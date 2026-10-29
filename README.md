@@ -49,6 +49,8 @@ Pages on a **private** repo requires a paid GitHub plan (Pro, Team or Enterprise
 
 No database tables are needed: the race uses Realtime **Broadcast** and **Presence** channels only. The anon key is meant to be public, so it is fine in `config.js`; never put the `service_role` / secret key there. If rooms won't connect, check in the Supabase dashboard that Realtime is enabled and that public channel access is allowed (Project Settings → Realtime).
 
+> **Note:** `config.js` currently contains a live Supabase project URL and anon key. If this repository is public, rotate the key in the Supabase dashboard if you do not want others to use the project.
+
 ## Project layout
 
 ```
@@ -75,9 +77,11 @@ node tests/playthrough.js it      # ...and in Italian
 node tests/check_python.js > /tmp/rounds.json && python3 tests/check_python.py /tmp/rounds.json
                                    # runs every Python puzzle with real Python
 node tests/race.js                 # two simulated players race each other (offline stand-in for Supabase)
+node tests/helpers.test.js         # pure helper unit tests
 ```
 
 ## Notes
 
 - All characters and demons are original; no characters from existing anime are used.
 - Content was written from the textbook's table of contents, not its pages. Check definitions against the book before tests.
+- See `IMPROVEMENTS.md` for recent robustness and testing changes.
