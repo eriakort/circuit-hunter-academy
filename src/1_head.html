@@ -399,5 +399,28 @@ textarea.out{font:600 15px ui-monospace,Menlo,monospace;width:min(360px,100%);mi
 .ops div{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:14px}
 .ops b{font-family:ui-monospace,monospace;color:var(--gold);margin-right:6px}
 
+/* v4 race */
+.race-code{font-family:var(--display);font-size:clamp(40px,10vw,68px);letter-spacing:.18em;color:var(--gold);line-height:1}
+.race-sel{font:600 15px var(--body);padding:9px 10px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:var(--text);width:100%;max-width:440px}
+.lanes{display:flex;flex-direction:column;gap:6px}
+.lane{position:relative;height:40px;border-radius:10px;background:repeating-linear-gradient(90deg,var(--panel2) 0 30px,#262a56 30px 32px);border:1px solid var(--line);overflow:hidden}
+.lane.me{border-color:var(--data);box-shadow:0 0 0 1px var(--data) inset}
+.lane .nm{position:absolute;left:52px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:800;color:var(--muted);white-space:nowrap}
+.lane .sc{position:absolute;right:22px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:13px;color:var(--gold)}
+.lane .flag{position:absolute;right:0;top:0;bottom:0;width:14px;background:repeating-conic-gradient(#fff 0 25%,#111 0 50%) 0 0/8px 8px;opacity:.75}
+.runner{position:absolute;top:3px;width:34px;height:34px;transition:left .6s cubic-bezier(.3,1.4,.5,1);z-index:1}
+.runner svg{width:34px;height:34px;display:block}
+.timer{height:8px;border-radius:99px;background:#2a2d5c;overflow:hidden}
+.timer i{display:block;height:100%;background:linear-gradient(90deg,var(--bad),var(--gold),var(--data));transition:width .2s linear}
+.countdown{font-family:var(--display);font-size:clamp(90px,24vw,170px);color:var(--ember);line-height:1;animation:pop .9s}
+@keyframes pop{0%{transform:scale(.4);opacity:0}30%{transform:scale(1.12);opacity:1}100%{transform:scale(1);opacity:.95}}
+.plist{display:flex;flex-direction:column;gap:6px}
+.pl{display:flex;gap:10px;align-items:center;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:6px 10px}
+.pl .avatar{flex:0 0 34px;width:34px;height:34px}
+.podium{display:flex;align-items:flex-end;justify-content:center;gap:8px;width:100%}
+.podium > div{display:flex;flex-direction:column;align-items:center;gap:4px;width:min(110px,30%)}
+.podium .avatar{width:44px;height:44px;flex:none}
+.podium .blk{width:100%;border-radius:8px 8px 0 0;display:flex;justify-content:center;font-family:var(--display);font-size:26px;color:#1b0c06;padding-top:6px}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>

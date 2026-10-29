@@ -5,7 +5,7 @@ from pathlib import Path
 ORDER = [
     "0_open.html",      # doctype + <head> start
     "1_head.html",      # <title>, fonts, all CSS
-    "1b_body.html",     # </head><body>
+    "1b_body.html",     # config.js loader, </head><body>
     "2_visuals.js",     # page shell, helpers, icons, characters, visuals (ch. 1-5)
     "2b_visuals2.js",   # code highlighter + visuals (ch. 6-16)
     "3a_arcs12.js",     # arcs + missions, ch. 1-2
@@ -15,6 +15,7 @@ ORDER = [
     "3e_ch11_16.js",    # missions ch. 11-16 + codex additions
     "4_engine.js",      # state, map, scenes, mini-games, battles, dojo, codex
     "4b_games2.js",     # mini-games for ch. 6-16
+    "4c_race.js",       # multiplayer race mode (Supabase Realtime)
     "5_end.js",         # start-up + </script>
     "6_close.html",     # </body></html>
 ]

@@ -27,7 +27,7 @@ const U={
 /* ============ HUD ============ */
 function setLang(l){ if(LANG===l) return; LANG=l; S.lang=l; save(); rerender(); }
 function rerender(){
-  if(VIEW==='scene') renderScene(); else if(VIEW==='codex') renderCodex(); else if(VIEW==='ending') renderEnding();
+  if(VIEW==='race') renderRace(); else if(VIEW==='scene') renderScene(); else if(VIEW==='codex') renderCodex(); else if(VIEW==='ending') renderEnding();
   else if(VIEW==='battle' && B){ RESUME=B; if(B.dojo) startDojo(); else renderScene(); }
   else renderMap();
 }
@@ -37,10 +37,11 @@ function renderHUD(){
   $('#hud').innerHTML=`<button class="brand" id="hHome">CIRCUIT <b>HUNTER</b> ACADEMY</button>
    <div class="hud-r">${S.name?`<div class="who-hud"><span class="nm">${esc(S.name)} · ${S.xp} XP</span><span class="rank">${L(r[1])}</span><div class="xpbar"><i style="width:${pct}%"></i></div></div>`:''}
    <div class="lang" role="group" aria-label="Language / Lingua"><button id="lEN" class="${LANG==='en'?'on':''}" aria-pressed="${LANG==='en'}">EN</button><button id="lIT" class="${LANG==='it'?'on':''}" aria-pressed="${LANG==='it'}">IT</button></div>
-   <button class="btn ghost sm" id="hMap">${L(U.missions)}</button><button class="btn ghost sm" id="hCodex">${L(U.codex)}</button><button class="btn ghost sm" id="hDojo" ${anyClear?'':'disabled'}>${L(U.dojo)}</button></div>`;
+   <button class="btn ghost sm" id="hMap">${L(U.missions)}</button><button class="btn ghost sm" id="hCodex">${L(U.codex)}</button><button class="btn ghost sm" id="hDojo" ${anyClear?'':'disabled'}>${L(U.dojo)}</button>${S.name?`<button class="btn ghost sm" id="hRace">${L(['Race','Gara'])}${RACE.code?` · ${RACE.code}`:''}</button>`:''}</div>`;
   $('#hHome').onclick=$('#hMap').onclick=()=>renderMap();
   $('#hCodex').onclick=()=>renderCodex();
   $('#hDojo').onclick=()=>startDojo();
+  const hr=$('#hRace'); if(hr) hr.onclick=()=>renderRace();
   $('#lEN').onclick=()=>setLang('en'); $('#lIT').onclick=()=>setLang('it');
 }
 
@@ -60,7 +61,7 @@ function renderMap(){
   const nextI=MISSIONS.findIndex((m,i)=>!S.cleared[m.id]&&isOpen(i));
   app.innerHTML=`<section class="hero card"><div><div class="eyebrow">${L(['Welcome back','Bentornata'])}, ${esc(S.name)}</div><h1>Circuit Hunter <span>Academy</span></h1>
      <p class="lede">${allCleared()?L(['Every Glitch Demon is defeated. Keep your techniques sharp in the Dojo.','Tutti i Demoni Glitch sono sconfitti. Tieni allenate le tue tecniche nel Dojo.']):L([`${done} of ${MISSIONS.length} missions cleared. The book's three units are the tabs below; each arc is one chapter, and every arc's first mission is open, so you can start from the chapter you're studying in class.`,`${done} missioni superate su ${MISSIONS.length}. Le tre unità del libro sono le schede qui sotto; ogni arco è un capitolo, e la prima missione di ogni arco è già aperta: puoi partire dal capitolo che state studiando in classe.`])}</p>
-     <div class="row" style="margin-top:14px">${allCleared()?`<button class="btn" id="goDojo">${L(['Train in the Dojo','Allenati nel Dojo'])}</button><button class="btn ghost" id="goCert">${L(['See certificate','Vedi il diploma'])}</button>`:nextI>=0?`<button class="btn" id="goNext">${L(U.mission)} ${MISSIONS[nextI].sec}: ${L(MISSIONS[nextI].title)}</button>`:''}</div></div>
+     <div class="row" style="margin-top:14px">${allCleared()?`<button class="btn" id="goDojo">${L(['Train in the Dojo','Allenati nel Dojo'])}</button><button class="btn ghost" id="goCert">${L(['See certificate','Vedi il diploma'])}</button>`:nextI>=0?`<button class="btn" id="goNext">${L(U.mission)} ${MISSIONS[nextI].sec}: ${L(MISSIONS[nextI].title)}</button>`:''}<button class="btn ghost" id="goRace">${L(['Race your friends','Sfida le amiche'])}</button></div></div>
      <div>${VIS.title()}</div></section>
    <nav class="units" aria-label="Units">${UNITS.map((u,ui)=>{const ms=MISSIONS.filter(m=>(ARCS[m.arc].unit||0)===ui); const dn=ms.filter(m=>S.cleared[m.id]).length;
       return `<button data-u="${ui}" class="${(S.unit||0)===ui?'on':''}" aria-pressed="${(S.unit||0)===ui}">${L(['Unit','Unità'])} ${ui+1} · ${L(u.title)}<small>${L(['ch.','cap.'])} ${u.ch} · ${dn}/${ms.length}</small></button>`;}).join('')}</nav>
@@ -75,6 +76,7 @@ function renderMap(){
   $$('.mcard').forEach(b=>b.onclick=()=>openMission(+b.dataset.i));
   $$('[data-u]').forEach(b=>b.onclick=()=>{S.unit=+b.dataset.u;save();renderMap();});
   const gn=$('#goNext'); if(gn) gn.onclick=()=>openMission(nextI);
+  const gr=$('#goRace'); if(gr) gr.onclick=()=>renderRace();
   const gd=$('#goDojo'); if(gd) gd.onclick=startDojo;
   const gc=$('#goCert'); if(gc) gc.onclick=renderEnding;
   let armed=false; $('#reset').onclick=e=>{ if(!armed){armed=true;e.target.textContent=L(['Tap again to erase everything','Tocca di nuovo per cancellare tutto']);e.target.style.borderColor='var(--bad)';return;}
