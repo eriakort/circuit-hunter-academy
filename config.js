@@ -4,6 +4,6 @@
    3. Paste them below, commit, and the Race Arena will work on the GitHub Pages site.
    The anon key is designed to be public: it is safe to commit. Never put the "service_role" / secret key here. */
 window.RACE_CONFIG = {
-  url: "YOUR-PROJECT-URL",        // e.g. "https://abcdefghijklm.supabase.co"
-  anonKey: "YOUR-ANON-KEY"
+  url: "https://yhzefqoplunmseuwcwku.supabase.co",        // e.g. "https://abcdefghijklm.supabase.co"
+  anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InloemVmcW9wbHVubXNldXdjd2t1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNDM0NTQsImV4cCI6MjEwODgxOTQ1NH0.5CWs0AtbFtrAYOYiPjgKfvWivAMPeXGXSzOblZMCS3c"
 };
