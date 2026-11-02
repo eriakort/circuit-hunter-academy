@@ -70,11 +70,25 @@ export interface LearningObjective {
   successCriteria?: BilingualText[];
 }
 
+export interface LearningWorkedExample {
+  scenario: BilingualText;
+  steps: BilingualText[];
+  answer: BilingualText;
+}
+
+export interface LearningMisconception {
+  belief: BilingualText;
+  correction: BilingualText;
+}
+
 export interface LearningConcept {
   id: string;
   title: BilingualText;
   explanation: BilingualText;
   example?: BilingualText;
+  workedExample?: LearningWorkedExample;
+  misconceptions?: LearningMisconception[];
+  knowledgePrompts?: BilingualText[];
   /** Zero-based indexes of existing scenes that demonstrate this concept. */
   sceneIndexes?: number[];
   /** Optional key used by the existing visual renderer. */
