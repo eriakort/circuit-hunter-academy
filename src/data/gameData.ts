@@ -2352,6 +2352,94 @@ export const MISSIONS: Mission[] = [
     ]
   }
 ],
+          "independentPractice": [
+  {
+    "id": "independent-hardware-cycle",
+    "title": [
+      "Independent challenge: computer systems",
+      "Sfida autonoma: sistemi informatici"
+    ],
+    "instructions": [
+      "Solve each new situation without hints. Choose the best answer, then review the explanation.",
+      "Risolvi ogni nuova situazione senza suggerimenti. Scegli la risposta migliore, poi leggi la spiegazione."
+    ],
+    "sceneIndex": 0,
+    "questions": [
+      {
+        "q": [
+          "A student edits a presentation, displays it on a projector and saves it. Which device is an output device?",
+          "Uno studente modifica una presentazione, la mostra con un proiettore e la salva. Quale dispositivo è di output?"
+        ],
+        "a": [
+          [
+            "The projector",
+            "Il proiettore"
+          ],
+          [
+            "The keyboard",
+            "La tastiera"
+          ],
+          [
+            "The SSD",
+            "L'SSD"
+          ]
+        ],
+        "why": [
+          "The projector presents information from the computer, so it is output. The keyboard is input and the SSD stores data.",
+          "Il proiettore presenta le informazioni del computer, quindi è output. La tastiera è input e l'SSD memorizza i dati."
+        ]
+      },
+      {
+        "q": [
+          "A computer follows instructions stored in memory. Which architecture principle does this describe?",
+          "Un computer esegue istruzioni memorizzate in memoria. Quale principio architetturale descrive?"
+        ],
+        "a": [
+          [
+            "Stored-program concept",
+            "Concetto di programma memorizzato"
+          ],
+          [
+            "Touchscreen sensing",
+            "Rilevamento touchscreen"
+          ],
+          [
+            "Cloud synchronisation",
+            "Sincronizzazione cloud"
+          ]
+        ],
+        "why": [
+          "The stored-program concept places program instructions and data in memory for the processor to use.",
+          "Il concetto di programma memorizzato prevede che istruzioni e dati siano in memoria per essere utilizzati dal processore."
+        ]
+      },
+      {
+        "q": [
+          "The CPU needs to read a memory location. Which bus carries the location identifier?",
+          "La CPU deve leggere una posizione di memoria. Quale bus trasporta l'identificatore della posizione?"
+        ],
+        "a": [
+          [
+            "Address bus",
+            "Bus degli indirizzi"
+          ],
+          [
+            "Data bus",
+            "Bus dei dati"
+          ],
+          [
+            "Control bus",
+            "Bus di controllo"
+          ]
+        ],
+        "why": [
+          "The address bus identifies where data should be read from or written to.",
+          "Il bus degli indirizzi indica da dove leggere o dove scrivere i dati."
+        ]
+      }
+    ]
+  }
+],
           "concepts": [
                 {
                       "id": "input-processing-output-storage",
@@ -3013,6 +3101,94 @@ export const MISSIONS: Mission[] = [
     ]
   }
 ],
+          "independentPractice": [
+  {
+    "id": "independent-cpu-core",
+    "title": [
+      "Independent challenge: motherboard and CPU",
+      "Sfida autonoma: scheda madre e CPU"
+    ],
+    "instructions": [
+      "Apply what you learned to new hardware scenarios. No hints are available in this challenge.",
+      "Applica ciò che hai imparato a nuovi scenari hardware. In questa sfida non sono disponibili suggerimenti."
+    ],
+    "sceneIndex": 0,
+    "questions": [
+      {
+        "q": [
+          "A PC turns off unexpectedly when the processor gets too hot. Which component helps remove heat from the CPU?",
+          "Un PC si spegne improvvisamente quando il processore si surriscalda. Quale componente aiuta a rimuovere il calore dalla CPU?"
+        ],
+        "a": [
+          [
+            "CPU cooler",
+            "Dissipatore della CPU"
+          ],
+          [
+            "RAM module",
+            "Modulo RAM"
+          ],
+          [
+            "Network card",
+            "Scheda di rete"
+          ]
+        ],
+        "why": [
+          "The cooler transfers heat away from the CPU to help keep it within a safe operating temperature.",
+          "Il dissipatore trasferisce il calore lontano dalla CPU per mantenerla a una temperatura operativa sicura."
+        ]
+      },
+      {
+        "q": [
+          "A processor has four cores. What does this most directly mean?",
+          "Un processore ha quattro core. Che cosa significa più direttamente?"
+        ],
+        "a": [
+          [
+            "It has four processing cores that can work on tasks",
+            "Ha quattro core di elaborazione che possono lavorare sulle attività"
+          ],
+          [
+            "It has four hard drives",
+            "Ha quattro dischi rigidi"
+          ],
+          [
+            "It always runs at four times the speed",
+            "Funziona sempre a una velocità quattro volte superiore"
+          ]
+        ],
+        "why": [
+          "More cores can handle multiple instruction streams, but performance also depends on clock speed, workload and design.",
+          "Più core possono gestire più flussi di istruzioni, ma le prestazioni dipendono anche da frequenza, carico e progettazione."
+        ]
+      },
+      {
+        "q": [
+          "During the fetch-decode-execute cycle, what happens during decode?",
+          "Durante il ciclo fetch-decode-execute, che cosa accade durante decode?"
+        ],
+        "a": [
+          [
+            "The control unit interprets the instruction",
+            "L'unità di controllo interpreta l'istruzione"
+          ],
+          [
+            "The instruction is permanently saved to an SSD",
+            "L'istruzione viene salvata permanentemente su un SSD"
+          ],
+          [
+            "The monitor displays the instruction",
+            "Il monitor visualizza l'istruzione"
+          ]
+        ],
+        "why": [
+          "Decode interprets the fetched instruction so the processor knows which operation to perform.",
+          "Decode interpreta l'istruzione recuperata affinché il processore sappia quale operazione eseguire."
+        ]
+      }
+    ]
+  }
+],
           "concepts": [
                 {
                       "id": "motherboard",
@@ -3654,6 +3830,94 @@ export const MISSIONS: Mission[] = [
         "why": [
           "The address bus identifies the location; the data bus carries the value and control signals coordinate the operation.",
           "Il bus indirizzi identifica la posizione; il bus dati trasporta il valore e i segnali di controllo coordinano l'operazione."
+        ]
+      }
+    ]
+  }
+],
+          "independentPractice": [
+  {
+    "id": "independent-memory-buses",
+    "title": [
+      "Independent challenge: memory and storage",
+      "Sfida autonoma: memoria e archiviazione"
+    ],
+    "instructions": [
+      "Choose the best solution for each memory and storage situation. Work independently, then read the feedback.",
+      "Scegli la soluzione migliore per ogni situazione relativa a memoria e archiviazione. Lavora in autonomia, poi leggi il feedback."
+    ],
+    "sceneIndex": 0,
+    "questions": [
+      {
+        "q": [
+          "A laptop needs to keep a saved file when the battery is removed. Where should the file be stored?",
+          "Un portatile deve conservare un file salvato quando la batteria viene rimossa. Dove va memorizzato il file?"
+        ],
+        "a": [
+          [
+            "On an SSD",
+            "Su un SSD"
+          ],
+          [
+            "Only in RAM",
+            "Solo nella RAM"
+          ],
+          [
+            "Only in CPU cache",
+            "Solo nella cache della CPU"
+          ]
+        ],
+        "why": [
+          "An SSD is non-volatile storage and retains saved data without power. RAM and cache are volatile.",
+          "Un SSD è una memoria non volatile e conserva i dati senza alimentazione. RAM e cache sono volatili."
+        ]
+      },
+      {
+        "q": [
+          "The CPU repeatedly uses the same small set of data. Which memory is designed to provide very fast access close to the CPU?",
+          "La CPU utilizza ripetutamente lo stesso piccolo insieme di dati. Quale memoria è progettata per offrire un accesso molto rapido vicino alla CPU?"
+        ],
+        "a": [
+          [
+            "Cache",
+            "Cache"
+          ],
+          [
+            "Optical disc",
+            "Disco ottico"
+          ],
+          [
+            "USB flash drive",
+            "Chiavetta USB"
+          ]
+        ],
+        "why": [
+          "CPU cache keeps frequently used data and instructions close to the processor to reduce access time.",
+          "La cache della CPU mantiene dati e istruzioni usati frequentemente vicino al processore per ridurre i tempi di accesso."
+        ]
+      },
+      {
+        "q": [
+          "A device wants to send the value 42 from memory to the CPU. Which bus carries the actual value?",
+          "Un dispositivo vuole inviare il valore 42 dalla memoria alla CPU. Quale bus trasporta il valore effettivo?"
+        ],
+        "a": [
+          [
+            "Data bus",
+            "Bus dei dati"
+          ],
+          [
+            "Address bus",
+            "Bus degli indirizzi"
+          ],
+          [
+            "Control bus",
+            "Bus di controllo"
+          ]
+        ],
+        "why": [
+          "The data bus carries the actual data. Address and control buses carry location and coordination signals.",
+          "Il bus dei dati trasporta i dati effettivi. I bus degli indirizzi e di controllo trasportano segnali di posizione e coordinamento."
         ]
       }
     ]
@@ -4428,6 +4692,94 @@ export const MISSIONS: Mission[] = [
         "why": [
           "A conductive finger changes capacitance; the controller detects and interprets the change as a touch.",
           "Un dito conduttivo modifica la capacità; il controller rileva e interpreta la variazione come un tocco."
+        ]
+      }
+    ]
+  }
+],
+          "independentPractice": [
+  {
+    "id": "independent-peripherals-touch",
+    "title": [
+      "Independent challenge: peripherals and touchscreens",
+      "Sfida autonoma: periferiche e touchscreen"
+    ],
+    "instructions": [
+      "Solve each real-world device scenario without hints. Use the feedback to check your reasoning.",
+      "Risolvi ogni scenario reale sui dispositivi senza suggerimenti. Usa il feedback per verificare il tuo ragionamento."
+    ],
+    "sceneIndex": 0,
+    "questions": [
+      {
+        "q": [
+          "A student scans a paper worksheet and the computer receives a digital image. What role does the scanner perform?",
+          "Uno studente acquisisce una scheda cartacea e il computer riceve un'immagine digitale. Quale ruolo svolge lo scanner?"
+        ],
+        "a": [
+          [
+            "Input",
+            "Input"
+          ],
+          [
+            "Output",
+            "Output"
+          ],
+          [
+            "Storage",
+            "Archiviazione"
+          ]
+        ],
+        "why": [
+          "A scanner sends information into the computer, so it is an input device.",
+          "Uno scanner invia informazioni al computer, quindi è un dispositivo di input."
+        ]
+      },
+      {
+        "q": [
+          "Why can a capacitive touchscreen detect a finger but may not respond to an ordinary non-conductive plastic stylus?",
+          "Perché un touchscreen capacitivo rileva un dito ma potrebbe non rispondere a uno stilo di plastica non conduttivo?"
+        ],
+        "a": [
+          [
+            "It senses changes in the screen's electrical field",
+            "Rileva variazioni nel campo elettrico dello schermo"
+          ],
+          [
+            "It measures only the force of a press",
+            "Misura solo la forza della pressione"
+          ],
+          [
+            "It reads fingerprints using a camera",
+            "Legge le impronte digitali con una fotocamera"
+          ]
+        ],
+        "why": [
+          "A capacitive screen detects changes in capacitance caused by a conductive touch, rather than relying only on pressure.",
+          "Uno schermo capacitivo rileva variazioni di capacità causate da un tocco conduttivo, senza basarsi solo sulla pressione."
+        ]
+      },
+      {
+        "q": [
+          "A school replaces old computers. What is the most responsible way to handle devices that cannot be reused?",
+          "Una scuola sostituisce i vecchi computer. Qual è il modo più responsabile di gestire i dispositivi che non possono essere riutilizzati?"
+        ],
+        "a": [
+          [
+            "Use an authorised e-waste recycling route",
+            "Utilizzare un circuito autorizzato di riciclo dei RAEE"
+          ],
+          [
+            "Put them in ordinary mixed waste",
+            "Gettarli nei rifiuti indifferenziati"
+          ],
+          [
+            "Leave them outdoors",
+            "Lasciarli all'aperto"
+          ]
+        ],
+        "why": [
+          "Electronic waste should go through appropriate collection and recycling so materials can be recovered and hazardous substances managed safely.",
+          "I rifiuti elettronici devono essere raccolti e riciclati correttamente per recuperare i materiali e gestire in sicurezza le sostanze pericolose."
         ]
       }
     ]

@@ -545,3 +545,12 @@ body{overflow-x:hidden}
 .guided-complete{margin:12px 0;padding:12px 14px}
 .guided-complete p{margin-bottom:0}
 @media(max-width:520px){.learning-guided-practice{padding:11px}.guided-option{padding:10px}.guided-question > strong{font-size:14px}}
+
+
+/* Smart Learning independent practice */
+.learning-independent-practice{width:100%;min-width:0;display:flex;flex-direction:column;gap:12px;margin:12px 0 18px;padding:16px;border:1px solid rgba(255,190,90,.34);border-radius:14px;background:var(--panel)}
+.independent-progress{align-self:flex-start;margin-top:4px;padding:4px 9px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);font:700 11px var(--mono);color:var(--gold)}
+.independent-complete{margin:12px 0;padding:12px 14px;border:1px solid rgba(83,214,151,.35);border-radius:10px;background:rgba(83,214,151,.07);color:var(--text)}
+.independent-complete strong{display:block;font-size:13px}
+.independent-complete p{margin:5px 0 0;font-size:13px;line-height:1.5}
+@media(max-width:520px){.learning-independent-practice{padding:11px}}
