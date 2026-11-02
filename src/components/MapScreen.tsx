@@ -206,6 +206,7 @@ export const MapScreen: React.FC = () => {
                 const open = isOpen(i);
                 const isCleared = !!cleared[m.id];
                 const isFlawless = !!flawless[m.id];
+                const learning = state.learningProgress?.[m.id];
 
                 return (
                   <button
@@ -226,6 +227,11 @@ export const MapScreen: React.FC = () => {
                     </span>
                     <h3>{L(m.title, lang)}</h3>
                     <span className="topic">{L(m.topic, lang)}</span>
+                    {learning?.knowledgeCheckScore !== undefined && (
+                      <small className="learning-map-progress">
+                        {L(['Knowledge check', 'Verifica conoscenze'], lang)} · {learning.knowledgeCheckScore}%
+                      </small>
+                    )}
 
                     <span className={`badge ${isCleared ? 'ok' : open ? 'go' : 'lock'}`}>
                       {isCleared
