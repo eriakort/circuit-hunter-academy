@@ -22,6 +22,9 @@ export const MissionScreen: React.FC = () => {
   const [guidedHintVisible, setGuidedHintVisible] = useState(false);
   const [guidedFeedback, setGuidedFeedback] = useState<{ correct: boolean; why: any } | null>(null);
   const [guidedCompletions, setGuidedCompletions] = useState<Record<string, boolean>>({});
+  const [independentIndex, setIndependentIndex] = useState(0);
+  const [independentFeedback, setIndependentFeedback] = useState<{ correct: boolean; why: any } | null>(null);
+  const [independentCompletions, setIndependentCompletions] = useState<Record<string, boolean>>({});
   const gameContainerRef = useRef<HTMLDivElement>(null);
 
   // Scene gating check
@@ -62,6 +65,8 @@ export const MissionScreen: React.FC = () => {
     setGuidedIndex(0);
     setGuidedHintVisible(false);
     setGuidedFeedback(null);
+    setIndependentIndex(0);
+    setIndependentFeedback(null);
   }, [currentMission.id, currentSceneIndex]);
 
   // Mount mini-game or interactive scene
@@ -129,6 +134,13 @@ export const MissionScreen: React.FC = () => {
   const guidedQuestions = guidedPractice?.questions || [];
   const guidedComplete = !guidedPractice || !!guidedCompletions[guidedKey];
   const guidedQuestion = guidedQuestions[guidedIndex];
+  const independentPractice = currentMission.learning?.independentPractice?.find(
+    activity => activity.sceneIndex === currentSceneIndex && activity.questions?.length
+  );
+  const independentKey = `${currentMission.id}:${independentPractice?.id || ''}`;
+  const independentQuestions = independentPractice?.questions || [];
+  const independentComplete = !independentPractice || !!independentCompletions[independentKey];
+  const independentQuestion = independentQuestions[independentIndex];
   const workedExamples = currentMission.learning?.concepts.filter(
     concept => concept.sceneIndexes?.includes(currentSceneIndex) && concept.workedExample
   ) || [];
@@ -258,6 +270,62 @@ export const MissionScreen: React.FC = () => {
         </div>
       )}
 
+      {independentPractice && independentQuestion && !independentComplete && (
+        <section className="learning-independent-practice" aria-label={lang === 'it' ? 'Esercitazione autonoma' : 'Independent practice'}>
+          <div className="learning-section-heading">
+            <span className="learning-kicker">{lang === 'it' ? 'SFIDA AUTONOMA' : 'INDEPENDENT CHALLENGE'}</span>
+            <h3>{L(independentPractice.title, lang)}</h3>
+            <p>{L(independentPractice.instructions, lang)}</p>
+            <div className="independent-progress">{lang === 'it' ? 'Problema' : 'Challenge'} {independentIndex + 1} / {independentQuestions.length}</div>
+          </div>
+          <div className="guided-question">
+            <strong>{L(independentQuestion.q, lang)}</strong>
+            <div className="guided-options">
+              {independentQuestion.a.map((option, index) => (
+                <button
+                  type="button"
+                  className="guided-option"
+                  key={index}
+                  disabled={!!independentFeedback?.correct}
+                  onClick={() => setIndependentFeedback({ correct: index === 0, why: independentQuestion.why })}
+                >
+                  <span className="guided-option-letter">{String.fromCharCode(65 + index)}</span>
+                  <span>{L(option, lang)}</span>
+                </button>
+              ))}
+            </div>
+            {independentFeedback && (
+              <div className={independentFeedback.correct ? 'guided-feedback correct' : 'guided-feedback retry'} role="status" aria-live="polite">
+                <strong>{independentFeedback.correct ? (lang === 'it' ? 'Risposta corretta' : 'Correct answer') : (lang === 'it' ? 'Non ancora: riprova' : 'Not quite — try again')}</strong>
+                <p>{L(independentFeedback.why, lang)}</p>
+                {independentFeedback.correct ? (
+                  <button type="button" className="btn" onClick={() => {
+                    if (independentIndex + 1 < independentQuestions.length) {
+                      setIndependentIndex(index => index + 1);
+                      setIndependentFeedback(null);
+                    } else {
+                      setIndependentCompletions(previous => ({ ...previous, [independentKey]: true }));
+                    }
+                  }}>
+                    {independentIndex + 1 < independentQuestions.length ? (lang === 'it' ? 'Prossimo problema' : 'Next challenge') : (lang === 'it' ? 'Completa la sfida' : 'Complete challenge')}
+                  </button>
+                ) : (
+                  <button type="button" className="btn ghost" onClick={() => setIndependentFeedback(null)}>
+                    {lang === 'it' ? 'Riprova' : 'Try again'}
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+      {independentComplete && independentPractice && (
+        <div className="independent-complete" role="status">
+          <strong>{lang === 'it' ? 'Sfida autonoma completata' : 'Independent challenge completed'}</strong>
+          <p>{lang === 'it' ? 'Hai applicato le tue conoscenze senza suggerimenti. Puoi continuare.' : 'You applied your knowledge without hints. You can continue.'}</p>
+        </div>
+      )}
+
       {workedExamples.length > 0 && (
         <section className="learning-worked-examples" aria-label={lang === 'it' ? 'Esempi svolti' : 'Worked examples'}>
           <div className="learning-section-heading">
@@ -300,7 +368,7 @@ export const MissionScreen: React.FC = () => {
         <button
           className="btn"
           id="next"
-          disabled={!canProceed || !guidedComplete}
+          disabled={!canProceed || !guidedComplete || !independentComplete}
           onClick={nextScene}
         >
           {nxt && nxt.type === 'battle' ? L(U.fight, lang) : L(U.cont, lang)}
