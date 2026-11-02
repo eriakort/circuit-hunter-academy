@@ -9,6 +9,7 @@ const lang=process.argv[2]||'en';
  await p.setContent(html,{waitUntil:'domcontentloaded'});
  await p.waitForTimeout(300);
  if(lang==='it') await p.click('#lIT');
+ await p.click('.subjcard');
  await p.fill('#nm','Hana'); await p.click('#regf button');
  const sol=['FFFF','LFFFRFFFFRFFF','LFFRFFFLFFFRFF'];
  const N=await p.evaluate(()=>MISSIONS.length);

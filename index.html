@@ -429,6 +429,14 @@ textarea.out{font:600 15px ui-monospace,Menlo,monospace;width:min(360px,100%);mi
 .podium .blk{width:100%;border-radius:8px 8px 0 0;display:flex;justify-content:center;font-family:var(--display);font-size:26px;color:#1b0c06;padding-top:6px}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.subjects{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:720px){.subjects{grid-template-columns:1fr}}
+.subjcard{text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;color:var(--text);cursor:pointer;display:flex;flex-direction:column;gap:8px;font:inherit;transition:transform .15s,border-color .15s}
+.subjcard:hover{transform:translateY(-3px);border-color:var(--ember)}
+.subjcard .subjart{width:76px;height:76px}
+.subjcard h2{margin:2px 0 0;font-size:20px}
+.subjcard p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+.subjcard .pg{color:var(--ember);font-size:12.5px;font-weight:600}
 </style>
 <script src="config.js"></script>
 </head>
@@ -2498,6 +2506,67 @@ CODEX.push(
  [42,'Module / import','Modulo / import','A file of ready-made functions / loading it.','Un file di funzioni pronte / caricarlo.'],
  [43,'Stack (LIFO) / queue (FIFO)','Pila (LIFO) / coda (FIFO)','Last in first out / first in first out.','L\'ultimo entrato esce per primo / il primo entrato esce per primo.'],
 );
+/* ============ PHYSICS — Il Walker, primo biennio (subject 'phys') ============
+   Phase 0: the physics unit + Chapter 1, one full mission, to prove the
+   subject pipeline end to end. Chapters 1–5 content follows. */
+
+/* ---- a physics visual: the SI base units ---- */
+VIS.phQuant = () => `<svg viewBox="0 0 320 180" role="img" aria-label="SI base units">
+  <defs><linearGradient id="pq" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9f45"/><stop offset="1" stop-color="#ff5d8f"/></linearGradient></defs>
+  <rect x="8" y="8" width="304" height="164" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+  <g transform="translate(40,54)"><rect x="-26" y="0" width="52" height="22" rx="3" fill="none" stroke="url(#pq)" stroke-width="2.5"/>${[0,1,2,3,4].map(i=>`<line x1="${-26+i*13}" y1="0" x2="${-26+i*13}" y2="${i%2?8:12}" stroke="url(#pq)" stroke-width="2"/>`).join('')}<text x="0" y="46" text-anchor="middle" fill="var(--text)" font-size="20" font-weight="700">m</text><text x="0" y="64" text-anchor="middle" fill="var(--muted)" font-size="11">metre</text></g>
+  <g transform="translate(160,54)"><path d="M-22 22 h44 l-8 -22 h-28 z" fill="none" stroke="url(#pq)" stroke-width="2.5"/><circle cx="0" cy="6" r="6" fill="url(#pq)"/><text x="0" y="46" text-anchor="middle" fill="var(--text)" font-size="20" font-weight="700">kg</text><text x="0" y="64" text-anchor="middle" fill="var(--muted)" font-size="11">kilogram</text></g>
+  <g transform="translate(280,54)"><circle cx="0" cy="11" r="18" fill="none" stroke="url(#pq)" stroke-width="2.5"/><line x1="0" y1="11" x2="0" y2="-1" stroke="url(#pq)" stroke-width="2.5"><animateTransform attributeName="transform" type="rotate" from="0 0 11" to="360 0 11" dur="6s" repeatCount="indefinite"/></line><line x1="0" y1="11" x2="9" y2="11" stroke="url(#pq)" stroke-width="2"/><text x="0" y="46" text-anchor="middle" fill="var(--text)" font-size="20" font-weight="700">s</text><text x="0" y="64" text-anchor="middle" fill="var(--muted)" font-size="11">second</text></g>
+  <text x="160" y="152" text-anchor="middle" fill="var(--muted)" font-size="12">${L(['Length · Mass · Time — three of the seven SI base quantities','Lunghezza · Massa · Tempo — tre delle sette grandezze base del SI'])}</text>
+</svg>`;
+
+/* ---- unit + chapter 1 arc ---- */
+UNITS.push({ title:['Physics · Measurement & Mechanics','Fisica · Misura e meccanica'], ch:'1–5', subject:'phys' });
+const PHYS_U = UNITS.length - 1;
+const PHYS_A0 = ARCS.length;
+ARCS.push(
+  { n:1, unit:PHYS_U, subject:'phys', title:['Physical Quantities','Le grandezze fisiche'], pages:'1–30' },
+);
+
+const PHYS_M0 = MISSIONS.length;
+MISSIONS.push(
+{ id:'p1m1', arc:PHYS_A0, sec:'1.1–1.3', pages:'2–18', hue:28, horns:3, eyes:2,
+  title:['Measuring the World','Misurare il mondo'], topic:['Physical quantities, the SI, fundamental vs derived','Grandezze fisiche, il SI, fondamentali e derivate'],
+  demon:['Unit Gremlin','Gremlin delle Unità'], tech:['Measure Form · First Technique: SI Strike','Stile della Misura · Prima Tecnica: Colpo del SI'],
+  scenes:[
+   {who:'s', vis:'phQuant', text:[`<p>Welcome to the physics wing, {name}. Same academy, new discipline.</p><p>Physics begins with <b>measuring</b>. A [[physical quantity|grandezza fisica]] is anything we can measure — a length, a time, a temperature. Measuring means comparing it with a [[unit of measurement|unità di misura]] and getting a number.</p>`,
+     `<p>Benvenuta nell'ala di fisica, {name}. Stessa accademia, nuova disciplina.</p><p>La fisica comincia dal <b>misurare</b>. Una [[physical quantity|grandezza fisica]] è tutto ciò che possiamo misurare — una lunghezza, un tempo, una temperatura. Misurare significa confrontarla con un'[[unit of measurement|unità di misura]] e ottenere un numero.</p>`]},
+   {who:'s', vis:'phQuant', text:[`<p>Scientists agree on one set of units: the [[International System|Sistema Internazionale]] (SI). It has seven [[fundamental quantities|grandezze fondamentali]] — among them <b>length</b> (metre, m), <b>mass</b> (kilogram, kg) and <b>time</b> (second, s).</p><p>Everything else is a [[derived quantity|grandezza derivata]], built from these: area is m², speed is m/s, density is kg/m³.</p><p>Very large or very small numbers are written in [[scientific notation|notazione scientifica]], like 3·10⁸ m/s.</p>`,
+     `<p>Gli scienziati si accordano su un insieme di unità: il [[International System|Sistema Internazionale]] (SI). Ha sette [[fundamental quantities|grandezze fondamentali]] — tra cui <b>lunghezza</b> (metro, m), <b>massa</b> (chilogrammo, kg) e <b>tempo</b> (secondo, s).</p><p>Tutto il resto è una [[derived quantity|grandezza derivata]], costruita da queste: l'area è m², la velocità è m/s, la densità è kg/m³.</p><p>I numeri molto grandi o molto piccoli si scrivono in [[scientific notation|notazione scientifica]], come 3·10⁸ m/s.</p>`]},
+   {who:'y', vis:'phQuant', text:[`<p>So the fundamental ones are the "building blocks", and the derived ones are combinations of them?</p>`,`<p>Quindi quelle fondamentali sono i "mattoni", e quelle derivate sono loro combinazioni?</p>`]},
+   {who:'s', vis:'phQuant', text:[`<p>Exactly. The Unit Gremlin has scrambled a pile of quantities. Sort each one: is it <b>fundamental</b> or <b>derived</b>?</p>`,`<p>Esatto. Il Gremlin delle Unità ha mescolato un mucchio di grandezze. Smista ciascuna: è <b>fondamentale</b> o <b>derivata</b>?</p>`]},
+   {type:'sort', title:['Fundamental or derived?','Fondamentale o derivata?'], cats:[['Fundamental','Fondamentale'],['Derived','Derivata']], items:[
+     {n:['Length (m)','Lunghezza (m)'],i:'layers',c:0,why:['Length is one of the seven SI base quantities.','La lunghezza è una delle sette grandezze base del SI.']},
+     {n:['Mass (kg)','Massa (kg)'],i:'file',c:0,why:['Mass is a fundamental SI quantity, measured in kilograms.','La massa è una grandezza fondamentale del SI, misurata in chilogrammi.']},
+     {n:['Time (s)','Tempo (s)'],i:'book',c:0,why:['Time is fundamental; its unit is the second.','Il tempo è fondamentale; la sua unità è il secondo.']},
+     {n:['Speed (m/s)','Velocità (m/s)'],i:'robot',c:1,why:['Speed = length ÷ time, so it is derived.','La velocità = lunghezza ÷ tempo, quindi è derivata.']},
+     {n:['Area (m²)','Area (m²)'],i:'puzzle',c:1,why:['Area = length × length, a derived quantity.','L\'area = lunghezza × lunghezza, una grandezza derivata.']},
+     {n:['Density (kg/m³)','Densità (kg/m³)'],i:'eye',c:1,why:['Density = mass ÷ volume, so it is derived.','La densità = massa ÷ volume, quindi è derivata.']}]},
+   {who:'d', vis:'demon', text:[`<p>Grr… I'm the Unit Gremlin! I swap metres for miles and grams for ounces until nothing adds up!</p>`,`<p>Grr… Sono il Gremlin delle Unità! Scambio metri con miglia e grammi con once finché non torna più niente!</p>`]},
+   {type:'battle'}],
+  quiz:[
+   {q:['What is a physical quantity?','Che cos\'è una grandezza fisica?'],a:[['Something that can be measured','Qualcosa che si può misurare'],['A type of atom','Un tipo di atomo'],['A unit of measurement','Un\'unità di misura'],['A scientific law','Una legge scientifica']],why:['A physical quantity is any property we can measure and express with a number and a unit.','Una grandezza fisica è una proprietà che possiamo misurare ed esprimere con un numero e un\'unità.']},
+   {q:['The SI unit of length is the…','L\'unità SI della lunghezza è il…'],a:[['Metre','Metro'],['Kilogram','Chilogrammo'],['Second','Secondo'],['Litre','Litro']],why:['Length is measured in metres (m) in the SI.','La lunghezza si misura in metri (m) nel SI.']},
+   {q:['Which of these is a fundamental quantity?','Quale di queste è una grandezza fondamentale?'],a:[['Mass','Massa'],['Speed','Velocità'],['Area','Area'],['Density','Densità']],why:['Mass is one of the seven SI base quantities; the others are derived.','La massa è una delle sette grandezze base del SI; le altre sono derivate.']},
+   {q:['Speed (m/s) is a derived quantity because…','La velocità (m/s) è una grandezza derivata perché…'],a:[['It combines length and time','Combina lunghezza e tempo'],['It cannot be measured','Non si può misurare'],['It has no unit','Non ha unità'],['It is always constant','È sempre costante']],why:['Speed = length ÷ time, so it is built from fundamental quantities.','La velocità = lunghezza ÷ tempo, quindi è costruita da grandezze fondamentali.']},
+   {q:['How do you write 300 000 000 in scientific notation?','Come si scrive 300.000.000 in notazione scientifica?'],a:[['3 × 10⁸','3 × 10⁸'],['3 × 10⁶','3 × 10⁶'],['30 × 10⁷','30 × 10⁷'],['0.3 × 10⁹','0,3 × 10⁹']],why:['Move the point so one non-zero digit stays before it: 3 × 10⁸.','Si sposta la virgola lasciando una cifra diversa da zero davanti: 3 × 10⁸.']},
+   {q:['Why does science use the International System (SI)?','Perché la scienza usa il Sistema Internazionale (SI)?'],a:[['So measurements are comparable everywhere','Così le misure sono confrontabili ovunque'],['Because it is older','Perché è più antico'],['To make physics harder','Per rendere la fisica più difficile'],['Only Italy uses it','Lo usa solo l\'Italia']],why:['A shared set of units lets scientists everywhere compare results.','Un insieme di unità condiviso permette a tutti gli scienziati di confrontare i risultati.']},
+  ]}
+);
+
+CODEX.push(
+  [PHYS_M0,'physical quantity','grandezza fisica','A property that can be measured and expressed with a number and a unit.','Una proprietà che si può misurare ed esprimere con un numero e un\'unità.'],
+  [PHYS_M0,'unit of measurement','unità di misura','A reference amount a quantity is compared with (e.g. the metre).','Una quantità di riferimento con cui si confronta una grandezza (es. il metro).'],
+  [PHYS_M0,'International System','Sistema Internazionale','The SI: the agreed set of units used by scientists worldwide.','Il SI: l\'insieme di unità condiviso dagli scienziati di tutto il mondo.'],
+  [PHYS_M0,'fundamental quantities','grandezze fondamentali','The seven SI base quantities (length, mass, time, …) from which others are built.','Le sette grandezze base del SI (lunghezza, massa, tempo, …) da cui si costruiscono le altre.'],
+  [PHYS_M0,'derived quantity','grandezza derivata','A quantity built from fundamental ones, like speed (m/s) or density (kg/m³).','Una grandezza costruita da quelle fondamentali, come velocità (m/s) o densità (kg/m³).'],
+  [PHYS_M0,'scientific notation','notazione scientifica','Writing a number as a value between 1 and 10 times a power of ten.','Scrivere un numero come un valore tra 1 e 10 per una potenza di dieci.']
+);
 
 /* ============ state ============ */
 const SKEY='circuit-hunter-academy-v2';
@@ -2517,7 +2586,13 @@ function award(n){ if(inMissionFirstTime()) addXP(n); }
 function toTop(){ try{window.scrollTo({top:0,behavior:REDUCED?'auto':'smooth'});}catch(e){window.scrollTo(0,0);} }
 function pauseSmil(){ if(REDUCED) $$('svg').forEach(s=>s.pauseAnimations&&s.pauseAnimations()); }
 const isOpen=i=>{const m=MISSIONS[i]; const prev=MISSIONS[i-1]; return !prev||prev.arc!==m.arc||!!S.cleared[prev.id];};
-const allCleared=()=>MISSIONS.every(m=>S.cleared[m.id]);
+/* ---- subjects: content is tagged on its arc/unit; default is 'cs' ---- */
+const SUBOF=x=>(x&&x.subject)||'cs';
+const curSub=()=>S.subject||'cs';
+const msub=m=>SUBOF(ARCS[m.arc]);
+const myMissions=()=>MISSIONS.filter(m=>msub(m)===curSub());
+const firstUnitOf=subj=>{const i=UNITS.findIndex(u=>SUBOF(u)===subj);return i<0?0:i;};
+const allCleared=()=>myMissions().every(m=>S.cleared[m.id]);
 const U={
   missions:['Missions','Missioni'], codex:['Codex','Glossario'], dojo:['Dojo','Dojo'], cont:['Continue','Continua'], back:['Back','Indietro'], fight:['Fight!','Combatti!'],
   next:['Next step','Passo successivo'], prev:['Previous step','Passo precedente'], arc:['Arc','Arco'], mission:['Mission','Missione'], pages:['pp.','pp.'],
@@ -2537,41 +2612,62 @@ function renderHUD(){
   $('#hud').innerHTML=`<button class="brand" id="hHome">CIRCUIT <b>HUNTER</b> ACADEMY</button>
    <div class="hud-r">${S.name?`<div class="who-hud"><span class="nm">${esc(S.name)} · ${S.xp} XP</span><span class="rank">${L(r[1])}</span><div class="xpbar"><i style="width:${pct}%"></i></div></div>`:''}
    <div class="lang" role="group" aria-label="Language / Lingua"><button id="lEN" class="${LANG==='en'?'on':''}" aria-pressed="${LANG==='en'}">EN</button><button id="lIT" class="${LANG==='it'?'on':''}" aria-pressed="${LANG==='it'}">IT</button></div>
-   <button class="btn ghost sm" id="hMap">${L(U.missions)}</button><button class="btn ghost sm" id="hCodex">${L(U.codex)}</button><button class="btn ghost sm" id="hDojo" ${anyClear?'':'disabled'}>${L(U.dojo)}</button>${S.name?`<button class="btn ghost sm" id="hRace">${L(['Race','Gara'])}${RACE.code?` · ${RACE.code}`:''}</button>`:''}</div>`;
+   ${S.subject?`<button class="btn ghost sm" id="hSubj">${L(['Subjects','Materie'])}</button>`:''}<button class="btn ghost sm" id="hMap">${L(U.missions)}</button><button class="btn ghost sm" id="hCodex">${L(U.codex)}</button><button class="btn ghost sm" id="hDojo" ${anyClear?'':'disabled'}>${L(U.dojo)}</button>${S.name?`<button class="btn ghost sm" id="hRace">${L(['Race','Gara'])}${RACE.code?` · ${RACE.code}`:''}</button>`:''}</div>`;
   $('#hHome').onclick=$('#hMap').onclick=()=>renderMap();
+  const hs=$('#hSubj'); if(hs) hs.onclick=()=>renderSubjects();
   $('#hCodex').onclick=()=>renderCodex();
   $('#hDojo').onclick=()=>startDojo();
   const hr=$('#hRace'); if(hr) hr.onclick=()=>renderRace();
   $('#lEN').onclick=()=>setLang('en'); $('#lIT').onclick=()=>setLang('it');
 }
 
+/* ============ subjects (entry point) ============ */
+const SUBJECTS=[
+  {id:'cs', name:['Computer Science','Informatica'], blurb:['How computers work — algorithms, data, hardware, networks, security and code.','Come funzionano i computer — algoritmi, dati, hardware, reti, sicurezza e codice.'], meta:['3 units · 16 chapters · 44 missions','3 unità · 16 capitoli · 44 missioni'],
+   art:`<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><defs><linearGradient id="csg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6ad1ff"/><stop offset="1" stop-color="#8a7bff"/></linearGradient></defs><rect x="34" y="34" width="52" height="52" rx="8" fill="none" stroke="url(#csg)" stroke-width="3"/><rect x="48" y="48" width="24" height="24" rx="4" fill="url(#csg)" opacity=".85"/>${[0,1,2].map(i=>`<line x1="${44+i*16}" y1="34" x2="${44+i*16}" y2="22" stroke="url(#csg)" stroke-width="3"/><line x1="${44+i*16}" y1="86" x2="${44+i*16}" y2="98" stroke="url(#csg)" stroke-width="3"/><line x1="34" y1="${44+i*16}" x2="22" y2="${44+i*16}" stroke="url(#csg)" stroke-width="3"/><line x1="86" y1="${44+i*16}" x2="98" y2="${44+i*16}" stroke="url(#csg)" stroke-width="3"/>`).join('')}</svg>`},
+  {id:'phys', name:['Physics','Fisica'], blurb:['Measuring the world and the physics of equilibrium — quantities, vectors, forces, solids and fluids.','Misurare il mondo e la fisica dell\'equilibrio — grandezze, vettori, forze, solidi e fluidi.'], meta:['Il Walker · chapters 1–5 · prima','Il Walker · capitoli 1–5 · prima'],
+   art:`<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><defs><linearGradient id="phg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9f45"/><stop offset="1" stop-color="#ff5d8f"/></linearGradient></defs><line x1="60" y1="20" x2="60" y2="64" stroke="url(#phg)" stroke-width="3"/><circle cx="60" cy="74" r="12" fill="url(#phg)"/><ellipse cx="60" cy="60" rx="40" ry="16" fill="none" stroke="url(#phg)" stroke-width="2.5" opacity=".7"/><ellipse cx="60" cy="60" rx="40" ry="16" fill="none" stroke="url(#phg)" stroke-width="2.5" opacity=".7" transform="rotate(60 60 60)"/><ellipse cx="60" cy="60" rx="40" ry="16" fill="none" stroke="url(#phg)" stroke-width="2.5" opacity=".7" transform="rotate(120 60 60)"/></svg>`}
+];
+function renderSubjects(){
+  VIEW='subjects'; renderHUD();
+  const cards=SUBJECTS.map(s=>`<button class="subjcard" data-s="${s.id}"><div class="subjart">${s.art}</div><h2>${L(s.name)}</h2><p>${L(s.blurb)}</p><span class="pg">${L(s.meta)}</span></button>`).join('');
+  app.innerHTML=`<section class="hero card"><div><div class="eyebrow">${L(['Choose your path','Scegli il tuo percorso'])}</div><h1>Circuit Hunter <span>Academy</span></h1>
+     <p class="lede">${L(['Pick a subject to begin. Each is a full academy — its own missions, techniques, Codex and demons. Your hunter name and XP are shared across both.','Scegli una materia per iniziare. Ognuna è un\'accademia completa — missioni, tecniche, Glossario e demoni propri. Il tuo nome e i tuoi XP valgono per entrambe.'])}</p></div>
+     <div class="subjects">${cards}</div></section>`;
+  $$('.subjcard').forEach(b=>b.onclick=()=>{ S.subject=b.dataset.s; S.unit=firstUnitOf(S.subject); save(); renderMap(); });
+  pauseSmil();
+}
+
 /* ============ map ============ */
 function renderMap(){
+  if(!S.subject){ renderSubjects(); return; }
   VIEW='map'; renderHUD();
   if(!S.name){
-    app.innerHTML=`<section class="hero card"><div><div class="eyebrow">${L(['Computer science · Foundations','Informatica · Le basi'])}</div><h1>Circuit Hunter <span>Academy</span></h1>
-      <p class="lede">${L(['Glitch Demons have invaded the academy\'s computers. Learn how computers work, chapter by chapter, turn that knowledge into techniques, and drive them out.','I Demoni Glitch hanno invaso i computer dell\'accademia. Impara come funzionano i computer, capitolo per capitolo, trasforma ciò che impari in tecniche e scacciali.'])}</p>
+    const SD=SUBJECTS.find(s=>s.id===curSub())||SUBJECTS[0];
+    app.innerHTML=`<section class="hero card"><div><div class="eyebrow">${L(SD.name)}</div><h1>Circuit Hunter <span>Academy</span></h1>
+      <p class="lede">${L(['Glitch Demons have invaded the academy. Learn your subject chapter by chapter, turn that knowledge into techniques, and drive them out.','I Demoni Glitch hanno invaso l\'accademia. Impara la tua materia capitolo per capitolo, trasforma ciò che impari in tecniche e scacciali.'])}</p>
       <form class="reg" id="regf" style="margin-top:16px"><label for="nm" class="eyebrow">${L(['Enter your hunter name','Scrivi il tuo nome da cacciatrice'])}</label><input id="nm" maxlength="20" autocomplete="off" placeholder="Hana"><button class="btn" type="submit">${L(['Join the academy','Entra nell\'accademia'])}</button>
       <span class="muted" style="font-size:14px">${L(['You can switch between English and Italian at any time with EN / IT at the top.','Puoi passare dall\'inglese all\'italiano in qualsiasi momento con EN / IT in alto.'])}</span></form></div>
       <div>${VIS.title()}</div></section>`;
     $('#regf').onsubmit=e=>{e.preventDefault();const v=$('#nm').value.trim();if(!v){$('#nm').focus();return;}S.name=v.slice(0,20);save();renderMap();};
     pauseSmil(); return;
   }
-  const done=MISSIONS.filter(m=>S.cleared[m.id]).length;
-  const nextI=MISSIONS.findIndex((m,i)=>!S.cleared[m.id]&&isOpen(i));
+  const MY=myMissions();
+  const done=MY.filter(m=>S.cleared[m.id]).length;
+  const nextI=MISSIONS.findIndex((m,i)=>msub(m)===curSub()&&!S.cleared[m.id]&&isOpen(i));
   app.innerHTML=`<section class="hero card"><div><div class="eyebrow">${L(['Welcome back','Bentornata'])}, ${esc(S.name)}</div><h1>Circuit Hunter <span>Academy</span></h1>
-     <p class="lede">${allCleared()?L(['Every Glitch Demon is defeated. Keep your techniques sharp in the Dojo.','Tutti i Demoni Glitch sono sconfitti. Tieni allenate le tue tecniche nel Dojo.']):L([`${done} of ${MISSIONS.length} missions cleared. The book's three units are the tabs below; each arc is one chapter, and every arc's first mission is open, so you can start from the chapter you're studying in class.`,`${done} missioni superate su ${MISSIONS.length}. Le tre unità del libro sono le schede qui sotto; ogni arco è un capitolo, e la prima missione di ogni arco è già aperta: puoi partire dal capitolo che state studiando in classe.`])}</p>
+     <p class="lede">${allCleared()?L(['Every Glitch Demon is defeated. Keep your techniques sharp in the Dojo.','Tutti i Demoni Glitch sono sconfitti. Tieni allenate le tue tecniche nel Dojo.']):L([`${done} of ${MY.length} missions cleared. The units are the tabs below; each arc is one chapter, and every arc's first mission is open, so you can start from the chapter you're studying in class.`,`${done} missioni superate su ${MY.length}. Le unità sono le schede qui sotto; ogni arco è un capitolo, e la prima missione di ogni arco è già aperta: puoi partire dal capitolo che state studiando in classe.`])}</p>
      <div class="row" style="margin-top:14px">${allCleared()?`<button class="btn" id="goDojo">${L(['Train in the Dojo','Allenati nel Dojo'])}</button><button class="btn ghost" id="goCert">${L(['See certificate','Vedi il diploma'])}</button>`:nextI>=0?`<button class="btn" id="goNext">${L(U.mission)} ${MISSIONS[nextI].sec}: ${L(MISSIONS[nextI].title)}</button>`:''}<button class="btn ghost" id="goRace">${L(['Race your friends','Sfida le amiche'])}</button></div></div>
      <div>${VIS.title()}</div></section>
-   <nav class="units" aria-label="Units">${UNITS.map((u,ui)=>{const ms=MISSIONS.filter(m=>(ARCS[m.arc].unit||0)===ui); const dn=ms.filter(m=>S.cleared[m.id]).length;
-      return `<button data-u="${ui}" class="${(S.unit||0)===ui?'on':''}" aria-pressed="${(S.unit||0)===ui}">${L(['Unit','Unità'])} ${ui+1} · ${L(u.title)}<small>${L(['ch.','cap.'])} ${u.ch} · ${dn}/${ms.length}</small></button>`;}).join('')}</nav>
-   ${ARCS.map((a,ai)=>{ if((a.unit||0)!==(S.unit||0)) return ''; const ms=MISSIONS.map((m,i)=>[m,i]).filter(([m])=>m.arc===ai);
+   <nav class="units" aria-label="Units">${UNITS.map((u,ui)=>({u,ui})).filter(x=>SUBOF(x.u)===curSub()).map(({u,ui},k)=>{const ms=MISSIONS.filter(m=>(ARCS[m.arc].unit||0)===ui); const dn=ms.filter(m=>S.cleared[m.id]).length;
+      return `<button data-u="${ui}" class="${(S.unit||0)===ui?'on':''}" aria-pressed="${(S.unit||0)===ui}">${L(['Unit','Unità'])} ${k+1} · ${L(u.title)}<small>${L(['ch.','cap.'])} ${u.ch} · ${dn}/${ms.length}</small></button>`;}).join('')}</nav>
+   ${ARCS.map((a,ai)=>{ if((a.unit||0)!==(S.unit||0)||SUBOF(a)!==curSub()) return ''; const ms=MISSIONS.map((m,i)=>[m,i]).filter(([m])=>m.arc===ai);
      return `<section class="arc"><div class="arc-h"><span class="n">${a.n}</span><h2>${L(a.title)}</h2><span class="pg">${L(['Chapter','Capitolo'])} ${a.n} · pp. ${a.pages}</span></div>
       <div class="missions">${ms.map(([m,i])=>{const open=isOpen(i), dn=S.cleared[m.id];
         return `<button class="mcard ${dn?'cleared':''}" data-i="${i}" ${open?'':'disabled'}>${demonSVG(m.hue,m.horns,m.eyes,'dm')}<span class="sec">§ ${m.sec} · pp. ${m.pages}</span><h3>${L(m.title)}</h3><span class="topic">${L(m.topic)}</span>
           <span class="badge ${dn?'ok':open?'go':'lock'}">${dn?L(S.flawless[m.id]?U.flawless:U.cleared):open?L(U.ready):L(U.locked)}</span></button>`;}).join('')}</div></section>`;}).join('')}
    <section class="card"><div class="eyebrow" style="margin-bottom:8px">${L(['Techniques learned','Tecniche apprese'])}</div>
-     <div class="techlist">${done?MISSIONS.filter(m=>S.cleared[m.id]).map(m=>`<div>${L(m.tech)}</div>`).join(''):`<span class="muted">${L(['None yet. Clear a mission to learn your first technique.','Ancora nessuna. Supera una missione per imparare la prima tecnica.'])}</span>`}</div>
+     <div class="techlist">${done?MY.filter(m=>S.cleared[m.id]).map(m=>`<div>${L(m.tech)}</div>`).join(''):`<span class="muted">${L(['None yet. Clear a mission to learn your first technique.','Ancora nessuna. Supera una missione per imparare la prima tecnica.'])}</span>`}</div>
      <div class="row" style="margin-top:16px;justify-content:space-between"><span class="muted" style="font-size:13px">${L(['Progress is saved in this browser.','I progressi sono salvati in questo browser.'])}</span><button class="btn ghost sm" id="reset">${L(['Reset progress','Azzera i progressi'])}</button></div></section>`;
   $$('.mcard').forEach(b=>b.onclick=()=>openMission(+b.dataset.i));
   $$('[data-u]').forEach(b=>b.onclick=()=>{S.unit=+b.dataset.u;save();renderMap();});
@@ -2909,7 +3005,7 @@ function win(){
   else if(flawless && !S.flawless[M.id]){ S.flawless[M.id]=true; save(); }
   B=null; VIEW='result';
   if(allCleared() && first){ renderEnding(); return; }
-  const ni=CUR.m+1, nxtOpen=ni<MISSIONS.length&&isOpen(ni);
+  const ni=CUR.m+1, nxtOpen=ni<MISSIONS.length&&msub(MISSIONS[ni])===curSub()&&isOpen(ni);
   host.innerHTML=`<div class="card result"><div class="eyebrow">${L(['Demon defeated','Demone sconfitto'])}</div><h2>${L(M.demon)} ${L(['is sealed!','è sigillato!'])}</h2>
     <p>${L(['Technique learned','Tecnica appresa'])}</p><div class="tech">${L(M.tech)}</div>
     <p class="muted">${first?`+${gained} XP${flawless?L([' (including +25 flawless bonus)',' (compreso il bonus perfezione +25)']):''}`:L(['Replay complete. XP is only awarded the first time.','Replay completato. I punti XP si ottengono solo la prima volta.'])}</p>
@@ -2921,10 +3017,10 @@ function renderEnding(){
   const d=new Date().toLocaleDateString(LANG==='it'?'it-IT':'en-GB',{day:'numeric',month:'long',year:'numeric'});
   app.innerHTML=`<div class="cert"><div class="eyebrow">Circuit Hunter Academy · ${L(['Certificate of mastery','Diploma di maestria'])}</div>
      <div style="width:min(200px,50%)">${demonSVG(275,5,3,'dia')}</div>
-     <p>${L([`All ${MISSIONS.length} missions cleared and every Glitch Demon sealed by`,`Tutte le ${MISSIONS.length} missioni superate e tutti i Demoni Glitch sigillati da`])}</p><div class="nm">${esc(S.name)}</div>
+     <p>${L([`All ${myMissions().length} missions cleared and every Glitch Demon sealed by`,`Tutte le ${myMissions().length} missioni superate e tutti i Demoni Glitch sigillati da`])}</p><div class="nm">${esc(S.name)}</div>
      <p class="rank" style="font-size:15px">${L(rankOf(S.xp)[1])} · ${S.xp} XP</p><p class="muted">${d}</p>
-     <div class="techlist" style="margin-top:6px">${MISSIONS.map(m=>`<div>${L(m.tech)}</div>`).join('')}</div></div>
-   <div class="card"><p>${L(['You have covered all 16 chapters: from algorithms and hardware to spreadsheets and Python. Keep it fresh with a few rounds in the Dojo each week, and look through the Codex before tests.','Hai completato tutti i 16 capitoli: dagli algoritmi e l\'hardware ai fogli di calcolo e Python. Tieniti in allenamento con qualche round nel Dojo ogni settimana e sfoglia il Glossario prima delle verifiche.'])}</p>
+     <div class="techlist" style="margin-top:6px">${myMissions().map(m=>`<div>${L(m.tech)}</div>`).join('')}</div></div>
+   <div class="card"><p>${L(['You have cleared every mission in this subject. Keep it fresh with a few rounds in the Dojo each week, look through the Codex before tests — and try the other subject from Subjects at the top.','Hai superato ogni missione di questa materia. Tieniti in allenamento con qualche round nel Dojo ogni settimana, sfoglia il Glossario prima delle verifiche — e prova l\'altra materia da Materie in alto.'])}</p>
      <div class="row" style="margin-top:12px"><button class="btn" id="dj">Dojo</button><button class="btn ghost" id="cx">${L(U.codex)}</button><button class="btn ghost" id="mp">${L(U.missions)}</button></div></div>`;
   $('#dj').onclick=startDojo; $('#cx').onclick=renderCodex; $('#mp').onclick=renderMap; toTop(); pauseSmil();
 }
@@ -2932,7 +3028,7 @@ function renderEnding(){
 /* ============ dojo ============ */
 function startDojo(){
   renderHUD();
-  const pool=MISSIONS.filter(m=>S.cleared[m.id]).flatMap(m=>m.quiz);
+  const pool=myMissions().filter(m=>S.cleared[m.id]).flatMap(m=>m.quiz);
   if(!pool.length){renderMap();return;}
   const qs=shuffle(pool.slice()).slice(0,8);
   const dummy={demon:['Training Dummy','Manichino d\'allenamento'],hue:220,horns:1,eyes:1,tech:['Training','Allenamento'],quiz:qs};
@@ -2947,7 +3043,7 @@ function renderCodex(){
     <p class="muted" style="max-width:62ch">${L(['Every key term, with its Italian name. Terms unlock when you open the mission that teaches them.','Tutti i termini chiave, con il nome in inglese. Si sbloccano quando apri la missione che li spiega.'])}</p>
     <input class="codex-search" id="cxq" placeholder="${L(['Search a term (English or Italian)','Cerca un termine (italiano o inglese)'])}" autocomplete="off"><div id="cxl" style="display:flex;flex-direction:column;gap:18px"></div>`;
   const list=()=>{ const q=$('#cxq').value.trim().toLowerCase();
-    $('#cxl').innerHTML=MISSIONS.map((m,mi)=>{ const seen=S.seen[mi];
+    $('#cxl').innerHTML=MISSIONS.map((m,mi)=>{ if(msub(m)!==curSub()) return ''; const seen=S.seen[mi];
       const es=CODEX.filter(e=>e[0]===mi&&(!q||(seen&&e.slice(1).join(' ').toLowerCase().includes(q))));
       if(!es.length) return '';
       return `<div class="cx-group"><h3>§ ${m.sec} · ${L(m.title)}</h3><div class="cx">${es.map(e=>seen?`<div class="cx-e"><b>${LANG==='it'?e[2]:e[1]}</b>${PILL(e[1],e[2])}<p>${LANG==='it'?e[4]:e[3]}</p></div>`:`<div class="cx-e locked"><b>???</b><p>${L(['Unlocks in','Si sblocca in'])} § ${m.sec}.</p></div>`).join('')}</div></div>`;}).join('')||`<p class="muted">${L(['No terms match that search.','Nessun termine corrisponde alla ricerca.'])}</p>`; };

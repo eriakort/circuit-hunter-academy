@@ -423,4 +423,12 @@ textarea.out{font:600 15px ui-monospace,Menlo,monospace;width:min(360px,100%);mi
 .podium .blk{width:100%;border-radius:8px 8px 0 0;display:flex;justify-content:center;font-family:var(--display);font-size:26px;color:#1b0c06;padding-top:6px}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.subjects{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:720px){.subjects{grid-template-columns:1fr}}
+.subjcard{text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;color:var(--text);cursor:pointer;display:flex;flex-direction:column;gap:8px;font:inherit;transition:transform .15s,border-color .15s}
+.subjcard:hover{transform:translateY(-3px);border-color:var(--ember)}
+.subjcard .subjart{width:76px;height:76px}
+.subjcard h2{margin:2px 0 0;font-size:20px}
+.subjcard p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+.subjcard .pg{color:var(--ember);font-size:12.5px;font-weight:600}
 </style>

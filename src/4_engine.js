@@ -17,7 +17,13 @@ function award(n){ if(inMissionFirstTime()) addXP(n); }
 function toTop(){ try{window.scrollTo({top:0,behavior:REDUCED?'auto':'smooth'});}catch(e){window.scrollTo(0,0);} }
 function pauseSmil(){ if(REDUCED) $$('svg').forEach(s=>s.pauseAnimations&&s.pauseAnimations()); }
 const isOpen=i=>{const m=MISSIONS[i]; const prev=MISSIONS[i-1]; return !prev||prev.arc!==m.arc||!!S.cleared[prev.id];};
-const allCleared=()=>MISSIONS.every(m=>S.cleared[m.id]);
+/* ---- subjects: content is tagged on its arc/unit; default is 'cs' ---- */
+const SUBOF=x=>(x&&x.subject)||'cs';
+const curSub=()=>S.subject||'cs';
+const msub=m=>SUBOF(ARCS[m.arc]);
+const myMissions=()=>MISSIONS.filter(m=>msub(m)===curSub());
+const firstUnitOf=subj=>{const i=UNITS.findIndex(u=>SUBOF(u)===subj);return i<0?0:i;};
+const allCleared=()=>myMissions().every(m=>S.cleared[m.id]);
 const U={
   missions:['Missions','Missioni'], codex:['Codex','Glossario'], dojo:['Dojo','Dojo'], cont:['Continue','Continua'], back:['Back','Indietro'], fight:['Fight!','Combatti!'],
   next:['Next step','Passo successivo'], prev:['Previous step','Passo precedente'], arc:['Arc','Arco'], mission:['Mission','Missione'], pages:['pp.','pp.'],
@@ -37,41 +43,62 @@ function renderHUD(){
   $('#hud').innerHTML=`<button class="brand" id="hHome">CIRCUIT <b>HUNTER</b> ACADEMY</button>
    <div class="hud-r">${S.name?`<div class="who-hud"><span class="nm">${esc(S.name)} · ${S.xp} XP</span><span class="rank">${L(r[1])}</span><div class="xpbar"><i style="width:${pct}%"></i></div></div>`:''}
    <div class="lang" role="group" aria-label="Language / Lingua"><button id="lEN" class="${LANG==='en'?'on':''}" aria-pressed="${LANG==='en'}">EN</button><button id="lIT" class="${LANG==='it'?'on':''}" aria-pressed="${LANG==='it'}">IT</button></div>
-   <button class="btn ghost sm" id="hMap">${L(U.missions)}</button><button class="btn ghost sm" id="hCodex">${L(U.codex)}</button><button class="btn ghost sm" id="hDojo" ${anyClear?'':'disabled'}>${L(U.dojo)}</button>${S.name?`<button class="btn ghost sm" id="hRace">${L(['Race','Gara'])}${RACE.code?` · ${RACE.code}`:''}</button>`:''}</div>`;
+   ${S.subject?`<button class="btn ghost sm" id="hSubj">${L(['Subjects','Materie'])}</button>`:''}<button class="btn ghost sm" id="hMap">${L(U.missions)}</button><button class="btn ghost sm" id="hCodex">${L(U.codex)}</button><button class="btn ghost sm" id="hDojo" ${anyClear?'':'disabled'}>${L(U.dojo)}</button>${S.name?`<button class="btn ghost sm" id="hRace">${L(['Race','Gara'])}${RACE.code?` · ${RACE.code}`:''}</button>`:''}</div>`;
   $('#hHome').onclick=$('#hMap').onclick=()=>renderMap();
+  const hs=$('#hSubj'); if(hs) hs.onclick=()=>renderSubjects();
   $('#hCodex').onclick=()=>renderCodex();
   $('#hDojo').onclick=()=>startDojo();
   const hr=$('#hRace'); if(hr) hr.onclick=()=>renderRace();
   $('#lEN').onclick=()=>setLang('en'); $('#lIT').onclick=()=>setLang('it');
 }
 
+/* ============ subjects (entry point) ============ */
+const SUBJECTS=[
+  {id:'cs', name:['Computer Science','Informatica'], blurb:['How computers work — algorithms, data, hardware, networks, security and code.','Come funzionano i computer — algoritmi, dati, hardware, reti, sicurezza e codice.'], meta:['3 units · 16 chapters · 44 missions','3 unità · 16 capitoli · 44 missioni'],
+   art:`<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><defs><linearGradient id="csg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6ad1ff"/><stop offset="1" stop-color="#8a7bff"/></linearGradient></defs><rect x="34" y="34" width="52" height="52" rx="8" fill="none" stroke="url(#csg)" stroke-width="3"/><rect x="48" y="48" width="24" height="24" rx="4" fill="url(#csg)" opacity=".85"/>${[0,1,2].map(i=>`<line x1="${44+i*16}" y1="34" x2="${44+i*16}" y2="22" stroke="url(#csg)" stroke-width="3"/><line x1="${44+i*16}" y1="86" x2="${44+i*16}" y2="98" stroke="url(#csg)" stroke-width="3"/><line x1="34" y1="${44+i*16}" x2="22" y2="${44+i*16}" stroke="url(#csg)" stroke-width="3"/><line x1="86" y1="${44+i*16}" x2="98" y2="${44+i*16}" stroke="url(#csg)" stroke-width="3"/>`).join('')}</svg>`},
+  {id:'phys', name:['Physics','Fisica'], blurb:['Measuring the world and the physics of equilibrium — quantities, vectors, forces, solids and fluids.','Misurare il mondo e la fisica dell\'equilibrio — grandezze, vettori, forze, solidi e fluidi.'], meta:['Il Walker · chapters 1–5 · prima','Il Walker · capitoli 1–5 · prima'],
+   art:`<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><defs><linearGradient id="phg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9f45"/><stop offset="1" stop-color="#ff5d8f"/></linearGradient></defs><line x1="60" y1="20" x2="60" y2="64" stroke="url(#phg)" stroke-width="3"/><circle cx="60" cy="74" r="12" fill="url(#phg)"/><ellipse cx="60" cy="60" rx="40" ry="16" fill="none" stroke="url(#phg)" stroke-width="2.5" opacity=".7"/><ellipse cx="60" cy="60" rx="40" ry="16" fill="none" stroke="url(#phg)" stroke-width="2.5" opacity=".7" transform="rotate(60 60 60)"/><ellipse cx="60" cy="60" rx="40" ry="16" fill="none" stroke="url(#phg)" stroke-width="2.5" opacity=".7" transform="rotate(120 60 60)"/></svg>`}
+];
+function renderSubjects(){
+  VIEW='subjects'; renderHUD();
+  const cards=SUBJECTS.map(s=>`<button class="subjcard" data-s="${s.id}"><div class="subjart">${s.art}</div><h2>${L(s.name)}</h2><p>${L(s.blurb)}</p><span class="pg">${L(s.meta)}</span></button>`).join('');
+  app.innerHTML=`<section class="hero card"><div><div class="eyebrow">${L(['Choose your path','Scegli il tuo percorso'])}</div><h1>Circuit Hunter <span>Academy</span></h1>
+     <p class="lede">${L(['Pick a subject to begin. Each is a full academy — its own missions, techniques, Codex and demons. Your hunter name and XP are shared across both.','Scegli una materia per iniziare. Ognuna è un\'accademia completa — missioni, tecniche, Glossario e demoni propri. Il tuo nome e i tuoi XP valgono per entrambe.'])}</p></div>
+     <div class="subjects">${cards}</div></section>`;
+  $$('.subjcard').forEach(b=>b.onclick=()=>{ S.subject=b.dataset.s; S.unit=firstUnitOf(S.subject); save(); renderMap(); });
+  pauseSmil();
+}
+
 /* ============ map ============ */
 function renderMap(){
+  if(!S.subject){ renderSubjects(); return; }
   VIEW='map'; renderHUD();
   if(!S.name){
-    app.innerHTML=`<section class="hero card"><div><div class="eyebrow">${L(['Computer science · Foundations','Informatica · Le basi'])}</div><h1>Circuit Hunter <span>Academy</span></h1>
-      <p class="lede">${L(['Glitch Demons have invaded the academy\'s computers. Learn how computers work, chapter by chapter, turn that knowledge into techniques, and drive them out.','I Demoni Glitch hanno invaso i computer dell\'accademia. Impara come funzionano i computer, capitolo per capitolo, trasforma ciò che impari in tecniche e scacciali.'])}</p>
+    const SD=SUBJECTS.find(s=>s.id===curSub())||SUBJECTS[0];
+    app.innerHTML=`<section class="hero card"><div><div class="eyebrow">${L(SD.name)}</div><h1>Circuit Hunter <span>Academy</span></h1>
+      <p class="lede">${L(['Glitch Demons have invaded the academy. Learn your subject chapter by chapter, turn that knowledge into techniques, and drive them out.','I Demoni Glitch hanno invaso l\'accademia. Impara la tua materia capitolo per capitolo, trasforma ciò che impari in tecniche e scacciali.'])}</p>
       <form class="reg" id="regf" style="margin-top:16px"><label for="nm" class="eyebrow">${L(['Enter your hunter name','Scrivi il tuo nome da cacciatrice'])}</label><input id="nm" maxlength="20" autocomplete="off" placeholder="Hana"><button class="btn" type="submit">${L(['Join the academy','Entra nell\'accademia'])}</button>
       <span class="muted" style="font-size:14px">${L(['You can switch between English and Italian at any time with EN / IT at the top.','Puoi passare dall\'inglese all\'italiano in qualsiasi momento con EN / IT in alto.'])}</span></form></div>
       <div>${VIS.title()}</div></section>`;
     $('#regf').onsubmit=e=>{e.preventDefault();const v=$('#nm').value.trim();if(!v){$('#nm').focus();return;}S.name=v.slice(0,20);save();renderMap();};
     pauseSmil(); return;
   }
-  const done=MISSIONS.filter(m=>S.cleared[m.id]).length;
-  const nextI=MISSIONS.findIndex((m,i)=>!S.cleared[m.id]&&isOpen(i));
+  const MY=myMissions();
+  const done=MY.filter(m=>S.cleared[m.id]).length;
+  const nextI=MISSIONS.findIndex((m,i)=>msub(m)===curSub()&&!S.cleared[m.id]&&isOpen(i));
   app.innerHTML=`<section class="hero card"><div><div class="eyebrow">${L(['Welcome back','Bentornata'])}, ${esc(S.name)}</div><h1>Circuit Hunter <span>Academy</span></h1>
-     <p class="lede">${allCleared()?L(['Every Glitch Demon is defeated. Keep your techniques sharp in the Dojo.','Tutti i Demoni Glitch sono sconfitti. Tieni allenate le tue tecniche nel Dojo.']):L([`${done} of ${MISSIONS.length} missions cleared. The book's three units are the tabs below; each arc is one chapter, and every arc's first mission is open, so you can start from the chapter you're studying in class.`,`${done} missioni superate su ${MISSIONS.length}. Le tre unità del libro sono le schede qui sotto; ogni arco è un capitolo, e la prima missione di ogni arco è già aperta: puoi partire dal capitolo che state studiando in classe.`])}</p>
+     <p class="lede">${allCleared()?L(['Every Glitch Demon is defeated. Keep your techniques sharp in the Dojo.','Tutti i Demoni Glitch sono sconfitti. Tieni allenate le tue tecniche nel Dojo.']):L([`${done} of ${MY.length} missions cleared. The units are the tabs below; each arc is one chapter, and every arc's first mission is open, so you can start from the chapter you're studying in class.`,`${done} missioni superate su ${MY.length}. Le unità sono le schede qui sotto; ogni arco è un capitolo, e la prima missione di ogni arco è già aperta: puoi partire dal capitolo che state studiando in classe.`])}</p>
      <div class="row" style="margin-top:14px">${allCleared()?`<button class="btn" id="goDojo">${L(['Train in the Dojo','Allenati nel Dojo'])}</button><button class="btn ghost" id="goCert">${L(['See certificate','Vedi il diploma'])}</button>`:nextI>=0?`<button class="btn" id="goNext">${L(U.mission)} ${MISSIONS[nextI].sec}: ${L(MISSIONS[nextI].title)}</button>`:''}<button class="btn ghost" id="goRace">${L(['Race your friends','Sfida le amiche'])}</button></div></div>
      <div>${VIS.title()}</div></section>
-   <nav class="units" aria-label="Units">${UNITS.map((u,ui)=>{const ms=MISSIONS.filter(m=>(ARCS[m.arc].unit||0)===ui); const dn=ms.filter(m=>S.cleared[m.id]).length;
-      return `<button data-u="${ui}" class="${(S.unit||0)===ui?'on':''}" aria-pressed="${(S.unit||0)===ui}">${L(['Unit','Unità'])} ${ui+1} · ${L(u.title)}<small>${L(['ch.','cap.'])} ${u.ch} · ${dn}/${ms.length}</small></button>`;}).join('')}</nav>
-   ${ARCS.map((a,ai)=>{ if((a.unit||0)!==(S.unit||0)) return ''; const ms=MISSIONS.map((m,i)=>[m,i]).filter(([m])=>m.arc===ai);
+   <nav class="units" aria-label="Units">${UNITS.map((u,ui)=>({u,ui})).filter(x=>SUBOF(x.u)===curSub()).map(({u,ui},k)=>{const ms=MISSIONS.filter(m=>(ARCS[m.arc].unit||0)===ui); const dn=ms.filter(m=>S.cleared[m.id]).length;
+      return `<button data-u="${ui}" class="${(S.unit||0)===ui?'on':''}" aria-pressed="${(S.unit||0)===ui}">${L(['Unit','Unità'])} ${k+1} · ${L(u.title)}<small>${L(['ch.','cap.'])} ${u.ch} · ${dn}/${ms.length}</small></button>`;}).join('')}</nav>
+   ${ARCS.map((a,ai)=>{ if((a.unit||0)!==(S.unit||0)||SUBOF(a)!==curSub()) return ''; const ms=MISSIONS.map((m,i)=>[m,i]).filter(([m])=>m.arc===ai);
      return `<section class="arc"><div class="arc-h"><span class="n">${a.n}</span><h2>${L(a.title)}</h2><span class="pg">${L(['Chapter','Capitolo'])} ${a.n} · pp. ${a.pages}</span></div>
       <div class="missions">${ms.map(([m,i])=>{const open=isOpen(i), dn=S.cleared[m.id];
         return `<button class="mcard ${dn?'cleared':''}" data-i="${i}" ${open?'':'disabled'}>${demonSVG(m.hue,m.horns,m.eyes,'dm')}<span class="sec">§ ${m.sec} · pp. ${m.pages}</span><h3>${L(m.title)}</h3><span class="topic">${L(m.topic)}</span>
           <span class="badge ${dn?'ok':open?'go':'lock'}">${dn?L(S.flawless[m.id]?U.flawless:U.cleared):open?L(U.ready):L(U.locked)}</span></button>`;}).join('')}</div></section>`;}).join('')}
    <section class="card"><div class="eyebrow" style="margin-bottom:8px">${L(['Techniques learned','Tecniche apprese'])}</div>
-     <div class="techlist">${done?MISSIONS.filter(m=>S.cleared[m.id]).map(m=>`<div>${L(m.tech)}</div>`).join(''):`<span class="muted">${L(['None yet. Clear a mission to learn your first technique.','Ancora nessuna. Supera una missione per imparare la prima tecnica.'])}</span>`}</div>
+     <div class="techlist">${done?MY.filter(m=>S.cleared[m.id]).map(m=>`<div>${L(m.tech)}</div>`).join(''):`<span class="muted">${L(['None yet. Clear a mission to learn your first technique.','Ancora nessuna. Supera una missione per imparare la prima tecnica.'])}</span>`}</div>
      <div class="row" style="margin-top:16px;justify-content:space-between"><span class="muted" style="font-size:13px">${L(['Progress is saved in this browser.','I progressi sono salvati in questo browser.'])}</span><button class="btn ghost sm" id="reset">${L(['Reset progress','Azzera i progressi'])}</button></div></section>`;
   $$('.mcard').forEach(b=>b.onclick=()=>openMission(+b.dataset.i));
   $$('[data-u]').forEach(b=>b.onclick=()=>{S.unit=+b.dataset.u;save();renderMap();});
@@ -409,7 +436,7 @@ function win(){
   else if(flawless && !S.flawless[M.id]){ S.flawless[M.id]=true; save(); }
   B=null; VIEW='result';
   if(allCleared() && first){ renderEnding(); return; }
-  const ni=CUR.m+1, nxtOpen=ni<MISSIONS.length&&isOpen(ni);
+  const ni=CUR.m+1, nxtOpen=ni<MISSIONS.length&&msub(MISSIONS[ni])===curSub()&&isOpen(ni);
   host.innerHTML=`<div class="card result"><div class="eyebrow">${L(['Demon defeated','Demone sconfitto'])}</div><h2>${L(M.demon)} ${L(['is sealed!','è sigillato!'])}</h2>
     <p>${L(['Technique learned','Tecnica appresa'])}</p><div class="tech">${L(M.tech)}</div>
     <p class="muted">${first?`+${gained} XP${flawless?L([' (including +25 flawless bonus)',' (compreso il bonus perfezione +25)']):''}`:L(['Replay complete. XP is only awarded the first time.','Replay completato. I punti XP si ottengono solo la prima volta.'])}</p>
@@ -421,10 +448,10 @@ function renderEnding(){
   const d=new Date().toLocaleDateString(LANG==='it'?'it-IT':'en-GB',{day:'numeric',month:'long',year:'numeric'});
   app.innerHTML=`<div class="cert"><div class="eyebrow">Circuit Hunter Academy · ${L(['Certificate of mastery','Diploma di maestria'])}</div>
      <div style="width:min(200px,50%)">${demonSVG(275,5,3,'dia')}</div>
-     <p>${L([`All ${MISSIONS.length} missions cleared and every Glitch Demon sealed by`,`Tutte le ${MISSIONS.length} missioni superate e tutti i Demoni Glitch sigillati da`])}</p><div class="nm">${esc(S.name)}</div>
+     <p>${L([`All ${myMissions().length} missions cleared and every Glitch Demon sealed by`,`Tutte le ${myMissions().length} missioni superate e tutti i Demoni Glitch sigillati da`])}</p><div class="nm">${esc(S.name)}</div>
      <p class="rank" style="font-size:15px">${L(rankOf(S.xp)[1])} · ${S.xp} XP</p><p class="muted">${d}</p>
-     <div class="techlist" style="margin-top:6px">${MISSIONS.map(m=>`<div>${L(m.tech)}</div>`).join('')}</div></div>
-   <div class="card"><p>${L(['You have covered all 16 chapters: from algorithms and hardware to spreadsheets and Python. Keep it fresh with a few rounds in the Dojo each week, and look through the Codex before tests.','Hai completato tutti i 16 capitoli: dagli algoritmi e l\'hardware ai fogli di calcolo e Python. Tieniti in allenamento con qualche round nel Dojo ogni settimana e sfoglia il Glossario prima delle verifiche.'])}</p>
+     <div class="techlist" style="margin-top:6px">${myMissions().map(m=>`<div>${L(m.tech)}</div>`).join('')}</div></div>
+   <div class="card"><p>${L(['You have cleared every mission in this subject. Keep it fresh with a few rounds in the Dojo each week, look through the Codex before tests — and try the other subject from Subjects at the top.','Hai superato ogni missione di questa materia. Tieniti in allenamento con qualche round nel Dojo ogni settimana, sfoglia il Glossario prima delle verifiche — e prova l\'altra materia da Materie in alto.'])}</p>
      <div class="row" style="margin-top:12px"><button class="btn" id="dj">Dojo</button><button class="btn ghost" id="cx">${L(U.codex)}</button><button class="btn ghost" id="mp">${L(U.missions)}</button></div></div>`;
   $('#dj').onclick=startDojo; $('#cx').onclick=renderCodex; $('#mp').onclick=renderMap; toTop(); pauseSmil();
 }
@@ -432,7 +459,7 @@ function renderEnding(){
 /* ============ dojo ============ */
 function startDojo(){
   renderHUD();
-  const pool=MISSIONS.filter(m=>S.cleared[m.id]).flatMap(m=>m.quiz);
+  const pool=myMissions().filter(m=>S.cleared[m.id]).flatMap(m=>m.quiz);
   if(!pool.length){renderMap();return;}
   const qs=shuffle(pool.slice()).slice(0,8);
   const dummy={demon:['Training Dummy','Manichino d\'allenamento'],hue:220,horns:1,eyes:1,tech:['Training','Allenamento'],quiz:qs};
@@ -447,7 +474,7 @@ function renderCodex(){
     <p class="muted" style="max-width:62ch">${L(['Every key term, with its Italian name. Terms unlock when you open the mission that teaches them.','Tutti i termini chiave, con il nome in inglese. Si sbloccano quando apri la missione che li spiega.'])}</p>
     <input class="codex-search" id="cxq" placeholder="${L(['Search a term (English or Italian)','Cerca un termine (italiano o inglese)'])}" autocomplete="off"><div id="cxl" style="display:flex;flex-direction:column;gap:18px"></div>`;
   const list=()=>{ const q=$('#cxq').value.trim().toLowerCase();
-    $('#cxl').innerHTML=MISSIONS.map((m,mi)=>{ const seen=S.seen[mi];
+    $('#cxl').innerHTML=MISSIONS.map((m,mi)=>{ if(msub(m)!==curSub()) return ''; const seen=S.seen[mi];
       const es=CODEX.filter(e=>e[0]===mi&&(!q||(seen&&e.slice(1).join(' ').toLowerCase().includes(q))));
       if(!es.length) return '';
       return `<div class="cx-group"><h3>§ ${m.sec} · ${L(m.title)}</h3><div class="cx">${es.map(e=>seen?`<div class="cx-e"><b>${LANG==='it'?e[2]:e[1]}</b>${PILL(e[1],e[2])}<p>${LANG==='it'?e[4]:e[3]}</p></div>`:`<div class="cx-e locked"><b>???</b><p>${L(['Unlocks in','Si sblocca in'])} § ${m.sec}.</p></div>`).join('')}</div></div>`;}).join('')||`<p class="muted">${L(['No terms match that search.','Nessun termine corrisponde alla ricerca.'])}</p>`; };

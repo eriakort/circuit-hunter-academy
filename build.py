@@ -13,6 +13,7 @@ ORDER = [
     "3c_arcs45.js",     # missions ch. 4-5, build data, ranks, codex
     "3d_ch6_10.js",     # units + missions ch. 6-10
     "3e_ch11_16.js",    # missions ch. 11-16 + codex additions
+    "3f_physics.js",    # PHYSICS subject: unit + ch.1 mission (Il Walker)
     "4_engine.js",      # state, map, scenes, mini-games, battles, dojo, codex
     "4b_games2.js",     # mini-games for ch. 6-16
     "4c_race.js",       # multiplayer race mode (Supabase Realtime)
