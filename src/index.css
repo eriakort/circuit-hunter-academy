@@ -1,9 +1,4 @@
-<title>Circuit Hunter Academy</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DotGothic16&family=M+PLUS+Rounded+1c:wght@400;700;800&display=swap">
-<style>
+
 /* Layout: single-column game shell — HUD band, stage card (animated diagram over a dialogue bubble), battle arena */
 :root{
   --ink:#0e0f22; --panel:#171935; --panel2:#20234a; --line:#363a74; --text:#eeecf8; --muted:#a9a8cc;
@@ -280,7 +275,7 @@ p{margin:0}
 .arc-h h2{font-size:20px}
 .arc-h .pg{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .mcard .sec{font-family:var(--mono);font-size:12px;color:var(--sakura)}
-.robo{display:grid;grid-template-columns:min(300px,100%) minmax(0,1fr);gap:16px;width:100%;text-align:left;align-items:start}
+.robo{display:grid;grid-template-columns:auto 1fr;gap:16px;width:100%;text-align:left;align-items:start}
 .robo > *{min-width:0}
 @media (max-width:640px){.robo{grid-template-columns:1fr;justify-items:center}}
 .rgrid{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:4px;width:min(300px,100%)}
@@ -448,4 +443,3 @@ textarea.out{font:600 15px ui-monospace,Menlo,monospace;width:min(360px,100%);mi
 .vnode:hover,.rpos:hover,.pdot:hover{fill:rgba(69,216,255,.32);stroke:var(--data)}
 .vnode.hit{fill:var(--data);stroke:var(--data)}
 .rpos.on,.pdot.on{fill:var(--good);stroke:var(--good)}
-</style>

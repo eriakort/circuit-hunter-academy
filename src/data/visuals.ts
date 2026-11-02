@@ -1,117 +1,17 @@
-<div class="wrap">
-  <header class="hud" id="hud"></header>
-  <main id="app" aria-live="polite"></main>
-</div>
-<script>
-/* ============ helpers ============ */
-const $ = (s, el=document) => el.querySelector(s);
-const $$ = (s, el=document) => [...el.querySelectorAll(s)];
-const shuffle = a => { for (let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
-const C = {ink:'#0e0f22',panel:'#171935',p2:'#20234a',line:'#454a8e',text:'#eeecf8',muted:'#a9a8cc',ember:'#ff6a3d',data:'#45d8ff',sak:'#ff8fc0',good:'#4be39a',bad:'#ff4d6d',gold:'#ffd166'};
-const REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-let LANG = 'en';
-/* L(['english','italiano']) picks the current language */
-const L = x => Array.isArray(x) ? x[LANG==='it'?1:0] : x;
-/* pill showing the term in the OTHER language */
-const PILL = (en,it) => LANG==='it' ? `<span class="it" data-l="EN">${en}</span>` : `<span class="it" data-l="IT">${it}</span>`;
-const H = (en,it) => `${LANG==='it'?it:en}${PILL(en,it)}`;
-/* [[EN term|IT term]] markup inside lesson text */
-const rich = s => s.replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g,(m,en,it)=>`<span class="term">${LANG==='it'?it:en}</span>${PILL(en,it)}`);
-const cards = list => `<div class="grid3">${list.map(c=>`<div class="mini">${ICON(c[0])}<b>${L(c[1])}</b><span>${L(c[2])}</span></div>`).join('')}</div>`;
+// @ts-nocheck
+import { Language } from "../types";
+import { L as origL, PILL as origPILL, H as origH, rich as origRich, cards as origCards, ICON, C, esc, demonSVG, hl } from "../helpers";
+import { JN, BOARD, ROBOT_LEVELS } from "./gameData";
 
-/* ============ icons (24px stroke) ============ */
-const ICONS = {
-  keyboard:'<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h0M10 10h0M14 10h0M18 10h0M7 14h10"/>',
-  mouse:'<rect x="6" y="3" width="12" height="18" rx="6"/><path d="M12 7v4"/>',
-  mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/>',
-  webcam:'<circle cx="12" cy="10" r="7"/><circle cx="12" cy="10" r="3"/><path d="M8 21h8M12 17v4"/>',
-  monitor:'<rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',
-  speaker:'<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/>',
-  printer:'<path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><rect x="7" y="14" width="10" height="7"/>',
-  touch:'<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/>',
-  headset:'<path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="2" y="14" width="5" height="7" rx="1"/><rect x="17" y="14" width="5" height="7" rx="1"/><path d="M4.5 21c0 1.5 3 2 5.5 1.5"/>',
-  scanner:'<rect x="2" y="11" width="20" height="9" rx="2"/><path d="M4 8l16-3M6 15h12"/>',
-  sensor:'<path d="M12 3a2 2 0 0 0-2 2v9a4 4 0 1 0 4 0V5a2 2 0 0 0-2-2z"/><path d="M12 9v7"/>',
-  projector:'<rect x="2" y="8" width="20" height="9" rx="2"/><circle cx="16" cy="12.5" r="2.5"/><path d="M5 12h5"/>',
-  gamepad:'<path d="M6 8h12a4 4 0 0 1 4 4v2a3 3 0 0 1-5 2l-2-2H9l-2 2a3 3 0 0 1-5-2v-2a4 4 0 0 1 4-4z"/><path d="M7 10.5v3M5.5 12h3M16 12h0M18 13h0"/>',
-  chip:'<rect x="6" y="6" width="12" height="12" rx="1"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>',
-  ram:'<rect x="2" y="7" width="20" height="9" rx="1"/><path d="M5 10h3v3H5zM10.5 10h3v3h-3zM16 10h3v3h-3zM4 19v-3M8 19v-3M12 19v-3M16 19v-3M20 19v-3"/>',
-  disc:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M12 6a6 6 0 0 1 6 6"/>',
-  cloud:'<path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19 10a4 4 0 0 1-1 8z"/>',
-  hdd:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="11" r="5"/><path d="M12 11l4 6"/>',
-  ssd:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h4v6H7zM13 9h4v6h-4z"/>',
-  usb:'<rect x="8" y="2" width="8" height="7"/><rect x="6" y="9" width="12" height="13" rx="2"/><path d="M10 5h0M14 5h0"/>',
-  sd:'<path d="M6 2h9l4 4v16H6z"/><path d="M9 5v3M12 5v3M15 6v2"/>',
-  tape:'<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="2.5"/><circle cx="16" cy="12" r="2.5"/>',
-  app:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M6 6.5h0M8.5 6.5h0"/>',
-  shield:'<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
-  gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',
-  folder:'<path d="M3 6a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>',
-  file:'<path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4M9 12h6M9 16h6"/>',
-  image:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 17l-6-6-9 9"/>',
-  music:'<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',
-  video:'<rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3z"/>',
-  zip:'<path d="M6 2h12v20H6z"/><path d="M12 2v2M12 6v2M12 10v2M10 14h4v4h-4z"/>',
-  layers:'<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
-  user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
-  lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
-  power:'<path d="M12 2v10M6.3 6.3a8 8 0 1 0 11.4 0"/>',
-  fan:'<circle cx="12" cy="12" r="9"/><path d="M12 12c0-4 2-6 4-5s0 4-4 5zM12 12c4 0 6 2 5 4s-4 0-5-4zM12 12c0 4-2 6-4 5s0-4 4-5zM12 12c-4 0-6-2-5-4s4 0 5 4z"/>',
-  gpu:'<rect x="2" y="6" width="20" height="11" rx="1"/><circle cx="8" cy="11.5" r="3"/><circle cx="16" cy="11.5" r="3"/><path d="M4 17v3M8 17v2M12 17v2"/>',
-  psu:'<rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="10" cy="12" r="4"/><path d="M17 9v6"/>',
-  board:'<rect x="3" y="3" width="18" height="18" rx="1"/><rect x="7" y="7" width="6" height="6"/><path d="M16 6v8M18 6v8M6 17h12"/>',
-  robot:'<rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 4v4M9 13h0M15 13h0M2 13h3M19 13h3"/>',
-  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
-  wifi:'<path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/>',
-  router:'<rect x="2" y="13" width="20" height="7" rx="2"/><path d="M6 16.5h0M10 16.5h0M7 13l-2-6M17 13l2-6"/>',
-  mail:'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 7l10 7 10-7"/>',
-  search:'<circle cx="10" cy="10" r="6"/><path d="M15 15l6 6"/>',
-  heart:'<path d="M12 20s-8-5-8-11a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 6-8 11-8 11z"/>',
-  warn:'<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h0"/>',
-  recycle:'<path d="M7 19H4l3-5M17 19h3l-3-5M12 4l-2 3h4z"/><path d="M7 14l3-7M17 14l-3-7M7 19h10"/>',
-  sat:'<rect x="9" y="9" width="6" height="6"/><path d="M3 5l4 4M17 15l4 4M5 3l4 4M15 17l4 4"/><path d="M15 9l3-3M6 18l3-3"/>',
-  compass:'<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
-  book:'<path d="M4 4h7a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4zM20 4h-5a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h5z"/>',
-  bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
-  dna:'<path d="M7 2c0 6 10 8 10 14M17 2c0 6-10 8-10 14M7 22c0-2 1-4 3-5M17 22c0-2-1-4-3-5M8 6h8M8 12h8"/>',
-  eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
-  puzzle:'<path d="M4 8h4a2 2 0 1 1 4 0h4v4a2 2 0 1 1 0 4v4H4z"/>',
-  scale:'<path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/>',
-  key:'<circle cx="7" cy="14" r="4"/><path d="M10 12l10-8M17 7l2 2M15 9l2 2"/>',
-  watch:'<rect x="6" y="6" width="12" height="12" rx="3"/><path d="M9 6V2h6v4M9 18v4h6v-4M12 10v2l1.5 1.5"/>',
-  car:'<path d="M3 16v-4l2-5h14l2 5v4z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
-  home:'<path d="M3 11l9-8 9 8v10H3z"/><path d="M9 21v-6h6v6"/>',
-  tower:'<path d="M12 10v12M8 22h8M9 14l3-4 3 4M5 6a10 10 0 0 1 14 0M8 8.5a5 5 0 0 1 8 0"/>',
-};
-const ICON = (k, cls='ico') => `<svg viewBox="0 0 24 24" class="${cls}" aria-hidden="true">${ICONS[k]||ICONS.chip}</svg>`;
+let currentLang: Language = "en";
+const L: any = (x: any) => origL(x, currentLang);
+const PILL = (en: string, it: string) => origPILL(en, it, currentLang);
+const H = (en: string, it: string) => origH(en, it, currentLang);
+const rich = (s: string) => origRich(s, currentLang);
+const cards = (list: any) => origCards(list, currentLang);
 
-/* ============ characters (all original) ============ */
-function demonSVG(h, horns=2, eyes=2, cls='demon'){
-  const body=`hsl(${h} 62% 42%)`, dark=`hsl(${h} 60% 18%)`, glow=`hsl(${(h+170)%360} 100% 72%)`;
-  let hs='';
-  for(let i=0;i<horns;i++){const x = horns===1?100: 62+i*(76/(horns-1)); const tip = 14+((i%2)*12)+(Math.abs(x-100)<12?-6:0);
-    hs+=`<polygon points="${x-11},66 ${x+(x<100?-6:6)},${tip} ${x+11},66" fill="${dark}" stroke="${glow}" stroke-width="1.5"/>`;}
-  let es='';
-  for(let i=0;i<eyes;i++){const x = eyes===1?100: 72+i*(56/(eyes-1)); const y = eyes>2 && i%2 ? 92 : 102;
-    es+=`<ellipse cx="${x}" cy="${y}" rx="11" ry="7" fill="${glow}"/><rect x="${x-1.6}" y="${y-6}" width="3.2" height="12" fill="${dark}"/>`;}
-  let gl='';
-  for(let i=0;i<6;i++){const x=30+((i*53)%140), y=40+((i*37)%130);
-    gl+=`<rect class="blink" style="animation-delay:${i*.23}s" x="${x}" y="${y}" width="${6+(i%3)*4}" height="5" fill="${glow}" opacity=".7"/>`;}
-  return `<svg viewBox="0 0 200 200" class="${cls}" aria-hidden="true"><g class="float">${hs}
-    <path d="M40 122 Q38 56 100 50 Q162 56 160 122 Q160 176 132 180 L121 166 L110 182 L100 166 L90 182 L79 166 L68 180 Q40 176 40 122Z" fill="${body}" stroke="${dark}" stroke-width="5"/>
-    <path d="M58 92 Q100 70 142 92" fill="none" stroke="${dark}" stroke-width="4" opacity=".6"/>
-    ${es}
-    <path d="M70 142 L80 133 L90 144 L100 133 L110 144 L120 133 L130 142" fill="none" stroke="${glow}" stroke-width="3.5" stroke-linejoin="round"/>
-    ${gl}</g></svg>`;
-}
-const SENSEI = `<svg viewBox="0 0 64 64" class="avatar" aria-hidden="true"><polygon points="32,2 59,17 59,47 32,62 5,47 5,17" fill="#2a1830" stroke="${C.ember}" stroke-width="3"/><path d="M36 10 L20 36 H31 L26 54 L44 26 H33 Z" fill="${C.gold}"/></svg>`;
-const YOU = () => `<svg viewBox="0 0 64 64" class="avatar" aria-hidden="true"><polygon points="32,2 59,17 59,47 32,62 5,47 5,17" fill="#10283a" stroke="${C.data}" stroke-width="3"/><text x="32" y="42" text-anchor="middle" font-family="Dela Gothic One, Arial Black, sans-serif" font-size="26" fill="${C.data}">${(S.name||'H').trim().charAt(0).toUpperCase()}</text></svg>`;
-const HEART = on => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l9 10-9 10-9-10z" fill="${on?C.sak:'#2a2d5c'}" stroke="${on?'#fff':'#454a8e'}" stroke-width="1.2"/></svg>`;
-
-/* ============ visuals ============ */
-const VIS = {
-/* ---------- general ---------- */
-title(){
+export const VIS: Record<string, () => string> = {
+  "title": function title(){
   let lines=''; for(let k=0;k<28;k++){const a=k/28*Math.PI*2; lines+=`<line x1="${320+Math.cos(a)*80}" y1="${115+Math.sin(a)*80}" x2="${320+Math.cos(a)*420}" y2="${115+Math.sin(a)*420}" stroke="${k%2?C.ember:C.data}" stroke-opacity=".18" stroke-width="${k%3+1}"/>`;}
   let hex=''; for(let i=0;i<6;i++){const a=Math.PI/3*i-Math.PI/2; hex+=`${320+Math.cos(a)*72},${115+Math.sin(a)*72} `;}
   return `<svg viewBox="0 0 640 230" class="dia" role="img" aria-label="Circuit Hunter Academy">${lines}
@@ -122,120 +22,114 @@ title(){
    <text x="320" y="122" text-anchor="middle" style="font-family:var(--display);font-size:20px;fill:${C.gold}">CPU</text>
    <text x="320" y="218" text-anchor="middle" class="lbl">CIRCUIT · HUNTER · ACADEMY</text></svg>`;
 },
-boss(){ return `<div style="display:flex;justify-content:center"><div style="width:min(240px,70%)">${demonSVG(275,5,3,'dia')}</div></div>`; },
-
-/* ---------- ARC 1: algorithms ---------- */
-infowords(){
+  "boss": function boss(){ return `<div style="display:flex;justify-content:center"><div style="width:min(240px,70%)">${demonSVG(275,5,3,'dia')}</div></div>`; },
+  "infowords": function infowords(){
   return `<div class="wordfx"><span class="a">INFORmazione</span><span class="op">+</span><span class="b">autoMATICA</span><span class="op">=</span><span>INFORMATICA</span></div>
    <p class="muted" style="text-align:center;margin-top:10px">${L(['information + automatic = computer science','informazione + automatica = informatica'])}</p>`;
 },
-recipe(){
+  "recipe": function recipe(){
   const st=L([['Fill a pot with water','Put the pot on the stove and boil the water','Put the noodles in a bowl','Pour the boiling water over the noodles','Wait 3 minutes','Add the seasoning and stir'],['Riempi una pentola d\'acqua','Metti la pentola sul fuoco e porta a ebollizione','Metti i noodles in una ciotola','Versa l\'acqua bollente sui noodles','Aspetta 3 minuti','Aggiungi il condimento e mescola']]);
   return `<div class="recipe"><div class="io"><b>IN</b><span>${L(['Input: water, noodle pack, seasoning','Input: acqua, confezione di noodles, condimento'])}</span></div>
    ${st.map((s,i)=>`<div><b>${i+1}</b><span>${s}</span></div>`).join('')}
    <div class="io"><b>OUT</b><span>${L(['Output: a bowl of ramen','Output: una ciotola di ramen'])}</span></div></div>`;
 },
-props(){ return cards([
+  "props": function props(){ return cards([
   ['gear',['Finite','Finito'],['It must end after a limited number of steps.','Deve terminare dopo un numero limitato di passi.']],
   ['eye',['Unambiguous','Non ambiguo'],['Each step can be understood in only one way.','Ogni passo si può interpretare in un solo modo.']],
   ['bolt',['Executable','Eseguibile'],['Each step can really be carried out.','Ogni passo si può davvero eseguire.']],
   ['layers',['General','Generale'],['It solves a whole family of problems, not just one case.','Risolve un\'intera classe di problemi, non un solo caso.']],
   ['scale',['Deterministic','Deterministico'],['The same input always gives the same output.','Con gli stessi dati in ingresso dà sempre lo stesso risultato.']],
 ]);},
-badalgo(){ return cards([
+  "badalgo": function badalgo(){ return cards([
   ['warn',['"Add some salt."','"Aggiungi un po\' di sale."'],['How much is "some"? AMBIGUOUS.','Quanto è "un po\'"? AMBIGUO.']],
   ['warn',['"Keep stirring."','"Continua a mescolare."'],['Until when? Never stops: NOT FINITE.','Fino a quando? Non finisce mai: NON FINITO.']],
   ['warn',['"Fly to the shop."','"Vola fino al negozio."'],['Impossible: NOT EXECUTABLE.','Impossibile: NON ESEGUIBILE.']],
 ]);},
-ct(){ return cards([
+  "ct": function ct(){ return cards([
   ['puzzle',['Decomposition','Scomposizione'],['Break a big problem into smaller ones.','Dividere un problema grande in problemi più piccoli.']],
   ['eye',['Pattern recognition','Riconoscimento di schemi'],['Spot what problems have in common.','Notare cosa hanno in comune i problemi.']],
   ['layers',['Abstraction','Astrazione'],['Keep the important details, ignore the rest.','Tenere i dettagli importanti, ignorare il resto.']],
   ['gear',['Algorithms','Algoritmi'],['Write the step-by-step solution.','Scrivere la soluzione passo per passo.']],
 ]);},
-sciences(){ return cards([
+  "sciences": function sciences(){ return cards([
   ['dna',['Medicine & biology','Medicina e biologia'],['Computers read DNA and help doctors study scans.','I computer leggono il DNA e aiutano i medici ad analizzare le immagini.']],
   ['cloud',['Weather','Meteorologia'],['Simulations of the atmosphere make forecasts.','Simulazioni dell\'atmosfera producono le previsioni.']],
   ['sat',['Astronomy & physics','Astronomia e fisica'],['Analysing huge amounts of data from telescopes and experiments.','Analizzare enormi quantità di dati da telescopi ed esperimenti.']],
   ['music',['Art & music','Arte e musica'],['Digital drawing, animation, music production.','Disegno digitale, animazione, produzione musicale.']],
 ]);},
-feed(){
+  "feed": function feed(){
   const posts=L([['Dance video','You watched 3 like it',96],['Anime clip','You liked 12 like it',91],['Friend\'s photo','You often comment',74],['News article','You rarely open these',22]],[['Video di ballo','Ne hai guardati 3 simili',96],['Clip anime','Ne hai messi 12 "mi piace"',91],['Foto di un\'amica','Commenti spesso',74],['Articolo di notizie','Li apri raramente',22]]);
   return `<div class="ladder">${posts.map(p=>`<div class="rung"><b>${p[2]}</b><span><b style="font-family:var(--body);color:var(--text)">${p[0]}</b> · ${p[1]}</span></div>`).join('')}</div>
    <p class="muted" style="margin-top:8px;font-size:14px">${L(['Example scores: the feed algorithm ranks posts and shows the highest first.','Punteggi di esempio: l\'algoritmo del feed ordina i post e mostra prima quelli col punteggio più alto.'])}</p>`;
 },
-
-/* ---------- ARC 2: encoding ---------- */
-switches(){
+  "switches": function switches(){
   const bits=[1,0,1,1,0,0,1,0];
   return `<div class="bitrow">${bits.map(b=>`<div class="${b?'':'z'}"><svg viewBox="0 0 40 40" style="width:34px;height:34px"><circle cx="20" cy="20" r="14" fill="${b?C.gold:'#2a2d5c'}" ${b?'class="blink"':''}/></svg><b>${b}</b><small>${b?'ON':'OFF'}</small></div>`).join('')}</div>
    <p class="muted" style="text-align:center;margin-top:10px">${L(['8 switches = 8 bits = 1 byte','8 interruttori = 8 bit = 1 byte'])}</p>`;
 },
-places(){
+  "places": function places(){
   const v=[128,64,32,16,8,4,2,1], b=[0,0,0,0,1,1,0,1];
   return `<div class="bitrow">${v.map((x,i)=>`<div class="${b[i]?'':'z'}"><small>${x}</small><b>${b[i]}</b></div>`).join('')}</div>
    <p style="text-align:center;margin-top:12px;font-family:var(--mono);font-size:18px">00001101 → 8 + 4 + 1 = <span style="color:var(--gold)">13</span></p>`;
 },
-div2(){
+  "div2": function div2(){
   return `<div class="div2"><span>13 ÷ 2 = 6</span><span>${L(['remainder','resto'])}</span><span class="r">1</span><span>6 ÷ 2 = 3</span><span>${L(['remainder','resto'])}</span><span class="r">0</span><span>3 ÷ 2 = 1</span><span>${L(['remainder','resto'])}</span><span class="r">1</span><span>1 ÷ 2 = 0</span><span>${L(['remainder','resto'])}</span><span class="r">1</span></div>
    <p style="text-align:center;margin-top:12px">${L(['Read the remainders from the bottom up:','Leggi i resti dal basso verso l\'alto:'])} <b style="font-family:var(--mono);color:var(--gold);font-size:20px">1101</b></p>`;
 },
-units(){
+  "units": function units(){
   const R=L([[['1 bit','A single 0 or 1.'],['1 byte','8 bits. About one letter of text.'],['1 KB','kilobyte ≈ 1,000 bytes. A short text.'],['1 MB','megabyte ≈ 1,000 KB. About a minute of MP3 music.'],['1 GB','gigabyte ≈ 1,000 MB. Roughly an hour of standard video.'],['1 TB','terabyte ≈ 1,000 GB. A big hard drive.']],
     [['1 bit','Un solo 0 o 1.'],['1 byte','8 bit. Circa una lettera di testo.'],['1 KB','kilobyte ≈ 1.000 byte. Un breve testo.'],['1 MB','megabyte ≈ 1.000 KB. Circa un minuto di musica MP3.'],['1 GB','gigabyte ≈ 1.000 MB. Circa un\'ora di video normale.'],['1 TB','terabyte ≈ 1.000 GB. Un grande hard disk.']]]);
   return `<div class="ladder">${R.map(r=>`<div class="rung"><b>${r[0]}</b><span>${r[1]}</span></div>`).join('')}</div>
    <p class="muted" style="margin-top:10px;font-size:14px">${L(['Music and video sizes are rough examples. Many courses use 1 KB = 1,024 bytes (2¹⁰) instead of 1,000: check which one your book uses.','Le dimensioni di musica e video sono esempi indicativi. Molti libri usano 1 KB = 1.024 byte (2¹⁰) invece di 1.000: controlla quale usa il tuo libro.'])}</p>`;
 },
-asciitable(){
+  "asciitable": function asciitable(){
   let t=''; for(let c=65;c<=90;c++) t+=`<span><b>${String.fromCharCode(c)}</b> ${c}</span>`;
   return `<div class="atab">${t}<span><b>a</b> 97</span><span><b>␣</b> 32</span><span><b>0</b> 48</span><span><b>!</b> 33</span></div>`;
 },
-unicode(){
+  "unicode": function unicode(){
   const ch=['A','è','ñ','ß','Ж','Ω','あ','漢','한','ع','अ','😀'];
   return `<div class="cats" style="gap:8px">${ch.map(c=>`<span class="chip" style="font-size:24px;padding:6px 14px">${c}</span>`).join('')}</div>
    <p class="muted" style="text-align:center;margin-top:10px">${L(['Unicode: almost every character in every writing system, plus emoji','Unicode: quasi tutti i caratteri di ogni sistema di scrittura, più le emoji'])}</p>`;
 },
-pixels(){
+  "pixels": function pixels(){
   const g=['01100110','11111111','11111111','11111111','01111110','00111100','00011000','00000000'];
   return `<div class="twocol" style="align-items:center"><div style="display:flex;justify-content:center"><div class="pix">${g.join('').split('').map(b=>`<span class="b${b}">${b}</span>`).join('')}</div></div>
    <div><p>${L(['An 8 × 8 black-and-white image: 64 pixels, 1 bit each = 64 bits = 8 bytes.','Un\'immagine in bianco e nero di 8 × 8: 64 pixel, 1 bit ciascuno = 64 bit = 8 byte.'])}</p>
    <p class="muted" style="margin-top:8px">${L(['A Full HD screen is 1920 × 1080 ≈ 2 million pixels.','Uno schermo Full HD ha 1920 × 1080 ≈ 2 milioni di pixel.'])}</p></div></div>`;
 },
-rgbmix(){
+  "rgbmix": function rgbmix(){
   return `<svg viewBox="0 0 640 230" class="dia" role="img" aria-label="Red, green and blue light mixing">
    <g style="mix-blend-mode:screen"><circle cx="270" cy="95" r="70" fill="#ff0000"/><circle cx="370" cy="95" r="70" fill="#00ff00" style="mix-blend-mode:screen"/><circle cx="320" cy="160" r="70" fill="#0000ff" style="mix-blend-mode:screen"/></g>
    <text x="150" y="70" text-anchor="end">R 255,0,0</text><text x="490" y="70">G 0,255,0</text><text x="400" y="215">B 0,0,255</text>
    <text x="320" y="125" text-anchor="middle" style="fill:#000;font-size:12px">255,255,255</text></svg>
    <p class="muted" style="text-align:center">${L(['Mixing light: red + green = yellow, all three = white.','Mescolando la luce: rosso + verde = giallo, tutti e tre = bianco.'])}</p>`;
 },
-sampling(){
+  "sampling": function sampling(){
   let wave='M20 120'; for(let x=20;x<=620;x+=5) wave+=` L${x} ${120-70*Math.sin((x-20)/600*Math.PI*4)*Math.cos((x-20)/900)}`;
   let bars=''; for(let x=20;x<=620;x+=30){const y=120-70*Math.sin((x-20)/600*Math.PI*4)*Math.cos((x-20)/900); bars+=`<line x1="${x}" y1="120" x2="${x}" y2="${y}" stroke="${C.gold}" stroke-width="3"/><circle cx="${x}" cy="${y}" r="5" fill="${C.gold}"/>`;}
   return `<svg viewBox="0 0 640 250" class="dia" role="img" aria-label="Sound wave being sampled at regular intervals">
    <line x1="20" y1="120" x2="620" y2="120" stroke="${C.line}"/><path d="${wave}" fill="none" stroke="${C.data}" stroke-width="3"/>${bars}
    <text x="20" y="230" class="sm">${L(['blue = real sound wave · yellow = samples the computer stores as numbers','blu = onda sonora reale · giallo = campioni che il computer salva come numeri'])}</text></svg>`;
 },
-rle(){
+  "rle": function rle(){
   const row='WWWWWBBBWW';
   return `<div style="display:flex;flex-direction:column;align-items:center;gap:10px">
    <div style="display:flex;gap:3px">${row.split('').map(c=>`<span style="width:26px;height:26px;border-radius:4px;background:${c==='W'?'#eeecf8':'#15161f'};border:1px solid ${C.line}"></span>`).join('')}</div>
    <div class="codes">${row}</div><div style="color:var(--muted)">↓ ${L(['run-length encoding (lossless)','codifica run-length (senza perdita)'])}</div><div class="codes" style="color:var(--gold)">5W 3B 2W</div>
    <p class="muted">${L(['10 symbols become 6. Nothing is lost: you can rebuild the row exactly.','10 simboli diventano 6. Non si perde nulla: la riga si ricostruisce identica.'])}</p></div>`;
 },
-hex(){
+  "hex": function hex(){
   const d=[...'0123456789ABCDEF'];
   return `<div class="atab">${d.map((h,i)=>`<span><b>${h}</b> = ${i}</span>`).join('')}</div>
    <div class="swatches" style="margin-top:14px">${[['#FF0000'],['#00FF00'],['#0000FF'],['#FFD166'],['#FFFFFF'],['#000000']].map(([c])=>`<div class="swb"><div class="sw" style="width:70px;height:50px;background:${c}"></div>${c}</div>`).join('')}</div>`;
 },
-divide(){ return cards([
+  "divide": function divide(){ return cards([
   ['wifi',['Access','Accesso'],['Fast internet and a device at home: not everyone has them.','Internet veloce e un dispositivo a casa: non tutti li hanno.']],
   ['book',['Skills','Competenze'],['Knowing how to use technology safely and well.','Saper usare la tecnologia in modo sicuro e consapevole.']],
   ['globe',['Where you live','Dove vivi'],['Gaps between countries, and between cities and the countryside.','Differenze tra Paesi, e tra città e zone rurali.']],
   ['user',['Age & income','Età e reddito'],['Older people and poorer families are more often left out.','Anziani e famiglie con meno risorse restano più spesso esclusi.']],
 ]);},
-
-/* ---------- ARC 3: hardware ---------- */
-ipos(){
+  "ipos": function ipos(){
   let keys=''; for(let r=0;r<3;r++) for(let c=0;c<7;c++) keys+=`<rect x="${32+c*16}" y="${108+r*16}" width="12" height="11" rx="2" fill="#3a3f7a"/>`;
   const dot=(path,d,delay,col)=>`<circle r="6" fill="${col}"><animateMotion dur="${d}s" begin="${delay}s" repeatCount="indefinite" path="${path}"/></circle>`;
   return `<svg viewBox="0 0 640 300" class="dia" role="img" aria-label="Input, process, output, storage">
@@ -262,7 +156,7 @@ ipos(){
    ${dot('M152 131 H262',1.4,0,C.data)}${dot('M378 131 H490',1.4,.7,C.data)}${dot('M305 198 V236',1.2,.3,C.gold)}${dot('M335 236 V198',1.2,.9,C.gold)}
   </svg>`;
 },
-hwsw(){
+  "hwsw": function hwsw(){
   return `<div class="twocol">
    <div class="panel"><h3>${H('Hardware','Hardware')}</h3><p class="muted" style="margin-bottom:10px">${L(['The physical parts. You can touch them.','Le parti fisiche. Si possono toccare.'])}</p>
      <div class="chips">${[['keyboard',['Keyboard','Tastiera']],['monitor',['Monitor','Monitor']],['chip',['CPU','CPU']],['ram',['RAM','RAM']],['ssd',['SSD','SSD']],['mouse',['Mouse','Mouse']]].map(([i,n])=>`<span class="chip">${ICON(i)}${L(n)}</span>`).join('')}</div></div>
@@ -270,7 +164,7 @@ hwsw(){
      <div class="chips">${[['layers',['Operating system','Sistema operativo']],['app',['Web browser','Browser']],['gamepad',['Games','Videogiochi']],['app',['Word processor','Videoscrittura']],['shield',['Antivirus','Antivirus']]].map(([i,n])=>`<span class="chip">${ICON(i)}${L(n)}</span>`).join('')}</div></div>
   </div>`;
 },
-vonneumann(){
+  "vonneumann": function vonneumann(){
   return `<svg viewBox="0 0 640 300" class="dia" role="img" aria-label="Von Neumann architecture: CPU, memory, input and output linked by a bus">
    <rect x="230" y="20" width="180" height="110" rx="12" fill="#262a5e" stroke="${C.ember}" stroke-width="3"/>
    <text x="320" y="48" text-anchor="middle" class="lbl">CPU</text>
@@ -284,7 +178,7 @@ vonneumann(){
    <circle r="6" fill="${C.ember}"><animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" path="M320 130 V190 H530 V220"/></circle>
   </svg>`;
 },
-cpu(){
+  "cpu": function cpu(){
   let pins=''; for(let i=0;i<12;i++){pins+=`<line x1="${50+i*26}" y1="18" x2="${50+i*26}" y2="30" stroke="${C.muted}" stroke-width="3"/><line x1="${50+i*26}" y1="270" x2="${50+i*26}" y2="282" stroke="${C.muted}" stroke-width="3"/>`;}
   const rows=[['0001','ADD 5, 3'],['0002','SHOW'],['0003','ADD 8, 1'],['0004','…']];
   const rn=L([['Address','Instruction','Result'],['Indirizzo','Istruzione','Risultato']]);
@@ -302,7 +196,7 @@ cpu(){
      ${rows.map((r,i)=>`<g id="row${i+1}" class="part"><rect class="box" x="466" y="${70+i*46}" width="162" height="38" rx="6"/><text x="476" y="${94+i*46}" class="sm">${r[0]}</text><text x="520" y="${94+i*46}" style="font-size:13px">${r[1]}</text></g>`).join('')}</g>
   </svg>`;
 },
-cores(){
+  "cores": function cores(){
   return `<div class="twocol">
    <div class="panel"><h3>${H('Clock speed','Frequenza di clock')}</h3>
      <div class="row" style="margin:8px 0 10px"><svg viewBox="0 0 160 50" style="width:160px;height:50px" aria-hidden="true"><path d="M0 40 H15 V10 H35 V40 H55 V10 H75 V40 H95 V10 H115 V40 H135 V10 H160" fill="none" stroke="${C.gold}" stroke-width="3" class="flow"/></svg></div>
@@ -312,7 +206,7 @@ cores(){
      <p>${L(['Each core is a separate processing unit. A 4-core CPU can work on 4 things at the same moment.','Ogni core è un\'unità di elaborazione separata. Una CPU a 4 core può lavorare su 4 cose nello stesso istante.'])}</p></div>
   </div>`;
 },
-board(){
+  "board": function board(){
   let traces=''; const T=['M80 120 H200','M330 105 H380','M460 120 H520','M265 170 V250','M400 210 V250','M330 160 Q360 230 420 250','M480 300 H580','M190 260 V300 H240'];
   T.forEach((d,i)=>traces+=`<path d="${d}" stroke="#3fae9c" stroke-width="2" fill="none" class="flow" style="animation-delay:${i*.15}s"/>`);
   const z=(k,inner)=>`<g class="zone" data-k="${k}" tabindex="0" role="button" aria-label="${L(BOARD[k].n)}">${inner}</g>`;
@@ -332,7 +226,7 @@ board(){
    ${z('bus',`<rect x="100" y="312" width="100" height="40" rx="6" fill="rgba(63,174,156,.15)" stroke="#3fae9c" stroke-width="2" stroke-dasharray="4 4"/>${t(150,337,'bus')}`)}
   </svg><div class="narr" id="boardInfo"><b class="step">${L(['Tap a part','Tocca un componente'])}</b>${L(['Tap or click any part of the board to learn what it does.','Tocca o clicca un componente della scheda per scoprire a cosa serve.'])}</div>`;
 },
-psu(){
+  "psu": function psu(){
   return `<svg viewBox="0 0 640 260" class="dia" role="img" aria-label="Power supply converting AC to DC">
    <rect x="20" y="90" width="80" height="80" rx="10" fill="#d8dae8"/><circle cx="48" cy="130" r="6" fill="#333"/><circle cx="72" cy="130" r="6" fill="#333"/>
    <text x="60" y="196" text-anchor="middle" class="sm">${L(['wall socket','presa'])}</text><text x="60" y="212" text-anchor="middle" class="sm">AC ~230 V</text>
@@ -343,7 +237,7 @@ psu(){
    ${[['12 V',L(['CPU + graphics card','CPU + scheda video']),90],['5 V',L(['USB + some drives','USB + alcuni dischi']),140],['3.3 V',L(['small chips','piccoli chip']),190]].map(([v,t,y])=>`<path d="M340 130 C380 130 380 ${y} 420 ${y}" stroke="${C.data}" stroke-width="3" fill="none" class="flow"/><text x="430" y="${y+5}" style="fill:${C.data}">${v} DC</text><text x="500" y="${y+5}" class="sm">→ ${t}</text>`).join('')}
    <text x="320" y="240" text-anchor="middle" class="sm">${L(['AC from the wall becomes low-voltage DC','la corrente alternata diventa continua a bassa tensione'])}</text></svg>`;
 },
-ramstick(){
+  "ramstick": function ramstick(){
   let chips=''; const apps=L([['Browser','Music','Essay','Game','Chat','Photos','OS','Free'],['Browser','Musica','Tema','Gioco','Chat','Foto','SO','Libera']]);
   for(let i=0;i<8;i++) chips+=`<rect x="${48+i*68}" y="48" width="56" height="58" rx="3" fill="#15161f" stroke="${i<7?C.data:C.line}" stroke-width="${i<7?2:1}"/><text x="${76+i*68}" y="82" text-anchor="middle" class="sm" style="fill:${i<7?C.data:C.muted}">${apps[i]}</text>`;
   let pins=''; for(let i=0;i<60;i++){ if(i===26) continue; pins+=`<rect x="${34+i*9.6}" y="128" width="6" height="18" fill="${C.gold}"/>`;}
@@ -352,7 +246,7 @@ ramstick(){
    <rect x="283" y="130" width="12" height="22" fill="${C.panel2}"/>
    <text x="34" y="22" class="lbl">${L(['RAM STICK','BANCO DI RAM'])}</text><text x="606" y="22" text-anchor="end" class="sm">${L(['what is open right now','ciò che è aperto adesso'])}</text></svg>`;
 },
-powercut(){
+  "powercut": function powercut(){
   return `<div class="pc">
     <div class="pc-box"><div class="pc-h">RAM<small>${L(['volatile','volatile'])}</small></div>
       <div class="files" id="ramFiles"><span class="file">${L(['essay_draft (NOT saved)','bozza_tema (NON salvata)'])}</span><span class="file">${L(['music player','lettore musicale'])}</span><span class="file">${L(['12 browser tabs','12 schede del browser'])}</span></div></div>
@@ -361,20 +255,20 @@ powercut(){
       <div class="files"><span class="file">${L(['essay_v1 (saved)','tema_v1 (salvato)'])}</span><span class="file">${L(['photos','foto'])}</span><span class="file">${L(['games','giochi'])}</span></div></div>
   </div>`;
 },
-pyramid(){
+  "pyramid": function pyramid(){
   const Lv=L([[['Registers','inside the CPU · a few bytes · fastest'],['Cache','on the CPU chip · a few MB'],['RAM','e.g. 8–32 GB'],['Mass storage (SSD / HDD)','hundreds of GB to TB · slowest']],[['Registri','dentro la CPU · pochi byte · i più veloci'],['Cache','sul chip della CPU · pochi MB'],['RAM','es. 8–32 GB'],['Memoria di massa (SSD / HDD)','da centinaia di GB a TB · la più lenta']]]);
   const st=[['34%',C.ember],['50%','#ff9a5c'],['70%',C.gold],['92%',C.data]];
   return `<div class="pyr">${Lv.map((l,i)=>`<div class="lvl" style="--w:${st[i][0]};--c:${st[i][1]}">${l[0]}<small>${l[1]}</small></div>`).join('')}</div>
    <div class="pyr-axis"><span>${L(['Top: faster, smaller, more expensive','In alto: più veloce, più piccola, più costosa'])}</span><span>${L(['Bottom: slower, bigger, cheaper','In basso: più lenta, più grande, più economica'])}</span></div>`;
 },
-buses(){
+  "buses": function buses(){
   const B=[[L(['data bus','bus dati']),C.data,L(['carries the data itself','trasporta i dati'])],[L(['address bus','bus indirizzi']),C.gold,L(['says WHERE in memory','indica DOVE in memoria'])],[L(['control bus','bus di controllo']),C.sak,L(['says WHAT to do: read or write','indica COSA fare: leggere o scrivere'])]];
   return `<svg viewBox="0 0 640 250" class="dia" role="img" aria-label="Data, address and control buses between CPU, RAM and I/O">
    ${[[70,'CPU'],[320,'RAM'],[570,'I/O']].map(([x,t])=>`<rect x="${x-55}" y="20" width="110" height="60" rx="10" fill="#262a5e" stroke="${C.line}" stroke-width="2"/><text x="${x}" y="56" text-anchor="middle" class="lbl">${t}</text>`).join('')}
    ${B.map((b,i)=>{const y=120+i*42;return `<line x1="40" y1="${y}" x2="600" y2="${y}" stroke="${b[1]}" stroke-width="6" stroke-linecap="round" opacity=".35"/><line x1="40" y1="${y}" x2="600" y2="${y}" stroke="${b[1]}" stroke-width="3" class="flow" style="animation-delay:${i*.3}s"/>${[70,320,570].map(x=>`<line x1="${x}" y1="80" x2="${x}" y2="${y}" stroke="${b[1]}" stroke-width="1.5" opacity=".5"/>`).join('')}<text x="44" y="${y-8}" style="fill:${b[1]};font-size:13px">${b[0]}</text><text x="600" y="${y-8}" text-anchor="end" class="sm">${b[2]}</text>`;}).join('')}
   </svg>`;
 },
-hdd(){
+  "hdd": function hdd(){
   let tracks=''; for(let r=20;r<=92;r+=12) tracks+=`<circle cx="160" cy="135" r="${r}" fill="none" stroke="#8d93b8" stroke-opacity=".35"/>`;
   let cells=''; for(let r=0;r<4;r++) for(let c=0;c<6;c++) cells+=`<rect x="${410+c*32}" y="${70+r*32}" width="24" height="24" rx="3" fill="${C.data}" class="blink" style="animation-delay:${((r*6+c)*0.17)%1.4}s"/>`;
   return `<svg viewBox="0 0 640 280" class="dia" role="img" aria-label="Hard disk and SSD">
@@ -390,7 +284,7 @@ hdd(){
    <style>.swing2{animation:swing2 2.6s ease-in-out infinite}@keyframes swing2{0%,100%{transform:rotate(0)}50%{transform:rotate(-22deg)}}</style>
   </svg>`;
 },
-optcloud(){
+  "optcloud": function optcloud(){
   return `<svg viewBox="0 0 640 260" class="dia" role="img" aria-label="Optical disc and cloud storage">
    <defs><radialGradient id="dg"><stop offset=".15" stop-color="#cfd3ff"/><stop offset=".5" stop-color="#ffb8e0"/><stop offset=".8" stop-color="#9fe9ff"/><stop offset="1" stop-color="#d9dcf5"/></radialGradient></defs>
    <text x="150" y="22" text-anchor="middle" class="lbl">${L(['OPTICAL','OTTICA'])}</text>
@@ -405,7 +299,7 @@ optcloud(){
    ${[0,1,2].map(i=>`<rect x="${405+i*50}" y="150" width="40" height="84" rx="4" fill="#15161f" stroke="${C.line}"/>${[0,1,2,3].map(j=>`<rect x="${411+i*50}" y="${158+j*18}" width="28" height="10" rx="2" fill="#262a5e"/><circle cx="${434+i*50}" cy="${163+j*18}" r="2.5" fill="${C.good}" class="blink" style="animation-delay:${(i+j)*.2}s"/>`).join('')}`).join('')}
    <text x="470" y="252" text-anchor="middle" class="sm">${L(['your files on remote servers','i tuoi file su server remoti'])}</text></svg>`;
 },
-ioflow(){
+  "ioflow": function ioflow(){
   const col=(arr)=>`<div class="iocol">${arr.map(([i,n])=>`<span class="chip">${ICON(i)}${L(n)}</span>`).join('')}</div>`;
   return `<div class="ioflow">
    <div><div class="eyebrow" style="margin-bottom:8px">Input →</div>${col([['keyboard',['Keyboard','Tastiera']],['mouse',['Mouse','Mouse']],['mic',['Microphone','Microfono']],['webcam',['Webcam','Webcam']],['scanner',['Scanner','Scanner']]])}</div>
@@ -413,13 +307,13 @@ ioflow(){
    <div><div class="eyebrow" style="margin-bottom:8px;color:var(--ember)">→ Output</div>${col([['monitor',['Monitor','Monitor']],['speaker',['Speakers','Casse']],['printer',['Printer','Stampante']],['projector',['Projector','Proiettore']],['headset',['Headphones','Cuffie']]])}</div>
   </div>`;
 },
-both(){ return cards([
+  "both": function both(){ return cards([
   ['touch',['Touchscreen','Touchscreen'],['You touch it (input) and it shows pictures (output).','Lo tocchi (input) e mostra immagini (output).']],
   ['headset',['Headset with mic','Cuffie con microfono'],['Mic = input, earphones = output.','Microfono = input, auricolari = output.']],
   ['gamepad',['Controller with vibration','Controller con vibrazione'],['Buttons = input, rumble = output.','Tasti = input, vibrazione = output.']],
   ['robot',['Robot','Robot'],['Sensors are inputs; motors and lights are outputs.','I sensori sono input; motori e luci sono output.']],
 ]);},
-touch(){
+  "touch": function touch(){
   let grid=''; for(let i=0;i<9;i++){grid+=`<line x1="${140+i*45}" y1="40" x2="${140+i*45}" y2="220" stroke="${C.data}" stroke-opacity=".5"/>`;} for(let j=0;j<5;j++){grid+=`<line x1="140" y1="${40+j*45}" x2="500" y2="${40+j*45}" stroke="${C.sak}" stroke-opacity=".5"/>`;}
   return `<svg viewBox="0 0 640 260" class="dia" role="img" aria-label="Capacitive touchscreen grid sensing a finger">
    <rect x="120" y="20" width="400" height="220" rx="16" fill="#10283a" stroke="${C.line}" stroke-width="3"/>${grid}
@@ -429,13 +323,13 @@ touch(){
    <text x="530" y="140" style="fill:${C.gold};font-size:13px">x=4, y=2</text>
    <text x="20" y="140" class="sm">${L(['finger changes','il dito modifica'])}</text><text x="20" y="156" class="sm">${L(['the charge here','la carica qui'])}</text></svg>`;
 },
-earth(){ return cards([
+  "earth": function earth(){ return cards([
   ['recycle',['E-waste (RAEE)','RAEE'],['Old computers are electronic waste. Take them to a collection point, never in normal rubbish.','I vecchi computer sono rifiuti elettronici (RAEE): vanno portati all\'isola ecologica, mai nell\'indifferenziato.']],
   ['chip',['Precious materials','Materiali preziosi'],['Recycling recovers copper, gold and other metals.','Il riciclo recupera rame, oro e altri metalli.']],
   ['warn',['Toxic parts','Parti tossiche'],['Batteries and some components can pollute soil and water.','Batterie e alcuni componenti possono inquinare terreno e acqua.']],
   ['bolt',['Moore\'s law','Legge di Moore'],['The number of transistors on a chip doubled about every 2 years. Today this is slowing down.','Il numero di transistor su un chip è raddoppiato circa ogni 2 anni. Oggi questa crescita sta rallentando.']],
 ]);},
-gpu(){
+  "gpu": function gpu(){
   return `<div class="twocol">
    <div class="panel"><h3>CPU</h3><p class="muted" style="font-size:14px;margin-bottom:8px">${L(['A few powerful cores.','Pochi core potenti.'])}</p>
      <div class="cores" style="--n:4;max-width:200px">${[0,1,2,3].map(i=>`<div class="core" style="animation-delay:${i*.35}s"></div>`).join('')}</div></div>
@@ -443,7 +337,7 @@ gpu(){
      <div class="cores" style="--n:12">${Array.from({length:48},(_,i)=>`<div class="core g" style="animation-delay:${((i%12)+Math.floor(i/12))*.08}s"></div>`).join('')}</div></div>
   </div>`;
 },
-journey(){
+  "journey": function journey(){
   const node=(k,x,y,label,it)=>`<g id="jn-${k}" class="part"><rect class="box" x="${x-58}" y="${y-30}" width="116" height="60" rx="10"/><text x="${x}" y="${y-2}" text-anchor="middle">${label}</text><text x="${x}" y="${y+16}" text-anchor="middle" class="sm">${it}</text></g>`;
   const P=JN;
   const wire=(a,b)=>`<line x1="${P[a][0]}" y1="${P[a][1]}" x2="${P[b][0]}" y2="${P[b][1]}" stroke="${C.line}" stroke-width="3" stroke-dasharray="5 6"/>`;
@@ -454,14 +348,12 @@ journey(){
    <g id="jdot" style="transform:translate(${P.kb[0]}px,${P.kb[1]}px);transition:transform .9s cubic-bezier(.5,0,.3,1)"><circle r="16" fill="none" stroke="${C.gold}" stroke-opacity=".5" class="pulse"/><circle r="9" fill="${C.gold}"/><text y="4" text-anchor="middle" style="font-size:10px;fill:#000">A</text></g>
   </svg>`;
 },
-
-/* ---------- ARC 4: OS & apps ---------- */
-stack(){
+  "stack": function stack(){
   const Ls=L([[['You (the user)','click, type, tap'],['Application software','games, browser, word processor'],['Operating system','Windows, macOS, Linux, Android, iOS'],['Drivers + firmware','translators for each device'],['Hardware','CPU, RAM, storage, screen…']],[['Tu (l\'utente)','clicchi, scrivi, tocchi'],['Software applicativo','giochi, browser, videoscrittura'],['Sistema operativo','Windows, macOS, Linux, Android, iOS'],['Driver + firmware','traduttori per ogni dispositivo'],['Hardware','CPU, RAM, memoria di massa, schermo…']]]);
   const col=[C.sak,C.gold,C.ember,C.data,'#b6b9e0'];
   return `<div class="stack">${Ls.map((l,i)=>`${i?'<div class="arrowdown"><i></i></div>':''}<div class="layer" style="background:${col[i]}">${l[0]}<small>${l[1]}</small></div>`).join('')}</div>`;
 },
-osjobs(){ return cards([
+  "osjobs": function osjobs(){ return cards([
   ['ram',['Manages memory','Gestisce la memoria'],['Decides which program gets which part of RAM.','Decide quale parte della RAM va a ogni programma.']],
   ['chip',['Manages processes','Gestisce i processi'],['Shares the CPU so many programs run at once.','Divide la CPU così più programmi girano insieme.']],
   ['folder',['Manages files','Gestisce i file'],['The file system: folders, saving, opening.','Il file system: cartelle, salvataggio, apertura.']],
@@ -469,7 +361,7 @@ osjobs(){ return cards([
   ['app',['User interface','Interfaccia utente'],['Desktop, windows, icons, menus (GUI).','Desktop, finestre, icone, menu (GUI).']],
   ['lock',['Security','Sicurezza'],['User accounts, passwords, permissions.','Account utente, password, permessi.']],
 ]);},
-process(){
+  "process": function process(){
   const P=L([['Music','Browser','Chat','Music','Browser','Chat','Music','Browser'],['Musica','Browser','Chat','Musica','Browser','Chat','Musica','Browser']]);
   const col={0:C.sak,1:C.gold,2:C.data};
   return `<div class="twocol" style="margin-bottom:14px">
@@ -479,7 +371,7 @@ process(){
    <div class="slices">${P.map((p,i)=>`<i style="background:${col[i%3]}">${p}</i>`).join('')}<span class="cursor"></span></div>
    <p class="muted" style="margin-top:8px;font-size:14px">${L(['Each slice lasts a few milliseconds, so it looks like everything runs at once.','Ogni fetta dura pochi millisecondi: sembra che tutto giri contemporaneamente.'])}</p>`;
 },
-tree(){
+  "tree": function tree(){
   return `<div class="twocol"><div class="panel tree">
     <div>${ICON('hdd','ico" style="width:16px;height:16px;vertical-align:-3px')} C:\\</div>
     <div>&nbsp;└ ${ICON('folder','ico" style="width:16px;height:16px;vertical-align:-3px')} ${L(['Users','Utenti'])}</div>
@@ -491,25 +383,25 @@ tree(){
    <div class="path">C:\\${L(['Users','Utenti'])}\\Hana\\${L(['Documents','Documenti'])}\\<span style="color:var(--gold)">${L(['essay','tema'])}</span><span style="color:var(--sakura)">.docx</span></div>
    <p class="muted" style="font-size:14px;margin-top:6px">${L(['path · name · extension','percorso · nome · estensione'])}</p></div></div>`;
 },
-fileops(){ return cards([
+  "fileops": function fileops(){ return cards([
   ['file',['Create & rename','Crea e rinomina'],['Give files clear names: verifica_storia_2026.docx, not doc1.docx.','Dai nomi chiari: verifica_storia_2026.docx, non doc1.docx.']],
   ['layers',['Copy','Copia'],['Makes a second copy. The original stays where it was.','Crea un secondo esemplare. L\'originale resta dov\'era.']],
   ['folder',['Move (cut & paste)','Sposta (taglia e incolla)'],['The file leaves the old folder and goes to the new one.','Il file lascia la vecchia cartella e va nella nuova.']],
   ['recycle',['Delete','Elimina'],['Goes to the Recycle Bin first, so you can still restore it.','Finisce prima nel Cestino, da cui puoi ancora ripristinarlo.']],
 ]);},
-gui(){ return cards([
+  "gui": function gui(){ return cards([
   ['app',['Windows','Finestre'],['Each program runs in its own window.','Ogni programma lavora nella sua finestra.']],
   ['image',['Icons','Icone'],['Little pictures for files, folders and apps.','Piccole immagini per file, cartelle e app.']],
   ['layers',['Menus','Menu'],['Lists of commands to choose from.','Elenchi di comandi tra cui scegliere.']],
   ['mouse',['Pointer','Puntatore'],['The arrow you move with the mouse or touchpad.','La freccia che muovi con mouse o touchpad.']],
 ]);},
-apps(){ return cards([
+  "apps": function apps(){ return cards([
   ['app',['Desktop apps','Applicazioni desktop'],['Word processors, spreadsheets, photo editors, games.','Videoscrittura, fogli di calcolo, fotoritocco, giochi.']],
   ['touch',['Mobile apps','App per dispositivi mobili'],['Downloaded from an app store, built for touch and small screens.','Si scaricano da uno store; pensate per il touch e gli schermi piccoli.']],
   ['lock',['Permissions','Autorizzazioni'],['Apps ask to use the camera, microphone or location. Only allow what makes sense.','Le app chiedono di usare fotocamera, microfono o posizione. Concedi solo ciò che ha senso.']],
   ['book',['Learning apps','App per imparare'],['Language apps use short lessons, repetition and points to keep you going.','Le app per le lingue usano lezioni brevi, ripetizione e punti per motivarti.']],
 ]);},
-sensors(){
+  "sensors": function sensors(){
   return `<svg viewBox="0 0 640 260" class="dia" role="img" aria-label="Phone tilting with accelerometer, and satellites sending signals to a GNSS receiver">
    <g style="transform-origin:150px 140px" class="tilt"><rect x="110" y="60" width="80" height="150" rx="14" fill="#262a5e" stroke="${C.data}" stroke-width="3"/><rect x="120" y="78" width="60" height="110" rx="4" fill="#10283a"/><path d="M150 100 V160 M138 148 L150 160 L162 148" stroke="${C.gold}" stroke-width="3" fill="none"/></g>
    <text x="150" y="245" text-anchor="middle" class="sm">${L(['accelerometer: feels tilt and movement','accelerometro: sente inclinazione e movimento'])}</text>
@@ -518,15 +410,13 @@ sensors(){
    <text x="500" y="245" text-anchor="middle" class="sm">${L(['GNSS: position from 4+ satellites','GNSS: posizione da 4 o più satelliti'])}</text>
    <style>.tilt{animation:tilt 3s ease-in-out infinite}@keyframes tilt{0%,100%{transform:rotate(0)}50%{transform:rotate(-80deg)}}</style></svg>`;
 },
-licences(){ return cards([
+  "licences": function licences(){ return cards([
   ['lock',['Proprietary','Proprietario'],['You pay for a licence to USE it. The code is secret and you can\'t change it.','Paghi una licenza per USARLO. Il codice è segreto e non puoi modificarlo.']],
   ['heart',['Freeware','Freeware'],['Free to use, but the code is still closed.','Gratuito da usare, ma il codice resta chiuso.']],
   ['key',['Shareware','Shareware'],['Try it free for a while, then pay to keep using it.','Lo provi gratis per un periodo, poi paghi per continuare.']],
   ['globe',['Open source','Open source'],['The source code is public: anyone can study, change and share it (Linux, Firefox, LibreOffice).','Il codice sorgente è pubblico: chiunque può studiarlo, modificarlo e condividerlo (Linux, Firefox, LibreOffice).']],
 ]);},
-
-/* ---------- ARC 5: networks ---------- */
-comm(){
+  "comm": function comm(){
   return `<svg viewBox="0 0 640 220" class="dia" role="img" aria-label="Sender, channel, receiver">
    ${[[90,L(['SENDER','EMITTENTE']),'user'],[550,L(['RECEIVER','RICEVENTE']),'user']].map(([x,t,i])=>`<rect x="${x-70}" y="50" width="140" height="90" rx="12" fill="#262a5e" stroke="${C.line}" stroke-width="2"/><text x="${x}" y="105" text-anchor="middle" class="lbl">${t}</text>`).join('')}
    <path d="M160 95 H480" stroke="${C.data}" stroke-width="4" class="flow"/>
@@ -535,7 +425,7 @@ comm(){
    <text x="320" y="130" text-anchor="middle" class="sm">${L(['message coded in bits (cable, Wi-Fi, fibre, 5G…)','messaggio codificato in bit (cavo, Wi-Fi, fibra, 5G…)'])}</text>
    <text x="320" y="190" text-anchor="middle" class="sm">${L(['A PROTOCOL = the shared rules both sides follow','PROTOCOLLO = le regole comuni che entrambi rispettano'])}</text></svg>`;
 },
-networks(){ return cards([
+  "networks": function networks(){ return cards([
   ['home',['LAN','LAN'],['Local Area Network: devices in one home, school or office.','Rete locale: dispositivi in una casa, scuola o ufficio.']],
   ['globe',['WAN','WAN'],['Wide Area Network: links networks across cities and countries.','Rete geografica: collega reti tra città e Paesi.']],
   ['router',['Router','Router'],['Connects networks and chooses the route for each packet.','Collega reti diverse e sceglie il percorso di ogni pacchetto.']],
@@ -543,7 +433,7 @@ networks(){ return cards([
   ['key',['IP address','Indirizzo IP'],['Each device on the Internet has an address, like 192.168.1.10.','Ogni dispositivo in rete ha un indirizzo, ad esempio 192.168.1.10.']],
   ['bolt',['Speed','Velocità'],['Measured in bits per second: Mbps, Gbps.','Si misura in bit al secondo: Mbps, Gbps.']],
 ]);},
-packets(){
+  "packets": function packets(){
   const R=[[230,60],[230,200],[410,60],[410,200],[320,130]];
   return `<svg viewBox="0 0 640 260" class="dia" role="img" aria-label="A message split into packets travelling through different routers">
    <rect x="20" y="100" width="100" height="60" rx="10" fill="#262a5e" stroke="${C.data}" stroke-width="2"/><text x="70" y="135" text-anchor="middle">${L(['You','Tu'])}</text>
@@ -553,25 +443,25 @@ packets(){
    ${[['M120 130 L230 60 L410 60 L520 130',C.gold,'1',0],['M120 130 L320 130 L410 200 L520 130',C.sak,'2',.6],['M120 130 L230 200 L410 200 L520 130',C.data,'3',1.2]].map(([p,c,n,d])=>`<g><rect x="-11" y="-11" width="22" height="22" rx="4" fill="${c}"/><text y="5" text-anchor="middle" style="fill:#000;font-size:13px">${n}</text><animateMotion dur="3.6s" begin="${d}s" repeatCount="indefinite" path="${p}"/></g>`).join('')}
    <text x="320" y="250" text-anchor="middle" class="sm">${L(['R = router · packets can take different routes and are put back in order at the end','R = router · i pacchetti possono seguire strade diverse e vengono riordinati all\'arrivo'])}</text></svg>`;
 },
-url(){
+  "url": function url(){
   const parts=[['https://',C.sak],['www.school-example.it',C.gold],['/students/timetable.html',C.data]];
   return `<div class="url">${parts.map(([t,c])=>`<span style="--c:${c}">${t}</span>`).join('')}</div>
    <div class="legend"><div style="--c:${C.sak}"><i></i><span><b>${L(['Protocol','Protocollo'])}</b> · ${L(['HTTPS = encrypted, safer (padlock)','HTTPS = cifrato, più sicuro (lucchetto)'])}</span></div>
    <div style="--c:${C.gold}"><i></i><span><b>${L(['Domain','Dominio'])}</b> · ${L(['the site\'s name; .it = Italy','il nome del sito; .it = Italia'])}</span></div>
    <div style="--c:${C.data}"><i></i><span><b>${L(['Path','Percorso'])}</b> · ${L(['which page on the site','quale pagina del sito'])}</span></div></div>`;
 },
-webnet(){
+  "webnet": function webnet(){
   return `<div class="twocol">
    <div class="panel"><h3>Internet</h3><p>${L(['The physical network of networks: cables, routers, servers, connecting billions of devices. It carries email, games, video calls… and the Web.','La rete di reti fisica: cavi, router, server che collegano miliardi di dispositivi. Trasporta e-mail, giochi, videochiamate… e il Web.'])}</p></div>
    <div class="panel"><h3>World Wide Web</h3><p>${L(['A service that runs on the Internet: pages written in HTML, linked by hyperlinks, which you open with a browser. Invented by Tim Berners-Lee at CERN (1989).','Un servizio che funziona su Internet: pagine scritte in HTML, collegate da link, che apri con un browser. Inventato da Tim Berners-Lee al CERN (1989).'])}</p></div></div>`;
 },
-search(){ return cards([
+  "search": function search(){ return cards([
   ['search',['Choose keywords','Scegli le parole chiave'],['"volcano eruption causes" works better than a long question.','"eruzione vulcano cause" funziona meglio di una domanda lunga.']],
   ['book',['Use "quotes"','Usa le "virgolette"'],['Search for an exact phrase: "von Neumann architecture".','Cerca una frase esatta: "architettura di von Neumann".']],
   ['eye',['Check the source','Verifica la fonte'],['Who wrote it? When? Is it an official or expert site?','Chi l\'ha scritto? Quando? È un sito ufficiale o esperto?']],
   ['layers',['Compare','Confronta'],['Confirm the information on at least two reliable sites.','Conferma l\'informazione su almeno due siti affidabili.']],
 ]);},
-email(){
+  "email": function email(){
   return `<div class="panel" style="max-width:560px;margin:0 auto;font-size:15px">
    <div class="row" style="gap:6px"><b style="width:70px">${L(['From','Da'])}</b><span>hana<span style="color:var(--gold)">@</span>school-example.it</span></div>
    <div class="row" style="gap:6px"><b style="width:70px">${L(['To','A'])}</b><span>teacher@school-example.it</span></div>
@@ -581,37 +471,362 @@ email(){
    <div class="row" style="gap:6px;margin-top:6px">${ICON('file','ico" style="width:18px;height:18px')}<span>${L(['attachment: report.pdf','allegato: relazione.pdf'])}</span></div></div>
    <p class="muted" style="text-align:center;margin-top:8px;font-size:14px">${L(['address = username @ domain','indirizzo = nome utente @ dominio'])}</p>`;
 },
-phishing(){ return cards([
+  "phishing": function phishing(){ return cards([
   ['warn',['Urgent threats','Minacce urgenti'],['"Your account will be closed in 24 hours!"','"Il tuo account sarà chiuso entro 24 ore!"']],
   ['key',['Asks for passwords','Chiede la password'],['Real companies never ask for your password by email.','Le aziende vere non chiedono mai la password via e-mail.']],
   ['eye',['Strange sender or link','Mittente o link strani'],['Look closely: "amaz0n-security.xyz" is not the real site.','Guarda bene: "amaz0n-security.xyz" non è il sito vero.']],
   ['heart',['Too good to be true','Troppo bello per essere vero'],['"You won a free phone!" is bait.','"Hai vinto un telefono gratis!" è un\'esca.']],
 ]);},
-netiquette(){ return cards([
+  "netiquette": function netiquette(){ return cards([
   ['user',['Respect people','Rispetta le persone'],['Behind every screen there is a real person.','Dietro ogni schermo c\'è una persona reale.']],
   ['warn',['NO ALL CAPS','NIENTE MAIUSCOLE'],['Writing in capitals feels like SHOUTING.','Scrivere tutto in maiuscolo sembra URLARE.']],
   ['image',['Ask before posting','Chiedi prima di pubblicare'],['Never share photos of others without permission.','Non condividere foto di altri senza permesso.']],
   ['eye',['Your digital footprint','La tua impronta digitale'],['What you post can stay online for years.','Ciò che pubblichi può restare online per anni.']],
 ]);},
-iot(){ return cards([
+  "iot": function iot(){ return cards([
   ['tower',['5G','5G'],['5th-generation mobile network: much faster, very low delay, and many more devices connected at once.','Rete mobile di quinta generazione: molto più veloce, ritardo minimo e moltissimi dispositivi collegati insieme.']],
   ['home',['Smart home','Casa intelligente'],['Thermostats, lights and alarms you control from your phone.','Termostati, luci e allarmi che controlli dal telefono.']],
   ['watch',['Wearables','Dispositivi indossabili'],['Smartwatches that count steps and heartbeats.','Smartwatch che contano passi e battiti.']],
   ['car',['Connected cars & cities','Auto e città connesse'],['Sensors that report traffic, parking and air quality.','Sensori che segnalano traffico, parcheggi e qualità dell\'aria.']],
 ]);},
+  "cia": function cia(){ return cards([
+  ['lock',['Confidentiality','Riservatezza'],['Only the right people can read the data.','Solo le persone autorizzate possono leggere i dati.']],
+  ['shield',['Integrity','Integrità'],['Data is not changed or damaged without permission.','I dati non vengono modificati o danneggiati senza permesso.']],
+  ['power',['Availability','Disponibilità'],['Data and services work when you need them.','Dati e servizi funzionano quando servono.']],
+  ['warn',['Threats','Minacce'],['Human mistakes, attacks by criminals, breakdowns, fires and floods.','Errori umani, attacchi di criminali, guasti, incendi e alluvioni.']],
+]);},
+  "pwdtips": function pwdtips(){ return cards([
+  ['key',['Long','Lunga'],['At least 12 characters. A passphrase like "Ramen!Sotto-la-Luna7" is strong and easy to remember.','Almeno 12 caratteri. Una frase come "Ramen!Sotto-la-Luna7" è forte e facile da ricordare.']],
+  ['layers',['Mixed','Varia'],['Upper and lower case letters, numbers and symbols.','Maiuscole, minuscole, numeri e simboli.']],
+  ['warn',['Not personal','Non personale'],['No names, birthdays, pets, "123456" or "password".','Niente nomi, compleanni, animali, "123456" o "password".']],
+  ['lock',['One per account + 2FA','Una per account + 2FA'],['Never reuse passwords. Two-factor authentication adds a code from your phone.','Non riusare le password. L\'autenticazione a due fattori aggiunge un codice dal telefono.']],
+]);},
+  "malware": function malware(){ return cards([
+  ['bug',['Virus','Virus'],['Attaches to files and spreads when they are opened.','Si attacca ai file e si diffonde quando vengono aperti.']],
+  ['share',['Worm','Worm'],['Copies itself across networks by itself.','Si copia da solo attraverso le reti.']],
+  ['gamepad',['Trojan horse','Cavallo di Troia'],['Looks like a useful program but hides malware.','Sembra un programma utile ma nasconde un malware.']],
+  ['lock',['Ransomware','Ransomware'],['Encrypts your files and demands money to unlock them.','Cifra i tuoi file e chiede un riscatto per sbloccarli.']],
+  ['eye',['Spyware','Spyware'],['Secretly watches what you do and steals data.','Spia di nascosto cosa fai e ruba dati.']],
+  ['image',['Adware','Adware'],['Floods you with unwanted ads.','Ti riempie di pubblicità indesiderata.']],
+]);},
+  "netsec": function netsec(){ return cards([
+  ['shield',['Antivirus','Antivirus'],['Scans files and blocks known malware. Keep it updated.','Analizza i file e blocca i malware conosciuti. Va tenuto aggiornato.']],
+  ['wall',['Firewall','Firewall'],['A filter that decides which network traffic may enter or leave.','Un filtro che decide quale traffico di rete può entrare o uscire.']],
+  ['wifi',['Protected Wi-Fi','Wi-Fi protetto'],['Use WPA2/WPA3 encryption and change the router\'s default password.','Usa la cifratura WPA2/WPA3 e cambia la password predefinita del router.']],
+  ['update',['Updates','Aggiornamenti'],['Updates fix security holes. Install them!','Gli aggiornamenti chiudono le falle di sicurezza. Installali!']],
+]);},
+  "safeweb": function safeweb(){ return cards([
+  ['lock',['HTTPS padlock','Lucchetto HTTPS'],['Type passwords only on encrypted sites.','Inserisci password solo su siti cifrati.']],
+  ['eye',['Cookies & privacy','Cookie e privacy'],['Cookies remember you; accept only the necessary ones.','I cookie ti ricordano; accetta solo quelli necessari.']],
+  ['wifi',['Public Wi-Fi','Wi-Fi pubblico'],['Avoid logging in to important accounts on open networks.','Evita di accedere ad account importanti su reti aperte.']],
+  ['file',['Downloads','Download'],['Download only from official sites and stores.','Scarica solo da siti e store ufficiali.']],
+]);},
+  "backup": function backup(){
+  return `<div class="grid3">${[['3',['copies of your data','copie dei dati'],['the original + 2 backups','l\'originale + 2 backup']],['2',['different media','supporti diversi'],['e.g. laptop + external disk','es. portatile + disco esterno']],['1',['copy off-site','copia altrove'],['e.g. in the cloud','es. nel cloud']]].map(([n,a,b])=>`<div class="mini" style="align-items:center;text-align:center"><b style="font-family:var(--display);font-size:42px;color:var(--gold);font-weight:400">${n}</b><b>${L(a)}</b><span>${L(b)}</span></div>`).join('')}</div>
+   <p class="muted" style="margin-top:10px;font-size:14px;text-align:center">${L(['The 3-2-1 backup rule','La regola del backup 3-2-1'])}</p>`;
+},
+  "vpn": function vpn(){
+  return `<svg viewBox="0 0 640 220" class="dia" role="img" aria-label="VPN encrypted tunnel">
+   <rect x="20" y="80" width="100" height="60" rx="10" fill="#262a5e" stroke="${C.data}" stroke-width="2"/><text x="70" y="115" text-anchor="middle">${L(['You','Tu'])}</text>
+   <rect x="400" y="80" width="100" height="60" rx="10" fill="#262a5e" stroke="${C.gold}" stroke-width="2"/><text x="450" y="115" text-anchor="middle" style="font-size:12px">VPN server</text>
+   <rect x="540" y="80" width="80" height="60" rx="10" fill="#262a5e" stroke="${C.line}" stroke-width="2"/><text x="580" y="115" text-anchor="middle" style="font-size:12px">${L(['website','sito'])}</text>
+   <path d="M120 95 H400 M120 125 H400" stroke="${C.good}" stroke-width="3"/><rect x="120" y="95" width="280" height="30" fill="${C.good}" opacity=".12"/>
+   <path d="M500 110 H540" stroke="${C.line}" stroke-width="3"/>
+   ${[0,1,2].map(i=>`<g><rect x="-10" y="-7" width="20" height="14" rx="3" fill="${C.good}"/>${'<path d="M-4 -1 V-4 a4 4 0 0 1 8 0 V-1" stroke="#032" fill="none" stroke-width="1.5"/>'}<animateMotion dur="2.4s" begin="${i*.8}s" repeatCount="indefinite" path="M125 110 H395"/></g>`).join('')}
+   <text x="260" y="80" text-anchor="middle" style="fill:${C.good}">${L(['encrypted tunnel','tunnel cifrato'])}</text>
+   <text x="260" y="170" text-anchor="middle" class="sm">${L(['on public Wi-Fi, others can\'t read what travels inside the tunnel','sul Wi-Fi pubblico, gli altri non possono leggere ciò che viaggia nel tunnel'])}</text></svg>`;
+},
+  "cloudmodels": function cloudmodels(){ return cards([
+  ['app',['SaaS · Software as a Service','SaaS · Software come servizio'],['Ready apps in the browser: webmail, online office, school platforms.','App pronte nel browser: webmail, office online, piattaforme scolastiche.']],
+  ['layers',['PaaS · Platform','PaaS · Piattaforma'],['A platform where developers build and run their own apps.','Una piattaforma dove gli sviluppatori creano ed eseguono le loro app.']],
+  ['hdd',['IaaS · Infrastructure','IaaS · Infrastruttura'],['Rented servers, storage and networks.','Server, memoria e reti in affitto.']],
+  ['warn',['Pros & cons','Pro e contro'],['Use from any device and never lose files; but you need internet and you trust someone else with your data.','Usi qualsiasi dispositivo e non perdi i file; ma serve internet e affidi i tuoi dati a qualcun altro.']],
+]);},
+  "share": function share(){
+  const P=[[['Viewer','Visualizzatore'],['can only read','può solo leggere']],[['Commenter','Commentatore'],['can read and add comments','può leggere e commentare']],[['Editor','Editor'],['can change the file','può modificare il file']]];
+  return `<div class="panel" style="max-width:520px;margin:0 auto"><div class="row" style="justify-content:space-between"><b>${ICON('folder','ico" style="width:20px;height:20px;vertical-align:-4px;color:var(--data)')} ${L(['Science project','Progetto di scienze'])}</b><span class="badge go">${L(['Share','Condividi'])}</span></div>
+   ${[['Hana','Editor'],['Luca',L(['Commenter','Commentatore'])],[L(['Teacher','Prof.']),L(['Viewer','Visualizzatore'])]].map(([n,r])=>`<div class="row" style="justify-content:space-between;margin-top:8px;border-top:1px solid var(--line);padding-top:8px"><span>${ICON('user','ico" style="width:18px;height:18px;vertical-align:-3px')} ${n}</span><span class="muted">${r}</span></div>`).join('')}</div>
+   <div class="legend">${P.map((p,i)=>`<div style="--c:${[C.data,C.gold,C.ember][i]}"><i></i><span><b>${L(p[0])}</b> · ${L(p[1])}</span></div>`).join('')}</div>`;
+},
+  "calendar": function calendar(){
+  const d=L([['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],['Lun','Mar','Mer','Gio','Ven','Sab','Dom']]);
+  const ev={3:L(['Maths test','Verifica mate']),9:L(['Group call 16:00','Call di gruppo 16:00']),12:L(['Hand in project','Consegna progetto'])};
+  return `<div class="cal">${d.map(x=>`<div class="h">${x}</div>`).join('')}${Array.from({length:14},(_,i)=>`<div>${i+1}${ev[i+1]?`<em>${ev[i+1]}</em>`:''}</div>`).join('')}</div>
+   <p class="muted" style="text-align:center;margin-top:8px;font-size:14px">${L(['A shared calendar: everyone in the group sees the same events and gets reminders.','Un calendario condiviso: tutto il gruppo vede gli stessi eventi e riceve promemoria.'])}</p>`;
+},
+  "videocall": function videocall(){ return cards([
+  ['camera',['Camera & mic','Webcam e microfono'],['Mute when you\'re not speaking. Check your background.','Silenzia il microfono quando non parli. Controlla lo sfondo.']],
+  ['share',['Share screen','Condividi schermo'],['Show a document or slides to everyone.','Mostra un documento o le slide a tutti.']],
+  ['mail',['Chat & hand raise','Chat e alzata di mano'],['Ask questions without interrupting.','Fai domande senza interrompere.']],
+  ['recycle',['Environment','Ambiente'],['Calls avoid travel and its CO₂, but data centres also use energy.','Le call evitano viaggi e CO₂, ma anche i data center consumano energia.']],
+]);},
+  "wp": function wp(){
+  return `<div class="panel" style="padding:10px"><div class="toolbar" style="justify-content:flex-start;margin-bottom:8px"><button>B</button><button><i>I</i></button><button><u>U</u></button><select aria-label="size"><option>12</option></select><button>≡</button><button>${ICON('image','ico" style="width:16px;height:16px')}</button><button>${ICON('table','ico" style="width:16px;height:16px')}</button></div>
+   <div class="doc"><h3 class="t" style="text-align:center;font-family:Georgia,serif;font-size:22px">${L(['The Glitch Report','Il rapporto Glitch'])}</h3><p class="bd" style="text-align:justify">${L(['A word processor lets you write, edit and format text: <b>bold</b>, <i>italic</i>, <u>underline</u>, font size, alignment, paragraphs, lists and styles.','Un programma di videoscrittura ti permette di scrivere, modificare e formattare il testo: <b>grassetto</b>, <i>corsivo</i>, <u>sottolineato</u>, dimensione del carattere, allineamento, paragrafi, elenchi e stili.'])}</p></div></div>`;
+},
+  "wpformats": function wpformats(){ return cards([
+  ['file',['.docx / .odt','.docx / .odt'],['Editable documents (Word / LibreOffice Writer).','Documenti modificabili (Word / LibreOffice Writer).']],
+  ['book',['.pdf','.pdf'],['Looks the same on every device; good for sending and printing.','Appare uguale su ogni dispositivo; ideale per inviare e stampare.']],
+  ['search',['Find & replace','Trova e sostituisci'],['Change a word everywhere in one go.','Cambia una parola ovunque in un colpo solo.']],
+  ['update',['Undo (Ctrl+Z)','Annulla (Ctrl+Z)'],['Your best friend when something goes wrong.','La tua migliore amica quando qualcosa va storto.']],
+]);},
+  "wpextra": function wpextra(){ return cards([
+  ['image',['Images','Immagini'],['Insert, resize and choose text wrapping (around, behind, in line).','Inserisci, ridimensiona e scegli il testo a capo (intorno, dietro, in linea).']],
+  ['table',['Tables','Tabelle'],['Rows and columns of cells; you can merge cells and add borders.','Righe e colonne di celle; puoi unire celle e aggiungere bordi.']],
+  ['bolt',['Symbols & equations','Simboli ed equazioni'],['Insert Ω, ≠, π and use the equation editor for maths.','Inserisci Ω, ≠, π e usa l\'editor di equazioni per la matematica.']],
+  ['share',['Share, link, export','Condividi, collega, esporta'],['Add hyperlinks, export to PDF, print, or send by email.','Aggiungi link, esporta in PDF, stampa o invia per e-mail.']],
+]);},
+  "ergo": function ergo(){
+  return `<svg viewBox="0 0 640 260" class="dia" role="img" aria-label="Good posture at a computer">
+   <rect x="380" y="60" width="150" height="100" rx="6" fill="#10283a" stroke="${C.data}" stroke-width="3"/><rect x="445" y="160" width="20" height="40" fill="${C.line}"/><rect x="300" y="200" width="300" height="10" fill="${C.line}"/>
+   <circle cx="160" cy="70" r="24" fill="#e8c4a8"/><path d="M160 94 V170 M160 120 L230 150 L300 190 M160 170 L240 170 L240 240 M160 170 L160 240" stroke="#e8c4a8" stroke-width="12" stroke-linecap="round" fill="none"/>
+   <rect x="120" y="170" width="70" height="10" fill="${C.muted}"/><rect x="185" y="100" width="10" height="80" fill="${C.muted}"/>
+   <path d="M184 66 L380 66" stroke="${C.gold}" stroke-width="2" stroke-dasharray="6 6"/><text x="282" y="58" text-anchor="middle" style="fill:${C.gold};font-size:12px">${L(['top of screen at eye level','bordo alto dello schermo all\'altezza degli occhi'])}</text>
+   <path d="M184 120 L380 120" stroke="${C.data}" stroke-width="2"/><text x="282" y="112" text-anchor="middle" style="fill:${C.data};font-size:12px">${L(['about 50–70 cm','circa 50–70 cm'])}</text>
+   <text x="240" y="236" class="sm">${L(['feet flat, back supported','piedi a terra, schiena appoggiata'])}</text></svg>
+   <p class="muted" style="text-align:center;font-size:14px">${L(['20-20-20: every 20 minutes, look at something 20 feet (about 6 m) away for 20 seconds.','20-20-20: ogni 20 minuti guarda qualcosa a 6 metri di distanza per 20 secondi.'])}</p>`;
+},
+  "sheetvis": function sheetvis(){
+  const rows=[[L(['Item','Voce']),'€'],[L(['Phone','Telefono']),'15'],[L(['Snacks','Merende']),'20'],['Bus','12'],[L(['Total','Totale']),'=SUM(B2:B4)']];
+  return `<div class="fbar" style="margin:0 auto 10px"><b>B5</b><input value="=SUM(B2:B4)" readonly aria-label="formula bar"></div>
+   <div class="sheetwrap"><table class="sheet"><tr><th></th><th>A</th><th style="background:#ffe9a8">B</th><th>C</th></tr>
+   ${rows.map((r,i)=>`<tr><th ${i===2?'style="background:#ffe9a8"':''}>${i+1}</th><td class="txt">${r[0]}</td><td class="${i===4?'task':''}" ${i===2?'style="background:#fff6d6"':''}>${i===4?'47':r[1]}</td><td></td></tr>`).join('')}</table></div>
+   <p class="muted" style="text-align:center;font-size:14px;margin-top:8px">${L(['Columns are letters, rows are numbers. B3 is column B, row 3. Formulas start with =.','Le colonne sono lettere, le righe numeri. B3 è colonna B, riga 3. Le formule iniziano con =.'])}</p>`;
+},
+  "charts": function charts(){
+  const v=[15,20,12];
+  return `<svg viewBox="0 0 640 210" class="dia" role="img" aria-label="Bar, pie and line charts">
+   ${v.map((x,i)=>`<rect x="${40+i*50}" y="${160-x*5}" width="34" height="${x*5}" fill="${[C.data,C.gold,C.ember][i]}"/>`).join('')}<line x1="30" y1="160" x2="200" y2="160" stroke="${C.muted}"/>
+   <text x="115" y="190" text-anchor="middle" class="sm">${L(['bar: compare values','istogramma: confronta valori'])}</text>
+   <circle cx="320" cy="100" r="60" fill="${C.data}"/><path d="M320 100 L320 40 A60 60 0 0 1 377 118 Z" fill="${C.gold}"/><path d="M320 100 L377 118 A60 60 0 0 1 300 157 Z" fill="${C.ember}"/>
+   <text x="320" y="190" text-anchor="middle" class="sm">${L(['pie: parts of a whole','torta: parti di un intero'])}</text>
+   <polyline points="450,140 490,120 530,130 570,80 610,60" fill="none" stroke="${C.good}" stroke-width="4"/><line x1="440" y1="160" x2="620" y2="160" stroke="${C.muted}"/>
+   <text x="530" y="190" text-anchor="middle" class="sm">${L(['line: change over time','linee: andamento nel tempo'])}</text></svg>`;
+},
+  "autofill": function autofill(){
+  return `<div class="twocol"><div class="panel"><h3>${H('Relative reference','Riferimento relativo')}</h3><p class="code" style="white-space:pre">B2: =A2*9/5+32
+B3: =A3*9/5+32
+B4: =A4*9/5+32</p><p class="muted" style="font-size:14px;margin-top:6px">${L(['Drag the fill handle down: the row number changes by itself.','Trascina il quadratino di riempimento: il numero di riga cambia da solo.'])}</p></div>
+   <div class="panel"><h3>${H('Absolute reference','Riferimento assoluto')}</h3><p class="code" style="white-space:pre">B11: =A11*(1-$B$10)
+B12: =A12*(1-$B$10)
+B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${L(['The $ locks the cell: B10 (the discount) stays fixed.','Il $ blocca la cella: B10 (lo sconto) resta fisso.'])}</p></div></div>`;
+},
+  "sheetfn": function sheetfn(){ return cards([
+  ['chart',['SUM · AVERAGE · MAX · MIN','SOMMA · MEDIA · MAX · MIN'],['Totals, averages, highest and lowest value of a range.','Totale, media, valore massimo e minimo di un intervallo.']],
+  ['scale',['IF','SE'],['=IF(B2>=6;"OK";"NO") chooses between two results.','=SE(B2>=6;"OK";"NO") sceglie tra due risultati.']],
+  ['layers',['AND · OR','E · O'],['Combine conditions: =AND(B2>=6;C2>=6).','Combinano condizioni: =E(B2>=6;C2>=6).']],
+  ['gear',['What-if & simulation','Analisi what-if e simulazioni'],['Change one input (e.g. birth rate) and watch the whole model update.','Cambia un dato (es. natalità) e guarda tutto il modello aggiornarsi.']],
+  ['chip',['DEC2BIN · BIN2DEC','DECIMALE.BINARIO · BINARIO.DECIMALE'],['Convert numbers between decimal and binary.','Convertono numeri tra decimale e binario.']],
+  ['user',['Gini index','Indice di Gini'],['Measures inequality: 0 = everyone has the same, 1 = one person has everything.','Misura la disuguaglianza: 0 = tutti hanno lo stesso, 1 = una persona ha tutto.']],
+]);},
+  "slides": function slides(){
+  return `<div class="twocol"><div><div class="eyebrow" style="color:var(--bad);margin-bottom:6px">${L(['Bad slide','Slide sbagliata'])}</div>
+   <div class="slide" style="background:#ffef3b;color:#ff3df2"><h4 style="font-family:cursive">${L(['MY PROJECT ABOUT VOLCANOES!!!','IL MIO PROGETTO SUI VULCANI!!!'])}</h4><p>${L(['Volcanoes are openings in the Earth\'s crust where magma, gases and ash escape. There are many types such as shield volcanoes, stratovolcanoes, cinder cones and calderas, and they form at plate boundaries or hotspots, and eruptions can be explosive or effusive depending on…','I vulcani sono aperture nella crosta terrestre da cui escono magma, gas e cenere. Ne esistono molti tipi come vulcani a scudo, stratovulcani, coni di scorie e caldere, e si formano ai margini delle placche o nei punti caldi, e le eruzioni possono essere esplosive o effusive a seconda…'])}</p></div></div>
+   <div><div class="eyebrow" style="color:var(--good);margin-bottom:6px">${L(['Good slide','Slide efficace'])}</div>
+   <div class="slide" style="background:#14213d;color:#fff"><h4>${L(['Two kinds of eruption','Due tipi di eruzione'])}</h4><p style="font-size:12px">• ${L(['Explosive: ash and gas','Esplosiva: cenere e gas'])}<br>• ${L(['Effusive: lava flows','Effusiva: colate di lava'])}</p><div style="flex:1;border-radius:6px;background:linear-gradient(135deg,#e85d04,#370617)"></div></div></div></div>`;
+},
+  "slidetips": function slidetips(){ return cards([
+  ['slide',['Few words','Poche parole'],['Key points only; you do the talking.','Solo i punti chiave; il resto lo dici tu.']],
+  ['eye',['Contrast','Contrasto'],['Dark text on light background, or the opposite. Big fonts.','Testo scuro su sfondo chiaro, o viceversa. Caratteri grandi.']],
+  ['layers',['Theme / master','Tema / schema'],['One consistent style for all slides.','Uno stile coerente per tutte le slide.']],
+  ['image',['Images with credit','Immagini con fonte'],['Use images you may use, and say where they come from.','Usa immagini che puoi usare e indica la fonte.']],
+]);},
+  "slidefx": function slidefx(){ return cards([
+  ['slide',['Transition','Transizione'],['The effect BETWEEN one slide and the next.','L\'effetto TRA una slide e la successiva.']],
+  ['bolt',['Animation','Animazione'],['The effect on an OBJECT inside a slide (a title flying in).','L\'effetto su un OGGETTO dentro la slide (un titolo che entra).']],
+  ['video',['Audio & video','Audio e video'],['Embed short clips; check they play before presenting.','Inserisci brevi clip; prova che funzionino prima di presentare.']],
+  ['share',['Presenting remotely','Presentare a distanza'],['Share your screen in a video call; presenter view shows your notes.','Condividi lo schermo in videochiamata; la visualizzazione relatore mostra le tue note.']],
+  ['chart',['Open data','Open data'],['Public data (e.g. from ISTAT) anyone can use in charts and reports.','Dati pubblici (es. dell\'ISTAT) che chiunque può usare in grafici e relazioni.']],
+  ['globe',['Prezi','Prezi'],['A zooming canvas instead of a row of slides.','Una tela con zoom invece di una fila di slide.']],
+]);},
+  "flowsym": function flowsym(){
+  const y=60;
+  return `<svg viewBox="0 0 640 170" class="dia" role="img" aria-label="Flowchart symbols">
+   <rect x="20" y="${y-25}" width="120" height="50" rx="25" fill="#262a5e" stroke="${C.good}" stroke-width="3"/><text x="80" y="${y+5}" text-anchor="middle">START / END</text>
+   <polygon points="190,${y-25} 320,${y-25} 300,${y+25} 170,${y+25}" fill="#262a5e" stroke="${C.sak}" stroke-width="3"/><text x="245" y="${y+5}" text-anchor="middle">INPUT / OUTPUT</text>
+   <rect x="350" y="${y-25}" width="120" height="50" fill="#262a5e" stroke="${C.data}" stroke-width="3"/><text x="410" y="${y+5}" text-anchor="middle">x ← x + 1</text>
+   <polygon points="560,${y-34} 620,${y} 560,${y+34} 500,${y}" fill="#262a5e" stroke="${C.gold}" stroke-width="3"/><text x="560" y="${y+5}" text-anchor="middle">x > 5 ?</text>
+   ${[[80,L(['terminal (oval)','terminale (ovale)'])],[245,L(['input/output (parallelogram)','input/output (parallelogramma)'])],[410,L(['process (rectangle)','elaborazione (rettangolo)'])],[560,L(['decision (rhombus)','decisione (rombo)'])]].map(([x,t])=>`<text x="${x}" y="130" text-anchor="middle" class="sm">${t}</text>`).join('')}</svg>`;
+},
+  "flowex": function flowex(){
+  return `<svg viewBox="0 0 640 400" class="dia" role="img" aria-label="Flowchart: read age, decide if adult">
+   <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="${C.muted}"/></marker></defs>
+   <rect x="260" y="10" width="120" height="40" rx="20" fill="#262a5e" stroke="${C.good}" stroke-width="2"/><text x="320" y="35" text-anchor="middle">START</text>
+   <polygon points="250,80 410,80 390,120 230,120" fill="#262a5e" stroke="${C.sak}" stroke-width="2"/><text x="320" y="105" text-anchor="middle">${L(['read age','leggi età'])}</text>
+   <polygon points="320,150 400,190 320,230 240,190" fill="#262a5e" stroke="${C.gold}" stroke-width="2"/><text x="320" y="195" text-anchor="middle">${L(['age ≥ 18 ?','età ≥ 18 ?'])}</text>
+   <polygon points="70,270 230,270 210,310 50,310" fill="#262a5e" stroke="${C.sak}" stroke-width="2"/><text x="140" y="295" text-anchor="middle">${L(['write "adult"','scrivi "adulto"'])}</text>
+   <polygon points="430,270 590,270 570,310 410,310" fill="#262a5e" stroke="${C.sak}" stroke-width="2"/><text x="500" y="295" text-anchor="middle">${L(['write "minor"','scrivi "minorenne"'])}</text>
+   <rect x="260" y="350" width="120" height="40" rx="20" fill="#262a5e" stroke="${C.good}" stroke-width="2"/><text x="320" y="375" text-anchor="middle">END</text>
+   <g stroke="${C.muted}" stroke-width="2" fill="none" marker-end="url(#ar)"><path d="M320 50 V78"/><path d="M320 120 V148"/><path d="M240 190 H140 V268"/><path d="M400 190 H500 V268"/><path d="M140 310 V370 H258"/><path d="M500 310 V370 H382"/></g>
+   <text x="180" y="182" style="fill:${C.good}">${L(['yes','sì'])}</text><text x="430" y="182" style="fill:${C.bad}">no</text></svg>`;
+},
+  "structures": function structures(){
+  const box=(x,y,t,c)=>`<rect x="${x-45}" y="${y-14}" width="90" height="28" rx="4" fill="#262a5e" stroke="${c}" stroke-width="2"/><text x="${x}" y="${y+5}" text-anchor="middle" style="font-size:12px">${t}</text>`;
+  const dia=(x,y)=>`<polygon points="${x},${y-20} ${x+40},${y} ${x},${y+20} ${x-40},${y}" fill="#262a5e" stroke="${C.gold}" stroke-width="2"/><text x="${x}" y="${y+4}" text-anchor="middle" style="font-size:11px">?</text>`;
+  return `<svg viewBox="0 0 640 260" class="dia" role="img" aria-label="Sequence, selection and iteration">
+   <g stroke="${C.muted}" stroke-width="2">
+    <line x1="110" y1="64" x2="110" y2="96"/><line x1="110" y1="124" x2="110" y2="156"/>
+    <line x1="280" y1="80" x2="320" y2="80"/><line x1="360" y1="80" x2="400" y2="80"/><line x1="280" y1="80" x2="280" y2="136"/><line x1="400" y1="80" x2="400" y2="136"/><line x1="280" y1="164" x2="280" y2="200"/><line x1="400" y1="164" x2="400" y2="200"/><line x1="280" y1="200" x2="400" y2="200"/>
+    <line x1="540" y1="100" x2="540" y2="136"/><path d="M540 164 V200 H610 V60 H540 V80" fill="none"/><line x1="580" y1="80" x2="620" y2="80"/></g>
+   ${box(110,50,'A',C.data)}${box(110,110,'B',C.data)}${box(110,170,'C',C.data)}
+   ${dia(340,80)}${box(280,150,L(['if yes','se sì']),C.data)}${box(400,150,L(['if no','se no']),C.data)}
+   ${dia(540,80)}${box(540,150,L(['repeat','ripeti']),C.data)}
+   <text x="110" y="240" text-anchor="middle" class="lbl">${L(['SEQUENCE','SEQUENZA'])}</text><text x="340" y="240" text-anchor="middle" class="lbl">${L(['SELECTION','SELEZIONE'])}</text><text x="540" y="240" text-anchor="middle" class="lbl">${L(['ITERATION','ITERAZIONE'])}</text></svg>`;
+},
+  "pioneers": function pioneers(){ return cards([
+  ['woman',['Ada Lovelace (1815–1852)','Ada Lovelace (1815–1852)'],['Wrote what is considered the first computer program, for Babbage\'s Analytical Engine (1843).','Scrisse quello che è considerato il primo programma, per la Macchina Analitica di Babbage (1843).']],
+  ['woman',['Grace Hopper (1906–1992)','Grace Hopper (1906–1992)'],['Built one of the first compilers and helped create COBOL.','Realizzò uno dei primi compilatori e contribuì a creare il COBOL.']],
+  ['bug',['The first "bug" (1947)','Il primo "bug" (1947)'],['A real moth found stuck in the Harvard Mark II computer and taped into the log book.','Una vera falena trovata incastrata nel computer Harvard Mark II e attaccata al registro.']],
+  ['woman',['Margaret Hamilton','Margaret Hamilton'],['Led the team that wrote the software for the Apollo Moon missions.','Guidò il team che scrisse il software delle missioni Apollo sulla Luna.']],
+]);},
+  "langlevels": function langlevels(){
+  const Lv=[[['High-level language','Linguaggio ad alto livello'],'print("Hi")',C.good],[['Assembly','Assembly'],'MOV AL, 48h',C.gold],[['Machine language','Linguaggio macchina'],'10110000 01001000',C.ember]];
+  return `<div class="stack">${Lv.map((l,i)=>`${i?'<div class="arrowdown"><i></i></div>':''}<div class="layer" style="background:${l[2]}">${L(l[0])}<small style="font-family:ui-monospace,monospace">${l[1]}</small></div>`).join('')}</div>
+   <p class="muted" style="text-align:center;margin-top:8px;font-size:14px">${L(['Top: easy for people. Bottom: what the CPU actually runs.','In alto: facile per le persone. In basso: ciò che la CPU esegue davvero.'])}</p>`;
+},
+  "compinterp": function compinterp(){
+  return `<div class="twocol"><div class="panel"><h3>${H('Compiler','Compilatore')}</h3><p>${L(['Translates the WHOLE program into machine code first, then you run it. Fast to run. (C, C++)','Traduce TUTTO il programma in linguaggio macchina, poi lo esegui. Veloce in esecuzione. (C, C++)'])}</p></div>
+   <div class="panel"><h3>${H('Interpreter','Interprete')}</h3><p>${L(['Translates and runs the program ONE LINE at a time. Easy to test. (Python)','Traduce ed esegue il programma UNA RIGA alla volta. Facile da provare. (Python)'])}</p></div></div>`;
+},
+  "pytypes": function pytypes(){ return `<div class="ops">${[['int','7, -3, 2026'],['float','3.14, 0.5'],['str','"Hana", \'42\''],['bool','True, False']].map(([t,e])=>`<div><b>${t}</b>${e}</div>`).join('')}</div>`;},
+  "pyops": function pyops(){ return `<div class="ops">${[['+',L(['add','somma'])],['-',L(['subtract','sottrae'])],['*',L(['multiply','moltiplica'])],['/',L(['divide (float)','divide (decimale)'])],['//',L(['integer division','divisione intera'])],['%',L(['remainder','resto'])],['**',L(['power','potenza'])],['==',L(['equal to','uguale a'])],['!=',L(['not equal','diverso da'])],['< <= > >=',L(['compare','confronti'])],['+=',L(['add and assign','somma e assegna'])],['and or not',L(['logic','logica'])]].map(([o,t])=>`<div><b>${o}</b>${t}</div>`).join('')}</div>`;},
+  "gatesvis": function gatesvis(){
+  return `<svg viewBox="0 0 640 200" class="dia" role="img" aria-label="AND, OR, NOT logic gates">
+   <path d="M60 40 H110 A40 40 0 0 1 110 120 H60 Z" fill="#262a5e" stroke="${C.data}" stroke-width="3"/><text x="95" y="86" text-anchor="middle">AND</text>
+   <path d="M260 40 Q330 40 360 80 Q330 120 260 120 Q285 80 260 40 Z" fill="#262a5e" stroke="${C.gold}" stroke-width="3"/><text x="315" y="86" text-anchor="middle">OR</text>
+   <path d="M480 45 L550 80 L480 115 Z" fill="#262a5e" stroke="${C.sak}" stroke-width="3"/><circle cx="558" cy="80" r="8" fill="#262a5e" stroke="${C.sak}" stroke-width="3"/><text x="505" y="86" text-anchor="middle" style="font-size:12px">NOT</text>
+   <text x="95" y="160" text-anchor="middle" class="sm">${L(['1 only if BOTH are 1','1 solo se ENTRAMBI sono 1'])}</text>
+   <text x="310" y="160" text-anchor="middle" class="sm">${L(['1 if AT LEAST ONE is 1','1 se ALMENO UNO è 1'])}</text>
+   <text x="520" y="160" text-anchor="middle" class="sm">${L(['flips 0 ↔ 1','inverte 0 ↔ 1'])}</text></svg>`;
+},
+  "rangevis": function rangevis(){
+  return `<div class="idx">${[0,1,2,3,4].map(i=>`<div><b>${i}</b></div>`).join('')}</div>
+   <p style="text-align:center;margin-top:8px;font-family:ui-monospace,monospace">range(5) → 0, 1, 2, 3, 4 · range(2, 8, 2) → 2, 4, 6</p>
+   <p class="muted" style="text-align:center;font-size:14px">${L(['The stop number is never included!','Il numero finale non è mai incluso!'])}</p>`;
+},
+  "climate": function climate(){ return cards([
+  ['cloud',['Climate models','Modelli climatici'],['Supercomputers divide the planet into a grid and repeat the physics equations for every cell, step after step: a giant loop.','I supercomputer dividono il pianeta in una griglia e ripetono le equazioni della fisica per ogni cella, passo dopo passo: un ciclo gigante.']],
+  ['loop',['Iterative design','Progettazione iterativa'],['Build → test → improve → repeat. Designers work in loops too.','Costruisci → prova → migliora → ripeti. Anche i progettisti lavorano a cicli.']],
+  ['warn',['Infinite loop','Ciclo infinito'],['If the while condition never becomes False, the loop never ends.','Se la condizione del while non diventa mai False, il ciclo non finisce mai.']],
+]);},
+  "strindex": function strindex(){
+  const w='PYTHON';
+  return `<div class="idx">${w.split('').map((c,i)=>`<div><small>${i}</small><b>${c}</b><small class="neg">${i-w.length}</small></div>`).join('')}</div>
+   <pre class="code" style="margin-top:10px">${hl('s = "PYTHON"\nprint(s[0])     # P\nprint(s[-1])    # N\nprint(s[1:4])   # YTH\nprint(len(s))   # 6')}</pre>`;
+},
+  "listvis": function listvis(){
+  return `<div class="twocol"><div><div class="eyebrow" style="margin-bottom:6px">${L(['list','lista'])}</div><div class="idx">${['"Hana"','"Luca"','"Sara"'].map((c,i)=>`<div><small>${i}</small><b style="width:auto;padding:0 8px;font-size:14px">${c}</b></div>`).join('')}</div>
+   <pre class="code" style="margin-top:8px">${hl('team = ["Hana", "Luca", "Sara"]\nteam.append("Ren")\nprint(len(team))   # 4')}</pre></div>
+   <div><div class="eyebrow" style="margin-bottom:6px">${L(['matrix (list of lists)','matrice (lista di liste)'])}</div>
+   <pre class="code">${hl('m = [[1, 2, 3],\n     [4, 5, 6]]\nprint(m[1][0])   # 4')}</pre></div></div>`;
+},
+  "funcvis": function funcvis(){
+  return `<svg viewBox="0 0 640 170" class="dia" role="img" aria-label="A function takes parameters and returns a result">
+   <rect x="20" y="60" width="130" height="50" rx="8" fill="#262a5e" stroke="${C.data}" stroke-width="2"/><text x="85" y="90" text-anchor="middle">3, 4</text><text x="85" y="135" text-anchor="middle" class="sm">${L(['arguments','argomenti'])}</text>
+   <path d="M150 85 H230" stroke="${C.data}" stroke-width="3" class="flow"/>
+   <rect x="230" y="40" width="180" height="90" rx="12" fill="#3b2440" stroke="${C.ember}" stroke-width="3"/><text x="320" y="80" text-anchor="middle" style="font-family:ui-monospace,monospace">area(b, h)</text><text x="320" y="104" text-anchor="middle" class="sm">return b * h</text>
+   <path d="M410 85 H490" stroke="${C.gold}" stroke-width="3" class="flow"/>
+   <rect x="490" y="60" width="130" height="50" rx="8" fill="#262a5e" stroke="${C.gold}" stroke-width="2"/><text x="555" y="90" text-anchor="middle">12</text><text x="555" y="135" text-anchor="middle" class="sm">${L(['return value','valore restituito'])}</text></svg>`;
+},
+  "fifolifo": function fifolifo(){
+  return `<div class="twocol"><div class="panel"><h3>${H('Stack (LIFO)','Pila (LIFO)')}</h3><div class="sq v"><span>A</span><span>B</span><span class="out">C</span></div><p style="margin-top:8px">${L(['Last In, First Out: like a pile of plates. The Undo button works like this.','Last In, First Out (l\'ultimo entrato è il primo a uscire): come una pila di piatti. Il tasto Annulla funziona così.'])}</p></div>
+   <div class="panel"><h3>${H('Queue (FIFO)','Coda (FIFO)')}</h3><div class="sq"><span class="out">A</span><span>B</span><span>C</span></div><p style="margin-top:8px">${L(['First In, First Out: like a line at the canteen. A printer queue works like this.','First In, First Out (il primo entrato è il primo a uscire): come la fila in mensa. La coda di stampa funziona così.'])}</p></div></div>`;
+},
+  "titlePhys": () => {
+  let lines=''; for(let k=0;k<28;k++){const a=k/28*Math.PI*2; lines+=`<line x1="${320+Math.cos(a)*80}" y1="${115+Math.sin(a)*80}" x2="${320+Math.cos(a)*420}" y2="${115+Math.sin(a)*420}" stroke="${k%2?'#ff6a3d':'#ff8fc0'}" stroke-opacity=".16" stroke-width="${k%3+1}"/>`;}
+  let hex=''; for(let i=0;i<6;i++){const a=Math.PI/3*i-Math.PI/2; hex+=`${320+Math.cos(a)*72},${115+Math.sin(a)*72} `;}
+  const pt=(t,rot)=>{const x=52*Math.cos(t), y=20*Math.sin(t), r=rot*Math.PI/180; return [320+x*Math.cos(r)-y*Math.sin(r), 115+x*Math.sin(r)+y*Math.cos(r)];};
+  const orbit=rot=>`<ellipse cx="320" cy="115" rx="52" ry="20" fill="none" stroke="url(#phcrest)" stroke-width="3" transform="rotate(${rot} 320 115)"/>`;
+  const e1=pt(0,32), e2=pt(0,-32);
+  return `<svg viewBox="0 0 640 230" class="dia" role="img" aria-label="Circuit Hunter Academy — Physics">
+   <defs><linearGradient id="phcrest" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9f45"/><stop offset="1" stop-color="#ff5d8f"/></linearGradient></defs>
+   ${lines}
+   <polygon points="${hex}" fill="#171935" stroke="#ff6a3d" stroke-width="4"/>
+   ${orbit(32)}${orbit(-32)}
+   <circle cx="320" cy="115" r="11" fill="url(#phcrest)"/>
+   <circle cx="${e1[0].toFixed(1)}" cy="${e1[1].toFixed(1)}" r="6" fill="#ffd166"/>
+   <circle cx="${e2[0].toFixed(1)}" cy="${e2[1].toFixed(1)}" r="6" fill="#ffd166"/>
+   <path d="M262 175 L380 55" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M262 175 L380 55" stroke="#ff6a3d" stroke-width="2" stroke-linecap="round" class="blink"/>
+   <text x="320" y="218" text-anchor="middle" class="lbl">CIRCUIT · HUNTER · ACADEMY</text></svg>`;
+},
+  "phQuant": () => `<svg viewBox="0 0 320 180" role="img" aria-label="SI base units">
+  <defs><linearGradient id="pq" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9f45"/><stop offset="1" stop-color="#ff5d8f"/></linearGradient></defs>
+  <rect x="8" y="8" width="304" height="164" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+  <g transform="translate(40,54)"><rect x="-26" y="0" width="52" height="22" rx="3" fill="none" stroke="url(#pq)" stroke-width="2.5"/>${[0,1,2,3,4].map(i=>`<line x1="${-26+i*13}" y1="0" x2="${-26+i*13}" y2="${i%2?8:12}" stroke="url(#pq)" stroke-width="2"/>`).join('')}<text x="0" y="46" text-anchor="middle" fill="var(--text)" font-size="20" font-weight="700">m</text><text x="0" y="64" text-anchor="middle" fill="var(--muted)" font-size="11">metre</text></g>
+  <g transform="translate(160,54)"><path d="M-22 22 h44 l-8 -22 h-28 z" fill="none" stroke="url(#pq)" stroke-width="2.5"/><circle cx="0" cy="6" r="6" fill="url(#pq)"/><text x="0" y="46" text-anchor="middle" fill="var(--text)" font-size="20" font-weight="700">kg</text><text x="0" y="64" text-anchor="middle" fill="var(--muted)" font-size="11">kilogram</text></g>
+  <g transform="translate(280,54)"><circle cx="0" cy="11" r="18" fill="none" stroke="url(#pq)" stroke-width="2.5"/><line x1="0" y1="11" x2="0" y2="-1" stroke="url(#pq)" stroke-width="2.5"><animateTransform attributeName="transform" type="rotate" from="0 0 11" to="360 0 11" dur="6s" repeatCount="indefinite"/></line><line x1="0" y1="11" x2="9" y2="11" stroke="url(#pq)" stroke-width="2"/><text x="0" y="46" text-anchor="middle" fill="var(--text)" font-size="20" font-weight="700">s</text><text x="0" y="64" text-anchor="middle" fill="var(--muted)" font-size="11">second</text></g>
+  <text x="160" y="141" text-anchor="middle" fill="var(--text)" font-size="12" font-weight="700">${L(['Length · Mass · Time','Lunghezza · Massa · Tempo'])}</text>
+  <text x="160" y="157" text-anchor="middle" fill="var(--muted)" font-size="10.5">${L(['three of the seven SI base quantities','tre delle sette grandezze base del SI'])}</text>
+</svg>`,
+  "phScale": () => `<svg viewBox="0 0 320 150" role="img" aria-label="Orders of magnitude">
+  <rect x="8" y="8" width="304" height="134" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+  <line x1="28" y1="78" x2="292" y2="78" stroke="var(--muted)" stroke-width="2"/>
+  ${[['10⁻¹⁰','atom',40],['10⁰','human',120],['10⁷','Earth',196],['10²¹','galaxy',272]].map(([p,l,x])=>`<line x1="${x}" y1="70" x2="${x}" y2="86" stroke="var(--ember)" stroke-width="2.5"/><circle cx="${x}" cy="78" r="4" fill="var(--ember)"/><text x="${x}" y="60" text-anchor="middle" fill="var(--text)" font-size="12" font-weight="700">${p}</text><text x="${x}" y="104" text-anchor="middle" fill="var(--muted)" font-size="10">${l}</text>`).join('')}
+  <text x="160" y="130" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['Every step is ×10 — an order of magnitude','Ogni passo è ×10 — un ordine di grandezza'])}</text>
+</svg>`,
+  "phDensity": () => `<svg viewBox="0 0 320 150" role="img" aria-label="Density">
+  <rect x="8" y="8" width="304" height="134" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+  ${[['var(--data)',70,6,'low'],['var(--ember)',160,22,'high']].map(([c,cx,dots,l])=>`<rect x="${cx-34}" y="44" width="68" height="68" rx="6" fill="none" stroke="${c}" stroke-width="2.5"/>${[...Array(dots)].map((_,i)=>`<circle cx="${cx-26+(i%5)*13}" cy="${52+Math.floor(i/5)*13}" r="3" fill="${c}"/>`).join('')}`).join('')}
+  <text x="70" y="128" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['less dense','meno densa'])}</text>
+  <text x="160" y="128" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['more dense','più densa'])}</text>
+  <text x="258" y="70" fill="var(--text)" font-size="13" font-weight="700">ρ = m / V</text>
+  <text x="258" y="92" fill="var(--muted)" font-size="10">kg/m³</text>
+</svg>`,
+  "phRuler": () => `<svg viewBox="0 0 320 150" role="img" aria-label="Measuring with a ruler">
+  <rect x="8" y="8" width="304" height="134" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+  <rect x="30" y="86" width="260" height="26" rx="3" fill="none" stroke="var(--muted)" stroke-width="2"/>
+  ${[...Array(27)].map((_,i)=>`<line x1="${30+i*10}" y1="86" x2="${30+i*10}" y2="${i%5?94:100}" stroke="var(--muted)" stroke-width="1.5"/>`).join('')}
+  <rect x="40" y="58" width="150" height="20" rx="4" fill="var(--data)" opacity="0.5"/>
+  <line x1="40" y1="48" x2="190" y2="48" stroke="var(--ember)" stroke-width="2"/>
+  <text x="115" y="42" text-anchor="middle" fill="var(--text)" font-size="12" font-weight="700">15.0 ± 0.1 cm</text>
+  <text x="160" y="130" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['Every measure carries an uncertainty','Ogni misura porta con sé un\'incertezza'])}</text>
+</svg>`,
+  "phGraph": () => `<svg viewBox="0 0 320 150" role="img" aria-label="Proportionality graphs">
+  <rect x="8" y="8" width="304" height="134" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+  <g>${[[30,'direct','var(--data)','M0 60 L60 0'],[176,'inverse','var(--ember)','M0 2 Q 10 55 58 58']].map(([ox,l,c,d])=>`<g transform="translate(${ox},34)"><line x1="0" y1="0" x2="0" y2="64" stroke="var(--muted)" stroke-width="1.5"/><line x1="0" y1="64" x2="80" y2="64" stroke="var(--muted)" stroke-width="1.5"/><path d="${d}" transform="translate(4,2)" fill="none" stroke="${c}" stroke-width="3"/></g>`).join('')}</g>
+  <text x="70" y="128" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['direct: y = k·x','diretta: y = k·x'])}</text>
+  <text x="232" y="128" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['inverse: y = k/x','inversa: y = k/x'])}</text>
+</svg>`,
+  "phVector": () => `<svg viewBox="0 0 320 150" role="img" aria-label="Scalar versus vector">
+  <rect x="8" y="8" width="304" height="134" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+  <text x="90" y="50" text-anchor="middle" fill="var(--text)" font-size="22" font-weight="700">25 °C</text>
+  <text x="90" y="118" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['scalar: only a number','scalare: solo un numero'])}</text>
+  <line x1="190" y1="70" x2="280" y2="40" stroke="var(--ember)" stroke-width="3.5"/>
+  <polygon points="280,40 268,40 274,52" fill="var(--ember)"/>
+  <text x="232" y="118" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['vector: value + direction','vettore: valore + direzione'])}</text>
+</svg>`,
+  "phForce": () => `<svg viewBox="0 0 320 150" role="img" aria-label="Forces on a block">
+  <rect x="8" y="8" width="304" height="134" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+  <line x1="40" y1="110" x2="280" y2="110" stroke="var(--muted)" stroke-width="2"/>
+  <rect x="130" y="76" width="60" height="34" rx="4" fill="var(--panel)" stroke="var(--data)" stroke-width="2"/>
+  <line x1="160" y1="110" x2="160" y2="138" stroke="var(--ember)" stroke-width="3"/><polygon points="160,138 154,128 166,128" fill="var(--ember)"/>
+  <line x1="190" y1="93" x2="250" y2="93" stroke="var(--gold)" stroke-width="3"/><polygon points="250,93 240,88 240,98" fill="var(--gold)"/>
+  <line x1="130" y1="93" x2="90" y2="93" stroke="var(--sakura)" stroke-width="3"/><polygon points="90,93 100,88 100,98" fill="var(--sakura)"/>
+  <text x="160" y="150" text-anchor="middle" fill="var(--muted)" font-size="10">${L(['weight','peso'])}</text>
+  <text x="240" y="82" text-anchor="middle" fill="var(--muted)" font-size="10">${L(['push','spinta'])}</text>
+  <text x="96" y="82" text-anchor="middle" fill="var(--muted)" font-size="10">${L(['friction','attrito'])}</text>
+</svg>`,
+  "phLever": () => `<svg viewBox="0 0 320 150" role="img" aria-label="Lever and torque">
+  <rect x="8" y="8" width="304" height="134" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+  <line x1="40" y1="84" x2="280" y2="84" stroke="var(--ember)" stroke-width="6" stroke-linecap="round"/>
+  <polygon points="150,120 170,120 160,86" fill="var(--muted)"/>
+  <rect x="48" y="66" width="30" height="18" rx="3" fill="var(--data)"/>
+  <line x1="250" y1="84" x2="250" y2="54" stroke="var(--gold)" stroke-width="3"/><polygon points="250,54 244,64 256,64" fill="var(--gold)"/>
+  <text x="105" y="112" text-anchor="middle" fill="var(--muted)" font-size="10">d₁</text>
+  <text x="205" y="112" text-anchor="middle" fill="var(--muted)" font-size="10">d₂</text>
+  <text x="160" y="140" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['moment = force × distance','momento = forza × distanza'])}</text>
+</svg>`,
+  "phTank": () => `<svg viewBox="0 0 320 150" role="img" aria-label="Pressure in a fluid">
+  <rect x="8" y="8" width="304" height="134" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+  <rect x="40" y="26" width="240" height="104" rx="6" fill="var(--data)" opacity="0.14" stroke="var(--line)"/>
+  ${[[60,34,1],[60,70,3],[60,106,5]].map(([x,y,n])=>`${[...Array(n)].map((_,i)=>`<line x1="${x+i*14}" y1="${y}" x2="${x+i*14+9}" y2="${y}" stroke="var(--ember)" stroke-width="2.5"/><polygon points="${x+i*14+9},${y} ${x+i*14+4},${y-3} ${x+i*14+4},${y+3}" fill="var(--ember)"/>`).join('')}`).join('')}
+  <rect x="210" y="40" width="34" height="26" rx="4" fill="var(--gold)" opacity="0.85"/>
+  <text x="160" y="146" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['deeper water pushes harder (Stevin)','più in profondità spinge di più (Stevino)'])}</text>
+</svg>`,
 };
-const JN = {kb:[90,240],cpu:[290,80],ram:[290,250],gpu:[480,160],mon:[620,80],ssd:[480,280]};
 
-const BOARD = {
-  cpu:{n:['CPU socket','Socket della CPU'],t:['Holds the CPU. Hundreds of tiny contacts connect the processor to the board. A cooler sits on top.','Ospita la CPU. Centinaia di piccoli contatti collegano il processore alla scheda. Sopra si monta il dissipatore.']},
-  ram:{n:['RAM slots (DIMM)','Slot della RAM (DIMM)'],t:['RAM sticks click into these slots, close to the CPU so data travels quickly.','I banchi di RAM si inseriscono qui, vicino alla CPU, così i dati viaggiano velocemente.']},
-  psu:{n:['24-pin power connector','Connettore di alimentazione a 24 pin'],t:['The big cable from the power supply (PSU) plugs in here.','Qui si collega il cavo principale dell\'alimentatore.']},
-  pcie:{n:['PCIe x16 slot','Slot PCIe x16'],t:['Expansion slot. The graphics card (GPU) usually goes here.','Slot di espansione. Di solito qui va la scheda video (GPU).']},
-  m2:{n:['M.2 slot','Slot M.2'],t:['A small, fast SSD lies flat on the board here. No cable needed.','Un SSD piccolo e veloce si monta qui, piatto sulla scheda, senza cavi.']},
-  sata:{n:['SATA ports','Porte SATA'],t:['Cables from hard disks, some SSDs and DVD drives plug in here.','Qui si collegano i cavi di hard disk, alcuni SSD e lettori DVD.']},
-  io:{n:['Rear I/O ports','Porte posteriori'],t:['USB, HDMI/DisplayPort for screens, Ethernet for the network, audio jacks.','USB, HDMI/DisplayPort per gli schermi, Ethernet per la rete, prese audio.']},
-  bios:{n:['BIOS/UEFI chip','Chip BIOS/UEFI'],t:['Stores the firmware: the first program that runs when you switch on. It checks the hardware and starts the operating system.','Contiene il firmware: il primo programma che parte all\'accensione. Controlla l\'hardware e avvia il sistema operativo.']},
-  bat:{n:['CMOS battery','Batteria tampone (CMOS)'],t:['Keeps the clock running and remembers settings while the PC is unplugged.','Mantiene l\'orologio e le impostazioni quando il PC è scollegato.']},
-  chipset:{n:['Chipset','Chipset'],t:['A traffic controller helping the CPU talk to USB, storage and other parts.','Un "vigile" che aiuta la CPU a comunicare con USB, dischi e altri componenti.']},
-  bus:{n:['Buses','Bus'],t:['The copper lines printed on the board: pathways carrying data, addresses and control signals.','Le piste di rame stampate sulla scheda: percorsi che trasportano dati, indirizzi e segnali di controllo.']},
-};
+export function getVisualHtml(key: string, lang: Language): string {
+  currentLang = lang;
+  if (VIS[key]) return VIS[key]();
+  return "";
+}

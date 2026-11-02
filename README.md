@@ -1,15 +1,16 @@
-# Circuit Hunter Academy
+# Circuit Hunter Academy (React + TypeScript + Vite)
 
-[![Play now](https://img.shields.io/badge/%E2%96%B6%20Play%20now-GitHub%20Pages-ff6a3d?style=for-the-badge)](https://eriakort.github.io/circuit-hunter-academy/)
+[![Play now](https://img.shields.io/badge/%E2%96%B6%20Play%20now-Circuit%20Hunter-ff6a3d?style=for-the-badge)](#)
 
-An anime-style study game for grade 9 (Italian *prima*). The player is a student hunter at an original academy who turns each school topic into a "technique" to defeat Glitch Demons. On opening the game you first **pick a subject** — there is no default subject page.
+An anime-style study game for grade 9 (Italian *prima*), rewritten as a modern **React 19 + TypeScript + Vite** application. The player is a student hunter at an original academy who turns each school topic into a "technique" to defeat Glitch Demons.
 
-The whole game can be switched between **English and Italian** at any time (EN / IT button), and every key term is shown with its translation in the other language. Your hunter name and XP are shared across subjects; progress and the certificate are tracked per subject.
+On opening the game, players choose their subject (**Computer Science** or **Physics**). The entire game can be toggled between **English and Italian** at any time (EN / IT button), and every key term includes bilingual tag pills with pronunciations/translations. Hunter names and XP are shared across subjects, while progress and certificates of mastery are tracked per subject in browser `localStorage`.
+
+---
 
 ## Subjects
 
 ### Computer Science — 3 units · 16 chapters · 44 missions
-
 Follows the Italian textbook *L'informatica e il computer* chapter by chapter.
 
 | Unit | Chapters |
@@ -19,83 +20,59 @@ Follows the Italian textbook *L'informatica e il computer* chapter by chapter.
 | 3 · Iniziare a programmare | 11 Flowcharts · 12 Python basics · 13 Selection · 14 Loops · 15 Strings, lists & files · 16 Functions |
 
 ### Physics — 1 unit · 5 chapters · 12 missions
-
 Follows *Il Walker. Corso di fisica. Per il primo biennio* (chapters 1–5).
 
 | Unit | Chapters |
 |---|---|
 | Fisica · Misura e meccanica | 1 Le grandezze fisiche · 2 Misure e rappresentazioni · 3 I vettori e le forze · 4 L'equilibrio dei solidi · 5 L'equilibrio dei fluidi |
 
-Physics adds its own mini-games: building a **vector resultant** and resolving **components** on a grid, balancing a **lever** by matching moments, and reading **buoyancy** (float / sink) and **hydrostatic pressure** with depth.
+---
 
-Each mission in both subjects has a lesson, an animated diagram, a mini-game and a quiz battle.
+## Features & Mini-Games
 
-Mini-games include a robot you program with commands, binary lamps, an ASCII decoder, an RGB colour mixer, a fetch–decode–execute stepper, building a PC, a live spreadsheet that evaluates real formulas (English and Italian function names), a formatting challenge, trace tables, predict-the-output Python puzzles, logic gates and a stack/queue game.
+Each mission features a narrative lesson with animated diagrams, an interactive mini-game, and a Glitch Demon quiz battle with Spirit hearts, combo awakenings, and technique unlock rewards.
 
-**Race Arena** (multiplayer): create a room, share the 4-letter code, and up to 8 players race through the same mission live. Faster correct answers score more; a podium and XP at the end. It runs on Supabase Realtime (see setup below).
+- **Robot Grid Programmer**: Program movement algorithms (Forward, Turn Left, Turn Right) with step-by-step debug and crash detection across 3 difficulty levels.
+- **Binary Lamps**: Toggle 8 bits to form target numbers (5, 13, 42, 100, 255).
+- **ASCII Secret Scroll**: Decode ASCII numbers and binary codes using the ASCII character table.
+- **RGB Light Mixer**: Adjust Red, Green, and Blue sliders to match target light color swatches.
+- **Computer Hardware & PC Builder**: Examine motherboards, explore the CPU Fetch-Decode-Execute cycle, trace keystroke hardware journeys, simulate power cuts (volatile RAM vs SSD storage), and assemble PC parts into slots.
+- **Spreadsheet Formula Evaluator**: Real formula evaluation for `=SUM`, `=AVERAGE`, `=MAX`, `=MIN`, `=IF`, `=COUNT` in both English and Italian syntax.
+- **Word Processor Formatting**: Match model typography, alignment, and formatting styles.
+- **Logic Gates & Python Trace Tables**: Interactive logic gates (AND, OR, NOT, XOR), Python output prediction, and memory trace tables.
+- **Physics Mini-Games**:
+  - Vector resultant addition (tip-to-tail on grid) and component resolution on axes.
+  - Lever balance & torque calculation ($M = F \times d$).
+  - Fluids, buoyancy (Archimedes' principle), and hydrostatic pressure with depth.
+- **Multiplayer Race Arena**: Create or join rooms with 4-letter codes for live real-time quiz racing with broadcast presence, synchronized timers, running lane tracks, and podium awards powered by Supabase Realtime (with built-in offline preview fallback).
+- **Searchable Bilingual Codex**: Unlocked glossary of definitions in both Italian and English.
+- **Dojo Training Hall**: Mixed review battle using questions from cleared missions.
+- **Certificate of Mastery**: Official hunter diploma with credentials, rank, and mastered techniques list.
 
-Also: a searchable bilingual **Codex** (glossary), a **Dojo** for mixed review, XP and ranks, and a certificate when every mission is cleared. Progress is saved in the browser's local storage.
+---
 
-## Play
-
-**▶ [Play now](https://eriakort.github.io/circuit-hunter-academy/)** (GitHub Pages)
-
-You can also open `index.html` directly in a browser. Everything works offline except the Race Arena, which needs the internet and the Supabase setup below.
-
-## Setup
-
-### 1. GitHub Pages (the Play now link)
-
-1. Push this repo to GitHub.
-2. Repo → **Settings → Pages**.
-3. Under **Build and deployment**, set **Source: Deploy from a branch**, **Branch: `main`**, folder **`/ (root)`**, then **Save**.
-4. Wait 1–2 minutes and refresh the page: GitHub shows *"Your site is live at https://eriakort.github.io/circuit-hunter-academy/"*.
-5. Optional: on the repo home page click the ⚙ next to **About**, tick **Use your GitHub Pages website**, and save, so the link shows at the top of the repo.
-
-Pages on a **private** repo requires a paid GitHub plan (Pro, Team or Enterprise). On a free account, make the repo public first (Settings → General → Danger Zone → Change visibility).
-
-### 2. Supabase (the Race Arena)
-
-1. Create a free account and a new project at [supabase.com](https://supabase.com). Any region near you is fine.
-2. In the project, open **Project Settings → API** and copy the **Project URL** and the **anon public** key (newer dashboards may call it the *publishable* key).
-3. Edit `config.js` in this repo (you can do it on github.com with the ✏️ button) and paste both values. Commit.
-4. Open the Play now link → **Race** → **Create room**. Open the link on a second device, **Join** with the code, and race.
-
-No database tables are needed: the race uses Realtime **Broadcast** and **Presence** channels only. The anon key is meant to be public, so it is fine in `config.js`; never put the `service_role` / secret key there. If rooms won't connect, check in the Supabase dashboard that Realtime is enabled and that public channel access is allowed (Project Settings → Realtime).
-
-> **Note:** `config.js` currently contains a live Supabase project URL and anon key. If this repository is public, rotate the key in the Supabase dashboard if you do not want others to use the project.
-
-## Project layout
-
-```
-index.html        the built game (single self-contained file)
-config.js         Supabase URL + anon key for the Race Arena
-vendor/           supabase-js 2.117.3 (MIT), loaded only when a race starts
-build.py          concatenates src/ into index.html
-src/              source parts: CSS, visuals, mission data, game engine, race mode
-tests/            automated checks (Playwright + Python)
-```
-
-Edit files in `src/`, then rebuild:
+## Development & Build
 
 ```bash
-python3 build.py
+# Install dependencies
+npm install
+
+# Start the Vite development server (port 3000)
+npm run dev
+
+# Type-check and production build
+npm run build
+
+# Run unit tests
+npx tsx tests/helpers.test.js
 ```
 
-## Tests
+---
 
-```bash
-npm i playwright
-node tests/playthrough.js en      # plays all 56 missions in English
-node tests/playthrough.js it      # ...and in Italian
-node tests/check_python.js > /tmp/rounds.json && python3 tests/check_python.py /tmp/rounds.json
-                                   # runs every Python puzzle with real Python
-node tests/race.js                 # two simulated players race each other (offline stand-in for Supabase)
-node tests/helpers.test.js         # pure helper unit tests
-```
+## Tech Stack
 
-## Notes
-
-- All characters and demons are original; no characters from existing anime are used.
-- Content was written from the textbook's table of contents, not its pages. Check definitions against the book before tests.
-- See `IMPROVEMENTS.md` for recent robustness and testing changes.
+- **React 19**
+- **TypeScript**
+- **Vite**
+- **Supabase Realtime** (`@supabase/supabase-js`)
+- **CSS3 Design System**: Custom anime dark mode palette, cyber gridlines, and typography (`Dela Gothic One`, `DotGothic16`, `M PLUS Rounded 1c`).
