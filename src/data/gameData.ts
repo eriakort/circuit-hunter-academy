@@ -4168,8 +4168,7 @@ export const MISSIONS: Mission[] = [
                       "sceneIndexes": [
                             2
                       ],
-                      "visualKey": "touch"
-                ,
+                      "visualKey": "touch",
                       "example": ["A finger changes the capacitance at a screen location; the controller interprets the change as a touch.","Un dito modifica la capacità elettrica in un punto dello schermo; il controller interpreta la variazione come un tocco."],
                       "workedExample": {
                         "scenario": [
