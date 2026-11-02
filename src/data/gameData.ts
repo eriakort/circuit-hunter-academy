@@ -2297,41 +2297,45 @@ export const MISSIONS: Mission[] = [
                       
                       "example": ["When you search for a video: the keyboard sends your query, the CPU and app process it, the screen displays results, and the browser may store history.","Quando cerchi un video: la tastiera invia la ricerca, CPU e app la elaborano, lo schermo mostra i risultati e il browser può salvare la cronologia."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain The computer cycle using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare Il ciclo del computer usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "A computer accepts input, processes data, produces output and can store information for later use.",
-                          "Un computer riceve input, elabora dati, produce output e può memorizzare informazioni per utilizzarle in seguito."
-                        ]
-                      },
+  "scenario": [
+    "You type a search for a volcano video, press Enter, watch the result and save the link. Trace the computer cycle in this task.",
+    "Digiti una ricerca per un video sui vulcani, premi Invio, guardi il risultato e salvi il link. Descrivi il ciclo del computer in questa attività."
+  ],
+  "steps": [
+    [
+      "1. Input: the keyboard sends the search words to the computer.",
+      "1. Input: la tastiera invia le parole della ricerca al computer."
+    ],
+    [
+      "2. Processing: the CPU runs the browser and search instructions to handle the request.",
+      "2. Elaborazione: la CPU esegue il browser e le istruzioni di ricerca per gestire la richiesta."
+    ],
+    [
+      "3. Output: the screen presents the search results and video.",
+      "3. Output: lo schermo mostra i risultati e il video."
+    ],
+    [
+      "4. Storage: saving the link writes information to storage so it can be used later.",
+      "4. Memorizzazione: salvare il link scrive le informazioni in una memoria che potrai usare in seguito."
+    ]
+  ],
+  "answer": [
+    "The keyboard provides input, the CPU and software process it, the screen provides output, and storage keeps the saved link.",
+    "La tastiera fornisce l'input, CPU e software lo elaborano, lo schermo produce l'output e la memoria conserva il link salvato."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "A computer accepts input, processes data, produces output and can store information for later use.",
-                            "Un computer riceve input, elabora dati, produce output e può memorizzare informazioni per utilizzarle in seguito."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "The monitor is the input because it is where I see the result.",
+      "Il monitor è l'input perché è lì che vedo il risultato."
+    ],
+    "correction": [
+      "The monitor presents information, so it is output. Input is the information sent into the computer, such as the search words typed on the keyboard.",
+      "Il monitor presenta informazioni, quindi è output. L'input è l'informazione inviata al computer, ad esempio le parole digitate sulla tastiera."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain The computer cycle in your own words and give one practical example.",
@@ -2357,41 +2361,45 @@ export const MISSIONS: Mission[] = [
                       
                       "example": ["A laptop's keyboard is hardware; the operating system and browser running on it are software.","La tastiera di un portatile è hardware; il sistema operativo e il browser che vi funzionano sono software."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain Hardware and software using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare Hardware e software usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "Hardware is the physical equipment; software is the programs and instructions that tell the equipment what to do.",
-                          "L'hardware è la parte fisica; il software è l'insieme di programmi e istruzioni che indicano ai componenti cosa fare."
-                        ]
-                      },
+  "scenario": [
+    "A student uses a laptop to write a report. Identify the hardware and software involved.",
+    "Uno studente usa un portatile per scrivere una relazione. Individua l'hardware e il software coinvolti."
+  ],
+  "steps": [
+    [
+      "1. Find the physical parts you can touch: laptop, keyboard, screen and SSD.",
+      "1. Individua le parti fisiche che puoi toccare: portatile, tastiera, schermo e SSD."
+    ],
+    [
+      "2. Identify the programs and instructions: operating system and word processor.",
+      "2. Individua i programmi e le istruzioni: sistema operativo e programma di videoscrittura."
+    ],
+    [
+      "3. Explain how they work together: software gives instructions and hardware carries them out.",
+      "3. Spiega come collaborano: il software fornisce istruzioni e l'hardware le esegue."
+    ],
+    [
+      "4. Test the distinction: closing the word processor stops the program, but the keyboard remains a physical component.",
+      "4. Verifica la differenza: chiudere il programma interrompe il software, ma la tastiera resta un componente fisico."
+    ]
+  ],
+  "answer": [
+    "The laptop, keyboard, screen and SSD are hardware. The operating system and word processor are software; they use the hardware to create and save the report.",
+    "Il portatile, la tastiera, lo schermo e l'SSD sono hardware. Il sistema operativo e il programma di videoscrittura sono software e usano l'hardware per creare e salvare la relazione."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "Hardware is the physical equipment; software is the programs and instructions that tell the equipment what to do.",
-                            "L'hardware è la parte fisica; il software è l'insieme di programmi e istruzioni che indicano ai componenti cosa fare."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "A word processor is hardware because I use it on a laptop.",
+      "Un programma di videoscrittura è hardware perché lo uso su un portatile."
+    ],
+    "correction": [
+      "A word processor is software: it is a program, not a physical component. The keyboard and screen are hardware.",
+      "Un programma di videoscrittura è software: è un programma, non un componente fisico. Tastiera e schermo sono hardware."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain Hardware and software in your own words and give one practical example.",
@@ -2417,41 +2425,45 @@ export const MISSIONS: Mission[] = [
                       
                       "example": ["A calculator program's instructions and values are held in main memory while the CPU fetches and executes the instructions.","Le istruzioni e i valori di un programma calcolatrice sono conservati nella memoria centrale mentre la CPU li preleva ed esegue."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain The von Neumann architecture using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare L'architettura di von Neumann usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "In the von Neumann model, instructions and data share main memory. The CPU processes instructions, input/output devices communicate with the outside world, and buses connect the components.",
-                          "Nel modello di von Neumann, istruzioni e dati condividono la memoria centrale. La CPU esegue le istruzioni, le periferiche di input/output comunicano con l'esterno e i bus collegano i componenti."
-                        ]
-                      },
+  "scenario": [
+    "A computer opens a calculator app and works out 27 × 14. Use the von Neumann model to explain what happens.",
+    "Un computer apre una calcolatrice e calcola 27 × 14. Usa il modello di von Neumann per spiegare cosa accade."
+  ],
+  "steps": [
+    [
+      "1. The calculator instructions and the values 27 and 14 are loaded into main memory.",
+      "1. Le istruzioni della calcolatrice e i valori 27 e 14 vengono caricati nella memoria centrale."
+    ],
+    [
+      "2. The CPU fetches an instruction and its required data from memory.",
+      "2. La CPU preleva dalla memoria un'istruzione e i dati necessari."
+    ],
+    [
+      "3. The control unit coordinates the operation and the ALU performs the multiplication.",
+      "3. L'unità di controllo coordina l'operazione e l'ALU esegue la moltiplicazione."
+    ],
+    [
+      "4. Buses carry data, addresses and control signals; the result is sent to the display.",
+      "4. I bus trasportano dati, indirizzi e segnali di controllo; il risultato viene inviato allo schermo."
+    ]
+  ],
+  "answer": [
+    "Instructions and data share main memory; the CPU fetches and executes instructions, while buses connect the components and input/output devices communicate with the user.",
+    "Istruzioni e dati condividono la memoria centrale; la CPU preleva ed esegue le istruzioni, mentre i bus collegano i componenti e le periferiche comunicano con l'utente."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "In the von Neumann model, instructions and data share main memory. The CPU processes instructions, input/output devices communicate with the outside world, and buses connect the components.",
-                            "Nel modello di von Neumann, istruzioni e dati condividono la memoria centrale. La CPU esegue le istruzioni, le periferiche di input/output comunicano con l'esterno e i bus collegano i componenti."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "The CPU permanently stores every program and file.",
+      "La CPU memorizza permanentemente ogni programma e file."
+    ],
+    "correction": [
+      "The CPU processes instructions. Main memory holds the instructions and data currently needed; long-term files are kept in storage.",
+      "La CPU elabora le istruzioni. La memoria centrale contiene istruzioni e dati necessari in quel momento; i file a lungo termine sono conservati nell'archiviazione."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain The von Neumann architecture in your own words and give one practical example.",
@@ -2872,41 +2884,45 @@ export const MISSIONS: Mission[] = [
                       
                       "example": ["A compatible motherboard provides the CPU socket, RAM slots and connectors for storage and expansion cards.","Una scheda madre compatibile offre il socket della CPU, gli slot RAM e i connettori per archiviazione e schede di espansione."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain The motherboard using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare La scheda madre usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "The motherboard is the main circuit board. It provides connections and communication paths for the CPU, memory, storage and expansion devices.",
-                          "La scheda madre è il circuito principale. Fornisce connessioni e percorsi di comunicazione per CPU, memoria, archiviazione e dispositivi di espansione."
-                        ]
-                      },
+  "scenario": [
+    "You are checking whether a desktop PC can accept a new CPU, RAM kit and graphics card. What does the motherboard contribute?",
+    "Stai verificando se un PC desktop può ospitare una nuova CPU, un kit RAM e una scheda video. Qual è il ruolo della scheda madre?"
+  ],
+  "steps": [
+    [
+      "1. Locate the CPU socket and check that it supports the processor.",
+      "1. Individua il socket della CPU e verifica che sia compatibile con il processore."
+    ],
+    [
+      "2. Check the DIMM slots and supported memory type for the RAM.",
+      "2. Controlla gli slot DIMM e il tipo di memoria supportato per la RAM."
+    ],
+    [
+      "3. Check the PCIe slot and available space for the graphics card.",
+      "3. Controlla lo slot PCIe e lo spazio disponibile per la scheda video."
+    ],
+    [
+      "4. Explain that the board provides the physical connections and communication paths; it does not perform all processing itself.",
+      "4. Spiega che la scheda fornisce connessioni fisiche e percorsi di comunicazione; non esegue da sola tutta l'elaborazione."
+    ]
+  ],
+  "answer": [
+    "The motherboard connects the CPU, RAM, storage and expansion cards, and provides pathways for them to communicate. Compatibility depends on its sockets, slots and supported standards.",
+    "La scheda madre collega CPU, RAM, archiviazione e schede di espansione e fornisce percorsi per la comunicazione. La compatibilità dipende da socket, slot e standard supportati."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "The motherboard is the main circuit board. It provides connections and communication paths for the CPU, memory, storage and expansion devices.",
-                            "La scheda madre è il circuito principale. Fornisce connessioni e percorsi di comunicazione per CPU, memoria, archiviazione e dispositivi di espansione."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "The motherboard is the component that performs all calculations.",
+      "La scheda madre è il componente che esegue tutti i calcoli."
+    ],
+    "correction": [
+      "The CPU executes instructions and calculations. The motherboard connects components and allows them to communicate.",
+      "La CPU esegue istruzioni e calcoli. La scheda madre collega i componenti e permette loro di comunicare."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain The motherboard in your own words and give one practical example.",
@@ -2932,41 +2948,45 @@ export const MISSIONS: Mission[] = [
                       
                       "example": ["A desktop PSU converts mains AC into regulated DC outputs such as 12 V, 5 V and 3.3 V for components.","Un alimentatore desktop converte la corrente alternata di rete in uscite continue regolate, ad esempio 12 V, 5 V e 3,3 V, per i componenti."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain The power supply unit using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare L'alimentatore usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "The PSU converts incoming alternating current into regulated low-voltage direct current required by computer components.",
-                          "L'alimentatore converte la corrente alternata in ingresso in corrente continua regolata a bassa tensione, necessaria ai componenti del computer."
-                        ]
-                      },
+  "scenario": [
+    "A desktop PC needs power for its CPU, motherboard, drives and graphics card. Explain the PSU's job.",
+    "Un PC desktop ha bisogno di alimentazione per CPU, scheda madre, unità e scheda video. Spiega il compito dell'alimentatore."
+  ],
+  "steps": [
+    [
+      "1. Electricity from the wall is alternating current (AC).",
+      "1. L'elettricità della presa è corrente alternata (CA)."
+    ],
+    [
+      "2. The PSU converts AC into regulated direct-current (DC) outputs.",
+      "2. L'alimentatore converte la CA in uscite regolate di corrente continua (CC)."
+    ],
+    [
+      "3. It supplies the voltage rails required by different components through power connectors.",
+      "3. Fornisce le tensioni necessarie ai diversi componenti tramite connettori di alimentazione."
+    ],
+    [
+      "4. Choose a PSU with suitable connectors and sufficient capacity for the system.",
+      "4. Scegli un alimentatore con connettori adatti e potenza sufficiente per il sistema."
+    ]
+  ],
+  "answer": [
+    "The PSU converts mains AC into regulated low-voltage DC and distributes it to computer components. It does not process program instructions.",
+    "L'alimentatore converte la CA di rete in CC regolata a bassa tensione e la distribuisce ai componenti. Non elabora le istruzioni dei programmi."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "The PSU converts incoming alternating current into regulated low-voltage direct current required by computer components.",
-                            "L'alimentatore converte la corrente alternata in ingresso in corrente continua regolata a bassa tensione, necessaria ai componenti del computer."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "The PSU stores files and sends instructions to the CPU.",
+      "L'alimentatore conserva file e invia istruzioni alla CPU."
+    ],
+    "correction": [
+      "The PSU supplies electrical power. Storage devices keep files, and the CPU executes instructions.",
+      "L'alimentatore fornisce energia elettrica. Le unità di archiviazione conservano i file e la CPU esegue le istruzioni."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain The power supply unit in your own words and give one practical example.",
@@ -2992,41 +3012,45 @@ export const MISSIONS: Mission[] = [
                       
                       "example": ["For an ADD instruction, the CPU fetches the instruction, decodes it and uses the ALU to add the values.","Per un'istruzione ADD, la CPU preleva l'istruzione, la decodifica e usa l'ALU per sommare i valori."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain The CPU and instruction cycle using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare La CPU e il ciclo delle istruzioni usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "The CPU executes program instructions. Its control unit coordinates operations, the arithmetic logic unit performs calculations and logic, and registers hold small amounts of data in immediate use. The fetch–decode–execute cycle repeats as instructions run.",
-                          "La CPU esegue le istruzioni dei programmi. L'unità di controllo coordina le operazioni, l'unità aritmetico-logica esegue calcoli e operazioni logiche e i registri conservano piccole quantità di dati in uso immediato. Il ciclo fetch–decode–execute si ripete durante l'esecuzione."
-                        ]
-                      },
+  "scenario": [
+    "A program asks the computer to add 8 and 5, then compare the result with 10. Identify the CPU parts at work.",
+    "Un programma chiede al computer di sommare 8 e 5 e poi confrontare il risultato con 10. Individua le parti della CPU coinvolte."
+  ],
+  "steps": [
+    [
+      "1. The control unit fetches the next instruction and coordinates the operation.",
+      "1. L'unità di controllo preleva l'istruzione successiva e coordina l'operazione."
+    ],
+    [
+      "2. The instruction is decoded so the CPU knows which operation and data are required.",
+      "2. L'istruzione viene decodificata affinché la CPU sappia quale operazione e quali dati servono."
+    ],
+    [
+      "3. Registers hold the values 8 and 5 for immediate use.",
+      "3. I registri contengono i valori 8 e 5 per l'uso immediato."
+    ],
+    [
+      "4. The ALU adds them to produce 13, then performs the comparison with 10.",
+      "4. L'ALU li somma ottenendo 13, poi esegue il confronto con 10."
+    ]
+  ],
+  "answer": [
+    "The control unit coordinates fetch and decode, registers hold values in immediate use, and the ALU performs arithmetic and logical operations. The cycle repeats for further instructions.",
+    "L'unità di controllo coordina prelievo e decodifica, i registri contengono i valori necessari nell'immediato e l'ALU esegue operazioni aritmetiche e logiche. Il ciclo si ripete per le istruzioni successive."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "The CPU executes program instructions. Its control unit coordinates operations, the arithmetic logic unit performs calculations and logic, and registers hold small amounts of data in immediate use. The fetch–decode–execute cycle repeats as instructions run.",
-                            "La CPU esegue le istruzioni dei programmi. L'unità di controllo coordina le operazioni, l'unità aritmetico-logica esegue calcoli e operazioni logiche e i registri conservano piccole quantità di dati in uso immediato. Il ciclo fetch–decode–execute si ripete durante l'esecuzione."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "The control unit performs every calculation itself.",
+      "L'unità di controllo esegue da sola tutti i calcoli."
+    ],
+    "correction": [
+      "The control unit coordinates and directs operations. The ALU performs arithmetic and logical calculations.",
+      "L'unità di controllo coordina e dirige le operazioni. L'ALU esegue i calcoli aritmetici e logici."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain The CPU and instruction cycle in your own words and give one practical example.",
@@ -3052,41 +3076,45 @@ export const MISSIONS: Mission[] = [
                       
                       "example": ["Video encoding may benefit from multiple cores, while a lightly threaded task may depend more on single-core performance.","La codifica video può beneficiare di più core, mentre un'attività con pochi thread può dipendere maggiormente dalle prestazioni di un singolo core."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain Cores and clock speed using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare Core e frequenza di clock usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "Clock speed describes the number of clock cycles per second, while cores are processing units within a CPU. Real performance also depends on architecture, workload and other factors.",
-                          "La frequenza di clock indica il numero di cicli al secondo, mentre i core sono unità di elaborazione all'interno della CPU. Le prestazioni reali dipendono anche da architettura, carico di lavoro e altri fattori."
-                        ]
-                      },
+  "scenario": [
+    "Two CPUs have different specifications: CPU A has 4 cores at 4.0 GHz; CPU B has 8 cores at 3.2 GHz. Can you decide which is faster from these numbers alone?",
+    "Due CPU hanno specifiche diverse: la CPU A ha 4 core a 4,0 GHz; la CPU B ha 8 core a 3,2 GHz. Puoi decidere quale sia più veloce solo da questi numeri?"
+  ],
+  "steps": [
+    [
+      "1. Interpret clock speed: GHz describes billions of clock cycles per second, not completed tasks per second.",
+      "1. Interpreta la frequenza: GHz indica miliardi di cicli di clock al secondo, non attività completate al secondo."
+    ],
+    [
+      "2. Interpret core count: each core can execute instructions, allowing more work to run in parallel.",
+      "2. Interpreta il numero di core: ogni core può eseguire istruzioni, consentendo più attività in parallelo."
+    ],
+    [
+      "3. Consider the workload: software that uses many cores may benefit from CPU B; a lightly threaded task may not.",
+      "3. Considera il carico: un software che usa molti core può beneficiare della CPU B; un'attività con pochi thread potrebbe non farlo."
+    ],
+    [
+      "4. Check architecture, cache, power limits and real benchmarks before deciding.",
+      "4. Controlla architettura, cache, limiti energetici e benchmark reali prima di decidere."
+    ]
+  ],
+  "answer": [
+    "Neither GHz nor core count alone proves which CPU is faster. Performance depends on the workload and other design factors, so compare relevant benchmarks.",
+    "Né i GHz né il numero di core, da soli, dimostrano quale CPU sia più veloce. Le prestazioni dipendono dal carico e da altri fattori di progettazione: confronta benchmark pertinenti."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "Clock speed describes the number of clock cycles per second, while cores are processing units within a CPU. Real performance also depends on architecture, workload and other factors.",
-                            "La frequenza di clock indica il numero di cicli al secondo, mentre i core sono unità di elaborazione all'interno della CPU. Le prestazioni reali dipendono anche da architettura, carico di lavoro e altri fattori."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "A CPU with the highest GHz is always the fastest.",
+      "Una CPU con più GHz è sempre la più veloce."
+    ],
+    "correction": [
+      "Clock speed is only one factor. Core count, architecture, cache, thermal limits and software parallelism also affect performance.",
+      "La frequenza è solo uno dei fattori. Anche numero di core, architettura, cache, limiti termici e parallelismo del software influenzano le prestazioni."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain Cores and clock speed in your own words and give one practical example.",
@@ -3429,41 +3457,45 @@ export const MISSIONS: Mission[] = [
                       
                       "example": ["A document you are editing is held in working memory; saving it writes a persistent copy to an SSD or HDD.","Un documento che stai modificando è nella memoria di lavoro; salvarlo crea una copia persistente su SSD o HDD."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain RAM and volatility using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare RAM e volatilità usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "RAM temporarily holds programs and data currently in use. It is volatile, so its contents are lost when power is removed.",
-                          "La RAM conserva temporaneamente programmi e dati in uso. È volatile: il suo contenuto si perde quando viene tolta l'alimentazione."
-                        ]
-                      },
+  "scenario": [
+    "You edit a presentation, leave it unsaved, and the computer suddenly loses power. Explain what happens to the working copy.",
+    "Modifichi una presentazione senza salvarla e il computer perde improvvisamente alimentazione. Spiega cosa accade alla copia di lavoro."
+  ],
+  "steps": [
+    [
+      "1. While editing, the open program and current presentation data are held in RAM for quick access.",
+      "1. Durante la modifica, il programma aperto e i dati correnti della presentazione sono nella RAM per un accesso rapido."
+    ],
+    [
+      "2. RAM is volatile memory and needs power to retain its contents.",
+      "2. La RAM è una memoria volatile e ha bisogno di alimentazione per conservare il contenuto."
+    ],
+    [
+      "3. When power is lost, the unsaved data in RAM is lost.",
+      "3. Quando manca l'alimentazione, i dati non salvati nella RAM vengono persi."
+    ],
+    [
+      "4. Saving writes a persistent copy to an SSD or HDD so it remains after shutdown.",
+      "4. Salvare scrive una copia permanente su SSD o HDD, così resta disponibile dopo lo spegnimento."
+    ]
+  ],
+  "answer": [
+    "The unsaved working copy in RAM is lost when power is removed. A saved copy on non-volatile storage remains.",
+    "La copia di lavoro non salvata nella RAM si perde quando viene tolta l'alimentazione. Una copia salvata su memoria non volatile rimane disponibile."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "RAM temporarily holds programs and data currently in use. It is volatile, so its contents are lost when power is removed.",
-                            "La RAM conserva temporaneamente programmi e dati in uso. È volatile: il suo contenuto si perde quando viene tolta l'alimentazione."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "RAM keeps my files permanently even when the computer is unplugged.",
+      "La RAM conserva i miei file in modo permanente anche quando il computer è scollegato."
+    ],
+    "correction": [
+      "RAM is temporary and volatile. Use persistent storage such as an SSD or HDD to keep files when power is off.",
+      "La RAM è temporanea e volatile. Per conservare i file a computer spento usa una memoria persistente come SSD o HDD."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain RAM and volatility in your own words and give one practical example.",
@@ -3489,41 +3521,45 @@ export const MISSIONS: Mission[] = [
                       
                       "example": ["A CPU may find recently used data in cache; firmware stored in non-volatile memory helps a computer start.","La CPU può trovare nella cache dati usati di recente; il firmware conservato in memoria non volatile aiuta il computer ad avviarsi."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain Cache and ROM using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare Cache e ROM usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "Cache is small, very fast memory that keeps frequently needed data close to the CPU. ROM is non-volatile memory used to retain essential firmware.",
-                          "La cache è una memoria piccola e molto veloce che conserva dati usati frequentemente vicino alla CPU. La ROM è una memoria non volatile usata per conservare firmware essenziale."
-                        ]
-                      },
+  "scenario": [
+    "A computer starts up and then repeatedly accesses the same instructions while running an application. Explain the different roles of cache and ROM.",
+    "Un computer si avvia e poi accede ripetutamente alle stesse istruzioni durante l'esecuzione di un'applicazione. Spiega i diversi ruoli di cache e ROM."
+  ],
+  "steps": [
+    [
+      "1. Firmware stored in non-volatile memory helps initialise the computer during startup.",
+      "1. Il firmware conservato in memoria non volatile aiuta a inizializzare il computer durante l'avvio."
+    ],
+    [
+      "2. Once programs run, the CPU frequently needs some data and instructions again.",
+      "2. Quando i programmi sono in esecuzione, la CPU ha spesso bisogno di alcuni dati e istruzioni più volte."
+    ],
+    [
+      "3. Cache keeps copies of frequently needed information close to the CPU for faster access.",
+      "3. La cache conserva copie delle informazioni usate spesso vicino alla CPU per accedervi più rapidamente."
+    ],
+    [
+      "4. Cache speeds access; ROM/firmware retains essential information without normal power.",
+      "4. La cache velocizza l'accesso; la ROM/firmware conserva informazioni essenziali anche senza alimentazione normale."
+    ]
+  ],
+  "answer": [
+    "Cache is small, fast memory that reduces the time needed to access frequently used data. ROM is non-volatile memory used to retain firmware or other essential instructions.",
+    "La cache è una memoria piccola e veloce che riduce il tempo di accesso ai dati usati frequentemente. La ROM è una memoria non volatile usata per conservare firmware o altre istruzioni essenziali."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "Cache is small, very fast memory that keeps frequently needed data close to the CPU. ROM is non-volatile memory used to retain essential firmware.",
-                            "La cache è una memoria piccola e molto veloce che conserva dati usati frequentemente vicino alla CPU. La ROM è una memoria non volatile usata per conservare firmware essenziale."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "Cache and ROM are both just extra RAM used for open apps.",
+      "Cache e ROM sono entrambe semplicemente RAM aggiuntiva per le app aperte."
+    ],
+    "correction": [
+      "Cache and ROM have different purposes: cache helps the CPU access frequently used data quickly, while ROM retains non-volatile firmware or essential instructions.",
+      "Cache e ROM hanno funzioni diverse: la cache aiuta la CPU ad accedere rapidamente ai dati frequenti, mentre la ROM conserva firmware o istruzioni essenziali in modo non volatile."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain Cache and ROM in your own words and give one practical example.",
@@ -3549,41 +3585,45 @@ export const MISSIONS: Mission[] = [
                       
                       "example": ["When reading memory, the address bus identifies the location, control signals request a read, and the data bus carries the value back.","Durante una lettura della memoria, il bus indirizzi identifica la posizione, i segnali di controllo richiedono la lettura e il bus dati riporta il valore."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain System buses using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare I bus di sistema usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "The data bus carries data, the address bus identifies a location, and the control bus carries signals that coordinate operations.",
-                          "Il bus dati trasporta i dati, il bus indirizzi identifica una posizione e il bus di controllo trasporta segnali che coordinano le operazioni."
-                        ]
-                      },
+  "scenario": [
+    "The CPU needs to read a value from a particular memory location. Explain how the three system buses help.",
+    "La CPU deve leggere un valore da una specifica posizione di memoria. Spiega come aiutano i tre bus di sistema."
+  ],
+  "steps": [
+    [
+      "1. The address bus carries the location the CPU wants to access.",
+      "1. Il bus indirizzi trasporta la posizione a cui la CPU vuole accedere."
+    ],
+    [
+      "2. The control bus carries signals such as read, write and timing to coordinate the operation.",
+      "2. Il bus di controllo trasporta segnali come lettura, scrittura e temporizzazione per coordinare l'operazione."
+    ],
+    [
+      "3. The data bus carries the value being transferred between memory and the CPU.",
+      "3. Il bus dati trasporta il valore trasferito tra memoria e CPU."
+    ],
+    [
+      "4. Remember the distinction: where (address), what (data), and how/when (control).",
+      "4. Ricorda la distinzione: dove (indirizzo), cosa (dati) e come/quando (controllo)."
+    ]
+  ],
+  "answer": [
+    "The address bus identifies the location, the control bus coordinates the read operation, and the data bus carries the value returned from memory.",
+    "Il bus indirizzi identifica la posizione, il bus di controllo coordina la lettura e il bus dati trasporta il valore restituito dalla memoria."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "The data bus carries data, the address bus identifies a location, and the control bus carries signals that coordinate operations.",
-                            "Il bus dati trasporta i dati, il bus indirizzi identifica una posizione e il bus di controllo trasporta segnali che coordinano le operazioni."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "The address bus carries the actual file contents.",
+      "Il bus indirizzi trasporta il contenuto effettivo del file."
+    ],
+    "correction": [
+      "The address bus identifies a location. The data bus carries the information stored there; control signals coordinate the transfer.",
+      "Il bus indirizzi identifica una posizione. Il bus dati trasporta le informazioni conservate lì; i segnali di controllo coordinano il trasferimento."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain System buses in your own words and give one practical example.",
@@ -3610,41 +3650,45 @@ export const MISSIONS: Mission[] = [
                       
                       "example": ["An SSD keeps your photos after shutdown; an HDD can also retain them using magnetic platters.","Un SSD conserva le foto dopo lo spegnimento; anche un HDD può conservarle usando piatti magnetici."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain Mass storage using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare Memoria di massa usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "Mass storage keeps files and programs when power is off. HDDs use magnetic disks, SSDs use flash memory, optical media use lasers, and cloud storage keeps data on remote systems.",
-                          "La memoria di massa conserva file e programmi anche a computer spento. Gli HDD usano dischi magnetici, gli SSD memoria flash, i supporti ottici usano laser e il cloud conserva i dati su sistemi remoti."
-                        ]
-                      },
+  "scenario": [
+    "You need to keep a 2 GB video after shutting down the computer and share it with a classmate. Compare suitable storage choices.",
+    "Devi conservare un video da 2 GB dopo aver spento il computer e condividerlo con un compagno. Confronta le opzioni di archiviazione adatte."
+  ],
+  "steps": [
+    [
+      "1. Rule out RAM: it is temporary working memory, not long-term storage.",
+      "1. Escludi la RAM: è memoria di lavoro temporanea, non archiviazione a lungo termine."
+    ],
+    [
+      "2. An SSD stores data in flash memory and offers fast access with no moving parts.",
+      "2. Un SSD conserva dati in memoria flash e offre accesso rapido senza parti mobili."
+    ],
+    [
+      "3. An HDD stores data magnetically on spinning disks and may offer lower cost per GB.",
+      "3. Un HDD conserva dati magneticamente su dischi rotanti e può costare meno per GB."
+    ],
+    [
+      "4. Cloud storage keeps a copy on remote servers and makes sharing possible over a network; check connection and privacy needs.",
+      "4. Il cloud conserva una copia su server remoti e permette la condivisione tramite rete; considera connessione e privacy."
+    ]
+  ],
+  "answer": [
+    "An SSD or HDD can keep the video when power is off. Cloud storage can make it accessible to a classmate over the internet; the best choice depends on speed, capacity, cost and sharing needs.",
+    "Un SSD o HDD può conservare il video a computer spento. Il cloud può renderlo accessibile a un compagno tramite Internet; la scelta dipende da velocità, capacità, costo e necessità di condivisione."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "Mass storage keeps files and programs when power is off. HDDs use magnetic disks, SSDs use flash memory, optical media use lasers, and cloud storage keeps data on remote systems.",
-                            "La memoria di massa conserva file e programmi anche a computer spento. Gli HDD usano dischi magnetici, gli SSD memoria flash, i supporti ottici usano laser e il cloud conserva i dati su sistemi remoti."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "Cloud storage means the file is stored inside the laptop's RAM.",
+      "Il cloud significa che il file è conservato nella RAM del portatile."
+    ],
+    "correction": [
+      "Cloud storage keeps data on remote computers accessed through a network. It is different from local RAM and local disk storage.",
+      "Il cloud conserva i dati su computer remoti accessibili tramite rete. È diverso dalla RAM locale e dall'archiviazione su disco locale."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain Mass storage in your own words and give one practical example.",
@@ -4113,41 +4157,45 @@ export const MISSIONS: Mission[] = [
                       
                       "example": ["A headset microphone sends sound into the computer (input), while its headphones play sound from the computer (output).","Il microfono di una cuffia invia audio al computer (input), mentre gli auricolari riproducono l'audio del computer (output)."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain Input and output peripherals using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare Periferiche di input e output usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "Input devices send information to a computer; output devices present information from it. Some devices perform both roles.",
-                          "I dispositivi di input inviano informazioni al computer; quelli di output presentano le informazioni elaborate. Alcuni dispositivi svolgono entrambi i ruoli."
-                        ]
-                      },
+  "scenario": [
+    "A phone registers a finger tap but does not respond to a non-conductive plastic stylus. Explain why a capacitive screen behaves this way.",
+    "Un telefono registra il tocco di un dito ma non risponde a uno stilo di plastica non conduttivo. Spiega perché uno schermo capacitivo si comporta così."
+  ],
+  "steps": [
+    [
+      "1. The screen maintains an electrical field across its surface.",
+      "1. Lo schermo mantiene un campo elettrico sulla propria superficie."
+    ],
+    [
+      "2. A conductive finger changes the capacitance at the point of contact.",
+      "2. Un dito conduttivo modifica la capacità elettrica nel punto di contatto."
+    ],
+    [
+      "3. Sensors and the controller detect and interpret that change as a touch location.",
+      "3. Sensori e controller rilevano e interpretano la variazione come una posizione di tocco."
+    ],
+    [
+      "4. Ordinary plastic does not cause the same conductive change, so a basic capacitive screen may not detect it.",
+      "4. La normale plastica non provoca la stessa variazione conduttiva, quindi uno schermo capacitivo di base potrebbe non rilevarla."
+    ]
+  ],
+  "answer": [
+    "A capacitive touchscreen detects changes in capacitance caused by a conductive object, usually a finger. The controller interprets the change as a touch.",
+    "Un touchscreen capacitivo rileva variazioni di capacità causate da un oggetto conduttivo, di solito un dito. Il controller interpreta la variazione come un tocco."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "Input devices send information to a computer; output devices present information from it. Some devices perform both roles.",
-                            "I dispositivi di input inviano informazioni al computer; quelli di output presentano le informazioni elaborate. Alcuni dispositivi svolgono entrambi i ruoli."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "The screen detects pressure because the finger physically pushes a button underneath it.",
+      "Lo schermo rileva la pressione perché il dito preme fisicamente un pulsante sottostante."
+    ],
+    "correction": [
+      "A capacitive screen detects an electrical change, not simply pressure on a mechanical button. Resistive screens work differently.",
+      "Uno schermo capacitivo rileva una variazione elettrica, non semplicemente la pressione su un pulsante meccanico. Gli schermi resistivi funzionano in modo diverso."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain Input and output peripherals in your own words and give one practical example.",
@@ -4231,41 +4279,45 @@ export const MISSIONS: Mission[] = [
                       
                       "example": ["A school can securely erase and donate working laptops, then send unusable devices to an approved e-waste recycler.","Una scuola può cancellare in sicurezza e donare i portatili funzionanti, poi affidare i dispositivi inutilizzabili a un centro RAEE autorizzato."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain E-waste and Moore's law using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare RAEE e legge di Moore usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "Electronic waste should be collected and recycled responsibly to recover materials and reduce pollution. Moore's law describes a historical trend in the growth of transistor counts on integrated circuits; it is not a guarantee about every device's speed.",
-                          "I rifiuti elettronici devono essere raccolti e riciclati correttamente per recuperare materiali e ridurre l'inquinamento. La legge di Moore descrive una tendenza storica nella crescita del numero di transistor nei circuiti integrati; non garantisce la velocità di ogni dispositivo."
-                        ]
-                      },
+  "scenario": [
+    "A school replaces an old computer and hears that newer chips contain many more transistors. Explain both the responsible disposal decision and what Moore's law describes.",
+    "Una scuola sostituisce un vecchio computer e scopre che i chip più recenti contengono molti più transistor. Spiega sia la scelta corretta per lo smaltimento sia cosa descrive la legge di Moore."
+  ],
+  "steps": [
+    [
+      "1. Do not put electronic equipment in ordinary household waste; it may contain valuable and hazardous materials.",
+      "1. Non gettare le apparecchiature elettroniche nei rifiuti comuni: possono contenere materiali preziosi e pericolosi."
+    ],
+    [
+      "2. Reuse or donate working equipment where appropriate, and send unusable devices to an authorised e-waste collection or recycling service.",
+      "2. Riutilizza o dona le apparecchiature funzionanti quando possibile e porta quelle inutilizzabili a un servizio autorizzato di raccolta o riciclo RAEE."
+    ],
+    [
+      "3. Moore's law describes a historical trend in which transistor counts on integrated circuits grew rapidly, often described as doubling roughly every two years.",
+      "3. La legge di Moore descrive una tendenza storica per cui il numero di transistor nei circuiti integrati cresceva rapidamente, spesso con un raddoppio circa ogni due anni."
+    ],
+    [
+      "4. Do not treat it as a guarantee that every computer's speed doubles on a fixed schedule.",
+      "4. Non considerarla una garanzia che la velocità di ogni computer raddoppi secondo una scadenza fissa."
+    ]
+  ],
+  "answer": [
+    "Electronic devices should be reused where possible or taken to authorised e-waste collection and recycling. Moore's law describes a historical trend in transistor density, not a guaranteed speed increase for every device.",
+    "I dispositivi elettronici dovrebbero essere riutilizzati quando possibile o portati a un servizio autorizzato di raccolta e riciclo RAEE. La legge di Moore descrive una tendenza storica della densità dei transistor, non un aumento garantito della velocità di ogni dispositivo."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "Electronic waste should be collected and recycled responsibly to recover materials and reduce pollution. Moore's law describes a historical trend in the growth of transistor counts on integrated circuits; it is not a guarantee about every device's speed.",
-                            "I rifiuti elettronici devono essere raccolti e riciclati correttamente per recuperare materiali e ridurre l'inquinamento. La legge di Moore descrive una tendenza storica nella crescita del numero di transistor nei circuiti integrati; non garantisce la velocità di ogni dispositivo."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "Moore's law says every computer becomes twice as fast every two years.",
+      "La legge di Moore dice che ogni computer diventa due volte più veloce ogni due anni."
+    ],
+    "correction": [
+      "Moore's law concerns the historical growth in transistor counts on integrated circuits. It does not guarantee that overall computer performance doubles at that rate.",
+      "La legge di Moore riguarda la crescita storica del numero di transistor nei circuiti integrati. Non garantisce che le prestazioni complessive dei computer raddoppino a quel ritmo."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain E-waste and Moore's law in your own words and give one practical example.",
