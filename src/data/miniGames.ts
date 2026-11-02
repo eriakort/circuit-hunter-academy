@@ -31,11 +31,32 @@ function initPowercut(done){
     else renderScene();
   };
 }
-function initBoard(){
+function initBoard(done){
   const info=$('#boardInfo');
-  $$('.zone').forEach(z=>{
-    const show=()=>{ $$('.zone').forEach(o=>o.classList.remove('on')); z.classList.add('on'); const d=BOARD[z.dataset.k]; info.innerHTML=`<b class="step">${L(d.n)}</b><p style="margin-top:6px">${L(d.t)}</p>`; };
-    z.onclick=show; z.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} };
+  const explored=new Set<string>();
+  const total=$('.zone').length;
+  const updateProgress=()=>{
+    const count=explored.size;
+    const progress=L([`Components explored: ${count} / ${total}`,`Componenti esplorati: ${count} / ${total}`]);
+    info.setAttribute('aria-live','polite');
+    info.dataset.progress=String(count);
+    info.innerHTML+=`<p class="muted" style="margin-top:10px">${progress}</p>`;
+    if(count===total){
+      info.innerHTML+=`<p class="fb ok">${L(['Board scan complete! You can continue.','Esplorazione completata! Puoi continuare.'])}</p>`;
+      done();
+    }
+  };
+  $('.zone').forEach(z=>{
+    const show=()=>{
+      $('.zone').forEach(o=>o.classList.remove('on'));
+      z.classList.add('on');
+      const d=BOARD[z.dataset.k];
+      explored.add(z.dataset.k);
+      info.innerHTML=`<b class="step">${L(d.n)}</b><p style="margin-top:6px">${L(d.t)}</p>`;
+      updateProgress();
+    };
+    z.onclick=show;
+    z.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} };
   });
 }
 function stepper(host,steps,draw,done){
@@ -700,7 +721,7 @@ export function runMiniGame(
   if (type === "powercut") {
     initPowercut(done);
   } else if (type === "board") {
-    initBoard();
+    initBoard(done);
   } else if (MINI_GAMES[type]) {
     MINI_GAMES[type](sc, host, done);
   }
