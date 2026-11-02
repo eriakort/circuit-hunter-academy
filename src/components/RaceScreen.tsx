@@ -8,6 +8,27 @@ import { createClient } from '@supabase/supabase-js';
 const RACE_QTIME = 20000;
 const RACE_MAX = 8;
 
+const MAX_POINTS_PER_Q = 100;
+
+/* Everything received from other players is untrusted: coerce it to known shapes before storing or rendering. */
+const toNum = (v: unknown, max: number): number => {
+  const n = Number(v);
+  return Number.isFinite(n) ? Math.min(max, Math.max(0, Math.round(n))) : 0;
+};
+
+const cleanPlayer = (id: string, p: any): RacePlayer | null => {
+  if (!p || typeof p !== 'object') return null;
+  const name = String(p.name ?? '').slice(0, 20).trim();
+  if (!name) return null;
+  return { id, name, joinedAt: toNum(p.joinedAt, Number.MAX_SAFE_INTEGER), hue: toNum(p.hue, 359) };
+};
+
+const isRaceMission = (id: unknown): id is string =>
+  id === 'mix' || MISSIONS.some(m => m.id === id && Array.isArray(m.quiz) && m.quiz.length > 0);
+
+const hostIdOf = (players: Record<string, RacePlayer>): string | undefined =>
+  Object.values(players).sort((a, b) => a.joinedAt - b.joinedAt || (a.id < b.id ? -1 : 1))[0]?.id;
+
 const defaultSupabaseUrl = 'https://yhzefqoplunmseuwcwku.supabase.co';
 const defaultSupabaseKey =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InloemVmcW9wbHVubXNldXdjd2t1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyNDM0NTQsImV4cCI6MjEwODgxOTQ1NH0.5CWs0AtbFtrAYOYiPjgKfvWivAMPeXGXSzOblZMCS3c';
@@ -44,9 +65,18 @@ export const RaceScreen: React.FC = () => {
   const channelRef = useRef<any>(null);
   const timerIntervalRef = useRef<any>(null);
   const raceIdRef = useRef<string>('');
+  // Channel handlers are registered once per room, so they read live values from refs instead of stale state.
+  const playersRef = useRef<Record<string, RacePlayer>>({});
+  const meRef = useRef<RacePlayer | null>(null);
+  const qCountRef = useRef(0);
+
+  const updatePlayers = (next: Record<string, RacePlayer>) => {
+    playersRef.current = next;
+    setPlayers(next);
+  };
 
   // Sorted players by join order
-  const playerList = Object.values(players).sort((a, b) => a.joinedAt - b.joinedAt);
+  const playerList = Object.values(players).sort((a, b) => a.joinedAt - b.joinedAt || (a.id < b.id ? -1 : 1));
   const hostPlayer = playerList[0];
   const isHost = me && hostPlayer && me.id === hostPlayer.id;
 
@@ -79,6 +109,7 @@ export const RaceScreen: React.FC = () => {
     };
 
     setMe(myPlayer);
+    meRef.current = myPlayer;
     setCode(cleanCode);
 
     try {
@@ -90,10 +121,12 @@ export const RaceScreen: React.FC = () => {
       ch.on('presence', { event: 'sync' }, () => {
         const presenceState = ch.presenceState();
         const pMap: Record<string, RacePlayer> = { [myPlayer.id]: myPlayer };
-        Object.values(presenceState).forEach((arr: any) => {
-          if (arr && arr[0]) pMap[arr[0].id] = arr[0];
+        Object.entries(presenceState).forEach(([key, arr]: [string, any]) => {
+          if (key === myPlayer.id) return;
+          const clean = cleanPlayer(key, arr && arr[0]);
+          if (clean) pMap[key] = clean;
         });
-        setPlayers(pMap);
+        updatePlayers(pMap);
       });
 
       ch.on('broadcast', { event: 'start' }, ({ payload }) => {
@@ -104,8 +137,8 @@ export const RaceScreen: React.FC = () => {
         onProgressBroadcast(payload);
       });
 
-      ch.on('broadcast', { event: 'lobby' }, () => {
-        setRaceState('lobby');
+      ch.on('broadcast', { event: 'lobby' }, ({ payload }) => {
+        if (payload && payload.from === hostIdOf(playersRef.current)) setRaceState('lobby');
       });
 
       await new Promise<void>((resolve, reject) => {
@@ -130,20 +163,26 @@ export const RaceScreen: React.FC = () => {
       });
 
       channelRef.current = ch;
-      setPlayers({ [myPlayer.id]: myPlayer });
+      if (!playersRef.current[myPlayer.id]) updatePlayers({ [myPlayer.id]: myPlayer });
       setRaceState('lobby');
       setIsPending(false);
     } catch (e) {
       console.warn('Realtime error, using offline room fallback:', e);
-      setPlayers({ [myPlayer.id]: myPlayer });
+      updatePlayers({ [myPlayer.id]: myPlayer });
       setRaceState('lobby');
       setIsPending(false);
     }
   };
 
-  const onStartBroadcast = (payload: { missionId: string; seed: number; raceId: string }) => {
-    raceIdRef.current = payload.raceId;
-    const qs = buildRaceQuestions(payload.missionId, payload.seed);
+  const onStartBroadcast = (payload: any) => {
+    if (!payload || typeof payload !== 'object') return;
+    const { from, missionId, seed, raceId } = payload;
+    if (from !== hostIdOf(playersRef.current)) return;
+    if (typeof raceId !== 'string' || !raceId || raceId.length > 64) return;
+    if (!isRaceMission(missionId) || !Number.isInteger(seed)) return;
+    raceIdRef.current = raceId;
+    const qs = buildRaceQuestions(missionId, seed);
+    qCountRef.current = qs.length;
     setQuestions(qs);
     setCurrentQIndex(0);
     setScore(0);
@@ -167,15 +206,26 @@ export const RaceScreen: React.FC = () => {
     }, 900);
   };
 
-  const onProgressBroadcast = (p: RaceProgress) => {
-    if (p.raceId !== raceIdRef.current) return;
-    setProgress(prev => ({ ...prev, [p.id]: p }));
+  const onProgressBroadcast = (p: any) => {
+    if (!p || typeof p !== 'object' || p.raceId !== raceIdRef.current) return;
+    if (typeof p.id !== 'string' || p.id === meRef.current?.id || !playersRef.current[p.id]) return;
+    const n = qCountRef.current;
+    const step = toNum(p.step, n);
+    const clean: RaceProgress = {
+      id: p.id,
+      step,
+      score: toNum(p.score, step * MAX_POINTS_PER_Q),
+      time: toNum(p.time, Number.MAX_SAFE_INTEGER),
+      raceId: raceIdRef.current,
+      done: step >= n && p.done === true
+    };
+    setProgress(prev => ({ ...prev, [clean.id]: clean }));
   };
 
   const handleHostStart = () => {
     const seed = Math.floor(Math.random() * 1000000);
     const rId = safeId();
-    const payload = { missionId: selectedMission, seed, raceId: rId };
+    const payload = { from: me?.id, missionId: selectedMission, seed, raceId: rId };
 
     if (channelRef.current) {
       try {
@@ -296,13 +346,14 @@ export const RaceScreen: React.FC = () => {
     }
     setRaceState('home');
     setMe(null);
-    setPlayers({});
+    meRef.current = null;
+    updatePlayers({});
   };
 
   const handleBackToLobby = () => {
     if (channelRef.current && isHost) {
       try {
-        channelRef.current.send({ type: 'broadcast', event: 'lobby', payload: {} });
+        channelRef.current.send({ type: 'broadcast', event: 'lobby', payload: { from: me?.id } });
       } catch (e) {}
     }
     setRaceState('lobby');

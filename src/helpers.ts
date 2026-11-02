@@ -163,8 +163,10 @@ export const hueOf = (s: any): number => {
   return h;
 };
 
-export const raceAvatar = (name: string, hue: number, cls = 'avatar'): string =>
-  `<svg viewBox="0 0 64 64" class="${cls}" aria-hidden="true"><polygon points="32,2 59,17 59,47 32,62 5,47 5,17" fill="hsl(${hue} 55% 22%)" stroke="hsl(${hue} 90% 65%)" stroke-width="4"/><text x="32" y="42" text-anchor="middle" font-family="Dela Gothic One, Arial Black, sans-serif" font-size="26" fill="hsl(${hue} 90% 70%)">${esc((name || '?').trim().charAt(0).toUpperCase())}</text></svg>`;
+export const raceAvatar = (name: string, hue: number, cls = 'avatar'): string => {
+  const h = Number.isFinite(Number(hue)) ? Math.round(Number(hue)) : 0;
+  return `<svg viewBox="0 0 64 64" class="${esc(cls)}" aria-hidden="true"><polygon points="32,2 59,17 59,47 32,62 5,47 5,17" fill="hsl(${h} 55% 22%)" stroke="hsl(${h} 90% 65%)" stroke-width="4"/><text x="32" y="42" text-anchor="middle" font-family="Dela Gothic One, Arial Black, sans-serif" font-size="26" fill="hsl(${h} 90% 70%)">${esc((name || '?').trim().charAt(0).toUpperCase())}</text></svg>`;
+};
 
 export const escH = (s: any): string =>
   String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
