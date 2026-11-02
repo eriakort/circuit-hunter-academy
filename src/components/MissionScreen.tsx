@@ -41,7 +41,7 @@ export const MissionScreen: React.FC = () => {
     'vectors',
     'torque',
     'fluids'
-  ].includes(sc?.type || '') || !!sc?.needDone;
+  ].includes(sc?.type || '') || sc?.init === 'board' || !!sc?.needDone;
 
   const isGated = isGatedType && inMissionFirstTime();
 
