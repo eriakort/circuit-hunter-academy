@@ -2294,6 +2294,8 @@ export const MISSIONS: Mission[] = [
                       ],
                       "visualKey": "ipos"
                 ,
+                      
+                      "example": ["When you search for a video: the keyboard sends your query, the CPU and app process it, the screen displays results, and the browser may store history.","Quando cerchi un video: la tastiera invia la ricerca, CPU e app la elaborano, lo schermo mostra i risultati e il browser può salvare la cronologia."],
                       "workedExample": {
                         "scenario": [
                           "A student is asked to explain The computer cycle using a familiar computer task. What should they examine?",
@@ -2352,6 +2354,8 @@ export const MISSIONS: Mission[] = [
                       ],
                       "visualKey": "hwsw"
                 ,
+                      
+                      "example": ["A laptop's keyboard is hardware; the operating system and browser running on it are software.","La tastiera di un portatile è hardware; il sistema operativo e il browser che vi funzionano sono software."],
                       "workedExample": {
                         "scenario": [
                           "A student is asked to explain Hardware and software using a familiar computer task. What should they examine?",
@@ -2410,6 +2414,8 @@ export const MISSIONS: Mission[] = [
                       ],
                       "visualKey": "vonneumann"
                 ,
+                      
+                      "example": ["A calculator program's instructions and values are held in main memory while the CPU fetches and executes the instructions.","Le istruzioni e i valori di un programma calcolatrice sono conservati nella memoria centrale mentre la CPU li preleva ed esegue."],
                       "workedExample": {
                         "scenario": [
                           "A student is asked to explain The von Neumann architecture using a familiar computer task. What should they examine?",
@@ -2863,6 +2869,8 @@ export const MISSIONS: Mission[] = [
                       ],
                       "visualKey": "board"
                 ,
+                      
+                      "example": ["A compatible motherboard provides the CPU socket, RAM slots and connectors for storage and expansion cards.","Una scheda madre compatibile offre il socket della CPU, gli slot RAM e i connettori per archiviazione e schede di espansione."],
                       "workedExample": {
                         "scenario": [
                           "A student is asked to explain The motherboard using a familiar computer task. What should they examine?",
@@ -2921,6 +2929,8 @@ export const MISSIONS: Mission[] = [
                       ],
                       "visualKey": "psu"
                 ,
+                      
+                      "example": ["A desktop PSU converts mains AC into regulated DC outputs such as 12 V, 5 V and 3.3 V for components.","Un alimentatore desktop converte la corrente alternata di rete in uscite continue regolate, ad esempio 12 V, 5 V e 3,3 V, per i componenti."],
                       "workedExample": {
                         "scenario": [
                           "A student is asked to explain The power supply unit using a familiar computer task. What should they examine?",
@@ -2979,6 +2989,8 @@ export const MISSIONS: Mission[] = [
                       ],
                       "visualKey": "cpu"
                 ,
+                      
+                      "example": ["For an ADD instruction, the CPU fetches the instruction, decodes it and uses the ALU to add the values.","Per un'istruzione ADD, la CPU preleva l'istruzione, la decodifica e usa l'ALU per sommare i valori."],
                       "workedExample": {
                         "scenario": [
                           "A student is asked to explain The CPU and instruction cycle using a familiar computer task. What should they examine?",
@@ -3037,6 +3049,8 @@ export const MISSIONS: Mission[] = [
                       ],
                       "visualKey": "cores"
                 ,
+                      
+                      "example": ["Video encoding may benefit from multiple cores, while a lightly threaded task may depend more on single-core performance.","La codifica video può beneficiare di più core, mentre un'attività con pochi thread può dipendere maggiormente dalle prestazioni di un singolo core."],
                       "workedExample": {
                         "scenario": [
                           "A student is asked to explain Cores and clock speed using a familiar computer task. What should they examine?",
@@ -3412,6 +3426,8 @@ export const MISSIONS: Mission[] = [
                       ],
                       "visualKey": "ramstick"
                 ,
+                      
+                      "example": ["A document you are editing is held in working memory; saving it writes a persistent copy to an SSD or HDD.","Un documento che stai modificando è nella memoria di lavoro; salvarlo crea una copia persistente su SSD o HDD."],
                       "workedExample": {
                         "scenario": [
                           "A student is asked to explain RAM and volatility using a familiar computer task. What should they examine?",
@@ -3470,6 +3486,8 @@ export const MISSIONS: Mission[] = [
                       ],
                       "visualKey": "pyramid"
                 ,
+                      
+                      "example": ["A CPU may find recently used data in cache; firmware stored in non-volatile memory helps a computer start.","La CPU può trovare nella cache dati usati di recente; il firmware conservato in memoria non volatile aiuta il computer ad avviarsi."],
                       "workedExample": {
                         "scenario": [
                           "A student is asked to explain Cache and ROM using a familiar computer task. What should they examine?",
@@ -3528,6 +3546,8 @@ export const MISSIONS: Mission[] = [
                       ],
                       "visualKey": "buses"
                 ,
+                      
+                      "example": ["When reading memory, the address bus identifies the location, control signals request a read, and the data bus carries the value back.","Durante una lettura della memoria, il bus indirizzi identifica la posizione, i segnali di controllo richiedono la lettura e il bus dati riporta il valore."],
                       "workedExample": {
                         "scenario": [
                           "A student is asked to explain System buses using a familiar computer task. What should they examine?",
@@ -3587,6 +3607,8 @@ export const MISSIONS: Mission[] = [
                       ],
                       "visualKey": "hdd"
                 ,
+                      
+                      "example": ["An SSD keeps your photos after shutdown; an HDD can also retain them using magnetic platters.","Un SSD conserva le foto dopo lo spegnimento; anche un HDD può conservarle usando piatti magnetici."],
                       "workedExample": {
                         "scenario": [
                           "A student is asked to explain Mass storage using a familiar computer task. What should they examine?",
@@ -4062,7 +4084,9 @@ export const MISSIONS: Mission[] = [
                             "Explain at a basic level how a capacitive touchscreen detects a touch.",
                             "Spiegare a livello introduttivo come un touchscreen capacitivo rileva il tocco."
                       ]
-                },
+                
+                      "example": ["A finger changes the capacitance at a screen location; the controller interprets the change as a touch.","Un dito modifica la capacità elettrica in un punto dello schermo; il controller interpreta la variazione come un tocco."],
+                      },
                 {
                       "id": "responsible-technology",
                       "description": [
@@ -4088,6 +4112,8 @@ export const MISSIONS: Mission[] = [
                       ],
                       "visualKey": "ioflow"
                 ,
+                      
+                      "example": ["A headset microphone sends sound into the computer (input), while its headphones play sound from the computer (output).","Il microfono di una cuffia invia audio al computer (input), mentre gli auricolari riproducono l'audio del computer (output)."],
                       "workedExample": {
                         "scenario": [
                           "A student is asked to explain Input and output peripherals using a familiar computer task. What should they examine?",
@@ -4204,6 +4230,8 @@ export const MISSIONS: Mission[] = [
                       ],
                       "visualKey": "earth"
                 ,
+                      
+                      "example": ["A school can securely erase and donate working laptops, then send unusable devices to an approved e-waste recycler.","Una scuola può cancellare in sicurezza e donare i portatili funzionanti, poi affidare i dispositivi inutilizzabili a un centro RAEE autorizzato."],
                       "workedExample": {
                         "scenario": [
                           "A student is asked to explain E-waste and Moore's law using a familiar computer task. What should they examine?",
