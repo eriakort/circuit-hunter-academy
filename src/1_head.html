@@ -431,4 +431,12 @@ textarea.out{font:600 15px ui-monospace,Menlo,monospace;width:min(360px,100%);mi
 .subjcard h2{margin:2px 0 0;font-size:20px}
 .subjcard p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
 .subjcard .pg{color:var(--ember);font-size:12.5px;font-weight:600}
+/* physics mini-games */
+.vwrap,.beamwrap,.tank{width:100%;margin:0 auto}
+.vwrap{max-width:380px}.beamwrap{max-width:460px}.tank{max-width:300px}
+.vgrid,.beam,.tank svg{width:100%;height:auto;display:block}
+.vnode,.rpos,.pdot{fill:rgba(255,255,255,.05);stroke:var(--muted);stroke-width:1.5;cursor:pointer;transition:fill .12s,stroke .12s}
+.vnode:hover,.rpos:hover,.pdot:hover{fill:rgba(69,216,255,.32);stroke:var(--data)}
+.vnode.hit{fill:var(--data);stroke:var(--data)}
+.rpos.on,.pdot.on{fill:var(--good);stroke:var(--good)}
 </style>

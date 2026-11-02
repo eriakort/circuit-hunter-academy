@@ -53,6 +53,10 @@ const lang=process.argv[2]||'en';
      if(sc.type==='predict'){ for(const q of sc.rounds){ document.querySelector('#po').value=L(q.out); clk('#pk'); clk('#pn'); } }
      if(sc.type==='gates'){ for(let t=0;t<5;t++){ for(let k=0;k<6 && !document.querySelector('#gF.ok');k++){ const a=document.querySelector('#gA:not([disabled])'), bb=document.querySelector('#gB:not([disabled])'); if(k%2===0&&bb) bb.click(); else if(a) a.click(); else if(bb) bb.click(); } clk('#gn'); } }
      if(sc.type==='stackq'){ for(let r=0;r<5;r++){ for(const b of [...document.querySelectorAll('[data-c]')]){ if(document.querySelector('#qF.ok')) break; b.click(); } clk('#qn'); } }
+     const svgclk=s=>{const e=document.querySelector(s); if(e) e.dispatchEvent(new MouseEvent('click',{bubbles:true})); return !!e;};
+     if(sc.type==='vectors'){ for(const rd of sc.rounds){ const T=(sc.mode==='components')?[[rd.v[0],0],[0,rd.v[1]]]:[[rd.a[0]+rd.b[0],rd.a[1]+rd.b[1]]]; for(const t of T){ svgclk(`.vnode[data-x="${t[0]}"][data-y="${t[1]}"]`); } clk('#vN'); } }
+     if(sc.type==='torque'){ for(const rd of sc.rounds){ const dr=rd.wl*rd.dl/rd.wr; svgclk(`.rpos[data-d="${dr}"]`); clk('#tN'); } }
+     if(sc.type==='fluids'){ for(const rd of sc.rounds){ if(sc.mode==='pressure'){ const md=Math.max(...rd.points.map(p=>p.depth)); svgclk(`.pdot[data-depth="${md}"]`); } else { const fl=(rd.m/rd.v)<1; clk(`.fchoice[data-f="${fl?1:0}"]`); } clk('#flN'); } }
    });
    const dis=await p.evaluate(()=>document.querySelector('#next').disabled);
    if(dis){console.log('STUCK',m,await p.evaluate(()=>[MISSIONS[CUR.m].id,CUR.s,MISSIONS[CUR.m].scenes[CUR.s].type, (document.querySelector('.fb')||{}).textContent]));break;}

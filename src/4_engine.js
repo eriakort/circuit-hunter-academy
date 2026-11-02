@@ -128,7 +128,7 @@ function renderScene(){
   const M=MISSIONS[CUR.m], sc=M.scenes[CUR.s];
   const head=`<div class="mhead"><div><div class="eyebrow">${L(U.arc)} ${M.arc+1} · § ${M.sec} · pp. ${M.pages}</div><h2>${L(M.title)}</h2></div><div class="dots" aria-label="${CUR.s+1} / ${M.scenes.length}">${M.scenes.map((_,i)=>`<i class="${i<CUR.s?'done':i===CUR.s?'now':''}"></i>`).join('')}</div></div>`;
   if(sc.type==='battle'){VIEW='battle';app.innerHTML=head+'<div id="bt" style="display:flex;flex-direction:column;gap:14px"></div>';toTop();startBattle(M,$('#bt'));return;}
-  const gated=(['order','sort','build','fde','journey','robot','bits','ascii','rgb','pwd','format','sheet','trace','predict','gates','stackq'].includes(sc.type)||sc.needDone)&&inMissionFirstTime();
+  const gated=(['order','sort','build','fde','journey','robot','bits','ascii','rgb','pwd','format','sheet','trace','predict','gates','stackq','vectors','torque','fluids'].includes(sc.type)||sc.needDone)&&inMissionFirstTime();
   let body='';
   if(!sc.type){
     let v = sc.vis==='demon' ? `<div style="display:flex;justify-content:center"><div style="width:min(220px,60%)">${demonSVG(M.hue,M.horns,M.eyes,'dia')}</div></div>` : sc.vis ? VIS[sc.vis]() : '';
@@ -141,7 +141,7 @@ function renderScene(){
   app.innerHTML=head+body+`<div class="nav"><button class="btn ghost" id="back">${CUR.s?L(U.back):L(U.missions)}</button><button class="btn" id="next" ${gated?'disabled':''}>${nxt&&nxt.type==='battle'?L(U.fight):L(U.cont)}</button></div>`;
   const done=()=>{$('#next').disabled=false;};
   const gm=$('#gm');
-  const G={order:gameOrder,sort:gameSort,build:gameBuild,fde:sceneFDE,journey:sceneJourney,robot:gameRobot,bits:gameBits,ascii:gameAscii,rgb:gameRGB,pwd:gamePwd,format:gameFormat,sheet:gameSheet,trace:gameTrace,predict:gamePredict,gates:gameGates,stackq:gameStackQ};
+  const G={order:gameOrder,sort:gameSort,build:gameBuild,fde:sceneFDE,journey:sceneJourney,robot:gameRobot,bits:gameBits,ascii:gameAscii,rgb:gameRGB,pwd:gamePwd,format:gameFormat,sheet:gameSheet,trace:gameTrace,predict:gamePredict,gates:gameGates,stackq:gameStackQ,vectors:gameVectors,torque:gameTorque,fluids:gameFluids};
   if(G[sc.type]) G[sc.type](sc,gm,done);
   if(sc.init==='powercut') initPowercut(done);
   if(sc.init==='board') initBoard();

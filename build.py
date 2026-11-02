@@ -14,8 +14,10 @@ ORDER = [
     "3d_ch6_10.js",     # units + missions ch. 6-10
     "3e_ch11_16.js",    # missions ch. 11-16 + codex additions
     "3f_physics.js",    # PHYSICS subject: unit + ch.1 mission (Il Walker)
+    "3g_physics2.js",   # PHYSICS content: ch.1-5 missions, visuals, codex
     "4_engine.js",      # state, map, scenes, mini-games, battles, dojo, codex
     "4b_games2.js",     # mini-games for ch. 6-16
+    "4d_physgames.js",  # PHYSICS mini-games: vectors, torque, fluids
     "4c_race.js",       # multiplayer race mode (Supabase Realtime)
     "5_end.js",         # start-up + </script>
     "6_close.html",     # </body></html>

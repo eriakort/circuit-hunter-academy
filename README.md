@@ -2,19 +2,33 @@
 
 [![Play now](https://img.shields.io/badge/%E2%96%B6%20Play%20now-GitHub%20Pages-ff6a3d?style=for-the-badge)](https://eriakort.github.io/circuit-hunter-academy/)
 
-An anime-style study game for a grade 9 computer science course. The player is a student hunter at an original academy who learns how computers work and turns each topic into a "technique" to defeat Glitch Demons.
+An anime-style study game for grade 9 (Italian *prima*). The player is a student hunter at an original academy who turns each school topic into a "technique" to defeat Glitch Demons. On opening the game you first **pick a subject** — there is no default subject page.
 
-The missions follow the Italian textbook *L'informatica e il computer* chapter by chapter, and the whole game can be switched between **English and Italian** at any time (EN / IT button). Every key term is shown with its translation in the other language.
+The whole game can be switched between **English and Italian** at any time (EN / IT button), and every key term is shown with its translation in the other language. Your hunter name and XP are shared across subjects; progress and the certificate are tracked per subject.
 
-## What's inside
+## Subjects
 
-**3 units · 16 chapters · 44 missions**, each with a lesson, an animated diagram, a mini-game and a quiz battle.
+### Computer Science — 3 units · 16 chapters · 44 missions
+
+Follows the Italian textbook *L'informatica e il computer* chapter by chapter.
 
 | Unit | Chapters |
 |---|---|
 | 1 · L'informatica e il computer | 1 Algorithms · 2 Data encoding · 3 Hardware · 4 Operating systems · 5 Networks & Internet · 6 Security |
 | 2 · Lavorare con le applicazioni | 7 Cloud · 8 Word processing · 9 Spreadsheets · 10 Presentations |
 | 3 · Iniziare a programmare | 11 Flowcharts · 12 Python basics · 13 Selection · 14 Loops · 15 Strings, lists & files · 16 Functions |
+
+### Physics — 1 unit · 5 chapters · 12 missions
+
+Follows *Il Walker. Corso di fisica. Per il primo biennio* (chapters 1–5).
+
+| Unit | Chapters |
+|---|---|
+| Fisica · Misura e meccanica | 1 Le grandezze fisiche · 2 Misure e rappresentazioni · 3 I vettori e le forze · 4 L'equilibrio dei solidi · 5 L'equilibrio dei fluidi |
+
+Physics adds its own mini-games: building a **vector resultant** and resolving **components** on a grid, balancing a **lever** by matching moments, and reading **buoyancy** (float / sink) and **hydrostatic pressure** with depth.
+
+Each mission in both subjects has a lesson, an animated diagram, a mini-game and a quiz battle.
 
 Mini-games include a robot you program with commands, binary lamps, an ASCII decoder, an RGB colour mixer, a fetch–decode–execute stepper, building a PC, a live spreadsheet that evaluates real formulas (English and Italian function names), a formatting challenge, trace tables, predict-the-output Python puzzles, logic gates and a stack/queue game.
 
@@ -72,7 +86,7 @@ python3 build.py
 
 ```bash
 npm i playwright
-node tests/playthrough.js en      # plays all 44 missions in English
+node tests/playthrough.js en      # plays all 56 missions in English
 node tests/playthrough.js it      # ...and in Italian
 node tests/check_python.js > /tmp/rounds.json && python3 tests/check_python.py /tmp/rounds.json
                                    # runs every Python puzzle with real Python
