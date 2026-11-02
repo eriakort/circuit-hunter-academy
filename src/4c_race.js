@@ -10,6 +10,25 @@ const raceCfg=()=>{const c=window.RACE_CONFIG||{}; return c.url&&c.anonKey&&!/YO
 function rng(seed){let a=seed>>>0;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
 function sshuffle(arr,r){for(let i=arr.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
 const hueOf=s=>{let h=0;for(const c of String(s))h=(h*31+c.charCodeAt(0))%360;return h;};
+/* Everything received from other players is untrusted: coerce it to known shapes before it is stored or rendered. */
+const raceNum=(v,max)=>{v=Number(v);return Number.isFinite(v)?Math.min(max,Math.max(0,Math.round(v))):0;};
+function cleanPlayer(p){
+  if(!p||typeof p!=='object') return null;
+  const name=String(p.name==null?'':p.name).slice(0,20).trim(); if(!name) return null;
+  return {name,joinedAt:raceNum(p.joinedAt,Number.MAX_SAFE_INTEGER),hue:raceNum(p.hue,359)};
+}
+const raceMission=id=>id==='mix'||MISSIONS.some(m=>m.id===id&&Array.isArray(m.quiz)&&m.quiz.length>0);
+function cleanStart(p){
+  if(!p||typeof p!=='object'||p.from!==raceHost()) return null;
+  if(typeof p.raceId!=='string'||!p.raceId||p.raceId.length>16||!raceMission(p.missionId)||!Number.isInteger(p.seed)) return null;
+  return {raceId:p.raceId,missionId:p.missionId,seed:p.seed};
+}
+function cleanProgress(p){
+  if(!p||typeof p!=='object'||typeof p.id!=='string'||p.id===RACE.me.id||!RACE.players[p.id]) return null;
+  const pl=RACE.players[p.id], n=RACE.run.qs.length;
+  const idx=raceNum(p.idx,n), correct=raceNum(p.correct,idx), score=raceNum(p.score,correct*150), done=idx>=n&&p.done===true;
+  return {id:p.id,name:pl.name,hue:pl.hue,raceId:RACE.run.raceId,idx,score,correct,done,finishMs:done?raceNum(p.finishMs,1e9)||null:null};
+}
 const raceAvatar=(name,hue,cls='avatar')=>`<svg viewBox="0 0 64 64" class="${cls}" aria-hidden="true"><polygon points="32,2 59,17 59,47 32,62 5,47 5,17" fill="hsl(${hue} 55% 22%)" stroke="hsl(${hue} 90% 65%)" stroke-width="4"/><text x="32" y="42" text-anchor="middle" font-family="Dela Gothic One, Arial Black, sans-serif" font-size="26" fill="hsl(${hue} 90% 70%)">${esc((name||'?').trim().charAt(0).toUpperCase())}</text></svg>`;
 function raceQuestions(missionId,seed){
   const r=rng(seed);
@@ -42,19 +61,21 @@ const iAmHost=()=>RACE.me&&raceHost()===RACE.me.id;
 
 /* ---- networking events ---- */
 function onPresence(ps){
-  RACE.players=ps;
+  const clean={}; Object.entries(ps||{}).forEach(([k,v])=>{const c=cleanPlayer(v); if(c) clean[k]=c;});
+  RACE.players=clean;
   const list=racePlayers();
   if(list.length>RACE_MAX&&list.findIndex(p=>p.id===RACE.me.id)>=RACE_MAX){ raceLeave(L(['That room is full (8 players).','La stanza è piena (8 giocatori).'])); return; }
   if(VIEW!=='race') return;
   if(RACE.state==='running'||RACE.state==='done') updateTrack(); else renderRace();
 }
 function onMsg(ev,p){
-  if(ev==='start') beginRace(p);
+  if(ev==='start'){ const s=cleanStart(p); if(s) beginRace(s); }
   else if(ev==='progress'){
-    if(!RACE.run||p.raceId!==RACE.run.raceId){ if(RACE.state==='lobby'&&!RACE.busy){RACE.busy=true; if(VIEW==='race') renderRace();} return; }
-    RACE.progress[p.id]=p; updateTrack(); checkAllDone();
+    if(!RACE.run||!p||p.raceId!==RACE.run.raceId){ if(RACE.state==='lobby'&&!RACE.busy){RACE.busy=true; if(VIEW==='race') renderRace();} return; }
+    const c=cleanProgress(p); if(!c) return;
+    RACE.progress[c.id]=c; updateTrack(); checkAllDone();
   }
-  else if(ev==='lobby'){ toLobby(); }
+  else if(ev==='lobby'){ if(p&&p.from===raceHost()) toLobby(); }
 }
 
 /* ---- actions ---- */
@@ -78,7 +99,7 @@ function raceLeave(msg){
 function raceStart(){
   if(!iAmHost()) return;
   const mid=$('#rmis').value;
-  const p={raceId:Math.random().toString(36).slice(2,9),missionId:mid,seed:Math.floor(Math.random()*2**31)};
+  const p={from:RACE.me.id,raceId:Math.random().toString(36).slice(2,9),missionId:mid,seed:Math.floor(Math.random()*2**31)};
   RACE.net.send('start',p); beginRace(p);
 }
 function beginRace(p){
@@ -194,7 +215,7 @@ function renderRace(){
   on('#rcreate',()=>{ const A='ABCDEFGHJKMNPQRSTUVWXYZ23456789'; let c=''; for(let i=0;i<4;i++) c+=A[Math.floor(Math.random()*A.length)]; raceJoin(c,true); });
   const jf=$('#rjoinf'); if(jf) jf.onsubmit=e=>{e.preventDefault(); raceJoin($('#rcode').value,false);};
   on('#rgo',raceStart);
-  on('#rlobby',()=>{ RACE.net&&RACE.net.send('lobby',{}); toLobby(); });
+  on('#rlobby',()=>{ RACE.net&&RACE.net.send('lobby',{from:RACE.me.id}); toLobby(); });
   $$('.opt[data-k]').forEach(b=>b.onclick=()=>raceAnswer(+b.dataset.k));
   pauseSmil();
 }

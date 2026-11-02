@@ -39,6 +39,15 @@ const MOCK=`window.RACE_TRANSPORT=async(code,me,onPresence,onMsg)=>{
   await A.screenshot({path:path.join(require('os').tmpdir(),'race-podium.png'),fullPage:true});
   await A.click('#rlobby'); await Bp.waitForSelector('.race-code'); console.log('back to lobby ok');
   await Bp.click('#rleave'); await A.waitForFunction(()=>document.querySelectorAll('.pl').length===1); console.log('leave ok');
+  const rogue=await A.evaluate(async code=>{
+    const bc=new BroadcastChannel('mock-race-'+code), wait=ms=>new Promise(r=>setTimeout(r,ms));
+    bc.postMessage({t:'join',me:{id:'evil',name:'Eve<b>x</b>',joinedAt:Date.now()+1e6,hue:'0"/><img src=x onerror="window.PWNED=1">'}}); await wait(200);
+    bc.postMessage({ev:'start',payload:{from:'evil',raceId:'r1',missionId:MISSIONS[0].id,seed:1}});
+    bc.postMessage({ev:'start',payload:{from:RACE.me.id,raceId:'r2',missionId:'nope',seed:1}});
+    bc.postMessage({ev:'lobby',payload:{from:'evil'}}); await wait(400); bc.close();
+    return {pwned:!!window.PWNED,html:!!document.querySelector('.pl img, .pl b b'),players:document.querySelectorAll('.pl').length,state:RACE.state,hue:RACE.players.evil&&RACE.players.evil.hue};
+  },code);
+  console.log('rogue peer',rogue); if(rogue.pwned||rogue.html||rogue.players!==2||rogue.state!=='lobby'||rogue.hue!==0) errs.push('rogue peer: '+JSON.stringify(rogue));
   await A.click('#lIT'); console.log('IT lobby text:',(await A.textContent('.eyebrow')).trim());
   console.log('ERR',errs); await b.close(); srv.kill(); if(errs.length) process.exit(1);
 })().catch(e=>{console.error(e);process.exit(1);});
