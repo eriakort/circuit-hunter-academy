@@ -2,6 +2,25 @@
    Phase 0: the physics unit + Chapter 1, one full mission, to prove the
    subject pipeline end to end. Chapters 1–5 content follows. */
 
+/* ---- physics crest for the map hero (mirrors VIS.title, atom emblem) ---- */
+VIS.titlePhys = () => {
+  let lines=''; for(let k=0;k<28;k++){const a=k/28*Math.PI*2; lines+=`<line x1="${320+Math.cos(a)*80}" y1="${115+Math.sin(a)*80}" x2="${320+Math.cos(a)*420}" y2="${115+Math.sin(a)*420}" stroke="${k%2?'#ff6a3d':'#ff8fc0'}" stroke-opacity=".16" stroke-width="${k%3+1}"/>`;}
+  let hex=''; for(let i=0;i<6;i++){const a=Math.PI/3*i-Math.PI/2; hex+=`${320+Math.cos(a)*72},${115+Math.sin(a)*72} `;}
+  const pt=(t,rot)=>{const x=52*Math.cos(t), y=20*Math.sin(t), r=rot*Math.PI/180; return [320+x*Math.cos(r)-y*Math.sin(r), 115+x*Math.sin(r)+y*Math.cos(r)];};
+  const orbit=rot=>`<ellipse cx="320" cy="115" rx="52" ry="20" fill="none" stroke="url(#phcrest)" stroke-width="3" transform="rotate(${rot} 320 115)"/>`;
+  const e1=pt(0,32), e2=pt(0,-32);
+  return `<svg viewBox="0 0 640 230" class="dia" role="img" aria-label="Circuit Hunter Academy — Physics">
+   <defs><linearGradient id="phcrest" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9f45"/><stop offset="1" stop-color="#ff5d8f"/></linearGradient></defs>
+   ${lines}
+   <polygon points="${hex}" fill="#171935" stroke="#ff6a3d" stroke-width="4"/>
+   ${orbit(32)}${orbit(-32)}
+   <circle cx="320" cy="115" r="11" fill="url(#phcrest)"/>
+   <circle cx="${e1[0].toFixed(1)}" cy="${e1[1].toFixed(1)}" r="6" fill="#ffd166"/>
+   <circle cx="${e2[0].toFixed(1)}" cy="${e2[1].toFixed(1)}" r="6" fill="#ffd166"/>
+   <path d="M262 175 L380 55" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M262 175 L380 55" stroke="#ff6a3d" stroke-width="2" stroke-linecap="round" class="blink"/>
+   <text x="320" y="218" text-anchor="middle" class="lbl">CIRCUIT · HUNTER · ACADEMY</text></svg>`;
+};
+
 /* ---- a physics visual: the SI base units ---- */
 VIS.phQuant = () => `<svg viewBox="0 0 320 180" role="img" aria-label="SI base units">
   <defs><linearGradient id="pq" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9f45"/><stop offset="1" stop-color="#ff5d8f"/></linearGradient></defs>
