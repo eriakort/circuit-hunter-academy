@@ -1,6 +1,6 @@
 # Circuit Hunter Academy (React + TypeScript + Vite)
 
-[![Play now](https://img.shields.io/badge/%E2%96%B6%20Play%20now-Circuit%20Hunter-ff6a3d?style=for-the-badge)](#)
+[![Play now](https://img.shields.io/badge/%E2%96%B6%20Play%20now-Circuit%20Hunter-ff6a3d?style=for-the-badge)](https://eriakort.github.io/circuit-hunter-academy/)
 
 An anime-style study game for grade 9 (Italian *prima*), rewritten as a modern **React 19 + TypeScript + Vite** application. The player is a student hunter at an original academy who turns each school topic into a "technique" to defeat Glitch Demons.
 
@@ -66,6 +66,10 @@ npm run build
 # Run unit tests
 npx tsx tests/helpers.test.js
 ```
+
+### Deploy
+
+GitHub Pages is built by `.github/workflows/deploy.yml`: every push to `main` runs `bun install --frozen-lockfile && bun run build` and publishes `dist/`. In repo **Settings → Pages**, **Source** must be **GitHub Actions** (serving the branch root directly does not work, because the root `index.html` loads `/src/main.tsx`, which only Vite can run).
 
 ---
 
