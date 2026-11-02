@@ -94,7 +94,7 @@ function sceneJourney(sc,host,done){
     {id:'speaker',label:['Speakers','Altoparlanti'],detail:['Play recorded sound.','Riproduci il suono registrato.']},
     {id:'printer',label:['Printer','Stampante'],detail:['Produce a paper copy.','Stampa una copia su carta.']}
   ];
-  const expectedOutput=()=>selectedInput==='microphone'?'speaker':'monitor';
+  const expectedOutput=()=>selectedInput==='microphone'?['speaker']:selectedInput==='keyboard'?['monitor','printer']:['monitor'];
   const setNodeLabel=(id,value)=>{
     const node=$('#jn-'+id,host);
     if(node){const labels=node.querySelectorAll('text');const label=id==='mon'?labels[labels.length-1]:labels[0];if(label)label.textContent=value;}
@@ -168,7 +168,7 @@ function sceneJourney(sc,host,done){
       wrap.classList.add('journey-task');
       const fb=feedback(wrap,L(['Choose the device that presents your result.','Scegli il dispositivo che presenta il risultato.']));
       choiceGroup(wrap,outputs.map(x=>({id:x.id,label:L(x.label)+' — '+L(x.detail)})),id=>{
-        if(id===expected){selectedOutput=id;setNodeLabel('mon',L(outputs.find(x=>x.id===id).label));fb.className='fb ok';fb.textContent=L(['Correct! Output devices present information from the computer.','Corretto! Le periferiche di output presentano le informazioni elaborate dal computer.']);const next=button(L(['Decide whether to save','Decidi se salvare']),()=>{stage=4;draw();},'cyan');wrap.appendChild(next);next.focus();}
+        if(expected.includes(id)){selectedOutput=id;setNodeLabel('mon',L(outputs.find(x=>x.id===id).label));fb.className='fb ok';fb.textContent=L(['Correct! Output devices present information from the computer.','Corretto! Le periferiche di output presentano le informazioni elaborate dal computer.']);const next=button(L(['Decide whether to save','Decidi se salvare']),()=>{stage=4;draw();},'cyan');wrap.appendChild(next);next.focus();}
         else{fb.className='fb no';fb.textContent=L(['Try again. Match the output to the information you created.','Riprova. Abbina l’output alle informazioni che hai creato.']);}
       });
     }else if(stage===4){
