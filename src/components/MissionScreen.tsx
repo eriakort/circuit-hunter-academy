@@ -153,24 +153,24 @@ export const MissionScreen: React.FC = () => {
           </div>
         </>
       ) : (
-        <>
-          {guideText && (
-            <div className="dialog">
-              <div className="avatar" aria-hidden="true" dangerouslySetInnerHTML={{ __html: SENSEI }} />
-              <div className="bubble">
-                <div className="who">Sensei Kaito</div>
-                <div dangerouslySetInnerHTML={{ __html: L(guideText, lang) }} />
-              </div>
-            </div>
-          )}
-
+        <div className="mission-interactive-flow">
           <div
             key={`scene-game-${currentSceneIndex}-${sc.type || sc.init || 'interactive'}`}
             className="visual"
             id="gm"
             ref={gameContainerRef}
           />
-        </>
+
+          {guideText && (
+            <section className="mission-guide" aria-label="Sensei Kaito lesson guidance">
+              <div className="avatar" aria-hidden="true" dangerouslySetInnerHTML={{ __html: SENSEI }} />
+              <div className="bubble">
+                <div className="who">Sensei Kaito</div>
+                <div dangerouslySetInnerHTML={{ __html: L(guideText, lang) }} />
+              </div>
+            </section>
+          )}
+        </div>
       )}
 
       <div className="nav">
