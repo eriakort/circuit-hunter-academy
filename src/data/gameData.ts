@@ -2359,6 +2359,104 @@ export const MISSIONS: Mission[] = [
       "Independent challenge: computer systems",
       "Sfida autonoma: sistemi informatici"
     ],
+          "knowledgeCheck": [
+            {
+              "q": [
+                "A computer receives typed words and shows a result. Which component processes the instructions?",
+                "Un computer riceve parole digitate e mostra un risultato. Quale componente elabora le istruzioni?"
+              ],
+              "a": [
+                [
+                  "CPU",
+                  "CPU"
+                ],
+                [
+                  "Monitor",
+                  "Monitor"
+                ],
+                [
+                  "Keyboard",
+                  "Tastiera"
+                ]
+              ],
+              "why": [
+                "The CPU processes instructions.",
+                "La CPU elabora le istruzioni."
+              ]
+            },
+            {
+              "q": [
+                "Which item is software?",
+                "Quale elemento è software?"
+              ],
+              "a": [
+                [
+                  "A web browser",
+                  "Un browser web"
+                ],
+                [
+                  "A mouse",
+                  "Un mouse"
+                ],
+                [
+                  "A motherboard",
+                  "Una scheda madre"
+                ]
+              ],
+              "why": [
+                "A browser is a program, not a physical component.",
+                "Un browser è un programma, non un componente fisico."
+              ]
+            },
+            {
+              "q": [
+                "Where are instructions and data stored while in use in the von Neumann model?",
+                "Dove sono conservati istruzioni e dati mentre vengono usati nel modello di von Neumann?"
+              ],
+              "a": [
+                [
+                  "Main memory",
+                  "Memoria principale"
+                ],
+                [
+                  "Monitor",
+                  "Monitor"
+                ],
+                [
+                  "Printer",
+                  "Stampante"
+                ]
+              ],
+              "why": [
+                "The stored-program model keeps instructions and data in memory.",
+                "Il modello a programma memorizzato conserva istruzioni e dati in memoria."
+              ]
+            },
+            {
+              "q": [
+                "What is the purpose of a system bus?",
+                "Qual è lo scopo di un bus di sistema?"
+              ],
+              "a": [
+                [
+                  "Connect components and transfer signals",
+                  "Collegare componenti e trasferire segnali"
+                ],
+                [
+                  "Cool the CPU",
+                  "Raffreddare la CPU"
+                ],
+                [
+                  "Display images",
+                  "Visualizzare immagini"
+                ]
+              ],
+              "why": [
+                "Buses provide communication paths between components.",
+                "I bus forniscono percorsi di comunicazione tra componenti."
+              ]
+            }
+          ],
     "instructions": [
       "Solve each new situation without hints. Choose the best answer, then review the explanation.",
       "Risolvi ogni nuova situazione senza suggerimenti. Scegli la risposta migliore, poi leggi la spiegazione."
@@ -3108,6 +3206,104 @@ export const MISSIONS: Mission[] = [
       "Independent challenge: motherboard and CPU",
       "Sfida autonoma: scheda madre e CPU"
     ],
+          "knowledgeCheck": [
+            {
+              "q": [
+                "Which component connects the CPU, RAM and expansion cards?",
+                "Quale componente collega CPU, RAM e schede di espansione?"
+              ],
+              "a": [
+                [
+                  "Motherboard",
+                  "Scheda madre"
+                ],
+                [
+                  "Power supply",
+                  "Alimentatore"
+                ],
+                [
+                  "SSD",
+                  "SSD"
+                ]
+              ],
+              "why": [
+                "The motherboard connects the main components.",
+                "La scheda madre collega i componenti principali."
+              ]
+            },
+            {
+              "q": [
+                "What does the CPU control unit do?",
+                "Cosa fa l'unità di controllo della CPU?"
+              ],
+              "a": [
+                [
+                  "Coordinates instruction execution",
+                  "Coordina l'esecuzione delle istruzioni"
+                ],
+                [
+                  "Stores files permanently",
+                  "Memorizza i file in modo permanente"
+                ],
+                [
+                  "Displays graphics",
+                  "Visualizza la grafica"
+                ]
+              ],
+              "why": [
+                "The control unit directs CPU operations.",
+                "L'unità di controllo dirige le operazioni della CPU."
+              ]
+            },
+            {
+              "q": [
+                "Which sequence is the instruction cycle?",
+                "Quale sequenza rappresenta il ciclo delle istruzioni?"
+              ],
+              "a": [
+                [
+                  "Fetch, decode, execute",
+                  "Fetch, decode, execute"
+                ],
+                [
+                  "Decode, execute, fetch",
+                  "Decode, execute, fetch"
+                ],
+                [
+                  "Execute, fetch, decode",
+                  "Execute, fetch, decode"
+                ]
+              ],
+              "why": [
+                "The CPU fetches, decodes and then executes an instruction.",
+                "La CPU recupera, decodifica ed esegue un'istruzione."
+              ]
+            },
+            {
+              "q": [
+                "Why is clock speed alone insufficient to compare CPUs?",
+                "Perché la sola frequenza non basta per confrontare le CPU?"
+              ],
+              "a": [
+                [
+                  "Cores, architecture and workload also matter",
+                  "Contano anche core, architettura e carico di lavoro"
+                ],
+                [
+                  "GHz measures storage",
+                  "I GHz misurano l'archiviazione"
+                ],
+                [
+                  "All CPUs do equal work per cycle",
+                  "Tutte le CPU svolgono lo stesso lavoro per ciclo"
+                ]
+              ],
+              "why": [
+                "Performance depends on more than clock frequency.",
+                "Le prestazioni dipendono da più fattori oltre alla frequenza."
+              ]
+            }
+          ],
     "instructions": [
       "Apply what you learned to new hardware scenarios. No hints are available in this challenge.",
       "Applica ciò che hai imparato a nuovi scenari hardware. In questa sfida non sono disponibili suggerimenti."
@@ -3842,6 +4038,104 @@ export const MISSIONS: Mission[] = [
       "Independent challenge: memory and storage",
       "Sfida autonoma: memoria e archiviazione"
     ],
+          "knowledgeCheck": [
+            {
+              "q": [
+                "Why is RAM volatile?",
+                "Perché la RAM è volatile?"
+              ],
+              "a": [
+                [
+                  "It loses contents when power is removed",
+                  "Perde il contenuto quando manca alimentazione"
+                ],
+                [
+                  "It stores files permanently",
+                  "Conserva i file in modo permanente"
+                ],
+                [
+                  "It is slower than an HDD",
+                  "È più lenta di un HDD"
+                ]
+              ],
+              "why": [
+                "RAM needs power to retain its contents.",
+                "La RAM ha bisogno di alimentazione per conservare i dati."
+              ]
+            },
+            {
+              "q": [
+                "Which memory is typically fastest and closest to the CPU?",
+                "Quale memoria è in genere più veloce e vicina alla CPU?"
+              ],
+              "a": [
+                [
+                  "CPU cache",
+                  "Cache della CPU"
+                ],
+                [
+                  "SSD",
+                  "SSD"
+                ],
+                [
+                  "Optical disc",
+                  "Disco ottico"
+                ]
+              ],
+              "why": [
+                "Cache gives very fast access to frequently used data.",
+                "La cache offre accesso rapido ai dati usati spesso."
+              ]
+            },
+            {
+              "q": [
+                "Which bus carries the location of a memory cell?",
+                "Quale bus trasporta la posizione di una cella di memoria?"
+              ],
+              "a": [
+                [
+                  "Address bus",
+                  "Bus degli indirizzi"
+                ],
+                [
+                  "Data bus",
+                  "Bus dati"
+                ],
+                [
+                  "Control bus",
+                  "Bus di controllo"
+                ]
+              ],
+              "why": [
+                "The address bus identifies the location.",
+                "Il bus degli indirizzi identifica la posizione."
+              ]
+            },
+            {
+              "q": [
+                "Which storage technology has no moving mechanical parts?",
+                "Quale tecnologia di archiviazione non ha parti meccaniche in movimento?"
+              ],
+              "a": [
+                [
+                  "SSD",
+                  "SSD"
+                ],
+                [
+                  "HDD",
+                  "HDD"
+                ],
+                [
+                  "DVD drive",
+                  "Lettore DVD"
+                ]
+              ],
+              "why": [
+                "An SSD uses flash memory.",
+                "Un SSD utilizza memoria flash."
+              ]
+            }
+          ],
     "instructions": [
       "Choose the best solution for each memory and storage situation. Work independently, then read the feedback.",
       "Scegli la soluzione migliore per ogni situazione relativa a memoria e archiviazione. Lavora in autonomia, poi leggi il feedback."
@@ -4704,6 +4998,104 @@ export const MISSIONS: Mission[] = [
       "Independent challenge: peripherals and touchscreens",
       "Sfida autonoma: periferiche e touchscreen"
     ],
+          "knowledgeCheck": [
+            {
+              "q": [
+                "A webcam sends video into a computer. What type of device is it?",
+                "Una webcam invia video a un computer. Che tipo di dispositivo è?"
+              ],
+              "a": [
+                [
+                  "Input",
+                  "Input"
+                ],
+                [
+                  "Output",
+                  "Output"
+                ],
+                [
+                  "Storage",
+                  "Archiviazione"
+                ]
+              ],
+              "why": [
+                "A webcam captures and sends information into the computer.",
+                "Una webcam acquisisce e invia informazioni al computer."
+              ]
+            },
+            {
+              "q": [
+                "Why can a touchscreen be input and output?",
+                "Perché un touchscreen può essere input e output?"
+              ],
+              "a": [
+                [
+                  "It displays information and detects touch",
+                  "Visualizza informazioni e rileva il tocco"
+                ],
+                [
+                  "It stores files and cools the CPU",
+                  "Memorizza file e raffredda la CPU"
+                ],
+                [
+                  "It only sends sound",
+                  "Invia solo audio"
+                ]
+              ],
+              "why": [
+                "It displays content and detects user input.",
+                "Visualizza contenuti e rileva l'input dell'utente."
+              ]
+            },
+            {
+              "q": [
+                "What does a capacitive touchscreen detect?",
+                "Che cosa rileva un touchscreen capacitivo?"
+              ],
+              "a": [
+                [
+                  "A change in electrical field caused by a finger",
+                  "Una variazione del campo elettrico causata da un dito"
+                ],
+                [
+                  "Room temperature",
+                  "La temperatura della stanza"
+                ],
+                [
+                  "Sound waves",
+                  "Onde sonore"
+                ]
+              ],
+              "why": [
+                "A finger changes local capacitance.",
+                "Un dito modifica la capacità elettrica locale."
+              ]
+            },
+            {
+              "q": [
+                "How should an old phone be disposed of?",
+                "Come va smaltito un vecchio telefono?"
+              ],
+              "a": [
+                [
+                  "At an authorised e-waste collection point",
+                  "In un centro autorizzato di raccolta RAEE"
+                ],
+                [
+                  "In general waste",
+                  "Nei rifiuti indifferenziati"
+                ],
+                [
+                  "Outdoors",
+                  "All'aperto"
+                ]
+              ],
+              "why": [
+                "Electronic waste needs appropriate collection and recycling.",
+                "I rifiuti elettronici richiedono raccolta e riciclo adeguati."
+              ]
+            }
+          ],
     "instructions": [
       "Solve each real-world device scenario without hints. Use the feedback to check your reasoning.",
       "Risolvi ogni scenario reale sui dispositivi senza suggerimenti. Usa il feedback per verificare il tuo ragionamento."
