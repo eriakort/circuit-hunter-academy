@@ -53,6 +53,86 @@ export interface Scene {
   [key: string]: any;
 }
 
+export type LearningStageId =
+  | 'briefing'
+  | 'learn'
+  | 'demonstrate'
+  | 'guided-practice'
+  | 'independent-practice'
+  | 'knowledge-check'
+  | 'summary'
+  | 'mastery-assessment'
+  | 'battle';
+
+export interface LearningObjective {
+  id: string;
+  description: BilingualText;
+  successCriteria?: BilingualText[];
+}
+
+export interface LearningConcept {
+  id: string;
+  title: BilingualText;
+  explanation: BilingualText;
+  example?: BilingualText;
+  /** Existing scene indexes that demonstrate this concept. */
+  sceneIndexes?: number[];
+  /** Optional key used by the existing visual renderer. */
+  visualKey?: string;
+}
+
+export interface LearningPracticeActivity {
+  id: string;
+  title: BilingualText;
+  instructions: BilingualText;
+  /** Reuse an existing interactive scene where possible. */
+  sceneIndex?: number;
+  /** Optional new mini-game type for a future activity. */
+  activityType?: string;
+  /** Optional scenario or question set for a standalone practice activity. */
+  questions?: QuizQuestion[];
+}
+
+export interface LearningMasteryAssessment {
+  title: BilingualText;
+  instructions: BilingualText;
+  questions: QuizQuestion[];
+  /** Percentage required to unlock the mission battle. */
+  passingScore: number;
+}
+
+export interface LearningTechniqueUnlock {
+  id: string;
+  name: BilingualText;
+  description: BilingualText;
+  xpReward?: number;
+}
+
+export interface LearningMissionDefinition {
+  version: 1;
+  objectives: LearningObjective[];
+  prerequisites?: BilingualText[];
+  concepts: LearningConcept[];
+  guidedPractice: LearningPracticeActivity[];
+  independentPractice: LearningPracticeActivity[];
+  knowledgeCheck: QuizQuestion[];
+  summary: BilingualText[];
+  masteryAssessment: LearningMasteryAssessment;
+  techniqueUnlock: LearningTechniqueUnlock;
+}
+
+/** Persistable learning outcome model; wired into GameState in a later increment. */
+export interface LearningMissionProgress {
+  guidedPracticeComplete: boolean;
+  independentPracticeComplete: boolean;
+  knowledgeCheckScore?: number;
+  masteryScore?: number;
+  masteryAttempts?: number;
+  mastered: boolean;
+  techniqueUnlocked: boolean;
+  lastAttemptAt?: number;
+}
+
 export interface Mission {
   id: string;
   arc: number;
@@ -67,6 +147,7 @@ export interface Mission {
   tech: BilingualText;
   scenes: Scene[];
   quiz: QuizQuestion[];
+  learning?: LearningMissionDefinition;
   boss?: boolean;
   [key: string]: any;
 }
