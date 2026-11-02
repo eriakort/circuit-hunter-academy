@@ -105,6 +105,8 @@ export interface LearningPracticeActivity {
   activityType?: string;
   /** Optional scenario or question set for a standalone practice activity. */
   questions?: QuizQuestion[];
+  /** Optional bilingual hint for each question, aligned by question index. */
+  hints?: BilingualText[];
 }
 
 export interface LearningMasteryAssessment {
