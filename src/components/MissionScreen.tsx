@@ -136,7 +136,12 @@ export const MissionScreen: React.FC = () => {
       {!sc.type ? (
         <>
           {visualContent && (
-            <div className="visual" ref={sc.init ? gameContainerRef : undefined} dangerouslySetInnerHTML={{ __html: visualContent }} />
+            <div
+              key={`scene-visual-${currentSceneIndex}-${sc.vis || sc.init || 'content'}`}
+              className="visual"
+              ref={sc.init ? gameContainerRef : undefined}
+              dangerouslySetInnerHTML={{ __html: visualContent }}
+            />
           )}
 
           <div className="dialog">
@@ -159,7 +164,12 @@ export const MissionScreen: React.FC = () => {
             </div>
           )}
 
-          <div className="visual" id="gm" ref={gameContainerRef} />
+          <div
+            key={`scene-game-${currentSceneIndex}-${sc.type || sc.init || 'interactive'}`}
+            className="visual"
+            id="gm"
+            ref={gameContainerRef}
+          />
         </>
       )}
 
