@@ -97,7 +97,7 @@ function sceneJourney(sc,host,done){
   const expectedOutput=()=>selectedInput==='microphone'?'speaker':'monitor';
   const setNodeLabel=(id,value)=>{
     const node=$('#jn-'+id,host);
-    if(node){const label=$('text',node);if(label)label.textContent=value;}
+    if(node){const labels=$('text',node);const label=id==='mon'?labels[labels.length-1]:labels[0];if(label)label.textContent=value;}
   };
   const activate=(keys,at,symbol='')=>{
     ['kb','cpu','ram','gpu','mon','ssd'].forEach(k=>{
@@ -129,31 +129,7 @@ function sceneJourney(sc,host,done){
     activate(keys,at,symbol);
     const wrap=panel(heading,copy);host.appendChild(wrap);return wrap;
   };
-  const finish=()=>{
-    if(completed)return;
-    completed=true;
-    const wrap=panel(L(['Data journey complete!','Percorso dei dati completato!']),
-      L(['You followed information from an input device, through processing, to an output and permanent storage.','Hai seguito le informazioni da una periferica di input, attraverso l’elaborazione, fino all’output e alla memoria permanente.']));
-    const recap=document.createElement('ol');
-    [
-      L([inputs.find(x=>x.id===selectedInput).label[0]+' sends data into the computer.','Il dispositivo di input invia i dati al computer.']),
-      L(['The CPU processes instructions and data; RAM holds the work temporarily.','La CPU elabora istruzioni e dati; la RAM conserva temporaneamente il lavoro.']),
-      L([outputs.find(x=>x.id===selectedOutput).label[0]+' presents the result.','Il dispositivo di output presenta il risultato.']),
-      L(['Saving copies the work from RAM to storage so it can remain after power is off.','Il salvataggio copia il lavoro dalla RAM alla memoria di massa, così resta disponibile anche a computer spento.'])
-    ];
-    recap.style.margin='12px 0';recap.style.paddingLeft='24px';
-    recapItems(recap,recapItemsData);
-    wrap.appendChild(recap);
-    const completeBtn=button(L(['Complete mission activity','Completa attività'],),()=>{if(!awarded){awarded=true;award(25);}done();},'cyan');
-    wrap.appendChild(completeBtn);host.appendChild(wrap);completeBtn.focus();
-  };
   const recapItems=(list,items)=>items.forEach(item=>{const li=document.createElement('li');li.textContent=item;list.appendChild(li);});
-  const recapItemsData=[
-    L([inputs[0].label[0]+' sends data into the computer.','Il dispositivo di input invia i dati al computer.']),
-    L(['The CPU processes instructions and data; RAM holds the work temporarily.','La CPU elabora istruzioni e dati; la RAM conserva temporaneamente il lavoro.']),
-    L([outputs[0].label[0]+' presents the result.','Il dispositivo di output presenta il risultato.']),
-    L(['Saving copies the work from RAM to storage so it remains after power is off.','Il salvataggio copia il lavoro dalla RAM alla memoria di massa, così resta disponibile anche a computer spento.'])
-  ];
   const draw=()=>{
     host.querySelectorAll('.journey-task').forEach(el=>el.remove());
     if(stage===0){
