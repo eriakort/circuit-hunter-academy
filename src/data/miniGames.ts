@@ -31,11 +31,34 @@ function initPowercut(done){
     else renderScene();
   };
 }
-function initBoard(){
+function initBoard(done){
   const info=$('#boardInfo');
-  $$('.zone').forEach(z=>{
-    const show=()=>{ $$('.zone').forEach(o=>o.classList.remove('on')); z.classList.add('on'); const d=BOARD[z.dataset.k]; info.innerHTML=`<b class="step">${L(d.n)}</b><p style="margin-top:6px">${L(d.t)}</p>`; };
-    z.onclick=show; z.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} };
+  const zones=$$('.zone');
+  const explored=new Set<string>();
+  const total=zones.length;
+  let completed=false;
+  const updateProgress=()=>{
+    const count=explored.size;
+    const progress=L([`Components explored: ${count} / ${total}`,`Componenti esplorati: ${count} / ${total}`]);
+    info.setAttribute('aria-live','polite');
+    info.innerHTML+=`<p class="muted" style="margin-top:10px">${progress}</p>`;
+    if(count===total && !completed){
+      completed=true;
+      info.innerHTML+=`<p class="fb ok">${L(['Board scan complete! You can continue.','Esplorazione completata! Puoi continuare.'])}</p>`;
+      done();
+    }
+  };
+  zones.forEach(z=>{
+    const show=()=>{
+      zones.forEach(o=>o.classList.remove('on'));
+      z.classList.add('on');
+      const d=BOARD[z.dataset.k];
+      explored.add(z.dataset.k);
+      info.innerHTML=`<b class="step">${L(d.n)}</b><p style="margin-top:6px">${L(d.t)}</p>`;
+      updateProgress();
+    };
+    z.onclick=show;
+    z.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();show();} };
   });
 }
 function stepper(host,steps,draw,done){
@@ -60,19 +83,121 @@ function sceneFDE(sc,host,done){
 }
 function sceneJourney(sc,host,done){
   host.innerHTML=VIS.journey();
-  const ST=[
-    {at:'kb',on:['kb'],scr:'',h:['START','INIZIO'],t:['You press the A key. The keyboard turns it into a code of 0s and 1s.','Premi il tasto A. La tastiera lo trasforma in un codice di 0 e 1.']},
-    {at:'cpu',on:['kb','cpu'],scr:'',h:['INPUT → CPU','INPUT → CPU'],t:['The code travels along the cable and the buses to the CPU. The operating system and the keyboard driver work out that it means "A".','Il codice viaggia lungo il cavo e i bus fino alla CPU. Il sistema operativo e il driver della tastiera capiscono che significa "A".']},
-    {at:'ram',on:['cpu','ram'],scr:'',h:['RAM','RAM'],t:['Your document is open in RAM, so the CPU adds "A" there. Until you save, it only exists in volatile RAM!','Il documento è aperto in RAM, quindi la CPU aggiunge lì la "A". Finché non salvi, esiste solo nella RAM volatile!']},
-    {at:'gpu',on:['cpu','gpu'],scr:'',h:['CPU → GPU','CPU → GPU'],t:['The CPU asks the GPU to draw the letter. The GPU works out the colour of every pixel of the "A".','La CPU chiede alla GPU di disegnare la lettera. La GPU calcola il colore di ogni pixel della "A".']},
-    {at:'mon',on:['gpu','mon'],scr:'A',h:['OUTPUT','OUTPUT'],t:['The picture goes through the HDMI or DisplayPort cable to the monitor. The A appears!','L\'immagine passa dal cavo HDMI o DisplayPort al monitor. Compare la A!']},
-    {at:'ssd',on:['ram','ssd'],scr:'A',h:['STORAGE','MEMORIA DI MASSA'],t:['You press Ctrl+S. The document is copied from RAM to the SSD. Now it is safe even in a power cut.','Premi Ctrl+S. Il documento viene copiato dalla RAM all\'SSD. Ora è al sicuro anche se va via la corrente.']},
+  let stage=0, selectedInput=null, selectedOutput=null, completed=false, awarded=false;
+  const inputs=[
+    {id:'keyboard',label:['Keyboard','Tastiera'],detail:['Type a short note.','Scrivi una breve nota.'],node:'Keyboard'},
+    {id:'microphone',label:['Microphone','Microfono'],detail:['Record a spoken reminder.','Registra un promemoria vocale.'],node:'Microphone'},
+    {id:'touchscreen',label:['Touchscreen','Touchscreen'],detail:['Draw or tap a shape.','Disegna o tocca una forma.'],node:'Touchscreen'}
   ];
-  stepper(host,ST,s=>{
-    ['kb','cpu','ram','gpu','mon','ssd'].forEach(k=>$('#jn-'+k,host).classList.toggle('on',s.on.includes(k)));
-    const p=JN[s.at]; $('#jdot',host).style.transform=`translate(${p[0]}px,${p[1]+(s.at==='mon'?-52:-38)}px)`;
-    $('#mscr',host).textContent=s.scr;
-  },done);
+  const outputs=[
+    {id:'monitor',label:['Monitor','Monitor'],detail:['Show text or an image.','Mostra testo o un’immagine.']},
+    {id:'speaker',label:['Speakers','Altoparlanti'],detail:['Play recorded sound.','Riproduci il suono registrato.']},
+    {id:'printer',label:['Printer','Stampante'],detail:['Produce a paper copy.','Stampa una copia su carta.']}
+  ];
+  const expectedOutput=()=>selectedInput==='microphone'?['speaker']:selectedInput==='keyboard'?['monitor','printer']:['monitor'];
+  const setNodeLabel=(id,value)=>{
+    const node=$('#jn-'+id,host);
+    if(node){const labels=node.querySelectorAll('text');const label=id==='mon'?labels[labels.length-1]:labels[0];if(label)label.textContent=value;}
+  };
+  const activate=(keys,at,symbol='')=>{
+    ['kb','cpu','ram','gpu','mon','ssd'].forEach(k=>{
+      const el=$('#jn-'+k,host);
+      if(el)el.classList.toggle('on',keys.includes(k));
+    });
+    const p=JN[at]||JN.kb, dot=$('#jdot',host);
+    if(dot)dot.style.transform=`translate(${p[0]}px,${p[1]+(at==='mon'?-52:-38)}px)`;
+    const screen=$('#mscr',host);if(screen)screen.textContent=symbol;
+  };
+  const button=(label,onClick,kind='ghost')=>{
+    const b=document.createElement('button');b.type='button';b.className='btn '+kind+' sm';b.textContent=label;b.addEventListener('click',onClick);return b;
+  };
+  const panel=(heading,copy)=>{
+    const wrap=document.createElement('div');wrap.className='game';
+    const h=document.createElement('div');h.className='gtitle';h.textContent=heading;wrap.appendChild(h);
+    const p=document.createElement('p');p.className='muted';p.textContent=copy;wrap.appendChild(p);
+    return wrap;
+  };
+  const feedback=(parent,copy,ok=false)=>{
+    const el=document.createElement('div');el.className='fb '+(ok?'ok':'no');el.setAttribute('aria-live','polite');el.textContent=copy;parent.appendChild(el);return el;
+  };
+  const choiceGroup=(parent,items,onChoose)=>{
+    const group=document.createElement('div');group.className='cats';group.setAttribute('role','group');
+    items.forEach(item=>group.appendChild(button(item.label,item.id?()=>onChoose(item.id):item.onClick,'ghost')));
+    parent.appendChild(group);
+  };
+  const show=(heading,copy,keys,at,symbol='')=>{
+    activate(keys,at,symbol);
+    const wrap=panel(heading,copy);host.appendChild(wrap);return wrap;
+  };
+  const recapItems=(list,items)=>items.forEach(item=>{const li=document.createElement('li');li.textContent=item;list.appendChild(li);});
+  const draw=()=>{
+    host.querySelectorAll('.journey-task').forEach(el=>el.remove());
+    if(stage===0){
+      setNodeLabel('kb',L(['Input device','Periferica input']));
+      setNodeLabel('mon',L(['Output','Output']));
+      const wrap=show(L(['1 · Choose an input device','1 · Scegli una periferica di input']),
+        L(['You are creating something to keep. How will information enter the computer?','Stai creando qualcosa da conservare. Come entreranno le informazioni nel computer?']),[], 'kb');
+      wrap.classList.add('journey-task');
+      choiceGroup(wrap,inputs.map(x=>({id:x.id,label:L(x.label)+' — '+L(x.detail)})),id=>{
+        selectedInput=id;const item=inputs.find(x=>x.id===id);setNodeLabel('kb',L(item.label));stage=1;draw();
+      });
+    }else if(stage===1){
+      const item=inputs.find(x=>x.id===selectedInput);
+      const wrap=show(L(['2 · Input travels to the computer','2 · L’input entra nel computer']),
+        L([item.label[0]+' captures your action and converts it into digital data (bits). The data travels through a connection and the system buses.',''+item.label[1]+' rileva la tua azione e la converte in dati digitali (bit). I dati viaggiano attraverso una connessione e i bus del sistema.']),['kb','cpu'],'cpu');
+      wrap.classList.add('journey-task');
+      wrap.appendChild(button(L(['Continue to processing','Continua all’elaborazione']),()=>{stage=2;draw();},'cyan'));
+    }else if(stage===2){
+      const wrap=show(L(['3 · What does the CPU do?','3 · Cosa fa la CPU?']),
+        L(['The CPU fetches and decodes instructions, then executes them. RAM temporarily holds the open work and data the CPU is using. Choose the CPU’s main role.','La CPU preleva e decodifica le istruzioni, poi le esegue. La RAM conserva temporaneamente il lavoro aperto e i dati usati dalla CPU. Scegli il ruolo principale della CPU.']),['cpu','ram'],'ram');
+      wrap.classList.add('journey-task');
+      const fb=feedback(wrap,L(['Choose the best description.','Scegli la descrizione migliore.']));
+      choiceGroup(wrap,[
+        {id:'process',label:L(['Process instructions and data','Elaborare istruzioni e dati'])},
+        {id:'save',label:L(['Keep files permanently','Conservare i file in modo permanente'])},
+        {id:'display',label:L(['Show images on the screen','Mostrare immagini sullo schermo'])}
+      ],id=>{
+        if(id==='process'){fb.className='fb ok';fb.textContent=L(['Correct! The CPU processes; RAM temporarily holds the active work.','Corretto! La CPU elabora; la RAM conserva temporaneamente il lavoro attivo.']);const next=button(L(['Choose an output device','Scegli una periferica di output']),()=>{stage=3;draw();},'cyan');wrap.appendChild(next);next.focus();}
+        else{fb.className='fb no';fb.textContent=L(['Not quite. The CPU executes instructions; storage and output devices have different jobs. Try again.','Non proprio. La CPU esegue istruzioni; memoria di massa e periferiche di output hanno funzioni diverse. Riprova.']);}
+      });
+    }else if(stage===3){
+      const expected=expectedOutput();
+      const wrap=show(L(['4 · Choose an output device','4 · Scegli una periferica di output']),
+        L(['Your result is ready. Which device is the best match for this activity?','Il risultato è pronto. Quale dispositivo è più adatto a questa attività?']),['cpu','gpu','mon'],'mon',
+        selectedInput==='microphone'?'♪':'A');
+      wrap.classList.add('journey-task');
+      const fb=feedback(wrap,L(['Choose the device that presents your result.','Scegli il dispositivo che presenta il risultato.']));
+      choiceGroup(wrap,outputs.map(x=>({id:x.id,label:L(x.label)+' — '+L(x.detail)})),id=>{
+        if(expected.includes(id)){selectedOutput=id;setNodeLabel('mon',L(outputs.find(x=>x.id===id).label));fb.className='fb ok';fb.textContent=L(['Correct! Output devices present information from the computer.','Corretto! Le periferiche di output presentano le informazioni elaborate dal computer.']);const next=button(L(['Decide whether to save','Decidi se salvare']),()=>{stage=4;draw();},'cyan');wrap.appendChild(next);next.focus();}
+        else{fb.className='fb no';fb.textContent=L(['Try again. Match the output to the information you created.','Riprova. Abbina l’output alle informazioni che hai creato.']);}
+      });
+    }else if(stage===4){
+      const wrap=show(L(['5 · Keep your work','5 · Conserva il tuo lavoro']),
+        L(['You want to use this note, recording or drawing tomorrow. What should you do so it survives a power cut?','Vuoi usare domani questa nota, registrazione o disegno. Cosa devi fare perché non vada perso se manca la corrente?']),['ram','ssd'],'ssd');
+      wrap.classList.add('journey-task');
+      const fb=feedback(wrap,L(['Choose what happens to the work.','Scegli cosa succede al lavoro.']));
+      choiceGroup(wrap,[
+        {id:'save',label:L(['Save it to the SSD / storage','Salvalo su SSD / memoria di massa'])},
+        {id:'ram',label:L(['Leave it only in RAM','Lascialo solo nella RAM'])}
+      ],id=>{
+        if(id==='save'){fb.className='fb ok';fb.textContent=L(['Correct! Saving copies data from volatile RAM to non-volatile storage.','Corretto! Il salvataggio copia i dati dalla RAM volatile alla memoria non volatile.']);const next=button(L(['Review the complete journey','Rivedi il percorso completo']),()=>{stage=5;draw();},'cyan');wrap.appendChild(next);next.focus();}
+        else{fb.className='fb no';fb.textContent=L(['If the power is lost, RAM is cleared. Save the work to non-volatile storage.','Se manca la corrente, la RAM si svuota. Salva il lavoro nella memoria non volatile.']);}
+      });
+    }else{
+      const wrap=show(L(['6 · Your complete data journey','6 · Il tuo percorso completo dei dati']),
+        L(['Input → transfer → CPU processing ↔ RAM → output → storage. You made each decision and followed the data all the way through.','Input → trasferimento → elaborazione CPU ↔ RAM → output → memoria di massa. Hai preso ogni decisione e seguito i dati lungo tutto il percorso.']),['kb','cpu','ram','gpu','mon','ssd'],'ssd','✓');
+      wrap.classList.add('journey-task');
+      const recap=document.createElement('ol');recap.style.margin='12px 0';recap.style.paddingLeft='24px';
+      recapItems(recap,[
+        L([inputs.find(x=>x.id===selectedInput).label[0]+' sends information into the computer.',''+inputs.find(x=>x.id===selectedInput).label[1]+' invia informazioni al computer.']),
+        L(['The CPU processes the data; RAM temporarily holds active work.','La CPU elabora i dati; la RAM conserva temporaneamente il lavoro attivo.']),
+        L([outputs.find(x=>x.id===selectedOutput).label[0]+' presents the result.',''+outputs.find(x=>x.id===selectedOutput).label[1]+' presenta il risultato.']),
+        L(['Saving copies the work to non-volatile storage.','Il salvataggio copia il lavoro nella memoria non volatile.'])
+      ]);wrap.appendChild(recap);
+      wrap.appendChild(button(L(['Complete activity','Completa attività']),()=>{if(!completed){completed=true;if(!awarded){awarded=true;award(25);}done();}},'cyan'));
+    }
+  };
+  draw();
 }
 
 /* ============ mini-games ============ */
@@ -700,7 +825,7 @@ export function runMiniGame(
   if (type === "powercut") {
     initPowercut(done);
   } else if (type === "board") {
-    initBoard();
+    initBoard(done);
   } else if (MINI_GAMES[type]) {
     MINI_GAMES[type](sc, host, done);
   }

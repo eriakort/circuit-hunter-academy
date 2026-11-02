@@ -41,7 +41,7 @@ export const MissionScreen: React.FC = () => {
     'vectors',
     'torque',
     'fluids'
-  ].includes(sc?.type || '') || !!sc?.needDone;
+  ].includes(sc?.type || '') || sc?.init === 'board' || sc?.init === 'powercut' || !!sc?.needDone;
 
   const isGated = isGatedType && inMissionFirstTime();
 
@@ -136,11 +136,16 @@ export const MissionScreen: React.FC = () => {
       {!sc.type ? (
         <>
           {visualContent && (
-            <div className="visual" dangerouslySetInnerHTML={{ __html: visualContent }} />
+            <div
+              key={`scene-visual-${currentSceneIndex}-${sc.vis || sc.init || 'content'}`}
+              className="visual"
+              ref={sc.init ? gameContainerRef : undefined}
+              dangerouslySetInnerHTML={{ __html: visualContent }}
+            />
           )}
 
           <div className="dialog">
-            <div dangerouslySetInnerHTML={{ __html: sp.avatar }} />
+            <div className="avatar" aria-hidden="true" dangerouslySetInnerHTML={{ __html: sp.avatar }} />
             <div className={`bubble ${sp.cls}`}>
               <div className="who">{sp.name}</div>
               <div dangerouslySetInnerHTML={{ __html: fill(sc.text, lang, name) }} />
@@ -148,19 +153,24 @@ export const MissionScreen: React.FC = () => {
           </div>
         </>
       ) : (
-        <>
+        <div className="mission-interactive-flow">
+          <div
+            key={`scene-game-${currentSceneIndex}-${sc.type || sc.init || 'interactive'}`}
+            className="visual"
+            id="gm"
+            ref={gameContainerRef}
+          />
+
           {guideText && (
-            <div className="dialog">
-              <div dangerouslySetInnerHTML={{ __html: SENSEI }} />
+            <section className="mission-guide" aria-label="Sensei Kaito lesson guidance">
+              <div className="avatar" aria-hidden="true" dangerouslySetInnerHTML={{ __html: SENSEI }} />
               <div className="bubble">
                 <div className="who">Sensei Kaito</div>
                 <div dangerouslySetInnerHTML={{ __html: L(guideText, lang) }} />
               </div>
-            </div>
+            </section>
           )}
-
-          <div className="visual" id="gm" ref={gameContainerRef} />
-        </>
+        </div>
       )}
 
       <div className="nav">

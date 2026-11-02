@@ -5,6 +5,43 @@ import { rankOf } from '../helpers';
 
 const SKEY = 'circuit-hunter-academy-v2';
 const SCHEMA = 2;
+const NAV_KEY = 'circuit-hunter-academy-navigation-v2';
+const VALID_VIEWS: ViewMode[] = ['subjects', 'map', 'scene', 'battle', 'result', 'ending', 'dojo', 'codex', 'race', 'test'];
+
+interface SavedNavigation {
+  view: ViewMode;
+  currentMissionIndex: number;
+  currentSceneIndex: number;
+  battleContext: { isDojo: boolean; customQuestions?: any[] } | null;
+}
+
+const readSavedNavigation = (): SavedNavigation | null => {
+  try {
+    const raw = localStorage.getItem(NAV_KEY);
+    if (!raw) return null;
+    const saved = JSON.parse(raw) as Partial<SavedNavigation>;
+    if (!saved.view || !VALID_VIEWS.includes(saved.view)) return null;
+
+    const missionIndex = Number.isInteger(saved.currentMissionIndex)
+      ? saved.currentMissionIndex as number
+      : 0;
+    const safeMissionIndex = Math.min(Math.max(missionIndex, 0), MISSIONS.length - 1);
+    const mission = MISSIONS[safeMissionIndex];
+    const sceneIndex = Number.isInteger(saved.currentSceneIndex)
+      ? saved.currentSceneIndex as number
+      : 0;
+
+    return {
+      view: saved.view,
+      currentMissionIndex: safeMissionIndex,
+      currentSceneIndex: Math.min(Math.max(sceneIndex, 0), Math.max(0, mission.scenes.length - 1)),
+      battleContext: saved.battleContext || null
+    };
+  } catch (e) {
+    console.error('Failed to restore navigation:', e);
+    return null;
+  }
+};
 
 const defaultState: GameState = {
   name: '',
@@ -64,10 +101,20 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return defaultState;
   });
 
-  const [view, setView] = useState<ViewMode>(() => (state.subject ? 'map' : 'subjects'));
-  const [currentMissionIndex, setCurrentMissionIndex] = useState<number>(0);
-  const [currentSceneIndex, setCurrentSceneIndex] = useState<number>(0);
-  const [battleContext, setBattleContext] = useState<{ isDojo: boolean; customQuestions?: any[] } | null>(null);
+  const [initialNavigation] = useState<SavedNavigation | null>(() => readSavedNavigation());
+  const [view, setView] = useState<ViewMode>(() => {
+    if (!state.subject) return 'subjects';
+    return initialNavigation?.view || 'map';
+  });
+  const [currentMissionIndex, setCurrentMissionIndex] = useState<number>(
+    () => initialNavigation?.currentMissionIndex ?? 0
+  );
+  const [currentSceneIndex, setCurrentSceneIndex] = useState<number>(
+    () => initialNavigation?.currentSceneIndex ?? 0
+  );
+  const [battleContext, setBattleContext] = useState<{ isDojo: boolean; customQuestions?: any[] } | null>(
+    () => initialNavigation?.battleContext ?? null
+  );
 
   useEffect(() => {
     try {
@@ -76,6 +123,20 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('Failed to save state:', e);
     }
   }, [state]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(NAV_KEY, JSON.stringify({
+        view,
+        currentMissionIndex,
+        currentSceneIndex,
+        battleContext
+      } satisfies SavedNavigation));
+    } catch (e) {
+      console.error('Failed to save navigation:', e);
+    }
+  }, [view, currentMissionIndex, currentSceneIndex, battleContext]);
+
 
   const setLanguage = (lang: Language) => {
     setState(s => ({ ...s, lang }));

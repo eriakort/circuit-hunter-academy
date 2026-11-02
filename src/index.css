@@ -443,3 +443,58 @@ textarea.out{font:600 15px ui-monospace,Menlo,monospace;width:min(360px,100%);mi
 .vnode:hover,.rpos:hover,.pdot:hover{fill:rgba(69,216,255,.32);stroke:var(--data)}
 .vnode.hit{fill:var(--data);stroke:var(--data)}
 .rpos.on,.pdot.on{fill:var(--good);stroke:var(--good)}
+
+
+/* Smart Learning Mission layout: stable full-width content and dialogue columns */
+html,body,#root{width:100%;min-width:0}
+body{overflow-x:hidden}
+.wrap{width:min(100%,1000px);min-width:0}
+#app{display:flex;flex-direction:column;align-items:stretch;width:100%;min-width:0}
+#app > *{width:100%;min-width:0;max-width:100%}
+.mhead,.visual,.dialog,.nav{width:100%;min-width:0;max-width:100%}
+.mhead > *,.visual > *{min-width:0;max-width:100%}
+.visual{overflow-x:auto;overscroll-behavior-x:contain}
+.visual#gm{display:flex;flex-direction:column;align-items:stretch;gap:12px}
+.visual#gm > *{width:100%;min-width:0;max-width:100%}
+.visual#gm .dia{width:100%;height:auto}
+.visual#gm .narr{width:100%;max-width:none;overflow-wrap:anywhere}
+.visual#gm .stepbar{width:100%;justify-content:center}
+.dialog{display:grid;grid-template-columns:60px minmax(0,1fr);align-items:start;gap:14px}
+.dialog > .avatar{width:60px;height:60px;min-width:0;max-width:60px;overflow:hidden}
+.dialog > .avatar svg{display:block;width:100%;height:100%}
+.dialog > .bubble{width:auto;min-width:0;max-width:100%;overflow-wrap:anywhere}
+.dialog .bubble p{max-width:70ch;overflow-wrap:anywhere}
+.dia{max-width:100%}
+@media(max-width:720px){
+ body{padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+ .wrap{gap:14px}
+ .visual{padding:10px}
+ .dialog{grid-template-columns:48px minmax(0,1fr);gap:10px}
+ .dialog > .avatar{width:48px;height:48px}
+ .bubble{padding:12px}
+}
+@media(max-width:420px){
+ .dialog{grid-template-columns:40px minmax(0,1fr);gap:8px}
+ .dialog > .avatar{width:40px;height:40px}
+ .bubble{padding:10px}
+}
+
+
+/* Keep interactive mission and its Sensei guidance in explicit full-width rows */
+#app{display:flex!important;flex-direction:column!important;align-items:stretch!important}
+#app > .mission-interactive-flow{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:14px;width:100%!important;min-width:0!important;max-width:100%!important}
+#app > .mission-interactive-flow > #gm{order:1;display:flex;flex-direction:column;align-items:stretch;width:100%!important;min-width:0!important;max-width:100%!important}
+#app > .mission-interactive-flow > #gm > *{width:100%;min-width:0;max-width:100%}
+#app > .mission-interactive-flow > .mission-guide{order:2;display:grid!important;grid-template-columns:60px minmax(0,1fr)!important;align-items:start;gap:14px;width:100%!important;min-width:0!important;max-width:100%!important}
+.mission-guide > .avatar{width:60px;height:60px;min-width:60px;overflow:hidden}
+.mission-guide > .avatar svg{display:block;width:100%;height:100%}
+.mission-guide > .bubble{width:auto!important;min-width:0!important;max-width:100%!important;overflow-wrap:anywhere}
+.mission-guide .who{display:block}
+@media(max-width:720px){
+ #app > .mission-interactive-flow > .mission-guide{grid-template-columns:48px minmax(0,1fr)!important;gap:10px}
+ .mission-guide > .avatar{width:48px;height:48px;min-width:48px}
+}
+@media(max-width:420px){
+ #app > .mission-interactive-flow > .mission-guide{grid-template-columns:40px minmax(0,1fr)!important;gap:8px}
+ .mission-guide > .avatar{width:40px;height:40px;min-width:40px}
+}
