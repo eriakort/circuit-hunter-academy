@@ -71,6 +71,9 @@ export const MissionScreen: React.FC = () => {
     setGuidedFeedback(null);
     setIndependentIndex(0);
     setIndependentFeedback(null);
+    setKnowledgeIndex(0);
+    setKnowledgeFeedback(null);
+    setKnowledgeMissed({});
   }, [currentMission.id, currentSceneIndex]);
 
   // Mount mini-game or interactive scene
