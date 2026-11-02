@@ -4084,11 +4084,7 @@ export const MISSIONS: Mission[] = [
                             "Explain at a basic level how a capacitive touchscreen detects a touch.",
                             "Spiegare a livello introduttivo come un touchscreen capacitivo rileva il tocco."
                       ]
-<<<<<<< HEAD
                 },
-=======
-                 },
->>>>>>> 56c6585 (Move touchscreen example to learning concept)
                 {
                       "id": "responsible-technology",
                       "description": [
