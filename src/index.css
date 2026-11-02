@@ -443,3 +443,34 @@ textarea.out{font:600 15px ui-monospace,Menlo,monospace;width:min(360px,100%);mi
 .vnode:hover,.rpos:hover,.pdot:hover{fill:rgba(69,216,255,.32);stroke:var(--data)}
 .vnode.hit{fill:var(--data);stroke:var(--data)}
 .rpos.on,.pdot.on{fill:var(--good);stroke:var(--good)}
+
+
+/* Smart Learning Mission layout safeguards */
+html,body,#root{width:100%;min-width:0}
+body{overflow-x:clip}
+.wrap{width:100%;min-width:0}
+#app{width:100%;min-width:0}
+.mhead,.visual,.dialog,.nav{width:100%;min-width:0;max-width:100%}
+.mhead > *,.visual > *,.dialog > *{min-width:0;max-width:100%}
+.visual{overflow-x:auto;overscroll-behavior-x:contain}
+.dialog{display:flex;align-items:flex-start;gap:14px}
+.dialog > :first-child{flex:0 0 60px;max-width:60px}
+.dialog .bubble{flex:1 1 0%;width:0;min-width:0;overflow-wrap:anywhere}
+.dialog .bubble p{max-width:70ch;overflow-wrap:anywhere}
+.dia{max-width:100%}
+
+@media (max-width:720px){
+  body{padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+  .wrap{gap:14px}
+  .visual{padding:10px}
+  .dialog{gap:10px}
+  .dialog > :first-child{flex-basis:48px;max-width:48px}
+  .avatar{width:48px;height:48px}
+  .bubble{padding:12px}
+}
+@media (max-width:420px){
+  .dialog{gap:8px}
+  .dialog > :first-child{flex-basis:40px;max-width:40px}
+  .avatar{width:40px;height:40px}
+  .bubble{padding:10px}
+}
