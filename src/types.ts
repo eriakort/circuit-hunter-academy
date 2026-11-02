@@ -113,12 +113,12 @@ export interface LearningMissionDefinition {
   objectives: LearningObjective[];
   prerequisites?: BilingualText[];
   concepts: LearningConcept[];
-  guidedPractice: LearningPracticeActivity[];
-  independentPractice: LearningPracticeActivity[];
-  knowledgeCheck: QuizQuestion[];
-  summary: BilingualText[];
-  masteryAssessment: LearningMasteryAssessment;
-  techniqueUnlock: LearningTechniqueUnlock;
+  guidedPractice?: LearningPracticeActivity[];
+  independentPractice?: LearningPracticeActivity[];
+  knowledgeCheck?: QuizQuestion[];
+  summary?: BilingualText[];
+  masteryAssessment?: LearningMasteryAssessment;
+  techniqueUnlock?: LearningTechniqueUnlock;
 }
 
 /** Persistable learning outcome model; wired into GameState in a later increment. */
