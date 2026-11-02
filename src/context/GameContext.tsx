@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { GameState, Language, SubjectId, ViewMode, Mission } from '../types';
+import { GameState, Language, SubjectId, ViewMode, Mission, LearningMissionProgress } from '../types';
 import { MISSIONS, UNITS, ARCS, RANKS } from '../data/gameData';
 import { rankOf } from '../helpers';
 
@@ -52,6 +52,7 @@ const defaultState: GameState = {
   cleared: {},
   seen: {},
   flawless: {},
+  learningProgress: {},
   v: SCHEMA
 };
 
@@ -69,6 +70,7 @@ interface GameContextType {
   addXP: (amount: number) => void;
   award: (amount: number) => void;
   clearMission: (missionId: string, flawless: boolean, xpGained: number) => void;
+  saveLearningProgress: (missionId: string, progress: Partial<LearningMissionProgress>) => void;
   markSeen: (missionIndex: number) => void;
   openMission: (index: number) => void;
   nextScene: () => void;
@@ -186,6 +188,23 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
   };
 
+  const saveLearningProgress = (missionId: string, progress: Partial<LearningMissionProgress>) => {
+    setState(s => ({
+      ...s,
+      learningProgress: {
+        ...(s.learningProgress || {}),
+        [missionId]: {
+          guidedPracticeComplete: false,
+          independentPracticeComplete: false,
+          mastered: false,
+          techniqueUnlocked: false,
+          ...(s.learningProgress?.[missionId] || {}),
+          ...progress
+        }
+      }
+    }));
+  };
+
   const markSeen = (missionIndex: number) => {
     setState(s => ({
       ...s,
@@ -240,6 +259,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       cleared: {},
       seen: {},
       flawless: {},
+      learningProgress: {},
       v: SCHEMA
     };
     setState(fresh);
@@ -283,6 +303,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
         addXP,
         award,
         clearMission,
+        saveLearningProgress,
         markSeen,
         openMission,
         nextScene,

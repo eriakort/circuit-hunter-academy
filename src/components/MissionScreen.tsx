@@ -12,7 +12,8 @@ export const MissionScreen: React.FC = () => {
     nextScene,
     prevScene,
     inMissionFirstTime,
-    award
+    award,
+    saveLearningProgress
   } = useGame();
 
   const { lang, name } = state;
@@ -25,6 +26,9 @@ export const MissionScreen: React.FC = () => {
   const [independentIndex, setIndependentIndex] = useState(0);
   const [independentFeedback, setIndependentFeedback] = useState<{ correct: boolean; why: any } | null>(null);
   const [independentCompletions, setIndependentCompletions] = useState<Record<string, boolean>>({});
+  const [knowledgeIndex, setKnowledgeIndex] = useState(0);
+  const [knowledgeFeedback, setKnowledgeFeedback] = useState<boolean | null>(null);
+  const [knowledgeMissed, setKnowledgeMissed] = useState<Record<number, boolean>>({});
   const gameContainerRef = useRef<HTMLDivElement>(null);
 
   // Scene gating check
@@ -67,6 +71,9 @@ export const MissionScreen: React.FC = () => {
     setGuidedFeedback(null);
     setIndependentIndex(0);
     setIndependentFeedback(null);
+    setKnowledgeIndex(0);
+    setKnowledgeFeedback(null);
+    setKnowledgeMissed({});
   }, [currentMission.id, currentSceneIndex]);
 
   // Mount mini-game or interactive scene
@@ -132,14 +139,18 @@ export const MissionScreen: React.FC = () => {
   );
   const guidedKey = `${currentMission.id}:${guidedPractice?.id || ''}`;
   const guidedQuestions = guidedPractice?.questions || [];
-  const guidedComplete = !guidedPractice || !!guidedCompletions[guidedKey];
+  const savedLearning = state.learningProgress?.[currentMission.id];
+  const guidedComplete = !guidedPractice || !!guidedCompletions[guidedKey] || !!savedLearning?.guidedPracticeComplete;
   const guidedQuestion = guidedQuestions[guidedIndex];
   const independentPractice = currentMission.learning?.independentPractice?.find(
     activity => activity.sceneIndex === currentSceneIndex && activity.questions?.length
   );
   const independentKey = `${currentMission.id}:${independentPractice?.id || ''}`;
   const independentQuestions = independentPractice?.questions || [];
-  const independentComplete = !independentPractice || !!independentCompletions[independentKey];
+  const independentComplete = !independentPractice || !!independentCompletions[independentKey] || !!savedLearning?.independentPracticeComplete;
+  const knowledgeQuestions = currentMission.learning?.knowledgeCheck || [];
+  const knowledgeComplete = knowledgeQuestions.length === 0 || typeof savedLearning?.knowledgeCheckScore === 'number';
+  const knowledgeQuestion = knowledgeQuestions[knowledgeIndex];
   const independentQuestion = independentQuestions[independentIndex];
   const workedExamples = currentMission.learning?.concepts.filter(
     concept => concept.sceneIndexes?.includes(currentSceneIndex) && concept.workedExample
@@ -249,6 +260,7 @@ export const MissionScreen: React.FC = () => {
                       setGuidedHintVisible(false);
                     } else {
                       setGuidedCompletions(previous => ({ ...previous, [guidedKey]: true }));
+                      saveLearningProgress(currentMission.id, { guidedPracticeComplete: true });
                     }
                   }}>
                     {guidedIndex + 1 < guidedQuestions.length ? (lang === 'it' ? 'Prossima domanda' : 'Next question') : (lang === 'it' ? 'Completa esercitazione' : 'Complete practice')}
@@ -305,6 +317,7 @@ export const MissionScreen: React.FC = () => {
                       setIndependentFeedback(null);
                     } else {
                       setIndependentCompletions(previous => ({ ...previous, [independentKey]: true }));
+                      saveLearningProgress(currentMission.id, { independentPracticeComplete: true });
                     }
                   }}>
                     {independentIndex + 1 < independentQuestions.length ? (lang === 'it' ? 'Prossimo problema' : 'Next challenge') : (lang === 'it' ? 'Completa la sfida' : 'Complete challenge')}
@@ -323,6 +336,62 @@ export const MissionScreen: React.FC = () => {
         <div className="independent-complete" role="status">
           <strong>{lang === 'it' ? 'Sfida autonoma completata' : 'Independent challenge completed'}</strong>
           <p>{lang === 'it' ? 'Hai applicato le tue conoscenze senza suggerimenti. Puoi continuare.' : 'You applied your knowledge without hints. You can continue.'}</p>
+        </div>
+      )}
+
+      {independentComplete && knowledgeQuestions.length > 0 && !knowledgeComplete && knowledgeQuestion && (
+        <section className="learning-knowledge-check" aria-label={lang === 'it' ? 'Verifica delle conoscenze' : 'Knowledge check'}>
+          <div className="learning-section-heading">
+            <span className="learning-kicker">{lang === 'it' ? 'VERIFICA DELLE CONOSCENZE' : 'KNOWLEDGE CHECK'}</span>
+            <h3>{lang === 'it' ? 'Metti alla prova ciò che hai imparato' : 'Check what you have learned'}</h3>
+            <p>{lang === 'it' ? 'Rispondi senza suggerimenti. Se sbagli, leggi la spiegazione e riprova.' : 'Answer without hints. If you miss one, read the explanation and try again.'}</p>
+            <div className="guided-progress">{lang === 'it' ? 'Domanda' : 'Question'} {knowledgeIndex + 1} / {knowledgeQuestions.length}</div>
+          </div>
+          <div className="guided-question">
+            <strong>{L(knowledgeQuestion.q, lang)}</strong>
+            <div className="guided-options">
+              {knowledgeQuestion.a.map((option, index) => (
+                <button type="button" className="guided-option" key={index}
+                  disabled={knowledgeFeedback === true}
+                  onClick={() => {
+                    const correct = index === 0;
+                    setKnowledgeFeedback(correct);
+                    if (!correct) setKnowledgeMissed(previous => ({ ...previous, [knowledgeIndex]: true }));
+                  }}>
+                  <span className="guided-option-letter">{String.fromCharCode(65 + index)}</span>
+                  <span>{L(option, lang)}</span>
+                </button>
+              ))}
+            </div>
+            {knowledgeFeedback !== null && (
+              <div className={knowledgeFeedback ? 'guided-feedback correct' : 'guided-feedback retry'} role="status" aria-live="polite">
+                <strong>{knowledgeFeedback ? (lang === 'it' ? 'Risposta corretta' : 'Correct answer') : (lang === 'it' ? 'Riprova' : 'Try again')}</strong>
+                <p>{L(knowledgeQuestion.why, lang)}</p>
+                <button type="button" className="btn" onClick={() => {
+                  if (!knowledgeFeedback) { setKnowledgeFeedback(null); return; }
+                  if (knowledgeIndex + 1 < knowledgeQuestions.length) {
+                    setKnowledgeIndex(index => index + 1);
+                    setKnowledgeFeedback(null);
+                  } else {
+                    const score = Math.round(((knowledgeQuestions.length - Object.keys(knowledgeMissed).length) / knowledgeQuestions.length) * 100);
+                    saveLearningProgress(currentMission.id, { knowledgeCheckScore: score, lastAttemptAt: Date.now() });
+                  }
+                }}>
+                  {!knowledgeFeedback ? (lang === 'it' ? 'Riprova' : 'Try again') : knowledgeIndex + 1 < knowledgeQuestions.length ? (lang === 'it' ? 'Prossima domanda' : 'Next question') : (lang === 'it' ? 'Completa verifica' : 'Finish check')}
+                </button>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+      {knowledgeComplete && knowledgeQuestions.length > 0 && (
+        <div className="independent-complete" role="status">
+          <strong>{lang === 'it' ? 'Verifica completata' : 'Knowledge check complete'} · {savedLearning?.knowledgeCheckScore ?? 0}%</strong>
+          <p>{lang === 'it' ? 'Il risultato è salvato in questo browser. Puoi continuare la missione.' : 'Your result is saved in this browser. You can continue the mission.'}</p>
+          <button type="button" className="btn ghost" onClick={() => {
+            setKnowledgeIndex(0); setKnowledgeFeedback(null); setKnowledgeMissed({});
+            saveLearningProgress(currentMission.id, { knowledgeCheckScore: undefined });
+          }}>{lang === 'it' ? 'Ripeti verifica' : 'Retake check'}</button>
         </div>
       )}
 
@@ -368,7 +437,7 @@ export const MissionScreen: React.FC = () => {
         <button
           className="btn"
           id="next"
-          disabled={!canProceed || !guidedComplete || !independentComplete}
+          disabled={!canProceed || !guidedComplete || !independentComplete || !knowledgeComplete}
           onClick={nextScene}
         >
           {nxt && nxt.type === 'battle' ? L(U.fight, lang) : L(U.cont, lang)}
