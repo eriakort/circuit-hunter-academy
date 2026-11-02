@@ -41,7 +41,7 @@ export const MissionScreen: React.FC = () => {
     'vectors',
     'torque',
     'fluids'
-  ].includes(sc?.type || '') || sc?.init === 'board' || !!sc?.needDone;
+  ].includes(sc?.type || '') || sc?.init === 'board' || sc?.init === 'powercut' || !!sc?.needDone;
 
   const isGated = isGatedType && inMissionFirstTime();
 
@@ -136,7 +136,7 @@ export const MissionScreen: React.FC = () => {
       {!sc.type ? (
         <>
           {visualContent && (
-            <div className="visual" dangerouslySetInnerHTML={{ __html: visualContent }} />
+            <div className="visual" ref={sc.init ? gameContainerRef : undefined} dangerouslySetInnerHTML={{ __html: visualContent }} />
           )}
 
           <div className="dialog">
