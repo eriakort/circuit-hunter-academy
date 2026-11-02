@@ -8,6 +8,7 @@ import { BattleScreen } from './components/BattleScreen';
 import { CodexScreen } from './components/CodexScreen';
 import { CertificateScreen } from './components/CertificateScreen';
 import { RaceScreen } from './components/RaceScreen';
+import { TestScreen } from './components/TestScreen';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -67,6 +68,7 @@ const AppContent: React.FC = () => {
         {activeView === 'codex' && <CodexScreen />}
         {activeView === 'ending' && <CertificateScreen />}
         {activeView === 'race' && <RaceScreen />}
+        {activeView === 'test' && <TestScreen />}
       </main>
     </div>
   );

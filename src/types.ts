@@ -88,7 +88,17 @@ export interface GameState {
   v: number;
 }
 
-export type ViewMode = 'subjects' | 'map' | 'scene' | 'battle' | 'result' | 'ending' | 'dojo' | 'codex' | 'race';
+export type ViewMode = 'subjects' | 'map' | 'scene' | 'battle' | 'result' | 'ending' | 'dojo' | 'codex' | 'race' | 'test';
+
+export interface TaggedQuestion extends QuizQuestion {
+  id: string;
+  subject: SubjectId;
+  unitIndex: number;
+  arcIndex: number;
+  missionId: string;
+  chapterTitle: BilingualText;
+  missionTitle: BilingualText;
+}
 
 export interface RacePlayer {
   id: string;

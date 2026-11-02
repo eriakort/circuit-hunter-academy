@@ -151,6 +151,9 @@ export const MapScreen: React.FC = () => {
             <button className="btn ghost" id="goRace" onClick={() => goToView('race')}>
               {L(['Race your friends', 'Sfida le amiche'], lang)}
             </button>
+            <button className="btn ghost" id="goTest" onClick={() => goToView('test')}>
+              {L(['Test Knowledge', 'Test del Sapere'], lang)}
+            </button>
           </div>
         </div>
 

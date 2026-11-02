@@ -73,6 +73,10 @@ export const HUD: React.FC = () => {
           {L(['Dojo', 'Dojo'], lang)}
         </button>
 
+        <button className="btn ghost sm" id="hTest" onClick={() => goToView('test')}>
+          {L(['Test', 'Test'], lang)}
+        </button>
+
         {name && (
           <button className="btn ghost sm" id="hRace" onClick={() => goToView('race')}>
             {L(['Race', 'Gara'], lang)}
