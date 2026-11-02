@@ -44,6 +44,8 @@ export const RaceScreen: React.FC = () => {
   const channelRef = useRef<any>(null);
   const timerIntervalRef = useRef<any>(null);
   const raceIdRef = useRef<string>('');
+  const awardedRef = useRef(false);
+  const [lastXP, setLastXP] = useState(0);
 
   // Sorted players by join order
   const playerList = Object.values(players).sort((a, b) => a.joinedAt - b.joinedAt);
@@ -149,6 +151,8 @@ export const RaceScreen: React.FC = () => {
     setScore(0);
     setCorrectCount(0);
     setProgress({});
+    awardedRef.current = false;
+    setLastXP(0);
 
     // Start countdown
     setRaceState('countdown');
@@ -201,9 +205,24 @@ export const RaceScreen: React.FC = () => {
 
       if (left <= 0) {
         clearInterval(timerIntervalRef.current);
-        handleAnswerTimeout();
+        timeoutRef.current();
       }
     }, 100);
+  };
+
+  const sendProgress = (step: number, curScore: number) => {
+    if (!channelRef.current || !me) return;
+    const myProg: RaceProgress = {
+      id: me.id,
+      step,
+      score: curScore,
+      time: Date.now(),
+      raceId: raceIdRef.current,
+      done: step >= questions.length
+    };
+    try {
+      channelRef.current.send({ type: 'broadcast', event: 'progress', payload: myProg });
+    } catch (e) {}
   };
 
   const handleAnswerTimeout = () => {
@@ -214,8 +233,10 @@ export const RaceScreen: React.FC = () => {
       ok: false
     });
 
+    sendProgress(currentQIndex + 1, score);
+
     setTimeout(() => {
-      advanceQuestion(score, correctCount);
+      advanceRef.current(score, correctCount);
     }, 1200);
   };
 
@@ -250,23 +271,10 @@ export const RaceScreen: React.FC = () => {
 
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
 
-    // Broadcast progress to opponents
-    if (channelRef.current && me) {
-      const myProg: RaceProgress = {
-        id: me.id,
-        step: currentQIndex + 1,
-        score: newScore,
-        time: Date.now(),
-        raceId: raceIdRef.current,
-        done: currentQIndex + 1 >= questions.length
-      };
-      try {
-        channelRef.current.send({ type: 'broadcast', event: 'progress', payload: myProg });
-      } catch (e) {}
-    }
+    sendProgress(currentQIndex + 1, newScore);
 
     setTimeout(() => {
-      advanceQuestion(newScore, newCorrect);
+      advanceRef.current(newScore, newCorrect);
     }, 1200);
   };
 
@@ -279,13 +287,16 @@ export const RaceScreen: React.FC = () => {
     }
   };
 
-  const finishRace = (_finalScore: number, finalCorrect: number) => {
+  const finishRace = (_finalScore: number, _finalCorrect: number) => {
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
     setRaceState('done');
-
-    const xpEarned = raceXP(finalCorrect, true, playerList.length);
-    addXP(xpEarned);
   };
+
+  // Timer and setTimeout callbacks outlive the render that created them; route them to the latest handlers.
+  const timeoutRef = useRef(handleAnswerTimeout);
+  timeoutRef.current = handleAnswerTimeout;
+  const advanceRef = useRef(advanceQuestion);
+  advanceRef.current = advanceQuestion;
 
   const handleLeave = () => {
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
@@ -307,6 +318,22 @@ export const RaceScreen: React.FC = () => {
     }
     setRaceState('lobby');
   };
+
+  // Award XP once every racer has finished, so the winner bonus goes only to the actual winner.
+  useEffect(() => {
+    if (raceState !== 'done' || awardedRef.current || !me) return;
+    const others = playerList.filter(p => p.id !== me.id);
+    if (!others.every(p => progress[p.id]?.done)) return;
+    awardedRef.current = true;
+    const top = [...playerList].sort(
+      (a, b) =>
+        (b.id === me.id ? score : progress[b.id]?.score || 0) -
+        (a.id === me.id ? score : progress[a.id]?.score || 0)
+    )[0];
+    const xp = raceXP(correctCount, top?.id === me.id, playerList.length);
+    setLastXP(xp);
+    addXP(xp);
+  }, [raceState, progress, players, me, score, correctCount]);
 
   // 1. Home View: Join / Create Room
   if (raceState === 'home') {
@@ -610,7 +637,7 @@ export const RaceScreen: React.FC = () => {
       </div>
 
       <p className="muted">
-        {L(['Your score', 'Il tuo punteggio'], lang)}: <b>{score} pts</b>. +{raceXP(correctCount, leaderboard[0]?.id === me?.id, playerList.length)} XP!
+        {L(['Your score', 'Il tuo punteggio'], lang)}: <b>{score} pts</b>. {awardedRef.current ? `+${lastXP} XP!` : L(['Waiting for other racers…', 'In attesa delle altre giocatrici…'], lang)}
       </p>
 
       <div className="row" style={{ justifyContent: 'center', marginTop: '18px' }}>

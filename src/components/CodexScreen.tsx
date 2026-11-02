@@ -10,6 +10,14 @@ export const CodexScreen: React.FC = () => {
 
   const curSub = subject || 'cs';
   const q = searchQuery.trim().toLowerCase();
+  const anyMatch =
+    !q ||
+    CODEX.some(
+      e =>
+        (ARCS[MISSIONS[e[0] as number]?.arc]?.subject || 'cs') === curSub &&
+        !!seen[e[0] as number] &&
+        e.slice(1).join(' ').toLowerCase().includes(q)
+    );
 
   return (
     <>
@@ -51,6 +59,9 @@ export const CodexScreen: React.FC = () => {
       />
 
       <div id="cxl" style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+        {!anyMatch && (
+          <p className="muted">{L(['No unlocked terms match your search.', 'Nessun termine sbloccato corrisponde alla ricerca.'], lang)}</p>
+        )}
         {MISSIONS.map((m, mi) => {
           if ((ARCS[m.arc]?.subject || 'cs') !== curSub) return null;
           const isMissionSeen = !!seen[mi];

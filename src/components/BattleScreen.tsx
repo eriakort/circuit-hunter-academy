@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useGame } from '../context/GameContext';
 import { QuizQuestion, Mission } from '../types';
+import { MISSIONS } from '../data/gameData';
 import { L, demonSVG, HEART, shuffle, U } from '../helpers';
 
 export const BattleScreen: React.FC = () => {
@@ -44,7 +45,7 @@ export const BattleScreen: React.FC = () => {
   const [combo, setCombo] = useState(0);
   const [bestCombo, setBestCombo] = useState(0);
   const [currentQ, setCurrentQ] = useState<QuizQuestion | null>(null);
-  const [options, setOptions] = useState<string[]>([]);
+  const [options, setOptions] = useState<number[]>([]);
   const [answered, setAnswered] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [correctIndex, setCorrectIndex] = useState<number | null>(null);
@@ -53,6 +54,7 @@ export const BattleScreen: React.FC = () => {
   const [demonHit, setDemonHit] = useState(false);
   const [arenaOuch, setArenaOuch] = useState(false);
   const [battleFinished, setBattleFinished] = useState<'win' | 'lose' | null>(null);
+  const [firstClear, setFirstClear] = useState(false);
 
   // Initialize battle queue
   useEffect(() => {
@@ -86,11 +88,9 @@ export const BattleScreen: React.FC = () => {
     setArenaOuch(false);
 
     // Shuffle options: the correct answer is always index 0 in q.a
-    const rawOptions = q.a.map(opt => L(opt, lang));
-    const rightAnswer = rawOptions[0];
-    const shuffledOpts = shuffle(rawOptions.slice());
-    setOptions(shuffledOpts);
-    setCorrectIndex(shuffledOpts.indexOf(rightAnswer));
+    const order = shuffle(q.a.map((_, i) => i));
+    setOptions(order);
+    setCorrectIndex(order.indexOf(0));
   };
 
   const handleSelectOption = (idx: number) => {
@@ -99,7 +99,7 @@ export const BattleScreen: React.FC = () => {
     setSelectedIndex(idx);
 
     const isCorrect = idx === correctIndex;
-    const rightText = options[correctIndex!];
+    const rightText = currentQ.a[0] ? L(currentQ.a[0], lang) : '';
 
     // Split tech name if formatted as "Form · Technique"
     const fullTech = L(activeMission.tech, lang);
@@ -198,7 +198,7 @@ export const BattleScreen: React.FC = () => {
     setBattleFinished('win');
     if (isDojo) return;
 
-    const first = !cleared[activeMission.id];
+    setFirstClear(!cleared[activeMission.id]);
     const flawless = hearts === 3;
     const gained = 50 + (flawless ? 25 : 0);
     clearMission(activeMission.id, flawless, gained);
@@ -312,10 +312,11 @@ export const BattleScreen: React.FC = () => {
       );
     }
 
-    const first = !cleared[activeMission.id];
+    const first = firstClear;
     const flawless = hearts === 3;
     const gained = 50 + (flawless ? 25 : 0);
     const ni = currentMissionIndex + 1;
+    const nextMission = MISSIONS[ni];
 
     return (
       <div className="card result">
@@ -358,7 +359,7 @@ export const BattleScreen: React.FC = () => {
           ) : (
             <>
               <button className="btn" id="nx" onClick={() => openMission(ni)}>
-                {L(['Next', 'Avanti'], lang)}: {L(activeMission.title, lang)}
+                {L(['Next', 'Avanti'], lang)}: {L((nextMission || activeMission).title, lang)}
               </button>
               <button className="btn ghost" id="map" onClick={() => goToView('map')}>
                 {L(U.missions, lang)}
@@ -442,7 +443,7 @@ export const BattleScreen: React.FC = () => {
                   disabled={answered}
                   onClick={() => handleSelectOption(idx)}
                 >
-                  {opt}
+                  {L(currentQ.a[opt], lang)}
                 </button>
               );
             })}

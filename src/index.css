@@ -275,7 +275,7 @@ p{margin:0}
 .arc-h h2{font-size:20px}
 .arc-h .pg{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .mcard .sec{font-family:var(--mono);font-size:12px;color:var(--sakura)}
-.robo{display:grid;grid-template-columns:auto 1fr;gap:16px;width:100%;text-align:left;align-items:start}
+.robo{display:grid;grid-template-columns:min(300px,100%) minmax(0,1fr);gap:16px;width:100%;text-align:left;align-items:start}
 .robo > *{min-width:0}
 @media (max-width:640px){.robo{grid-template-columns:1fr;justify-items:center}}
 .rgrid{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:4px;width:min(300px,100%)}

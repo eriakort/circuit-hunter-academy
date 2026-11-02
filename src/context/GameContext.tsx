@@ -164,6 +164,11 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const startBattle = (isDojo = false, customQuestions?: any[]) => {
+    if (isDojo && !customQuestions) {
+      const pool = myMissions().filter(m => state.cleared[m.id]).flatMap(m => m.quiz || []);
+      if (!pool.length) return;
+      customQuestions = pool;
+    }
     setBattleContext({ isDojo, customQuestions });
     setView('battle');
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -59,17 +59,20 @@ export const MissionScreen: React.FC = () => {
     if (!sc) return;
     const isInteractive = isGatedType || sc.init === 'powercut' || sc.init === 'board';
 
-    if (isInteractive && gameContainerRef.current) {
+    // powercut/board scenes have no game container; they wire up the visual rendered above.
+    const host = gameContainerRef.current || (!sc.type ? document.body : null);
+    if (isInteractive && host) {
       const type = sc.type || sc.init || '';
       runMiniGame(
         type,
         sc,
-        gameContainerRef.current,
+        host,
         () => setCanProceed(true),
         lang,
         currentMission,
         inMissionFirstTime(),
-        (xp: number) => award(xp)
+        (xp: number) => award(xp),
+        state.name
       );
     }
   }, [currentSceneIndex, lang, currentMission, isGatedType, sc]);
