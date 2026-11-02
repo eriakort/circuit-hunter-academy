@@ -97,7 +97,7 @@ function sceneJourney(sc,host,done){
   const expectedOutput=()=>selectedInput==='microphone'?'speaker':'monitor';
   const setNodeLabel=(id,value)=>{
     const node=$('#jn-'+id,host);
-    if(node){const labels=$('text',node);const label=id==='mon'?labels[labels.length-1]:labels[0];if(label)label.textContent=value;}
+    if(node){const labels=node.querySelectorAll('text');const label=id==='mon'?labels[labels.length-1]:labels[0];if(label)label.textContent=value;}
   };
   const activate=(keys,at,symbol='')=>{
     ['kb','cpu','ram','gpu','mon','ssd'].forEach(k=>{
