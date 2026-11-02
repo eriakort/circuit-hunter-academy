@@ -5,7 +5,7 @@ import { rankOf } from '../helpers';
 
 const SKEY = 'circuit-hunter-academy-v2';
 const SCHEMA = 2;
-const NAV_KEY = 'circuit-hunter-academy-navigation-v1';
+const NAV_KEY = 'circuit-hunter-academy-navigation-v2';
 const VALID_VIEWS: ViewMode[] = ['subjects', 'map', 'scene', 'battle', 'result', 'ending', 'dojo', 'codex', 'race', 'test'];
 
 interface SavedNavigation {
@@ -17,7 +17,7 @@ interface SavedNavigation {
 
 const readSavedNavigation = (): SavedNavigation | null => {
   try {
-    const raw = sessionStorage.getItem(NAV_KEY);
+    const raw = localStorage.getItem(NAV_KEY);
     if (!raw) return null;
     const saved = JSON.parse(raw) as Partial<SavedNavigation>;
     if (!saved.view || !VALID_VIEWS.includes(saved.view)) return null;
@@ -126,7 +126,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      sessionStorage.setItem(NAV_KEY, JSON.stringify({
+      localStorage.setItem(NAV_KEY, JSON.stringify({
         view,
         currentMissionIndex,
         currentSceneIndex,
