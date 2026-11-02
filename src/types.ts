@@ -130,6 +130,8 @@ export interface LearningMissionDefinition {
   prerequisites?: BilingualText[];
   concepts: LearningConcept[];
   guidedPractice?: LearningPracticeActivity[];
+  /** Hint-free scenario questions completed independently after guided practice. */
+  independentPractice?: LearningPracticeActivity[];
   independentPractice?: LearningPracticeActivity[];
   knowledgeCheck?: QuizQuestion[];
   summary?: BilingualText[];
