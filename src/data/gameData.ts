@@ -2440,6 +2440,104 @@ export const MISSIONS: Mission[] = [
     ]
   }
 ],
+          "knowledgeCheck": [
+            {
+              "q": [
+                "Which component processes instructions?",
+                "Quale componente elabora le istruzioni?"
+              ],
+              "a": [
+                [
+                  "CPU",
+                  "CPU"
+                ],
+                [
+                  "Monitor",
+                  "Monitor"
+                ],
+                [
+                  "Keyboard",
+                  "Tastiera"
+                ]
+              ],
+              "why": [
+                "The CPU processes instructions.",
+                "La CPU elabora le istruzioni."
+              ]
+            },
+            {
+              "q": [
+                "Which item is software?",
+                "Quale elemento è software?"
+              ],
+              "a": [
+                [
+                  "A browser",
+                  "Un browser"
+                ],
+                [
+                  "A mouse",
+                  "Un mouse"
+                ],
+                [
+                  "A motherboard",
+                  "Una scheda madre"
+                ]
+              ],
+              "why": [
+                "A browser is a program.",
+                "Un browser è un programma."
+              ]
+            },
+            {
+              "q": [
+                "Where are program instructions held while in use?",
+                "Dove sono conservate le istruzioni mentre vengono usate?"
+              ],
+              "a": [
+                [
+                  "Main memory",
+                  "Memoria principale"
+                ],
+                [
+                  "Monitor",
+                  "Monitor"
+                ],
+                [
+                  "Printer",
+                  "Stampante"
+                ]
+              ],
+              "why": [
+                "Instructions and data are stored in memory.",
+                "Istruzioni e dati sono conservati in memoria."
+              ]
+            },
+            {
+              "q": [
+                "What does a system bus do?",
+                "Cosa fa un bus di sistema?"
+              ],
+              "a": [
+                [
+                  "Connect components and transfer signals",
+                  "Collega componenti e trasferisce segnali"
+                ],
+                [
+                  "Cool the CPU",
+                  "Raffredda la CPU"
+                ],
+                [
+                  "Display images",
+                  "Visualizza immagini"
+                ]
+              ],
+              "why": [
+                "Buses enable communication between components.",
+                "I bus permettono la comunicazione tra componenti."
+              ]
+            }
+          ],
           "concepts": [
                 {
                       "id": "input-processing-output-storage",
@@ -3189,6 +3287,104 @@ export const MISSIONS: Mission[] = [
     ]
   }
 ],
+          "knowledgeCheck": [
+            {
+              "q": [
+                "Which component connects CPU and RAM?",
+                "Quale componente collega CPU e RAM?"
+              ],
+              "a": [
+                [
+                  "Motherboard",
+                  "Scheda madre"
+                ],
+                [
+                  "Power supply",
+                  "Alimentatore"
+                ],
+                [
+                  "SSD",
+                  "SSD"
+                ]
+              ],
+              "why": [
+                "The motherboard connects components.",
+                "La scheda madre collega i componenti."
+              ]
+            },
+            {
+              "q": [
+                "What does the control unit do?",
+                "Cosa fa l'unità di controllo?"
+              ],
+              "a": [
+                [
+                  "Coordinates instruction execution",
+                  "Coordina l'esecuzione delle istruzioni"
+                ],
+                [
+                  "Stores files permanently",
+                  "Memorizza i file in modo permanente"
+                ],
+                [
+                  "Displays graphics",
+                  "Visualizza la grafica"
+                ]
+              ],
+              "why": [
+                "It directs CPU operations.",
+                "Dirige le operazioni della CPU."
+              ]
+            },
+            {
+              "q": [
+                "Which is the correct instruction cycle?",
+                "Qual è il ciclo corretto delle istruzioni?"
+              ],
+              "a": [
+                [
+                  "Fetch, decode, execute",
+                  "Fetch, decode, execute"
+                ],
+                [
+                  "Decode, execute, fetch",
+                  "Decode, execute, fetch"
+                ],
+                [
+                  "Execute, fetch, decode",
+                  "Execute, fetch, decode"
+                ]
+              ],
+              "why": [
+                "The CPU fetches, decodes, then executes.",
+                "La CPU recupera, decodifica ed esegue."
+              ]
+            },
+            {
+              "q": [
+                "What else affects CPU performance besides clock speed?",
+                "Cos'altro influisce sulle prestazioni oltre alla frequenza?"
+              ],
+              "a": [
+                [
+                  "Cores and architecture",
+                  "Core e architettura"
+                ],
+                [
+                  "Case colour",
+                  "Colore del case"
+                ],
+                [
+                  "Screen size",
+                  "Dimensione dello schermo"
+                ]
+              ],
+              "why": [
+                "Architecture and core count also matter.",
+                "Contano anche architettura e numero di core."
+              ]
+            }
+          ],
           "concepts": [
                 {
                       "id": "motherboard",
@@ -3923,6 +4119,104 @@ export const MISSIONS: Mission[] = [
     ]
   }
 ],
+          "knowledgeCheck": [
+            {
+              "q": [
+                "Why is RAM volatile?",
+                "Perché la RAM è volatile?"
+              ],
+              "a": [
+                [
+                  "It loses data without power",
+                  "Perde i dati senza alimentazione"
+                ],
+                [
+                  "It stores files permanently",
+                  "Conserva i file in modo permanente"
+                ],
+                [
+                  "It is an optical disc",
+                  "È un disco ottico"
+                ]
+              ],
+              "why": [
+                "RAM needs power to retain data.",
+                "La RAM richiede alimentazione per conservare i dati."
+              ]
+            },
+            {
+              "q": [
+                "Which memory is fastest and closest to CPU?",
+                "Quale memoria è più veloce e vicina alla CPU?"
+              ],
+              "a": [
+                [
+                  "Cache",
+                  "Cache"
+                ],
+                [
+                  "SSD",
+                  "SSD"
+                ],
+                [
+                  "DVD",
+                  "DVD"
+                ]
+              ],
+              "why": [
+                "Cache provides very fast access.",
+                "La cache offre accesso molto rapido."
+              ]
+            },
+            {
+              "q": [
+                "Which bus carries a memory location?",
+                "Quale bus trasporta un indirizzo di memoria?"
+              ],
+              "a": [
+                [
+                  "Address bus",
+                  "Bus degli indirizzi"
+                ],
+                [
+                  "Data bus",
+                  "Bus dati"
+                ],
+                [
+                  "Control bus",
+                  "Bus di controllo"
+                ]
+              ],
+              "why": [
+                "The address bus identifies a location.",
+                "Il bus degli indirizzi identifica una posizione."
+              ]
+            },
+            {
+              "q": [
+                "Which drive has no moving parts?",
+                "Quale unità non ha parti in movimento?"
+              ],
+              "a": [
+                [
+                  "SSD",
+                  "SSD"
+                ],
+                [
+                  "HDD",
+                  "HDD"
+                ],
+                [
+                  "DVD drive",
+                  "Lettore DVD"
+                ]
+              ],
+              "why": [
+                "An SSD uses flash memory.",
+                "Un SSD usa memoria flash."
+              ]
+            }
+          ],
           "concepts": [
                 {
                       "id": "ram",
@@ -4785,6 +5079,104 @@ export const MISSIONS: Mission[] = [
     ]
   }
 ],
+          "knowledgeCheck": [
+            {
+              "q": [
+                "A webcam sends video into a computer. It is what type?",
+                "Una webcam invia video al computer. Che tipo è?"
+              ],
+              "a": [
+                [
+                  "Input",
+                  "Input"
+                ],
+                [
+                  "Output",
+                  "Output"
+                ],
+                [
+                  "Storage",
+                  "Archiviazione"
+                ]
+              ],
+              "why": [
+                "A webcam sends information into the computer.",
+                "Una webcam invia informazioni al computer."
+              ]
+            },
+            {
+              "q": [
+                "Why is a touchscreen both input and output?",
+                "Perché un touchscreen è input e output?"
+              ],
+              "a": [
+                [
+                  "It displays and detects touch",
+                  "Visualizza e rileva il tocco"
+                ],
+                [
+                  "It only stores data",
+                  "Memorizza solo dati"
+                ],
+                [
+                  "It only plays sound",
+                  "Riproduce solo audio"
+                ]
+              ],
+              "why": [
+                "It displays content and detects user input.",
+                "Visualizza contenuti e rileva l'input."
+              ]
+            },
+            {
+              "q": [
+                "What does a capacitive screen detect?",
+                "Cosa rileva uno schermo capacitivo?"
+              ],
+              "a": [
+                [
+                  "A change in capacitance",
+                  "Una variazione di capacità elettrica"
+                ],
+                [
+                  "Room temperature",
+                  "La temperatura della stanza"
+                ],
+                [
+                  "Sound waves",
+                  "Onde sonore"
+                ]
+              ],
+              "why": [
+                "A finger changes local capacitance.",
+                "Un dito modifica la capacità elettrica locale."
+              ]
+            },
+            {
+              "q": [
+                "Where should an old phone be disposed of?",
+                "Dove va smaltito un vecchio telefono?"
+              ],
+              "a": [
+                [
+                  "An authorised e-waste point",
+                  "Un centro autorizzato RAEE"
+                ],
+                [
+                  "General waste",
+                  "Rifiuti indifferenziati"
+                ],
+                [
+                  "Outdoors",
+                  "All'aperto"
+                ]
+              ],
+              "why": [
+                "Electronics need appropriate recycling.",
+                "I dispositivi elettronici richiedono riciclo adeguato."
+              ]
+            }
+          ],
           "concepts": [
                 {
                       "id": "input-output-peripherals",
