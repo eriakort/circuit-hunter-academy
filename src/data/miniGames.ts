@@ -33,13 +33,14 @@ function initPowercut(done){
 }
 function initBoard(done){
   const info=$('#boardInfo');
+  const zones=$$('.zone');
   const explored=new Set<string>();
-  const total=$('.zone').length;
+  const total=zones.length;
+  let completed=false;
   const updateProgress=()=>{
     const count=explored.size;
     const progress=L([`Components explored: ${count} / ${total}`,`Componenti esplorati: ${count} / ${total}`]);
     info.setAttribute('aria-live','polite');
-    info.dataset.progress=String(count);
     info.innerHTML+=`<p class="muted" style="margin-top:10px">${progress}</p>`;
     if(count===total && !completed){
       completed=true;
@@ -47,9 +48,9 @@ function initBoard(done){
       done();
     }
   };
-  $('.zone').forEach(z=>{
+  zones.forEach(z=>{
     const show=()=>{
-      $('.zone').forEach(o=>o.classList.remove('on'));
+      zones.forEach(o=>o.classList.remove('on'));
       z.classList.add('on');
       const d=BOARD[z.dataset.k];
       explored.add(z.dataset.k);
