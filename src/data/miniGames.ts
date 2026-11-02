@@ -41,7 +41,8 @@ function initBoard(done){
     info.setAttribute('aria-live','polite');
     info.dataset.progress=String(count);
     info.innerHTML+=`<p class="muted" style="margin-top:10px">${progress}</p>`;
-    if(count===total){
+    if(count===total && !completed){
+      completed=true;
       info.innerHTML+=`<p class="fb ok">${L(['Board scan complete! You can continue.','Esplorazione completata! Puoi continuare.'])}</p>`;
       done();
     }
