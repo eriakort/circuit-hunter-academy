@@ -75,7 +75,7 @@ export interface LearningConcept {
   title: BilingualText;
   explanation: BilingualText;
   example?: BilingualText;
-  /** Existing scene indexes that demonstrate this concept. */
+  /** Zero-based indexes of existing scenes that demonstrate this concept. */
   sceneIndexes?: number[];
   /** Optional key used by the existing visual renderer. */
   visualKey?: string;
@@ -85,7 +85,7 @@ export interface LearningPracticeActivity {
   id: string;
   title: BilingualText;
   instructions: BilingualText;
-  /** Reuse an existing interactive scene where possible. */
+  /** Zero-based index of an existing interactive scene to reuse, where possible. */
   sceneIndex?: number;
   /** Optional new mini-game type for a future activity. */
   activityType?: string;
@@ -97,7 +97,7 @@ export interface LearningMasteryAssessment {
   title: BilingualText;
   instructions: BilingualText;
   questions: QuizQuestion[];
-  /** Percentage required to unlock the mission battle. */
+  /** Percentage from 0 to 100 required to unlock the mission battle. */
   passingScore: number;
 }
 
