@@ -2331,7 +2331,7 @@ export const MISSIONS: Mission[] = [
       "Il monitor è l'input perché è lì che vedo il risultato."
     ],
     "correction": [
-      "The monitor presents information, so it is output. Input is the information sent into the computer, such as the search words typed on the keyboard.",
+      "The monitor presents information, so it is output. Input is information sent into the computer, such as search words typed on the keyboard.",
       "Il monitor presenta informazioni, quindi è output. L'input è l'informazione inviata al computer, ad esempio le parole digitate sulla tastiera."
     ]
   }
@@ -2367,20 +2367,20 @@ export const MISSIONS: Mission[] = [
   ],
   "steps": [
     [
-      "1. Find the physical parts you can touch: laptop, keyboard, screen and SSD.",
-      "1. Individua le parti fisiche che puoi toccare: portatile, tastiera, schermo e SSD."
+      "1. Find the physical parts: laptop, keyboard, screen and SSD.",
+      "1. Individua le parti fisiche: portatile, tastiera, schermo e SSD."
     ],
     [
-      "2. Identify the programs and instructions: operating system and word processor.",
-      "2. Individua i programmi e le istruzioni: sistema operativo e programma di videoscrittura."
+      "2. Identify the programs: operating system and word processor.",
+      "2. Individua i programmi: sistema operativo e programma di videoscrittura."
     ],
     [
       "3. Explain how they work together: software gives instructions and hardware carries them out.",
       "3. Spiega come collaborano: il software fornisce istruzioni e l'hardware le esegue."
     ],
     [
-      "4. Test the distinction: closing the word processor stops the program, but the keyboard remains a physical component.",
-      "4. Verifica la differenza: chiudere il programma interrompe il software, ma la tastiera resta un componente fisico."
+      "4. Closing the word processor stops the program, but the keyboard remains a physical component.",
+      "4. Chiudere il programma interrompe il software, ma la tastiera resta un componente fisico."
     ]
   ],
   "answer": [
@@ -2431,7 +2431,7 @@ export const MISSIONS: Mission[] = [
   ],
   "steps": [
     [
-      "1. The calculator instructions and the values 27 and 14 are loaded into main memory.",
+      "1. The calculator instructions and values 27 and 14 are loaded into main memory.",
       "1. Le istruzioni della calcolatrice e i valori 27 e 14 vengono caricati nella memoria centrale."
     ],
     [
@@ -2448,7 +2448,7 @@ export const MISSIONS: Mission[] = [
     ]
   ],
   "answer": [
-    "Instructions and data share main memory; the CPU fetches and executes instructions, while buses connect the components and input/output devices communicate with the user.",
+    "Instructions and data share main memory; the CPU fetches and executes instructions, while buses connect components and input/output devices communicate with the user.",
     "Istruzioni e dati condividono la memoria centrale; la CPU preleva ed esegue le istruzioni, mentre i bus collegano i componenti e le periferiche comunicano con l'utente."
   ]
 },
@@ -2902,12 +2902,12 @@ export const MISSIONS: Mission[] = [
       "3. Controlla lo slot PCIe e lo spazio disponibile per la scheda video."
     ],
     [
-      "4. Explain that the board provides the physical connections and communication paths; it does not perform all processing itself.",
-      "4. Spiega che la scheda fornisce connessioni fisiche e percorsi di comunicazione; non esegue da sola tutta l'elaborazione."
+      "4. The board provides physical connections and communication paths; it does not perform all processing itself.",
+      "4. La scheda fornisce connessioni fisiche e percorsi di comunicazione; non esegue da sola tutta l'elaborazione."
     ]
   ],
   "answer": [
-    "The motherboard connects the CPU, RAM, storage and expansion cards, and provides pathways for them to communicate. Compatibility depends on its sockets, slots and supported standards.",
+    "The motherboard connects the CPU, RAM, storage and expansion cards and provides pathways for communication. Compatibility depends on its sockets, slots and supported standards.",
     "La scheda madre collega CPU, RAM, archiviazione e schede di espansione e fornisce percorsi per la comunicazione. La compatibilità dipende da socket, slot e standard supportati."
   ]
 },
@@ -2962,12 +2962,12 @@ export const MISSIONS: Mission[] = [
       "2. L'alimentatore converte la CA in uscite regolate di corrente continua (CC)."
     ],
     [
-      "3. It supplies the voltage rails required by different components through power connectors.",
-      "3. Fornisce le tensioni necessarie ai diversi componenti tramite connettori di alimentazione."
+      "3. It supplies the voltage required by components through power connectors.",
+      "3. Fornisce le tensioni necessarie ai componenti tramite connettori di alimentazione."
     ],
     [
-      "4. Choose a PSU with suitable connectors and sufficient capacity for the system.",
-      "4. Scegli un alimentatore con connettori adatti e potenza sufficiente per il sistema."
+      "4. Choose a PSU with suitable connectors and sufficient capacity.",
+      "4. Scegli un alimentatore con connettori adatti e potenza sufficiente."
     ]
   ],
   "answer": [
@@ -3013,8 +3013,8 @@ export const MISSIONS: Mission[] = [
                       "example": ["For an ADD instruction, the CPU fetches the instruction, decodes it and uses the ALU to add the values.","Per un'istruzione ADD, la CPU preleva l'istruzione, la decodifica e usa l'ALU per sommare i valori."],
                       "workedExample": {
   "scenario": [
-    "A program asks the computer to add 8 and 5, then compare the result with 10. Identify the CPU parts at work.",
-    "Un programma chiede al computer di sommare 8 e 5 e poi confrontare il risultato con 10. Individua le parti della CPU coinvolte."
+    "A program adds 8 and 5, then compares the result with 10. Identify the CPU parts at work.",
+    "Un programma somma 8 e 5, poi confronta il risultato con 10. Individua le parti della CPU coinvolte."
   ],
   "steps": [
     [
@@ -3077,30 +3077,30 @@ export const MISSIONS: Mission[] = [
                       "example": ["Video encoding may benefit from multiple cores, while a lightly threaded task may depend more on single-core performance.","La codifica video può beneficiare di più core, mentre un'attività con pochi thread può dipendere maggiormente dalle prestazioni di un singolo core."],
                       "workedExample": {
   "scenario": [
-    "Two CPUs have different specifications: CPU A has 4 cores at 4.0 GHz; CPU B has 8 cores at 3.2 GHz. Can you decide which is faster from these numbers alone?",
-    "Due CPU hanno specifiche diverse: la CPU A ha 4 core a 4,0 GHz; la CPU B ha 8 core a 3,2 GHz. Puoi decidere quale sia più veloce solo da questi numeri?"
+    "CPU A has 4 cores at 4.0 GHz; CPU B has 8 cores at 3.2 GHz. Can you decide which is faster from these numbers alone?",
+    "La CPU A ha 4 core a 4,0 GHz; la CPU B ha 8 core a 3,2 GHz. Puoi decidere quale sia più veloce solo da questi numeri?"
   ],
   "steps": [
     [
-      "1. Interpret clock speed: GHz describes billions of clock cycles per second, not completed tasks per second.",
-      "1. Interpreta la frequenza: GHz indica miliardi di cicli di clock al secondo, non attività completate al secondo."
+      "1. GHz describes billions of clock cycles per second, not completed tasks per second.",
+      "1. GHz indica miliardi di cicli di clock al secondo, non attività completate al secondo."
     ],
     [
-      "2. Interpret core count: each core can execute instructions, allowing more work to run in parallel.",
-      "2. Interpreta il numero di core: ogni core può eseguire istruzioni, consentendo più attività in parallelo."
+      "2. Each core can execute instructions, allowing more work to run in parallel.",
+      "2. Ogni core può eseguire istruzioni, consentendo più attività in parallelo."
     ],
     [
-      "3. Consider the workload: software that uses many cores may benefit from CPU B; a lightly threaded task may not.",
-      "3. Considera il carico: un software che usa molti core può beneficiare della CPU B; un'attività con pochi thread potrebbe non farlo."
+      "3. Software that uses many cores may benefit from CPU B; a lightly threaded task may not.",
+      "3. Un software che usa molti core può beneficiare della CPU B; un'attività con pochi thread potrebbe non farlo."
     ],
     [
-      "4. Check architecture, cache, power limits and real benchmarks before deciding.",
-      "4. Controlla architettura, cache, limiti energetici e benchmark reali prima di decidere."
+      "4. Check architecture, cache, power limits and relevant benchmarks before deciding.",
+      "4. Controlla architettura, cache, limiti energetici e benchmark pertinenti prima di decidere."
     ]
   ],
   "answer": [
     "Neither GHz nor core count alone proves which CPU is faster. Performance depends on the workload and other design factors, so compare relevant benchmarks.",
-    "Né i GHz né il numero di core, da soli, dimostrano quale CPU sia più veloce. Le prestazioni dipendono dal carico e da altri fattori di progettazione: confronta benchmark pertinenti."
+    "Né i GHz né il numero di core, da soli, dimostrano quale CPU sia più veloce. Le prestazioni dipendono dal carico e da altri fattori: confronta benchmark pertinenti."
   ]
 },
                       "misconceptions": [
@@ -3458,25 +3458,25 @@ export const MISSIONS: Mission[] = [
                       "example": ["A document you are editing is held in working memory; saving it writes a persistent copy to an SSD or HDD.","Un documento che stai modificando è nella memoria di lavoro; salvarlo crea una copia persistente su SSD o HDD."],
                       "workedExample": {
   "scenario": [
-    "You edit a presentation, leave it unsaved, and the computer suddenly loses power. Explain what happens to the working copy.",
-    "Modifichi una presentazione senza salvarla e il computer perde improvvisamente alimentazione. Spiega cosa accade alla copia di lavoro."
+    "You edit a presentation, leave it unsaved, and the computer suddenly loses power. What happens to the working copy?",
+    "Modifichi una presentazione senza salvarla e il computer perde improvvisamente alimentazione. Cosa accade alla copia di lavoro?"
   ],
   "steps": [
     [
-      "1. While editing, the open program and current presentation data are held in RAM for quick access.",
-      "1. Durante la modifica, il programma aperto e i dati correnti della presentazione sono nella RAM per un accesso rapido."
+      "1. While editing, the open program and current presentation data are held in RAM.",
+      "1. Durante la modifica, il programma aperto e i dati correnti della presentazione sono nella RAM."
     ],
     [
       "2. RAM is volatile memory and needs power to retain its contents.",
       "2. La RAM è una memoria volatile e ha bisogno di alimentazione per conservare il contenuto."
     ],
     [
-      "3. When power is lost, the unsaved data in RAM is lost.",
-      "3. Quando manca l'alimentazione, i dati non salvati nella RAM vengono persi."
+      "3. When power is lost, unsaved data in RAM is lost.",
+      "3. Quando manca l'alimentazione, i dati non salvati nella RAM si perdono."
     ],
     [
-      "4. Saving writes a persistent copy to an SSD or HDD so it remains after shutdown.",
-      "4. Salvare scrive una copia permanente su SSD o HDD, così resta disponibile dopo lo spegnimento."
+      "4. Saving writes a persistent copy to an SSD or HDD.",
+      "4. Salvare scrive una copia permanente su SSD o HDD."
     ]
   ],
   "answer": [
@@ -3522,21 +3522,21 @@ export const MISSIONS: Mission[] = [
                       "example": ["A CPU may find recently used data in cache; firmware stored in non-volatile memory helps a computer start.","La CPU può trovare nella cache dati usati di recente; il firmware conservato in memoria non volatile aiuta il computer ad avviarsi."],
                       "workedExample": {
   "scenario": [
-    "A computer starts up and then repeatedly accesses the same instructions while running an application. Explain the different roles of cache and ROM.",
-    "Un computer si avvia e poi accede ripetutamente alle stesse istruzioni durante l'esecuzione di un'applicazione. Spiega i diversi ruoli di cache e ROM."
+    "A computer starts up and then repeatedly accesses the same instructions while running an application. Explain the roles of cache and ROM.",
+    "Un computer si avvia e poi accede ripetutamente alle stesse istruzioni durante un'applicazione. Spiega i ruoli di cache e ROM."
   ],
   "steps": [
     [
-      "1. Firmware stored in non-volatile memory helps initialise the computer during startup.",
-      "1. Il firmware conservato in memoria non volatile aiuta a inizializzare il computer durante l'avvio."
+      "1. Firmware in non-volatile memory helps initialise the computer during startup.",
+      "1. Il firmware in memoria non volatile aiuta a inizializzare il computer durante l'avvio."
     ],
     [
-      "2. Once programs run, the CPU frequently needs some data and instructions again.",
-      "2. Quando i programmi sono in esecuzione, la CPU ha spesso bisogno di alcuni dati e istruzioni più volte."
+      "2. While programs run, the CPU may need some data and instructions repeatedly.",
+      "2. Durante l'esecuzione dei programmi, la CPU può aver bisogno più volte di alcuni dati e istruzioni."
     ],
     [
-      "3. Cache keeps copies of frequently needed information close to the CPU for faster access.",
-      "3. La cache conserva copie delle informazioni usate spesso vicino alla CPU per accedervi più rapidamente."
+      "3. Cache keeps frequently needed information close to the CPU for faster access.",
+      "3. La cache conserva le informazioni usate spesso vicino alla CPU per accedervi più rapidamente."
     ],
     [
       "4. Cache speeds access; ROM/firmware retains essential information without normal power.",
@@ -3544,8 +3544,8 @@ export const MISSIONS: Mission[] = [
     ]
   ],
   "answer": [
-    "Cache is small, fast memory that reduces the time needed to access frequently used data. ROM is non-volatile memory used to retain firmware or other essential instructions.",
-    "La cache è una memoria piccola e veloce che riduce il tempo di accesso ai dati usati frequentemente. La ROM è una memoria non volatile usata per conservare firmware o altre istruzioni essenziali."
+    "Cache is small, fast memory that reduces access time for frequently used data. ROM is non-volatile memory used to retain firmware or essential instructions.",
+    "La cache è una memoria piccola e veloce che riduce il tempo di accesso ai dati frequenti. La ROM è una memoria non volatile usata per conservare firmware o istruzioni essenziali."
   ]
 },
                       "misconceptions": [
@@ -3555,8 +3555,8 @@ export const MISSIONS: Mission[] = [
       "Cache e ROM sono entrambe semplicemente RAM aggiuntiva per le app aperte."
     ],
     "correction": [
-      "Cache and ROM have different purposes: cache helps the CPU access frequently used data quickly, while ROM retains non-volatile firmware or essential instructions.",
-      "Cache e ROM hanno funzioni diverse: la cache aiuta la CPU ad accedere rapidamente ai dati frequenti, mentre la ROM conserva firmware o istruzioni essenziali in modo non volatile."
+      "Cache helps the CPU access frequently used data quickly, while ROM retains non-volatile firmware or essential instructions.",
+      "La cache aiuta la CPU ad accedere rapidamente ai dati frequenti, mentre la ROM conserva firmware o istruzioni essenziali in modo non volatile."
     ]
   }
 ],
@@ -3599,12 +3599,12 @@ export const MISSIONS: Mission[] = [
       "2. Il bus di controllo trasporta segnali come lettura, scrittura e temporizzazione per coordinare l'operazione."
     ],
     [
-      "3. The data bus carries the value being transferred between memory and the CPU.",
+      "3. The data bus carries the value transferred between memory and the CPU.",
       "3. Il bus dati trasporta il valore trasferito tra memoria e CPU."
     ],
     [
-      "4. Remember the distinction: where (address), what (data), and how/when (control).",
-      "4. Ricorda la distinzione: dove (indirizzo), cosa (dati) e come/quando (controllo)."
+      "4. Remember: where (address), what (data), and how/when (control).",
+      "4. Ricorda: dove (indirizzo), cosa (dati) e come/quando (controllo)."
     ]
   ],
   "answer": [
@@ -3651,8 +3651,8 @@ export const MISSIONS: Mission[] = [
                       "example": ["An SSD keeps your photos after shutdown; an HDD can also retain them using magnetic platters.","Un SSD conserva le foto dopo lo spegnimento; anche un HDD può conservarle usando piatti magnetici."],
                       "workedExample": {
   "scenario": [
-    "You need to keep a 2 GB video after shutting down the computer and share it with a classmate. Compare suitable storage choices.",
-    "Devi conservare un video da 2 GB dopo aver spento il computer e condividerlo con un compagno. Confronta le opzioni di archiviazione adatte."
+    "You need to keep a 2 GB video after shutting down the computer and share it with a classmate. Compare storage choices.",
+    "Devi conservare un video da 2 GB dopo aver spento il computer e condividerlo con un compagno. Confronta le opzioni di archiviazione."
   ],
   "steps": [
     [
@@ -3668,13 +3668,13 @@ export const MISSIONS: Mission[] = [
       "3. Un HDD conserva dati magneticamente su dischi rotanti e può costare meno per GB."
     ],
     [
-      "4. Cloud storage keeps a copy on remote servers and makes sharing possible over a network; check connection and privacy needs.",
-      "4. Il cloud conserva una copia su server remoti e permette la condivisione tramite rete; considera connessione e privacy."
+      "4. Cloud storage keeps a copy on remote servers and enables network sharing; consider connection and privacy.",
+      "4. Il cloud conserva una copia su server remoti e permette la condivisione in rete; considera connessione e privacy."
     ]
   ],
   "answer": [
-    "An SSD or HDD can keep the video when power is off. Cloud storage can make it accessible to a classmate over the internet; the best choice depends on speed, capacity, cost and sharing needs.",
-    "Un SSD o HDD può conservare il video a computer spento. Il cloud può renderlo accessibile a un compagno tramite Internet; la scelta dipende da velocità, capacità, costo e necessità di condivisione."
+    "An SSD or HDD can keep the video when power is off. Cloud storage can make it accessible to a classmate online; the best choice depends on speed, capacity, cost and sharing needs.",
+    "Un SSD o HDD può conservare il video a computer spento. Il cloud può renderlo accessibile a un compagno online; la scelta dipende da velocità, capacità, costo e necessità di condivisione."
   ]
 },
                       "misconceptions": [
@@ -3684,7 +3684,7 @@ export const MISSIONS: Mission[] = [
       "Il cloud significa che il file è conservato nella RAM del portatile."
     ],
     "correction": [
-      "Cloud storage keeps data on remote computers accessed through a network. It is different from local RAM and local disk storage.",
+      "Cloud storage keeps data on remote computers accessed through a network. It is different from local RAM and disk storage.",
       "Il cloud conserva i dati su computer remoti accessibili tramite rete. È diverso dalla RAM locale e dall'archiviazione su disco locale."
     ]
   }
@@ -4158,41 +4158,41 @@ export const MISSIONS: Mission[] = [
                       "example": ["A headset microphone sends sound into the computer (input), while its headphones play sound from the computer (output).","Il microfono di una cuffia invia audio al computer (input), mentre gli auricolari riproducono l'audio del computer (output)."],
                       "workedExample": {
   "scenario": [
-    "A phone registers a finger tap but does not respond to a non-conductive plastic stylus. Explain why a capacitive screen behaves this way.",
-    "Un telefono registra il tocco di un dito ma non risponde a uno stilo di plastica non conduttivo. Spiega perché uno schermo capacitivo si comporta così."
+    "A student joins an online lesson using a laptop, headset and webcam. Classify the devices by the direction of information.",
+    "Uno studente partecipa a una lezione online usando portatile, cuffie con microfono e webcam. Classifica i dispositivi in base alla direzione delle informazioni."
   ],
   "steps": [
     [
-      "1. The screen maintains an electrical field across its surface.",
-      "1. Lo schermo mantiene un campo elettrico sulla propria superficie."
+      "1. The webcam sends video into the computer; the microphone sends sound in.",
+      "1. La webcam invia video al computer; il microfono invia audio."
     ],
     [
-      "2. A conductive finger changes the capacitance at the point of contact.",
-      "2. Un dito conduttivo modifica la capacità elettrica nel punto di contatto."
+      "2. The screen displays the lesson and headphones play sound out.",
+      "2. Lo schermo mostra la lezione e le cuffie riproducono l'audio."
     ],
     [
-      "3. Sensors and the controller detect and interpret that change as a touch location.",
-      "3. Sensori e controller rilevano e interpretano la variazione come una posizione di tocco."
+      "3. A touchscreen can do both: display output and detect touch input.",
+      "3. Un touchscreen può svolgere entrambe le funzioni: mostrare output e rilevare input tramite il tocco."
     ],
     [
-      "4. Ordinary plastic does not cause the same conductive change, so a basic capacitive screen may not detect it.",
-      "4. La normale plastica non provoca la stessa variazione conduttiva, quindi uno schermo capacitivo di base potrebbe non rilevarla."
+      "4. Classify by following the direction of information.",
+      "4. Classifica seguendo la direzione delle informazioni."
     ]
   ],
   "answer": [
-    "A capacitive touchscreen detects changes in capacitance caused by a conductive object, usually a finger. The controller interprets the change as a touch.",
-    "Un touchscreen capacitivo rileva variazioni di capacità causate da un oggetto conduttivo, di solito un dito. Il controller interpreta la variazione come un tocco."
+    "The webcam and microphone are input devices; the screen and headphones are output devices. A touchscreen is both input and output.",
+    "Webcam e microfono sono dispositivi di input; schermo e cuffie sono dispositivi di output. Un touchscreen svolge entrambe le funzioni."
   ]
 },
                       "misconceptions": [
   {
     "belief": [
-      "The screen detects pressure because the finger physically pushes a button underneath it.",
-      "Lo schermo rileva la pressione perché il dito preme fisicamente un pulsante sottostante."
+      "A headset is only output because it has headphones.",
+      "Una cuffia è solo output perché ha gli auricolari."
     ],
     "correction": [
-      "A capacitive screen detects an electrical change, not simply pressure on a mechanical button. Resistive screens work differently.",
-      "Uno schermo capacitivo rileva una variazione elettrica, non semplicemente la pressione su un pulsante meccanico. Gli schermi resistivi funzionano in modo diverso."
+      "A headset with a microphone has both roles: the microphone is input and the headphones are output.",
+      "Una cuffia con microfono svolge entrambe le funzioni: il microfono è input e gli auricolari sono output."
     ]
   }
 ],
@@ -4219,41 +4219,45 @@ export const MISSIONS: Mission[] = [
                       "visualKey": "touch",
                       "example": ["A finger changes the capacitance at a screen location; the controller interprets the change as a touch.","Un dito modifica la capacità elettrica in un punto dello schermo; il controller interpreta la variazione come un tocco."],
                       "workedExample": {
-                        "scenario": [
-                          "A student is asked to explain Capacitive touchscreens using a familiar computer task. What should they examine?",
-                          "A uno studente viene chiesto di spiegare Touchscreen capacitivi usando un'attività informatica familiare. Che cosa dovrebbe osservare?"
-                        ],
-                        "steps": [
-                          [
-                            "1. Identify the component or process involved.",
-                            "1. Individua il componente o il processo coinvolto."
-                          ],
-                          [
-                            "2. Describe its role in the computer system.",
-                            "2. Descrivi il suo ruolo nel sistema informatico."
-                          ],
-                          [
-                            "3. Connect that role to the information or task being handled.",
-                            "3. Collega quel ruolo alle informazioni o all'attività gestita."
-                          ]
-                        ],
-                        "answer": [
-                          "A capacitive screen detects a touch by sensing a change in the electrical field at its surface, typically caused by a conductive finger.",
-                          "Uno schermo capacitivo rileva il tocco percependo una variazione del campo elettrico sulla superficie, in genere causata da un dito conduttivo."
-                        ]
-                      },
+  "scenario": [
+    "A phone registers a finger tap but does not respond to a non-conductive plastic stylus. Explain why.",
+    "Un telefono registra il tocco di un dito ma non risponde a uno stilo di plastica non conduttivo. Spiega perché."
+  ],
+  "steps": [
+    [
+      "1. The screen maintains an electrical field across its surface.",
+      "1. Lo schermo mantiene un campo elettrico sulla propria superficie."
+    ],
+    [
+      "2. A conductive finger changes capacitance at the point of contact.",
+      "2. Un dito conduttivo modifica la capacità elettrica nel punto di contatto."
+    ],
+    [
+      "3. Sensors and the controller interpret that change as a touch location.",
+      "3. Sensori e controller interpretano la variazione come una posizione di tocco."
+    ],
+    [
+      "4. Ordinary plastic may not cause the conductive change required for detection.",
+      "4. La normale plastica potrebbe non provocare la variazione conduttiva necessaria al rilevamento."
+    ]
+  ],
+  "answer": [
+    "A capacitive touchscreen detects changes in capacitance caused by a conductive object, usually a finger. The controller interprets the change as a touch.",
+    "Un touchscreen capacitivo rileva variazioni di capacità causate da un oggetto conduttivo, di solito un dito. Il controller interpreta la variazione come un tocco."
+  ]
+},
                       "misconceptions": [
-                        {
-                          "belief": [
-                            "This concept works exactly like every other computer component.",
-                            "Questo concetto funziona esattamente come ogni altro componente del computer."
-                          ],
-                          "correction": [
-                            "A capacitive screen detects a touch by sensing a change in the electrical field at its surface, typically caused by a conductive finger.",
-                            "Uno schermo capacitivo rileva il tocco percependo una variazione del campo elettrico sulla superficie, in genere causata da un dito conduttivo."
-                          ]
-                        }
-                      ],
+  {
+    "belief": [
+      "The screen detects pressure because the finger pushes a mechanical button underneath.",
+      "Lo schermo rileva la pressione perché il dito preme un pulsante meccanico sottostante."
+    ],
+    "correction": [
+      "A capacitive screen detects an electrical change, not simply pressure on a mechanical button. Resistive screens work differently.",
+      "Uno schermo capacitivo rileva una variazione elettrica, non semplicemente la pressione su un pulsante meccanico. Gli schermi resistivi funzionano diversamente."
+    ]
+  }
+],
                       "knowledgePrompts": [
                         [
                           "Explain Capacitive touchscreens in your own words and give one practical example.",
@@ -4280,8 +4284,8 @@ export const MISSIONS: Mission[] = [
                       "example": ["A school can securely erase and donate working laptops, then send unusable devices to an approved e-waste recycler.","Una scuola può cancellare in sicurezza e donare i portatili funzionanti, poi affidare i dispositivi inutilizzabili a un centro RAEE autorizzato."],
                       "workedExample": {
   "scenario": [
-    "A school replaces an old computer and hears that newer chips contain many more transistors. Explain both the responsible disposal decision and what Moore's law describes.",
-    "Una scuola sostituisce un vecchio computer e scopre che i chip più recenti contengono molti più transistor. Spiega sia la scelta corretta per lo smaltimento sia cosa descrive la legge di Moore."
+    "A school replaces an old computer and hears that newer chips contain many more transistors. Explain responsible disposal and Moore's law.",
+    "Una scuola sostituisce un vecchio computer e scopre che i chip più recenti contengono molti più transistor. Spiega lo smaltimento responsabile e la legge di Moore."
   ],
   "steps": [
     [
@@ -4289,21 +4293,21 @@ export const MISSIONS: Mission[] = [
       "1. Non gettare le apparecchiature elettroniche nei rifiuti comuni: possono contenere materiali preziosi e pericolosi."
     ],
     [
-      "2. Reuse or donate working equipment where appropriate, and send unusable devices to an authorised e-waste collection or recycling service.",
-      "2. Riutilizza o dona le apparecchiature funzionanti quando possibile e porta quelle inutilizzabili a un servizio autorizzato di raccolta o riciclo RAEE."
+      "2. Reuse or donate working equipment where appropriate; send unusable devices to authorised e-waste collection or recycling.",
+      "2. Riutilizza o dona le apparecchiature funzionanti quando possibile; porta quelle inutilizzabili a un servizio autorizzato di raccolta o riciclo RAEE."
     ],
     [
-      "3. Moore's law describes a historical trend in which transistor counts on integrated circuits grew rapidly, often described as doubling roughly every two years.",
-      "3. La legge di Moore descrive una tendenza storica per cui il numero di transistor nei circuiti integrati cresceva rapidamente, spesso con un raddoppio circa ogni due anni."
+      "3. Moore's law describes a historical trend of rapid growth in transistor counts on integrated circuits, often described as doubling roughly every two years.",
+      "3. La legge di Moore descrive una tendenza storica di rapida crescita del numero di transistor nei circuiti integrati, spesso descritta come un raddoppio circa ogni due anni."
     ],
     [
-      "4. Do not treat it as a guarantee that every computer's speed doubles on a fixed schedule.",
-      "4. Non considerarla una garanzia che la velocità di ogni computer raddoppi secondo una scadenza fissa."
+      "4. It does not guarantee that every computer's speed doubles on a fixed schedule.",
+      "4. Non garantisce che la velocità di ogni computer raddoppi secondo una scadenza fissa."
     ]
   ],
   "answer": [
-    "Electronic devices should be reused where possible or taken to authorised e-waste collection and recycling. Moore's law describes a historical trend in transistor density, not a guaranteed speed increase for every device.",
-    "I dispositivi elettronici dovrebbero essere riutilizzati quando possibile o portati a un servizio autorizzato di raccolta e riciclo RAEE. La legge di Moore descrive una tendenza storica della densità dei transistor, non un aumento garantito della velocità di ogni dispositivo."
+    "Reuse electronics where possible or take them to authorised e-waste recycling. Moore's law describes a historical trend in transistor density, not a guaranteed speed increase for every device.",
+    "Riutilizza i dispositivi elettronici quando possibile o portali a un servizio autorizzato di riciclo RAEE. La legge di Moore descrive una tendenza storica della densità dei transistor, non un aumento garantito della velocità di ogni dispositivo."
   ]
 },
                       "misconceptions": [
@@ -4313,8 +4317,8 @@ export const MISSIONS: Mission[] = [
       "La legge di Moore dice che ogni computer diventa due volte più veloce ogni due anni."
     ],
     "correction": [
-      "Moore's law concerns the historical growth in transistor counts on integrated circuits. It does not guarantee that overall computer performance doubles at that rate.",
-      "La legge di Moore riguarda la crescita storica del numero di transistor nei circuiti integrati. Non garantisce che le prestazioni complessive dei computer raddoppino a quel ritmo."
+      "Moore's law concerns historical growth in transistor counts on integrated circuits. It does not guarantee that overall computer performance doubles at that rate.",
+      "La legge di Moore riguarda la crescita storica del numero di transistor nei circuiti integrati. Non garantisce che le prestazioni complessive raddoppino a quel ritmo."
     ]
   }
 ],
