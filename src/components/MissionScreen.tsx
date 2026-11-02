@@ -145,7 +145,7 @@ export const MissionScreen: React.FC = () => {
           )}
 
           <div className="dialog">
-            <div dangerouslySetInnerHTML={{ __html: sp.avatar }} />
+            <div className="avatar" aria-hidden="true" dangerouslySetInnerHTML={{ __html: sp.avatar }} />
             <div className={`bubble ${sp.cls}`}>
               <div className="who">{sp.name}</div>
               <div dangerouslySetInnerHTML={{ __html: fill(sc.text, lang, name) }} />
@@ -156,7 +156,7 @@ export const MissionScreen: React.FC = () => {
         <>
           {guideText && (
             <div className="dialog">
-              <div dangerouslySetInnerHTML={{ __html: SENSEI }} />
+              <div className="avatar" aria-hidden="true" dangerouslySetInnerHTML={{ __html: SENSEI }} />
               <div className="bubble">
                 <div className="who">Sensei Kaito</div>
                 <div dangerouslySetInnerHTML={{ __html: L(guideText, lang) }} />
