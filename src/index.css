@@ -522,3 +522,26 @@ body{overflow-x:hidden}
 .learning-misconception strong{color:var(--gold)}
 .learning-misconception p span{font-weight:800}
 @media(max-width:520px){.learning-worked-examples{padding:11px}.learning-example summary{padding:11px}.learning-example-body{padding:0 11px 11px;font-size:13px}}
+
+
+/* Smart Learning guided practice */
+.learning-guided-practice{width:100%;min-width:0;display:flex;flex-direction:column;gap:12px;margin:12px 0 18px;padding:16px;border:1px solid rgba(69,216,255,.3);border-radius:14px;background:var(--panel)}
+.guided-progress{align-self:flex-start;margin-top:4px;padding:4px 9px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);font:700 11px var(--mono);color:var(--data)}
+.guided-question{display:flex;flex-direction:column;gap:12px}
+.guided-question > strong{font-size:15px;line-height:1.5;color:var(--text)}
+.guided-options{display:grid;grid-template-columns:1fr;gap:8px}
+.guided-option{display:flex;align-items:center;gap:10px;width:100%;min-width:0;text-align:left;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--text);font:inherit;cursor:pointer;transition:border-color .15s,background .15s}
+.guided-option:hover:not(:disabled){border-color:var(--data);background:rgba(69,216,255,.07)}
+.guided-option:disabled{opacity:.65;cursor:default}
+.guided-option-letter{display:grid;place-items:center;flex:0 0 27px;width:27px;height:27px;border-radius:8px;background:rgba(69,216,255,.12);color:var(--data);font:800 12px var(--mono)}
+.guided-hint-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+.guided-hint-toggle{padding:5px 0;border:0;background:none;color:var(--data);font:700 12px var(--mono);text-decoration:underline;cursor:pointer}
+.guided-hint{margin:0;padding:10px 12px;border-left:3px solid var(--data);border-radius:0 8px 8px 0;background:rgba(69,216,255,.07);color:var(--text);font-size:13px;line-height:1.5}
+.guided-feedback,.guided-complete{padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--text)}
+.guided-feedback strong,.guided-complete strong{display:block;font-size:13px}
+.guided-feedback p,.guided-complete p{margin:5px 0 10px;font-size:13px;line-height:1.5}
+.guided-feedback.correct,.guided-complete{border-color:rgba(83,214,151,.35);background:rgba(83,214,151,.07)}
+.guided-feedback.retry{border-color:rgba(255,190,90,.35);background:rgba(255,190,90,.06)}
+.guided-complete{margin:12px 0;padding:12px 14px}
+.guided-complete p{margin-bottom:0}
+@media(max-width:520px){.learning-guided-practice{padding:11px}.guided-option{padding:10px}.guided-question > strong{font-size:14px}}
