@@ -183,6 +183,7 @@ export interface GameState {
   cleared: Record<string, boolean>;
   seen: Record<number, boolean>;
   flawless: Record<string, boolean>;
+  learningProgress: Record<string, LearningMissionProgress>;
   v: number;
 }
 
