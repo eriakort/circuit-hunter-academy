@@ -2247,6 +2247,85 @@ export const MISSIONS: Mission[] = [
       "What a computer is; the von Neumann architecture",
       "Che cos'è un computer; l'architettura di von Neumann"
     ],
+    "learning": {
+          "version": 1,
+          "prerequisites": [
+                [
+                      "Know that a computer runs programs and works with information.",
+                      "Sapere che un computer esegue programmi ed elabora informazioni."
+                ]
+          ],
+          "objectives": [
+                {
+                      "id": "trace-computer-cycle",
+                      "description": [
+                            "Trace how a computer receives, processes, outputs and stores information.",
+                            "Descrivere come un computer riceve, elabora, produce e memorizza informazioni."
+                      ]
+                },
+                {
+                      "id": "hardware-vs-software",
+                      "description": [
+                            "Distinguish physical hardware from the software instructions it runs.",
+                            "Distinguere l'hardware fisico dalle istruzioni software che esegue."
+                      ]
+                },
+                {
+                      "id": "von-neumann-components",
+                      "description": [
+                            "Identify the main parts of the von Neumann architecture and explain the role of the bus.",
+                            "Identificare i componenti principali dell'architettura di von Neumann e spiegare il ruolo del bus."
+                      ]
+                }
+          ],
+          "concepts": [
+                {
+                      "id": "input-processing-output-storage",
+                      "title": [
+                            "The computer cycle",
+                            "Il ciclo del computer"
+                      ],
+                      "explanation": [
+                            "A computer accepts input, processes data, produces output and can store information for later use.",
+                            "Un computer riceve input, elabora dati, produce output e può memorizzare informazioni per utilizzarle in seguito."
+                      ],
+                      "sceneIndexes": [
+                            0
+                      ],
+                      "visualKey": "ipos"
+                },
+                {
+                      "id": "hardware-and-software",
+                      "title": [
+                            "Hardware and software",
+                            "Hardware e software"
+                      ],
+                      "explanation": [
+                            "Hardware is the physical equipment; software is the programs and instructions that tell the equipment what to do.",
+                            "L'hardware è la parte fisica; il software è l'insieme di programmi e istruzioni che indicano ai componenti cosa fare."
+                      ],
+                      "sceneIndexes": [
+                            1
+                      ],
+                      "visualKey": "hwsw"
+                },
+                {
+                      "id": "von-neumann-architecture",
+                      "title": [
+                            "The von Neumann architecture",
+                            "L'architettura di von Neumann"
+                      ],
+                      "explanation": [
+                            "In the von Neumann model, instructions and data share main memory. The CPU processes instructions, input/output devices communicate with the outside world, and buses connect the components.",
+                            "Nel modello di von Neumann, istruzioni e dati condividono la memoria centrale. La CPU esegue le istruzioni, le periferiche di input/output comunicano con l'esterno e i bus collegano i componenti."
+                      ],
+                      "sceneIndexes": [
+                            2
+                      ],
+                      "visualKey": "vonneumann"
+                }
+          ]
+    },
     "demon": [
       "Static Imp",
       "Folletto Statico"
@@ -2594,6 +2673,114 @@ export const MISSIONS: Mission[] = [
       "Motherboard, CPU, fetch–decode–execute",
       "Scheda madre, CPU, ciclo fetch–decode–execute"
     ],
+    "learning": {
+          "version": 1,
+          "prerequisites": [
+                [
+                      "Understand the input–processing–output cycle and the difference between hardware and software.",
+                      "Comprendere il ciclo input–elaborazione–output e la differenza tra hardware e software."
+                ]
+          ],
+          "objectives": [
+                {
+                      "id": "motherboard-role",
+                      "description": [
+                            "Explain how the motherboard connects and allows computer components to communicate.",
+                            "Spiegare come la scheda madre collega i componenti e permette loro di comunicare."
+                      ]
+                },
+                {
+                      "id": "power-supply-role",
+                      "description": [
+                            "Describe why a power supply converts mains AC into suitable DC power for components.",
+                            "Descrivere perché l'alimentatore converte la corrente alternata di rete in corrente continua adatta ai componenti."
+                      ]
+                },
+                {
+                      "id": "cpu-components",
+                      "description": [
+                            "Identify the CPU's control unit, arithmetic logic unit and registers and describe their roles.",
+                            "Identificare unità di controllo, unità aritmetico-logica e registri della CPU e descriverne i ruoli."
+                      ]
+                },
+                {
+                      "id": "cpu-performance",
+                      "description": [
+                            "Interpret clock speed and core count without assuming that GHz alone determines performance.",
+                            "Interpretare frequenza di clock e numero di core senza presumere che i GHz da soli determinino le prestazioni."
+                      ]
+                },
+                {
+                      "id": "fetch-decode-execute",
+                      "description": [
+                            "Put fetch, decode and execute in the correct order and explain each stage.",
+                            "Ordinare correttamente fetch, decode ed execute e spiegare ogni fase."
+                      ]
+                }
+          ],
+          "concepts": [
+                {
+                      "id": "motherboard",
+                      "title": [
+                            "The motherboard",
+                            "La scheda madre"
+                      ],
+                      "explanation": [
+                            "The motherboard is the main circuit board. It provides connections and communication paths for the CPU, memory, storage and expansion devices.",
+                            "La scheda madre è il circuito principale. Fornisce connessioni e percorsi di comunicazione per CPU, memoria, archiviazione e dispositivi di espansione."
+                      ],
+                      "sceneIndexes": [
+                            0
+                      ],
+                      "visualKey": "board"
+                },
+                {
+                      "id": "power-supply",
+                      "title": [
+                            "The power supply unit",
+                            "L'alimentatore"
+                      ],
+                      "explanation": [
+                            "The PSU converts incoming alternating current into regulated low-voltage direct current required by computer components.",
+                            "L'alimentatore converte la corrente alternata in ingresso in corrente continua regolata a bassa tensione, necessaria ai componenti del computer."
+                      ],
+                      "sceneIndexes": [
+                            1
+                      ],
+                      "visualKey": "psu"
+                },
+                {
+                      "id": "cpu-and-instruction-cycle",
+                      "title": [
+                            "The CPU and instruction cycle",
+                            "La CPU e il ciclo delle istruzioni"
+                      ],
+                      "explanation": [
+                            "The CPU executes program instructions. Its control unit coordinates operations, the arithmetic logic unit performs calculations and logic, and registers hold small amounts of data in immediate use. The fetch–decode–execute cycle repeats as instructions run.",
+                            "La CPU esegue le istruzioni dei programmi. L'unità di controllo coordina le operazioni, l'unità aritmetico-logica esegue calcoli e operazioni logiche e i registri conservano piccole quantità di dati in uso immediato. Il ciclo fetch–decode–execute si ripete durante l'esecuzione."
+                      ],
+                      "sceneIndexes": [
+                            2
+                      ],
+                      "visualKey": "cpu"
+                },
+                {
+                      "id": "cores-and-clock-speed",
+                      "title": [
+                            "Cores and clock speed",
+                            "Core e frequenza di clock"
+                      ],
+                      "explanation": [
+                            "Clock speed describes the number of clock cycles per second, while cores are processing units within a CPU. Real performance also depends on architecture, workload and other factors.",
+                            "La frequenza di clock indica il numero di cicli al secondo, mentre i core sono unità di elaborazione all'interno della CPU. Le prestazioni reali dipendono anche da architettura, carico di lavoro e altri fattori."
+                      ],
+                      "sceneIndexes": [
+                            3
+                      ],
+                      "visualKey": "cores"
+                }
+          ]
+    },
     "demon": [
       "Lag Oni",
       "Oni del Lag"
@@ -2869,6 +3056,109 @@ export const MISSIONS: Mission[] = [
       "RAM, ROM, cache, buses, mass storage",
       "RAM, ROM, cache, bus, memoria di massa"
     ],
+    "learning": {
+          "version": 1,
+          "prerequisites": [
+                [
+                      "Know that the CPU needs fast access to instructions and data and that computers store files for later use.",
+                      "Sapere che la CPU deve accedere rapidamente a istruzioni e dati e che i computer conservano i file per utilizzarli in seguito."
+                ]
+          ],
+          "objectives": [
+                {
+                      "id": "ram-volatility",
+                      "description": [
+                            "Explain the role of RAM and why it is volatile.",
+                            "Spiegare il ruolo della RAM e perché è volatile."
+                      ]
+                },
+                {
+                      "id": "memory-types",
+                      "description": [
+                            "Compare cache, RAM, ROM and mass storage by purpose, speed and persistence.",
+                            "Confrontare cache, RAM, ROM e memoria di massa per funzione, velocità e permanenza dei dati."
+                      ]
+                },
+                {
+                      "id": "bus-types",
+                      "description": [
+                            "Distinguish data, address and control buses by the information each carries.",
+                            "Distinguere bus dati, indirizzi e controllo in base alle informazioni che trasportano."
+                      ]
+                },
+                {
+                      "id": "storage-technologies",
+                      "description": [
+                            "Compare HDD, SSD, optical media and cloud storage at a basic level.",
+                            "Confrontare a livello introduttivo HDD, SSD, supporti ottici e archiviazione cloud."
+                      ]
+                }
+          ],
+          "concepts": [
+                {
+                      "id": "ram",
+                      "title": [
+                            "RAM and volatility",
+                            "RAM e volatilità"
+                      ],
+                      "explanation": [
+                            "RAM temporarily holds programs and data currently in use. It is volatile, so its contents are lost when power is removed.",
+                            "La RAM conserva temporaneamente programmi e dati in uso. È volatile: il suo contenuto si perde quando viene tolta l'alimentazione."
+                      ],
+                      "sceneIndexes": [
+                            0,
+                            1
+                      ],
+                      "visualKey": "ramstick"
+                },
+                {
+                      "id": "cache-and-rom",
+                      "title": [
+                            "Cache and ROM",
+                            "Cache e ROM"
+                      ],
+                      "explanation": [
+                            "Cache is small, very fast memory that keeps frequently needed data close to the CPU. ROM is non-volatile memory used to retain essential firmware.",
+                            "La cache è una memoria piccola e molto veloce che conserva dati usati frequentemente vicino alla CPU. La ROM è una memoria non volatile usata per conservare firmware essenziale."
+                      ],
+                      "sceneIndexes": [
+                            2
+                      ],
+                      "visualKey": "pyramid"
+                },
+                {
+                      "id": "system-buses",
+                      "title": [
+                            "System buses",
+                            "I bus di sistema"
+                      ],
+                      "explanation": [
+                            "The data bus carries data, the address bus identifies a location, and the control bus carries signals that coordinate operations.",
+                            "Il bus dati trasporta i dati, il bus indirizzi identifica una posizione e il bus di controllo trasporta segnali che coordinano le operazioni."
+                      ],
+                      "sceneIndexes": [
+                            3
+                      ],
+                      "visualKey": "buses"
+                },
+                {
+                      "id": "mass-storage",
+                      "title": [
+                            "Mass storage",
+                            "Memoria di massa"
+                      ],
+                      "explanation": [
+                            "Mass storage keeps files and programs when power is off. HDDs use magnetic disks, SSDs use flash memory, optical media use lasers, and cloud storage keeps data on remote systems.",
+                            "La memoria di massa conserva file e programmi anche a computer spento. Gli HDD usano dischi magnetici, gli SSD memoria flash, i supporti ottici usano laser e il cloud conserva i dati su sistemi remoti."
+                      ],
+                      "sceneIndexes": [
+                            4,
+                            5
+                      ],
+                      "visualKey": "hdd"
+                }
+          ]
+    },
     "demon": [
       "Amnesia Wraith",
       "Spettro dell'Amnesia"
@@ -3270,6 +3560,93 @@ export const MISSIONS: Mission[] = [
       "Input/output devices, touchscreens, e-waste, Moore's law",
       "Periferiche di input e output, touchscreen, RAEE, legge di Moore"
     ],
+    "learning": {
+          "version": 1,
+          "prerequisites": [
+                [
+                      "Understand input and output in the computer cycle and know that a computer communicates with its environment through devices.",
+                      "Comprendere input e output nel ciclo del computer e sapere che il computer comunica con l'ambiente tramite dispositivi."
+                ]
+          ],
+          "objectives": [
+                {
+                      "id": "classify-peripherals",
+                      "description": [
+                            "Classify common peripherals as input, output or both and justify each choice.",
+                            "Classificare le periferiche comuni come input, output o entrambe e motivare la scelta."
+                      ]
+                },
+                {
+                      "id": "embedded-systems",
+                      "description": [
+                            "Identify how sensors provide input and actuators produce output in an interactive system.",
+                            "Identificare come i sensori forniscono input e gli attuatori producono output in un sistema interattivo."
+                      ]
+                },
+                {
+                      "id": "capacitive-touchscreens",
+                      "description": [
+                            "Explain at a basic level how a capacitive touchscreen detects a touch.",
+                            "Spiegare a livello introduttivo come un touchscreen capacitivo rileva il tocco."
+                      ]
+                },
+                {
+                      "id": "responsible-technology",
+                      "description": [
+                            "Describe responsible e-waste disposal and the basic idea behind Moore's law.",
+                            "Descrivere il corretto smaltimento dei RAEE e il concetto di base della legge di Moore."
+                      ]
+                }
+          ],
+          "concepts": [
+                {
+                      "id": "input-output-peripherals",
+                      "title": [
+                            "Input and output peripherals",
+                            "Periferiche di input e output"
+                      ],
+                      "explanation": [
+                            "Input devices send information to a computer; output devices present information from it. Some devices perform both roles.",
+                            "I dispositivi di input inviano informazioni al computer; quelli di output presentano le informazioni elaborate. Alcuni dispositivi svolgono entrambi i ruoli."
+                      ],
+                      "sceneIndexes": [
+                            0,
+                            1
+                      ],
+                      "visualKey": "ioflow"
+                },
+                {
+                      "id": "capacitive-touchscreens",
+                      "title": [
+                            "Capacitive touchscreens",
+                            "Touchscreen capacitivi"
+                      ],
+                      "explanation": [
+                            "A capacitive screen detects a touch by sensing a change in the electrical field at its surface, typically caused by a conductive finger.",
+                            "Uno schermo capacitivo rileva il tocco percependo una variazione del campo elettrico sulla superficie, in genere causata da un dito conduttivo."
+                      ],
+                      "sceneIndexes": [
+                            2
+                      ],
+                      "visualKey": "touch"
+                },
+                {
+                      "id": "ewaste-and-moores-law",
+                      "title": [
+                            "E-waste and Moore's law",
+                            "RAEE e legge di Moore"
+                      ],
+                      "explanation": [
+                            "Electronic waste should be collected and recycled responsibly to recover materials and reduce pollution. Moore's law describes a historical trend in the growth of transistor counts on integrated circuits; it is not a guarantee about every device's speed.",
+                            "I rifiuti elettronici devono essere raccolti e riciclati correttamente per recuperare materiali e ridurre l'inquinamento. La legge di Moore descrive una tendenza storica nella crescita del numero di transistor nei circuiti integrati; non garantisce la velocità di ogni dispositivo."
+                      ],
+                      "sceneIndexes": [
+                            3
+                      ],
+                      "visualKey": "earth"
+                }
+          ]
+    },
     "demon": [
       "Ghost Signal",
       "Segnale Fantasma"
