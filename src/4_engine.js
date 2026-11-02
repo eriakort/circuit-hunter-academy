@@ -375,9 +375,12 @@ function startBattle(M,host,opts={}){
   VIEW='battle';
   const res=RESUME; RESUME=null;
   if(res){ B=Object.assign(res,{host}); M=B.M; }
-  else { const qs=shuffle((opts.qs||M.quiz).map(q=>({...q}))); B={M,host,queue:qs,total:qs.length,hp:qs.length,hearts:4,maxH:4,dojo:!!opts.dojo}; }
-  const techShort=B.dojo?L(['Training Strike!','Colpo d\'allenamento!']):L(M.tech).split(':').pop().trim()+'!';
-  host.innerHTML=`<div class="arena" id="arena"><div class="shout" id="shout">${techShort}</div>
+  else { const qs=shuffle((opts.qs||M.quiz).map(q=>({...q}))); B={M,host,queue:qs,total:qs.length,hp:qs.length,hearts:4,maxH:4,dojo:!!opts.dojo,combo:0,bestCombo:0}; }
+  if(B.combo==null){ B.combo=0; B.bestCombo=0; }
+  const techFull=B.dojo?L(['Training Form · Training Strike','Stile dell\'Allenamento · Colpo d\'allenamento']):L(M.tech);
+  B.techName=(techFull.includes(':')?techFull.split(':').pop():techFull).trim();
+  B.formName=(techFull.includes('·')?techFull.split('·')[0]:'').trim();
+  host.innerHTML=`<div class="arena" id="arena"><div class="shout" id="shout"></div>
      <div class="hunter">${YOU()}<div class="hn">${esc(S.name)}</div><div class="eyebrow">${L(['Spirit','Spirito'])}</div><div class="hearts" id="hearts"></div><div class="muted" style="font-size:13px">${B.dojo?L(['Mixed review from cleared missions','Ripasso misto dalle missioni superate']):L(M.tech)}</div></div>
      <div class="foe" id="foe">${demonSVG(M.hue,M.horns,M.eyes,'demon')}<div class="slash"></div><div class="fname">${L(M.demon)}</div><div class="hp"><i id="hpbar"></i></div><div class="hp-l" id="hpl"></div></div></div>
    <div class="card qcard" id="qc"></div>`;
@@ -399,14 +402,19 @@ function answer(q,opts,i,btn){
   const ok=opts[i].ok, right=opts.find(o=>o.ok).t;
   if(ok){
     B.queue.shift(); B.hp--;
+    B.combo++; if(B.combo>B.bestCombo) B.bestCombo=B.combo;
     if(B.dojo) addXP(5); else award(10);
     const foe=$('#foe'); foe.classList.remove('hit'); void foe.offsetWidth; foe.classList.add('hit');
-    const sh=$('#shout'); sh.classList.remove('show'); void sh.offsetWidth; sh.classList.add('show');
-    $('#qfb').innerHTML=`<div class="why"><b>${L(['Direct hit!','Colpo a segno!'])}</b> ${L(q.why)}</div>`;
+    const lvl=B.combo>=5?3:B.combo>=3?2:1;
+    const chainTxt=B.combo>=2?`<span class="scombo">×${B.combo} ${L(['CHAIN','CATENA'])}</span>`:'';
+    const sh=$('#shout'); sh.className='shout'; sh.innerHTML=`${B.formName?`<span class="sform">${B.formName}</span>`:''}<span class="stech">${B.techName}!</span>${chainTxt}`;
+    void sh.offsetWidth; sh.classList.add('show','lvl'+lvl);
+    const lead=B.combo>=5?L(['Technique unleashed!','Tecnica scatenata!']):B.combo>=3?L(['Breathing in rhythm!','Respiro in ritmo!']):L(['Direct hit!','Colpo a segno!']);
+    $('#qfb').innerHTML=`<div class="why"><b>⟐ ${B.techName} — ${lead}</b> ${L(q.why)}</div>`;
   } else {
-    btn.classList.add('wrong'); B.hearts--; B.queue.push(B.queue.shift());
+    btn.classList.add('wrong'); B.hearts--; B.combo=0; B.queue.push(B.queue.shift());
     const ar=$('#arena'); ar.classList.remove('ouch'); void ar.offsetWidth; ar.classList.add('ouch');
-    $('#qfb').innerHTML=`<div class="why"><b>${L(['The demon strikes back!','Il demone contrattacca!'])}</b> ${L(['The answer is','La risposta è'])} "${right}". ${L(q.why)}<br><span class="muted">${L(['This question will come back later in the fight.','Questa domanda tornerà più avanti nello scontro.'])}</span></div>`;
+    $('#qfb').innerHTML=`<div class="why"><b>${L(['The demon strikes back!','Il demone contrattacca!'])}</b> ${L(['Your focus breaks and the chain resets.','La concentrazione si spezza e la catena si azzera.'])} ${L(['The answer is','La risposta è'])} "${right}". ${L(q.why)}<br><span class="muted">${L(['This question will come back later in the fight.','Questa domanda tornerà più avanti nello scontro.'])}</span></div>`;
   }
   bars();
   const nb=document.createElement('button'); nb.className='btn'; nb.style.marginTop='12px';
@@ -431,13 +439,14 @@ function win(){
       <div class="row" style="justify-content:center"><button class="btn" id="again">${L(['Train again','Allenati ancora'])}</button><button class="btn ghost" id="map">${L(U.missions)}</button></div></div>`;
     $('#again').onclick=startDojo; $('#map').onclick=renderMap; return;
   }
-  const first=!S.cleared[M.id], flawless=B.hearts===B.maxH; let gained=0;
+  const first=!S.cleared[M.id], flawless=B.hearts===B.maxH, bestCombo=B.bestCombo||0; let gained=0;
   if(first){ gained=50+(flawless?25:0); S.cleared[M.id]=true; if(flawless) S.flawless[M.id]=true; addXP(gained); save(); }
   else if(flawless && !S.flawless[M.id]){ S.flawless[M.id]=true; save(); }
   B=null; VIEW='result';
   if(allCleared() && first){ renderEnding(); return; }
   const ni=CUR.m+1, nxtOpen=ni<MISSIONS.length&&msub(MISSIONS[ni])===curSub()&&isOpen(ni);
   host.innerHTML=`<div class="card result"><div class="eyebrow">${L(['Demon defeated','Demone sconfitto'])}</div><h2>${L(M.demon)} ${L(['is sealed!','è sigillato!'])}</h2>
+    ${flawless?`<div class="awaken">⟐ ${L(['AWAKENING','RISVEGLIO'])} · ${L(['flawless chain of','catena perfetta di'])} ${bestCombo}</div>`:''}
     <p>${L(['Technique learned','Tecnica appresa'])}</p><div class="tech">${L(M.tech)}</div>
     <p class="muted">${first?`+${gained} XP${flawless?L([' (including +25 flawless bonus)',' (compreso il bonus perfezione +25)']):''}`:L(['Replay complete. XP is only awarded the first time.','Replay completato. I punti XP si ottengono solo la prima volta.'])}</p>
     <div class="row" style="justify-content:center">${nxtOpen?`<button class="btn" id="nx">${L(['Next','Avanti'])}: ${L(MISSIONS[ni].title)}</button>`:''}<button class="btn ${nxtOpen?'ghost':''}" id="map">${L(U.missions)}</button></div></div>`;
