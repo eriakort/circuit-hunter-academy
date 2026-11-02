@@ -18,6 +18,10 @@ export const MissionScreen: React.FC = () => {
   const { lang, name } = state;
   const sc = currentMission.scenes[currentSceneIndex];
   const [canProceed, setCanProceed] = useState(false);
+  const [guidedIndex, setGuidedIndex] = useState(0);
+  const [guidedHintVisible, setGuidedHintVisible] = useState(false);
+  const [guidedFeedback, setGuidedFeedback] = useState<{ correct: boolean; why: any } | null>(null);
+  const [guidedCompletions, setGuidedCompletions] = useState<Record<string, boolean>>({});
   const gameContainerRef = useRef<HTMLDivElement>(null);
 
   // Scene gating check
@@ -53,6 +57,12 @@ export const MissionScreen: React.FC = () => {
       setCanProceed(false);
     }
   }, [currentSceneIndex, isGated]);
+
+  useEffect(() => {
+    setGuidedIndex(0);
+    setGuidedHintVisible(false);
+    setGuidedFeedback(null);
+  }, [currentMission.id, currentSceneIndex]);
 
   // Mount mini-game or interactive scene
   useEffect(() => {
@@ -112,6 +122,13 @@ export const MissionScreen: React.FC = () => {
   }
 
   const guideText = sc.type && GUIDE[sc.type as keyof typeof GUIDE];
+  const guidedPractice = currentMission.learning?.guidedPractice?.find(
+    activity => activity.sceneIndex === currentSceneIndex && activity.questions?.length
+  );
+  const guidedKey = `${currentMission.id}:${guidedPractice?.id || ''}`;
+  const guidedQuestions = guidedPractice?.questions || [];
+  const guidedComplete = !guidedPractice || !!guidedCompletions[guidedKey];
+  const guidedQuestion = guidedQuestions[guidedIndex];
   const workedExamples = currentMission.learning?.concepts.filter(
     concept => concept.sceneIndexes?.includes(currentSceneIndex) && concept.workedExample
   ) || [];
@@ -176,6 +193,71 @@ export const MissionScreen: React.FC = () => {
         </div>
       )}
 
+      {guidedPractice && guidedQuestion && !guidedComplete && (
+        <section className="learning-guided-practice" aria-label={lang === 'it' ? 'Esercitazione guidata' : 'Guided practice'}>
+          <div className="learning-section-heading">
+            <span className="learning-kicker">{lang === 'it' ? 'ALLENAMENTO GUIDATO' : 'GUIDED TRAINING'}</span>
+            <h3>{L(guidedPractice.title, lang)}</h3>
+            <p>{L(guidedPractice.instructions, lang)}</p>
+            <div className="guided-progress">{lang === 'it' ? 'Domanda' : 'Question'} {guidedIndex + 1} / {guidedQuestions.length}</div>
+          </div>
+          <div className="guided-question">
+            <strong>{L(guidedQuestion.q, lang)}</strong>
+            <div className="guided-options">
+              {guidedQuestion.a.map((option, index) => (
+                <button
+                  type="button"
+                  className="guided-option"
+                  key={index}
+                  disabled={!!guidedFeedback?.correct}
+                  onClick={() => setGuidedFeedback({ correct: index === 0, why: guidedQuestion.why })}
+                >
+                  <span className="guided-option-letter">{String.fromCharCode(65 + index)}</span>
+                  <span>{L(option, lang)}</span>
+                </button>
+              ))}
+            </div>
+            {guidedPractice.hints?.[guidedIndex] && (
+              <div className="guided-hint-wrap">
+                <button type="button" className="guided-hint-toggle" onClick={() => setGuidedHintVisible(value => !value)}>
+                  {guidedHintVisible ? (lang === 'it' ? 'Nascondi suggerimento' : 'Hide hint') : (lang === 'it' ? 'Mostra suggerimento' : 'Show hint')}
+                </button>
+                {guidedHintVisible && <p className="guided-hint">{L(guidedPractice.hints[guidedIndex], lang)}</p>}
+              </div>
+            )}
+            {guidedFeedback && (
+              <div className={guidedFeedback.correct ? 'guided-feedback correct' : 'guided-feedback retry'} role="status" aria-live="polite">
+                <strong>{guidedFeedback.correct ? (lang === 'it' ? 'Esatto!' : 'Correct!') : (lang === 'it' ? 'Riprova' : 'Try again')}</strong>
+                <p>{L(guidedFeedback.why, lang)}</p>
+                {guidedFeedback.correct ? (
+                  <button type="button" className="btn" onClick={() => {
+                    if (guidedIndex + 1 < guidedQuestions.length) {
+                      setGuidedIndex(index => index + 1);
+                      setGuidedFeedback(null);
+                      setGuidedHintVisible(false);
+                    } else {
+                      setGuidedCompletions(previous => ({ ...previous, [guidedKey]: true }));
+                    }
+                  }}>
+                    {guidedIndex + 1 < guidedQuestions.length ? (lang === 'it' ? 'Prossima domanda' : 'Next question') : (lang === 'it' ? 'Completa esercitazione' : 'Complete practice')}
+                  </button>
+                ) : (
+                  <button type="button" className="btn ghost" onClick={() => setGuidedFeedback(null)}>
+                    {lang === 'it' ? 'Riprova' : 'Try again'}
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+      {guidedComplete && guidedPractice && (
+        <div className="guided-complete" role="status">
+          <strong>{lang === 'it' ? 'Esercitazione guidata completata' : 'Guided practice completed'}</strong>
+          <p>{lang === 'it' ? 'Ottimo lavoro. Ora puoi continuare la missione.' : 'Well done. You can now continue the mission.'}</p>
+        </div>
+      )}
+
       {workedExamples.length > 0 && (
         <section className="learning-worked-examples" aria-label={lang === 'it' ? 'Esempi svolti' : 'Worked examples'}>
           <div className="learning-section-heading">
@@ -218,7 +300,7 @@ export const MissionScreen: React.FC = () => {
         <button
           className="btn"
           id="next"
-          disabled={!canProceed}
+          disabled={!canProceed || !guidedComplete}
           onClick={nextScene}
         >
           {nxt && nxt.type === 'battle' ? L(U.fight, lang) : L(U.cont, lang)}

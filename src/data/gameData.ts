@@ -2278,6 +2278,80 @@ export const MISSIONS: Mission[] = [
                       ]
                 }
           ],
+          "guidedPractice": [
+  {
+    "id": "guided-hardware-cycle",
+    "title": [
+      "Guided practice: computer systems",
+      "Esercitazione guidata: sistemi informatici"
+    ],
+    "instructions": [
+      "Answer both questions. If you get stuck, reveal the hint; an incorrect answer lets you try again.",
+      "Rispondi a entrambe le domande. Se hai difficoltà, mostra il suggerimento; una risposta errata ti permette di riprovare."
+    ],
+    "sceneIndex": 0,
+    "hints": [
+      [
+        "Follow the direction of information: what enters, what processes it, and what presents the result?",
+        "Segui la direzione delle informazioni: cosa entra, cosa le elabora e cosa presenta il risultato?"
+      ],
+      [
+        "Separate physical components from programs and instructions.",
+        "Distingui i componenti fisici dai programmi e dalle istruzioni."
+      ]
+    ],
+    "questions": [
+      {
+        "q": [
+          "A student speaks into a microphone and sees their words appear on screen. Which sequence best describes the system?",
+          "Uno studente parla in un microfono e vede le parole apparire sullo schermo. Quale sequenza descrive meglio il sistema?"
+        ],
+        "a": [
+          [
+            "Microphone input → processing → screen output",
+            "Input microfono → elaborazione → output schermo"
+          ],
+          [
+            "Screen input → storage → microphone output",
+            "Input schermo → archiviazione → output microfono"
+          ],
+          [
+            "CPU input → keyboard processing → RAM output",
+            "Input CPU → elaborazione tastiera → output RAM"
+          ]
+        ],
+        "why": [
+          "The microphone sends information in, the computer processes it, and the screen presents the result.",
+          "Il microfono invia informazioni, il computer le elabora e lo schermo presenta il risultato."
+        ]
+      },
+      {
+        "q": [
+          "Which item is software rather than hardware?",
+          "Quale elemento è software anziché hardware?"
+        ],
+        "a": [
+          [
+            "A word-processing application",
+            "Un programma di videoscrittura"
+          ],
+          [
+            "A keyboard",
+            "Una tastiera"
+          ],
+          [
+            "An SSD",
+            "Un SSD"
+          ]
+        ],
+        "why": [
+          "An application is a set of instructions. A keyboard and SSD are physical components.",
+          "Un'applicazione è un insieme di istruzioni. Tastiera e SSD sono componenti fisici."
+        ]
+      }
+    ]
+  }
+],
           "concepts": [
                 {
                       "id": "input-processing-output-storage",
@@ -2865,6 +2939,80 @@ export const MISSIONS: Mission[] = [
                       ]
                 }
           ],
+          "guidedPractice": [
+  {
+    "id": "guided-cpu-components",
+    "title": [
+      "Guided practice: motherboard and CPU",
+      "Esercitazione guidata: scheda madre e CPU"
+    ],
+    "instructions": [
+      "Use the hints to reason about the role of each component. Both answers must be correct to finish.",
+      "Usa i suggerimenti per ragionare sul ruolo di ogni componente. Per completare, entrambe le risposte devono essere corrette."
+    ],
+    "sceneIndex": 0,
+    "hints": [
+      [
+        "Think of the motherboard as the connection platform, not the component that executes instructions.",
+        "Pensa alla scheda madre come alla piattaforma di collegamento, non al componente che esegue le istruzioni."
+      ],
+      [
+        "Remember: the control unit directs; the ALU calculates.",
+        "Ricorda: l'unità di controllo dirige; l'ALU calcola."
+      ]
+    ],
+    "questions": [
+      {
+        "q": [
+          "A new graphics card needs a compatible slot and a path to communicate with the CPU. Which component provides these connections?",
+          "Una nuova scheda video ha bisogno di uno slot compatibile e di un percorso per comunicare con la CPU. Quale componente fornisce queste connessioni?"
+        ],
+        "a": [
+          [
+            "The motherboard",
+            "La scheda madre"
+          ],
+          [
+            "The power supply",
+            "L'alimentatore"
+          ],
+          [
+            "The CPU cache",
+            "La cache della CPU"
+          ]
+        ],
+        "why": [
+          "The motherboard provides slots and communication pathways between components.",
+          "La scheda madre fornisce slot e percorsi di comunicazione tra i componenti."
+        ]
+      },
+      {
+        "q": [
+          "Which CPU component performs an addition such as 8 + 5?",
+          "Quale componente della CPU esegue un'addizione come 8 + 5?"
+        ],
+        "a": [
+          [
+            "The arithmetic logic unit (ALU)",
+            "L'unità aritmetico-logica (ALU)"
+          ],
+          [
+            "The control unit",
+            "L'unità di controllo"
+          ],
+          [
+            "The power supply unit",
+            "L'alimentatore"
+          ]
+        ],
+        "why": [
+          "The ALU performs arithmetic and logical operations; the control unit coordinates them.",
+          "L'ALU esegue operazioni aritmetiche e logiche; l'unità di controllo le coordina."
+        ]
+      }
+    ]
+  }
+],
           "concepts": [
                 {
                       "id": "motherboard",
@@ -3437,6 +3585,80 @@ export const MISSIONS: Mission[] = [
                       ]
                 }
           ],
+          "guidedPractice": [
+  {
+    "id": "guided-memory-buses",
+    "title": [
+      "Guided practice: memory and buses",
+      "Esercitazione guidata: memoria e bus"
+    ],
+    "instructions": [
+      "Work through each situation. Reveal a hint if needed, then choose the best answer.",
+      "Affronta ogni situazione. Se necessario, mostra un suggerimento, poi scegli la risposta migliore."
+    ],
+    "sceneIndex": 0,
+    "hints": [
+      [
+        "Volatile memory needs power. Ask where the file was saved, not just where it was being edited.",
+        "La memoria volatile ha bisogno di alimentazione. Chiediti dove era stato salvato il file, non solo dove veniva modificato."
+      ],
+      [
+        "Use the three questions: where? what? how/when?",
+        "Usa le tre domande: dove? cosa? come/quando?"
+      ]
+    ],
+    "questions": [
+      {
+        "q": [
+          "A power cut happens before a document is saved. Which copy is most likely to be lost?",
+          "Manca la corrente prima che un documento venga salvato. Quale copia rischia maggiormente di andare persa?"
+        ],
+        "a": [
+          [
+            "The unsaved working data in RAM",
+            "I dati di lavoro non salvati nella RAM"
+          ],
+          [
+            "The saved copy on an SSD",
+            "La copia salvata su un SSD"
+          ],
+          [
+            "Firmware stored in non-volatile memory",
+            "Il firmware conservato in memoria non volatile"
+          ]
+        ],
+        "why": [
+          "RAM is volatile. A saved SSD copy and non-volatile firmware normally remain without power.",
+          "La RAM è volatile. Una copia salvata su SSD e il firmware in memoria non volatile normalmente restano anche senza alimentazione."
+        ]
+      },
+      {
+        "q": [
+          "Which bus identifies the memory location the CPU wants to read?",
+          "Quale bus identifica la posizione di memoria che la CPU vuole leggere?"
+        ],
+        "a": [
+          [
+            "The address bus",
+            "Il bus indirizzi"
+          ],
+          [
+            "The data bus",
+            "Il bus dati"
+          ],
+          [
+            "The control bus",
+            "Il bus di controllo"
+          ]
+        ],
+        "why": [
+          "The address bus identifies the location; the data bus carries the value and control signals coordinate the operation.",
+          "Il bus indirizzi identifica la posizione; il bus dati trasporta il valore e i segnali di controllo coordinano l'operazione."
+        ]
+      }
+    ]
+  }
+],
           "concepts": [
                 {
                       "id": "ram",
@@ -4137,6 +4359,80 @@ export const MISSIONS: Mission[] = [
                       ]
                 }
           ],
+          "guidedPractice": [
+  {
+    "id": "guided-peripherals-touch",
+    "title": [
+      "Guided practice: peripherals and touchscreens",
+      "Esercitazione guidata: periferiche e touchscreen"
+    ],
+    "instructions": [
+      "Classify each device by the direction of information. Use a hint if you need help.",
+      "Classifica ogni dispositivo in base alla direzione delle informazioni. Usa un suggerimento se hai bisogno di aiuto."
+    ],
+    "sceneIndex": 0,
+    "hints": [
+      [
+        "A microphone sends sound into the computer; headphones send sound out.",
+        "Un microfono invia audio al computer; le cuffie inviano audio verso l'esterno."
+      ],
+      [
+        "A capacitive screen detects a change in an electrical property, not simply pressure.",
+        "Uno schermo capacitivo rileva una variazione elettrica, non semplicemente la pressione."
+      ]
+    ],
+    "questions": [
+      {
+        "q": [
+          "A headset has headphones and a microphone. How should it be classified?",
+          "Una cuffia ha auricolari e microfono. Come dovrebbe essere classificata?"
+        ],
+        "a": [
+          [
+            "Both input and output",
+            "Sia input sia output"
+          ],
+          [
+            "Input only",
+            "Solo input"
+          ],
+          [
+            "Output only",
+            "Solo output"
+          ]
+        ],
+        "why": [
+          "The microphone is input and the headphones are output, so the headset performs both roles.",
+          "Il microfono è input e gli auricolari sono output, quindi la cuffia svolge entrambi i ruoli."
+        ]
+      },
+      {
+        "q": [
+          "Why does a basic capacitive touchscreen usually detect a finger?",
+          "Perché un touchscreen capacitivo di base rileva normalmente un dito?"
+        ],
+        "a": [
+          [
+            "The finger changes capacitance in the screen's electrical field",
+            "Il dito modifica la capacità nel campo elettrico dello schermo"
+          ],
+          [
+            "The finger presses a mechanical switch",
+            "Il dito preme un interruttore meccanico"
+          ],
+          [
+            "The screen reads the finger's fingerprint image",
+            "Lo schermo legge l'immagine dell'impronta digitale"
+          ]
+        ],
+        "why": [
+          "A conductive finger changes capacitance; the controller detects and interprets the change as a touch.",
+          "Un dito conduttivo modifica la capacità; il controller rileva e interpreta la variazione come un tocco."
+        ]
+      }
+    ]
+  }
+],
           "concepts": [
                 {
                       "id": "input-output-peripherals",
