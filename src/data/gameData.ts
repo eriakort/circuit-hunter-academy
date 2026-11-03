@@ -295,8 +295,7 @@ export const ARCS: ArcInfo[] = [
       "L'equilibrio dei fluidi"
     ],
     "pages": "117–146"
-  }
-
+  },
   {
     "n": 1,
     "unit": 4,
@@ -326,10 +325,10 @@ export const ARCS: ArcInfo[] = [
       "Insiemi, logica e relazioni"
     ],
     "pages": "147–222"
-  },
+  }
 ];
 
-export const MISSIONS: Mission[
+export const MISSIONS: Mission[] = [
   {
     "id": "m1m1",
     "arc": 0,
@@ -412,7 +411,6 @@ export const MISSIONS: Mission[
       }
     ]
   },
-] = [
   {
     "id": "a1m1",
     "arc": 0,
