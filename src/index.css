@@ -721,3 +721,13 @@ body{overflow-x:hidden}
 .learning-technique-unlocked p{margin:0;font-size:13px;line-height:1.5}
 .learning-technique-unlocked small{display:block;margin-top:8px;color:var(--data);font:700 10px var(--mono)}
 @media(max-width:600px){.learning-pathway{padding:11px}.learning-pathway-stages{grid-template-columns:repeat(2,minmax(0,1fr))}.learning-pathway-stage:last-child{grid-column:1/-1}}
+
+/* Smart Learning 2.4 — explainable adaptive next-step recommendations. */
+.adaptive-recommendation{align-items:center;border-color:rgba(176,139,255,.42);background:linear-gradient(115deg,rgba(176,139,255,.1),rgba(69,216,255,.06))}
+.adaptive-recommendation>div{min-width:0}
+.adaptive-recommendation .learning-kicker{display:block;margin-bottom:5px;color:var(--sak);font:700 10px var(--mono);letter-spacing:.08em}
+.adaptive-recommendation>div>strong{font-size:16px}
+.adaptive-recommendation p{max-width:760px;line-height:1.55}
+.adaptive-recommendation-reason{display:block;margin-top:6px;color:var(--muted);font-size:11px;line-height:1.45}
+.concept-revision-impact{display:block;margin-top:4px;color:var(--good);font-size:11px}
+@media(max-width:650px){.adaptive-recommendation{align-items:flex-start}.adaptive-recommendation>.btn{width:100%}}

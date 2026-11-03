@@ -5,6 +5,7 @@ import { getVisualHtml } from '../data/visuals';
 import { L, demonSVG, esc, U } from '../helpers';
 import type { LearningConcept, Mission } from '../types';
 import { ConceptRevision } from './ConceptRevision';
+import { recommendNextLearningAction } from '../adaptiveLearning';
 
 export const MapScreen: React.FC = () => {
   const {
@@ -144,6 +145,20 @@ export const MapScreen: React.FC = () => {
   const nextMissionIndex = MISSIONS.findIndex(
     (m, i) => (ARCS[m.arc]?.subject || 'cs') === curSub && !cleared[m.id] && isOpen(i)
   );
+  const nextMission = nextMissionIndex >= 0 ? MISSIONS[nextMissionIndex] : undefined;
+  const adaptiveRecommendation = recommendNextLearningAction(MY, state.learningProgress || {}, nextMission);
+
+  const handleAdaptiveAction = () => {
+    if (adaptiveRecommendation.kind === 'review') {
+      setRevisionTarget({ mission: adaptiveRecommendation.mission, concept: adaptiveRecommendation.concept });
+      return;
+    }
+    if (adaptiveRecommendation.kind === 'retry' || adaptiveRecommendation.kind === 'mission') {
+      openMission(MISSIONS.indexOf(adaptiveRecommendation.mission));
+      return;
+    }
+    startBattle(true);
+  };
 
   const handleRevisionComplete = (result: { correct: number; attempted: number }) => {
     if (!revisionTarget) return;
@@ -151,6 +166,7 @@ export const MapScreen: React.FC = () => {
     const conceptId = revisionTarget.concept.id;
     const existing = state.learningProgress?.[missionId]?.conceptRevisionPerformance || {};
     const previous = existing[conceptId] || { correct: 0, attempted: 0, sessions: 0, lastReviewedAt: 0 };
+    const masteryPerformance = state.learningProgress?.[missionId]?.masteryConceptPerformance?.[conceptId];
     saveLearningProgress(missionId, {
       conceptRevisionPerformance: {
         ...existing,
@@ -158,7 +174,12 @@ export const MapScreen: React.FC = () => {
           correct: previous.correct + result.correct,
           attempted: previous.attempted + result.attempted,
           sessions: previous.sessions + 1,
-          lastReviewedAt: Date.now()
+          lastReviewedAt: Date.now(),
+          baselineMasteryPercent: masteryPerformance?.attempted
+            ? Math.round((masteryPerformance.correct / masteryPerformance.attempted) * 100)
+            : undefined,
+          postRevisionMasteryPercent: undefined,
+          postRevisionAt: undefined
         }
       }
     });
@@ -271,6 +292,14 @@ export const MapScreen: React.FC = () => {
                       <i style={{ width: `${concept.percent}%` }} />
                     </div>
                     <small>{concept.correct}/{concept.attempted} {lang === 'it' ? 'risposte corrette' : 'correct responses'}</small>
+                    {concept.revision?.baselineMasteryPercent !== undefined && concept.revision.postRevisionMasteryPercent !== undefined && (
+                      <small className="concept-revision-impact">
+                        {lang === 'it' ? 'Maestria dopo il ripasso: ' : 'Mastery after revision: '}
+                        {concept.revision.postRevisionMasteryPercent}%
+                        {' ('}{concept.revision.postRevisionMasteryPercent - concept.revision.baselineMasteryPercent > 0 ? '+' : ''}
+                        {concept.revision.postRevisionMasteryPercent - concept.revision.baselineMasteryPercent} {lang === 'it' ? 'punti' : 'pp'}{')'}
+                      </small>
+                    )}
                     {concept.revision?.sessions ? (
                       <small className="concept-revision-history">
                         {lang === 'it'
@@ -316,18 +345,51 @@ export const MapScreen: React.FC = () => {
             )}
           </div>
         </div>
-        <div className="learning-dashboard-next">
+        <div className="learning-dashboard-next adaptive-recommendation" data-recommendation={adaptiveRecommendation.kind}>
           <div>
-            <strong>{lang === 'it' ? 'Prossimo passo consigliato' : 'Recommended next step'}</strong>
-            <p>{nextMissionIndex >= 0
-              ? <>{lang === 'it' ? 'Continua con ' : 'Continue with '}<b>{L(MISSIONS[nextMissionIndex].title, lang)}</b>{lang === 'it' ? ' e completa la valutazione.' : ' and complete its mastery assessment.'}</>
-              : (lang === 'it' ? 'Hai completato tutte le missioni disponibili. Continua ad allenarti nel Dojo.' : 'You have cleared all available missions. Keep practising in the Dojo.')}</p>
+            <span className="learning-kicker">{lang === 'it' ? 'PERCORSO ADATTIVO' : 'ADAPTIVE LEARNING'}</span>
+            <strong>{lang === 'it' ? 'Il tuo prossimo passo' : 'Your recommended next step'}</strong>
+            <p>
+              {adaptiveRecommendation.kind === 'review' && (
+                <>
+                  {lang === 'it' ? 'Rinforza ' : 'Strengthen '}
+                  <b>{L(adaptiveRecommendation.concept.title, lang)}</b>
+                  {adaptiveRecommendation.reason === 'revision-needs-practice'
+                    ? (lang === 'it' ? `: il ripasso precedente ha ottenuto il ${adaptiveRecommendation.revisionAccuracy}%. Prova ancora prima di tornare alla prova.` : `: your previous review scored ${adaptiveRecommendation.revisionAccuracy}%. Practise it again before returning to mastery.`)
+                    : (lang === 'it' ? ': è uno dei concetti più deboli nella tua ultima prova di maestria.' : ': it was one of the weakest concepts in your latest mastery assessment.')}
+                </>
+              )}
+              {adaptiveRecommendation.kind === 'retry' && (
+                <>
+                  {lang === 'it' ? 'Hai ottenuto ' : 'You scored '}
+                  <b>{adaptiveRecommendation.revisionAccuracy}%</b>
+                  {lang === 'it' ? ' nel ripasso mirato di ' : ' in targeted revision for '}
+                  <b>{L(adaptiveRecommendation.concept.title, lang)}</b>
+                  {lang === 'it' ? '. Ora torna alla prova di maestria per verificare i progressi.' : '. Now return to the mastery assessment to check your progress.'}
+                </>
+              )}
+              {adaptiveRecommendation.kind === 'mission' && (
+                <>{lang === 'it' ? 'Continua con ' : 'Continue with '}<b>{L(adaptiveRecommendation.mission.title, lang)}</b>{lang === 'it' ? ' e completa il percorso.' : ' and complete its learning pathway.'}</>
+              )}
+              {adaptiveRecommendation.kind === 'dojo' && (
+                <>{lang === 'it' ? 'Hai completato tutte le missioni disponibili. Continua ad allenarti nel Dojo.' : 'You have cleared all available missions. Keep practising in the Dojo.'}</>
+              )}
+            </p>
+            {adaptiveRecommendation.kind === 'retry' && (
+              <small className="adaptive-recommendation-reason">
+                {lang === 'it' ? 'Consiglio basato sul risultato del ripasso e sulla prova di maestria ancora da superare.' : 'Suggested because your revision result is strong and this mission still needs mastery.'}
+              </small>
+            )}
           </div>
-          {nextMissionIndex >= 0 ? (
-            <button className="btn sm" onClick={() => openMission(nextMissionIndex)}>{lang === 'it' ? 'Continua' : 'Continue'}</button>
-          ) : (
-            <button className="btn sm" onClick={() => startBattle(true)}>{lang === 'it' ? 'Vai al Dojo' : 'Open Dojo'}</button>
-          )}
+          <button className="btn sm" id="adaptiveNextAction" onClick={handleAdaptiveAction}>
+            {adaptiveRecommendation.kind === 'review'
+              ? (lang === 'it' ? 'Ripassa concetto' : 'Review concept')
+              : adaptiveRecommendation.kind === 'retry'
+                ? (lang === 'it' ? 'Riprova maestria' : 'Retry mastery')
+                : adaptiveRecommendation.kind === 'mission'
+                  ? (lang === 'it' ? 'Continua missione' : 'Continue mission')
+                  : (lang === 'it' ? 'Vai al Dojo' : 'Open Dojo')}
+          </button>
         </div>
       </section>
 

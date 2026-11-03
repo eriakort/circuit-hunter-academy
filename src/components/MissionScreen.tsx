@@ -517,6 +517,7 @@ export const MissionScreen: React.FC = () => {
                         const passed = score >= masteryAssessment!.passingScore;
                         const attempt = (savedLearning?.masteryAttempts || 0) + 1;
                         const conceptPerformance = { ...(savedLearning?.masteryConceptPerformance || {}) };
+                        const revisionPerformance = { ...(savedLearning?.conceptRevisionPerformance || {}) };
                         const attemptHistory = [...(savedLearning?.masteryAttemptHistory || []), { score, attemptedAt: Date.now(), attempt }].slice(-20);
                         const weakConcepts: string[] = [];
                         masteryQuestions.forEach((question, index) => {
@@ -529,10 +530,21 @@ export const MissionScreen: React.FC = () => {
                           };
                           if (answers[index] !== 0 && !weakConcepts.includes(conceptId)) weakConcepts.push(conceptId);
                         });
+                        Object.entries(revisionPerformance).forEach(([conceptId, revision]) => {
+                          if (!revision.lastReviewedAt || revision.lastReviewedAt <= (revision.postRevisionAt || 0)) return;
+                          const performance = conceptPerformance[conceptId];
+                          if (!performance?.attempted) return;
+                          revisionPerformance[conceptId] = {
+                            ...revision,
+                            postRevisionMasteryPercent: Math.round((performance.correct / performance.attempted) * 100),
+                            postRevisionAt: Date.now()
+                          };
+                        });
                         saveLearningProgress(currentMission.id, {
                           masteryScore: score,
                           masteryAttempts: attempt,
                           masteryConceptPerformance: conceptPerformance,
+                          conceptRevisionPerformance: revisionPerformance,
                           masteryAttemptHistory: attemptHistory,
                           masteryLastAttemptWeakConcepts: passed ? [] : weakConcepts,
                           mastered: passed,
