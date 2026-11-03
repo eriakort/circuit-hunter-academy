@@ -54,7 +54,7 @@ test('starts a guided review session and shows a per-concept and overall summary
 
   const summary = page.locator('.review-session-summary');
   await expect(summary.getByRole('heading', { name: 'Review session summary' })).toBeVisible();
-  await expect(summary).toContainText('You completed 1 concepts.');
+  await expect(summary).toContainText('You completed 1 concept.');
   await expect(summary.locator('.review-session-result')).toContainText('100%');
   await expect(summary.getByRole('button', { name: 'Return to learning path' })).toBeVisible();
 });
