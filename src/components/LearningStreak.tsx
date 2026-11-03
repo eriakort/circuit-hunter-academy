@@ -21,8 +21,8 @@ export const LearningStreak: React.FC<LearningStreakProps> = ({ streak, lang }) 
           <h3>{isItalian ? 'La tua costanza nello studio' : 'Your study consistency'}</h3>
           <p className="muted">
             {isItalian
-              ? 'Le attività registrate includono prove di maestria e sessioni di ripasso mirato.'
-              : 'Recorded activity includes mastery assessments and targeted revision sessions.'}
+              ? 'Le attività mostrate derivano dalle prove di maestria salvate e dalle date dell’ultimo ripasso mirato per concetto; le attività più vecchie potrebbero non essere incluse.'
+              : 'Activity is derived from saved mastery attempts and each concept’s latest targeted revision date; older activity may not be represented.'}
           </p>
         </div>
         <div className="learning-streak-metrics">
@@ -32,7 +32,7 @@ export const LearningStreak: React.FC<LearningStreakProps> = ({ streak, lang }) 
           </div>
           <div className="learning-streak-metric">
             <strong>{streak.bestStreak}</strong>
-            <span>{isItalian ? 'Record personale' : 'Best streak'}</span>
+            <span>{isItalian ? 'Miglior serie registrata' : 'Best recorded streak'}</span>
           </div>
           <div className="learning-streak-metric">
             <strong>{streak.activeLast7Days}/7</strong>
