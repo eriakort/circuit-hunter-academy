@@ -16,6 +16,12 @@ console.assert(csCategories.length > 15, `Expected >15 categories for CS, got ${
 const physCategories = getCategories('phys');
 console.assert(physCategories.length >= 6, `Expected >=6 categories for Physics, got ${physCategories.length}`);
 
+// Test Math categories and questions
+const mathCategories = getCategories('math');
+console.assert(mathCategories.length >= 7, `Expected >=7 categories for Math, got ${mathCategories.length}`);
+const mathQuestions = bank.filter(q => q.subject === 'math');
+console.assert(mathQuestions.length >= 170, `Expected >=170 questions for Math, got ${mathQuestions.length}`);
+
 // Test Chapter filter
 const ch1Category = csCategories.find(c => c.arcIndex === 0);
 console.assert(ch1Category !== undefined, 'Chapter 1 category should exist');

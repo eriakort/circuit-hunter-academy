@@ -1,6 +1,7 @@
 import { TaggedQuestion, SubjectId, BilingualText } from '../types';
 import { MISSIONS, ARCS, UNITS } from './gameData';
 import { EXTRA_PHYSICS_QUESTIONS } from './physicsQuestions';
+import { EXTRA_MATH_QUESTIONS } from './mathQuestions';
 import { shuffle } from '../helpers';
 
 // Compile all questions from missions into an indexed bank
@@ -32,8 +33,9 @@ export function getCompleteQuestionBank(): TaggedQuestion[] {
     }
   });
 
-  // Include comprehensive Walker textbook questions
+  // Include comprehensive Walker physics and Bergamini-Barozzi math questions
   bank.push(...EXTRA_PHYSICS_QUESTIONS);
+  bank.push(...EXTRA_MATH_QUESTIONS);
 
   cachedBank = bank;
   return bank;
@@ -59,8 +61,8 @@ export function getCategories(subject: SubjectId): CategoryOption[] {
     type: 'all',
     id: `all-${subject}`,
     label: [
-      `All ${subject === 'cs' ? 'Computer Science' : 'Physics'} Topics`,
-      `Tutti gli argomenti di ${subject === 'cs' ? 'Informatica' : 'Fisica'}`
+      `All ${subject === 'cs' ? 'Computer Science' : subject === 'math' ? 'Mathematics' : 'Physics'} Topics`,
+      `Tutti gli argomenti di ${subject === 'cs' ? 'Informatica' : subject === 'math' ? 'Matematica' : 'Fisica'}`
     ],
     count: bank.length
   });
