@@ -239,6 +239,13 @@ export const MapScreen: React.FC = () => {
                           : L(['Not yet passed', 'Non superata'], lang)} · {learning.masteryScore}%
                       </small>
                     )}
+                    {!!learning?.masteryLastAttemptWeakConcepts?.length && (
+                      <small className="learning-map-progress mastery-map-pending">
+                        {L(['Review', 'Ripasso'], lang)} · {m.learning?.concepts
+                          .filter(concept => learning.masteryLastAttemptWeakConcepts?.includes(concept.id))
+                          .map(concept => L(concept.title, lang)).join(', ')}
+                      </small>
+                    )}
 
                     <span className={`badge ${isCleared ? 'ok' : open ? 'go' : 'lock'}`}>
                       {isCleared
