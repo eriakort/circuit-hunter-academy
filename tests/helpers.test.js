@@ -1,5 +1,6 @@
 // npx tsx tests/helpers.test.js
 import { rng, sshuffle, rankOf, nextRank, raceXP } from '../src/helpers';
+import { recommendNextLearningAction } from '../src/adaptiveLearning';
 
 const RANKS = [
   [0, 'Intern'],
@@ -20,5 +21,51 @@ const r = rng(42);
 const shuffled = sshuffle([1, 2, 3, 4, 5], r);
 console.assert(shuffled.length === 5);
 console.assert(new Set(shuffled).size === 5);
+
+
+// Adaptive learning recommendations respond to assessment and revision outcomes.
+const weakConcept = { id: 'cpu-cycle', title: ['CPU cycle', 'Ciclo della CPU'] };
+const weakMission = { id: 'mission-1', learning: { concepts: [weakConcept] } };
+const nextMission = { id: 'mission-2', learning: { concepts: [] } };
+const weakProgress = {
+  'mission-1': {
+    mastered: false,
+    lastAttemptAt: 100,
+    masteryConceptPerformance: { 'cpu-cycle': { correct: 1, attempted: 4 } },
+    masteryLastAttemptWeakConcepts: ['cpu-cycle'],
+    conceptRevisionPerformance: {}
+  }
+};
+const reviewRecommendation = recommendNextLearningAction([weakMission], weakProgress, nextMission);
+console.assert(reviewRecommendation.kind === 'review');
+console.assert(reviewRecommendation.concept.id === 'cpu-cycle');
+
+const revisionReadyProgress = {
+  'mission-1': {
+    ...weakProgress['mission-1'],
+    conceptRevisionPerformance: {
+      'cpu-cycle': { correct: 4, attempted: 4, sessions: 1, lastReviewedAt: 200 }
+    }
+  }
+};
+const retryRecommendation = recommendNextLearningAction([weakMission], revisionReadyProgress, nextMission);
+console.assert(retryRecommendation.kind === 'retry');
+console.assert(retryRecommendation.revisionAccuracy === 100);
+
+const morePracticeProgress = {
+  'mission-1': {
+    ...revisionReadyProgress['mission-1'],
+    conceptRevisionPerformance: {
+      'cpu-cycle': { correct: 2, attempted: 4, sessions: 1, lastReviewedAt: 200 }
+    }
+  }
+};
+console.assert(recommendNextLearningAction([weakMission], morePracticeProgress, nextMission).kind === 'review');
+
+const masteredProgress = {
+  'mission-1': { ...weakProgress['mission-1'], mastered: true }
+};
+console.assert(recommendNextLearningAction([weakMission], masteredProgress, nextMission).kind === 'mission');
+console.assert(recommendNextLearningAction([weakMission], { 'mission-1': { mastered: true } }).kind === 'dojo');
 
 console.log('helpers.test.js ok');
