@@ -39,7 +39,7 @@ test('dashboard launches a targeted revision and persists its result', async ({ 
   await startCourse(page);
   await seedWeakConcept(page);
 
-  await expect(page.getByText('The von Neumann architecture')).toBeVisible();
+  await expect(page.getByText('The von Neumann architecture', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Review concept: The von Neumann architecture' }).click();
 
   await expect(page.getByRole('heading', { name: 'Targeted concept revision' })).toBeVisible();
