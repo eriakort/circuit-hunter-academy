@@ -9,6 +9,9 @@ interface ConceptRevisionProps {
   revisionPerformance?: { correct: number; attempted: number; sessions: number; lastReviewedAt: number };
   onClose: () => void;
   onComplete: (result: { correct: number; attempted: number }) => void;
+  onContinue?: () => void;
+  sessionPosition?: number;
+  sessionLength?: number;
 }
 
 export const ConceptRevision: React.FC<ConceptRevisionProps> = ({
@@ -17,7 +20,10 @@ export const ConceptRevision: React.FC<ConceptRevisionProps> = ({
   lang,
   revisionPerformance,
   onClose,
-  onComplete
+  onComplete,
+  onContinue,
+  sessionPosition,
+  sessionLength
 }) => {
   const assessment = mission.learning?.masteryAssessment;
   const questions = assessment?.questions.filter(
@@ -109,6 +115,11 @@ export const ConceptRevision: React.FC<ConceptRevisionProps> = ({
         <div className="learning-section-heading">
           <span className="learning-kicker">{lang === 'it' ? 'VERIFICA DI RICHIAMO' : 'RETRIEVAL PRACTICE'}</span>
           <h3>{lang === 'it' ? 'Controlla ciò che ricordi' : 'Check what you remember'}</h3>
+          {sessionPosition !== undefined && sessionLength !== undefined && (
+            <div className="guided-progress" aria-label={lang === 'it' ? 'Avanzamento sessione' : 'Session progress'}>
+              {lang === 'it' ? 'Concetto' : 'Concept'} {sessionPosition} / {sessionLength}
+            </div>
+          )}
           {questions.length > 0 && !completed && (
             <div className="guided-progress">
               {lang === 'it' ? 'Domanda' : 'Question'} {questionIndex + 1} / {questions.length}
@@ -154,11 +165,16 @@ export const ConceptRevision: React.FC<ConceptRevisionProps> = ({
         )}
 
         {questions.length === 0 && (
-          <p className="muted">
-            {lang === 'it'
+          <div className="muted">
+            <p>{lang === 'it'
               ? 'Non sono ancora collegate domande di verifica a questo concetto. Rivedi i contenuti qui sopra.'
-              : 'No assessment questions are linked to this concept yet. Review the learning material above.'}
-          </p>
+              : 'No assessment questions are linked to this concept yet. Review the learning material above.'}</p>
+            {onContinue && (
+              <button type="button" className="btn ghost" onClick={onContinue}>
+                {lang === 'it' ? 'Salta al prossimo concetto' : 'Skip to next concept'}
+              </button>
+            )}
+          </div>
         )}
 
         {completed && finalScore !== null && (
@@ -167,6 +183,13 @@ export const ConceptRevision: React.FC<ConceptRevisionProps> = ({
             <p>{lang === 'it'
               ? 'I risultati di questo ripasso sono stati salvati nel tuo percorso.'
               : 'This revision result has been saved to your learning journey.'}</p>
+            {onContinue && (
+              <button type="button" className="btn" onClick={onContinue}>
+                {sessionPosition !== undefined && sessionLength !== undefined && sessionPosition < sessionLength
+                  ? (lang === 'it' ? 'Prossimo concetto' : 'Next concept')
+                  : (lang === 'it' ? 'Vedi riepilogo' : 'View session summary')}
+              </button>
+            )}
           </div>
         )}
       </div>

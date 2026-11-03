@@ -30,6 +30,11 @@ export const MapScreen: React.FC = () => {
   const [nameInput, setNameInput] = useState('');
   const [resetArmed, setResetArmed] = useState(false);
   const [revisionTarget, setRevisionTarget] = useState<{ mission: Mission; concept: LearningConcept } | null>(null);
+  const [reviewQueue, setReviewQueue] = useState<Array<{ mission: Mission; concept: LearningConcept }>>([]);
+  const [reviewQueueIndex, setReviewQueueIndex] = useState(0);
+  const [reviewQueueResults, setReviewQueueResults] = useState<Array<{ title: any; score: number }>>([]);
+  const [reviewQueueActive, setReviewQueueActive] = useState(false);
+  const [reviewQueueSummary, setReviewQueueSummary] = useState(false);
 
   const curSub = subject || 'cs';
   const currentSubjectData = SUBJECTS.find(s => s.id === curSub) || SUBJECTS[0];
@@ -152,9 +157,47 @@ export const MapScreen: React.FC = () => {
   const nextMission = nextMissionIndex >= 0 ? MISSIONS[nextMissionIndex] : undefined;
   const adaptiveRecommendation = recommendNextLearningAction(MY, state.learningProgress || {}, nextMission);
 
+  const startReviewQueue = (items: Array<{ mission: Mission; concept: LearningConcept }>) => {
+    if (!items.length) return;
+    setReviewQueue(items);
+    setReviewQueueIndex(0);
+    setReviewQueueResults([]);
+    setReviewQueueActive(true);
+    setReviewQueueSummary(false);
+    setRevisionTarget(items[0]);
+  };
+
+  const startSingleRevision = (item: { mission: Mission; concept: LearningConcept }) => {
+    setReviewQueue([item]);
+    setReviewQueueIndex(0);
+    setReviewQueueResults([]);
+    setReviewQueueActive(false);
+    setReviewQueueSummary(false);
+    setRevisionTarget(item);
+  };
+
+  const handleReviewQueueContinue = () => {
+    const nextIndex = reviewQueueIndex + 1;
+    if (nextIndex < reviewQueue.length) {
+      setReviewQueueIndex(nextIndex);
+      setRevisionTarget(reviewQueue[nextIndex]);
+      return;
+    }
+    setRevisionTarget(null);
+    setReviewQueueSummary(true);
+  };
+
+  const closeReviewQueue = () => {
+    setRevisionTarget(null);
+    setReviewQueue([]);
+    setReviewQueueIndex(0);
+    setReviewQueueActive(false);
+    setReviewQueueSummary(false);
+  };
+
   const handleAdaptiveAction = () => {
     if (adaptiveRecommendation.kind === 'review') {
-      setRevisionTarget({ mission: adaptiveRecommendation.mission, concept: adaptiveRecommendation.concept });
+      startSingleRevision({ mission: adaptiveRecommendation.mission, concept: adaptiveRecommendation.concept });
       return;
     }
     if (adaptiveRecommendation.kind === 'retry' || adaptiveRecommendation.kind === 'mission') {
@@ -174,6 +217,10 @@ export const MapScreen: React.FC = () => {
     const reviewedAt = Date.now();
     const reviewSchedule = { ...(state.learningProgress?.[missionId]?.conceptReviewSchedule || {}) };
     const revisionScore = result.attempted ? Math.round((result.correct / result.attempted) * 100) : 0;
+    setReviewQueueResults(previousResults => [
+      ...previousResults,
+      { title: revisionTarget.concept.title, score: revisionScore }
+    ]);
     reviewSchedule[conceptId] = scheduleNextConceptReview(reviewSchedule[conceptId], revisionScore, reviewedAt);
     saveLearningProgress(missionId, {
       conceptRevisionPerformance: {
@@ -325,7 +372,7 @@ export const MapScreen: React.FC = () => {
                       onClick={() => {
                         const mission = MY.find(item => item.id === concept.missionId);
                         const selectedConcept = mission?.learning?.concepts.find(item => item.id === concept.id);
-                        if (mission && selectedConcept) setRevisionTarget({ mission, concept: selectedConcept });
+                        if (mission && selectedConcept) startSingleRevision({ mission, concept: selectedConcept });
                       }}
                     >
                       {lang === 'it' ? 'Ripassa concetto' : 'Review concept'}
@@ -362,8 +409,9 @@ export const MapScreen: React.FC = () => {
           onReviewConcept={(missionId, conceptId) => {
             const mission = MY.find(item => item.id === missionId);
             const concept = mission?.learning?.concepts.find(item => item.id === conceptId);
-            if (mission && concept) setRevisionTarget({ mission, concept });
+            if (mission && concept) startSingleRevision({ mission, concept });
           }}
+          onStartReviewQueue={items => startReviewQueue(items)}
         />
         <AssessmentReview
           missions={MY}
@@ -423,14 +471,44 @@ export const MapScreen: React.FC = () => {
         </div>
       </section>
 
+      {reviewQueueSummary && (
+        <section className="review-session-summary card" aria-live="polite">
+          <div className="learning-kicker">{lang === 'it' ? 'SESSIONE COMPLETATA' : 'SESSION COMPLETE'}</div>
+          <h2>{lang === 'it' ? 'Riepilogo del ripasso' : 'Review session summary'}</h2>
+          <p>{lang === 'it'
+            ? `Hai completato ${reviewQueueResults.length} ${reviewQueueResults.length === 1 ? 'concetto' : 'concetti'}.`
+            : `You completed ${reviewQueueResults.length} ${reviewQueueResults.length === 1 ? 'concept' : 'concepts'}.`}</p>
+          <div className="review-session-results">
+            {reviewQueueResults.map((item, index) => (
+              <div className="review-session-result" key={index}>
+                <span>{L(item.title, lang)}</span>
+                <strong>{item.score}%</strong>
+              </div>
+            ))}
+          </div>
+          <div className="review-session-total">
+            <span>{lang === 'it' ? 'Punteggio medio della sessione' : 'Session average'}</span>
+            <strong>{reviewQueueResults.length
+              ? Math.round(reviewQueueResults.reduce((sum, item) => sum + item.score, 0) / reviewQueueResults.length)
+              : 0}%</strong>
+          </div>
+          <button type="button" className="btn" onClick={closeReviewQueue}>
+            {lang === 'it' ? 'Torna al percorso' : 'Return to learning path'}
+          </button>
+        </section>
+      )}
+
       {revisionTarget && (
         <ConceptRevision
           mission={revisionTarget.mission}
           concept={revisionTarget.concept}
           lang={lang}
           revisionPerformance={state.learningProgress?.[revisionTarget.mission.id]?.conceptRevisionPerformance?.[revisionTarget.concept.id]}
-          onClose={() => setRevisionTarget(null)}
+          onClose={closeReviewQueue}
           onComplete={handleRevisionComplete}
+          onContinue={reviewQueueActive ? handleReviewQueueContinue : undefined}
+          sessionPosition={reviewQueueActive ? reviewQueueIndex + 1 : undefined}
+          sessionLength={reviewQueueActive ? reviewQueue.length : undefined}
         />
       )}
 
