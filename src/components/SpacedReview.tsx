@@ -7,10 +7,11 @@ interface SpacedReviewProps {
   progressByMission: Record<string, LearningMissionProgress | undefined>;
   lang: Language;
   onReviewConcept: (missionId: string, conceptId: string) => void;
+  onStartReviewQueue?: (items: Array<{ mission: Mission; concept: NonNullable<Mission['learning']>['concepts'][number] }>) => void;
 }
 
 export const SpacedReview: React.FC<SpacedReviewProps> = ({
-  missions, progressByMission, lang, onReviewConcept
+  missions, progressByMission, lang, onReviewConcept, onStartReviewQueue
 }) => {
   const isItalian = lang === 'it';
   const now = Date.now();
@@ -58,6 +59,15 @@ export const SpacedReview: React.FC<SpacedReviewProps> = ({
       {dueItems.length > 0 ? (
         <>
           <h4 className="spaced-review-subheading">{isItalian ? 'Pronti per il ripasso' : 'Ready to review'}</h4>
+          {onStartReviewQueue && (
+            <button
+              type="button"
+              className="btn sm"
+              onClick={() => onStartReviewQueue(dueItems.map(item => ({ mission: item.mission, concept: item.concept })))}
+            >
+              {isItalian ? `Inizia sessione (${dueItems.length})` : `Start review session (${dueItems.length})`}
+            </button>
+          )}
           <div className="spaced-review-list">
             {dueItems.slice(0, 5).map(item => (
               <article className="spaced-review-item" key={item.mission.id + ':' + item.concept.id}>
