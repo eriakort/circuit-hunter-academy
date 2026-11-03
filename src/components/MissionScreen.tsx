@@ -409,6 +409,40 @@ export const MissionScreen: React.FC = () => {
         </div>
       )}
 
+      {workedExamples.length > 0 && (
+        <section className="learning-worked-examples" aria-label={lang === 'it' ? 'Esempi svolti' : 'Worked examples'}>
+          <div className="learning-section-heading">
+            <span className="learning-kicker">{lang === 'it' ? 'IMPARA FACENDO' : 'LEARN BY EXAMPLE'}</span>
+            <h3>{lang === 'it' ? 'Esempio svolto' : 'Worked example'}</h3>
+            <p>{lang === 'it' ? 'Segui il ragionamento passo dopo passo, poi prova a spiegare il concetto con parole tue.' : 'Follow the reasoning step by step, then try explaining the concept in your own words.'}</p>
+          </div>
+          {workedExamples.map(concept => (
+            <details className="learning-example" key={concept.id}>
+              <summary>{L(concept.title, lang)}</summary>
+              <div className="learning-example-body">
+                <p className="learning-scenario">{L(concept.workedExample!.scenario, lang)}</p>
+                <ol>
+                  {concept.workedExample!.steps.map((step, index) => (
+                    <li key={index}>{L(step, lang)}</li>
+                  ))}
+                </ol>
+                <div className="learning-answer">
+                  <strong>{lang === 'it' ? 'Risposta ragionata' : 'Reasoned answer'}</strong>
+                  <p>{L(concept.workedExample!.answer, lang)}</p>
+                </div>
+                {concept.misconceptions?.[0] && (
+                  <div className="learning-misconception">
+                    <strong>{lang === 'it' ? 'Attenzione a questo errore comune' : 'Watch out for this common mistake'}</strong>
+                    <p><span>{lang === 'it' ? 'Idea errata: ' : 'Common mistake: '}</span>{L(concept.misconceptions[0].belief, lang)}</p>
+                    <p><span>{lang === 'it' ? 'Correzione: ' : 'Correction: '}</span>{L(concept.misconceptions[0].correction, lang)}</p>
+                  </div>
+                )}
+              </div>
+            </details>
+          ))}
+        </section>
+      )}
+
       {masteryIsActive && independentComplete && knowledgeComplete && (
         <section className="learning-mastery-assessment" aria-label={lang === 'it' ? 'Valutazione di padronanza' : 'Mastery assessment'}>
           <div className="learning-section-heading">
@@ -513,40 +547,6 @@ export const MissionScreen: React.FC = () => {
               )}
             </div>
           )}
-        </section>
-      )}
-
-      {workedExamples.length > 0 && (
-        <section className="learning-worked-examples" aria-label={lang === 'it' ? 'Esempi svolti' : 'Worked examples'}>
-          <div className="learning-section-heading">
-            <span className="learning-kicker">{lang === 'it' ? 'IMPARA FACENDO' : 'LEARN BY EXAMPLE'}</span>
-            <h3>{lang === 'it' ? 'Esempio svolto' : 'Worked example'}</h3>
-            <p>{lang === 'it' ? 'Segui il ragionamento passo dopo passo, poi prova a spiegare il concetto con parole tue.' : 'Follow the reasoning step by step, then try explaining the concept in your own words.'}</p>
-          </div>
-          {workedExamples.map(concept => (
-            <details className="learning-example" key={concept.id}>
-              <summary>{L(concept.title, lang)}</summary>
-              <div className="learning-example-body">
-                <p className="learning-scenario">{L(concept.workedExample!.scenario, lang)}</p>
-                <ol>
-                  {concept.workedExample!.steps.map((step, index) => (
-                    <li key={index}>{L(step, lang)}</li>
-                  ))}
-                </ol>
-                <div className="learning-answer">
-                  <strong>{lang === 'it' ? 'Risposta ragionata' : 'Reasoned answer'}</strong>
-                  <p>{L(concept.workedExample!.answer, lang)}</p>
-                </div>
-                {concept.misconceptions?.[0] && (
-                  <div className="learning-misconception">
-                    <strong>{lang === 'it' ? 'Attenzione a questo errore comune' : 'Watch out for this common mistake'}</strong>
-                    <p><span>{lang === 'it' ? 'Idea errata: ' : 'Common mistake: '}</span>{L(concept.misconceptions[0].belief, lang)}</p>
-                    <p><span>{lang === 'it' ? 'Correzione: ' : 'Correction: '}</span>{L(concept.misconceptions[0].correction, lang)}</p>
-                  </div>
-                )}
-              </div>
-            </details>
-          ))}
         </section>
       )}
 
