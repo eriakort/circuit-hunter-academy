@@ -12,8 +12,6 @@ export const LearningStreak: React.FC<LearningStreakProps> = ({ streak, lang }) 
   const dayLabels = isItalian
     ? ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom']
     : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  const today = new Date();
-  const todayIndex = (today.getUTCDay() + 6) % 7;
 
   return (
     <section className="learning-streak" aria-label={isItalian ? 'Costanza nello studio' : 'Study consistency'}>
@@ -43,7 +41,7 @@ export const LearningStreak: React.FC<LearningStreakProps> = ({ streak, lang }) 
         </div>
       </div>
       <div className="learning-streak-days" aria-label={isItalian ? 'Attività degli ultimi sette giorni' : 'Activity in the last seven days'}>
-        {streak.recentDays.map((day, index) => {
+        {streak.recentDays.map(day => {
           const date = new Date(day.dateKey + 'T00:00:00Z');
           const weekday = (date.getUTCDay() + 6) % 7;
           const label = dayLabels[weekday];
