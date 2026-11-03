@@ -88,6 +88,36 @@ export const MapScreen: React.FC = () => {
   const MY = myMissions();
   const doneCount = MY.filter(m => cleared[m.id]).length;
   const isMastered = allCleared();
+  const learningRecords = MY.map(m => ({ mission: m, progress: state.learningProgress?.[m.id] }))
+    .filter(item => item.progress);
+  const masteredCount = learningRecords.filter(item => item.progress?.mastered).length;
+  const assessedCount = learningRecords.filter(item => item.progress?.masteryAttempts).length;
+  const averageMastery = assessedCount
+    ? Math.round(learningRecords.reduce((sum, item) => sum + (item.progress?.masteryScore ?? 0), 0) / assessedCount)
+    : null;
+  const conceptTotals = new Map<string, { title: any; correct: number; attempted: number; missionTitle: any }>();
+  MY.forEach(m => {
+    const progress = state.learningProgress?.[m.id];
+    m.learning?.concepts.forEach(concept => {
+      const performance = progress?.masteryConceptPerformance?.[concept.id];
+      if (!performance?.attempted) return;
+      const current = conceptTotals.get(concept.id) || {
+        title: concept.title, correct: 0, attempted: 0, missionTitle: m.title
+      };
+      current.correct += performance.correct;
+      current.attempted += performance.attempted;
+      conceptTotals.set(concept.id, current);
+    });
+  });
+  const weakestConcepts = Array.from(conceptTotals.entries())
+    .map(([id, value]) => ({ id, ...value, percent: Math.round((value.correct / value.attempted) * 100) }))
+    .sort((a, b) => a.percent - b.percent || b.attempted - a.attempted)
+    .slice(0, 3);
+  const recentAttempts = learningRecords.flatMap(item =>
+    (item.progress?.masteryAttemptHistory || []).map(attempt => ({
+      ...attempt, missionTitle: item.mission.title
+    }))
+  ).sort((a, b) => b.attemptedAt - a.attemptedAt).slice(0, 5);
 
   // Find next playable mission
   const nextMissionIndex = MISSIONS.findIndex(
@@ -158,6 +188,86 @@ export const MapScreen: React.FC = () => {
         </div>
 
         <div dangerouslySetInnerHTML={{ __html: titleSvgHtml }} />
+      </section>
+
+      <section className="learning-dashboard card" aria-label={lang === 'it' ? 'Cruscotto dei progressi' : 'Learning progress dashboard'}>
+        <div className="learning-dashboard-heading">
+          <div>
+            <div className="eyebrow">{lang === 'it' ? 'IL TUO PERCORSO' : 'YOUR LEARNING JOURNEY'}</div>
+            <h2>{lang === 'it' ? 'Cruscotto dei progressi' : 'Learning progress'}</h2>
+            <p className="muted">{lang === 'it' ? 'Una panoramica dei risultati e dei prossimi passi.' : 'A course-wide view of your results and what to focus on next.'}</p>
+          </div>
+        </div>
+        <div className="learning-dashboard-stats">
+          <div className="learning-stat">
+            <strong>{doneCount}/{MY.length}</strong>
+            <span>{lang === 'it' ? 'Missioni completate' : 'Missions cleared'}</span>
+          </div>
+          <div className="learning-stat">
+            <strong>{masteredCount}/{MY.length}</strong>
+            <span>{lang === 'it' ? 'Prove superate' : 'Mastery passed'}</span>
+          </div>
+          <div className="learning-stat">
+            <strong>{averageMastery === null ? '—' : averageMastery + '%'}</strong>
+            <span>{lang === 'it' ? 'Media ultimo risultato' : 'Average latest score'}</span>
+          </div>
+          <div className="learning-stat">
+            <strong>{assessedCount}</strong>
+            <span>{lang === 'it' ? 'Missioni valutate' : 'Missions assessed'}</span>
+          </div>
+        </div>
+        <div className="learning-dashboard-grid">
+          <div className="learning-dashboard-panel">
+            <h3>{lang === 'it' ? 'Concetti da rinforzare' : 'Concepts to strengthen'}</h3>
+            {weakestConcepts.length ? (
+              <div className="learning-dashboard-concepts">
+                {weakestConcepts.map(concept => (
+                  <div className="learning-dashboard-concept" key={concept.id}>
+                    <div className="learning-dashboard-concept-title">
+                      <strong>{L(concept.title, lang)}</strong>
+                      <span>{concept.percent}%</span>
+                    </div>
+                    <div className="learning-dashboard-track" role="img" aria-label={`${concept.percent}% correct`}>
+                      <i style={{ width: `${concept.percent}%` }} />
+                    </div>
+                    <small>{concept.correct}/{concept.attempted} {lang === 'it' ? 'risposte corrette' : 'correct responses'}</small>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="muted">{lang === 'it' ? 'Completa una prova di maestria per vedere quali concetti ripassare.' : 'Complete a mastery assessment to discover which concepts need revision.'}</p>
+            )}
+          </div>
+          <div className="learning-dashboard-panel">
+            <h3>{lang === 'it' ? 'Ultimi tentativi' : 'Recent attempts'}</h3>
+            {recentAttempts.length ? (
+              <ol className="learning-dashboard-history">
+                {recentAttempts.map((attempt, index) => (
+                  <li key={`${attempt.attemptedAt}-${index}`}>
+                    <span>{L(attempt.missionTitle, lang)}</span>
+                    <strong>{attempt.score}%</strong>
+                    <small>{new Date(attempt.attemptedAt).toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-CA')}</small>
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <p className="muted">{lang === 'it' ? 'I risultati delle prove appariranno qui.' : 'Your mastery scores will appear here as you complete assessments.'}</p>
+            )}
+          </div>
+        </div>
+        <div className="learning-dashboard-next">
+          <div>
+            <strong>{lang === 'it' ? 'Prossimo passo consigliato' : 'Recommended next step'}</strong>
+            <p>{nextMissionIndex >= 0
+              ? <>{lang === 'it' ? 'Continua con ' : 'Continue with '}<b>{L(MISSIONS[nextMissionIndex].title, lang)}</b>{lang === 'it' ? ' e completa la valutazione.' : ' and complete its mastery assessment.'}</>
+              : (lang === 'it' ? 'Hai completato tutte le missioni disponibili. Continua ad allenarti nel Dojo.' : 'You have cleared all available missions. Keep practising in the Dojo.')}</p>
+          </div>
+          {nextMissionIndex >= 0 ? (
+            <button className="btn sm" onClick={() => openMission(nextMissionIndex)}>{lang === 'it' ? 'Continua' : 'Continue'}</button>
+          ) : (
+            <button className="btn sm" onClick={() => startBattle(true)}>{lang === 'it' ? 'Vai al Dojo' : 'Open Dojo'}</button>
+          )}
+        </div>
       </section>
 
       {/* Units tabs navigation */}

@@ -607,3 +607,30 @@ body{overflow-x:hidden}
 .mastery-recommendation > p {
   margin: 0;
 }
+
+
+/* Smart Learning 2.1 — course progress dashboard */
+.learning-dashboard{display:flex;flex-direction:column;gap:16px;margin:18px 0}
+.learning-dashboard-heading h2{font-size:clamp(22px,4vw,30px);margin:4px 0}
+.learning-dashboard-heading p{margin:0}
+.learning-dashboard-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.learning-stat{display:flex;flex-direction:column;gap:4px;padding:12px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;min-width:0}
+.learning-stat strong{font:400 clamp(22px,4vw,30px) var(--display);color:var(--data)}
+.learning-stat span{font-size:13px;color:var(--muted)}
+.learning-dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.learning-dashboard-panel{min-width:0;padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.learning-dashboard-panel h3{font-size:17px;margin-bottom:12px}
+.learning-dashboard-concepts{display:flex;flex-direction:column;gap:12px}
+.learning-dashboard-concept-title{display:flex;justify-content:space-between;gap:8px;font-size:14px}
+.learning-dashboard-concept-title span{font-family:var(--mono);color:var(--gold)}
+.learning-dashboard-track{height:8px;background:var(--panel2);border-radius:99px;overflow:hidden;margin:5px 0}
+.learning-dashboard-track i{display:block;height:100%;background:var(--data);border-radius:99px}
+.learning-dashboard-concept small{font-size:12px;color:var(--muted)}
+.learning-dashboard-history{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.learning-dashboard-history li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;font-size:13px}
+.learning-dashboard-history li span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.learning-dashboard-history li strong{font-family:var(--mono);color:var(--data)}
+.learning-dashboard-history li small{color:var(--muted)}
+.learning-dashboard-next{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px;background:rgba(69,216,255,.07);border:1px solid rgba(69,216,255,.3);border-radius:12px}
+.learning-dashboard-next p{margin:4px 0 0;color:var(--muted);font-size:14px}
+@media(max-width:650px){.learning-dashboard-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.learning-dashboard-grid{grid-template-columns:1fr}.learning-dashboard-next{align-items:flex-start;flex-direction:column}.learning-dashboard-history li{grid-template-columns:minmax(0,1fr) auto}.learning-dashboard-history li small{grid-column:1/-1}}

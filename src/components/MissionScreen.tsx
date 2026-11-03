@@ -506,6 +506,7 @@ export const MissionScreen: React.FC = () => {
                         const passed = score >= masteryAssessment!.passingScore;
                         const attempt = (savedLearning?.masteryAttempts || 0) + 1;
                         const conceptPerformance = { ...(savedLearning?.masteryConceptPerformance || {}) };
+                        const attemptHistory = [...(savedLearning?.masteryAttemptHistory || []), { score, attemptedAt: Date.now(), attempt }].slice(-20);
                         const weakConcepts: string[] = [];
                         masteryQuestions.forEach((question, index) => {
                           const conceptId = masteryAssessment!.questionConceptIds?.[index];
@@ -521,6 +522,7 @@ export const MissionScreen: React.FC = () => {
                           masteryScore: score,
                           masteryAttempts: attempt,
                           masteryConceptPerformance: conceptPerformance,
+                          masteryAttemptHistory: attemptHistory,
                           masteryLastAttemptWeakConcepts: passed ? [] : weakConcepts,
                           mastered: passed,
                           lastAttemptAt: Date.now()

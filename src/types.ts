@@ -151,6 +151,8 @@ export interface LearningMissionProgress {
   masteryConceptPerformance?: Record<string, { correct: number; attempted: number }>;
   /** Concepts missed in the most recent mastery attempt. */
   masteryLastAttemptWeakConcepts?: string[];
+  /** Timestamped mastery scores used for a lightweight progress trend. */
+  masteryAttemptHistory?: Array<{ score: number; attemptedAt: number; attempt: number }>;
   mastered: boolean;
   techniqueUnlocked: boolean;
   lastAttemptAt?: number;

@@ -21,9 +21,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
-      - run: bun install --frozen-lockfile
+      - run: bun install --no-save
       - run: bun run build
       - run: bun tests/helpers.test.js
+      - run: bunx playwright install --with-deps chromium
+      - run: bun run test:e2e
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
