@@ -61,7 +61,7 @@ export const HARDWARE_LEARNING_PILOT: Record<string, LearningPilotDefinition> = 
         'Riconosci come i dispositivi inviano informazioni al computer, le ricevono o svolgono entrambe le funzioni.'],
       xpReward: 25
     }
-  }
+  },
   m4m1: {
     summary: [
       ['A variable is a letter for a number. Read each term, identify its coefficient and constant, then substitute values and calculate in the correct order.',
