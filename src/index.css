@@ -634,3 +634,39 @@ body{overflow-x:hidden}
 .learning-dashboard-next{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px;background:rgba(69,216,255,.07);border:1px solid rgba(69,216,255,.3);border-radius:12px}
 .learning-dashboard-next p{margin:4px 0 0;color:var(--muted);font-size:14px}
 @media(max-width:650px){.learning-dashboard-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.learning-dashboard-grid{grid-template-columns:1fr}.learning-dashboard-next{align-items:flex-start;flex-direction:column}.learning-dashboard-history li{grid-template-columns:minmax(0,1fr) auto}.learning-dashboard-history li small{grid-column:1/-1}}
+
+
+/* Active HUD navigation: persistent location cue with a brief selection animation. */
+.hud-r .btn.nav-active {
+  position: relative;
+  overflow: hidden;
+  color: var(--data);
+  border-color: var(--data);
+  background: linear-gradient(135deg, rgba(69,216,255,.19), rgba(69,216,255,.07));
+  box-shadow: 0 0 0 1px rgba(69,216,255,.12), 0 0 18px rgba(69,216,255,.14);
+  animation: navSelect .32s ease-out both;
+}
+.hud-r .btn.nav-active::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 99px;
+  background: var(--data);
+  box-shadow: 0 0 8px rgba(69,216,255,.8);
+}
+.hud-r .btn.nav-active:hover:not(:disabled) {
+  border-color: var(--data);
+  background: linear-gradient(135deg, rgba(69,216,255,.24), rgba(69,216,255,.1));
+  filter: none;
+}
+@keyframes navSelect {
+  from { transform: translateY(2px) scale(.96); box-shadow: 0 0 0 rgba(69,216,255,0); }
+  to { transform: translateY(0) scale(1); box-shadow: 0 0 0 1px rgba(69,216,255,.12), 0 0 18px rgba(69,216,255,.14); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hud-r .btn.nav-active { animation: none; }
+  .hud-r .btn { transition: none; }
+}
