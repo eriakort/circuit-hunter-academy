@@ -55,7 +55,7 @@ test('dashboard separates due and upcoming reviews and launches targeted retriev
   await expect(review).toContainText('Overdue since');
   await expect(review).toContainText('Coming up');
   await expect(review).toContainText('The von Neumann architecture');
-  await review.getByRole('button', { name: 'Start review' }).click();
+  await review.getByRole('button', { name: 'Start review', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Targeted concept revision' })).toBeVisible();
 });
 
