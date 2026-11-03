@@ -556,3 +556,22 @@ body{overflow-x:hidden}
 .independent-complete strong{display:block;font-size:13px}
 .independent-complete p{margin:5px 0 0;font-size:13px;line-height:1.5}
 @media(max-width:520px){.learning-independent-practice,.learning-knowledge-check{padding:11px}}
+
+
+/* Smart Learning 1.9 — mastery assessment */
+.learning-mastery-assessment{width:100%;min-width:0;display:flex;flex-direction:column;gap:12px;margin:14px 0 18px;padding:16px;border:1px solid rgba(176,139,255,.42);border-radius:14px;background:var(--panel)}
+.mastery-progress{align-self:flex-start;margin-top:4px;padding:4px 9px;border:1px solid rgba(176,139,255,.3);border-radius:999px;background:var(--panel2);color:#c7adff;font:700 11px var(--mono)}
+.mastery-result{padding:13px 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--text)}
+.mastery-result strong{display:block;font-size:14px}
+.mastery-result p{margin:6px 0 10px;font-size:13px;line-height:1.5}
+.mastery-result small{color:var(--muted);font:700 11px var(--mono)}
+.mastery-result.passed{border-color:rgba(83,214,151,.4);background:rgba(83,214,151,.07)}
+.mastery-result.retry{border-color:rgba(255,190,90,.4);background:rgba(255,190,90,.06)}
+.mastery-review{display:flex;flex-direction:column;gap:10px;margin:12px 0;padding-left:22px}
+.mastery-review li{padding-left:3px;font-size:13px;line-height:1.45}
+.mastery-review li>strong,.mastery-review li>span{display:block}
+.mastery-review li>span{margin-top:4px;color:var(--data);font-size:12px}
+.mastery-review li>p{margin:4px 0 0;color:var(--muted);font-size:12px}
+.mastery-map-passed{color:var(--ok,#53d697)}
+.mastery-map-pending{color:var(--gold)}
+@media(max-width:520px){.learning-mastery-assessment{padding:11px}.mastery-review{gap:8px}}
