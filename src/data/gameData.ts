@@ -2548,6 +2548,7 @@ export const MISSIONS: Mission[] = [
               "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
             ],
             "passingScore": 80,
+            "questionConceptIds": ["input-processing-output-storage", "hardware-and-software", "von-neumann-architecture", "von-neumann-architecture", "von-neumann-architecture"],
             "questions": [
               {
                 "q": [
@@ -3548,6 +3549,7 @@ export const MISSIONS: Mission[] = [
               "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
             ],
             "passingScore": 80,
+            "questionConceptIds": ["cpu-and-instruction-cycle", "cores-and-clock-speed", "cpu-and-instruction-cycle", "cpu-and-instruction-cycle", "power-supply"],
             "questions": [
               {
                 "q": [
@@ -4533,6 +4535,7 @@ export const MISSIONS: Mission[] = [
               "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
             ],
             "passingScore": 80,
+            "questionConceptIds": ["ram", "cache-and-rom", "mass-storage", "system-buses", "mass-storage"],
             "questions": [
               {
                 "q": [
@@ -5646,6 +5649,7 @@ export const MISSIONS: Mission[] = [
               "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
             ],
             "passingScore": 80,
+            "questionConceptIds": ["input-output-peripherals", "input-output-peripherals", "input-output-peripherals", "ewaste-and-moores-law", "ewaste-and-moores-law"],
             "questions": [
               {
                 "q": [
