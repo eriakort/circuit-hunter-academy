@@ -670,3 +670,27 @@ body{overflow-x:hidden}
   .hud-r .btn.nav-active { animation: none; }
   .hud-r .btn { transition: none; }
 }
+
+
+/* Smart Learning 2.2 — actionable personalized concept revision */
+.concept-revision{display:flex;flex-direction:column;gap:16px;margin:18px 0;border-color:rgba(176,139,255,.38);min-width:0}
+.concept-revision-header{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.concept-revision-header h2{font-size:clamp(21px,4vw,28px);margin:4px 0}
+.concept-revision-header p{margin:0;font-size:13px}
+.concept-revision-study{display:flex;flex-direction:column;gap:12px}
+.concept-revision-study article{padding:14px;border:1px solid var(--line);border-radius:11px;background:var(--panel2)}
+.concept-revision-study h3,.concept-revision-quiz h3{font-size:17px;margin:0 0 7px}
+.concept-revision-study article p{margin:0;line-height:1.6}
+.concept-revision-study article .concept-revision-example{margin-top:8px;color:var(--muted);font-size:13px}
+.concept-revision-prompts{padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);font-size:13px}
+.concept-revision-prompts ul{margin:7px 0 0;padding-left:20px}
+.concept-revision-prompts li+li{margin-top:5px}
+.concept-revision-quiz{display:flex;flex-direction:column;gap:12px;padding:14px;border:1px solid rgba(176,139,255,.28);border-radius:12px;background:var(--panel)}
+.concept-revision-quiz .learning-section-heading h3{margin:0}
+.revision-option-correct{border-color:rgba(83,214,151,.65)!important;background:rgba(83,214,151,.1)!important}
+.revision-option-wrong{border-color:rgba(255,190,90,.65)!important;background:rgba(255,190,90,.08)!important}
+.concept-revision-history{display:block;color:var(--good);font-size:11px;margin-top:4px}
+.concept-revision-mission{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.concept-revision-launch{margin-top:7px;align-self:flex-start}
+.concept-revision-footnote{margin:0;color:var(--muted);font-size:12px}
+@media(max-width:520px){.concept-revision{padding:12px}.concept-revision-header{flex-direction:column}.concept-revision-quiz{padding:11px}}
