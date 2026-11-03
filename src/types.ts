@@ -159,6 +159,11 @@ export interface LearningMissionProgress {
     attempted: number;
     sessions: number;
     lastReviewedAt: number;
+    /** Mastery accuracy when the latest revision session was completed. */
+    baselineMasteryPercent?: number;
+    /** First mastery accuracy recorded after the latest revision session. */
+    postRevisionMasteryPercent?: number;
+    postRevisionAt?: number;
   }>;
   mastered: boolean;
   techniqueUnlocked: boolean;
