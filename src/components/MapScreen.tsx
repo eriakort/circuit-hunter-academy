@@ -10,6 +10,8 @@ import { MasteryInsights } from './MasteryInsights';
 import { AssessmentReview } from './AssessmentReview';
 import { SpacedReview } from './SpacedReview';
 import { scheduleNextConceptReview } from '../spacedRepetition';
+import { calculateLearningStreak } from '../learningStreak';
+import { LearningStreak } from './LearningStreak';
 
 export const MapScreen: React.FC = () => {
   const {
@@ -149,6 +151,12 @@ export const MapScreen: React.FC = () => {
       ...attempt, missionTitle: item.mission.title
     }))
   ).sort((a, b) => b.attemptedAt - a.attemptedAt).slice(0, 5);
+  const learningActivityTimestamps = learningRecords.flatMap(item => [
+    ...(item.progress?.masteryAttemptHistory || []).map(attempt => attempt.attemptedAt),
+    ...Object.values(item.progress?.conceptRevisionPerformance || {}).map(revision => revision.lastReviewedAt)
+  ]).filter(timestamp => Number.isFinite(timestamp) && timestamp > 0);
+  const learningStreak = calculateLearningStreak(learningActivityTimestamps);
+
 
   // Find next playable mission
   const nextMissionIndex = MISSIONS.findIndex(
@@ -333,6 +341,7 @@ export const MapScreen: React.FC = () => {
             <span>{lang === 'it' ? 'Missioni valutate' : 'Missions assessed'}</span>
           </div>
         </div>
+        <LearningStreak streak={learningStreak} lang={lang} />
         <div className="learning-dashboard-grid">
           <div className="learning-dashboard-panel">
             <h3>{lang === 'it' ? 'Concetti da rinforzare' : 'Concepts to strengthen'}</h3>
