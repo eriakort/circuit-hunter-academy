@@ -62,4 +62,17 @@ export const HARDWARE_LEARNING_PILOT: Record<string, LearningPilotDefinition> = 
       xpReward: 25
     }
   }
+  m4m1: {
+    summary: [
+      ['A variable is a letter for a number. Read each term, identify its coefficient and constant, then substitute values and calculate in the correct order.',
+       'Una variabile è una lettera che rappresenta un numero. Riconosci ogni termine, individua coefficiente e costante, poi sostituisci i valori e calcola nell’ordine corretto.']
+    ],
+    techniqueUnlock: {
+      id: 'variable-slash',
+      name: ['Algebra Form · First Technique: Variable Slash', 'Stile dell’Algebra · Prima Tecnica: Fendente della Variabile'],
+      description: ['Read, substitute and evaluate algebraic expressions with confidence.',
+        'Leggi, sostituisci e calcola le espressioni algebriche con sicurezza.'],
+      xpReward: 25
+    }
+  },
 };
