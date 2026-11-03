@@ -166,6 +166,7 @@ export const MapScreen: React.FC = () => {
     const conceptId = revisionTarget.concept.id;
     const existing = state.learningProgress?.[missionId]?.conceptRevisionPerformance || {};
     const previous = existing[conceptId] || { correct: 0, attempted: 0, sessions: 0, lastReviewedAt: 0 };
+    const masteryPerformance = state.learningProgress?.[missionId]?.masteryConceptPerformance?.[conceptId];
     saveLearningProgress(missionId, {
       conceptRevisionPerformance: {
         ...existing,
@@ -174,8 +175,8 @@ export const MapScreen: React.FC = () => {
           attempted: previous.attempted + result.attempted,
           sessions: previous.sessions + 1,
           lastReviewedAt: Date.now(),
-          baselineMasteryPercent: state.learningProgress?.[missionId]?.masteryConceptPerformance?.[conceptId]?.attempted
-            ? Math.round((state.learningProgress[missionId].masteryConceptPerformance[conceptId].correct / state.learningProgress[missionId].masteryConceptPerformance[conceptId].attempted) * 100)
+          baselineMasteryPercent: masteryPerformance?.attempted
+            ? Math.round((masteryPerformance.correct / masteryPerformance.attempted) * 100)
             : undefined,
           postRevisionMasteryPercent: undefined,
           postRevisionAt: undefined
