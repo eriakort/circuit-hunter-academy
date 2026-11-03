@@ -2,10 +2,12 @@ import { expect, test, type Page } from '@playwright/test';
 
 async function startCourse(page: Page) {
   await page.goto('/');
-  await page.evaluate(() => window.localStorage.clear());
+  await page.evaluate(() => {
+    window.localStorage.clear();
+  });
   await page.reload();
 
-  await page.locator('.subjcard[data-s="cs"]').click();
+  // Computer Science is the default subject; a new player first registers a hunter name.
   await expect(page.locator('#nm')).toBeVisible();
   await page.locator('#nm').fill('Test Hunter');
   await page.locator('#regf button[type="submit"]').click();
