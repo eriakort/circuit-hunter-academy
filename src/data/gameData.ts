@@ -2538,6 +2538,159 @@ export const MISSIONS: Mission[] = [
               ]
             }
           ],
+          "masteryAssessment": {
+            "title": [
+              "Hardware & computer systems mastery",
+              "Padronanza di hardware e sistemi informatici"
+            ],
+            "instructions": [
+              "Answer all five questions independently. You need at least 80% to unlock the battle.",
+              "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
+            ],
+            "passingScore": 80,
+            "questions": [
+              {
+                "q": [
+                  "A smart doorbell records a visitor and shows the video on a phone. Which sequence best describes the computer system?",
+                  "Un campanello smart registra un visitatore e mostra il video su un telefono. Quale sequenza descrive meglio il sistema?"
+                ],
+                "a": [
+                  [
+                    "Camera input → processing → screen output",
+                    "Input fotocamera → elaborazione → output schermo"
+                  ],
+                  [
+                    "Screen input → storage → camera output",
+                    "Input schermo → archiviazione → output fotocamera"
+                  ],
+                  [
+                    "Output → processing → input",
+                    "Output → elaborazione → input"
+                  ],
+                  [
+                    "Storage → keyboard input → processing",
+                    "Archiviazione → input tastiera → elaborazione"
+                  ]
+                ],
+                "why": [
+                  "The camera captures input, the system processes it, and the phone displays the result.",
+                  "La fotocamera acquisisce l'input, il sistema lo elabora e il telefono mostra il risultato."
+                ]
+              },
+              {
+                "q": [
+                  "Which item is software rather than hardware?",
+                  "Quale elemento è software anziché hardware?"
+                ],
+                "a": [
+                  [
+                    "A spreadsheet application",
+                    "Un'applicazione per fogli di calcolo"
+                  ],
+                  [
+                    "A graphics card",
+                    "Una scheda grafica"
+                  ],
+                  [
+                    "A keyboard",
+                    "Una tastiera"
+                  ],
+                  [
+                    "A monitor",
+                    "Un monitor"
+                  ]
+                ],
+                "why": [
+                  "An application is a set of programs and instructions, not a physical component.",
+                  "Un'applicazione è un insieme di programmi e istruzioni, non un componente fisico."
+                ]
+              },
+              {
+                "q": [
+                  "What is the key idea of the stored-program concept in von Neumann architecture?",
+                  "Qual è l'idea fondamentale del concetto di programma memorizzato nell'architettura di von Neumann?"
+                ],
+                "a": [
+                  [
+                    "Instructions are stored in memory",
+                    "Le istruzioni sono memorizzate in memoria"
+                  ],
+                  [
+                    "Instructions are built permanently into the monitor",
+                    "Le istruzioni sono incorporate permanentemente nel monitor"
+                  ],
+                  [
+                    "Programs are stored only on the keyboard",
+                    "I programmi sono memorizzati solo nella tastiera"
+                  ],
+                  [
+                    "The CPU works without memory",
+                    "La CPU funziona senza memoria"
+                  ]
+                ],
+                "why": [
+                  "The stored-program concept keeps program instructions in memory so the CPU can fetch them.",
+                  "Il concetto di programma memorizzato mantiene le istruzioni in memoria affinché la CPU possa prelevarle."
+                ]
+              },
+              {
+                "q": [
+                  "Which statement best describes the system bus?",
+                  "Quale affermazione descrive meglio il bus di sistema?"
+                ],
+                "a": [
+                  [
+                    "It carries data, address and control signals between components",
+                    "Trasporta dati, indirizzi e segnali di controllo tra i componenti"
+                  ],
+                  [
+                    "It supplies electrical power from the wall",
+                    "Fornisce energia elettrica dalla presa"
+                  ],
+                  [
+                    "It displays images on the monitor",
+                    "Visualizza immagini sul monitor"
+                  ],
+                  [
+                    "It stores files permanently",
+                    "Memorizza i file in modo permanente"
+                  ]
+                ],
+                "why": [
+                  "The system bus provides communication paths for data, addresses and control signals.",
+                  "Il bus di sistema offre percorsi di comunicazione per dati, indirizzi e segnali di controllo."
+                ]
+              },
+              {
+                "q": [
+                  "In a typical computer, which component carries out program instructions?",
+                  "In un computer tipico, quale componente esegue le istruzioni dei programmi?"
+                ],
+                "a": [
+                  [
+                    "The CPU",
+                    "La CPU"
+                  ],
+                  [
+                    "The monitor",
+                    "Il monitor"
+                  ],
+                  [
+                    "The power supply",
+                    "L'alimentatore"
+                  ],
+                  [
+                    "The case fan",
+                    "La ventola del case"
+                  ]
+                ],
+                "why": [
+                  "The CPU fetches, decodes and executes program instructions.",
+                  "La CPU preleva, decodifica ed esegue le istruzioni dei programmi."
+                ]
+              }
+            ]
+          },
           "concepts": [
                 {
                       "id": "input-processing-output-storage",
@@ -3385,6 +3538,159 @@ export const MISSIONS: Mission[] = [
               ]
             }
           ],
+          "masteryAssessment": {
+            "title": [
+              "CPU & processing mastery",
+              "Padronanza di CPU ed elaborazione"
+            ],
+            "instructions": [
+              "Answer all five questions independently. You need at least 80% to unlock the battle.",
+              "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
+            ],
+            "passingScore": 80,
+            "questions": [
+              {
+                "q": [
+                  "Which sequence correctly describes the CPU instruction cycle?",
+                  "Quale sequenza descrive correttamente il ciclo delle istruzioni della CPU?"
+                ],
+                "a": [
+                  [
+                    "Fetch → Decode → Execute",
+                    "Prelievo → Decodifica → Esecuzione"
+                  ],
+                  [
+                    "Decode → Execute → Fetch",
+                    "Decodifica → Esecuzione → Prelievo"
+                  ],
+                  [
+                    "Execute → Fetch → Decode",
+                    "Esecuzione → Prelievo → Decodifica"
+                  ],
+                  [
+                    "Fetch → Execute → Decode",
+                    "Prelievo → Esecuzione → Decodifica"
+                  ]
+                ],
+                "why": [
+                  "The CPU retrieves an instruction, interprets it, and then carries it out.",
+                  "La CPU preleva un'istruzione, la interpreta e poi la esegue."
+                ]
+              },
+              {
+                "q": [
+                  "A processor runs at 2.5 GHz. What does this frequency represent?",
+                  "Un processore funziona a 2,5 GHz. Che cosa rappresenta questa frequenza?"
+                ],
+                "a": [
+                  [
+                    "About 2.5 billion clock cycles per second",
+                    "Circa 2,5 miliardi di cicli di clock al secondo"
+                  ],
+                  [
+                    "2.5 billion bytes of RAM",
+                    "2,5 miliardi di byte di RAM"
+                  ],
+                  [
+                    "Exactly 2.5 programs at a time",
+                    "Esattamente 2,5 programmi alla volta"
+                  ],
+                  [
+                    "2.5 processor cores",
+                    "2,5 core del processore"
+                  ]
+                ],
+                "why": [
+                  "A gigahertz is one billion hertz, and hertz means cycles per second.",
+                  "Un gigahertz equivale a un miliardo di hertz e l'hertz indica i cicli al secondo."
+                ]
+              },
+              {
+                "q": [
+                  "Which CPU component performs arithmetic calculations and logical comparisons?",
+                  "Quale componente della CPU esegue calcoli aritmetici e confronti logici?"
+                ],
+                "a": [
+                  [
+                    "The ALU",
+                    "L'ALU"
+                  ],
+                  [
+                    "The control unit",
+                    "L'unità di controllo"
+                  ],
+                  [
+                    "The cache",
+                    "La cache"
+                  ],
+                  [
+                    "The clock",
+                    "Il clock"
+                  ]
+                ],
+                "why": [
+                  "The arithmetic logic unit performs arithmetic and logical operations.",
+                  "L'unità aritmetico-logica esegue operazioni aritmetiche e logiche."
+                ]
+              },
+              {
+                "q": [
+                  "What is the main role of the CPU control unit?",
+                  "Qual è il ruolo principale dell'unità di controllo della CPU?"
+                ],
+                "a": [
+                  [
+                    "Directing and coordinating instruction execution",
+                    "Dirigere e coordinare l'esecuzione delle istruzioni"
+                  ],
+                  [
+                    "Permanently storing user documents",
+                    "Memorizzare permanentemente i documenti dell'utente"
+                  ],
+                  [
+                    "Converting AC wall power to DC",
+                    "Convertire la corrente alternata in continua"
+                  ],
+                  [
+                    "Displaying pixels on the screen",
+                    "Visualizzare i pixel sullo schermo"
+                  ]
+                ],
+                "why": [
+                  "The control unit coordinates the CPU's operations and control signals.",
+                  "L'unità di controllo coordina le operazioni della CPU e i segnali di controllo."
+                ]
+              },
+              {
+                "q": [
+                  "What does a computer power supply unit (PSU) do?",
+                  "Che cosa fa l'alimentatore di un computer (PSU)?"
+                ],
+                "a": [
+                  [
+                    "Converts mains AC into regulated DC power",
+                    "Converte la corrente alternata di rete in corrente continua regolata"
+                  ],
+                  [
+                    "Executes software instructions",
+                    "Esegue le istruzioni software"
+                  ],
+                  [
+                    "Stores files when power is off",
+                    "Memorizza i file quando manca corrente"
+                  ],
+                  [
+                    "Cools the processor with liquid",
+                    "Raffredda il processore con un liquido"
+                  ]
+                ],
+                "why": [
+                  "Computer components require regulated low-voltage DC power.",
+                  "I componenti del computer richiedono corrente continua regolata a bassa tensione."
+                ]
+              }
+            ]
+          },
           "concepts": [
                 {
                       "id": "motherboard",
@@ -4217,6 +4523,159 @@ export const MISSIONS: Mission[] = [
               ]
             }
           ],
+          "masteryAssessment": {
+            "title": [
+              "Memory & storage mastery",
+              "Padronanza di memoria e archiviazione"
+            ],
+            "instructions": [
+              "Answer all five questions independently. You need at least 80% to unlock the battle.",
+              "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
+            ],
+            "passingScore": 80,
+            "questions": [
+              {
+                "q": [
+                  "What happens to the contents of ordinary RAM when the computer is switched off?",
+                  "Che cosa succede ai contenuti della normale RAM quando il computer viene spento?"
+                ],
+                "a": [
+                  [
+                    "They are lost because RAM is volatile",
+                    "Vengono persi perché la RAM è volatile"
+                  ],
+                  [
+                    "They are copied automatically to the monitor",
+                    "Vengono copiati automaticamente sul monitor"
+                  ],
+                  [
+                    "They remain permanently in RAM",
+                    "Rimangono permanentemente nella RAM"
+                  ],
+                  [
+                    "They are converted into CPU instructions",
+                    "Vengono convertiti in istruzioni della CPU"
+                  ]
+                ],
+                "why": [
+                  "Ordinary RAM needs power to retain its contents, so it is volatile.",
+                  "La normale RAM ha bisogno di alimentazione per mantenere i contenuti, quindi è volatile."
+                ]
+              },
+              {
+                "q": [
+                  "Why is CPU cache generally faster than main memory?",
+                  "Perché la cache della CPU è generalmente più veloce della memoria principale?"
+                ],
+                "a": [
+                  [
+                    "It is very close to the CPU and built for fast access",
+                    "È molto vicina alla CPU ed è progettata per accessi rapidi"
+                  ],
+                  [
+                    "It stores data on spinning magnetic disks",
+                    "Memorizza i dati su dischi magnetici rotanti"
+                  ],
+                  [
+                    "It is connected through the internet",
+                    "È collegata tramite Internet"
+                  ],
+                  [
+                    "It has a larger capacity than an SSD",
+                    "Ha una capacità maggiore di un SSD"
+                  ]
+                ],
+                "why": [
+                  "Cache is a small, fast memory located on or near the processor.",
+                  "La cache è una memoria piccola e veloce situata sul processore o vicino ad esso."
+                ]
+              },
+              {
+                "q": [
+                  "How does a typical SSD store data?",
+                  "Come memorizza i dati un normale SSD?"
+                ],
+                "a": [
+                  [
+                    "In flash memory chips with no moving parts",
+                    "In chip di memoria flash senza parti mobili"
+                  ],
+                  [
+                    "Magnetically on spinning platters",
+                    "Magneticamente su piatti rotanti"
+                  ],
+                  [
+                    "Optically on a laser-read disc",
+                    "Otticamente su un disco letto da un laser"
+                  ],
+                  [
+                    "Temporarily inside the CPU registers only",
+                    "Temporaneamente solo nei registri della CPU"
+                  ]
+                ],
+                "why": [
+                  "SSDs use flash memory, unlike HDDs with moving magnetic platters.",
+                  "Gli SSD usano memoria flash, a differenza degli HDD con piatti magnetici mobili."
+                ]
+              },
+              {
+                "q": [
+                  "Which bus carries the address of the memory location to access?",
+                  "Quale bus trasporta l'indirizzo della posizione di memoria da raggiungere?"
+                ],
+                "a": [
+                  [
+                    "Address bus",
+                    "Bus degli indirizzi"
+                  ],
+                  [
+                    "Data bus",
+                    "Bus dei dati"
+                  ],
+                  [
+                    "Control bus",
+                    "Bus di controllo"
+                  ],
+                  [
+                    "Power bus",
+                    "Bus di alimentazione"
+                  ]
+                ],
+                "why": [
+                  "The address bus identifies the memory location for a read or write operation.",
+                  "Il bus degli indirizzi identifica la posizione di memoria per un'operazione di lettura o scrittura."
+                ]
+              },
+              {
+                "q": [
+                  "How does a traditional hard disk drive (HDD) store data?",
+                  "Come memorizza i dati un tradizionale disco rigido (HDD)?"
+                ],
+                "a": [
+                  [
+                    "Magnetically on rotating platters",
+                    "Magneticamente su piatti rotanti"
+                  ],
+                  [
+                    "In flash memory cells",
+                    "In celle di memoria flash"
+                  ],
+                  [
+                    "As light pulses in fibre-optic cable",
+                    "Come impulsi luminosi in un cavo in fibra ottica"
+                  ],
+                  [
+                    "Only in volatile CPU cache",
+                    "Solo nella cache volatile della CPU"
+                  ]
+                ],
+                "why": [
+                  "An HDD uses magnetic surfaces on spinning platters and moving read/write heads.",
+                  "Un HDD usa superfici magnetiche su piatti rotanti e testine di lettura/scrittura mobili."
+                ]
+              }
+            ]
+          },
           "concepts": [
                 {
                       "id": "ram",
@@ -5177,6 +5636,159 @@ export const MISSIONS: Mission[] = [
               ]
             }
           ],
+          "masteryAssessment": {
+            "title": [
+              "Devices & modern computing mastery",
+              "Padronanza di dispositivi e informatica moderna"
+            ],
+            "instructions": [
+              "Answer all five questions independently. You need at least 80% to unlock the battle.",
+              "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
+            ],
+            "passingScore": 80,
+            "questions": [
+              {
+                "q": [
+                  "A touchscreen displays an image and detects a finger tap. Which roles does it perform?",
+                  "Un touchscreen visualizza un'immagine e rileva il tocco di un dito. Quali ruoli svolge?"
+                ],
+                "a": [
+                  [
+                    "Both output and input",
+                    "Sia output sia input"
+                  ],
+                  [
+                    "Input only",
+                    "Solo input"
+                  ],
+                  [
+                    "Output only",
+                    "Solo output"
+                  ],
+                  [
+                    "Storage and processing only",
+                    "Solo archiviazione ed elaborazione"
+                  ]
+                ],
+                "why": [
+                  "It outputs visual information and inputs touch commands.",
+                  "Fornisce informazioni visive in output e riceve comandi tattili in input."
+                ]
+              },
+              {
+                "q": [
+                  "In a smart thermostat, what is the role of a temperature sensor?",
+                  "In un termostato smart, qual è il ruolo di un sensore di temperatura?"
+                ],
+                "a": [
+                  [
+                    "Input device",
+                    "Dispositivo di input"
+                  ],
+                  [
+                    "Output device",
+                    "Dispositivo di output"
+                  ],
+                  [
+                    "Permanent storage",
+                    "Memoria permanente"
+                  ],
+                  [
+                    "Power supply",
+                    "Alimentatore"
+                  ]
+                ],
+                "why": [
+                  "The sensor sends measured temperature data into the system.",
+                  "Il sensore invia i dati della temperatura misurata al sistema."
+                ]
+              },
+              {
+                "q": [
+                  "What is the main job of a graphics processing unit (GPU)?",
+                  "Qual è il compito principale di un'unità di elaborazione grafica (GPU)?"
+                ],
+                "a": [
+                  [
+                    "Processing graphics and image data",
+                    "Elaborare grafica e dati delle immagini"
+                  ],
+                  [
+                    "Storing files permanently",
+                    "Memorizzare file in modo permanente"
+                  ],
+                  [
+                    "Supplying power to every component",
+                    "Fornire alimentazione a tutti i componenti"
+                  ],
+                  [
+                    "Recording sound from a microphone",
+                    "Registrare il suono da un microfono"
+                  ]
+                ],
+                "why": [
+                  "A GPU accelerates graphics-related processing and rendering.",
+                  "Una GPU accelera l'elaborazione e il rendering legati alla grafica."
+                ]
+              },
+              {
+                "q": [
+                  "What is the responsible way to dispose of an old computer?",
+                  "Qual è il modo responsabile per smaltire un vecchio computer?"
+                ],
+                "a": [
+                  [
+                    "Take it to an approved e-waste collection or recycling point",
+                    "Portarlo in un centro autorizzato di raccolta o riciclo RAEE"
+                  ],
+                  [
+                    "Put it in ordinary household rubbish",
+                    "Gettarlo nei rifiuti domestici indifferenziati"
+                  ],
+                  [
+                    "Burn it to remove plastic parts",
+                    "Bruciarlo per eliminare le parti in plastica"
+                  ],
+                  [
+                    "Leave it outdoors for collection",
+                    "Lasciarlo all'aperto perché venga raccolto"
+                  ]
+                ],
+                "why": [
+                  "Approved e-waste recycling safely handles hazardous materials and recovers reusable resources.",
+                  "Il riciclo RAEE autorizzato gestisce in sicurezza i materiali pericolosi e recupera risorse riutilizzabili."
+                ]
+              },
+              {
+                "q": [
+                  "Moore's law was historically an observation about what trend?",
+                  "La legge di Moore era storicamente un'osservazione su quale tendenza?"
+                ],
+                "a": [
+                  [
+                    "The number of transistors on an integrated circuit roughly doubling over time",
+                    "Il numero di transistor in un circuito integrato che raddoppia approssimativamente nel tempo"
+                  ],
+                  [
+                    "The physical size of monitors doubling every year",
+                    "Le dimensioni fisiche dei monitor che raddoppiano ogni anno"
+                  ],
+                  [
+                    "The amount of RAM in every computer halving yearly",
+                    "La quantità di RAM in ogni computer che si dimezza ogni anno"
+                  ],
+                  [
+                    "Internet speed remaining constant for decades",
+                    "La velocità di Internet che rimane costante per decenni"
+                  ]
+                ],
+                "why": [
+                  "Moore's law described a historical trend in transistor density, not monitor size or internet speed.",
+                  "La legge di Moore descriveva una tendenza storica nella densità dei transistor, non nelle dimensioni dei monitor o nella velocità di Internet."
+                ]
+              }
+            ]
+          },
           "concepts": [
                 {
                       "id": "input-output-peripherals",

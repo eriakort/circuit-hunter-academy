@@ -232,6 +232,13 @@ export const MapScreen: React.FC = () => {
                         {L(['Knowledge check', 'Verifica conoscenze'], lang)} · {learning.knowledgeCheckScore}%
                       </small>
                     )}
+                    {learning?.masteryScore !== undefined && (
+                      <small className={`learning-map-progress ${learning.mastered ? 'mastery-map-passed' : 'mastery-map-pending'}`}>
+                        {L(['Mastery', 'Maestria'], lang)} · {learning.mastered
+                          ? L(['Passed', 'Superata'], lang)
+                          : L(['Not yet passed', 'Non superata'], lang)} · {learning.masteryScore}%
+                      </small>
+                    )}
 
                     <span className={`badge ${isCleared ? 'ok' : open ? 'go' : 'lock'}`}>
                       {isCleared

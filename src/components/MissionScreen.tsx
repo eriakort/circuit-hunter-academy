@@ -29,6 +29,10 @@ export const MissionScreen: React.FC = () => {
   const [knowledgeIndex, setKnowledgeIndex] = useState(0);
   const [knowledgeFeedback, setKnowledgeFeedback] = useState<boolean | null>(null);
   const [knowledgeMissed, setKnowledgeMissed] = useState<Record<number, boolean>>({});
+  const [masteryIndex, setMasteryIndex] = useState(0);
+  const [masteryAnswers, setMasteryAnswers] = useState<number[]>([]);
+  const [masteryFeedback, setMasteryFeedback] = useState<{ score: number; passed: boolean; attempt: number } | null>(null);
+  const [masteryStarted, setMasteryStarted] = useState(false);
   const gameContainerRef = useRef<HTMLDivElement>(null);
 
   // Scene gating check
@@ -74,6 +78,10 @@ export const MissionScreen: React.FC = () => {
     setKnowledgeIndex(0);
     setKnowledgeFeedback(null);
     setKnowledgeMissed({});
+    setMasteryIndex(0);
+    setMasteryAnswers([]);
+    setMasteryFeedback(null);
+    setMasteryStarted(false);
   }, [currentMission.id, currentSceneIndex]);
 
   // Mount mini-game or interactive scene
@@ -151,6 +159,12 @@ export const MissionScreen: React.FC = () => {
   const knowledgeQuestions = currentMission.learning?.knowledgeCheck || [];
   const knowledgeComplete = knowledgeQuestions.length === 0 || typeof savedLearning?.knowledgeCheckScore === 'number';
   const knowledgeQuestion = knowledgeQuestions[knowledgeIndex];
+  const masteryAssessment = currentMission.learning?.masteryAssessment;
+  const masteryQuestions = masteryAssessment?.questions || [];
+  const masteryIsActive = !!masteryAssessment && nxt?.type === 'battle';
+  const masteryQuestion = masteryQuestions[masteryIndex];
+  const masteryPassed = !masteryIsActive || !!savedLearning?.mastered || !!masteryFeedback?.passed;
+  const masteryNeedsRetry = masteryIsActive && typeof savedLearning?.masteryScore === 'number' && !savedLearning?.mastered && !masteryStarted && !masteryFeedback;
   const independentQuestion = independentQuestions[independentIndex];
   const workedExamples = currentMission.learning?.concepts.filter(
     concept => concept.sceneIndexes?.includes(currentSceneIndex) && concept.workedExample
@@ -429,6 +443,113 @@ export const MissionScreen: React.FC = () => {
         </section>
       )}
 
+      {masteryIsActive && independentComplete && knowledgeComplete && (
+        <section className="learning-mastery-assessment" aria-label={lang === 'it' ? 'Valutazione di padronanza' : 'Mastery assessment'}>
+          <div className="learning-section-heading">
+            <span className="learning-kicker">{lang === 'it' ? 'PROVA DI MAESTRIA' : 'MASTERY TRIAL'}</span>
+            <h3>{L(masteryAssessment!.title, lang)}</h3>
+            <p>{L(masteryAssessment!.instructions, lang)}</p>
+            <div className="mastery-progress">
+              {lang === 'it' ? 'Domanda' : 'Question'} {Math.min(masteryIndex + 1, masteryQuestions.length)} / {masteryQuestions.length}
+              {' · '}{lang === 'it' ? 'Soglia' : 'Pass mark'} {masteryAssessment!.passingScore}%
+            </div>
+          </div>
+
+          {savedLearning?.mastered && !masteryFeedback && (
+            <div className="mastery-result passed" role="status">
+              <strong>{lang === 'it' ? 'Maestria raggiunta' : 'Mastery achieved'} · {savedLearning.masteryScore ?? 0}%</strong>
+              <p>{lang === 'it' ? 'Hai superato la prova. La battaglia è sbloccata.' : 'You passed the assessment. The boss battle is unlocked.'}</p>
+              <small>{lang === 'it' ? 'Tentativi' : 'Attempts'}: {savedLearning.masteryAttempts ?? 1}</small>
+            </div>
+          )}
+
+          {masteryNeedsRetry && (
+            <div className="mastery-result retry" role="status">
+              <strong>{lang === 'it' ? 'Ultimo risultato' : 'Previous result'} · {savedLearning?.masteryScore}%</strong>
+              <p>{lang === 'it' ? 'Serve un altro tentativo per raggiungere la soglia richiesta.' : 'One more attempt is needed to reach the required pass mark.'}</p>
+              <button type="button" className="btn" onClick={() => {
+                setMasteryIndex(0);
+                setMasteryAnswers([]);
+                setMasteryFeedback(null);
+                setMasteryStarted(true);
+              }}>{lang === 'it' ? 'Riprova la prova' : 'Retry assessment'}</button>
+            </div>
+          )}
+
+          {!savedLearning?.mastered && !masteryNeedsRetry && !masteryFeedback && masteryQuestion && (
+            <div className="guided-question">
+              <div className="mastery-progress">{lang === 'it' ? 'Risposta' : 'Response'} {masteryIndex + 1} / {masteryQuestions.length}</div>
+              <strong>{L(masteryQuestion.q, lang)}</strong>
+              <div className="guided-options">
+                {masteryQuestion.a.map((option, index) => (
+                  <button
+                    type="button"
+                    className="guided-option"
+                    key={index}
+                    onClick={() => {
+                      const answers = [...masteryAnswers, index];
+                      setMasteryAnswers(answers);
+                      if (masteryIndex + 1 < masteryQuestions.length) {
+                        setMasteryIndex(value => value + 1);
+                      } else {
+                        const score = Math.round((answers.filter(answer => answer === 0).length / masteryQuestions.length) * 100);
+                        const passed = score >= masteryAssessment!.passingScore;
+                        const attempt = (savedLearning?.masteryAttempts || 0) + 1;
+                        saveLearningProgress(currentMission.id, {
+                          masteryScore: score,
+                          masteryAttempts: attempt,
+                          mastered: passed,
+                          lastAttemptAt: Date.now()
+                        });
+                        setMasteryFeedback({ score, passed, attempt });
+                      }
+                    }}
+                  >
+                    <span className="guided-option-letter">{String.fromCharCode(65 + index)}</span>
+                    <span>{L(option, lang)}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {masteryFeedback && (
+            <div className={masteryFeedback.passed ? 'mastery-result passed' : 'mastery-result retry'} role="status" aria-live="polite">
+              <strong>
+                {masteryFeedback.passed
+                  ? (lang === 'it' ? 'Maestria raggiunta' : 'Mastery achieved')
+                  : (lang === 'it' ? 'Prova non superata' : 'Assessment not passed')}
+                {' · '}{masteryFeedback.score}%
+              </strong>
+              <p>
+                {masteryFeedback.passed
+                  ? (lang === 'it' ? 'Ottimo lavoro. La battaglia è sbloccata.' : 'Excellent work. The boss battle is now unlocked.')
+                  : (lang === 'it' ? `Hai bisogno del ${masteryAssessment!.passingScore}% per superare la prova. Rivedi le spiegazioni e riprova.` : `You need ${masteryAssessment!.passingScore}% to pass. Review the explanations and try again.`)}
+              </p>
+              <ol className="mastery-review">
+                {masteryQuestions.map((question, index) => (
+                  <li key={index}>
+                    <strong>{L(question.q, lang)}</strong>
+                    <span>{lang === 'it' ? 'Risposta corretta: ' : 'Correct answer: '}{L(question.a[0], lang)}</span>
+                    <p>{L(question.why, lang)}</p>
+                  </li>
+                ))}
+              </ol>
+              {masteryFeedback.passed ? (
+                <small>{lang === 'it' ? 'Tentativi totali' : 'Total attempts'}: {masteryFeedback.attempt}</small>
+              ) : (
+                <button type="button" className="btn" onClick={() => {
+                  setMasteryIndex(0);
+                  setMasteryAnswers([]);
+                  setMasteryFeedback(null);
+                  setMasteryStarted(true);
+                }}>{lang === 'it' ? 'Riprova la prova' : 'Retry assessment'}</button>
+              )}
+            </div>
+          )}
+        </section>
+      )}
+
       <div className="nav">
         <button className="btn ghost" id="back" onClick={prevScene}>
           {currentSceneIndex ? L(U.back, lang) : L(U.missions, lang)}
@@ -437,7 +558,7 @@ export const MissionScreen: React.FC = () => {
         <button
           className="btn"
           id="next"
-          disabled={!canProceed || !guidedComplete || !independentComplete || !knowledgeComplete}
+          disabled={!canProceed || !guidedComplete || !independentComplete || !knowledgeComplete || !masteryPassed}
           onClick={nextScene}
         >
           {nxt && nxt.type === 'battle' ? L(U.fight, lang) : L(U.cont, lang)}
