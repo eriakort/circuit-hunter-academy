@@ -20362,26 +20362,132 @@ export const MISSIONS: Mission[] = [
     "horns": 2,
     "eyes": 1,
     "title": ["Algebraic Expressions", "Espressioni algebriche"],
-    "topic": ["Variables, coefficients and evaluating expressions", "Variabili, coefficienti e valutazione di espressioni"],
+    "topic": ["Variables, terms, coefficients, constants and evaluating expressions", "Variabili, termini, coefficienti, costanti e valutazione di espressioni"],
     "learning": {
       "version": 1,
-      "prerequisites": [["Know the order of operations.", "Conoscere l'ordine delle operazioni."]],
+      "prerequisites": [
+        ["Know the order of operations and the four basic operations.", "Conoscere l'ordine delle operazioni e le quattro operazioni."]
+      ],
       "objectives": [
-        {"id": "evaluate-expressions", "description": ["Evaluate simple algebraic expressions by substituting values.", "Valutare semplici espressioni algebriche sostituendo i valori."]}
+        {
+          "id": "read-expressions",
+          "description": ["Identify variables, terms, coefficients and constant terms in simple algebraic expressions.", "Riconoscere variabili, termini, coefficienti e termini costanti nelle semplici espressioni algebriche."],
+          "successCriteria": [
+            ["I can explain what a letter represents in an expression.", "So spiegare che cosa rappresenta una lettera in un'espressione."],
+            ["I can identify the coefficient and the constant term.", "So individuare il coefficiente e il termine costante."]
+          ]
+        },
+        {
+          "id": "evaluate-expressions",
+          "description": ["Evaluate simple algebraic expressions by substituting values and following the order of operations.", "Calcolare semplici espressioni algebriche sostituendo i valori e rispettando l'ordine delle operazioni."],
+          "successCriteria": [
+            ["I replace each variable with its given value.", "Sostituisco ogni variabile con il valore assegnato."],
+            ["I calculate the result in the correct order.", "Calcolo il risultato rispettando l'ordine corretto."]
+          ]
+        }
       ],
       "concepts": [
-        {"id": "variables", "title": ["Variables and expressions", "Variabili ed espressioni"], "explanation": ["A variable is a letter that stands for a number. An algebraic expression combines numbers and variables with operations.", "Una variabile è una lettera che rappresenta un numero. Un'espressione algebrica combina numeri e variabili con operazioni."], "example": ["If x = 3, then 2x + 5 = 2·3 + 5 = 11.", "Se x = 3, allora 2x + 5 = 2·3 + 5 = 11."]}
+        {
+          "id": "variables",
+          "title": ["Variables and expressions", "Variabili ed espressioni"],
+          "explanation": ["A variable is a letter that represents a number. It is like an empty box: the letter can take different values. An algebraic expression combines numbers, variables and operations. For example, 3x + 2 means three times x, then add 2.", "Una variabile è una lettera che rappresenta un numero. È come una casella vuota: la lettera può assumere valori diversi. Un'espressione algebrica combina numeri, variabili e operazioni. Per esempio, 3x + 2 significa tre volte x, poi si aggiunge 2."],
+          "example": ["If x = 4, then 3x + 2 = 3 · 4 + 2 = 14.", "Se x = 4, allora 3x + 2 = 3 · 4 + 2 = 14."],
+          "misconceptions": [
+            {"belief": ["3x means 3 + x.", "3x significa 3 + x."], "correction": ["No. When a number and a letter are written next to each other, it means multiplication: 3x = 3 · x.", "No. Quando un numero e una lettera sono scritti vicini, significa moltiplicazione: 3x = 3 · x."]}
+          ],
+          "knowledgePrompts": [
+            ["If x changes, can the value of 3x + 2 change too?", "Se x cambia, può cambiare anche il valore di 3x + 2?"]
+          ],
+          "visualKey": "algebra-parts"
+        },
+        {
+          "id": "terms-coefficients",
+          "title": ["Terms, coefficients and constants", "Termini, coefficienti e costanti"],
+          "explanation": ["A term is a part of an expression separated by + or − signs. In 3x + 2, the terms are 3x and 2. The coefficient is the number multiplying the variable: here it is 3. The constant term has no variable: here it is 2.", "Un termine è una parte dell'espressione separata dai segni + o −. In 3x + 2, i termini sono 3x e 2. Il coefficiente è il numero che moltiplica la variabile: qui è 3. Il termine costante non contiene variabili: qui è 2."],
+          "example": ["In 5a − 7, the coefficient is 5, the variable is a and the constant term is −7.", "In 5a − 7, il coefficiente è 5, la variabile è a e il termine costante è −7."],
+          "misconceptions": [
+            {"belief": ["The constant term in 5a − 7 is 7.", "Il termine costante in 5a − 7 è 7."], "correction": ["The sign belongs to the term. The constant term is −7, not +7.", "Il segno fa parte del termine. Il termine costante è −7, non +7."]
+          ],
+          "visualKey": "algebra-parts"
+        },
+        {
+          "id": "substitution",
+          "title": ["Substitution: replacing a letter with a number", "Sostituzione: rimpiazzare una lettera con un numero"],
+          "explanation": ["To evaluate an expression, replace every variable with its given value. Then calculate using the order of operations. Use brackets when the value is negative.", "Per calcolare un'espressione, sostituisci ogni variabile con il valore assegnato. Poi esegui i calcoli rispettando l'ordine delle operazioni. Usa le parentesi quando il valore è negativo."],
+          "example": ["If x = 3, then 2x + 5 = 2 · 3 + 5 = 6 + 5 = 11.", "Se x = 3, allora 2x + 5 = 2 · 3 + 5 = 6 + 5 = 11."],
+          "workedExample": {
+            "scenario": ["A notebook costs x euros. You buy 3 notebooks and a pen that costs 2 euros. If x = 4, how much do you spend?", "Un quaderno costa x euro. Compri 3 quaderni e una penna che costa 2 euro. Se x = 4, quanto spendi?"],
+            "steps": [
+              ["Write the expression: 3x + 2. The 3 notebooks cost 3 times x; the pen costs 2 euros.", "Scrivi l'espressione: 3x + 2. I 3 quaderni costano 3 volte x; la penna costa 2 euro."],
+              ["Replace x with 4: 3 · 4 + 2.", "Sostituisci x con 4: 3 · 4 + 2."],
+              ["Multiply first: 12 + 2.", "Esegui prima la moltiplicazione: 12 + 2."],
+              ["Add: 14.", "Somma: 14."]
+            ],
+            "answer": ["You spend 14 euros. The expression 3x + 2 describes the cost for any notebook price x.", "SpendI 14 euro. L'espressione 3x + 2 descrive il costo per qualsiasi prezzo x del quaderno."]
+          },
+          "misconceptions": [
+            {"belief": ["If x = −2, then x² = −4.", "Se x = −2, allora x² = −4."], "correction": ["Use brackets: (−2)² = (−2) · (−2) = 4. The square of a negative number is positive.", "Usa le parentesi: (−2)² = (−2) · (−2) = 4. Il quadrato di un numero negativo è positivo."]
+          ],
+          "sceneIndexes": [3],
+          "visualKey": "algebra-substitution"
+        }
       ],
-      "guidedPractice": [{"id": "gp-alg", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Evaluate.", "Valuta."], "questions": [{"q": ["If a = 4, what is 3a − 2?", "Se a = 4, quanto fa 3a − 2?"], "a": [["10", "10"], ["14", "14"], ["6", "6"], ["12", "12"]], "why": ["3·4 − 2 = 12 − 2 = 10.", "3·4 − 2 = 12 − 2 = 10."]}]}],
-      "knowledgeCheck": [{"q": ["In the expression 5x + 3, 5 is the…", "Nell'espressione 5x + 3, 5 è il…"], "a": [["Coefficient", "Coefficiente"], ["Variable", "Variabile"], ["Constant term only", "Solo termine costante"], ["Exponent", "Esponente"]], "why": ["The number multiplying the variable is the coefficient.", "Il numero che moltiplica la variabile è il coefficiente."]}],
-      "summary": [["Algebraic expressions use variables. We evaluate them by substituting numbers and calculating.", "Le espressioni algebriche usano variabili. Le valutiamo sostituendo numeri e calcolando."]],
-      "techniqueUnlock": {"id": "variable-slash", "name": ["Algebra Form · First Technique: Variable Slash", "Stile dell'Algebra · Prima Tecnica: Fendente della Variabile"], "description": ["Substitute any value and cut through an expression in one clean sequence.", "Sostituisci qualsiasi valore e taglia un'espressione in una sequenza pulita."], "xpReward": 25}
+      "guidedPractice": [
+        {
+          "id": "gp-alg",
+          "title": ["Guided practice: read and evaluate", "Esercitazione guidata: riconosci e calcola"],
+          "instructions": ["Choose the correct answer. Use the hint if you need help.", "Scegli la risposta corretta. Usa il suggerimento se hai bisogno di aiuto."],
+          "sceneIndex": 2,
+          "hints": [
+            ["Remember: a number next to a letter means multiplication.", "Ricorda: un numero vicino a una lettera indica una moltiplicazione."],
+            ["The coefficient is the number multiplying the letter.", "Il coefficiente è il numero che moltiplica la lettera."],
+            ["Replace x with 4 first, then multiply before adding.", "Sostituisci prima x con 4, poi moltiplica prima di sommare."]
+          ],
+          "questions": [
+            {"q": ["What does 4y mean?", "Che cosa significa 4y?"], "a": [["4 multiplied by y", "4 moltiplicato per y"], ["4 plus y", "4 più y"], ["y minus 4", "y meno 4"], ["y divided by 4", "y diviso 4"]], "why": ["A number written next to a variable means multiplication: 4y = 4 · y.", "Un numero scritto vicino a una variabile indica una moltiplicazione: 4y = 4 · y."]},
+            {"q": ["In 6x + 9, what is the coefficient of x?", "In 6x + 9, qual è il coefficiente di x?"], "a": [["6", "6"], ["9", "9"], ["x", "x"], ["15", "15"]], "why": ["6 multiplies x, so 6 is the coefficient. 9 is the constant term.", "6 moltiplica x, quindi 6 è il coefficiente. 9 è il termine costante."]},
+            {"q": ["If x = 4, what is 2x + 3?", "Se x = 4, quanto fa 2x + 3?"], "a": [["11", "11"], ["14", "14"], ["9", "9"], ["7", "7"]], "why": ["Replace x with 4: 2 · 4 + 3 = 8 + 3 = 11.", "Sostituisci x con 4: 2 · 4 + 3 = 8 + 3 = 11."]}
+          ]
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "ip-alg",
+          "title": ["Independent practice", "Esercitazione autonoma"],
+          "instructions": ["Solve each question without a hint. Read the explanation after answering.", "Risolvi ogni domanda senza suggerimenti. Leggi la spiegazione dopo aver risposto."],
+          "sceneIndex": 4,
+          "questions": [
+            {"q": ["In 8a − 5, which part is the constant term?", "In 8a − 5, qual è il termine costante?"], "a": [["−5", "−5"], ["8", "8"], ["a", "a"], ["8a", "8a"]], "why": ["The constant term has no variable, and its sign is part of the term: −5.", "Il termine costante non contiene variabili e il suo segno fa parte del termine: −5."]},
+            {"q": ["If y = 5, what is 3y − 4?", "Se y = 5, quanto fa 3y − 4?"], "a": [["11", "11"], ["19", "19"], ["7", "7"], ["15", "15"]], "why": ["3 · 5 − 4 = 15 − 4 = 11.", "3 · 5 − 4 = 15 − 4 = 11."]},
+            {"q": ["If x = −2, what is x² + 3x?", "Se x = −2, quanto fa x² + 3x?"], "a": [["−2", "−2"], ["−10", "−10"], ["10", "10"], ["−1", "−1"]], "why": ["(−2)² + 3 · (−2) = 4 − 6 = −2. Remember the brackets when substituting a negative number.", "(−2)² + 3 · (−2) = 4 − 6 = −2. Ricorda le parentesi quando sostituisci un numero negativo."]}
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {"q": ["In 7m + 4, which number is the coefficient?", "In 7m + 4, quale numero è il coefficiente?"], "a": [["7", "7"], ["4", "4"], ["m", "m"], ["11", "11"]], "why": ["The coefficient multiplies the variable: 7m.", "Il coefficiente moltiplica la variabile: 7m."]},
+        {"q": ["Which expression means 'five more than twice n'?", "Quale espressione significa 'cinque in più del doppio di n'?"], "a": [["2n + 5", "2n + 5"], ["5n + 2", "5n + 2"], ["2(n + 5)", "2(n + 5)"], ["n + 2 + 5", "n + 2 + 5"]], "why": ["Twice n is 2n; five more means add 5: 2n + 5.", "Il doppio di n è 2n; cinque in più significa aggiungere 5: 2n + 5."]},
+        {"q": ["If a = 3, what is a² + 2a?", "Se a = 3, quanto fa a² + 2a?"], "a": [["15", "15"], ["12", "12"], ["11", "11"], ["9", "9"]], "why": ["3² + 2 · 3 = 9 + 6 = 15.", "3² + 2 · 3 = 9 + 6 = 15."]}
+      ],
+      "summary": [
+        ["A variable is a letter for a number. Terms are separated by + or −. The coefficient multiplies the variable; the constant term has no variable. To evaluate, substitute and follow the order of operations.", "Una variabile è una lettera che rappresenta un numero. I termini sono separati da + o −. Il coefficiente moltiplica la variabile; il termine costante non contiene variabili. Per calcolare, sostituisci e rispetta l'ordine delle operazioni."]
+      ],
+      "techniqueUnlock": {
+        "id": "variable-slash",
+        "name": ["Algebra Form · First Technique: Variable Slash", "Stile dell'Algebra · Prima Tecnica: Fendente della Variabile"],
+        "description": ["Substitute values carefully, identify each part of an expression, and calculate in the right order.", "Sostituisci con attenzione i valori, riconosci ogni parte di un'espressione e calcola nell'ordine corretto."],
+        "xpReward": 25
+      }
     },
     "demon": ["Variable Imp", "Folletto della Variabile"],
     "tech": ["Algebra Form · First Technique: Variable Slash", "Stile dell'Algebra · Prima Tecnica: Fendente della Variabile"],
-    "scenes": [{"who": "s", "text": ["<p>A variable is a letter that can stand for different numbers.</p>", "<p>Una variabile è una lettera che può rappresentare numeri diversi.</p>"]}, {"who": "y", "text": ["<p>To evaluate an expression we replace the variable with a number and calculate.</p>", "<p>Per valutare un'espressione sostituiamo la variabile con un numero e calcoliamo.</p>"]}],
-    "quiz": [{"q": ["If x = 2, what is x² + 3x?", "Se x = 2, quanto fa x² + 3x?"], "a": [["10", "10"], ["8", "8"], ["14", "14"], ["7", "7"]], "why": ["2² + 3·2 = 4 + 6 = 10.", "2² + 3·2 = 4 + 6 = 10."]}]
-  },
+    "scenes": [
+      {"who": "s", "text": ["<p>Today we learn to read algebra: letters are not mysterious. They are simply numbers whose values we may not know yet.</p>", "<p>Oggi impariamo a leggere l'algebra: le lettere non sono misteriose. Sono semplicemente numeri di cui forse non conosciamo ancora il valore.</p>"]},
+      {"who": "y", "text": ["<p>Think of a variable as an empty box. If the box is called x, we can put a number inside it.</p><p><strong>x = 3</strong> means that the box contains 3.</p>", "<p>Pensa a una variabile come a una casella vuota. Se la casella si chiama x, possiamo inserirci un numero.</p><p><strong>x = 3</strong> significa che nella casella c'è 3.</p>"]},
+      {"who": "s", "vis": "algebra-parts", "text": ["<p>Look at <strong>3x + 2</strong>. The expression has two terms: <strong>3x</strong> and <strong>2</strong>. The coefficient is <strong>3</strong>, the variable is <strong>x</strong>, and the constant term is <strong>2</strong>.</p><p>Remember: <strong>3x = 3 · x</strong>, not 3 + x.</p>", "<p>Osserva <strong>3x + 2</strong>. L'espressione ha due termini: <strong>3x</strong> e <strong>2</strong>. Il coefficiente è <strong>3</strong>, la variabile è <strong>x</strong> e il termine costante è <strong>2</strong>.</p><p>Ricorda: <strong>3x = 3 · x</strong>, non 3 + x.</p>"]},
+      {"who": "y", "vis": "algebra-substitution", "text": ["<p>Now replace the letter with a number. If <strong>x = 4</strong>, then:</p><p><strong>3x + 2 = 3 · 4 + 2 = 12 + 2 = 14</strong>.</p><p>Multiply before adding.</p>", "<p>Ora sostituisci la lettera con un numero. Se <strong>x = 4</strong>, allora:</p><p><strong>3x + 2 = 3 · 4 + 2 = 12 + 2 = 14</strong>.</p><p>Moltiplica prima di sommare.</p>"]},
+      {"who": "d", "vis": "algebra-parts", "text": ["<p>Common trap! In <strong>5a − 7</strong>, the constant term is <strong>−7</strong>, not +7. The sign belongs to the term.</p><p>If <strong>a = 2</strong>, then <strong>5 · 2 − 7 = 10 − 7 = 3</strong>.</p>", "<p>Errore frequente! In <strong>5a − 7</strong>, il termine costante è <strong>−7</strong>, non +7. Il segno fa parte del termine.</p><p>Se <strong>a = 2</strong>, allora <strong>5 · 2 − 7 = 10 − 7 = 3</strong>.</p>"]}
+    ]
+  }  },
   {
     "id": "m1m4",
     "arc": 21,
