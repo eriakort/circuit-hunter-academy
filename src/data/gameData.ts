@@ -20498,11 +20498,9 @@ export const MISSIONS: Mission[] = [
       {"who": "y", "text": ["<p>Think of a variable as an empty box. If the box is called x, we can put a number inside it.</p><p><strong>x = 3</strong> means that the box contains 3.</p>", "<p>Pensa a una variabile come a una casella vuota. Se la casella si chiama x, possiamo inserirci un numero.</p><p><strong>x = 3</strong> significa che nella casella c'è 3.</p>"]},
       {"who": "s", "vis": "algebra-parts", "text": ["<p>Look at <strong>3x + 2</strong>. The expression has two terms: <strong>3x</strong> and <strong>2</strong>. The coefficient is <strong>3</strong>, the variable is <strong>x</strong>, and the constant term is <strong>2</strong>.</p><p>Remember: <strong>3x = 3 · x</strong>, not 3 + x.</p>", "<p>Osserva <strong>3x + 2</strong>. L'espressione ha due termini: <strong>3x</strong> e <strong>2</strong>. Il coefficiente è <strong>3</strong>, la variabile è <strong>x</strong> e il termine costante è <strong>2</strong>.</p><p>Ricorda: <strong>3x = 3 · x</strong>, non 3 + x.</p>"]},
       {"who": "y", "vis": "algebra-substitution", "text": ["<p>Now replace the letter with a number. If <strong>x = 4</strong>, then:</p><p><strong>3x + 2 = 3 · 4 + 2 = 12 + 2 = 14</strong>.</p><p>Multiply before adding.</p>", "<p>Ora sostituisci la lettera con un numero. Se <strong>x = 4</strong>, allora:</p><p><strong>3x + 2 = 3 · 4 + 2 = 12 + 2 = 14</strong>.</p><p>Moltiplica prima di sommare.</p>"]},
-      {"who": "d", "vis": "algebra-parts", "text": ["<p>Common trap! In <strong>5a − 7</strong>, the constant term is <strong>−7</strong>, not +7. The sign belongs to the term.</p><p>If <strong>a = 2</strong>, then <strong>5 · 2 − 7 = 10 − 7 = 3</strong>.</p>", "<p>Errore frequente! In <strong>5a − 7</strong>, il termine costante è <strong>−7</strong>, non +7. Il segno fa parte del termine.</p><p>Se <strong>a = 2</strong>, allora <strong>5 · 2 − 7 = 10 − 7 = 3</strong>.</p>"]}
-      ,{"type": "battle"}
+      {"who": "d", "vis": "algebra-parts", "text": ["<p>Common trap! In <strong>5a − 7</strong>, the constant term is <strong>−7</strong>, not +7. The sign belongs to the term.</p><p>If <strong>a = 2</strong>, then <strong>5 · 2 − 7 = 10 − 7 = 3</strong>.</p>", "<p>Errore frequente! In <strong>5a − 7</strong>, il termine costante è <strong>−7</strong>, non +7. Il segno fa parte del termine.</p><p>Se <strong>a = 2</strong>, allora <strong>5 · 2 − 7 = 10 − 7 = 3</strong>.</p>"]} ,
+      {"type": "battle"}
     ]
-  }  },
-
   },
   {
     "id": "m1m4",
