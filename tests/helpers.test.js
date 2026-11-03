@@ -2,6 +2,7 @@
 import { rng, sshuffle, rankOf, nextRank, raceXP } from '../src/helpers';
 import { recommendNextLearningAction } from '../src/adaptiveLearning';
 import { scheduleNextConceptReview, REVIEW_DAY_MS } from '../src/spacedRepetition';
+import { calculateLearningStreak } from '../src/learningStreak';
 
 const RANKS = [
   [0, 'Intern'],
@@ -84,3 +85,21 @@ console.assert(difficultReview.intervalDays === 1);
 console.assert(difficultReview.repetitions === 0);
 const partialReview = scheduleNextConceptReview(firstReview, 70, firstReview.dueAt);
 console.assert(partialReview.intervalDays === 2);
+
+
+// Study streaks use unique UTC calendar days and tolerate duplicate activities.
+const streakNow = Date.UTC(2026, 10, 3, 12);
+const streak = calculateLearningStreak([
+  streakNow,
+  streakNow - 1 * 24 * 60 * 60 * 1000,
+  streakNow - 1 * 24 * 60 * 60 * 1000,
+  streakNow - 2 * 24 * 60 * 60 * 1000,
+  streakNow - 4 * 24 * 60 * 60 * 1000,
+  streakNow - 6 * 24 * 60 * 60 * 1000
+], streakNow);
+console.assert(streak.currentStreak === 3);
+console.assert(streak.bestStreak === 3);
+console.assert(streak.activeLast7Days === 5);
+console.assert(streak.recentDays.length === 7);
+console.assert(streak.recentDays[6].active === true);
+console.assert(calculateLearningStreak([], streakNow).currentStreak === 0);
