@@ -4,6 +4,7 @@ import { getVisualHtml } from '../data/visuals';
 import { runMiniGame } from '../data/miniGames';
 import { L, CODE, fill, demonSVG, SENSEI, YOU, esc, U, GUIDE } from '../helpers';
 import { LearningPathway } from './LearningPathway';
+import { scheduleNextConceptReview } from '../spacedRepetition';
 import { HARDWARE_LEARNING_PILOT } from '../data/learningPilot';
 
 export const MissionScreen: React.FC = () => {
@@ -524,6 +525,7 @@ export const MissionScreen: React.FC = () => {
                           score, attemptedAt, attempt, answers: [...answers]
                         }].slice(-20);
                         const weakConcepts: string[] = [];
+                        const conceptAttemptResults: Record<string, { correct: number; attempted: number }> = {};
                         masteryQuestions.forEach((question, index) => {
                           const conceptId = masteryAssessment!.questionConceptIds?.[index];
                           if (!conceptId) return;
@@ -532,7 +534,20 @@ export const MissionScreen: React.FC = () => {
                             correct: previous.correct + (answers[index] === 0 ? 1 : 0),
                             attempted: previous.attempted + 1
                           };
+                          const attemptResult = conceptAttemptResults[conceptId] || { correct: 0, attempted: 0 };
+                          attemptResult.correct += answers[index] === 0 ? 1 : 0;
+                          attemptResult.attempted += 1;
+                          conceptAttemptResults[conceptId] = attemptResult;
                           if (answers[index] !== 0 && !weakConcepts.includes(conceptId)) weakConcepts.push(conceptId);
+                        });
+                        const conceptReviewSchedule = { ...(savedLearning?.conceptReviewSchedule || {}) };
+                        Object.entries(conceptAttemptResults).forEach(([conceptId, result]) => {
+                          const conceptScore = Math.round((result.correct / result.attempted) * 100);
+                          conceptReviewSchedule[conceptId] = scheduleNextConceptReview(
+                            conceptReviewSchedule[conceptId],
+                            conceptScore,
+                            attemptedAt
+                          );
                         });
                         Object.entries(revisionPerformance).forEach(([conceptId, revision]) => {
                           if (!revision.lastReviewedAt || revision.lastReviewedAt <= (revision.postRevisionAt || 0)) return;
@@ -549,6 +564,7 @@ export const MissionScreen: React.FC = () => {
                           masteryAttempts: attempt,
                           masteryConceptPerformance: conceptPerformance,
                           conceptRevisionPerformance: revisionPerformance,
+                          conceptReviewSchedule,
                           masteryAttemptHistory: attemptHistory,
                           masteryAttemptReviews: attemptReviews,
                           masteryLastAttemptWeakConcepts: passed ? [] : weakConcepts,
