@@ -762,3 +762,31 @@ body{overflow-x:hidden}
 .mastery-insights-concept-heading span{flex:none;color:var(--gold);font:700 12px var(--mono)}
 .mastery-insights-concepts small{display:block;color:var(--muted);font-size:11px;line-height:1.4}
 @media(max-width:650px){.mastery-insights-grid{grid-template-columns:1fr}.mastery-insights-heading{flex-direction:column}.mastery-insights-count{align-self:flex-start}.mastery-trend-endpoints{font-size:10px}}
+
+
+/* assessment review */
+.assessment-review{margin-top:18px}
+.assessment-review-heading{margin-bottom:14px}
+.assessment-review-heading h3{font-size:20px}
+.assessment-review-list{display:flex;flex-direction:column;gap:10px}
+.assessment-review-attempt{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px}
+.assessment-review-attempt summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none}
+.assessment-review-attempt summary::-webkit-details-marker{display:none}
+.assessment-review-attempt summary strong{font-family:var(--display);font-size:17px}
+.assessment-review-meta{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;flex-wrap:wrap}
+.assessment-review-score{font-family:var(--mono);font-weight:800;color:var(--gold)}
+.assessment-review-body{padding-top:14px;display:flex;flex-direction:column;gap:14px}
+.assessment-review-mistakes{border:1px solid rgba(255,106,61,.35);border-radius:10px;padding:12px}
+.assessment-review-mistakes h4,.assessment-review-questions h4{margin-bottom:8px}
+.assessment-review-concepts{display:flex;flex-wrap:wrap;gap:8px}
+.assessment-review-concept{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:8px 10px}
+.assessment-review-question{border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:8px}
+.assessment-review-question.is-wrong{border-color:rgba(255,77,109,.5)}
+.assessment-review-question.is-correct{border-color:rgba(75,227,154,.35)}
+.assessment-review-question p{margin:6px 0}
+.assessment-review-answer{font-size:14px}
+.assessment-review-answer .wrong-answer{color:var(--bad)}
+.assessment-review-answer .right-answer{color:var(--good)}
+.assessment-review-explanation{color:var(--muted);font-size:14px}
+.assessment-review-empty{color:var(--muted);background:var(--panel2);border-radius:10px;padding:12px}
+@media(max-width:600px){.assessment-review-attempt summary{align-items:flex-start;flex-direction:column}.assessment-review-concept{width:100%;justify-content:space-between}}
