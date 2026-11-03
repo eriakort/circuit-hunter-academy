@@ -20423,7 +20423,7 @@ export const MISSIONS: Mission[] = [
               ["Multiply first: 12 + 2.", "Esegui prima la moltiplicazione: 12 + 2."],
               ["Add: 14.", "Somma: 14."]
             ],
-            "answer": ["You spend 14 euros. The expression 3x + 2 describes the cost for any notebook price x.", "SpendI 14 euro. L'espressione 3x + 2 descrive il costo per qualsiasi prezzo x del quaderno."]
+            "answer": ["You spend 14 euros. The expression 3x + 2 describes the cost for any notebook price x.", "Spendi 14 euro. L'espressione 3x + 2 descrive il costo per qualsiasi prezzo x del quaderno."]
           },
           "misconceptions": [
             {"belief": ["If x = −2, then x² = −4.", "Se x = −2, allora x² = −4."], "correction": ["Use brackets: (−2)² = (−2) · (−2) = 4. The square of a negative number is positive.", "Usa le parentesi: (−2)² = (−2) · (−2) = 4. Il quadrato di un numero negativo è positivo."]
