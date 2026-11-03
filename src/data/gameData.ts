@@ -19911,7 +19911,332 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
+  },
+  {
+    "id": "m1m2",
+    "arc": 21,
+    "sec": "1.2",
+    "pages": "7–14",
+    "hue": 50,
+    "horns": 2,
+    "eyes": 2,
+    "title": [
+      "Operations & Expressions",
+      "Operazioni ed espressioni"
+    ],
+    "topic": [
+      "Addition, subtraction, multiplication, division and simple expressions with natural numbers",
+      "Addizione, sottrazione, moltiplicazione, divisione e semplici espressioni con i numeri naturali"
+    ],
+    "learning": {
+      "version": 1,
+      "prerequisites": [
+        ["Know the natural numbers and their order.", "Conoscere i numeri naturali e il loro ordinamento."]
+      ],
+      "objectives": [
+        {
+          "id": "perform-basic-operations",
+          "description": ["Perform the four basic operations on natural numbers.", "Eseguire le quattro operazioni sui numeri naturali."]
+        },
+        {
+          "id": "evaluate-expressions",
+          "description": ["Evaluate simple numerical expressions following the correct order.", "Calcolare semplici espressioni numeriche rispettando l'ordine corretto."]
+        }
+      ],
+      "concepts": [
+        {
+          "id": "order-of-operations",
+          "title": ["Order of operations", "Ordine delle operazioni"],
+          "explanation": ["In expressions we do multiplications and divisions before additions and subtractions, from left to right.", "Nelle espressioni eseguiamo prima moltiplicazioni e divisioni, poi addizioni e sottrazioni, da sinistra a destra."],
+          "example": ["3 + 2 × 4 = 3 + 8 = 11, not 20.", "3 + 2 × 4 = 3 + 8 = 11, non 20."]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "guided-ops",
+          "title": ["Guided practice: operations", "Esercitazione guidata: operazioni"],
+          "instructions": ["Calculate the result.", "Calcola il risultato."],
+          "questions": [
+            {
+              "q": ["What is 12 ÷ 3 + 5?", "Quanto fa 12 ÷ 3 + 5?"],
+              "a": [["9", "9"], ["4", "4"], ["20", "20"], ["1", "1"]],
+              "why": ["Division first: 12 ÷ 3 = 4, then 4 + 5 = 9.", "Prima la divisione: 12 ÷ 3 = 4, poi 4 + 5 = 9."]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": ["Which operation is done first in 8 − 2 × 3?", "Quale operazione si fa prima in 8 − 2 × 3?"],
+          "a": [["Multiplication", "Moltiplicazione"], ["Subtraction", "Sottrazione"], ["Either", "Indifferente"], ["Addition", "Addizione"]],
+          "why": ["Multiplication has priority over subtraction.", "La moltiplicazione ha la priorità sulla sottrazione."]
+        }
+      ],
+      "summary": [
+        ["The four operations on ℕ follow a clear order: × and ÷ before + and −.", "Le quattro operazioni su ℕ seguono un ordine chiaro: × e ÷ prima di + e −."]
+      ],
+      "techniqueUnlock": {
+        "id": "order-slash",
+        "name": ["Number Form · Second Technique: Order Slash", "Stile dei Numeri · Seconda Tecnica: Fendente dell'Ordine"],
+        "description": ["Cut through any expression by respecting the correct order of operations.", "Attraversa qualsiasi espressione rispettando l'ordine corretto delle operazioni."],
+        "xpReward": 25
+      }
+    },
+    "demon": ["Order-Chaos Imp", "Folletto del Caos dell'Ordine"],
+    "tech": ["Number Form · Second Technique: Order Slash", "Stile dei Numeri · Seconda Tecnica: Fendente dell'Ordine"],
+    "scenes": [
+      {
+        "who": "s",
+        "text": ["<p>The four operations on natural numbers are addition, subtraction, multiplication and division.</p>", "<p>Le quattro operazioni sui numeri naturali sono addizione, sottrazione, moltiplicazione e divisione.</p>"]
+      },
+      {
+        "who": "y",
+        "text": ["<p>In an expression we always do × and ÷ before + and −.</p>", "<p>In un'espressione facciamo sempre × e ÷ prima di + e −.</p>"]
+      }
+    ],
+    "quiz": [
+      {
+        "q": ["What is 5 + 3 × 2?", "Quanto fa 5 + 3 × 2?"],
+        "a": [["11", "11"], ["16", "16"], ["10", "10"], ["8", "8"]],
+        "why": ["Multiplication first: 3 × 2 = 6, then 5 + 6 = 11.", "Prima la moltiplicazione: 3 × 2 = 6, poi 5 + 6 = 11."]
+      }
+    ]
+  },
+  {
+    "id": "m1m3",
+    "arc": 21,
+    "sec": "1.3",
+    "pages": "15–20",
+    "hue": 55,
+    "horns": 3,
+    "eyes": 2,
+    "title": ["Properties of Operations", "Proprietà delle operazioni"],
+    "topic": ["Commutative, associative and distributive properties", "Proprietà commutativa, associativa e distributiva"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know the four basic operations.", "Conoscere le quattro operazioni di base."]],
+      "objectives": [
+        {
+          "id": "use-properties",
+          "description": ["Use the commutative, associative and distributive properties to simplify calculations.", "Usare le proprietà commutativa, associativa e distributiva per semplificare i calcoli."]
+        }
+      ],
+      "concepts": [
+        {
+          "id": "distributive",
+          "title": ["Distributive property", "Proprietà distributiva"],
+          "explanation": ["a × (b + c) = a × b + a × c. It lets us break multiplications into easier parts.", "a × (b + c) = a × b + a × c. Ci permette di spezzare le moltiplicazioni in parti più facili."],
+          "example": ["7 × 12 = 7 × (10 + 2) = 70 + 14 = 84.", "7 × 12 = 7 × (10 + 2) = 70 + 14 = 84."]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "guided-props",
+          "title": ["Guided practice: properties", "Esercitazione guidata: proprietà"],
+          "instructions": ["Apply the property.", "Applica la proprietà."],
+          "questions": [
+            {
+              "q": ["Which property is used in 4 + 9 = 9 + 4?", "Quale proprietà si usa in 4 + 9 = 9 + 4?"],
+              "a": [["Commutative", "Commutativa"], ["Associative", "Associativa"], ["Distributive", "Distributiva"], ["None", "Nessuna"]],
+              "why": ["The commutative property lets us change the order of the addends.", "La proprietà commutativa ci permette di cambiare l'ordine degli addendi."]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": ["a × (b + c) equals…", "a × (b + c) è uguale a…"],
+          "a": [["a × b + a × c", "a × b + a × c"], ["a + b × c", "a + b × c"], ["a × b × c", "a × b × c"], ["(a × b) + c", "(a × b) + c"]],
+          "why": ["This is the distributive property.", "Questa è la proprietà distributiva."]
+        }
+      ],
+      "summary": [
+        ["The properties let us rearrange and simplify calculations without changing the result.", "Le proprietà ci permettono di riorganizzare e semplificare i calcoli senza cambiare il risultato."]
+      ],
+      "techniqueUnlock": {
+        "id": "property-slash",
+        "name": ["Number Form · Third Technique: Property Slash", "Stile dei Numeri · Terza Tecnica: Fendente delle Proprietà"],
+        "description": ["Rewrite any calculation using the properties to make it easier.", "Riscrivi qualsiasi calcolo usando le proprietà per renderlo più facile."],
+        "xpReward": 25
+      }
+    },
+    "demon": ["Property Imp", "Folletto delle Proprietà"],
+    "tech": ["Number Form · Third Technique: Property Slash", "Stile dei Numeri · Terza Tecnica: Fendente delle Proprietà"],
+    "scenes": [
+      {
+        "who": "s",
+        "text": ["<p>The commutative property says the order of the numbers does not change the result of addition or multiplication.</p>", "<p>La proprietà commutativa dice che l'ordine dei numeri non cambia il risultato di addizione o moltiplicazione.</p>"]
+      },
+      {
+        "who": "d",
+        "text": ["<p>The distributive property is especially useful for mental calculation.</p>", "<p>La proprietà distributiva è particolarmente utile per il calcolo mentale.</p>"]
+      }
+    ],
+    "quiz": [
+      {
+        "q": ["Which property is 2 × (5 + 3) = 2 × 5 + 2 × 3?", "Quale proprietà è 2 × (5 + 3) = 2 × 5 + 2 × 3?"],
+        "a": [["Distributive", "Distributiva"], ["Commutative", "Commutativa"], ["Associative", "Associativa"], ["None", "Nessuna"]],
+        "why": ["Multiplication distributes over addition.", "La moltiplicazione si distribuisce sull'addizione."]
+      }
+    ]
+  },
+  {
+    "id": "m2m1",
+    "arc": 22,
+    "sec": "2.1",
+    "pages": "77–84",
+    "hue": 180,
+    "horns": 2,
+    "eyes": 1,
+    "title": ["Rational Numbers", "Numeri razionali"],
+    "topic": ["Fractions and the set of rational numbers ℚ", "Frazioni e l'insieme dei numeri razionali ℚ"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know natural numbers and the four operations.", "Conoscere i numeri naturali e le quattro operazioni."]],
+      "objectives": [
+        {
+          "id": "identify-rationals",
+          "description": ["Identify rational numbers and write their set symbol ℚ.", "Riconoscere i numeri razionali e scrivere il loro simbolo di insieme ℚ."]
+        }
+      ],
+      "concepts": [
+        {
+          "id": "rational-numbers",
+          "title": ["Rational numbers", "Numeri razionali"],
+          "explanation": ["A rational number is any number that can be written as a fraction a/b where a and b are integers and b ≠ 0. The set is ℚ.", "Un numero razionale è qualsiasi numero che si può scrivere come frazione a/b con a e b interi e b ≠ 0. L'insieme è ℚ."],
+          "example": ["1/2, 3/4, -5/3, 0.25 = 1/4 are rational. √2 is not.", "1/2, 3/4, -5/3, 0,25 = 1/4 sono razionali. √2 non lo è."]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "guided-rational",
+          "title": ["Guided practice: rationals", "Esercitazione guidata: razionali"],
+          "instructions": ["Choose the rational number.", "Scegli il numero razionale."],
+          "questions": [
+            {
+              "q": ["Which of these is rational?", "Quale di questi è razionale?"],
+              "a": [["3/5", "3/5"], ["√2", "√2"], ["π", "π"], ["√7", "√7"]],
+              "why": ["3/5 is a fraction of two integers.", "3/5 è una frazione di due interi."]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": ["What is the symbol for the rational numbers?", "Qual è il simbolo dei numeri razionali?"],
+          "a": [["ℚ", "ℚ"], ["ℕ", "ℕ"], ["ℤ", "ℤ"], ["ℝ", "ℝ"]],
+          "why": ["ℚ stands for rational numbers (quotient).", "ℚ indica i numeri razionali (quoziente)."]
+        }
+      ],
+      "summary": [
+        ["Rational numbers (ℚ) are all numbers that can be written as a fraction of two integers.", "I numeri razionali (ℚ) sono tutti i numeri che si possono scrivere come frazione di due interi."]
+      ],
+      "techniqueUnlock": {
+        "id": "fraction-slash",
+        "name": ["Number Form · Fourth Technique: Fraction Slash", "Stile dei Numeri · Quarta Tecnica: Fendente della Frazione"],
+        "description": ["Cut any rational problem by rewriting it as a clean fraction.", "Taglia qualsiasi problema razionale riscrivendolo come frazione pulita."],
+        "xpReward": 25
+      }
+    },
+    "demon": ["Fraction Imp", "Folletto delle Frazioni"],
+    "tech": ["Number Form · Fourth Technique: Fraction Slash", "Stile dei Numeri · Quarta Tecnica: Fendente della Frazione"],
+    "scenes": [
+      {
+        "who": "s",
+        "text": ["<p>A rational number can always be written as a fraction a/b with b ≠ 0.</p>", "<p>Un numero razionale si può sempre scrivere come frazione a/b con b ≠ 0.</p>"]
+      },
+      {
+        "who": "y",
+        "text": ["<p>The set of all rational numbers is called ℚ.</p>", "<p>L'insieme di tutti i numeri razionali si chiama ℚ.</p>"]
+      }
+    ],
+    "quiz": [
+      {
+        "q": ["Is 0.5 a rational number?", "0,5 è un numero razionale?"],
+        "a": [["Yes", "Sì"], ["No", "No"], ["Only sometimes", "Solo a volte"], ["Never", "Mai"]],
+        "why": ["0.5 = 1/2, so it is rational.", "0,5 = 1/2, quindi è razionale."]
+      }
+    ]
+  },
+  {
+    "id": "m3m1",
+    "arc": 23,
+    "sec": "3.1",
+    "pages": "147–154",
+    "hue": 270,
+    "horns": 2,
+    "eyes": 3,
+    "title": ["Sets", "Insiemi"],
+    "topic": ["What a set is, membership and basic set notation", "Che cos'è un insieme, appartenenza e notazione di base"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know the sets ℕ, ℤ, ℚ and ℝ.", "Conoscere gli insiemi ℕ, ℤ, ℚ e ℝ."]],
+      "objectives": [
+        {
+          "id": "describe-sets",
+          "description": ["Describe a set by listing its elements or by a property.", "Descrivere un insieme elencando i suoi elementi o con una proprietà."]
+        }
+      ],
+      "concepts": [
+        {
+          "id": "sets-basics",
+          "title": ["Sets", "Insiemi"],
+          "explanation": ["A set is a collection of distinct objects. We write a ∈ A to say that a belongs to A.", "Un insieme è una collezione di oggetti distinti. Scriviamo a ∈ A per dire che a appartiene ad A."],
+          "example": ["A = {1, 2, 3}. Then 2 ∈ A and 5 ∉ A.", "A = {1, 2, 3}. Allora 2 ∈ A e 5 ∉ A."]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "guided-sets",
+          "title": ["Guided practice: sets", "Esercitazione guidata: insiemi"],
+          "instructions": ["Decide membership.", "Decidi l'appartenenza."],
+          "questions": [
+            {
+              "q": ["Does 4 belong to the set {2, 4, 6}?", "4 appartiene all'insieme {2, 4, 6}?"],
+              "a": [["Yes", "Sì"], ["No", "No"], ["Only even numbers", "Solo i pari"], ["Only odds", "Solo i dispari"]],
+              "why": ["4 is listed in the set.", "4 è elencato nell'insieme."]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": ["Which symbol means “belongs to”?", "Quale simbolo significa “appartiene a”?"],
+          "a": [["∈", "∈"], ["∉", "∉"], ["⊂", "⊂"], ["∪", "∪"]],
+          "why": ["∈ is the membership symbol.", "∈ è il simbolo di appartenenza."]
+        }
+      ],
+      "summary": [
+        ["A set is a collection of distinct elements. We use ∈ to say an element belongs to a set.", "Un insieme è una collezione di elementi distinti. Usiamo ∈ per dire che un elemento appartiene a un insieme."]
+      ],
+      "techniqueUnlock": {
+        "id": "set-slash",
+        "name": ["Logic Form · First Technique: Set Slash", "Stile della Logica · Prima Tecnica: Fendente dell'Insieme"],
+        "description": ["Cut through any set problem by clearly listing or describing its elements.", "Taglia qualsiasi problema sugli insiemi elencando o descrivendo chiaramente i suoi elementi."],
+        "xpReward": 25
+      }
+    },
+    "demon": ["Empty-Set Imp", "Folletto dell'Insieme Vuoto"],
+    "tech": ["Logic Form · First Technique: Set Slash", "Stile della Logica · Prima Tecnica: Fendente dell'Insieme"],
+    "scenes": [
+      {
+        "who": "s",
+        "text": ["<p>A set is a well-defined collection of distinct objects called elements.</p>", "<p>Un insieme è una collezione ben definita di oggetti distinti chiamati elementi.</p>"]
+      },
+      {
+        "who": "y",
+        "text": ["<p>We write 3 ∈ {1, 3, 5} to say that 3 belongs to the set.</p>", "<p>Scriviamo 3 ∈ {1, 3, 5} per dire che 3 appartiene all'insieme.</p>"]
+      }
+    ],
+    "quiz": [
+      {
+        "q": ["Which of these is an empty set?", "Quale di questi è un insieme vuoto?"],
+        "a": [["The set of natural numbers less than 0", "L'insieme dei numeri naturali minori di 0"], ["{0}", "{0}"], ["{1, 2}", "{1, 2}"], ["ℕ", "ℕ"]],
+        "why": ["There are no natural numbers less than 0, so the set is empty.", "Non esistono numeri naturali minori di 0, quindi l'insieme è vuoto."]
+      }
+    ]
   }
+
 ];
 
 export const RANKS: Rank[] = [
