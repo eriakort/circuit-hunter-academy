@@ -811,3 +811,35 @@ body{overflow-x:hidden}
 .spaced-review-empty{margin:0;padding:12px;border-radius:10px;background:var(--panel2);color:var(--muted);font-size:13px}
 .spaced-review-subheading{margin:4px 0 0;font-size:15px}
 @media(max-width:600px){.spaced-review{padding:12px}.spaced-review-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.spaced-review-stat{padding:8px}.spaced-review-stat span{font-size:10px}.spaced-review-item{align-items:flex-start;flex-direction:column}.spaced-review-item .btn{width:100%}}
+
+
+/* Smart Learning 2.8 — guided review session summary */
+.review-session-summary {
+  margin: 18px 0;
+}
+.review-session-summary h2 {
+  margin: 6px 0 8px;
+}
+.review-session-results {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0;
+}
+.review-session-result,
+.review-session-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line, rgba(255,255,255,.12));
+  border-radius: 10px;
+}
+.review-session-total {
+  margin-bottom: 16px;
+  background: rgba(255,255,255,.04);
+}
+.review-session-result strong,
+.review-session-total strong {
+  font-variant-numeric: tabular-nums;
+}
