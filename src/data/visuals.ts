@@ -823,6 +823,23 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
   <rect x="210" y="40" width="34" height="26" rx="4" fill="var(--gold)" opacity="0.85"/>
   <text x="160" y="146" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['deeper water pushes harder (Stevin)','più in profondità spinge di più (Stevino)'])}</text>
 </svg>`,
+  "algebra-parts": function algebraParts(){
+    return `<svg viewBox="0 0 640 210" class="dia" role="img" aria-label="Parts of the algebraic expression 3x plus 2">
+      <text x="320" y="35" text-anchor="middle" class="lbl">${L(['ONE EXPRESSION · TWO TERMS','UN’ESPRESSIONE · DUE TERMINI'])}</text>
+      <rect x="112" y="58" width="188" height="104" rx="14" fill="var(--data)" opacity=".16" stroke="var(--data)" stroke-width="2"/>
+      <rect x="340" y="58" width="188" height="104" rx="14" fill="var(--gold)" opacity=".13" stroke="var(--gold)" stroke-width="2"/>
+      <text x="206" y="111" text-anchor="middle" style="font-size:38px;font-weight:800;fill:var(--text)">3x</text>
+      <text x="434" y="111" text-anchor="middle" style="font-size:38px;font-weight:800;fill:var(--text)">+ 2</text>
+      <text x="206" y="143" text-anchor="middle" class="sm">${L(['coefficient 3 · variable x','coefficiente 3 · variabile x'])}</text>
+      <text x="434" y="143" text-anchor="middle" class="sm">${L(['constant term','termine costante'])}</text>
+      <text x="320" y="190" text-anchor="middle" class="sm">${L(['3x means 3 × x','3x significa 3 × x'])}</text>
+    </svg>`;
+  },
+  "algebra-substitution": function algebraSubstitution(){
+    return `<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;align-items:stretch;text-align:center">
+      ${[['1',['SUBSTITUTE','SOSTITUISCI'],'x = 4'],['2',['MULTIPLY','MOLTIPLICA'],'3 × 4 = 12'],['3',['KEEP + 2','MANTIENI + 2'],'12 + 2'],['4',['ANSWER','RISULTATO'],'14']].map(([n,label,value])=>`<div style="padding:12px 5px;border:1px solid var(--line);border-radius:12px;background:var(--panel2)"><div style="font-size:12px;color:var(--muted)">STEP ${n}</div><strong style="display:block;margin:8px 0;color:var(--gold)">${L(label)}</strong><div style="font-size:18px;font-weight:800;color:var(--text)">${value}</div></div>`).join('')}
+    </div><p class="muted" style="text-align:center;margin-top:10px">${L(['Replace the letter, then follow the order of operations.','Sostituisci la lettera, poi rispetta l’ordine delle operazioni.'])}</p>`;
+  },
 };
 
 export function getVisualHtml(key: string, lang: Language): string {

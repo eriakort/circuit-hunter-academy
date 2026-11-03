@@ -29,7 +29,7 @@ export const LearningPathway: React.FC<LearningPathwayProps> = ({
     <section className="learning-pathway card" aria-label={lang === 'it' ? 'Percorso di apprendimento' : 'Learning pathway'}>
       <div className="learning-pathway-heading">
         <div>
-          <span className="learning-kicker">{lang === 'it' ? 'BRIEFING DELLA MISSIONE · CIRCUIT FORMS' : 'MISSION BRIEFING · CIRCUIT FORMS'}</span>
+          <span className="learning-kicker">{lang === 'it' ? 'BRIEFING DELLA MISSIONE · PERCORSO DI APPRENDIMENTO' : 'MISSION BRIEFING · LEARNING PATHWAY'}</span>
           <h3>{lang === 'it' ? 'La tua missione di apprendimento' : 'Your learning mission'}</h3>
           <p>{lang === 'it' ? 'Obiettivi chiari, pratica progressiva e una tecnica da conquistare.' : 'Clear objectives, progressive practice, and a technique to earn.'}</p>
         </div>
