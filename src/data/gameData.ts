@@ -19794,7 +19794,8 @@ export const MISSIONS: Mission[] = [
       "summary": [
         ["ℕ = {0, 1, 2, 3, …}. È ordinato e discreto. Si rappresenta su una semiretta. Lo 0 non ha precedente; ogni numero ha un successivo.", "ℕ = {0, 1, 2, 3, …}. It is ordered and discrete. It is represented on a half-line. 0 has no predecessor; every number has a successor."]
       ],
-      "techniqueUnlock": {
+            "masteryAssessment": {"title": ["Verifica di padronanza", "Mastery check"], "instructions": ["Almeno il 75%.", "At least 75%."], "passingScore": 75, "questions": [{"q": ["Successivo di 9?", "Successor of 9?"], "a": [["10","10"],["8","8"],["11","11"],["0","0"]], "why": ["+1.", "+1."]}, {"q": ["0 ha precedente?", "Does 0 have predecessor?"], "a": [["No","No"],["Sì","Yes"],["A volte","Sometimes"],["-1","-1"]], "why": ["Primo.", "First."]}]},
+"techniqueUnlock": {
         "id": "step-by-step-slash",
         "name": ["Stile dei Numeri · Prima Tecnica: Fendente Passo-Passo", "Number Form · First Technique: Step-by-Step Slash"],
         "description": ["Scomponi ogni problema numerico in passi chiari, proprio come i passi sulla semiretta.", "Break any number problem into clear steps, just like steps on the half-line."],
@@ -19809,30 +19810,13 @@ export const MISSIONS: Mission[] = [
       "Number Form · First Technique: Step-by-Step Slash",
       "Stile dei Numeri · Prima Tecnica: Fendente Passo-Passo"
     ],
-    "scenes": [
-      {
-        "who": "s",
-        "text": [
-          "<p>Natural numbers are the counting numbers: 0, 1, 2, 3, 4, 5…</p><p>We write their set as <b>ℕ</b>.</p>",
-          "<p>I numeri naturali sono i numeri del contare: 0, 1, 2, 3, 4, 5…</p><p>Il loro insieme si indica con <b>ℕ</b>.</p>"
-        ]
-      },
-      {
-        "who": "y",
-        "text": [
-          "<p>They are ordered. We can always compare two natural numbers with <, >, ≤, ≥.</p>",
-          "<p>Sono ordinati. Possiamo sempre confrontare due numeri naturali con <, >, ≤, ≥.</p>"
-        ]
-      },
-      {
-        "who": "d",
-        "text": [
-          "<p>Zero has no predecessor in ℕ, but every number has a successor. The set is infinite and discrete.</p>",
-          "<p>Lo zero non ha precedente in ℕ, ma ogni numero ha un successivo. L’insieme è infinito e discreto.</p>"
-        ]
-      }
+        "scenes": [
+      {"who": "s", "text": ["<p>I numeri naturali sono 0, 1, 2, 3, 4, 5… L’insieme si chiama <b>ℕ</b>.</p><p>Disegna una semiretta: parti da un punto O (lo 0) e vai sempre a destra con passi uguali.</p>", "<p>Natural numbers are 0, 1, 2, 3, 4, 5… The set is called <b>ℕ</b>.</p><p>Draw a half-line: start at point O (zero) and always go right with equal steps.</p>"]},
+      {"who": "y", "text": ["<p>Tra 2 e 3 non c’è nessun altro numero naturale. Per questo ℕ è <b>discreto</b>.</p>", "<p>Between 2 and 3 there is no other natural number. That is why ℕ is <b>discrete</b>.</p>"]},
+      {"who": "d", "text": ["<p>Lo 0 non ha precedente. Ogni altro numero ne ha uno (il precedente) e tutti hanno un successivo.</p>", "<p>Zero has no predecessor. Every other number has one (the predecessor) and all have a successor.</p>"]},
+      {"who": "s", "text": ["<p>Prova a posizionare 0, 3, 1, 5 sulla semiretta e leggili da sinistra a destra.</p>", "<p>Try placing 0, 3, 1, 5 on the half-line and read them from left to right.</p>"]}
     ],
-    "quiz": [
+"quiz": [
       {
         "q": [
           "Which set symbol represents the natural numbers?",
@@ -19915,7 +19899,8 @@ export const MISSIONS: Mission[] = [
       "independentPractice": [{"id": "ip-ops", "title": ["Prova da solo", "Try on your own"], "instructions": ["Senza suggerimenti.", "Without hints."], "questions": [{"q": ["Quanto fa 5 + 3 × 2?", "What is 5 + 3 × 2?"], "a": [["11", "11"], ["16", "16"], ["10", "10"], ["8", "8"]], "why": ["3 × 2 = 6, poi 5 + 6 = 11.", "3 × 2 = 6, then 5 + 6 = 11."]}]}],
       "knowledgeCheck": [{"q": ["Cosa si fa prima in 8 − 2 × 3?", "What is done first in 8 − 2 × 3?"], "a": [["Moltiplicazione", "Multiplication"], ["Sottrazione", "Subtraction"], ["Indifferente", "Either"], ["Addizione", "Addition"]], "why": ["La moltiplicazione ha la priorità.", "Multiplication has priority."]}],
       "summary": [["Nelle espressioni: potenze → × e ÷ → + e −. Da sinistra a destra quando le operazioni hanno la stessa priorità.", "In expressions: powers → × and ÷ → + and −. Left to right when operations have the same priority."]],
-      "techniqueUnlock": {"id": "order-slash", "name": ["Stile dei Numeri · Seconda Tecnica: Fendente dell’Ordine", "Number Form · Second Technique: Order Slash"], "description": ["Taglia qualsiasi espressione rispettando la priorità corretta.", "Cut through any expression by respecting the correct priority."], "xpReward": 25}
+            "masteryAssessment": {"title": ["Verifica di padronanza", "Mastery check"], "instructions": ["Almeno il 75%.", "At least 75%."], "passingScore": 75, "questions": [{"q": ["6 + 2 × 3?", "6 + 2 × 3?"], "a": [["12","12"],["24","24"],["11","11"],["8","8"]], "why": ["× first.", "× first."]}]},
+"techniqueUnlock": {"id": "order-slash", "name": ["Stile dei Numeri · Seconda Tecnica: Fendente dell’Ordine", "Number Form · Second Technique: Order Slash"], "description": ["Taglia qualsiasi espressione rispettando la priorità corretta.", "Cut through any expression by respecting the correct priority."], "xpReward": 25}
     },
 "demon": ["Order-Chaos Imp", "Folletto del Caos dell'Ordine"],
     "tech": ["Number Form · Second Technique: Order Slash", "Stile dei Numeri · Seconda Tecnica: Fendente dell'Ordine"],
@@ -19977,7 +19962,9 @@ export const MISSIONS: Mission[] = [
       "guidedPractice": [{"id": "gp-props", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Riconosci la proprietà.", "Identify the property."], "questions": [{"q": ["Quale proprietà è 4 + 9 = 9 + 4?", "Which property is 4 + 9 = 9 + 4?"], "a": [["Commutativa", "Commutative"], ["Associativa", "Associative"], ["Distributiva", "Distributive"], ["Nessuna", "None"]], "why": ["Si cambia l’ordine degli addendi.", "We change the order of the addends."]}]}],
       "knowledgeCheck": [{"q": ["a × (b + c) è uguale a…", "a × (b + c) equals…"], "a": [["a × b + a × c", "a × b + a × c"], ["a + b × c", "a + b × c"], ["a × b × c", "a × b × c"], ["(a × b) + c", "(a × b) + c"]], "why": ["Questa è la proprietà distributiva.", "This is the distributive property."]}],
       "summary": [["Le proprietà ci permettono di riorganizzare i calcoli senza cambiare il risultato. La distributiva è molto utile per il calcolo mentale.", "The properties let us rearrange calculations without changing the result. The distributive property is very useful for mental calculation."]],
-      "techniqueUnlock": {"id": "property-slash", "name": ["Stile dei Numeri · Terza Tecnica: Fendente delle Proprietà", "Number Form · Third Technique: Property Slash"], "description": ["Riscrivi il calcolo usando le proprietà per renderlo più facile.", "Rewrite the calculation using the properties to make it easier."], "xpReward": 25}
+            "independentPractice": [{"id":"ip3","title":["Prova da solo","Try alone"],"instructions":["Applica.","Apply."],"questions":[{"q":["8×13 con distributiva?","8×13 distributive?"],"a":[["104","104"],["96","96"],["112","112"],["100","100"]],"why":["80+24.","80+24."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["5+7=7+5 è…","5+7=7+5 is…"], "a": [["Commutativa","Commutative"],["Associativa","Associative"],["Distributiva","Distributive"],["Nessuna","None"]], "why": ["Ordine.","Order."]}]},
+"techniqueUnlock": {"id": "property-slash", "name": ["Stile dei Numeri · Terza Tecnica: Fendente delle Proprietà", "Number Form · Third Technique: Property Slash"], "description": ["Riscrivi il calcolo usando le proprietà per renderlo più facile.", "Rewrite the calculation using the properties to make it easier."], "xpReward": 25}
     },
 "demon": ["Property Imp", "Folletto delle Proprietà"],
     "tech": ["Number Form · Third Technique: Property Slash", "Stile dei Numeri · Terza Tecnica: Fendente delle Proprietà"],
@@ -20041,21 +20028,18 @@ export const MISSIONS: Mission[] = [
       "guidedPractice": [{"id": "gp-rat", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Scegli la risposta.", "Choose the answer."], "questions": [{"q": ["Quale di questi è razionale?", "Which of these is rational?"], "a": [["2/5", "2/5"], ["√3", "√3"], ["π", "π"], ["√7", "√7"]], "why": ["2/5 è una frazione di due interi.", "2/5 is a fraction of two integers."]}]}],
       "knowledgeCheck": [{"q": ["Il simbolo dei numeri razionali è…", "The symbol for rational numbers is…"], "a": [["ℚ", "ℚ"], ["ℕ", "ℕ"], ["ℤ", "ℤ"], ["ℝ", "ℝ"]], "why": ["ℚ indica i numeri razionali (quoziente).", "ℚ stands for rational numbers (quotient)."]}],
       "summary": [["I numeri razionali (ℚ) sono tutti i numeri che si possono scrivere come frazione a/b con b ≠ 0. Si visualizzano bene come parti di un intero.", "Rational numbers (ℚ) are all numbers that can be written as a fraction a/b with b ≠ 0. They are easy to visualise as parts of a whole."]],
-      "techniqueUnlock": {"id": "fraction-slash", "name": ["Stile dei Numeri · Quarta Tecnica: Fendente della Frazione", "Number Form · Fourth Technique: Fraction Slash"], "description": ["Riscrivi qualsiasi numero razionale come frazione pulita e visualizzala.", "Rewrite any rational number as a clean fraction and visualise it."], "xpReward": 25}
+            "independentPractice": [{"id":"ip21","title":["Prova da solo","Try alone"],"instructions":["Scegli.","Choose."],"questions":[{"q":["Razionale?","Rational?"],"a":[["3/7","3/7"],["√5","√5"],["π","π"],["√8","√8"]],"why":["Frazione.","Fraction."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["Simbolo razionali?","Rationals symbol?"], "a": [["ℚ","ℚ"],["ℕ","ℕ"],["ℤ","ℤ"],["ℝ","ℝ"]], "why": ["ℚ.","ℚ."]}]},
+"techniqueUnlock": {"id": "fraction-slash", "name": ["Stile dei Numeri · Quarta Tecnica: Fendente della Frazione", "Number Form · Fourth Technique: Fraction Slash"], "description": ["Riscrivi qualsiasi numero razionale come frazione pulita e visualizzala.", "Rewrite any rational number as a clean fraction and visualise it."], "xpReward": 25}
     },
 "demon": ["Fraction Imp", "Folletto delle Frazioni"],
     "tech": ["Number Form · Fourth Technique: Fraction Slash", "Stile dei Numeri · Quarta Tecnica: Fendente della Frazione"],
-    "scenes": [
-      {
-        "who": "s",
-        "text": ["<p>A rational number can always be written as a fraction a/b with b ≠ 0.</p>", "<p>Un numero razionale si può sempre scrivere come frazione a/b con b ≠ 0.</p>"]
-      },
-      {
-        "who": "y",
-        "text": ["<p>The set of all rational numbers is called ℚ.</p>", "<p>L'insieme di tutti i numeri razionali si chiama ℚ.</p>"]
-      }
+        "scenes": [
+      {"who": "s", "text": ["<p>Un numero razionale si può scrivere come frazione <b>a/b</b> con b ≠ 0.</p><p>Immagina una pizza divisa in b fette uguali: a/b significa prendere a fette.</p>", "<p>A rational number can be written as a fraction <b>a/b</b> with b ≠ 0.</p><p>Imagine a pizza divided into b equal slices: a/b means taking a slices.</p>"]},
+      {"who": "y", "text": ["<p>0,5 = 1/2, quindi è razionale. √2 non si può scrivere come frazione, quindi non lo è.</p>", "<p>0.5 = 1/2, so it is rational. √2 cannot be written as a fraction, so it is not.</p>"]},
+      {"who": "d", "text": ["<p>L’insieme di tutti i numeri razionali si chiama <b>ℚ</b>.</p>", "<p>The set of all rational numbers is called <b>ℚ</b>.</p>"]}
     ],
-    "quiz": [
+"quiz": [
       {
         "q": ["Is 0.5 a rational number?", "0,5 è un numero razionale?"],
         "a": [["Yes", "Sì"], ["No", "No"], ["Only sometimes", "Solo a volte"], ["Never", "Mai"]],
@@ -20104,21 +20088,18 @@ export const MISSIONS: Mission[] = [
       "guidedPractice": [{"id": "gp-set", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Decidi.", "Decide."], "questions": [{"q": ["4 appartiene a {2, 4, 6}?", "Does 4 belong to {2, 4, 6}?"], "a": [["Sì", "Yes"], ["No", "No"], ["Solo se è pari", "Only if even"], ["Solo se è dispari", "Only if odd"]], "why": ["4 è elencato nell’insieme.", "4 is listed in the set."]}]}],
       "knowledgeCheck": [{"q": ["Il simbolo “appartiene a” è…", "The symbol for “belongs to” is…"], "a": [["∈", "∈"], ["∉", "∉"], ["⊂", "⊂"], ["∪", "∪"]], "why": ["∈ indica l’appartenenza.", "∈ indicates membership."]}],
       "summary": [["Un insieme è una collezione di elementi distinti. Si può descrivere per elencazione o per proprietà. Usiamo ∈ e ∉ per dire se un elemento sta dentro o fuori.", "A set is a collection of distinct elements. It can be described by listing or by a property. We use ∈ and ∉ to say if an element is inside or outside."]],
-      "techniqueUnlock": {"id": "set-slash", "name": ["Stile della Logica · Prima Tecnica: Fendente dell’Insieme", "Logic Form · First Technique: Set Slash"], "description": ["Elenca o descrivi chiaramente gli elementi e taglia il problema.", "Clearly list or describe the elements and cut through the problem."], "xpReward": 25}
+            "independentPractice": [{"id":"ip31","title":["Prova da solo","Try alone"],"instructions":["Decidi.","Decide."],"questions":[{"q":["5 ∈ {1,3,5}?","5 ∈ {1,3,5}?"],"a":[["Sì","Yes"],["No","No"],["Solo dispari","Only odd"],["Solo primo","Only prime"]],"why":["Elencato.","Listed."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["Simbolo appartenenza?","Membership symbol?"], "a": [["∈","∈"],["∉","∉"],["⊂","⊂"],["∪","∪"]], "why": ["∈.","∈."]}]},
+"techniqueUnlock": {"id": "set-slash", "name": ["Stile della Logica · Prima Tecnica: Fendente dell’Insieme", "Logic Form · First Technique: Set Slash"], "description": ["Elenca o descrivi chiaramente gli elementi e taglia il problema.", "Clearly list or describe the elements and cut through the problem."], "xpReward": 25}
     },
 "demon": ["Empty-Set Imp", "Folletto dell'Insieme Vuoto"],
     "tech": ["Logic Form · First Technique: Set Slash", "Stile della Logica · Prima Tecnica: Fendente dell'Insieme"],
-    "scenes": [
-      {
-        "who": "s",
-        "text": ["<p>A set is a well-defined collection of distinct objects called elements.</p>", "<p>Un insieme è una collezione ben definita di oggetti distinti chiamati elementi.</p>"]
-      },
-      {
-        "who": "y",
-        "text": ["<p>We write 3 ∈ {1, 3, 5} to say that 3 belongs to the set.</p>", "<p>Scriviamo 3 ∈ {1, 3, 5} per dire che 3 appartiene all'insieme.</p>"]
-      }
+        "scenes": [
+      {"who": "s", "text": ["<p>Un insieme è una collezione di oggetti distinti chiamati elementi.</p><p>Disegnalo come un cerchio e metti gli elementi dentro.</p>", "<p>A set is a collection of distinct objects called elements.</p><p>Draw it as a circle and put the elements inside.</p>"]},
+      {"who": "y", "text": ["<p>Scriviamo <b>a ∈ A</b> se a sta dentro, <b>a ∉ A</b> se sta fuori.</p>", "<p>We write <b>a ∈ A</b> if a is inside, <b>a ∉ A</b> if it is outside.</p>"]},
+      {"who": "d", "text": ["<p>Gli elementi sono sempre distinti: {1, 1, 2} è uguale a {1, 2}.</p>", "<p>Elements are always distinct: {1, 1, 2} is the same as {1, 2}.</p>"]}
     ],
-    "quiz": [
+"quiz": [
       {
         "q": ["Which of these is an empty set?", "Quale di questi è un insieme vuoto?"],
         "a": [["The set of natural numbers less than 0", "L'insieme dei numeri naturali minori di 0"], ["{0}", "{0}"], ["{1, 2}", "{1, 2}"], ["ℕ", "ℕ"]],
@@ -20165,7 +20146,9 @@ export const MISSIONS: Mission[] = [
       "guidedPractice": [{"id": "gp-fracops", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Calcola.", "Calculate."], "questions": [{"q": ["Quanto fa 1/2 × 3/4?", "What is 1/2 × 3/4?"], "a": [["3/8", "3/8"], ["4/6", "4/6"], ["3/6", "3/6"], ["2/3", "2/3"]], "why": ["1×3 / 2×4 = 3/8.", "1×3 / 2×4 = 3/8."]}]}],
       "knowledgeCheck": [{"q": ["Per dividere per una frazione si…", "To divide by a fraction we…"], "a": [["Moltiplica per il suo reciproco", "Multiply by its reciprocal"], ["Somma i denominatori", "Add the denominators"], ["Sottrai i numeratori", "Subtract the numerators"], ["Niente di speciale", "Nothing special"]], "why": ["Dividere per a/b equivale a moltiplicare per b/a.", "Dividing by a/b is the same as multiplying by b/a."]}],
       "summary": [["Moltiplicazione di frazioni: moltiplica in croce. Divisione: moltiplica per il reciproco.", "Fraction multiplication: multiply across. Division: multiply by the reciprocal."]],
-      "techniqueUnlock": {"id": "reciprocal-slash", "name": ["Stile dei Numeri · Quinta Tecnica: Fendente del Reciproco", "Number Form · Fifth Technique: Reciprocal Slash"], "description": ["Trasforma qualsiasi divisione di frazioni in una moltiplicazione per il reciproco.", "Turn any division of fractions into a multiplication by the reciprocal."], "xpReward": 25}
+            "independentPractice": [{"id":"ip22","title":["Prova da solo","Try alone"],"instructions":["Calcola.","Calculate."],"questions":[{"q":["2/3 × 3/4?","2/3 × 3/4?"],"a":[["1/2","1/2"],["6/12","6/12"],["5/7","5/7"],["2/4","2/4"]],"why":["6/12=1/2.","6/12=1/2."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["1/2 ÷ 1/4?","1/2 ÷ 1/4?"], "a": [["2","2"],["1/8","1/8"],["1/2","1/2"],["4","4"]], "why": ["×4.","×4."]}]},
+"techniqueUnlock": {"id": "reciprocal-slash", "name": ["Stile dei Numeri · Quinta Tecnica: Fendente del Reciproco", "Number Form · Fifth Technique: Reciprocal Slash"], "description": ["Trasforma qualsiasi divisione di frazioni in una moltiplicazione per il reciproco.", "Turn any division of fractions into a multiplication by the reciprocal."], "xpReward": 25}
     },
 "demon": ["Denominator Imp", "Folletto del Denominatore"],
     "tech": ["Number Form · Fifth Technique: Reciprocal Slash", "Stile dei Numeri · Quinta Tecnica: Fendente del Reciproco"],
@@ -20208,7 +20191,9 @@ export const MISSIONS: Mission[] = [
       "guidedPractice": [{"id": "gp-real", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Scegli.", "Choose."], "questions": [{"q": ["Quale numero è irrazionale?", "Which number is irrational?"], "a": [["√2", "√2"], ["1/3", "1/3"], ["0,25", "0.25"], ["-7", "-7"]], "why": ["√2 non si può scrivere come frazione.", "√2 cannot be written as a fraction."]}]}],
       "knowledgeCheck": [{"q": ["Ogni numero razionale è anche…", "Every rational number is also…"], "a": [["Reale", "Real"], ["Irrazionale", "Irrational"], ["Naturale", "Natural"], ["Immaginario", "Imaginary"]], "why": ["ℚ ⊂ ℝ.", "ℚ ⊂ ℝ."]}],
       "summary": [["I numeri reali riempiono tutta la retta. I razionali sono quelli che si scrivono come frazione; gli altri sono irrazionali.", "Real numbers fill the entire line. Rationals are those that can be written as a fraction; the others are irrational."]],
-      "techniqueUnlock": {"id": "number-line-slash", "name": ["Stile dei Numeri · Sesta Tecnica: Fendente della Retta", "Number Form · Sixth Technique: Number-Line Slash"], "description": ["Posiziona qualsiasi numero reale sulla retta e confrontalo.", "Place any real number on the line and compare it."], "xpReward": 25}
+            "independentPractice": [{"id":"ip23","title":["Prova da solo","Try alone"],"instructions":["Scegli.","Choose."],"questions":[{"q":["Irrazionale?","Irrational?"],"a":[["√3","√3"],["0,75","0.75"],["2/5","2/5"],["-4","-4"]],"why":["√3.","√3."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["π è reale?","Is π real?"], "a": [["Sì","Yes"],["No","No"],["A volte","Sometimes"],["Immaginario","Imaginary"]], "why": ["Sì.","Yes."]}]},
+"techniqueUnlock": {"id": "number-line-slash", "name": ["Stile dei Numeri · Sesta Tecnica: Fendente della Retta", "Number Form · Sixth Technique: Number-Line Slash"], "description": ["Posiziona qualsiasi numero reale sulla retta e confrontalo.", "Place any real number on the line and compare it."], "xpReward": 25}
     },
 "demon": ["Irrational Imp", "Folletto dell'Irrazionale"],
     "tech": ["Number Form · Sixth Technique: Number-Line Slash", "Stile dei Numeri · Sesta Tecnica: Fendente della Retta"],
@@ -20450,7 +20435,9 @@ export const MISSIONS: Mission[] = [
       "guidedPractice": [{"id": "gp-pow", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Calcola.", "Calculate."], "questions": [{"q": ["Quanto fa 4²?", "What is 4²?"], "a": [["16", "16"], ["8", "8"], ["6", "6"], ["12", "12"]], "why": ["4 × 4 = 16.", "4 × 4 = 16."]}]}],
       "knowledgeCheck": [{"q": ["Quale di questi è primo?", "Which of these is prime?"], "a": [["7", "7"], ["9", "9"], ["1", "1"], ["15", "15"]], "why": ["7 ha solo due divisori: 1 e 7.", "7 has only two divisors: 1 and 7."]}],
       "summary": [["Una potenza è una moltiplicazione ripetuta. Un numero primo ha esattamente due divisori distinti: 1 e se stesso.", "A power is repeated multiplication. A prime number has exactly two distinct divisors: 1 and itself."]],
-      "techniqueUnlock": {"id": "power-slash", "name": ["Stile dei Numeri · Quarta Tecnica: Fendente della Potenza", "Number Form · Fourth Technique: Power Slash"], "description": ["Scomponi i calcoli in potenze e riconosci i primi a colpo d’occhio.", "Break calculations into powers and recognise primes at a glance."], "xpReward": 25}
+            "independentPractice": [{"id":"ip4","title":["Prova da solo","Try alone"],"instructions":["Calcola.","Calculate."],"questions":[{"q":["5²?","5²?"],"a":[["25","25"],["10","10"],["7","7"],["15","15"]],"why":["5×5.","5×5."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["3²?","3²?"], "a": [["9","9"],["6","6"],["5","5"],["8","8"]], "why": ["9.","9."]}]},
+"techniqueUnlock": {"id": "power-slash", "name": ["Stile dei Numeri · Quarta Tecnica: Fendente della Potenza", "Number Form · Fourth Technique: Power Slash"], "description": ["Scomponi i calcoli in potenze e riconosci i primi a colpo d’occhio.", "Break calculations into powers and recognise primes at a glance."], "xpReward": 25}
     },
 "demon": ["Composite Imp", "Folletto del Composto"],
     "tech": ["Number Form · Fourth Technique: Power Slash", "Stile dei Numeri · Quarta Tecnica: Fendente della Potenza"],
@@ -20494,7 +20481,9 @@ export const MISSIONS: Mission[] = [
       "guidedPractice": [{"id": "gp-rev1", "title": ["Ripasso guidato", "Guided review"], "instructions": ["Calcola con attenzione.", "Calculate carefully."], "questions": [{"q": ["Quanto fa 2² × 3 + 1?", "What is 2² × 3 + 1?"], "a": [["13", "13"], ["10", "10"], ["7", "7"], ["16", "16"]], "why": ["4 × 3 + 1 = 13.", "4 × 3 + 1 = 13."]}]}],
       "knowledgeCheck": [{"q": ["Cosa viene prima in 6 + 2³?", "What comes first in 6 + 2³?"], "a": [["La potenza", "The power"], ["L’addizione", "The addition"], ["Indifferente", "Either"], ["La sottrazione", "The subtraction"]], "why": ["Le potenze si fanno prima dell’addizione.", "Powers are done before addition."]}],
       "summary": [["Capitolo 1: ℕ, operazioni, proprietà, potenze e primi. Usa sempre l’ordine corretto e le proprietà per semplificare.", "Chapter 1: ℕ, operations, properties, powers and primes. Always use the correct order and the properties to simplify."]],
-      "techniqueUnlock": {"id": "review-slash", "name": ["Stile dei Numeri · Quinta Tecnica: Fendente del Ripasso", "Number Form · Fifth Technique: Review Slash"], "description": ["Combina tutte le tecniche del Capitolo 1 in una sequenza pulita.", "Combine all Chapter 1 techniques into one clean sequence."], "xpReward": 30}
+            "independentPractice": [{"id":"ip5","title":["Prova da solo","Try alone"],"instructions":["Calcola.","Calculate."],"questions":[{"q":["2³ + 3×2?","2³ + 3×2?"],"a":[["14","14"],["16","16"],["10","10"],["20","20"]],"why":["8+6.","8+6."]}]}],
+      "masteryAssessment": {"title": ["Verifica Cap.1", "Ch.1 check"], "instructions": ["80%.", "80%."], "passingScore": 80, "questions": [{"q": ["4² − 2×3?","4² − 2×3?"], "a": [["10","10"],["16","16"],["4","4"],["14","14"]], "why": ["16-6.","16-6."]}]},
+"techniqueUnlock": {"id": "review-slash", "name": ["Stile dei Numeri · Quinta Tecnica: Fendente del Ripasso", "Number Form · Fifth Technique: Review Slash"], "description": ["Combina tutte le tecniche del Capitolo 1 in una sequenza pulita.", "Combine all Chapter 1 techniques into one clean sequence."], "xpReward": 30}
     },
 "demon": ["Review Imp", "Folletto del Ripasso"],
     "tech": ["Number Form · Fifth Technique: Review Slash", "Stile dei Numeri · Quinta Tecnica: Fendente del Ripasso"],
@@ -20538,7 +20527,9 @@ export const MISSIONS: Mission[] = [
       "guidedPractice": [{"id": "gp-comp", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Scegli il più grande.", "Choose the larger one."], "questions": [{"q": ["Qual è più grande: 3/4 o 2/3?", "Which is larger: 3/4 or 2/3?"], "a": [["3/4", "3/4"], ["2/3", "2/3"], ["Sono uguali", "They are equal"], ["Non si può dire", "Cannot tell"]], "why": ["0,75 > 0,667.", "0.75 > 0.667."]}]}],
       "knowledgeCheck": [{"q": ["Sulla retta numerica i numeri crescono…", "On the number line numbers increase…"], "a": [["Verso destra", "To the right"], ["Verso sinistra", "To the left"], ["Verso l’alto", "Upwards"], ["A caso", "Randomly"]], "why": ["La retta è ordinata da sinistra a destra.", "The line is ordered from left to right."]}],
       "summary": [["Per confrontare razionali: stesso denominatore o decimali. Sulla retta il più grande sta più a destra.", "To compare rationals: same denominator or decimals. On the line the larger number is further right."]],
-      "techniqueUnlock": {"id": "compare-slash", "name": ["Stile dei Numeri · Settima Tecnica: Fendente del Confronto", "Number Form · Seventh Technique: Compare Slash"], "description": ["Posiziona e confronta due razionali sulla retta in un colpo solo.", "Place and compare two rationals on the line in one go."], "xpReward": 25}
+            "independentPractice": [{"id":"ip24","title":["Prova da solo","Try alone"],"instructions":["Confronta.","Compare."],"questions":[{"q":["Più piccolo: 1/4 o 1/5?","Smaller: 1/4 or 1/5?"],"a":[["1/5","1/5"],["1/4","1/4"],["Uguali","Equal"],["Dipende","Depends"]],"why":["0.2<0.25.","0.2<0.25."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["Più grande: 2/3 o 3/5?","Larger: 2/3 or 3/5?"], "a": [["2/3","2/3"],["3/5","3/5"],["Uguali","Equal"],["?","?"]], "why": ["0.667>0.6.","0.667>0.6."]}]},
+"techniqueUnlock": {"id": "compare-slash", "name": ["Stile dei Numeri · Settima Tecnica: Fendente del Confronto", "Number Form · Seventh Technique: Compare Slash"], "description": ["Posiziona e confronta due razionali sulla retta in un colpo solo.", "Place and compare two rationals on the line in one go."], "xpReward": 25}
     },
 "demon": ["Order Imp", "Folletto dell'Ordine"],
     "tech": ["Number Form · Seventh Technique: Compare Slash", "Stile dei Numeri · Settima Tecnica: Fendente del Confronto"],
@@ -20581,7 +20572,9 @@ export const MISSIONS: Mission[] = [
       "guidedPractice": [{"id": "gp-perc", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Calcola.", "Calculate."], "questions": [{"q": ["Quanto è il 10% di 80?", "What is 10% of 80?"], "a": [["8", "8"], ["10", "10"], ["18", "18"], ["0,8", "0.8"]], "why": ["0,1 × 80 = 8.", "0.1 × 80 = 8."]}]}],
       "knowledgeCheck": [{"q": ["50% è uguale a…", "50% is equal to…"], "a": [["1/2", "1/2"], ["1/5", "1/5"], ["2/5", "2/5"], ["1/50", "1/50"]], "why": ["50/100 = 1/2.", "50/100 = 1/2."]}],
       "summary": [["Le percentuali sono frazioni su 100. Converti in decimale e moltiplica per trovare una percentuale di una quantità.", "Percentages are fractions out of 100. Convert to a decimal and multiply to find a percentage of a quantity."]],
-      "techniqueUnlock": {"id": "percent-slash", "name": ["Stile dei Numeri · Ottava Tecnica: Fendente della Percentuale", "Number Form · Eighth Technique: Percent Slash"], "description": ["Trasforma qualsiasi percentuale in decimale e taglia il calcolo.", "Turn any percentage into a decimal and cut through the calculation."], "xpReward": 25}
+            "independentPractice": [{"id":"ip25","title":["Prova da solo","Try alone"],"instructions":["Calcola.","Calculate."],"questions":[{"q":["20% di 50?","20% of 50?"],"a":[["10","10"],["20","20"],["5","5"],["25","25"]],"why":["0.2×50.","0.2×50."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["25% di 80?","25% of 80?"], "a": [["20","20"],["25","25"],["16","16"],["40","40"]], "why": ["0.25×80.","0.25×80."]}]},
+"techniqueUnlock": {"id": "percent-slash", "name": ["Stile dei Numeri · Ottava Tecnica: Fendente della Percentuale", "Number Form · Eighth Technique: Percent Slash"], "description": ["Trasforma qualsiasi percentuale in decimale e taglia il calcolo.", "Turn any percentage into a decimal and cut through the calculation."], "xpReward": 25}
     },
 "demon": ["Percent Imp", "Folletto della Percentuale"],
     "tech": ["Number Form · Eighth Technique: Percent Slash", "Stile dei Numeri · Ottava Tecnica: Fendente della Percentuale"],
@@ -20624,7 +20617,9 @@ export const MISSIONS: Mission[] = [
       "guidedPractice": [{"id": "gp-sub", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Decidi.", "Decide."], "questions": [{"q": ["{1} è sottoinsieme di {1,2,3}?", "Is {1} a subset of {1,2,3}?"], "a": [["Sì", "Yes"], ["No", "No"], ["Solo se 1 è primo", "Only if 1 is prime"], ["Solo l’insieme vuoto", "Only the empty set"]], "why": ["Ogni elemento di {1} sta in {1,2,3}.", "Every element of {1} is in {1,2,3}."]}]}],
       "knowledgeCheck": [{"q": ["Quanti sottoinsiemi ha un insieme con 2 elementi?", "How many subsets does a set with 2 elements have?"], "a": [["4", "4"], ["2", "2"], ["3", "3"], ["8", "8"]], "why": ["2² = 4.", "2² = 4."]}],
       "summary": [["A ⊆ B se tutti gli elementi di A stanno in B. Un insieme con n elementi ha 2ⁿ sottoinsiemi.", "A ⊆ B if all elements of A are in B. A set with n elements has 2ⁿ subsets."]],
-      "techniqueUnlock": {"id": "subset-slash", "name": ["Stile della Logica · Terza Tecnica: Fendente del Sottoinsieme", "Logic Form · Third Technique: Subset Slash"], "description": ["Decidi le relazioni di sottoinsieme e conta l’insieme delle parti.", "Decide subset relations and count the power set."], "xpReward": 25}
+            "independentPractice": [{"id":"ip33","title":["Prova da solo","Try alone"],"instructions":["Conta.","Count."],"questions":[{"q":["Sottoinsiemi di {a,b}?","Subsets of {a,b}?"],"a":[["4","4"],["2","2"],["3","3"],["8","8"]],"why":["2²=4.","2²=4."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["Sottoinsiemi di 3 elementi?","Subsets of 3 elements?"], "a": [["8","8"],["6","6"],["3","3"],["9","9"]], "why": ["2³=8.","2³=8."]}]},
+"techniqueUnlock": {"id": "subset-slash", "name": ["Stile della Logica · Terza Tecnica: Fendente del Sottoinsieme", "Logic Form · Third Technique: Subset Slash"], "description": ["Decidi le relazioni di sottoinsieme e conta l’insieme delle parti.", "Decide subset relations and count the power set."], "xpReward": 25}
     },
 "demon": ["Subset Imp", "Folletto del Sottoinsieme"],
     "tech": ["Logic Form · Third Technique: Subset Slash", "Stile della Logica · Terza Tecnica: Fendente del Sottoinsieme"],
@@ -20668,12 +20663,257 @@ export const MISSIONS: Mission[] = [
       "guidedPractice": [{"id": "gp-venn", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Interpreta.", "Interpret."], "questions": [{"q": ["La regione sovrapposta rappresenta…", "The overlapping region represents…"], "a": [["L’intersezione", "The intersection"], ["L’unione", "The union"], ["L’insieme vuoto", "The empty set"], ["L’insieme delle parti", "The power set"]], "why": ["La sovrapposizione contiene gli elementi comuni.", "The overlap contains the common elements."]}]}],
       "knowledgeCheck": [{"q": ["Quale regione mostra gli elementi in A ma non in B?", "Which region shows elements in A but not in B?"], "a": [["La parte di A fuori dalla sovrapposizione", "The part of A outside the overlap"], ["La sovrapposizione", "The overlap"], ["La parte di B fuori dalla sovrapposizione", "The part of B outside the overlap"], ["Fuori da entrambi i cerchi", "Outside both circles"]], "why": ["Quella regione è A − B.", "That region is A − B."]}],
       "summary": [["I diagrammi di Venn rendono visibili unione, intersezione e differenza. La sovrapposizione è l’intersezione.", "Venn diagrams make union, intersection and difference visible. The overlap is the intersection."]],
-      "techniqueUnlock": {"id": "venn-slash", "name": ["Stile della Logica · Quarta Tecnica: Fendente di Venn", "Logic Form · Fourth Technique: Venn Slash"], "description": ["Visualizza qualsiasi problema a due insiemi con un diagramma pulito.", "Visualise any two-set problem with a clean diagram."], "xpReward": 25}
+            "independentPractice": [{"id":"ip34","title":["Prova da solo","Try alone"],"instructions":["Interpreta.","Interpret."],"questions":[{"q":["Parte di A fuori sovrapposizione?","Part of A outside overlap?"],"a":[["A−B","A−B"],["A∩B","A∩B"],["A∪B","A∪B"],["B−A","B−A"]],"why":["Differenza.","Difference."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["Sovrapposizione = ?","Overlap = ?"], "a": [["Intersezione","Intersection"],["Unione","Union"],["Differenza","Difference"],["Vuoto","Empty"]], "why": ["∩.","∩."]}]},
+"techniqueUnlock": {"id": "venn-slash", "name": ["Stile della Logica · Quarta Tecnica: Fendente di Venn", "Logic Form · Fourth Technique: Venn Slash"], "description": ["Visualizza qualsiasi problema a due insiemi con un diagramma pulito.", "Visualise any two-set problem with a clean diagram."], "xpReward": 25}
     },
 "demon": ["Overlap Imp", "Folletto della Sovrapposizione"],
     "tech": ["Logic Form · Fourth Technique: Venn Slash", "Stile della Logica · Quarta Tecnica: Fendente di Venn"],
     "scenes": [{"who": "s", "text": ["<p>A Venn diagram uses circles to show how sets overlap.</p>", "<p>Un diagramma di Venn usa cerchi per mostrare come gli insiemi si sovrappongono.</p>"]}, {"who": "y", "text": ["<p>The overlapping region is the intersection.</p>", "<p>La regione sovrapposta è l'intersezione.</p>"]}, {"who": "d", "text": ["<p>Elements outside both circles belong to neither set.</p>", "<p>Gli elementi fuori da entrambi i cerchi non appartengono a nessuno dei due insiemi.</p>"]}],
     "quiz": [{"q": ["What does the overlap in a Venn diagram represent?", "Cosa rappresenta la sovrapposizione in un diagramma di Venn?"], "a": [["Intersection", "Intersezione"], ["Union", "Unione"], ["Difference", "Differenza"], ["Empty set", "Insieme vuoto"]], "why": ["The overlap contains elements common to both sets.", "La sovrapposizione contiene gli elementi comuni a entrambi gli insiemi."]}]
+  },
+  {
+    "id": "m1m6",
+    "arc": 21,
+    "sec": "1.6",
+    "pages": "41–52",
+    "hue": 70,
+    "horns": 2,
+    "eyes": 1,
+    "title": ["Integer Numbers", "Numeri interi"],
+    "topic": ["Positive and negative integers, the set ℤ, and the number line", "Numeri interi positivi e negativi, l’insieme ℤ e la retta numerica"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Conoscere i numeri naturali.", "Know natural numbers."]],
+      "objectives": [{"id": "integers", "description": ["Riconoscere i numeri interi e posizionarli sulla retta.", "Recognise integers and place them on the line."]}],
+      "concepts": [{"id": "integers-visual", "title": ["Numeri interi", "Integers"], "explanation": ["I numeri interi sono … −3, −2, −1, 0, 1, 2, 3 … L’insieme si chiama ℤ. Si rappresentano su una retta completa, non solo una semiretta.", "Integers are … −3, −2, −1, 0, 1, 2, 3 … The set is called ℤ. They are represented on a full line, not only a half-line."], "example": ["−2 sta a sinistra dello 0. Il precedente di −3 è −4.", "−2 is left of 0. The predecessor of −3 is −4."], "workedExample": {"scenario": ["Posiziona −2, 0, 3 sulla retta.", "Place −2, 0, 3 on the line."], "steps": [["1. Disegna la retta con freccia a destra.", "1. Draw the line with arrow to the right."], ["2. Segna lo 0 al centro.", "2. Mark 0 in the centre."], ["3. −2 a sinistra, 3 a destra.", "3. −2 on the left, 3 on the right."]], "answer": ["−2 < 0 < 3.", "−2 < 0 < 3."]}, "misconceptions": [{"belief": ["I numeri negativi sono più grandi dei positivi.", "Negative numbers are larger than positive ones."], "correction": ["No. Sulla retta i negativi stanno a sinistra dello 0, quindi sono più piccoli.", "No. On the line negatives are left of 0, so they are smaller."]}]}],
+      "guidedPractice": [{"id": "gp-int", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Scegli.", "Choose."], "questions": [{"q": ["Qual è più grande: −5 o −2?", "Which is larger: −5 or −2?"], "a": [["−2", "−2"], ["−5", "−5"], ["Uguali", "Equal"], ["Dipende", "Depends"]], "why": ["−2 sta più a destra.", "−2 is further right."]}]}],
+      "independentPractice": [{"id": "ip-int", "title": ["Prova da solo", "Try alone"], "instructions": ["Ordina.", "Order."], "questions": [{"q": ["Ordina: 1, −3, 0, −1.", "Order: 1, −3, 0, −1."], "a": [["−3, −1, 0, 1", "−3, −1, 0, 1"], ["1, 0, −1, −3", "1, 0, −1, −3"], ["0, −1, 1, −3", "0, −1, 1, −3"], ["−1, −3, 0, 1", "−1, −3, 0, 1"]], "why": ["Da sinistra a destra sulla retta.", "Left to right on the line."]}]}],
+      "knowledgeCheck": [{"q": ["Il simbolo degli interi è…", "The symbol for integers is…"], "a": [["ℤ", "ℤ"], ["ℕ", "ℕ"], ["ℚ", "ℚ"], ["ℝ", "ℝ"]], "why": ["ℤ.", "ℤ."]}],
+      "summary": [["ℤ = {…, −2, −1, 0, 1, 2, …}. Si rappresenta sulla retta completa. I negativi stanno a sinistra dello 0.", "ℤ = {…, −2, −1, 0, 1, 2, …}. It is represented on the full line. Negatives are left of 0."]],
+      "masteryAssessment": {"title": ["Verifica di padronanza", "Mastery check"], "instructions": ["Almeno il 75%.", "At least 75%."], "passingScore": 75, "questions": [{"q": ["Qual è più piccolo: −4 o −1?", "Which is smaller: −4 or −1?"], "a": [["−4", "−4"], ["−1", "−1"], ["Uguali", "Equal"], ["Dipende", "Depends"]], "why": ["−4 sta più a sinistra.", "−4 is further left."]}]},
+      "techniqueUnlock": {"id": "integer-slash", "name": ["Stile dei Numeri · Sesta Tecnica: Fendente dell’Intero", "Number Form · Sixth Technique: Integer Slash"], "description": ["Posiziona qualsiasi intero sulla retta e confrontalo.", "Place any integer on the line and compare it."], "xpReward": 25}
+    },
+    "demon": ["Negative Imp", "Folletto del Negativo"],
+    "tech": ["Stile dei Numeri · Sesta Tecnica: Fendente dell’Intero", "Number Form · Sixth Technique: Integer Slash"],
+    "scenes": [{"who": "s", "text": ["<p>I numeri interi comprendono anche i negativi. L’insieme si chiama ℤ.</p>", "<p>Integers also include the negatives. The set is called ℤ.</p>"]}, {"who": "y", "text": ["<p>Sulla retta i numeri crescono da sinistra a destra. −5 < −2 < 0 < 3.</p>", "<p>On the line numbers increase from left to right. −5 < −2 < 0 < 3.</p>"]}],
+    "quiz": [{"q": ["Qual è più grande: −3 o 1?", "Which is larger: −3 or 1?"], "a": [["1", "1"], ["−3", "−3"], ["Uguali", "Equal"], ["Dipende", "Depends"]], "why": ["1 sta a destra di −3.", "1 is right of −3."]}]
+  },
+  {
+    "id": "m2m6",
+    "arc": 22,
+    "sec": "2.6",
+    "pages": "135–146",
+    "hue": 205,
+    "horns": 2,
+    "eyes": 2,
+    "title": ["Proportions", "Proporzioni"],
+    "topic": ["What a proportion is and the fundamental property", "Che cos’è una proporzione e la proprietà fondamentale"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Conoscere le frazioni e le percentuali.", "Know fractions and percentages."]],
+      "objectives": [{"id": "proportions", "description": ["Riconoscere una proporzione e usare la proprietà fondamentale.", "Recognise a proportion and use the fundamental property."]}],
+      "concepts": [{"id": "prop-concept", "title": ["Proporzioni", "Proportions"], "explanation": ["Una proporzione è un’uguaglianza di due rapporti: a:b = c:d. La proprietà fondamentale dice che il prodotto dei medi è uguale al prodotto degli estremi: a×d = b×c.", "A proportion is an equality of two ratios: a:b = c:d. The fundamental property says the product of the means equals the product of the extremes: a×d = b×c."], "example": ["2:4 = 3:6 perché 2×6 = 4×3 = 12.", "2:4 = 3:6 because 2×6 = 4×3 = 12."], "workedExample": {"scenario": ["Verifica se 3:5 = 6:10 è una proporzione.", "Check whether 3:5 = 6:10 is a proportion."], "steps": [["1. Prodotto degli estremi: 3 × 10 = 30.", "1. Product of extremes: 3 × 10 = 30."], ["2. Prodotto dei medi: 5 × 6 = 30.", "2. Product of means: 5 × 6 = 30."], ["3. Sono uguali, quindi è una proporzione.", "3. They are equal, so it is a proportion."]], "answer": ["Sì, 3:5 = 6:10.", "Yes, 3:5 = 6:10."]}}],
+      "guidedPractice": [{"id": "gp-prop", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Verifica.", "Check."], "questions": [{"q": ["2:3 = 4:6 è una proporzione?", "Is 2:3 = 4:6 a proportion?"], "a": [["Sì", "Yes"], ["No", "No"], ["Solo se pari", "Only if even"], ["Dipende", "Depends"]], "why": ["2×6 = 3×4 = 12.", "2×6 = 3×4 = 12."]}]}],
+      "independentPractice": [{"id": "ip-prop", "title": ["Prova da solo", "Try alone"], "instructions": ["Trova il termine mancante.", "Find the missing term."], "questions": [{"q": ["3:x = 6:8. Quanto vale x?", "3:x = 6:8. What is x?"], "a": [["4", "4"], ["2", "2"], ["5", "5"], ["6", "6"]], "why": ["3×8 = x×6 → 24 = 6x → x = 4.", "3×8 = x×6 → 24 = 6x → x = 4."]}]}],
+      "knowledgeCheck": [{"q": ["In a:b = c:d i medi sono…", "In a:b = c:d the means are…"], "a": [["b e c", "b and c"], ["a e d", "a and d"], ["a e b", "a and b"], ["c e d", "c and d"]], "why": ["I medi sono i due termini centrali.", "The means are the two middle terms."]}],
+      "summary": [["Una proporzione è un’uguaglianza di rapporti. La proprietà fondamentale: prodotto dei medi = prodotto degli estremi.", "A proportion is an equality of ratios. Fundamental property: product of means = product of extremes."]],
+      "masteryAssessment": {"title": ["Verifica di padronanza", "Mastery check"], "instructions": ["Almeno il 75%.", "At least 75%."], "passingScore": 75, "questions": [{"q": ["4:6 = 2:3?", "4:6 = 2:3?"], "a": [["Sì", "Yes"], ["No", "No"], ["Solo se interi", "Only if integers"], ["Dipende", "Depends"]], "why": ["4×3 = 6×2 = 12.", "4×3 = 6×2 = 12."]}]},
+      "techniqueUnlock": {"id": "proportion-slash", "name": ["Stile dei Numeri · Nona Tecnica: Fendente della Proporzione", "Number Form · Ninth Technique: Proportion Slash"], "description": ["Verifica o completa qualsiasi proporzione con la proprietà fondamentale.", "Check or complete any proportion with the fundamental property."], "xpReward": 25}
+    },
+    "demon": ["Ratio Imp", "Folletto del Rapporto"],
+    "tech": ["Stile dei Numeri · Nona Tecnica: Fendente della Proporzione", "Number Form · Ninth Technique: Proportion Slash"],
+    "scenes": [{"who": "s", "text": ["<p>Una proporzione è un’uguaglianza tra due rapporti: a:b = c:d.</p>", "<p>A proportion is an equality of two ratios: a:b = c:d.</p>"]}, {"who": "y", "text": ["<p>La proprietà fondamentale dice che a × d = b × c.</p>", "<p>The fundamental property says that a × d = b × c.</p>"]}],
+    "quiz": [{"q": ["2:4 = 5:10 è una proporzione?", "Is 2:4 = 5:10 a proportion?"], "a": [["Sì", "Yes"], ["No", "No"], ["Solo a volte", "Only sometimes"], ["Mai", "Never"]], "why": ["2×10 = 4×5 = 20.", "2×10 = 4×5 = 20."]}]
+  },
+  {
+    "id": "m3m5",
+    "arc": 23,
+    "sec": "3.5",
+    "pages": "195–210",
+    "hue": 290,
+    "horns": 2,
+    "eyes": 1,
+    "title": ["Basic Logic", "Logica di base"],
+    "topic": ["Propositions, negation, and, or", "Proposizioni, negazione, e, o"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Conoscere gli insiemi e i diagrammi di Venn.", "Know sets and Venn diagrams."]],
+      "objectives": [{"id": "logic", "description": ["Riconoscere proposizioni vere o false e usare i connettivi non, e, o.", "Recognise true or false propositions and use the connectives not, and, or."]}],
+      "concepts": [{"id": "logic-concept", "title": ["Proposizioni e connettivi", "Propositions and connectives"], "explanation": ["Una proposizione è una frase che è vera o falsa. La negazione ¬p inverte il valore. p ∧ q (e) è vera solo se entrambe sono vere. p ∨ q (o) è vera se almeno una è vera.", "A proposition is a sentence that is true or false. Negation ¬p flips the value. p ∧ q (and) is true only if both are true. p ∨ q (or) is true if at least one is true."], "example": ["“2 è pari” è vera. “2 è dispari” è falsa. “2 è pari e 3 è primo” è vera.", "“2 is even” is true. “2 is odd” is false. “2 is even and 3 is prime” is true."], "workedExample": {"scenario": ["p: “5 > 3” (vera), q: “5 è pari” (falsa). Quanto valgono p ∧ q e p ∨ q?", "p: “5 > 3” (true), q: “5 is even” (false). What are p ∧ q and p ∨ q?"], "steps": [["1. p ∧ q è vera solo se entrambe sono vere → falsa.", "1. p ∧ q is true only if both are true → false."], ["2. p ∨ q è vera se almeno una è vera → vera.", "2. p ∨ q is true if at least one is true → true."]], "answer": ["p ∧ q falsa, p ∨ q vera.", "p ∧ q false, p ∨ q true."]}}],
+      "guidedPractice": [{"id": "gp-logic", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Valuta.", "Evaluate."], "questions": [{"q": ["Se p è vera e q è falsa, p ∧ q è…", "If p is true and q is false, p ∧ q is…"], "a": [["Falsa", "False"], ["Vera", "True"], ["Dipende", "Depends"], ["Né vera né falsa", "Neither"]], "why": ["L’and richiede entrambe vere.", "And requires both true."]}]}],
+      "independentPractice": [{"id": "ip-logic", "title": ["Prova da solo", "Try alone"], "instructions": ["Valuta.", "Evaluate."], "questions": [{"q": ["Se p è falsa, ¬p è…", "If p is false, ¬p is…"], "a": [["Vera", "True"], ["Falsa", "False"], ["Uguale a p", "Same as p"], ["Dipende", "Depends"]], "why": ["La negazione inverte.", "Negation flips."]}]}],
+      "knowledgeCheck": [{"q": ["p ∨ q è vera quando…", "p ∨ q is true when…"], "a": [["Almeno una è vera", "At least one is true"], ["Entrambe sono vere", "Both are true"], ["Entrambe sono false", "Both are false"], ["Nessuna è vera", "None is true"]], "why": ["L’or è vero se almeno una proposizione è vera.", "Or is true if at least one proposition is true."]}],
+      "summary": [["Una proposizione è vera o falsa. ¬ inverte, ∧ richiede entrambe vere, ∨ richiede almeno una vera.", "A proposition is true or false. ¬ flips, ∧ requires both true, ∨ requires at least one true."]],
+      "masteryAssessment": {"title": ["Verifica di padronanza", "Mastery check"], "instructions": ["Almeno il 75%.", "At least 75%."], "passingScore": 75, "questions": [{"q": ["Se p e q sono entrambe vere, p ∧ q è…", "If p and q are both true, p ∧ q is…"], "a": [["Vera", "True"], ["Falsa", "False"], ["Dipende", "Depends"], ["Né vera né falsa", "Neither"]], "why": ["Entrambe vere → and vera.", "Both true → and true."]}]},
+      "techniqueUnlock": {"id": "logic-slash", "name": ["Stile della Logica · Quinta Tecnica: Fendente Logico", "Logic Form · Fifth Technique: Logic Slash"], "description": ["Valuta qualsiasi proposizione composta con non, e, o.", "Evaluate any compound proposition with not, and, or."], "xpReward": 25}
+    },
+    "demon": ["Logic Imp", "Folletto della Logica"],
+    "tech": ["Stile della Logica · Quinta Tecnica: Fendente Logico", "Logic Form · Fifth Technique: Logic Slash"],
+    "scenes": [{"who": "s", "text": ["<p>Una proposizione è una frase che può essere solo vera o falsa.</p>", "<p>A proposition is a sentence that can only be true or false.</p>"]}, {"who": "y", "text": ["<p>“E” (∧) è vero solo se entrambe le parti sono vere. “O” (∨) è vero se almeno una è vera.</p>", "<p>“And” (∧) is true only if both parts are true. “Or” (∨) is true if at least one is true.</p>"]}],
+    "quiz": [{"q": ["La negazione di una proposizione vera è…", "The negation of a true proposition is…"], "a": [["Falsa", "False"], ["Vera", "True"], ["Uguale", "The same"], ["Dipende", "Depends"]], "why": ["La negazione inverte il valore di verità.", "Negation flips the truth value."]}]
+  },
+  {
+    "id": "m1m7",
+    "arc": 21,
+    "sec": "1.7",
+    "pages": "53–64",
+    "hue": 75,
+    "horns": 2,
+    "eyes": 2,
+    "title": ["MCD and mcm", "MCD e mcm"],
+    "topic": ["Greatest common divisor and least common multiple", "Massimo comune divisore e minimo comune multiplo"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Conoscere multipli, divisori e numeri primi.", "Know multiples, divisors and primes."]],
+      "objectives": [{"id": "mcd-mcm", "description": ["Calcolare MCD e mcm di due numeri.", "Calculate GCD and LCM of two numbers."]}],
+      "concepts": [{"id": "mcd-concept", "title": ["MCD e mcm", "GCD and LCM"], "explanation": ["Il MCD è il più grande divisore comune. Il mcm è il più piccolo multiplo comune. Si possono trovare con la scomposizione in fattori primi.", "The GCD is the largest common divisor. The LCM is the smallest common multiple. They can be found with prime factorisation."], "example": ["12 = 2²×3, 18 = 2×3². MCD = 2×3 = 6. mcm = 2²×3² = 36.", "12 = 2²×3, 18 = 2×3². GCD = 2×3 = 6. LCM = 2²×3² = 36."], "workedExample": {"scenario": ["Calcola MCD e mcm di 8 e 12.", "Calculate GCD and LCM of 8 and 12."], "steps": [["1. 8 = 2³, 12 = 2²×3.", "1. 8 = 2³, 12 = 2²×3."], ["2. MCD = 2² = 4.", "2. GCD = 2² = 4."], ["3. mcm = 2³×3 = 24.", "3. LCM = 2³×3 = 24."]], "answer": ["MCD = 4, mcm = 24.", "GCD = 4, LCM = 24."]}}],
+      "guidedPractice": [{"id": "gp-mcd", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Calcola.", "Calculate."], "questions": [{"q": ["MCD di 6 e 9?", "GCD of 6 and 9?"], "a": [["3", "3"], ["6", "6"], ["9", "9"], ["18", "18"]], "why": ["3 è il più grande divisore comune.", "3 is the largest common divisor."]}]}],
+      "independentPractice": [{"id": "ip-mcd", "title": ["Prova da solo", "Try alone"], "instructions": ["Calcola.", "Calculate."], "questions": [{"q": ["mcm di 4 e 6?", "LCM of 4 and 6?"], "a": [["12", "12"], ["24", "24"], ["6", "6"], ["4", "4"]], "why": ["12 è il più piccolo multiplo comune.", "12 is the smallest common multiple."]}]}],
+      "knowledgeCheck": [{"q": ["Il MCD di due numeri primi distinti è…", "The GCD of two distinct primes is…"], "a": [["1", "1"], ["Il loro prodotto", "Their product"], ["Il più piccolo", "The smaller one"], ["0", "0"]], "why": ["Non hanno divisori comuni tranne 1.", "They have no common divisors except 1."]}],
+      "summary": [["MCD = più grande divisore comune. mcm = più piccolo multiplo comune. Si trovano con la scomposizione in primi.", "GCD = largest common divisor. LCM = smallest common multiple. Found with prime factorisation."]],
+      "masteryAssessment": {"title": ["Verifica di padronanza", "Mastery check"], "instructions": ["Almeno il 75%.", "At least 75%."], "passingScore": 75, "questions": [{"q": ["MCD di 15 e 25?", "GCD of 15 and 25?"], "a": [["5", "5"], ["15", "15"], ["25", "25"], ["75", "75"]], "why": ["5.", "5."]}]},
+      "techniqueUnlock": {"id": "mcd-slash", "name": ["Stile dei Numeri · Settima Tecnica: Fendente MCD", "Number Form · Seventh Technique: GCD Slash"], "description": ["Scomponi in primi e trova MCD e mcm al volo.", "Factorise into primes and find GCD and LCM on the fly."], "xpReward": 25}
+    },
+    "demon": ["Divisor Imp", "Folletto del Divisore"],
+    "tech": ["Stile dei Numeri · Settima Tecnica: Fendente MCD", "Number Form · Seventh Technique: GCD Slash"],
+    "scenes": [{"who": "s", "text": ["<p>Il massimo comune divisore (MCD) è il più grande numero che divide entrambi.</p>", "<p>The greatest common divisor (GCD) is the largest number that divides both.</p>"]}, {"who": "y", "text": ["<p>Il minimo comune multiplo (mcm) è il più piccolo numero che è multiplo di entrambi.</p>", "<p>The least common multiple (LCM) is the smallest number that is a multiple of both.</p>"]}],
+    "quiz": [{"q": ["MCD di 8 e 12?", "GCD of 8 and 12?"], "a": [["4", "4"], ["2", "2"], ["8", "8"], ["24", "24"]], "why": ["4 è il più grande divisore comune.", "4 is the largest common divisor."]}]
+  },
+  {
+    "id": "m1m8",
+    "arc": 21,
+    "sec": "1.8",
+    "pages": "65–76",
+    "hue": 80,
+    "horns": 3,
+    "eyes": 1,
+    "title": ["Divisibility Rules", "Regole di divisibilità"],
+    "topic": ["Simple rules to check divisibility by 2, 3, 5, 9, 10", "Regole semplici per verificare la divisibilità per 2, 3, 5, 9, 10"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Conoscere multipli e divisori.", "Know multiples and divisors."]],
+      "objectives": [{"id": "div-rules", "description": ["Usare le regole di divisibilità per 2, 3, 5, 9 e 10.", "Use the divisibility rules for 2, 3, 5, 9 and 10."]}],
+      "concepts": [{"id": "div-rules-concept", "title": ["Regole di divisibilità", "Divisibility rules"], "explanation": ["Un numero è divisibile per 2 se è pari, per 5 se finisce per 0 o 5, per 10 se finisce per 0, per 3 (e 9) se la somma delle cifre è divisibile per 3 (o 9).", "A number is divisible by 2 if even, by 5 if it ends in 0 or 5, by 10 if it ends in 0, by 3 (and 9) if the sum of its digits is divisible by 3 (or 9)."], "example": ["123: 1+2+3=6, divisibile per 3. 45 finisce per 5, divisibile per 5.", "123: 1+2+3=6, divisible by 3. 45 ends in 5, divisible by 5."], "workedExample": {"scenario": ["246 è divisibile per 2 e per 3?", "Is 246 divisible by 2 and by 3?"], "steps": [["1. Finisce per 6 → pari → divisibile per 2.", "1. Ends in 6 → even → divisible by 2."], ["2. 2+4+6=12, 12÷3=4 → divisibile per 3.", "2. 2+4+6=12, 12÷3=4 → divisible by 3."]], "answer": ["Sì per entrambi.", "Yes for both."]}}],
+      "guidedPractice": [{"id": "gp-div", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Decidi.", "Decide."], "questions": [{"q": ["315 è divisibile per 5?", "Is 315 divisible by 5?"], "a": [["Sì", "Yes"], ["No", "No"], ["Solo per 3", "Only by 3"], ["Solo per 2", "Only by 2"]], "why": ["Finisce per 5.", "Ends in 5."]}]}],
+      "independentPractice": [{"id": "ip-div", "title": ["Prova da solo", "Try alone"], "instructions": ["Verifica.", "Check."], "questions": [{"q": ["144 è divisibile per 9?", "Is 144 divisible by 9?"], "a": [["Sì", "Yes"], ["No", "No"], ["Solo per 3", "Only by 3"], ["Solo per 2", "Only by 2"]], "why": ["1+4+4=9, divisibile per 9.", "1+4+4=9, divisible by 9."]}]}],
+      "knowledgeCheck": [{"q": ["Un numero è divisibile per 10 se…", "A number is divisible by 10 if…"], "a": [["Finisce per 0", "It ends in 0"], ["È pari", "It is even"], ["La somma delle cifre è 10", "Digit sum is 10"], ["Finisce per 5", "It ends in 5"]], "why": ["Deve finire per 0.", "It must end in 0."]}],
+      "summary": [["Regole rapide: 2 (pari), 5 (0 o 5), 10 (0), 3 e 9 (somma delle cifre).", "Quick rules: 2 (even), 5 (0 or 5), 10 (0), 3 and 9 (digit sum)."]],
+      "masteryAssessment": {"title": ["Verifica di padronanza", "Mastery check"], "instructions": ["Almeno il 75%.", "At least 75%."], "passingScore": 75, "questions": [{"q": ["126 è divisibile per 3?", "Is 126 divisible by 3?"], "a": [["Sì", "Yes"], ["No", "No"], ["Solo per 2", "Only by 2"], ["Solo per 9", "Only by 9"]], "why": ["1+2+6=9, divisibile per 3.", "1+2+6=9, divisible by 3."]}]},
+      "techniqueUnlock": {"id": "div-slash", "name": ["Stile dei Numeri · Ottava Tecnica: Fendente della Divisibilità", "Number Form · Eighth Technique: Divisibility Slash"], "description": ["Controlla la divisibilità a colpo d’occhio con le regole.", "Check divisibility at a glance with the rules."], "xpReward": 25}
+    },
+    "demon": ["Digit Imp", "Folletto della Cifra"],
+    "tech": ["Stile dei Numeri · Ottava Tecnica: Fendente della Divisibilità", "Number Form · Eighth Technique: Divisibility Slash"],
+    "scenes": [{"who": "s", "text": ["<p>Ci sono regole rapide per sapere se un numero è divisibile per 2, 3, 5, 9 o 10 senza fare la divisione.</p>", "<p>There are quick rules to know if a number is divisible by 2, 3, 5, 9 or 10 without dividing.</p>"]}, {"who": "y", "text": ["<p>Per 3 e 9 si somma le cifre. Per 2, 5 e 10 si guarda l’ultima cifra.</p>", "<p>For 3 and 9 we add the digits. For 2, 5 and 10 we look at the last digit.</p>"]}],
+    "quiz": [{"q": ["Quale numero è divisibile per 9?", "Which number is divisible by 9?"], "a": [["18", "18"], ["14", "14"], ["22", "22"], ["25", "25"]], "why": ["1+8=9.", "1+8=9."]}]
+  },
+  {
+    "id": "m2m7",
+    "arc": 22,
+    "sec": "2.7",
+    "pages": "147–158",
+    "hue": 210,
+    "horns": 2,
+    "eyes": 1,
+    "title": ["Powers with Negative Exponents", "Potenze con esponente negativo"],
+    "topic": ["What a negative exponent means", "Che cosa significa un esponente negativo"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Conoscere le potenze e le frazioni.", "Know powers and fractions."]],
+      "objectives": [{"id": "neg-exp", "description": ["Calcolare potenze con esponente negativo.", "Calculate powers with negative exponents."]}],
+      "concepts": [{"id": "neg-exp-concept", "title": ["Esponente negativo", "Negative exponent"], "explanation": ["a⁻ⁿ = 1 / aⁿ (con a ≠ 0). L’esponente negativo indica il reciproco della potenza positiva.", "a⁻ⁿ = 1 / aⁿ (with a ≠ 0). A negative exponent means the reciprocal of the positive power."], "example": ["2⁻³ = 1 / 2³ = 1/8. 10⁻² = 1/100 = 0,01.", "2⁻³ = 1 / 2³ = 1/8. 10⁻² = 1/100 = 0.01."], "workedExample": {"scenario": ["Calcola 5⁻².", "Calculate 5⁻²."], "steps": [["1. 5⁻² = 1 / 5².", "1. 5⁻² = 1 / 5²."], ["2. 5² = 25.", "2. 5² = 25."], ["3. 1/25.", "3. 1/25."]], "answer": ["1/25", "1/25"]}}],
+      "guidedPractice": [{"id": "gp-neg", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Calcola.", "Calculate."], "questions": [{"q": ["Quanto fa 3⁻¹?", "What is 3⁻¹?"], "a": [["1/3", "1/3"], ["-3", "-3"], ["3", "3"], ["0", "0"]], "why": ["1/3¹ = 1/3.", "1/3¹ = 1/3."]}]}],
+      "independentPractice": [{"id": "ip-neg", "title": ["Prova da solo", "Try alone"], "instructions": ["Calcola.", "Calculate."], "questions": [{"q": ["Quanto fa 10⁻³?", "What is 10⁻³?"], "a": [["0,001", "0.001"], ["-1000", "-1000"], ["1000", "1000"], ["0,1", "0.1"]], "why": ["1/1000 = 0,001.", "1/1000 = 0.001."]}]}],
+      "knowledgeCheck": [{"q": ["a⁻ⁿ è uguale a…", "a⁻ⁿ equals…"], "a": [["1/aⁿ", "1/aⁿ"], ["-aⁿ", "-aⁿ"], ["aⁿ", "aⁿ"], ["0", "0"]], "why": ["È il reciproco della potenza positiva.", "It is the reciprocal of the positive power."]}],
+      "summary": [["Un esponente negativo indica il reciproco: a⁻ⁿ = 1/aⁿ.", "A negative exponent means the reciprocal: a⁻ⁿ = 1/aⁿ."]],
+      "masteryAssessment": {"title": ["Verifica di padronanza", "Mastery check"], "instructions": ["Almeno il 75%.", "At least 75%."], "passingScore": 75, "questions": [{"q": ["2⁻² = ?", "2⁻² = ?"], "a": [["1/4", "1/4"], ["-4", "-4"], ["4", "4"], ["1/2", "1/2"]], "why": ["1/4.", "1/4."]}]},
+      "techniqueUnlock": {"id": "neg-exp-slash", "name": ["Stile dei Numeri · Decima Tecnica: Fendente dell’Esponente", "Number Form · Tenth Technique: Exponent Slash"], "description": ["Trasforma qualsiasi esponente negativo in una frazione.", "Turn any negative exponent into a fraction."], "xpReward": 25}
+    },
+    "demon": ["Exponent Imp", "Folletto dell’Esponente"],
+    "tech": ["Stile dei Numeri · Decima Tecnica: Fendente dell’Esponente", "Number Form · Tenth Technique: Exponent Slash"],
+    "scenes": [{"who": "s", "text": ["<p>Un esponente negativo significa “fai il reciproco della potenza positiva”.</p>", "<p>A negative exponent means “take the reciprocal of the positive power”.</p>"]}, {"who": "y", "text": ["<p>2⁻³ = 1/8. Non è un numero negativo!</p>", "<p>2⁻³ = 1/8. It is not a negative number!</p>"]}],
+    "quiz": [{"q": ["Quanto fa 4⁻¹?", "What is 4⁻¹?"], "a": [["1/4", "1/4"], ["-4", "-4"], ["4", "4"], ["0", "0"]], "why": ["1/4.", "1/4."]}]
+  },
+  {
+    "id": "m2m8",
+    "arc": 22,
+    "sec": "2.8",
+    "pages": "159–170",
+    "hue": 215,
+    "horns": 3,
+    "eyes": 2,
+    "title": ["Approximate Calculation", "Calcolo approssimato"],
+    "topic": ["Rounding and estimating results", "Arrotondamento e stima dei risultati"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Conoscere i decimali.", "Know decimals."]],
+      "objectives": [{"id": "approx", "description": ["Arrotondare numeri e stimare il risultato di un calcolo.", "Round numbers and estimate the result of a calculation."]}],
+      "concepts": [{"id": "approx-concept", "title": ["Arrotondamento", "Rounding"], "explanation": ["Per arrotondare si guarda la cifra successiva: se è 0-4 si lascia, se è 5-9 si aumenta di 1. Stimare significa sostituire i numeri con valori vicini più facili.", "To round we look at the next digit: 0-4 leave it, 5-9 increase by 1. Estimating means replacing numbers with nearby easier values."], "example": ["3,47 arrotondato ai decimi è 3,5. 48 × 21 ≈ 50 × 20 = 1000.", "3.47 rounded to tenths is 3.5. 48 × 21 ≈ 50 × 20 = 1000."], "workedExample": {"scenario": ["Arrotonda 6,38 alle unità e stima 19 × 31.", "Round 6.38 to units and estimate 19 × 31."], "steps": [["1. 6,38 → la cifra dei decimi è 3 < 5 → 6.", "1. 6.38 → tenths digit is 3 < 5 → 6."], ["2. 19 ≈ 20, 31 ≈ 30 → 20 × 30 = 600.", "2. 19 ≈ 20, 31 ≈ 30 → 20 × 30 = 600."]], "answer": ["6 e circa 600.", "6 and about 600."]}}],
+      "guidedPractice": [{"id": "gp-approx", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Arrotonda.", "Round."], "questions": [{"q": ["2,64 arrotondato ai decimi?", "2.64 rounded to tenths?"], "a": [["2,6", "2.6"], ["2,7", "2.7"], ["2,60", "2.60"], ["3", "3"]], "why": ["4 < 5, quindi resta 2,6.", "4 < 5, so it stays 2.6."]}]}],
+      "independentPractice": [{"id": "ip-approx", "title": ["Prova da solo", "Try alone"], "instructions": ["Stima.", "Estimate."], "questions": [{"q": ["Stima 48 + 53.", "Estimate 48 + 53."], "a": [["100", "100"], ["90", "90"], ["110", "110"], ["80", "80"]], "why": ["50 + 50 = 100.", "50 + 50 = 100."]}]}],
+      "knowledgeCheck": [{"q": ["Per arrotondare si guarda…", "To round we look at…"], "a": [["La cifra successiva", "The next digit"], ["Solo la prima cifra", "Only the first digit"], ["Il numero di cifre", "The number of digits"], ["Niente", "Nothing"]], "why": ["Si guarda la cifra immediatamente successiva.", "We look at the immediately following digit."]}],
+      "summary": [["Arrotondare: 0-4 lascia, 5-9 aumenta. Stimare: sostituisci con numeri vicini facili.", "Rounding: 0-4 leave, 5-9 increase. Estimating: replace with nearby easy numbers."]],
+      "masteryAssessment": {"title": ["Verifica di padronanza", "Mastery check"], "instructions": ["Almeno il 75%.", "At least 75%."], "passingScore": 75, "questions": [{"q": ["7,85 arrotondato alle unità?", "7.85 rounded to units?"], "a": [["8", "8"], ["7", "7"], ["7,9", "7.9"], ["7,8", "7.8"]], "why": ["8 ≥ 5 → 8.", "8 ≥ 5 → 8."]}]},
+      "techniqueUnlock": {"id": "approx-slash", "name": ["Stile dei Numeri · Undicesima Tecnica: Fendente della Stima", "Number Form · Eleventh Technique: Estimate Slash"], "description": ["Arrotonda e stima qualsiasi calcolo in pochi secondi.", "Round and estimate any calculation in seconds."], "xpReward": 25}
+    },
+    "demon": ["Rounding Imp", "Folletto dell’Arrotondamento"],
+    "tech": ["Stile dei Numeri · Undicesima Tecnica: Fendente della Stima", "Number Form · Eleventh Technique: Estimate Slash"],
+    "scenes": [{"who": "s", "text": ["<p>Arrotondare significa sostituire un numero con uno vicino più semplice.</p>", "<p>Rounding means replacing a number with a nearby simpler one.</p>"]}, {"who": "y", "text": ["<p>Se la cifra successiva è 5 o più, aumentiamo di 1. Altrimenti lasciamo com’è.</p>", "<p>If the next digit is 5 or more, we increase by 1. Otherwise we leave it.</p>"]}],
+    "quiz": [{"q": ["3,2 arrotondato alle unità è…", "3.2 rounded to units is…"], "a": [["3", "3"], ["4", "4"], ["3,0", "3.0"], ["2", "2"]], "why": ["2 < 5.", "2 < 5."]}]
+  },
+  {
+    "id": "m3m6",
+    "arc": 23,
+    "sec": "3.6",
+    "pages": "211–222",
+    "hue": 295,
+    "horns": 2,
+    "eyes": 2,
+    "title": ["Relations", "Relazioni"],
+    "topic": ["What a relation is and simple examples", "Che cos’è una relazione e semplici esempi"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Conoscere gli insiemi.", "Know sets."]],
+      "objectives": [{"id": "relations", "description": ["Riconoscere una relazione tra due insiemi e rappresentarla.", "Recognise a relation between two sets and represent it."]}],
+      "concepts": [{"id": "rel-concept", "title": ["Relazioni", "Relations"], "explanation": ["Una relazione tra due insiemi A e B è un modo di collegare alcuni elementi di A con alcuni elementi di B. Si può disegnare con frecce.", "A relation between two sets A and B is a way of linking some elements of A with some elements of B. It can be drawn with arrows."], "example": ["A = {1,2}, B = {a,b}. La relazione “è collegato a” può mandare 1→a e 2→b.", "A = {1,2}, B = {a,b}. The relation “is linked to” can send 1→a and 2→b."], "workedExample": {"scenario": ["Disegna la relazione “è maggiore di” tra {2,4} e {1,3}.", "Draw the relation “is greater than” between {2,4} and {1,3}."], "steps": [["1. 2 > 1, quindi freccia 2→1.", "1. 2 > 1, so arrow 2→1."], ["2. 4 > 1 e 4 > 3, quindi frecce 4→1 e 4→3.", "2. 4 > 1 and 4 > 3, so arrows 4→1 and 4→3."]], "answer": ["Frecce: 2→1, 4→1, 4→3.", "Arrows: 2→1, 4→1, 4→3."]}}],
+      "guidedPractice": [{"id": "gp-rel", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Decidi.", "Decide."], "questions": [{"q": ["Nella relazione “è doppio di”, 6 è collegato a…", "In the relation “is double of”, 6 is linked to…"], "a": [["3", "3"], ["12", "12"], ["6", "6"], ["2", "2"]], "why": ["6 = 2 × 3.", "6 = 2 × 3."]}]}],
+      "independentPractice": [{"id": "ip-rel", "title": ["Prova da solo", "Try alone"], "instructions": ["Collega.", "Link."], "questions": [{"q": ["Nella relazione “è minore di” tra {1,3} e {2,4}, 1 è collegato a…", "In “is less than” between {1,3} and {2,4}, 1 is linked to…"], "a": [["2 e 4", "2 and 4"], ["Solo 2", "Only 2"], ["Solo 4", "Only 4"], ["Nessuno", "None"]], "why": ["1 < 2 e 1 < 4.", "1 < 2 and 1 < 4."]}]}],
+      "knowledgeCheck": [{"q": ["Una relazione collega elementi di…", "A relation links elements of…"], "a": [["Due insiemi", "Two sets"], ["Un solo insieme sempre", "Always one set"], ["Solo numeri", "Only numbers"], ["Solo lettere", "Only letters"]], "why": ["Può collegare elementi di due insiemi (anche lo stesso).", "It can link elements of two sets (even the same one)."]}],
+      "summary": [["Una relazione collega alcuni elementi di un insieme con alcuni di un altro. Si rappresenta bene con frecce.", "A relation links some elements of one set with some of another. It is well represented with arrows."]],
+      "masteryAssessment": {"title": ["Verifica di padronanza", "Mastery check"], "instructions": ["Almeno il 75%.", "At least 75%."], "passingScore": 75, "questions": [{"q": ["Nella relazione “è uguale a”, ogni elemento è collegato a…", "In the relation “is equal to”, every element is linked to…"], "a": [["Se stesso", "Itself"], ["Tutti", "Everyone"], ["Nessuno", "No one"], ["Il successivo", "The next one"]], "why": ["Solo a se stesso.", "Only to itself."]}]},
+      "techniqueUnlock": {"id": "relation-slash", "name": ["Stile della Logica · Sesta Tecnica: Fendente della Relazione", "Logic Form · Sixth Technique: Relation Slash"], "description": ["Disegna le frecce e leggi qualsiasi relazione.", "Draw the arrows and read any relation."], "xpReward": 25}
+    },
+    "demon": ["Arrow Imp", "Folletto della Freccia"],
+    "tech": ["Stile della Logica · Sesta Tecnica: Fendente della Relazione", "Logic Form · Sixth Technique: Relation Slash"],
+    "scenes": [{"who": "s", "text": ["<p>Una relazione collega alcuni elementi di un insieme con alcuni di un altro.</p>", "<p>A relation links some elements of one set with some of another.</p>"]}, {"who": "y", "text": ["<p>Si può disegnare con frecce da un insieme all’altro.</p>", "<p>It can be drawn with arrows from one set to the other.</p>"]}],
+    "quiz": [{"q": ["Nella relazione “è metà di”, 4 è collegato a…", "In the relation “is half of”, 4 is linked to…"], "a": [["8", "8"], ["2", "2"], ["4", "4"], ["16", "16"]], "why": ["4 è la metà di 8.", "4 is half of 8."]}]
+  },
+  {
+    "id": "m3m7",
+    "arc": 23,
+    "sec": "3.7",
+    "pages": "223–234",
+    "hue": 300,
+    "horns": 3,
+    "eyes": 1,
+    "title": ["Quantifiers", "Quantificatori"],
+    "topic": ["For all and there exists", "Per ogni e esiste"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Conoscere le proposizioni.", "Know propositions."]],
+      "objectives": [{"id": "quantifiers", "description": ["Usare i quantificatori ∀ (per ogni) e ∃ (esiste).", "Use the quantifiers ∀ (for all) and ∃ (there exists)."]}],
+      "concepts": [{"id": "quant-concept", "title": ["Quantificatori", "Quantifiers"], "explanation": ["∀ significa “per ogni”. ∃ significa “esiste almeno uno”. Servono per parlare di proprietà che valgono per tutti o per qualcuno.", "∀ means “for all”. ∃ means “there exists at least one”. They are used to talk about properties that hold for everyone or for someone."], "example": ["∀ n ∈ ℕ, n + 0 = n. ∃ n ∈ ℕ tale che n > 100.", "∀ n ∈ ℕ, n + 0 = n. ∃ n ∈ ℕ such that n > 100."], "workedExample": {"scenario": ["La frase “ogni numero naturale ha un successivo” si scrive con ∀ o ∃?", "The sentence “every natural number has a successor” is written with ∀ or ∃?"], "steps": [["1. Parla di tutti i numeri naturali.", "1. It talks about all natural numbers."], ["2. Quindi si usa ∀.", "2. So we use ∀."]], "answer": ["∀ n ∈ ℕ, esiste il successivo di n.", "∀ n ∈ ℕ, the successor of n exists."]}}],
+      "guidedPractice": [{"id": "gp-quant", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Scegli.", "Choose."], "questions": [{"q": ["“Esiste un numero pari” si scrive con…", "“There exists an even number” is written with…"], "a": [["∃", "∃"], ["∀", "∀"], ["∈", "∈"], ["∉", "∉"]], "why": ["∃ significa esiste.", "∃ means there exists."]}]}],
+      "independentPractice": [{"id": "ip-quant", "title": ["Prova da solo", "Try alone"], "instructions": ["Traduci.", "Translate."], "questions": [{"q": ["“Per ogni x, x × 1 = x” usa…", "“For every x, x × 1 = x” uses…"], "a": [["∀", "∀"], ["∃", "∃"], ["∈", "∈"], ["∪", "∪"]], "why": ["Per ogni = ∀.", "For every = ∀."]}]}],
+      "knowledgeCheck": [{"q": ["∀ significa…", "∀ means…"], "a": [["Per ogni", "For all"], ["Esiste", "There exists"], ["Appartiene", "Belongs to"], ["Unione", "Union"]], "why": ["∀ = per ogni.", "∀ = for all."]}],
+      "summary": [["∀ = per ogni, ∃ = esiste almeno uno. Servono per parlare di proprietà su interi insiemi.", "∀ = for all, ∃ = there exists at least one. Used to talk about properties over whole sets."]],
+      "masteryAssessment": {"title": ["Verifica di padronanza", "Mastery check"], "instructions": ["Almeno il 75%.", "At least 75%."], "passingScore": 75, "questions": [{"q": ["∃ significa…", "∃ means…"], "a": [["Esiste", "There exists"], ["Per ogni", "For all"], ["Non esiste", "Does not exist"], ["Appartiene", "Belongs"]], "why": ["∃ = esiste.", "∃ = there exists."]}]},
+      "techniqueUnlock": {"id": "quant-slash", "name": ["Stile della Logica · Settima Tecnica: Fendente del Quantificatore", "Logic Form · Seventh Technique: Quantifier Slash"], "description": ["Leggi e scrivi frasi con ∀ e ∃.", "Read and write sentences with ∀ and ∃."], "xpReward": 25}
+    },
+    "demon": ["Quantifier Imp", "Folletto del Quantificatore"],
+    "tech": ["Stile della Logica · Settima Tecnica: Fendente del Quantificatore", "Logic Form · Seventh Technique: Quantifier Slash"],
+    "scenes": [{"who": "s", "text": ["<p>∀ significa “per ogni”. ∃ significa “esiste almeno uno”.</p>", "<p>∀ means “for all”. ∃ means “there exists at least one”.</p>"]}, {"who": "y", "text": ["<p>Servono quando vogliamo dire qualcosa su tutti gli elementi o su qualcuno di essi.</p>", "<p>They are used when we want to say something about all elements or about some of them.</p>"]}],
+    "quiz": [{"q": ["Quale simbolo significa “per ogni”?", "Which symbol means “for all”?"], "a": [["∀", "∀"], ["∃", "∃"], ["∈", "∈"], ["∉", "∉"]], "why": ["∀ = per ogni.", "∀ = for all."]}]
   }
 
 ];
