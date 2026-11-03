@@ -476,8 +476,8 @@ export const MapScreen: React.FC = () => {
           <div className="learning-kicker">{lang === 'it' ? 'SESSIONE COMPLETATA' : 'SESSION COMPLETE'}</div>
           <h2>{lang === 'it' ? 'Riepilogo del ripasso' : 'Review session summary'}</h2>
           <p>{lang === 'it'
-            ? `Hai completato ${reviewQueueResults.length} concetti.`
-            : `You completed ${reviewQueueResults.length} concepts.`}</p>
+            ? `Hai completato ${reviewQueueResults.length} ${reviewQueueResults.length === 1 ? 'concetto' : 'concetti'}.`
+            : `You completed ${reviewQueueResults.length} ${reviewQueueResults.length === 1 ? 'concept' : 'concepts'}.`}</p>
           <div className="review-session-results">
             {reviewQueueResults.map((item, index) => (
               <div className="review-session-result" key={index}>
