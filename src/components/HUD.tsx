@@ -4,13 +4,24 @@ import { RANKS } from '../data/gameData';
 import { L, rankOf, nextRank, esc } from '../helpers';
 
 export const HUD: React.FC = () => {
-  const { state, setLanguage, goToView, startBattle } = useGame();
+  const { state, view, battleContext, setLanguage, goToView, startBattle } = useGame();
   const { lang, name, xp, subject, cleared } = state;
 
   const currentRank = rankOf(xp, RANKS);
   const next = nextRank(xp, RANKS);
   const pct = next ? Math.min(100, Math.max(0, ((xp - currentRank[0]) / (next[0] - currentRank[0])) * 100)) : 100;
   const anyClear = Object.keys(cleared).length > 0;
+
+  // Mission battles belong to Missions; dojo battles belong to Dojo.
+  const isMissionsActive =
+    ['map', 'scene', 'ending'].includes(view) ||
+    ((view === 'battle' || view === 'result') && !battleContext?.isDojo);
+  const isDojoActive =
+    view === 'dojo' ||
+    ((view === 'battle' || view === 'result') && !!battleContext?.isDojo);
+
+  const navClass = (active: boolean) => `btn ghost sm${active ? ' nav-active' : ''}`;
+  const currentPage = (active: boolean) => active ? 'page' as const : undefined;
 
   return (
     <header className="hud" id="hud">
@@ -51,34 +62,60 @@ export const HUD: React.FC = () => {
         </div>
 
         {subject && (
-          <button className="btn ghost sm" id="hSubj" onClick={() => goToView('subjects')}>
+          <button
+            className={navClass(view === 'subjects')}
+            id="hSubj"
+            aria-current={currentPage(view === 'subjects')}
+            onClick={() => goToView('subjects')}
+          >
             {L(['Subjects', 'Materie'], lang)}
           </button>
         )}
 
-        <button className="btn ghost sm" id="hMap" onClick={() => goToView('map')}>
+        <button
+          className={navClass(isMissionsActive)}
+          id="hMap"
+          aria-current={currentPage(isMissionsActive)}
+          onClick={() => goToView('map')}
+        >
           {L(['Missions', 'Missioni'], lang)}
         </button>
 
-        <button className="btn ghost sm" id="hCodex" onClick={() => goToView('codex')}>
+        <button
+          className={navClass(view === 'codex')}
+          id="hCodex"
+          aria-current={currentPage(view === 'codex')}
+          onClick={() => goToView('codex')}
+        >
           {L(['Codex', 'Glossario'], lang)}
         </button>
 
         <button
-          className="btn ghost sm"
+          className={navClass(isDojoActive)}
           id="hDojo"
+          aria-current={currentPage(isDojoActive)}
           disabled={!anyClear}
           onClick={() => startBattle(true)}
         >
           {L(['Dojo', 'Dojo'], lang)}
         </button>
 
-        <button className="btn ghost sm" id="hTest" onClick={() => goToView('test')}>
+        <button
+          className={navClass(view === 'test')}
+          id="hTest"
+          aria-current={currentPage(view === 'test')}
+          onClick={() => goToView('test')}
+        >
           {L(['Test', 'Test'], lang)}
         </button>
 
         {name && (
-          <button className="btn ghost sm" id="hRace" onClick={() => goToView('race')}>
+          <button
+            className={navClass(view === 'race')}
+            id="hRace"
+            aria-current={currentPage(view === 'race')}
+            onClick={() => goToView('race')}
+          >
             {L(['Race', 'Gara'], lang)}
           </button>
         )}
