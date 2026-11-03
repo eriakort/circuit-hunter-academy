@@ -161,6 +161,16 @@ export const MissionScreen: React.FC = () => {
   const knowledgeQuestion = knowledgeQuestions[knowledgeIndex];
   const masteryAssessment = currentMission.learning?.masteryAssessment;
   const masteryQuestions = masteryAssessment?.questions || [];
+  const masteryReviewConceptIds = masteryFeedback && !masteryFeedback.passed
+    ? masteryQuestions.reduce<string[]>((ids, question, index) => {
+        const conceptId = masteryAssessment?.questionConceptIds?.[index];
+        if (masteryAnswers[index] !== 0 && conceptId && !ids.includes(conceptId)) ids.push(conceptId);
+        return ids;
+      }, [])
+    : (savedLearning?.masteryLastAttemptWeakConcepts || []);
+  const masteryReviewConcepts = currentMission.learning?.concepts.filter(
+    concept => masteryReviewConceptIds.includes(concept.id)
+  ) || [];
   const masteryIsActive = !!masteryAssessment && nxt?.type === 'battle';
   const masteryQuestion = masteryQuestions[masteryIndex];
   const masteryPassed = !masteryIsActive || !!savedLearning?.mastered || !!masteryFeedback?.passed;
@@ -495,9 +505,23 @@ export const MissionScreen: React.FC = () => {
                         const score = Math.round((answers.filter(answer => answer === 0).length / masteryQuestions.length) * 100);
                         const passed = score >= masteryAssessment!.passingScore;
                         const attempt = (savedLearning?.masteryAttempts || 0) + 1;
+                        const conceptPerformance = { ...(savedLearning?.masteryConceptPerformance || {}) };
+                        const weakConcepts: string[] = [];
+                        masteryQuestions.forEach((question, index) => {
+                          const conceptId = masteryAssessment!.questionConceptIds?.[index];
+                          if (!conceptId) return;
+                          const previous = conceptPerformance[conceptId] || { correct: 0, attempted: 0 };
+                          conceptPerformance[conceptId] = {
+                            correct: previous.correct + (answers[index] === 0 ? 1 : 0),
+                            attempted: previous.attempted + 1
+                          };
+                          if (answers[index] !== 0 && !weakConcepts.includes(conceptId)) weakConcepts.push(conceptId);
+                        });
                         saveLearningProgress(currentMission.id, {
                           masteryScore: score,
                           masteryAttempts: attempt,
+                          masteryConceptPerformance: conceptPerformance,
+                          masteryLastAttemptWeakConcepts: passed ? [] : weakConcepts,
                           mastered: passed,
                           lastAttemptAt: Date.now()
                         });
@@ -546,6 +570,53 @@ export const MissionScreen: React.FC = () => {
                 }}>{lang === 'it' ? 'Riprova la prova' : 'Retry assessment'}</button>
               )}
             </div>
+          )}
+
+          {(masteryNeedsRetry || (masteryFeedback && !masteryFeedback.passed)) && masteryReviewConcepts.length > 0 && (
+            <section className="mastery-recommendations" aria-label={lang === 'it' ? 'Ripasso consigliato' : 'Recommended revision'}>
+              <div className="learning-section-heading">
+                <span className="learning-kicker">{lang === 'it' ? 'RIPASSO MIRATO' : 'TARGETED REVISION'}</span>
+                <h4>{lang === 'it' ? 'Concentrati su questi concetti' : 'Focus on these concepts'}</h4>
+                <p>{lang === 'it' ? 'Questi argomenti corrispondono alle risposte errate dell’ultimo tentativo.' : 'These topics match the questions missed in your latest attempt.'}</p>
+              </div>
+              {masteryReviewConcepts.map(concept => {
+                const performance = savedLearning?.masteryConceptPerformance?.[concept.id];
+                const percent = performance?.attempted
+                  ? Math.round((performance.correct / performance.attempted) * 100)
+                  : null;
+                return (
+                  <article className="mastery-recommendation" key={concept.id}>
+                    <div className="mastery-recommendation-heading">
+                      <strong>{L(concept.title, lang)}</strong>
+                      {percent !== null && (
+                        <small>{lang === 'it' ? 'Risposte corrette' : 'Correct responses'}: {performance!.correct}/{performance!.attempted} · {percent}%</small>
+                      )}
+                    </div>
+                    <p>{L(concept.explanation, lang)}</p>
+                    {concept.workedExample && (
+                      <details className="learning-example">
+                        <summary>{lang === 'it' ? 'Rivedi un esempio svolto' : 'Review a worked example'}</summary>
+                        <div className="learning-example-body">
+                          <p className="learning-scenario">{L(concept.workedExample.scenario, lang)}</p>
+                          <ol>{concept.workedExample.steps.map((step, index) => <li key={index}>{L(step, lang)}</li>)}</ol>
+                          <div className="learning-answer">
+                            <strong>{lang === 'it' ? 'Risposta ragionata' : 'Reasoned answer'}</strong>
+                            <p>{L(concept.workedExample.answer, lang)}</p>
+                          </div>
+                        </div>
+                      </details>
+                    )}
+                    {concept.misconceptions?.[0] && (
+                      <div className="learning-misconception">
+                        <strong>{lang === 'it' ? 'Errore da evitare' : 'Misconception to avoid'}</strong>
+                        <p>{L(concept.misconceptions[0].belief, lang)}</p>
+                        <p>{L(concept.misconceptions[0].correction, lang)}</p>
+                      </div>
+                    )}
+                  </article>
+                );
+              })}
+            </section>
           )}
         </section>
       )}
