@@ -6,6 +6,7 @@ import { L, demonSVG, esc, U } from '../helpers';
 import type { LearningConcept, Mission } from '../types';
 import { ConceptRevision } from './ConceptRevision';
 import { recommendNextLearningAction } from '../adaptiveLearning';
+import { MasteryInsights } from './MasteryInsights';
 
 export const MapScreen: React.FC = () => {
   const {
@@ -345,6 +346,7 @@ export const MapScreen: React.FC = () => {
             )}
           </div>
         </div>
+        <MasteryInsights missions={MY} progressByMission={state.learningProgress || {}} lang={lang} />
         <div className="learning-dashboard-next adaptive-recommendation" data-recommendation={adaptiveRecommendation.kind}>
           <div>
             <span className="learning-kicker">{lang === 'it' ? 'PERCORSO ADATTIVO' : 'ADAPTIVE LEARNING'}</span>
