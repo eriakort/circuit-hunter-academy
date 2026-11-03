@@ -19742,137 +19742,62 @@ export const MISSIONS: Mission[] = [
       "Numeri naturali, ordinamento e operazioni di base"
     ],
     
+    
     "learning": {
       "version": 1,
       "prerequisites": [
-        [
-          "Know how to count and compare small whole numbers.",
-          "Saper contare e confrontare piccoli numeri interi."
-        ]
+        ["Sapere contare fino a 20 e confrontare piccoli numeri.", "Know how to count to 20 and compare small numbers."]
       ],
       "objectives": [
-        {
-          "id": "identify-natural-numbers",
-          "description": [
-            "Identify natural numbers and write their set symbol ℕ.",
-            "Riconoscere i numeri naturali e scrivere il loro simbolo di insieme ℕ."
-          ]
-        },
-        {
-          "id": "order-natural-numbers",
-          "description": [
-            "Order and compare natural numbers using <, >, ≤, ≥.",
-            "Ordinare e confrontare numeri naturali con <, >, ≤, ≥."
-          ]
-        },
-        {
-          "id": "zero-and-successor",
-          "description": [
-            "Explain that 0 has no predecessor in ℕ and that every number has a successor.",
-            "Spiegare che lo 0 non ha precedente in ℕ e che ogni numero ha un successivo."
-          ]
-        }
+        {"id": "identify-natural", "description": ["Riconoscere i numeri naturali e scrivere ℕ.", "Identify natural numbers and write ℕ."]},
+        {"id": "order-number-line", "description": ["Ordinare i numeri naturali e posizionarli su una semiretta.", "Order natural numbers and place them on a half-line."]},
+        {"id": "zero-successor", "description": ["Spiegare che lo 0 non ha precedente e che ogni numero ha un successivo.", "Explain that 0 has no predecessor and every number has a successor."]}
       ],
       "concepts": [
         {
           "id": "natural-numbers",
-          "title": [
-            "Natural numbers",
-            "Numeri naturali"
-          ],
-          "explanation": [
-            "Natural numbers are the counting numbers. The set is written ℕ = {0, 1, 2, 3, 4, …}. It is infinite and discrete.",
-            "I numeri naturali sono i numeri del contare. L’insieme si scrive ℕ = {0, 1, 2, 3, 4, …}. È infinito e discreto."
-          ],
-          "example": [
-            "0, 1, 2, 3, 4, 5 are natural numbers. -1 and ½ are not.",
-            "0, 1, 2, 3, 4, 5 sono numeri naturali. -1 e ½ non lo sono."
-          ],
+          "title": ["Numeri naturali e la semiretta", "Natural numbers and the half-line"],
+          "explanation": ["I numeri naturali sono 0, 1, 2, 3, 4, 5… L’insieme si chiama ℕ. Possiamo disegnarli su una semiretta orientata: partiamo da un punto O (lo 0) e andiamo sempre verso destra, un passo uguale per ogni numero. Tra un numero e il successivo non c’è nessun altro numero naturale: per questo ℕ è discreto.", "Natural numbers are 0, 1, 2, 3, 4, 5… The set is called ℕ. We can draw them on an oriented half-line: start at point O (zero) and always go right, equal steps. Between one number and the next there is no other natural number: that is why ℕ is discrete."],
+          "example": ["Disegna la semiretta: O—1—2—3—4—5→. Il precedente di 4 è 3, il successivo di 4 è 5. Lo 0 non ha precedente.", "Draw the half-line: O—1—2—3—4—5→. The predecessor of 4 is 3, the successor of 4 is 5. Zero has no predecessor."],
+          "workedExample": {
+            "scenario": ["Posiziona sulla semiretta i numeri 0, 3, 1, 5 e ordinali dal più piccolo al più grande.", "Place the numbers 0, 3, 1, 5 on the half-line and order them from smallest to largest."],
+            "steps": [
+              ["1. Disegna la semiretta con freccia a destra e segna l’origine O.", "1. Draw the half-line with an arrow to the right and mark the origin O."],
+              ["2. Segna i punti a distanza uguale: 0, poi 1, 2, 3, 4, 5.", "2. Mark points at equal distance: 0, then 1, 2, 3, 4, 5."],
+              ["3. Evidenzia 0, 1, 3, 5.", "3. Highlight 0, 1, 3, 5."],
+              ["4. Leggendo da sinistra a destra ottieni l’ordine: 0 < 1 < 3 < 5.", "4. Reading left to right gives the order: 0 < 1 < 3 < 5."]
+            ],
+            "answer": ["0, 1, 3, 5. Sulla semiretta i numeri crescono sempre verso destra.", "0, 1, 3, 5. On the half-line numbers always increase to the right."]
+          },
           "misconceptions": [
-            {
-              "belief": [
-                "Natural numbers always start from 1.",
-                "I numeri naturali partono sempre da 1."
-              ],
-              "correction": [
-                "In this course ℕ includes 0. Zero is a natural number.",
-                "In questo corso ℕ include lo 0. Lo zero è un numero naturale."
-              ]
-            }
+            {"belief": ["I numeri naturali partono da 1.", "Natural numbers start from 1."], "correction": ["In questo libro ℕ include lo 0. Lo zero è un numero naturale.", "In this book ℕ includes 0. Zero is a natural number."]},
+            {"belief": ["Tra 2 e 3 c’è un altro numero naturale.", "Between 2 and 3 there is another natural number."], "correction": ["No. ℕ è discreto: tra due numeri consecutivi non c’è nessun altro numero naturale.", "No. ℕ is discrete: between two consecutive numbers there is no other natural number."]}
+          ],
+          "knowledgePrompts": [
+            ["Disegna la semiretta e spiega a un compagno perché lo 0 non ha precedente.", "Draw the half-line and explain to a classmate why 0 has no predecessor."]
           ]
         }
       ],
       "guidedPractice": [
-        {
-          "id": "guided-natural",
-          "title": [
-            "Guided practice: natural numbers",
-            "Esercitazione guidata: numeri naturali"
-          ],
-          "instructions": [
-            "Answer the questions. Use the hint if you need it.",
-            "Rispondi alle domande. Usa il suggerimento se ne hai bisogno."
-          ],
-          "hints": [
-            [
-              "ℕ is the symbol for natural numbers.",
-              "ℕ è il simbolo dei numeri naturali."
-            ]
-          ],
-          "questions": [
-            {
-              "q": [
-                "Which of these is a natural number?",
-                "Quale di questi è un numero naturale?"
-              ],
-              "a": [
-                ["7", "7"],
-                ["-3", "-3"],
-                ["1/2", "1/2"],
-                ["π", "π"]
-              ],
-              "why": [
-                "7 is a counting number, so it belongs to ℕ.",
-                "7 è un numero del contare, quindi appartiene a ℕ."
-              ]
-            }
-          ]
-        }
+        {"id": "gp-nat-1", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Usa la semiretta mentale per rispondere.", "Use a mental half-line to answer."], "questions": [
+          {"q": ["Qual è il successivo di 7?", "What is the successor of 7?"], "a": [["8", "8"], ["6", "6"], ["9", "9"], ["0", "0"]], "why": ["Il successivo si ottiene aggiungendo 1: 7 + 1 = 8.", "The successor is obtained by adding 1: 7 + 1 = 8."]}
+        ]}
+      ],
+      "independentPractice": [
+        {"id": "ip-nat-1", "title": ["Prova da solo", "Try on your own"], "instructions": ["Senza suggerimenti.", "Without hints."], "questions": [
+          {"q": ["Ordina dal più piccolo al più grande: 5, 0, 2, 8.", "Order from smallest to largest: 5, 0, 2, 8."], "a": [["0, 2, 5, 8", "0, 2, 5, 8"], ["5, 2, 0, 8", "5, 2, 0, 8"], ["8, 5, 2, 0", "8, 5, 2, 0"], ["0, 5, 2, 8", "0, 5, 2, 8"]], "why": ["Sulla semiretta si legge da sinistra a destra: 0 < 2 < 5 < 8.", "On the half-line we read left to right: 0 < 2 < 5 < 8."]}
+        ]}
       ],
       "knowledgeCheck": [
-        {
-          "q": [
-            "What is the symbol for the set of natural numbers?",
-            "Qual è il simbolo dell’insieme dei numeri naturali?"
-          ],
-          "a": [
-            ["ℕ", "ℕ"],
-            ["ℤ", "ℤ"],
-            ["ℚ", "ℚ"],
-            ["ℝ", "ℝ"]
-          ],
-          "why": [
-            "ℕ stands for natural numbers.",
-            "ℕ indica i numeri naturali."
-          ]
-        }
+        {"q": ["Lo 0 ha un precedente in ℕ?", "Does 0 have a predecessor in ℕ?"], "a": [["No", "No"], ["Sì", "Yes"], ["Solo a volte", "Only sometimes"], ["Sì, è -1", "Yes, it is -1"]], "why": ["Lo zero è il primo numero naturale: non ha precedente.", "Zero is the first natural number: it has no predecessor."]}
       ],
       "summary": [
-        [
-          "Natural numbers (ℕ) are 0, 1, 2, 3, … They are ordered, infinite and discrete. Zero has no predecessor.",
-          "I numeri naturali (ℕ) sono 0, 1, 2, 3, … Sono ordinati, infiniti e discreti. Lo zero non ha precedente."
-        ]
+        ["ℕ = {0, 1, 2, 3, …}. È ordinato e discreto. Si rappresenta su una semiretta. Lo 0 non ha precedente; ogni numero ha un successivo.", "ℕ = {0, 1, 2, 3, …}. It is ordered and discrete. It is represented on a half-line. 0 has no predecessor; every number has a successor."]
       ],
       "techniqueUnlock": {
         "id": "step-by-step-slash",
-        "name": [
-          "Number Form · First Technique: Step-by-Step Slash",
-          "Stile dei Numeri · Prima Tecnica: Fendente Passo-Passo"
-        ],
-        "description": [
-          "Break any number problem into clear ordered steps, just like counting.",
-          "Scomponi ogni problema numerico in passi chiari e ordinati, proprio come il contare."
-        ],
+        "name": ["Stile dei Numeri · Prima Tecnica: Fendente Passo-Passo", "Number Form · First Technique: Step-by-Step Slash"],
+        "description": ["Scomponi ogni problema numerico in passi chiari, proprio come i passi sulla semiretta.", "Break any number problem into clear steps, just like steps on the half-line."],
         "xpReward": 25
       }
     },
@@ -20120,55 +20045,41 @@ export const MISSIONS: Mission[] = [
     "eyes": 1,
     "title": ["Rational Numbers", "Numeri razionali"],
     "topic": ["Fractions and the set of rational numbers ℚ", "Frazioni e l'insieme dei numeri razionali ℚ"],
+    
     "learning": {
       "version": 1,
-      "prerequisites": [["Know natural numbers and the four operations.", "Conoscere i numeri naturali e le quattro operazioni."]],
+      "prerequisites": [["Conoscere i numeri naturali e le quattro operazioni.", "Know natural numbers and the four operations."]],
       "objectives": [
-        {
-          "id": "identify-rationals",
-          "description": ["Identify rational numbers and write their set symbol ℚ.", "Riconoscere i numeri razionali e scrivere il loro simbolo di insieme ℚ."]
-        }
+        {"id": "identify-rationals", "description": ["Riconoscere i numeri razionali e scrivere ℚ.", "Identify rational numbers and write ℚ."]},
+        {"id": "fraction-visual", "description": ["Rappresentare una frazione come parte di un intero o di un segmento.", "Represent a fraction as part of a whole or of a segment."]}
       ],
       "concepts": [
         {
-          "id": "rational-numbers",
-          "title": ["Rational numbers", "Numeri razionali"],
-          "explanation": ["A rational number is any number that can be written as a fraction a/b where a and b are integers and b ≠ 0. The set is ℚ.", "Un numero razionale è qualsiasi numero che si può scrivere come frazione a/b con a e b interi e b ≠ 0. L'insieme è ℚ."],
-          "example": ["1/2, 3/4, -5/3, 0.25 = 1/4 are rational. √2 is not.", "1/2, 3/4, -5/3, 0,25 = 1/4 sono razionali. √2 non lo è."]
-        }
-      ],
-      "guidedPractice": [
-        {
-          "id": "guided-rational",
-          "title": ["Guided practice: rationals", "Esercitazione guidata: razionali"],
-          "instructions": ["Choose the rational number.", "Scegli il numero razionale."],
-          "questions": [
-            {
-              "q": ["Which of these is rational?", "Quale di questi è razionale?"],
-              "a": [["3/5", "3/5"], ["√2", "√2"], ["π", "π"], ["√7", "√7"]],
-              "why": ["3/5 is a fraction of two integers.", "3/5 è una frazione di due interi."]
-            }
+          "id": "rational-visual",
+          "title": ["Numeri razionali e frazioni", "Rational numbers and fractions"],
+          "explanation": ["Un numero razionale si può scrivere come frazione a/b con b ≠ 0. Immagina una pizza divisa in b fette uguali: a/b significa prendere a di quelle fette. L’insieme di tutti i numeri razionali si chiama ℚ.", "A rational number can be written as a fraction a/b with b ≠ 0. Imagine a pizza divided into b equal slices: a/b means taking a of those slices. The set of all rational numbers is called ℚ."],
+          "example": ["1/2 è mezza pizza. 3/4 sono tre fette su quattro. 0,5 = 1/2. √2 non si può scrivere come frazione, quindi non è razionale.", "1/2 is half a pizza. 3/4 is three slices out of four. 0.5 = 1/2. √2 cannot be written as a fraction, so it is not rational."],
+          "workedExample": {
+            "scenario": ["Disegna 3/4 e spiega perché è razionale.", "Draw 3/4 and explain why it is rational."],
+            "steps": [
+              ["1. Disegna un rettangolo e dividilo in 4 parti uguali.", "1. Draw a rectangle and divide it into 4 equal parts."],
+              ["2. Colora 3 di quelle parti.", "2. Colour 3 of those parts."],
+              ["3. Hai rappresentato 3/4.", "3. You have represented 3/4."],
+              ["4. Poiché è una frazione di due interi, appartiene a ℚ.", "4. Since it is a fraction of two integers, it belongs to ℚ."]
+            ],
+            "answer": ["3/4 è razionale perché si scrive come frazione di due interi.", "3/4 is rational because it is written as a fraction of two integers."]
+          },
+          "misconceptions": [
+            {"belief": ["0,5 non è una frazione.", "0.5 is not a fraction."], "correction": ["0,5 = 5/10 = 1/2, quindi è razionale.", "0.5 = 5/10 = 1/2, so it is rational."]}
           ]
         }
       ],
-      "knowledgeCheck": [
-        {
-          "q": ["What is the symbol for the rational numbers?", "Qual è il simbolo dei numeri razionali?"],
-          "a": [["ℚ", "ℚ"], ["ℕ", "ℕ"], ["ℤ", "ℤ"], ["ℝ", "ℝ"]],
-          "why": ["ℚ stands for rational numbers (quotient).", "ℚ indica i numeri razionali (quoziente)."]
-        }
-      ],
-      "summary": [
-        ["Rational numbers (ℚ) are all numbers that can be written as a fraction of two integers.", "I numeri razionali (ℚ) sono tutti i numeri che si possono scrivere come frazione di due interi."]
-      ],
-      "techniqueUnlock": {
-        "id": "fraction-slash",
-        "name": ["Number Form · Fourth Technique: Fraction Slash", "Stile dei Numeri · Quarta Tecnica: Fendente della Frazione"],
-        "description": ["Cut any rational problem by rewriting it as a clean fraction.", "Taglia qualsiasi problema razionale riscrivendolo come frazione pulita."],
-        "xpReward": 25
-      }
+      "guidedPractice": [{"id": "gp-rat", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Scegli la risposta.", "Choose the answer."], "questions": [{"q": ["Quale di questi è razionale?", "Which of these is rational?"], "a": [["2/5", "2/5"], ["√3", "√3"], ["π", "π"], ["√7", "√7"]], "why": ["2/5 è una frazione di due interi.", "2/5 is a fraction of two integers."]}]}],
+      "knowledgeCheck": [{"q": ["Il simbolo dei numeri razionali è…", "The symbol for rational numbers is…"], "a": [["ℚ", "ℚ"], ["ℕ", "ℕ"], ["ℤ", "ℤ"], ["ℝ", "ℝ"]], "why": ["ℚ indica i numeri razionali (quoziente).", "ℚ stands for rational numbers (quotient)."]}],
+      "summary": [["I numeri razionali (ℚ) sono tutti i numeri che si possono scrivere come frazione a/b con b ≠ 0. Si visualizzano bene come parti di un intero.", "Rational numbers (ℚ) are all numbers that can be written as a fraction a/b with b ≠ 0. They are easy to visualise as parts of a whole."]],
+      "techniqueUnlock": {"id": "fraction-slash", "name": ["Stile dei Numeri · Quarta Tecnica: Fendente della Frazione", "Number Form · Fourth Technique: Fraction Slash"], "description": ["Riscrivi qualsiasi numero razionale come frazione pulita e visualizzala.", "Rewrite any rational number as a clean fraction and visualise it."], "xpReward": 25}
     },
-    "demon": ["Fraction Imp", "Folletto delle Frazioni"],
+"demon": ["Fraction Imp", "Folletto delle Frazioni"],
     "tech": ["Number Form · Fourth Technique: Fraction Slash", "Stile dei Numeri · Quarta Tecnica: Fendente della Frazione"],
     "scenes": [
       {
@@ -20198,55 +20109,40 @@ export const MISSIONS: Mission[] = [
     "eyes": 3,
     "title": ["Sets", "Insiemi"],
     "topic": ["What a set is, membership and basic set notation", "Che cos'è un insieme, appartenenza e notazione di base"],
+    
     "learning": {
       "version": 1,
-      "prerequisites": [["Know the sets ℕ, ℤ, ℚ and ℝ.", "Conoscere gli insiemi ℕ, ℤ, ℚ e ℝ."]],
+      "prerequisites": [["Conoscere gli insiemi ℕ, ℤ, ℚ.", "Know the sets ℕ, ℤ, ℚ."]],
       "objectives": [
-        {
-          "id": "describe-sets",
-          "description": ["Describe a set by listing its elements or by a property.", "Descrivere un insieme elencando i suoi elementi o con una proprietà."]
-        }
+        {"id": "describe-sets", "description": ["Descrivere un insieme per elencazione o per proprietà.", "Describe a set by listing or by a property."]},
+        {"id": "membership", "description": ["Usare correttamente i simboli ∈ e ∉.", "Use the symbols ∈ and ∉ correctly."]}
       ],
       "concepts": [
         {
-          "id": "sets-basics",
-          "title": ["Sets", "Insiemi"],
-          "explanation": ["A set is a collection of distinct objects. We write a ∈ A to say that a belongs to A.", "Un insieme è una collezione di oggetti distinti. Scriviamo a ∈ A per dire che a appartiene ad A."],
-          "example": ["A = {1, 2, 3}. Then 2 ∈ A and 5 ∉ A.", "A = {1, 2, 3}. Allora 2 ∈ A e 5 ∉ A."]
-        }
-      ],
-      "guidedPractice": [
-        {
-          "id": "guided-sets",
-          "title": ["Guided practice: sets", "Esercitazione guidata: insiemi"],
-          "instructions": ["Decide membership.", "Decidi l'appartenenza."],
-          "questions": [
-            {
-              "q": ["Does 4 belong to the set {2, 4, 6}?", "4 appartiene all'insieme {2, 4, 6}?"],
-              "a": [["Yes", "Sì"], ["No", "No"], ["Only even numbers", "Solo i pari"], ["Only odds", "Solo i dispari"]],
-              "why": ["4 is listed in the set.", "4 è elencato nell'insieme."]
-            }
+          "id": "sets-visual",
+          "title": ["Insiemi e appartenenza", "Sets and membership"],
+          "explanation": ["Un insieme è una collezione di oggetti distinti chiamati elementi. Possiamo disegnarlo come una nuvola o un cerchio e mettere gli elementi dentro. Scriviamo a ∈ A se a sta dentro, a ∉ A se sta fuori.", "A set is a collection of distinct objects called elements. We can draw it as a cloud or a circle and put the elements inside. We write a ∈ A if a is inside, a ∉ A if it is outside."],
+          "example": ["A = {1, 2, 3}. Disegna un cerchio con 1, 2 e 3 dentro. Allora 2 ∈ A e 5 ∉ A.", "A = {1, 2, 3}. Draw a circle with 1, 2 and 3 inside. Then 2 ∈ A and 5 ∉ A."],
+          "workedExample": {
+            "scenario": ["Dato A = {numeri naturali minori di 4}, elenca gli elementi e di’ se 3 ∈ A.", "Given A = {natural numbers less than 4}, list the elements and say if 3 ∈ A."],
+            "steps": [
+              ["1. I numeri naturali minori di 4 sono 0, 1, 2, 3.", "1. Natural numbers less than 4 are 0, 1, 2, 3."],
+              ["2. Quindi A = {0, 1, 2, 3}.", "2. So A = {0, 1, 2, 3}."],
+              ["3. 3 è nell’elenco, quindi 3 ∈ A.", "3. 3 is in the list, so 3 ∈ A."]
+            ],
+            "answer": ["A = {0, 1, 2, 3} e 3 ∈ A.", "A = {0, 1, 2, 3} and 3 ∈ A."]
+          },
+          "misconceptions": [
+            {"belief": ["Un insieme può contenere lo stesso elemento due volte.", "A set can contain the same element twice."], "correction": ["No. Gli elementi di un insieme sono sempre distinti. {1, 1, 2} è uguale a {1, 2}.", "No. Elements of a set are always distinct. {1, 1, 2} is the same as {1, 2}."]}
           ]
         }
       ],
-      "knowledgeCheck": [
-        {
-          "q": ["Which symbol means “belongs to”?", "Quale simbolo significa “appartiene a”?"],
-          "a": [["∈", "∈"], ["∉", "∉"], ["⊂", "⊂"], ["∪", "∪"]],
-          "why": ["∈ is the membership symbol.", "∈ è il simbolo di appartenenza."]
-        }
-      ],
-      "summary": [
-        ["A set is a collection of distinct elements. We use ∈ to say an element belongs to a set.", "Un insieme è una collezione di elementi distinti. Usiamo ∈ per dire che un elemento appartiene a un insieme."]
-      ],
-      "techniqueUnlock": {
-        "id": "set-slash",
-        "name": ["Logic Form · First Technique: Set Slash", "Stile della Logica · Prima Tecnica: Fendente dell'Insieme"],
-        "description": ["Cut through any set problem by clearly listing or describing its elements.", "Taglia qualsiasi problema sugli insiemi elencando o descrivendo chiaramente i suoi elementi."],
-        "xpReward": 25
-      }
+      "guidedPractice": [{"id": "gp-set", "title": ["Esercitazione guidata", "Guided practice"], "instructions": ["Decidi.", "Decide."], "questions": [{"q": ["4 appartiene a {2, 4, 6}?", "Does 4 belong to {2, 4, 6}?"], "a": [["Sì", "Yes"], ["No", "No"], ["Solo se è pari", "Only if even"], ["Solo se è dispari", "Only if odd"]], "why": ["4 è elencato nell’insieme.", "4 is listed in the set."]}]}],
+      "knowledgeCheck": [{"q": ["Il simbolo “appartiene a” è…", "The symbol for “belongs to” is…"], "a": [["∈", "∈"], ["∉", "∉"], ["⊂", "⊂"], ["∪", "∪"]], "why": ["∈ indica l’appartenenza.", "∈ indicates membership."]}],
+      "summary": [["Un insieme è una collezione di elementi distinti. Si può descrivere per elencazione o per proprietà. Usiamo ∈ e ∉ per dire se un elemento sta dentro o fuori.", "A set is a collection of distinct elements. It can be described by listing or by a property. We use ∈ and ∉ to say if an element is inside or outside."]],
+      "techniqueUnlock": {"id": "set-slash", "name": ["Stile della Logica · Prima Tecnica: Fendente dell’Insieme", "Logic Form · First Technique: Set Slash"], "description": ["Elenca o descrivi chiaramente gli elementi e taglia il problema.", "Clearly list or describe the elements and cut through the problem."], "xpReward": 25}
     },
-    "demon": ["Empty-Set Imp", "Folletto dell'Insieme Vuoto"],
+"demon": ["Empty-Set Imp", "Folletto dell'Insieme Vuoto"],
     "tech": ["Logic Form · First Technique: Set Slash", "Stile della Logica · Prima Tecnica: Fendente dell'Insieme"],
     "scenes": [
       {
