@@ -20468,6 +20468,19 @@ export const MISSIONS: Mission[] = [
         {"q": ["Which expression means 'five more than twice n'?", "Quale espressione significa 'cinque in più del doppio di n'?"], "a": [["2n + 5", "2n + 5"], ["5n + 2", "5n + 2"], ["2(n + 5)", "2(n + 5)"], ["n + 2 + 5", "n + 2 + 5"]], "why": ["Twice n is 2n; five more means add 5: 2n + 5.", "Il doppio di n è 2n; cinque in più significa aggiungere 5: 2n + 5."]},
         {"q": ["If a = 3, what is a² + 2a?", "Se a = 3, quanto fa a² + 2a?"], "a": [["15", "15"], ["12", "12"], ["11", "11"], ["9", "9"]], "why": ["3² + 2 · 3 = 9 + 6 = 15.", "3² + 2 · 3 = 9 + 6 = 15."]}
       ],
+      "masteryAssessment": {
+        "title": ["Algebra expressions mastery", "Prova di padronanza: espressioni algebriche"],
+        "instructions": ["Answer all five questions independently. You need at least 80% to unlock the battle.", "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."],
+        "passingScore": 80,
+        "questionConceptIds": ["variables", "terms-coefficients", "variables", "substitution", "substitution"],
+        "questions": [
+          {"q": ["In 4x + 3, what is the coefficient?", "In 4x + 3, qual è il coefficiente?"], "a": [["4", "4"], ["3", "3"], ["x", "x"], ["7", "7"]], "why": ["4 multiplies x, so it is the coefficient.", "4 moltiplica x, quindi è il coefficiente."]},
+          {"q": ["What is the constant term in 7a − 6?", "Qual è il termine costante in 7a − 6?"], "a": [["−6", "−6"], ["6", "6"], ["7", "7"], ["a", "a"]], "why": ["The constant term has no variable, and its sign is −: it is −6.", "Il termine costante non contiene variabili e il suo segno è −: è −6."]},
+          {"q": ["Which expression means 'three less than twice x'?", "Quale espressione significa 'tre in meno del doppio di x'?"], "a": [["2x − 3", "2x − 3"], ["3 − 2x", "3 − 2x"], ["2(x − 3)", "2(x − 3)"], ["3x − 2", "3x − 2"]], "why": ["Twice x is 2x; three less means subtract 3: 2x − 3.", "Il doppio di x è 2x; tre in meno significa sottrarre 3: 2x − 3."]},
+          {"q": ["If x = 5, what is 3x + 4?", "Se x = 5, quanto fa 3x + 4?"], "a": [["19", "19"], ["27", "27"], ["15", "15"], ["12", "12"]], "why": ["3 · 5 + 4 = 15 + 4 = 19.", "3 · 5 + 4 = 15 + 4 = 19."]},
+          {"q": ["If x = −3, what is x² + 2x?", "Se x = −3, quanto fa x² + 2x?"], "a": [["3", "3"], ["−15", "−15"], ["−3", "−3"], ["15", "15"]], "why": ["(−3)² + 2 · (−3) = 9 − 6 = 3.", "(−3)² + 2 · (−3) = 9 − 6 = 3."]}
+        ]
+      },
       "summary": [
         ["A variable is a letter for a number. Terms are separated by + or −. The coefficient multiplies the variable; the constant term has no variable. To evaluate, substitute and follow the order of operations.", "Una variabile è una lettera che rappresenta un numero. I termini sono separati da + o −. Il coefficiente moltiplica la variabile; il termine costante non contiene variabili. Per calcolare, sostituisci e rispetta l'ordine delle operazioni."]
       ],
@@ -20486,8 +20499,11 @@ export const MISSIONS: Mission[] = [
       {"who": "s", "vis": "algebra-parts", "text": ["<p>Look at <strong>3x + 2</strong>. The expression has two terms: <strong>3x</strong> and <strong>2</strong>. The coefficient is <strong>3</strong>, the variable is <strong>x</strong>, and the constant term is <strong>2</strong>.</p><p>Remember: <strong>3x = 3 · x</strong>, not 3 + x.</p>", "<p>Osserva <strong>3x + 2</strong>. L'espressione ha due termini: <strong>3x</strong> e <strong>2</strong>. Il coefficiente è <strong>3</strong>, la variabile è <strong>x</strong> e il termine costante è <strong>2</strong>.</p><p>Ricorda: <strong>3x = 3 · x</strong>, non 3 + x.</p>"]},
       {"who": "y", "vis": "algebra-substitution", "text": ["<p>Now replace the letter with a number. If <strong>x = 4</strong>, then:</p><p><strong>3x + 2 = 3 · 4 + 2 = 12 + 2 = 14</strong>.</p><p>Multiply before adding.</p>", "<p>Ora sostituisci la lettera con un numero. Se <strong>x = 4</strong>, allora:</p><p><strong>3x + 2 = 3 · 4 + 2 = 12 + 2 = 14</strong>.</p><p>Moltiplica prima di sommare.</p>"]},
       {"who": "d", "vis": "algebra-parts", "text": ["<p>Common trap! In <strong>5a − 7</strong>, the constant term is <strong>−7</strong>, not +7. The sign belongs to the term.</p><p>If <strong>a = 2</strong>, then <strong>5 · 2 − 7 = 10 − 7 = 3</strong>.</p>", "<p>Errore frequente! In <strong>5a − 7</strong>, il termine costante è <strong>−7</strong>, non +7. Il segno fa parte del termine.</p><p>Se <strong>a = 2</strong>, allora <strong>5 · 2 − 7 = 10 − 7 = 3</strong>.</p>"]}
+      ,{"type": "battle"}
     ]
   }  },
+
+  },
   {
     "id": "m1m4",
     "arc": 21,
