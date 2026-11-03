@@ -575,3 +575,35 @@ body{overflow-x:hidden}
 .mastery-map-passed{color:var(--ok,#53d697)}
 .mastery-map-pending{color:var(--gold)}
 @media(max-width:520px){.learning-mastery-assessment{padding:11px}.mastery-review{gap:8px}}
+
+
+/* Smart Learning 2.0: adaptive revision recommendations */
+.mastery-recommendations {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line, rgba(255,255,255,.12));
+}
+.mastery-recommendation {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--line, rgba(255,255,255,.12));
+  border-radius: 12px;
+  background: var(--panel, rgba(255,255,255,.03));
+}
+.mastery-recommendation-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 12px;
+}
+.mastery-recommendation-heading small {
+  color: var(--muted);
+  font-size: .82em;
+}
+.mastery-recommendation > p {
+  margin: 0;
+}

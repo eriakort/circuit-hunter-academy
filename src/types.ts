@@ -113,6 +113,8 @@ export interface LearningMasteryAssessment {
   title: BilingualText;
   instructions: BilingualText;
   questions: QuizQuestion[];
+  /** Concept ID aligned to each question, used to generate targeted revision. */
+  questionConceptIds?: string[];
   /** Percentage from 0 to 100 required to unlock the mission battle. */
   passingScore: number;
 }
@@ -145,6 +147,10 @@ export interface LearningMissionProgress {
   knowledgeCheckScore?: number;
   masteryScore?: number;
   masteryAttempts?: number;
+  /** Cumulative correct/attempted mastery responses, grouped by learning concept. */
+  masteryConceptPerformance?: Record<string, { correct: number; attempted: number }>;
+  /** Concepts missed in the most recent mastery attempt. */
+  masteryLastAttemptWeakConcepts?: string[];
   mastered: boolean;
   techniqueUnlocked: boolean;
   lastAttemptAt?: number;

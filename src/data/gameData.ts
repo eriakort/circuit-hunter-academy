@@ -2548,6 +2548,7 @@ export const MISSIONS: Mission[] = [
               "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
             ],
             "passingScore": 80,
+            "questionConceptIds": ["input-processing-output-storage", "hardware-and-software", "von-neumann-architecture", "von-neumann-architecture", "von-neumann-architecture"],
             "questions": [
               {
                 "q": [
@@ -3548,6 +3549,7 @@ export const MISSIONS: Mission[] = [
               "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
             ],
             "passingScore": 80,
+            "questionConceptIds": ["cpu-and-instruction-cycle", "cores-and-clock-speed", "cpu-and-instruction-cycle", "cpu-and-instruction-cycle", "power-supply"],
             "questions": [
               {
                 "q": [
@@ -4533,6 +4535,7 @@ export const MISSIONS: Mission[] = [
               "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
             ],
             "passingScore": 80,
+            "questionConceptIds": ["ram", "cache-and-rom", "mass-storage", "system-buses", "mass-storage"],
             "questions": [
               {
                 "q": [
@@ -5374,6 +5377,13 @@ export const MISSIONS: Mission[] = [
                             "Describe responsible e-waste disposal and the basic idea behind Moore's law.",
                             "Descrivere il corretto smaltimento dei RAEE e il concetto di base della legge di Moore."
                       ]
+                },
+                {
+                      "id": "graphics-processing",
+                      "description": [
+                            "Explain how a graphics processing unit accelerates graphics and image processing.",
+                            "Spiegare come un'unità di elaborazione grafica accelera l'elaborazione di grafica e immagini."
+                      ]
                 }
           ],
           "guidedPractice": [
@@ -5646,6 +5656,7 @@ export const MISSIONS: Mission[] = [
               "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
             ],
             "passingScore": 80,
+            "questionConceptIds": ["input-output-peripherals", "input-output-peripherals", "graphics-processing", "ewaste-and-moores-law", "ewaste-and-moores-law"],
             "questions": [
               {
                 "q": [
@@ -5915,6 +5926,51 @@ export const MISSIONS: Mission[] = [
                           "Explain Capacitive touchscreens in your own words and give one practical example.",
                           "Spiega Touchscreen capacitivi con parole tue e fornisci un esempio pratico."
                         ]
+                      ]
+                },
+                {
+                      "id": "graphics-processing",
+                      "title": [
+                            "Graphics processing",
+                            "Elaborazione grafica"
+                      ],
+                      "explanation": [
+                            "A graphics processing unit (GPU) is a specialised processor that handles graphics and image workloads. It can render images for display and accelerate parallel tasks; it does not replace the CPU for general-purpose instruction control.",
+                            "Un'unità di elaborazione grafica (GPU) è un processore specializzato che gestisce grafica e immagini. Può renderizzare immagini da visualizzare e accelerare attività parallele; non sostituisce la CPU nel controllo generale delle istruzioni."
+                      ],
+                      "example": [
+                            "A game uses the GPU to render a 3D scene while the CPU manages game logic and other general tasks.",
+                            "Un videogioco usa la GPU per renderizzare una scena 3D mentre la CPU gestisce la logica del gioco e altre attività generali."
+                      ],
+                      "workedExample": {
+                            "scenario": [
+                                  "A laptop displays a detailed 3D game. Which processor is especially suited to rendering the graphics, and why?",
+                                  "Un portatile mostra un videogioco 3D dettagliato. Quale processore è particolarmente adatto a renderizzare la grafica e perché?"
+                            ],
+                            "steps": [
+                                  [
+                                        "1. Identify the workload: many calculations are needed to draw pixels, textures and 3D objects.",
+                                        "1. Individua il carico di lavoro: servono molti calcoli per disegnare pixel, texture e oggetti 3D."
+                                  ],
+                                  [
+                                        "2. The GPU is designed to process many graphics operations efficiently, often in parallel.",
+                                        "2. La GPU è progettata per elaborare in modo efficiente molte operazioni grafiche, spesso in parallelo."
+                                  ],
+                                  [
+                                        "3. The CPU continues to manage general program instructions and game logic.",
+                                        "3. La CPU continua a gestire le istruzioni generali del programma e la logica del gioco."
+                                  ]
+                            ],
+                            "answer": [
+                                  "The GPU handles graphics rendering and image processing, while the CPU manages general-purpose instructions and application logic.",
+                                  "La GPU gestisce il rendering grafico e l'elaborazione delle immagini, mentre la CPU gestisce le istruzioni generali e la logica dell'applicazione."
+                            ]
+                      },
+                      "knowledgePrompts": [
+                            [
+                                  "Explain the role of a GPU and give one example of a graphics workload.",
+                                  "Spiega il ruolo di una GPU e fornisci un esempio di carico di lavoro grafico."
+                            ]
                       ]
                 },
                 {
