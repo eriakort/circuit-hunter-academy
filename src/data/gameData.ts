@@ -20406,7 +20406,7 @@ export const MISSIONS: Mission[] = [
           "explanation": ["A term is a part of an expression separated by + or − signs. In 3x + 2, the terms are 3x and 2. The coefficient is the number multiplying the variable: here it is 3. The constant term has no variable: here it is 2.", "Un termine è una parte dell'espressione separata dai segni + o −. In 3x + 2, i termini sono 3x e 2. Il coefficiente è il numero che moltiplica la variabile: qui è 3. Il termine costante non contiene variabili: qui è 2."],
           "example": ["In 5a − 7, the coefficient is 5, the variable is a and the constant term is −7.", "In 5a − 7, il coefficiente è 5, la variabile è a e il termine costante è −7."],
           "misconceptions": [
-            {"belief": ["The constant term in 5a − 7 is 7.", "Il termine costante in 5a − 7 è 7."], "correction": ["The sign belongs to the term. The constant term is −7, not +7.", "Il segno fa parte del termine. Il termine costante è −7, non +7."]
+            {"belief": ["The constant term in 5a − 7 is 7.", "Il termine costante in 5a − 7 è 7."], "correction": ["The sign belongs to the term. The constant term is −7, not +7.", "Il segno fa parte del termine. Il termine costante è −7, non +7."]}
           ],
           "visualKey": "algebra-parts"
         },
@@ -20426,7 +20426,7 @@ export const MISSIONS: Mission[] = [
             "answer": ["You spend 14 euros. The expression 3x + 2 describes the cost for any notebook price x.", "Spendi 14 euro. L'espressione 3x + 2 descrive il costo per qualsiasi prezzo x del quaderno."]
           },
           "misconceptions": [
-            {"belief": ["If x = −2, then x² = −4.", "Se x = −2, allora x² = −4."], "correction": ["Use brackets: (−2)² = (−2) · (−2) = 4. The square of a negative number is positive.", "Usa le parentesi: (−2)² = (−2) · (−2) = 4. Il quadrato di un numero negativo è positivo."]
+            {"belief": ["If x = −2, then x² = −4.", "Se x = −2, allora x² = −4."], "correction": ["Use brackets: (−2)² = (−2) · (−2) = 4. The square of a negative number is positive.", "Usa le parentesi: (−2)² = (−2) · (−2) = 4. Il quadrato di un numero negativo è positivo."]}
           ],
           "sceneIndexes": [3],
           "visualKey": "algebra-substitution"
