@@ -1,3 +1,4 @@
+import { SubjectInfo, UnitInfo, ArcInfo, Mission, Rank, CodexEntry } from "../types";
 export const SUBJECTS: SubjectInfo[] = [
   {
     "id": "cs",
