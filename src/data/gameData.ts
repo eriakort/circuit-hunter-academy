@@ -325,6 +325,36 @@ export const ARCS: ArcInfo[] = [
       "Insiemi, logica e relazioni"
     ],
     "pages": "147–222"
+  },
+  {
+    "n": 1,
+    "unit": 5,
+    "subject": "math",
+    "title": [
+      "Algebraic Expressions",
+      "Espressioni algebriche"
+    ],
+    "pages": "223–260"
+  },
+  {
+    "n": 2,
+    "unit": 5,
+    "subject": "math",
+    "title": [
+      "Equations",
+      "Equazioni"
+    ],
+    "pages": "261–310"
+  },
+  {
+    "n": 3,
+    "unit": 5,
+    "subject": "math",
+    "title": [
+      "Inequalities",
+      "Disequazioni"
+    ],
+    "pages": "311–350"
   }
 ];
 
@@ -20235,6 +20265,122 @@ export const MISSIONS: Mission[] = [
         "why": ["There are no natural numbers less than 0, so the set is empty.", "Non esistono numeri naturali minori di 0, quindi l'insieme è vuoto."]
       }
     ]
+  },
+  {
+    "id": "m2m2",
+    "arc": 22,
+    "sec": "2.2",
+    "pages": "85–96",
+    "hue": 185,
+    "horns": 2,
+    "eyes": 2,
+    "title": ["Operations with Rationals", "Operazioni con i razionali"],
+    "topic": ["Addition, subtraction, multiplication and division of fractions", "Addizione, sottrazione, moltiplicazione e divisione di frazioni"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know what a rational number is.", "Sapere che cos'è un numero razionale."]],
+      "objectives": [
+        {"id": "operate-fractions", "description": ["Add, subtract, multiply and divide fractions.", "Addizionare, sottrarre, moltiplicare e dividere frazioni."]}
+      ],
+      "concepts": [
+        {"id": "multiply-fractions", "title": ["Multiplying fractions", "Moltiplicazione di frazioni"], "explanation": ["To multiply fractions, multiply the numerators and multiply the denominators.", "Per moltiplicare frazioni si moltiplicano i numeratori e i denominatori."], "example": ["2/3 × 4/5 = 8/15.", "2/3 × 4/5 = 8/15."]}
+      ],
+      "guidedPractice": [{"id": "gp-frac-ops", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Calculate.", "Calcola."], "questions": [{"q": ["What is 1/2 × 3/4?", "Quanto fa 1/2 × 3/4?"], "a": [["3/8", "3/8"], ["4/6", "4/6"], ["3/6", "3/6"], ["2/3", "2/3"]], "why": ["Multiply numerators and denominators: 1×3 / 2×4 = 3/8.", "Moltiplica numeratori e denominatori: 1×3 / 2×4 = 3/8."]}]}],
+      "knowledgeCheck": [{"q": ["To divide by a fraction we…", "Per dividere per una frazione si…"], "a": [["Multiply by its reciprocal", "Moltiplica per il suo reciproco"], ["Add the denominators", "Somma i denominatori"], ["Subtract the numerators", "Sottrai i numeratori"], ["Nothing special", "Niente di speciale"]], "why": ["Division by a/b is multiplication by b/a.", "Dividere per a/b equivale a moltiplicare per b/a."]}],
+      "summary": [["Operations with fractions follow clear rules: multiply across, or find a common denominator for addition.", "Le operazioni con le frazioni seguono regole chiare: moltiplica in croce o trova il denominatore comune per l'addizione."]],
+      "techniqueUnlock": {"id": "reciprocal-slash", "name": ["Number Form · Fifth Technique: Reciprocal Slash", "Stile dei Numeri · Quinta Tecnica: Fendente del Reciproco"], "description": ["Turn any division of fractions into a multiplication by the reciprocal.", "Trasforma qualsiasi divisione di frazioni in una moltiplicazione per il reciproco."], "xpReward": 25}
+    },
+    "demon": ["Denominator Imp", "Folletto del Denominatore"],
+    "tech": ["Number Form · Fifth Technique: Reciprocal Slash", "Stile dei Numeri · Quinta Tecnica: Fendente del Reciproco"],
+    "scenes": [{"who": "s", "text": ["<p>To multiply fractions, multiply the numerators together and the denominators together.</p>", "<p>Per moltiplicare frazioni si moltiplicano tra loro i numeratori e i denominatori.</p>"]}, {"who": "y", "text": ["<p>To divide by a fraction, multiply by its reciprocal.</p>", "<p>Per dividere per una frazione si moltiplica per il suo reciproco.</p>"]}],
+    "quiz": [{"q": ["What is 2/3 ÷ 1/6?", "Quanto fa 2/3 ÷ 1/6?"], "a": [["4", "4"], ["1/9", "1/9"], ["2/18", "2/18"], ["12", "12"]], "why": ["2/3 × 6/1 = 12/3 = 4.", "2/3 × 6/1 = 12/3 = 4."]}]
+  },
+  {
+    "id": "m2m3",
+    "arc": 22,
+    "sec": "2.3",
+    "pages": "97–110",
+    "hue": 190,
+    "horns": 3,
+    "eyes": 1,
+    "title": ["Decimals and Real Numbers", "Decimali e numeri reali"],
+    "topic": ["Decimal representation and the set of real numbers ℝ", "Rappresentazione decimale e l'insieme dei numeri reali ℝ"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know rational numbers.", "Conoscere i numeri razionali."]],
+      "objectives": [
+        {"id": "decimals-reals", "description": ["Convert between fractions and decimals and recognise real numbers.", "Convertire tra frazioni e decimali e riconoscere i numeri reali."]}
+      ],
+      "concepts": [
+        {"id": "real-numbers", "title": ["Real numbers", "Numeri reali"], "explanation": ["The real numbers ℝ include all rational and irrational numbers. They fill the entire number line.", "I numeri reali ℝ comprendono tutti i numeri razionali e irrazionali. Riempiono l'intera retta numerica."], "example": ["√2 ≈ 1.414… is real but not rational. 0.5 is both.", "√2 ≈ 1,414… è reale ma non razionale. 0,5 è entrambi."]}
+      ],
+      "guidedPractice": [{"id": "gp-decimal", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Choose the correct statement.", "Scegli l'affermazione corretta."], "questions": [{"q": ["Which number is irrational?", "Quale numero è irrazionale?"], "a": [["√2", "√2"], ["1/3", "1/3"], ["0.25", "0.25"], ["-7", "-7"]], "why": ["√2 cannot be written as a fraction of two integers.", "√2 non può essere scritto come frazione di due interi."]}]}],
+      "knowledgeCheck": [{"q": ["Every rational number is also…", "Ogni numero razionale è anche…"], "a": [["Real", "Reale"], ["Irrational", "Irrazionale"], ["Natural", "Naturale"], ["Imaginary", "Immaginario"]], "why": ["ℚ ⊂ ℝ.", "ℚ ⊂ ℝ."]}],
+      "summary": [["Real numbers include both rationals and irrationals and correspond to every point on the number line.", "I numeri reali comprendono razionali e irrazionali e corrispondono a ogni punto della retta numerica."]],
+      "techniqueUnlock": {"id": "number-line-slash", "name": ["Number Form · Sixth Technique: Number-Line Slash", "Stile dei Numeri · Sesta Tecnica: Fendente della Retta"], "description": ["Place any real number on the number line and compare it instantly.", "Posiziona qualsiasi numero reale sulla retta e confrontalo all'istante."], "xpReward": 25}
+    },
+    "demon": ["Irrational Imp", "Folletto dell'Irrazionale"],
+    "tech": ["Number Form · Sixth Technique: Number-Line Slash", "Stile dei Numeri · Sesta Tecnica: Fendente della Retta"],
+    "scenes": [{"who": "s", "text": ["<p>Every fraction can be written as a decimal, terminating or repeating.</p>", "<p>Ogni frazione si può scrivere come decimale, finito o periodico.</p>"]}, {"who": "d", "text": ["<p>The real numbers fill the whole number line.</p>", "<p>I numeri reali riempiono tutta la retta numerica.</p>"]}],
+    "quiz": [{"q": ["Is π a real number?", "π è un numero reale?"], "a": [["Yes", "Sì"], ["No", "No"], ["Only sometimes", "Solo a volte"], ["It is imaginary", "È immaginario"]], "why": ["π is irrational, therefore it is real.", "π è irrazionale, quindi è reale."]}]
+  },
+  {
+    "id": "m3m2",
+    "arc": 23,
+    "sec": "3.2",
+    "pages": "155–168",
+    "hue": 275,
+    "horns": 2,
+    "eyes": 2,
+    "title": ["Set Operations", "Operazioni tra insiemi"],
+    "topic": ["Union, intersection and difference", "Unione, intersezione e differenza"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know what a set is and the membership symbol.", "Sapere che cos'è un insieme e il simbolo di appartenenza."]],
+      "objectives": [
+        {"id": "set-ops", "description": ["Compute the union, intersection and difference of two sets.", "Calcolare unione, intersezione e differenza di due insiemi."]}
+      ],
+      "concepts": [
+        {"id": "union-intersection", "title": ["Union and intersection", "Unione e intersezione"], "explanation": ["A ∪ B contains every element that is in A or in B. A ∩ B contains only the elements that are in both.", "A ∪ B contiene ogni elemento che sta in A o in B. A ∩ B contiene solo gli elementi che stanno in entrambi."], "example": ["{1,2} ∪ {2,3} = {1,2,3}; {1,2} ∩ {2,3} = {2}.", "{1,2} ∪ {2,3} = {1,2,3}; {1,2} ∩ {2,3} = {2}."]}
+      ],
+      "guidedPractice": [{"id": "gp-setops", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Compute the result.", "Calcola il risultato."], "questions": [{"q": ["What is {a,b} ∩ {b,c}?", "Quanto fa {a,b} ∩ {b,c}?"], "a": [["{b}", "{b}"], ["{a,b,c}", "{a,b,c}"], ["{a,c}", "{a,c}"], ["∅", "∅"]], "why": ["Only b belongs to both sets.", "Solo b appartiene a entrambi gli insiemi."]}]}],
+      "knowledgeCheck": [{"q": ["A ∪ B is…", "A ∪ B è…"], "a": [["The set of elements in A or B", "L'insieme degli elementi in A o in B"], ["The set of elements in both", "L'insieme degli elementi in entrambi"], ["Always empty", "Sempre vuoto"], ["The same as A ∩ B", "Uguale a A ∩ B"]], "why": ["Union takes everything from either set.", "L'unione prende tutto da entrambi gli insiemi."]}],
+      "summary": [["Union combines, intersection keeps the common elements, difference removes.", "L'unione combina, l'intersezione tiene gli elementi comuni, la differenza toglie."]],
+      "techniqueUnlock": {"id": "union-slash", "name": ["Logic Form · Second Technique: Union Slash", "Stile della Logica · Seconda Tecnica: Fendente dell'Unione"], "description": ["Combine or filter sets instantly with union and intersection.", "Combina o filtra insiemi all'istante con unione e intersezione."], "xpReward": 25}
+    },
+    "demon": ["Overlap Imp", "Folletto della Sovrapposizione"],
+    "tech": ["Logic Form · Second Technique: Union Slash", "Stile della Logica · Seconda Tecnica: Fendente dell'Unione"],
+    "scenes": [{"who": "s", "text": ["<p>The union of two sets contains every element that belongs to at least one of them.</p>", "<p>L'unione di due insiemi contiene ogni elemento che appartiene ad almeno uno di essi.</p>"]}, {"who": "y", "text": ["<p>The intersection contains only the elements that belong to both.</p>", "<p>L'intersezione contiene solo gli elementi che appartengono a entrambi.</p>"]}],
+    "quiz": [{"q": ["What is {1,2,3} ∪ {3,4}?", "Quanto fa {1,2,3} ∪ {3,4}?"], "a": [["{1,2,3,4}", "{1,2,3,4}"], ["{3}", "{3}"], ["{1,2}", "{1,2}"], ["{4}", "{4}"]], "why": ["Union keeps every distinct element.", "L'unione tiene ogni elemento distinto."]}]
+  },
+  {
+    "id": "m4m1",
+    "arc": 24,
+    "sec": "4.1",
+    "pages": "223–232",
+    "hue": 30,
+    "horns": 2,
+    "eyes": 1,
+    "title": ["Algebraic Expressions", "Espressioni algebriche"],
+    "topic": ["Variables, coefficients and evaluating expressions", "Variabili, coefficienti e valutazione di espressioni"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know the order of operations.", "Conoscere l'ordine delle operazioni."]],
+      "objectives": [
+        {"id": "evaluate-expressions", "description": ["Evaluate simple algebraic expressions by substituting values.", "Valutare semplici espressioni algebriche sostituendo i valori."]}
+      ],
+      "concepts": [
+        {"id": "variables", "title": ["Variables and expressions", "Variabili ed espressioni"], "explanation": ["A variable is a letter that stands for a number. An algebraic expression combines numbers and variables with operations.", "Una variabile è una lettera che rappresenta un numero. Un'espressione algebrica combina numeri e variabili con operazioni."], "example": ["If x = 3, then 2x + 5 = 2·3 + 5 = 11.", "Se x = 3, allora 2x + 5 = 2·3 + 5 = 11."]}
+      ],
+      "guidedPractice": [{"id": "gp-alg", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Evaluate.", "Valuta."], "questions": [{"q": ["If a = 4, what is 3a − 2?", "Se a = 4, quanto fa 3a − 2?"], "a": [["10", "10"], ["14", "14"], ["6", "6"], ["12", "12"]], "why": ["3·4 − 2 = 12 − 2 = 10.", "3·4 − 2 = 12 − 2 = 10."]}]}],
+      "knowledgeCheck": [{"q": ["In the expression 5x + 3, 5 is the…", "Nell'espressione 5x + 3, 5 è il…"], "a": [["Coefficient", "Coefficiente"], ["Variable", "Variabile"], ["Constant term only", "Solo termine costante"], ["Exponent", "Esponente"]], "why": ["The number multiplying the variable is the coefficient.", "Il numero che moltiplica la variabile è il coefficiente."]}],
+      "summary": [["Algebraic expressions use variables. We evaluate them by substituting numbers and calculating.", "Le espressioni algebriche usano variabili. Le valutiamo sostituendo numeri e calcolando."]],
+      "techniqueUnlock": {"id": "variable-slash", "name": ["Algebra Form · First Technique: Variable Slash", "Stile dell'Algebra · Prima Tecnica: Fendente della Variabile"], "description": ["Substitute any value and cut through an expression in one clean sequence.", "Sostituisci qualsiasi valore e taglia un'espressione in una sequenza pulita."], "xpReward": 25}
+    },
+    "demon": ["Variable Imp", "Folletto della Variabile"],
+    "tech": ["Algebra Form · First Technique: Variable Slash", "Stile dell'Algebra · Prima Tecnica: Fendente della Variabile"],
+    "scenes": [{"who": "s", "text": ["<p>A variable is a letter that can stand for different numbers.</p>", "<p>Una variabile è una lettera che può rappresentare numeri diversi.</p>"]}, {"who": "y", "text": ["<p>To evaluate an expression we replace the variable with a number and calculate.</p>", "<p>Per valutare un'espressione sostituiamo la variabile con un numero e calcoliamo.</p>"]}],
+    "quiz": [{"q": ["If x = 2, what is x² + 3x?", "Se x = 2, quanto fa x² + 3x?"], "a": [["10", "10"], ["8", "8"], ["14", "14"], ["7", "7"]], "why": ["2² + 3·2 = 4 + 6 = 10.", "2² + 3·2 = 4 + 6 = 10."]}]
   }
 
 ];
