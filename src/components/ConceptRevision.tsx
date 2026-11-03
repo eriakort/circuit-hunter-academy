@@ -165,11 +165,16 @@ export const ConceptRevision: React.FC<ConceptRevisionProps> = ({
         )}
 
         {questions.length === 0 && (
-          <p className="muted">
-            {lang === 'it'
+          <div className="muted">
+            <p>{lang === 'it'
               ? 'Non sono ancora collegate domande di verifica a questo concetto. Rivedi i contenuti qui sopra.'
-              : 'No assessment questions are linked to this concept yet. Review the learning material above.'}
-          </p>
+              : 'No assessment questions are linked to this concept yet. Review the learning material above.'}</p>
+            {onContinue && (
+              <button type="button" className="btn ghost" onClick={onContinue}>
+                {lang === 'it' ? 'Salta al prossimo concetto' : 'Skip to next concept'}
+              </button>
+            )}
+          </div>
         )}
 
         {completed && finalScore !== null && (
