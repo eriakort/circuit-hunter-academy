@@ -843,3 +843,21 @@ body{overflow-x:hidden}
 .review-session-total strong {
   font-variant-numeric: tabular-nums;
 }
+
+
+/* Smart Learning 2.9 — study consistency */
+.learning-streak{display:flex;flex-direction:column;gap:12px;padding:15px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.learning-streak-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.learning-streak-heading h3{font-size:17px;margin:3px 0}
+.learning-streak-metrics{display:flex;gap:16px;flex-wrap:wrap}
+.learning-streak-metric{display:flex;flex-direction:column;gap:2px}
+.learning-streak-metric strong{font:400 25px var(--display);color:var(--data)}
+.learning-streak-metric span{font-size:12px;color:var(--muted)}
+.learning-streak-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.learning-streak-day{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.learning-streak-day-label{font-size:11px;color:var(--muted)}
+.learning-streak-day-dot{width:100%;max-width:34px;aspect-ratio:1;border-radius:9px;border:1px solid var(--line);background:var(--panel2);display:grid;place-items:center;color:var(--muted);font-size:11px}
+.learning-streak-day.is-active .learning-streak-day-dot{background:color-mix(in srgb,var(--data) 22%,var(--panel));border-color:var(--data);color:var(--data)}
+.learning-streak-day.is-today .learning-streak-day-label{color:var(--data);font-weight:700}
+.learning-streak-empty{font-size:13px;color:var(--muted);margin:0}
+@media(max-width:620px){.learning-streak{padding:12px}.learning-streak-metrics{gap:12px}.learning-streak-days{gap:4px}.learning-streak-day-dot{max-width:30px}}
