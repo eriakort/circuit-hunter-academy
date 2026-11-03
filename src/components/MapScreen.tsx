@@ -8,6 +8,8 @@ import { ConceptRevision } from './ConceptRevision';
 import { recommendNextLearningAction } from '../adaptiveLearning';
 import { MasteryInsights } from './MasteryInsights';
 import { AssessmentReview } from './AssessmentReview';
+import { SpacedReview } from './SpacedReview';
+import { scheduleNextConceptReview } from '../spacedRepetition';
 
 export const MapScreen: React.FC = () => {
   const {
@@ -169,6 +171,10 @@ export const MapScreen: React.FC = () => {
     const existing = state.learningProgress?.[missionId]?.conceptRevisionPerformance || {};
     const previous = existing[conceptId] || { correct: 0, attempted: 0, sessions: 0, lastReviewedAt: 0 };
     const masteryPerformance = state.learningProgress?.[missionId]?.masteryConceptPerformance?.[conceptId];
+    const reviewedAt = Date.now();
+    const reviewSchedule = { ...(state.learningProgress?.[missionId]?.conceptReviewSchedule || {}) };
+    const revisionScore = result.attempted ? Math.round((result.correct / result.attempted) * 100) : 0;
+    reviewSchedule[conceptId] = scheduleNextConceptReview(reviewSchedule[conceptId], revisionScore, reviewedAt);
     saveLearningProgress(missionId, {
       conceptRevisionPerformance: {
         ...existing,
@@ -176,14 +182,15 @@ export const MapScreen: React.FC = () => {
           correct: previous.correct + result.correct,
           attempted: previous.attempted + result.attempted,
           sessions: previous.sessions + 1,
-          lastReviewedAt: Date.now(),
+          lastReviewedAt: reviewedAt,
           baselineMasteryPercent: masteryPerformance?.attempted
             ? Math.round((masteryPerformance.correct / masteryPerformance.attempted) * 100)
             : undefined,
           postRevisionMasteryPercent: undefined,
           postRevisionAt: undefined
         }
-      }
+      },
+      conceptReviewSchedule: reviewSchedule
     });
   };
 
@@ -348,6 +355,16 @@ export const MapScreen: React.FC = () => {
           </div>
         </div>
         <MasteryInsights missions={MY} progressByMission={state.learningProgress || {}} lang={lang} />
+        <SpacedReview
+          missions={MY}
+          progressByMission={state.learningProgress || {}}
+          lang={lang}
+          onReviewConcept={(missionId, conceptId) => {
+            const mission = MY.find(item => item.id === missionId);
+            const concept = mission?.learning?.concepts.find(item => item.id === conceptId);
+            if (mission && concept) setRevisionTarget({ mission, concept });
+          }}
+        />
         <AssessmentReview
           missions={MY}
           progressByMission={state.learningProgress || {}}
