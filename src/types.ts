@@ -140,6 +140,15 @@ export interface LearningMissionDefinition {
   techniqueUnlock?: LearningTechniqueUnlock;
 }
 
+/** Persisted spaced-repetition state for one learning concept. */
+export interface ConceptReviewSchedule {
+  dueAt: number;
+  lastReviewedAt: number;
+  intervalDays: number;
+  repetitions: number;
+  lastScore: number;
+}
+
 /** Persistable learning outcome model; wired into GameState in a later increment. */
 export interface LearningMissionProgress {
   guidedPracticeComplete: boolean;
@@ -155,6 +164,8 @@ export interface LearningMissionProgress {
   masteryAttemptHistory?: Array<{ score: number; attemptedAt: number; attempt: number }>;
   /** Per-question selected answer indexes for the most recent assessment attempts. */
   masteryAttemptReviews?: Array<{ score: number; attemptedAt: number; attempt: number; answers: number[] }>;
+  /** Next spaced-review date and retention history, keyed by concept ID. */
+  conceptReviewSchedule?: Record<string, ConceptReviewSchedule>;
   /** Cumulative results from optional targeted concept-revision sessions. */
   conceptRevisionPerformance?: Record<string, {
     correct: number;
