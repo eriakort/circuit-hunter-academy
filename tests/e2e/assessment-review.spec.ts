@@ -28,7 +28,7 @@ async function seedAssessmentReview(page: Page) {
           score: 75,
           attemptedAt: Date.now(),
           attempt: 1,
-          answers: [1, 0, 0, 1]
+          answers: [1, 0, 0, 1, 0]
         }]
       }
     };
