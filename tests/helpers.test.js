@@ -1,6 +1,7 @@
 // npx tsx tests/helpers.test.js
 import { rng, sshuffle, rankOf, nextRank, raceXP } from '../src/helpers';
 import { recommendNextLearningAction } from '../src/adaptiveLearning';
+import { scheduleNextConceptReview, REVIEW_DAY_MS } from '../src/spacedRepetition';
 
 const RANKS = [
   [0, 'Intern'],
@@ -69,3 +70,17 @@ console.assert(recommendNextLearningAction([weakMission], masteredProgress, next
 console.assert(recommendNextLearningAction([weakMission], { 'mission-1': { mastered: true } }).kind === 'dojo');
 
 console.log('helpers.test.js ok');
+
+
+// Spaced repetition lengthens intervals after strong retrieval and shortens them after mistakes.
+const firstReview = scheduleNextConceptReview(undefined, 100, 1_000);
+console.assert(firstReview.intervalDays === 3);
+console.assert(firstReview.dueAt === 1_000 + 3 * REVIEW_DAY_MS);
+const successfulReview = scheduleNextConceptReview(firstReview, 90, firstReview.dueAt);
+console.assert(successfulReview.intervalDays === 6);
+console.assert(successfulReview.repetitions === 2);
+const difficultReview = scheduleNextConceptReview(successfulReview, 45, successfulReview.dueAt);
+console.assert(difficultReview.intervalDays === 1);
+console.assert(difficultReview.repetitions === 0);
+const partialReview = scheduleNextConceptReview(firstReview, 70, firstReview.dueAt);
+console.assert(partialReview.intervalDays === 2);

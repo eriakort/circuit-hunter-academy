@@ -790,3 +790,24 @@ body{overflow-x:hidden}
 .assessment-review-explanation{color:var(--muted);font-size:14px}
 .assessment-review-empty{color:var(--muted);background:var(--panel2);border-radius:10px;padding:12px}
 @media(max-width:600px){.assessment-review-attempt summary{align-items:flex-start;flex-direction:column}.assessment-review-concept{width:100%;justify-content:space-between}}
+
+
+
+/* Smart Learning 2.7 — spaced retrieval and retention schedule */
+.spaced-review{display:flex;flex-direction:column;gap:13px;margin-top:18px;padding:16px;border:1px solid rgba(69,216,255,.28);border-radius:14px;background:var(--panel)}
+.spaced-review-heading h3{margin:4px 0;font-size:clamp(19px,3vw,24px)}
+.spaced-review-heading p{margin:0;font-size:13px}
+.spaced-review-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.spaced-review-stat{display:flex;flex-direction:column;gap:3px;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--panel2)}
+.spaced-review-stat strong{font:400 clamp(20px,3vw,27px) var(--display);color:var(--data)}
+.spaced-review-stat span{font-size:12px;color:var(--muted)}
+.spaced-review-list{display:flex;flex-direction:column;gap:9px}
+.spaced-review-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--panel2)}
+.spaced-review-item>div{min-width:0}
+.spaced-review-item strong{display:block;font-size:14px}
+.spaced-review-item small{display:block;color:var(--muted);font-size:12px}
+.spaced-review-due{color:var(--gold)!important}
+.spaced-review-upcoming{border-style:dashed}
+.spaced-review-empty{margin:0;padding:12px;border-radius:10px;background:var(--panel2);color:var(--muted);font-size:13px}
+.spaced-review-subheading{margin:4px 0 0;font-size:15px}
+@media(max-width:600px){.spaced-review{padding:12px}.spaced-review-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.spaced-review-stat{padding:8px}.spaced-review-stat span{font-size:10px}.spaced-review-item{align-items:flex-start;flex-direction:column}.spaced-review-item .btn{width:100%}}
