@@ -3,6 +3,8 @@ import { useGame } from '../context/GameContext';
 import { getVisualHtml } from '../data/visuals';
 import { runMiniGame } from '../data/miniGames';
 import { L, CODE, fill, demonSVG, SENSEI, YOU, esc, U, GUIDE } from '../helpers';
+import { LearningPathway } from './LearningPathway';
+import { HARDWARE_LEARNING_PILOT } from '../data/learningPilot';
 
 export const MissionScreen: React.FC = () => {
   const {
@@ -13,6 +15,7 @@ export const MissionScreen: React.FC = () => {
     prevScene,
     inMissionFirstTime,
     award,
+    addXP,
     saveLearningProgress
   } = useGame();
 
@@ -160,6 +163,7 @@ export const MissionScreen: React.FC = () => {
   const knowledgeComplete = knowledgeQuestions.length === 0 || typeof savedLearning?.knowledgeCheckScore === 'number';
   const knowledgeQuestion = knowledgeQuestions[knowledgeIndex];
   const masteryAssessment = currentMission.learning?.masteryAssessment;
+  const techniqueUnlock = HARDWARE_LEARNING_PILOT[currentMission.id]?.techniqueUnlock;
   const masteryQuestions = masteryAssessment?.questions || [];
   const masteryReviewConceptIds = masteryFeedback && !masteryFeedback.passed
     ? masteryQuestions.reduce<string[]>((ids, question, index) => {
@@ -199,6 +203,13 @@ export const MissionScreen: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <LearningPathway
+        mission={currentMission}
+        lang={lang}
+        progress={savedLearning}
+        missionCleared={!!state.cleared[currentMission.id]}
+      />
 
       {!sc.type ? (
         <>
@@ -525,8 +536,12 @@ export const MissionScreen: React.FC = () => {
                           masteryAttemptHistory: attemptHistory,
                           masteryLastAttemptWeakConcepts: passed ? [] : weakConcepts,
                           mastered: passed,
+                          ...(passed && techniqueUnlock && !savedLearning?.techniqueUnlocked ? { techniqueUnlocked: true } : {}),
                           lastAttemptAt: Date.now()
                         });
+                        if (passed && techniqueUnlock && !savedLearning?.techniqueUnlocked && techniqueUnlock.xpReward) {
+                          addXP(techniqueUnlock.xpReward);
+                        }
                         setMasteryFeedback({ score, passed, attempt });
                       }
                     }}
