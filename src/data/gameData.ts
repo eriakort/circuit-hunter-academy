@@ -19711,7 +19711,142 @@ export const MISSIONS: Mission[] = [
       "Natural numbers, order and basic operations",
       "Numeri naturali, ordinamento e operazioni di base"
     ],
-    "demon": [
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [
+        [
+          "Know how to count and compare small whole numbers.",
+          "Saper contare e confrontare piccoli numeri interi."
+        ]
+      ],
+      "objectives": [
+        {
+          "id": "identify-natural-numbers",
+          "description": [
+            "Identify natural numbers and write their set symbol ℕ.",
+            "Riconoscere i numeri naturali e scrivere il loro simbolo di insieme ℕ."
+          ]
+        },
+        {
+          "id": "order-natural-numbers",
+          "description": [
+            "Order and compare natural numbers using <, >, ≤, ≥.",
+            "Ordinare e confrontare numeri naturali con <, >, ≤, ≥."
+          ]
+        },
+        {
+          "id": "zero-and-successor",
+          "description": [
+            "Explain that 0 has no predecessor in ℕ and that every number has a successor.",
+            "Spiegare che lo 0 non ha precedente in ℕ e che ogni numero ha un successivo."
+          ]
+        }
+      ],
+      "concepts": [
+        {
+          "id": "natural-numbers",
+          "title": [
+            "Natural numbers",
+            "Numeri naturali"
+          ],
+          "explanation": [
+            "Natural numbers are the counting numbers. The set is written ℕ = {0, 1, 2, 3, 4, …}. It is infinite and discrete.",
+            "I numeri naturali sono i numeri del contare. L’insieme si scrive ℕ = {0, 1, 2, 3, 4, …}. È infinito e discreto."
+          ],
+          "example": [
+            "0, 1, 2, 3, 4, 5 are natural numbers. -1 and ½ are not.",
+            "0, 1, 2, 3, 4, 5 sono numeri naturali. -1 e ½ non lo sono."
+          ],
+          "misconceptions": [
+            {
+              "belief": [
+                "Natural numbers always start from 1.",
+                "I numeri naturali partono sempre da 1."
+              ],
+              "correction": [
+                "In this course ℕ includes 0. Zero is a natural number.",
+                "In questo corso ℕ include lo 0. Lo zero è un numero naturale."
+              ]
+            }
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "guided-natural",
+          "title": [
+            "Guided practice: natural numbers",
+            "Esercitazione guidata: numeri naturali"
+          ],
+          "instructions": [
+            "Answer the questions. Use the hint if you need it.",
+            "Rispondi alle domande. Usa il suggerimento se ne hai bisogno."
+          ],
+          "hints": [
+            [
+              "ℕ is the symbol for natural numbers.",
+              "ℕ è il simbolo dei numeri naturali."
+            ]
+          ],
+          "questions": [
+            {
+              "q": [
+                "Which of these is a natural number?",
+                "Quale di questi è un numero naturale?"
+              ],
+              "a": [
+                ["7", "7"],
+                ["-3", "-3"],
+                ["1/2", "1/2"],
+                ["π", "π"]
+              ],
+              "why": [
+                "7 is a counting number, so it belongs to ℕ.",
+                "7 è un numero del contare, quindi appartiene a ℕ."
+              ]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "What is the symbol for the set of natural numbers?",
+            "Qual è il simbolo dell’insieme dei numeri naturali?"
+          ],
+          "a": [
+            ["ℕ", "ℕ"],
+            ["ℤ", "ℤ"],
+            ["ℚ", "ℚ"],
+            ["ℝ", "ℝ"]
+          ],
+          "why": [
+            "ℕ stands for natural numbers.",
+            "ℕ indica i numeri naturali."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "Natural numbers (ℕ) are 0, 1, 2, 3, … They are ordered, infinite and discrete. Zero has no predecessor.",
+          "I numeri naturali (ℕ) sono 0, 1, 2, 3, … Sono ordinati, infiniti e discreti. Lo zero non ha precedente."
+        ]
+      ],
+      "techniqueUnlock": {
+        "id": "step-by-step-slash",
+        "name": [
+          "Number Form · First Technique: Step-by-Step Slash",
+          "Stile dei Numeri · Prima Tecnica: Fendente Passo-Passo"
+        ],
+        "description": [
+          "Break any number problem into clear ordered steps, just like counting.",
+          "Scomponi ogni problema numerico in passi chiari e ordinati, proprio come il contare."
+        ],
+        "xpReward": 25
+      }
+    },
+"demon": [
       "Zero-Confusion Imp",
       "Folletto della Confusione dello Zero"
     ],
