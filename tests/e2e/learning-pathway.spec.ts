@@ -12,6 +12,14 @@ async function startCourse(page: Page) {
 
 test('hardware mission briefing shows prerequisites, objectives and a staged route', async ({ page }) => {
   await startCourse(page);
+  await page.evaluate(() => {
+    const key = 'circuit-hunter-academy-v2';
+    const state = JSON.parse(window.localStorage.getItem(key) || '{}');
+    // Unlock the later missions for this content-coverage test without changing app gating.
+    state.cleared = { ...(state.cleared || {}), a3m1: true, a3m2: true, a3m3: true };
+    window.localStorage.setItem(key, JSON.stringify(state));
+  });
+  await page.reload();
 
   for (const missionIndex of [7, 8, 9, 10]) {
     await page.locator(`.mcard[data-i="${missionIndex}"]`).click();
