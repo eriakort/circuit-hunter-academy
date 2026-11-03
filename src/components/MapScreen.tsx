@@ -3,6 +3,8 @@ import { useGame } from '../context/GameContext';
 import { SUBJECTS, UNITS, ARCS, MISSIONS } from '../data/gameData';
 import { getVisualHtml } from '../data/visuals';
 import { L, demonSVG, esc, U } from '../helpers';
+import type { LearningConcept, Mission } from '../types';
+import { ConceptRevision } from './ConceptRevision';
 
 export const MapScreen: React.FC = () => {
   const {
@@ -15,12 +17,14 @@ export const MapScreen: React.FC = () => {
     resetProgress,
     isOpen,
     myMissions,
-    allCleared
+    allCleared,
+    saveLearningProgress
   } = useGame();
 
   const { lang, name, subject, unit, cleared, flawless } = state;
   const [nameInput, setNameInput] = useState('');
   const [resetArmed, setResetArmed] = useState(false);
+  const [revisionTarget, setRevisionTarget] = useState<{ mission: Mission; concept: LearningConcept } | null>(null);
 
   const curSub = subject || 'cs';
   const currentSubjectData = SUBJECTS.find(s => s.id === curSub) || SUBJECTS[0];
@@ -95,22 +99,39 @@ export const MapScreen: React.FC = () => {
   const averageMastery = assessedCount
     ? Math.round(learningRecords.reduce((sum, item) => sum + (item.progress?.masteryScore ?? 0), 0) / assessedCount)
     : null;
-  const conceptTotals = new Map<string, { title: any; correct: number; attempted: number; missionTitle: any }>();
+  const conceptTotals = new Map<string, {
+    id: string;
+    missionId: string;
+    title: any;
+    correct: number;
+    attempted: number;
+    missionTitle: any;
+  }>();
   MY.forEach(m => {
     const progress = state.learningProgress?.[m.id];
     m.learning?.concepts.forEach(concept => {
       const performance = progress?.masteryConceptPerformance?.[concept.id];
       if (!performance?.attempted) return;
-      const current = conceptTotals.get(concept.id) || {
-        title: concept.title, correct: 0, attempted: 0, missionTitle: m.title
+      const key = m.id + ':' + concept.id;
+      const current = conceptTotals.get(key) || {
+        id: concept.id,
+        missionId: m.id,
+        title: concept.title,
+        correct: 0,
+        attempted: 0,
+        missionTitle: m.title
       };
       current.correct += performance.correct;
       current.attempted += performance.attempted;
-      conceptTotals.set(concept.id, current);
+      conceptTotals.set(key, current);
     });
   });
-  const weakestConcepts = Array.from(conceptTotals.entries())
-    .map(([id, value]) => ({ id, ...value, percent: Math.round((value.correct / value.attempted) * 100) }))
+  const weakestConcepts = Array.from(conceptTotals.values())
+    .map(value => ({
+      ...value,
+      percent: Math.round((value.correct / value.attempted) * 100),
+      revision: state.learningProgress?.[value.missionId]?.conceptRevisionPerformance?.[value.id]
+    }))
     .sort((a, b) => a.percent - b.percent || b.attempted - a.attempted)
     .slice(0, 3);
   const recentAttempts = learningRecords.flatMap(item =>
@@ -123,6 +144,25 @@ export const MapScreen: React.FC = () => {
   const nextMissionIndex = MISSIONS.findIndex(
     (m, i) => (ARCS[m.arc]?.subject || 'cs') === curSub && !cleared[m.id] && isOpen(i)
   );
+
+  const handleRevisionComplete = (result: { correct: number; attempted: number }) => {
+    if (!revisionTarget) return;
+    const missionId = revisionTarget.mission.id;
+    const conceptId = revisionTarget.concept.id;
+    const existing = state.learningProgress?.[missionId]?.conceptRevisionPerformance || {};
+    const previous = existing[conceptId] || { correct: 0, attempted: 0, sessions: 0, lastReviewedAt: 0 };
+    saveLearningProgress(missionId, {
+      conceptRevisionPerformance: {
+        ...existing,
+        [conceptId]: {
+          correct: previous.correct + result.correct,
+          attempted: previous.attempted + result.attempted,
+          sessions: previous.sessions + 1,
+          lastReviewedAt: Date.now()
+        }
+      }
+    });
+  };
 
   const handleResetClick = () => {
     if (!resetArmed) {
@@ -222,7 +262,7 @@ export const MapScreen: React.FC = () => {
             {weakestConcepts.length ? (
               <div className="learning-dashboard-concepts">
                 {weakestConcepts.map(concept => (
-                  <div className="learning-dashboard-concept" key={concept.id}>
+                  <div className="learning-dashboard-concept" key={concept.missionId + ':' + concept.id}>
                     <div className="learning-dashboard-concept-title">
                       <strong>{L(concept.title, lang)}</strong>
                       <span>{concept.percent}%</span>
@@ -231,6 +271,27 @@ export const MapScreen: React.FC = () => {
                       <i style={{ width: `${concept.percent}%` }} />
                     </div>
                     <small>{concept.correct}/{concept.attempted} {lang === 'it' ? 'risposte corrette' : 'correct responses'}</small>
+                    {concept.revision?.sessions ? (
+                      <small className="concept-revision-history">
+                        {lang === 'it'
+                          ? `Ripassato ${concept.revision.sessions} ${concept.revision.sessions === 1 ? 'volta' : 'volte'}`
+                          : `Reviewed ${concept.revision.sessions} ${concept.revision.sessions === 1 ? 'session' : 'sessions'}`}
+                        {' · '}{new Date(concept.revision.lastReviewedAt).toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-CA')}
+                      </small>
+                    ) : null}
+                    <small className="concept-revision-mission">{L(concept.missionTitle, lang)}</small>
+                    <button
+                      type="button"
+                      className="btn ghost sm concept-revision-launch"
+                      aria-label={`Review concept: ${L(concept.title, lang)}`}
+                      onClick={() => {
+                        const mission = MY.find(item => item.id === concept.missionId);
+                        const selectedConcept = mission?.learning?.concepts.find(item => item.id === concept.id);
+                        if (mission && selectedConcept) setRevisionTarget({ mission, concept: selectedConcept });
+                      }}
+                    >
+                      {lang === 'it' ? 'Ripassa concetto' : 'Review concept'}
+                    </button>
                   </div>
                 ))}
               </div>
@@ -269,6 +330,17 @@ export const MapScreen: React.FC = () => {
           )}
         </div>
       </section>
+
+      {revisionTarget && (
+        <ConceptRevision
+          mission={revisionTarget.mission}
+          concept={revisionTarget.concept}
+          lang={lang}
+          revisionPerformance={state.learningProgress?.[revisionTarget.mission.id]?.conceptRevisionPerformance?.[revisionTarget.concept.id]}
+          onClose={() => setRevisionTarget(null)}
+          onComplete={handleRevisionComplete}
+        />
+      )}
 
       {/* Units tabs navigation */}
       <nav className="units" aria-label="Units">
