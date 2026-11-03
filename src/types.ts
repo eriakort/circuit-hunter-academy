@@ -2,7 +2,7 @@ export type Language = 'en' | 'it';
 
 export type BilingualText = [string, string] | string;
 
-export type SubjectId = 'cs' | 'phys';
+export type SubjectId = 'cs' | 'phys' | 'math';
 
 export interface SubjectInfo {
   id: SubjectId;
