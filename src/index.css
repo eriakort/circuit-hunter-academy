@@ -731,3 +731,34 @@ body{overflow-x:hidden}
 .adaptive-recommendation-reason{display:block;margin-top:6px;color:var(--muted);font-size:11px;line-height:1.45}
 .concept-revision-impact{display:block;margin-top:4px;color:var(--good);font-size:11px}
 @media(max-width:650px){.adaptive-recommendation{align-items:flex-start}.adaptive-recommendation>.btn{width:100%}}
+
+
+/* Smart Learning 2.5 — learner mastery insights */
+.mastery-insights{display:flex;flex-direction:column;gap:13px;padding:16px;border:1px solid rgba(176,139,255,.28);border-radius:14px;background:var(--panel)}
+.mastery-insights-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.mastery-insights-heading h3{font-size:clamp(19px,3vw,24px);margin:4px 0}
+.mastery-insights-heading p{margin:0;font-size:13px}
+.mastery-insights-count{flex:none;padding:5px 8px;border:1px solid var(--line);border-radius:99px;color:var(--data);font:700 10px var(--mono)}
+.mastery-insights-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.mastery-insights-grid>.learning-dashboard-panel{min-width:0}
+.mastery-insights-grid h4{font-size:15px;margin:0 0 11px}
+.mastery-insights-panel-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.mastery-insights-panel-heading h4{margin:0}
+.mastery-insights-panel-heading>strong{font:700 13px var(--mono);color:var(--muted)}
+.mastery-insights-panel-heading>.trend-positive{color:var(--good)}
+.mastery-insights-panel-heading>.trend-negative{color:var(--bad)}
+.mastery-trend-chart{display:block;width:100%;height:auto;margin-top:12px;overflow:visible}
+.mastery-chart-gridline{stroke:var(--line);stroke-width:1;stroke-dasharray:4 5}
+.mastery-chart-label{fill:var(--muted);font:11px var(--mono)}
+.mastery-chart-line{fill:none;stroke:var(--data);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.mastery-chart-point{fill:var(--panel);stroke:var(--data);stroke-width:3}
+.mastery-trend-endpoints{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font:11px var(--mono)}
+.mastery-insights-note{margin:8px 0 0;color:var(--muted);font-size:11px;line-height:1.45}
+.mastery-revision-summary{margin:12px 0 0;line-height:1.55;font-size:14px}
+.mastery-insights-concepts{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+.mastery-insights-concepts li{min-width:0}
+.mastery-insights-concept-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;font-size:13px}
+.mastery-insights-concept-heading strong{min-width:0}
+.mastery-insights-concept-heading span{flex:none;color:var(--gold);font:700 12px var(--mono)}
+.mastery-insights-concepts small{display:block;color:var(--muted);font-size:11px;line-height:1.4}
+@media(max-width:650px){.mastery-insights-grid{grid-template-columns:1fr}.mastery-insights-heading{flex-direction:column}.mastery-insights-count{align-self:flex-start}.mastery-trend-endpoints{font-size:10px}}
