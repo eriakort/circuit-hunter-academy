@@ -20500,6 +20500,9 @@ export const MISSIONS: Mission[] = [
       {"who": "y", "vis": "algebra-substitution", "text": ["<p>Now replace the letter with a number. If <strong>x = 4</strong>, then:</p><p><strong>3x + 2 = 3 · 4 + 2 = 12 + 2 = 14</strong>.</p><p>Multiply before adding.</p>", "<p>Ora sostituisci la lettera con un numero. Se <strong>x = 4</strong>, allora:</p><p><strong>3x + 2 = 3 · 4 + 2 = 12 + 2 = 14</strong>.</p><p>Moltiplica prima di sommare.</p>"]},
       {"who": "d", "vis": "algebra-parts", "text": ["<p>Common trap! In <strong>5a − 7</strong>, the constant term is <strong>−7</strong>, not +7. The sign belongs to the term.</p><p>If <strong>a = 2</strong>, then <strong>5 · 2 − 7 = 10 − 7 = 3</strong>.</p>", "<p>Errore frequente! In <strong>5a − 7</strong>, il termine costante è <strong>−7</strong>, non +7. Il segno fa parte del termine.</p><p>Se <strong>a = 2</strong>, allora <strong>5 · 2 − 7 = 10 − 7 = 3</strong>.</p>"]} ,
       {"type": "battle"}
+    ],
+    "quiz": [
+      {"q": ["If x = 2, what is x² + 3x?", "Se x = 2, quanto fa x² + 3x?"], "a": [["10", "10"], ["8", "8"], ["14", "14"], ["7", "7"]], "why": ["2² + 3 · 2 = 4 + 6 = 10.", "2² + 3 · 2 = 4 + 6 = 10."]}
     ]
   },
   {
