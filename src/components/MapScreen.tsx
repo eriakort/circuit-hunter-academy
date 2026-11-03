@@ -7,6 +7,7 @@ import type { LearningConcept, Mission } from '../types';
 import { ConceptRevision } from './ConceptRevision';
 import { recommendNextLearningAction } from '../adaptiveLearning';
 import { MasteryInsights } from './MasteryInsights';
+import { AssessmentReview } from './AssessmentReview';
 
 export const MapScreen: React.FC = () => {
   const {
@@ -347,6 +348,16 @@ export const MapScreen: React.FC = () => {
           </div>
         </div>
         <MasteryInsights missions={MY} progressByMission={state.learningProgress || {}} lang={lang} />
+        <AssessmentReview
+          missions={MY}
+          progressByMission={state.learningProgress || {}}
+          lang={lang}
+          onReviewConcept={(missionId, conceptId) => {
+            const mission = MY.find(item => item.id === missionId);
+            const concept = mission?.learning?.concepts.find(item => item.id === conceptId);
+            if (mission && concept) setRevisionTarget({ mission, concept });
+          }}
+        />
         <div className="learning-dashboard-next adaptive-recommendation" data-recommendation={adaptiveRecommendation.kind}>
           <div>
             <span className="learning-kicker">{lang === 'it' ? 'PERCORSO ADATTIVO' : 'ADAPTIVE LEARNING'}</span>
