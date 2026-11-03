@@ -330,88 +330,6 @@ export const ARCS: ArcInfo[] = [
 
 export const MISSIONS: Mission[] = [
   {
-    "id": "m1m1",
-    "arc": 0,
-    "sec": "1.1",
-    "pages": "1–6",
-    "hue": 45,
-    "horns": 2,
-    "eyes": 1,
-    "title": [
-      "Natural Numbers",
-      "Numeri naturali"
-    ],
-    "topic": [
-      "Natural numbers, order and basic operations",
-      "Numeri naturali, ordinamento e operazioni di base"
-    ],
-    "demon": [
-      "Zero-Confusion Imp",
-      "Folletto della Confusione dello Zero"
-    ],
-    "tech": [
-      "Number Form · First Technique: Step-by-Step Slash",
-      "Stile dei Numeri · Prima Tecnica: Fendente Passo-Passo"
-    ],
-    "scenes": [
-      {
-        "who": "s",
-        "text": [
-          "<p>Natural numbers are the counting numbers: 0, 1, 2, 3, 4, 5…</p><p>We write their set as <b>ℕ</b>.</p>",
-          "<p>I numeri naturali sono i numeri del contare: 0, 1, 2, 3, 4, 5…</p><p>Il loro insieme si indica con <b>ℕ</b>.</p>"
-        ]
-      },
-      {
-        "who": "y",
-        "text": [
-          "<p>They are ordered. We can always compare two natural numbers with <, >, ≤, ≥.</p>",
-          "<p>Sono ordinati. Possiamo sempre confrontare due numeri naturali con <, >, ≤, ≥.</p>"
-        ]
-      },
-      {
-        "who": "d",
-        "text": [
-          "<p>Zero has no predecessor in ℕ, but every number has a successor. The set is infinite and discrete.</p>",
-          "<p>Lo zero non ha precedente in ℕ, ma ogni numero ha un successivo. L’insieme è infinito e discreto.</p>"
-        ]
-      }
-    ],
-    "quiz": [
-      {
-        "q": [
-          "Which set symbol represents the natural numbers?",
-          "Quale simbolo indica l’insieme dei numeri naturali?"
-        ],
-        "a": [
-          ["ℕ", "ℕ"],
-          ["ℤ", "ℤ"],
-          ["ℚ", "ℚ"],
-          ["ℝ", "ℝ"]
-        ],
-        "why": [
-          "ℕ is the standard symbol for the set of natural numbers.",
-          "ℕ è il simbolo standard per l’insieme dei numeri naturali."
-        ]
-      },
-      {
-        "q": [
-          "Does 0 have a predecessor in ℕ?",
-          "Lo 0 ha un precedente in ℕ?"
-        ],
-        "a": [
-          ["No", "No"],
-          ["Yes", "Sì"],
-          ["Only in some definitions", "Solo in alcune definizioni"],
-          ["Always", "Sempre"]
-        ],
-        "why": [
-          "In the usual definition of ℕ that includes 0, zero has no predecessor.",
-          "Nella definizione usuale di ℕ che include lo 0, lo zero non ha precedente."
-        ]
-      }
-    ]
-  },
-  {
     "id": "a1m1",
     "arc": 0,
     "sec": "1.1–1.2",
@@ -19773,6 +19691,88 @@ export const MISSIONS: Mission[] = [
         "why": [
           "Buoyancy acts upward, opposing weight.",
           "La spinta agisce verso l'alto, opponendosi al peso."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "m1m1",
+    "arc": 0,
+    "sec": "1.1",
+    "pages": "1–6",
+    "hue": 45,
+    "horns": 2,
+    "eyes": 1,
+    "title": [
+      "Natural Numbers",
+      "Numeri naturali"
+    ],
+    "topic": [
+      "Natural numbers, order and basic operations",
+      "Numeri naturali, ordinamento e operazioni di base"
+    ],
+    "demon": [
+      "Zero-Confusion Imp",
+      "Folletto della Confusione dello Zero"
+    ],
+    "tech": [
+      "Number Form · First Technique: Step-by-Step Slash",
+      "Stile dei Numeri · Prima Tecnica: Fendente Passo-Passo"
+    ],
+    "scenes": [
+      {
+        "who": "s",
+        "text": [
+          "<p>Natural numbers are the counting numbers: 0, 1, 2, 3, 4, 5…</p><p>We write their set as <b>ℕ</b>.</p>",
+          "<p>I numeri naturali sono i numeri del contare: 0, 1, 2, 3, 4, 5…</p><p>Il loro insieme si indica con <b>ℕ</b>.</p>"
+        ]
+      },
+      {
+        "who": "y",
+        "text": [
+          "<p>They are ordered. We can always compare two natural numbers with <, >, ≤, ≥.</p>",
+          "<p>Sono ordinati. Possiamo sempre confrontare due numeri naturali con <, >, ≤, ≥.</p>"
+        ]
+      },
+      {
+        "who": "d",
+        "text": [
+          "<p>Zero has no predecessor in ℕ, but every number has a successor. The set is infinite and discrete.</p>",
+          "<p>Lo zero non ha precedente in ℕ, ma ogni numero ha un successivo. L’insieme è infinito e discreto.</p>"
+        ]
+      }
+    ],
+    "quiz": [
+      {
+        "q": [
+          "Which set symbol represents the natural numbers?",
+          "Quale simbolo indica l’insieme dei numeri naturali?"
+        ],
+        "a": [
+          ["ℕ", "ℕ"],
+          ["ℤ", "ℤ"],
+          ["ℚ", "ℚ"],
+          ["ℝ", "ℝ"]
+        ],
+        "why": [
+          "ℕ is the standard symbol for the set of natural numbers.",
+          "ℕ è il simbolo standard per l’insieme dei numeri naturali."
+        ]
+      },
+      {
+        "q": [
+          "Does 0 have a predecessor in ℕ?",
+          "Lo 0 ha un precedente in ℕ?"
+        ],
+        "a": [
+          ["No", "No"],
+          ["Yes", "Sì"],
+          ["Only in some definitions", "Solo in alcune definizioni"],
+          ["Always", "Sempre"]
+        ],
+        "why": [
+          "In the usual definition of ℕ that includes 0, zero has no predecessor.",
+          "Nella definizione usuale di ℕ che include lo 0, lo zero non ha precedente."
         ]
       }
     ]
