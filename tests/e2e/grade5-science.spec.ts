@@ -16,7 +16,7 @@ test('Grade 5 learners can enter the dedicated bilingual Science curriculum', as
   await page.locator('#nm').fill('Science Hunter');
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
-  await expect(page.locator('.units button')).toHaveCount(1);
+  await expect(page.locator('.units button')).toHaveCount(2);
   await expect(page.getByRole('heading', { name: 'Science Foundations' })).toBeVisible();
   await expect(page.locator('.mcard')).toHaveCount(2);
   await expect(page.getByRole('heading', { name: 'The Secret Life of Plants' })).toBeVisible();
@@ -53,4 +53,33 @@ test('Grade 5 battle answers update immediately when the language changes', asyn
 
   await page.locator('#lEN').click();
   await expect.poll(() => page.locator('.opts button').allTextContents()).toEqual(englishOptions);
+});
+
+
+test('Grade 5 Science includes the complete bilingual Universe unit', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="science"]').click();
+  await page.locator('#regf').waitFor();
+  await page.locator('#nm').fill('Cosmos Hunter');
+  await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
+
+  await expect(page.locator('.units button')).toHaveCount(2);
+  await page.locator('.units button').nth(1).click();
+
+  await expect(page.getByRole('heading', { name: 'The Universe' })).toBeVisible();
+  await expect(page.locator('.mcard')).toHaveCount(11);
+  await expect(page.getByRole('heading', { name: 'The Sky Beyond Earth' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Our Solar System' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'STEM: Exploring Space' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'STEM: The Foucault Pendulum' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Universe Review: Mission Complete' })).toBeVisible();
+
+  await page.locator('#lIT').click();
+  await expect(page.getByRole('heading', { name: "L'Univers" })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Il cielo oltre la Terra' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'STEM: Il pendolo di Foucault' })).toBeVisible();
 });
