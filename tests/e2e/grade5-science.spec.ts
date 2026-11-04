@@ -170,12 +170,16 @@ test('Grade 5 Science includes bilingual self-assessment and workbook practice',
   await page.locator('.units button').nth(4).click();
 
   await expect(page.getByRole('heading', { name: 'Self-Assessment & Workbook', exact: true })).toBeVisible();
-  await expect(page.locator('.mcard')).toHaveCount(2);
+  await expect(page.locator('.mcard')).toHaveCount(4);
   await expect(page.getByRole('heading', { name: 'Science Self-Assessment' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Science Workbook Challenge' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Mission: An Energy-Smart Classroom' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Mission: Become a Habitat Helper' })).toBeVisible();
 
   await page.locator('#lIT').click();
   await expect(page.getByRole('heading', { name: 'Autovalutazione e quaderno operativo', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Autovalutazione di scienze' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Sfida del quaderno di scienze' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Missione: un’aula attenta all’energia' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Missione: diventa un’aiutante degli habitat' })).toBeVisible();
 });
