@@ -480,8 +480,8 @@ export const CH2_QUESTIONS: TaggedQuestion[] = [
       ['7', '7']
     ],
     why: [
-      'In Italian science and math textbooks (Bergamini, Walker), if the coefficient is ≥ √10 ≈ 3.16 (or ≥ 5 in some conventions), the power of 10 rounds up: 7.2 ≥ 3.16, so the order of magnitude is 10⁵⁺¹ = 10⁶.',
-      'Nei testi scolastici italiani (Bergamini, Walker), se la mantissa è ≥ √10 ≈ 3,16 (o ≥ 5), si arrotonda alla potenza successiva: 7,2 ≥ 3,16, quindi l’ordine di grandezza è 10⁶.'
+      'In Italian science and math textbooks, if the coefficient is ≥ √10 ≈ 3.16 (or ≥ 5 in some conventions), the power of 10 rounds up: 7.2 ≥ 3.16, so the order of magnitude is 10⁵⁺¹ = 10⁶.',
+      'Nei testi scolastici italiani, se la mantissa è ≥ √10 ≈ 3,16 (o ≥ 5), si arrotonda alla potenza successiva: 7,2 ≥ 3,16, quindi l’ordine di grandezza è 10⁶.'
     ]
   },
   {
