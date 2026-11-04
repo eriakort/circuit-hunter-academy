@@ -1,11 +1,12 @@
 import React from 'react';
 import { useGame } from '../context/GameContext';
-import { RANKS } from '../data/gameData';
+import { RANKS, SUBJECTS } from '../data/gameData';
 import { L, rankOf, nextRank, esc } from '../helpers';
 
 export const HUD: React.FC = () => {
   const { state, view, battleContext, setLanguage, goToView, startBattle } = useGame();
   const { lang, name, xp, subject, cleared } = state;
+  const activeSubject = SUBJECTS.find(item => item.id === subject) || SUBJECTS[0];
 
   const currentRank = rankOf(xp, RANKS);
   const next = nextRank(xp, RANKS);
@@ -28,6 +29,16 @@ export const HUD: React.FC = () => {
       <button className="brand" id="hHome" onClick={() => goToView('map')}>
         CIRCUIT <b>HUNTER</b> ACADEMY
       </button>
+
+      {subject && (
+        <div className="subject-indicator" data-s={subject} aria-label={`${L(['Current subject', 'Materia attiva'], lang)}: ${L(activeSubject.name, lang)}`}>
+          <span className="subject-indicator-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: activeSubject.art }} />
+          <span className="subject-indicator-copy">
+            <small>{L(['CURRENT SUBJECT', 'MATERIA ATTIVA'], lang)}</small>
+            <strong>{L(activeSubject.name, lang)}</strong>
+          </span>
+        </div>
+      )}
 
       <div className="hud-r">
         {name && (
