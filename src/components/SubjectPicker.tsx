@@ -19,8 +19,8 @@ export const SubjectPicker: React.FC = () => {
         <p className="lede">
           {L(
             [
-              grade === 'grade5' ? 'The Grade 5 curriculum is being organised separately. Choose Grade 9 to explore the existing academy.' : 'Choose a subject for Grade 9. Your existing missions and saved progress remain right where you left them.',
-              grade === 'grade5' ? 'Il programma della quinta primaria viene organizzato separatamente. Scegli la terza media per esplorare l’accademia esistente.' : 'Scegli una materia per la classe terza della scuola secondaria di primo grado. Le missioni e i progressi già salvati restano al loro posto.'
+              grade === 'grade5' ? 'Start exploring Science & Technology. More Grade 5 subjects will be added as their curricula are prepared.' : 'Choose a subject for Grade 9. Your existing missions and saved progress remain right where you left them.',
+              grade === 'grade5' ? 'Inizia a esplorare Scienze e Tecnologia. Aggiungeremo altre materie della quinta primaria man mano che saranno pronti i relativi programmi.' : 'Scegli una materia per la classe terza della scuola secondaria di primo grado. Le missioni e i progressi già salvati restano al loro posto.'
             ],
             lang
           )}
@@ -32,7 +32,7 @@ export const SubjectPicker: React.FC = () => {
           <div className="grade-coming-soon card" role="status">
             <div className="grade-coming-icon" aria-hidden="true">✦</div>
             <h2>{L(['Grade 5 subjects are being prepared', 'Le materie della quinta primaria sono in preparazione'], lang)}</h2>
-            <p>{L(['We will add the Grade 5 curriculum separately, including General Science where appropriate. Grade 5 will not reuse the Grade 9 Physics course.', 'Aggiungeremo un programma dedicato alla quinta primaria, compresa Scienze dove previsto. La quinta primaria non riutilizzerà il corso di Fisica della terza media.'], lang)}</p>
+            <p>{L(['We will add the Grade 5 curriculum separately, using the dedicated Grade 5 textbook. Grade 5 will not reuse the Grade 9 Physics course.', 'Aggiungeremo un programma dedicato alla quinta primaria, basato sul libro dedicato alla quinta primaria. La quinta primaria non riutilizzerà il corso di Fisica della terza media.'], lang)}</p>
             <button className="btn" onClick={() => goToView('grades')}>{L(['Choose another grade', 'Scegli un’altra classe'], lang)}</button>
           </div>
         ) : gradeSubjects.map(s => (
