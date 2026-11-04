@@ -7,7 +7,7 @@ export const GRADE5_SCIENCE_SUBJECT: SubjectInfo = {
     'Explore living things, space, energy, forces and the human body through simple explanations and experiments.',
     'Esplora gli esseri viventi, lo spazio, l’energia, le forze e il corpo umano con spiegazioni semplici ed esperimenti.'
   ],
-  meta: ['4 learning areas · Foundations now available', '4 aree di apprendimento · Fondamenti disponibili'],
+  meta: ['4 learning areas · Foundations + Universe', '4 aree di apprendimento · Fondamenti + Universo'],
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="38" fill="none" stroke="#7bd88f" stroke-width="3"/><path d="M60 22 C42 42 42 78 60 98 M60 22 C78 42 78 78 60 98 M24 60 H96" fill="none" stroke="#7bd88f" stroke-width="2"/><circle cx="60" cy="60" r="8" fill="#ffd166"/><path d="M60 12 L64 22 L56 22 Z M108 60 L98 64 L98 56 Z" fill="#7bd88f"/></svg>'
 };
 
