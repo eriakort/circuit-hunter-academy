@@ -4,7 +4,7 @@
 
 An anime-style study game for grade 9 (Italian *prima*), rewritten as a modern **React 19 + TypeScript + Vite** application. The player is a student hunter at an original academy who turns each school topic into a "technique" to defeat Glitch Demons.
 
-On opening the game, players choose their subject (**Computer Science** or **Physics**). The entire game can be toggled between **English and Italian** at any time (EN / IT button), and every key term includes bilingual tag pills with pronunciations/translations. Hunter names and XP are shared across subjects, while progress and certificates of mastery are tracked per subject in browser `localStorage`.
+On opening the game, players choose their subject (**Computer Science**, **Physics** or **Mathematics**). The entire game can be toggled between **English and Italian** at any time (EN / IT button), and every key term includes bilingual tag pills with pronunciations/translations. Hunter names and XP are shared across subjects, while progress and certificates of mastery are tracked per subject in browser `localStorage`.
 
 ---
 
@@ -25,6 +25,16 @@ Follows *Il Walker. Corso di fisica. Per il primo biennio* (chapters 1–5).
 | Unit | Chapters |
 |---|---|
 | Fisica · Misura e meccanica | 1 Le grandezze fisiche · 2 Misure e rappresentazioni · 3 I vettori e le forze · 4 L'equilibrio dei solidi · 5 L'equilibrio dei fluidi |
+
+### Mathematics — 6 chapters · 28 missions
+Based on *Massimo Bergamini & Graziella Barozzi, Matematica multimediale.blu, Terza edizione*. Current missions cover the first six chapters represented in the game; later chapters and geometry units are not yet included.
+
+| Coverage | Topics |
+|---|---|
+| Chapters 1–3 | Number sets, natural/integer/rational/real numbers, fractions, divisibility, powers and relations |
+| Chapter 4 | Algebraic expressions, monomials, polynomials, like terms and notable products |
+| Chapter 5 | Linear equations and equations with brackets |
+| Chapter 6 | Linear inequalities |
 
 ---
 

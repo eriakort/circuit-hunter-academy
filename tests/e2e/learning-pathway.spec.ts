@@ -106,3 +106,35 @@ test('hardware mission briefing and earned technique render in Italian', async (
   await expect(page.getByRole('heading', { name: 'Fendente Input–Output' })).toBeVisible();
   await expect(page.getByText('+25 XP · ricompensa maestria')).toBeVisible();
 });
+
+
+test('math mission briefing renders from its own learning definition without a pilot entry', async ({ page }) => {
+  await startCourse(page);
+  await page.evaluate(() => {
+    const key = 'circuit-hunter-academy-v2';
+    const state = JSON.parse(window.localStorage.getItem(key) || '{}');
+    state.subject = 'math';
+    state.unit = 5;
+    state.cleared = { ...(state.cleared || {}), m4m1: true };
+    state.learningProgress = {
+      ...(state.learningProgress || {}),
+      m4m2: {
+        guidedPracticeComplete: true,
+        independentPracticeComplete: true,
+        mastered: true,
+        techniqueUnlocked: true,
+        masteryScore: 100,
+        masteryAttempts: 1
+      }
+    };
+    window.localStorage.setItem(key, JSON.stringify(state));
+  });
+  await page.reload();
+
+  await page.locator('.mcard').filter({ hasText: 'Simplifying Expressions' }).click();
+  await expect(page.getByRole('heading', { name: 'Your learning mission' })).toBeVisible();
+  await expect(page.getByText('By the end, you will be able to')).toBeVisible();
+  await expect(page.locator('.learning-pathway-summary')).toContainText('Like terms are added by adding coefficients');
+  await expect(page.getByText('NEW TECHNIQUE UNLOCKED')).toBeVisible();
+  await expect(page.getByRole('heading', { name: /Simplify Slash/ })).toBeVisible();
+});

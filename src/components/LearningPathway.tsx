@@ -15,7 +15,12 @@ export const LearningPathway: React.FC<LearningPathwayProps> = ({
 }) => {
   const learning = mission.learning;
   const pilot = HARDWARE_LEARNING_PILOT[mission.id];
-  if (!learning || !pilot) return null;
+  if (!learning) return null;
+
+  // The pilot map provides curated overrides for selected missions. Every mission
+  // with a learning definition can render its own summary and technique unlock.
+  const summary = pilot?.summary ?? learning.summary ?? [];
+  const techniqueUnlock = pilot?.techniqueUnlock ?? learning.techniqueUnlock;
 
   const stages = [
     { id: 'guided', label: ['Guided practice', 'Esercitazione guidata'], complete: !!progress?.guidedPracticeComplete },
@@ -59,7 +64,7 @@ export const LearningPathway: React.FC<LearningPathwayProps> = ({
 
       <div className="learning-pathway-summary">
         <strong>{lang === 'it' ? 'Idea chiave' : 'Key takeaway'}</strong>
-        {pilot.summary.map((item, index) => <p key={index}>{L(item, lang)}</p>)}
+        {summary.map((item, index) => <p key={index}>{L(item, lang)}</p>)}
       </div>
 
       <div className="learning-pathway-stages" aria-label={lang === 'it' ? 'Fasi della missione' : 'Mission stages'}>
@@ -72,13 +77,13 @@ export const LearningPathway: React.FC<LearningPathwayProps> = ({
         ))}
       </div>
 
-      {progress?.mastered && (
+      {progress?.mastered && techniqueUnlock && (
         <div className="learning-technique-unlocked" role="status" aria-live="polite">
           <span className="learning-kicker">{lang === 'it' ? 'NUOVA TECNICA SBLOCCATA' : 'NEW TECHNIQUE UNLOCKED'}</span>
-          <h4>{L(pilot.techniqueUnlock.name, lang)}</h4>
-          <p>{L(pilot.techniqueUnlock.description, lang)}</p>
-          {pilot.techniqueUnlock.xpReward ? (
-            <small>+{pilot.techniqueUnlock.xpReward} XP · {lang === 'it' ? 'ricompensa maestria' : 'mastery reward'}</small>
+          <h4>{L(techniqueUnlock.name, lang)}</h4>
+          <p>{L(techniqueUnlock.description, lang)}</p>
+          {techniqueUnlock.xpReward ? (
+            <small>+{techniqueUnlock.xpReward} XP · {lang === 'it' ? 'ricompensa maestria' : 'mastery reward'}</small>
           ) : null}
         </div>
       )}
