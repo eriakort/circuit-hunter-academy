@@ -82,7 +82,7 @@ export const PhysicsLab: React.FC<Props> = ({ missionId, lang }) => {
   const weightN = objectDensity * objectVolume * 9.81;
   const buoyancyN = liquidDensity * objectVolume * 9.81;
   const floats = objectDensity < liquidDensity;
-  const stability = Math.abs(cgOffset) <= baseWidth / 2;
+  const stability = Math.abs(cgOffset) <= baseWidth;
 
   return <section className="physics-lab" aria-label={copy(lang,'Interactive physics experiment','Esperimento interattivo di fisica')}>
     <div className="pl-heading">
