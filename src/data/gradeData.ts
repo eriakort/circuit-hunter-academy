@@ -21,7 +21,7 @@ export const GRADES: GradeInfo[] = [
     schoolLevel: ['Primary school', 'Scuola primaria'],
     ageRange: ['Usually ages 10–11', 'Generalmente 10–11 anni'],
     description: ['A dedicated primary-school curriculum.', 'Un programma dedicato alla scuola primaria.'],
-    status: 'preparing'
+    status: 'ready'
   },
   {
     id: 'grade9',
@@ -34,7 +34,7 @@ export const GRADES: GradeInfo[] = [
 ];
 
 export const GRADE_SUBJECT_IDS: Record<GradeId, string[]> = {
-  grade5: [],
+  grade5: ['science'],
   grade9: ['cs', 'phys', 'math']
 };
 
