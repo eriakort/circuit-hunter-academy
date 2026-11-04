@@ -131,7 +131,7 @@ test('Grade 5 Science includes the complete bilingual Human Body unit', async ({
   await page.locator('.units button').nth(3).click();
 
   await expect(page.getByRole('heading', { name: 'The Human Body' })).toBeVisible();
-  await expect(page.locator('.mcard')).toHaveCount(17);
+  await expect(page.locator('.mcard')).toHaveCount(18);
   await expect(page.getByRole('heading', { name: 'One Amazing Organism' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'The Skeletal System' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'STEM: What Is Blood Made Of?' })).toBeVisible();
