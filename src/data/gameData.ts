@@ -16829,6 +16829,10 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
           ]
         },
         {
@@ -16882,6 +16886,9 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            2
           ]
         }
       ],
@@ -16963,7 +16970,8 @@ export const MISSIONS: Mission[] = [
               "Check the unit and the direction or scale in your answer.",
               "Controlla l'unità e la direzione o la scala nella risposta."
             ]
-          ]
+          ],
+          "sceneIndex": 3
         }
       ],
       "independentPractice": [
@@ -17034,7 +17042,8 @@ export const MISSIONS: Mission[] = [
                 "Mantiene lo stesso valore in una forma compatta."
               ]
             }
-          ]
+          ],
+          "sceneIndex": 4
         }
       ],
       "knowledgeCheck": [
@@ -17716,6 +17725,10 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
           ]
         },
         {
@@ -17769,6 +17782,9 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            2
           ]
         }
       ],
@@ -17850,7 +17866,8 @@ export const MISSIONS: Mission[] = [
               "Check the unit and the direction or scale in your answer.",
               "Controlla l'unità e la direzione o la scala nella risposta."
             ]
-          ]
+          ],
+          "sceneIndex": 3
         }
       ],
       "independentPractice": [
@@ -17921,7 +17938,8 @@ export const MISSIONS: Mission[] = [
                 "La densità è la massa divisa per il volume."
               ]
             }
-          ]
+          ],
+          "sceneIndex": 4
         }
       ],
       "knowledgeCheck": [
@@ -18545,6 +18563,10 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
           ]
         },
         {
@@ -18598,6 +18620,9 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            2
           ]
         }
       ],
@@ -18679,7 +18704,8 @@ export const MISSIONS: Mission[] = [
               "Check the unit and the direction or scale in your answer.",
               "Controlla l'unità e la direzione o la scala nella risposta."
             ]
-          ]
+          ],
+          "sceneIndex": 3
         }
       ],
       "independentPractice": [
@@ -18750,7 +18776,8 @@ export const MISSIONS: Mission[] = [
                 "Le letture ripetute aiutano a individuare variazioni casuali."
               ]
             }
-          ]
+          ],
+          "sceneIndex": 4
         }
       ],
       "knowledgeCheck": [
@@ -19432,6 +19459,10 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
           ]
         },
         {
@@ -19485,6 +19516,9 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            2
           ]
         }
       ],
@@ -19566,7 +19600,8 @@ export const MISSIONS: Mission[] = [
               "Check the unit and the direction or scale in your answer.",
               "Controlla l'unità e la direzione o la scala nella risposta."
             ]
-          ]
+          ],
+          "sceneIndex": 3
         }
       ],
       "independentPractice": [
@@ -19637,7 +19672,8 @@ export const MISSIONS: Mission[] = [
                 "Quando x è zero, anche y è zero."
               ]
             }
-          ]
+          ],
+          "sceneIndex": 4
         }
       ],
       "knowledgeCheck": [
@@ -20281,6 +20317,10 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
           ]
         },
         {
@@ -20334,6 +20374,9 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            2
           ]
         }
       ],
@@ -20415,7 +20458,8 @@ export const MISSIONS: Mission[] = [
               "Check the unit and the direction or scale in your answer.",
               "Controlla l'unità e la direzione o la scala nella risposta."
             ]
-          ]
+          ],
+          "sceneIndex": 3
         }
       ],
       "independentPractice": [
@@ -20486,7 +20530,8 @@ export const MISSIONS: Mission[] = [
                 "Versi opposti: sottrai e mantieni il verso del vettore maggiore."
               ]
             }
-          ]
+          ],
+          "sceneIndex": 4
         }
       ],
       "knowledgeCheck": [
@@ -21172,6 +21217,10 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
           ]
         },
         {
@@ -21225,6 +21274,9 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            2
           ]
         }
       ],
@@ -21306,7 +21358,8 @@ export const MISSIONS: Mission[] = [
               "Check the unit and the direction or scale in your answer.",
               "Controlla l'unità e la direzione o la scala nella risposta."
             ]
-          ]
+          ],
+          "sceneIndex": 3
         }
       ],
       "independentPractice": [
@@ -21377,7 +21430,8 @@ export const MISSIONS: Mission[] = [
                 "L'attrito agisce contro il moto relativo tra superfici."
               ]
             }
-          ]
+          ],
+          "sceneIndex": 4
         }
       ],
       "knowledgeCheck": [
@@ -22009,6 +22063,10 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
           ]
         },
         {
@@ -22062,6 +22120,9 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            2
           ]
         }
       ],
@@ -22143,7 +22204,8 @@ export const MISSIONS: Mission[] = [
               "Check the unit and the direction or scale in your answer.",
               "Controlla l'unità e la direzione o la scala nella risposta."
             ]
-          ]
+          ],
+          "sceneIndex": 3
         }
       ],
       "independentPractice": [
@@ -22214,7 +22276,8 @@ export const MISSIONS: Mission[] = [
                 "Il segno indica la direzione rispetto agli assi scelti."
               ]
             }
-          ]
+          ],
+          "sceneIndex": 4
         }
       ],
       "knowledgeCheck": [
@@ -22842,6 +22905,10 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
           ]
         },
         {
@@ -22895,6 +22962,9 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            2
           ]
         }
       ],
@@ -22976,7 +23046,8 @@ export const MISSIONS: Mission[] = [
               "Check the unit and the direction or scale in your answer.",
               "Controlla l'unità e la direzione o la scala nella risposta."
             ]
-          ]
+          ],
+          "sceneIndex": 3
         }
       ],
       "independentPractice": [
@@ -23047,7 +23118,8 @@ export const MISSIONS: Mission[] = [
                 "Il momento aumenta con la distanza perpendicolare."
               ]
             }
-          ]
+          ],
+          "sceneIndex": 4
         }
       ],
       "knowledgeCheck": [
@@ -23733,6 +23805,10 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
           ]
         },
         {
@@ -23786,6 +23862,9 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            2
           ]
         }
       ],
@@ -23867,7 +23946,8 @@ export const MISSIONS: Mission[] = [
               "Check the unit and the direction or scale in your answer.",
               "Controlla l'unità e la direzione o la scala nella risposta."
             ]
-          ]
+          ],
+          "sceneIndex": 3
         }
       ],
       "independentPractice": [
@@ -23938,7 +24018,8 @@ export const MISSIONS: Mission[] = [
                 "Dopo un piccolo spostamento, può restare nella nuova posizione."
               ]
             }
-          ]
+          ],
+          "sceneIndex": 4
         }
       ],
       "knowledgeCheck": [
@@ -24599,6 +24680,10 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
           ]
         },
         {
@@ -24652,6 +24737,9 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            2
           ]
         }
       ],
@@ -24733,7 +24821,8 @@ export const MISSIONS: Mission[] = [
               "Check the unit and the direction or scale in your answer.",
               "Controlla l'unità e la direzione o la scala nella risposta."
             ]
-          ]
+          ],
+          "sceneIndex": 3
         }
       ],
       "independentPractice": [
@@ -24804,7 +24893,8 @@ export const MISSIONS: Mission[] = [
                 "La profondità h fa aumentare la pressione nel liquido."
               ]
             }
-          ]
+          ],
+          "sceneIndex": 4
         }
       ],
       "knowledgeCheck": [
@@ -25453,6 +25543,10 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
           ]
         },
         {
@@ -25506,6 +25600,9 @@ export const MISSIONS: Mission[] = [
               "Explain the key idea, then solve a new example.",
               "Spiega l'idea chiave, poi risolvi un nuovo esempio."
             ]
+          ],
+          "sceneIndexes": [
+            2
           ]
         }
       ],
@@ -25587,7 +25684,8 @@ export const MISSIONS: Mission[] = [
               "Check the unit and the direction or scale in your answer.",
               "Controlla l'unità e la direzione o la scala nella risposta."
             ]
-          ]
+          ],
+          "sceneIndex": 3
         }
       ],
       "independentPractice": [
@@ -25658,7 +25756,8 @@ export const MISSIONS: Mission[] = [
                 "Forze uguali verso l'alto e verso il basso danno equilibrio verticale."
               ]
             }
-          ]
+          ],
+          "sceneIndex": 4
         }
       ],
       "knowledgeCheck": [
