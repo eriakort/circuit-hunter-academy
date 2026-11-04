@@ -1008,3 +1008,19 @@ body{overflow-x:hidden}
 .csl-coach small{font:700 10px var(--mono);color:var(--data);letter-spacing:.06em}
 .csl-footer{border-top:1px solid var(--line);padding-top:10px;color:var(--muted);font-size:12px}
 @media(max-width:720px){.csl-grid{grid-template-columns:1fr}.cs-visual-lab{padding:13px}.csl-stage,.csl-coach{padding:11px}.csl-bit-grid{gap:3px}.csl-bit-grid button small{font-size:8px}}
+
+
+/* Persistent active-subject identity in the HUD */
+.subject-indicator{display:flex;align-items:center;gap:9px;min-width:0;padding:5px 12px 5px 7px;border:1px solid var(--line);border-radius:11px;background:var(--panel2)}
+.subject-indicator-art{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px}
+.subject-indicator-art svg{display:block;width:100%;height:100%;max-width:36px;max-height:36px}
+.subject-indicator-copy{display:flex;flex-direction:column;gap:1px;min-width:0;line-height:1.25}
+.subject-indicator-copy small{font:700 9px var(--mono);letter-spacing:.09em;color:var(--muted)}
+.subject-indicator-copy strong{font-size:13px;white-space:nowrap}
+.subject-indicator[data-s="math"]{border-color:rgba(255,209,102,.55)}
+.subject-indicator[data-s="math"] .subject-indicator-copy strong{color:var(--gold)}
+.subject-indicator[data-s="phys"]{border-color:rgba(255,143,192,.5)}
+.subject-indicator[data-s="phys"] .subject-indicator-copy strong{color:var(--sakura)}
+.subject-indicator[data-s="cs"]{border-color:rgba(69,216,255,.5)}
+.subject-indicator[data-s="cs"] .subject-indicator-copy strong{color:var(--data)}
+@media(max-width:600px){.subject-indicator{padding:4px 8px 4px 5px;gap:6px}.subject-indicator-art{flex-basis:30px;width:30px;height:30px}.subject-indicator-art svg{max-width:30px;max-height:30px}.subject-indicator-copy small{font-size:8px}.subject-indicator-copy strong{font-size:12px}}
