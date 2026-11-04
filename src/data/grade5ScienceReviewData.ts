@@ -109,4 +109,66 @@ export const GRADE5_SCIENCE_REVIEW_MISSIONS: Mission[] = [
       question('What makes a science answer strong?', 'Che cosa rende valida una risposta scientifica?', [['A clear idea supported by evidence or an example', 'Un’idea chiara sostenuta da una prova o da un esempio'], ['Guessing without explaining', 'Indovinare senza spiegare'], ['Copying words without understanding', 'Copiare parole senza capirle']], ['A good answer explains the idea and supports it with relevant evidence or an example.', 'Una buona risposta spiega l’idea e la sostiene con prove o esempi pertinenti.'])
     ]
   })
+,
+
+  makeMission({
+    id: 'g5x-energy-smart-classroom',
+    sec: '3',
+    pages: '101–120',
+    hue: 42,
+    title: ['Mission: An Energy-Smart Classroom', 'Missione: un’aula attenta all’energia'],
+    topic: ['Use science, teamwork and evidence to reduce wasted energy', 'Usa scienze, collaborazione e prove per ridurre gli sprechi energetici'],
+    demon: ['The Wasteful Watt', 'Il Watt Sprecone'],
+    tech: ['Civic Science Form · Third Technique: Small Changes, Big Impact', 'Stile della Scienza Civica · Terza Tecnica: Piccoli gesti, grande impatto'],
+    lessons: [
+      [
+        '<p>🏫 Your class wants to make its classroom more energy-aware. Observe: are lights on when daylight is enough? Are screens left on when nobody is using them? Is the room comfortable without wasting heating or cooling?</p><p>Do not touch plugs, sockets, switches or electrical equipment. Observe with your teacher or another adult.</p>',
+        '<p>🏫 La tua classe vuole rendere l’aula più attenta all’energia. Osserva: le luci sono accese anche quando basta la luce del giorno? Gli schermi restano accesi quando nessuno li usa? L’aula è confortevole senza sprecare riscaldamento o aria condizionata?</p><p>Non toccare spine, prese, interruttori o apparecchi elettrici. Osserva insieme all’insegnante o a un adulto.</p>'
+      ],
+      [
+        '<p>🔎 Make a chart with three columns: <b>What we noticed</b>, <b>Why it may waste energy</b>, and <b>A safe improvement</b>. Example: “The projector stays on during a break” → “It uses electricity when not needed” → “Ask the teacher to switch it off when appropriate.”</p><p>Compare ideas respectfully. Choose changes that are safe, realistic and agreed by the adults responsible for the classroom.</p>',
+        '<p>🔎 Prepara una tabella con tre colonne: <b>Che cosa abbiamo osservato</b>, <b>Perché può sprecare energia</b> e <b>Un miglioramento sicuro</b>. Esempio: “Il proiettore resta acceso durante l’intervallo” → “Consuma elettricità anche se non serve” → “Chiedere all’insegnante di spegnerlo quando è opportuno”.</p><p>Confronta le idee con rispetto. Scegli cambiamenti sicuri, realistici e approvati dagli adulti responsabili dell’aula.</p>'
+      ],
+      [
+        '<p>🌱 Present one improvement as a mini-poster: show the problem, your suggested action and the benefit. If you collect observations on different days, compare them fairly using the same time period. Do not claim that a change saved energy unless you have measurements to support it.</p><p>Careful observation, teamwork and responsible choices can help a community.</p>',
+        '<p>🌱 Presenta un miglioramento con un piccolo cartellone: mostra il problema, l’azione proposta e il beneficio. Se raccogli osservazioni in giorni diversi, confrontale usando lo stesso intervallo di tempo. Non affermare che una modifica ha fatto risparmiare energia se non hai misurazioni che lo dimostrano.</p><p>Osservazione attenta, collaborazione e scelte responsabili possono aiutare la comunità.</p>'
+      ]
+    ],
+    quiz: [
+      question('What is the best first step in an energy-saving project?', 'Qual è il primo passo migliore in un progetto per risparmiare energia?', [['Observe and record what happens', 'Osservare e annotare ciò che accade'], ['Guess how much energy is used', 'Indovinare quanta energia viene usata'], ['Change electrical wiring', 'Modificare i cavi elettrici']], ['A project should begin with observations and evidence, not guesses or unsafe actions.', 'Un progetto deve iniziare con osservazioni e prove, non con supposizioni o azioni pericolose.']),
+      question('The projector is on during a break. What is a safe response?', 'Il proiettore è acceso durante l’intervallo. Qual è una risposta sicura?', [['Ask the teacher whether it can be switched off', 'Chiedere all’insegnante se si può spegnere'], ['Pull out its plug', 'Staccare la spina'], ['Open the projector', 'Aprire il proiettore']], ['An adult responsible for the equipment should decide and operate it.', 'L’adulto responsabile dell’apparecchio deve decidere e intervenire.']),
+      question('What makes a comparison of observations fair?', 'Che cosa rende corretto il confronto tra osservazioni?', [['Use the same time period and method', 'Usare lo stesso intervallo di tempo e lo stesso metodo'], ['Change the method each time', 'Cambiare metodo ogni volta'], ['Record only results you like', 'Annotare solo i risultati preferiti']], ['Fair comparisons use consistent methods and time periods.', 'I confronti corretti usano metodi e intervalli di tempo coerenti.']),
+      question('Which skill helps a class choose a shared improvement?', 'Quale capacità aiuta la classe a scegliere un miglioramento condiviso?', [['Listening and respectful teamwork', 'Ascolto e collaborazione rispettosa'], ['Ignoring other ideas', 'Ignorare le altre idee'], ['Rushing without discussion', 'Decidere in fretta senza discutere']], ['Listening helps a group consider evidence and agree on a realistic action.', 'Ascoltare aiuta il gruppo a valutare le prove e concordare un’azione realistica.'])
+    ]
+  }),
+  makeMission({
+    id: 'g5x-habitat-helper',
+    sec: '4',
+    pages: '101–120',
+    hue: 112,
+    title: ['Mission: Become a Habitat Helper', 'Missione: diventa un’aiutante degli habitat'],
+    topic: ['Investigate a local habitat and design a responsible action', 'Esplora un habitat vicino e progetta un’azione responsabile'],
+    demon: ['The Littering Mist', 'La Nebbia dell’Incuria'],
+    tech: ['Eco-Explorer Form · Fourth Technique: Protect What You Discover', 'Stile dell’Eco-Esplorazione · Quarta Tecnica: Proteggi ciò che scopri'],
+    lessons: [
+      [
+        '<p>🦋 A habitat is a place where a living thing finds what it needs: food, water, shelter and space. A school garden, park, pond or patch of woodland can be a habitat for many plants and animals.</p><p>Observe living things from a respectful distance. Do not collect animals, damage plants or disturb nests.</p>',
+        '<p>🦋 Un habitat è un luogo in cui un essere vivente trova ciò di cui ha bisogno: cibo, acqua, riparo e spazio. Un giardino scolastico, un parco, uno stagno o un boschetto possono essere habitat per molte piante e animali.</p><p>Osserva gli esseri viventi a distanza e con rispetto. Non raccogliere animali, danneggiare piante o disturbare i nidi.</p>'
+      ],
+      [
+        '<p>🌿 Create a habitat map with symbols for plants, water, shelter and signs of animals. Record only what you actually observe. A feather, footprint or sound may be a clue, but it does not always prove which animal was there.</p><p>Think about how litter, noise, trampling and loss of plants can affect living things. Different organisms need different conditions.</p>',
+        '<p>🌿 Crea una mappa dell’habitat usando simboli per piante, acqua, ripari e tracce di animali. Registra solo ciò che osservi davvero. Una piuma, un’impronta o un suono possono essere indizi, ma non dimostrano sempre quale animale fosse presente.</p><p>Rifletti su come rifiuti, rumore, calpestio e perdita di piante possano influire sugli esseri viventi. Organismi diversi hanno bisogno di condizioni diverse.</p>'
+      ],
+      [
+        '<p>🤝 Choose one helpful action with an adult: make a reminder poster, keep to paths, reduce litter, or share information about a native plant or animal. Do not feed wildlife or move animals to another place.</p><p>Explain how your action may help and what evidence would show whether it worked. Scientists protect nature by observing carefully and avoiding harm.</p>',
+        '<p>🤝 Scegli un’azione utile insieme a un adulto: prepara un cartellone informativo, resta sui sentieri, riduci i rifiuti o condividi informazioni su una pianta o un animale autoctono. Non dare cibo agli animali selvatici e non spostarli in un altro luogo.</p><p>Spiega in che modo la tua azione potrebbe aiutare e quali prove permetterebbero di capire se ha funzionato. Le scienziate proteggono la natura osservando con attenzione ed evitando di causare danni.</p>'
+      ]
+    ],
+    quiz: [
+      question('What does a habitat provide to living things?', 'Che cosa offre un habitat agli esseri viventi?', [['Food, water, shelter and space', 'Cibo, acqua, riparo e spazio'], ['Only sunlight', 'Solo luce solare'], ['Only a place to sleep', 'Solo un posto per dormire']], ['A habitat provides the resources and conditions organisms need to live.', 'Un habitat offre le risorse e le condizioni necessarie agli organismi per vivere.']),
+      question('You find a bird nest during an observation. What should you do?', 'Durante un’osservazione trovi un nido. Che cosa dovresti fare?', [['Keep your distance and do not disturb it', 'Mantenere le distanze e non disturbarlo'], ['Touch the eggs', 'Toccare le uova'], ['Move the nest', 'Spostare il nido']], ['Disturbing nests can harm wildlife; observe from a respectful distance.', 'Disturbare i nidi può danneggiare gli animali: osserva a distanza e con rispetto.']),
+      question('A footprint is found near a pond. What is it?', 'Vicino a uno stagno viene trovata un’impronta. Che cos’è?', [['A clue that needs more evidence', 'Un indizio che richiede altre prove'], ['Certain proof of one exact animal', 'La prova certa di un animale preciso'], ['A plant', 'Una pianta']], ['One clue may have several explanations, so scientists seek more evidence.', 'Un indizio può avere diverse spiegazioni: per questo le scienziate cercano altre prove.']),
+      question('Which action is most responsible around wild animals?', 'Quale comportamento è più responsabile vicino agli animali selvatici?', [['Observe quietly without feeding or handling them', 'Osservare in silenzio senza nutrirli né toccarli'], ['Feed them human snacks', 'Dare loro snack per persone'], ['Take them home', 'Portarli a casa']], ['Wild animals should be observed without feeding, handling or relocating them.', 'Gli animali selvatici vanno osservati senza nutrirli, toccarli o spostarli.'])
+    ]
+  })
 ];
