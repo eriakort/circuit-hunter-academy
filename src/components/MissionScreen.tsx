@@ -6,6 +6,7 @@ import { L, CODE, fill, demonSVG, SENSEI, YOU, esc, U, GUIDE } from '../helpers'
 import { LearningPathway } from './LearningPathway';
 import { PhysicsLab } from './PhysicsLab';
 import { MathLab } from './MathLab';
+import { ComputerScienceLab } from './ComputerScienceLab';
 import { scheduleNextConceptReview } from '../spacedRepetition';
 import { HARDWARE_LEARNING_PILOT } from '../data/learningPilot';
 
@@ -259,6 +260,9 @@ export const MissionScreen: React.FC = () => {
       )}
       {currentMission.id.startsWith('m') && currentSceneIndex === 1 && (
         <MathLab missionId={currentMission.id} lang={lang} />
+      )}
+      {(currentMission.id.startsWith('a') || currentMission.id.startsWith('c')) && currentSceneIndex === 1 && (
+        <ComputerScienceLab missionId={currentMission.id} lang={lang} />
       )}
 
       {guidedPractice && guidedQuestion && !guidedComplete && (
