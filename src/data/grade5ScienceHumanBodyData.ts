@@ -329,4 +329,40 @@ export const GRADE5_HUMAN_BODY_MISSIONS: Mission[] = [
       question('Which combination supports health?', 'Quale combinazione sostiene la salute?', [['Balanced habits and reliable advice', 'Abitudini equilibrate e consigli affidabili'], ['No sleep and no movement', 'Niente sonno e niente movimento'], ['Only one type of food', 'Un solo tipo di alimento']], ['Many everyday habits work together to support health.', 'Molte abitudini quotidiane collaborano per sostenere la salute.'])
     ]
   })
+,
+
+  makeMission({
+    id: 'g5h-body-concept-map', sec: '19', pages: '78–81, 96–98', hue: 165,
+    title: ['Body Systems: The Big Picture', 'Gli apparati: una mappa d’insieme'],
+    topic: ['Connect the body parts and their jobs', 'Collegare le parti del corpo e le loro funzioni'],
+    demon: ['The Map Scrambler', 'Il Confondi-Mappe'],
+    tech: ['Concept Map Style · Connect the Clues', 'Stile Mappa Concettuale · Collega gli Indizi'],
+    lessons: [
+      ['<p>🗺️ A <b>concept map</b> shows how ideas connect. Start with the organism, then link cells → tissues → organs → systems and apparatuses.</p>', '<p>🗺️ Una <b>mappa concettuale</b> mostra come sono collegate le idee. Parti dall’organismo e collega cellule → tessuti → organi → sistemi e apparati.</p>'],
+      ['<p>Follow oxygen: <b>air → lungs → blood → body cells</b>. Follow food: <b>food → digestive system → nutrients → blood → cells</b>. The circulatory system transports useful materials around the body.</p>', '<p>Segui l’ossigeno: <b>aria → polmoni → sangue → cellule</b>. Segui il cibo: <b>cibo → apparato digerente → sostanze nutritive → sangue → cellule</b>. L’apparato circolatorio trasporta sostanze utili in tutto il corpo.</p>'],
+      ['<p>The <b>nervous system</b> receives information and coordinates responses. Bones, joints and muscles work together for movement. The <b>immune system</b> helps protect the body. Draw these links with arrows and add an example to each branch.</p>', '<p>Il <b>sistema nervoso</b> riceve informazioni e coordina le risposte. Ossa, articolazioni e muscoli collaborano nel movimento. Il <b>sistema immunitario</b> aiuta a proteggere il corpo. Disegna questi collegamenti con frecce e aggiungi un esempio a ogni ramo.</p>']
+    ],
+    quiz: [
+      question('Which sequence shows body organisation?', 'Quale sequenza mostra l’organizzazione del corpo?', [['Cells → tissues → organs → systems', 'Cellule → tessuti → organi → apparati'], ['Organs → cells → tissues → systems', 'Organi → cellule → tessuti → apparati'], ['Systems → tissues → cells → organs', 'Apparati → tessuti → cellule → organi']], ['Cells form tissues, tissues form organs, and organs cooperate in systems.', 'Le cellule formano i tessuti, i tessuti gli organi e gli organi collaborano negli apparati.']),
+      question('Which route correctly follows oxygen?', 'Quale percorso segue correttamente l’ossigeno?', [['Lungs → blood → cells', 'Polmoni → sangue → cellule'], ['Stomach → bones → lungs', 'Stomaco → ossa → polmoni'], ['Skin → food → heart', 'Pelle → cibo → cuore']], ['The lungs add oxygen to the blood, which carries it to cells.', 'I polmoni trasferiscono ossigeno al sangue, che lo porta alle cellule.']),
+      question('Which system coordinates responses?', 'Quale sistema coordina le risposte?', [['Nervous system', 'Sistema nervoso'], ['Digestive system', 'Apparato digerente'], ['Skeletal system', 'Sistema scheletrico']], ['The nervous system receives information and helps coordinate responses.', 'Il sistema nervoso riceve informazioni e aiuta a coordinare le risposte.'])
+    ]
+  }),
+  makeMission({
+    id: 'g5h-human-body-checkpoint', sec: '20', pages: '83, 99–100', hue: 25,
+    title: ['Human Body Checkpoint', 'Verifica: il corpo umano'],
+    topic: ['Show what you know about the human body', 'Dimostrare ciò che sai sul corpo umano'],
+    demon: ['The Last Quiz Keeper', 'Il Custode dell’Ultimo Quiz'],
+    tech: ['Science Mastery Style · Final Check', 'Stile Padronanza Scientifica · Verifica Finale'],
+    lessons: [
+      ['<p>🎯 Check what you have learned. Remember: cells build tissues, tissues build organs, and organs cooperate in systems.</p>', '<p>🎯 Verifica ciò che hai imparato. Ricorda: le cellule formano i tessuti, i tessuti gli organi e gli organi collaborano negli apparati.</p>'],
+      ['<p>Think about teamwork: breathing brings oxygen into the lungs; blood transports oxygen and nutrients; digestion makes nutrients available; the nervous system coordinates many activities.</p>', '<p>Rifletti sulla collaborazione: la respirazione porta aria ai polmoni; il sangue trasporta ossigeno e sostanze nutritive; la digestione rende disponibili i nutrienti; il sistema nervoso coordina molte attività.</p>'],
+      ['<p>After the quiz, explain one connection in your own words. If an answer is difficult, revisit the related mission and try again.</p>', '<p>Dopo il quiz, spiega con parole tue un collegamento. Se una risposta è difficile, torna alla missione corrispondente e riprova.</p>']
+    ],
+    quiz: [
+      question('What is the main job of red blood cells?', 'Qual è la funzione principale dei globuli rossi?', [['Carry oxygen', 'Trasportare ossigeno'], ['Digest food', 'Digerire il cibo'], ['Move bones', 'Muovere le ossa']], ['Red blood cells contain haemoglobin, which helps carry oxygen.', 'I globuli rossi contengono emoglobina, che aiuta a trasportare l’ossigeno.']),
+      question('Which organs exchange gases with the air?', 'Quali organi scambiano i gas con l’aria?', [['The lungs', 'I polmoni'], ['The kidneys', 'I reni'], ['The muscles', 'I muscoli']], ['Gas exchange takes place in the lungs, especially in the alveoli.', 'Gli scambi gassosi avvengono nei polmoni, soprattutto negli alveoli.']),
+      question('Which combination supports health?', 'Quale combinazione sostiene la salute?', [['Sleep, movement, hygiene and varied food', 'Sonno, movimento, igiene e alimentazione varia'], ['Only one type of food', 'Un solo tipo di alimento'], ['Never resting', 'Non riposare mai']], ['Several healthy habits work together to support health.', 'Diverse abitudini sane collaborano per sostenere la salute.'])
+    ]
+  })
 ];
