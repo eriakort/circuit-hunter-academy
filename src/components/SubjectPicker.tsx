@@ -12,15 +12,15 @@ export const SubjectPicker: React.FC = () => {
   return (
     <section className="hero card">
       <div>
-        <div className="eyebrow">{L(['GRADE 9 · CHOOSE YOUR SUBJECT', 'CLASSE 3ª MEDIA · SCEGLI LA MATERIA'], lang)}</div>
+        <div className="eyebrow">{grade === 'grade5' ? L(['GRADE 5 · SUBJECTS', 'QUINTA PRIMARIA · MATERIE'], lang) : L(['GRADE 9 · CHOOSE YOUR SUBJECT', 'CLASSE 3ª MEDIA · SCEGLI LA MATERIA'], lang)}</div>
         <h1>
           Circuit Hunter <span>Academy</span>
         </h1>
         <p className="lede">
           {L(
             [
-              'Choose a subject for Grade 9. Your existing missions and saved progress remain right where you left them.',
-              'Scegli una materia per la classe terza della scuola secondaria di primo grado. Le missioni e i progressi già salvati restano al loro posto.'
+              grade === 'grade5' ? 'The Grade 5 curriculum is being organised separately. Choose Grade 9 to explore the existing academy.' : 'Choose a subject for Grade 9. Your existing missions and saved progress remain right where you left them.',
+              grade === 'grade5' ? 'Il programma della quinta primaria viene organizzato separatamente. Scegli la terza media per esplorare l’accademia esistente.' : 'Scegli una materia per la classe terza della scuola secondaria di primo grado. Le missioni e i progressi già salvati restano al loro posto.'
             ],
             lang
           )}
