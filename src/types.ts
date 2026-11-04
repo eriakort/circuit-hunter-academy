@@ -2,6 +2,8 @@ export type Language = 'en' | 'it';
 
 export type BilingualText = [string, string] | string;
 
+export type GradeId = 'grade5' | 'grade9';
+
 export type SubjectId = 'cs' | 'phys' | 'math';
 
 export interface SubjectInfo {
@@ -208,6 +210,8 @@ export type Rank = [number, [string, string]];
 export type CodexEntry = [number, string, string, string, string];
 
 export interface GameState {
+  /** Selected school grade; null means the learner has not chosen a grade yet. */
+  grade: GradeId | null;
   name: string;
   lang: Language;
   xp: number;
@@ -220,7 +224,7 @@ export interface GameState {
   v: number;
 }
 
-export type ViewMode = 'subjects' | 'map' | 'scene' | 'battle' | 'result' | 'ending' | 'dojo' | 'codex' | 'race' | 'test';
+export type ViewMode = 'grades' | 'subjects' | 'map' | 'scene' | 'battle' | 'result' | 'ending' | 'dojo' | 'codex' | 'race' | 'test';
 
 export interface TaggedQuestion extends QuizQuestion {
   id: string;
