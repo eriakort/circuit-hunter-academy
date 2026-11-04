@@ -1,6 +1,7 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { GameProvider, useGame } from './context/GameContext';
 import { HUD } from './components/HUD';
+import { GradePicker } from './components/GradePicker';
 import { SubjectPicker } from './components/SubjectPicker';
 import { MapScreen } from './components/MapScreen';
 import { MissionScreen } from './components/MissionScreen';
@@ -54,13 +55,14 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 const AppContent: React.FC = () => {
   const { view, state } = useGame();
 
-  // If no subject selected yet, always show SubjectPicker
-  const activeView = !state.subject ? 'subjects' : view;
+  // New learners choose a grade first; existing Grade 9 saves are migrated in GameContext.
+  const activeView = !state.grade ? 'grades' : view;
 
   return (
     <div className="wrap">
       <HUD />
       <main id="app" aria-live="polite">
+        {activeView === 'grades' && <GradePicker />}
         {activeView === 'subjects' && <SubjectPicker />}
         {activeView === 'map' && <MapScreen />}
         {activeView === 'scene' && <MissionScreen />}
