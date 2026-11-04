@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { GameState, GradeId, Language, SubjectId, ViewMode, Mission, LearningMissionProgress } from '../types';
 import { MISSIONS, UNITS, ARCS, RANKS } from '../data/gameData';
 import { rankOf } from '../helpers';
+import { GRADE_SUBJECT_IDS } from '../data/gradeData';
 
 const SKEY = 'circuit-hunter-academy-v2';
 const SCHEMA = 3;
@@ -98,9 +99,10 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
           loaded.v = SCHEMA;
         }
         // Existing saves predate grade selection and belong to the current Grade 9 curriculum.
+        const hasSavedGrade = Object.prototype.hasOwnProperty.call(loaded, 'grade');
         const grade: GradeId | null = loaded.grade === 'grade5' || loaded.grade === 'grade9'
           ? loaded.grade
-          : (loaded.grade == null ? 'grade9' : null);
+          : (hasSavedGrade ? null : 'grade9');
         return { ...defaultState, ...loaded, grade };
       }
     } catch (e) {
@@ -157,6 +159,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const setSubject = (sub: SubjectId) => {
+    if (!state.grade || !GRADE_SUBJECT_IDS[state.grade].includes(sub)) return;
     const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === sub);
     setState(s => ({ ...s, subject: sub, unit: firstUnit < 0 ? 0 : firstUnit }));
     setView('map');
