@@ -141,7 +141,7 @@ test('Grade 5 Science includes the complete bilingual Human Body unit', async ({
   await expect(page.getByRole('heading', { name: 'The Human Body: A Marvellous Machine' })).toBeVisible();
 
   await page.locator('#lIT').click();
-  await expect(page.getByRole('heading', { name: 'Il corpo umano' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Il corpo umano', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Un organismo unico' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Il sistema scheletrico' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'STEM: Da che cosa è composto il sangue?' })).toBeVisible();
