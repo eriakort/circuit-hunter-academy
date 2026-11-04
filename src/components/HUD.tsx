@@ -30,11 +30,11 @@ export const HUD: React.FC = () => {
         CIRCUIT <b>HUNTER</b> ACADEMY
       </button>
 
-      {grade && view !== 'grades' && view !== 'subjects' && grade === 'grade9' && subject && (
+      {grade && view !== 'grades' && view !== 'subjects' && grade && subject && (
         <div className="subject-indicator" data-s={subject} aria-label={`${L(['Current subject', 'Materia attiva'], lang)}: ${L(activeSubject.name, lang)}`}>
           <span className="subject-indicator-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: activeSubject.art }} />
           <span className="subject-indicator-copy">
-            <small>{L(['GRADE 9 · CURRENT SUBJECT', 'CLASSE 3ª MEDIA · MATERIA'], lang)}</small>
+            <small>{L(grade === 'grade5' ? ['GRADE 5 · CURRENT SUBJECT', 'QUINTA PRIMARIA · MATERIA'] : ['GRADE 9 · CURRENT SUBJECT', 'CLASSE 3ª MEDIA · MATERIA'], lang)}</small>
             <strong>{L(activeSubject.name, lang)}</strong>
           </span>
         </div>
@@ -80,7 +80,7 @@ export const HUD: React.FC = () => {
           </button>
         </div>
 
-        {grade === 'grade9' && subject && (
+        {grade && subject && (
           <button
             className={navClass(view === 'subjects')}
             id="hSubj"
@@ -91,7 +91,7 @@ export const HUD: React.FC = () => {
           </button>
         )}
 
-        {grade === 'grade9' && <>
+        {grade && subject && <>
         <button
           className={navClass(isMissionsActive)}
           id="hMap"
