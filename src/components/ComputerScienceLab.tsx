@@ -1,0 +1,211 @@
+import React, { useMemo, useState } from 'react';
+import { Language } from '../types';
+
+type Props = { missionId: string; lang: Language };
+const t = (lang: Language, en: string, it: string) => lang === 'it' ? it : en;
+const clamp = (n: number, min: number, max: number) => Math.min(max, Math.max(min, n));
+
+const lessons: Record<string, [string, string]> = {
+  a1m1: ['Algorithm step builder', 'Costruttore di algoritmi'],
+  a2m1: ['Binary number laboratory', 'Laboratorio dei numeri binari'],
+  a2m2: ['Text encoding explorer', 'Esploratore della codifica del testo'],
+  a2m3: ['Pixel and colour studio', 'Studio dei pixel e dei colori'],
+  a2m4: ['Compression workshop', 'Officina della compressione'],
+  a3m1: ['Inside the computer', 'Dentro il computer'],
+  a3m2: ['CPU and motherboard lab', 'Laboratorio di CPU e scheda madre'],
+  a3m3: ['Memory hierarchy explorer', 'Esploratore della gerarchia di memoria'],
+  a3m4: ['Input and output studio', 'Studio di input e output'],
+  a5m1: ['Packet journey simulator', 'Simulatore del viaggio dei pacchetti'],
+  c6m1: ['Password strength practice', 'Allenamento sulle password sicure'],
+  c6m2: ['Malware response simulator', 'Simulatore di risposta ai malware'],
+  c6m3: ['Backup and safe connection lab', 'Laboratorio di backup e connessioni sicure'],
+  c9m1: ['Spreadsheet formula lab', 'Laboratorio delle formule'],
+  c9m2: ['Cell reference simulator', 'Simulatore dei riferimenti di cella'],
+  c9m3: ['IF function decision lab', 'Laboratorio della funzione SE'],
+  c11m1: ['Flowchart builder', 'Costruttore di diagrammi di flusso'],
+  c12m2: ['Python data type explorer', 'Esploratore dei tipi di dato Python'],
+  c13m1: ['Python decision simulator', 'Simulatore delle decisioni Python'],
+  c14m1: ['Loop trace laboratory', 'Laboratorio di tracciamento dei cicli'],
+  c15m1: ['String index and slice lab', 'Laboratorio di indici e slicing'],
+  c16m1: ['Function call workbench', 'Banco di prova delle funzioni']
+};
+
+const Panel: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
+  <div className="csl-panel"><h4>{title}</h4>{children}</div>
+);
+const Readout: React.FC<{ label: string; value: React.ReactNode }> = ({ label, value }) => (
+  <div className="csl-readout"><small>{label}</small><strong>{value}</strong></div>
+);
+const Range: React.FC<{ label: string; value: number; min: number; max: number; onChange: (n: number) => void; step?: number }> =
+  ({ label, value, min, max, onChange, step = 1 }) => (
+    <label className="csl-range"><span>{label}<b>{value}</b></span><input type="range" min={min} max={max} step={step} value={value} onChange={e => onChange(Number(e.target.value))}/></label>
+  );
+
+export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
+  const [bits, setBits] = useState([0,0,0,0,1,1,0,1]);
+  const [character, setCharacter] = useState('A');
+  const [red, setRed] = useState(120);
+  const [green, setGreen] = useState(180);
+  const [blue, setBlue] = useState(240);
+  const [runLength, setRunLength] = useState(5);
+  const [cores, setCores] = useState(4);
+  const [ram, setRam] = useState(8);
+  const [packetCount, setPacketCount] = useState(4);
+  const [route, setRoute] = useState('wifi');
+  const [practicePassword, setPracticePassword] = useState('BlueFox!27');
+  const [backupCopies, setBackupCopies] = useState(2);
+  const [formulaA, setFormulaA] = useState(12);
+  const [formulaB, setFormulaB] = useState(8);
+  const [fillMode, setFillMode] = useState<'relative'|'absolute'>('relative');
+  const [score, setScore] = useState(72);
+  const [flowStep, setFlowStep] = useState(0);
+  const [pythonValue, setPythonValue] = useState('42');
+  const [temperature, setTemperature] = useState(18);
+  const [loopLimit, setLoopLimit] = useState(5);
+  const [loopStep, setLoopStep] = useState(0);
+  const [sampleString, setSampleString] = useState('CIRCUIT');
+  const [sliceStart, setSliceStart] = useState(1);
+  const [sliceEnd, setSliceEnd] = useState(4);
+  const [functionInput, setFunctionInput] = useState(5);
+
+  if (!lessons[missionId]) return null;
+  const title = t(lang, lessons[missionId][0], lessons[missionId][1]);
+  const binary = bits.reduce((n, bit, i) => n + bit * 2 ** (7-i), 0);
+  const charCode = character.length ? character.codePointAt(0) ?? 0 : 0;
+  const rle = useMemo(() => {
+    const source = 'A'.repeat(runLength) + 'B'.repeat(8-runLength);
+    const groups = source.match(/(.)\1*/g) ?? [];
+    return { source, encoded: groups.map(group => group.length + group[0]).join(' ') };
+  }, [runLength]);
+  const passwordScore = Math.min(100, (practicePassword.length >= 12 ? 35 : practicePassword.length * 2.5) +
+    (/[a-z]/.test(practicePassword) ? 10 : 0) + (/[A-Z]/.test(practicePassword) ? 10 : 0) +
+    (/\\d/.test(practicePassword) ? 10 : 0) + (/[^A-Za-z0-9]/.test(practicePassword) ? 15 : 0) +
+    (new Set(practicePassword).size >= 8 ? 20 : 0));
+  const sliced = sampleString.slice(sliceStart, sliceEnd);
+  const loopValues = Array.from({length: loopStep}, (_,i) => i);
+  const flowLabels = [
+    [t(lang,'Start','Inizio'),t(lang,'Read the number','Leggi il numero'),t(lang,'Is it even?','È pari?'),t(lang,'Print the answer','Stampa il risultato'),t(lang,'End','Fine')],
+    [t(lang,'Inizio','Start'),t(lang,'Leggi il numero','Read the number'),t(lang,'È pari?','Is it even?'),t(lang,'Stampa il risultato','Print the answer'),t(lang,'Fine','End')]
+  ][lang === 'it' ? 0 : 1];
+
+  return <section className="cs-visual-lab" aria-label={t(lang,'Interactive computer science lab','Laboratorio interattivo di informatica')}>
+    <header className="csl-heading">
+      <span>COMPUTER SCIENCE LAB · LABORATORIO DI INFORMATICA</span>
+      <h3>{title}</h3>
+      <p>{t(lang,'Experiment with the controls. Predict what will happen, then check the result.','Sperimenta con i controlli. Prima prevedi il risultato, poi verificalo.')}</p>
+    </header>
+    <div className="csl-grid">
+      <div className="csl-stage">
+        {missionId === 'a1m1' && <Panel title={t(lang,'Build a clear algorithm','Costruisci un algoritmo chiaro')}>
+          <div className="csl-steps">{[t(lang,'Input: receive a number','Input: ricevi un numero'),t(lang,'Process: multiply by 2','Elaborazione: moltiplica per 2'),t(lang,'Output: show the result','Output: mostra il risultato')].map((s,i)=><div key={s}><b>{i+1}</b>{s}</div>)}</div>
+          <Readout label={t(lang,'Example input','Esempio di input')} value="6"/>
+          <Readout label={t(lang,'Output','Risultato')} value="12"/>
+          <p>{t(lang,'A good algorithm has a clear start, precise steps and an end.','Un buon algoritmo ha un inizio chiaro, passi precisi e una fine.')}</p>
+        </Panel>}
+        {missionId === 'a2m1' && <Panel title={t(lang,'Switch each bit on or off','Accendi o spegni ogni bit')}>
+          <div className="csl-bit-grid">{bits.map((bit,i)=><button type="button" key={i} className={bit?'active':''} onClick={()=>setBits(old=>old.map((v,j)=>i===j?1-v:v))}><small>{2**(7-i)}</small><strong>{bit}</strong><small>{bit?'ON':'OFF'}</small></button>)}</div>
+          <Readout label="Binary / Binario" value={bits.join('')}/><Readout label="Decimal / Decimale" value={binary}/>
+          <p>{t(lang,'Each position is worth twice the position to its right. Add the values where the bit is 1.','Ogni posizione vale il doppio di quella alla sua destra. Somma i valori delle posizioni con bit uguale a 1.')}</p>
+        </Panel>}
+        {missionId === 'a2m2' && <Panel title={t(lang,'Turn a character into a code point','Trasforma un carattere in un codice')}>
+          <label className="csl-input">{t(lang,'Try one character','Prova un carattere')}<input maxLength={2} value={character} onChange={e=>setCharacter(Array.from(e.target.value).slice(0,1).join(''))}/></label>
+          <Readout label="Unicode code point" value={'U+'+charCode.toString(16).toUpperCase().padStart(4,'0')}/>
+          <Readout label="Decimal value / Valore decimale" value={charCode}/>
+          <p>{t(lang,'Unicode assigns a number to characters from many writing systems. ASCII is a smaller, older character set.','Unicode assegna un numero ai caratteri di molti sistemi di scrittura. ASCII è un insieme di caratteri più piccolo e più antico.')}</p>
+        </Panel>}
+        {missionId === 'a2m3' && <Panel title={t(lang,'Mix red, green and blue light','Mescola la luce rossa, verde e blu')}>
+          <div className="csl-colour" style={{background:'rgb('+red+','+green+','+blue+')'}}/>
+          <Range label="Red / Rosso" value={red} min={0} max={255} onChange={setRed}/><Range label="Green / Verde" value={green} min={0} max={255} onChange={setGreen}/><Range label="Blue / Blu" value={blue} min={0} max={255} onChange={setBlue}/>
+          <Readout label="RGB" value={red+', '+green+', '+blue}/><Readout label="Hex" value={'#'+[red,green,blue].map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase()}/>
+          <p>{t(lang,'Screens mix light (RGB). Equal high values move towards white; no light is black.','Gli schermi mescolano luce (RGB). Valori alti e uguali si avvicinano al bianco; senza luce si ottiene il nero.')}</p>
+        </Panel>}
+        {missionId === 'a2m4' && <Panel title={t(lang,'Compress a simple pattern','Comprimi un semplice schema')}>
+          <div className="csl-symbols">{rle.source.split('').map((x,i)=><i key={i} className={x==='A'?'a':'b'}>{x}</i>)}</div>
+          <Range label={t(lang,'Number of A symbols','Numero di simboli A')} value={runLength} min={1} max={7} onChange={setRunLength}/>
+          <Readout label={t(lang,'Original data','Dati originali')} value={rle.source}/>
+          <Readout label="RLE" value={rle.encoded}/>
+          <p>{t(lang,'Run-length encoding stores a repeated symbol and its count. It is lossless: the original sequence can be rebuilt.','La codifica run-length memorizza un simbolo ripetuto e il suo conteggio. È senza perdita: la sequenza originale si può ricostruire.')}</p>
+        </Panel>}
+        {['a3m1','a3m2','a3m3','a3m4'].includes(missionId) && <Panel title={t(lang,'Follow the computer system','Segui il sistema del computer')}>
+          <div className="csl-computer-flow"><span>INPUT</span><b>→</b><span className="cpu">CPU</span><b>↔</b><span>RAM</span><b>→</b><span>OUTPUT</span></div>
+          <Range label={t(lang,'CPU cores (simplified)','Core CPU (semplificati)')} value={cores} min={1} max={16} onChange={setCores}/>
+          <Range label={t(lang,'Installed RAM (GB)','RAM installata (GB)')} value={ram} min={2} max={32} onChange={setRam}/>
+          <Readout label={t(lang,'Processing lanes (model)','Corsie di elaborazione (modello)')} value={cores}/>
+          <Readout label={t(lang,'Memory capacity','Capacità della memoria')} value={ram+' GB'}/>
+          <p>{missionId==='a3m3'?t(lang,'RAM is fast working memory. It is temporary: its contents are normally lost when power is off.','La RAM è una memoria di lavoro veloce. È temporanea: normalmente perde il contenuto quando manca alimentazione.'):missionId==='a3m4'?t(lang,'Input devices send data to the computer; output devices present results. A touchscreen can do both.','I dispositivi di input inviano dati al computer; quelli di output mostrano i risultati. Un touchscreen può svolgere entrambe le funzioni.'):t(lang,'The CPU processes instructions. RAM holds the data and programs currently in use.','La CPU elabora le istruzioni. La RAM contiene i dati e i programmi in uso.')}</p>
+        </Panel>}
+        {missionId === 'a5m1' && <Panel title={t(lang,'Send a message in packets','Invia un messaggio in pacchetti')}>
+          <Range label={t(lang,'Number of packets','Numero di pacchetti')} value={packetCount} min={2} max={8} onChange={setPacketCount}/>
+          <label className="csl-input">{t(lang,'Network route','Percorso di rete')}<select value={route} onChange={e=>setRoute(e.target.value)}><option value="wifi">Wi-Fi → Router → Internet</option><option value="ethernet">Ethernet → Switch → Router</option><option value="mobile">Mobile → Cell tower → Internet</option></select></label>
+          <div className="csl-packets">{Array.from({length:packetCount},(_,i)=><span key={i}>{i+1}</span>)}</div>
+          <Readout label={t(lang,'Route selected','Percorso scelto')} value={route==='wifi'?'Wi-Fi / Router':route==='ethernet'?'Ethernet / Switch':'Mobile / Tower'}/>
+          <p>{t(lang,'Packets may travel through different network paths. The receiver uses packet information to reassemble the message.','I pacchetti possono attraversare percorsi diversi. Il destinatario usa le informazioni dei pacchetti per ricomporre il messaggio.')}</p>
+        </Panel>}
+        {missionId === 'c6m1' && <Panel title={t(lang,'Test a practice password only','Prova solo una password di esercizio')}>
+          <label className="csl-input">{t(lang,'Example password (never use a real one)','Password di esempio (mai usarne una reale)')}<input type="text" autoComplete="off" value={practicePassword} onChange={e=>setPracticePassword(e.target.value)}/></label>
+          <div className="csl-meter"><i style={{width:passwordScore+'%'}}/></div>
+          <Readout label={t(lang,'Learning score (not a security audit)','Punteggio didattico (non è un controllo di sicurezza)')} value={passwordScore+'/100'}/>
+          <p>{t(lang,'Length and variety help, but this simple score cannot tell whether a password has been reused or exposed. Use a password manager and unique passwords.','Lunghezza e varietà aiutano, ma questo punteggio semplice non rileva riutilizzi o password esposte. Usa un gestore di password e password uniche.')}</p>
+        </Panel>}
+        {missionId === 'c6m2' && <Panel title={t(lang,'Choose a safe response to a warning','Scegli una risposta sicura a un avviso')}>
+          <div className="csl-steps"><div><b>1</b>{t(lang,'Stop interacting with the suspicious file.','Smetti di interagire con il file sospetto.')}</div><div><b>2</b>{t(lang,'Tell a trusted adult or the IT support team.','Avvisa un adulto di fiducia o il supporto IT.')}</div><div><b>3</b>{t(lang,'Follow the approved scan and recovery process.','Segui la procedura autorizzata di scansione e ripristino.')}</div></div>
+          <Readout label={t(lang,'Key rule','Regola chiave')} value={t(lang,'Do not open it again','Non riaprirlo')}/>
+          <p>{t(lang,'Do not try to investigate malware on a school or family device by yourself. Isolate it only if your organisation’s instructions say to do so.','Non cercare di analizzare un malware da solo su un dispositivo scolastico o familiare. Isolalo solo se previsto dalle istruzioni della tua organizzazione.')}</p>
+        </Panel>}
+        {missionId === 'c6m3' && <Panel title={t(lang,'Build a resilient backup plan','Crea un piano di backup resiliente')}>
+          <Range label={t(lang,'Separate backup copies','Copie di backup separate')} value={backupCopies} min={1} max={4} onChange={setBackupCopies}/>
+          <div className="csl-steps"><div><b>3</b>{t(lang,'Keep 3 copies of important data.','Conserva 3 copie dei dati importanti.')}</div><div><b>2</b>{t(lang,'Use 2 different types of storage.','Usa 2 tipi diversi di supporto.')}</div><div><b>1</b>{t(lang,'Keep 1 copy off-site or offline.','Conserva 1 copia fuori sede o offline.')}</div></div>
+          <Readout label={t(lang,'Copies in your plan','Copie nel tuo piano')} value={backupCopies}/>
+          <p>{t(lang,'A VPN can protect traffic on some networks, but it does not replace HTTPS, safe behaviour or backups.','Una VPN può proteggere il traffico su alcune reti, ma non sostituisce HTTPS, comportamenti sicuri o backup.')}</p>
+        </Panel>}
+        {['c9m1','c9m2','c9m3'].includes(missionId) && <Panel title={t(lang,'Change the values and see the formula update','Modifica i valori e osserva la formula aggiornarsi')}>
+          <div className="csl-sheet"><div className="head">A</div><div className="head">B</div><div className="head">C</div><div>Item 1</div><div>{formulaA}</div><div>{formulaA*2}</div><div>Item 2</div><div>{formulaB}</div><div>{formulaB*2}</div><div className="sum">Total</div><div className="sum">{formulaA+formulaB}</div><div className="sum">{(formulaA+formulaB)*2}</div></div>
+          <Range label="B2" value={formulaA} min={0} max={50} onChange={setFormulaA}/><Range label="B3" value={formulaB} min={0} max={50} onChange={setFormulaB}/>
+          {missionId==='c9m2'&&<label className="csl-input">{t(lang,'Fill behaviour','Comportamento del riempimento')}<select value={fillMode} onChange={e=>setFillMode(e.target.value as typeof fillMode)}><option value="relative">{t(lang,'Relative reference: A1','Riferimento relativo: A1')}</option><option value="absolute">{t(lang,'Absolute reference: $A$1','Riferimento assoluto: $A$1')}</option></select></label>}
+          <Readout label={missionId==='c9m3'?'=IF(B2>10,"High","Low")':'=SUM(B2:B3)'} value={missionId==='c9m3'?(formulaA>10?'High / Alto':'Low / Basso'):formulaA+formulaB}/>
+          <p>{missionId==='c9m2'?(fillMode==='relative'?t(lang,'Relative references change when copied to another cell.','I riferimenti relativi cambiano quando la formula viene copiata in un’altra cella.'):t(lang,'Absolute references stay fixed when a formula is copied.','I riferimenti assoluti restano fissi quando si copia una formula.')):t(lang,'A spreadsheet recalculates formulas when input cells change.','Un foglio di calcolo ricalcola le formule quando cambiano le celle di input.')}</p>
+        </Panel>}
+        {missionId === 'c11m1' && <Panel title={t(lang,'Step through a simple flowchart','Segui un semplice diagramma di flusso')}>
+          <div className="csl-steps">{flowLabels.map((label,i)=><div className={flowStep===i?'current':''} key={i}><b>{i+1}</b>{label}</div>)}</div>
+          <div className="csl-actions"><button type="button" onClick={()=>setFlowStep(v=>Math.max(0,v-1))}>{t(lang,'Previous','Indietro')}</button><button type="button" onClick={()=>setFlowStep(v=>(v+1)%flowLabels.length)}>{t(lang,'Next step','Passo successivo')}</button></div>
+          <Readout label={t(lang,'Current step','Passo attuale')} value={(flowStep+1)+' / '+flowLabels.length}/>
+        </Panel>}
+        {missionId === 'c12m2' && <Panel title={t(lang,'Explore Python value types','Esplora i tipi di dato Python')}>
+          <label className="csl-input">{t(lang,'Try a value','Prova un valore')}<input value={pythonValue} onChange={e=>setPythonValue(e.target.value)}/></label>
+          <Readout label="Python type (simple example)" value={pythonValue.trim()===''?'str':/^[-+]?\d+$/.test(pythonValue)?'int':/^[-+]?(\d+\.\d*|\.\d+)$/.test(pythonValue)?'float':/^(True|False)$/.test(pythonValue)?'bool':'str'}/>
+          <p>{t(lang,'input() returns text. Convert it with int() or float() before doing arithmetic.','input() restituisce testo. Convertilo con int() o float() prima di eseguire calcoli.')}</p>
+        </Panel>}
+        {missionId === 'c13m1' && <Panel title={t(lang,'Test an if / else decision','Prova una decisione if / else')}>
+          <Range label={t(lang,'Temperature (°C)','Temperatura (°C)')} value={temperature} min={-5} max={35} onChange={setTemperature}/>
+          <div className="csl-code">if temperature &gt;= 20:<br/>　print("Warm")<br/>else:<br/>　print("Cool")</div>
+          <Readout label="Output" value={temperature>=20?'Warm / Caldo':'Cool / Fresco'}/>
+          <p>{t(lang,'The condition is checked first. Only one branch runs in this simple if / else structure.','Prima si verifica la condizione. In questa semplice struttura if / else viene eseguito un solo ramo.')}</p>
+        </Panel>}
+        {missionId === 'c14m1' && <Panel title={t(lang,'Advance a for loop one turn at a time','Avanza un ciclo for un giro alla volta')}>
+          <Range label={t(lang,'range(stop)','range(fine)')} value={loopLimit} min={1} max={10} onChange={n=>{setLoopLimit(n);setLoopStep(0);}}/>
+          <div className="csl-code">for i in range({loopLimit}):<br/>　print(i)</div>
+          <div className="csl-packets">{loopValues.map(v=><span key={v}>{v}</span>)}</div>
+          <div className="csl-actions"><button type="button" onClick={()=>setLoopStep(0)}>{t(lang,'Reset','Azzera')}</button><button type="button" onClick={()=>setLoopStep(v=>Math.min(loopLimit,v+1))}>{t(lang,'Next iteration','Iterazione successiva')}</button></div>
+          <Readout label={t(lang,'Iterations completed','Iterazioni completate')} value={loopStep+'/'+loopLimit}/>
+          <p>{t(lang,'range(stop) starts at 0 and does not include stop.','range(fine) parte da 0 e non include il valore finale.')}</p>
+        </Panel>}
+        {missionId === 'c15m1' && <Panel title={t(lang,'Explore indexes and slicing','Esplora indici e slicing')}>
+          <label className="csl-input">{t(lang,'Text (up to 12 characters)','Testo (fino a 12 caratteri)')}<input maxLength={12} value={sampleString} onChange={e=>{setSampleString(e.target.value);setSliceStart(0);setSliceEnd(e.target.value.length);}}/></label>
+          <div className="csl-indexes">{Array.from(sampleString).map((ch,i)=><span key={i}><b>{ch||'·'}</b><small>{i}</small></span>)}</div>
+          <Range label={t(lang,'Start index','Indice iniziale')} value={sliceStart} min={0} max={sampleString.length} onChange={n=>{setSliceStart(n);setSliceEnd(v=>Math.max(v,n));}}/>
+          <Range label={t(lang,'End index (excluded)','Indice finale (escluso)')} value={sliceEnd} min={0} max={sampleString.length} onChange={setSliceEnd}/>
+          <Readout label={'text['+sliceStart+':'+sliceEnd+']'} value={sliced||'∅'}/>
+          <p>{t(lang,'Indexes start at 0. The end index is excluded from a slice.','Gli indici partono da 0. L’indice finale è escluso dallo slicing.')}</p>
+        </Panel>}
+        {missionId === 'c16m1' && <Panel title={t(lang,'Call a reusable function','Chiama una funzione riutilizzabile')}>
+          <Range label={t(lang,'Input x','Valore x')} value={functionInput} min={0} max={20} onChange={setFunctionInput}/>
+          <div className="csl-code">def double(x):<br/>　return x * 2<br/><br/>double({functionInput})</div>
+          <Readout label={t(lang,'Returned value','Valore restituito')} value={functionInput*2}/>
+          <p>{t(lang,'A parameter receives the input. return sends the result back to the place where the function was called.','Un parametro riceve il valore in ingresso. return restituisce il risultato al punto in cui la funzione è stata chiamata.')}</p>
+        </Panel>}
+      </div>
+      <aside className="csl-coach"><strong>{t(lang,'Hunter challenge','Sfida della cacciatrice')}</strong><p>{t(lang,'Before moving a control, say what you expect to happen. Then explain why the result changed.','Prima di modificare un controllo, prova a prevedere cosa succederà. Poi spiega perché il risultato è cambiato.')}</p><small>{t(lang,'Try it · Observe it · Explain it','Prova · Osserva · Spiega')}</small></aside>
+    </div>
+    <footer className="csl-footer">{t(lang,'These are learning models, not full hardware or security simulations.','Questi sono modelli didattici, non simulazioni complete dell’hardware o della sicurezza.')}</footer>
+  </section>;
+};
