@@ -28740,3 +28740,26 @@ MISSIONS.push(...GRADE5_ENERGY_FORCES_MISSIONS.map(mission => ({
   ...mission,
   arc: mission.arc + grade5EnergyForcesArcOffset
 })));
+
+ 
+// Grade 5 Science · The Human Body is the fourth textbook unit (pages 51–99).
+import { GRADE5_HUMAN_BODY_MISSIONS } from './grade5ScienceHumanBodyData';
+
+const grade5HumanBodyUnitOffset = UNITS.length;
+UNITS.push({
+  title: ['The Human Body', 'Il corpo umano'],
+  ch: '27–44',
+  subject: 'science'
+});
+const grade5HumanBodyArcOffset = ARCS.length;
+ARCS.push({
+  n: 4,
+  unit: grade5HumanBodyUnitOffset,
+  subject: 'science',
+  title: ['The Human Body', 'Il corpo umano'],
+  pages: '51–99'
+});
+MISSIONS.push(...GRADE5_HUMAN_BODY_MISSIONS.map(mission => ({
+  ...mission,
+  arc: mission.arc + grade5HumanBodyArcOffset
+})));
