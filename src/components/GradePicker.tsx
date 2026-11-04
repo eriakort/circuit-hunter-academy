@@ -1,5 +1,6 @@
 import React from 'react';
 import { useGame } from '../context/GameContext';
+import { GRADES } from '../data/gradeData';
 import { L } from '../helpers';
 
 export const GradePicker: React.FC = () => {
@@ -19,22 +20,29 @@ export const GradePicker: React.FC = () => {
         </p>
       </div>
 
-      <div className="grade-options" aria-label={L(['Choose your grade', 'Scegli la tua classe'], lang)}>
-        <button className={`grade-card${state.grade === 'grade5' ? ' grade-card-selected' : ''}`} aria-pressed={state.grade === 'grade5'} onClick={() => setGrade('grade5')}>
-          <span className="grade-card-art" aria-hidden="true">５</span>
-          <span className="grade-card-kicker">{L(['PRIMARY SCHOOL', 'SCUOLA PRIMARIA'], lang)}</span>
-          <strong>{L(['Grade 5', 'Quinta primaria'], lang)}</strong>
-          <span className="grade-card-detail">{L(['Usually ages 10–11', 'Generalmente 10–11 anni'], lang)}</span>
-          <span className="grade-card-status">{L(['Curriculum setup next', 'Programma in preparazione'], lang)}</span>
-        </button>
-
-        <button className={`grade-card grade-card-current${state.grade === 'grade9' ? ' grade-card-selected' : ''}`} aria-pressed={state.grade === 'grade9'} onClick={() => setGrade('grade9')}>
-          <span className="grade-card-art" aria-hidden="true">９</span>
-          <span className="grade-card-kicker">{L(['LOWER SECONDARY SCHOOL', 'SCUOLA SECONDARIA DI PRIMO GRADO'], lang)}</span>
-          <strong>{L(['Grade 9', 'Terza media'], lang)}</strong>
-          <span className="grade-card-detail">{L(['Usually ages 13–14', 'Generalmente 13–14 anni'], lang)}</span>
-          <span className="grade-card-status">{L(['Existing academy · Ready', 'Accademia esistente · Pronta'], lang)}</span>
-        </button>
+      <div className="grade-options" role="group" aria-label={L(['Choose your grade', 'Scegli la tua classe'], lang)}>
+        {GRADES.map(grade => {
+          const selected = state.grade === grade.id;
+          const ready = grade.status === 'ready';
+          return (
+            <button
+              key={grade.id}
+              className={`grade-card${ready ? ' grade-card-current' : ''}${selected ? ' grade-card-selected' : ''}`}
+              aria-pressed={selected}
+              onClick={() => setGrade(grade.id)}
+            >
+              <span className="grade-card-art" aria-hidden="true">{grade.id.replace('grade', '')}</span>
+              <span className="grade-card-kicker">{L(grade.schoolLevel, lang)}</span>
+              <strong>{L(grade.name, lang)}</strong>
+              <span className="grade-card-detail">{L(grade.ageRange, lang)}</span>
+              <span className="grade-card-status">
+                {ready
+                  ? L(['Existing academy · Ready', 'Accademia esistente · Pronta'], lang)
+                  : L(['Curriculum setup next', 'Programma in preparazione'], lang)}
+              </span>
+            </button>
+          );
+        })}
       </div>
     </section>
   );
