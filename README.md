@@ -20,7 +20,7 @@ Follows the Italian textbook *L'informatica e il computer* chapter by chapter.
 | 3 · Iniziare a programmare | 11 Flowcharts · 12 Python basics · 13 Selection · 14 Loops · 15 Strings, lists & files · 16 Functions |
 
 ### Physics — 1 unit · 5 chapters · 12 missions
-Follows *Il Walker. Corso di fisica. Per il primo biennio* (chapters 1–5).
+Aligned with the first-two-year physics course (chapters 1–5).
 
 | Unit | Chapters |
 |---|---|
