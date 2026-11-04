@@ -59,16 +59,16 @@ export const GRADE5_UNIVERSE_MISSIONS: Mission[] = [
     tech: ['Cosmos Form · First Technique: Sky Scanner', 'Stile del Cosmo · Prima Tecnica: Scanner del Cielo'],
     lessons: [
       [
-        '<p>🌌 Look up on a clear night. You may see the <b>Moon, stars and planets</b>. They are objects in space, also called <b>celestial bodies</b>.</p><p>Space is enormous. The stars look tiny because they are very far away. The Sun is also a star, but it looks much bigger and brighter because it is much closer to Earth than the other stars we see.</p>',
-        '<p>🌌 Guarda il cielo in una notte serena. Puoi vedere la <b>Luna, le stelle e i pianeti</b>. Sono oggetti nello spazio, chiamati anche <b>corpi celesti</b>.</p><p>Lo spazio è immenso. Le stelle sembrano piccole perché sono molto lontane. Anche il Sole è una stella, ma appare molto più grande e luminoso perché è molto più vicino alla Terra rispetto alle altre stelle che vediamo.</p>'
+        `<p>🌌 Look up on a clear night. You may see the <b>Moon, stars and planets</b>. They are objects in space, also called <b>celestial bodies</b>.</p><p>Space is enormous. The stars look tiny because they are very far away. The Sun is also a star, but it looks much bigger and brighter because it is much closer to Earth than the other stars we see.</p>`,
+        `<p>🌌 Guarda il cielo in una notte serena. Puoi vedere la <b>Luna, le stelle e i pianeti</b>. Sono oggetti nello spazio, chiamati anche <b>corpi celesti</b>.</p><p>Lo spazio è immenso. Le stelle sembrano piccole perché sono molto lontane. Anche il Sole è una stella, ma appare molto più grande e luminoso perché è molto più vicino alla Terra rispetto alle altre stelle che vediamo.</p>`
       ],
       [
-        '<p>☁️ During the day, the <b>atmosphere</b> makes the sky appear blue. It is the layer of gases surrounding Earth. It gives us air to breathe and helps protect life.</p><p>Clouds, rain and wind are weather phenomena in the atmosphere. Beyond it lies outer space, where there is no breathable air like the air near the ground.</p>',
-        '<p>☁️ Di giorno, l'<b>atmosfera</b> fa apparire azzurro il cielo. È lo strato di gas che circonda la Terra. Ci fornisce l'aria da respirare e contribuisce a proteggere la vita.</p><p>Nuvole, pioggia e vento sono fenomeni atmosferici. Oltre l'atmosfera si trova lo spazio, dove non c'è aria respirabile come quella vicino al suolo.</p>'
+        `<p>☁️ During the day, the <b>atmosphere</b> makes the sky appear blue. It is the layer of gases surrounding Earth. It gives us air to breathe and helps protect life.</p><p>Clouds, rain and wind are weather phenomena in the atmosphere. Beyond it lies outer space, where there is no breathable air like the air near the ground.</p>`,
+        `<p>☁️ Di giorno, l'<b>atmosfera</b> fa apparire azzurro il cielo. È lo strato di gas che circonda la Terra. Ci fornisce l'aria da respirare e contribuisce a proteggere la vita.</p><p>Nuvole, pioggia e vento sono fenomeni atmosferici. Oltre l'atmosfera si trova lo spazio, dove non c'è aria respirabile come quella vicino al suolo.</p>`
       ],
       [
-        '<p>🔭 We study the sky with our eyes and with instruments. A <b>telescope</b> collects light and helps us observe distant objects. Satellites and space probes carry instruments into space and send information back to Earth.</p><p><b>Remember:</b> looking at the sky means looking at objects at very different distances and sometimes seeing light that began its journey long ago.</p>',
-        '<p>🔭 Studiamo il cielo con gli occhi e con strumenti. Un <b>telescopio</b> raccoglie la luce e ci aiuta a osservare oggetti lontani. Satelliti e sonde spaziali portano strumenti nello spazio e inviano informazioni alla Terra.</p><p><b>Ricorda:</b> osservando il cielo vediamo oggetti a distanze molto diverse e, a volte, luce partita molto tempo fa.</p>'
+        `<p>🔭 We study the sky with our eyes and with instruments. A <b>telescope</b> collects light and helps us observe distant objects. Satellites and space probes carry instruments into space and send information back to Earth.</p><p><b>Remember:</b> looking at the sky means looking at objects at very different distances and sometimes seeing light that began its journey long ago.</p>`,
+        `<p>🔭 Studiamo il cielo con gli occhi e con strumenti. Un <b>telescopio</b> raccoglie la luce e ci aiuta a osservare oggetti lontani. Satelliti e sonde spaziali portano strumenti nello spazio e inviano informazioni alla Terra.</p><p><b>Ricorda:</b> osservando il cielo vediamo oggetti a distanze molto diverse e, a volte, luce partita molto tempo fa.</p>`
       ]
     ],
     quiz: [
@@ -89,16 +89,16 @@ export const GRADE5_UNIVERSE_MISSIONS: Mission[] = [
     tech: ['Cosmos Form · Second Technique: Cosmic Timeline', 'Stile del Cosmo · Seconda Tecnica: Linea del Tempo Cosmica'],
     lessons: [
       [
-        '<p>⏳ Scientists think the Universe began about <b>13.8 billion years ago</b> in an extremely hot and dense state. The name of the scientific model describing its early expansion is the <b>Big Bang</b>.</p><p>The Big Bang was not an explosion into empty space. It describes the expansion of space itself. The Universe has continued to expand and change.</p>',
-        '<p>⏳ Gli scienziati ritengono che l'Universo abbia avuto inizio circa <b>13,8 miliardi di anni fa</b>, in uno stato estremamente caldo e denso. Il modello scientifico che descrive la sua prima espansione si chiama <b>Big Bang</b>.</p><p>Il Big Bang non fu un'esplosione dentro uno spazio vuoto: descrive l'espansione dello spazio stesso. L'Universo ha continuato a espandersi e a cambiare.</p>'
+        `<p>⏳ Scientists think the Universe began about <b>13.8 billion years ago</b> in an extremely hot and dense state. The name of the scientific model describing its early expansion is the <b>Big Bang</b>.</p><p>The Big Bang was not an explosion into empty space. It describes the expansion of space itself. The Universe has continued to expand and change.</p>`,
+        `<p>⏳ Gli scienziati ritengono che l'Universo abbia avuto inizio circa <b>13,8 miliardi di anni fa</b>, in uno stato estremamente caldo e denso. Il modello scientifico che descrive la sua prima espansione si chiama <b>Big Bang</b>.</p><p>Il Big Bang non fu un'esplosione dentro uno spazio vuoto: descrive l'espansione dello spazio stesso. L'Universo ha continuato a espandersi e a cambiare.</p>`
       ],
       [
-        '<p>✨ As the Universe expanded, it cooled. Over a very long time, matter gathered under gravity. The first stars formed, and groups of stars, gas and dust became <b>galaxies</b>.</p><p>Our Solar System is inside a galaxy called the <b>Milky Way</b>. It contains hundreds of billions of stars.</p>',
-        '<p>✨ Mentre l'Universo si espandeva, si raffreddava. In tempi lunghissimi, la materia si raccolse grazie alla gravità. Si formarono le prime stelle e gli insiemi di stelle, gas e polveri diventarono <b>galassie</b>.</p><p>Il nostro Sistema solare si trova in una galassia chiamata <b>Via Lattea</b>, che contiene centinaia di miliardi di stelle.</p>'
+        `<p>✨ As the Universe expanded, it cooled. Over a very long time, matter gathered under gravity. The first stars formed, and groups of stars, gas and dust became <b>galaxies</b>.</p><p>Our Solar System is inside a galaxy called the <b>Milky Way</b>. It contains hundreds of billions of stars.</p>`,
+        `<p>✨ Mentre l'Universo si espandeva, si raffreddava. In tempi lunghissimi, la materia si raccolse grazie alla gravità. Si formarono le prime stelle e gli insiemi di stelle, gas e polveri diventarono <b>galassie</b>.</p><p>Il nostro Sistema solare si trova in una galassia chiamata <b>Via Lattea</b>, che contiene centinaia di miliardi di stelle.</p>`
       ],
       [
-        '<p>🌟 A <b>star</b> is a huge sphere of very hot gas that produces light and heat. A <b>galaxy</b> is a vast group of stars, gas and dust held together by gravity.</p><p><b>Timeline:</b> early expanding Universe → first atoms → first stars → galaxies → our Solar System. These events happened over billions of years.</p>',
-        '<p>🌟 Una <b>stella</b> è un'enorme sfera di gas molto caldo che produce luce e calore. Una <b>galassia</b> è un vasto insieme di stelle, gas e polveri tenuto insieme dalla gravità.</p><p><b>Linea del tempo:</b> Universo in espansione → primi atomi → prime stelle → galassie → Sistema solare. Questi eventi si sono svolti in miliardi di anni.</p>'
+        `<p>🌟 A <b>star</b> is a huge sphere of very hot gas that produces light and heat. A <b>galaxy</b> is a vast group of stars, gas and dust held together by gravity.</p><p><b>Timeline:</b> early expanding Universe → first atoms → first stars → galaxies → our Solar System. These events happened over billions of years.</p>`,
+        `<p>🌟 Una <b>stella</b> è un'enorme sfera di gas molto caldo che produce luce e calore. Una <b>galassia</b> è un vasto insieme di stelle, gas e polveri tenuto insieme dalla gravità.</p><p><b>Linea del tempo:</b> Universo in espansione → primi atomi → prime stelle → galassie → Sistema solare. Questi eventi si sono svolti in miliardi di anni.</p>`
       ]
     ],
     quiz: [
@@ -119,16 +119,16 @@ export const GRADE5_UNIVERSE_MISSIONS: Mission[] = [
     tech: ['Cosmos Form · Third Technique: Planetary Order', 'Stile del Cosmo · Terza Tecnica: Ordine Planetario'],
     lessons: [
       [
-        '<p>☀️ The <b>Solar System</b> is made up of the Sun and all the objects held near it by gravity. The Sun is at its centre and provides most of the light and heat that reach the planets.</p><p>Eight planets travel around the Sun on paths called <b>orbits</b>.</p>',
-        '<p>☀️ Il <b>Sistema solare</b> è formato dal Sole e da tutti gli oggetti che gli restano vicini grazie alla gravità. Il Sole si trova al centro e fornisce gran parte della luce e del calore che raggiungono i pianeti.</p><p>Otto pianeti viaggiano intorno al Sole seguendo percorsi chiamati <b>orbite</b>.</p>'
+        `<p>☀️ The <b>Solar System</b> is made up of the Sun and all the objects held near it by gravity. The Sun is at its centre and provides most of the light and heat that reach the planets.</p><p>Eight planets travel around the Sun on paths called <b>orbits</b>.</p>`,
+        `<p>☀️ Il <b>Sistema solare</b> è formato dal Sole e da tutti gli oggetti che gli restano vicini grazie alla gravità. Il Sole si trova al centro e fornisce gran parte della luce e del calore che raggiungono i pianeti.</p><p>Otto pianeti viaggiano intorno al Sole seguendo percorsi chiamati <b>orbite</b>.</p>`
       ],
       [
-        '<p>🪐 From the Sun outwards, the planets are: <b>Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune</b>.</p><p>Mercury, Venus, Earth and Mars are rocky inner planets. Jupiter and Saturn are gas giants. Uranus and Neptune are ice giants.</p>',
-        '<p>🪐 Partendo dal Sole, i pianeti sono: <b>Mercurio, Venere, Terra, Marte, Giove, Saturno, Urano e Nettuno</b>.</p><p>Mercurio, Venere, Terra e Marte sono pianeti rocciosi interni. Giove e Saturno sono giganti gassosi. Urano e Nettuno sono giganti ghiacciati.</p>'
+        `<p>🪐 From the Sun outwards, the planets are: <b>Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune</b>.</p><p>Mercury, Venus, Earth and Mars are rocky inner planets. Jupiter and Saturn are gas giants. Uranus and Neptune are ice giants.</p>`,
+        `<p>🪐 Partendo dal Sole, i pianeti sono: <b>Mercurio, Venere, Terra, Marte, Giove, Saturno, Urano e Nettuno</b>.</p><p>Mercurio, Venere, Terra e Marte sono pianeti rocciosi interni. Giove e Saturno sono giganti gassosi. Urano e Nettuno sono giganti ghiacciati.</p>`
       ],
       [
-        '<p>☄️ The Solar System also contains <b>dwarf planets</b> such as Pluto, moons, asteroids, comets and meteoroids. Asteroids are mostly rocky; comets contain ice and dust and can develop bright tails when they approach the Sun.</p><p><b>Model:</b> Sun → Mercury → Venus → Earth → Mars → asteroid belt → Jupiter → Saturn → Uranus → Neptune. The distances are enormous, so drawings are not to scale.</p>',
-        '<p>☄️ Nel Sistema solare ci sono anche <b>pianeti nani</b> come Plutone, satelliti naturali, asteroidi, comete e meteoroidi. Gli asteroidi sono soprattutto rocciosi; le comete contengono ghiaccio e polveri e possono sviluppare code luminose quando si avvicinano al Sole.</p><p><b>Schema:</b> Sole → Mercurio → Venere → Terra → Marte → fascia degli asteroidi → Giove → Saturno → Urano → Nettuno. Le distanze sono enormi: i disegni non sono in scala.</p>'
+        `<p>☄️ The Solar System also contains <b>dwarf planets</b> such as Pluto, moons, asteroids, comets and meteoroids. Asteroids are mostly rocky; comets contain ice and dust and can develop bright tails when they approach the Sun.</p><p><b>Model:</b> Sun → Mercury → Venus → Earth → Mars → asteroid belt → Jupiter → Saturn → Uranus → Neptune. The distances are enormous, so drawings are not to scale.</p>`,
+        `<p>☄️ Nel Sistema solare ci sono anche <b>pianeti nani</b> come Plutone, satelliti naturali, asteroidi, comete e meteoroidi. Gli asteroidi sono soprattutto rocciosi; le comete contengono ghiaccio e polveri e possono sviluppare code luminose quando si avvicinano al Sole.</p><p><b>Schema:</b> Sole → Mercurio → Venere → Terra → Marte → fascia degli asteroidi → Giove → Saturno → Urano → Nettuno. Le distanze sono enormi: i disegni non sono in scala.</p>`
       ]
     ],
     quiz: [
@@ -149,16 +149,16 @@ export const GRADE5_UNIVERSE_MISSIONS: Mission[] = [
     tech: ['Cosmos Form · Fourth Technique: Day–Year Balance', 'Stile del Cosmo · Quarta Tecnica: Equilibrio Giorno–Anno'],
     lessons: [
       [
-        '<p>🌍 Earth has two important movements. <b>Rotation</b> is the spinning of Earth around its own axis. One rotation takes about <b>24 hours</b> and gives us day and night.</p><p>The side facing the Sun has daylight. The side turned away from the Sun has night.</p>',
-        '<p>🌍 La Terra compie due movimenti importanti. La <b>rotazione</b> è il movimento della Terra intorno al proprio asse. Una rotazione dura circa <b>24 ore</b> e produce il giorno e la notte.</p><p>La parte rivolta verso il Sole è illuminata; quella opposta si trova al buio.</p>'
+        `<p>🌍 Earth has two important movements. <b>Rotation</b> is the spinning of Earth around its own axis. One rotation takes about <b>24 hours</b> and gives us day and night.</p><p>The side facing the Sun has daylight. The side turned away from the Sun has night.</p>`,
+        `<p>🌍 La Terra compie due movimenti importanti. La <b>rotazione</b> è il movimento della Terra intorno al proprio asse. Una rotazione dura circa <b>24 ore</b> e produce il giorno e la notte.</p><p>La parte rivolta verso il Sole è illuminata; quella opposta si trova al buio.</p>`
       ],
       [
-        '<p>☀️ <b>Revolution</b> is Earth’s movement around the Sun. One complete revolution takes about <b>365 days and 6 hours</b>, which is one year. Every four years, the extra hours add up to an extra day in a leap year.</p><p>Earth follows an orbit around the Sun while its axis remains tilted.</p>',
-        '<p>☀️ La <b>rivoluzione</b> è il movimento della Terra intorno al Sole. Un giro completo dura circa <b>365 giorni e 6 ore</b>, cioè un anno. Ogni quattro anni circa, le ore in più formano un giorno aggiuntivo nell'anno bisestile.</p><p>La Terra segue un'orbita intorno al Sole e il suo asse rimane inclinato.</p>'
+        `<p>☀️ <b>Revolution</b> is Earth’s movement around the Sun. One complete revolution takes about <b>365 days and 6 hours</b>, which is one year. Every four years, the extra hours add up to an extra day in a leap year.</p><p>Earth follows an orbit around the Sun while its axis remains tilted.</p>`,
+        `<p>☀️ La <b>rivoluzione</b> è il movimento della Terra intorno al Sole. Un giro completo dura circa <b>365 giorni e 6 ore</b>, cioè un anno. Ogni quattro anni circa, le ore in più formano un giorno aggiuntivo nell'anno bisestile.</p><p>La Terra segue un'orbita intorno al Sole e il suo asse rimane inclinato.</p>`
       ],
       [
-        '<p>🍂 The <b>seasons</b> are mainly caused by Earth’s tilted axis as it revolves around the Sun. When a hemisphere is tilted towards the Sun, it receives more direct sunlight and has longer days: it is summer there. The opposite hemisphere has winter.</p><p><b>Important:</b> seasons are not caused by Earth being much closer to or farther from the Sun.</p>',
-        '<p>🍂 Le <b>stagioni</b> dipendono soprattutto dall'inclinazione dell'asse terrestre mentre la Terra gira intorno al Sole. Quando un emisfero è inclinato verso il Sole, riceve raggi più diretti e ha giornate più lunghe: lì è estate. Nell'emisfero opposto è inverno.</p><p><b>Attenzione:</b> le stagioni non sono causate principalmente dalla maggiore o minore distanza dal Sole.</p>'
+        `<p>🍂 The <b>seasons</b> are mainly caused by Earth’s tilted axis as it revolves around the Sun. When a hemisphere is tilted towards the Sun, it receives more direct sunlight and has longer days: it is summer there. The opposite hemisphere has winter.</p><p><b>Important:</b> seasons are not caused by Earth being much closer to or farther from the Sun.</p>`,
+        `<p>🍂 Le <b>stagioni</b> dipendono soprattutto dall'inclinazione dell'asse terrestre mentre la Terra gira intorno al Sole. Quando un emisfero è inclinato verso il Sole, riceve raggi più diretti e ha giornate più lunghe: lì è estate. Nell'emisfero opposto è inverno.</p><p><b>Attenzione:</b> le stagioni non sono causate principalmente dalla maggiore o minore distanza dal Sole.</p>`
       ]
     ],
     quiz: [
@@ -179,16 +179,16 @@ export const GRADE5_UNIVERSE_MISSIONS: Mission[] = [
     tech: ['Cosmos Form · Fifth Technique: Lunar Phase Finder', 'Stile del Cosmo · Quinta Tecnica: Trova-Fasi Lunari'],
     lessons: [
       [
-        '<p>🌙 The <b>Moon</b> is Earth’s natural satellite. It does not make its own light: we see sunlight reflected from its surface. The Moon travels around Earth in an orbit.</p><p>It takes about 27.3 days to complete one orbit relative to the stars. The cycle of phases takes about 29.5 days.</p>',
-        '<p>🌙 La <b>Luna</b> è il satellite naturale della Terra. Non produce luce propria: vediamo la luce del Sole riflessa dalla sua superficie. La Luna si muove intorno alla Terra seguendo un'orbita.</p><p>Impiega circa 27,3 giorni per completare un'orbita rispetto alle stelle. Il ciclo delle fasi dura circa 29,5 giorni.</p>'
+        `<p>🌙 The <b>Moon</b> is Earth’s natural satellite. It does not make its own light: we see sunlight reflected from its surface. The Moon travels around Earth in an orbit.</p><p>It takes about 27.3 days to complete one orbit relative to the stars. The cycle of phases takes about 29.5 days.</p>`,
+        `<p>🌙 La <b>Luna</b> è il satellite naturale della Terra. Non produce luce propria: vediamo la luce del Sole riflessa dalla sua superficie. La Luna si muove intorno alla Terra seguendo un'orbita.</p><p>Impiega circa 27,3 giorni per completare un'orbita rispetto alle stelle. Il ciclo delle fasi dura circa 29,5 giorni.</p>`
       ],
       [
-        '<p>🌓 The Moon seems to change shape during the month. These changing appearances are called <b>phases</b>. The main phases are new Moon, first quarter, full Moon and last quarter.</p><p>We see different portions of the Moon’s sunlit half as the Moon moves around Earth.</p>',
-        '<p>🌓 Durante il mese la Luna sembra cambiare forma. Questi aspetti si chiamano <b>fasi lunari</b>. Le fasi principali sono Luna nuova, primo quarto, Luna piena e ultimo quarto.</p><p>Vediamo porzioni diverse della metà illuminata della Luna mentre essa si muove intorno alla Terra.</p>'
+        `<p>🌓 The Moon seems to change shape during the month. These changing appearances are called <b>phases</b>. The main phases are new Moon, first quarter, full Moon and last quarter.</p><p>We see different portions of the Moon’s sunlit half as the Moon moves around Earth.</p>`,
+        `<p>🌓 Durante il mese la Luna sembra cambiare forma. Questi aspetti si chiamano <b>fasi lunari</b>. Le fasi principali sono Luna nuova, primo quarto, Luna piena e ultimo quarto.</p><p>Vediamo porzioni diverse della metà illuminata della Luna mentre essa si muove intorno alla Terra.</p>`
       ],
       [
-        '<p>🔦 Imagine a lamp as the Sun, a ball as the Moon and your head as Earth. Keep the lamp shining on the ball and move the ball around you: the lit part you can see changes.</p><p><b>Remember:</b> the phases are not caused by Earth’s shadow. Earth’s shadow is involved in a lunar eclipse.</p>',
-        '<p>🔦 Immagina una lampada come il Sole, una palla come la Luna e la tua testa come la Terra. Illumina la palla e spostala intorno a te: cambia la parte illuminata che riesci a vedere.</p><p><b>Ricorda:</b> le fasi non sono causate dall'ombra della Terra. L'ombra terrestre interviene durante un'eclissi di Luna.</p>'
+        `<p>🔦 Imagine a lamp as the Sun, a ball as the Moon and your head as Earth. Keep the lamp shining on the ball and move the ball around you: the lit part you can see changes.</p><p><b>Remember:</b> the phases are not caused by Earth’s shadow. Earth’s shadow is involved in a lunar eclipse.</p>`,
+        `<p>🔦 Immagina una lampada come il Sole, una palla come la Luna e la tua testa come la Terra. Illumina la palla e spostala intorno a te: cambia la parte illuminata che riesci a vedere.</p><p><b>Ricorda:</b> le fasi non sono causate dall'ombra della Terra. L'ombra terrestre interviene durante un'eclissi di Luna.</p>`
       ]
     ],
     quiz: [
@@ -209,16 +209,16 @@ export const GRADE5_UNIVERSE_MISSIONS: Mission[] = [
     tech: ['Cosmos Form · Sixth Technique: Eclipse Alignment', 'Stile del Cosmo · Sesta Tecnica: Allineamento dell’Eclissi'],
     lessons: [
       [
-        '<p>🌑 An <b>eclipse</b> happens when the Sun, Earth and Moon line up so that one body blocks some or all of the light reaching another.</p><p>There are two main types: a <b>solar eclipse</b> and a <b>lunar eclipse</b>. They do not happen every month because the Moon’s orbit is slightly tilted compared with Earth’s orbit around the Sun.</p>',
-        '<p>🌑 Un'<b>eclissi</b> si verifica quando Sole, Terra e Luna si allineano e un corpo blocca in parte o del tutto la luce che raggiunge un altro corpo.</p><p>Esistono due tipi principali: <b>eclissi di Sole</b> ed <b>eclissi di Luna</b>. Non avvengono ogni mese perché l'orbita lunare è leggermente inclinata rispetto al piano dell'orbita terrestre.</p>'
+        `<p>🌑 An <b>eclipse</b> happens when the Sun, Earth and Moon line up so that one body blocks some or all of the light reaching another.</p><p>There are two main types: a <b>solar eclipse</b> and a <b>lunar eclipse</b>. They do not happen every month because the Moon’s orbit is slightly tilted compared with Earth’s orbit around the Sun.</p>`,
+        `<p>🌑 Un'<b>eclissi</b> si verifica quando Sole, Terra e Luna si allineano e un corpo blocca in parte o del tutto la luce che raggiunge un altro corpo.</p><p>Esistono due tipi principali: <b>eclissi di Sole</b> ed <b>eclissi di Luna</b>. Non avvengono ogni mese perché l'orbita lunare è leggermente inclinata rispetto al piano dell'orbita terrestre.</p>`
       ],
       [
-        '<p>☀️ During a <b>solar eclipse</b>, the Moon moves between the Sun and Earth. The Moon’s shadow falls on a small area of Earth. Never look directly at the Sun during an eclipse without certified solar viewing protection.</p>',
-        '<p>☀️ Durante un'<b>eclissi di Sole</b>, la Luna passa tra il Sole e la Terra. L'ombra della Luna cade su una piccola zona terrestre. Non guardare mai direttamente il Sole durante un'eclissi senza appositi filtri certificati per l'osservazione solare.</p>'
+        `<p>☀️ During a <b>solar eclipse</b>, the Moon moves between the Sun and Earth. The Moon’s shadow falls on a small area of Earth. Never look directly at the Sun during an eclipse without certified solar viewing protection.</p>`,
+        `<p>☀️ Durante un'<b>eclissi di Sole</b>, la Luna passa tra il Sole e la Terra. L'ombra della Luna cade su una piccola zona terrestre. Non guardare mai direttamente il Sole durante un'eclissi senza appositi filtri certificati per l'osservazione solare.</p>`
       ],
       [
-        '<p>🌕 During a <b>lunar eclipse</b>, Earth moves between the Sun and Moon. Earth’s shadow falls on the Moon. A lunar eclipse can be watched safely with the naked eye.</p><p><b>Quick memory trick:</b> solar = Moon’s shadow on Earth; lunar = Earth’s shadow on the Moon.</p>',
-        '<p>🌕 Durante un'<b>eclissi di Luna</b>, la Terra si trova tra il Sole e la Luna. L'ombra della Terra si proietta sulla Luna. Un'eclissi lunare si può osservare in sicurezza a occhio nudo.</p><p><b>Trucco per ricordare:</b> eclissi solare = ombra della Luna sulla Terra; eclissi lunare = ombra della Terra sulla Luna.</p>'
+        `<p>🌕 During a <b>lunar eclipse</b>, Earth moves between the Sun and Moon. Earth’s shadow falls on the Moon. A lunar eclipse can be watched safely with the naked eye.</p><p><b>Quick memory trick:</b> solar = Moon’s shadow on Earth; lunar = Earth’s shadow on the Moon.</p>`,
+        `<p>🌕 Durante un'<b>eclissi di Luna</b>, la Terra si trova tra il Sole e la Luna. L'ombra della Terra si proietta sulla Luna. Un'eclissi lunare si può osservare in sicurezza a occhio nudo.</p><p><b>Trucco per ricordare:</b> eclissi solare = ombra della Luna sulla Terra; eclissi lunare = ombra della Terra sulla Luna.</p>`
       ]
     ],
     quiz: [
@@ -239,16 +239,16 @@ export const GRADE5_UNIVERSE_MISSIONS: Mission[] = [
     tech: ['Cosmos Form · Seventh Technique: Gravity Anchor', 'Stile del Cosmo · Settima Tecnica: Ancora Gravitazionale'],
     lessons: [
       [
-        '<p>🍎 <b>Gravity</b> is an attractive force between objects that have mass. Earth’s gravity pulls objects towards its centre. It keeps us on the ground and helps hold the atmosphere around our planet.</p><p>Gravity also keeps the Moon in orbit around Earth and the planets in orbit around the Sun.</p>',
-        '<p>🍎 La <b>gravità</b> è una forza di attrazione tra oggetti che hanno massa. La gravità terrestre attira gli oggetti verso il centro della Terra. Ci mantiene sul terreno e contribuisce a trattenere l'atmosfera intorno al pianeta.</p><p>La gravità mantiene anche la Luna in orbita intorno alla Terra e i pianeti in orbita intorno al Sole.</p>'
+        `<p>🍎 <b>Gravity</b> is an attractive force between objects that have mass. Earth’s gravity pulls objects towards its centre. It keeps us on the ground and helps hold the atmosphere around our planet.</p><p>Gravity also keeps the Moon in orbit around Earth and the planets in orbit around the Sun.</p>`,
+        `<p>🍎 La <b>gravità</b> è una forza di attrazione tra oggetti che hanno massa. La gravità terrestre attira gli oggetti verso il centro della Terra. Ci mantiene sul terreno e contribuisce a trattenere l'atmosfera intorno al pianeta.</p><p>La gravità mantiene anche la Luna in orbita intorno alla Terra e i pianeti in orbita intorno al Sole.</p>`
       ],
       [
-        '<p>⚖️ <b>Mass</b> tells us how much matter an object contains and is measured in kilograms (kg). <b>Weight</b> is the force of gravity acting on that mass and is measured in newtons (N).</p><p>Your mass stays almost the same on Earth and the Moon, but your weight is smaller on the Moon because lunar gravity is weaker.</p>',
-        '<p>⚖️ La <b>massa</b> indica quanta materia contiene un corpo e si misura in chilogrammi (kg). Il <b>peso</b> è la forza di gravità che agisce su quella massa e si misura in newton (N).</p><p>La tua massa rimane quasi uguale sulla Terra e sulla Luna, ma il tuo peso sulla Luna è minore perché la gravità lunare è più debole.</p>'
+        `<p>⚖️ <b>Mass</b> tells us how much matter an object contains and is measured in kilograms (kg). <b>Weight</b> is the force of gravity acting on that mass and is measured in newtons (N).</p><p>Your mass stays almost the same on Earth and the Moon, but your weight is smaller on the Moon because lunar gravity is weaker.</p>`,
+        `<p>⚖️ La <b>massa</b> indica quanta materia contiene un corpo e si misura in chilogrammi (kg). Il <b>peso</b> è la forza di gravità che agisce su quella massa e si misura in newton (N).</p><p>La tua massa rimane quasi uguale sulla Terra e sulla Luna, ma il tuo peso sulla Luna è minore perché la gravità lunare è più debole.</p>`
       ],
       [
-        '<p>🛰️ An orbit is a curved path followed by one object around another because of gravity and its forward motion. Astronauts on the International Space Station are still affected by Earth’s gravity; they appear weightless because they and the station are continuously falling around Earth together.</p><p><b>Remember:</b> gravity does not disappear in space.</p>',
-        '<p>🛰️ Un'orbita è il percorso curvo seguito da un corpo intorno a un altro grazie alla gravità e al suo movimento in avanti. Gli astronauti sulla Stazione Spaziale Internazionale sono ancora attratti dalla gravità terrestre; sembrano senza peso perché loro e la stazione stanno cadendo continuamente intorno alla Terra insieme.</p><p><b>Ricorda:</b> nello spazio la gravità non scompare.</p>'
+        `<p>🛰️ An orbit is a curved path followed by one object around another because of gravity and its forward motion. Astronauts on the International Space Station are still affected by Earth’s gravity; they appear weightless because they and the station are continuously falling around Earth together.</p><p><b>Remember:</b> gravity does not disappear in space.</p>`,
+        `<p>🛰️ Un'orbita è il percorso curvo seguito da un corpo intorno a un altro grazie alla gravità e al suo movimento in avanti. Gli astronauti sulla Stazione Spaziale Internazionale sono ancora attratti dalla gravità terrestre; sembrano senza peso perché loro e la stazione stanno cadendo continuamente intorno alla Terra insieme.</p><p><b>Ricorda:</b> nello spazio la gravità non scompare.</p>`
       ]
     ],
     quiz: [
@@ -269,16 +269,16 @@ export const GRADE5_UNIVERSE_MISSIONS: Mission[] = [
     tech: ['Cosmos Form · Eighth Technique: Star Mapper', 'Stile del Cosmo · Ottava Tecnica: Mappa Stellare'],
     lessons: [
       [
-        '<p>⭐ A <b>constellation</b> is an officially recognised area of the sky. People also imagine lines between some stars to make patterns that look like people, animals or objects.</p><p>Famous constellations include Orion, Ursa Major and Cassiopeia.</p>',
-        '<p>⭐ Una <b>costellazione</b> è una regione del cielo riconosciuta ufficialmente. Le persone immaginano anche linee tra alcune stelle per creare figure che ricordano persone, animali o oggetti.</p><p>Tra le costellazioni famose ci sono Orione, l'Orsa Maggiore e Cassiopea.</p>'
+        `<p>⭐ A <b>constellation</b> is an officially recognised area of the sky. People also imagine lines between some stars to make patterns that look like people, animals or objects.</p><p>Famous constellations include Orion, Ursa Major and Cassiopeia.</p>`,
+        `<p>⭐ Una <b>costellazione</b> è una regione del cielo riconosciuta ufficialmente. Le persone immaginano anche linee tra alcune stelle per creare figure che ricordano persone, animali o oggetti.</p><p>Tra le costellazioni famose ci sono Orione, l'Orsa Maggiore e Cassiopea.</p>`
       ],
       [
-        '<p>🧭 Stars appear to move across the sky during the night because Earth rotates. In the Northern Hemisphere, the <b>North Star (Polaris)</b> appears close to the direction of the north celestial pole and can help us find north.</p><p>The stars in a constellation are usually at very different distances from Earth. They only look close together in our sky.</p>',
-        '<p>🧭 Le stelle sembrano muoversi nel cielo durante la notte perché la Terra ruota. Nell'emisfero nord, la <b>Stella Polare</b> appare vicina alla direzione del polo nord celeste e può aiutarci a trovare il nord.</p><p>Le stelle di una costellazione si trovano spesso a distanze molto diverse dalla Terra: sembrano vicine solo nel cielo che osserviamo.</p>'
+        `<p>🧭 Stars appear to move across the sky during the night because Earth rotates. In the Northern Hemisphere, the <b>North Star (Polaris)</b> appears close to the direction of the north celestial pole and can help us find north.</p><p>The stars in a constellation are usually at very different distances from Earth. They only look close together in our sky.</p>`,
+        `<p>🧭 Le stelle sembrano muoversi nel cielo durante la notte perché la Terra ruota. Nell'emisfero nord, la <b>Stella Polare</b> appare vicina alla direzione del polo nord celeste e può aiutarci a trovare il nord.</p><p>Le stelle di una costellazione si trovano spesso a distanze molto diverse dalla Terra: sembrano vicine solo nel cielo che osserviamo.</p>`
       ],
       [
-        '<p>📍 Constellations help astronomers describe and map the sky. In the past, people used star patterns to navigate and organise calendars. Today, astronomers use precise maps and coordinates as well as constellation names.</p><p><b>Observation tip:</b> find a dark, safe place, let your eyes adjust, and use a star chart to identify patterns.</p>',
-        '<p>📍 Le costellazioni aiutano gli astronomi a descrivere e mappare il cielo. In passato, le persone usavano le figure stellari per orientarsi e organizzare i calendari. Oggi gli astronomi utilizzano mappe precise e coordinate, oltre ai nomi delle costellazioni.</p><p><b>Consiglio:</b> scegli un luogo buio e sicuro, lascia abituare gli occhi e usa una carta stellare per riconoscere le figure.</p>'
+        `<p>📍 Constellations help astronomers describe and map the sky. In the past, people used star patterns to navigate and organise calendars. Today, astronomers use precise maps and coordinates as well as constellation names.</p><p><b>Observation tip:</b> find a dark, safe place, let your eyes adjust, and use a star chart to identify patterns.</p>`,
+        `<p>📍 Le costellazioni aiutano gli astronomi a descrivere e mappare il cielo. In passato, le persone usavano le figure stellari per orientarsi e organizzare i calendari. Oggi gli astronomi utilizzano mappe precise e coordinate, oltre ai nomi delle costellazioni.</p><p><b>Consiglio:</b> scegli un luogo buio e sicuro, lascia abituare gli occhi e usa una carta stellare per riconoscere le figure.</p>`
       ]
     ],
     quiz: [
@@ -299,16 +299,16 @@ export const GRADE5_UNIVERSE_MISSIONS: Mission[] = [
     tech: ['Cosmos Form · Ninth Technique: Mission Planner', 'Stile del Cosmo · Nona Tecnica: Pianificatore di Missione'],
     lessons: [
       [
-        '<p>🚀 Space exploration uses science and engineering to study places beyond Earth. <b>Rockets</b> provide the thrust needed to carry spacecraft beyond the atmosphere. A spacecraft may carry people, instruments or robots.</p><p>Engineers plan a mission by defining its goal, route, equipment, power supply and communication system.</p>',
-        '<p>🚀 L'esplorazione spaziale usa scienza e tecnologia per studiare luoghi oltre la Terra. I <b>razzi</b> forniscono la spinta necessaria per portare i veicoli spaziali oltre l'atmosfera. Un veicolo può trasportare persone, strumenti o robot.</p><p>Gli ingegneri progettano una missione definendo obiettivo, percorso, strumenti, alimentazione e sistema di comunicazione.</p>'
+        `<p>🚀 Space exploration uses science and engineering to study places beyond Earth. <b>Rockets</b> provide the thrust needed to carry spacecraft beyond the atmosphere. A spacecraft may carry people, instruments or robots.</p><p>Engineers plan a mission by defining its goal, route, equipment, power supply and communication system.</p>`,
+        `<p>🚀 L'esplorazione spaziale usa scienza e tecnologia per studiare luoghi oltre la Terra. I <b>razzi</b> forniscono la spinta necessaria per portare i veicoli spaziali oltre l'atmosfera. Un veicolo può trasportare persone, strumenti o robot.</p><p>Gli ingegneri progettano una missione definendo obiettivo, percorso, strumenti, alimentazione e sistema di comunicazione.</p>`
       ],
       [
-        '<p>🛰️ An <b>artificial satellite</b> is a human-made object placed in orbit. Satellites help with communication, weather forecasts, navigation and observing Earth. A <b>space probe</b> is a robotic spacecraft sent to investigate the Moon, planets, asteroids or other targets.</p>',
-        '<p>🛰️ Un <b>satellite artificiale</b> è un oggetto costruito dall'uomo e messo in orbita. I satelliti aiutano nelle comunicazioni, nelle previsioni del tempo, nella navigazione e nell'osservazione della Terra. Una <b>sonda spaziale</b> è un veicolo robotico inviato a studiare la Luna, i pianeti, gli asteroidi o altri obiettivi.</p>'
+        `<p>🛰️ An <b>artificial satellite</b> is a human-made object placed in orbit. Satellites help with communication, weather forecasts, navigation and observing Earth. A <b>space probe</b> is a robotic spacecraft sent to investigate the Moon, planets, asteroids or other targets.</p>`,
+        `<p>🛰️ Un <b>satellite artificiale</b> è un oggetto costruito dall'uomo e messo in orbita. I satelliti aiutano nelle comunicazioni, nelle previsioni del tempo, nella navigazione e nell'osservazione della Terra. Una <b>sonda spaziale</b> è un veicolo robotico inviato a studiare la Luna, i pianeti, gli asteroidi o altri obiettivi.</p>`
       ],
       [
-        '<p>👩‍🚀 Astronauts work in spacecraft and space stations. They need training, teamwork, careful planning and systems that provide air, water, food and protection.</p><p><b>STEM challenge:</b> plan a small robotic mission to study a planet. Choose one scientific question, one instrument to collect data, a way to send results home and one safety or environmental risk to reduce.</p>',
-        '<p>👩‍🚀 Gli astronauti lavorano nei veicoli e nelle stazioni spaziali. Hanno bisogno di addestramento, lavoro di squadra, pianificazione e sistemi che forniscano aria, acqua, cibo e protezione.</p><p><b>Sfida STEM:</b> progetta una piccola missione robotica per studiare un pianeta. Scegli una domanda scientifica, uno strumento per raccogliere dati, un modo per inviare i risultati a casa e un rischio per la sicurezza o l'ambiente da ridurre.</p>'
+        `<p>👩‍🚀 Astronauts work in spacecraft and space stations. They need training, teamwork, careful planning and systems that provide air, water, food and protection.</p><p><b>STEM challenge:</b> plan a small robotic mission to study a planet. Choose one scientific question, one instrument to collect data, a way to send results home and one safety or environmental risk to reduce.</p>`,
+        `<p>👩‍🚀 Gli astronauti lavorano nei veicoli e nelle stazioni spaziali. Hanno bisogno di addestramento, lavoro di squadra, pianificazione e sistemi che forniscano aria, acqua, cibo e protezione.</p><p><b>Sfida STEM:</b> progetta una piccola missione robotica per studiare un pianeta. Scegli una domanda scientifica, uno strumento per raccogliere dati, un modo per inviare i risultati a casa e un rischio per la sicurezza o l'ambiente da ridurre.</p>`
       ]
     ],
     quiz: [
@@ -329,16 +329,16 @@ export const GRADE5_UNIVERSE_MISSIONS: Mission[] = [
     tech: ['Cosmos Form · Tenth Technique: Rotation Detector', 'Stile del Cosmo · Decima Tecnica: Rilevatore di Rotazione'],
     lessons: [
       [
-        '<p>🔔 A <b>pendulum</b> is a weight hanging from a fixed point so it can swing back and forth. If it is pulled gently to one side and released, gravity makes it swing through a repeated path.</p><p>A Foucault pendulum is very long and carefully set up so its direction of swing can be observed over many hours.</p>',
-        '<p>🔔 Un <b>pendolo</b> è un peso appeso a un punto fisso, libero di oscillare avanti e indietro. Se viene spostato delicatamente da un lato e lasciato andare, la gravità lo fa oscillare lungo un percorso ripetuto.</p><p>Il pendolo di Foucault è molto lungo ed è costruito in modo da poter osservare la direzione delle oscillazioni per molte ore.</p>'
+        `<p>🔔 A <b>pendulum</b> is a weight hanging from a fixed point so it can swing back and forth. If it is pulled gently to one side and released, gravity makes it swing through a repeated path.</p><p>A Foucault pendulum is very long and carefully set up so its direction of swing can be observed over many hours.</p>`,
+        `<p>🔔 Un <b>pendolo</b> è un peso appeso a un punto fisso, libero di oscillare avanti e indietro. Se viene spostato delicatamente da un lato e lasciato andare, la gravità lo fa oscillare lungo un percorso ripetuto.</p><p>Il pendolo di Foucault è molto lungo ed è costruito in modo da poter osservare la direzione delle oscillazioni per molte ore.</p>`
       ],
       [
-        '<p>🌍 The pendulum tends to keep swinging in nearly the same plane while Earth rotates beneath it. To an observer standing on Earth, the direction of the swing appears to change slowly during the day.</p><p>This is a demonstration that Earth rotates. The apparent turning is fastest at the poles and is not observed in the same way at the equator.</p>',
-        '<p>🌍 Il pendolo tende a oscillare quasi sullo stesso piano mentre la Terra ruota sotto di esso. Per chi osserva dalla Terra, la direzione dell'oscillazione sembra cambiare lentamente durante la giornata.</p><p>È una dimostrazione della rotazione terrestre. La rotazione apparente del piano è più rapida ai poli e non si osserva nello stesso modo all'equatore.</p>'
+        `<p>🌍 The pendulum tends to keep swinging in nearly the same plane while Earth rotates beneath it. To an observer standing on Earth, the direction of the swing appears to change slowly during the day.</p><p>This is a demonstration that Earth rotates. The apparent turning is fastest at the poles and is not observed in the same way at the equator.</p>`,
+        `<p>🌍 Il pendolo tende a oscillare quasi sullo stesso piano mentre la Terra ruota sotto di esso. Per chi osserva dalla Terra, la direzione dell'oscillazione sembra cambiare lentamente durante la giornata.</p><p>È una dimostrazione della rotazione terrestre. La rotazione apparente del piano è più rapida ai poli e non si osserva nello stesso modo all'equatore.</p>`
       ],
       [
-        '<p>🧪 <b>Try a simple pendulum:</b> tie a small, safe weight to a string, hold the string at a fixed point, move the weight a little to one side and release it gently. Keep people and fragile objects away.</p><p>Measure the time for ten swings. Change the string length and compare. A short pendulum swings faster than a long one. This classroom activity studies pendulum motion; it does not reproduce the full Foucault demonstration.</p>',
-        '<p>🧪 <b>Prova un pendolo semplice:</b> lega un piccolo peso sicuro a un filo, tieni il filo fermo in un punto, sposta poco il peso di lato e lascialo andare delicatamente. Tieni lontane persone e oggetti fragili.</p><p>Misura il tempo di dieci oscillazioni. Cambia la lunghezza del filo e confronta i risultati. Un pendolo corto oscilla più rapidamente di uno lungo. Questa attività studia il moto del pendolo, ma non riproduce l'intera dimostrazione di Foucault.</p>'
+        `<p>🧪 <b>Try a simple pendulum:</b> tie a small, safe weight to a string, hold the string at a fixed point, move the weight a little to one side and release it gently. Keep people and fragile objects away.</p><p>Measure the time for ten swings. Change the string length and compare. A short pendulum swings faster than a long one. This classroom activity studies pendulum motion; it does not reproduce the full Foucault demonstration.</p>`,
+        `<p>🧪 <b>Prova un pendolo semplice:</b> lega un piccolo peso sicuro a un filo, tieni il filo fermo in un punto, sposta poco il peso di lato e lascialo andare delicatamente. Tieni lontane persone e oggetti fragili.</p><p>Misura il tempo di dieci oscillazioni. Cambia la lunghezza del filo e confronta i risultati. Un pendolo corto oscilla più rapidamente di uno lungo. Questa attività studia il moto del pendolo, ma non riproduce l'intera dimostrazione di Foucault.</p>`
       ]
     ],
     quiz: [
@@ -359,16 +359,16 @@ export const GRADE5_UNIVERSE_MISSIONS: Mission[] = [
     tech: ['Cosmos Form · Final Technique: Universe Mastery', 'Stile del Cosmo · Tecnica Finale: Maestria dell’Universo'],
     lessons: [
       [
-        '<p>🗺️ Let’s connect the ideas. The Universe contains galaxies; galaxies contain stars and other objects. Our Solar System is in the Milky Way. The Sun is a star, and eight planets orbit it.</p><p>Earth rotates to make day and night and revolves around the Sun in one year. Its tilted axis helps produce the seasons.</p>',
-        '<p>🗺️ Colleghiamo le idee. L'Universo contiene galassie; le galassie contengono stelle e altri oggetti. Il Sistema solare si trova nella Via Lattea. Il Sole è una stella e otto pianeti gli orbitano intorno.</p><p>La Terra ruota causando il giorno e la notte e compie una rivoluzione intorno al Sole in un anno. L'inclinazione del suo asse contribuisce a produrre le stagioni.</p>'
+        `<p>🗺️ Let’s connect the ideas. The Universe contains galaxies; galaxies contain stars and other objects. Our Solar System is in the Milky Way. The Sun is a star, and eight planets orbit it.</p><p>Earth rotates to make day and night and revolves around the Sun in one year. Its tilted axis helps produce the seasons.</p>`,
+        `<p>🗺️ Colleghiamo le idee. L'Universo contiene galassie; le galassie contengono stelle e altri oggetti. Il Sistema solare si trova nella Via Lattea. Il Sole è una stella e otto pianeti gli orbitano intorno.</p><p>La Terra ruota causando il giorno e la notte e compie una rivoluzione intorno al Sole in un anno. L'inclinazione del suo asse contribuisce a produrre le stagioni.</p>`
       ],
       [
-        '<p>🌙 The Moon orbits Earth and reflects sunlight. Its phases depend on the changing view of its illuminated half. Eclipses happen when the Sun, Earth and Moon line up. Gravity keeps planets and moons in orbit.</p>',
-        '<p>🌙 La Luna orbita intorno alla Terra e riflette la luce solare. Le sue fasi dipendono dalla diversa porzione illuminata che vediamo. Le eclissi avvengono quando Sole, Terra e Luna si allineano. La gravità mantiene pianeti e satelliti nelle loro orbite.</p>'
+        `<p>🌙 The Moon orbits Earth and reflects sunlight. Its phases depend on the changing view of its illuminated half. Eclipses happen when the Sun, Earth and Moon line up. Gravity keeps planets and moons in orbit.</p>`,
+        `<p>🌙 La Luna orbita intorno alla Terra e riflette la luce solare. Le sue fasi dipendono dalla diversa porzione illuminata che vediamo. Le eclissi avvengono quando Sole, Terra e Luna si allineano. La gravità mantiene pianeti e satelliti nelle loro orbite.</p>`
       ],
       [
-        '<p>🔭 We explore space with telescopes, satellites, probes and crewed spacecraft. Constellations help us map the sky. The Foucault pendulum provides evidence of Earth’s rotation.</p><p><b>Self-check:</b> Can you explain one idea using a drawing, one using an example from everyday life, and one using a scientific model? Then take the final challenge!</p>',
-        '<p>🔭 Esploriamo lo spazio con telescopi, satelliti, sonde e veicoli con equipaggio. Le costellazioni ci aiutano a mappare il cielo. Il pendolo di Foucault fornisce una prova della rotazione terrestre.</p><p><b>Autovalutazione:</b> sai spiegare un'idea con un disegno, una con un esempio della vita quotidiana e una con un modello scientifico? Poi affronta la verifica finale!</p>'
+        `<p>🔭 We explore space with telescopes, satellites, probes and crewed spacecraft. Constellations help us map the sky. The Foucault pendulum provides evidence of Earth’s rotation.</p><p><b>Self-check:</b> Can you explain one idea using a drawing, one using an example from everyday life, and one using a scientific model? Then take the final challenge!</p>`,
+        `<p>🔭 Esploriamo lo spazio con telescopi, satelliti, sonde e veicoli con equipaggio. Le costellazioni ci aiutano a mappare il cielo. Il pendolo di Foucault fornisce una prova della rotazione terrestre.</p><p><b>Autovalutazione:</b> sai spiegare un'idea con un disegno, una con un esempio della vita quotidiana e una con un modello scientifico? Poi affronta la verifica finale!</p>`
       ]
     ],
     quiz: [
