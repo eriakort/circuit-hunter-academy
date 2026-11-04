@@ -20,7 +20,7 @@ export const GradePicker: React.FC = () => {
       </div>
 
       <div className="grade-options" aria-label={L(['Choose your grade', 'Scegli la tua classe'], lang)}>
-        <button className="grade-card" onClick={() => setGrade('grade5')}>
+        <button className={`grade-card${state.grade === 'grade5' ? ' grade-card-selected' : ''}`} aria-pressed={state.grade === 'grade5'} onClick={() => setGrade('grade5')}>
           <span className="grade-card-art" aria-hidden="true">５</span>
           <span className="grade-card-kicker">{L(['PRIMARY SCHOOL', 'SCUOLA PRIMARIA'], lang)}</span>
           <strong>{L(['Grade 5', 'Quinta primaria'], lang)}</strong>
@@ -28,7 +28,7 @@ export const GradePicker: React.FC = () => {
           <span className="grade-card-status">{L(['Curriculum setup next', 'Programma in preparazione'], lang)}</span>
         </button>
 
-        <button className="grade-card grade-card-current" onClick={() => setGrade('grade9')}>
+        <button className={`grade-card grade-card-current${state.grade === 'grade9' ? ' grade-card-selected' : ''}`} aria-pressed={state.grade === 'grade9'} onClick={() => setGrade('grade9')}>
           <span className="grade-card-art" aria-hidden="true">９</span>
           <span className="grade-card-kicker">{L(['LOWER SECONDARY SCHOOL', 'SCUOLA SECONDARIA DI PRIMO GRADO'], lang)}</span>
           <strong>{L(['Grade 9', 'Terza media'], lang)}</strong>
