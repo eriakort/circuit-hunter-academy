@@ -1,4 +1,5 @@
 import { SubjectInfo, UnitInfo, ArcInfo, Mission, Rank, CodexEntry } from "../types";
+import { PHYSICS_FOUNDATION_MISSIONS } from "./physicsFoundationsData";
 export const SUBJECTS: SubjectInfo[] = [
   {
     "id": "cs",
@@ -18210,6 +18211,7 @@ export const MISSIONS: Mission[] = [
         "xpReward": 25
       }
     }},
+  ...PHYSICS_FOUNDATION_MISSIONS,
   {
     "id": "p2m1",
     "arc": 17,
