@@ -103,3 +103,13 @@ console.assert(streak.activeLast7Days === 5);
 console.assert(streak.recentDays.length === 7);
 console.assert(streak.recentDays[6].active === true);
 console.assert(calculateLearningStreak([], streakNow).currentStreak === 0);
+
+
+// Grade catalogue keeps the current curriculum separate from the upcoming primary curriculum.
+import { GRADES, GRADE_SUBJECT_IDS, getSubjectsForGrade } from '../src/data/gradeData';
+import { SUBJECTS } from '../src/data/gameData';
+console.assert(GRADES.some(grade => grade.id === 'grade5' && grade.status === 'preparing'));
+console.assert(GRADES.some(grade => grade.id === 'grade9' && grade.status === 'ready'));
+console.assert(GRADE_SUBJECT_IDS.grade5.length === 0);
+console.assert(getSubjectsForGrade('grade9', SUBJECTS).map(subject => subject.id).join(',') === 'cs,phys,math');
+console.assert(getSubjectsForGrade('grade5', SUBJECTS).length === 0);

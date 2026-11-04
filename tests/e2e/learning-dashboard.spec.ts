@@ -7,7 +7,11 @@ async function startCourse(page: Page) {
   });
   await page.reload();
 
-  // Computer Science is the default subject; a new player first registers a hunter name.
+  // New learners select Grade 9 and Computer Science before registering a hunter name.
+  await expect(page.locator('.grade-card-current')).toBeVisible();
+  await page.locator('.grade-card-current').click();
+  await expect(page.locator('.subjcard[data-s="cs"]')).toBeVisible();
+  await page.locator('.subjcard[data-s="cs"]').click();
   await expect(page.locator('#nm')).toBeVisible();
   await page.locator('#nm').fill('Test Hunter');
   await page.locator('#regf button[type="submit"]').click();

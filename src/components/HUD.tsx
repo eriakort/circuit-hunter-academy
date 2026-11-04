@@ -5,7 +5,7 @@ import { L, rankOf, nextRank, esc } from '../helpers';
 
 export const HUD: React.FC = () => {
   const { state, view, battleContext, setLanguage, goToView, startBattle } = useGame();
-  const { lang, name, xp, subject, cleared } = state;
+  const { lang, name, xp, subject, grade, cleared } = state;
   const activeSubject = SUBJECTS.find(item => item.id === subject) || SUBJECTS[0];
 
   const currentRank = rankOf(xp, RANKS);
@@ -26,21 +26,29 @@ export const HUD: React.FC = () => {
 
   return (
     <header className="hud" id="hud">
-      <button className="brand" id="hHome" onClick={() => goToView('map')}>
+      <button className="brand" id="hHome" onClick={() => goToView(grade === 'grade5' ? 'subjects' : 'map')}>
         CIRCUIT <b>HUNTER</b> ACADEMY
       </button>
 
-      {subject && (
+      {grade && view !== 'grades' && view !== 'subjects' && grade === 'grade9' && subject && (
         <div className="subject-indicator" data-s={subject} aria-label={`${L(['Current subject', 'Materia attiva'], lang)}: ${L(activeSubject.name, lang)}`}>
           <span className="subject-indicator-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: activeSubject.art }} />
           <span className="subject-indicator-copy">
-            <small>{L(['CURRENT SUBJECT', 'MATERIA ATTIVA'], lang)}</small>
+            <small>{L(['GRADE 9 · CURRENT SUBJECT', 'CLASSE 3ª MEDIA · MATERIA'], lang)}</small>
             <strong>{L(activeSubject.name, lang)}</strong>
           </span>
         </div>
       )}
 
       <div className="hud-r">
+        <button
+          className={navClass(view === 'grades')}
+          id="hGrade"
+          aria-current={currentPage(view === 'grades')}
+          onClick={() => goToView('grades')}
+        >
+          {L(['Change grade', 'Cambia classe'], lang)}{grade === 'grade5' ? ' · 5' : grade === 'grade9' ? ' · 9' : ''}
+        </button>
         {name && (
           <div className="who-hud">
             <span className="nm">
@@ -72,7 +80,7 @@ export const HUD: React.FC = () => {
           </button>
         </div>
 
-        {subject && (
+        {grade === 'grade9' && subject && (
           <button
             className={navClass(view === 'subjects')}
             id="hSubj"
@@ -83,6 +91,7 @@ export const HUD: React.FC = () => {
           </button>
         )}
 
+        {grade === 'grade9' && <>
         <button
           className={navClass(isMissionsActive)}
           id="hMap"
@@ -130,6 +139,7 @@ export const HUD: React.FC = () => {
             {L(['Race', 'Gara'], lang)}
           </button>
         )}
+        </>}
       </div>
     </header>
   );

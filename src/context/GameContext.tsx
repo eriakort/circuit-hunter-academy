@@ -1,12 +1,13 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { GameState, Language, SubjectId, ViewMode, Mission, LearningMissionProgress } from '../types';
+import { GameState, GradeId, Language, SubjectId, ViewMode, Mission, LearningMissionProgress } from '../types';
 import { MISSIONS, UNITS, ARCS, RANKS } from '../data/gameData';
 import { rankOf } from '../helpers';
+import { GRADE_SUBJECT_IDS } from '../data/gradeData';
 
 const SKEY = 'circuit-hunter-academy-v2';
-const SCHEMA = 2;
+const SCHEMA = 3;
 const NAV_KEY = 'circuit-hunter-academy-navigation-v2';
-const VALID_VIEWS: ViewMode[] = ['subjects', 'map', 'scene', 'battle', 'result', 'ending', 'dojo', 'codex', 'race', 'test'];
+const VALID_VIEWS: ViewMode[] = ['grades', 'subjects', 'map', 'scene', 'battle', 'result', 'ending', 'dojo', 'codex', 'race', 'test'];
 
 interface SavedNavigation {
   view: ViewMode;
@@ -44,6 +45,7 @@ const readSavedNavigation = (): SavedNavigation | null => {
 };
 
 const defaultState: GameState = {
+  grade: null,
   name: '',
   lang: 'en',
   xp: 0,
@@ -64,6 +66,7 @@ interface GameContextType {
   currentMission: Mission;
   battleContext: { isDojo: boolean; customQuestions?: any[] } | null;
   setLanguage: (lang: Language) => void;
+  setGrade: (grade: GradeId) => void;
   setSubject: (sub: SubjectId) => void;
   setUnit: (u: number) => void;
   setName: (name: string) => void;
@@ -95,7 +98,12 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (!loaded.v || loaded.v < SCHEMA) {
           loaded.v = SCHEMA;
         }
-        return { ...defaultState, ...loaded };
+        // Existing saves predate grade selection and belong to the current Grade 9 curriculum.
+        const hasSavedGrade = Object.prototype.hasOwnProperty.call(loaded, 'grade');
+        const grade: GradeId | null = loaded.grade === 'grade5' || loaded.grade === 'grade9'
+          ? loaded.grade
+          : (hasSavedGrade ? null : 'grade9');
+        return { ...defaultState, ...loaded, grade };
       }
     } catch (e) {
       console.error('Failed to load save state:', e);
@@ -105,7 +113,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const [initialNavigation] = useState<SavedNavigation | null>(() => readSavedNavigation());
   const [view, setView] = useState<ViewMode>(() => {
-    if (!state.subject) return 'subjects';
+    if (!state.grade) return 'grades';
     return initialNavigation?.view || 'map';
   });
   const [currentMissionIndex, setCurrentMissionIndex] = useState<number>(
@@ -140,11 +148,18 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [view, currentMissionIndex, currentSceneIndex, battleContext]);
 
 
+  const setGrade = (grade: GradeId) => {
+    setState(s => ({ ...s, grade }));
+    setView('subjects');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const setLanguage = (lang: Language) => {
     setState(s => ({ ...s, lang }));
   };
 
   const setSubject = (sub: SubjectId) => {
+    if (!state.grade || !GRADE_SUBJECT_IDS[state.grade].includes(sub)) return;
     const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === sub);
     setState(s => ({ ...s, subject: sub, unit: firstUnit < 0 ? 0 : firstUnit }));
     setView('map');
@@ -251,6 +266,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const resetProgress = () => {
     const fresh: GameState = {
+      grade: state.grade,
       name: '',
       lang: state.lang,
       xp: 0,
@@ -297,6 +313,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
         currentMission,
         battleContext,
         setLanguage,
+        setGrade,
         setSubject,
         setUnit,
         setName,
