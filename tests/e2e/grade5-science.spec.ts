@@ -16,7 +16,7 @@ test('Grade 5 learners can enter the dedicated bilingual Science curriculum', as
   await page.locator('#nm').fill('Science Hunter');
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
-  await expect(page.locator('.units button')).toHaveCount(1);
+  await expect(page.locator('.units button')).toHaveCount(2);
   await expect(page.getByRole('heading', { name: 'Science Foundations' })).toBeVisible();
   await expect(page.locator('.mcard')).toHaveCount(2);
   await expect(page.getByRole('heading', { name: 'The Secret Life of Plants' })).toBeVisible();
