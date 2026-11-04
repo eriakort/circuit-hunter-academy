@@ -16,7 +16,7 @@ export const GRADE5_SCIENCE_UNITS: UnitInfo[] = [
 ];
 
 export const GRADE5_SCIENCE_ARCS: ArcInfo[] = [
-  { n: 0, unit: 0, subject: 'science', title: ['Science Foundations', 'Le basi delle scienze'], pages: '4–5' }
+  { n: 1, unit: 0, subject: 'science', title: ['Science Foundations', 'Le basi delle scienze'], pages: '4–5' }
 ];
 
 export const GRADE5_SCIENCE_MISSIONS: Mission[] = [
