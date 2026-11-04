@@ -170,5 +170,36 @@ export const GRADE5_SCIENCE_REVIEW_MISSIONS: Mission[] = [
       question('A footprint is found near a pond. What is it?', 'Vicino a uno stagno viene trovata un’impronta. Che cos’è?', [['A clue that needs more evidence', 'Un indizio che richiede altre prove'], ['Certain proof of one exact animal', 'La prova certa di un animale preciso'], ['A plant', 'Una pianta']], ['One clue may have several explanations, so scientists seek more evidence.', 'Un indizio può avere diverse spiegazioni: per questo le scienziate cercano altre prove.']),
       question('Which action is most responsible around wild animals?', 'Quale comportamento è più responsabile vicino agli animali selvatici?', [['Observe quietly without feeding or handling them', 'Osservare in silenzio senza nutrirli né toccarli'], ['Feed them human snacks', 'Dare loro snack per persone'], ['Take them home', 'Portarli a casa']], ['Wild animals should be observed without feeding, handling or relocating them.', 'Gli animali selvatici vanno osservati senza nutrirli, toccarli o spostarli.'])
     ]
+
+  }),
+  makeMission({
+    id: 'g5x-science-fair-capstone',
+    sec: '5',
+    pages: '101–120',
+    hue: 265,
+    title: ['Science Fair: One Big Question', 'Fiera delle scienze: una grande domanda'],
+    topic: ['Plan a small science showcase using ideas from the whole year', 'Progetta una piccola mostra scientifica usando ciò che hai imparato durante l’anno'],
+    demon: ['The Confusion Cloud', 'La Nuvola della Confusione'],
+    tech: ['Master Explorer Form · Fifth Technique: Share What You Discover', 'Stile dell’Esploratrice · Quinta Tecnica: Condividi ciò che scopri'],
+    lessons: [
+      [
+        '<p>🎪 Imagine your class is preparing a science fair. Choose one question you are curious about. You could investigate what plants need, how shadows change, how a simple lever helps lift an object, or how the body uses different organs to work together.</p><p>Pick a question that can be explored safely with materials approved by your teacher.</p>',
+        '<p>🎪 Immagina che la tua classe stia preparando una fiera delle scienze. Scegli una domanda che ti incuriosisce. Puoi esplorare di che cosa hanno bisogno le piante, come cambiano le ombre, come una semplice leva aiuta a sollevare un oggetto o come gli organi collaborano nel corpo.</p><p>Scegli una domanda che si possa esplorare in sicurezza, usando materiali approvati dall’insegnante.</p>'
+      ],
+      [
+        '<p>🧠 Make a simple plan: <b>Question</b> → <b>Prediction</b> → <b>What we will do</b> → <b>What we will observe</b> → <b>What we found out</b>. Change one factor at a time when possible, keep other conditions similar and record what really happens—even if the result is different from your prediction.</p><p>Use a table, labelled drawing or model to make your evidence easy to understand.</p>',
+        '<p>🧠 Prepara un piano semplice: <b>Domanda</b> → <b>Previsione</b> → <b>Che cosa faremo</b> → <b>Che cosa osserveremo</b> → <b>Che cosa abbiamo scoperto</b>. Quando è possibile, cambia un solo fattore alla volta, mantieni simili le altre condizioni e annota ciò che accade davvero, anche se il risultato è diverso dalla previsione.</p><p>Usa una tabella, un disegno con etichette o un modello per rendere chiare le prove.</p>'
+      ],
+      [
+        '<p>🤝 Prepare a short presentation with your team. Everyone can contribute: asking questions, drawing, recording observations or explaining the result. Listen to different ideas and give credit to people who helped.</p><p>Never invent results or claim that one test proves everything. Explain what your evidence shows, what it does not show and what you would investigate next. Follow adult instructions and do not use electricity, heat, chemicals, sharp tools or outdoor observations without supervision.</p>',
+        '<p>🤝 Prepara una breve presentazione con il tuo gruppo. Tutti possono contribuire: facendo domande, disegnando, registrando osservazioni o spiegando i risultati. Ascolta idee diverse e riconosci il contributo di chi ti ha aiutato.</p><p>Non inventare risultati e non dire che una sola prova dimostra tutto. Spiega che cosa mostrano le tue prove, che cosa non dimostrano e che cosa vorresti approfondire. Segui le indicazioni degli adulti e non usare elettricità, calore, sostanze chimiche o strumenti appuntiti, né fare osservazioni all’aperto senza supervisione.</p>'
+      ]
+    ],
+    quiz: [
+      question('What should a science fair project begin with?', 'Con che cosa dovrebbe iniziare un progetto per la fiera delle scienze?', [['A clear question', 'Una domanda chiara'], ['A result chosen in advance', 'Un risultato scelto in anticipo'], ['A poster with no investigation', 'Un cartellone senza indagine']], ['A clear question helps you plan what to investigate and observe.', 'Una domanda chiara ti aiuta a pianificare che cosa esplorare e osservare.']),
+      question('Your result is different from your prediction. What should you do?', 'Il risultato è diverso dalla tua previsione. Che cosa dovresti fare?', [['Record the real result honestly', 'Registrare con sincerità il risultato reale'], ['Change the result to match your prediction', 'Cambiare il risultato per farlo coincidere con la previsione'], ['Hide the observation', 'Nascondere l’osservazione']], ['Scientists report what they observe, even when it is unexpected.', 'Le scienziate riportano ciò che osservano, anche quando è inaspettato.']),
+      question('What makes evidence easier for visitors to understand?', 'Che cosa rende le prove più facili da capire per i visitatori?', [['A labelled drawing or clear table', 'Un disegno con etichette o una tabella chiara'], ['A list of unexplained numbers', 'Un elenco di numeri senza spiegazione'], ['A guess without observations', 'Un’ipotesi senza osservazioni']], ['Clear labels and organised records help others understand your findings.', 'Etichette chiare e dati organizzati aiutano gli altri a capire i risultati.']),
+      question('How should a team prepare its presentation?', 'Come dovrebbe preparare la presentazione un gruppo?', [['Share tasks and listen respectfully', 'Dividere i compiti e ascoltarsi con rispetto'], ['Let one person do everything', 'Lasciare che una sola persona faccia tutto'], ['Ignore questions from visitors', 'Ignorare le domande dei visitatori']], ['Teamwork includes shared contributions, listening and respectful answers.', 'La collaborazione comprende contributi condivisi, ascolto e risposte rispettose.'])
+    ]
   })
 ];
