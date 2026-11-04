@@ -861,3 +861,38 @@ body{overflow-x:hidden}
 .learning-streak-day.is-today .learning-streak-day-label{color:var(--data);font-weight:700}
 .learning-streak-empty{font-size:13px;color:var(--muted);margin:0}
 @media(max-width:620px){.learning-streak{padding:12px}.learning-streak-metrics{gap:12px}.learning-streak-days{gap:4px}.learning-streak-day-dot{max-width:30px}}
+
+
+/* Physics Visual Lab */
+.physics-lab{background:linear-gradient(145deg,rgba(69,216,255,.09),rgba(255,106,61,.07)),var(--panel);border:1px solid rgba(69,216,255,.42);border-radius:16px;padding:18px;margin:4px 0 18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.pl-heading{display:flex;flex-direction:column;gap:5px}
+.pl-kicker{font:700 11px var(--mono);letter-spacing:.13em;color:var(--data)}
+.pl-heading h3{font-size:clamp(18px,3vw,23px)}
+.pl-heading p,.pl-visual p{color:var(--muted);font-size:14px}
+.pl-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(220px,.85fr);gap:16px;align-items:stretch}
+.pl-visual,.pl-controls{min-width:0;background:rgba(10,12,34,.48);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.pl-visual svg{width:100%;max-height:220px;overflow:visible}
+.pl-controls{justify-content:flex-start}
+.pl-control{display:flex;flex-direction:column;gap:5px;color:var(--text);font-size:13px}
+.pl-control>span{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.pl-control b{font-family:var(--mono);color:var(--data);font-size:13px}
+.pl-control small{color:var(--muted);font-size:11px}
+.pl-control input[type=range]{width:100%;accent-color:var(--data);cursor:pointer}
+.pl-control select{width:100%;padding:9px 10px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--text);font:inherit}
+.pl-readout{display:flex;flex-direction:column;gap:1px;padding:9px 11px;background:rgba(69,216,255,.07);border:1px solid rgba(69,216,255,.2);border-radius:9px;min-width:0}
+.pl-readout small{font:11px var(--mono);color:var(--muted);letter-spacing:.04em}
+.pl-readout strong{font:700 20px var(--mono);color:var(--gold);overflow-wrap:anywhere}
+.pl-readout em{font-size:12px;color:var(--good);font-style:normal}
+.pl-formula{padding:10px;border-radius:8px;background:rgba(255,209,102,.08);border:1px solid rgba(255,209,102,.25);font:700 14px var(--mono);color:var(--gold);text-align:center;overflow-wrap:anywhere}
+.pl-number{display:flex;justify-content:center;align-items:flex-start;gap:3px;padding:20px 4px;font:700 clamp(24px,5vw,40px) var(--mono);color:var(--data)}
+.pl-number b{font-size:.55em;color:var(--ember)}
+.pl-scale{height:28px;position:relative;display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--line);color:var(--muted);font:11px var(--mono)}
+.pl-scale i{position:absolute;top:-7px;width:12px;height:12px;border-radius:50%;background:var(--ember);border:2px solid var(--text);transform:translateX(-50%)}
+.pl-cube{width:70px;height:70px;align-self:center;background:linear-gradient(135deg,#ff9b54,#ff5d8f);border:2px solid #ffd166;border-radius:12px;box-shadow:inset -12px -12px 0 rgba(0,0,0,.12),0 8px 24px rgba(255,106,61,.15);transition:transform .2s}
+.pl-ruler{height:86px;position:relative;background:#f5d99a;border-radius:7px;padding:8px 8px 25px;color:#25213b;display:flex;justify-content:space-between;align-items:flex-end;font:11px var(--mono)}
+.pl-ruler-ticks{position:absolute;left:8px;right:8px;top:8px;height:40px;display:flex;justify-content:space-between;align-items:flex-start}
+.pl-ruler-ticks i{width:1px;background:#39324a}
+.pl-ruler-pointer{position:absolute;top:0;bottom:20px;width:2px;background:#e33c4e;transform:translateX(-50%)}
+.pl-ruler-pointer:before{content:'';position:absolute;top:0;left:-4px;border:5px solid transparent;border-top-color:#e33c4e}
+.pl-footnote{border-top:1px solid var(--line);padding-top:11px;color:var(--muted);font-size:12px}
+@media(max-width:640px){.pl-grid{grid-template-columns:1fr}.physics-lab{padding:13px}.pl-visual,.pl-controls{padding:11px}.pl-readout strong{font-size:18px}}
