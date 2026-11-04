@@ -1044,4 +1044,3 @@ body{overflow-x:hidden}
 @media(max-width:600px){.grade-options{grid-template-columns:1fr}.grade-card{min-height:190px}.grade-picker{gap:14px}}
 
 .grade-card-selected{border-color:var(--data);box-shadow:0 0 0 2px rgba(69,216,255,.2),0 0 22px rgba(69,216,255,.12)}
-.grade-card-selected .grade-card-status::after{content:' · SELECTED';font:700 9px var(--mono);letter-spacing:.04em}
