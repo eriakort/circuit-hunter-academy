@@ -27,8 +27,8 @@ export const SUBJECTS: SubjectInfo[] = [
       "Misurare il mondo e la fisica dell'equilibrio — grandezze, vettori, forze, solidi e fluidi."
     ],
     "meta": [
-      "Il Walker · chapters 1–5 · prima",
-      "Il Walker · capitoli 1–5 · prima"
+      "Physics · first two years · chapters 1–5",
+      "Fisica · primo biennio · capitoli 1–5"
     ],
     "art": "<svg viewBox=\"0 0 120 120\" width=\"100%\" aria-hidden=\"true\"><defs><linearGradient id=\"phg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#ff9f45\"/><stop offset=\"1\" stop-color=\"#ff5d8f\"/></linearGradient></defs><ellipse cx=\"60\" cy=\"60\" rx=\"46\" ry=\"17\" fill=\"none\" stroke=\"url(#phg)\" stroke-width=\"3\" transform=\"rotate(32 60 60)\"/><ellipse cx=\"60\" cy=\"60\" rx=\"46\" ry=\"17\" fill=\"none\" stroke=\"url(#phg)\" stroke-width=\"3\" transform=\"rotate(-32 60 60)\"/><circle cx=\"60\" cy=\"60\" r=\"10\" fill=\"url(#phg)\"/><circle cx=\"99\" cy=\"81\" r=\"5.5\" fill=\"#ffd166\"/><circle cx=\"99\" cy=\"39\" r=\"5.5\" fill=\"#ffd166\"/></svg>"
   },
@@ -7765,8 +7765,8 @@ export const MISSIONS: Mission[] = [
     "horns": 2,
     "eyes": 3,
     "title": [
-      "Web Walker: Pages, Browsers & Search",
-      "Viandante del Web: pagine, browser e ricerche"
+      "Web Explorer: Pages, Browsers & Search",
+      "Esploratore del Web: pagine, browser e ricerche"
     ],
     "topic": [
       "World Wide Web, URL, browser, searching well",
