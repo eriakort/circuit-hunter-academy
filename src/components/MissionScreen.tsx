@@ -164,7 +164,7 @@ export const MissionScreen: React.FC = () => {
   const knowledgeComplete = knowledgeQuestions.length === 0 || typeof savedLearning?.knowledgeCheckScore === 'number';
   const knowledgeQuestion = knowledgeQuestions[knowledgeIndex];
   const masteryAssessment = currentMission.learning?.masteryAssessment;
-  const techniqueUnlock = HARDWARE_LEARNING_PILOT[currentMission.id]?.techniqueUnlock;
+  const techniqueUnlock = HARDWARE_LEARNING_PILOT[currentMission.id]?.techniqueUnlock ?? currentMission.learning?.techniqueUnlock;
   const masteryQuestions = masteryAssessment?.questions || [];
   const masteryReviewConceptIds = masteryFeedback && !masteryFeedback.passed
     ? masteryQuestions.reduce<string[]>((ids, question, index) => {
