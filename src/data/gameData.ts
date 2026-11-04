@@ -28717,3 +28717,26 @@ MISSIONS.push(...GRADE5_UNIVERSE_MISSIONS.map(mission => ({
   ...mission,
   arc: mission.arc + grade5UniverseArcOffset
 })));
+
+ 
+// Grade 5 Science · Energy and Forces is the third textbook unit (pages 27–49).
+import { GRADE5_ENERGY_FORCES_MISSIONS } from './grade5ScienceEnergyForcesData';
+
+const grade5EnergyForcesUnitOffset = UNITS.length;
+UNITS.push({
+  title: ['Energy and Forces', 'L’energia e le forze'],
+  ch: '14–26',
+  subject: 'science'
+});
+const grade5EnergyForcesArcOffset = ARCS.length;
+ARCS.push({
+  n: 3,
+  unit: grade5EnergyForcesUnitOffset,
+  subject: 'science',
+  title: ['Energy and Forces', 'L’energia e le forze'],
+  pages: '27–49'
+});
+MISSIONS.push(...GRADE5_ENERGY_FORCES_MISSIONS.map(mission => ({
+  ...mission,
+  arc: mission.arc + grade5EnergyForcesArcOffset
+})));

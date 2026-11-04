@@ -16,7 +16,7 @@ test('Grade 5 learners can enter the dedicated bilingual Science curriculum', as
   await page.locator('#nm').fill('Science Hunter');
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
-  await expect(page.locator('.units button')).toHaveCount(2);
+  await expect(page.locator('.units button')).toHaveCount(3);
   await expect(page.getByRole('heading', { name: 'Science Foundations' })).toBeVisible();
   await expect(page.locator('.mcard')).toHaveCount(2);
   await expect(page.getByRole('heading', { name: 'The Secret Life of Plants' })).toBeVisible();
@@ -67,7 +67,7 @@ test('Grade 5 Science includes the complete bilingual Universe unit', async ({ p
   await page.locator('#nm').fill('Cosmos Hunter');
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
-  await expect(page.locator('.units button')).toHaveCount(2);
+  await expect(page.locator('.units button')).toHaveCount(3);
   await page.locator('.units button').nth(1).click();
 
   await expect(page.getByRole('heading', { name: 'The Universe' })).toBeVisible();
@@ -82,4 +82,35 @@ test('Grade 5 Science includes the complete bilingual Universe unit', async ({ p
   await expect(page.getByRole('heading', { name: "L'Univers" })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Il cielo oltre la Terra' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'STEM: Il pendolo di Foucault' })).toBeVisible();
+});
+
+
+test('Grade 5 Science includes the complete bilingual Energy and Forces unit', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="science"]').click();
+  await page.locator('#regf').waitFor();
+  await page.locator('#nm').fill('Energy Hunter');
+  await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
+
+  await expect(page.locator('.units button')).toHaveCount(3);
+  await page.locator('.units button').nth(2).click();
+
+  await expect(page.getByRole('heading', { name: 'Energy and Forces' })).toBeVisible();
+  await expect(page.locator('.mcard')).toHaveCount(12);
+  await expect(page.getByRole('heading', { name: 'What Is Energy?' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Electricity in Everyday Life' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'STEM: Shadows and a Colour Wheel' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'The Magnetic Force' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'STEM: Levers Make Work Easier' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Science in Our Landscape: Review' })).toBeVisible();
+
+  await page.locator('#lIT').click();
+  await expect(page.getByRole('heading', { name: 'L’energia e le forze' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Che cos’è l’energia?' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'La forza magnetica' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'STEM: Le leve facilitano il lavoro' })).toBeVisible();
 });
