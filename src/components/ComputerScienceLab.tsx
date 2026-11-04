@@ -74,7 +74,7 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
   const charCode = character.length ? character.codePointAt(0) ?? 0 : 0;
   const rle = useMemo(() => {
     const source = 'A'.repeat(runLength) + 'B'.repeat(8-runLength);
-    const groups = source.match(/(.)\\1*/g) ?? [];
+    const groups = source.match(/(.)\1*/g) ?? [];
     return { source, encoded: groups.map(group => group.length + group[0]).join(' ') };
   }, [runLength]);
   const passwordScore = Math.min(100, (practicePassword.length >= 12 ? 35 : practicePassword.length * 2.5) +
