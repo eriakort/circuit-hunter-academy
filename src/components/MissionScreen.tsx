@@ -4,6 +4,7 @@ import { getVisualHtml } from '../data/visuals';
 import { runMiniGame } from '../data/miniGames';
 import { L, CODE, fill, demonSVG, SENSEI, YOU, esc, U, GUIDE } from '../helpers';
 import { LearningPathway } from './LearningPathway';
+import { PhysicsLab } from './PhysicsLab';
 import { scheduleNextConceptReview } from '../spacedRepetition';
 import { HARDWARE_LEARNING_PILOT } from '../data/learningPilot';
 
@@ -211,6 +212,10 @@ export const MissionScreen: React.FC = () => {
         progress={savedLearning}
         missionCleared={!!state.cleared[currentMission.id]}
       />
+
+      {currentMission.id.startsWith('p') && currentSceneIndex === 1 && (
+        <PhysicsLab missionId={currentMission.id} lang={lang} />
+      )}
 
       {!sc.type ? (
         <>
