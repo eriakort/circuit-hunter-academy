@@ -16740,7 +16740,571 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p1m2-objective-1",
+          "description": [
+            "Write numbers in scientific notation",
+            "Scrivere numeri in notazione scientifica"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p1m2-objective-2",
+          "description": [
+            "Compare very large and very small quantities",
+            "Confrontare grandezze molto grandi e molto piccole"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "standard-form",
+          "title": [
+            "Scientific notation",
+            "Notazione scientifica"
+          ],
+          "explanation": [
+            "Write a number as a × 10ⁿ, with 1 ≤ |a| < 10. Move the decimal point left for a positive exponent and right for a negative exponent.",
+            "Scrivi un numero come a × 10ⁿ, con 1 ≤ |a| < 10. Sposta la virgola a sinistra per un esponente positivo e a destra per uno negativo."
+          ],
+          "example": [
+            "Convert 45 000: move the decimal point four places left → 4.5 × 10⁴.",
+            "Converti 45 000: sposta la virgola di quattro posti a sinistra → 4,5 × 10⁴."
+          ],
+          "workedExample": {
+            "scenario": [
+              "Convert 45 000: move the decimal point four places left → 4.5 × 10⁴.",
+              "Converti 45 000: sposta la virgola di quattro posti a sinistra → 4,5 × 10⁴."
+            ],
+            "steps": [
+              [
+                "4.5 × 10⁴",
+                "4,5 × 10⁴"
+              ],
+              [
+                "The coefficient must be at least 1 and less than 10.",
+                "Il coefficiente deve essere almeno 1 e minore di 10."
+              ]
+            ],
+            "answer": [
+              "A number such as 45 × 10³ is not in standard scientific notation.",
+              "Un numero come 45 × 10³ non è scritto in notazione scientifica standard."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        },
+        {
+          "id": "orders",
+          "title": [
+            "Orders of magnitude",
+            "Ordini di grandezza"
+          ],
+          "explanation": [
+            "Powers of ten help compare scales. With positive powers, a larger exponent means a larger number.",
+            "Le potenze di dieci aiutano a confrontare le scale. Con esponenti positivi, un esponente maggiore indica un numero maggiore."
+          ],
+          "example": [
+            "10⁶ is 1 000 times larger than 10³.",
+            "10⁶ è 1 000 volte maggiore di 10³."
+          ],
+          "workedExample": {
+            "scenario": [
+              "10⁶ is 1 000 times larger than 10³.",
+              "10⁶ è 1 000 volte maggiore di 10³."
+            ],
+            "steps": [
+              [
+                "10⁶ > 10³",
+                "10⁶ > 10³"
+              ],
+              [
+                "Compare the powers of ten first.",
+                "Confronta prima le potenze di dieci."
+              ]
+            ],
+            "answer": [
+              "The exponent is not itself the value of the number.",
+              "L'esponente non è il valore del numero."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-1m2-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Write 72 000 in scientific notation.",
+                "Scrivi 72 000 in notazione scientifica."
+              ],
+              "a": [
+                [
+                  "7.2 × 10⁴",
+                  "7,2 × 10⁴"
+                ],
+                [
+                  "72 × 10³",
+                  "72 × 10³"
+                ],
+                [
+                  "7.2 × 10³",
+                  "7,2 × 10³"
+                ],
+                [
+                  "0.72 × 10⁴",
+                  "0,72 × 10⁴"
+                ]
+              ],
+              "why": [
+                "The decimal point moves four places left.",
+                "La virgola si sposta di quattro posti a sinistra."
+              ]
+            },
+            {
+              "q": [
+                "Which number is smallest?",
+                "Quale numero è il più piccolo?"
+              ],
+              "a": [
+                [
+                  "2 × 10²",
+                  "2 × 10²"
+                ],
+                [
+                  "2 × 10⁴",
+                  "2 × 10⁴"
+                ],
+                [
+                  "2 × 10⁶",
+                  "2 × 10⁶"
+                ],
+                [
+                  "2 × 10³",
+                  "2 × 10³"
+                ]
+              ],
+              "why": [
+                "With the same coefficient, the smallest exponent gives the smallest value.",
+                "Con lo stesso coefficiente, l'esponente più piccolo dà il valore minore."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ]
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-1m2-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Write 0.0035 in scientific notation.",
+                "Scrivi 0,0035 in notazione scientifica."
+              ],
+              "a": [
+                [
+                  "3.5 × 10⁻³",
+                  "3,5 × 10⁻³"
+                ],
+                [
+                  "3.5 × 10³",
+                  "3,5 × 10³"
+                ],
+                [
+                  "35 × 10⁻³",
+                  "35 × 10⁻³"
+                ],
+                [
+                  "0.35 × 10⁻²",
+                  "0,35 × 10⁻²"
+                ]
+              ],
+              "why": [
+                "Move the decimal point three places right, so the exponent is −3.",
+                "Sposta la virgola di tre posti a destra: l'esponente è −3."
+              ]
+            },
+            {
+              "q": [
+                "Why is scientific notation useful?",
+                "Perché è utile la notazione scientifica?"
+              ],
+              "a": [
+                [
+                  "It makes very large and small numbers easier to read.",
+                  "Rende più facili da leggere numeri molto grandi e molto piccoli."
+                ],
+                [
+                  "It changes the value.",
+                  "Cambia il valore."
+                ],
+                [
+                  "It removes the unit.",
+                  "Elimina l'unità."
+                ],
+                [
+                  "It works only for whole numbers.",
+                  "Funziona solo con numeri interi."
+                ]
+              ],
+              "why": [
+                "It keeps the same value in a compact form.",
+                "Mantiene lo stesso valore in una forma compatta."
+              ]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "Write 72 000 in scientific notation.",
+            "Scrivi 72 000 in notazione scientifica."
+          ],
+          "a": [
+            [
+              "7.2 × 10⁴",
+              "7,2 × 10⁴"
+            ],
+            [
+              "72 × 10³",
+              "72 × 10³"
+            ],
+            [
+              "7.2 × 10³",
+              "7,2 × 10³"
+            ],
+            [
+              "0.72 × 10⁴",
+              "0,72 × 10⁴"
+            ]
+          ],
+          "why": [
+            "The decimal point moves four places left.",
+            "La virgola si sposta di quattro posti a sinistra."
+          ]
+        },
+        {
+          "q": [
+            "Which number is smallest?",
+            "Quale numero è il più piccolo?"
+          ],
+          "a": [
+            [
+              "2 × 10²",
+              "2 × 10²"
+            ],
+            [
+              "2 × 10⁴",
+              "2 × 10⁴"
+            ],
+            [
+              "2 × 10⁶",
+              "2 × 10⁶"
+            ],
+            [
+              "2 × 10³",
+              "2 × 10³"
+            ]
+          ],
+          "why": [
+            "With the same coefficient, the smallest exponent gives the smallest value.",
+            "Con lo stesso coefficiente, l'esponente più piccolo dà il valore minore."
+          ]
+        },
+        {
+          "q": [
+            "Write 0.0035 in scientific notation.",
+            "Scrivi 0,0035 in notazione scientifica."
+          ],
+          "a": [
+            [
+              "3.5 × 10⁻³",
+              "3,5 × 10⁻³"
+            ],
+            [
+              "3.5 × 10³",
+              "3,5 × 10³"
+            ],
+            [
+              "35 × 10⁻³",
+              "35 × 10⁻³"
+            ],
+            [
+              "0.35 × 10⁻²",
+              "0,35 × 10⁻²"
+            ]
+          ],
+          "why": [
+            "Move the decimal point three places right, so the exponent is −3.",
+            "Sposta la virgola di tre posti a destra: l'esponente è −3."
+          ]
+        },
+        {
+          "q": [
+            "Why is scientific notation useful?",
+            "Perché è utile la notazione scientifica?"
+          ],
+          "a": [
+            [
+              "It makes very large and small numbers easier to read.",
+              "Rende più facili da leggere numeri molto grandi e molto piccoli."
+            ],
+            [
+              "It changes the value.",
+              "Cambia il valore."
+            ],
+            [
+              "It removes the unit.",
+              "Elimina l'unità."
+            ],
+            [
+              "It works only for whole numbers.",
+              "Funziona solo con numeri interi."
+            ]
+          ],
+          "why": [
+            "It keeps the same value in a compact form.",
+            "Mantiene lo stesso valore in una forma compatta."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "Write a number as a × 10ⁿ, with 1 ≤ |a| < 10. Move the decimal point left for a positive exponent and right for a negative exponent.",
+          "Scrivi un numero come a × 10ⁿ, con 1 ≤ |a| < 10. Sposta la virgola a sinistra per un esponente positivo e a destra per uno negativo."
+        ],
+        [
+          "Powers of ten help compare scales. With positive powers, a larger exponent means a larger number.",
+          "Le potenze di dieci aiutano a confrontare le scale. Con esponenti positivi, un esponente maggiore indica un numero maggiore."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "Write 72 000 in scientific notation.",
+              "Scrivi 72 000 in notazione scientifica."
+            ],
+            "a": [
+              [
+                "7.2 × 10⁴",
+                "7,2 × 10⁴"
+              ],
+              [
+                "72 × 10³",
+                "72 × 10³"
+              ],
+              [
+                "7.2 × 10³",
+                "7,2 × 10³"
+              ],
+              [
+                "0.72 × 10⁴",
+                "0,72 × 10⁴"
+              ]
+            ],
+            "why": [
+              "The decimal point moves four places left.",
+              "La virgola si sposta di quattro posti a sinistra."
+            ]
+          },
+          {
+            "q": [
+              "Which number is smallest?",
+              "Quale numero è il più piccolo?"
+            ],
+            "a": [
+              [
+                "2 × 10²",
+                "2 × 10²"
+              ],
+              [
+                "2 × 10⁴",
+                "2 × 10⁴"
+              ],
+              [
+                "2 × 10⁶",
+                "2 × 10⁶"
+              ],
+              [
+                "2 × 10³",
+                "2 × 10³"
+              ]
+            ],
+            "why": [
+              "With the same coefficient, the smallest exponent gives the smallest value.",
+              "Con lo stesso coefficiente, l'esponente più piccolo dà il valore minore."
+            ]
+          },
+          {
+            "q": [
+              "Write 0.0035 in scientific notation.",
+              "Scrivi 0,0035 in notazione scientifica."
+            ],
+            "a": [
+              [
+                "3.5 × 10⁻³",
+                "3,5 × 10⁻³"
+              ],
+              [
+                "3.5 × 10³",
+                "3,5 × 10³"
+              ],
+              [
+                "35 × 10⁻³",
+                "35 × 10⁻³"
+              ],
+              [
+                "0.35 × 10⁻²",
+                "0,35 × 10⁻²"
+              ]
+            ],
+            "why": [
+              "Move the decimal point three places right, so the exponent is −3.",
+              "Sposta la virgola di tre posti a destra: l'esponente è −3."
+            ]
+          },
+          {
+            "q": [
+              "Why is scientific notation useful?",
+              "Perché è utile la notazione scientifica?"
+            ],
+            "a": [
+              [
+                "It makes very large and small numbers easier to read.",
+                "Rende più facili da leggere numeri molto grandi e molto piccoli."
+              ],
+              [
+                "It changes the value.",
+                "Cambia il valore."
+              ],
+              [
+                "It removes the unit.",
+                "Elimina l'unità."
+              ],
+              [
+                "It works only for whole numbers.",
+                "Funziona solo con numeri interi."
+              ]
+            ],
+            "why": [
+              "It keeps the same value in a compact form.",
+              "Mantiene lo stesso valore in una forma compatta."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "standard-form",
+          "standard-form",
+          "orders",
+          "orders"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-1m2-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p1m3",
     "arc": 16,
@@ -17063,7 +17627,571 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p1m3-objective-1",
+          "description": [
+            "Calculate area and volume from dimensions",
+            "Calcolare area e volume dalle dimensioni"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p1m3-objective-2",
+          "description": [
+            "Calculate and interpret density",
+            "Calcolare e interpretare la densità"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "area-volume",
+          "title": [
+            "Area and volume",
+            "Area e volume"
+          ],
+          "explanation": [
+            "Area measures a surface; volume measures the space occupied. Rectangle area is A = l × w; rectangular volume is V = l × w × h.",
+            "L'area misura una superficie; il volume misura lo spazio occupato. L'area del rettangolo è A = b × h; il volume del parallelepipedo è V = l × w × h."
+          ],
+          "example": [
+            "A box measuring 2 m × 1 m × 0.5 m has V = 1 m³.",
+            "Una scatola di 2 m × 1 m × 0,5 m ha V = 1 m³."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A box measuring 2 m × 1 m × 0.5 m has V = 1 m³.",
+              "Una scatola di 2 m × 1 m × 0,5 m ha V = 1 m³."
+            ],
+            "steps": [
+              [
+                "1 m³",
+                "1 m³"
+              ],
+              [
+                "Area uses square units; volume uses cubic units.",
+                "L'area usa unità quadrate; il volume unità cubiche."
+              ]
+            ],
+            "answer": [
+              "Volume and surface area are not the same quantity.",
+              "Volume e area della superficie non sono la stessa grandezza."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        },
+        {
+          "id": "density",
+          "title": [
+            "Density",
+            "Densità"
+          ],
+          "explanation": [
+            "Density is mass divided by volume: ρ = m/V. It describes how much mass is packed into a given volume.",
+            "La densità è la massa divisa per il volume: ρ = m/V. Descrive quanta massa è contenuta in un certo volume."
+          ],
+          "example": [
+            "A 6 kg object occupying 2 m³ has density 3 kg/m³.",
+            "Un corpo di 6 kg che occupa 2 m³ ha densità 3 kg/m³."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A 6 kg object occupying 2 m³ has density 3 kg/m³.",
+              "Un corpo di 6 kg che occupa 2 m³ ha densità 3 kg/m³."
+            ],
+            "steps": [
+              [
+                "3 kg/m³",
+                "3 kg/m³"
+              ],
+              [
+                "Divide mass by volume and include the compound unit.",
+                "Dividi la massa per il volume e indica l'unità composta."
+              ]
+            ],
+            "answer": [
+              "Density is not volume divided by mass.",
+              "La densità non è il volume diviso per la massa."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-1m3-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "A rectangle is 4 m by 3 m. What is its area?",
+                "Un rettangolo misura 4 m per 3 m. Qual è la sua area?"
+              ],
+              "a": [
+                [
+                  "12 m²",
+                  "12 m²"
+                ],
+                [
+                  "7 m²",
+                  "7 m²"
+                ],
+                [
+                  "12 m³",
+                  "12 m³"
+                ],
+                [
+                  "14 m²",
+                  "14 m²"
+                ]
+              ],
+              "why": [
+                "Area = length × width = 4 × 3.",
+                "Area = lunghezza × larghezza = 4 × 3."
+              ]
+            },
+            {
+              "q": [
+                "Which unit is suitable for volume?",
+                "Quale unità è adatta al volume?"
+              ],
+              "a": [
+                [
+                  "m³",
+                  "m³"
+                ],
+                [
+                  "m",
+                  "m"
+                ],
+                [
+                  "m²",
+                  "m²"
+                ],
+                [
+                  "kg",
+                  "kg"
+                ]
+              ],
+              "why": [
+                "Volume is measured in cubic units.",
+                "Il volume si misura in unità cubiche."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ]
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-1m3-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "A mass of 6 kg occupies 2 m³. Find its density.",
+                "Una massa di 6 kg occupa 2 m³. Calcola la densità."
+              ],
+              "a": [
+                [
+                  "3 kg/m³",
+                  "3 kg/m³"
+                ],
+                [
+                  "8 kg/m³",
+                  "8 kg/m³"
+                ],
+                [
+                  "12 kg/m³",
+                  "12 kg/m³"
+                ],
+                [
+                  "0.33 kg/m³",
+                  "0,33 kg/m³"
+                ]
+              ],
+              "why": [
+                "ρ = m/V = 6/2 = 3 kg/m³.",
+                "ρ = m/V = 6/2 = 3 kg/m³."
+              ]
+            },
+            {
+              "q": [
+                "Which formula defines density?",
+                "Quale formula definisce la densità?"
+              ],
+              "a": [
+                [
+                  "ρ = m/V",
+                  "ρ = m/V"
+                ],
+                [
+                  "ρ = V/m",
+                  "ρ = V/m"
+                ],
+                [
+                  "ρ = m × V",
+                  "ρ = m × V"
+                ],
+                [
+                  "ρ = m + V",
+                  "ρ = m + V"
+                ]
+              ],
+              "why": [
+                "Density is mass divided by volume.",
+                "La densità è la massa divisa per il volume."
+              ]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "A rectangle is 4 m by 3 m. What is its area?",
+            "Un rettangolo misura 4 m per 3 m. Qual è la sua area?"
+          ],
+          "a": [
+            [
+              "12 m²",
+              "12 m²"
+            ],
+            [
+              "7 m²",
+              "7 m²"
+            ],
+            [
+              "12 m³",
+              "12 m³"
+            ],
+            [
+              "14 m²",
+              "14 m²"
+            ]
+          ],
+          "why": [
+            "Area = length × width = 4 × 3.",
+            "Area = lunghezza × larghezza = 4 × 3."
+          ]
+        },
+        {
+          "q": [
+            "Which unit is suitable for volume?",
+            "Quale unità è adatta al volume?"
+          ],
+          "a": [
+            [
+              "m³",
+              "m³"
+            ],
+            [
+              "m",
+              "m"
+            ],
+            [
+              "m²",
+              "m²"
+            ],
+            [
+              "kg",
+              "kg"
+            ]
+          ],
+          "why": [
+            "Volume is measured in cubic units.",
+            "Il volume si misura in unità cubiche."
+          ]
+        },
+        {
+          "q": [
+            "A mass of 6 kg occupies 2 m³. Find its density.",
+            "Una massa di 6 kg occupa 2 m³. Calcola la densità."
+          ],
+          "a": [
+            [
+              "3 kg/m³",
+              "3 kg/m³"
+            ],
+            [
+              "8 kg/m³",
+              "8 kg/m³"
+            ],
+            [
+              "12 kg/m³",
+              "12 kg/m³"
+            ],
+            [
+              "0.33 kg/m³",
+              "0,33 kg/m³"
+            ]
+          ],
+          "why": [
+            "ρ = m/V = 6/2 = 3 kg/m³.",
+            "ρ = m/V = 6/2 = 3 kg/m³."
+          ]
+        },
+        {
+          "q": [
+            "Which formula defines density?",
+            "Quale formula definisce la densità?"
+          ],
+          "a": [
+            [
+              "ρ = m/V",
+              "ρ = m/V"
+            ],
+            [
+              "ρ = V/m",
+              "ρ = V/m"
+            ],
+            [
+              "ρ = m × V",
+              "ρ = m × V"
+            ],
+            [
+              "ρ = m + V",
+              "ρ = m + V"
+            ]
+          ],
+          "why": [
+            "Density is mass divided by volume.",
+            "La densità è la massa divisa per il volume."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "Area measures a surface; volume measures the space occupied. Rectangle area is A = l × w; rectangular volume is V = l × w × h.",
+          "L'area misura una superficie; il volume misura lo spazio occupato. L'area del rettangolo è A = b × h; il volume del parallelepipedo è V = l × w × h."
+        ],
+        [
+          "Density is mass divided by volume: ρ = m/V. It describes how much mass is packed into a given volume.",
+          "La densità è la massa divisa per il volume: ρ = m/V. Descrive quanta massa è contenuta in un certo volume."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "A rectangle is 4 m by 3 m. What is its area?",
+              "Un rettangolo misura 4 m per 3 m. Qual è la sua area?"
+            ],
+            "a": [
+              [
+                "12 m²",
+                "12 m²"
+              ],
+              [
+                "7 m²",
+                "7 m²"
+              ],
+              [
+                "12 m³",
+                "12 m³"
+              ],
+              [
+                "14 m²",
+                "14 m²"
+              ]
+            ],
+            "why": [
+              "Area = length × width = 4 × 3.",
+              "Area = lunghezza × larghezza = 4 × 3."
+            ]
+          },
+          {
+            "q": [
+              "Which unit is suitable for volume?",
+              "Quale unità è adatta al volume?"
+            ],
+            "a": [
+              [
+                "m³",
+                "m³"
+              ],
+              [
+                "m",
+                "m"
+              ],
+              [
+                "m²",
+                "m²"
+              ],
+              [
+                "kg",
+                "kg"
+              ]
+            ],
+            "why": [
+              "Volume is measured in cubic units.",
+              "Il volume si misura in unità cubiche."
+            ]
+          },
+          {
+            "q": [
+              "A mass of 6 kg occupies 2 m³. Find its density.",
+              "Una massa di 6 kg occupa 2 m³. Calcola la densità."
+            ],
+            "a": [
+              [
+                "3 kg/m³",
+                "3 kg/m³"
+              ],
+              [
+                "8 kg/m³",
+                "8 kg/m³"
+              ],
+              [
+                "12 kg/m³",
+                "12 kg/m³"
+              ],
+              [
+                "0.33 kg/m³",
+                "0,33 kg/m³"
+              ]
+            ],
+            "why": [
+              "ρ = m/V = 6/2 = 3 kg/m³.",
+              "ρ = m/V = 6/2 = 3 kg/m³."
+            ]
+          },
+          {
+            "q": [
+              "Which formula defines density?",
+              "Quale formula definisce la densità?"
+            ],
+            "a": [
+              [
+                "ρ = m/V",
+                "ρ = m/V"
+              ],
+              [
+                "ρ = V/m",
+                "ρ = V/m"
+              ],
+              [
+                "ρ = m × V",
+                "ρ = m × V"
+              ],
+              [
+                "ρ = m + V",
+                "ρ = m + V"
+              ]
+            ],
+            "why": [
+              "Density is mass divided by volume.",
+              "La densità è la massa divisa per il volume."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "area-volume",
+          "area-volume",
+          "density",
+          "density"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-1m3-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p2m1",
     "arc": 17,
@@ -17328,7 +18456,571 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p2m1-objective-1",
+          "description": [
+            "Choose a suitable instrument and read its scale",
+            "Scegliere uno strumento adatto e leggerne la scala"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p2m1-objective-2",
+          "description": [
+            "Explain measurement errors and uncertainty",
+            "Spiegare errori e incertezza di misura"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "instruments",
+          "title": [
+            "Instruments and sensitivity",
+            "Strumenti e sensibilità"
+          ],
+          "explanation": [
+            "Choose an instrument with a suitable range and scale division. Sensitivity describes the smallest change it can detect.",
+            "Scegli uno strumento con portata e divisione della scala adatte. La sensibilità descrive la più piccola variazione che può rilevare."
+          ],
+          "example": [
+            "A ruler marked every millimetre can detect smaller length changes than one marked every centimetre.",
+            "Un righello graduato ogni millimetro rileva variazioni più piccole rispetto a uno graduato ogni centimetro."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A ruler marked every millimetre can detect smaller length changes than one marked every centimetre.",
+              "Un righello graduato ogni millimetro rileva variazioni più piccole rispetto a uno graduato ogni centimetro."
+            ],
+            "steps": [
+              [
+                "1 mm is a finer division than 1 cm.",
+                "1 mm è una divisione più fine di 1 cm."
+              ],
+              [
+                "Read a scale at eye level to reduce parallax error.",
+                "Leggi la scala all'altezza degli occhi per ridurre l'errore di parallasse."
+              ]
+            ],
+            "answer": [
+              "More decimal places do not automatically mean greater accuracy.",
+              "Più cifre decimali non significano automaticamente maggiore accuratezza."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        },
+        {
+          "id": "uncertainty",
+          "title": [
+            "Errors and uncertainty",
+            "Errori e incertezza"
+          ],
+          "explanation": [
+            "Random errors vary between readings; systematic errors shift readings consistently. Uncertainty describes the reasonable range around a measured value.",
+            "Gli errori casuali variano tra le letture; quelli sistematici spostano le misure in modo costante. L'incertezza descrive l'intervallo ragionevole attorno a un valore misurato."
+          ],
+          "example": [
+            "Repeat a measurement and compare readings. A constant offset can indicate a systematic error.",
+            "Ripeti una misura e confronta le letture. Uno scostamento costante può indicare un errore sistematico."
+          ],
+          "workedExample": {
+            "scenario": [
+              "Repeat a measurement and compare readings. A constant offset can indicate a systematic error.",
+              "Ripeti una misura e confronta le letture. Uno scostamento costante può indicare un errore sistematico."
+            ],
+            "steps": [
+              [
+                "Repeated readings reveal variation.",
+                "Le misure ripetute rivelano le variazioni."
+              ],
+              [
+                "Repeating helps reduce random uncertainty, not a persistent calibration error.",
+                "Ripetere aiuta a ridurre l'incertezza casuale, non un errore persistente di calibrazione."
+              ]
+            ],
+            "answer": [
+              "Repeating a reading does not guarantee zero error.",
+              "Ripetere una lettura non garantisce errore zero."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-2m1-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "What does instrument sensitivity describe?",
+                "Che cosa descrive la sensibilità di uno strumento?"
+              ],
+              "a": [
+                [
+                  "The smallest change it can detect.",
+                  "La più piccola variazione che può rilevare."
+                ],
+                [
+                  "Its colour.",
+                  "Il suo colore."
+                ],
+                [
+                  "Its weight.",
+                  "Il suo peso."
+                ],
+                [
+                  "The largest object it can measure.",
+                  "L'oggetto più grande che può misurare."
+                ]
+              ],
+              "why": [
+                "Sensitivity concerns the smallest detectable change.",
+                "La sensibilità riguarda la più piccola variazione rilevabile."
+              ]
+            },
+            {
+              "q": [
+                "How can you reduce parallax error?",
+                "Come puoi ridurre l'errore di parallasse?"
+              ],
+              "a": [
+                [
+                  "Read the scale straight on at eye level.",
+                  "Leggi la scala frontalmente, all'altezza degli occhi."
+                ],
+                [
+                  "Look from the side.",
+                  "Guarda di lato."
+                ],
+                [
+                  "Tilt the ruler.",
+                  "Inclina il righello."
+                ],
+                [
+                  "Guess the reading.",
+                  "Indovina la lettura."
+                ]
+              ],
+              "why": [
+                "Align your eye with the scale mark.",
+                "Allinea l'occhio con la tacca della scala."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ]
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-2m1-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "A balance always reads 0.2 kg too high. This is…",
+                "Una bilancia indica sempre 0,2 kg in più. Si tratta di…"
+              ],
+              "a": [
+                [
+                  "a systematic error.",
+                  "un errore sistematico."
+                ],
+                [
+                  "a random error.",
+                  "un errore casuale."
+                ],
+                [
+                  "no error.",
+                  "nessun errore."
+                ],
+                [
+                  "a unit conversion.",
+                  "una conversione di unità."
+                ]
+              ],
+              "why": [
+                "A repeated bias in one direction is systematic.",
+                "Uno scostamento ripetuto in una direzione è sistematico."
+              ]
+            },
+            {
+              "q": [
+                "Why repeat a measurement?",
+                "Perché ripetere una misura?"
+              ],
+              "a": [
+                [
+                  "To observe variation and obtain a more reliable estimate.",
+                  "Per osservare le variazioni e ottenere una stima più affidabile."
+                ],
+                [
+                  "To guarantee zero error.",
+                  "Per garantire errore zero."
+                ],
+                [
+                  "To change the unit.",
+                  "Per cambiare unità."
+                ],
+                [
+                  "To make the object larger.",
+                  "Per ingrandire l'oggetto."
+                ]
+              ],
+              "why": [
+                "Repeated readings help identify random variation.",
+                "Le letture ripetute aiutano a individuare variazioni casuali."
+              ]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "What does instrument sensitivity describe?",
+            "Che cosa descrive la sensibilità di uno strumento?"
+          ],
+          "a": [
+            [
+              "The smallest change it can detect.",
+              "La più piccola variazione che può rilevare."
+            ],
+            [
+              "Its colour.",
+              "Il suo colore."
+            ],
+            [
+              "Its weight.",
+              "Il suo peso."
+            ],
+            [
+              "The largest object it can measure.",
+              "L'oggetto più grande che può misurare."
+            ]
+          ],
+          "why": [
+            "Sensitivity concerns the smallest detectable change.",
+            "La sensibilità riguarda la più piccola variazione rilevabile."
+          ]
+        },
+        {
+          "q": [
+            "How can you reduce parallax error?",
+            "Come puoi ridurre l'errore di parallasse?"
+          ],
+          "a": [
+            [
+              "Read the scale straight on at eye level.",
+              "Leggi la scala frontalmente, all'altezza degli occhi."
+            ],
+            [
+              "Look from the side.",
+              "Guarda di lato."
+            ],
+            [
+              "Tilt the ruler.",
+              "Inclina il righello."
+            ],
+            [
+              "Guess the reading.",
+              "Indovina la lettura."
+            ]
+          ],
+          "why": [
+            "Align your eye with the scale mark.",
+            "Allinea l'occhio con la tacca della scala."
+          ]
+        },
+        {
+          "q": [
+            "A balance always reads 0.2 kg too high. This is…",
+            "Una bilancia indica sempre 0,2 kg in più. Si tratta di…"
+          ],
+          "a": [
+            [
+              "a systematic error.",
+              "un errore sistematico."
+            ],
+            [
+              "a random error.",
+              "un errore casuale."
+            ],
+            [
+              "no error.",
+              "nessun errore."
+            ],
+            [
+              "a unit conversion.",
+              "una conversione di unità."
+            ]
+          ],
+          "why": [
+            "A repeated bias in one direction is systematic.",
+            "Uno scostamento ripetuto in una direzione è sistematico."
+          ]
+        },
+        {
+          "q": [
+            "Why repeat a measurement?",
+            "Perché ripetere una misura?"
+          ],
+          "a": [
+            [
+              "To observe variation and obtain a more reliable estimate.",
+              "Per osservare le variazioni e ottenere una stima più affidabile."
+            ],
+            [
+              "To guarantee zero error.",
+              "Per garantire errore zero."
+            ],
+            [
+              "To change the unit.",
+              "Per cambiare unità."
+            ],
+            [
+              "To make the object larger.",
+              "Per ingrandire l'oggetto."
+            ]
+          ],
+          "why": [
+            "Repeated readings help identify random variation.",
+            "Le letture ripetute aiutano a individuare variazioni casuali."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "Choose an instrument with a suitable range and scale division. Sensitivity describes the smallest change it can detect.",
+          "Scegli uno strumento con portata e divisione della scala adatte. La sensibilità descrive la più piccola variazione che può rilevare."
+        ],
+        [
+          "Random errors vary between readings; systematic errors shift readings consistently. Uncertainty describes the reasonable range around a measured value.",
+          "Gli errori casuali variano tra le letture; quelli sistematici spostano le misure in modo costante. L'incertezza descrive l'intervallo ragionevole attorno a un valore misurato."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "What does instrument sensitivity describe?",
+              "Che cosa descrive la sensibilità di uno strumento?"
+            ],
+            "a": [
+              [
+                "The smallest change it can detect.",
+                "La più piccola variazione che può rilevare."
+              ],
+              [
+                "Its colour.",
+                "Il suo colore."
+              ],
+              [
+                "Its weight.",
+                "Il suo peso."
+              ],
+              [
+                "The largest object it can measure.",
+                "L'oggetto più grande che può misurare."
+              ]
+            ],
+            "why": [
+              "Sensitivity concerns the smallest detectable change.",
+              "La sensibilità riguarda la più piccola variazione rilevabile."
+            ]
+          },
+          {
+            "q": [
+              "How can you reduce parallax error?",
+              "Come puoi ridurre l'errore di parallasse?"
+            ],
+            "a": [
+              [
+                "Read the scale straight on at eye level.",
+                "Leggi la scala frontalmente, all'altezza degli occhi."
+              ],
+              [
+                "Look from the side.",
+                "Guarda di lato."
+              ],
+              [
+                "Tilt the ruler.",
+                "Inclina il righello."
+              ],
+              [
+                "Guess the reading.",
+                "Indovina la lettura."
+              ]
+            ],
+            "why": [
+              "Align your eye with the scale mark.",
+              "Allinea l'occhio con la tacca della scala."
+            ]
+          },
+          {
+            "q": [
+              "A balance always reads 0.2 kg too high. This is…",
+              "Una bilancia indica sempre 0,2 kg in più. Si tratta di…"
+            ],
+            "a": [
+              [
+                "a systematic error.",
+                "un errore sistematico."
+              ],
+              [
+                "a random error.",
+                "un errore casuale."
+              ],
+              [
+                "no error.",
+                "nessun errore."
+              ],
+              [
+                "a unit conversion.",
+                "una conversione di unità."
+              ]
+            ],
+            "why": [
+              "A repeated bias in one direction is systematic.",
+              "Uno scostamento ripetuto in una direzione è sistematico."
+            ]
+          },
+          {
+            "q": [
+              "Why repeat a measurement?",
+              "Perché ripetere una misura?"
+            ],
+            "a": [
+              [
+                "To observe variation and obtain a more reliable estimate.",
+                "Per osservare le variazioni e ottenere una stima più affidabile."
+              ],
+              [
+                "To guarantee zero error.",
+                "Per garantire errore zero."
+              ],
+              [
+                "To change the unit.",
+                "Per cambiare unità."
+              ],
+              [
+                "To make the object larger.",
+                "Per ingrandire l'oggetto."
+              ]
+            ],
+            "why": [
+              "Repeated readings help identify random variation.",
+              "Le letture ripetute aiutano a individuare variazioni casuali."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "instruments",
+          "instruments",
+          "uncertainty",
+          "uncertainty"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-2m1-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p2m2",
     "arc": 17,
@@ -17651,7 +19343,571 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p2m2-objective-1",
+          "description": [
+            "Organise measurements in tables and graphs",
+            "Organizzare le misure in tabelle e grafici"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p2m2-objective-2",
+          "description": [
+            "Recognise direct proportionality",
+            "Riconoscere la proporzionalità diretta"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "graphs",
+          "title": [
+            "Tables and graphs",
+            "Tabelle e grafici"
+          ],
+          "explanation": [
+            "Tables organise paired values. Graphs show relationships: the independent variable is usually on the x-axis and the dependent variable on the y-axis.",
+            "Le tabelle organizzano coppie di valori. I grafici mostrano relazioni: la variabile indipendente è di solito sull'asse x e quella dipendente sull'asse y."
+          ],
+          "example": [
+            "For distance measured over time, put time on x and distance on y.",
+            "Per una distanza misurata nel tempo, metti il tempo su x e la distanza su y."
+          ],
+          "workedExample": {
+            "scenario": [
+              "For distance measured over time, put time on x and distance on y.",
+              "Per una distanza misurata nel tempo, metti il tempo su x e la distanza su y."
+            ],
+            "steps": [
+              [
+                "Label both axes and include units.",
+                "Indica entrambi gli assi e inserisci le unità."
+              ],
+              [
+                "A graph needs a clear scale and labelled axes.",
+                "Un grafico richiede una scala chiara e assi etichettati."
+              ]
+            ],
+            "answer": [
+              "Do not swap axes without checking which variable depends on the other.",
+              "Non scambiare gli assi senza verificare quale variabile dipende dall'altra."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        },
+        {
+          "id": "proportionality",
+          "title": [
+            "Direct proportionality",
+            "Proporzionalità diretta"
+          ],
+          "explanation": [
+            "Two quantities are directly proportional when y/x is constant: y = kx. The graph is a straight line through the origin.",
+            "Due grandezze sono direttamente proporzionali quando y/x è costante: y = kx. Il grafico è una retta che passa per l'origine."
+          ],
+          "example": [
+            "If each notebook costs €2, total cost C = 2n; doubling n doubles C.",
+            "Se ogni quaderno costa 2 €, il costo totale C = 2n; raddoppiando n, raddoppia C."
+          ],
+          "workedExample": {
+            "scenario": [
+              "If each notebook costs €2, total cost C = 2n; doubling n doubles C.",
+              "Se ogni quaderno costa 2 €, il costo totale C = 2n; raddoppiando n, raddoppia C."
+            ],
+            "steps": [
+              [
+                "The constant k is the ratio y/x.",
+                "La costante k è il rapporto y/x."
+              ],
+              [
+                "Direct proportionality has a constant ratio and a line through (0,0).",
+                "La proporzionalità diretta ha rapporto costante e retta passante per (0,0)."
+              ]
+            ],
+            "answer": [
+              "A straight line not through the origin is not direct proportionality.",
+              "Una retta che non passa per l'origine non rappresenta proporzionalità diretta."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-2m2-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Where is the independent variable usually plotted?",
+                "Dove si rappresenta di solito la variabile indipendente?"
+              ],
+              "a": [
+                [
+                  "On the horizontal x-axis.",
+                  "Sull'asse orizzontale x."
+                ],
+                [
+                  "On the vertical y-axis.",
+                  "Sull'asse verticale y."
+                ],
+                [
+                  "Outside the graph.",
+                  "Fuori dal grafico."
+                ],
+                [
+                  "Only in the title.",
+                  "Solo nel titolo."
+                ]
+              ],
+              "why": [
+                "The independent variable is usually placed on x.",
+                "La variabile indipendente si colloca di solito su x."
+              ]
+            },
+            {
+              "q": [
+                "What does one point on a graph represent?",
+                "Che cosa rappresenta un punto su un grafico?"
+              ],
+              "a": [
+                [
+                  "A pair of values.",
+                  "Una coppia di valori."
+                ],
+                [
+                  "A unit only.",
+                  "Solo un'unità."
+                ],
+                [
+                  "A title.",
+                  "Un titolo."
+                ],
+                [
+                  "An instrument.",
+                  "Uno strumento."
+                ]
+              ],
+              "why": [
+                "Each point links one x-value to one y-value.",
+                "Ogni punto collega un valore di x a uno di y."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ]
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-2m2-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Which equation represents direct proportionality?",
+                "Quale equazione rappresenta proporzionalità diretta?"
+              ],
+              "a": [
+                [
+                  "y = 4x",
+                  "y = 4x"
+                ],
+                [
+                  "y = x + 4",
+                  "y = x + 4"
+                ],
+                [
+                  "y = 4/x",
+                  "y = 4/x"
+                ],
+                [
+                  "y = x²",
+                  "y = x²"
+                ]
+              ],
+              "why": [
+                "Direct proportionality has the form y = kx.",
+                "La proporzionalità diretta ha forma y = kx."
+              ]
+            },
+            {
+              "q": [
+                "A graph of direct proportionality passes through…",
+                "Il grafico di proporzionalità diretta passa per…"
+              ],
+              "a": [
+                [
+                  "the origin (0,0).",
+                  "l'origine (0,0)."
+                ],
+                [
+                  "(0,5) only.",
+                  "solo (0,5)."
+                ],
+                [
+                  "every point on the y-axis.",
+                  "tutti i punti dell'asse y."
+                ],
+                [
+                  "no axes.",
+                  "nessun asse."
+                ]
+              ],
+              "why": [
+                "When x is zero, y is also zero.",
+                "Quando x è zero, anche y è zero."
+              ]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "Where is the independent variable usually plotted?",
+            "Dove si rappresenta di solito la variabile indipendente?"
+          ],
+          "a": [
+            [
+              "On the horizontal x-axis.",
+              "Sull'asse orizzontale x."
+            ],
+            [
+              "On the vertical y-axis.",
+              "Sull'asse verticale y."
+            ],
+            [
+              "Outside the graph.",
+              "Fuori dal grafico."
+            ],
+            [
+              "Only in the title.",
+              "Solo nel titolo."
+            ]
+          ],
+          "why": [
+            "The independent variable is usually placed on x.",
+            "La variabile indipendente si colloca di solito su x."
+          ]
+        },
+        {
+          "q": [
+            "What does one point on a graph represent?",
+            "Che cosa rappresenta un punto su un grafico?"
+          ],
+          "a": [
+            [
+              "A pair of values.",
+              "Una coppia di valori."
+            ],
+            [
+              "A unit only.",
+              "Solo un'unità."
+            ],
+            [
+              "A title.",
+              "Un titolo."
+            ],
+            [
+              "An instrument.",
+              "Uno strumento."
+            ]
+          ],
+          "why": [
+            "Each point links one x-value to one y-value.",
+            "Ogni punto collega un valore di x a uno di y."
+          ]
+        },
+        {
+          "q": [
+            "Which equation represents direct proportionality?",
+            "Quale equazione rappresenta proporzionalità diretta?"
+          ],
+          "a": [
+            [
+              "y = 4x",
+              "y = 4x"
+            ],
+            [
+              "y = x + 4",
+              "y = x + 4"
+            ],
+            [
+              "y = 4/x",
+              "y = 4/x"
+            ],
+            [
+              "y = x²",
+              "y = x²"
+            ]
+          ],
+          "why": [
+            "Direct proportionality has the form y = kx.",
+            "La proporzionalità diretta ha forma y = kx."
+          ]
+        },
+        {
+          "q": [
+            "A graph of direct proportionality passes through…",
+            "Il grafico di proporzionalità diretta passa per…"
+          ],
+          "a": [
+            [
+              "the origin (0,0).",
+              "l'origine (0,0)."
+            ],
+            [
+              "(0,5) only.",
+              "solo (0,5)."
+            ],
+            [
+              "every point on the y-axis.",
+              "tutti i punti dell'asse y."
+            ],
+            [
+              "no axes.",
+              "nessun asse."
+            ]
+          ],
+          "why": [
+            "When x is zero, y is also zero.",
+            "Quando x è zero, anche y è zero."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "Tables organise paired values. Graphs show relationships: the independent variable is usually on the x-axis and the dependent variable on the y-axis.",
+          "Le tabelle organizzano coppie di valori. I grafici mostrano relazioni: la variabile indipendente è di solito sull'asse x e quella dipendente sull'asse y."
+        ],
+        [
+          "Two quantities are directly proportional when y/x is constant: y = kx. The graph is a straight line through the origin.",
+          "Due grandezze sono direttamente proporzionali quando y/x è costante: y = kx. Il grafico è una retta che passa per l'origine."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "Where is the independent variable usually plotted?",
+              "Dove si rappresenta di solito la variabile indipendente?"
+            ],
+            "a": [
+              [
+                "On the horizontal x-axis.",
+                "Sull'asse orizzontale x."
+              ],
+              [
+                "On the vertical y-axis.",
+                "Sull'asse verticale y."
+              ],
+              [
+                "Outside the graph.",
+                "Fuori dal grafico."
+              ],
+              [
+                "Only in the title.",
+                "Solo nel titolo."
+              ]
+            ],
+            "why": [
+              "The independent variable is usually placed on x.",
+              "La variabile indipendente si colloca di solito su x."
+            ]
+          },
+          {
+            "q": [
+              "What does one point on a graph represent?",
+              "Che cosa rappresenta un punto su un grafico?"
+            ],
+            "a": [
+              [
+                "A pair of values.",
+                "Una coppia di valori."
+              ],
+              [
+                "A unit only.",
+                "Solo un'unità."
+              ],
+              [
+                "A title.",
+                "Un titolo."
+              ],
+              [
+                "An instrument.",
+                "Uno strumento."
+              ]
+            ],
+            "why": [
+              "Each point links one x-value to one y-value.",
+              "Ogni punto collega un valore di x a uno di y."
+            ]
+          },
+          {
+            "q": [
+              "Which equation represents direct proportionality?",
+              "Quale equazione rappresenta proporzionalità diretta?"
+            ],
+            "a": [
+              [
+                "y = 4x",
+                "y = 4x"
+              ],
+              [
+                "y = x + 4",
+                "y = x + 4"
+              ],
+              [
+                "y = 4/x",
+                "y = 4/x"
+              ],
+              [
+                "y = x²",
+                "y = x²"
+              ]
+            ],
+            "why": [
+              "Direct proportionality has the form y = kx.",
+              "La proporzionalità diretta ha forma y = kx."
+            ]
+          },
+          {
+            "q": [
+              "A graph of direct proportionality passes through…",
+              "Il grafico di proporzionalità diretta passa per…"
+            ],
+            "a": [
+              [
+                "the origin (0,0).",
+                "l'origine (0,0)."
+              ],
+              [
+                "(0,5) only.",
+                "solo (0,5)."
+              ],
+              [
+                "every point on the y-axis.",
+                "tutti i punti dell'asse y."
+              ],
+              [
+                "no axes.",
+                "nessun asse."
+              ]
+            ],
+            "why": [
+              "When x is zero, y is also zero.",
+              "Quando x è zero, anche y è zero."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "graphs",
+          "graphs",
+          "proportionality",
+          "proportionality"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-2m2-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p3m1",
     "arc": 18,
@@ -17936,7 +20192,571 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p3m1-objective-1",
+          "description": [
+            "Distinguish scalar and vector quantities",
+            "Distinguere grandezze scalari e vettoriali"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p3m1-objective-2",
+          "description": [
+            "Add vectors along the same line",
+            "Sommare vettori sulla stessa linea"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "scalar-vector",
+          "title": [
+            "Scalars and vectors",
+            "Scalari e vettori"
+          ],
+          "explanation": [
+            "A scalar has magnitude only, such as mass or time. A vector has magnitude, direction and sense, such as force or displacement.",
+            "Uno scalare ha solo un valore, come massa o tempo. Un vettore ha modulo, direzione e verso, come forza o spostamento."
+          ],
+          "example": [
+            "A 5 N force to the right is a vector; a mass of 5 kg is a scalar.",
+            "Una forza di 5 N verso destra è un vettore; una massa di 5 kg è uno scalare."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A 5 N force to the right is a vector; a mass of 5 kg is a scalar.",
+              "Una forza di 5 N verso destra è un vettore; una massa di 5 kg è uno scalare."
+            ],
+            "steps": [
+              [
+                "A vector arrow shows magnitude by length and orientation by direction and sense.",
+                "La freccia mostra il modulo con la lunghezza e l'orientamento con direzione e verso."
+              ],
+              [
+                "A vector needs more information than a number alone.",
+                "Un vettore richiede più informazioni di un semplice numero."
+              ]
+            ],
+            "answer": [
+              "A vector is not defined by magnitude alone.",
+              "Un vettore non è definito dal solo modulo."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        },
+        {
+          "id": "addition",
+          "title": [
+            "Adding vectors on one line",
+            "Somma di vettori su una linea"
+          ],
+          "explanation": [
+            "For the same direction, add magnitudes. For opposite directions, subtract magnitudes and keep the direction of the larger vector.",
+            "Per lo stesso verso, somma i moduli. Per versi opposti, sottrai i moduli e mantieni il verso del vettore maggiore."
+          ],
+          "example": [
+            "3 N right + 2 N right = 5 N right; 5 N right + 2 N left = 3 N right.",
+            "3 N a destra + 2 N a destra = 5 N a destra; 5 N a destra + 2 N a sinistra = 3 N a destra."
+          ],
+          "workedExample": {
+            "scenario": [
+              "3 N right + 2 N right = 5 N right; 5 N right + 2 N left = 3 N right.",
+              "3 N a destra + 2 N a destra = 5 N a destra; 5 N a destra + 2 N a sinistra = 3 N a destra."
+            ],
+            "steps": [
+              [
+                "Choose one direction as positive before adding signed values.",
+                "Scegli una direzione come positiva prima di sommare i valori con segno."
+              ],
+              [
+                "Opposite vectors can partly or completely cancel.",
+                "Vettori opposti possono annullarsi in parte o completamente."
+              ]
+            ],
+            "answer": [
+              "Do not add opposite-direction magnitudes without considering direction.",
+              "Non sommare i moduli di versi opposti senza considerare la direzione."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-3m1-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Which is a vector quantity?",
+                "Quale è una grandezza vettoriale?"
+              ],
+              "a": [
+                [
+                  "Force.",
+                  "Forza."
+                ],
+                [
+                  "Mass.",
+                  "Massa."
+                ],
+                [
+                  "Time.",
+                  "Tempo."
+                ],
+                [
+                  "Temperature.",
+                  "Temperatura."
+                ]
+              ],
+              "why": [
+                "Force has magnitude, direction and sense.",
+                "La forza ha modulo, direzione e verso."
+              ]
+            },
+            {
+              "q": [
+                "A vector is described by…",
+                "Un vettore è descritto da…"
+              ],
+              "a": [
+                [
+                  "magnitude, direction and sense.",
+                  "modulo, direzione e verso."
+                ],
+                [
+                  "magnitude only.",
+                  "solo modulo."
+                ],
+                [
+                  "unit only.",
+                  "solo unità."
+                ],
+                [
+                  "colour and mass.",
+                  "colore e massa."
+                ]
+              ],
+              "why": [
+                "A vector includes size and orientation.",
+                "Un vettore comprende valore e orientamento."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ]
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-3m1-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "4 N right plus 3 N right equals…",
+                "4 N verso destra più 3 N verso destra equivale a…"
+              ],
+              "a": [
+                [
+                  "7 N right.",
+                  "7 N verso destra."
+                ],
+                [
+                  "1 N left.",
+                  "1 N verso sinistra."
+                ],
+                [
+                  "12 N right.",
+                  "12 N verso destra."
+                ],
+                [
+                  "7 N left.",
+                  "7 N verso sinistra."
+                ]
+              ],
+              "why": [
+                "Same direction: add the magnitudes.",
+                "Stesso verso: somma i moduli."
+              ]
+            },
+            {
+              "q": [
+                "6 N right plus 2 N left equals…",
+                "6 N verso destra più 2 N verso sinistra equivale a…"
+              ],
+              "a": [
+                [
+                  "4 N right.",
+                  "4 N verso destra."
+                ],
+                [
+                  "8 N right.",
+                  "8 N verso destra."
+                ],
+                [
+                  "4 N left.",
+                  "4 N verso sinistra."
+                ],
+                [
+                  "12 N left.",
+                  "12 N verso sinistra."
+                ]
+              ],
+              "why": [
+                "Opposite directions: subtract and keep the larger vector's direction.",
+                "Versi opposti: sottrai e mantieni il verso del vettore maggiore."
+              ]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "Which is a vector quantity?",
+            "Quale è una grandezza vettoriale?"
+          ],
+          "a": [
+            [
+              "Force.",
+              "Forza."
+            ],
+            [
+              "Mass.",
+              "Massa."
+            ],
+            [
+              "Time.",
+              "Tempo."
+            ],
+            [
+              "Temperature.",
+              "Temperatura."
+            ]
+          ],
+          "why": [
+            "Force has magnitude, direction and sense.",
+            "La forza ha modulo, direzione e verso."
+          ]
+        },
+        {
+          "q": [
+            "A vector is described by…",
+            "Un vettore è descritto da…"
+          ],
+          "a": [
+            [
+              "magnitude, direction and sense.",
+              "modulo, direzione e verso."
+            ],
+            [
+              "magnitude only.",
+              "solo modulo."
+            ],
+            [
+              "unit only.",
+              "solo unità."
+            ],
+            [
+              "colour and mass.",
+              "colore e massa."
+            ]
+          ],
+          "why": [
+            "A vector includes size and orientation.",
+            "Un vettore comprende valore e orientamento."
+          ]
+        },
+        {
+          "q": [
+            "4 N right plus 3 N right equals…",
+            "4 N verso destra più 3 N verso destra equivale a…"
+          ],
+          "a": [
+            [
+              "7 N right.",
+              "7 N verso destra."
+            ],
+            [
+              "1 N left.",
+              "1 N verso sinistra."
+            ],
+            [
+              "12 N right.",
+              "12 N verso destra."
+            ],
+            [
+              "7 N left.",
+              "7 N verso sinistra."
+            ]
+          ],
+          "why": [
+            "Same direction: add the magnitudes.",
+            "Stesso verso: somma i moduli."
+          ]
+        },
+        {
+          "q": [
+            "6 N right plus 2 N left equals…",
+            "6 N verso destra più 2 N verso sinistra equivale a…"
+          ],
+          "a": [
+            [
+              "4 N right.",
+              "4 N verso destra."
+            ],
+            [
+              "8 N right.",
+              "8 N verso destra."
+            ],
+            [
+              "4 N left.",
+              "4 N verso sinistra."
+            ],
+            [
+              "12 N left.",
+              "12 N verso sinistra."
+            ]
+          ],
+          "why": [
+            "Opposite directions: subtract and keep the larger vector's direction.",
+            "Versi opposti: sottrai e mantieni il verso del vettore maggiore."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "A scalar has magnitude only, such as mass or time. A vector has magnitude, direction and sense, such as force or displacement.",
+          "Uno scalare ha solo un valore, come massa o tempo. Un vettore ha modulo, direzione e verso, come forza o spostamento."
+        ],
+        [
+          "For the same direction, add magnitudes. For opposite directions, subtract magnitudes and keep the direction of the larger vector.",
+          "Per lo stesso verso, somma i moduli. Per versi opposti, sottrai i moduli e mantieni il verso del vettore maggiore."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "Which is a vector quantity?",
+              "Quale è una grandezza vettoriale?"
+            ],
+            "a": [
+              [
+                "Force.",
+                "Forza."
+              ],
+              [
+                "Mass.",
+                "Massa."
+              ],
+              [
+                "Time.",
+                "Tempo."
+              ],
+              [
+                "Temperature.",
+                "Temperatura."
+              ]
+            ],
+            "why": [
+              "Force has magnitude, direction and sense.",
+              "La forza ha modulo, direzione e verso."
+            ]
+          },
+          {
+            "q": [
+              "A vector is described by…",
+              "Un vettore è descritto da…"
+            ],
+            "a": [
+              [
+                "magnitude, direction and sense.",
+                "modulo, direzione e verso."
+              ],
+              [
+                "magnitude only.",
+                "solo modulo."
+              ],
+              [
+                "unit only.",
+                "solo unità."
+              ],
+              [
+                "colour and mass.",
+                "colore e massa."
+              ]
+            ],
+            "why": [
+              "A vector includes size and orientation.",
+              "Un vettore comprende valore e orientamento."
+            ]
+          },
+          {
+            "q": [
+              "4 N right plus 3 N right equals…",
+              "4 N verso destra più 3 N verso destra equivale a…"
+            ],
+            "a": [
+              [
+                "7 N right.",
+                "7 N verso destra."
+              ],
+              [
+                "1 N left.",
+                "1 N verso sinistra."
+              ],
+              [
+                "12 N right.",
+                "12 N verso destra."
+              ],
+              [
+                "7 N left.",
+                "7 N verso sinistra."
+              ]
+            ],
+            "why": [
+              "Same direction: add the magnitudes.",
+              "Stesso verso: somma i moduli."
+            ]
+          },
+          {
+            "q": [
+              "6 N right plus 2 N left equals…",
+              "6 N verso destra più 2 N verso sinistra equivale a…"
+            ],
+            "a": [
+              [
+                "4 N right.",
+                "4 N verso destra."
+              ],
+              [
+                "8 N right.",
+                "8 N verso destra."
+              ],
+              [
+                "4 N left.",
+                "4 N verso sinistra."
+              ],
+              [
+                "12 N left.",
+                "12 N verso sinistra."
+              ]
+            ],
+            "why": [
+              "Opposite directions: subtract and keep the larger vector's direction.",
+              "Versi opposti: sottrai e mantieni il verso del vettore maggiore."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "scalar-vector",
+          "scalar-vector",
+          "addition",
+          "addition"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-3m1-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p3m2",
     "arc": 18,
@@ -18263,7 +21083,571 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p3m2-objective-1",
+          "description": [
+            "Describe the effects of forces",
+            "Descrivere gli effetti delle forze"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p3m2-objective-2",
+          "description": [
+            "Explain weight, elastic force and friction",
+            "Spiegare peso, forza elastica e attrito"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "force-effects",
+          "title": [
+            "Forces and their effects",
+            "Forze e loro effetti"
+          ],
+          "explanation": [
+            "A force is an interaction that can change motion or shape. Force is measured in newtons (N).",
+            "Una forza è un'interazione che può cambiare il moto o la forma. La forza si misura in newton (N)."
+          ],
+          "example": [
+            "Pushing a stationary trolley can make it move; stretching a spring changes its shape.",
+            "Spingere un carrello fermo può metterlo in moto; allungare una molla ne cambia la forma."
+          ],
+          "workedExample": {
+            "scenario": [
+              "Pushing a stationary trolley can make it move; stretching a spring changes its shape.",
+              "Spingere un carrello fermo può metterlo in moto; allungare una molla ne cambia la forma."
+            ],
+            "steps": [
+              [
+                "A force can change speed, direction or shape.",
+                "Una forza può cambiare velocità, direzione o forma."
+              ],
+              [
+                "Forces arise from interactions between objects.",
+                "Le forze derivano dalle interazioni tra oggetti."
+              ]
+            ],
+            "answer": [
+              "Force is not the same thing as motion.",
+              "La forza non è la stessa cosa del moto."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        },
+        {
+          "id": "weight-elastic-friction",
+          "title": [
+            "Weight, elasticity and friction",
+            "Peso, elasticità e attrito"
+          ],
+          "explanation": [
+            "Weight is gravitational force: P = mg. Elastic force acts when a spring is stretched or compressed. Friction opposes sliding or the tendency to slide.",
+            "Il peso è la forza gravitazionale: P = mg. La forza elastica agisce quando una molla è allungata o compressa. L'attrito si oppone allo scorrimento o alla sua tendenza."
+          ],
+          "example": [
+            "For m = 2 kg and g ≈ 9.8 N/kg, P ≈ 19.6 N downward.",
+            "Per m = 2 kg e g ≈ 9,8 N/kg, P ≈ 19,6 N verso il basso."
+          ],
+          "workedExample": {
+            "scenario": [
+              "For m = 2 kg and g ≈ 9.8 N/kg, P ≈ 19.6 N downward.",
+              "Per m = 2 kg e g ≈ 9,8 N/kg, P ≈ 19,6 N verso il basso."
+            ],
+            "steps": [
+              [
+                "Mass is measured in kg; weight is measured in N.",
+                "La massa si misura in kg; il peso in N."
+              ],
+              [
+                "Friction acts against relative motion between surfaces.",
+                "L'attrito si oppone al moto relativo tra superfici."
+              ]
+            ],
+            "answer": [
+              "Mass stays the same when gravitational field strength changes; weight can change.",
+              "La massa resta uguale se cambia il campo gravitazionale; il peso può cambiare."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-3m2-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "What can a force change?",
+                "Che cosa può cambiare una forza?"
+              ],
+              "a": [
+                [
+                  "An object's motion or shape.",
+                  "Il moto o la forma di un oggetto."
+                ],
+                [
+                  "Only its colour.",
+                  "Solo il colore."
+                ],
+                [
+                  "Only its temperature.",
+                  "Solo la temperatura."
+                ],
+                [
+                  "Nothing measurable.",
+                  "Niente di misurabile."
+                ]
+              ],
+              "why": [
+                "Forces can change motion or deform objects.",
+                "Le forze possono cambiare il moto o deformare gli oggetti."
+              ]
+            },
+            {
+              "q": [
+                "What is the SI unit of force?",
+                "Qual è l'unità SI della forza?"
+              ],
+              "a": [
+                [
+                  "newton (N)",
+                  "newton (N)"
+                ],
+                [
+                  "kilogram (kg)",
+                  "chilogrammo (kg)"
+                ],
+                [
+                  "metre (m)",
+                  "metro (m)"
+                ],
+                [
+                  "second (s)",
+                  "secondo (s)"
+                ]
+              ],
+              "why": [
+                "Force is measured in newtons.",
+                "La forza si misura in newton."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ]
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-3m2-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Which formula gives weight near Earth's surface?",
+                "Quale formula calcola il peso vicino alla superficie terrestre?"
+              ],
+              "a": [
+                [
+                  "P = mg",
+                  "P = mg"
+                ],
+                [
+                  "P = m/g",
+                  "P = m/g"
+                ],
+                [
+                  "P = m + g",
+                  "P = m + g"
+                ],
+                [
+                  "P = g/m",
+                  "P = g/m"
+                ]
+              ],
+              "why": [
+                "Weight equals mass multiplied by gravitational field strength.",
+                "Il peso è la massa moltiplicata per l'intensità del campo gravitazionale."
+              ]
+            },
+            {
+              "q": [
+                "Friction usually opposes…",
+                "L'attrito si oppone di solito a…"
+              ],
+              "a": [
+                [
+                  "sliding or the tendency to slide.",
+                  "lo scorrimento o la tendenza a scivolare."
+                ],
+                [
+                  "mass.",
+                  "la massa."
+                ],
+                [
+                  "time.",
+                  "il tempo."
+                ],
+                [
+                  "temperature.",
+                  "la temperatura."
+                ]
+              ],
+              "why": [
+                "Friction acts against relative motion between surfaces.",
+                "L'attrito agisce contro il moto relativo tra superfici."
+              ]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "What can a force change?",
+            "Che cosa può cambiare una forza?"
+          ],
+          "a": [
+            [
+              "An object's motion or shape.",
+              "Il moto o la forma di un oggetto."
+            ],
+            [
+              "Only its colour.",
+              "Solo il colore."
+            ],
+            [
+              "Only its temperature.",
+              "Solo la temperatura."
+            ],
+            [
+              "Nothing measurable.",
+              "Niente di misurabile."
+            ]
+          ],
+          "why": [
+            "Forces can change motion or deform objects.",
+            "Le forze possono cambiare il moto o deformare gli oggetti."
+          ]
+        },
+        {
+          "q": [
+            "What is the SI unit of force?",
+            "Qual è l'unità SI della forza?"
+          ],
+          "a": [
+            [
+              "newton (N)",
+              "newton (N)"
+            ],
+            [
+              "kilogram (kg)",
+              "chilogrammo (kg)"
+            ],
+            [
+              "metre (m)",
+              "metro (m)"
+            ],
+            [
+              "second (s)",
+              "secondo (s)"
+            ]
+          ],
+          "why": [
+            "Force is measured in newtons.",
+            "La forza si misura in newton."
+          ]
+        },
+        {
+          "q": [
+            "Which formula gives weight near Earth's surface?",
+            "Quale formula calcola il peso vicino alla superficie terrestre?"
+          ],
+          "a": [
+            [
+              "P = mg",
+              "P = mg"
+            ],
+            [
+              "P = m/g",
+              "P = m/g"
+            ],
+            [
+              "P = m + g",
+              "P = m + g"
+            ],
+            [
+              "P = g/m",
+              "P = g/m"
+            ]
+          ],
+          "why": [
+            "Weight equals mass multiplied by gravitational field strength.",
+            "Il peso è la massa moltiplicata per l'intensità del campo gravitazionale."
+          ]
+        },
+        {
+          "q": [
+            "Friction usually opposes…",
+            "L'attrito si oppone di solito a…"
+          ],
+          "a": [
+            [
+              "sliding or the tendency to slide.",
+              "lo scorrimento o la tendenza a scivolare."
+            ],
+            [
+              "mass.",
+              "la massa."
+            ],
+            [
+              "time.",
+              "il tempo."
+            ],
+            [
+              "temperature.",
+              "la temperatura."
+            ]
+          ],
+          "why": [
+            "Friction acts against relative motion between surfaces.",
+            "L'attrito agisce contro il moto relativo tra superfici."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "A force is an interaction that can change motion or shape. Force is measured in newtons (N).",
+          "Una forza è un'interazione che può cambiare il moto o la forma. La forza si misura in newton (N)."
+        ],
+        [
+          "Weight is gravitational force: P = mg. Elastic force acts when a spring is stretched or compressed. Friction opposes sliding or the tendency to slide.",
+          "Il peso è la forza gravitazionale: P = mg. La forza elastica agisce quando una molla è allungata o compressa. L'attrito si oppone allo scorrimento o alla sua tendenza."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "What can a force change?",
+              "Che cosa può cambiare una forza?"
+            ],
+            "a": [
+              [
+                "An object's motion or shape.",
+                "Il moto o la forma di un oggetto."
+              ],
+              [
+                "Only its colour.",
+                "Solo il colore."
+              ],
+              [
+                "Only its temperature.",
+                "Solo la temperatura."
+              ],
+              [
+                "Nothing measurable.",
+                "Niente di misurabile."
+              ]
+            ],
+            "why": [
+              "Forces can change motion or deform objects.",
+              "Le forze possono cambiare il moto o deformare gli oggetti."
+            ]
+          },
+          {
+            "q": [
+              "What is the SI unit of force?",
+              "Qual è l'unità SI della forza?"
+            ],
+            "a": [
+              [
+                "newton (N)",
+                "newton (N)"
+              ],
+              [
+                "kilogram (kg)",
+                "chilogrammo (kg)"
+              ],
+              [
+                "metre (m)",
+                "metro (m)"
+              ],
+              [
+                "second (s)",
+                "secondo (s)"
+              ]
+            ],
+            "why": [
+              "Force is measured in newtons.",
+              "La forza si misura in newton."
+            ]
+          },
+          {
+            "q": [
+              "Which formula gives weight near Earth's surface?",
+              "Quale formula calcola il peso vicino alla superficie terrestre?"
+            ],
+            "a": [
+              [
+                "P = mg",
+                "P = mg"
+              ],
+              [
+                "P = m/g",
+                "P = m/g"
+              ],
+              [
+                "P = m + g",
+                "P = m + g"
+              ],
+              [
+                "P = g/m",
+                "P = g/m"
+              ]
+            ],
+            "why": [
+              "Weight equals mass multiplied by gravitational field strength.",
+              "Il peso è la massa moltiplicata per l'intensità del campo gravitazionale."
+            ]
+          },
+          {
+            "q": [
+              "Friction usually opposes…",
+              "L'attrito si oppone di solito a…"
+            ],
+            "a": [
+              [
+                "sliding or the tendency to slide.",
+                "lo scorrimento o la tendenza a scivolare."
+              ],
+              [
+                "mass.",
+                "la massa."
+              ],
+              [
+                "time.",
+                "il tempo."
+              ],
+              [
+                "temperature.",
+                "la temperatura."
+              ]
+            ],
+            "why": [
+              "Friction acts against relative motion between surfaces.",
+              "L'attrito agisce contro il moto relativo tra superfici."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "force-effects",
+          "force-effects",
+          "weight-elastic-friction",
+          "weight-elastic-friction"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-3m2-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p3m3",
     "arc": 18,
@@ -18536,7 +21920,571 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p3m3-objective-1",
+          "description": [
+            "Resolve a vector into perpendicular components",
+            "Scomporre un vettore in componenti perpendicolari"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p3m3-objective-2",
+          "description": [
+            "Reconstruct a vector from its components",
+            "Ricostruire un vettore dalle sue componenti"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "components",
+          "title": [
+            "Resolving a vector",
+            "Scomporre un vettore"
+          ],
+          "explanation": [
+            "For angle θ measured from the horizontal, Fx = F cos θ and Fy = F sin θ. The components are perpendicular sides of a right triangle.",
+            "Per un angolo θ misurato dall'orizzontale, Fx = F cos θ e Fy = F sin θ. Le componenti sono i cateti perpendicolari di un triangolo rettangolo."
+          ],
+          "example": [
+            "For F = 10 N at 30° above horizontal, Fx ≈ 8.66 N and Fy = 5 N.",
+            "Per F = 10 N a 30° sopra l'orizzontale, Fx ≈ 8,66 N e Fy = 5 N."
+          ],
+          "workedExample": {
+            "scenario": [
+              "For F = 10 N at 30° above horizontal, Fx ≈ 8.66 N and Fy = 5 N.",
+              "Per F = 10 N a 30° sopra l'orizzontale, Fx ≈ 8,66 N e Fy = 5 N."
+            ],
+            "steps": [
+              [
+                "Check which axis the angle is measured from before choosing sine or cosine.",
+                "Controlla da quale asse è misurato l'angolo prima di scegliere seno o coseno."
+              ],
+              [
+                "The components are projections of the original vector.",
+                "Le componenti sono proiezioni del vettore originale."
+              ]
+            ],
+            "answer": [
+              "Do not swap sine and cosine without checking the angle reference.",
+              "Non scambiare seno e coseno senza controllare il riferimento dell'angolo."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        },
+        {
+          "id": "reconstruct",
+          "title": [
+            "Combining components",
+            "Combinare le componenti"
+          ],
+          "explanation": [
+            "For perpendicular components, the magnitude is F = √(Fx² + Fy²). The angle from the horizontal can be found using tan θ = Fy/Fx.",
+            "Per componenti perpendicolari, il modulo è F = √(Fx² + Fy²). L'angolo rispetto all'orizzontale si trova con tan θ = Fy/Fx."
+          ],
+          "example": [
+            "If Fx = 3 N and Fy = 4 N, F = √(9 + 16) = 5 N.",
+            "Se Fx = 3 N e Fy = 4 N, F = √(9 + 16) = 5 N."
+          ],
+          "workedExample": {
+            "scenario": [
+              "If Fx = 3 N and Fy = 4 N, F = √(9 + 16) = 5 N.",
+              "Se Fx = 3 N e Fy = 4 N, F = √(9 + 16) = 5 N."
+            ],
+            "steps": [
+              [
+                "Use Pythagoras for perpendicular components.",
+                "Usa Pitagora per componenti perpendicolari."
+              ],
+              [
+                "Signs show the direction along each chosen axis.",
+                "I segni indicano il verso lungo ciascun asse scelto."
+              ]
+            ],
+            "answer": [
+              "The components are not generally equal to the original magnitude.",
+              "Le componenti non sono generalmente uguali al modulo originale."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-3m3-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "A vector is resolved into components along…",
+                "Un vettore viene scomposto in componenti lungo…"
+              ],
+              "a": [
+                [
+                  "perpendicular axes.",
+                  "assi perpendicolari."
+                ],
+                [
+                  "the same line only.",
+                  "solo la stessa linea."
+                ],
+                [
+                  "a circle.",
+                  "un cerchio."
+                ],
+                [
+                  "random directions.",
+                  "direzioni casuali."
+                ]
+              ],
+              "why": [
+                "Horizontal and vertical axes are perpendicular.",
+                "Gli assi orizzontale e verticale sono perpendicolari."
+              ]
+            },
+            {
+              "q": [
+                "For an angle measured from the horizontal, the horizontal component is…",
+                "Per un angolo misurato dall'orizzontale, la componente orizzontale è…"
+              ],
+              "a": [
+                [
+                  "Fx = F cos θ",
+                  "Fx = F cos θ"
+                ],
+                [
+                  "Fx = F sin θ",
+                  "Fx = F sin θ"
+                ],
+                [
+                  "Fx = F tan θ",
+                  "Fx = F tan θ"
+                ],
+                [
+                  "Fx = F/θ",
+                  "Fx = F/θ"
+                ]
+              ],
+              "why": [
+                "The adjacent side uses cosine.",
+                "Il cateto adiacente usa il coseno."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ]
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-3m3-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "If Fx = 3 N and Fy = 4 N, what is F?",
+                "Se Fx = 3 N e Fy = 4 N, quanto vale F?"
+              ],
+              "a": [
+                [
+                  "5 N",
+                  "5 N"
+                ],
+                [
+                  "7 N",
+                  "7 N"
+                ],
+                [
+                  "1 N",
+                  "1 N"
+                ],
+                [
+                  "12 N",
+                  "12 N"
+                ]
+              ],
+              "why": [
+                "F = √(3² + 4²) = 5 N.",
+                "F = √(3² + 4²) = 5 N."
+              ]
+            },
+            {
+              "q": [
+                "What does a negative component indicate?",
+                "Che cosa indica una componente negativa?"
+              ],
+              "a": [
+                [
+                  "It points in the negative direction of that axis.",
+                  "Punta nel verso negativo di quell'asse."
+                ],
+                [
+                  "The vector is impossible.",
+                  "Il vettore è impossibile."
+                ],
+                [
+                  "The magnitude is zero.",
+                  "Il modulo è zero."
+                ],
+                [
+                  "The unit is wrong.",
+                  "L'unità è sbagliata."
+                ]
+              ],
+              "why": [
+                "The sign records direction relative to the chosen axes.",
+                "Il segno indica la direzione rispetto agli assi scelti."
+              ]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "A vector is resolved into components along…",
+            "Un vettore viene scomposto in componenti lungo…"
+          ],
+          "a": [
+            [
+              "perpendicular axes.",
+              "assi perpendicolari."
+            ],
+            [
+              "the same line only.",
+              "solo la stessa linea."
+            ],
+            [
+              "a circle.",
+              "un cerchio."
+            ],
+            [
+              "random directions.",
+              "direzioni casuali."
+            ]
+          ],
+          "why": [
+            "Horizontal and vertical axes are perpendicular.",
+            "Gli assi orizzontale e verticale sono perpendicolari."
+          ]
+        },
+        {
+          "q": [
+            "For an angle measured from the horizontal, the horizontal component is…",
+            "Per un angolo misurato dall'orizzontale, la componente orizzontale è…"
+          ],
+          "a": [
+            [
+              "Fx = F cos θ",
+              "Fx = F cos θ"
+            ],
+            [
+              "Fx = F sin θ",
+              "Fx = F sin θ"
+            ],
+            [
+              "Fx = F tan θ",
+              "Fx = F tan θ"
+            ],
+            [
+              "Fx = F/θ",
+              "Fx = F/θ"
+            ]
+          ],
+          "why": [
+            "The adjacent side uses cosine.",
+            "Il cateto adiacente usa il coseno."
+          ]
+        },
+        {
+          "q": [
+            "If Fx = 3 N and Fy = 4 N, what is F?",
+            "Se Fx = 3 N e Fy = 4 N, quanto vale F?"
+          ],
+          "a": [
+            [
+              "5 N",
+              "5 N"
+            ],
+            [
+              "7 N",
+              "7 N"
+            ],
+            [
+              "1 N",
+              "1 N"
+            ],
+            [
+              "12 N",
+              "12 N"
+            ]
+          ],
+          "why": [
+            "F = √(3² + 4²) = 5 N.",
+            "F = √(3² + 4²) = 5 N."
+          ]
+        },
+        {
+          "q": [
+            "What does a negative component indicate?",
+            "Che cosa indica una componente negativa?"
+          ],
+          "a": [
+            [
+              "It points in the negative direction of that axis.",
+              "Punta nel verso negativo di quell'asse."
+            ],
+            [
+              "The vector is impossible.",
+              "Il vettore è impossibile."
+            ],
+            [
+              "The magnitude is zero.",
+              "Il modulo è zero."
+            ],
+            [
+              "The unit is wrong.",
+              "L'unità è sbagliata."
+            ]
+          ],
+          "why": [
+            "The sign records direction relative to the chosen axes.",
+            "Il segno indica la direzione rispetto agli assi scelti."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "For angle θ measured from the horizontal, Fx = F cos θ and Fy = F sin θ. The components are perpendicular sides of a right triangle.",
+          "Per un angolo θ misurato dall'orizzontale, Fx = F cos θ e Fy = F sin θ. Le componenti sono i cateti perpendicolari di un triangolo rettangolo."
+        ],
+        [
+          "For perpendicular components, the magnitude is F = √(Fx² + Fy²). The angle from the horizontal can be found using tan θ = Fy/Fx.",
+          "Per componenti perpendicolari, il modulo è F = √(Fx² + Fy²). L'angolo rispetto all'orizzontale si trova con tan θ = Fy/Fx."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "A vector is resolved into components along…",
+              "Un vettore viene scomposto in componenti lungo…"
+            ],
+            "a": [
+              [
+                "perpendicular axes.",
+                "assi perpendicolari."
+              ],
+              [
+                "the same line only.",
+                "solo la stessa linea."
+              ],
+              [
+                "a circle.",
+                "un cerchio."
+              ],
+              [
+                "random directions.",
+                "direzioni casuali."
+              ]
+            ],
+            "why": [
+              "Horizontal and vertical axes are perpendicular.",
+              "Gli assi orizzontale e verticale sono perpendicolari."
+            ]
+          },
+          {
+            "q": [
+              "For an angle measured from the horizontal, the horizontal component is…",
+              "Per un angolo misurato dall'orizzontale, la componente orizzontale è…"
+            ],
+            "a": [
+              [
+                "Fx = F cos θ",
+                "Fx = F cos θ"
+              ],
+              [
+                "Fx = F sin θ",
+                "Fx = F sin θ"
+              ],
+              [
+                "Fx = F tan θ",
+                "Fx = F tan θ"
+              ],
+              [
+                "Fx = F/θ",
+                "Fx = F/θ"
+              ]
+            ],
+            "why": [
+              "The adjacent side uses cosine.",
+              "Il cateto adiacente usa il coseno."
+            ]
+          },
+          {
+            "q": [
+              "If Fx = 3 N and Fy = 4 N, what is F?",
+              "Se Fx = 3 N e Fy = 4 N, quanto vale F?"
+            ],
+            "a": [
+              [
+                "5 N",
+                "5 N"
+              ],
+              [
+                "7 N",
+                "7 N"
+              ],
+              [
+                "1 N",
+                "1 N"
+              ],
+              [
+                "12 N",
+                "12 N"
+              ]
+            ],
+            "why": [
+              "F = √(3² + 4²) = 5 N.",
+              "F = √(3² + 4²) = 5 N."
+            ]
+          },
+          {
+            "q": [
+              "What does a negative component indicate?",
+              "Che cosa indica una componente negativa?"
+            ],
+            "a": [
+              [
+                "It points in the negative direction of that axis.",
+                "Punta nel verso negativo di quell'asse."
+              ],
+              [
+                "The vector is impossible.",
+                "Il vettore è impossibile."
+              ],
+              [
+                "The magnitude is zero.",
+                "Il modulo è zero."
+              ],
+              [
+                "The unit is wrong.",
+                "L'unità è sbagliata."
+              ]
+            ],
+            "why": [
+              "The sign records direction relative to the chosen axes.",
+              "Il segno indica la direzione rispetto agli assi scelti."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "components",
+          "components",
+          "reconstruct",
+          "reconstruct"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-3m3-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p4m1",
     "arc": 19,
@@ -18805,7 +22753,571 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p4m1-objective-1",
+          "description": [
+            "Calculate the moment of a force",
+            "Calcolare il momento di una forza"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p4m1-objective-2",
+          "description": [
+            "Explain how levers balance",
+            "Spiegare come si equilibrano le leve"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "moment",
+          "title": [
+            "Moment of a force",
+            "Momento di una forza"
+          ],
+          "explanation": [
+            "The moment measures a force's turning effect: M = F × d, where d is the perpendicular distance from the pivot to the force's line of action.",
+            "Il momento misura l'effetto rotatorio di una forza: M = F × d, dove d è la distanza perpendicolare dal fulcro alla retta d'azione della forza."
+          ],
+          "example": [
+            "A 10 N force applied 0.5 m from a pivot gives M = 5 N·m.",
+            "Una forza di 10 N applicata a 0,5 m dal fulcro dà M = 5 N·m."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A 10 N force applied 0.5 m from a pivot gives M = 5 N·m.",
+              "Una forza di 10 N applicata a 0,5 m dal fulcro dà M = 5 N·m."
+            ],
+            "steps": [
+              [
+                "Use the perpendicular distance, not any distance to the pivot.",
+                "Usa la distanza perpendicolare, non una distanza qualsiasi dal fulcro."
+              ],
+              [
+                "A larger force or longer arm creates a larger moment.",
+                "Una forza maggiore o un braccio più lungo crea un momento maggiore."
+              ]
+            ],
+            "answer": [
+              "The moment is not just the force; the lever arm matters too.",
+              "Il momento non è solo la forza: conta anche il braccio."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        },
+        {
+          "id": "lever-balance",
+          "title": [
+            "Levers and balance",
+            "Leve ed equilibrio"
+          ],
+          "explanation": [
+            "In rotational balance, clockwise and anticlockwise moments are equal: F₁d₁ = F₂d₂.",
+            "In equilibrio rotazionale, i momenti orario e antiorario sono uguali: F₁d₁ = F₂d₂."
+          ],
+          "example": [
+            "20 N at 0.2 m balances 10 N at 0.4 m: both moments are 4 N·m.",
+            "20 N a 0,2 m bilanciano 10 N a 0,4 m: entrambi i momenti sono 4 N·m."
+          ],
+          "workedExample": {
+            "scenario": [
+              "20 N at 0.2 m balances 10 N at 0.4 m: both moments are 4 N·m.",
+              "20 N a 0,2 m bilanciano 10 N a 0,4 m: entrambi i momenti sono 4 N·m."
+            ],
+            "steps": [
+              [
+                "A longer arm needs less force for the same moment.",
+                "Un braccio più lungo richiede meno forza per lo stesso momento."
+              ],
+              [
+                "A lever balances moments, not necessarily equal forces.",
+                "Una leva equilibra i momenti, non necessariamente forze uguali."
+              ]
+            ],
+            "answer": [
+              "The pivot is the point about which the lever turns.",
+              "Il fulcro è il punto attorno al quale ruota la leva."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-4m1-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "What is the formula for moment?",
+                "Qual è la formula del momento?"
+              ],
+              "a": [
+                [
+                  "M = F × d",
+                  "M = F × d"
+                ],
+                [
+                  "M = F + d",
+                  "M = F + d"
+                ],
+                [
+                  "M = F/d",
+                  "M = F/d"
+                ],
+                [
+                  "M = d/F",
+                  "M = d/F"
+                ]
+              ],
+              "why": [
+                "Moment equals force times perpendicular distance.",
+                "Il momento è la forza per la distanza perpendicolare."
+              ]
+            },
+            {
+              "q": [
+                "A 5 N force acts 2 m from a pivot. What is its moment?",
+                "Una forza di 5 N agisce a 2 m dal fulcro. Qual è il momento?"
+              ],
+              "a": [
+                [
+                  "10 N·m",
+                  "10 N·m"
+                ],
+                [
+                  "7 N·m",
+                  "7 N·m"
+                ],
+                [
+                  "2.5 N·m",
+                  "2,5 N·m"
+                ],
+                [
+                  "3 N·m",
+                  "3 N·m"
+                ]
+              ],
+              "why": [
+                "M = 5 × 2 = 10 N·m.",
+                "M = 5 × 2 = 10 N·m."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ]
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-4m1-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "When is a lever in rotational equilibrium?",
+                "Quando una leva è in equilibrio rotazionale?"
+              ],
+              "a": [
+                [
+                  "Clockwise and anticlockwise moments are equal.",
+                  "I momenti orario e antiorario sono uguali."
+                ],
+                [
+                  "Both forces are zero.",
+                  "Entrambe le forze sono zero."
+                ],
+                [
+                  "The arms are equal.",
+                  "I bracci sono uguali."
+                ],
+                [
+                  "The pivot disappears.",
+                  "Il fulcro scompare."
+                ]
+              ],
+              "why": [
+                "Equal opposite moments balance turning effects.",
+                "Momenti opposti uguali bilanciano gli effetti rotatori."
+              ]
+            },
+            {
+              "q": [
+                "Why can a longer lever arm help lift a load?",
+                "Perché un braccio più lungo può aiutare a sollevare un carico?"
+              ],
+              "a": [
+                [
+                  "It produces a greater moment for the same force.",
+                  "Produce un momento maggiore con la stessa forza."
+                ],
+                [
+                  "It removes gravity.",
+                  "Elimina la gravità."
+                ],
+                [
+                  "It changes mass into force.",
+                  "Trasforma la massa in forza."
+                ],
+                [
+                  "It makes the pivot heavier.",
+                  "Rende più pesante il fulcro."
+                ]
+              ],
+              "why": [
+                "Moment increases with perpendicular distance.",
+                "Il momento aumenta con la distanza perpendicolare."
+              ]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "What is the formula for moment?",
+            "Qual è la formula del momento?"
+          ],
+          "a": [
+            [
+              "M = F × d",
+              "M = F × d"
+            ],
+            [
+              "M = F + d",
+              "M = F + d"
+            ],
+            [
+              "M = F/d",
+              "M = F/d"
+            ],
+            [
+              "M = d/F",
+              "M = d/F"
+            ]
+          ],
+          "why": [
+            "Moment equals force times perpendicular distance.",
+            "Il momento è la forza per la distanza perpendicolare."
+          ]
+        },
+        {
+          "q": [
+            "A 5 N force acts 2 m from a pivot. What is its moment?",
+            "Una forza di 5 N agisce a 2 m dal fulcro. Qual è il momento?"
+          ],
+          "a": [
+            [
+              "10 N·m",
+              "10 N·m"
+            ],
+            [
+              "7 N·m",
+              "7 N·m"
+            ],
+            [
+              "2.5 N·m",
+              "2,5 N·m"
+            ],
+            [
+              "3 N·m",
+              "3 N·m"
+            ]
+          ],
+          "why": [
+            "M = 5 × 2 = 10 N·m.",
+            "M = 5 × 2 = 10 N·m."
+          ]
+        },
+        {
+          "q": [
+            "When is a lever in rotational equilibrium?",
+            "Quando una leva è in equilibrio rotazionale?"
+          ],
+          "a": [
+            [
+              "Clockwise and anticlockwise moments are equal.",
+              "I momenti orario e antiorario sono uguali."
+            ],
+            [
+              "Both forces are zero.",
+              "Entrambe le forze sono zero."
+            ],
+            [
+              "The arms are equal.",
+              "I bracci sono uguali."
+            ],
+            [
+              "The pivot disappears.",
+              "Il fulcro scompare."
+            ]
+          ],
+          "why": [
+            "Equal opposite moments balance turning effects.",
+            "Momenti opposti uguali bilanciano gli effetti rotatori."
+          ]
+        },
+        {
+          "q": [
+            "Why can a longer lever arm help lift a load?",
+            "Perché un braccio più lungo può aiutare a sollevare un carico?"
+          ],
+          "a": [
+            [
+              "It produces a greater moment for the same force.",
+              "Produce un momento maggiore con la stessa forza."
+            ],
+            [
+              "It removes gravity.",
+              "Elimina la gravità."
+            ],
+            [
+              "It changes mass into force.",
+              "Trasforma la massa in forza."
+            ],
+            [
+              "It makes the pivot heavier.",
+              "Rende più pesante il fulcro."
+            ]
+          ],
+          "why": [
+            "Moment increases with perpendicular distance.",
+            "Il momento aumenta con la distanza perpendicolare."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "The moment measures a force's turning effect: M = F × d, where d is the perpendicular distance from the pivot to the force's line of action.",
+          "Il momento misura l'effetto rotatorio di una forza: M = F × d, dove d è la distanza perpendicolare dal fulcro alla retta d'azione della forza."
+        ],
+        [
+          "In rotational balance, clockwise and anticlockwise moments are equal: F₁d₁ = F₂d₂.",
+          "In equilibrio rotazionale, i momenti orario e antiorario sono uguali: F₁d₁ = F₂d₂."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "What is the formula for moment?",
+              "Qual è la formula del momento?"
+            ],
+            "a": [
+              [
+                "M = F × d",
+                "M = F × d"
+              ],
+              [
+                "M = F + d",
+                "M = F + d"
+              ],
+              [
+                "M = F/d",
+                "M = F/d"
+              ],
+              [
+                "M = d/F",
+                "M = d/F"
+              ]
+            ],
+            "why": [
+              "Moment equals force times perpendicular distance.",
+              "Il momento è la forza per la distanza perpendicolare."
+            ]
+          },
+          {
+            "q": [
+              "A 5 N force acts 2 m from a pivot. What is its moment?",
+              "Una forza di 5 N agisce a 2 m dal fulcro. Qual è il momento?"
+            ],
+            "a": [
+              [
+                "10 N·m",
+                "10 N·m"
+              ],
+              [
+                "7 N·m",
+                "7 N·m"
+              ],
+              [
+                "2.5 N·m",
+                "2,5 N·m"
+              ],
+              [
+                "3 N·m",
+                "3 N·m"
+              ]
+            ],
+            "why": [
+              "M = 5 × 2 = 10 N·m.",
+              "M = 5 × 2 = 10 N·m."
+            ]
+          },
+          {
+            "q": [
+              "When is a lever in rotational equilibrium?",
+              "Quando una leva è in equilibrio rotazionale?"
+            ],
+            "a": [
+              [
+                "Clockwise and anticlockwise moments are equal.",
+                "I momenti orario e antiorario sono uguali."
+              ],
+              [
+                "Both forces are zero.",
+                "Entrambe le forze sono zero."
+              ],
+              [
+                "The arms are equal.",
+                "I bracci sono uguali."
+              ],
+              [
+                "The pivot disappears.",
+                "Il fulcro scompare."
+              ]
+            ],
+            "why": [
+              "Equal opposite moments balance turning effects.",
+              "Momenti opposti uguali bilanciano gli effetti rotatori."
+            ]
+          },
+          {
+            "q": [
+              "Why can a longer lever arm help lift a load?",
+              "Perché un braccio più lungo può aiutare a sollevare un carico?"
+            ],
+            "a": [
+              [
+                "It produces a greater moment for the same force.",
+                "Produce un momento maggiore con la stessa forza."
+              ],
+              [
+                "It removes gravity.",
+                "Elimina la gravità."
+              ],
+              [
+                "It changes mass into force.",
+                "Trasforma la massa in forza."
+              ],
+              [
+                "It makes the pivot heavier.",
+                "Rende più pesante il fulcro."
+              ]
+            ],
+            "why": [
+              "Moment increases with perpendicular distance.",
+              "Il momento aumenta con la distanza perpendicolare."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "moment",
+          "moment",
+          "lever-balance",
+          "lever-balance"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-4m1-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p4m2",
     "arc": 19,
@@ -19132,7 +23644,571 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p4m2-objective-1",
+          "description": [
+            "Explain the centre of gravity and stability",
+            "Spiegare il baricentro e la stabilità"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p4m2-objective-2",
+          "description": [
+            "Distinguish three types of equilibrium",
+            "Distinguere tre tipi di equilibrio"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "centre-gravity",
+          "title": [
+            "Centre of gravity",
+            "Baricentro"
+          ],
+          "explanation": [
+            "The centre of gravity is the point where an object's weight can be considered to act. A low centre of gravity and wide support base usually increase stability.",
+            "Il baricentro è il punto in cui si può considerare applicato il peso di un oggetto. Un baricentro basso e una base d'appoggio ampia aumentano di solito la stabilità."
+          ],
+          "example": [
+            "A wide, low stool is harder to tip than a tall, narrow one.",
+            "Uno sgabello basso e largo è più difficile da ribaltare di uno alto e stretto."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A wide, low stool is harder to tip than a tall, narrow one.",
+              "Uno sgabello basso e largo è più difficile da ribaltare di uno alto e stretto."
+            ],
+            "steps": [
+              [
+                "An object tends to topple when the vertical line through its centre of gravity falls outside its support base.",
+                "Un oggetto tende a ribaltarsi quando la verticale del baricentro cade fuori dalla base d'appoggio."
+              ],
+              [
+                "The centre of gravity is not always at the geometric centre.",
+                "Il baricentro non si trova sempre nel centro geometrico."
+              ]
+            ],
+            "answer": [
+              "Stability depends on the centre of gravity relative to the support base.",
+              "La stabilità dipende dal baricentro rispetto alla base d'appoggio."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        },
+        {
+          "id": "equilibrium-types",
+          "title": [
+            "Types of equilibrium",
+            "Tipi di equilibrio"
+          ],
+          "explanation": [
+            "Stable equilibrium returns after a small disturbance; unstable equilibrium moves farther away; neutral equilibrium stays in its new position.",
+            "L'equilibrio stabile ritorna dopo una piccola perturbazione; quello instabile si allontana ulteriormente; quello indifferente resta nella nuova posizione."
+          ],
+          "example": [
+            "A ball in a bowl is stable; on a hilltop it is unstable; on a flat surface it is neutral.",
+            "Una palla in una conca è stabile; in cima a una collina è instabile; su una superficie piana è indifferente."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A ball in a bowl is stable; on a hilltop it is unstable; on a flat surface it is neutral.",
+              "Una palla in una conca è stabile; in cima a una collina è instabile; su una superficie piana è indifferente."
+            ],
+            "steps": [
+              [
+                "Think about what happens after a small push.",
+                "Pensa a ciò che accade dopo una piccola spinta."
+              ],
+              [
+                "The response to a small displacement defines the type of equilibrium.",
+                "La risposta a un piccolo spostamento definisce il tipo di equilibrio."
+              ]
+            ],
+            "answer": [
+              "Stable equilibrium describes the response to a small disturbance, not every possible force.",
+              "L'equilibrio stabile descrive la risposta a una piccola perturbazione, non a qualsiasi forza."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-4m2-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Where can an object's weight be considered to act?",
+                "In quale punto si può considerare applicato il peso di un oggetto?"
+              ],
+              "a": [
+                [
+                  "At its centre of gravity.",
+                  "Nel suo baricentro."
+                ],
+                [
+                  "At every point equally.",
+                  "In ogni punto allo stesso modo."
+                ],
+                [
+                  "Only at its surface.",
+                  "Solo sulla superficie."
+                ],
+                [
+                  "Only at its support base.",
+                  "Solo alla base d'appoggio."
+                ]
+              ],
+              "why": [
+                "The centre of gravity is the effective point of action of weight.",
+                "Il baricentro è il punto efficace di applicazione del peso."
+              ]
+            },
+            {
+              "q": [
+                "Which change usually increases stability?",
+                "Quale cambiamento aumenta di solito la stabilità?"
+              ],
+              "a": [
+                [
+                  "Lower the centre of gravity and widen the base.",
+                  "Abbassare il baricentro e allargare la base."
+                ],
+                [
+                  "Raise the centre of gravity.",
+                  "Alzare il baricentro."
+                ],
+                [
+                  "Narrow the base.",
+                  "Restringere la base."
+                ],
+                [
+                  "Remove the support.",
+                  "Togliere il supporto."
+                ]
+              ],
+              "why": [
+                "A low centre of gravity and wide base make tipping harder.",
+                "Un baricentro basso e una base larga rendono più difficile il ribaltamento."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ]
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-4m2-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "A ball in a bowl is an example of…",
+                "Una palla in una conca è un esempio di…"
+              ],
+              "a": [
+                [
+                  "stable equilibrium.",
+                  "equilibrio stabile."
+                ],
+                [
+                  "unstable equilibrium.",
+                  "equilibrio instabile."
+                ],
+                [
+                  "neutral equilibrium.",
+                  "equilibrio indifferente."
+                ],
+                [
+                  "no gravity.",
+                  "assenza di gravità."
+                ]
+              ],
+              "why": [
+                "After a small displacement, the ball tends to return.",
+                "Dopo un piccolo spostamento, la palla tende a tornare."
+              ]
+            },
+            {
+              "q": [
+                "A ball on a flat horizontal surface is approximately…",
+                "Una palla su una superficie piana orizzontale è approssimativamente…"
+              ],
+              "a": [
+                [
+                  "in neutral equilibrium.",
+                  "in equilibrio indifferente."
+                ],
+                [
+                  "in unstable equilibrium.",
+                  "in equilibrio instabile."
+                ],
+                [
+                  "in stable equilibrium.",
+                  "in equilibrio stabile."
+                ],
+                [
+                  "without weight.",
+                  "senza peso."
+                ]
+              ],
+              "why": [
+                "After a small move, it can remain in its new position.",
+                "Dopo un piccolo spostamento, può restare nella nuova posizione."
+              ]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "Where can an object's weight be considered to act?",
+            "In quale punto si può considerare applicato il peso di un oggetto?"
+          ],
+          "a": [
+            [
+              "At its centre of gravity.",
+              "Nel suo baricentro."
+            ],
+            [
+              "At every point equally.",
+              "In ogni punto allo stesso modo."
+            ],
+            [
+              "Only at its surface.",
+              "Solo sulla superficie."
+            ],
+            [
+              "Only at its support base.",
+              "Solo alla base d'appoggio."
+            ]
+          ],
+          "why": [
+            "The centre of gravity is the effective point of action of weight.",
+            "Il baricentro è il punto efficace di applicazione del peso."
+          ]
+        },
+        {
+          "q": [
+            "Which change usually increases stability?",
+            "Quale cambiamento aumenta di solito la stabilità?"
+          ],
+          "a": [
+            [
+              "Lower the centre of gravity and widen the base.",
+              "Abbassare il baricentro e allargare la base."
+            ],
+            [
+              "Raise the centre of gravity.",
+              "Alzare il baricentro."
+            ],
+            [
+              "Narrow the base.",
+              "Restringere la base."
+            ],
+            [
+              "Remove the support.",
+              "Togliere il supporto."
+            ]
+          ],
+          "why": [
+            "A low centre of gravity and wide base make tipping harder.",
+            "Un baricentro basso e una base larga rendono più difficile il ribaltamento."
+          ]
+        },
+        {
+          "q": [
+            "A ball in a bowl is an example of…",
+            "Una palla in una conca è un esempio di…"
+          ],
+          "a": [
+            [
+              "stable equilibrium.",
+              "equilibrio stabile."
+            ],
+            [
+              "unstable equilibrium.",
+              "equilibrio instabile."
+            ],
+            [
+              "neutral equilibrium.",
+              "equilibrio indifferente."
+            ],
+            [
+              "no gravity.",
+              "assenza di gravità."
+            ]
+          ],
+          "why": [
+            "After a small displacement, the ball tends to return.",
+            "Dopo un piccolo spostamento, la palla tende a tornare."
+          ]
+        },
+        {
+          "q": [
+            "A ball on a flat horizontal surface is approximately…",
+            "Una palla su una superficie piana orizzontale è approssimativamente…"
+          ],
+          "a": [
+            [
+              "in neutral equilibrium.",
+              "in equilibrio indifferente."
+            ],
+            [
+              "in unstable equilibrium.",
+              "in equilibrio instabile."
+            ],
+            [
+              "in stable equilibrium.",
+              "in equilibrio stabile."
+            ],
+            [
+              "without weight.",
+              "senza peso."
+            ]
+          ],
+          "why": [
+            "After a small move, it can remain in its new position.",
+            "Dopo un piccolo spostamento, può restare nella nuova posizione."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "The centre of gravity is the point where an object's weight can be considered to act. A low centre of gravity and wide support base usually increase stability.",
+          "Il baricentro è il punto in cui si può considerare applicato il peso di un oggetto. Un baricentro basso e una base d'appoggio ampia aumentano di solito la stabilità."
+        ],
+        [
+          "Stable equilibrium returns after a small disturbance; unstable equilibrium moves farther away; neutral equilibrium stays in its new position.",
+          "L'equilibrio stabile ritorna dopo una piccola perturbazione; quello instabile si allontana ulteriormente; quello indifferente resta nella nuova posizione."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "Where can an object's weight be considered to act?",
+              "In quale punto si può considerare applicato il peso di un oggetto?"
+            ],
+            "a": [
+              [
+                "At its centre of gravity.",
+                "Nel suo baricentro."
+              ],
+              [
+                "At every point equally.",
+                "In ogni punto allo stesso modo."
+              ],
+              [
+                "Only at its surface.",
+                "Solo sulla superficie."
+              ],
+              [
+                "Only at its support base.",
+                "Solo alla base d'appoggio."
+              ]
+            ],
+            "why": [
+              "The centre of gravity is the effective point of action of weight.",
+              "Il baricentro è il punto efficace di applicazione del peso."
+            ]
+          },
+          {
+            "q": [
+              "Which change usually increases stability?",
+              "Quale cambiamento aumenta di solito la stabilità?"
+            ],
+            "a": [
+              [
+                "Lower the centre of gravity and widen the base.",
+                "Abbassare il baricentro e allargare la base."
+              ],
+              [
+                "Raise the centre of gravity.",
+                "Alzare il baricentro."
+              ],
+              [
+                "Narrow the base.",
+                "Restringere la base."
+              ],
+              [
+                "Remove the support.",
+                "Togliere il supporto."
+              ]
+            ],
+            "why": [
+              "A low centre of gravity and wide base make tipping harder.",
+              "Un baricentro basso e una base larga rendono più difficile il ribaltamento."
+            ]
+          },
+          {
+            "q": [
+              "A ball in a bowl is an example of…",
+              "Una palla in una conca è un esempio di…"
+            ],
+            "a": [
+              [
+                "stable equilibrium.",
+                "equilibrio stabile."
+              ],
+              [
+                "unstable equilibrium.",
+                "equilibrio instabile."
+              ],
+              [
+                "neutral equilibrium.",
+                "equilibrio indifferente."
+              ],
+              [
+                "no gravity.",
+                "assenza di gravità."
+              ]
+            ],
+            "why": [
+              "After a small displacement, the ball tends to return.",
+              "Dopo un piccolo spostamento, la palla tende a tornare."
+            ]
+          },
+          {
+            "q": [
+              "A ball on a flat horizontal surface is approximately…",
+              "Una palla su una superficie piana orizzontale è approssimativamente…"
+            ],
+            "a": [
+              [
+                "in neutral equilibrium.",
+                "in equilibrio indifferente."
+              ],
+              [
+                "in unstable equilibrium.",
+                "in equilibrio instabile."
+              ],
+              [
+                "in stable equilibrium.",
+                "in equilibrio stabile."
+              ],
+              [
+                "without weight.",
+                "senza peso."
+              ]
+            ],
+            "why": [
+              "After a small move, it can remain in its new position.",
+              "Dopo un piccolo spostamento, può restare nella nuova posizione."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "centre-gravity",
+          "centre-gravity",
+          "equilibrium-types",
+          "equilibrium-types"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-4m2-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p5m1",
     "arc": 20,
@@ -19434,7 +24510,571 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p5m1-objective-1",
+          "description": [
+            "Calculate pressure from force and area",
+            "Calcolare la pressione da forza e area"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p5m1-objective-2",
+          "description": [
+            "Explain pressure in fluids and at depth",
+            "Spiegare la pressione nei fluidi e in profondità"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "pressure",
+          "title": [
+            "Pressure",
+            "Pressione"
+          ],
+          "explanation": [
+            "Pressure is perpendicular force divided by area: p = F/A. Its SI unit is the pascal (Pa), equal to N/m².",
+            "La pressione è la forza perpendicolare divisa per l'area: p = F/A. L'unità SI è il pascal (Pa), pari a N/m²."
+          ],
+          "example": [
+            "A 100 N force spread over 2 m² gives p = 50 Pa.",
+            "Una forza di 100 N distribuita su 2 m² dà p = 50 Pa."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A 100 N force spread over 2 m² gives p = 50 Pa.",
+              "Una forza di 100 N distribuita su 2 m² dà p = 50 Pa."
+            ],
+            "steps": [
+              [
+                "The same force on a smaller area creates greater pressure.",
+                "La stessa forza su un'area minore produce una pressione maggiore."
+              ],
+              [
+                "Pressure increases with force and decreases as area increases.",
+                "La pressione aumenta con la forza e diminuisce se aumenta l'area."
+              ]
+            ],
+            "answer": [
+              "Pressure is not the same as force; area matters.",
+              "La pressione non è la stessa cosa della forza: conta l'area."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        },
+        {
+          "id": "fluid-pressure",
+          "title": [
+            "Pressure in fluids: Pascal and Stevin",
+            "Pressione nei fluidi: Pascal e Stevino"
+          ],
+          "explanation": [
+            "Pascal's principle describes pressure transmission in a confined fluid. Stevin's law gives the depth contribution: p = ρgh.",
+            "Il principio di Pascal descrive la trasmissione della pressione in un fluido confinato. La legge di Stevino dà il contributo della profondità: p = ρgh."
+          ],
+          "example": [
+            "In the same liquid, pressure increases with depth because p = ρgh grows with h.",
+            "Nello stesso liquido, la pressione aumenta con la profondità perché p = ρgh cresce con h."
+          ],
+          "workedExample": {
+            "scenario": [
+              "In the same liquid, pressure increases with depth because p = ρgh grows with h.",
+              "Nello stesso liquido, la pressione aumenta con la profondità perché p = ρgh cresce con h."
+            ],
+            "steps": [
+              [
+                "At the same depth in the same static fluid, pressure is the same in the ideal case.",
+                "Alla stessa profondità nello stesso fluido statico, nel caso ideale, la pressione è uguale."
+              ],
+              [
+                "Stevin's depth pressure does not depend on the container's shape.",
+                "La pressione idrostatica di Stevino non dipende dalla forma del recipiente."
+              ]
+            ],
+            "answer": [
+              null,
+              null
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-5m1-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "What is the formula for pressure?",
+                "Qual è la formula della pressione?"
+              ],
+              "a": [
+                [
+                  "p = F/A",
+                  "p = F/A"
+                ],
+                [
+                  "p = F × A",
+                  "p = F × A"
+                ],
+                [
+                  "p = A/F",
+                  "p = A/F"
+                ],
+                [
+                  "p = F + A",
+                  "p = F + A"
+                ]
+              ],
+              "why": [
+                "Pressure is perpendicular force divided by area.",
+                "La pressione è la forza perpendicolare divisa per l'area."
+              ]
+            },
+            {
+              "q": [
+                "What is the SI unit of pressure?",
+                "Qual è l'unità SI della pressione?"
+              ],
+              "a": [
+                [
+                  "pascal (Pa)",
+                  "pascal (Pa)"
+                ],
+                [
+                  "newton (N)",
+                  "newton (N)"
+                ],
+                [
+                  "joule (J)",
+                  "joule (J)"
+                ],
+                [
+                  "kilogram (kg)",
+                  "chilogrammo (kg)"
+                ]
+              ],
+              "why": [
+                "One pascal is one newton per square metre.",
+                "Un pascal è un newton per metro quadrato."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ]
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-5m1-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Same force on a smaller area: pressure…",
+                "Stessa forza su un'area minore: la pressione…"
+              ],
+              "a": [
+                [
+                  "increases.",
+                  "aumenta."
+                ],
+                [
+                  "decreases.",
+                  "diminuisce."
+                ],
+                [
+                  "becomes zero.",
+                  "diventa zero."
+                ],
+                [
+                  "becomes mass.",
+                  "diventa massa."
+                ]
+              ],
+              "why": [
+                "For fixed force, pressure is inversely proportional to area.",
+                "A forza costante, la pressione è inversamente proporzionale all'area."
+              ]
+            },
+            {
+              "q": [
+                "According to Stevin's law, liquid pressure increases with…",
+                "Secondo la legge di Stevino, la pressione di un liquido aumenta con…"
+              ],
+              "a": [
+                [
+                  "depth.",
+                  "la profondità."
+                ],
+                [
+                  "container colour.",
+                  "il colore del recipiente."
+                ],
+                [
+                  "container shape only.",
+                  "solo la forma del recipiente."
+                ],
+                [
+                  "surface area only.",
+                  "solo l'area della superficie."
+                ]
+              ],
+              "why": [
+                "The depth h makes pressure grow deeper in the liquid.",
+                "La profondità h fa aumentare la pressione nel liquido."
+              ]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "What is the formula for pressure?",
+            "Qual è la formula della pressione?"
+          ],
+          "a": [
+            [
+              "p = F/A",
+              "p = F/A"
+            ],
+            [
+              "p = F × A",
+              "p = F × A"
+            ],
+            [
+              "p = A/F",
+              "p = A/F"
+            ],
+            [
+              "p = F + A",
+              "p = F + A"
+            ]
+          ],
+          "why": [
+            "Pressure is perpendicular force divided by area.",
+            "La pressione è la forza perpendicolare divisa per l'area."
+          ]
+        },
+        {
+          "q": [
+            "What is the SI unit of pressure?",
+            "Qual è l'unità SI della pressione?"
+          ],
+          "a": [
+            [
+              "pascal (Pa)",
+              "pascal (Pa)"
+            ],
+            [
+              "newton (N)",
+              "newton (N)"
+            ],
+            [
+              "joule (J)",
+              "joule (J)"
+            ],
+            [
+              "kilogram (kg)",
+              "chilogrammo (kg)"
+            ]
+          ],
+          "why": [
+            "One pascal is one newton per square metre.",
+            "Un pascal è un newton per metro quadrato."
+          ]
+        },
+        {
+          "q": [
+            "Same force on a smaller area: pressure…",
+            "Stessa forza su un'area minore: la pressione…"
+          ],
+          "a": [
+            [
+              "increases.",
+              "aumenta."
+            ],
+            [
+              "decreases.",
+              "diminuisce."
+            ],
+            [
+              "becomes zero.",
+              "diventa zero."
+            ],
+            [
+              "becomes mass.",
+              "diventa massa."
+            ]
+          ],
+          "why": [
+            "For fixed force, pressure is inversely proportional to area.",
+            "A forza costante, la pressione è inversamente proporzionale all'area."
+          ]
+        },
+        {
+          "q": [
+            "According to Stevin's law, liquid pressure increases with…",
+            "Secondo la legge di Stevino, la pressione di un liquido aumenta con…"
+          ],
+          "a": [
+            [
+              "depth.",
+              "la profondità."
+            ],
+            [
+              "container colour.",
+              "il colore del recipiente."
+            ],
+            [
+              "container shape only.",
+              "solo la forma del recipiente."
+            ],
+            [
+              "surface area only.",
+              "solo l'area della superficie."
+            ]
+          ],
+          "why": [
+            "The depth h makes pressure grow deeper in the liquid.",
+            "La profondità h fa aumentare la pressione nel liquido."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "Pressure is perpendicular force divided by area: p = F/A. Its SI unit is the pascal (Pa), equal to N/m².",
+          "La pressione è la forza perpendicolare divisa per l'area: p = F/A. L'unità SI è il pascal (Pa), pari a N/m²."
+        ],
+        [
+          "Pascal's principle describes pressure transmission in a confined fluid. Stevin's law gives the depth contribution: p = ρgh.",
+          "Il principio di Pascal descrive la trasmissione della pressione in un fluido confinato. La legge di Stevino dà il contributo della profondità: p = ρgh."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "What is the formula for pressure?",
+              "Qual è la formula della pressione?"
+            ],
+            "a": [
+              [
+                "p = F/A",
+                "p = F/A"
+              ],
+              [
+                "p = F × A",
+                "p = F × A"
+              ],
+              [
+                "p = A/F",
+                "p = A/F"
+              ],
+              [
+                "p = F + A",
+                "p = F + A"
+              ]
+            ],
+            "why": [
+              "Pressure is perpendicular force divided by area.",
+              "La pressione è la forza perpendicolare divisa per l'area."
+            ]
+          },
+          {
+            "q": [
+              "What is the SI unit of pressure?",
+              "Qual è l'unità SI della pressione?"
+            ],
+            "a": [
+              [
+                "pascal (Pa)",
+                "pascal (Pa)"
+              ],
+              [
+                "newton (N)",
+                "newton (N)"
+              ],
+              [
+                "joule (J)",
+                "joule (J)"
+              ],
+              [
+                "kilogram (kg)",
+                "chilogrammo (kg)"
+              ]
+            ],
+            "why": [
+              "One pascal is one newton per square metre.",
+              "Un pascal è un newton per metro quadrato."
+            ]
+          },
+          {
+            "q": [
+              "Same force on a smaller area: pressure…",
+              "Stessa forza su un'area minore: la pressione…"
+            ],
+            "a": [
+              [
+                "increases.",
+                "aumenta."
+              ],
+              [
+                "decreases.",
+                "diminuisce."
+              ],
+              [
+                "becomes zero.",
+                "diventa zero."
+              ],
+              [
+                "becomes mass.",
+                "diventa massa."
+              ]
+            ],
+            "why": [
+              "For fixed force, pressure is inversely proportional to area.",
+              "A forza costante, la pressione è inversamente proporzionale all'area."
+            ]
+          },
+          {
+            "q": [
+              "According to Stevin's law, liquid pressure increases with…",
+              "Secondo la legge di Stevino, la pressione di un liquido aumenta con…"
+            ],
+            "a": [
+              [
+                "depth.",
+                "la profondità."
+              ],
+              [
+                "container colour.",
+                "il colore del recipiente."
+              ],
+              [
+                "container shape only.",
+                "solo la forma del recipiente."
+              ],
+              [
+                "surface area only.",
+                "solo l'area della superficie."
+              ]
+            ],
+            "why": [
+              "The depth h makes pressure grow deeper in the liquid.",
+              "La profondità h fa aumentare la pressione nel liquido."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "pressure",
+          "pressure",
+          "fluid-pressure",
+          "fluid-pressure"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-5m1-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p5m2",
     "arc": 20,
@@ -19724,7 +25364,571 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p5m2-objective-1",
+          "description": [
+            "Explain the buoyant force",
+            "Spiegare la spinta idrostatica"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p5m2-objective-2",
+          "description": [
+            "Apply Archimedes' principle to floating and sinking",
+            "Applicare il principio di Archimede al galleggiamento e all'affondamento"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "buoyancy",
+          "title": [
+            "Buoyant force",
+            "Spinta idrostatica"
+          ],
+          "explanation": [
+            "A fluid exerts an upward buoyant force on an immersed object. The force is linked to the pressure difference between the lower and upper parts.",
+            "Un fluido esercita una spinta verso l'alto su un corpo immerso. La forza è collegata alla differenza di pressione tra la parte inferiore e quella superiore."
+          ],
+          "example": [
+            "A submerged block feels an upward push from the water.",
+            "Un blocco immerso sente una spinta verso l'alto esercitata dall'acqua."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A submerged block feels an upward push from the water.",
+              "Un blocco immerso sente una spinta verso l'alto esercitata dall'acqua."
+            ],
+            "steps": [
+              [
+                "The buoyant force acts upward, opposite to weight.",
+                "La spinta idrostatica è diretta verso l'alto, opposta al peso."
+              ],
+              [
+                "Buoyancy exists in liquids and gases.",
+                "La spinta idrostatica esiste nei liquidi e nei gas."
+              ]
+            ],
+            "answer": [
+              "Buoyancy is not caused by an object having no weight.",
+              "Il galleggiamento non è dovuto all'assenza di peso del corpo."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        },
+        {
+          "id": "archimedes",
+          "title": [
+            "Archimedes' principle",
+            "Principio di Archimede"
+          ],
+          "explanation": [
+            "The buoyant force equals the weight of the displaced fluid: Fb = ρfluid g Vdisplaced. A floating object is in vertical balance when buoyancy equals weight.",
+            "La spinta idrostatica è uguale al peso del fluido spostato: Fb = ρfluido g Vspostato. Un corpo galleggiante è in equilibrio verticale quando la spinta è uguale al peso."
+          ],
+          "example": [
+            "If 0.002 m³ of water is displaced, its mass is about 2 kg and its weight about 19.6 N.",
+            "Se vengono spostati 0,002 m³ d'acqua, la sua massa è circa 2 kg e il suo peso circa 19,6 N."
+          ],
+          "workedExample": {
+            "scenario": [
+              "If 0.002 m³ of water is displaced, its mass is about 2 kg and its weight about 19.6 N.",
+              "Se vengono spostati 0,002 m³ d'acqua, la sua massa è circa 2 kg e il suo peso circa 19,6 N."
+            ],
+            "steps": [
+              [
+                "Compare average object density with fluid density to predict floating or sinking in simple cases.",
+                "Confronta la densità media del corpo con quella del fluido per prevedere se galleggia o affonda nei casi semplici."
+              ],
+              [
+                "A floating object displaces fluid whose weight equals the object's weight.",
+                "Un corpo galleggiante sposta fluido il cui peso è uguale al peso del corpo."
+              ]
+            ],
+            "answer": [
+              "A large object does not automatically sink; shape and displaced volume matter.",
+              "Un oggetto grande non affonda automaticamente: contano la forma e il volume spostato."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-5m2-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "In which direction does buoyant force act?",
+                "In quale direzione agisce la spinta idrostatica?"
+              ],
+              "a": [
+                [
+                  "Upward.",
+                  "Verso l'alto."
+                ],
+                [
+                  "Downward only.",
+                  "Solo verso il basso."
+                ],
+                [
+                  "Sideways only.",
+                  "Solo lateralmente."
+                ],
+                [
+                  "It has no direction.",
+                  "Non ha direzione."
+                ]
+              ],
+              "why": [
+                "Buoyant force acts upward on an immersed object.",
+                "La spinta idrostatica agisce verso l'alto su un corpo immerso."
+              ]
+            },
+            {
+              "q": [
+                "Archimedes' principle says buoyant force equals…",
+                "Il principio di Archimede afferma che la spinta è uguale a…"
+              ],
+              "a": [
+                [
+                  "the weight of the displaced fluid.",
+                  "il peso del fluido spostato."
+                ],
+                [
+                  "the object's volume.",
+                  "il volume dell'oggetto."
+                ],
+                [
+                  "the object's mass.",
+                  "la massa dell'oggetto."
+                ],
+                [
+                  "atmospheric pressure.",
+                  "la pressione atmosferica."
+                ]
+              ],
+              "why": [
+                "The displaced fluid's weight determines the buoyant force.",
+                "Il peso del fluido spostato determina la spinta."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ]
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-5m2-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "An object with average density lower than water will generally…",
+                "Un oggetto con densità media minore di quella dell'acqua generalmente…"
+              ],
+              "a": [
+                [
+                  "float in water.",
+                  "galleggia nell'acqua."
+                ],
+                [
+                  "always sink.",
+                  "affonda sempre."
+                ],
+                [
+                  "have no weight.",
+                  "non ha peso."
+                ],
+                [
+                  "turn into water.",
+                  "si trasforma in acqua."
+                ]
+              ],
+              "why": [
+                "A lower average density allows the object to float.",
+                "Una densità media minore permette al corpo di galleggiare."
+              ]
+            },
+            {
+              "q": [
+                "A floating object is in vertical balance when…",
+                "Un corpo galleggiante è in equilibrio verticale quando…"
+              ],
+              "a": [
+                [
+                  "buoyant force equals its weight.",
+                  "la spinta idrostatica è uguale al suo peso."
+                ],
+                [
+                  "buoyant force is zero.",
+                  "la spinta è zero."
+                ],
+                [
+                  "its mass is zero.",
+                  "la sua massa è zero."
+                ],
+                [
+                  "water pressure is absent.",
+                  "la pressione dell'acqua è assente."
+                ]
+              ],
+              "why": [
+                "Equal upward and downward forces give vertical equilibrium.",
+                "Forze uguali verso l'alto e verso il basso danno equilibrio verticale."
+              ]
+            }
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "In which direction does buoyant force act?",
+            "In quale direzione agisce la spinta idrostatica?"
+          ],
+          "a": [
+            [
+              "Upward.",
+              "Verso l'alto."
+            ],
+            [
+              "Downward only.",
+              "Solo verso il basso."
+            ],
+            [
+              "Sideways only.",
+              "Solo lateralmente."
+            ],
+            [
+              "It has no direction.",
+              "Non ha direzione."
+            ]
+          ],
+          "why": [
+            "Buoyant force acts upward on an immersed object.",
+            "La spinta idrostatica agisce verso l'alto su un corpo immerso."
+          ]
+        },
+        {
+          "q": [
+            "Archimedes' principle says buoyant force equals…",
+            "Il principio di Archimede afferma che la spinta è uguale a…"
+          ],
+          "a": [
+            [
+              "the weight of the displaced fluid.",
+              "il peso del fluido spostato."
+            ],
+            [
+              "the object's volume.",
+              "il volume dell'oggetto."
+            ],
+            [
+              "the object's mass.",
+              "la massa dell'oggetto."
+            ],
+            [
+              "atmospheric pressure.",
+              "la pressione atmosferica."
+            ]
+          ],
+          "why": [
+            "The displaced fluid's weight determines the buoyant force.",
+            "Il peso del fluido spostato determina la spinta."
+          ]
+        },
+        {
+          "q": [
+            "An object with average density lower than water will generally…",
+            "Un oggetto con densità media minore di quella dell'acqua generalmente…"
+          ],
+          "a": [
+            [
+              "float in water.",
+              "galleggia nell'acqua."
+            ],
+            [
+              "always sink.",
+              "affonda sempre."
+            ],
+            [
+              "have no weight.",
+              "non ha peso."
+            ],
+            [
+              "turn into water.",
+              "si trasforma in acqua."
+            ]
+          ],
+          "why": [
+            "A lower average density allows the object to float.",
+            "Una densità media minore permette al corpo di galleggiare."
+          ]
+        },
+        {
+          "q": [
+            "A floating object is in vertical balance when…",
+            "Un corpo galleggiante è in equilibrio verticale quando…"
+          ],
+          "a": [
+            [
+              "buoyant force equals its weight.",
+              "la spinta idrostatica è uguale al suo peso."
+            ],
+            [
+              "buoyant force is zero.",
+              "la spinta è zero."
+            ],
+            [
+              "its mass is zero.",
+              "la sua massa è zero."
+            ],
+            [
+              "water pressure is absent.",
+              "la pressione dell'acqua è assente."
+            ]
+          ],
+          "why": [
+            "Equal upward and downward forces give vertical equilibrium.",
+            "Forze uguali verso l'alto e verso il basso danno equilibrio verticale."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "A fluid exerts an upward buoyant force on an immersed object. The force is linked to the pressure difference between the lower and upper parts.",
+          "Un fluido esercita una spinta verso l'alto su un corpo immerso. La forza è collegata alla differenza di pressione tra la parte inferiore e quella superiore."
+        ],
+        [
+          "The buoyant force equals the weight of the displaced fluid: Fb = ρfluid g Vdisplaced. A floating object is in vertical balance when buoyancy equals weight.",
+          "La spinta idrostatica è uguale al peso del fluido spostato: Fb = ρfluido g Vspostato. Un corpo galleggiante è in equilibrio verticale quando la spinta è uguale al peso."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "In which direction does buoyant force act?",
+              "In quale direzione agisce la spinta idrostatica?"
+            ],
+            "a": [
+              [
+                "Upward.",
+                "Verso l'alto."
+              ],
+              [
+                "Downward only.",
+                "Solo verso il basso."
+              ],
+              [
+                "Sideways only.",
+                "Solo lateralmente."
+              ],
+              [
+                "It has no direction.",
+                "Non ha direzione."
+              ]
+            ],
+            "why": [
+              "Buoyant force acts upward on an immersed object.",
+              "La spinta idrostatica agisce verso l'alto su un corpo immerso."
+            ]
+          },
+          {
+            "q": [
+              "Archimedes' principle says buoyant force equals…",
+              "Il principio di Archimede afferma che la spinta è uguale a…"
+            ],
+            "a": [
+              [
+                "the weight of the displaced fluid.",
+                "il peso del fluido spostato."
+              ],
+              [
+                "the object's volume.",
+                "il volume dell'oggetto."
+              ],
+              [
+                "the object's mass.",
+                "la massa dell'oggetto."
+              ],
+              [
+                "atmospheric pressure.",
+                "la pressione atmosferica."
+              ]
+            ],
+            "why": [
+              "The displaced fluid's weight determines the buoyant force.",
+              "Il peso del fluido spostato determina la spinta."
+            ]
+          },
+          {
+            "q": [
+              "An object with average density lower than water will generally…",
+              "Un oggetto con densità media minore di quella dell'acqua generalmente…"
+            ],
+            "a": [
+              [
+                "float in water.",
+                "galleggia nell'acqua."
+              ],
+              [
+                "always sink.",
+                "affonda sempre."
+              ],
+              [
+                "have no weight.",
+                "non ha peso."
+              ],
+              [
+                "turn into water.",
+                "si trasforma in acqua."
+              ]
+            ],
+            "why": [
+              "A lower average density allows the object to float.",
+              "Una densità media minore permette al corpo di galleggiare."
+            ]
+          },
+          {
+            "q": [
+              "A floating object is in vertical balance when…",
+              "Un corpo galleggiante è in equilibrio verticale quando…"
+            ],
+            "a": [
+              [
+                "buoyant force equals its weight.",
+                "la spinta idrostatica è uguale al suo peso."
+              ],
+              [
+                "buoyant force is zero.",
+                "la spinta è zero."
+              ],
+              [
+                "its mass is zero.",
+                "la sua massa è zero."
+              ],
+              [
+                "water pressure is absent.",
+                "la pressione dell'acqua è assente."
+              ]
+            ],
+            "why": [
+              "Equal upward and downward forces give vertical equilibrium.",
+              "Forze uguali verso l'alto e verso il basso danno equilibrio verticale."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "buoyancy",
+          "buoyancy",
+          "archimedes",
+          "archimedes"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-5m2-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "m1m1",
     "arc": 21,
