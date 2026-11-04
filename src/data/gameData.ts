@@ -43,8 +43,8 @@ export const SUBJECTS: SubjectInfo[] = [
       "Numeri, insiemi, algebra, geometria e statistica — trasforma ogni argomento in una tecnica."
     ],
     "meta": [
-      "3 units · chapters 1–11 + G1–G4 · missions coming soon",
-      "3 unità · capitoli 1–11 + G1–G4 · missioni in arrivo"
+      "6 chapters · 28 missions",
+      "6 capitoli · 28 missioni"
     ],
     "art": "<svg viewBox=\"0 0 120 120\" width=\"100%\" aria-hidden=\"true\"><defs><linearGradient id=\"mg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#ffd166\"/><stop offset=\"1\" stop-color=\"#ff6a3d\"/></linearGradient></defs><text x=\"60\" y=\"72\" text-anchor=\"middle\" font-family=\"Dela Gothic One, Arial Black, sans-serif\" font-size=\"42\" fill=\"url(#mg)\">∑</text></svg>"
   }
