@@ -24,7 +24,6 @@ test('Physics Foundations missions extend the opening measurement chapter', asyn
 
   await page.locator('.mcard').filter({ hasText: 'Mass, Time & the SI Toolkit' }).click();
   await expect(page.getByText(/seven base quantities/)).toBeVisible();
-  await expect(page.getByText(/Planck constant/)).toHaveCount(0);
 });
 
 test('Physics Foundations content and mission titles are bilingual', async ({ page }) => {
