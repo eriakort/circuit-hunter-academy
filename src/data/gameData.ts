@@ -28763,3 +28763,26 @@ MISSIONS.push(...GRADE5_HUMAN_BODY_MISSIONS.map(mission => ({
   ...mission,
   arc: mission.arc + grade5HumanBodyArcOffset
 })));
+
+
+// Grade 5 Science · Self-assessment and workbook practice (pages 100–120).
+import { GRADE5_SCIENCE_REVIEW_MISSIONS } from './grade5ScienceReviewData';
+
+const grade5ScienceReviewUnitOffset = UNITS.length;
+UNITS.push({
+  title: ['Self-Assessment & Workbook', 'Autovalutazione e quaderno operativo'],
+  ch: '45–46',
+  subject: 'science'
+});
+const grade5ScienceReviewArcOffset = ARCS.length;
+ARCS.push({
+  n: 5,
+  unit: grade5ScienceReviewUnitOffset,
+  subject: 'science',
+  title: ['Self-Assessment & Workbook', 'Autovalutazione e quaderno operativo'],
+  pages: '100–120'
+});
+MISSIONS.push(...GRADE5_SCIENCE_REVIEW_MISSIONS.map(mission => ({
+  ...mission,
+  arc: mission.arc + grade5ScienceReviewArcOffset
+})));
