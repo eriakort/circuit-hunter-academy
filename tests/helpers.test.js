@@ -110,6 +110,6 @@ import { GRADES, GRADE_SUBJECT_IDS, getSubjectsForGrade } from '../src/data/grad
 import { SUBJECTS } from '../src/data/gameData';
 console.assert(GRADES.some(grade => grade.id === 'grade5' && grade.status === 'preparing'));
 console.assert(GRADES.some(grade => grade.id === 'grade9' && grade.status === 'ready'));
-console.assert(GRADE_SUBJECT_IDS.grade5.length === 0);
+console.assert(GRADE_SUBJECT_IDS.grade5.join(',') === 'science');
 console.assert(getSubjectsForGrade('grade9', SUBJECTS).map(subject => subject.id).join(',') === 'cs,phys,math');
-console.assert(getSubjectsForGrade('grade5', SUBJECTS).length === 0);
+console.assert(getSubjectsForGrade('grade5', SUBJECTS).map(subject => subject.id).join(',') === 'science');
