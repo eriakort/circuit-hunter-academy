@@ -25,7 +25,7 @@ export const TestScreen: React.FC = () => {
 
   // Active Test State
   const [activeQuestions, setActiveQuestions] = useState<
-    Array<{ q: TaggedQuestion; shuffledAnswers: string[]; correctIdx: number }>
+    Array<{ q: TaggedQuestion; shuffledAnswerIndexes: number[]; correctIdx: number }>
   >([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState<Array<{ selectedIdx: number; isCorrect: boolean }>>([]);
@@ -46,11 +46,9 @@ export const TestScreen: React.FC = () => {
     const picked = pickRandomQuestions(pool, questionCount);
 
     const prepared = picked.map(q => {
-      const rawOptions = q.a.map(opt => L(opt, lang));
-      const rightAnswer = rawOptions[0];
-      const shuffledOpts = shuffle(rawOptions.slice());
-      const correctIdx = shuffledOpts.indexOf(rightAnswer);
-      return { q, shuffledAnswers: shuffledOpts, correctIdx };
+      const shuffledAnswerIndexes = shuffle(q.a.map((_, index) => index));
+      const correctIdx = shuffledAnswerIndexes.indexOf(0);
+      return { q, shuffledAnswerIndexes, correctIdx };
     });
 
     setActiveQuestions(prepared);
@@ -251,7 +249,7 @@ export const TestScreen: React.FC = () => {
           </div>
 
           <div className="opts">
-            {currentItem.shuffledAnswers.map((optText, optIdx) => {
+            {currentItem.shuffledAnswerIndexes.map((answerIndex, optIdx) => {
               let optClass = 'btn ghost opt';
               if (answeredCurrent) {
                 if (testMode === 'practice') {
@@ -271,7 +269,7 @@ export const TestScreen: React.FC = () => {
                   disabled={answeredCurrent}
                   onClick={() => handleSelectOption(optIdx)}
                 >
-                  {optText}
+                  {L(currentItem.q.a[answerIndex], lang)}
                 </button>
               );
             })}
@@ -291,7 +289,7 @@ export const TestScreen: React.FC = () => {
                         : L(['Incorrect!', 'Sbagliato!'], lang)
                     }</b> ${
                       selectedOptIdx !== currentItem.correctIdx
-                        ? `${L(['The answer is', 'La risposta è'], lang)} "${currentItem.shuffledAnswers[currentItem.correctIdx]}". `
+                        ? `${L(['The answer is', 'La risposta è'], lang)} "${L(currentItem.q.a[currentItem.shuffledAnswerIndexes[currentItem.correctIdx]], lang)}". `
                         : ''
                     }${L(currentItem.q.why, lang)}`
                   }}
@@ -380,8 +378,8 @@ export const TestScreen: React.FC = () => {
           {activeQuestions.map((item, idx) => {
             const answer = userAnswers[idx];
             const isCorrect = answer?.isCorrect;
-            const chosenText = answer ? item.shuffledAnswers[answer.selectedIdx] : '';
-            const correctText = item.shuffledAnswers[item.correctIdx];
+            const chosenText = answer ? L(item.q.a[item.shuffledAnswerIndexes[answer.selectedIdx]], lang) : '';
+            const correctText = L(item.q.a[item.shuffledAnswerIndexes[item.correctIdx]], lang);
 
             return (
               <div
