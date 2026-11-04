@@ -213,10 +213,6 @@ export const MissionScreen: React.FC = () => {
         missionCleared={!!state.cleared[currentMission.id]}
       />
 
-      {currentMission.id.startsWith('p') && currentSceneIndex === 1 && (
-        <PhysicsLab missionId={currentMission.id} lang={lang} />
-      )}
-
       {!sc.type ? (
         <>
           {visualContent && (
@@ -255,6 +251,10 @@ export const MissionScreen: React.FC = () => {
             </section>
           )}
         </div>
+      )}
+
+      {currentMission.id.startsWith('p') && currentSceneIndex === 1 && (
+        <PhysicsLab missionId={currentMission.id} lang={lang} />
       )}
 
       {guidedPractice && guidedQuestion && !guidedComplete && (
