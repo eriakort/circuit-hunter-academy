@@ -56,11 +56,7 @@ const AppContent: React.FC = () => {
   const { view, state } = useGame();
 
   // New learners choose a grade first; existing Grade 9 saves are migrated in GameContext.
-  const activeView = !state.grade
-    ? 'grades'
-    : state.grade === 'grade5' && !['grades', 'subjects'].includes(view)
-      ? 'subjects'
-      : view;
+  const activeView = !state.grade ? 'grades' : view;
 
   return (
     <div className="wrap">
