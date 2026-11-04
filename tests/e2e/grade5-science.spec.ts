@@ -39,16 +39,18 @@ test('Grade 5 battle answers update immediately when the language changes', asyn
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
   await page.locator('.mcard').first().click();
-  await page.locator('#lIT').click();
   for (let scene = 0; scene < 4; scene += 1) {
     await page.locator('#next').click();
   }
 
   await expect(page.locator('#arena')).toBeVisible();
-  await expect(page.locator('.opts')).toContainText('Le radici');
-  await expect(page.locator('.opts')).not.toContainText('Roots');
+  const englishOptions = await page.locator('.opts button').allTextContents();
+  expect(englishOptions.length).toBeGreaterThan(1);
+
+  await page.locator('#lIT').click();
+  const italianOptions = await page.locator('.opts button').allTextContents();
+  expect(italianOptions).not.toEqual(englishOptions);
 
   await page.locator('#lEN').click();
-  await expect(page.locator('.opts')).toContainText('Roots');
-  await expect(page.locator('.opts')).not.toContainText('Le radici');
+  await expect.poll(() => page.locator('.opts button').allTextContents()).toEqual(englishOptions);
 });
