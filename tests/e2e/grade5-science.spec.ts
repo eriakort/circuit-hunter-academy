@@ -138,7 +138,9 @@ test('Grade 5 Science includes the complete bilingual Human Body unit', async ({
   await expect(page.getByRole('heading', { name: 'The Digestive System' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'The Immune System' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'The Organs of the Senses' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'The Human Body: A Marvellous Machine' })).toBeVisible();\n  await expect(page.getByRole('heading', { name: 'Body Systems: The Big Picture' })).toBeVisible();\n  await expect(page.getByRole('heading', { name: 'Human Body Checkpoint' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'The Human Body: A Marvellous Machine' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Body Systems: The Big Picture' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Human Body Checkpoint' })).toBeVisible();
 
   await page.locator('#lIT').click();
   await expect(page.getByRole('heading', { name: 'Il corpo umano', exact: true })).toBeVisible();
@@ -147,5 +149,7 @@ test('Grade 5 Science includes the complete bilingual Human Body unit', async ({
   await expect(page.getByRole('heading', { name: 'STEM: Da che cosa è composto il sangue?' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'L’apparato digerente' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Il sistema immunitario' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Gli organi di senso' })).toBeVisible();\n  await expect(page.getByRole('heading', { name: 'Gli apparati: una mappa d’insieme' })).toBeVisible();\n  await expect(page.getByRole('heading', { name: 'Verifica: il corpo umano' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Gli organi di senso' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Gli apparati: una mappa d’insieme' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Verifica: il corpo umano' })).toBeVisible();
 });
