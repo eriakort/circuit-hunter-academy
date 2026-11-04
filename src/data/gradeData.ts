@@ -11,8 +11,8 @@ export interface GradeInfo {
 
 /**
  * Grade-specific curriculum registry.
- * Grade 5 intentionally has no active subjects yet: its curriculum will be curated
- * separately rather than inheriting Grade 9 subjects such as Physics.
+ * Grade 5 has its own Science & Technology subject and curriculum; it never inherits
+ * Grade 9 subjects such as Physics.
  */
 export const GRADES: GradeInfo[] = [
   {
@@ -34,7 +34,7 @@ export const GRADES: GradeInfo[] = [
 ];
 
 export const GRADE_SUBJECT_IDS: Record<GradeId, string[]> = {
-  grade5: [],
+  grade5: ['science'],
   grade9: ['cs', 'phys', 'math']
 };
 

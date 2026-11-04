@@ -28673,3 +28673,25 @@ export const BUILD = {
     psu: ["The PSU's big cable goes into the 24-pin connector.", "Il cavo grande dell'alimentatore va nel connettore a 24 pin."]
   }
 };
+
+// Grade 5 Science is appended after the existing Grade 9 catalogue so all legacy
+// mission indexes and IDs remain stable.
+import {
+  GRADE5_SCIENCE_SUBJECT,
+  GRADE5_SCIENCE_UNITS,
+  GRADE5_SCIENCE_ARCS,
+  GRADE5_SCIENCE_MISSIONS
+} from './grade5ScienceData';
+
+SUBJECTS.push(GRADE5_SCIENCE_SUBJECT);
+const grade5ScienceUnitOffset = UNITS.length;
+UNITS.push(...GRADE5_SCIENCE_UNITS);
+const grade5ScienceArcOffset = ARCS.length;
+ARCS.push(...GRADE5_SCIENCE_ARCS.map(arc => ({
+  ...arc,
+  unit: (arc.unit || 0) + grade5ScienceUnitOffset
+})));
+MISSIONS.push(...GRADE5_SCIENCE_MISSIONS.map(mission => ({
+  ...mission,
+  arc: mission.arc + grade5ScienceArcOffset
+})));

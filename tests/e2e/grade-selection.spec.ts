@@ -9,14 +9,16 @@ test('new learner chooses a grade before seeing its subjects and the choice surv
   await expect(page.locator('.grade-card')).toHaveCount(2);
 
   await page.locator('.grade-card').first().click();
-  await expect(page.getByRole('heading', { name: 'Grade 5 subjects are being prepared' })).toBeVisible();
-  await expect(page.locator('#hMap')).toHaveCount(0);
-  await expect(page.locator('#hCodex')).toHaveCount(0);
+  await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
+  await expect(page.locator('.subjcard')).toHaveCount(1);
+  await expect(page.locator('#hMap')).not.toHaveAttribute('aria-current', 'page');
+  await expect(page.locator('#hCodex')).not.toHaveAttribute('aria-current', 'page');
 
   await page.reload();
-  await expect(page.getByRole('heading', { name: 'Grade 5 subjects are being prepared' })).toBeVisible();
+  await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
+  await expect(page.locator('.subjcard')).toHaveCount(1);
 
-  await page.getByRole('button', { name: 'Choose another grade' }).click();
+  await page.getByRole('button', { name: /Change grade/ }).click();
   await page.locator('.grade-card-current').click();
   await expect(page.locator('.subjcard')).toHaveCount(3);
   await expect(page.locator('.subjcard[data-s="math"]')).toBeVisible();
