@@ -186,6 +186,7 @@ export interface LearningMissionProgress {
 }
 
 export interface Mission {
+  /** Mission IDs must be globally unique across grades (use a g5- prefix for Grade 5 IDs). */
   id: string;
   arc: number;
   sec: string;
