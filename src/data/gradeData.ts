@@ -11,8 +11,8 @@ export interface GradeInfo {
 
 /**
  * Grade-specific curriculum registry.
- * Grade 5 intentionally has no active subjects yet: its curriculum will be curated
- * separately rather than inheriting Grade 9 subjects such as Physics.
+ * Grade 5 has its own Science & Technology subject and curriculum; it never inherits
+ * Grade 9 subjects such as Physics.
  */
 export const GRADES: GradeInfo[] = [
   {
@@ -21,7 +21,7 @@ export const GRADES: GradeInfo[] = [
     schoolLevel: ['Primary school', 'Scuola primaria'],
     ageRange: ['Usually ages 10–11', 'Generalmente 10–11 anni'],
     description: ['A dedicated primary-school curriculum.', 'Un programma dedicato alla scuola primaria.'],
-    status: 'ready'
+    status: 'preparing'
   },
   {
     id: 'grade9',
