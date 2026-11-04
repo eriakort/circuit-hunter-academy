@@ -14,6 +14,18 @@ async function startPhysics(page: import('@playwright/test').Page) {
   await page.locator('#nm').fill('Physics Foundations Hunter');
   await page.locator('#regf button[type="submit"]').click();
   await expect(page.locator('.learning-dashboard')).toBeVisible();
+
+  // These missions extend chapter 1 and intentionally follow the existing
+  // p1m3 mastery gate. Seed that prerequisite so this suite focuses on the
+  // new content rather than replaying the earlier chapter.
+  await page.evaluate(() => {
+    const key = 'circuit-hunter-academy-v2';
+    const saved = JSON.parse(window.localStorage.getItem(key) || '{}');
+    saved.cleared = { ...(saved.cleared || {}), p1m3: true };
+    window.localStorage.setItem(key, JSON.stringify(saved));
+  });
+  await page.reload();
+  await expect(page.locator('.learning-dashboard')).toBeVisible();
 }
 
 test('Physics Foundations missions extend the opening measurement chapter', async ({ page }) => {
