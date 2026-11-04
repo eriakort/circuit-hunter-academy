@@ -201,5 +201,36 @@ export const GRADE5_SCIENCE_REVIEW_MISSIONS: Mission[] = [
       question('What makes evidence easier for visitors to understand?', 'Che cosa rende le prove più facili da capire per i visitatori?', [['A labelled drawing or clear table', 'Un disegno con etichette o una tabella chiara'], ['A list of unexplained numbers', 'Un elenco di numeri senza spiegazione'], ['A guess without observations', 'Un’ipotesi senza osservazioni']], ['Clear labels and organised records help others understand your findings.', 'Etichette chiare e dati organizzati aiutano gli altri a capire i risultati.']),
       question('How should a team prepare its presentation?', 'Come dovrebbe preparare la presentazione un gruppo?', [['Share tasks and listen respectfully', 'Dividere i compiti e ascoltarsi con rispetto'], ['Let one person do everything', 'Lasciare che una sola persona faccia tutto'], ['Ignore questions from visitors', 'Ignorare le domande dei visitatori']], ['Teamwork includes shared contributions, listening and respectful answers.', 'La collaborazione comprende contributi condivisi, ascolto e risposte rispettose.'])
     ]
+  }),
+
+  makeMission({
+    id: 'g5x-stem-paper-bridge',
+    sec: '6',
+    pages: '101–120',
+    hue: 28,
+    title: ['STEM: Build a Paper Bridge', 'STEM: Costruisci un ponte di carta'],
+    topic: ['Explore how shapes and materials help a structure carry a load', 'Scopri come forme e materiali aiutano una struttura a sostenere un peso'],
+    demon: ['The Wobbly Span', 'La Campata Traballante'],
+    tech: ['Engineering Form · Sixth Technique: Design, Test, Improve', 'Stile dell’Ingegneria · Sesta Tecnica: Progetta, prova, migliora'],
+    lessons: [
+      [
+        '<p>🌉 Can a sheet of paper become a bridge? Place two sturdy books a short distance apart and ask an adult to help you make a small bridge between them. First lay one sheet flat. Add light counters one at a time near the middle and count how many it holds before bending.</p><p>Use only light classroom counters, keep the gap small and stop if the bridge slips. Never stand on the bridge or use heavy objects.</p>',
+        '<p>🌉 Un foglio di carta può diventare un ponte? Metti due libri robusti a poca distanza e chiedi a un adulto di aiutarti a costruire un piccolo ponte. Per prima cosa appoggia un foglio in piano. Aggiungi uno alla volta piccoli gettoni leggeri al centro e conta quanti ne sostiene prima di piegarsi.</p><p>Usa solo gettoni leggeri, mantieni piccola la distanza e fermati se il ponte scivola. Non salire mai sul ponte e non usare oggetti pesanti.</p>'
+      ],
+      [
+        '<p>📐 Now try a different shape: fold the same kind of paper into a gentle accordion or a wide U-shape. Keep the distance between the books, paper size and counters the same. Test one counter at a time and record the result in a table: <b>design</b> | <b>number held</b> | <b>what happened</b>.</p><p>Changing one feature while keeping the others the same makes the comparison fair. The folds can help spread the load and make the paper harder to bend.</p>',
+        '<p>📐 Ora prova una forma diversa: piega un foglio dello stesso tipo a fisarmonica oppure a forma di U larga. Mantieni uguali la distanza tra i libri, la dimensione della carta e i gettoni. Prova un gettone alla volta e registra il risultato in una tabella: <b>modello</b> | <b>numero sostenuto</b> | <b>che cosa è successo</b>.</p><p>Cambiare una sola caratteristica e mantenere uguali le altre rende corretto il confronto. Le pieghe possono distribuire il carico e rendere la carta più difficile da piegare.</p>'
+      ],
+      [
+        '<p>🔧 Engineers use a cycle: <b>Ask → Imagine → Plan → Build → Test → Improve</b>. Draw your strongest design and explain what you changed. Repeat a test if it is safe, and record every result—including surprising ones.</p><p>Remember: this small classroom model does not prove that a real bridge is safe. Real bridges need careful calculations, suitable materials and expert testing.</p>',
+        '<p>🔧 Le ingegnere seguono un percorso: <b>Chiedi → Immagina → Progetta → Costruisci → Prova → Migliora</b>. Disegna il modello più resistente e spiega che cosa hai cambiato. Ripeti una prova se è sicuro e registra ogni risultato, anche quelli sorprendenti.</p><p>Ricorda: questo piccolo modello scolastico non dimostra che un vero ponte sia sicuro. I ponti reali richiedono calcoli accurati, materiali adatti e verifiche di esperti.</p>'
+      ]
+    ],
+    quiz: [
+      question('What should stay the same when comparing two paper bridge designs fairly?', 'Che cosa deve rimanere uguale per confrontare correttamente due ponti di carta?', [['The gap and the type of paper', 'La distanza e il tipo di carta'], ['Every part of the design', 'Ogni parte del modello'], ['The result you hope to get', 'Il risultato che speri di ottenere']], ['Keep the test conditions the same and change one design feature at a time.', 'Mantieni uguali le condizioni della prova e cambia una sola caratteristica del modello alla volta.']),
+      question('Why can folded paper support more counters than flat paper?', 'Perché la carta piegata può sostenere più gettoni della carta distesa?', [['Its shape can make it harder to bend', 'La sua forma può renderla più difficile da piegare'], ['It becomes a different material', 'Diventa un materiale diverso'], ['Gravity stops acting on it', 'La gravità smette di agire su di essa']], ['Folds change the shape and can help the paper resist bending under a load.', 'Le pieghe cambiano la forma e possono aiutare la carta a resistere alla flessione sotto un carico.']),
+      question('What is the best way to record the test?', 'Qual è il modo migliore per registrare la prova?', [['Write each design and its observed result in a table', 'Annotare ogni modello e il risultato osservato in una tabella'], ['Record only the best result', 'Registrare solo il risultato migliore'], ['Guess without testing', 'Indovinare senza fare prove']], ['A table makes it easier to compare designs and keeps the evidence honest.', 'Una tabella facilita il confronto tra i modelli e permette di registrare le prove con sincerità.']),
+      question('What does the engineering cycle encourage you to do?', 'Che cosa ti invita a fare il percorso dell’ingegneria?', [['Test a design and improve it using what you learn', 'Provare un modello e migliorarlo usando ciò che impari'], ['Keep the first design even if it fails', 'Mantenere il primo modello anche se non funziona'], ['Change many things without recording them', 'Cambiare molte cose senza registrarle']], ['Engineers learn from tests and use evidence to improve a design.', 'Le ingegnere imparano dalle prove e usano i risultati per migliorare un progetto.'])
+    ]
   })
 ];

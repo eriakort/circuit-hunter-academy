@@ -170,12 +170,13 @@ test('Grade 5 Science includes bilingual self-assessment and workbook practice',
   await page.locator('.units button').nth(4).click();
 
   await expect(page.getByRole('heading', { name: 'Self-Assessment & Workbook', exact: true })).toBeVisible();
-  await expect(page.locator('.mcard')).toHaveCount(5);
+  await expect(page.locator('.mcard')).toHaveCount(6);
   await expect(page.getByRole('heading', { name: 'Science Self-Assessment' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Science Workbook Challenge' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Mission: An Energy-Smart Classroom' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Mission: Become a Habitat Helper' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Science Fair: One Big Question' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'STEM: Build a Paper Bridge' })).toBeVisible();
 
   await page.locator('#lIT').click();
   await expect(page.getByRole('heading', { name: 'Autovalutazione e quaderno operativo', exact: true })).toBeVisible();
@@ -184,4 +185,5 @@ test('Grade 5 Science includes bilingual self-assessment and workbook practice',
   await expect(page.getByRole('heading', { name: 'Missione: un’aula attenta all’energia' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Missione: diventa un’aiutante degli habitat' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Fiera delle scienze: una grande domanda' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'STEM: Costruisci un ponte di carta' })).toBeVisible();
 });
