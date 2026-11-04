@@ -16,7 +16,7 @@ test('Grade 5 learners can enter the dedicated bilingual Science curriculum', as
   await page.locator('#nm').fill('Science Hunter');
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
-  await expect(page.locator('.units button')).toHaveCount(3);
+  await expect(page.locator('.units button')).toHaveCount(4);
   await expect(page.getByRole('heading', { name: 'Science Foundations' })).toBeVisible();
   await expect(page.locator('.mcard')).toHaveCount(2);
   await expect(page.getByRole('heading', { name: 'The Secret Life of Plants' })).toBeVisible();
@@ -67,7 +67,7 @@ test('Grade 5 Science includes the complete bilingual Universe unit', async ({ p
   await page.locator('#nm').fill('Cosmos Hunter');
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
-  await expect(page.locator('.units button')).toHaveCount(3);
+  await expect(page.locator('.units button')).toHaveCount(4);
   await page.locator('.units button').nth(1).click();
 
   await expect(page.getByRole('heading', { name: 'The Universe' })).toBeVisible();
@@ -96,7 +96,7 @@ test('Grade 5 Science includes the complete bilingual Energy and Forces unit', a
   await page.locator('#nm').fill('Energy Hunter');
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
-  await expect(page.locator('.units button')).toHaveCount(3);
+  await expect(page.locator('.units button')).toHaveCount(4);
   await page.locator('.units button').nth(2).click();
 
   await expect(page.getByRole('heading', { name: 'Energy and Forces' })).toBeVisible();
@@ -113,4 +113,39 @@ test('Grade 5 Science includes the complete bilingual Energy and Forces unit', a
   await expect(page.getByRole('heading', { name: 'Che cos’è l’energia?' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'La forza magnetica' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'STEM: Le leve facilitano il lavoro' })).toBeVisible();
+});
+
+
+test('Grade 5 Science includes the complete bilingual Human Body unit', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="science"]').click();
+  await page.locator('#regf').waitFor();
+  await page.locator('#nm').fill('Body Explorer');
+  await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
+
+  await expect(page.locator('.units button')).toHaveCount(4);
+  await page.locator('.units button').nth(3).click();
+
+  await expect(page.getByRole('heading', { name: 'The Human Body', exact: true })).toBeVisible();
+  await expect(page.locator('.mcard')).toHaveCount(18);
+  await expect(page.getByRole('heading', { name: 'One Amazing Organism' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'The Skeletal System' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'STEM: What Is Blood Made Of?' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'The Digestive System' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'The Immune System' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'The Organs of the Senses' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'The Human Body: A Marvellous Machine' })).toBeVisible();
+
+  await page.locator('#lIT').click();
+  await expect(page.getByRole('heading', { name: 'Il corpo umano', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Un organismo unico' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Il sistema scheletrico' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'STEM: Da che cosa è composto il sangue?' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'L’apparato digerente' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Il sistema immunitario' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Gli organi di senso' })).toBeVisible();
 });
