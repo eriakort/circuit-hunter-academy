@@ -34,7 +34,7 @@ export const HUD: React.FC = () => {
         <div className="subject-indicator" data-s={subject} aria-label={`${L(['Current subject', 'Materia attiva'], lang)}: ${L(activeSubject.name, lang)}`}>
           <span className="subject-indicator-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: activeSubject.art }} />
           <span className="subject-indicator-copy">
-            <small>{grade === 'grade5' ? 'GRADE 5' : L(['GRADE 9 · CURRENT SUBJECT', 'CLASSE 3ª MEDIA · MATERIA'], lang)}</small>
+            <small>{L(['GRADE 9 · CURRENT SUBJECT', 'CLASSE 3ª MEDIA · MATERIA'], lang)}</small>
             <strong>{L(activeSubject.name, lang)}</strong>
           </span>
         </div>
