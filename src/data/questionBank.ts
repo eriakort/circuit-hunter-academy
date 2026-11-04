@@ -33,7 +33,7 @@ export function getCompleteQuestionBank(): TaggedQuestion[] {
     }
   });
 
-  // Include comprehensive Walker physics and Bergamini-Barozzi math questions
+  // Include supplemental physics and Bergamini-Barozzi math questions
   bank.push(...EXTRA_PHYSICS_QUESTIONS);
   bank.push(...EXTRA_MATH_QUESTIONS);
 
