@@ -1,24 +1,26 @@
 import React from 'react';
 import { useGame } from '../context/GameContext';
 import { SUBJECTS } from '../data/gameData';
+import { getSubjectsForGrade } from '../data/gradeData';
 import { L } from '../helpers';
 
 export const SubjectPicker: React.FC = () => {
-  const { state, setSubject } = useGame();
-  const { lang } = state;
+  const { state, setSubject, goToView } = useGame();
+  const { lang, grade } = state;
+  const gradeSubjects = grade ? getSubjectsForGrade(grade, SUBJECTS) : [];
 
   return (
     <section className="hero card">
       <div>
-        <div className="eyebrow">{L(['Choose your path', 'Scegli il tuo percorso'], lang)}</div>
+        <div className="eyebrow">{L(['GRADE 9 · CHOOSE YOUR SUBJECT', 'CLASSE 3ª MEDIA · SCEGLI LA MATERIA'], lang)}</div>
         <h1>
           Circuit Hunter <span>Academy</span>
         </h1>
         <p className="lede">
           {L(
             [
-              'Pick a subject to begin. Each is a full academy — its own missions, techniques, Codex and demons. Your hunter name and XP are shared across both.',
-              "Scegli una materia per iniziare. Ognuna è un'accademia completa — missioni, tecniche, Glossario e demoni propri. Il tuo nome e i tuoi XP valgono per entrambe."
+              'Choose a subject for Grade 9. Your existing missions and saved progress remain right where you left them.',
+              'Scegli una materia per la classe terza della scuola secondaria di primo grado. Le missioni e i progressi già salvati restano al loro posto.'
             ],
             lang
           )}
@@ -26,7 +28,14 @@ export const SubjectPicker: React.FC = () => {
       </div>
 
       <div className="subjects">
-        {SUBJECTS.map(s => (
+        {gradeSubjects.length === 0 ? (
+          <div className="grade-coming-soon card" role="status">
+            <div className="grade-coming-icon" aria-hidden="true">✦</div>
+            <h2>{L(['Grade 5 subjects are being prepared', 'Le materie della quinta primaria sono in preparazione'], lang)}</h2>
+            <p>{L(['We will add the Grade 5 curriculum separately, including General Science where appropriate. Grade 5 will not reuse the Grade 9 Physics course.', 'Aggiungeremo un programma dedicato alla quinta primaria, compresa Scienze dove previsto. La quinta primaria non riutilizzerà il corso di Fisica della terza media.'], lang)}</p>
+            <button className="btn" onClick={() => goToView('grades')}>{L(['Choose another grade', 'Scegli un’altra classe'], lang)}</button>
+          </div>
+        ) : gradeSubjects.map(s => (
           <button
             key={s.id}
             className="subjcard"
