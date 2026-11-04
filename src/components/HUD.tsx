@@ -26,7 +26,7 @@ export const HUD: React.FC = () => {
 
   return (
     <header className="hud" id="hud">
-      <button className="brand" id="hHome" onClick={() => goToView('map')}>
+      <button className="brand" id="hHome" onClick={() => goToView(grade === 'grade5' ? 'subjects' : 'map')}>
         CIRCUIT <b>HUNTER</b> ACADEMY
       </button>
 
@@ -80,7 +80,7 @@ export const HUD: React.FC = () => {
           </button>
         </div>
 
-        {subject && (
+        {grade === 'grade9' && subject && (
           <button
             className={navClass(view === 'subjects')}
             id="hSubj"
@@ -91,6 +91,7 @@ export const HUD: React.FC = () => {
           </button>
         )}
 
+        {grade === 'grade9' && <>
         <button
           className={navClass(isMissionsActive)}
           id="hMap"
@@ -138,6 +139,7 @@ export const HUD: React.FC = () => {
             {L(['Race', 'Gara'], lang)}
           </button>
         )}
+        </>}
       </div>
     </header>
   );
