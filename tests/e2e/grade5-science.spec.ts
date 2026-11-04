@@ -67,7 +67,7 @@ test('Grade 5 Science includes the complete bilingual Universe unit', async ({ p
   await page.locator('#nm').fill('Cosmos Hunter');
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
-  await expect(page.locator('.units button')).toHaveCount(2);
+  await expect(page.locator('.units button')).toHaveCount(3);
   await page.locator('.units button').nth(1).click();
 
   await expect(page.getByRole('heading', { name: 'The Universe' })).toBeVisible();
