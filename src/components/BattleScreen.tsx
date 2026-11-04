@@ -44,7 +44,7 @@ export const BattleScreen: React.FC = () => {
   const [combo, setCombo] = useState(0);
   const [bestCombo, setBestCombo] = useState(0);
   const [currentQ, setCurrentQ] = useState<QuizQuestion | null>(null);
-  const [options, setOptions] = useState<string[]>([]);
+  const [options, setOptions] = useState<number[]>([]);
   const [answered, setAnswered] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [correctIndex, setCorrectIndex] = useState<number | null>(null);
@@ -86,11 +86,11 @@ export const BattleScreen: React.FC = () => {
     setArenaOuch(false);
 
     // Shuffle options: the correct answer is always index 0 in q.a
-    const rawOptions = q.a.map(opt => L(opt, lang));
-    const rightAnswer = rawOptions[0];
-    const shuffledOpts = shuffle(rawOptions.slice());
-    setOptions(shuffledOpts);
-    setCorrectIndex(shuffledOpts.indexOf(rightAnswer));
+    // Keep shuffled answer indexes, not translated strings, so a language switch
+    // immediately re-renders every choice in the newly selected language.
+    const shuffledIndexes = shuffle(q.a.map((_, index) => index));
+    setOptions(shuffledIndexes);
+    setCorrectIndex(shuffledIndexes.indexOf(0));
   };
 
   const handleSelectOption = (idx: number) => {
@@ -99,7 +99,7 @@ export const BattleScreen: React.FC = () => {
     setSelectedIndex(idx);
 
     const isCorrect = idx === correctIndex;
-    const rightText = options[correctIndex!];
+    const rightText = currentQ.a[options[correctIndex!]] ? L(currentQ.a[options[correctIndex!]], lang) : '';
 
     // Split tech name if formatted as "Form · Technique"
     const fullTech = L(activeMission.tech, lang);
@@ -429,7 +429,7 @@ export const BattleScreen: React.FC = () => {
           <div className="qtxt">{L(currentQ.q, lang)}</div>
 
           <div className="opts">
-            {options.map((opt, idx) => {
+            {options.map((optionIndex, idx) => {
               let optClass = 'btn ghost opt';
               if (answered) {
                 if (idx === correctIndex) optClass = 'btn right opt';
@@ -442,7 +442,7 @@ export const BattleScreen: React.FC = () => {
                   disabled={answered}
                   onClick={() => handleSelectOption(idx)}
                 >
-                  {opt}
+                  {L(currentQ.a[optionIndex], lang)}
                 </button>
               );
             })}
