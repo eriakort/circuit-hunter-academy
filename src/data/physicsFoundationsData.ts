@@ -146,7 +146,7 @@ export const PHYSICS_FOUNDATION_MISSIONS: Mission[] = [
       "Coordinates, axes, quadrants and relationships between variables",
       "Coordinate, assi, quadranti e relazioni tra variabili"
     ],
-    demon: ["The Axis Trickster", "L'Ingannassi"],
+    demon: ["The Axis Trickster", "L'Imbroglione degli Assi"],
     tech: [
       "Measure Form · Fifth Technique: Coordinate Sight",
       "Stile della Misura · Quinta Tecnica: Vista delle coordinate"
