@@ -329,7 +329,8 @@ export const GRADE5_HUMAN_BODY_MISSIONS: Mission[] = [
       question('Which combination supports health?', 'Quale combinazione sostiene la salute?', [['Balanced habits and reliable advice', 'Abitudini equilibrate e consigli affidabili'], ['No sleep and no movement', 'Niente sonno e niente movimento'], ['Only one type of food', 'Un solo tipo di alimento']], ['Many everyday habits work together to support health.', 'Molte abitudini quotidiane collaborano per sostenere la salute.'])
     ]
   })
-,\n
+,
+
   makeMission({
     id: 'g5h-body-concept-map', sec: '19', pages: '78–81, 96–98', hue: 165,
     title: ['Body Systems: The Big Picture', 'Gli apparati: una mappa d’insieme'],
