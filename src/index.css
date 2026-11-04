@@ -1024,3 +1024,21 @@ body{overflow-x:hidden}
 .subject-indicator[data-s="cs"]{border-color:rgba(69,216,255,.5)}
 .subject-indicator[data-s="cs"] .subject-indicator-copy strong{color:var(--data)}
 @media(max-width:600px){.subject-indicator{padding:4px 8px 4px 5px;gap:6px}.subject-indicator-art{flex-basis:30px;width:30px;height:30px}.subject-indicator-art svg{max-width:30px;max-height:30px}.subject-indicator-copy small{font-size:8px}.subject-indicator-copy strong{font-size:12px}}
+
+
+/* Grade-first onboarding and grade-aware curriculum selection */
+.grade-options{display:grid;grid-template-columns:1fr 1fr;gap:14px;min-width:0}
+.grade-card{display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-width:0;min-height:230px;padding:18px;text-align:left;color:var(--text);font:inherit;background:var(--panel);border:1px solid var(--line);border-radius:16px;cursor:pointer;transition:transform .15s,border-color .15s,background .15s}
+.grade-card:hover{transform:translateY(-3px);border-color:var(--ember);background:var(--panel2)}
+.grade-card-art{display:grid;place-items:center;width:58px;height:58px;border-radius:14px;background:linear-gradient(135deg,rgba(69,216,255,.2),rgba(176,139,255,.2));color:var(--data);font:800 32px var(--display)}
+.grade-card-current .grade-card-art{background:linear-gradient(135deg,rgba(255,106,61,.2),rgba(255,209,102,.2));color:var(--gold)}
+.grade-card-kicker{font:700 10px var(--mono);letter-spacing:.08em;color:var(--muted)}
+.grade-card strong{font:400 24px var(--display)}
+.grade-card-detail{font-size:13px;color:var(--muted)}
+.grade-card-status{margin-top:auto;padding-top:7px;font-size:12px;font-weight:700;color:var(--data)}
+.grade-card-current .grade-card-status{color:var(--good)}
+.grade-coming-soon{grid-column:1/-1;display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:22px}
+.grade-coming-soon h2{font-size:clamp(20px,4vw,28px)}
+.grade-coming-soon p{max-width:68ch;color:var(--muted);line-height:1.6}
+.grade-coming-icon{font-size:32px;color:var(--gold)}
+@media(max-width:600px){.grade-options{grid-template-columns:1fr}.grade-card{min-height:190px}.grade-picker{gap:14px}}
