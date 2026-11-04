@@ -130,7 +130,7 @@ test('Grade 5 Science includes the complete bilingual Human Body unit', async ({
   await expect(page.locator('.units button')).toHaveCount(4);
   await page.locator('.units button').nth(3).click();
 
-  await expect(page.getByRole('heading', { name: 'The Human Body' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'The Human Body', exact: true })).toBeVisible();
   await expect(page.locator('.mcard')).toHaveCount(18);
   await expect(page.getByRole('heading', { name: 'One Amazing Organism' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'The Skeletal System' })).toBeVisible();
