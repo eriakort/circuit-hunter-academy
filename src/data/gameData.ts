@@ -28695,3 +28695,25 @@ MISSIONS.push(...GRADE5_SCIENCE_MISSIONS.map(mission => ({
   ...mission,
   arc: mission.arc + grade5ScienceArcOffset
 })));
+
+// Grade 5 Science · The Universe is the next textbook unit (pages 7–25).
+import { GRADE5_UNIVERSE_MISSIONS } from './grade5ScienceUniverseData';
+
+const grade5UniverseUnitOffset = UNITS.length;
+UNITS.push({
+  title: ['The Universe', "L'Univers"],
+  ch: '3–13',
+  subject: 'science'
+});
+const grade5UniverseArcOffset = ARCS.length;
+ARCS.push({
+  n: 2,
+  unit: grade5UniverseUnitOffset,
+  subject: 'science',
+  title: ['The Universe', "L'Univers"],
+  pages: '7–25'
+});
+MISSIONS.push(...GRADE5_UNIVERSE_MISSIONS.map(mission => ({
+  ...mission,
+  arc: mission.arc + grade5UniverseArcOffset
+})));
