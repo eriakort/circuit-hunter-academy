@@ -26,3 +26,29 @@ test('Grade 5 learners can enter the dedicated bilingual Science curriculum', as
   await expect(page.getByText(/Plants are living things/)).toBeVisible();
   await expect(page.getByText(/photosynthesis/)).toBeVisible();
 });
+
+test('Grade 5 battle answers update immediately when the language changes', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="science"]').click();
+  await page.locator('#regf').waitFor();
+  await page.locator('#nm').fill('Science Hunter');
+  await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
+
+  await page.locator('.mcard').first().click();
+  await page.locator('#lIT').click();
+  for (let scene = 0; scene < 4; scene += 1) {
+    await page.locator('#next').click();
+  }
+
+  await expect(page.locator('#arena')).toBeVisible();
+  await expect(page.locator('.opts')).toContainText('Le radici');
+  await expect(page.locator('.opts')).not.toContainText('Roots');
+
+  await page.locator('#lEN').click();
+  await expect(page.locator('.opts')).toContainText('Roots');
+  await expect(page.locator('.opts')).not.toContainText('Le radici');
+});
