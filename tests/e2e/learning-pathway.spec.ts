@@ -114,7 +114,7 @@ test('math mission briefing renders from its own learning definition without a p
     const key = 'circuit-hunter-academy-v2';
     const state = JSON.parse(window.localStorage.getItem(key) || '{}');
     state.subject = 'math';
-    state.unit = 0;
+    state.unit = 5;
     state.cleared = { ...(state.cleared || {}), m4m1: true };
     state.learningProgress = {
       ...(state.learningProgress || {}),
