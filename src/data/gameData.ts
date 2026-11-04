@@ -16808,15 +16808,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "A number such as 45 × 10³ is not in standard scientific notation.",
-              "Un numero come 45 × 10³ non è scritto in notazione scientifica standard."
+              "The coefficient must be at least 1 and less than 10.",
+              "Il coefficiente deve essere almeno 1 e minore di 10."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "A number such as 45 × 10³ is not in standard scientific notation.",
+                "Un numero come 45 × 10³ non è scritto in notazione scientifica standard."
               ],
               "correction": [
                 null,
@@ -16861,15 +16861,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "The exponent is not itself the value of the number.",
-              "L'esponente non è il valore del numero."
+              "Compare the powers of ten first.",
+              "Confronta prima le potenze di dieci."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "The exponent is not itself the value of the number.",
+                "L'esponente non è il valore del numero."
               ],
               "correction": [
                 null,
@@ -17695,15 +17695,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "Volume and surface area are not the same quantity.",
-              "Volume e area della superficie non sono la stessa grandezza."
+              "Area uses square units; volume uses cubic units.",
+              "L'area usa unità quadrate; il volume unità cubiche."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "Volume and surface area are not the same quantity.",
+                "Volume e area della superficie non sono la stessa grandezza."
               ],
               "correction": [
                 null,
@@ -17748,15 +17748,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "Density is not volume divided by mass.",
-              "La densità non è il volume diviso per la massa."
+              "Divide mass by volume and include the compound unit.",
+              "Dividi la massa per il volume e indica l'unità composta."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "Density is not volume divided by mass.",
+                "La densità non è il volume diviso per la massa."
               ],
               "correction": [
                 null,
@@ -18524,15 +18524,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "More decimal places do not automatically mean greater accuracy.",
-              "Più cifre decimali non significano automaticamente maggiore accuratezza."
+              "Read a scale at eye level to reduce parallax error.",
+              "Leggi la scala all'altezza degli occhi per ridurre l'errore di parallasse."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "More decimal places do not automatically mean greater accuracy.",
+                "Più cifre decimali non significano automaticamente maggiore accuratezza."
               ],
               "correction": [
                 null,
@@ -18577,15 +18577,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "Repeating a reading does not guarantee zero error.",
-              "Ripetere una lettura non garantisce errore zero."
+              "Repeating helps reduce random uncertainty, not a persistent calibration error.",
+              "Ripetere aiuta a ridurre l'incertezza casuale, non un errore persistente di calibrazione."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "Repeating a reading does not guarantee zero error.",
+                "Ripetere una lettura non garantisce errore zero."
               ],
               "correction": [
                 null,
@@ -19411,15 +19411,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "Do not swap axes without checking which variable depends on the other.",
-              "Non scambiare gli assi senza verificare quale variabile dipende dall'altra."
+              "A graph needs a clear scale and labelled axes.",
+              "Un grafico richiede una scala chiara e assi etichettati."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "Do not swap axes without checking which variable depends on the other.",
+                "Non scambiare gli assi senza verificare quale variabile dipende dall'altra."
               ],
               "correction": [
                 null,
@@ -19464,15 +19464,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "A straight line not through the origin is not direct proportionality.",
-              "Una retta che non passa per l'origine non rappresenta proporzionalità diretta."
+              "Direct proportionality has a constant ratio and a line through (0,0).",
+              "La proporzionalità diretta ha rapporto costante e retta passante per (0,0)."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "A straight line not through the origin is not direct proportionality.",
+                "Una retta che non passa per l'origine non rappresenta proporzionalità diretta."
               ],
               "correction": [
                 null,
@@ -20260,15 +20260,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "A vector is not defined by magnitude alone.",
-              "Un vettore non è definito dal solo modulo."
+              "A vector needs more information than a number alone.",
+              "Un vettore richiede più informazioni di un semplice numero."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "A vector is not defined by magnitude alone.",
+                "Un vettore non è definito dal solo modulo."
               ],
               "correction": [
                 null,
@@ -20313,15 +20313,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "Do not add opposite-direction magnitudes without considering direction.",
-              "Non sommare i moduli di versi opposti senza considerare la direzione."
+              "Opposite vectors can partly or completely cancel.",
+              "Vettori opposti possono annullarsi in parte o completamente."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "Do not add opposite-direction magnitudes without considering direction.",
+                "Non sommare i moduli di versi opposti senza considerare la direzione."
               ],
               "correction": [
                 null,
@@ -21151,15 +21151,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "Force is not the same thing as motion.",
-              "La forza non è la stessa cosa del moto."
+              "Forces arise from interactions between objects.",
+              "Le forze derivano dalle interazioni tra oggetti."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "Force is not the same thing as motion.",
+                "La forza non è la stessa cosa del moto."
               ],
               "correction": [
                 null,
@@ -21204,15 +21204,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "Mass stays the same when gravitational field strength changes; weight can change.",
-              "La massa resta uguale se cambia il campo gravitazionale; il peso può cambiare."
+              "Friction acts against relative motion between surfaces.",
+              "L'attrito si oppone al moto relativo tra superfici."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "Mass stays the same when gravitational field strength changes; weight can change.",
+                "La massa resta uguale se cambia il campo gravitazionale; il peso può cambiare."
               ],
               "correction": [
                 null,
@@ -21988,15 +21988,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "Do not swap sine and cosine without checking the angle reference.",
-              "Non scambiare seno e coseno senza controllare il riferimento dell'angolo."
+              "The components are projections of the original vector.",
+              "Le componenti sono proiezioni del vettore originale."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "Do not swap sine and cosine without checking the angle reference.",
+                "Non scambiare seno e coseno senza controllare il riferimento dell'angolo."
               ],
               "correction": [
                 null,
@@ -22041,15 +22041,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "The components are not generally equal to the original magnitude.",
-              "Le componenti non sono generalmente uguali al modulo originale."
+              "Signs show the direction along each chosen axis.",
+              "I segni indicano il verso lungo ciascun asse scelto."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "The components are not generally equal to the original magnitude.",
+                "Le componenti non sono generalmente uguali al modulo originale."
               ],
               "correction": [
                 null,
@@ -22821,15 +22821,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "The moment is not just the force; the lever arm matters too.",
-              "Il momento non è solo la forza: conta anche il braccio."
+              "A larger force or longer arm creates a larger moment.",
+              "Una forza maggiore o un braccio più lungo crea un momento maggiore."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "The moment is not just the force; the lever arm matters too.",
+                "Il momento non è solo la forza: conta anche il braccio."
               ],
               "correction": [
                 null,
@@ -22874,15 +22874,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "The pivot is the point about which the lever turns.",
-              "Il fulcro è il punto attorno al quale ruota la leva."
+              "A lever balances moments, not necessarily equal forces.",
+              "Una leva equilibra i momenti, non necessariamente forze uguali."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "The pivot is the point about which the lever turns.",
+                "Il fulcro è il punto attorno al quale ruota la leva."
               ],
               "correction": [
                 null,
@@ -23712,15 +23712,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "Stability depends on the centre of gravity relative to the support base.",
-              "La stabilità dipende dal baricentro rispetto alla base d'appoggio."
+              "The centre of gravity is not always at the geometric centre.",
+              "Il baricentro non si trova sempre nel centro geometrico."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "Stability depends on the centre of gravity relative to the support base.",
+                "La stabilità dipende dal baricentro rispetto alla base d'appoggio."
               ],
               "correction": [
                 null,
@@ -23765,15 +23765,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "Stable equilibrium describes the response to a small disturbance, not every possible force.",
-              "L'equilibrio stabile descrive la risposta a una piccola perturbazione, non a qualsiasi forza."
+              "The response to a small displacement defines the type of equilibrium.",
+              "La risposta a un piccolo spostamento definisce il tipo di equilibrio."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "Stable equilibrium describes the response to a small disturbance, not every possible force.",
+                "L'equilibrio stabile descrive la risposta a una piccola perturbazione, non a qualsiasi forza."
               ],
               "correction": [
                 null,
@@ -24578,15 +24578,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "Pressure is not the same as force; area matters.",
-              "La pressione non è la stessa cosa della forza: conta l'area."
+              "Pressure increases with force and decreases as area increases.",
+              "La pressione aumenta con la forza e diminuisce se aumenta l'area."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "Pressure is not the same as force; area matters.",
+                "La pressione non è la stessa cosa della forza: conta l'area."
               ],
               "correction": [
                 null,
@@ -24631,8 +24631,8 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              null,
-              null
+              "Stevin's depth pressure does not depend on the container's shape.",
+              "La pressione idrostatica di Stevino non dipende dalla forma del recipiente."
             ]
           },
           "misconceptions": [
@@ -25432,15 +25432,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "Buoyancy is not caused by an object having no weight.",
-              "Il galleggiamento non è dovuto all'assenza di peso del corpo."
+              "Buoyancy exists in liquids and gases.",
+              "La spinta idrostatica esiste nei liquidi e nei gas."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "Buoyancy is not caused by an object having no weight.",
+                "Il galleggiamento non è dovuto all'assenza di peso del corpo."
               ],
               "correction": [
                 null,
@@ -25485,15 +25485,15 @@ export const MISSIONS: Mission[] = [
               ]
             ],
             "answer": [
-              "A large object does not automatically sink; shape and displaced volume matter.",
-              "Un oggetto grande non affonda automaticamente: contano la forma e il volume spostato."
+              "A floating object displaces fluid whose weight equals the object's weight.",
+              "Un corpo galleggiante sposta fluido il cui peso è uguale al peso del corpo."
             ]
           },
           "misconceptions": [
             {
               "belief": [
-                null,
-                null
+                "A large object does not automatically sink; shape and displaced volume matter.",
+                "Un oggetto grande non affonda automaticamente: contano la forma e il volume spostato."
               ],
               "correction": [
                 null,
