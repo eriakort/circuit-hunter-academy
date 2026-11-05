@@ -972,7 +972,7 @@ body{overflow-x:hidden}
 .csl-range b{font:700 13px var(--mono);color:var(--gold)}
 .csl-range input{width:100%;accent-color:var(--data)}
 .csl-input{display:flex;flex-direction:column;gap:6px;color:var(--text);font-size:13px}
-.csl-input input,.csl-input select{width:100%;min-width:0;padding:9px 10px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--text);font:inherit}
+.csl-input input:not([type="checkbox"]),.csl-input select{width:100%;min-width:0;padding:9px 10px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--text);font:inherit}.csl-input input[type="checkbox"]{width:16px;height:16px;accent-color:var(--data)}
 .csl-bit-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px}
 .csl-bit-grid button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 2px;background:var(--panel2);border:1px solid var(--line);border-radius:7px;color:var(--muted);cursor:pointer;min-width:0}
 .csl-bit-grid button.active{background:rgba(255,209,102,.16);border-color:var(--gold);color:var(--gold)}
