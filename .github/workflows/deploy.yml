@@ -24,6 +24,8 @@ jobs:
       - run: bun install --no-save
       - run: bun run build
       - run: bun tests/helpers.test.js
+      - name: Run question bank tests
+        run: bunx tsx tests/questionBank.test.ts
       - run: bunx playwright install --with-deps chromium
       - run: bun run test:e2e
       - uses: actions/upload-pages-artifact@v3
