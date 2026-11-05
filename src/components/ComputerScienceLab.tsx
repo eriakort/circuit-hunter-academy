@@ -15,6 +15,9 @@ const lessons: Record<string, [string, string]> = {
   a3m2: ['CPU and motherboard lab', 'Laboratorio di CPU e scheda madre'],
   a3m3: ['Memory hierarchy explorer', 'Esploratore della gerarchia di memoria'],
   a3m4: ['Input and output studio', 'Studio di input e output'],
+  a4m1: ['Operating system process desk', 'Postazione dei processi del sistema operativo'],
+  a4m2: ['File system and folder workshop', 'Officina di file e cartelle'],
+  a4m3: ['Application and mobile technology studio', 'Studio delle applicazioni e tecnologie mobili'],
   a5m1: ['Packet journey simulator', 'Simulatore del viaggio dei pacchetti'],
   c6m1: ['Password strength practice', 'Allenamento sulle password sicure'],
   c6m2: ['Malware response simulator', 'Simulatore di risposta ai malware'],
@@ -67,6 +70,12 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
   const [sliceStart, setSliceStart] = useState(1);
   const [sliceEnd, setSliceEnd] = useState(4);
   const [functionInput, setFunctionInput] = useState(5);
+  const [processStep, setProcessStep] = useState(0);
+  const [fileOperation, setFileOperation] = useState<'copy'|'move'|'rename'|'delete'>('copy');
+  const [fileFeedback, setFileFeedback] = useState('');
+  const [appTask, setAppTask] = useState<'write'|'calculate'|'draw'|'navigate'>('write');
+  const [phoneTilt, setPhoneTilt] = useState(0);
+  const [softwareLicence, setSoftwareLicence] = useState<'open'|'free'|'proprietary'>('open');
 
   if (!lessons[missionId]) return null;
   const title = t(lang, lessons[missionId][0], lessons[missionId][1]);
@@ -83,6 +92,30 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
     (new Set(practicePassword).size >= 8 ? 20 : 0));
   const sliced = sampleString.slice(sliceStart, sliceEnd);
   const loopValues = Array.from({length: loopStep}, (_,i) => i);
+  const osStepLabels = [
+    t(lang,'You select an application icon.','Selezioni l’icona di un’applicazione.'),
+    t(lang,'The operating system finds the program on storage.','Il sistema operativo trova il programma nella memoria di massa.'),
+    t(lang,'The program is loaded into RAM and becomes a process.','Il programma viene caricato nella RAM e diventa un processo.'),
+    t(lang,'The scheduler shares CPU time between active processes.','Lo scheduler distribuisce il tempo della CPU tra i processi attivi.'),
+    t(lang,'A driver helps the operating system communicate with hardware.','Un driver aiuta il sistema operativo a comunicare con l’hardware.')
+  ];
+  const appTaskLabels = {
+    write: t(lang,'Write a report','Scrivere una relazione'),
+    calculate: t(lang,'Calculate a budget','Calcolare un budget'),
+    draw: t(lang,'Create an illustration','Creare un’illustrazione'),
+    navigate: t(lang,'Find a route','Trovare un percorso')
+  };
+  const appMatches = {
+    write: t(lang,'Word processor','Programma di videoscrittura'),
+    calculate: t(lang,'Spreadsheet','Foglio di calcolo'),
+    draw: t(lang,'Graphics editor','Editor grafico'),
+    navigate: t(lang,'Maps / navigation app','App di mappe e navigazione')
+  };
+  const licenceDescriptions = {
+    open: t(lang,'Open-source software makes its source code available under a licence that grants specific freedoms.','Il software open source rende disponibile il codice sorgente con una licenza che concede specifiche libertà.'),
+    free: t(lang,'Freeware can be used without payment, but its source code is not necessarily available.','Il freeware si può usare senza pagare, ma il suo codice sorgente non è necessariamente disponibile.'),
+    proprietary: t(lang,'Proprietary software is controlled by its owner and used under the terms of its licence.','Il software proprietario è controllato dal titolare e si usa secondo i termini della sua licenza.')
+  };
   const flowLabels = [
     [t(lang,'Start','Inizio'),t(lang,'Read the number','Leggi il numero'),t(lang,'Is it even?','È pari?'),t(lang,'Print the answer','Stampa il risultato'),t(lang,'End','Fine')],
     [t(lang,'Inizio','Start'),t(lang,'Leggi il numero','Read the number'),t(lang,'È pari?','Is it even?'),t(lang,'Stampa il risultato','Print the answer'),t(lang,'Fine','End')]
@@ -164,6 +197,28 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
           {missionId==='c9m2'&&<label className="csl-input">{t(lang,'Fill behaviour','Comportamento del riempimento')}<select value={fillMode} onChange={e=>setFillMode(e.target.value as typeof fillMode)}><option value="relative">{t(lang,'Relative reference: A1','Riferimento relativo: A1')}</option><option value="absolute">{t(lang,'Absolute reference: $A$1','Riferimento assoluto: $A$1')}</option></select></label>}
           <Readout label={missionId==='c9m3'?'=IF(B2>10,"High","Low")':'=SUM(B2:B3)'} value={missionId==='c9m3'?(formulaA>10?'High / Alto':'Low / Basso'):formulaA+formulaB}/>
           <p>{missionId==='c9m2'?(fillMode==='relative'?t(lang,'Relative references change when copied to another cell.','I riferimenti relativi cambiano quando la formula viene copiata in un’altra cella.'):t(lang,'Absolute references stay fixed when a formula is copied.','I riferimenti assoluti restano fissi quando si copia una formula.')):t(lang,'A spreadsheet recalculates formulas when input cells change.','Un foglio di calcolo ricalcola le formule quando cambiano le celle di input.')}</p>
+        </Panel>}
+        {missionId === 'a4m1' && <Panel title={t(lang,'Follow an app from click to hardware','Segui un’app dal clic all’hardware')}>
+          <div className="csl-steps">{osStepLabels.map((label,i)=><div className={processStep===i?'current':''} key={i}><b>{i+1}</b>{label}</div>)}</div>
+          <div className="csl-actions"><button type="button" onClick={()=>setProcessStep(0)}>{t(lang,'Reset','Azzera')}</button><button type="button" onClick={()=>setProcessStep(v=>Math.min(osStepLabels.length-1,v+1))} disabled={processStep===osStepLabels.length-1}>{t(lang,'Next system step','Passo successivo')}</button></div>
+          <Readout label={t(lang,'System stage','Fase del sistema')} value={(processStep+1)+' / '+osStepLabels.length}/>
+          <p>{t(lang,'A program is stored as a file. When launched, it is loaded into RAM as a process; the operating system schedules its CPU time and uses drivers to control devices.','Un programma è memorizzato come file. Quando viene avviato, è caricato nella RAM come processo; il sistema operativo ne pianifica l’uso della CPU e utilizza i driver per controllare i dispositivi.')}</p>
+        </Panel>}
+        {missionId === 'a4m2' && <Panel title={t(lang,'Practise safe file and folder operations','Esercitati con le operazioni su file e cartelle')}>
+          <div className="csl-file-tree"><div><b>📁 Academy</b></div><div className="indent"><b>📁 Projects</b></div><div className="indent deeper">📄 Report.docx</div><div className="indent deeper">📄 Budget.xlsx</div></div>
+          <label className="csl-input">{t(lang,'Choose an operation','Scegli un’operazione')}<select value={fileOperation} onChange={e=>{setFileOperation(e.target.value as typeof fileOperation);setFileFeedback('');}}><option value="copy">{t(lang,'Copy','Copia')}</option><option value="move">{t(lang,'Move','Sposta')}</option><option value="rename">{t(lang,'Rename','Rinomina')}</option><option value="delete">{t(lang,'Delete','Elimina')}</option></select></label>
+          <button type="button" onClick={()=>setFileFeedback(fileOperation==='copy'?t(lang,'A second copy is created; the original stays in Projects.','Viene creata una seconda copia; l’originale resta in Projects.'):fileOperation==='move'?t(lang,'The file is moved to the selected destination; it is no longer in its old folder.','Il file viene spostato nella destinazione scelta; non si trova più nella cartella precedente.'):fileOperation==='rename'?t(lang,'The file keeps its contents but receives a new name.','Il file conserva il contenuto ma riceve un nuovo nome.'):t(lang,'The file moves to the Recycle Bin first, where it may be restored.','Il file viene prima spostato nel Cestino, da cui può essere ripristinato.') )}>{t(lang,'Run example','Esegui esempio')}</button>
+          {fileFeedback && <p role="status">{fileFeedback}</p>}
+          <p>{t(lang,'A folder tree organises files. A path identifies where a file is stored; copying keeps the original, while moving changes its location.','Una struttura ad albero organizza i file. Un percorso indica dove si trova un file; copiare mantiene l’originale, mentre spostare ne cambia la posizione.')}</p>
+        </Panel>}
+        {missionId === 'a4m3' && <Panel title={t(lang,'Match apps, sensors and software licences','Abbina app, sensori e licenze software')}>
+          <label className="csl-input">{t(lang,'What do you need to do?','Che cosa devi fare?')}<select value={appTask} onChange={e=>setAppTask(e.target.value as typeof appTask)}><option value="write">{appTaskLabels.write}</option><option value="calculate">{appTaskLabels.calculate}</option><option value="draw">{appTaskLabels.draw}</option><option value="navigate">{appTaskLabels.navigate}</option></select></label>
+          <Readout label={t(lang,'Suitable application','Applicazione adatta')} value={appMatches[appTask]}/>
+          <Range label={t(lang,'Phone tilt (degrees)','Inclinazione del telefono (gradi)')} value={phoneTilt} min={-45} max={45} onChange={setPhoneTilt}/>
+          <Readout label={t(lang,'Accelerometer example','Esempio di accelerometro')} value={Math.abs(phoneTilt)>25?t(lang,'Tilt detected · rotate screen','Inclinazione rilevata · ruota lo schermo'):t(lang,'Nearly level · keep portrait view','Quasi in piano · mantieni la vista verticale')}/>
+          <label className="csl-input">{t(lang,'Software licence type','Tipo di licenza software')}<select value={softwareLicence} onChange={e=>setSoftwareLicence(e.target.value as typeof softwareLicence)}><option value="open">Open source</option><option value="free">Freeware</option><option value="proprietary">{t(lang,'Proprietary','Proprietario')}</option></select></label>
+          <p role="status">{licenceDescriptions[softwareLicence]}</p>
+          <p>{t(lang,'Mobile apps can use sensors such as an accelerometer and location services. Always check what permissions an app requests.','Le app mobili possono usare sensori come l’accelerometro e i servizi di localizzazione. Controlla sempre quali autorizzazioni richiede un’app.')}</p>
         </Panel>}
         {missionId === 'c11m1' && <Panel title={t(lang,'Step through a simple flowchart','Segui un semplice diagramma di flusso')}>
           <div className="csl-steps">{flowLabels.map((label,i)=><div className={flowStep===i?'current':''} key={i}><b>{i+1}</b>{label}</div>)}</div>
