@@ -1,5 +1,5 @@
 import { TaggedQuestion, SubjectId, BilingualText } from '../types';
-import { MISSIONS, ARCS, UNITS } from './gameData';
+import { MISSIONS, ARCS, UNITS, SUBJECTS } from './gameData';
 import { EXTRA_PHYSICS_QUESTIONS } from './physicsQuestions';
 import { EXTRA_MATH_QUESTIONS } from './mathQuestions';
 import { shuffle } from '../helpers';
@@ -57,12 +57,13 @@ export function getCategories(subject: SubjectId): CategoryOption[] {
   const categories: CategoryOption[] = [];
 
   // 1. All Questions Option (Subject-wide comprehensive)
+  const subjectName = SUBJECTS.find(item => item.id === subject)?.name || ['Subject', 'Materia'];
   categories.push({
     type: 'all',
     id: `all-${subject}`,
     label: [
-      `All ${subject === 'cs' ? 'Computer Science' : subject === 'math' ? 'Mathematics' : 'Physics'} Topics`,
-      `Tutti gli argomenti di ${subject === 'cs' ? 'Informatica' : subject === 'math' ? 'Matematica' : 'Fisica'}`
+      `All ${subjectName[0]} Topics`,
+      `Tutti gli argomenti di ${subjectName[1]}`
     ],
     count: bank.length
   });
