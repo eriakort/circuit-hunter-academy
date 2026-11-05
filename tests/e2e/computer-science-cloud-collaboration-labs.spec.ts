@@ -67,8 +67,10 @@ test('Team collaboration lab guides meeting preparation and pre-call checks', as
   await page.getByLabel('Camera tested').check();
   await page.getByLabel('Microphone tested').check();
   await expect(page.getByRole('status')).toContainText('Pre-call check complete');
-  await page.locator('input[type="range"]').fill('50');
-  await expect(page.getByText('200 km', { exact: true })).toBeVisible();
+  const travelSlider = page.locator('input[type="range"]');
+  await travelSlider.focus();
+  await travelSlider.press('End');
+  await expect(page.getByText('800 km', { exact: true })).toBeVisible();
 });
 
 test('Team collaboration checks and environmental explanation are translated into Italian', async ({ page }) => {
