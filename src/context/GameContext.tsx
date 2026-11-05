@@ -149,7 +149,15 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
 
   const setGrade = (grade: GradeId) => {
-    setState(s => ({ ...s, grade }));
+    setState(s => {
+      // Keep the current subject when it belongs to the new grade; otherwise
+      // move to the first subject available in that grade.
+      const subject = GRADE_SUBJECT_IDS[grade].includes(s.subject)
+        ? s.subject
+        : GRADE_SUBJECT_IDS[grade][0] as SubjectId;
+      const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === subject);
+      return { ...s, grade, subject, unit: firstUnit < 0 ? 0 : firstUnit };
+    });
     setView('subjects');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
