@@ -52,7 +52,7 @@ test('Slide designer labels and guidance are translated into Italian', async ({ 
   await page.getByLabel('Supporto visivo').selectOption('image');
   await expect(page.locator('.csl-slide-preview')).toHaveClass(/theme-paper/);
   await expect(page.locator('.csl-slide-image')).toBeVisible();
-  await expect(page.getByText(/diritto d'autore/i)).toBeVisible();
+  await expect(page.getByText(/licenza e aggiungi un’attribuzione/i)).toBeVisible();
 });
 
 test('Live presentation studio distinguishes effects and checks remote readiness', async ({ page }) => {
