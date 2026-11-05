@@ -542,7 +542,7 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
           <Range label={t(lang,'range(stop)','range(fine)')} value={loopLimit} min={1} max={12} onChange={n=>{setLoopLimit(n);setLoopStep(0);}}/>
           <Range label={t(lang,'range(step)','range(passo)')} value={loopStride} min={1} max={4} onChange={n=>{setLoopStride(n);setLoopStep(0);}}/>
           <div className="csl-code">for i in range({loopStart}, {loopLimit}, {loopStride}):<br/>　print(i)</div>
-          <div className="csl-packets" aria-label={t(lang,'Values printed by the loop','Valori stampati dal ciclo')}>{loopValues.map(v=><span key={v}>{v}</span>)}</div>
+          <div className="csl-packets" aria-label={t(lang,'Values printed by the loop','Valori stampati dal ciclo')}>{loopValues.length===0?<small>{t(lang,'No values printed yet','Nessun valore stampato per ora')}</small>:loopValues.map(v=><span key={v}>{v}</span>)}</div>
           <div className="csl-actions"><button type="button" onClick={()=>setLoopStep(0)}>{t(lang,'Reset','Azzera')}</button><button type="button" disabled={loopStep>=loopSequence.length} onClick={()=>setLoopStep(v=>Math.min(loopSequence.length,v+1))}>{t(lang,'Next iteration','Iterazione successiva')}</button></div>
           <Readout label={t(lang,'Iterations completed','Iterazioni completate')} value={loopStep+'/'+loopSequence.length}/>
           <Readout label={t(lang,'Next value','Valore successivo')} value={loopValues.length<loopSequence.length?loopSequence[loopValues.length]:t(lang,'Loop finished','Ciclo terminato')}/>
@@ -554,7 +554,7 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
           <Range label={t(lang,'Stop when count reaches','Fermati quando il contatore raggiunge')} value={whileTarget} min={1} max={12} onChange={n=>{setWhileTarget(n);setWhileStep(0);}}/>
           <Range label={t(lang,'Increase by','Incrementa di')} value={whileIncrement} min={1} max={3} onChange={n=>{setWhileIncrement(n);setWhileStep(0);}}/>
           <div className="csl-code">count = {whileStart}<br/>while count &lt; {whileTarget}:<br/>　print(count)<br/>　count += {whileIncrement}</div>
-          <div className="csl-packets" aria-label={t(lang,'Values printed by the while loop','Valori stampati dal ciclo while')}>{whileValues.map(v=><span key={v}>{v}</span>)}</div>
+          <div className="csl-packets" aria-label={t(lang,'Values printed by the while loop','Valori stampati dal ciclo while')}>{whileValues.length===0?<small>{t(lang,'No values printed yet','Nessun valore stampato per ora')}</small>:whileValues.map(v=><span key={v}>{v}</span>)}</div>
           <div className="csl-actions"><button type="button" onClick={()=>setWhileStep(0)}>{t(lang,'Reset','Azzera')}</button><button type="button" disabled={whileStep>=whileMaxIterations} onClick={()=>setWhileStep(v=>Math.min(whileMaxIterations,v+1))}>{t(lang,'Next iteration','Iterazione successiva')}</button></div>
           <Readout label={t(lang,'Iterations completed','Iterazioni completate')} value={whileStep+'/'+whileMaxIterations}/>
           <Readout label={t(lang,'Current count after the loop','Contatore finale dopo il ciclo')} value={whileStep>=whileMaxIterations?whileStart+whileMaxIterations*whileIncrement:whileStart+whileStep*whileIncrement}/>
