@@ -57,10 +57,10 @@ test('while loop simulator advances safely and stops when its condition becomes 
 test('Chapter 14 loop visualisers are localised in Italian', async ({ page }) => {
   await openMission(page, 'c14m1', 'it');
   await expect(page.getByRole('heading', { name: 'Laboratorio di tracciamento dei cicli' })).toBeVisible();
-  await expect(page.getByText('Valori stampati dal ciclo')).toBeVisible();
+  await expect(page.locator('[aria-label="Valori stampati dal ciclo"]')).toBeVisible();
 
   await openMission(page, 'c14m2', 'it');
   await expect(page.getByRole('heading', { name: 'Centro di controllo del ciclo while' })).toBeVisible();
-  await expect(page.getByText('Valori stampati dal ciclo while')).toBeVisible();
+  await expect(page.locator('[aria-label="Valori stampati dal ciclo while"]')).toBeVisible();
   await expect(page.getByText('Questo simulatore è limitato a un massimo di 12 passi')).toBeVisible();
 });
