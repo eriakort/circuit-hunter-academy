@@ -17,7 +17,7 @@ test('Python input is text until converted and assignment is simulated', async (
   await expect(page.getByRole('heading', { name: 'Python variable & type lab' })).toBeVisible();
   await expect(page.getByText('Always returns str (text)')).toBeVisible();
   await page.getByLabel('Try a Python value').fill('True');
-  await expect(page.getByText('bool', { exact: true })).toBeVisible();
+  await expect(page.locator('.csl-readout').filter({ hasText: 'Detected literal type' }).locator('strong')).toHaveText('bool');
   await page.getByLabel('Text entered by the user').fill('23');
   await page.getByRole('button', { name: 'Run the example' }).click();
   await expect(page.getByText('TypeError: text and number cannot be added. Convert the input first.')).toBeVisible();
