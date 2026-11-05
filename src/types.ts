@@ -210,6 +210,14 @@ export type Rank = [number, [string, string]];
 // [missionIndexOrId, enTerm, itTerm, enDef, itDef]
 export type CodexEntry = [number | string, string, string, string, string];
 
+export interface CheckpointProgress {
+  attempts: number;
+  bestScore: number;
+  lastScore: number;
+  completed: boolean;
+  completedAt?: number;
+}
+
 export interface GameState {
   /** Selected school grade; null means the learner has not chosen a grade yet. */
   grade: GradeId | null;
@@ -222,10 +230,11 @@ export interface GameState {
   seen: Record<number, boolean>;
   flawless: Record<string, boolean>;
   learningProgress: Record<string, LearningMissionProgress>;
+  checkpointProgress?: Record<string, CheckpointProgress>;
   v: number;
 }
 
-export type ViewMode = 'grades' | 'subjects' | 'map' | 'scene' | 'battle' | 'result' | 'ending' | 'dojo' | 'codex' | 'race' | 'test' | 'formula';
+export type ViewMode = 'grades' | 'subjects' | 'map' | 'scene' | 'battle' | 'result' | 'ending' | 'dojo' | 'codex' | 'race' | 'test' | 'formula' | 'checkpoint';
 
 export interface TaggedQuestion extends QuizQuestion {
   id: string;
