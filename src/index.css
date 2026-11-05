@@ -1107,3 +1107,9 @@ body{overflow-x:hidden}
 .csl-branch-map>div span{flex:1 1 120px;padding:7px;border:1px solid var(--line);border-radius:7px;font-size:12px}
 .csl-branch-map>div span.chosen{border-color:var(--good);background:rgba(75,227,154,.12);color:var(--good);font-weight:800}
 @media(max-width:560px){.csl-branch-map{align-items:flex-start;flex-wrap:wrap}.csl-branch-map>div{flex-basis:100%}}
+
+/* Chapter 12 Python input, variables and data-type lab */
+.csl-python-output{display:flex;flex-direction:column;gap:6px;padding:12px;border:1px solid rgba(75,227,154,.35);border-radius:9px;background:rgba(75,227,154,.07)}
+.csl-python-output small{font:700 10px var(--mono);letter-spacing:.08em;color:var(--good);text-transform:uppercase}
+.csl-python-output strong{font:700 15px var(--mono);color:var(--text);overflow-wrap:anywhere}
+.csl-python-output span{font:12px var(--mono);color:var(--muted);overflow-wrap:anywhere}
