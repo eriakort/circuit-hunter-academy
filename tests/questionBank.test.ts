@@ -43,4 +43,14 @@ if (ch1Category) {
   console.assert(uniqueIdsAgain.size === 5, 'Second draw must also have unique questions within set');
 }
 
+
+// Grade 5 Science has its own bilingual subject-wide category and question pool.
+const scienceCategories = getCategories('science');
+console.assert(scienceCategories.length >= 2, `Expected Science categories, got ${scienceCategories.length}`);
+console.assert(scienceCategories[0]?.label[0] === 'All Science & Technology Topics', 'Science category should use the Science & Technology name');
+console.assert(scienceCategories[0]?.label[1] === 'Tutti gli argomenti di Scienze e Tecnologia', 'Italian Science category should be translated');
+const scienceQuestions = bank.filter(q => q.subject === 'science');
+console.assert(scienceQuestions.length > 0, 'Grade 5 Science should have questions in the shared test bank');
+console.assert(scienceCategories[0]?.count === scienceQuestions.length, 'Science subject-wide category count should match its question pool');
+
 console.log('questionBank.test.ts ok! Total bank questions:', bank.length);
