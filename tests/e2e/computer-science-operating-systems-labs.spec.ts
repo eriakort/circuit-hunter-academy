@@ -28,7 +28,7 @@ async function openOperatingSystemsMission(page, missionIndex, lang = 'en') {
 }
 
 test('Operating system lab explains the app-to-hardware process flow', async ({ page }) => {
-  await openOperatingSystemsMission(page, 51);
+  await openOperatingSystemsMission(page, 19);
   await expect(page.getByRole('heading', { name: 'Operating system process desk' })).toBeVisible();
   await expect(page.locator('.csl-steps>div.current')).toContainText('You select an application icon.');
   await page.getByRole('button', { name: 'Next system step' }).click();
@@ -38,7 +38,7 @@ test('Operating system lab explains the app-to-hardware process flow', async ({ 
 });
 
 test('File system lab demonstrates copy, move, rename and delete in Italian', async ({ page }) => {
-  await openOperatingSystemsMission(page, 52, 'it');
+  await openOperatingSystemsMission(page, 20, 'it');
   await expect(page.getByRole('heading', { name: 'Officina di file e cartelle' })).toBeVisible();
   await page.getByLabel('Scegli un’operazione').selectOption('move');
   await page.getByRole('button', { name: 'Esegui esempio' }).click();
@@ -49,7 +49,7 @@ test('File system lab demonstrates copy, move, rename and delete in Italian', as
 });
 
 test('Application lab matches tasks to apps and explains mobile sensors and licences', async ({ page }) => {
-  await openOperatingSystemsMission(page, 53);
+  await openOperatingSystemsMission(page, 21);
   await expect(page.getByRole('heading', { name: 'Application and mobile technology studio' })).toBeVisible();
   await page.getByLabel('What do you need to do?').selectOption('calculate');
   await expect(page.getByText('Spreadsheet', { exact: true })).toBeVisible();
