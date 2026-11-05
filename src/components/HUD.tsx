@@ -12,6 +12,7 @@ export const HUD: React.FC = () => {
   const next = nextRank(xp, RANKS);
   const pct = next ? Math.min(100, Math.max(0, ((xp - currentRank[0]) / (next[0] - currentRank[0])) * 100)) : 100;
   const anyClear = Object.keys(cleared).length > 0;
+  const physicsCheckpointUnlocked = subject === 'phys' && ['p1m1', 'p1m2', 'p1m3', 'p1m4', 'p1m5'].every(id => !!cleared[id]);
 
   // Mission battles belong to Missions; dojo battles belong to Dojo.
   const isMissionsActive =
@@ -118,6 +119,19 @@ export const HUD: React.FC = () => {
         >
           {L(['Formulas', 'Formulario'], lang)}
         </button>
+
+        {subject === 'phys' && (
+          <button
+            className={navClass(view === 'checkpoint')}
+            id="hCheckpoint"
+            aria-current={currentPage(view === 'checkpoint')}
+            disabled={!physicsCheckpointUnlocked}
+            title={!physicsCheckpointUnlocked ? L(['Complete the five Physics Foundations missions to unlock this checkpoint.', 'Completa le cinque missioni di Fondamenti di fisica per sbloccare questo checkpoint.'], lang) : undefined}
+            onClick={() => goToView('checkpoint')}
+          >
+            {L(['Checkpoint', 'Checkpoint'], lang)}
+          </button>
+        )}
 
         <button
           className={navClass(isDojoActive)}

@@ -7,7 +7,7 @@ import { GRADE_SUBJECT_IDS } from '../data/gradeData';
 const SKEY = 'circuit-hunter-academy-v2';
 const SCHEMA = 3;
 const NAV_KEY = 'circuit-hunter-academy-navigation-v2';
-const VALID_VIEWS: ViewMode[] = ['grades', 'subjects', 'map', 'scene', 'battle', 'result', 'ending', 'dojo', 'codex', 'race', 'test'];
+const VALID_VIEWS: ViewMode[] = ['grades', 'subjects', 'map', 'scene', 'battle', 'result', 'ending', 'dojo', 'codex', 'race', 'test', 'formula', 'checkpoint'];
 
 interface SavedNavigation {
   view: ViewMode;
@@ -74,6 +74,7 @@ interface GameContextType {
   award: (amount: number) => void;
   clearMission: (missionId: string, flawless: boolean, xpGained: number) => void;
   saveLearningProgress: (missionId: string, progress: Partial<LearningMissionProgress>) => void;
+  saveCheckpointResult: (checkpointId: string, score: number, total: number, passed: boolean, xpReward: number) => void;
   markSeen: (missionIndex: number) => void;
   openMission: (index: number) => void;
   nextScene: () => void;
@@ -228,6 +229,29 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }));
   };
 
+  const saveCheckpointResult = (checkpointId: string, score: number, total: number, passed: boolean, xpReward: number) => {
+    setState(s => {
+      const existing = s.checkpointProgress?.[checkpointId] || {
+        attempts: 0, bestScore: 0, lastScore: 0, completed: false
+      };
+      const newlyCompleted = passed && !existing.completed;
+      return {
+        ...s,
+        xp: newlyCompleted ? s.xp + xpReward : s.xp,
+        checkpointProgress: {
+          ...(s.checkpointProgress || {}),
+          [checkpointId]: {
+            attempts: existing.attempts + 1,
+            bestScore: Math.max(existing.bestScore, score),
+            lastScore: score,
+            completed: existing.completed || passed,
+            completedAt: newlyCompleted ? Date.now() : existing.completedAt
+          }
+        }
+      };
+    });
+  };
+
   const markSeen = (missionIndex: number) => {
     setState(s => ({
       ...s,
@@ -330,6 +354,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
         award,
         clearMission,
         saveLearningProgress,
+        saveCheckpointResult,
         markSeen,
         openMission,
         nextScene,
