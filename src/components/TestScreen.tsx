@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useGame } from '../context/GameContext';
 import { TaggedQuestion } from '../types';
+import { SUBJECTS } from '../data/gameData';
 import {
   getCategories,
   filterQuestionPool,
@@ -13,6 +14,7 @@ export const TestScreen: React.FC = () => {
   const { state, addXP, goToView } = useGame();
   const { lang, subject, name } = state;
   const curSub = subject || 'cs';
+  const activeSubject = SUBJECTS.find(item => item.id === curSub) || SUBJECTS[0];
 
   // Screen mode
   const [phase, setPhase] = useState<'config' | 'testing' | 'results'>('config');
@@ -101,7 +103,7 @@ export const TestScreen: React.FC = () => {
           <div>
             <div className="eyebrow">
               {L(['Knowledge Trials', 'Prove del Sapere'], lang)} ·{' '}
-              {curSub === 'cs' ? 'Computer Science' : 'Physics'}
+              {L(activeSubject.name, lang)}
             </div>
             <h2>{L(['Test Your Knowledge', 'Testa le tue Conoscenze'], lang)}</h2>
           </div>

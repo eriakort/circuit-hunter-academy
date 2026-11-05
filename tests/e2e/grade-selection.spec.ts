@@ -56,3 +56,58 @@ test('legacy saves without a grade are migrated to Grade 9 without losing progre
   expect(saved.xp).toBe(240);
   expect(saved.cleared.m1m1).toBe(true);
 });
+
+test('changing grades keeps the selected subject within that grade curriculum', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  // Grade 5 has Science only.
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="science"]').click();
+  await expect(page.locator('.subject-indicator')).toContainText('Science & Technology');
+
+  // Switching to Grade 9 must not leave the Grade 5 Science subject selected.
+  await page.locator('#hGrade').click();
+  await page.locator('.grade-card').nth(1).click();
+  await expect(page.locator('.subjcard[data-s="science"]')).toHaveCount(0);
+  await expect(page.locator('.subjcard[data-s="cs"]')).toBeVisible();
+  await page.locator('.subjcard[data-s="math"]').click();
+  await expect(page.locator('.subject-indicator')).toContainText('Mathematics');
+  await page.locator('#hTest').click();
+  await expect(page.locator('.mhead .eyebrow')).toContainText('Mathematics');
+  await expect(page.locator('#catSelect option').first()).toContainText('All Mathematics Topics');
+
+  // Switching back selects Science automatically and does not expose Grade 9 subjects.
+  await page.locator('#hGrade').click();
+  await page.locator('.grade-card').first().click();
+  await expect(page.locator('.subjcard')).toHaveCount(1);
+  await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
+  await page.locator('.subjcard[data-s="science"]').click();
+  await expect(page.locator('.subject-indicator')).toContainText('Science & Technology');
+});
+
+test('Grade 9 knowledge tests identify Computer Science, Physics and Mathematics correctly', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').nth(1).click();
+
+  await page.locator('.subjcard[data-s="cs"]').click();
+  await page.locator('#hTest').click();
+  await expect(page.locator('.mhead .eyebrow')).toContainText('Computer Science');
+  await expect(page.locator('#catSelect option').first()).toContainText('All Computer Science Topics');
+
+  await page.locator('#hSubj').click();
+  await page.locator('.subjcard[data-s="phys"]').click();
+  await page.locator('#hTest').click();
+  await expect(page.locator('.mhead .eyebrow')).toContainText('Physics');
+  await expect(page.locator('#catSelect option').first()).toContainText('All Physics Topics');
+
+  await page.locator('#hSubj').click();
+  await page.locator('.subjcard[data-s="math"]').click();
+  await page.locator('#hTest').click();
+  await expect(page.locator('.mhead .eyebrow')).toContainText('Mathematics');
+  await expect(page.locator('#catSelect option').first()).toContainText('All Mathematics Topics');
+});

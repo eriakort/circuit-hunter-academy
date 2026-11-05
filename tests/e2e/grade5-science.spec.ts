@@ -187,3 +187,23 @@ test('Grade 5 Science includes bilingual self-assessment and workbook practice',
   await expect(page.getByRole('heading', { name: 'Fiera delle scienze: una grande domanda' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'STEM: Costruisci un ponte di carta' })).toBeVisible();
 });
+
+test('Grade 5 Science knowledge tests show the correct subject in English and Italian', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="science"]').click();
+  await page.locator('#hTest').click();
+
+  await expect(page.locator('.mhead .eyebrow')).toContainText('Knowledge Trials');
+  await expect(page.locator('.mhead .eyebrow')).toContainText('Science & Technology');
+  await expect(page.locator('#catSelect option').first()).toContainText('All Science & Technology Topics');
+  await expect(page.locator('.mhead .eyebrow')).not.toContainText('Physics');
+
+  await page.locator('#lIT').click();
+  await expect(page.locator('.mhead .eyebrow')).toContainText('Prove del Sapere');
+  await expect(page.locator('.mhead .eyebrow')).toContainText('Scienze e Tecnologia');
+  await expect(page.locator('#catSelect option').first()).toContainText('Tutti gli argomenti di Scienze e Tecnologia');
+});
