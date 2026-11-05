@@ -86,3 +86,28 @@ test('changing grades keeps the selected subject within that grade curriculum', 
   await page.locator('.subjcard[data-s="science"]').click();
   await expect(page.locator('.subject-indicator')).toContainText('Science & Technology');
 });
+
+test('Grade 9 knowledge tests identify Computer Science, Physics and Mathematics correctly', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').nth(1).click();
+
+  await page.locator('.subjcard[data-s="cs"]').click();
+  await page.locator('#hTest').click();
+  await expect(page.locator('.mhead .eyebrow')).toContainText('Computer Science');
+  await expect(page.locator('#catSelect option').first()).toContainText('All Computer Science Topics');
+
+  await page.locator('#hSubj').click();
+  await page.locator('.subjcard[data-s="phys"]').click();
+  await page.locator('#hTest').click();
+  await expect(page.locator('.mhead .eyebrow')).toContainText('Physics');
+  await expect(page.locator('#catSelect option').first()).toContainText('All Physics Topics');
+
+  await page.locator('#hSubj').click();
+  await page.locator('.subjcard[data-s="math"]').click();
+  await page.locator('#hTest').click();
+  await expect(page.locator('.mhead .eyebrow')).toContainText('Mathematics');
+  await expect(page.locator('#catSelect option').first()).toContainText('All Mathematics Topics');
+});
