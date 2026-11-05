@@ -34,6 +34,7 @@ const lessons: Record<string, [string, string]> = {
   c11m1: ['Flowchart builder', 'Costruttore di diagrammi di flusso'],
   c11m2: ['Branch & Loop', 'Bivio e ciclo'],
   c12m2: ['Python variable & type lab', 'Laboratorio Python: variabili e tipi'],
+  c13m2: ['Logic gate & match-case lab', 'Laboratorio delle porte logiche e match-case'],
   c13m1: ['Python decision simulator', 'Simulatore delle decisioni Python'],
   c14m1: ['Loop trace laboratory', 'Laboratorio di tracciamento dei cicli'],
   c15m1: ['String index and slice lab', 'Laboratorio di indici e slicing'],
@@ -80,7 +81,11 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
   const [pythonConversion, setPythonConversion] = useState<'none'|'int'|'float'>('int');
   const [pythonHasRun, setPythonHasRun] = useState(false);
   const [pythonShowComment, setPythonShowComment] = useState(true);
-  const [temperature, setTemperature] = useState(18);
+  const [temperature, setTemperature] = useState(7);
+  const [gateA, setGateA] = useState(true);
+  const [gateB, setGateB] = useState(false);
+  const [gateOperator, setGateOperator] = useState<'and'|'or'|'xor'>('and');
+  const [matchDay, setMatchDay] = useState('Sat');
   const [loopLimit, setLoopLimit] = useState(5);
   const [loopStep, setLoopStep] = useState(0);
   const [sampleString, setSampleString] = useState('CIRCUIT');
@@ -493,11 +498,33 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
           </div>}
           <p>{t(lang,'A variable is a named box. The = sign assigns a value; it does not mean “is equal to” as it does in a maths question. Comments begin with # and are ignored by Python.','Una variabile è una casella con un nome. Il segno = assegna un valore; non significa “è uguale a” come in un esercizio di matematica. I commenti iniziano con # e Python li ignora.')}</p>
         </Panel>}
-        {missionId === 'c13m1' && <Panel title={t(lang,'Test an if / else decision','Prova una decisione if / else')}>
-          <Range label={t(lang,'Temperature (°C)','Temperatura (°C)')} value={temperature} min={-5} max={35} onChange={setTemperature}/>
-          <div className="csl-code">if temperature &gt;= 20:<br/>　print("Warm")<br/>else:<br/>　print("Cool")</div>
-          <Readout label="Output" value={temperature>=20?'Warm / Caldo':'Cool / Fresco'}/>
-          <p>{t(lang,'The condition is checked first. Only one branch runs in this simple if / else structure.','Prima si verifica la condizione. In questa semplice struttura if / else viene eseguito un solo ramo.')}</p>
+        {missionId === 'c13m1' && <Panel title={t(lang,'Selection decision simulator','Simulatore delle decisioni condizionali')}>
+          <p>{t(lang,'Change the score and follow the first condition that becomes True. Only one branch runs.','Modifica il voto e segui la prima condizione che diventa True. Viene eseguito un solo ramo.')}</p>
+          <Range label={t(lang,'Grade (0–10)','Voto (0–10)')} value={temperature} min={0} max={10} onChange={setTemperature}/>
+          <div className="csl-code">if grade &gt;= 9:<br/>　print("Excellent")<br/>elif grade &gt;= 6:<br/>　print("Passed")<br/>else:<br/>　print("Try again")</div>
+          <div className="csl-branch-map"><b>◇</b><div>
+            <span className={temperature>=9?'chosen':''}>if grade &gt;= 9 → {t(lang,'Excellent','Ottimo')}</span>
+            <span className={temperature<9&&temperature>=6?'chosen':''}>elif grade &gt;= 6 → {t(lang,'Passed','Sufficiente')}</span>
+            <span className={temperature<6?'chosen':''}>else → {t(lang,'Try again','Riprova')}</span>
+          </div></div>
+          <Readout label={t(lang,'Selected branch','Ramo selezionato')} value={temperature>=9?t(lang,'if: Excellent','if: Ottimo'):temperature>=6?t(lang,'elif: Passed','elif: Sufficiente'):t(lang,'else: Try again','else: Riprova')}/>
+          <p>{t(lang,'Python checks conditions from top to bottom. elif is checked only when the earlier if condition is False; else catches every remaining case.','Python controlla le condizioni dall’alto verso il basso. elif viene valutato solo se la condizione if precedente è False; else raccoglie tutti i casi rimanenti.')}</p>
+          <p>{t(lang,'Remember: = assigns a value, while == compares two values. The colon and indentation define each branch.','Ricorda: = assegna un valore, mentre == confronta due valori. I due punti e l’indentazione definiscono ogni ramo.')}</p>
+        </Panel>}
+        {missionId === 'c13m2' && <Panel title={t(lang,'Logic gates and match-case lab','Laboratorio di porte logiche e match-case')}>
+          <p>{t(lang,'Toggle the two inputs, then compare how AND, OR and XOR combine Boolean values.','Attiva o disattiva i due ingressi e confronta come AND, OR e XOR combinano valori booleani.')}</p>
+          <div className="csl-gate-inputs">
+            <label className="csl-check"><input type="checkbox" checked={gateA} onChange={e=>setGateA(e.target.checked)}/> {t(lang,'Input A','Ingresso A')}: <b>{gateA?'1':'0'}</b></label>
+            <label className="csl-check"><input type="checkbox" checked={gateB} onChange={e=>setGateB(e.target.checked)}/> {t(lang,'Input B','Ingresso B')}: <b>{gateB?'1':'0'}</b></label>
+          </div>
+          <label className="csl-input">{t(lang,'Logic operation','Operazione logica')}<select aria-label={t(lang,'Logic operation','Operazione logica')} value={gateOperator} onChange={e=>setGateOperator(e.target.value as typeof gateOperator)}><option value="and">AND</option><option value="or">OR</option><option value="xor">XOR</option></select></label>
+          <div className="csl-code">{gateOperator.toUpperCase()}({gateA?1:0}, {gateB?1:0}) → {gateOperator==='and'?(gateA&&gateB?1:0):gateOperator==='or'?(gateA||gateB?1:0):(gateA!==gateB?1:0)}</div>
+          <Readout label={t(lang,'Gate output','Uscita della porta')} value={gateOperator==='and'?(gateA&&gateB?'1 (True)':'0 (False)'):gateOperator==='or'?(gateA||gateB?'1 (True)':'0 (False)'):(gateA!==gateB?'1 (True)':'0 (False)')}/>
+          <div className="csl-divider"/>
+          <p>{t(lang,'Now practise match-case: Python selects the matching case and uses the wildcard case _ when none match.','Ora prova match-case: Python seleziona il caso corrispondente e usa il caso jolly _ quando nessun caso coincide.')}</p>
+          <label className="csl-input">{t(lang,'Choose a day','Scegli un giorno')}<select aria-label={t(lang,'Choose a day','Scegli un giorno')} value={matchDay} onChange={e=>setMatchDay(e.target.value)}><option value="Mon">{t(lang,'Monday','Lunedì')}</option><option value="Wed">{t(lang,'Wednesday','Mercoledì')}</option><option value="Sat">{t(lang,'Saturday','Sabato')}</option><option value="Sun">{t(lang,'Sunday','Domenica')}</option><option value="Fri">{t(lang,'Friday','Venerdì')}</option></select></label>
+          <div className="csl-code">match day:<br/>　case "Sat" | "Sun":<br/>　　print("Weekend")<br/>　case _:<br/>　　print("School day")</div>
+          <Readout label={t(lang,'Selected case','Caso selezionato')} value={matchDay==='Sat'||matchDay==='Sun'?t(lang,'Weekend','Fine settimana'):t(lang,'Default case: school day','Caso predefinito: giorno di scuola')}/>
         </Panel>}
         {missionId === 'c14m1' && <Panel title={t(lang,'Advance a for loop one turn at a time','Avanza un ciclo for un giro alla volta')}>
           <Range label={t(lang,'range(stop)','range(fine)')} value={loopLimit} min={1} max={10} onChange={n=>{setLoopLimit(n);setLoopStep(0);}}/>
