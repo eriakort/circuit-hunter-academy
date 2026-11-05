@@ -19,6 +19,7 @@ test('Python input is text until converted and assignment is simulated', async (
   await page.getByLabel('Try a Python value').fill('True');
   await expect(page.locator('.csl-readout').filter({ hasText: 'Detected literal type' }).locator('strong')).toHaveText('bool');
   await page.getByLabel('Text entered by the user').fill('23');
+  await page.getByLabel('Convert the input').selectOption('none');
   await page.getByRole('button', { name: 'Run the example' }).click();
   await expect(page.getByText('TypeError: text and number cannot be added. Convert the input first.')).toBeVisible();
   await page.getByLabel('Convert the input').selectOption('int');
