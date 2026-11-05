@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../context/GameContext';
 import { RacePlayer, RaceProgress, QuizQuestion } from '../types';
-import { MISSIONS } from '../data/gameData';
+import { MISSIONS, ARCS } from '../data/gameData';
 import { L, rng, sshuffle, hueOf, raceAvatar, raceXP, safeId, U } from '../helpers';
 import { createClient } from '@supabase/supabase-js';
 
@@ -14,7 +14,9 @@ const defaultSupabaseKey =
 
 export const RaceScreen: React.FC = () => {
   const { state, addXP, goToView } = useGame();
-  const { lang, name } = state;
+  const { lang, name, subject } = state;
+  const curSub = subject || 'cs';
+  const subjectMissions = MISSIONS.filter(m => (ARCS[m.arc]?.subject || 'cs') === curSub);
 
   // Race UI State
   const [raceState, setRaceState] = useState<'home' | 'lobby' | 'countdown' | 'running' | 'done'>('home');
@@ -55,10 +57,11 @@ export const RaceScreen: React.FC = () => {
     const r = rng(seed);
     const pool =
       missionId === 'mix'
-        ? sshuffle(MISSIONS.flatMap(m => m.quiz), r).slice(0, 10)
-        : sshuffle(MISSIONS.find(m => m.id === missionId)?.quiz.slice() || [], r);
+        ? sshuffle(subjectMissions.flatMap(m => m.quiz), r).slice(0, 10)
+        : sshuffle(subjectMissions.find(m => m.id === missionId)?.quiz.slice() || [], r);
 
-    return pool.map(q => ({ q, order: sshuffle([0, 1, 2, 3], r) }));
+    // Some Grade 5 Science questions have three choices rather than four.
+    return pool.map(q => ({ q, order: sshuffle(q.a.map((_, index) => index), r) }));
   };
 
   const handleJoinOrCreate = async (roomCode: string, create: boolean) => {
@@ -141,9 +144,19 @@ export const RaceScreen: React.FC = () => {
     }
   };
 
-  const onStartBroadcast = (payload: { missionId: string; seed: number; raceId: string }) => {
-    raceIdRef.current = payload.raceId;
+  const onStartBroadcast = (payload: { missionId: string; seed: number; raceId: string; subject?: string }) => {
+    if (payload.subject && payload.subject !== curSub) {
+      setErrorMsg(L(['This room is using a different subject. Choose the same grade and subject as the host.', 'Questa stanza usa una materia diversa. Scegli la stessa classe e materia dell’host.'], lang));
+      setRaceState('lobby');
+      return;
+    }
     const qs = buildRaceQuestions(payload.missionId, payload.seed);
+    if (qs.length === 0) {
+      setErrorMsg(L(['The selected race topic is not available for your subject.', 'L’argomento scelto per la gara non è disponibile per la tua materia.'], lang));
+      setRaceState('lobby');
+      return;
+    }
+    raceIdRef.current = payload.raceId;
     setQuestions(qs);
     setCurrentQIndex(0);
     setScore(0);
@@ -175,7 +188,7 @@ export const RaceScreen: React.FC = () => {
   const handleHostStart = () => {
     const seed = Math.floor(Math.random() * 1000000);
     const rId = safeId();
-    const payload = { missionId: selectedMission, seed, raceId: rId };
+    const payload = { missionId: selectedMission, seed, raceId: rId, subject: curSub };
 
     if (channelRef.current) {
       try {
@@ -449,7 +462,7 @@ export const RaceScreen: React.FC = () => {
               style={{ marginBottom: '14px' }}
             >
               <option value="mix">{L(['Mixed review (10 questions)', 'Ripasso misto (10 domande)'], lang)}</option>
-              {MISSIONS.map(m => (
+              {subjectMissions.map(m => (
                 <option key={m.id} value={m.id}>
                   § {m.sec} · {L(m.title, lang)}
                 </option>
