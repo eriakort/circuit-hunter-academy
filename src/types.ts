@@ -234,7 +234,7 @@ export interface GameState {
   v: number;
 }
 
-export type ViewMode = 'grades' | 'subjects' | 'map' | 'scene' | 'battle' | 'result' | 'ending' | 'dojo' | 'codex' | 'race' | 'test' | 'formula' | 'checkpoint';
+export type ViewMode = 'grades' | 'subjects' | 'map' | 'scene' | 'battle' | 'result' | 'ending' | 'dojo' | 'codex' | 'race' | 'test' | 'formula' | 'checkpoint' | 'cs-checkpoint';
 
 export interface TaggedQuestion extends QuizQuestion {
   id: string;
