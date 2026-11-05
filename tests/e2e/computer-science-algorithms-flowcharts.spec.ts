@@ -49,7 +49,7 @@ test('Flowchart lab is translated into Italian', async ({ page }) => {
   await expect(page.getByText('INIZIO', { exact: true })).toBeVisible();
   await page.getByLabel('Prova un numero in input').fill('12');
   await expect(page.getByText('Numero pari', { exact: true })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Passo successivo' })).click();
+  await page.getByRole('button', { name: 'Passo successivo' }).click();
   await expect(page.getByText(/Leggi un valore/)).toBeVisible();
 });
 
@@ -70,7 +70,7 @@ test('Branch and loop lab is translated into Italian', async ({ page }) => {
   await openAlgorithmMission(page, 'c11m2', 'it');
   await expect(page.locator('.cs-visual-lab h3', { hasText: 'Bivio e ciclo' })).toBeVisible();
   await page.getByLabel('Numero in input').fill('7');
-  await expect(page.getByText('Dispari', { exact: true })).toBeVisible();
+  await expect(page.getByText('Numero dispari', { exact: true })).toBeVisible();
   await page.getByLabel('Regola della decisione').selectOption('greater');
   await expect(page.getByText('10 o meno', { exact: true })).toBeVisible();
   await page.getByLabel('Numero di ripetizioni (1–8)').fill('2');
