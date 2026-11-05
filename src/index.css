@@ -1113,3 +1113,9 @@ body{overflow-x:hidden}
 .csl-python-output small{font:700 10px var(--mono);letter-spacing:.08em;color:var(--good);text-transform:uppercase}
 .csl-python-output strong{font:700 15px var(--mono);color:var(--text);overflow-wrap:anywhere}
 .csl-python-output span{font:12px var(--mono);color:var(--muted);overflow-wrap:anywhere}
+
+/* Chapter 13 selection and Boolean logic labs */
+.csl-gate-inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px;border:1px solid var(--line);border-radius:9px;background:var(--panel2)}
+.csl-gate-inputs .csl-check{justify-content:center;flex-wrap:wrap}
+.csl-gate-inputs b{font:800 14px var(--mono);color:var(--gold)}
+@media(max-width:480px){.csl-gate-inputs{grid-template-columns:1fr}}
