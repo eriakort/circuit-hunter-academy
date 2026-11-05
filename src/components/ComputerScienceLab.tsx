@@ -24,6 +24,8 @@ const lessons: Record<string, [string, string]> = {
   c6m3: ['Backup and safe connection lab', 'Laboratorio di backup e connessioni sicure'],
   c7m1: ['Cloud services and sharing studio', 'Studio dei servizi cloud e della condivisione'],
   c7m2: ['Team collaboration mission control', 'Centro di controllo della collaborazione'],
+  c8m1: ["The Scribe's Formatting Studio", 'Lo studio di formattazione dello scriba'],
+  c8m2: ['Document Layout & Wellbeing Studio', 'Studio di impaginazione e benessere'],
   c9m1: ['Spreadsheet formula lab', 'Laboratorio delle formule'],
   c9m2: ['Cell reference simulator', 'Simulatore dei riferimenti di cella'],
   c9m3: ['IF function decision lab', 'Laboratorio della funzione SE'],
@@ -85,6 +87,23 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
   const [micReady, setMicReady] = useState(false);
   const [cameraReady, setCameraReady] = useState(false);
   const [travelAvoided, setTravelAvoided] = useState(20);
+  const [documentTitle, setDocumentTitle] = useState('The Solar System');
+  const [documentFont, setDocumentFont] = useState('Arial');
+  const [documentSize, setDocumentSize] = useState(16);
+  const [documentAlignment, setDocumentAlignment] = useState<'left'|'center'|'right'|'justify'>('center');
+  const [documentBold, setDocumentBold] = useState(true);
+  const [documentItalic, setDocumentItalic] = useState(false);
+  const [documentFormat, setDocumentFormat] = useState<'docx'|'odt'|'pdf'|'txt'>('docx');
+  const [replaceTerm, setReplaceTerm] = useState('planet');
+  const [replaceWith, setReplaceWith] = useState('world');
+  const [replaceDone, setReplaceDone] = useState(false);
+  const [layoutWrap, setLayoutWrap] = useState<'square'|'inline'|'behind'>('square');
+  const [layoutTable, setLayoutTable] = useState(true);
+  const [layoutLink, setLayoutLink] = useState(false);
+  const [layoutEquation, setLayoutEquation] = useState(false);
+  const [ergonomicDistance, setErgonomicDistance] = useState(60);
+  const [screenHeight, setScreenHeight] = useState<'eye'|'low'>('eye');
+  const [breakTaken, setBreakTaken] = useState(false);
 
   if (!lessons[missionId]) return null;
   const title = t(lang, lessons[missionId][0], lessons[missionId][1]);
@@ -124,6 +143,12 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
     saas: t(lang,'Use a complete application hosted by a provider, such as webmail or an online document editor.','Usi un’applicazione completa ospitata da un fornitore, come la webmail o un editor di documenti online.'),
     paas: t(lang,'Use a managed platform to build and run your own applications without managing the underlying servers.','Usi una piattaforma gestita per creare ed eseguire applicazioni senza amministrare i server sottostanti.'),
     iaas: t(lang,'Rent computing infrastructure such as virtual machines, storage and networks; you manage the operating system and software.','Noleggi infrastruttura informatica come macchine virtuali, archiviazione e reti; gestisci sistema operativo e software.')
+  };
+  const documentFormatDescriptions = {
+    docx: t(lang,'Editable document format commonly used by Microsoft Word.','Formato modificabile comunemente usato da Microsoft Word.'),
+    odt: t(lang,'OpenDocument Text: an editable open-standard document format.','OpenDocument Text: un formato modificabile basato su uno standard aperto.'),
+    pdf: t(lang,'Best when readers should see a stable layout; editing is less convenient.','Ideale quando il layout deve restare stabile; la modifica è meno pratica.'),
+    txt: t(lang,'Plain text keeps words but not fonts, colours, images or layout.','Il testo semplice conserva le parole, ma non caratteri, colori, immagini o impaginazione.')
   };
   const permissionDescriptions = {
     viewer: t(lang,'Can view the file but cannot change its contents.','Può visualizzare il file ma non modificarne il contenuto.'),
@@ -271,6 +296,47 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
           <label className="csl-input">{t(lang,'Software licence type','Tipo di licenza software')}<select value={softwareLicence} onChange={e=>setSoftwareLicence(e.target.value as typeof softwareLicence)}><option value="open">Open source</option><option value="free">Freeware</option><option value="proprietary">{t(lang,'Proprietary','Proprietario')}</option></select></label>
           <p role="status">{licenceDescriptions[softwareLicence]}</p>
           <p>{t(lang,'Mobile apps can use sensors such as an accelerometer and location services. Always check what permissions an app requests.','Le app mobili possono usare sensori come l’accelerometro e i servizi di localizzazione. Controlla sempre quali autorizzazioni richiede un’app.')}</p>
+        </Panel>}
+        {missionId === 'c8m1' && <Panel title={t(lang,'Format a short document and choose the right file type','Formatta un breve documento e scegli il formato corretto')}>
+          <label className="csl-input">{t(lang,'Document title','Titolo del documento')}<input aria-label={t(lang,'Document title','Titolo del documento')} maxLength={48} value={documentTitle} onChange={e=>setDocumentTitle(e.target.value)}/></label>
+          <div className="csl-format-toolbar">
+            <label className="csl-input">{t(lang,'Font','Carattere')}<select aria-label={t(lang,'Font','Carattere')} value={documentFont} onChange={e=>setDocumentFont(e.target.value)}><option>Arial</option><option>Georgia</option><option>Verdana</option></select></label>
+            <Range label={t(lang,'Title size (pt)','Dimensione del titolo (pt)')} value={documentSize} min={12} max={32} onChange={setDocumentSize}/>
+          </div>
+          <div className="csl-format-actions">
+            <button type="button" aria-pressed={documentBold} className={documentBold?'selected':''} onClick={()=>setDocumentBold(v=>!v)}>{t(lang,'Bold','Grassetto')}</button>
+            <button type="button" aria-pressed={documentItalic} className={documentItalic?'selected':''} onClick={()=>setDocumentItalic(v=>!v)}>{t(lang,'Italic','Corsivo')}</button>
+            <label className="csl-input">{t(lang,'Alignment','Allineamento')}<select aria-label={t(lang,'Alignment','Allineamento')} value={documentAlignment} onChange={e=>setDocumentAlignment(e.target.value as typeof documentAlignment)}><option value="left">{t(lang,'Left','Sinistra')}</option><option value="center">{t(lang,'Centre','Centro')}</option><option value="right">{t(lang,'Right','Destra')}</option><option value="justify">{t(lang,'Justified','Giustificato')}</option></select></label>
+          </div>
+          <div className="csl-document-preview" aria-label={t(lang,'Document preview','Anteprima documento')}>
+            <strong style={{fontFamily:documentFont,fontSize:documentSize+'px',fontWeight:documentBold?700:400,fontStyle:documentItalic?'italic':'normal',textAlign:documentAlignment}}>{documentTitle || t(lang,'Untitled document','Documento senza titolo')}</strong>
+            <p>{t(lang,'Our planet travels around the Sun. A clear heading helps readers understand the topic.','Il nostro pianeta gira intorno al Sole. Un titolo chiaro aiuta chi legge a capire l’argomento.')}</p>
+          </div>
+          <label className="csl-input">{t(lang,'Save or export as','Salva o esporta come')}<select aria-label={t(lang,'Save or export as','Salva o esporta come')} value={documentFormat} onChange={e=>setDocumentFormat(e.target.value as typeof documentFormat)}><option value="docx">.docx</option><option value="odt">.odt</option><option value="pdf">.pdf</option><option value="txt">.txt</option></select></label>
+          <p role="status">{documentFormatDescriptions[documentFormat]}</p>
+          <div className="csl-find-replace">
+            <label className="csl-input">{t(lang,'Find','Trova')}<input aria-label={t(lang,'Find','Trova')} value={replaceTerm} onChange={e=>{setReplaceTerm(e.target.value);setReplaceDone(false);}}/></label>
+            <label className="csl-input">{t(lang,'Replace with','Sostituisci con')}<input aria-label={t(lang,'Replace with','Sostituisci con')} value={replaceWith} onChange={e=>{setReplaceWith(e.target.value);setReplaceDone(false);}}/></label>
+            <button type="button" disabled={!replaceTerm.trim()} onClick={()=>setReplaceDone(true)}>{t(lang,'Preview replacement','Anteprima sostituzione')}</button>
+          </div>
+          {replaceDone && <p role="status">{t(lang,'Find & replace preview:','Anteprima Trova e sostituisci:')} {replaceTerm} → {replaceWith}. {t(lang,'In a real editor, review the matches before replacing all.','In un editor reale, controlla le corrispondenze prima di sostituirle tutte.')}</p>}
+          <p>{t(lang,'Formatting changes appearance; editing changes the words. Save an editable copy while working and export a PDF when the layout should stay consistent.','La formattazione cambia l’aspetto; la modifica cambia le parole. Durante il lavoro salva una copia modificabile ed esporta un PDF quando vuoi mantenere stabile l’impaginazione.')}</p>
+        </Panel>}
+        {missionId === 'c8m2' && <Panel title={t(lang,'Build a readable page and check your workstation','Crea una pagina leggibile e controlla la postazione')}>
+          <label className="csl-input">{t(lang,'Image and text layout','Disposizione di immagine e testo')}<select aria-label={t(lang,'Image and text layout','Disposizione di immagine e testo')} value={layoutWrap} onChange={e=>setLayoutWrap(e.target.value as typeof layoutWrap)}><option value="square">{t(lang,'Text wraps around image','Testo intorno all’immagine')}</option><option value="inline">{t(lang,'Image in line with text','Immagine in linea con il testo')}</option><option value="behind">{t(lang,'Image behind text','Immagine dietro al testo')}</option></select></label>
+          <div className="csl-layout-preview"><div className="csl-layout-image">🌍</div><p className={layoutWrap}>{t(lang,'A page is easier to read when images support the text and do not hide important information.','Una pagina è più facile da leggere quando le immagini aiutano il testo e non nascondono informazioni importanti.')}</p></div>
+          <label className="csl-input csl-check"><input type="checkbox" checked={layoutTable} onChange={e=>setLayoutTable(e.target.checked)}/>{t(lang,'Include a small data table','Inserisci una piccola tabella di dati')}</label>
+          {layoutTable && <table className="csl-mini-table"><thead><tr><th>{t(lang,'Planet','Pianeta')}</th><th>{t(lang,'Moons (example)','Lune (esempio)')}</th></tr></thead><tbody><tr><td>Earth / Terra</td><td>1</td></tr><tr><td>Mars / Marte</td><td>2</td></tr></tbody></table>}
+          <label className="csl-check"><input type="checkbox" checked={layoutLink} onChange={e=>setLayoutLink(e.target.checked)}/>{t(lang,'Add a descriptive hyperlink','Aggiungi un collegamento descrittivo')}</label>
+          <label className="csl-check"><input type="checkbox" checked={layoutEquation} onChange={e=>setLayoutEquation(e.target.checked)}/>{t(lang,'Insert an equation','Inserisci un’equazione')}</label>
+          <Readout label={t(lang,'Document elements','Elementi del documento')} value={[layoutTable&&t(lang,'table','tabella'),layoutLink&&t(lang,'link','link'),layoutEquation&&t(lang,'equation','equazione')].filter(Boolean).join(' · ')||t(lang,'Text and image only','Solo testo e immagine')}/>
+          <div className="csl-divider"/>
+          <strong>{t(lang,'Ergonomics check','Controllo ergonomico')}</strong>
+          <Range label={t(lang,'Screen distance (cm)','Distanza dello schermo (cm)')} value={ergonomicDistance} min={20} max={100} onChange={setErgonomicDistance}/>
+          <label className="csl-input">{t(lang,'Top of screen','Bordo superiore dello schermo')}<select aria-label={t(lang,'Top of screen','Bordo superiore dello schermo')} value={screenHeight} onChange={e=>setScreenHeight(e.target.value as typeof screenHeight)}><option value="eye">{t(lang,'Around eye level','Circa all’altezza degli occhi')}</option><option value="low">{t(lang,'Below eye level','Sotto il livello degli occhi')}</option></select></label>
+          <label className="csl-check"><input type="checkbox" checked={breakTaken} onChange={e=>setBreakTaken(e.target.checked)}/>{t(lang,'I took a short screen break','Ho fatto una breve pausa dallo schermo')}</label>
+          <p role="status">{ergonomicDistance>=50&&ergonomicDistance<=70&&screenHeight==='eye'&&breakTaken?t(lang,'Good setup: about an arm’s length away, screen near eye level, and a break taken.','Buona postazione: circa un braccio di distanza, schermo vicino all’altezza degli occhi e pausa effettuata.'):t(lang,'Aim for roughly 50–70 cm, the top of the screen near eye level, and regular short breaks. Adjust to comfort and any accessibility needs.','Punta a circa 50–70 cm, al bordo superiore dello schermo vicino agli occhi e a pause brevi e regolari. Adatta la postazione al comfort e alle eventuali esigenze di accessibilità.')}</p>
+          <p>{t(lang,'Tables organise information into rows and columns; hyperlinks connect sources. Use descriptive link text and check that shared documents do not expose private information.','Le tabelle organizzano le informazioni in righe e colonne; i collegamenti ipertestuali connettono le fonti. Usa testi descrittivi e controlla che i documenti condivisi non espongano informazioni private.')}</p>
         </Panel>}
         {missionId === 'c11m1' && <Panel title={t(lang,'Step through a simple flowchart','Segui un semplice diagramma di flusso')}>
           <div className="csl-steps">{flowLabels.map((label,i)=><div className={flowStep===i?'current':''} key={i}><b>{i+1}</b>{label}</div>)}</div>

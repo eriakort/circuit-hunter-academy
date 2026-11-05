@@ -1045,3 +1045,28 @@ body{overflow-x:hidden}
 @media(max-width:600px){.grade-options{grid-template-columns:1fr}.grade-card{min-height:190px}.grade-picker{gap:14px}}
 
 .grade-card-selected{border-color:var(--data);box-shadow:0 0 0 2px rgba(69,216,255,.2),0 0 22px rgba(69,216,255,.12)}
+
+
+/* Chapter 8 word-processing labs */
+.csl-format-toolbar{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:end}
+.csl-format-actions,.csl-find-replace{display:flex;gap:8px;flex-wrap:wrap;align-items:end}
+.csl-format-actions>button,.csl-find-replace>button{padding:8px 11px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);color:var(--text);cursor:pointer}
+.csl-format-actions>button.selected{border-color:var(--gold);background:rgba(255,209,102,.14);color:var(--gold)}
+.csl-document-preview{padding:18px;background:#fff;color:#172033;border:1px solid #b7c3d4;border-radius:8px;min-height:130px}
+.csl-document-preview>strong{display:block;color:#172033;overflow-wrap:anywhere}
+.csl-document-preview p{color:#334155;font-size:13px;line-height:1.55}
+.csl-find-replace>.csl-input{flex:1 1 120px}
+.csl-find-replace>button:disabled{opacity:.45;cursor:not-allowed}
+.csl-layout-preview{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--panel2);min-height:110px}
+.csl-layout-image{flex:0 0 76px;height:76px;display:grid;place-items:center;border-radius:8px;background:rgba(106,209,255,.15);font-size:36px}
+.csl-layout-preview p{flex:1;min-width:0;margin:0}
+.csl-layout-preview p.square{min-width:0}
+.csl-layout-preview p.inline{flex-basis:100%}
+.csl-layout-preview p.behind{background:rgba(106,209,255,.2);padding:10px;border-radius:6px}
+.csl-mini-table{width:100%;border-collapse:collapse;font-size:13px}
+.csl-mini-table th,.csl-mini-table td{padding:7px;border:1px solid var(--line);text-align:left}
+.csl-mini-table th{background:rgba(106,209,255,.12)}
+.csl-check{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text)}
+.csl-check input{width:16px;height:16px;accent-color:var(--data)}
+.csl-divider{height:1px;background:var(--line);margin:4px 0}
+@media(max-width:560px){.csl-format-toolbar{grid-template-columns:1fr}.csl-layout-preview{flex-direction:column}.csl-layout-image{flex-basis:auto;width:76px}}
