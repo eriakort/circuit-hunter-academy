@@ -37,6 +37,7 @@ const lessons: Record<string, [string, string]> = {
   c13m2: ['Logic gate & match-case lab', 'Laboratorio delle porte logiche e match-case'],
   c13m1: ['Python decision simulator', 'Simulatore delle decisioni Python'],
   c14m1: ['Loop trace laboratory', 'Laboratorio di tracciamento dei cicli'],
+  c14m2: ['While loop control room', 'Centro di controllo del ciclo while'],
   c15m1: ['String index and slice lab', 'Laboratorio di indici e slicing'],
   c16m1: ['Function call workbench', 'Banco di prova delle funzioni']
 };
@@ -87,7 +88,13 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
   const [gateOperator, setGateOperator] = useState<'and'|'or'|'xor'>('and');
   const [matchDay, setMatchDay] = useState('Sat');
   const [loopLimit, setLoopLimit] = useState(5);
+  const [loopStart, setLoopStart] = useState(0);
+  const [loopStride, setLoopStride] = useState(1);
   const [loopStep, setLoopStep] = useState(0);
+  const [whileStart, setWhileStart] = useState(1);
+  const [whileTarget, setWhileTarget] = useState(6);
+  const [whileIncrement, setWhileIncrement] = useState(1);
+  const [whileStep, setWhileStep] = useState(0);
   const [sampleString, setSampleString] = useState('CIRCUIT');
   const [sliceStart, setSliceStart] = useState(1);
   const [sliceEnd, setSliceEnd] = useState(4);
@@ -159,7 +166,10 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
   const pythonConvertedType = pythonConversion === 'none' ? 'str' : pythonConversion;
   const pythonConvertedValue = pythonConversion === 'int' ? Number.parseInt(pythonInputText, 10) : pythonConversion === 'float' ? Number.parseFloat(pythonInputText) : pythonInputText;
   const pythonNextValue = pythonConversion === 'none' ? null : pythonConversionIsValid ? Number(pythonConvertedValue) + 1 : null;
-  const loopValues = Array.from({length: loopStep}, (_,i) => i);
+  const loopSequence = Array.from({length: Math.max(0, Math.ceil((loopLimit - loopStart) / loopStride))}, (_,i) => loopStart + i * loopStride);
+  const loopValues = loopSequence.slice(0, loopStep);
+  const whileMaxIterations = Math.min(12, Math.max(0, Math.ceil((whileTarget - whileStart) / whileIncrement)));
+  const whileValues = Array.from({length: Math.min(whileStep, whileMaxIterations)}, (_,i) => whileStart + i * whileIncrement);
   const osStepLabels = [
     t(lang,'You select an application icon.','Selezioni l’icona di un’applicazione.'),
     t(lang,'The operating system finds the program on storage.','Il sistema operativo trova il programma nella memoria di massa.'),
@@ -527,12 +537,29 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
           <Readout label={t(lang,'Selected case','Caso selezionato')} value={matchDay==='Sat'||matchDay==='Sun'?t(lang,'Weekend','Fine settimana'):t(lang,'Default case: school day','Caso predefinito: giorno di scuola')}/>
         </Panel>}
         {missionId === 'c14m1' && <Panel title={t(lang,'Advance a for loop one turn at a time','Avanza un ciclo for un giro alla volta')}>
-          <Range label={t(lang,'range(stop)','range(fine)')} value={loopLimit} min={1} max={10} onChange={n=>{setLoopLimit(n);setLoopStep(0);}}/>
-          <div className="csl-code">for i in range({loopLimit}):<br/>　print(i)</div>
-          <div className="csl-packets">{loopValues.map(v=><span key={v}>{v}</span>)}</div>
-          <div className="csl-actions"><button type="button" onClick={()=>setLoopStep(0)}>{t(lang,'Reset','Azzera')}</button><button type="button" onClick={()=>setLoopStep(v=>Math.min(loopLimit,v+1))}>{t(lang,'Next iteration','Iterazione successiva')}</button></div>
-          <Readout label={t(lang,'Iterations completed','Iterazioni completate')} value={loopStep+'/'+loopLimit}/>
-          <p>{t(lang,'range(stop) starts at 0 and does not include stop.','range(fine) parte da 0 e non include il valore finale.')}</p>
+          <p>{t(lang,'Change start, stop and step to build the sequence. The stop value is excluded, just as it is in Python.','Modifica inizio, fine e passo per creare la sequenza. Il valore finale è escluso, proprio come in Python.')}</p>
+          <Range label={t(lang,'range(start)','range(inizio)')} value={loopStart} min={0} max={10} onChange={n=>{setLoopStart(n);setLoopStep(0);}}/>
+          <Range label={t(lang,'range(stop)','range(fine)')} value={loopLimit} min={1} max={12} onChange={n=>{setLoopLimit(n);setLoopStep(0);}}/>
+          <Range label={t(lang,'range(step)','range(passo)')} value={loopStride} min={1} max={4} onChange={n=>{setLoopStride(n);setLoopStep(0);}}/>
+          <div className="csl-code">for i in range({loopStart}, {loopLimit}, {loopStride}):<br/>　print(i)</div>
+          <div className="csl-packets" aria-label={t(lang,'Values printed by the loop','Valori stampati dal ciclo')}>{loopValues.length===0?<small>{t(lang,'No values printed yet','Nessun valore stampato per ora')}</small>:loopValues.map(v=><span key={v}>{v}</span>)}</div>
+          <div className="csl-actions"><button type="button" onClick={()=>setLoopStep(0)}>{t(lang,'Reset','Azzera')}</button><button type="button" disabled={loopStep>=loopSequence.length} onClick={()=>setLoopStep(v=>Math.min(loopSequence.length,v+1))}>{t(lang,'Next iteration','Iterazione successiva')}</button></div>
+          <Readout label={t(lang,'Iterations completed','Iterazioni completate')} value={loopStep+'/'+loopSequence.length}/>
+          <Readout label={t(lang,'Next value','Valore successivo')} value={loopValues.length<loopSequence.length?loopSequence[loopValues.length]:t(lang,'Loop finished','Ciclo terminato')}/>
+          <p>{t(lang,'range(stop) starts at 0 by default, but range(start, stop, step) lets you choose the first value and the gap. The stop value is never included.','range(fine) parte da 0 per impostazione predefinita, ma range(inizio, fine, passo) permette di scegliere il primo valore e l’intervallo. Il valore finale non viene mai incluso.')}</p>
+        </Panel>}
+        {missionId === 'c14m2' && <Panel title={t(lang,'Control a while loop safely','Controlla un ciclo while in sicurezza')}>
+          <p>{t(lang,'Choose a starting count, a target and a positive increment. Advance one repetition at a time and watch the condition become False.','Scegli un contatore iniziale, un obiettivo e un incremento positivo. Avanza una ripetizione alla volta e osserva quando la condizione diventa False.')}</p>
+          <Range label={t(lang,'Starting count','Contatore iniziale')} value={whileStart} min={0} max={10} onChange={n=>{setWhileStart(n);setWhileStep(0);}}/>
+          <Range label={t(lang,'Stop when count reaches','Fermati quando il contatore raggiunge')} value={whileTarget} min={1} max={12} onChange={n=>{setWhileTarget(n);setWhileStep(0);}}/>
+          <Range label={t(lang,'Increase by','Incrementa di')} value={whileIncrement} min={1} max={3} onChange={n=>{setWhileIncrement(n);setWhileStep(0);}}/>
+          <div className="csl-code">count = {whileStart}<br/>while count &lt; {whileTarget}:<br/>　print(count)<br/>　count += {whileIncrement}</div>
+          <div className="csl-packets" aria-label={t(lang,'Values printed by the while loop','Valori stampati dal ciclo while')}>{whileValues.length===0?<small>{t(lang,'No values printed yet','Nessun valore stampato per ora')}</small>:whileValues.map(v=><span key={v}>{v}</span>)}</div>
+          <div className="csl-actions"><button type="button" onClick={()=>setWhileStep(0)}>{t(lang,'Reset','Azzera')}</button><button type="button" disabled={whileStep>=whileMaxIterations} onClick={()=>setWhileStep(v=>Math.min(whileMaxIterations,v+1))}>{t(lang,'Next iteration','Iterazione successiva')}</button></div>
+          <Readout label={t(lang,'Iterations completed','Iterazioni completate')} value={whileStep+'/'+whileMaxIterations}/>
+          <Readout label={t(lang,'Current count after the loop','Contatore finale dopo il ciclo')} value={whileStep>=whileMaxIterations?whileStart+whileMaxIterations*whileIncrement:whileStart+whileStep*whileIncrement}/>
+          <Readout label={t(lang,'Loop condition','Condizione del ciclo')} value={whileStep>=whileMaxIterations?t(lang,'False — loop finished','False — ciclo terminato'):t(lang,'True — loop continues','True — il ciclo continua')}/>
+          <p>{t(lang,'A while loop checks its condition before every repetition. This simulator is bounded to at most 12 steps and only allows a positive increment, so it cannot run forever.','Un ciclo while controlla la condizione prima di ogni ripetizione. Questo simulatore è limitato a un massimo di 12 passi e consente solo incrementi positivi, quindi non può continuare all’infinito.')}</p>
         </Panel>}
         {missionId === 'c15m1' && <Panel title={t(lang,'Explore indexes and slicing','Esplora indici e slicing')}>
           <label className="csl-input">{t(lang,'Text (up to 12 characters)','Testo (fino a 12 caratteri)')}<input maxLength={12} value={sampleString} onChange={e=>{setSampleString(e.target.value);setSliceStart(0);setSliceEnd(e.target.value.length);}}/></label>
