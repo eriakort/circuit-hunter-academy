@@ -32,6 +32,7 @@ const lessons: Record<string, [string, string]> = {
   c9m2: ['Cell reference simulator', 'Simulatore dei riferimenti di cella'],
   c9m3: ['IF function decision lab', 'Laboratorio della funzione SE'],
   c11m1: ['Flowchart builder', 'Costruttore di diagrammi di flusso'],
+  c11m2: ['Branch & Loop', 'Bivio e ciclo'],
   c12m2: ['Python data type explorer', 'Esploratore dei tipi di dato Python'],
   c13m1: ['Python decision simulator', 'Simulatore delle decisioni Python'],
   c14m1: ['Loop trace laboratory', 'Laboratorio di tracciamento dei cicli'],
@@ -68,6 +69,11 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
   const [fillMode, setFillMode] = useState<'relative'|'absolute'>('relative');
   const [score, setScore] = useState(72);
   const [flowStep, setFlowStep] = useState(0);
+  const [flowInput, setFlowInput] = useState(8);
+  const [algorithmInput, setAlgorithmInput] = useState(7);
+  const [branchCondition, setBranchCondition] = useState<'even'|'greater'>('even');
+  const [loopCount, setLoopCount] = useState(4);
+  const [traceStarted, setTraceStarted] = useState(false);
   const [pythonValue, setPythonValue] = useState('42');
   const [temperature, setTemperature] = useState(18);
   const [loopLimit, setLoopLimit] = useState(5);
@@ -183,9 +189,24 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
     proprietary: t(lang,'Proprietary software is controlled by its owner and used under the terms of its licence.','Il software proprietario è controllato dal titolare e si usa secondo i termini della sua licenza.')
   };
   const flowLabels = [
-    [t(lang,'Start','Inizio'),t(lang,'Read the number','Leggi il numero'),t(lang,'Is it even?','È pari?'),t(lang,'Print the answer','Stampa il risultato'),t(lang,'End','Fine')],
-    [t(lang,'Inizio','Start'),t(lang,'Leggi il numero','Read the number'),t(lang,'È pari?','Is it even?'),t(lang,'Stampa il risultato','Print the answer'),t(lang,'Fine','End')]
-  ][lang === 'it' ? 0 : 1];
+    t(lang,'Start','Inizio'),
+    t(lang,'Read the number','Leggi il numero'),
+    t(lang,'Is it even?','È pari?'),
+    t(lang,'Print the answer','Stampa il risultato'),
+    t(lang,'End','Fine')
+  ];
+  const flowDescriptions = [
+    t(lang,'Begin the algorithm. The oval marks its entry point.','Inizia l’algoritmo. L’ovale indica il punto di partenza.'),
+    t(lang,'Read a value: input is shown with a parallelogram.','Leggi un valore: l’input è rappresentato da un parallelogramma.'),
+    t(lang,'Check a yes/no question. A diamond represents a decision.','Verifica una domanda sì/no. Il rombo rappresenta una decisione.'),
+    t(lang,'Display the result. Output is also shown with a parallelogram.','Mostra il risultato. Anche l’output è rappresentato da un parallelogramma.'),
+    t(lang,'Finish the algorithm. The final oval marks the end.','Termina l’algoritmo. L’ovale finale indica la conclusione.')
+  ];
+  const branchResult = branchCondition === 'even' ? algorithmInput % 2 === 0 : algorithmInput > 10;
+  const branchOutput = branchCondition === 'even'
+    ? (branchResult ? t(lang,'Even number','Numero pari') : t(lang,'Odd number','Numero dispari'))
+    : (branchResult ? t(lang,'Greater than 10','Maggiore di 10') : t(lang,'10 or less','10 o meno'));
+  const loopValuesPreview = Array.from({length:loopCount},(_,i)=>i+1);
 
   return <section className="cs-visual-lab" aria-label={t(lang,'Interactive computer science lab','Laboratorio interattivo di informatica')}>
     <header className="csl-heading">
@@ -399,10 +420,41 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
           <div className="csl-actions"><button type="button" onClick={()=>setRehearsalStep(0)}>{t(lang,'Restart rehearsal','Ricomincia la prova')}</button><button type="button" onClick={()=>setRehearsalStep(v=>Math.min(3,v+1))} disabled={rehearsalStep===3}>{t(lang,'Next rehearsal step','Passo successivo')}</button></div>
           <Readout label={t(lang,'Rehearsal progress','Avanzamento prova')} value={`${rehearsalStep+1} / 4`}/>
         </Panel>}
-        {missionId === 'c11m1' && <Panel title={t(lang,'Step through a simple flowchart','Segui un semplice diagramma di flusso')}>
-          <div className="csl-steps">{flowLabels.map((label,i)=><div className={flowStep===i?'current':''} key={i}><b>{i+1}</b>{label}</div>)}</div>
-          <div className="csl-actions"><button type="button" onClick={()=>setFlowStep(v=>Math.max(0,v-1))}>{t(lang,'Previous','Indietro')}</button><button type="button" onClick={()=>setFlowStep(v=>(v+1)%flowLabels.length)}>{t(lang,'Next step','Passo successivo')}</button></div>
+        {missionId === 'c11m1' && <Panel title={t(lang,'Build and trace a flowchart','Costruisci e segui un diagramma di flusso')}>
+          <p>{t(lang,'Follow the arrows from START to END. Each shape has one job: oval = start/end, parallelogram = input/output, rectangle = process, diamond = decision.','Segui le frecce da INIZIO a FINE. Ogni forma ha un compito: ovale = inizio/fine, parallelogramma = input/output, rettangolo = elaborazione, rombo = decisione.')}</p>
+          <div className="csl-flowchart" aria-label={t(lang,'Even or odd flowchart','Diagramma di flusso pari o dispari')}>
+            <div className={flowStep===0?'active':''}><span className="csl-flow-node terminal">{t(lang,'START','INIZIO')}</span></div>
+            <b className="csl-flow-arrow">↓</b>
+            <div className={flowStep===1?'active':''}><span className="csl-flow-node io">{t(lang,'Input number','Inserisci numero')}</span></div>
+            <b className="csl-flow-arrow">↓</b>
+            <div className={flowStep===2?'active':''}><span className="csl-flow-node decision">{t(lang,'Is number even?','Il numero è pari?')}</span></div>
+            <b className="csl-flow-arrow">↓</b>
+            <div className={flowStep===3?'active':''}><span className="csl-flow-node process">{t(lang,'Show result','Mostra risultato')}</span></div>
+            <b className="csl-flow-arrow">↓</b>
+            <div className={flowStep===4?'active':''}><span className="csl-flow-node terminal">{t(lang,'END','FINE')}</span></div>
+          </div>
+          <div className="csl-actions"><button type="button" onClick={()=>setFlowStep(v=>Math.max(0,v-1))} disabled={flowStep===0}>{t(lang,'Previous','Indietro')}</button><button type="button" onClick={()=>setFlowStep(v=>Math.min(flowLabels.length-1,v+1))} disabled={flowStep===flowLabels.length-1}>{t(lang,'Next step','Passo successivo')}</button><button type="button" onClick={()=>setFlowStep(0)}>{t(lang,'Reset','Azzera')}</button></div>
           <Readout label={t(lang,'Current step','Passo attuale')} value={(flowStep+1)+' / '+flowLabels.length}/>
+          <p className="csl-flow-description" role="status">{flowDescriptions[flowStep]}</p>
+          <label className="csl-input">{t(lang,'Try an input number','Prova un numero in input')}<input aria-label={t(lang,'Try an input number','Prova un numero in input')} type="number" min="-999" max="999" value={flowInput} onChange={e=>setFlowInput(Number(e.target.value))}/></label>
+          <Readout label={t(lang,'Flowchart output','Risultato del diagramma')} value={flowInput%2===0?t(lang,'Even number','Numero pari'):t(lang,'Odd number','Numero dispari')}/>
+          <p>{t(lang,'A flowchart is a visual plan for an algorithm. Arrows show the order; the decision sends the process along a yes or no path.','Un diagramma di flusso è un piano visivo per un algoritmo. Le frecce mostrano l’ordine; la decisione invia il processo lungo il percorso sì o no.')}</p>
+        </Panel>}
+        {missionId === 'c11m2' && <Panel title={t(lang,'Explore sequence, selection and iteration','Esplora sequenza, selezione e iterazione')}>
+          <p>{t(lang,'Structured programs combine three building blocks: sequence (steps in order), selection (choose a branch) and iteration (repeat steps).','I programmi strutturati combinano tre elementi: sequenza (passi in ordine), selezione (scegliere un ramo) e iterazione (ripetere i passi).')}</p>
+          <div className="csl-format-toolbar">
+            <label className="csl-input">{t(lang,'Decision rule','Regola della decisione')}<select aria-label={t(lang,'Decision rule','Regola della decisione')} value={branchCondition} onChange={e=>setBranchCondition(e.target.value as typeof branchCondition)}><option value="even">{t(lang,'Is the number even?','Il numero è pari?')}</option><option value="greater">{t(lang,'Is it greater than 10?','È maggiore di 10?')}</option></select></label>
+            <label className="csl-input">{t(lang,'Input number','Numero in input')}<input aria-label={t(lang,'Input number','Numero in input')} type="number" min="-999" max="999" value={algorithmInput} onChange={e=>setAlgorithmInput(Number(e.target.value))}/></label>
+          </div>
+          <div className="csl-branch-map"><span>{t(lang,'Condition','Condizione')}</span><b>◇</b><div><span className={branchResult?'chosen':''}>{t(lang,'YES','SÌ')} → {branchCondition==='even'?t(lang,'Even','Pari'):t(lang,'Greater than 10','Maggiore di 10')}</span><span className={!branchResult?'chosen':''}>{t(lang,'NO','NO')} → {branchCondition==='even'?t(lang,'Odd','Dispari'):t(lang,'10 or less','10 o meno')}</span></div></div>
+          <Readout label={t(lang,'Selected branch output','Risultato del ramo scelto')} value={branchOutput}/>
+          <div className="csl-divider"/>
+          <label className="csl-input">{t(lang,'Repeat count (1–8)','Numero di ripetizioni (1–8)')}<input aria-label={t(lang,'Repeat count (1–8)','Numero di ripetizioni (1–8)')} type="number" min="1" max="8" value={loopCount} onChange={e=>{setLoopCount(clamp(Number(e.target.value)||1,1,8));setTraceStarted(false);}}/></label>
+          <div className="csl-code">for counter in range(1, {loopCount+1}):<br/>　print(counter)</div>
+          <div className="csl-packets">{(traceStarted?loopValuesPreview:[]).map(value=><span key={value}>{value}</span>)}</div>
+          <div className="csl-actions"><button type="button" onClick={()=>setTraceStarted(false)}>{t(lang,'Reset loop','Azzera ciclo')}</button><button type="button" onClick={()=>setTraceStarted(true)}>{t(lang,'Run loop','Esegui ciclo')}</button></div>
+          <Readout label={t(lang,'Iterations completed','Iterazioni completate')} value={traceStarted?loopCount+' / '+loopCount:'0 / '+loopCount}/>
+          <p>{t(lang,'A loop repeats its body. A counter-controlled loop stops after the chosen number of rounds; check that every loop has a stopping condition.','Un ciclo ripete il suo contenuto. Un ciclo con contatore termina dopo il numero scelto di giri; verifica che ogni ciclo abbia una condizione di arresto.')}</p>
         </Panel>}
         {missionId === 'c12m2' && <Panel title={t(lang,'Explore Python value types','Esplora i tipi di dato Python')}>
           <label className="csl-input">{t(lang,'Try a value','Prova un valore')}<input value={pythonValue} onChange={e=>setPythonValue(e.target.value)}/></label>

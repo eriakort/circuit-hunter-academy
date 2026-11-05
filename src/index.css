@@ -1088,3 +1088,22 @@ body{overflow-x:hidden}
 .csl-demo-bars{height:52px;display:flex;align-items:end;gap:7px}
 .csl-demo-bars i{display:block;width:18px;border-radius:4px 4px 0 0;background:#56c5a8}
 .csl-demo-bars i:nth-child(1){height:35%}.csl-demo-bars i:nth-child(2){height:65%}.csl-demo-bars i:nth-child(3){height:48%}.csl-demo-bars i:nth-child(4){height:90%}
+
+ 
+/* Chapter 11 algorithm and flowchart labs */
+.csl-flowchart{display:flex;flex-direction:column;align-items:center;gap:5px;padding:14px 8px;border:1px solid var(--line);border-radius:12px;background:rgba(32,35,74,.35)}
+.csl-flowchart>div{display:flex;justify-content:center;min-height:38px;align-items:center}
+.csl-flow-node{display:inline-flex;align-items:center;justify-content:center;min-width:140px;min-height:36px;padding:7px 14px;text-align:center;font-size:12px;font-weight:800;border:1px solid var(--data);background:rgba(69,216,255,.09);color:var(--text)}
+.csl-flow-node.terminal{border-radius:999px;border-color:var(--good);background:rgba(75,227,154,.1)}
+.csl-flow-node.io{transform:skew(-12deg);border-color:var(--data)}
+.csl-flow-node.decision{min-width:125px;min-height:54px;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);background:rgba(255,209,102,.16);border:0;outline:1px solid var(--gold)}
+.csl-flow-node.process{border-radius:4px;border-color:var(--sakura);background:rgba(255,143,192,.1)}
+.csl-flowchart>div.active .csl-flow-node{box-shadow:0 0 0 3px rgba(69,216,255,.22),0 0 18px rgba(69,216,255,.2)}
+.csl-flow-arrow{color:var(--gold);line-height:1;font-size:17px}
+.csl-flow-description{padding:9px 11px;border-left:3px solid var(--data);background:var(--panel2);border-radius:0 8px 8px 0;font-size:13px}
+.csl-branch-map{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--panel2)}
+.csl-branch-map>b{font-size:30px;color:var(--gold)}
+.csl-branch-map>div{display:flex;flex:1;flex-wrap:wrap;gap:8px}
+.csl-branch-map>div span{flex:1 1 120px;padding:7px;border:1px solid var(--line);border-radius:7px;font-size:12px}
+.csl-branch-map>div span.chosen{border-color:var(--good);background:rgba(75,227,154,.12);color:var(--good);font-weight:800}
+@media(max-width:560px){.csl-branch-map{align-items:flex-start;flex-wrap:wrap}.csl-branch-map>div{flex-basis:100%}}
