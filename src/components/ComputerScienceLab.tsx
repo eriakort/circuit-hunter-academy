@@ -26,6 +26,8 @@ const lessons: Record<string, [string, string]> = {
   c7m2: ['Team collaboration mission control', 'Centro di controllo della collaborazione'],
   c8m1: ["The Scribe's Formatting Studio", 'Lo studio di formattazione dello scriba'],
   c8m2: ['Document Layout & Wellbeing Studio', 'Studio di impaginazione e benessere'],
+  c10m1: ['Presentation Stage Designer', 'Progettista del palcoscenico delle presentazioni'],
+  c10m2: ['Grand Premiere Rehearsal Studio', 'Studio prove per la grande prima'],
   c9m1: ['Spreadsheet formula lab', 'Laboratorio delle formule'],
   c9m2: ['Cell reference simulator', 'Simulatore dei riferimenti di cella'],
   c9m3: ['IF function decision lab', 'Laboratorio della funzione SE'],
@@ -104,6 +106,19 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
   const [ergonomicDistance, setErgonomicDistance] = useState(60);
   const [screenHeight, setScreenHeight] = useState<'eye'|'low'>('eye');
   const [breakTaken, setBreakTaken] = useState(false);
+  const [presentationTitle, setPresentationTitle] = useState('Protect Our Planet');
+  const [slideMessage, setSlideMessage] = useState('Small actions can make a difference');
+  const [slideTheme, setSlideTheme] = useState<'night'|'paper'|'forest'>('night');
+  const [slideVisual, setSlideVisual] = useState<'diagram'|'image'|'chart'>('diagram');
+  const [slideFontSize, setSlideFontSize] = useState(28);
+  const [transitionEffect, setTransitionEffect] = useState<'fade'|'push'|'none'>('fade');
+  const [objectAnimation, setObjectAnimation] = useState<'appear'|'emphasis'|'none'>('appear');
+  const [presentationAudio, setPresentationAudio] = useState(false);
+  const [presentationVideo, setPresentationVideo] = useState(false);
+  const [remoteMic, setRemoteMic] = useState(false);
+  const [remoteScreen, setRemoteScreen] = useState(false);
+  const [remoteNotes, setRemoteNotes] = useState(false);
+  const [rehearsalStep, setRehearsalStep] = useState(0);
 
   if (!lessons[missionId]) return null;
   const title = t(lang, lessons[missionId][0], lessons[missionId][1]);
@@ -337,6 +352,52 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
           <label className="csl-check"><input type="checkbox" checked={breakTaken} onChange={e=>setBreakTaken(e.target.checked)}/>{t(lang,'I took a short screen break','Ho fatto una breve pausa dallo schermo')}</label>
           <p role="status">{ergonomicDistance>=50&&ergonomicDistance<=70&&screenHeight==='eye'&&breakTaken?t(lang,'Good setup: about an arm’s length away, screen near eye level, and a break taken.','Buona postazione: circa un braccio di distanza, schermo vicino all’altezza degli occhi e pausa effettuata.'):t(lang,'Aim for roughly 50–70 cm, the top of the screen near eye level, and regular short breaks. Adjust to comfort and any accessibility needs.','Punta a circa 50–70 cm, al bordo superiore dello schermo vicino agli occhi e a pause brevi e regolari. Adatta la postazione al comfort e alle eventuali esigenze di accessibilità.')}</p>
           <p>{t(lang,'Tables organise information into rows and columns; hyperlinks connect sources. Use descriptive link text and check that shared documents do not expose private information.','Le tabelle organizzano le informazioni in righe e colonne; i collegamenti ipertestuali connettono le fonti. Usa testi descrittivi e controlla che i documenti condivisi non espongano informazioni private.')}</p>
+        </Panel>}
+        {missionId === 'c10m1' && <Panel title={t(lang,'Design one clear, audience-friendly slide','Progetta una slide chiara e adatta al pubblico')}>
+          <label className="csl-input">{t(lang,'Presentation title','Titolo della presentazione')}<input aria-label={t(lang,'Presentation title','Titolo della presentazione')} maxLength={54} value={presentationTitle} onChange={e=>setPresentationTitle(e.target.value)}/></label>
+          <label className="csl-input">{t(lang,'Main message (one idea)','Messaggio principale (una sola idea)')}<input aria-label={t(lang,'Main message (one idea)','Messaggio principale (una sola idea)')} maxLength={90} value={slideMessage} onChange={e=>setSlideMessage(e.target.value)}/></label>
+          <div className="csl-format-toolbar">
+            <label className="csl-input">{t(lang,'Visual support','Supporto visivo')}<select aria-label={t(lang,'Visual support','Supporto visivo')} value={slideVisual} onChange={e=>setSlideVisual(e.target.value as typeof slideVisual)}><option value="diagram">{t(lang,'Simple diagram','Schema semplice')}</option><option value="image">{t(lang,'Relevant image','Immagine pertinente')}</option><option value="chart">{t(lang,'Small chart','Piccolo grafico')}</option></select></label>
+            <label className="csl-input">{t(lang,'Theme','Tema')}<select aria-label={t(lang,'Theme','Tema')} value={slideTheme} onChange={e=>setSlideTheme(e.target.value as typeof slideTheme)}><option value="night">{t(lang,'Night contrast','Contrasto notturno')}</option><option value="paper">{t(lang,'Light paper','Carta chiara')}</option><option value="forest">{t(lang,'Forest','Foresta')}</option></select></label>
+          </div>
+          <Range label={t(lang,'Heading size (px)','Dimensione del titolo (px)')} value={slideFontSize} min={20} max={40} onChange={setSlideFontSize}/>
+          <div className={`csl-slide-preview theme-${slideTheme}`} aria-label={t(lang,'Live slide preview','Anteprima live della slide')}>
+            <small>{t(lang,'LIVE SLIDE PREVIEW','ANTEPRIMA SLIDE')}</small>
+            <h3 style={{fontSize:slideFontSize+'px'}}>{presentationTitle || t(lang,'Untitled presentation','Presentazione senza titolo')}</h3>
+            <p>{slideMessage || t(lang,'Add one clear message','Aggiungi un messaggio chiaro')}</p>
+            <div className="csl-slide-visual" aria-label={t(lang,'Selected visual','Elemento visivo selezionato')}>
+              {slideVisual==='diagram'?<><span>{t(lang,'Idea','Idea')}</span><b>→</b><span>{t(lang,'Action','Azione')}</span><b>→</b><span>{t(lang,'Impact','Impatto')}</span></>:slideVisual==='image'?<span className="csl-slide-image">🌱</span>:<div className="csl-demo-bars"><i/><i/><i/><i/></div>}
+            </div>
+          </div>
+          <Readout label={t(lang,'Design checklist','Controllo del design')} value={t(lang,'One message · readable title · relevant visual','Un messaggio · titolo leggibile · elemento visivo pertinente')}/>
+          <p>{t(lang,'Use one main idea per slide, keep text brief, choose strong colour contrast and use a consistent theme. A diagram can explain a process; a chart can compare data. Use images only when they support the message.','Usa una sola idea principale per slide, limita il testo, scegli un forte contrasto cromatico e mantieni un tema coerente. Uno schema può spiegare un processo; un grafico può confrontare dati. Usa immagini solo se aiutano a comunicare.')}</p>
+          <p>{t(lang,'If you use an image or data from another source, check its licence and add a clear attribution. The preview uses an original illustrative visual.','Se usi immagini o dati di altre fonti, controlla la licenza e aggiungi un’attribuzione chiara. L’anteprima usa un elemento visivo illustrativo originale.')}</p>
+        </Panel>}
+        {missionId === 'c10m2' && <Panel title={t(lang,'Prepare and rehearse your live presentation','Prepara e prova la tua presentazione dal vivo')}>
+          <div className="csl-format-toolbar">
+            <label className="csl-input">{t(lang,'Slide transition (between slides)','Transizione (tra le slide)')}<select aria-label={t(lang,'Slide transition (between slides)','Transizione (tra le slide)')} value={transitionEffect} onChange={e=>setTransitionEffect(e.target.value as typeof transitionEffect)}><option value="fade">{t(lang,'Fade','Dissolvenza')}</option><option value="push">{t(lang,'Push','Scorrimento')}</option><option value="none">{t(lang,'No transition','Nessuna transizione')}</option></select></label>
+            <label className="csl-input">{t(lang,'Object animation (inside a slide)','Animazione oggetto (dentro una slide)')}<select aria-label={t(lang,'Object animation (inside a slide)','Animazione oggetto (dentro una slide)')} value={objectAnimation} onChange={e=>setObjectAnimation(e.target.value as typeof objectAnimation)}><option value="appear">{t(lang,'Appear','Comparsa')}</option><option value="emphasis">{t(lang,'Emphasis','Enfasi')}</option><option value="none">{t(lang,'No animation','Nessuna animazione')}</option></select></label>
+          </div>
+          <Readout label={t(lang,'Effects plan','Piano degli effetti')} value={`${transitionEffect==='none'?t(lang,'No transition','Nessuna transizione'):transitionEffect==='fade'?t(lang,'Fade transition','Transizione dissolvenza'):t(lang,'Push transition','Transizione scorrimento')} · ${objectAnimation==='none'?t(lang,'No object animation','Nessuna animazione oggetto'):objectAnimation==='appear'?t(lang,'Appear animation','Animazione comparsa'):t(lang,'Emphasis animation','Animazione enfasi')}`}/>
+          <p>{t(lang,'A transition happens between slides. An animation affects an object on a slide. Choose effects only when they help the audience follow your ideas.','Una transizione avviene tra le slide. Un’animazione riguarda un oggetto nella slide. Scegli gli effetti solo se aiutano il pubblico a seguire le tue idee.')}</p>
+          <div className="csl-format-actions">
+            <label className="csl-check"><input type="checkbox" checked={presentationAudio} onChange={e=>setPresentationAudio(e.target.checked)}/>{t(lang,'Include audio','Includi audio')}</label>
+            <label className="csl-check"><input type="checkbox" checked={presentationVideo} onChange={e=>setPresentationVideo(e.target.checked)}/>{t(lang,'Include video','Includi video')}</label>
+          </div>
+          <p>{t(lang,'Check that media files are licensed for use, relevant, accessible and tested on the presentation device. Provide captions or a transcript where possible.','Controlla che i file multimediali siano autorizzati, pertinenti, accessibili e verificati sul dispositivo di presentazione. Quando possibile, fornisci sottotitoli o una trascrizione.')}</p>
+          <strong>{t(lang,'Open-data snapshot (illustrative only)','Esempio di dati aperti (solo illustrativo)')}</strong>
+          <table className="csl-mini-table"><thead><tr><th>{t(lang,'Topic','Argomento')}</th><th>{t(lang,'Example value','Valore di esempio')}</th></tr></thead><tbody><tr><td>{t(lang,'Survey responses','Risposte al sondaggio')}</td><td>120</td></tr><tr><td>{t(lang,'Prefer digital tools','Preferiscono strumenti digitali')}</td><td>78</td></tr><tr><td>{t(lang,'Prefer paper tools','Preferiscono strumenti cartacei')}</td><td>42</td></tr></tbody></table>
+          <p>{t(lang,'These invented numbers demonstrate how a table can support a presentation; they are not real survey results. For a real project, use a trustworthy open-data source, check its terms and cite the dataset and date.','Questi numeri inventati mostrano come una tabella possa supportare una presentazione; non sono risultati reali. Per un progetto vero, usa una fonte affidabile di open data, controlla le condizioni e cita il dataset e la data.')}</p>
+          <div className="csl-divider"/>
+          <strong>{t(lang,'Remote presentation readiness','Preparazione alla presentazione a distanza')}</strong>
+          <label className="csl-check"><input type="checkbox" checked={remoteMic} onChange={e=>setRemoteMic(e.target.checked)}/>{t(lang,'Microphone tested','Microfono verificato')}</label>
+          <label className="csl-check"><input type="checkbox" checked={remoteScreen} onChange={e=>setRemoteScreen(e.target.checked)}/>{t(lang,'Correct window selected for screen sharing','Finestra corretta selezionata per la condivisione')}</label>
+          <label className="csl-check"><input type="checkbox" checked={remoteNotes} onChange={e=>setRemoteNotes(e.target.checked)}/>{t(lang,'Private speaker notes are hidden from the audience','Le note private del relatore sono nascoste al pubblico')}</label>
+          <p role="status">{remoteMic&&remoteScreen&&remoteNotes?t(lang,'Pre-flight check complete. You are ready to present remotely.','Controlli completati. Sei pronto per presentare a distanza.'):t(lang,'Before sharing, test your microphone, select only the intended window and make sure private notes are not visible.','Prima di condividere, verifica il microfono, seleziona solo la finestra desiderata e assicurati che le note private non siano visibili.')}</p>
+          <strong>{t(lang,'Rehearsal sequence','Sequenza di prova')}</strong>
+          <div className="csl-steps">{[t(lang,'Check the goal and audience','Controlla obiettivo e pubblico'),t(lang,'Test slides and media','Verifica slide e contenuti multimediali'),t(lang,'Rehearse the timing','Prova i tempi'),t(lang,'Present and invite questions','Presenta e invita alle domande')].map((step,i)=><div className={rehearsalStep===i?'current':''} key={i}><b>{i+1}</b>{step}</div>)}</div>
+          <div className="csl-actions"><button type="button" onClick={()=>setRehearsalStep(0)}>{t(lang,'Restart rehearsal','Ricomincia la prova')}</button><button type="button" onClick={()=>setRehearsalStep(v=>Math.min(3,v+1))} disabled={rehearsalStep===3}>{t(lang,'Next rehearsal step','Passo successivo')}</button></div>
+          <Readout label={t(lang,'Rehearsal progress','Avanzamento prova')} value={`${rehearsalStep+1} / 4`}/>
         </Panel>}
         {missionId === 'c11m1' && <Panel title={t(lang,'Step through a simple flowchart','Segui un semplice diagramma di flusso')}>
           <div className="csl-steps">{flowLabels.map((label,i)=><div className={flowStep===i?'current':''} key={i}><b>{i+1}</b>{label}</div>)}</div>
