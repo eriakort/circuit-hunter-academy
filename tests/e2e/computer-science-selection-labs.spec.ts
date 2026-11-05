@@ -6,7 +6,7 @@ async function openMission(page, missionId: string, lang = 'en') {
   if (missionIndex < 0) throw new Error(`Mission not found in curriculum: ${missionId}`);
   await page.addInitScript(({ missionIndex, lang }) => {
     window.localStorage.setItem('circuit-hunter-academy-v2', JSON.stringify({ grade: 'grade9', name: 'Selection Hunter', lang, xp: 0, subject: 'cs', unit: 0, cleared: {}, seen: {}, flawless: {}, learningProgress: {}, checkpointProgress: {}, v: 3 }));
-    window.localStorage.setItem('circuit-hunter-academy-navigation-v2', JSON.stringify({ view: 'scene', currentMissionIndex: missionIndex, currentSceneIndex: 0, battleContext: null }));
+    window.localStorage.setItem('circuit-hunter-academy-navigation-v2', JSON.stringify({ view: 'scene', currentMissionIndex: missionIndex, currentSceneIndex: 1, battleContext: null }));
   }, { missionIndex, lang });
   await page.goto('/');
   await expect(page.locator('.cs-visual-lab')).toBeVisible();
