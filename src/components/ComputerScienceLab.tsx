@@ -22,6 +22,8 @@ const lessons: Record<string, [string, string]> = {
   c6m1: ['Password strength practice', 'Allenamento sulle password sicure'],
   c6m2: ['Malware response simulator', 'Simulatore di risposta ai malware'],
   c6m3: ['Backup and safe connection lab', 'Laboratorio di backup e connessioni sicure'],
+  c7m1: ['Cloud services and sharing studio', 'Studio dei servizi cloud e della condivisione'],
+  c7m2: ['Team collaboration mission control', 'Centro di controllo della collaborazione'],
   c9m1: ['Spreadsheet formula lab', 'Laboratorio delle formule'],
   c9m2: ['Cell reference simulator', 'Simulatore dei riferimenti di cella'],
   c9m3: ['IF function decision lab', 'Laboratorio della funzione SE'],
@@ -76,6 +78,13 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
   const [appTask, setAppTask] = useState<'write'|'calculate'|'draw'|'navigate'>('write');
   const [phoneTilt, setPhoneTilt] = useState(0);
   const [softwareLicence, setSoftwareLicence] = useState<'open'|'free'|'proprietary'>('open');
+  const [cloudService, setCloudService] = useState<'saas'|'paas'|'iaas'>('saas');
+  const [sharePermission, setSharePermission] = useState<'viewer'|'commenter'|'editor'>('viewer');
+  const [shareAudience, setShareAudience] = useState<'specific'|'link'>('specific');
+  const [meetingStep, setMeetingStep] = useState(0);
+  const [micReady, setMicReady] = useState(false);
+  const [cameraReady, setCameraReady] = useState(false);
+  const [travelAvoided, setTravelAvoided] = useState(20);
 
   if (!lessons[missionId]) return null;
   const title = t(lang, lessons[missionId][0], lessons[missionId][1]);
@@ -111,6 +120,23 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
     draw: t(lang,'Graphics editor','Editor grafico'),
     navigate: t(lang,'Maps / navigation app','App di mappe e navigazione')
   };
+  const cloudServiceDescriptions = {
+    saas: t(lang,'Use a complete application hosted by a provider, such as webmail or an online document editor.','Usi un’applicazione completa ospitata da un fornitore, come la webmail o un editor di documenti online.'),
+    paas: t(lang,'Use a managed platform to build and run your own applications without managing the underlying servers.','Usi una piattaforma gestita per creare ed eseguire applicazioni senza amministrare i server sottostanti.'),
+    iaas: t(lang,'Rent computing infrastructure such as virtual machines, storage and networks; you manage the operating system and software.','Noleggi infrastruttura informatica come macchine virtuali, archiviazione e reti; gestisci sistema operativo e software.')
+  };
+  const permissionDescriptions = {
+    viewer: t(lang,'Can view the file but cannot change its contents.','Può visualizzare il file ma non modificarne il contenuto.'),
+    commenter: t(lang,'Can leave comments and suggestions without directly changing the original text.','Può lasciare commenti e suggerimenti senza modificare direttamente il testo originale.'),
+    editor: t(lang,'Can change the file. Give this permission only to trusted collaborators who need it.','Può modificare il file. Concedi questa autorizzazione solo a collaboratori fidati che ne hanno bisogno.')
+  };
+  const meetingSteps = [
+    t(lang,'Create an event in the shared calendar.','Crea un evento nell’agenda condivisa.'),
+    t(lang,'Invite the group and add the video-call link.','Invita il gruppo e aggiungi il link della videochiamata.'),
+    t(lang,'Everyone accepts or declines the invitation.','Tutti accettano o rifiutano l’invito.'),
+    t(lang,'Join on time and check the camera and microphone.','Entra puntualmente e controlla webcam e microfono.'),
+    t(lang,'Share your screen, agree on next steps and end the call.','Condividi lo schermo, concorda i prossimi passi e termina la chiamata.')
+  ];
   const licenceDescriptions = {
     open: t(lang,'Open-source software makes its source code available under a licence that grants specific freedoms.','Il software open source rende disponibile il codice sorgente con una licenza che concede specifiche libertà.'),
     free: t(lang,'Freeware can be used without payment, but its source code is not necessarily available.','Il freeware si può usare senza pagare, ma il suo codice sorgente non è necessariamente disponibile.'),
@@ -197,6 +223,32 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
           {missionId==='c9m2'&&<label className="csl-input">{t(lang,'Fill behaviour','Comportamento del riempimento')}<select value={fillMode} onChange={e=>setFillMode(e.target.value as typeof fillMode)}><option value="relative">{t(lang,'Relative reference: A1','Riferimento relativo: A1')}</option><option value="absolute">{t(lang,'Absolute reference: $A$1','Riferimento assoluto: $A$1')}</option></select></label>}
           <Readout label={missionId==='c9m3'?'=IF(B2>10,"High","Low")':'=SUM(B2:B3)'} value={missionId==='c9m3'?(formulaA>10?'High / Alto':'Low / Basso'):formulaA+formulaB}/>
           <p>{missionId==='c9m2'?(fillMode==='relative'?t(lang,'Relative references change when copied to another cell.','I riferimenti relativi cambiano quando la formula viene copiata in un’altra cella.'):t(lang,'Absolute references stay fixed when a formula is copied.','I riferimenti assoluti restano fissi quando si copia una formula.')):t(lang,'A spreadsheet recalculates formulas when input cells change.','Un foglio di calcolo ricalcola le formule quando cambiano le celle di input.')}</p>
+        </Panel>}
+        {missionId === 'c7m1' && <Panel title={t(lang,'Choose a cloud service and the safest sharing permission','Scegli un servizio cloud e l’autorizzazione di condivisione più sicura')}>
+          <label className="csl-input">{t(lang,'Cloud service model','Modello di servizio cloud')}<select aria-label={t(lang,'Cloud service model','Modello di servizio cloud')} value={cloudService} onChange={e=>setCloudService(e.target.value as typeof cloudService)}>
+            <option value="saas">SaaS</option><option value="paas">PaaS</option><option value="iaas">IaaS</option>
+          </select></label>
+          <Readout label={t(lang,'What the provider supplies','Cosa fornisce il provider')} value={cloudService.toUpperCase()}/>
+          <p role="status">{cloudServiceDescriptions[cloudService]}</p>
+          <label className="csl-input">{t(lang,'Permission for your collaborator','Autorizzazione per il collaboratore')}<select aria-label={t(lang,'Permission for your collaborator','Autorizzazione per il collaboratore')} value={sharePermission} onChange={e=>setSharePermission(e.target.value as typeof sharePermission)}>
+            <option value="viewer">{t(lang,'Viewer','Visualizzatore')}</option><option value="commenter">{t(lang,'Commenter','Commentatore')}</option><option value="editor">{t(lang,'Editor','Editor')}</option>
+          </select></label>
+          <p>{permissionDescriptions[sharePermission]}</p>
+          <label className="csl-input">{t(lang,'Who can open the link?','Chi può aprire il link?')}<select aria-label={t(lang,'Who can open the link?','Chi può aprire il link?')} value={shareAudience} onChange={e=>setShareAudience(e.target.value as typeof shareAudience)}>
+            <option value="specific">{t(lang,'Only invited people','Solo le persone invitate')}</option><option value="link">{t(lang,'Anyone with the link','Chiunque abbia il link')}</option>
+          </select></label>
+          <p role="status">{shareAudience==='link'?t(lang,'Warning: the link can be forwarded. Check the permission and avoid public editing links.','Attenzione: il link può essere inoltrato. Controlla l’autorizzazione ed evita link pubblici con permesso di modifica.'):t(lang,'More restricted sharing keeps access limited to the people you invite.','La condivisione limitata permette l’accesso solo alle persone che inviti.')}</p>
+        </Panel>}
+        {missionId === 'c7m2' && <Panel title={t(lang,'Plan a team call and check your setup','Organizza una chiamata di gruppo e controlla la configurazione')}>
+          <div className="csl-steps">{meetingSteps.map((step,i)=><div className={meetingStep===i?'current':''} key={i}><b>{i+1}</b>{step}</div>)}</div>
+          <div className="csl-actions"><button type="button" onClick={()=>setMeetingStep(v=>Math.max(0,v-1))}>{t(lang,'Previous','Indietro')}</button><button type="button" onClick={()=>setMeetingStep(v=>Math.min(meetingSteps.length-1,v+1))} disabled={meetingStep===meetingSteps.length-1}>{t(lang,'Next meeting step','Passo successivo')}</button></div>
+          <Readout label={t(lang,'Planning progress','Avanzamento organizzazione')} value={`${meetingStep+1} / ${meetingSteps.length}`}/>
+          <label className="csl-input"><input type="checkbox" checked={cameraReady} onChange={e=>setCameraReady(e.target.checked)}/>{t(lang,'Camera tested','Webcam verificata')}</label>
+          <label className="csl-input"><input type="checkbox" checked={micReady} onChange={e=>setMicReady(e.target.checked)}/>{t(lang,'Microphone tested','Microfono verificato')}</label>
+          <p role="status">{cameraReady&&micReady?t(lang,'Pre-call check complete. You are ready to join.','Controllo pre-chiamata completato. Sei pronto per partecipare.'):t(lang,'Test both camera and microphone before an important call.','Verifica webcam e microfono prima di una chiamata importante.')}</p>
+          <Range label={t(lang,'Travel avoided (km per participant)','Viaggio evitato (km per partecipante)')} value={travelAvoided} min={0} max={200} step={5} onChange={setTravelAvoided}/>
+          <Readout label={t(lang,'Potential travel avoided for 4 people','Viaggio potenzialmente evitato per 4 persone')} value={`${travelAvoided*4} km`}/>
+          <p>{t(lang,'Video calls can avoid some travel, but devices and data centres still use electricity. This is a simple illustration, not a carbon-footprint calculation.','Le videochiamate possono evitare alcuni viaggi, ma dispositivi e data center consumano comunque elettricità. È un esempio didattico, non un calcolo dell’impronta di carbonio.')}</p>
         </Panel>}
         {missionId === 'a4m1' && <Panel title={t(lang,'Follow an app from click to hardware','Segui un’app dal clic all’hardware')}>
           <div className="csl-steps">{osStepLabels.map((label,i)=><div className={processStep===i?'current':''} key={i}><b>{i+1}</b>{label}</div>)}</div>
