@@ -32,6 +32,7 @@ const lessons: Record<string, [string, string]> = {
   c9m2: ['Cell reference simulator', 'Simulatore dei riferimenti di cella'],
   c9m3: ['IF function decision lab', 'Laboratorio della funzione SE'],
   c11m1: ['Flowchart builder', 'Costruttore di diagrammi di flusso'],
+  c11m2: ['Branch & Loop', 'Bivio e ciclo'],
   c12m2: ['Python data type explorer', 'Esploratore dei tipi di dato Python'],
   c13m1: ['Python decision simulator', 'Simulatore delle decisioni Python'],
   c14m1: ['Loop trace laboratory', 'Laboratorio di tracciamento dei cicli'],
