@@ -11,6 +11,7 @@ import { CertificateScreen } from './components/CertificateScreen';
 import { RaceScreen } from './components/RaceScreen';
 import { TestScreen } from './components/TestScreen';
 import { FormulaScreen } from './components/FormulaScreen';
+import { CheckpointScreen } from './components/CheckpointScreen';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -73,6 +74,7 @@ const AppContent: React.FC = () => {
         {activeView === 'race' && <RaceScreen />}
         {activeView === 'test' && <TestScreen />}
         {activeView === 'formula' && <FormulaScreen />}
+        {activeView === 'checkpoint' && <CheckpointScreen />}
       </main>
     </div>
   );
