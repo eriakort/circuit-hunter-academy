@@ -15,6 +15,8 @@ export const HUD: React.FC = () => {
   const physicsCheckpointUnlocked = subject === 'phys' && ['p1m1', 'p1m2', 'p1m3', 'p1m4', 'p1m5'].every(id => !!cleared[id]);
   const csCheckpointMissions = ['a1m1', 'a1m2', 'a1m3', 'a2m1', 'a2m2', 'a2m3', 'a2m4', 'a3m1', 'a3m2', 'a3m3', 'a3m4', 'a5m1', 'a5m2', 'a5m3', 'a5m4'];
   const csCheckpointUnlocked = subject === 'cs' && grade === 'grade9' && csCheckpointMissions.every(id => !!cleared[id]);
+  const csAppliedMissions = ['c6m1', 'c6m2', 'c6m3', 'c9m1', 'c9m2', 'c9m3', 'c11m1', 'c11m2', 'c11m3', 'c12m1', 'c12m2', 'c12m3', 'c13m1', 'c13m2', 'c14m1', 'c14m2', 'c15m1', 'c15m2', 'c16m1', 'c16m2'];
+  const csAppliedCheckpointUnlocked = subject === 'cs' && grade === 'grade9' && csAppliedMissions.every(id => !!cleared[id]);
 
   // Mission battles belong to Missions; dojo battles belong to Dojo.
   const isMissionsActive =
@@ -145,6 +147,19 @@ export const HUD: React.FC = () => {
             onClick={() => goToView('cs-checkpoint')}
           >
             {L(['CS Checkpoint', 'Checkpoint Informatica'], lang)}
+          </button>
+        )}
+
+        {subject === 'cs' && grade === 'grade9' && (
+          <button
+            className={navClass(view === 'cs-applied-checkpoint')}
+            id="hCSAppliedCheckpoint"
+            aria-current={currentPage(view === 'cs-applied-checkpoint')}
+            disabled={!csAppliedCheckpointUnlocked}
+            title={!csAppliedCheckpointUnlocked ? L(['Complete the 20 Cybersecurity, Spreadsheet and Python missions to unlock this advanced checkpoint.', 'Completa le 20 missioni di sicurezza informatica, fogli di calcolo e Python per sbloccare questo checkpoint avanzato.'], lang) : undefined}
+            onClick={() => goToView('cs-applied-checkpoint')}
+          >
+            {L(['Applied CS Trial', 'Prova di Informatica Applicata'], lang)}
           </button>
         )}
 
