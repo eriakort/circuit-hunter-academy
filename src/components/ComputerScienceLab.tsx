@@ -33,7 +33,7 @@ const lessons: Record<string, [string, string]> = {
   c9m3: ['IF function decision lab', 'Laboratorio della funzione SE'],
   c11m1: ['Flowchart builder', 'Costruttore di diagrammi di flusso'],
   c11m2: ['Branch & Loop', 'Bivio e ciclo'],
-  c12m2: ['Python data type explorer', 'Esploratore dei tipi di dato Python'],
+  c12m2: ['Python variable & type lab', 'Laboratorio Python: variabili e tipi'],
   c13m1: ['Python decision simulator', 'Simulatore delle decisioni Python'],
   c14m1: ['Loop trace laboratory', 'Laboratorio di tracciamento dei cicli'],
   c15m1: ['String index and slice lab', 'Laboratorio di indici e slicing'],
@@ -75,6 +75,11 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
   const [loopCount, setLoopCount] = useState(4);
   const [traceStarted, setTraceStarted] = useState(false);
   const [pythonValue, setPythonValue] = useState('42');
+  const [pythonVariableName, setPythonVariableName] = useState('score');
+  const [pythonInputText, setPythonInputText] = useState('18');
+  const [pythonConversion, setPythonConversion] = useState<'none'|'int'|'float'>('int');
+  const [pythonHasRun, setPythonHasRun] = useState(false);
+  const [pythonShowComment, setPythonShowComment] = useState(true);
   const [temperature, setTemperature] = useState(18);
   const [loopLimit, setLoopLimit] = useState(5);
   const [loopStep, setLoopStep] = useState(0);
@@ -140,6 +145,15 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
     (/\\d/.test(practicePassword) ? 10 : 0) + (/[^A-Za-z0-9]/.test(practicePassword) ? 15 : 0) +
     (new Set(practicePassword).size >= 8 ? 20 : 0));
   const sliced = sampleString.slice(sliceStart, sliceEnd);
+  const pythonLiteralType = pythonValue.trim()===''?'str':/^[-+]?\d+$/.test(pythonValue)?'int':/^[-+]?(\d+\.\d*|\.\d+)$/.test(pythonValue)?'float':/^(True|False)$/.test(pythonValue)?'bool':'str';
+  const pythonInputIsInteger = /^[+-]?\d+$/.test(pythonInputText.trim());
+  const pythonInputIsFloat = /^[+-]?(?:\d+\.?\d*|\.\d+)$/.test(pythonInputText.trim());
+  const pythonNameIsValid = /^[A-Za-z_][A-Za-z0-9_]*$/.test(pythonVariableName) &&
+    !new Set(['False','None','True','and','as','assert','async','await','break','class','continue','def','del','elif','else','except','finally','for','from','global','if','import','in','is','lambda','nonlocal','not','or','pass','raise','return','try','while','with','yield']).has(pythonVariableName);
+  const pythonConversionIsValid = pythonConversion === 'none' || (pythonConversion === 'int' && pythonInputIsInteger) || (pythonConversion === 'float' && pythonInputIsFloat);
+  const pythonConvertedType = pythonConversion === 'none' ? 'str' : pythonConversion;
+  const pythonConvertedValue = pythonConversion === 'int' ? Number.parseInt(pythonInputText, 10) : pythonConversion === 'float' ? Number.parseFloat(pythonInputText) : pythonInputText;
+  const pythonNextValue = pythonConversion === 'none' ? null : pythonConversionIsValid ? Number(pythonConvertedValue) + 1 : null;
   const loopValues = Array.from({length: loopStep}, (_,i) => i);
   const osStepLabels = [
     t(lang,'You select an application icon.','Selezioni l’icona di un’applicazione.'),
@@ -456,10 +470,28 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
           <Readout label={t(lang,'Iterations completed','Iterazioni completate')} value={traceStarted?loopCount+' / '+loopCount:'0 / '+loopCount}/>
           <p>{t(lang,'A loop repeats its body. A counter-controlled loop stops after the chosen number of rounds; check that every loop has a stopping condition.','Un ciclo ripete il suo contenuto. Un ciclo con contatore termina dopo il numero scelto di giri; verifica che ogni ciclo abbia una condizione di arresto.')}</p>
         </Panel>}
-        {missionId === 'c12m2' && <Panel title={t(lang,'Explore Python value types','Esplora i tipi di dato Python')}>
-          <label className="csl-input">{t(lang,'Try a value','Prova un valore')}<input value={pythonValue} onChange={e=>setPythonValue(e.target.value)}/></label>
-          <Readout label="Python type (simple example)" value={pythonValue.trim()===''?'str':/^[-+]?\d+$/.test(pythonValue)?'int':/^[-+]?(\d+\.\d*|\.\d+)$/.test(pythonValue)?'float':/^(True|False)$/.test(pythonValue)?'bool':'str'}/>
-          <p>{t(lang,'input() returns text. Convert it with int() or float() before doing arithmetic.','input() restituisce testo. Convertilo con int() o float() prima di eseguire calcoli.')}</p>
+        {missionId === 'c12m2' && <Panel title={t(lang,'Build a Python input and variable','Crea un input e una variabile Python')}>
+          <p>{t(lang,'Try the same value as text, then convert it into a number. This is a safe simulation: it explains a few Python statements without executing code.','Prova lo stesso valore come testo, poi convertilo in numero. È una simulazione sicura: mostra alcune istruzioni Python senza eseguire codice.')}</p>
+          <label className="csl-input">{t(lang,'Try a Python value','Prova un valore Python')}<input aria-label={t(lang,'Try a Python value','Prova un valore Python')} value={pythonValue} onChange={e=>setPythonValue(e.target.value)}/></label>
+          <Readout label={t(lang,'Detected literal type','Tipo del valore')} value={pythonLiteralType}/>
+          <label className="csl-input">{t(lang,'Variable name','Nome della variabile')}<input aria-label={t(lang,'Variable name','Nome della variabile')} value={pythonVariableName} onChange={e=>{setPythonVariableName(e.target.value);setPythonHasRun(false);}}/></label>
+          <Readout label={t(lang,'Variable name check','Controllo del nome')} value={pythonNameIsValid?t(lang,'Valid identifier','Identificatore valido'):t(lang,'Use a letter or underscore first; no spaces or keywords.','Inizia con una lettera o un trattino basso; niente spazi o parole chiave.')}/>
+          <label className="csl-input">{t(lang,'Text entered by the user','Testo inserito dall’utente')}<input aria-label={t(lang,'Text entered by the user','Testo inserito dall’utente')} value={pythonInputText} onChange={e=>{setPythonInputText(e.target.value);setPythonHasRun(false);}}/></label>
+          <Readout label="input()" value={t(lang,'Always returns str (text)','Restituisce sempre str (testo)')}/>
+          <label className="csl-input">{t(lang,'Convert the input','Converti l’input')}<select aria-label={t(lang,'Convert the input','Converti l’input')} value={pythonConversion} onChange={e=>{setPythonConversion(e.target.value as typeof pythonConversion);setPythonHasRun(false);}}><option value="none">{t(lang,'Keep as text (str)','Mantieni come testo (str)')}</option><option value="int">int()</option><option value="float">float()</option></select></label>
+          <Readout label={t(lang,'Resulting data type','Tipo di dato risultante')} value={pythonConversionIsValid?pythonConvertedType:t(lang,'Conversion error','Errore di conversione')}/>
+          <div className="csl-code" aria-label={t(lang,'Python code preview','Anteprima del codice Python')}>
+            {pythonShowComment && <><span># {t(lang,'Read a value and convert it','Leggi un valore e convertilo')}</span><br/></>}
+            {pythonVariableName + '_text'} = input("{t(lang,'Enter a value: ','Inserisci un valore: ')}")<br/>
+            {pythonVariableName} = {pythonConversion==='none'?pythonVariableName+'_text':pythonConversion+'('+pythonVariableName+'_text)'}<br/>
+            print("{t(lang,'Next value:','Valore successivo:')}", {pythonVariableName} + 1)
+          </div>
+          <label className="csl-check"><input type="checkbox" checked={pythonShowComment} onChange={e=>setPythonShowComment(e.target.checked)}/>{t(lang,'Show the comment line','Mostra la riga di commento')}</label>
+          <div className="csl-actions"><button type="button" onClick={()=>setPythonHasRun(true)}>{t(lang,'Run the example','Esegui l’esempio')}</button><button type="button" onClick={()=>{setPythonInputText('18');setPythonVariableName('score');setPythonConversion('int');setPythonHasRun(false);setPythonShowComment(true);}}>{t(lang,'Reset example','Azzera esempio')}</button></div>
+          {pythonHasRun && <div className="csl-python-output" role="status"><small>{t(lang,'Simulated output','Output simulato')}</small>
+            {!pythonNameIsValid ? <strong>{t(lang,'Invalid variable name','Nome della variabile non valido')}</strong> : !pythonConversionIsValid ? <strong>{t(lang,'Cannot convert this text. Try a whole number for int() or a decimal for float().','Impossibile convertire questo testo. Prova un intero con int() o un decimale con float().')}</strong> : pythonConversion==='none' ? <strong>{t(lang,'TypeError: text and number cannot be added. Convert the input first.','TypeError: non puoi sommare testo e numero. Converti prima l’input.')}</strong> : <><strong>{t(lang,'Next value:','Valore successivo:')} {pythonNextValue}</strong><span>{pythonVariableName} = {String(pythonConvertedValue)} ({pythonConvertedType})</span></>}
+          </div>}
+          <p>{t(lang,'A variable is a named box. The = sign assigns a value; it does not mean “is equal to” as it does in a maths question. Comments begin with # and are ignored by Python.','Una variabile è una casella con un nome. Il segno = assegna un valore; non significa “è uguale a” come in un esercizio di matematica. I commenti iniziano con # e Python li ignora.')}</p>
         </Panel>}
         {missionId === 'c13m1' && <Panel title={t(lang,'Test an if / else decision','Prova una decisione if / else')}>
           <Range label={t(lang,'Temperature (°C)','Temperatura (°C)')} value={temperature} min={-5} max={35} onChange={setTemperature}/>
