@@ -30,11 +30,11 @@ async function openOperatingSystemsMission(page, missionIndex, lang = 'en') {
 test('Operating system lab explains the app-to-hardware process flow', async ({ page }) => {
   await openOperatingSystemsMission(page, 51);
   await expect(page.getByRole('heading', { name: 'Operating system process desk' })).toBeVisible();
-  await expect(page.getByText('You select an application icon.')).toBeVisible();
+  await expect(page.locator('.csl-steps>div.current')).toContainText('You select an application icon.');
   await page.getByRole('button', { name: 'Next system step' }).click();
-  await expect(page.getByText('The operating system finds the program on storage.')).toBeVisible();
+  await expect(page.locator('.csl-steps>div.current')).toContainText('The operating system finds the program on storage.');
   await page.getByRole('button', { name: 'Next system step' }).click();
-  await expect(page.getByText('The program is loaded into RAM and becomes a process.')).toBeVisible();
+  await expect(page.locator('.csl-steps>div.current')).toContainText('The program is loaded into RAM and becomes a process.');
 });
 
 test('File system lab demonstrates copy, move, rename and delete in Italian', async ({ page }) => {
