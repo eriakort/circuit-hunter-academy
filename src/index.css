@@ -987,6 +987,7 @@ body{overflow-x:hidden}
 .csl-computer-flow span{padding:10px 8px;border:1px solid var(--line);border-radius:7px;background:var(--panel2)}
 .csl-computer-flow .cpu{border-color:var(--gold);color:var(--gold)}
 .csl-steps{display:flex;flex-direction:column;gap:7px}
+.csl-file-tree{padding:10px 12px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;font:13px/1.9 var(--mono);color:var(--text)}.csl-file-tree .indent{padding-left:18px}.csl-file-tree .deeper{padding-left:38px;color:var(--data)}
 .csl-steps>div{display:flex;align-items:center;gap:10px;padding:9px 10px;background:rgba(106,209,255,.06);border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:13px}
 .csl-steps>div>b{flex:0 0 24px;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:var(--panel2);color:var(--data);font:700 12px var(--mono)}
 .csl-steps>div.current{border-color:var(--gold);background:rgba(255,209,102,.1)}
