@@ -273,13 +273,14 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const resetProgress = () => {
+    const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === state.subject);
     const fresh: GameState = {
       grade: state.grade,
       name: '',
       lang: state.lang,
       xp: 0,
       subject: state.subject,
-      unit: 0,
+      unit: firstUnit < 0 ? 0 : firstUnit,
       cleared: {},
       seen: {},
       flawless: {},
