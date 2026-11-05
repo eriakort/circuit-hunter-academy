@@ -1,5 +1,6 @@
 import { SubjectInfo, UnitInfo, ArcInfo, Mission, Rank, CodexEntry } from "../types";
 import { PHYSICS_FOUNDATION_MISSIONS } from "./physicsFoundationsData";
+import { MATH_CODEX } from "./mathCodex";
 export const SUBJECTS: SubjectInfo[] = [
   {
     "id": "cs",
@@ -28389,7 +28390,8 @@ export const CODEX: CodexEntry[] = [
     "spinta di Archimede",
     "The upward push of a fluid on a submerged body.",
     "La spinta verso l'alto di un fluido su un corpo immerso."
-  ]
+  ],
+  ...MATH_CODEX
 ];
 
 export const ROBOT_LEVELS = [

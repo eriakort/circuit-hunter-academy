@@ -111,6 +111,15 @@ export const HUD: React.FC = () => {
         </button>
 
         <button
+          className={navClass(view === 'formula')}
+          id="hFormula"
+          aria-current={currentPage(view === 'formula')}
+          onClick={() => goToView('formula')}
+        >
+          {L(['Formulas', 'Formulario'], lang)}
+        </button>
+
+        <button
           className={navClass(isDojoActive)}
           id="hDojo"
           aria-current={currentPage(isDojoActive)}

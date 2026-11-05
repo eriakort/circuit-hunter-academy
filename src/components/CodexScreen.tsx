@@ -57,7 +57,7 @@ export const CodexScreen: React.FC = () => {
 
           // Filter codex entries for this mission
           const entries = CODEX.filter(e => {
-            if (e[0] !== mi) return false;
+            if (e[0] !== mi && e[0] !== m.id) return false;
             if (!q) return true;
             if (!isMissionSeen) return false;
             return e.slice(1).join(' ').toLowerCase().includes(q);

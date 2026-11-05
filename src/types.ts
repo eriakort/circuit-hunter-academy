@@ -207,8 +207,8 @@ export interface Mission {
 
 export type Rank = [number, [string, string]];
 
-// [missionIndex, enTerm, itTerm, enDef, itDef]
-export type CodexEntry = [number, string, string, string, string];
+// [missionIndexOrId, enTerm, itTerm, enDef, itDef]
+export type CodexEntry = [number | string, string, string, string, string];
 
 export interface GameState {
   /** Selected school grade; null means the learner has not chosen a grade yet. */
@@ -225,7 +225,7 @@ export interface GameState {
   v: number;
 }
 
-export type ViewMode = 'grades' | 'subjects' | 'map' | 'scene' | 'battle' | 'result' | 'ending' | 'dojo' | 'codex' | 'race' | 'test';
+export type ViewMode = 'grades' | 'subjects' | 'map' | 'scene' | 'battle' | 'result' | 'ending' | 'dojo' | 'codex' | 'race' | 'test' | 'formula';
 
 export interface TaggedQuestion extends QuizQuestion {
   id: string;

@@ -8,6 +8,7 @@ import {
   pickRandomQuestions,
   CategoryOption
 } from '../data/questionBank';
+import { FORMULA_CARDS } from '../data/formulaData';
 import { L, shuffle, esc, U } from '../helpers';
 
 export const TestScreen: React.FC = () => {
@@ -33,6 +34,8 @@ export const TestScreen: React.FC = () => {
   const [userAnswers, setUserAnswers] = useState<Array<{ selectedIdx: number; isCorrect: boolean }>>([]);
   const [answeredCurrent, setAnsweredCurrent] = useState(false);
   const [selectedOptIdx, setSelectedOptIdx] = useState<number | null>(null);
+  const [showFormulaModal, setShowFormulaModal] = useState(false);
+  const [formulaModalSearch, setFormulaModalSearch] = useState('');
 
   const selectedCategory = useMemo(() => {
     return categories.find(c => c.id === selectedCatId) || categories[0];
@@ -207,6 +210,9 @@ export const TestScreen: React.FC = () => {
           >
             {L(['Start Knowledge Test', 'Inizia il Test'], lang)}
           </button>
+          <button type="button" className="btn ghost" onClick={() => goToView('formula')}>
+            📖 {L(['Formula Sheet', 'Formulario'], lang)}
+          </button>
           <button type="button" className="btn ghost" onClick={() => goToView('map')}>
             {L(U.missions, lang)}
           </button>
@@ -235,6 +241,14 @@ export const TestScreen: React.FC = () => {
             </div>
           </div>
           <div className="row" style={{ gap: '10px', alignItems: 'center' }}>
+            <button
+              type="button"
+              className="btn sm ghost"
+              onClick={() => setShowFormulaModal(true)}
+              title={L(['Open formula sheet reference', 'Consulta il formulario'], lang)}
+            >
+              📖 {L(['Formulas', 'Formulario'], lang)}
+            </button>
             <span className="badge go">
               {testMode === 'practice' ? L(['Practice', 'Pratica'], lang) : L(['Exam', 'Esame'], lang)}
             </span>
@@ -361,6 +375,9 @@ export const TestScreen: React.FC = () => {
           <button type="button" className="btn" onClick={startTest}>
             {L(['Retest (New Random Set)', 'Nuovo Test Casuale'], lang)}
           </button>
+          <button type="button" className="btn ghost" onClick={() => goToView('formula')}>
+            📖 {L(['Formula Sheet', 'Formulario'], lang)}
+          </button>
           <button type="button" className="btn ghost" onClick={() => setPhase('config')}>
             {L(['Choose Another Topic', 'Cambia Argomento'], lang)}
           </button>
@@ -434,6 +451,115 @@ export const TestScreen: React.FC = () => {
           })}
         </div>
       </div>
+
+      {/* QUICK FORMULA MODAL OVERLAY */}
+      {showFormulaModal && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(10, 11, 24, 0.85)',
+            backdropFilter: 'blur(6px)',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '16px'
+          }}
+          onClick={() => setShowFormulaModal(false)}
+        >
+          <div
+            className="card"
+            style={{
+              maxWidth: '780px',
+              width: '100%',
+              maxHeight: '85vh',
+              overflowY: 'auto',
+              boxShadow: '0 12px 40px rgba(0,0,0,0.6)',
+              border: '2px solid var(--data)'
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+              <div>
+                <div className="eyebrow" style={{ color: 'var(--data)' }}>
+                  {L(['QUICK FORMULA REFERENCE', 'CONSULTAZIONE RAPIDA FORMULARIO'], lang)}
+                </div>
+                <h3 style={{ fontSize: '20px' }}>
+                  {L(['Rules & Formulas', 'Regole e Formule d\'Oro'], lang)}
+                </h3>
+              </div>
+              <button
+                type="button"
+                className="btn sm"
+                onClick={() => setShowFormulaModal(false)}
+              >
+                ✕ {L(['Close', 'Chiudi'], lang)}
+              </button>
+            </div>
+
+            <input
+              className="codex-search"
+              placeholder={L(['Search formulas or rules...', 'Cerca formule o regole...'], lang)}
+              value={formulaModalSearch}
+              onChange={e => setFormulaModalSearch(e.target.value)}
+              style={{ marginBottom: '14px' }}
+            />
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {FORMULA_CARDS.filter(c => {
+                if (!formulaModalSearch) return true;
+                const q = formulaModalSearch.toLowerCase();
+                return (
+                  c.title[0].toLowerCase().includes(q) ||
+                  c.title[1].toLowerCase().includes(q) ||
+                  c.formula.toLowerCase().includes(q) ||
+                  (c.trap && (c.trap[0].toLowerCase().includes(q) || c.trap[1].toLowerCase().includes(q)))
+                );
+              }).map(card => (
+                <div
+                  key={card.id}
+                  style={{
+                    background: 'var(--panel2)',
+                    border: '1px solid var(--line)',
+                    borderRadius: '10px',
+                    padding: '12px 14px'
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                    <b style={{ fontSize: '14px', color: 'var(--text)' }}>{L(card.title, lang)}</b>
+                    <span className="badge ok" style={{ fontSize: '10px' }}>{card.category}</span>
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'var(--mono)',
+                      color: 'var(--gold)',
+                      fontSize: '15px',
+                      background: 'var(--panel)',
+                      padding: '6px 10px',
+                      borderRadius: '6px',
+                      margin: '6px 0',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    {card.formula}
+                  </div>
+                  <div style={{ fontSize: '13px', color: 'var(--muted)', marginBottom: '4px' }}>
+                    <b>{L(['Example', 'Esempio'], lang)}:</b> {L(card.example, lang)}
+                  </div>
+                  {card.trap && (
+                    <div style={{ fontSize: '12px', color: 'var(--ember)', background: 'rgba(255,106,61,0.1)', padding: '4px 8px', borderRadius: '6px' }}>
+                      ⚠️ {L(card.trap, lang)}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
