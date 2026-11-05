@@ -1070,3 +1070,21 @@ body{overflow-x:hidden}
 .csl-check input{width:16px;height:16px;accent-color:var(--data)}
 .csl-divider{height:1px;background:var(--line);margin:4px 0}
 @media(max-width:560px){.csl-format-toolbar{grid-template-columns:1fr}.csl-layout-preview{flex-direction:column}.csl-layout-image{flex-basis:auto;width:76px}}
+
+
+/* Chapter 10 presentation labs */
+.csl-slide-preview{min-height:210px;padding:18px 20px;border-radius:12px;border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:10px;overflow:hidden}
+.csl-slide-preview small{font-size:10px;letter-spacing:.12em;font-weight:800;opacity:.75}
+.csl-slide-preview h3{margin:0;line-height:1.12;overflow-wrap:anywhere}
+.csl-slide-preview p{margin:0;font-size:14px;line-height:1.45}
+.csl-slide-preview.theme-night{background:#14253d;color:#f8fbff;border-color:#35577e}
+.csl-slide-preview.theme-paper{background:#fff;color:#1d2939;border-color:#cbd5e1}
+.csl-slide-preview.theme-forest{background:#153b32;color:#f0fff7;border-color:#397a62}
+.csl-slide-visual{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;margin-top:6px}
+.csl-slide-visual>span:not(.csl-slide-image){padding:8px 12px;border-radius:8px;background:rgba(255,255,255,.15);font-size:12px;font-weight:700}
+.theme-paper .csl-slide-visual>span:not(.csl-slide-image){background:#e8eef5;color:#1d2939}
+.csl-slide-visual>b{opacity:.8}
+.csl-slide-image{font-size:42px}
+.csl-demo-bars{height:52px;display:flex;align-items:end;gap:7px}
+.csl-demo-bars i{display:block;width:18px;border-radius:4px 4px 0 0;background:#56c5a8}
+.csl-demo-bars i:nth-child(1){height:35%}.csl-demo-bars i:nth-child(2){height:65%}.csl-demo-bars i:nth-child(3){height:48%}.csl-demo-bars i:nth-child(4){height:90%}

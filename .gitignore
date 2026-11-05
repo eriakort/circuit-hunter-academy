@@ -1,7 +1,0 @@
-node_modules/
-__pycache__/
-.DS_Store
-*.png
-dist/
-playwright-report/
-test-results/
