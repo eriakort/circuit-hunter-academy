@@ -16,11 +16,14 @@ async function openOperatingSystemsMission(page, missionIndex, lang = 'en') {
       checkpointProgress: {},
       v: 3
     }));
+    window.localStorage.setItem('circuit-hunter-academy-navigation-v2', JSON.stringify({
+      view: 'scene',
+      currentMissionIndex: missionIndex,
+      currentSceneIndex: 1,
+      battleContext: null
+    }));
   }, { missionIndex, lang });
   await page.goto('/');
-  // Navigate through the same mission card and scene controls used by learners.
-  await page.locator(`.mcard[data-i="${missionIndex}"]`).click();
-  await page.locator('#next').click();
   await expect(page.locator('.cs-visual-lab')).toBeVisible();
 }
 
