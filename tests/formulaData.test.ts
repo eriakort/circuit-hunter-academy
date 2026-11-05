@@ -1,22 +1,35 @@
-import { FORMULA_CARDS } from '../src/data/formulaData';
+import { FORMULA_CARDS, SUBJECT_TOPICS } from '../src/data/formulaData';
 
-console.log('Testing FORMULA_CARDS integrity...');
+console.log('Testing FORMULA_CARDS & SUBJECT_TOPICS integrity...');
 
 if (!FORMULA_CARDS || FORMULA_CARDS.length === 0) {
   throw new Error('FORMULA_CARDS is empty or undefined');
 }
 
-const categories = new Set(FORMULA_CARDS.map(c => c.category));
-const requiredCategories = ['powers', 'fractions', 'algebra', 'equations', 'physics'];
+const subjectsInCards = new Set(FORMULA_CARDS.map(c => c.subject));
+const requiredSubjects = ['math', 'phys', 'cs', 'science'];
 
-for (const req of requiredCategories) {
-  if (!categories.has(req as any)) {
-    throw new Error(`Missing required formula category: ${req}`);
+for (const req of requiredSubjects) {
+  if (!subjectsInCards.has(req as any)) {
+    throw new Error(`Missing required formula subject: ${req}`);
+  }
+}
+
+// Verify SUBJECT_TOPICS
+for (const sub of requiredSubjects) {
+  const topics = SUBJECT_TOPICS[sub as keyof typeof SUBJECT_TOPICS];
+  if (!topics || topics.length === 0) {
+    throw new Error(`Missing subject topics for: ${sub}`);
+  }
+  for (const t of topics) {
+    if (!t.id || !t.name || t.name.length < 2) {
+      throw new Error(`Invalid topic definition in subject ${sub}: ${JSON.stringify(t)}`);
+    }
   }
 }
 
 for (const card of FORMULA_CARDS) {
-  if (!card.id || !card.title || !card.formula || !card.example) {
+  if (!card.id || !card.title || !card.formula || !card.example || !card.subject || !card.topicId) {
     throw new Error(`Card missing required properties: ${JSON.stringify(card)}`);
   }
   if (!Array.isArray(card.title) || card.title.length < 2) {
@@ -38,6 +51,12 @@ for (const card of FORMULA_CARDS) {
       }
     }
   }
+
+  // Ensure topicId belongs to the subject's defined topics
+  const subTopics = SUBJECT_TOPICS[card.subject];
+  if (!subTopics.some(t => t.id === card.topicId)) {
+    throw new Error(`Card ${card.id} has topicId ${card.topicId} which is not registered in SUBJECT_TOPICS for subject ${card.subject}`);
+  }
 }
 
-console.log(`✓ formulaData.test.ts passed! ${FORMULA_CARDS.length} formula cards verified across categories: ${Array.from(categories).join(', ')}`);
+console.log(`✓ formulaData.test.ts passed! ${FORMULA_CARDS.length} formula cards verified across subjects: ${Array.from(subjectsInCards).join(', ')}`);

@@ -36,6 +36,7 @@ export const TestScreen: React.FC = () => {
   const [selectedOptIdx, setSelectedOptIdx] = useState<number | null>(null);
   const [showFormulaModal, setShowFormulaModal] = useState(false);
   const [formulaModalSearch, setFormulaModalSearch] = useState('');
+  const [modalSubject, setModalSubject] = useState<string>(curSub);
 
   const selectedCategory = useMemo(() => {
     return categories.find(c => c.id === selectedCatId) || categories[0];
@@ -500,6 +501,27 @@ export const TestScreen: React.FC = () => {
               </button>
             </div>
 
+            {/* Subject Selector Tabs in Modal */}
+            <div className="row" style={{ gap: '6px', marginBottom: '12px', overflowX: 'auto' }}>
+              {[
+                { id: 'all', name: ['All', 'Tutte'] },
+                { id: 'math', name: ['Maths', 'Matematica'] },
+                { id: 'phys', name: ['Physics', 'Fisica'] },
+                { id: 'cs', name: ['CS', 'Informatica'] },
+                { id: 'science', name: ['Science', 'Scienze'] }
+              ].map(s => (
+                <button
+                  key={s.id}
+                  type="button"
+                  className={`btn sm ${modalSubject === s.id ? 'cyan' : 'ghost'}`}
+                  onClick={() => setModalSubject(s.id)}
+                  style={{ fontSize: '12px', padding: '4px 10px' }}
+                >
+                  {L(s.name, lang)}
+                </button>
+              ))}
+            </div>
+
             <input
               className="codex-search"
               placeholder={L(['Search formulas or rules...', 'Cerca formule o regole...'], lang)}
@@ -510,6 +532,7 @@ export const TestScreen: React.FC = () => {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {FORMULA_CARDS.filter(c => {
+                if (modalSubject !== 'all' && c.subject !== modalSubject) return false;
                 if (!formulaModalSearch) return true;
                 const q = formulaModalSearch.toLowerCase();
                 return (

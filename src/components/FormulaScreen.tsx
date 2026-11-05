@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useGame } from '../context/GameContext';
-import { FORMULA_CARDS, FormulaCard } from '../data/formulaData';
+import { FORMULA_CARDS, SUBJECT_TOPICS, FormulaCard } from '../data/formulaData';
+import { SubjectId } from '../types';
 import { L } from '../helpers';
 
 // Helper for fraction simplification
@@ -14,14 +15,40 @@ function reduceFraction(num: number, den: number): [number, number] {
   return [num / g, den / g];
 }
 
+interface SubjectMeta {
+  id: SubjectId | 'all';
+  name: [string, string];
+  icon: string;
+  badgeColor: string;
+}
+
+const SUBJECT_LIST: SubjectMeta[] = [
+  { id: 'all', name: ['All Subjects', 'Tutte le Materie'], icon: '🌐', badgeColor: 'var(--data)' },
+  { id: 'math', name: ['Mathematics', 'Matematica'], icon: '∑', badgeColor: 'var(--gold)' },
+  { id: 'phys', name: ['Physics', 'Fisica'], icon: '⚡', badgeColor: 'var(--sakura)' },
+  { id: 'cs', name: ['Computer Science', 'Informatica'], icon: '💾', badgeColor: 'var(--data)' },
+  { id: 'science', name: ['Grade 5 Science', 'Scienze (5ª Primaria)'], icon: '🔬', badgeColor: 'var(--good)' }
+];
+
 export const FormulaScreen: React.FC = () => {
   const { state, goToView } = useGame();
-  const { lang, subject } = state;
+  const { lang, subject: gameSubject } = state;
 
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  // Active Subject Selection (defaults to current game subject if valid, else 'math')
+  const [activeSubject, setActiveSubject] = useState<SubjectId | 'all'>(() => {
+    if (gameSubject && ['math', 'phys', 'cs', 'science'].includes(gameSubject)) {
+      return gameSubject;
+    }
+    return 'math';
+  });
+
+  // Active Topic Selection ('all' = All Formulas for selected subject, or specific topic ID)
+  const [activeTopic, setActiveTopic] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [showWorkbench, setShowWorkbench] = useState<boolean>(false);
-  const [activeTool, setActiveTool] = useState<'binomial' | 'trinomial' | 'equation' | 'inequality'>('binomial');
+  const [activeTool, setActiveTool] = useState<
+    'binomial' | 'trinomial' | 'equation' | 'inequality' | 'lever' | 'density' | 'binary' | 'ohm'
+  >('binomial');
 
   // Workbench Interactive States
   // 1. Binomial Expander (Ax + B)^2
@@ -40,22 +67,69 @@ export const FormulaScreen: React.FC = () => {
   const [inEqK, setInEqK] = useState<number>(-2);
   const [inEqB, setInEqB] = useState<number>(6);
 
-  const categories = [
-    { id: 'all', label: ['All Formulas', 'Tutte le Formule'] },
-    { id: 'powers', label: ['Powers & Exponents', 'Potenze ed Esponenti'] },
-    { id: 'fractions', label: ['Fractions & Decimals', 'Frazioni e Decimali'] },
-    { id: 'algebra', label: ['Algebra & Special Products', 'Calcolo Letterale & Prodotti Notevoli'] },
-    { id: 'equations', label: ['Equations & Inequalities', 'Equazioni & Disequazioni'] },
-    { id: 'physics', label: ['Physics Laws', 'Leggi Fisiche'] }
-  ];
+  // 5. Lever Balance Calculator
+  const [leverFr, setLeverFr] = useState<number>(400); // 400 N load
+  const [leverBr, setLeverBr] = useState<number>(0.2); // 0.2 m load arm
+  const [leverBm, setLeverBm] = useState<number>(1.0); // 1.0 m motive arm
+
+  // 6. Density Calculator
+  const [densMass, setDensMass] = useState<number>(600); // grams
+  const [densVol, setDensVol] = useState<number>(300); // cm3
+
+  // 7. Binary to Decimal Converter
+  const [binValue, setBinValue] = useState<string>('10110');
+
+  // 8. Ohm's Law Calculator
+  const [ohmVolts, setOhmVolts] = useState<number>(12);
+  const [ohmResistance, setOhmResistance] = useState<number>(4);
+
+  // Handle subject change: reset topic to 'all'
+  const handleSelectSubject = (subjId: SubjectId | 'all') => {
+    setActiveSubject(subjId);
+    setActiveTopic('all');
+  };
+
+  // Available topics for active subject
+  const currentTopics = useMemo(() => {
+    if (activeSubject === 'all') return [];
+    return SUBJECT_TOPICS[activeSubject] || [];
+  }, [activeSubject]);
+
+  // Counts per subject
+  const subjectCounts = useMemo(() => {
+    const counts: Record<string, number> = { all: FORMULA_CARDS.length, math: 0, phys: 0, cs: 0, science: 0 };
+    for (const card of FORMULA_CARDS) {
+      if (counts[card.subject] !== undefined) {
+        counts[card.subject]++;
+      }
+    }
+    return counts;
+  }, []);
+
+  // Counts per topic within current subject
+  const topicCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const card of FORMULA_CARDS) {
+      if (activeSubject === 'all' || card.subject === activeSubject) {
+        counts[card.topicId] = (counts[card.topicId] || 0) + 1;
+      }
+    }
+    return counts;
+  }, [activeSubject]);
 
   // Filtered formula cards
   const filteredCards = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     return FORMULA_CARDS.filter(card => {
-      if (activeCategory !== 'all' && card.category !== activeCategory) {
+      // 1. Subject filter
+      if (activeSubject !== 'all' && card.subject !== activeSubject) {
         return false;
       }
+      // 2. Topic filter
+      if (activeTopic !== 'all' && card.topicId !== activeTopic) {
+        return false;
+      }
+      // 3. Search query
       if (!q) return true;
       const titleEn = card.title[0].toLowerCase();
       const titleIt = card.title[1].toLowerCase();
@@ -82,7 +156,7 @@ export const FormulaScreen: React.FC = () => {
         rulesText.includes(q)
       );
     });
-  }, [activeCategory, searchQuery]);
+  }, [activeSubject, activeTopic, searchQuery]);
 
   // Calculations for Workbench
   // 1. Binomial (Ax + B)^2 = A^2 x^2 + 2AB x + B^2
@@ -101,7 +175,6 @@ export const FormulaScreen: React.FC = () => {
 
   // 2. Trinomial Factoring x^2 + sx + p = (x + m)(x + n)
   const trinomialFactors = useMemo(() => {
-    // Find integer pairs (m, n) such that m * n = triProd and m + n = triSum
     const limit = Math.max(Math.abs(triProd), 50);
     for (let m = -limit; m <= limit; m++) {
       if (m === 0 && triProd !== 0) continue;
@@ -154,6 +227,46 @@ export const FormulaScreen: React.FC = () => {
     }
   }, [eqA, eqB]);
 
+  // 5. Lever Motive Force Calculation
+  const leverFm = useMemo(() => {
+    if (leverBm <= 0) return 0;
+    return Number(((leverFr * leverBr) / leverBm).toFixed(1));
+  }, [leverFr, leverBr, leverBm]);
+
+  // 6. Density Calculation
+  const densityCalc = useMemo(() => {
+    if (densVol <= 0) return { gcm3: '0.00', kgm3: 0 };
+    const gcm3 = densMass / densVol;
+    const kgm3 = gcm3 * 1000;
+    return { gcm3: gcm3.toFixed(2), kgm3: Math.round(kgm3) };
+  }, [densMass, densVol]);
+
+  // 7. Binary to Decimal Calculation
+  const binaryCalc = useMemo(() => {
+    const clean = binValue.replace(/[^01]/g, '') || '0';
+    const dec = parseInt(clean, 2);
+    const powersExpansion = clean
+      .split('')
+      .reverse()
+      .map((bit, idx) => `${bit}·2^${idx}`)
+      .reverse()
+      .join(' + ');
+    return { clean, dec, powersExpansion };
+  }, [binValue]);
+
+  // 8. Ohm's Law Calculation
+  const ohmCurrent = useMemo(() => {
+    if (ohmResistance <= 0) return 0;
+    return Number((ohmVolts / ohmResistance).toFixed(2));
+  }, [ohmVolts, ohmResistance]);
+  const ohmPower = useMemo(() => {
+    return Number((ohmVolts * ohmCurrent).toFixed(2));
+  }, [ohmVolts, ohmCurrent]);
+
+  // Active Subject details
+  const activeSubjectInfo = SUBJECT_LIST.find(s => s.id === activeSubject) || SUBJECT_LIST[0];
+  const activeTopicInfo = currentTopics.find(t => t.id === activeTopic);
+
   // Visual SVGs for cards
   const renderVisual = (key?: string) => {
     if (!key) return null;
@@ -165,27 +278,20 @@ export const FormulaScreen: React.FC = () => {
             {L(['Geometric Model of (A + B)²: Area of 4 Regions', 'Modello geometrico di (A + B)²: Somma delle 4 aree'], lang)}
           </div>
           <svg viewBox="0 0 320 200" style={{ width: '100%', maxHeight: '180px', display: 'block', margin: '0 auto' }}>
-            {/* Main square outer outline */}
             <rect x="50" y="20" width="160" height="160" fill="none" stroke="var(--line)" strokeWidth="2" strokeDasharray="4 4" />
-            {/* Region A^2 */}
             <rect x="50" y="20" width="100" height="100" fill="#45d8ff" fillOpacity="0.25" stroke="#45d8ff" strokeWidth="2" />
             <text x="100" y="75" fill="#45d8ff" fontSize="16" fontWeight="bold" textAnchor="middle">A²</text>
-            {/* Region A x B (top right) */}
             <rect x="150" y="20" width="60" height="100" fill="#ffd166" fillOpacity="0.25" stroke="#ffd166" strokeWidth="2" />
             <text x="180" y="75" fill="#ffd166" fontSize="14" fontWeight="bold" textAnchor="middle">A·B</text>
-            {/* Region A x B (bottom left) */}
             <rect x="50" y="120" width="100" height="60" fill="#ffd166" fillOpacity="0.25" stroke="#ffd166" strokeWidth="2" />
             <text x="100" y="155" fill="#ffd166" fontSize="14" fontWeight="bold" textAnchor="middle">A·B</text>
-            {/* Region B^2 */}
             <rect x="150" y="120" width="60" height="60" fill="#ff8fc0" fillOpacity="0.25" stroke="#ff8fc0" strokeWidth="2" />
             <text x="180" y="155" fill="#ff8fc0" fontSize="14" fontWeight="bold" textAnchor="middle">B²</text>
-            {/* Dimension labels */}
             <text x="100" y="15" fill="var(--text)" fontSize="12" textAnchor="middle">A</text>
             <text x="180" y="15" fill="var(--text)" fontSize="12" textAnchor="middle">B</text>
             <text x="38" y="75" fill="var(--text)" fontSize="12" textAnchor="middle">A</text>
             <text x="38" y="155" fill="var(--text)" fontSize="12" textAnchor="middle">B</text>
-            {/* Callout arrow pointing to double product */}
-            <path d="M 230 110 L 195 110" stroke="#ffd166" strokeWidth="2" markerEnd="url(#arrow)" />
+            <path d="M 230 110 L 195 110" stroke="#ffd166" strokeWidth="2" />
             <text x="240" y="105" fill="#ffd166" fontSize="12" fontWeight="bold">2 × (A·B)</text>
             <text x="240" y="122" fill="var(--muted)" fontSize="10">{L(['Double Product!', 'Doppio Prodotto!'], lang)}</text>
           </svg>
@@ -200,15 +306,11 @@ export const FormulaScreen: React.FC = () => {
             {L(['Geometric Dissection: A² minus B² cutout', 'Dissezione geometrica: A² meno il ritaglio B²'], lang)}
           </div>
           <svg viewBox="0 0 320 180" style={{ width: '100%', maxHeight: '160px', display: 'block', margin: '0 auto' }}>
-            {/* Full square A */}
             <rect x="60" y="20" width="130" height="130" fill="#ff6a3d" fillOpacity="0.2" stroke="#ff6a3d" strokeWidth="2" />
-            {/* Cutout B^2 */}
             <rect x="140" y="20" width="50" height="50" fill="#0e0f22" stroke="var(--bad)" strokeWidth="2" strokeDasharray="3 3" />
             <text x="165" y="50" fill="var(--bad)" fontSize="13" fontWeight="bold" textAnchor="middle">−B²</text>
-            {/* Remaining L-shape */}
             <text x="100" y="85" fill="#ff6a3d" fontSize="15" fontWeight="bold" textAnchor="middle">A² − B²</text>
             <text x="100" y="105" fill="var(--text)" fontSize="11" textAnchor="middle">=(A+B)(A−B)</text>
-            {/* Side brackets */}
             <text x="125" y="168" fill="var(--text)" fontSize="12" textAnchor="middle">A</text>
             <text x="45" y="85" fill="var(--text)" fontSize="12" textAnchor="middle">A</text>
           </svg>
@@ -223,22 +325,17 @@ export const FormulaScreen: React.FC = () => {
             {L(['Equation Balance Principle: Whatever you do to one side, do to the other!', 'Principio della bilancia: Ciò che fai a un membro, fallo anche all\'altro!'], lang)}
           </div>
           <svg viewBox="0 0 320 160" style={{ width: '100%', maxHeight: '150px', display: 'block', margin: '0 auto' }}>
-            {/* Fulcrum base */}
             <polygon points="160,90 145,140 175,140" fill="#363a74" stroke="var(--line)" strokeWidth="2" />
-            {/* Horizontal beam */}
             <line x1="50" y1="90" x2="270" y2="90" stroke="var(--gold)" strokeWidth="4" />
             <circle cx="160" cy="90" r="5" fill="var(--gold)" />
-            {/* Left pan */}
             <line x1="80" y1="90" x2="60" y2="120" stroke="var(--line)" strokeWidth="1.5" />
             <line x1="80" y1="90" x2="100" y2="120" stroke="var(--line)" strokeWidth="1.5" />
             <rect x="50" y="120" width="60" height="8" rx="4" fill="var(--data)" />
             <text x="80" y="115" fill="var(--data)" fontSize="13" fontWeight="bold" textAnchor="middle">3x + 5</text>
-            {/* Right pan */}
             <line x1="240" y1="90" x2="220" y2="120" stroke="var(--line)" strokeWidth="1.5" />
             <line x1="240" y1="90" x2="260" y2="120" stroke="var(--line)" strokeWidth="1.5" />
             <rect x="210" y="120" width="60" height="8" rx="4" fill="var(--ember)" />
             <text x="240" y="115" fill="var(--ember)" fontSize="13" fontWeight="bold" textAnchor="middle">17</text>
-            {/* Equilibrium label */}
             <text x="160" y="65" fill="var(--good)" fontSize="14" fontWeight="bold" textAnchor="middle">⚖ EQUAL / UGUALE</text>
           </svg>
         </div>
@@ -252,10 +349,8 @@ export const FormulaScreen: React.FC = () => {
             {L(['Number Line Solution Ray: x > -3  (open dot = strictly greater)', 'Semiretta delle soluzioni: x > -3 (pallino vuoto = escluso)'], lang)}
           </div>
           <svg viewBox="0 0 320 100" style={{ width: '100%', maxHeight: '100px', display: 'block', margin: '0 auto' }}>
-            {/* Main Axis */}
             <line x1="30" y1="50" x2="290" y2="50" stroke="var(--muted)" strokeWidth="2" />
             <polygon points="290,50 280,45 280,55" fill="var(--muted)" />
-            {/* Ticks */}
             {[-4, -3, -2, -1, 0, 1, 2, 3].map((val, idx) => {
               const xPos = 50 + idx * 30;
               return (
@@ -265,9 +360,7 @@ export const FormulaScreen: React.FC = () => {
                 </g>
               );
             })}
-            {/* Solution Ray for x > -3 starting at -3 (xPos = 80) */}
             <line x1="80" y1="50" x2="290" y2="50" stroke="var(--data)" strokeWidth="6" opacity="0.6" />
-            {/* Open Circle at -3 */}
             <circle cx="80" cy="50" r="7" fill="var(--panel2)" stroke="var(--ember)" strokeWidth="3" />
             <text x="80" y="32" fill="var(--ember)" fontSize="12" fontWeight="bold" textAnchor="middle">x &gt; −3</text>
           </svg>
@@ -285,10 +378,8 @@ export const FormulaScreen: React.FC = () => {
             <line x1="20" y1="45" x2="300" y2="45" stroke="var(--line)" strokeWidth="2" />
             <circle cx="160" cy="45" r="4" fill="var(--muted)" />
             <text x="160" y="65" fill="var(--muted)" fontSize="11" textAnchor="middle">0</text>
-            {/* Negative point -9 */}
             <circle cx="60" cy="45" r="7" fill="var(--bad)" />
             <text x="60" y="32" fill="var(--bad)" fontSize="13" fontWeight="bold" textAnchor="middle">−3² = −9</text>
-            {/* Positive point +9 */}
             <circle cx="260" cy="45" r="7" fill="var(--good)" />
             <text x="260" y="32" fill="var(--good)" fontSize="13" fontWeight="bold" textAnchor="middle">(−3)² = +9</text>
           </svg>
@@ -303,20 +394,17 @@ export const FormulaScreen: React.FC = () => {
             {L(['Invariant Property: 2/3 = 4/6 = 6/9 (Identical shaded area)', 'Proprietà invariantiva: 2/3 = 4/6 = 6/9 (Stessa area colorata)'], lang)}
           </div>
           <svg viewBox="0 0 320 110" style={{ width: '100%', maxHeight: '110px', display: 'block', margin: '0 auto' }}>
-            {/* Bar 1: 2/3 */}
             <rect x="30" y="15" width="260" height="20" rx="4" fill="#171935" stroke="var(--line)" />
             <rect x="30" y="15" width="173" height="20" rx="4" fill="#45d8ff" fillOpacity="0.4" />
             <line x1="116.6" y1="15" x2="116.6" y2="35" stroke="var(--line)" />
             <line x1="203.3" y1="15" x2="203.3" y2="35" stroke="var(--line)" />
             <text x="15" y="30" fill="var(--text)" fontSize="12" fontWeight="bold">2/3</text>
-            {/* Bar 2: 4/6 */}
             <rect x="30" y="45" width="260" height="20" rx="4" fill="#171935" stroke="var(--line)" />
             <rect x="30" y="45" width="173" height="20" rx="4" fill="#ffd166" fillOpacity="0.4" />
             {[1, 2, 3, 4, 5].map(step => (
               <line key={step} x1={30 + step * 43.3} y1="45" x2={30 + step * 43.3} y2="65" stroke="var(--line)" />
             ))}
             <text x="15" y="60" fill="var(--text)" fontSize="12" fontWeight="bold">4/6</text>
-            {/* Equality sign */}
             <text x="160" y="95" fill="var(--good)" fontSize="13" fontWeight="bold" textAnchor="middle">2/3 = (2·2)/(3·2) = 4/6</text>
           </svg>
         </div>
@@ -330,20 +418,14 @@ export const FormulaScreen: React.FC = () => {
             {L(['Venn Model of 12 and 18: MCD = Intersection (6), mcm = Union (36)', 'Diagramma di Venn di 12 e 18: M.C.D. = Intersezione (6), m.c.m. = Unione (36)'], lang)}
           </div>
           <svg viewBox="0 0 320 150" style={{ width: '100%', maxHeight: '140px', display: 'block', margin: '0 auto' }}>
-            {/* Circle 12 = 2 * (2 * 3) */}
             <circle cx="120" cy="75" r="55" fill="#45d8ff" fillOpacity="0.2" stroke="#45d8ff" strokeWidth="2" />
-            {/* Circle 18 = 3 * (2 * 3) */}
             <circle cx="200" cy="75" r="55" fill="#ffd166" fillOpacity="0.2" stroke="#ffd166" strokeWidth="2" />
-            {/* Left only */}
             <text x="90" y="80" fill="#45d8ff" fontSize="15" fontWeight="bold" textAnchor="middle">2</text>
             <text x="90" y="35" fill="#45d8ff" fontSize="12" textAnchor="middle">12 (2²·3)</text>
-            {/* Intersection (MCD) */}
             <text x="160" y="70" fill="var(--good)" fontSize="14" fontWeight="bold" textAnchor="middle">2 · 3</text>
             <text x="160" y="90" fill="var(--good)" fontSize="11" textAnchor="middle">MCD = 6</text>
-            {/* Right only */}
             <text x="230" y="80" fill="#ffd166" fontSize="15" fontWeight="bold" textAnchor="middle">3</text>
             <text x="230" y="35" fill="#ffd166" fontSize="12" textAnchor="middle">18 (2·3²)</text>
-            {/* Union mcm footer */}
             <text x="160" y="142" fill="var(--text)" fontSize="12" fontWeight="bold" textAnchor="middle">
               m.c.m. = 2² · 3² = 36 ({L(['All factors with max exp', 'Tutti i fattori con max esponente'], lang)})
             </text>
@@ -357,15 +439,15 @@ export const FormulaScreen: React.FC = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-      {/* Header Banner */}
+      {/* 1. Header Banner */}
       <div className="card">
         <div className="mhead">
           <div>
             <div className="eyebrow">
               {L(
                 [
-                  "HUNTER'S FORMULA SHEET · GRADE 8/9 ACADEMY",
-                  "FORMULARIO E REGOLE D'ORO · 3ª MEDIA / 1ª SUPERIORE"
+                  "HUNTER'S FORMULA SHEET · CATEGORIZED BY SUBJECT & TOPIC",
+                  "FORMULARIO E REGOLE D'ORO · SUDDIVISO PER MATERIA E ARGOMENTO"
                 ],
                 lang
               )}
@@ -380,7 +462,7 @@ export const FormulaScreen: React.FC = () => {
             >
               {showWorkbench
                 ? L(['📖 View Formula Cards', '📖 Mostra Schede Formule'], lang)
-                : L(['⚡ Interactive Math Lab', '⚡ Palestra di Calcolo'], lang)}
+                : L(['⚡ Interactive Math & Science Lab', '⚡ Palestra Interattiva di Calcolo'], lang)}
             </button>
             <button type="button" className="btn ghost" onClick={() => goToView('map')}>
               {L(['Back to Missions', 'Torna alle Missioni'], lang)}
@@ -391,24 +473,159 @@ export const FormulaScreen: React.FC = () => {
         <p className="muted" style={{ margin: '8px 0 0', maxWidth: '72ch' }}>
           {L(
             [
-              'Authoritative Zanichelli (Bergamini–Barozzi) reference for powers, fractions, special products, linear equations, and physics. Each formula includes clear rules, worked examples, and warnings for typical exam pitfalls.',
-              'Guida autorevole basata su Bergamini–Barozzi (Zanichelli) per potenze, frazioni, prodotti notevoli, equazioni di 1° grado e fisica. Ogni scheda comprende regole, esempi svolti ed evidenziazione dei tranelli più frequenti.'
+              'Browse formulas categorized by subject (Mathematics, Physics, Computer Science, Grade 5 Science). Filter by all formulas in a subject or dive into specific topics with worked examples and exam trap warnings.',
+              'Esplora le formule suddivise per materia (Matematica, Fisica, Informatica, Scienze 5ª). Visualizza tutte le formule della materia o scegli uno specifico argomento con esempi svolti e tranelli d\'esame.'
             ],
             lang
           )}
         </p>
       </div>
 
-      {/* INTERACTIVE WORKBENCH (COLLAPSIBLE OR PRIMARY) */}
+      {/* 2. LEVEL 1: SUBJECT SELECTOR CARDS / PILLS */}
+      <div className="card" style={{ padding: '14px 16px' }}>
+        <div className="eyebrow" style={{ marginBottom: '8px', color: 'var(--data)' }}>
+          {L(['STEP 1: SELECT SUBJECT', 'PASSO 1: SCEGLI LA MATERIA'], lang)}
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px' }}>
+          {SUBJECT_LIST.map(subj => {
+            const isSelected = activeSubject === subj.id;
+            const count = subjectCounts[subj.id] || 0;
+            return (
+              <button
+                key={subj.id}
+                type="button"
+                onClick={() => handleSelectSubject(subj.id)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: '10px 14px',
+                  borderRadius: '12px',
+                  border: `2px solid ${isSelected ? 'var(--ember)' : 'var(--line)'}`,
+                  background: isSelected ? 'var(--panel2)' : 'var(--panel)',
+                  color: isSelected ? 'var(--text)' : 'var(--muted)',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  boxShadow: isSelected ? '0 0 14px rgba(255,106,61,0.25)' : 'none',
+                  transition: 'all 0.15s ease'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ fontSize: '18px' }}>{subj.icon}</span>
+                  <span style={{ fontWeight: isSelected ? 'bold' : 'normal', fontSize: '14px', color: isSelected ? 'var(--text)' : 'inherit' }}>
+                    {L(subj.name, lang)}
+                  </span>
+                </div>
+                <span
+                  className={`badge ${isSelected ? 'ok' : 'lock'}`}
+                  style={{ fontSize: '11px', padding: '2px 7px' }}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* 3. LEVEL 2: DYNAMIC TOPIC FILTER (FOR THE CHOSEN SUBJECT) */}
+      <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '12px', borderLeft: `5px solid ${activeSubjectInfo.badgeColor}` }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
+          <div>
+            <div className="eyebrow" style={{ color: 'var(--data)' }}>
+              {L(['STEP 2: FILTER TOPICS', 'PASSO 2: FILTRA PER ARGOMENTO'], lang)} · {L(activeSubjectInfo.name, lang)}
+            </div>
+            <div style={{ fontSize: '15px', fontWeight: 'bold', marginTop: '2px' }}>
+              {activeTopic === 'all'
+                ? L(
+                    [
+                      `Showing All ${activeSubject === 'all' ? '' : L(activeSubjectInfo.name, lang)} Formulas`,
+                      `Visualizzazione di Tutte le Formule ${activeSubject === 'all' ? '' : `di ${L(activeSubjectInfo.name, lang)}`}`
+                    ],
+                    lang
+                  )
+                : L(
+                    [
+                      `Filtered Topic: ${L(activeTopicInfo?.name || '', lang)}`,
+                      `Argomento: ${L(activeTopicInfo?.name || '', lang)}`
+                    ],
+                    lang
+                  )}
+            </div>
+          </div>
+
+          {/* Quick Breadcrumb Button to clear topic filter */}
+          {activeTopic !== 'all' && (
+            <button
+              type="button"
+              className="btn sm ghost"
+              onClick={() => setActiveTopic('all')}
+              style={{ fontSize: '12px' }}
+            >
+              ✕ {L(['View All Topics in Subject', 'Mostra Tutti gli Argomenti'], lang)}
+            </button>
+          )}
+        </div>
+
+        {/* Topic filter pills */}
+        <div className="row" style={{ gap: '8px', overflowX: 'auto', paddingBottom: '2px' }}>
+          {/* 'All formulas in this subject' button */}
+          <button
+            type="button"
+            className={`btn sm ${activeTopic === 'all' ? 'cyan' : 'ghost'}`}
+            onClick={() => setActiveTopic('all')}
+          >
+            ★ {L(['All Formulas', 'Tutte le Formule'], lang)} ({subjectCounts[activeSubject] || 0})
+          </button>
+
+          {/* Individual topics belonging to the selected subject */}
+          {currentTopics.map(topic => {
+            const isTopicSelected = activeTopic === topic.id;
+            const topicCount = topicCounts[topic.id] || 0;
+            return (
+              <button
+                key={topic.id}
+                type="button"
+                className={`btn sm ${isTopicSelected ? 'cyan' : 'ghost'}`}
+                onClick={() => setActiveTopic(topic.id)}
+              >
+                {L(topic.name, lang)} ({topicCount})
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Real-time search bar */}
+        <div style={{ marginTop: '4px' }}>
+          <input
+            className="codex-search"
+            placeholder={L(
+              [
+                `Search inside ${L(activeSubjectInfo.name, lang)} (formula, rule, or trap)...`,
+                `Cerca in ${L(activeSubjectInfo.name, lang)} (formula, regola o tranello)...`
+              ],
+              lang
+            )}
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
+          />
+        </div>
+
+        <div className="muted" style={{ fontSize: '13px' }}>
+          {L(['Displaying', 'Visualizzate'], lang)}: <b>{filteredCards.length}</b> {L(['formula cards', 'schede formule'], lang)}
+        </div>
+      </div>
+
+      {/* 4. INTERACTIVE WORKBENCH (MATHS, PHYSICS & CS LIVE SOLVERS) */}
       {showWorkbench && (
         <div className="card" style={{ border: '2px solid var(--data)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px', marginBottom: '14px' }}>
             <div>
               <div className="eyebrow" style={{ color: 'var(--data)' }}>
-                {L(['INTERACTIVE MATH LAB · PALESTRA INTERATTIVA', 'PALESTRA INTERATTIVA DI CALCOLO'], lang)}
+                {L(['INTERACTIVE MATH & SCIENCE LAB · PALESTRA DI CALCOLO', 'PALESTRA INTERATTIVA DI CALCOLO'], lang)}
               </div>
               <h3 style={{ fontSize: '20px' }}>
-                {L(['Live Algebraic Verifier & Solvers', 'Verificatori e Risolutori Algebrici in Tempo Reale'], lang)}
+                {L(['Live Verifiers & Experimental Solvers', 'Verificatori e Risolutori Interattivi in Tempo Reale'], lang)}
               </h3>
             </div>
             <div className="row" style={{ gap: '6px' }}>
@@ -439,6 +656,34 @@ export const FormulaScreen: React.FC = () => {
                 onClick={() => setActiveTool('inequality')}
               >
                 kx &lt; b
+              </button>
+              <button
+                type="button"
+                className={`btn sm ${activeTool === 'lever' ? 'cyan' : 'ghost'}`}
+                onClick={() => setActiveTool('lever')}
+              >
+                ⚖ {L(['Levers', 'Leve'], lang)}
+              </button>
+              <button
+                type="button"
+                className={`btn sm ${activeTool === 'density' ? 'cyan' : 'ghost'}`}
+                onClick={() => setActiveTool('density')}
+              >
+                ρ = m/V
+              </button>
+              <button
+                type="button"
+                className={`btn sm ${activeTool === 'binary' ? 'cyan' : 'ghost'}`}
+                onClick={() => setActiveTool('binary')}
+              >
+                0101₂ ↔ 10₁₀
+              </button>
+              <button
+                type="button"
+                className={`btn sm ${activeTool === 'ohm' ? 'cyan' : 'ghost'}`}
+                onClick={() => setActiveTool('ohm')}
+              >
+                V = I · R
               </button>
             </div>
           </div>
@@ -482,7 +727,6 @@ export const FormulaScreen: React.FC = () => {
                 </label>
               </div>
 
-              {/* Live result breakdown */}
               <div
                 style={{
                   background: 'var(--panel)',
@@ -795,161 +1039,438 @@ export const FormulaScreen: React.FC = () => {
               </div>
             </div>
           )}
+
+          {/* Tool 5: Lever Equilibrium Calculator */}
+          {activeTool === 'lever' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <p className="muted" style={{ fontSize: '14px' }}>
+                {L(
+                  [
+                    'Test the Law of Levers: F_m · b_m = F_r · b_r. Notice how increasing the motive arm b_m drastically reduces the needed effort F_m!',
+                    'Verifica la Legge delle Leve: F_m · b_m = F_r · b_r. Nota come allungando il braccio motore b_m si riduce enormemente lo sforzo F_m necessario!'
+                  ],
+                  lang
+                )}
+              </p>
+
+              <div className="row" style={{ gap: '16px', background: 'var(--panel2)', padding: '14px', borderRadius: '12px' }}>
+                <label style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '130px' }}>
+                  <span className="eyebrow">Load F_r: {leverFr} N</span>
+                  <input
+                    type="range"
+                    min="100"
+                    max="1000"
+                    step="50"
+                    value={leverFr}
+                    onChange={e => setLeverFr(Number(e.target.value))}
+                  />
+                </label>
+                <label style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '130px' }}>
+                  <span className="eyebrow">Load arm b_r: {leverBr} m</span>
+                  <input
+                    type="range"
+                    min="0.1"
+                    max="1.0"
+                    step="0.05"
+                    value={leverBr}
+                    onChange={e => setLeverBr(Number(e.target.value))}
+                  />
+                </label>
+                <label style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '130px' }}>
+                  <span className="eyebrow">Motive arm b_m: {leverBm} m</span>
+                  <input
+                    type="range"
+                    min="0.2"
+                    max="2.5"
+                    step="0.1"
+                    value={leverBm}
+                    onChange={e => setLeverBm(Number(e.target.value))}
+                  />
+                </label>
+              </div>
+
+              <div
+                style={{
+                  background: 'var(--panel)',
+                  border: '1px solid var(--line)',
+                  borderRadius: '12px',
+                  padding: '16px',
+                  textAlign: 'center'
+                }}
+              >
+                <div style={{ fontSize: '15px', color: 'var(--muted)', marginBottom: '6px' }}>
+                  F_m = (F_r · b_r) / b_m = ({leverFr} · {leverBr}) / {leverBm}
+                </div>
+                <div
+                  style={{
+                    fontSize: '26px',
+                    fontFamily: 'var(--display)',
+                    color: 'var(--gold)',
+                    background: 'var(--panel2)',
+                    padding: '8px 16px',
+                    borderRadius: '10px',
+                    display: 'inline-block'
+                  }}
+                >
+                  F_m = {leverFm} N
+                </div>
+                <div style={{ marginTop: '10px', fontSize: '13px', color: leverBm > leverBr ? 'var(--good)' : 'var(--ember)' }}>
+                  {leverBm > leverBr
+                    ? L([`✓ Favorable lever! Effort is reduced by ${(leverBm / leverBr).toFixed(1)}x`, `✓ Leva vantaggiosa! Sforzo ridotto di ${(leverBm / leverBr).toFixed(1)} volte`], lang)
+                    : L(['⚠️ Unfavorable lever: requires more force than the load.', '⚠️ Leva svantaggiosa: richiede più forza del carico.'], lang)}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Tool 6: Density Calculator */}
+          {activeTool === 'density' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <p className="muted" style={{ fontSize: '14px' }}>
+                {L(
+                  ['Calculate density ρ = m / V and test if the body floats in water (1.00 g/cm³ = 1000 kg/m³).', 'Calcola la densità ρ = m / V e verifica se il corpo galleggia in acqua (1,00 g/cm³ = 1000 kg/m³).'],
+                  lang
+                )}
+              </p>
+
+              <div className="row" style={{ gap: '16px', background: 'var(--panel2)', padding: '14px', borderRadius: '12px' }}>
+                <label style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '140px' }}>
+                  <span className="eyebrow">Mass m: {densMass} g</span>
+                  <input
+                    type="range"
+                    min="50"
+                    max="1500"
+                    step="50"
+                    value={densMass}
+                    onChange={e => setDensMass(Number(e.target.value))}
+                  />
+                </label>
+                <label style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '140px' }}>
+                  <span className="eyebrow">Volume V: {densVol} cm³</span>
+                  <input
+                    type="range"
+                    min="50"
+                    max="1000"
+                    step="25"
+                    value={densVol}
+                    onChange={e => setDensVol(Number(e.target.value))}
+                  />
+                </label>
+              </div>
+
+              <div
+                style={{
+                  background: 'var(--panel)',
+                  border: '1px solid var(--line)',
+                  borderRadius: '12px',
+                  padding: '16px',
+                  textAlign: 'center'
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: '26px',
+                    fontFamily: 'var(--display)',
+                    color: 'var(--data)',
+                    background: 'var(--panel2)',
+                    padding: '8px 16px',
+                    borderRadius: '10px',
+                    display: 'inline-block'
+                  }}
+                >
+                  ρ = {densityCalc.gcm3} g/cm³ ({densityCalc.kgm3} kg/m³)
+                </div>
+                <div style={{ marginTop: '10px', fontSize: '14px', fontWeight: 'bold' }}>
+                  {Number(densityCalc.gcm3) < 1.0 ? (
+                    <span style={{ color: 'var(--good)' }}>
+                      🏊 {L(['Floats in water (ρ < 1.0 g/cm³)', 'Galleggia in acqua (ρ < 1,0 g/cm³)'], lang)}
+                    </span>
+                  ) : (
+                    <span style={{ color: 'var(--bad)' }}>
+                      ⚓ {L(['Sinks in water (ρ > 1.0 g/cm³)', 'Affonda in acqua (ρ > 1,0 g/cm³)'], lang)}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Tool 7: Binary Positional Calculator */}
+          {activeTool === 'binary' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <p className="muted" style={{ fontSize: '14px' }}>
+                {L(
+                  ['Enter any binary number (0s and 1s) to see its decimal conversion via positional powers of 2.', 'Inserisci un numero binario (0 e 1) per vederne la conversione decimale tramite le potenze posizionali di 2.'],
+                  lang
+                )}
+              </p>
+
+              <div style={{ background: 'var(--panel2)', padding: '14px', borderRadius: '12px' }}>
+                <label className="eyebrow" style={{ display: 'block', marginBottom: '6px' }}>
+                  {L(['Binary Digits (e.g. 10110)', 'Cifre binarie (es. 10110)'], lang)}
+                </label>
+                <input
+                  type="text"
+                  maxLength={12}
+                  value={binValue}
+                  onChange={e => setBinValue(e.target.value.replace(/[^01]/g, ''))}
+                  style={{
+                    fontFamily: 'var(--mono)',
+                    fontSize: '20px',
+                    padding: '8px 14px',
+                    borderRadius: '8px',
+                    border: '1px solid var(--line)',
+                    background: 'var(--panel)',
+                    color: 'var(--gold)',
+                    letterSpacing: '0.1em'
+                  }}
+                />
+              </div>
+
+              <div
+                style={{
+                  background: 'var(--panel)',
+                  border: '1px solid var(--line)',
+                  borderRadius: '12px',
+                  padding: '16px',
+                  textAlign: 'center'
+                }}
+              >
+                <div style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '8px', fontFamily: 'var(--mono)' }}>
+                  {binaryCalc.powersExpansion}
+                </div>
+                <div
+                  style={{
+                    fontSize: '28px',
+                    fontFamily: 'var(--display)',
+                    color: 'var(--data)',
+                    background: 'var(--panel2)',
+                    padding: '8px 20px',
+                    borderRadius: '10px',
+                    display: 'inline-block'
+                  }}
+                >
+                  {binaryCalc.clean}₂ = {binaryCalc.dec}₁₀
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Tool 8: Ohm's Law Calculator */}
+          {activeTool === 'ohm' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <p className="muted" style={{ fontSize: '14px' }}>
+                {L(
+                  ['Adjust Voltage V and Resistance R to compute Current I (A) and dissipated Power P (W).', 'Regola la Tensione V e la Resistenza R per calcolare la Corrente I (A) e la Potenza dissipata P (W).'],
+                  lang
+                )}
+              </p>
+
+              <div className="row" style={{ gap: '16px', background: 'var(--panel2)', padding: '14px', borderRadius: '12px' }}>
+                <label style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '140px' }}>
+                  <span className="eyebrow">Voltage V: {ohmVolts} V</span>
+                  <input
+                    type="range"
+                    min="1"
+                    max="48"
+                    step="1"
+                    value={ohmVolts}
+                    onChange={e => setOhmVolts(Number(e.target.value))}
+                  />
+                </label>
+                <label style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '140px' }}>
+                  <span className="eyebrow">Resistance R: {ohmResistance} Ω</span>
+                  <input
+                    type="range"
+                    min="1"
+                    max="20"
+                    step="1"
+                    value={ohmResistance}
+                    onChange={e => setOhmResistance(Number(e.target.value))}
+                  />
+                </label>
+              </div>
+
+              <div
+                style={{
+                  background: 'var(--panel)',
+                  border: '1px solid var(--line)',
+                  borderRadius: '12px',
+                  padding: '16px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  gap: '20px',
+                  flexWrap: 'wrap'
+                }}
+              >
+                <div style={{ background: 'var(--panel2)', padding: '10px 18px', borderRadius: '10px', textAlign: 'center' }}>
+                  <div className="eyebrow">{L(['Current I = V / R', 'Corrente I = V / R'], lang)}</div>
+                  <div style={{ fontSize: '24px', fontFamily: 'var(--display)', color: 'var(--data)', marginTop: '4px' }}>
+                    {ohmCurrent} A
+                  </div>
+                </div>
+                <div style={{ background: 'var(--panel2)', padding: '10px 18px', borderRadius: '10px', textAlign: 'center' }}>
+                  <div className="eyebrow">{L(['Power P = V · I', 'Potenza P = V · I'], lang)}</div>
+                  <div style={{ fontSize: '24px', fontFamily: 'var(--display)', color: 'var(--gold)', marginTop: '4px' }}>
+                    {ohmPower} W
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
-      {/* SEARCH AND CATEGORY FILTER BAR */}
-      <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-        <input
-          className="codex-search"
-          placeholder={L(
-            ['Search formulas, rules, powers, or traps (e.g. double product, Stevin, MCD)...', 'Cerca formule, regole, potenze o tranelli (es. doppio prodotto, Stevino, MCD)...'],
-            lang
-          )}
-          value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
-        />
-
-        <div className="row" style={{ gap: '6px', overflowX: 'auto', paddingBottom: '2px' }}>
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              type="button"
-              className={`btn sm ${activeCategory === cat.id ? 'cyan' : 'ghost'}`}
-              onClick={() => setActiveCategory(cat.id)}
-            >
-              {L(cat.label, lang)}
-            </button>
-          ))}
-        </div>
-
-        <div className="muted" style={{ fontSize: '13px' }}>
-          {L(['Showing', 'Visualizzate'], lang)}: <b>{filteredCards.length}</b> {L(['formula cards', 'schede formule'], lang)}
-        </div>
-      </div>
-
-      {/* FORMULA CARDS GRID */}
+      {/* 5. FORMULA CARDS GRID */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        {filteredCards.map(card => {
-          return (
-            <div
-              key={card.id}
-              className="card"
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px',
-                borderLeft: `5px solid ${card.subject === 'phys' ? 'var(--sakura)' : 'var(--data)'}`
+        {filteredCards.length === 0 ? (
+          <div className="card" style={{ textAlign: 'center', padding: '36px 16px' }}>
+            <div style={{ fontSize: '32px', marginBottom: '8px' }}>🔍</div>
+            <h3>{L(['No formulas found', 'Nessuna formula trovata'], lang)}</h3>
+            <p className="muted" style={{ margin: '6px 0 16px' }}>
+              {L(
+                ['Try adjusting your search query or switching to another topic or subject.', 'Prova a modificare la ricerca o a cambiare argomento o materia.'],
+                lang
+              )}
+            </p>
+            <button
+              type="button"
+              className="btn"
+              onClick={() => {
+                setActiveTopic('all');
+                setSearchQuery('');
               }}
             >
-              {/* Card Header */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '6px' }}>
-                <div>
-                  <div className="eyebrow" style={{ fontSize: '11px', color: 'var(--muted)' }}>
-                    {card.category.toUpperCase()} · {card.subject === 'phys' ? 'PHYSICS' : 'MATHEMATICS'}
-                  </div>
-                  <h3 style={{ fontSize: '19px', marginTop: '2px' }}>{L(card.title, lang)}</h3>
-                </div>
-                <span className="badge ok" style={{ fontSize: '11px' }}>
-                  {card.subject === 'phys' ? 'Fisica' : 'Matematica'}
-                </span>
-              </div>
+              {L(['Reset Filters', 'Reimposta Filtri'], lang)}
+            </button>
+          </div>
+        ) : (
+          filteredCards.map(card => {
+            const cardSubjectInfo = SUBJECT_LIST.find(s => s.id === card.subject) || SUBJECT_LIST[1];
+            const cardTopic = SUBJECT_TOPICS[card.subject]?.find(t => t.id === card.topicId);
 
-              {/* Main Formula Highlight Box */}
+            return (
               <div
+                key={card.id}
+                className="card"
                 style={{
-                  background: 'var(--panel2)',
-                  border: '1px solid var(--line)',
-                  borderRadius: '10px',
-                  padding: '12px 16px',
-                  fontFamily: 'var(--mono)',
-                  fontSize: '18px',
-                  color: 'var(--gold)',
-                  overflowX: 'auto',
-                  letterSpacing: '0.02em',
-                  fontWeight: 'bold'
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px',
+                  borderLeft: `5px solid ${cardSubjectInfo.badgeColor}`
                 }}
               >
-                {card.formula}
-              </div>
-
-              {/* Visual Model if present */}
-              {renderVisual(card.visualKey)}
-
-              {/* Rules List */}
-              {card.rules && card.rules.length > 0 && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <div className="eyebrow" style={{ fontSize: '12px', color: 'var(--data)' }}>
-                    {L(['Golden Rules & Properties', 'Regole e Proprietà Fondamentali'], lang)}
+                {/* Card Header: Subject + Topic Breadcrumb */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '6px' }}>
+                  <div>
+                    <div className="eyebrow" style={{ fontSize: '11px', color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <span>{cardSubjectInfo.icon} {L(cardSubjectInfo.name, lang)}</span>
+                      <span>›</span>
+                      <span style={{ color: 'var(--data)' }}>{cardTopic ? L(cardTopic.name, lang) : card.topicId}</span>
+                    </div>
+                    <h3 style={{ fontSize: '19px', marginTop: '4px' }}>{L(card.title, lang)}</h3>
                   </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '8px' }}>
-                    {card.rules.map((rule, idx) => (
-                      <div
-                        key={idx}
-                        style={{
-                          background: 'rgba(255,255,255,0.03)',
-                          border: '1px solid var(--line)',
-                          borderRadius: '8px',
-                          padding: '8px 12px'
-                        }}
-                      >
-                        <div style={{ fontWeight: 'bold', fontSize: '13px', color: 'var(--text)' }}>
-                          {L(rule.name, lang)}
-                        </div>
-                        <div style={{ fontFamily: 'var(--mono)', color: 'var(--gold)', fontSize: '13px', margin: '2px 0' }}>
-                          {rule.math}
-                        </div>
-                        <div style={{ fontSize: '12px', color: 'var(--muted)' }}>
-                          {L(rule.desc, lang)}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <span className="badge ok" style={{ fontSize: '11px' }}>
+                    {cardSubjectInfo.icon} {L(cardSubjectInfo.name, lang)}
+                  </span>
                 </div>
-              )}
 
-              {/* Numerical Example */}
-              <div
-                style={{
-                  background: 'rgba(69,216,255,0.06)',
-                  borderLeft: '3px solid var(--data)',
-                  borderRadius: '0 8px 8px 0',
-                  padding: '8px 12px'
-                }}
-              >
-                <span style={{ fontSize: '12px', fontFamily: 'var(--mono)', color: 'var(--data)', fontWeight: 'bold' }}>
-                  {L(['Worked Example', 'Esempio Svolto'], lang)}:{' '}
-                </span>
-                <span style={{ fontSize: '13px', fontFamily: 'var(--mono)', color: 'var(--text)' }}>
-                  {L(card.example, lang)}
-                </span>
-              </div>
-
-              {/* Student Trap Warning Callout */}
-              {card.trap && (
+                {/* Main Formula Highlight Box */}
                 <div
                   style={{
-                    background: 'rgba(255,106,61,0.12)',
-                    border: '1px solid rgba(255,106,61,0.35)',
-                    borderRadius: '8px',
-                    padding: '10px 12px',
-                    display: 'flex',
-                    gap: '8px',
-                    alignItems: 'flex-start'
+                    background: 'var(--panel2)',
+                    border: '1px solid var(--line)',
+                    borderRadius: '10px',
+                    padding: '12px 16px',
+                    fontFamily: 'var(--mono)',
+                    fontSize: '18px',
+                    color: 'var(--gold)',
+                    overflowX: 'auto',
+                    letterSpacing: '0.02em',
+                    fontWeight: 'bold'
                   }}
                 >
-                  <span style={{ fontSize: '16px', lineHeight: 1 }}>⚠️</span>
-                  <div style={{ fontSize: '13px', color: '#ffb39c' }}>
-                    <b style={{ color: 'var(--ember)' }}>
-                      {L(['Student Trap!', 'Attenzione al Tranello!'], lang)}{' '}
-                    </b>
-                    {L(card.trap, lang)}
-                  </div>
+                  {card.formula}
                 </div>
-              )}
-            </div>
-          );
-        })}
+
+                {/* Visual Model if present */}
+                {renderVisual(card.visualKey)}
+
+                {/* Rules List */}
+                {card.rules && card.rules.length > 0 && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <div className="eyebrow" style={{ fontSize: '12px', color: 'var(--data)' }}>
+                      {L(['Golden Rules & Properties', 'Regole e Proprietà Fondamentali'], lang)}
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '8px' }}>
+                      {card.rules.map((rule, idx) => (
+                        <div
+                          key={idx}
+                          style={{
+                            background: 'rgba(255,255,255,0.03)',
+                            border: '1px solid var(--line)',
+                            borderRadius: '8px',
+                            padding: '8px 12px'
+                          }}
+                        >
+                          <div style={{ fontWeight: 'bold', fontSize: '13px', color: 'var(--text)' }}>
+                            {L(rule.name, lang)}
+                          </div>
+                          <div style={{ fontFamily: 'var(--mono)', color: 'var(--gold)', fontSize: '13px', margin: '2px 0' }}>
+                            {rule.math}
+                          </div>
+                          <div style={{ fontSize: '12px', color: 'var(--muted)' }}>
+                            {L(rule.desc, lang)}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Numerical Example */}
+                <div
+                  style={{
+                    background: 'rgba(69,216,255,0.06)',
+                    borderLeft: '3px solid var(--data)',
+                    borderRadius: '0 8px 8px 0',
+                    padding: '8px 12px'
+                  }}
+                >
+                  <span style={{ fontSize: '12px', fontFamily: 'var(--mono)', color: 'var(--data)', fontWeight: 'bold' }}>
+                    {L(['Worked Example', 'Esempio Svolto'], lang)}:{' '}
+                  </span>
+                  <span style={{ fontSize: '13px', fontFamily: 'var(--mono)', color: 'var(--text)' }}>
+                    {L(card.example, lang)}
+                  </span>
+                </div>
+
+                {/* Student Trap Warning Callout */}
+                {card.trap && (
+                  <div
+                    style={{
+                      background: 'rgba(255,106,61,0.12)',
+                      border: '1px solid rgba(255,106,61,0.35)',
+                      borderRadius: '8px',
+                      padding: '10px 12px',
+                      display: 'flex',
+                      gap: '8px',
+                      alignItems: 'flex-start'
+                    }}
+                  >
+                    <span style={{ fontSize: '16px', lineHeight: 1 }}>⚠️</span>
+                    <div style={{ fontSize: '13px', color: '#ffb39c' }}>
+                      <b style={{ color: 'var(--ember)' }}>
+                        {L(['Student Trap!', 'Attenzione al Tranello!'], lang)}{' '}
+                      </b>
+                      {L(card.trap, lang)}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

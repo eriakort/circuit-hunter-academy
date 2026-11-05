@@ -6,10 +6,17 @@ export interface FormulaRule {
   desc: BilingualText;
 }
 
+export interface SubjectTopic {
+  id: string;
+  subject: SubjectId;
+  name: BilingualText;
+}
+
 export interface FormulaCard {
   id: string;
   subject: SubjectId;
-  category: 'powers' | 'fractions' | 'algebra' | 'equations' | 'physics';
+  topicId: string;
+  category: string; // backwards compatibility
   title: BilingualText;
   formula: string;
   rules?: FormulaRule[];
@@ -18,11 +25,44 @@ export interface FormulaCard {
   visualKey?: string;
 }
 
+export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
+  math: [
+    { id: 'powers', subject: 'math', name: ['Powers & Exponents', 'Potenze ed Esponenti'] },
+    { id: 'fractions', subject: 'math', name: ['Fractions, Decimals & Proportions', 'Frazioni, Decimali e Proporzioni'] },
+    { id: 'algebra', subject: 'math', name: ['Algebra & Special Products', 'Calcolo Letterale e Prodotti Notevoli'] },
+    { id: 'equations', subject: 'math', name: ['Equations & Inequalities', 'Equazioni e Disequazioni'] },
+    { id: 'sets', subject: 'math', name: ['Sets & Formal Logic', 'Insiemi e Logica Formale'] }
+  ],
+  phys: [
+    { id: 'density-measurement', subject: 'phys', name: ['Density & Measurement', 'Densità e Misura'] },
+    { id: 'forces-elasticity', subject: 'phys', name: ['Forces, Weight & Hooke\'s Law', 'Forze, Peso e Legge di Hooke'] },
+    { id: 'equilibrium-levers', subject: 'phys', name: ['Equilibrium, Torque & Levers', 'Equilibrio, Momento e Leve'] },
+    { id: 'fluids-pressure', subject: 'phys', name: ['Pressure, Stevin & Archimedes', 'Pressione, Stevino e Archimede'] },
+    { id: 'friction-work', subject: 'phys', name: ['Friction & Mechanical Work', 'Attrito e Lavoro Meccanico'] }
+  ],
+  cs: [
+    { id: 'binary-encoding', subject: 'cs', name: ['Binary, Hex & Data Units', 'Binario, Esadecimale e Unità di Misura'] },
+    { id: 'boolean-logic', subject: 'cs', name: ['Boolean Logic & De Morgan', 'Logica Booleana e De Morgan'] },
+    { id: 'circuits-hardware', subject: 'cs', name: ['Ohm\'s Law, Circuits & Power', 'Legge di Ohm, Circuiti e Potenza'] },
+    { id: 'networking', subject: 'cs', name: ['Networks, Bandwidth & Transfer Time', 'Reti, Larghezza di Banda e Tempi'] }
+  ],
+  science: [
+    { id: 'matter-energy', subject: 'science', name: ['States of Matter & Heat', 'Stati della Materia e Calore'] },
+    { id: 'forces-motion', subject: 'science', name: ['Speed, Motion & Gravity', 'Velocità, Movimento e Gravità'] },
+    { id: 'photosynthesis-ecosystem', subject: 'science', name: ['Photosynthesis & Living Systems', 'Fotosintesi e Sistemi Viventi'] }
+  ]
+};
+
 export const FORMULA_CARDS: FormulaCard[] = [
-  // =================== POWERS & EXPONENTS ===================
+  // =========================================================================
+  // MATHEMATICS (Grade 8/9 Bergamini–Barozzi)
+  // =========================================================================
+
+  // --- TOPIC: Powers & Exponents ---
   {
     id: 'power-props-same-base',
     subject: 'math',
+    topicId: 'powers',
     category: 'powers',
     title: ['Properties of Powers: Same Base', 'Proprietà delle potenze: Stessa base'],
     formula: 'aᵐ · aⁿ = aᵐ⁺ⁿ  ·  aᵐ : aⁿ = aᵐ⁻ⁿ  ·  (aᵐ)ⁿ = aᵐ·ⁿ',
@@ -55,6 +95,7 @@ export const FORMULA_CARDS: FormulaCard[] = [
   {
     id: 'power-props-same-exp',
     subject: 'math',
+    topicId: 'powers',
     category: 'powers',
     title: ['Properties of Powers: Same Exponent', 'Proprietà delle potenze: Stesso esponente'],
     formula: 'aⁿ · bⁿ = (a · b)ⁿ  ·  aⁿ : bⁿ = (a : b)ⁿ',
@@ -82,6 +123,7 @@ export const FORMULA_CARDS: FormulaCard[] = [
   {
     id: 'power-special-exponents',
     subject: 'math',
+    topicId: 'powers',
     category: 'powers',
     title: ['Special Exponents: Zero & Negatives', 'Esponenti particolari: Zero e Negativi'],
     formula: 'a⁰ = 1 (a ≠ 0)  ·  a⁻ⁿ = 1 / aⁿ  ·  (a/b)⁻ⁿ = (b/a)ⁿ',
@@ -114,6 +156,7 @@ export const FORMULA_CARDS: FormulaCard[] = [
   {
     id: 'integers-signs-powers',
     subject: 'math',
+    topicId: 'powers',
     category: 'powers',
     title: ['Signs with Powers and Parentheses', 'Segni nelle potenze e parentesi'],
     formula: '(−a)ⁿ: even n → +aⁿ, odd n → −aⁿ  ·  −aⁿ = −(aⁿ)',
@@ -147,6 +190,7 @@ export const FORMULA_CARDS: FormulaCard[] = [
   {
     id: 'mcd-mcm-recipe',
     subject: 'math',
+    topicId: 'powers',
     category: 'powers',
     title: ['M.C.D. & m.c.m. Recipe', 'Regola del M.C.D. e del m.c.m.'],
     formula: 'M.C.D. = common factors with min exponent  ·  m.c.m. = all factors with max exponent',
@@ -178,10 +222,11 @@ export const FORMULA_CARDS: FormulaCard[] = [
     visualKey: 'math-mcd-mcm'
   },
 
-  // =================== FRACTIONS & DECIMALS ===================
+  // --- TOPIC: Fractions & Decimals ---
   {
     id: 'fractions-invariant',
     subject: 'math',
+    topicId: 'fractions',
     category: 'fractions',
     title: ['Fractions Invariant Property', 'Proprietà invariantiva delle frazioni'],
     formula: 'a / b = (a · k) / (b · k) = (a : k) / (b : k)  (k ≠ 0)',
@@ -210,6 +255,7 @@ export const FORMULA_CARDS: FormulaCard[] = [
   {
     id: 'generating-fractions',
     subject: 'math',
+    topicId: 'fractions',
     category: 'fractions',
     title: ['Generating Fractions of Decimals', 'Frazioni generatrici di numeri decimali'],
     formula: 'Finite: a / 10ⁿ  ·  Simple Periodic: p / 9...9  ·  Mixed: (ap − a) / 9...90...0',
@@ -242,6 +288,7 @@ export const FORMULA_CARDS: FormulaCard[] = [
   {
     id: 'proportions-formulas',
     subject: 'math',
+    topicId: 'fractions',
     category: 'fractions',
     title: ['Proportions & Cross Multiplication', 'Proporzioni e prodotto incrociato'],
     formula: 'a : b = c : d  ⇔  a · d = b · c',
@@ -272,10 +319,11 @@ export const FORMULA_CARDS: FormulaCard[] = [
     ]
   },
 
-  // =================== ALGEBRA & SPECIAL PRODUCTS ===================
+  // --- TOPIC: Algebra & Special Products ---
   {
     id: 'special-product-diff-squares',
     subject: 'math',
+    topicId: 'algebra',
     category: 'algebra',
     title: ['Sum Times Difference (Diff. of Squares)', 'Somma per differenza (Differenza di quadrati)'],
     formula: '(A + B)(A − B) = A² − B²',
@@ -304,6 +352,7 @@ export const FORMULA_CARDS: FormulaCard[] = [
   {
     id: 'special-product-square-binomial',
     subject: 'math',
+    topicId: 'algebra',
     category: 'algebra',
     title: ['Square of a Binomial', 'Quadrato di un binomio'],
     formula: '(A + B)² = A² + 2AB + B²   ·   (A − B)² = A² − 2AB + B²',
@@ -337,6 +386,7 @@ export const FORMULA_CARDS: FormulaCard[] = [
   {
     id: 'special-product-cube-trinomial',
     subject: 'math',
+    topicId: 'algebra',
     category: 'algebra',
     title: ['Cube of Binomial & Square of Trinomial', 'Cubo di binomio e Quadrato di trinomio'],
     formula: '(A + B)³ = A³ + 3A²B + 3AB² + B³  ·  (A+B+C)² = A²+B²+C²+2AB+2AC+2BC',
@@ -364,6 +414,7 @@ export const FORMULA_CARDS: FormulaCard[] = [
   {
     id: 'factoring-decision-tree',
     subject: 'math',
+    topicId: 'algebra',
     category: 'algebra',
     title: ['Factoring Decision Flowchart', 'Albero decisionale di scomposizione'],
     formula: '1. Total Common Factor → 2. Count terms (2, 3, 4) → 3. Apply pattern',
@@ -399,10 +450,11 @@ export const FORMULA_CARDS: FormulaCard[] = [
     ]
   },
 
-  // =================== EQUATIONS & INEQUALITIES ===================
+  // --- TOPIC: Equations & Inequalities ---
   {
     id: 'equations-principles',
     subject: 'math',
+    topicId: 'equations',
     category: 'equations',
     title: ['Equivalence Principles for Equations', 'Principi di equivalenza per le equazioni'],
     formula: '1°: A = B ⇔ A ± C = B ± C   ·   2°: A = B ⇔ A · C = B · C  (C ≠ 0)',
@@ -436,6 +488,7 @@ export const FORMULA_CARDS: FormulaCard[] = [
   {
     id: 'equations-taxonomy-ax-b',
     subject: 'math',
+    topicId: 'equations',
     category: 'equations',
     title: ['Classification of ax = b', 'Classificazione della forma normale ax = b'],
     formula: 'a ≠ 0 → Determined (x = b/a) · 0x = 0 → Indeterminate (ℝ) · 0x = b → Impossible (∅)',
@@ -468,6 +521,7 @@ export const FORMULA_CARDS: FormulaCard[] = [
   {
     id: 'inequalities-golden-rule',
     subject: 'math',
+    topicId: 'equations',
     category: 'equations',
     title: ['THE GOLDEN RULE OF INEQUALITIES', 'LA REGOLA D\'ORO DELLE DISEQUAZIONI'],
     formula: 'Multiply or divide by a NEGATIVE number → FLIP THE SIGN (< becomes >, ≤ becomes ≥)',
@@ -499,10 +553,83 @@ export const FORMULA_CARDS: FormulaCard[] = [
     visualKey: 'math-inequality-line'
   },
 
-  // =================== PHYSICS FOUNDATIONS ===================
+  // --- TOPIC: Sets & Logic ---
+  {
+    id: 'sets-cardinality-subsets',
+    subject: 'math',
+    topicId: 'sets',
+    category: 'algebra',
+    title: ['Set Operations & Power Set', 'Operazioni tra Insiemi e Insieme delle Parti'],
+    formula: '|P(A)| = 2ⁿ  ·  A ∪ B  ·  A ∩ B  ·  A \\ B',
+    rules: [
+      {
+        name: ['Union (Unione)', 'Unione'],
+        math: 'A ∪ B = {x | x ∈ A ∨ x ∈ B}',
+        desc: ['All elements belonging to A, B, or both.', 'Tutti gli elementi che appartengono ad A, a B o a entrambi.']
+      },
+      {
+        name: ['Intersection (Intersezione)', 'Intersezione'],
+        math: 'A ∩ B = {x | x ∈ A ∧ x ∈ B}',
+        desc: ['Elements common to BOTH sets.', 'Solo gli elementi in comune a entrambi gli insiemi.']
+      },
+      {
+        name: ['Power Set cardinality', 'Numero di sottoinsiemi'],
+        math: '|P(A)| = 2ⁿ (where n = |A|)',
+        desc: ['A set with n elements has 2ⁿ subsets including empty set ∅ and itself.', 'Un insieme di n elementi ha 2ⁿ sottoinsiemi compresi l\'insieme vuoto ∅ e l\'insieme stesso.']
+      }
+    ],
+    example: [
+      'A = {1, 2, 3} (n = 3) → |P(A)| = 2³ = 8 subsets: ∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}.',
+      'A = {1, 2, 3} (n = 3) → |P(A)| = 2³ = 8 sottoinsiemi: ∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}.'
+    ],
+    trap: [
+      'The empty set ∅ is a subset of EVERY set (∅ ⊆ A), and has 2⁰ = 1 subset (itself)!',
+      'L\'insieme vuoto ∅ è sottoinsieme di QUALUNQUE insieme (∅ ⊆ A), e ha 2⁰ = 1 sottoinsieme (sé stesso)!'
+    ]
+  },
+  {
+    id: 'logic-truth-tables',
+    subject: 'math',
+    topicId: 'sets',
+    category: 'algebra',
+    title: ['Formal Logic Truth Tables', 'Tavole di Verità e Connettivi Logici'],
+    formula: 'P ∧ Q (AND)  ·  P ∨ Q (OR)  ·  ¬P (NOT)  ·  P ⇒ Q (Implication)',
+    rules: [
+      {
+        name: ['Conjunction (AND)', 'Congiunzione (AND / ∧)'],
+        math: 'P ∧ Q is TRUE only if BOTH are True.',
+        desc: ['Vera solo se entrambe le proposizioni sono vere.', 'Vera solo quando entrambe le proposizioni sono contemporaneamente vere.']
+      },
+      {
+        name: ['Disjunction (OR)', 'Disgiunzione inclusiva (OR / ∨)'],
+        math: 'P ∨ Q is TRUE if AT LEAST ONE is True.',
+        desc: ['Vera quando almeno una delle due proposizioni è vera.', 'Vera se almeno una delle due proposizioni è vera.']
+      },
+      {
+        name: ['Material Implication', 'Implicazione materiale (⇒)'],
+        math: 'P ⇒ Q is FALSE only if P is True and Q is False.',
+        desc: ['False only when true premise leads to false conclusion.', 'Falsa unicamente quando la premessa è vera e la conseguenza è falsa.']
+      }
+    ],
+    example: [
+      'P = True, Q = False → P ∧ Q = False, P ∨ Q = True, P ⇒ Q = False, ¬P = False.',
+      'P = Vero, Q = Falso → P ∧ Q = Falso, P ∨ Q = Vero, P ⇒ Q = Falso, ¬P = Falso.'
+    ],
+    trap: [
+      'In logic, if P is FALSE, the implication P ⇒ Q is ALWAYS TRUE, regardless of Q! ("Ex falso sequitur quodlibet").',
+      'Nell\'implicazione logica, se la premessa P è FALSA, l\'implicazione P ⇒ Q è SEMPRE VERA, indipendentemente da Q!'
+    ]
+  },
+
+  // =========================================================================
+  // PHYSICS (Grade 9 Physics Foundations)
+  // =========================================================================
+
+  // --- TOPIC: Density & Measurement ---
   {
     id: 'physics-density-weight',
     subject: 'phys',
+    topicId: 'density-measurement',
     category: 'physics',
     title: ['Density & Weight Force', 'Densità e Forza Peso'],
     formula: 'ρ = m / V  ·  F_p = m · g  (g ≈ 9.81 N/kg)',
@@ -528,35 +655,511 @@ export const FORMULA_CARDS: FormulaCard[] = [
     ]
   },
   {
-    id: 'physics-hooke-pressure',
+    id: 'physics-measurement-uncertainty',
     subject: 'phys',
+    topicId: 'density-measurement',
     category: 'physics',
-    title: ['Hooke\'s Law & Pressure', 'Legge di Hooke e Pressione'],
-    formula: 'F_e = k · Δx  ·  p = F / A  ·  p = ρ · g · h',
+    title: ['Measurement Uncertainty & Errors', 'Incertezza di Misura e Propagazione Errori'],
+    formula: 'x̄ = Σxᵢ / N  ·  eₐ = (x_max − x_min) / 2  ·  e_r = eₐ / x̄  ·  e_p = e_r · 100%',
     rules: [
       {
-        name: ['Hooke\'s elastic law', 'Legge elastica di Hooke'],
-        math: 'F_e = k · Δx  [N]',
-        desc: ['Elastic restoring force is proportional to spring elongation Δx.', 'Forza elastica di richiamo proporzionale all\'allungamento Δx.']
+        name: ['Average value', 'Valore medio attendibile'],
+        math: 'x̄ = (x₁ + x₂ + ... + x_N) / N',
+        desc: ['Arithmetic mean of repeated measurements.', 'Media aritmetica delle misure ripetute.']
       },
       {
-        name: ['Pressure', 'Pressione'],
-        math: 'p = F_perp / A  [Pa = N/m²]',
-        desc: ['Perpendicular force distributed over surface area A.', 'Rapporto tra la forza perpendicolare e la superficie A.']
+        name: ['Absolute uncertainty', 'Incertezza / Errore assoluto'],
+        math: 'eₐ = (x_max − x_min) / 2  (or instrument sensitivity)',
+        desc: ['Half the spread of measurement values.', 'Semidispersione massima o sensibilità dello strumento.']
+      },
+      {
+        name: ['Relative uncertainty', 'Errore relativo e percentuale'],
+        math: 'e_r = eₐ / x̄  ·  e_p = e_r · 100%',
+        desc: ['Dimensionless index of measurement precision.', 'Indice adimensionale che indica la qualità della misura.']
+      }
+    ],
+    example: [
+      'Measurements: 10.2, 10.4, 10.6 s → x̄ = 10.4 s, eₐ = (10.6 - 10.2)/2 = 0.2 s, e_r = 0.2/10.4 ≈ 0.019 (1.9%).',
+      'Misure: 10.2, 10.4, 10.6 s → x̄ = 10.4 s, eₐ = (10.6 - 10.2)/2 = 0.2 s, e_r = 0.2/10.4 ≈ 0.019 (1.9%).'
+    ],
+    trap: [
+      'In products and quotients (e.g. area A = b · h), you add the RELATIVE uncertainties, NOT absolute uncertainties!',
+      'Nei prodotti e quozienti (es. area A = b · h) si sommano gli errori RELATIVI, MAI gli errori assoluti!'
+    ]
+  },
+
+  // --- TOPIC: Forces & Elasticity ---
+  {
+    id: 'physics-hooke-elasticity',
+    subject: 'phys',
+    topicId: 'forces-elasticity',
+    category: 'physics',
+    title: ['Hooke\'s Law of Elasticity', 'Legge Elastica di Hooke'],
+    formula: 'F_e = k · Δx   ⇔   k = F_e / Δx   [N/m]',
+    rules: [
+      {
+        name: ['Elastic restoring force', 'Forza elastica di richiamo'],
+        math: 'F_e = k · Δx',
+        desc: ['Directly proportional to the elongation or compression Δx.', 'Direttamente proporzionale all\'allungamento o compressione Δx.']
+      },
+      {
+        name: ['Spring constant k', 'Costante elastica k'],
+        math: 'k = F / Δx  [N/m]',
+        desc: ['Measures the stiffness of the spring (higher k = stiffer spring).', 'Misura la rigidità della molla: maggiore è k, più dura è la molla.']
+      }
+    ],
+    example: [
+      'k = 250 N/m, Δx = 0.04 m (4 cm) → F = 250 · 0.04 = 10 N.',
+      'k = 250 N/m, Δx = 0.04 m (4 cm) → F = 250 · 0.04 = 10 N.'
+    ],
+    trap: [
+      'Elongation Δx MUST be converted to meters (m)! Using centimeters directly gives a force 100 times too large!',
+      'L\'allungamento Δx va SEMPRE espresso in metri (m)! Se usi i centimetri ottieni una forza 100 volte più grande del reale!'
+    ]
+  },
+  {
+    id: 'physics-vectors-forces',
+    subject: 'phys',
+    topicId: 'forces-elasticity',
+    category: 'physics',
+    title: ['Vectors & Force Composition', 'Vettori e Composizione delle Forze'],
+    formula: 'R⃗ = F⃗₁ + F⃗₂  ·  R = √(F₁² + F₂²) (perpendicular)  ·  F_x = F·cosθ, F_y = F·sinθ',
+    rules: [
+      {
+        name: ['Parallelogram rule', 'Regola del parallelogramma'],
+        math: 'Diagonal of the parallelogram formed by F₁ and F₂.',
+        desc: ['Vector addition depends on both magnitude and direction.', 'La somma vettoriale tiene conto sia del modulo che della direzione.']
+      },
+      {
+        name: ['Perpendicular forces (Pythagoras)', 'Forze perpendicolari'],
+        math: 'R = √(F₁² + F₂²)',
+        desc: ['Applies Pythagorean theorem when angle between forces is 90°.', 'Teorema di Pitagora quando le due forze formano un angolo retto di 90°.']
+      }
+    ],
+    example: [
+      'F₁ = 3 N (East), F₂ = 4 N (North) → R = √(3² + 4²) = √(9 + 16) = √25 = 5 N.',
+      'F₁ = 3 N (Est), F₂ = 4 N (Nord) → R = √(3² + 4²) = √(9 + 16) = √25 = 5 N.'
+    ],
+    trap: [
+      'Forces cannot be added as simple numbers: 3 N + 4 N is only 7 N if they are parallel in the same direction!',
+      'Le forze NON si sommano come numeri scalari: 3 N + 4 N fa 7 N solo se hanno la stessa direzione e verso!'
+    ]
+  },
+
+  // --- TOPIC: Equilibrium & Levers ---
+  {
+    id: 'physics-equilibrium-torque',
+    subject: 'phys',
+    topicId: 'equilibrium-levers',
+    category: 'physics',
+    title: ['Torque & Moment of a Force', 'Momento di una Forza e Rotazione'],
+    formula: 'M = F · b  [N·m]  ·  Equilibrium: ΣF = 0 and ΣM = 0',
+    rules: [
+      {
+        name: ['Moment of a force', 'Momento della forza'],
+        math: 'M = F · b  (b = lever arm perpendicular to line of action)',
+        desc: ['Tendency of a force to rotate a body around a pivot.', 'Capacità di una forza di provocare la rotazione attorno a un perno.']
+      },
+      {
+        name: ['Lever arm (Braccio)', 'Braccio della forza'],
+        math: 'Perpendicular distance from the pivot to the line of action.',
+        desc: ['Distance measured at 90° from the rotation axis.', 'Distanza perpendicolare tra il punto di rotazione e la retta d\'azione.']
+      }
+    ],
+    example: [
+      'Force F = 40 N applied at distance b = 0.5 m from pivot → M = 40 · 0.5 = 20 N·m.',
+      'Forza F = 40 N applicata a distanza b = 0.5 m dal perno → M = 40 · 0.5 = 20 N·m.'
+    ],
+    trap: [
+      'The lever arm is NOT just the point of application distance, it MUST be the perpendicular distance to the force vector line!',
+      'Il braccio NON è una distanza qualunque: è la distanza PERPENDICOLARE tra il fulcro e la retta d\'azione della forza!'
+    ]
+  },
+  {
+    id: 'physics-levers-law',
+    subject: 'phys',
+    topicId: 'equilibrium-levers',
+    category: 'physics',
+    title: ['Fundamental Law of Levers', 'Legge Fondamentale delle Leve'],
+    formula: 'F_m · b_m = F_r · b_r   (Motive Force · Arm = Resisting Force · Arm)',
+    rules: [
+      {
+        name: ['Equilibrium condition', 'Condizione di equilibrio'],
+        math: 'F_m · b_m = F_r · b_r',
+        desc: ['Clockwise torque equals counter-clockwise torque.', 'Il momento motore è uguale al momento resistente.']
+      },
+      {
+        name: ['1st class lever (Interfissa)', 'Leva di 1° genere'],
+        math: 'Pivot in the center (e.g. scissors, crowbar)',
+        desc: ['Can be favorable, unfavorable, or neutral depending on arms.', 'Può essere vantaggiosa, svantaggiosa o indifferente.']
+      },
+      {
+        name: ['2nd class lever (Interresistente)', 'Leva di 2° genere'],
+        math: 'Resistance in the middle (e.g. wheelbarrow, nutcracker)',
+        desc: ['ALWAYS favorable (b_m > b_r, so F_m < F_r).', 'SEMPRE vantaggiosa (il braccio motore è sempre maggiore di quello resistente).']
+      },
+      {
+        name: ['3rd class lever (Interpotente)', 'Leva di 3° genere'],
+        math: 'Motive force in the middle (e.g. tongs, forearm)',
+        desc: ['ALWAYS unfavorable in force (requires F_m > F_r), but gains speed.', 'SEMPRE svantaggiosa per la forza (richiede F_m > F_r), ma vantaggiosa per ampiezza.']
+      }
+    ],
+    example: [
+      'Load F_r = 600 N at b_r = 0.2 m. If motive arm b_m = 1.2 m → F_m = (600 · 0.2) / 1.2 = 100 N (6x mechanical advantage!).',
+      'Carico F_r = 600 N con b_r = 0.2 m. Se b_m = 1.2 m → F_m = (600 · 0.2) / 1.2 = 100 N (guadagno 6x!).'
+    ],
+    trap: [
+      'A 3rd class lever (like human forearm biceps or sugar tongs) ALWAYS requires MORE force than the weight lifted!',
+      'Una leva di terzo genere (come il bicipite del braccio umano) richiede SEMPRE una forza maggiore del peso da sollevare!'
+    ]
+  },
+
+  // --- TOPIC: Fluids & Pressure ---
+  {
+    id: 'physics-pressure-stevino',
+    subject: 'phys',
+    topicId: 'fluids-pressure',
+    category: 'physics',
+    title: ['Pressure & Stevin\'s Hydrostatic Law', 'Pressione e Legge di Stevino'],
+    formula: 'p = F / A  [Pa]  ·  p = p₀ + ρ · g · h',
+    rules: [
+      {
+        name: ['Pressure definition', 'Definizione di pressione'],
+        math: 'p = F_perp / A  [1 Pa = 1 N/m²]',
+        desc: ['Perpendicular force spread over contact area A.', 'Rapporto tra la forza perpendicolare e la superficie A.']
       },
       {
         name: ['Stevino\'s law', 'Legge di Stevino'],
         math: 'p = ρ · g · h',
-        desc: ['Hydrostatic pressure at depth h in a fluid of density ρ.', 'Pressione idrostatica a profondità h in un fluido di densità ρ.']
+        desc: ['Hydrostatic pressure depends ONLY on fluid density ρ, gravity g, and depth h.', 'La pressione idrostatica dipende SOLO da densità del fluido, gravità e profondità.']
       }
     ],
     example: [
-      'k = 200 N/m, Δx = 0.05 m → F = 200 · 0.05 = 10 N  ·  F = 500 N, A = 2 m² → p = 250 Pa',
-      'k = 200 N/m, Δx = 0.05 m → F = 200 · 0.05 = 10 N  ·  F = 500 N, A = 2 m² → p = 250 Pa'
+      'Water (ρ = 1000 kg/m³) at depth h = 10 m → p = 1000 · 9.8 · 10 = 98 000 Pa ≈ 1 atm (doubles total pressure!).',
+      'Acqua (ρ = 1000 kg/m³) a h = 10 m → p = 1000 · 9.8 · 10 = 98 000 Pa ≈ 1 atm (raddoppia la pressione totale!).'
     ],
     trap: [
-      'In pressure, smaller area means MUCH HIGHER pressure for the same force (e.g. sharp knife vs dull surface)!',
-      'Nella pressione, una superficie più piccola produce una pressione MOLTO MAGGIORE a parità di forza (es. la punta di un chiodo)!'
+      'Hydrostatic pressure does NOT depend on the shape or volume of the container, only on the vertical depth h (hydrostatic paradox)!',
+      'La pressione sul fondo NON dipende dalla forma o larghezza del recipiente, ma UNICAMENTE dalla profondità verticale h!'
+    ]
+  },
+  {
+    id: 'physics-archimedes-buoyancy',
+    subject: 'phys',
+    topicId: 'fluids-pressure',
+    category: 'physics',
+    title: ['Archimedes\' Principle of Buoyancy', 'Principio di Archimede e Galleggiamento'],
+    formula: 'F_A = ρ_fluid · g · V_submerged  ·  Floating: ρ_body < ρ_fluid',
+    rules: [
+      {
+        name: ['Buoyant force', 'Spinta di Archimede'],
+        math: 'F_A = ρ_fluid · g · V_imm',
+        desc: ['Upward force equal to weight of displaced fluid volume.', 'Spinta verso l\'alto pari al peso del volume di fluido spostato.']
+      },
+      {
+        name: ['Floating condition', 'Condizione di galleggiamento'],
+        math: 'ρ_body < ρ_fluid → floats; ρ_body > ρ_fluid → sinks',
+        desc: ['Average density determines whether object floats or sinks.', 'È la densità media dell\'oggetto a determinare se galleggia o affonda.']
+      }
+    ],
+    example: [
+      'A block of V = 0.002 m³ fully submerged in water (1000 kg/m³) → F_A = 1000 · 9.8 · 0.002 = 19.6 N upward.',
+      'Un blocco di V = 0.002 m³ immerso in acqua (1000 kg/m³) → F_A = 1000 · 9.8 · 0.002 = 19.6 N verso l\'alto.'
+    ],
+    trap: [
+      'In F_A = ρ · g · V, the density ρ is the density of the FLUID, NOT the density of the submerged object!',
+      'Nella formula F_A = ρ · g · V, la densità ρ è quella del LIQUIDO, NON quella dell\'oggetto immerso!'
+    ]
+  },
+
+  // --- TOPIC: Friction & Work ---
+  {
+    id: 'physics-friction-work',
+    subject: 'phys',
+    topicId: 'friction-work',
+    category: 'physics',
+    title: ['Friction & Mechanical Work', 'Attrito e Lavoro Meccanico'],
+    formula: 'F_s ≤ μ_s · F_⊥  ·  F_d = μ_d · F_⊥  (μ_d < μ_s)  ·  L = F · s  [J]',
+    rules: [
+      {
+        name: ['Static friction', 'Attrito radente statico'],
+        math: 'F_s,max = μ_s · F_⊥',
+        desc: ['Max force to overcome to set an object in motion.', 'Forza massima da vincere per mettere in movimento un oggetto fermo.']
+      },
+      {
+        name: ['Dynamic friction', 'Attrito radente dinamico'],
+        math: 'F_d = μ_d · F_⊥  (with μ_d < μ_s)',
+        desc: ['Opposes motion while sliding. Always lower than static friction.', 'Si oppone al moto durante lo scivolamento. Sempre minore dell\'attrito statico.']
+      },
+      {
+        name: ['Mechanical work', 'Lavoro meccanico'],
+        math: 'L = F · s  [Joule = N·m] (when F and s are parallel)',
+        desc: ['Energy transferred by force moving along distance s.', 'Energia trasferita da una forza che sposta un corpo per una distanza s.']
+      }
+    ],
+    example: [
+      'Object of weight 100 N on table (μ_s = 0.4, μ_d = 0.3) → F_s,max = 40 N to start, F_d = 30 N to keep moving. Pushing 5 m with 30 N gives L = 150 J.',
+      'Oggetto di peso 100 N su un piano (μ_s = 0.4, μ_d = 0.3) → F_s,max = 40 N per partire, F_d = 30 N per proseguire. Spostare di 5 m richiede L = 150 J.'
+    ],
+    trap: [
+      'Friction does NOT depend on the contact area (A)! Wide tires or thin tires on dry road have the same theoretical friction coefficient.',
+      'L\'attrito NON dipende dall\'estensione della superficie di contatto: raddoppiare l\'area di contatto non raddoppia l\'attrito!'
+    ]
+  },
+
+  // =========================================================================
+  // COMPUTER SCIENCE (Grade 9 Computer Science)
+  // =========================================================================
+
+  // --- TOPIC: Binary & Data Units ---
+  {
+    id: 'cs-binary-positional',
+    subject: 'cs',
+    topicId: 'binary-encoding',
+    category: 'powers',
+    title: ['Binary Positional Encoding & Bit Capacity', 'Codifica Binaria Posizionale e Capacità di Bit'],
+    formula: 'N = Σ (bᵢ · 2ⁱ)  ·  With n bits: 2ⁿ distinct states (0 to 2ⁿ − 1)',
+    rules: [
+      {
+        name: ['Positional powers of 2', 'Pesi posizionali delle potenze di 2'],
+        math: '... 2⁴(16), 2³(8), 2²(4), 2¹(2), 2⁰(1)',
+        desc: ['Each bit from right to left represents ascending powers of 2.', 'Ogni bit da destra a sinistra moltiplica la corrispondente potenza di 2.']
+      },
+      {
+        name: ['Capacity rule (Shannon)', 'Regola della capacità'],
+        math: 'N = 2ⁿ combinations',
+        desc: ['n bits can represent exactly 2ⁿ distinct numerical values.', 'n bit permettono di rappresentare esattamente 2ⁿ valori distinti.']
+      }
+    ],
+    example: [
+      'Binary 10110₂ = 1·16 + 0·8 + 1·4 + 1·2 + 0·1 = 22₁₀. With 8 bits (1 Byte): 2⁸ = 256 values (0 to 255).',
+      'Binario 10110₂ = 1·16 + 0·8 + 1·4 + 1·2 + 0·1 = 22₁₀. Con 8 bit (1 Byte): 2⁸ = 256 valori (da 0 a 255).'
+    ],
+    trap: [
+      'The maximum value with n bits is 2ⁿ − 1, NOT 2ⁿ (because zero is included): with 8 bits the maximum is 255, not 256!',
+      'Il valore massimo rappresentabile con n bit è 2ⁿ − 1, NON 2ⁿ (perché si conta lo zero!): con 8 bit il massimo è 255, non 256!'
+    ]
+  },
+  {
+    id: 'cs-data-units-prefix',
+    subject: 'cs',
+    topicId: 'binary-encoding',
+    category: 'powers',
+    title: ['Data Units & Memory Hierarchies', 'Unità di Misura dei Dati e Prefissi'],
+    formula: '1 Byte = 8 bits  ·  1 KiB = 1024 B (2¹⁰)  ·  1 MiB = 1024 KiB (2²⁰)  ·  1 GiB = 2³⁰ B',
+    rules: [
+      {
+        name: ['Bit vs Byte', 'Bit contro Byte'],
+        math: '1 Byte (B) = 8 bits (b)',
+        desc: ['Byte is capital B, bit is lowercase b.', 'Byte si indica con B maiuscola, bit con b minuscola.']
+      },
+      {
+        name: ['Binary multiples (IEC)', 'Multipli binari (base 2)'],
+        math: '1 KiB = 1024 Bytes = 2¹⁰ B',
+        desc: ['In computer RAM, multipliers are powers of 2 (1024, not 1000).', 'Nella memoria RAM i moltiplicatori sono potenze di 2 (1024, non 1000).']
+      }
+    ],
+    example: [
+      '4 GiB RAM = 4 · 1024 MiB = 4 096 MiB = 4 294 967 296 Bytes.',
+      '4 GiB RAM = 4 · 1024 MiB = 4 096 MiB = 4 294 967 296 Byte.'
+    ],
+    trap: [
+      'Storage drives use decimal 1000 prefixes (1 TB = 10¹² B) whereas OS reports binary 1024 (GiB), explaining why a 1 TB drive shows ~931 GiB!',
+      'I produttori di dischi usano la base 10 (1000), mentre il sistema operativo usa base 2 (1024): per questo un disco da 1 TB viene letto come circa 931 GiB!'
+    ]
+  },
+
+  // --- TOPIC: Boolean Logic ---
+  {
+    id: 'cs-boolean-demorgan',
+    subject: 'cs',
+    topicId: 'boolean-logic',
+    category: 'algebra',
+    title: ['Boolean Algebra & De Morgan\'s Laws', 'Algebra Booleana e Leggi di De Morgan'],
+    formula: 'NOT(A AND B) = NOT A OR NOT B   ·   NOT(A OR B) = NOT A AND NOT B',
+    rules: [
+      {
+        name: ['First De Morgan Law', 'Prima legge di De Morgan'],
+        math: '¬(A ∧ B) = ¬A ∨ ¬B',
+        desc: ['Negation of a conjunction is the disjunction of negations.', 'La negazione di un AND equivale all\'OR delle singole negazioni.']
+      },
+      {
+        name: ['Second De Morgan Law', 'Seconda legge di De Morgan'],
+        math: '¬(A ∨ B) = ¬A ∧ ¬B',
+        desc: ['Negation of a disjunction is the conjunction of negations.', 'La negazione di un OR equivale all\'AND delle singole negazioni.']
+      },
+      {
+        name: ['Double negation', 'Doppia negazione'],
+        math: '¬(¬A) = A',
+        desc: ['Two NOTs cancel out to the original boolean state.', 'Due negazioni consecutive restituiscono il valore di partenza.']
+      }
+    ],
+    example: [
+      'In code: if (!(age >= 18 && hasTicket)) is identical to if (age < 18 || !hasTicket).',
+      'Nel codice: if (!(eta >= 18 && haBiglietto)) equivale a if (eta < 18 || !haBiglietto).'
+    ],
+    trap: [
+      'When applying NOT to a compound expression, you MUST invert the operator (AND becomes OR, OR becomes AND)!',
+      'Quando applichi il NOT a una combinazione, DEVI invertire l\'operatore (AND diventa OR, OR diventa AND)!'
+    ]
+  },
+
+  // --- TOPIC: Circuits & Hardware ---
+  {
+    id: 'cs-circuits-ohm-power',
+    subject: 'cs',
+    topicId: 'circuits-hardware',
+    category: 'physics',
+    title: ['Ohm\'s Law & Electric Power in Circuits', 'Legge di Ohm e Potenza Elettrica nei Circuiti'],
+    formula: 'V = I · R   ·   P = V · I = I² · R = V² / R   [Watt = Volt · Ampere]',
+    rules: [
+      {
+        name: ['Ohm\'s Law', 'Prima legge di Ohm'],
+        math: 'V = I · R   (I = V / R,  R = V / I)',
+        desc: ['Voltage (V) = Current (A) × Resistance (Ω).', 'Tensione (Volt) = Corrente (Ampere) × Resistenza (Ohm).']
+      },
+      {
+        name: ['Joule Power law', 'Potenza dissipata (effetto Joule)'],
+        math: 'P = V · I = I² · R  [W]',
+        desc: ['Electrical energy converted into work/heat per second.', 'Energia elettrica trasformata in calore o lavoro al secondo.']
+      },
+      {
+        name: ['Resistors in series', 'Resistenze in serie'],
+        math: 'R_eq = R₁ + R₂ + ... + R_n',
+        desc: ['Current is identical; resistances add up directly.', 'Stessa corrente attraversa tutte le resistenze; le resistenze si sommano.']
+      }
+    ],
+    example: [
+      'Circuit with V = 12 V and R = 4 Ω → Current I = 12 / 4 = 3 A. Power P = 12 · 3 = 36 W.',
+      'Circuito con V = 12 V e R = 4 Ω → Corrente I = 12 / 4 = 3 A. Potenza P = 12 · 3 = 36 W.'
+    ],
+    trap: [
+      'Power increases with the SQUARE of current (I²): doubling the current quadruples the heat generated in a CPU or wire!',
+      'La potenza dissipata aumenta col QUADRATO della corrente (I²): raddoppiare la corrente quadruplica il calore generato in un cavo o chip!'
+    ]
+  },
+
+  // --- TOPIC: Networking ---
+  {
+    id: 'cs-network-transfer-time',
+    subject: 'cs',
+    topicId: 'networking',
+    category: 'fractions',
+    title: ['Data Transfer Rate & Download Time', 'Velocità di Trasferimento Dati e Download'],
+    formula: 'Time (s) = Data Size (bits) / Bandwidth (bps)   ·   Data = Bandwidth · Time',
+    rules: [
+      {
+        name: ['Transfer time equation', 'Formula del tempo di trasmissione'],
+        math: 'T = (Size_Bytes · 8) / Bandwidth_bps',
+        desc: ['File size in bytes MUST be converted to bits before dividing.', 'I Byte del file vanno moltiplicati per 8 (bit) prima di dividere per i bps.']
+      },
+      {
+        name: ['Throughput vs Latency', 'Throughput contro Latenza'],
+        math: 'Latency = round-trip ping time (ms)',
+        desc: ['Throughput is width of pipe (bps); latency is delay of arrival (ms).', 'La larghezza di banda è la capienza del canale; la latenza è il tempo di reazione.']
+      }
+    ],
+    example: [
+      'Downloading a 25 MB file over a 100 Mbps broadband connection: (25 · 8) / 100 = 200 / 100 = 2.0 seconds.',
+      'Scaricare un file da 25 MB su una connessione da 100 Mbps: (25 · 8) / 100 = 200 / 100 = 2,0 secondi.'
+    ],
+    trap: [
+      'THE 8X TRAP: Internet speed is sold in Megabits per second (Mbps), but file sizes are in MegaBytes (MB)! Divide connection speed by 8 to get MB/s.',
+      'IL TRANELLO DELL\'8X: Le connessioni internet sono vendute in Megabit/s (Mbps), ma i file sono in MegaByte (MB)! Dividi i Mbps per 8 per sapere i MB/s effettivi.'
+    ]
+  },
+
+  // =========================================================================
+  // GRADE 5 SCIENCE (Quinta Primaria Scienze)
+  // =========================================================================
+
+  // --- TOPIC: Matter & Energy ---
+  {
+    id: 'science-matter-states',
+    subject: 'science',
+    topicId: 'matter-energy',
+    category: 'physics',
+    title: ['States of Matter & Changes of State', 'Stati della Materia e Passaggi di Stato'],
+    formula: 'Solid (0°C) ⇄ Liquid (100°C) ⇄ Gas   ·   Heat transfers from hot to cold',
+    rules: [
+      {
+        name: ['Three aggregate states', 'I tre stati di aggregazione'],
+        math: 'Solid (fixed shape/volume) · Liquid (fixed volume) · Gas (expands)',
+        desc: ['Molecular bonds become looser as thermal energy increases.', 'I legami tra molecole si allentano all\'aumentare dell\'energia termica.']
+      },
+      {
+        name: ['Phase changes for pure water', 'Passaggi di stato dell\'acqua'],
+        math: 'Fusion = 0°C  ·  Boiling / Vaporization = 100°C',
+        desc: ['Temperature remains constant during phase transition.', 'La temperatura rimane costante durante il passaggio di stato.']
+      }
+    ],
+    example: [
+      'Ice absorbs heat at 0°C to melt into water; water absorbs heat at 100°C to vaporize into steam.',
+      'Il ghiaccio assorbe calore a 0°C per fondere in acqua; l\'acqua assorbe calore a 100°C per bollire in vapore.'
+    ],
+    trap: [
+      'Heat (energy in transit, measured in Joules/calories) is NOT temperature (measure of thermal agitation in degrees Celsius)!',
+      'Il calore (energia termica in transito) NON è la temperatura (misura dello stato di agitazione delle molecole in °C)!'
+    ]
+  },
+
+  // --- TOPIC: Speed & Gravity ---
+  {
+    id: 'science-speed-formula',
+    subject: 'science',
+    topicId: 'forces-motion',
+    category: 'physics',
+    title: ['Uniform Speed & Travel Time', 'Velocità Costante e Tempo di Percorrenza'],
+    formula: 'v = s / t   ·   s = v · t   ·   t = s / v   (1 m/s = 3.6 km/h)',
+    rules: [
+      {
+        name: ['Speed definition', 'Formula della velocità'],
+        math: 'Speed = Distance / Time',
+        desc: ['Distance traveled in one unit of time.', 'Spazio percorso nell\'unità di tempo.']
+      },
+      {
+        name: ['km/h to m/s conversion', 'Conversione km/h in m/s'],
+        math: 'km/h ÷ 3.6 = m/s   ·   m/s × 3.6 = km/h',
+        desc: ['Divide by 3.6 to convert from km/h to m/s.', 'Dividi per 3,6 per passare da km/h a metri al secondo.']
+      }
+    ],
+    example: [
+      'A train travels s = 180 km in t = 2 hours → v = 180 / 2 = 90 km/h (which is 90 / 3.6 = 25 m/s).',
+      'Un treno percorre s = 180 km in t = 2 ore → v = 180 / 2 = 90 km/h (pari a 90 / 3,6 = 25 m/s).'
+    ],
+    trap: [
+      'Always ensure units match before calculating: do not divide kilometers by minutes directly without converting!',
+      'Assicurati sempre che le unità di misura siano concordi: non dividere chilometri per minuti senza aver convertito le ore!'
+    ]
+  },
+
+  // --- TOPIC: Photosynthesis & Ecosystem ---
+  {
+    id: 'science-photosynthesis',
+    subject: 'science',
+    topicId: 'photosynthesis-ecosystem',
+    category: 'fractions',
+    title: ['Chlorophyll Photosynthesis Formula', 'Formula della Fotosintesi Clorofilliana'],
+    formula: '6 CO₂ (Carbon Dioxide) + 6 H₂O (Water) + Sunlight  →  C₆H₁₂O₆ (Glucose) + 6 O₂ (Oxygen)',
+    rules: [
+      {
+        name: ['Reactants (Input)', 'Sostanze di partenza'],
+        math: 'Water from roots + Carbon dioxide from air + Sunlight energy',
+        desc: ['Absorbed by roots and stomata leaves.', 'Assorbite da radici e stomi delle foglie con la clorofilla.']
+      },
+      {
+        name: ['Products (Output)', 'Sostanze prodotte'],
+        math: 'Glucose sugar (plant food) + Oxygen gas released',
+        desc: ['Glucose feeds the plant; oxygen is released into atmosphere.', 'Il glucosio nutre la pianta; l\'ossigeno viene liberato nell\'aria.']
+      }
+    ],
+    example: [
+      'Plants act as autotrophic producers: they transform light energy into chemical energy stored in glucose sugar.',
+      'Le piante agiscono da produttori autotrofi: trasformano energia luminosa in energia chimica conservata nel glucosio.'
+    ],
+    trap: [
+      'Plants do NOT only do photosynthesis: at night, in the absence of sunlight, they respire like all living beings, taking in O₂ and releasing CO₂!',
+      'Le piante NON fanno solo fotosintesi: di notte, in assenza di luce, respirano come tutti i viventi assorbendo O₂ e rilasciando CO₂!'
     ]
   }
 ];
