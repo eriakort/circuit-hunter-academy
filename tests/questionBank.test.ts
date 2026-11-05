@@ -44,6 +44,17 @@ if (ch1Category) {
 }
 
 
+// Every Grade 9 subject uses its registered bilingual name in the all-topics category.
+const physicsAll = getCategories('phys')[0];
+console.assert(physicsAll?.label[0] === 'All Physics Topics', 'Physics category should be labelled correctly');
+console.assert(physicsAll?.label[1] === 'Tutti gli argomenti di Fisica', 'Italian Physics category should be translated');
+const mathAll = getCategories('math')[0];
+console.assert(mathAll?.label[0] === 'All Mathematics Topics', 'Mathematics category should be labelled correctly');
+console.assert(mathAll?.label[1] === 'Tutti gli argomenti di Matematica', 'Italian Mathematics category should be translated');
+const csAll = getCategories('cs')[0];
+console.assert(csAll?.label[0] === 'All Computer Science Topics', 'Computer Science category should be labelled correctly');
+console.assert(csAll?.label[1] === 'Tutti gli argomenti di Informatica', 'Italian Computer Science category should be translated');
+
 // Grade 5 Science has its own bilingual subject-wide category and question pool.
 const scienceCategories = getCategories('science');
 console.assert(scienceCategories.length >= 2, `Expected Science categories, got ${scienceCategories.length}`);
