@@ -7,7 +7,7 @@ import { GRADE_SUBJECT_IDS } from '../data/gradeData';
 const SKEY = 'circuit-hunter-academy-v2';
 const SCHEMA = 3;
 const NAV_KEY = 'circuit-hunter-academy-navigation-v2';
-const VALID_VIEWS: ViewMode[] = ['grades', 'subjects', 'map', 'scene', 'battle', 'result', 'ending', 'dojo', 'codex', 'race', 'test', 'formula', 'checkpoint'];
+const VALID_VIEWS: ViewMode[] = ['grades', 'subjects', 'map', 'scene', 'battle', 'result', 'ending', 'dojo', 'codex', 'race', 'test', 'formula', 'checkpoint', 'cs-checkpoint'];
 
 interface SavedNavigation {
   view: ViewMode;

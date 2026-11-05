@@ -13,6 +13,8 @@ export const HUD: React.FC = () => {
   const pct = next ? Math.min(100, Math.max(0, ((xp - currentRank[0]) / (next[0] - currentRank[0])) * 100)) : 100;
   const anyClear = Object.keys(cleared).length > 0;
   const physicsCheckpointUnlocked = subject === 'phys' && ['p1m1', 'p1m2', 'p1m3', 'p1m4', 'p1m5'].every(id => !!cleared[id]);
+  const csCheckpointMissions = ['a1m1', 'a1m2', 'a1m3', 'a2m1', 'a2m2', 'a2m3', 'a2m4', 'a3m1', 'a3m2', 'a3m3', 'a3m4', 'a5m1', 'a5m2', 'a5m3', 'a5m4'];
+  const csCheckpointUnlocked = subject === 'cs' && grade === 'grade9' && csCheckpointMissions.every(id => !!cleared[id]);
 
   // Mission battles belong to Missions; dojo battles belong to Dojo.
   const isMissionsActive =
@@ -130,6 +132,19 @@ export const HUD: React.FC = () => {
             onClick={() => goToView('checkpoint')}
           >
             {L(['Checkpoint', 'Checkpoint'], lang)}
+          </button>
+        )}
+
+        {subject === 'cs' && grade === 'grade9' && (
+          <button
+            className={navClass(view === 'cs-checkpoint')}
+            id="hCSCheckpoint"
+            aria-current={currentPage(view === 'cs-checkpoint')}
+            disabled={!csCheckpointUnlocked}
+            title={!csCheckpointUnlocked ? L(['Complete the 15 Algorithm, Data, Hardware and Network foundation missions to unlock this checkpoint.', 'Completa le 15 missioni di fondamenti su algoritmi, dati, hardware e reti per sbloccare questo checkpoint.'], lang) : undefined}
+            onClick={() => goToView('cs-checkpoint')}
+          >
+            {L(['CS Checkpoint', 'Checkpoint Informatica'], lang)}
           </button>
         )}
 
