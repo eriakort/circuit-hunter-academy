@@ -163,6 +163,17 @@ export const HUD: React.FC = () => {
           </button>
         )}
 
+        {subject === 'italian' && (
+          <button
+            className={navClass(view === 'it-checkpoint')}
+            id="hItCheckpoint"
+            aria-current={currentPage(view === 'it-checkpoint')}
+            onClick={() => goToView('it-checkpoint')}
+          >
+            {L(['Oral Trial', 'Esame Orale'], lang)}
+          </button>
+        )}
+
         <button
           className={navClass(isDojoActive)}
           id="hDojo"

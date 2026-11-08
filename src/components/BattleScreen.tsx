@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useGame } from '../context/GameContext';
 import { QuizQuestion, Mission } from '../types';
 import { L, demonSVG, HEART, shuffle, U } from '../helpers';
-import { speakItalian } from '../speech/speechEngine';
+import { speakItalian, startListening, isSpeechRecognitionAvailable, scorePronunciation } from '../speech/speechEngine';
 
 export const BattleScreen: React.FC = () => {
   const {
@@ -54,6 +54,61 @@ export const BattleScreen: React.FC = () => {
   const [demonHit, setDemonHit] = useState(false);
   const [arenaOuch, setArenaOuch] = useState(false);
   const [battleFinished, setBattleFinished] = useState<'win' | 'lose' | null>(null);
+  const [isListening, setIsListening] = useState(false);
+  const [voiceTranscript, setVoiceTranscript] = useState('');
+  const [speechStopFn, setSpeechStopFn] = useState<(() => void) | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (speechStopFn) speechStopFn();
+    };
+  }, [speechStopFn]);
+
+  const handleVoiceCast = () => {
+    if (answered || !currentQ) return;
+    if (!isSpeechRecognitionAvailable()) {
+      alert(L(['Speech recognition is not supported in this browser.', 'Il riconoscimento vocale non è supportato in questo browser.'], lang));
+      return;
+    }
+
+    if (isListening && speechStopFn) {
+      speechStopFn();
+      setIsListening(false);
+      return;
+    }
+
+    setIsListening(true);
+    setVoiceTranscript('');
+
+    const stop = startListening({
+      lang: 'it-IT',
+      onResult: (transcript, isFinal) => {
+        setVoiceTranscript(transcript);
+        if (isFinal) {
+          setIsListening(false);
+          let bestMatchIdx = -1;
+          let bestScore = 0;
+          options.forEach((optIdx, displayIdx) => {
+            const rawOpt = currentQ.a[optIdx];
+            const optItalian = Array.isArray(rawOpt) ? rawOpt[1] || rawOpt[0] : rawOpt;
+            const res = scorePronunciation(transcript, optItalian);
+            if (res.percentage > bestScore) {
+              bestScore = res.percentage;
+              bestMatchIdx = displayIdx;
+            }
+          });
+
+          if (bestMatchIdx >= 0 && bestScore >= 50) {
+            handleSelectOption(bestMatchIdx);
+          }
+        }
+      },
+      onError: () => setIsListening(false),
+      onEnd: () => setIsListening(false)
+    });
+
+    setSpeechStopFn(() => stop);
+  };
 
   // Initialize battle queue
   useEffect(() => {
@@ -445,6 +500,37 @@ export const BattleScreen: React.FC = () => {
             )}
           </div>
 
+          {(currentMission.id.startsWith('it_') || state.subject === 'italian') && !answered && (
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              background: 'rgba(255, 209, 102, 0.08)',
+              border: '1px dashed rgba(255, 209, 102, 0.3)',
+              borderRadius: 10,
+              padding: '8px 14px',
+              margin: '10px 0'
+            }}>
+              <span style={{ fontSize: 13, color: '#ffd166' }}>
+                🎤 {L(['Voice Cast: Speak the answer to strike!', 'Colpo Vocale: Pronuncia la risposta ad alta voce!'], lang)}
+              </span>
+              <button
+                type="button"
+                className={`btn sm ${isListening ? 'bad' : 'ghost'}`}
+                onClick={handleVoiceCast}
+                style={{ padding: '4px 10px', fontSize: 12 }}
+              >
+                {isListening ? L(['Listening... Speak now!', 'Ascolto... Parla ora!'], lang) : L(['Voice Attack', 'Attacco Vocale'], lang)}
+              </button>
+            </div>
+          )}
+
+          {voiceTranscript && !answered && (
+            <div style={{ fontSize: 13, color: 'var(--muted)', marginBottom: 8 }}>
+              {L(['Heard: ', 'Ascoltato: '], lang)} <i>"{voiceTranscript}"</i>
+            </div>
+          )}
+
           <div className="opts">
             {options.map((optionIndex, idx) => {
               let optClass = 'btn ghost opt';
@@ -452,15 +538,34 @@ export const BattleScreen: React.FC = () => {
                 if (idx === correctIndex) optClass = 'btn right opt';
                 else if (idx === selectedIndex) optClass = 'btn wrong opt';
               }
+              const isItalianMission = currentMission.id.startsWith('it_') || state.subject === 'italian';
               return (
-                <button
-                  key={idx}
-                  className={optClass}
-                  disabled={answered}
-                  onClick={() => handleSelectOption(idx)}
-                >
-                  {L(currentQ.a[optionIndex], lang)}
-                </button>
+                <div key={idx} style={{ display: 'flex', gap: 6, alignItems: 'stretch' }}>
+                  <button
+                    className={optClass}
+                    style={{ flex: 1 }}
+                    disabled={answered}
+                    onClick={() => handleSelectOption(idx)}
+                  >
+                    {L(currentQ.a[optionIndex], lang)}
+                  </button>
+                  {isItalianMission && (
+                    <button
+                      type="button"
+                      className="btn ghost sm"
+                      style={{ padding: '0 10px', fontSize: 13 }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const rawOpt = currentQ.a[optionIndex];
+                        const itText = Array.isArray(rawOpt) ? rawOpt[1] || rawOpt[0] : rawOpt;
+                        speakItalian(itText, { rate: 0.9 });
+                      }}
+                      title={L(['Listen', 'Ascolta'], lang)}
+                    >
+                      🔊
+                    </button>
+                  )}
+                </div>
               );
             })}
           </div>

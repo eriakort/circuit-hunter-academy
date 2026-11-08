@@ -521,6 +521,54 @@ export const MapScreen: React.FC = () => {
         />
       )}
 
+      {/* Italian CEFR Speaking & Checkpoint Banner */}
+      {curSub === 'italian' && (
+        <section className="card" style={{
+          background: 'linear-gradient(135deg, rgba(0, 146, 70, 0.12) 0%, rgba(206, 43, 55, 0.12) 100%)',
+          border: '1px solid rgba(255, 209, 102, 0.3)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: 16,
+          padding: '18px 22px',
+          marginBottom: 16
+        }}>
+          <div>
+            <div className="eyebrow" style={{ color: '#ffd166', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span>🇮🇹</span>
+              <span>{L(['CEFR LANGUAGE ACADEMY · A1 · A2 · B1', 'ACCADEMIA DI LINGUA QCER · A1 · A2 · B1'], lang)}</span>
+            </div>
+            <h3 style={{ margin: '4px 0 2px', fontSize: 20 }}>
+              {L(['Active Italian Speaking & Pronunciation Lab', 'Laboratorio di Parlato e Pronuncia Attiva'], lang)}
+            </h3>
+            <p className="muted" style={{ margin: 0, fontSize: 13.5 }}>
+              {L(
+                ['Every mission integrates dialogue simulation, Web Speech pronunciation scoring, and oral challenges.',
+                 'Ogni missione integra dialoghi al bar, valutazione fonetica con Web Speech e sfide orali.'],
+                lang
+              )}
+            </p>
+          </div>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+            <button
+              className="btn sm"
+              style={{ display: 'flex', alignItems: 'center', gap: 6 }}
+              onClick={() => goToView('it-checkpoint')}
+            >
+              🎤 {L(['Take Oral Trial', 'Affronta l’Esame Orale'], lang)}
+            </button>
+            <button
+              className="btn ghost sm"
+              style={{ display: 'flex', alignItems: 'center', gap: 6 }}
+              onClick={() => goToView('formula')}
+            >
+              📖 {L(['Grammar Rules', 'Grammatica'], lang)}
+            </button>
+          </div>
+        </section>
+      )}
+
       {/* Units tabs navigation */}
       <nav className="units" aria-label="Units">
         {UNITS.map((u, ui) => ({ u, ui }))
