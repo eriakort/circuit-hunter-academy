@@ -7,6 +7,7 @@ import { LearningPathway } from './LearningPathway';
 import { PhysicsLab } from './PhysicsLab';
 import { MathLab } from './MathLab';
 import { ComputerScienceLab } from './ComputerScienceLab';
+import { ItalianLab } from './ItalianLab';
 import { scheduleNextConceptReview } from '../spacedRepetition';
 import { HARDWARE_LEARNING_PILOT } from '../data/learningPilot';
 
@@ -263,6 +264,9 @@ export const MissionScreen: React.FC = () => {
       )}
       {(currentMission.id.startsWith('a') || currentMission.id.startsWith('c')) && currentSceneIndex === 1 && (
         <ComputerScienceLab missionId={currentMission.id} lang={lang} />
+      )}
+      {currentMission.id.startsWith('it_') && currentSceneIndex === 1 && (
+        <ItalianLab />
       )}
 
       {guidedPractice && guidedQuestion && !guidedComplete && (

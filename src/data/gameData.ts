@@ -1,6 +1,8 @@
 import { SubjectInfo, UnitInfo, ArcInfo, Mission, Rank, CodexEntry } from "../types";
 import { PHYSICS_FOUNDATION_MISSIONS } from "./physicsFoundationsData";
 import { MATH_CODEX } from "./mathCodex";
+import { ITALIAN_CODEX } from "./italianCodex";
+import { ITALIAN_MISSIONS } from "./italianData";
 export const SUBJECTS: SubjectInfo[] = [
   {
     "id": "cs",
@@ -49,6 +51,22 @@ export const SUBJECTS: SubjectInfo[] = [
       "6 capitoli · 28 missioni"
     ],
     "art": "<svg viewBox=\"0 0 120 120\" width=\"100%\" aria-hidden=\"true\"><defs><linearGradient id=\"mg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#ffd166\"/><stop offset=\"1\" stop-color=\"#ff6a3d\"/></linearGradient></defs><text x=\"60\" y=\"72\" text-anchor=\"middle\" font-family=\"Dela Gothic One, Arial Black, sans-serif\" font-size=\"42\" fill=\"url(#mg)\">∑</text></svg>"
+  },
+  {
+    "id": "italian",
+    "name": [
+      "Italian Studies",
+      "Lingua Italiana"
+    ],
+    "blurb": [
+      "Master Italian through speaking and active conversation: CEFR A1, A2, and B1 levels.",
+      "Padroneggia l'italiano attraverso il parlato e la conversazione attiva: livelli QCER A1, A2 e B1."
+    ],
+    "meta": [
+      "A1 · A2 · B1 · Speaking & Grammar",
+      "A1 · A2 · B1 · Parlato e Grammatica"
+    ],
+    "art": "<svg viewBox=\"0 0 120 120\" width=\"100%\" aria-hidden=\"true\"><defs><linearGradient id=\"itg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#009246\"/><stop offset=\"50%\" stop-color=\"#ffffff\"/><stop offset=\"100%\" stop-color=\"#ce2b37\"/></linearGradient><linearGradient id=\"micg\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#ffd166\"/><stop offset=\"100%\" stop-color=\"#ff6a3d\"/></linearGradient></defs><rect x=\"22\" y=\"26\" width=\"76\" height=\"68\" rx=\"14\" fill=\"#111936\" stroke=\"url(#itg)\" stroke-width=\"3\"/><path d=\"M38 34 h14 v52 h-14 z\" fill=\"#009246\" opacity=\".8\"/><path d=\"M52 34 h16 v52 h-16 z\" fill=\"#f4f4f4\" opacity=\".85\"/><path d=\"M68 34 h14 v52 h-14 z\" fill=\"#ce2b37\" opacity=\".8\"/><rect x=\"54\" y=\"46\" width=\"12\" height=\"20\" rx=\"6\" fill=\"url(#micg)\"/><path d=\"M49 56 a11 11 0 0 0 22 0\" fill=\"none\" stroke=\"#ffd166\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><line x1=\"60\" y1=\"67\" x2=\"60\" y2=\"75\" stroke=\"#ffd166\" stroke-width=\"2.5\"/><line x1=\"52\" y1=\"75\" x2=\"68\" y2=\"75\" stroke=\"#ffd166\" stroke-width=\"2.5\" stroke-linecap=\"round\"/></svg>"
   }
 ];
 
@@ -28391,7 +28409,8 @@ export const CODEX: CodexEntry[] = [
     "The upward push of a fluid on a submerged body.",
     "La spinta verso l'alto di un fluido su un corpo immerso."
   ],
-  ...MATH_CODEX
+  ...MATH_CODEX,
+  ...ITALIAN_CODEX
 ];
 
 export const ROBOT_LEVELS = [
@@ -28790,3 +28809,63 @@ MISSIONS.push(...GRADE5_SCIENCE_REVIEW_MISSIONS.map(mission => ({
   ...mission,
   arc: mission.arc + grade5ScienceReviewArcOffset
 })));
+
+// ============================================================================
+// Italian Studies · CEFR A1, A2, and B1 Curriculum
+// ============================================================================
+const italianA1UnitOffset = UNITS.length;
+UNITS.push({
+  title: ['Italian · A1 Principiante', 'Italiano · A1 Principiante'],
+  ch: 'A1.1–A1.3',
+  subject: 'italian'
+});
+const italianA1ArcOffset = ARCS.length;
+ARCS.push({
+  n: 1,
+  unit: italianA1UnitOffset,
+  subject: 'italian',
+  title: ['Saluti, Fonetica & Bar Italiano (A1)', 'Saluti, Fonetica e Bar Italiano (A1)'],
+  pages: '1–49'
+});
+
+const italianA2UnitOffset = UNITS.length;
+UNITS.push({
+  title: ['Italian · A2 Elementare', 'Italiano · A2 Elementare'],
+  ch: 'A2.1–A2.2',
+  subject: 'italian'
+});
+const italianA2ArcOffset = ARCS.length;
+ARCS.push({
+  n: 2,
+  unit: italianA2UnitOffset,
+  subject: 'italian',
+  title: ['Passato Prossimo & Vita in Città (A2)', 'Passato Prossimo e Vita in Città (A2)'],
+  pages: '50–99'
+});
+
+const italianB1UnitOffset = UNITS.length;
+UNITS.push({
+  title: ['Italian · B1 Intermedio', 'Italiano · B1 Intermedio'],
+  ch: 'B1.1–B1.2',
+  subject: 'italian'
+});
+const italianB1ArcOffset = ARCS.length;
+ARCS.push({
+  n: 3,
+  unit: italianB1UnitOffset,
+  subject: 'italian',
+  title: ['Futuro, Cortesia & Congiuntivo (B1)', 'Futuro, Cortesia e Congiuntivo (B1)'],
+  pages: '100–140'
+});
+
+const italianArcOffsets: Record<number, number> = {
+  0: italianA1ArcOffset,
+  1: italianA2ArcOffset,
+  2: italianB1ArcOffset
+};
+
+MISSIONS.push(...ITALIAN_MISSIONS.map(mission => ({
+  ...mission,
+  arc: (italianArcOffsets[mission.arc] ?? italianA1ArcOffset)
+})));
+

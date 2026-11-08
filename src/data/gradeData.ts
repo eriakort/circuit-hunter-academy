@@ -35,7 +35,7 @@ export const GRADES: GradeInfo[] = [
 
 export const GRADE_SUBJECT_IDS: Record<GradeId, string[]> = {
   grade5: ['science'],
-  grade9: ['cs', 'phys', 'math']
+  grade9: ['cs', 'phys', 'math', 'italian']
 };
 
 export const getSubjectsForGrade = (grade: GradeId, subjects: SubjectInfo[]): SubjectInfo[] => {

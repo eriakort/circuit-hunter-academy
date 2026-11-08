@@ -24,6 +24,7 @@ interface SubjectMeta {
 
 const SUBJECT_LIST: SubjectMeta[] = [
   { id: 'all', name: ['All Subjects', 'Tutte le Materie'], icon: '🌐', badgeColor: 'var(--data)' },
+  { id: 'italian', name: ['Italian Studies', 'Lingua Italiana'], icon: '🇮🇹', badgeColor: 'var(--accent)' },
   { id: 'math', name: ['Mathematics', 'Matematica'], icon: '∑', badgeColor: 'var(--gold)' },
   { id: 'phys', name: ['Physics', 'Fisica'], icon: '⚡', badgeColor: 'var(--sakura)' },
   { id: 'cs', name: ['Computer Science', 'Informatica'], icon: '💾', badgeColor: 'var(--data)' },
@@ -36,7 +37,7 @@ export const FormulaScreen: React.FC = () => {
 
   // Active Subject Selection (defaults to current game subject if valid, else 'math')
   const [activeSubject, setActiveSubject] = useState<SubjectId | 'all'>(() => {
-    if (gameSubject && ['math', 'phys', 'cs', 'science'].includes(gameSubject)) {
+    if (gameSubject && ['math', 'phys', 'cs', 'science', 'italian'].includes(gameSubject)) {
       return gameSubject;
     }
     return 'math';

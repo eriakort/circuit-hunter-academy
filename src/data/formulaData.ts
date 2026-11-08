@@ -50,6 +50,13 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
     { id: 'matter-energy', subject: 'science', name: ['States of Matter & Heat', 'Stati della Materia e Calore'] },
     { id: 'forces-motion', subject: 'science', name: ['Speed, Motion & Gravity', 'Velocità, Movimento e Gravità'] },
     { id: 'photosynthesis-ecosystem', subject: 'science', name: ['Photosynthesis & Living Systems', 'Fotosintesi e Sistemi Viventi'] }
+  ],
+  italian: [
+    { id: 'fonetica', subject: 'italian', name: ['Phonetics & Pronunciation (C/G, GLI, GN, Doppie)', 'Fonetica e Pronuncia (C/G, GLI, GN, Doppie)'] },
+    { id: 'articoli-nomi', subject: 'italian', name: ['Articles, Gender & Plural Endings', 'Articoli, Genere e Desinenze del Plurale'] },
+    { id: 'verbi-tempi', subject: 'italian', name: ['Verb Tenses & Auxiliaries (Essere vs Avere)', 'Tempi Verbali e Ausiliari (Essere vs Avere)'] },
+    { id: 'pronomi', subject: 'italian', name: ['Direct, Indirect & Combined Pronouns', 'Pronomi Diretti, Indiretti e Combinati'] },
+    { id: 'congiuntivo-condizionale', subject: 'italian', name: ['Subjunctive & Conditional of Courtesy', 'Congiuntivo e Condizionale di Cortesia'] }
   ]
 };
 
@@ -1161,5 +1168,170 @@ export const FORMULA_CARDS: FormulaCard[] = [
       'Plants do NOT only do photosynthesis: at night, in the absence of sunlight, they respire like all living beings, taking in O₂ and releasing CO₂!',
       'Le piante NON fanno solo fotosintesi: di notte, in assenza di luce, respirano come tutti i viventi assorbendo O₂ e rilasciando CO₂!'
     ]
+  },
+
+  // =========================================================================
+  // ITALIAN STUDIES (CEFR A1, A2, B1 Reference Sheets)
+  // =========================================================================
+  {
+    id: 'it-phonetics-matrix',
+    subject: 'italian',
+    topicId: 'fonetica',
+    category: 'powers',
+    title: ['The C & G Phonetic Rule (The Silent "H" Key)', 'La Regola di C e G (La Chiave dell’Acca Muta)'],
+    formula: 'C/G + E/I = Soft [tʃ, dʒ]  |  C/G + H + E/I = Hard [k, g]  |  C/G + A/O/U = Hard [k, g]',
+    rules: [
+      {
+        name: ['Soft C and G (Before E, I)', 'C e G dolci (Davanti a E, I)'],
+        math: 'C + I/E = [tʃ] (ciao, cena)  |  G + I/E = [dʒ] (gelato, giro)',
+        desc: ['Pronounced like English "ch" (cheese) and "j" (jump).', 'Suono dolce palatale senza acca.']
+      },
+      {
+        name: ['Hard C and G with H (Acca)', 'C e G dure con H (Acca)'],
+        math: 'C + H + I/E = [k] (chianti, che)  |  G + H + I/E = [g] (spaghetti, ghirlanda)',
+        desc: ['The H is 100% silent; its sole job is to harden the consonant!', 'L’acca è muta e ha solo funzione di indurire il suono fonetico.']
+      },
+      {
+        name: ['Palatals: GLI & GN', 'Palatali: GLI e GN'],
+        math: 'GLI = [ʎ] (famiglia, bottiglia)  |  GN = [ɲ] (gnocchi, lasagna)',
+        desc: ['Liquid and nasal palatals. Never pronounce a separate G sound!', 'Mai pronunciare la G staccata; formano un suono fuso unico.']
+      }
+    ],
+    example: [
+      'Compare: "Cianti" (incorrect) vs "Chianti" (hard K). "Spagetti" (incorrect) vs "Spaghetti" (hard G).',
+      'Confronta: "Cianti" (errato) vs "Chianti" (K duro). "Spagetti" (errato) vs "Spaghetti" (G dura).'
+    ],
+    trap: [
+      'In English, "CH" is soft (cheese). In Italian, "CH" is strictly HARD (K). For a soft sound in Italian, do NOT write H!',
+      'In inglese "CH" è dolce. In italiano "CH" è rigorosamente DURO (K)! Per il suono dolce non scrivere mai la H!'
+    ]
+  },
+  {
+    id: 'it-articles-table',
+    subject: 'italian',
+    topicId: 'articoli-nomi',
+    category: 'fractions',
+    title: ['Italian Definite Articles & Noun Endings', 'Articoli Determinativi e Desinenze dei Nomi'],
+    formula: 'Masc Sing: il / lo / l\'  →  Masc Plur: i / gli  |  Fem Sing: la / l\'  →  Fem Plur: le',
+    rules: [
+      {
+        name: ['Masculine: "il" → "i"', 'Maschile: "il" → "i"'],
+        math: 'il ragazzo → i ragazzi  |  il libro → i libri',
+        desc: ['Used before consonants (except s+consonant, z, gn, ps, x, y).', 'Davanti a consonante semplice.']
+      },
+      {
+        name: ['Masculine: "lo" / "l\'" → "gli"', 'Maschile: "lo" / "l\'" → "gli"'],
+        math: 'lo studente → gli studenti  |  lo zaino → gli zaini  |  l\'amico → gli amici',
+        desc: ['Used before s+consonant, z, ps, gn, and vowels.', 'Davanti a s impura, z, gn, ps e vocali.']
+      },
+      {
+        name: ['Feminine: "la" / "l\'" → "le"', 'Femminile: "la" / "l\'" → "le"'],
+        math: 'la pizza → le pizze  |  la casa → le case  |  l\'amica → le amiche',
+        desc: ['Used for all feminine nouns. Plural is always "le".', 'Per tutti i nomi femminili; il plurale è sempre "le".']
+      }
+    ],
+    example: [
+      '"Lo zaino di Marco è pesante" → Plural: "Gli zaini di Marco sono pesanti".',
+      '"Lo zaino di Marco è pesante" → Plurale: "Gli zaini di Marco sono pesanti".'
+    ],
+    trap: [
+      'Do not say "il studente" or "i amici"! Always use "lo studente" and "gli amici".',
+      'Non dire mai "il studente" o "i amici"! Usa sempre "lo studente" e "gli amici".'
+    ]
+  },
+  {
+    id: 'it-passato-prossimo-tree',
+    subject: 'italian',
+    topicId: 'verbi-tempi',
+    category: 'equations',
+    title: ['Passato Prossimo & Auxiliary Decision Flow', 'Passato Prossimo e Scelta dell’Ausiliare'],
+    formula: 'Passato Prossimo = Presente (Avere / Essere) + Participio Passato (-ato, -uto, -ito)',
+    rules: [
+      {
+        name: ['Rule 1: Transitive Verbs → AVERE', 'Regola 1: Verbi Transitivi → AVERE'],
+        math: 'Ho mangiato una pizza.  |  Abbiamo visto un film.',
+        desc: ['Participle ends in standard -o and does NOT change with the subject.', 'Il participio termina in -o e non concorda col soggetto.']
+      },
+      {
+        name: ['Rule 2: Movement, Status, Reflexive → ESSERE', 'Regola 2: Movimento, Stato, Riflessivi → ESSERE'],
+        math: 'Lui è andato.  |  Lei è andata.  |  Loro sono andati / andate.',
+        desc: ['With ESSERE, the participle MUST agree in gender and number (-o, -a, -i, -e)!', 'Con ESSERE il participio concorda obbligatoriamente in genere e numero.']
+      }
+    ],
+    example: [
+      'Movement verb "andare": Sofia è andata a Firenze. / Marco e Paolo sono andati a Firenze.',
+      'Verbo di movimento "andare": Sofia è andata a Firenze. / Marco e Paolo sono andati a Firenze.'
+    ],
+    trap: [
+      'Never say "ho andato" or "ho arrivato"! Verbs of movement take ESSERE and require agreement!',
+      'Mai dire "ho andato" o "ho arrivato"! I verbi di moto richiedono ESSERE con accordo del participio!'
+    ]
+  },
+  {
+    id: 'it-pronomi-matrix',
+    subject: 'italian',
+    topicId: 'pronomi',
+    category: 'sets',
+    title: ['Direct, Indirect & Combined Pronouns', 'Pronomi Diretti, Indiretti e Combinati'],
+    formula: 'Mi + lo → Me lo  |  Ti + la → Te la  |  Gli/Le + lo/la/li/le → Glielo / Gliela / Glieli / Gliele',
+    rules: [
+      {
+        name: ['Direct Object (Who? What?)', 'Oggetto Diretto (Chi? Che cosa?)'],
+        math: 'mi, ti, lo/la, ci, vi, li/le (es. "Lo compro", "La chiamo")',
+        desc: ['Replaces direct noun: "Mangi la pizza? Sì, la mangio".', 'Sostituisce il complemento oggetto diretto.']
+      },
+      {
+        name: ['Indirect Object (To whom?)', 'Oggetto Indiretto (A chi?)'],
+        math: 'mi, ti, gli/le, ci, vi, gli (es. "Gli parlo", "Le scrivo")',
+        desc: ['Replaces recipient: "Parli a Marco? Sì, gli parlo".', 'Sostituisce il complemento di termine (a chi).']
+      },
+      {
+        name: ['Partitive "NE"', 'Partitivo "NE"'],
+        math: 'ne = of it / of them (es. "Ne voglio due")',
+        desc: ['Used for quantities: "Quanti caffè bevi? Ne bevo tre".', 'Indica una quantità determinata o parziale.']
+      }
+    ],
+    example: [
+      '"Prestami il tuo libro" → "Me lo presti, per favore?". "Dici la verità a Luca?" → "Sì, gliela dico".',
+      '"Prestami il tuo libro" → "Me lo presti, per favore?". "Dici la verità a Luca?" → "Sì, gliela dico".'
+    ],
+    trap: [
+      '"Gli" (to him) and "Le" (to her) BOTH combine into "Glielo / Gliela" as a single compound word.',
+      'Sia "gli" sia "le" si fondono nel pronome unico "glielo / gliela".'
+    ]
+  },
+  {
+    id: 'it-congiuntivo-triggers',
+    subject: 'italian',
+    topicId: 'congiuntivo-condizionale',
+    category: 'inequalities',
+    title: ['The Subjunctive (Congiuntivo) Trigger Guide', 'Guida all’Uso del Congiuntivo'],
+    formula: 'Main Clause (Opinion / Doubt / Emotion) + CHE + Congiuntivo Presente',
+    rules: [
+      {
+        name: ['Trigger 1: Personal Opinion & Belief', 'Trigger 1: Opinione e Credenza'],
+        math: 'Penso che...  |  Credo che...  |  Ritengo che...',
+        desc: ['Subjective opinion: "Penso che questo ristorante sia fantastico".', 'Esprime opinione soggettiva non oggettiva.']
+      },
+      {
+        name: ['Trigger 2: Doubt & Uncertainty', 'Trigger 2: Dubbio e Incertezza'],
+        math: 'Dubito che...  |  Non sono sicuro che...  |  Non credo che...',
+        desc: ['Doubt: "Dubito che il treno arrivi in orario".', 'Esprime incertezza sul fatto.']
+      },
+      {
+        name: ['Trigger 3: Hope & Emotion', 'Trigger 3: Speranza e Sentimento'],
+        math: 'Spero che...  |  Sono felice che...  |  Ho paura che...',
+        desc: ['Hopes and wishes: "Spero che tu stia bene!".', 'Esprime stati d’animo e auguri personali.']
+      }
+    ],
+    example: [
+      'Compare: "So che Marco è a casa" (Indicativo = fact) vs "Penso che Marco sia a casa" (Congiuntivo = opinion).',
+      'Confronta: "So che Marco è a casa" (Indicativo = certezza) vs "Penso che Marco sia a casa" (Congiuntivo = opinione).'
+    ],
+    trap: [
+      'Do NOT use the subjunctive after certainty phrases: "So che...", "È sicuro che...", "È ovvio che..." take INDICATIVO!',
+      'NON usare il congiuntivo con espressioni di certezza: "So che...", "È sicuro che..." reggono l’INDICATIVO!'
+    ]
   }
 ];
+
