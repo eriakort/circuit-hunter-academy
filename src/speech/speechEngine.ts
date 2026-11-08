@@ -17,13 +17,19 @@ export interface WordScore {
 }
 
 export interface PronunciationScoreResult {
-  score: number; // 0 to 100
+  /** Accuracy percentage, 0 to 100. */
+  percentage: number;
+  /** Alias of `percentage` (0 to 100) kept for existing callers. */
+  score: number;
   passed: boolean; // >= 70%
   feedback: [string, string]; // [EN, IT]
   words: WordScore[];
   spokenNormalized: string;
   expectedNormalized: string;
 }
+
+/** Alias kept for callers that import the shorter name. */
+export type PronunciationScore = PronunciationScoreResult;
 
 /** Check if Text-to-Speech is available in current browser environment */
 export function isSpeechSynthesisSupported(): boolean {
@@ -55,9 +61,11 @@ export function stopSpeaking(): void {
  * @param text The Italian phrase to read aloud
  * @param options Rate (1.0 = normal, 0.75 = slow for learning), pitch, callbacks
  */
+export type SpeakRate = 'slow' | 'normal';
+
 export function speakItalian(
   text: string,
-  options: {
+  optionsArg: SpeakRate | {
     rate?: number;
     pitch?: number;
     onStart?: () => void;
@@ -65,6 +73,10 @@ export function speakItalian(
     onError?: (err: any) => void;
   } = {}
 ): void {
+  // A bare speed mode ('slow' | 'normal') is accepted as shorthand for a rate.
+  const options = typeof optionsArg === 'string'
+    ? { rate: optionsArg === 'slow' ? 0.7 : 0.95 }
+    : optionsArg;
   if (!isSpeechSynthesisSupported()) {
     options.onError?.('SpeechSynthesis not supported');
     return;
@@ -184,6 +196,30 @@ export function listenItalian(options: {
  * - strip punctuation and extra spaces
  * - normalize standard accents
  */
+/** Alias of {@link isSpeechRecognitionSupported} for callers that prefer this name. */
+export const isSpeechRecognitionAvailable = isSpeechRecognitionSupported;
+
+/**
+ * Convenience wrapper around {@link listenItalian} that returns a single stop
+ * function instead of a controller. `lang` is accepted for call-site symmetry
+ * but ignored (recognition always runs as it-IT).
+ */
+export function startListening(options: {
+  lang?: string;
+  onResult: (transcript: string, isFinal: boolean) => void;
+  onError: (error: string) => void;
+  onEnd: () => void;
+  continuous?: boolean;
+}): () => void {
+  const controller = listenItalian({
+    onResult: options.onResult,
+    onError: options.onError,
+    onEnd: options.onEnd,
+    continuous: options.continuous,
+  });
+  return () => controller.stop();
+}
+
 export function normalizeItalian(text: string): string {
   return text
     .toLowerCase()
@@ -245,6 +281,7 @@ export function scorePronunciation(spoken: string, expected: string): Pronunciat
 
   if (!normSpoken) {
     return {
+      percentage: 0,
       score: 0,
       passed: false,
       feedback: [
@@ -322,6 +359,7 @@ export function scorePronunciation(spoken: string, expected: string): Pronunciat
   }
 
   return {
+    percentage: finalScore,
     score: finalScore,
     passed,
     feedback,
