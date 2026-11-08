@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useGame } from '../context/GameContext';
 import { QuizQuestion, Mission } from '../types';
 import { L, demonSVG, HEART, shuffle, U } from '../helpers';
+import { speakItalian } from '../speech/speechEngine';
 
 export const BattleScreen: React.FC = () => {
   const {
@@ -426,7 +427,23 @@ export const BattleScreen: React.FC = () => {
 
       {currentQ && (
         <div className="qbox">
-          <div className="qtxt">{L(currentQ.q, lang)}</div>
+          <div className="qtxt" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
+            <span>{L(currentQ.q, lang)}</span>
+            {currentMission.id.startsWith('it_') && (
+              <button
+                type="button"
+                className="btn sm"
+                onClick={() => {
+                  const itText = Array.isArray(currentQ.q) ? currentQ.q[1] || currentQ.q[0] : currentQ.q;
+                  speakItalian(itText, { rate: 0.88 });
+                }}
+                style={{ flexShrink: 0, padding: '4px 10px', fontSize: '13px' }}
+                title={lang === 'it' ? 'Ascolta domanda' : 'Listen to question'}
+              >
+                🔊
+              </button>
+            )}
+          </div>
 
           <div className="opts">
             {options.map((optionIndex, idx) => {

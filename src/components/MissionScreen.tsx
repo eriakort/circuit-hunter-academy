@@ -8,6 +8,7 @@ import { PhysicsLab } from './PhysicsLab';
 import { MathLab } from './MathLab';
 import { ComputerScienceLab } from './ComputerScienceLab';
 import { ItalianLab } from './ItalianLab';
+import { speakItalian } from '../speech/speechEngine';
 import { scheduleNextConceptReview } from '../spacedRepetition';
 import { HARDWARE_LEARNING_PILOT } from '../data/learningPilot';
 
@@ -230,7 +231,35 @@ export const MissionScreen: React.FC = () => {
           <div className="dialog">
             <div className="avatar" aria-hidden="true" dangerouslySetInnerHTML={{ __html: sp.avatar }} />
             <div className={`bubble ${sp.cls}`}>
-              <div className="who">{sp.name}</div>
+              <div className="who" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span>{sp.name}</span>
+                {currentMission.id.startsWith('it_') && sc.text && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const textToSpeak = (Array.isArray(sc.text) ? sc.text[1] || sc.text[0] : sc.text || '')
+                        .replace(/<[^>]*>/g, '')
+                        .replace(/\[\[(.*?)\|(.*?)\]\]/g, '$2');
+                      speakItalian(textToSpeak, { rate: 0.88 });
+                    }}
+                    title={lang === 'it' ? 'Ascolta questo dialogo in italiano' : 'Listen to this dialogue in Italian'}
+                    style={{
+                      background: 'rgba(106, 209, 255, 0.12)',
+                      border: '1px solid rgba(106, 209, 255, 0.3)',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      fontSize: '0.75rem',
+                      padding: '2px 8px',
+                      color: 'var(--data)',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px'
+                    }}
+                  >
+                    🔊 {lang === 'it' ? 'Ascolta' : 'Listen'}
+                  </button>
+                )}
+              </div>
               <div dangerouslySetInnerHTML={{ __html: fill(sc.text, lang, name) }} />
             </div>
           </div>

@@ -35,7 +35,7 @@ const lessons: Record<string, [string, string]> = {
   c11m2: ['Branch & Loop', 'Bivio e ciclo'],
   c12m2: ['Python variable & type lab', 'Laboratorio Python: variabili e tipi'],
   c13m2: ['Logic gate & match-case lab', 'Laboratorio delle porte logiche e match-case'],
-  c13m1: ['Python decision simulator', 'Simulatore delle decisioni Python'],
+  c13m1: ['Selection decision simulator', 'Simulatore delle decisioni condizionali'],
   c14m1: ['Loop trace laboratory', 'Laboratorio di tracciamento dei cicli'],
   c14m2: ['While loop control room', 'Centro di controllo del ciclo while'],
   c15m1: ['String index and slice lab', 'Laboratorio di indici e slicing'],

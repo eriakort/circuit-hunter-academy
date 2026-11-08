@@ -3,6 +3,7 @@ import { useGame } from '../context/GameContext';
 import { FORMULA_CARDS, SUBJECT_TOPICS, FormulaCard } from '../data/formulaData';
 import { SubjectId } from '../types';
 import { L } from '../helpers';
+import { speakItalian } from '../speech/speechEngine';
 
 // Helper for fraction simplification
 function reduceFraction(num: number, den: number): [number, number] {
@@ -14,6 +15,123 @@ function reduceFraction(num: number, den: number): [number, number] {
   }
   return [num / g, den / g];
 }
+
+interface ItalianVerbMeta {
+  infinitive: string;
+  auxiliary: 'essere' | 'avere';
+  participle: string;
+  category: 'movement' | 'state' | 'reflexive' | 'transitive';
+  sampleContext: [string, string];
+  reason: [string, string];
+}
+
+const ITALIAN_VERBS: ItalianVerbMeta[] = [
+  {
+    infinitive: 'andare',
+    auxiliary: 'essere',
+    participle: 'andat',
+    category: 'movement',
+    sampleContext: ['to Rome by high-speed train', 'a Roma con il treno ad alta velocità'],
+    reason: [
+      'Movement verb with destination. Takes ESSERE with full participle agreement (-o, -a, -i, -e).',
+      'Verbo di moto a luogo. Richiede ESSERE con accordo obbligatorio del participio.'
+    ]
+  },
+  {
+    infinitive: 'mangiare',
+    auxiliary: 'avere',
+    participle: 'mangiat',
+    category: 'transitive',
+    sampleContext: ['a delicious wood-fired pizza', 'una deliziosa pizza margherita'],
+    reason: [
+      'Active transitive verb. Takes AVERE. Participle ends in invariant -o.',
+      'Verbo transitivo attivo. Richiede AVERE. Il participio termina nell’invariato -o.'
+    ]
+  },
+  {
+    infinitive: 'partire',
+    auxiliary: 'essere',
+    participle: 'partit',
+    category: 'movement',
+    sampleContext: ['early from the central station', 'presto dalla stazione centrale'],
+    reason: [
+      'Intransitive verb of departure/movement. Takes ESSERE with agreement.',
+      'Verbo intransitivo di partenza e movimento. Richiede ESSERE con accordo.'
+    ]
+  },
+  {
+    infinitive: 'vedere',
+    auxiliary: 'avere',
+    participle: 'vist',
+    category: 'transitive',
+    sampleContext: ['an unforgettable Italian film', 'un film italiano indimenticabile'],
+    reason: [
+      'Transitive perception verb. Takes AVERE. Irregular participle (visto).',
+      'Verbo transitivo di percezione. Richiede AVERE. Participio irregolare (visto).'
+    ]
+  },
+  {
+    infinitive: 'nascere',
+    auxiliary: 'essere',
+    participle: 'nat',
+    category: 'state',
+    sampleContext: ['in Florence on a sunny day', 'a Firenze in una giornata di sole'],
+    reason: [
+      'Verb expressing change of existential state. Takes ESSERE with agreement.',
+      'Verbo che indica mutamento di stato esistenziale. Richiede ESSERE con accordo.'
+    ]
+  },
+  {
+    infinitive: 'scrivere',
+    auxiliary: 'avere',
+    participle: 'scritt',
+    category: 'transitive',
+    sampleContext: ['a long postcard to a friend', 'una lunga cartolina a un amico'],
+    reason: [
+      'Transitive action verb. Takes AVERE. Irregular participle (scritto).',
+      'Verbo transitivo attivo. Richiede AVERE. Participio irregolare (scritto).'
+    ]
+  },
+  {
+    infinitive: 'tornare',
+    auxiliary: 'essere',
+    participle: 'tornat',
+    category: 'movement',
+    sampleContext: ['home late after dinner', 'a casa tardi dopo cena'],
+    reason: [
+      'Movement / return verb. Takes ESSERE with subject agreement.',
+      'Verbo di ritorno e movimento. Richiede ESSERE con accordo col soggetto.'
+    ]
+  }
+];
+
+const ITALIAN_MINIMAL_PAIRS = [
+  {
+    single: { word: 'pala', meaning: ['shovel', 'pala'], phonetic: 'PA-la' },
+    double: { word: 'palla', meaning: ['ball', 'palla'], phonetic: 'PAL-la (held double L)' },
+    contrast: ['Single L vs Geminate LL', 'L singola vs Doppia LL marcata']
+  },
+  {
+    single: { word: 'casa', meaning: ['house', 'casa'], phonetic: 'KA-za' },
+    double: { word: 'cassa', meaning: ['checkout / register / box', 'cassa del supermercato'], phonetic: 'KAS-sa (sharp double S)' },
+    contrast: ['Soft voiced S vs Unvoiced sharp SS', 'S sorda singola vs Doppia SS marcata']
+  },
+  {
+    single: { word: 'sete', meaning: ['thirst', 'sete'], phonetic: 'SE-te' },
+    double: { word: 'sette', meaning: ['number seven', 'numero 7'], phonetic: 'SET-te (crisp double T pause)' },
+    contrast: ['Single T vs Glottal stop double TT', 'T singola vs Doppia TT con stacco netto']
+  },
+  {
+    single: { word: 'caro', meaning: ['dear / expensive', 'caro'], phonetic: 'KA-ro (single tap R)' },
+    double: { word: 'carro', meaning: ['cart / wagon', 'carro'], phonetic: 'KAR-ro (rolling trill RR)' },
+    contrast: ['Single tap R vs Rolling alveolar trill RR', 'R battuta vs R vibrante multipla']
+  },
+  {
+    single: { word: 'ciao', meaning: ['hello (soft C)', 'ciao (C dolce)'], phonetic: 'CHOW' },
+    double: { word: 'chianti', meaning: ['Chianti wine (hard C with H)', 'Chianti (C dura con acca)'], phonetic: 'KYAN-tee' },
+    contrast: ['Soft C vs Hard C with Acca (H)', 'C dolce vs C dura con acca muta']
+  }
+];
 
 interface SubjectMeta {
   id: SubjectId | 'all';
@@ -48,8 +166,13 @@ export const FormulaScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [showWorkbench, setShowWorkbench] = useState<boolean>(false);
   const [activeTool, setActiveTool] = useState<
-    'binomial' | 'trinomial' | 'equation' | 'inequality' | 'lever' | 'density' | 'binary' | 'ohm'
+    'binomial' | 'trinomial' | 'equation' | 'inequality' | 'lever' | 'density' | 'binary' | 'ohm' | 'italian-auxiliary' | 'italian-phonetics'
   >('binomial');
+
+  // Italian Workbench States
+  const [selectedVerbIdx, setSelectedVerbIdx] = useState<number>(0);
+  const [italianSubjectPronoun, setItalianSubjectPronoun] = useState<'io' | 'tu' | 'lui' | 'lei' | 'noi' | 'voi' | 'loro'>('io');
+  const [italianGender, setItalianGender] = useState<'m' | 'f'>('f');
 
   // Workbench Interactive States
   // 1. Binomial Expander (Ax + B)^2
@@ -686,6 +809,20 @@ export const FormulaScreen: React.FC = () => {
               >
                 V = I · R
               </button>
+              <button
+                type="button"
+                className={`btn sm ${activeTool === 'italian-auxiliary' ? 'cyan' : 'ghost'}`}
+                onClick={() => setActiveTool('italian-auxiliary')}
+              >
+                🇮🇹 {L(['Essere vs Avere', 'Essere vs Avere'], lang)}
+              </button>
+              <button
+                type="button"
+                className={`btn sm ${activeTool === 'italian-phonetics' ? 'cyan' : 'ghost'}`}
+                onClick={() => setActiveTool('italian-phonetics')}
+              >
+                🗣️ {L(['Doppie & C/G', 'Doppie e C/G'], lang)}
+              </button>
             </div>
           </div>
 
@@ -1316,6 +1453,198 @@ export const FormulaScreen: React.FC = () => {
                     {ohmPower} W
                   </div>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* Tool 9: Italian Auxiliary & Agreement Engine */}
+          {activeTool === 'italian-auxiliary' && (() => {
+            const verb = ITALIAN_VERBS[selectedVerbIdx] || ITALIAN_VERBS[0];
+            const isEssere = verb.auxiliary === 'essere';
+
+            const auxPresent: Record<'io'|'tu'|'lui'|'lei'|'noi'|'voi'|'loro', { essere: string; avere: string }> = {
+              io: { essere: 'sono', avere: 'ho' },
+              tu: { essere: 'sei', avere: 'hai' },
+              lui: { essere: 'è', avere: 'ha' },
+              lei: { essere: 'è', avere: 'ha' },
+              noi: { essere: 'siamo', avere: 'abbiamo' },
+              voi: { essere: 'siete', avere: 'avete' },
+              loro: { essere: 'sono', avere: 'hanno' }
+            };
+
+            let ending = 'o';
+            if (isEssere) {
+              if (italianSubjectPronoun === 'lui') ending = 'o';
+              else if (italianSubjectPronoun === 'lei') ending = 'a';
+              else if (italianSubjectPronoun === 'noi' || italianSubjectPronoun === 'voi' || italianSubjectPronoun === 'loro') {
+                ending = italianGender === 'f' ? 'e' : 'i';
+              } else {
+                ending = italianGender === 'f' ? 'a' : 'o';
+              }
+            }
+            const participleFull = isEssere ? `${verb.participle}${ending}` : `${verb.participle}o`;
+            const auxForm = auxPresent[italianSubjectPronoun][verb.auxiliary];
+            const fullSentenceIt = `${italianSubjectPronoun.toUpperCase()} ${auxForm} ${participleFull} ${verb.sampleContext[1]}.`;
+            const fullSentenceEn = `${italianSubjectPronoun} (${auxForm} ${participleFull}) ${verb.sampleContext[0]}.`;
+
+            return (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                <p className="muted" style={{ fontSize: '14px' }}>
+                  {L(
+                    ['Select any high-frequency verb and subject pronoun to see whether it requires ESSERE or AVERE, and how the participle agrees.', 'Seleziona un verbo comune e un pronome soggetto per verificare se richiede ESSERE o AVERE e come si accorda il participio.'],
+                    lang
+                  )}
+                </p>
+
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                  {ITALIAN_VERBS.map((v, idx) => (
+                    <button
+                      key={v.infinitive}
+                      type="button"
+                      className={`btn sm ${selectedVerbIdx === idx ? 'cyan' : 'ghost'}`}
+                      onClick={() => setSelectedVerbIdx(idx)}
+                    >
+                      {v.infinitive.toUpperCase()} ({v.auxiliary})
+                    </button>
+                  ))}
+                </div>
+
+                <div className="row" style={{ gap: '12px', background: 'var(--panel2)', padding: '12px', borderRadius: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px' }}>
+                    <span className="eyebrow">{L(['Subject:', 'Soggetto:'], lang)}</span>
+                    <select
+                      value={italianSubjectPronoun}
+                      onChange={e => setItalianSubjectPronoun(e.target.value as any)}
+                      style={{ padding: '6px 10px', borderRadius: '6px', background: 'var(--panel)', color: 'var(--fg)', border: '1px solid var(--line)' }}
+                    >
+                      <option value="io">io (I)</option>
+                      <option value="tu">tu (you)</option>
+                      <option value="lui">lui (he)</option>
+                      <option value="lei">lei (she)</option>
+                      <option value="noi">noi (we)</option>
+                      <option value="voi">voi (you all)</option>
+                      <option value="loro">loro (they)</option>
+                    </select>
+                  </label>
+
+                  {isEssere && !['lui', 'lei'].includes(italianSubjectPronoun) && (
+                    <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px' }}>
+                      <span className="eyebrow">{L(['Gender:', 'Genere:'], lang)}</span>
+                      <select
+                        value={italianGender}
+                        onChange={e => setItalianGender(e.target.value as any)}
+                        style={{ padding: '6px 10px', borderRadius: '6px', background: 'var(--panel)', color: 'var(--fg)', border: '1px solid var(--line)' }}
+                      >
+                        <option value="m">{L(['Masculine', 'Maschile'], lang)}</option>
+                        <option value="f">{L(['Feminine', 'Femminile'], lang)}</option>
+                      </select>
+                    </label>
+                  )}
+
+                  <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{
+                      padding: '3px 8px',
+                      borderRadius: '4px',
+                      fontSize: '11px',
+                      fontWeight: 'bold',
+                      background: isEssere ? 'rgba(255, 93, 143, 0.2)' : 'rgba(106, 209, 255, 0.2)',
+                      border: `1px solid ${isEssere ? 'var(--sakura)' : 'var(--data)'}`,
+                      color: isEssere ? 'var(--sakura)' : 'var(--data)'
+                    }}>
+                      {isEssere ? 'AUSILIARE: ESSERE' : 'AUSILIARE: AVERE'}
+                    </span>
+                  </div>
+                </div>
+
+                <div style={{ background: 'var(--panel)', border: '1px solid var(--line)', borderRadius: '12px', padding: '16px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+                    <div>
+                      <div className="eyebrow">{L(['Generated Sentence · Passato Prossimo', 'Frase Generata · Passato Prossimo'], lang)}</div>
+                      <div style={{ fontSize: '20px', fontWeight: 600, color: 'var(--fg)', marginTop: '4px' }}>
+                        {fullSentenceIt}
+                      </div>
+                      <div style={{ fontSize: '14px', color: 'var(--muted)', marginTop: '2px' }}>
+                        {fullSentenceEn}
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={() => speakItalian(fullSentenceIt, { rate: 0.88 })}
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '6px 14px' }}
+                    >
+                      🔊 {L(['Listen Native Pronunciation', 'Ascolta Pronuncia'], lang)}
+                    </button>
+                  </div>
+
+                  <div style={{ marginTop: '14px', paddingTop: '10px', borderTop: '1px solid var(--line)', fontSize: '13px', color: 'var(--text)' }}>
+                    💡 <strong>{L(['Grammar Rule:', 'Regola Grammaticale:'], lang)}</strong> {L(verb.reason, lang)}
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+
+          {/* Tool 10: Italian Minimal Pairs & Phonetics Soundboard */}
+          {activeTool === 'italian-phonetics' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <p className="muted" style={{ fontSize: '14px' }}>
+                {L(
+                  ['Listen to contrast pairs side-by-side to train your ear on double consonants (doppie) and hard vs soft C and G sounds.', 'Ascolta le coppie minime a confronto per allenare l’orecchio sulle doppie consonanti e sui suoni dolci/duri di C e G.'],
+                  lang
+                )}
+              </p>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px' }}>
+                {ITALIAN_MINIMAL_PAIRS.map((pair, pIdx) => (
+                  <div
+                    key={pIdx}
+                    style={{
+                      background: 'var(--panel2)',
+                      border: '1px solid var(--line)',
+                      borderRadius: '10px',
+                      padding: '12px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '10px'
+                    }}
+                  >
+                    <div style={{ fontSize: '11px', fontWeight: 'bold', color: 'var(--gold)', letterSpacing: '0.05em' }}>
+                      {L(pair.contrast, lang)}
+                    </div>
+
+                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px' }}>
+                      <div style={{ flex: 1, background: 'var(--panel)', padding: '10px', borderRadius: '8px', textAlign: 'center' }}>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: 'var(--data)' }}>{pair.single.word}</div>
+                        <div style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '2px' }}>{pair.single.phonetic}</div>
+                        <div style={{ fontSize: '12px', color: 'var(--text)', marginTop: '4px' }}>{L(pair.single.meaning, lang)}</div>
+                        <button
+                          type="button"
+                          className="btn sm"
+                          onClick={() => speakItalian(pair.single.word, { rate: 0.85 })}
+                          style={{ marginTop: '8px', width: '100%' }}
+                        >
+                          🔊 {pair.single.word}
+                        </button>
+                      </div>
+
+                      <div style={{ flex: 1, background: 'var(--panel)', padding: '10px', borderRadius: '8px', textAlign: 'center', border: '1px solid rgba(255, 93, 143, 0.3)' }}>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: 'var(--sakura)' }}>{pair.double.word}</div>
+                        <div style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '2px' }}>{pair.double.phonetic}</div>
+                        <div style={{ fontSize: '12px', color: 'var(--text)', marginTop: '4px' }}>{L(pair.double.meaning, lang)}</div>
+                        <button
+                          type="button"
+                          className="btn sm cyan"
+                          onClick={() => speakItalian(pair.double.word, { rate: 0.85 })}
+                          style={{ marginTop: '8px', width: '100%' }}
+                        >
+                          🔊 {pair.double.word}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           )}

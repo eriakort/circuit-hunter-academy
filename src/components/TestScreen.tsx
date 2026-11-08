@@ -10,6 +10,7 @@ import {
 } from '../data/questionBank';
 import { FORMULA_CARDS } from '../data/formulaData';
 import { L, shuffle, esc, U } from '../helpers';
+import { speakItalian } from '../speech/speechEngine';
 
 export const TestScreen: React.FC = () => {
   const { state, addXP, goToView } = useGame();
@@ -261,8 +262,22 @@ export const TestScreen: React.FC = () => {
 
         {/* Question Card */}
         <div className="card qbox">
-          <div className="qtxt" style={{ fontSize: '20px', marginBottom: '18px' }}>
-            {L(currentItem.q.q, lang)}
+          <div className="qtxt" style={{ fontSize: '20px', marginBottom: '18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
+            <span>{L(currentItem.q.q, lang)}</span>
+            {currentItem.q.subject === 'italian' && (
+              <button
+                type="button"
+                className="btn sm"
+                onClick={() => {
+                  const itText = Array.isArray(currentItem.q.q) ? currentItem.q.q[1] || currentItem.q.q[0] : currentItem.q.q;
+                  speakItalian(itText, { rate: 0.88 });
+                }}
+                style={{ flexShrink: 0, padding: '4px 10px', fontSize: '13px' }}
+                title={lang === 'it' ? 'Ascolta la domanda in italiano' : 'Listen to question in Italian'}
+              >
+                🔊 {lang === 'it' ? 'Ascolta' : 'Listen'}
+              </button>
+            )}
           </div>
 
           <div className="opts">
