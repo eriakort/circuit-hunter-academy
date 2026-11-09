@@ -10,20 +10,22 @@ test('new learner chooses a grade before seeing its subjects and the choice surv
 
   await page.locator('.grade-card').first().click();
   await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
-  await expect(page.locator('.subjcard')).toHaveCount(1);
+  await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
+  await expect(page.locator('.subjcard')).toHaveCount(2);
   await expect(page.locator('#hMap')).not.toHaveAttribute('aria-current', 'page');
   await expect(page.locator('#hCodex')).not.toHaveAttribute('aria-current', 'page');
 
   await page.reload();
   await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
-  await expect(page.locator('.subjcard')).toHaveCount(1);
+  await expect(page.locator('.subjcard')).toHaveCount(2);
 
   await page.getByRole('button', { name: /Change grade/ }).click();
   await page.locator('.grade-card-current').click();
-  await expect(page.locator('.subjcard')).toHaveCount(3);
+  await expect(page.locator('.subjcard')).toHaveCount(4);
   await expect(page.locator('.subjcard[data-s="math"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="phys"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="cs"]')).toBeVisible();
+  await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
 
   await page.locator('.subjcard[data-s="math"]').click();
   await expect(page.locator('.subject-indicator')).toContainText('Mathematics');
@@ -62,7 +64,7 @@ test('changing grades keeps the selected subject within that grade curriculum', 
   await page.evaluate(() => window.localStorage.clear());
   await page.reload();
 
-  // Grade 5 has Science only.
+  // Grade 5 offers Science and Italian.
   await page.locator('.grade-card').first().click();
   await page.locator('.subjcard[data-s="science"]').click();
   await expect(page.locator('.subject-indicator')).toContainText('Science & Technology');
@@ -81,8 +83,9 @@ test('changing grades keeps the selected subject within that grade curriculum', 
   // Switching back selects Science automatically and does not expose Grade 9 subjects.
   await page.locator('#hGrade').click();
   await page.locator('.grade-card').first().click();
-  await expect(page.locator('.subjcard')).toHaveCount(1);
+  await expect(page.locator('.subjcard')).toHaveCount(2);
   await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
+  await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
   await page.locator('.subjcard[data-s="science"]').click();
   await expect(page.locator('.subject-indicator')).toContainText('Science & Technology');
 });

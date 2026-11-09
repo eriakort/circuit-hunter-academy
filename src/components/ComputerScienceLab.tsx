@@ -508,7 +508,7 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
           </div>}
           <p>{t(lang,'A variable is a named box. The = sign assigns a value; it does not mean “is equal to” as it does in a maths question. Comments begin with # and are ignored by Python.','Una variabile è una casella con un nome. Il segno = assegna un valore; non significa “è uguale a” come in un esercizio di matematica. I commenti iniziano con # e Python li ignora.')}</p>
         </Panel>}
-        {missionId === 'c13m1' && <Panel title={t(lang,'Selection decision simulator','Simulatore delle decisioni condizionali')}>
+        {missionId === 'c13m1' && <Panel title={t(lang,'Trace the if / elif / else branch','Traccia il ramo if / elif / else')}>
           <p>{t(lang,'Change the score and follow the first condition that becomes True. Only one branch runs.','Modifica il voto e segui la prima condizione che diventa True. Viene eseguito un solo ramo.')}</p>
           <Range label={t(lang,'Grade (0–10)','Voto (0–10)')} value={temperature} min={0} max={10} onChange={setTemperature}/>
           <div className="csl-code">if grade &gt;= 9:<br/>　print("Excellent")<br/>elif grade &gt;= 6:<br/>　print("Passed")<br/>else:<br/>　print("Try again")</div>
