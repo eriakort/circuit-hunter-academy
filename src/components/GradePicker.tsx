@@ -37,9 +37,9 @@ export const GradePicker: React.FC = () => {
               <span className="grade-card-detail">{L(grade.ageRange, lang)}</span>
               <span className="grade-card-status">
                 {grade.id === 'grade5'
-                  ? L(['Science available', 'Scienze disponibile'], lang)
+                  ? L(['Science & Italian available', 'Scienze e Italiano disponibili'], lang)
                   : ready
-                    ? L(['Existing academy · Ready', 'Accademia esistente · Pronta'], lang)
+                    ? L(['CS, Physics, Math & Italian · Ready', 'Informatica, Fisica, Matematica e Italiano · Pronte'], lang)
                     : L(['Curriculum setup next', 'Programma in preparazione'], lang)}
               </span>
             </button>

@@ -351,7 +351,7 @@ export const ItalianCheckpointScreen: React.FC = () => {
           const scoreData = scorePronunciation(transcript, question.expectedSpoken);
           setPronunciationResult(scoreData);
 
-          if (scoreData.percentage >= 65) {
+          if (scoreData.score >= 65) {
             handleAnswer(question.answer, scoreData);
           }
         }
@@ -595,8 +595,8 @@ export const ItalianCheckpointScreen: React.FC = () => {
             <span className="muted">{L(['You said: ', 'Hai detto: '], lang)}</span>
             <b>"{spokenAttempt}"</b>
             {pronunciationResult && (
-              <span style={{ marginLeft: 12, color: pronunciationResult.percentage >= 65 ? 'var(--good)' : 'var(--ember)', fontWeight: 700 }}>
-                {pronunciationResult.percentage}% {L(['accuracy', 'precisione'], lang)} · {L(pronunciationResult.feedback, lang)}
+              <span style={{ marginLeft: 12, color: pronunciationResult.score >= 65 ? 'var(--good)' : 'var(--ember)', fontWeight: 700 }}>
+                {pronunciationResult.score}% {L(['accuracy', 'precisione'], lang)} · {L(pronunciationResult.feedback, lang)}
               </span>
             )}
           </div>

@@ -28705,8 +28705,9 @@ import {
   GRADE5_SCIENCE_ARCS,
   GRADE5_SCIENCE_MISSIONS
 } from './grade5ScienceData';
-
-SUBJECTS.push(GRADE5_SCIENCE_SUBJECT);
+if (!SUBJECTS.some(s => s.id === 'science')) {
+  SUBJECTS.push(GRADE5_SCIENCE_SUBJECT);
+}
 const grade5ScienceUnitOffset = UNITS.length;
 UNITS.push(...GRADE5_SCIENCE_UNITS);
 const grade5ScienceArcOffset = ARCS.length;

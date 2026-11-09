@@ -92,8 +92,8 @@ export const BattleScreen: React.FC = () => {
             const rawOpt = currentQ.a[optIdx];
             const optItalian = Array.isArray(rawOpt) ? rawOpt[1] || rawOpt[0] : rawOpt;
             const res = scorePronunciation(transcript, optItalian);
-            if (res.percentage > bestScore) {
-              bestScore = res.percentage;
+            if (res.score > bestScore) {
+              bestScore = res.score;
               bestMatchIdx = displayIdx;
             }
           });

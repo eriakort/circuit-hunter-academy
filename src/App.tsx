@@ -2,7 +2,7 @@ import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { GameProvider, useGame } from './context/GameContext';
 import { HUD } from './components/HUD';
 import { GradePicker } from './components/GradePicker';
-import { SubjectPicker } from './components/SubjectPicker';
+import { SubjectPickerScreen } from './components/SubjectPickerScreen';
 import { MapScreen } from './components/MapScreen';
 import { MissionScreen } from './components/MissionScreen';
 import { BattleScreen } from './components/BattleScreen';
@@ -68,7 +68,7 @@ const AppContent: React.FC = () => {
       <HUD />
       <main id="app" aria-live="polite">
         {activeView === 'grades' && <GradePicker />}
-        {activeView === 'subjects' && <SubjectPicker />}
+        {activeView === 'subjects' && <SubjectPickerScreen />}
         {activeView === 'map' && <MapScreen />}
         {activeView === 'scene' && <MissionScreen />}
         {activeView === 'battle' && <BattleScreen />}

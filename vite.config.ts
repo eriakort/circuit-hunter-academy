@@ -9,5 +9,10 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 3000,
+    headers: {
+      'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+      'Pragma': 'no-cache',
+      'Expires': '0'
+    }
   },
 });

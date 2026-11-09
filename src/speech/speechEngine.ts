@@ -17,10 +17,7 @@ export interface WordScore {
 }
 
 export interface PronunciationScoreResult {
-  /** Accuracy percentage, 0 to 100. */
-  percentage: number;
-  /** Alias of `percentage` (0 to 100) kept for existing callers. */
-  score: number;
+  score: number; // 0 to 100
   passed: boolean; // >= 70%
   feedback: [string, string]; // [EN, IT]
   words: WordScore[];
@@ -28,7 +25,6 @@ export interface PronunciationScoreResult {
   expectedNormalized: string;
 }
 
-/** Alias kept for callers that import the shorter name. */
 export type PronunciationScore = PronunciationScoreResult;
 
 /** Check if Text-to-Speech is available in current browser environment */
@@ -56,39 +52,39 @@ export function stopSpeaking(): void {
   }
 }
 
+export type SpeakItalianOptions = {
+  rate?: number;
+  pitch?: number;
+  onStart?: () => void;
+  onEnd?: () => void;
+  onError?: (err: any) => void;
+} | 'normal' | 'slow';
+
 /**
  * Speak Italian text using browser Web Speech Synthesis.
  * @param text The Italian phrase to read aloud
- * @param options Rate (1.0 = normal, 0.75 = slow for learning), pitch, callbacks
+ * @param options Rate ('normal', 'slow' or { rate, pitch, callbacks })
  */
-export type SpeakRate = 'slow' | 'normal';
-
 export function speakItalian(
   text: string,
-  optionsArg: SpeakRate | {
-    rate?: number;
-    pitch?: number;
-    onStart?: () => void;
-    onEnd?: () => void;
-    onError?: (err: any) => void;
-  } = {}
+  options: SpeakItalianOptions = 'normal'
 ): void {
-  // A bare speed mode ('slow' | 'normal') is accepted as shorthand for a rate.
-  const options = typeof optionsArg === 'string'
-    ? { rate: optionsArg === 'slow' ? 0.7 : 0.95 }
-    : optionsArg;
   if (!isSpeechSynthesisSupported()) {
-    options.onError?.('SpeechSynthesis not supported');
+    if (typeof options === 'object') options.onError?.('SpeechSynthesis not supported');
     return;
   }
+
+  const parsedOptions = typeof options === 'string'
+    ? { rate: options === 'slow' ? 0.72 : 0.9, pitch: 1.0 }
+    : options;
 
   try {
     stopSpeaking();
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'it-IT';
-    utterance.rate = options.rate ?? 0.9; // Slightly deliberate for clear learning
-    utterance.pitch = options.pitch ?? 1.0;
+    utterance.rate = parsedOptions.rate ?? 0.9; // Slightly deliberate for clear learning
+    utterance.pitch = parsedOptions.pitch ?? 1.0;
 
     // Pick best Italian voice if available
     const voices = window.speechSynthesis.getVoices();
@@ -97,13 +93,13 @@ export function speakItalian(
       utterance.voice = itVoice;
     }
 
-    if (options.onStart) utterance.onstart = () => options.onStart?.();
-    if (options.onEnd) utterance.onend = () => options.onEnd?.();
-    if (options.onError) utterance.onerror = (e) => options.onError?.(e);
+    if (parsedOptions.onStart) utterance.onstart = () => parsedOptions.onStart?.();
+    if (parsedOptions.onEnd) utterance.onend = () => parsedOptions.onEnd?.();
+    if (parsedOptions.onError) utterance.onerror = (e) => parsedOptions.onError?.(e);
 
     window.speechSynthesis.speak(utterance);
   } catch (err) {
-    options.onError?.(err);
+    if (typeof options === 'object') options.onError?.(err);
   }
 }
 
@@ -120,6 +116,7 @@ export function listenItalian(options: {
   onError: (error: string) => void;
   onEnd: () => void;
   continuous?: boolean;
+  lang?: string;
 }): SpeechRecognitionController {
   const SpeechRec = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
@@ -190,36 +187,15 @@ export function listenItalian(options: {
   };
 }
 
+export const startListening = listenItalian;
+export const isSpeechRecognitionAvailable = isSpeechRecognitionSupported;
+
 /**
  * Normalize Italian text for fair pronunciation evaluation:
  * - lowercase
  * - strip punctuation and extra spaces
  * - normalize standard accents
  */
-/** Alias of {@link isSpeechRecognitionSupported} for callers that prefer this name. */
-export const isSpeechRecognitionAvailable = isSpeechRecognitionSupported;
-
-/**
- * Convenience wrapper around {@link listenItalian} that returns a single stop
- * function instead of a controller. `lang` is accepted for call-site symmetry
- * but ignored (recognition always runs as it-IT).
- */
-export function startListening(options: {
-  lang?: string;
-  onResult: (transcript: string, isFinal: boolean) => void;
-  onError: (error: string) => void;
-  onEnd: () => void;
-  continuous?: boolean;
-}): () => void {
-  const controller = listenItalian({
-    onResult: options.onResult,
-    onError: options.onError,
-    onEnd: options.onEnd,
-    continuous: options.continuous,
-  });
-  return () => controller.stop();
-}
-
 export function normalizeItalian(text: string): string {
   return text
     .toLowerCase()
@@ -281,7 +257,6 @@ export function scorePronunciation(spoken: string, expected: string): Pronunciat
 
   if (!normSpoken) {
     return {
-      percentage: 0,
       score: 0,
       passed: false,
       feedback: [
@@ -359,7 +334,6 @@ export function scorePronunciation(spoken: string, expected: string): Pronunciat
   }
 
   return {
-    percentage: finalScore,
     score: finalScore,
     passed,
     feedback,

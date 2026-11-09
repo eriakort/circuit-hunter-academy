@@ -168,9 +168,10 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const setSubject = (sub: SubjectId) => {
-    if (!state.grade || !GRADE_SUBJECT_IDS[state.grade].includes(sub)) return;
+    const activeGrade = state.grade || 'grade9';
+    if (!GRADE_SUBJECT_IDS[activeGrade]?.includes(sub)) return;
     const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === sub);
-    setState(s => ({ ...s, subject: sub, unit: firstUnit < 0 ? 0 : firstUnit }));
+    setState(s => ({ ...s, grade: s.grade || activeGrade, subject: sub, unit: firstUnit < 0 ? 0 : firstUnit }));
     setView('map');
   };
 
