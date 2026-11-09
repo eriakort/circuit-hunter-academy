@@ -52,6 +52,30 @@ export function stopSpeaking(): void {
   }
 }
 
+/** Pause the current utterance in place (resume continues from the same word). */
+export function pauseSpeaking(): void {
+  if (isSpeechSynthesisSupported()) {
+    try { window.speechSynthesis.pause(); } catch { /* ignore */ }
+  }
+}
+
+/** Resume a paused utterance from where it stopped. */
+export function resumeSpeaking(): void {
+  if (isSpeechSynthesisSupported()) {
+    try { window.speechSynthesis.resume(); } catch { /* ignore */ }
+  }
+}
+
+/** True while an utterance is active (speaking or paused). */
+export function isCurrentlySpeaking(): boolean {
+  return isSpeechSynthesisSupported() && window.speechSynthesis.speaking;
+}
+
+/** True while the active utterance is paused. */
+export function isSpeakingPaused(): boolean {
+  return isSpeechSynthesisSupported() && window.speechSynthesis.paused;
+}
+
 export type SpeakItalianOptions = {
   rate?: number;
   pitch?: number;
@@ -115,7 +139,13 @@ export function listenItalian(options: {
   onResult: (transcript: string, isFinal: boolean) => void;
   onError: (error: string) => void;
   onEnd: () => void;
-  continuous?: boolean;
+  /** Quiet gap (ms) allowed AFTER the speaker has begun before the phrase is
+   *  finalized. Larger = more patient. Default 2000. Before any speech is heard
+   *  the recogniser waits indefinitely (up to maxMs). */
+  silenceMs?: number;
+  /** Hard cap (ms) on one listening session so the mic never stays open forever. Default 20000. */
+  maxMs?: number;
+  continuous?: boolean; // accepted for compatibility; patience is always on
   lang?: string;
 }): SpeechRecognitionController {
   const SpeechRec = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -126,63 +156,91 @@ export function listenItalian(options: {
     return { stop: () => {}, abort: () => {} };
   }
 
+  const silenceMs = options.silenceMs ?? 2000;
+  const maxMs = options.maxMs ?? 20000;
+  const startedAt = Date.now();
+
   let recognition: any = null;
+  let finalTranscript = '';
+  let finished = false;      // finalized or aborted — ignore further events
+  let stopRequested = false; // user (or silence timer) asked to wrap up
+  let silenceTimer: ReturnType<typeof setTimeout> | null = null;
+
+  const clearSilence = () => { if (silenceTimer) { clearTimeout(silenceTimer); silenceTimer = null; } };
+
+  const finalize = () => {
+    if (finished) return;
+    finished = true;
+    clearSilence();
+    const result = finalTranscript.trim();
+    if (result) options.onResult(result, true); // single final result → caller scores
+    try { recognition?.stop(); } catch { options.onEnd(); }
+  };
+
+  // (Re)start the quiet countdown each time speech is heard. It fires only after
+  // the speaker goes silent for silenceMs, so natural mid-sentence pauses are fine.
+  const armSilence = () => {
+    clearSilence();
+    silenceTimer = setTimeout(() => { stopRequested = true; finalize(); }, silenceMs);
+  };
+
   try {
     recognition = new SpeechRec();
-    recognition.lang = 'it-IT';
-    recognition.continuous = options.continuous ?? false;
+    recognition.lang = options.lang || 'it-IT';
+    recognition.continuous = true;   // stay open through natural pauses
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
 
     recognition.onresult = (event: any) => {
+      if (finished) return;
       let interim = '';
-      let final = '';
-
       for (let i = event.resultIndex; i < event.results.length; ++i) {
         const transcript = event.results[i][0].transcript;
-        if (event.results[i].isFinal) {
-          final += transcript;
-        } else {
-          interim += transcript;
-        }
+        if (event.results[i].isFinal) finalTranscript += transcript + ' ';
+        else interim += transcript;
       }
-
-      if (final.trim()) {
-        options.onResult(final.trim(), true);
-      } else if (interim.trim()) {
-        options.onResult(interim.trim(), false);
+      const live = (finalTranscript + interim).trim();
+      if (live) {
+        options.onResult(live, false); // live interim update — never ends the session
+        armSilence();                  // speech heard → restart the quiet countdown
       }
     };
 
     recognition.onerror = (event: any) => {
-      const err = event.error || 'Speech recognition error';
+      const err = event.error || 'speech-recognition-error';
+      // Transient: nothing heard yet, or the engine auto-stopped — keep waiting.
+      if (err === 'no-speech' || err === 'aborted') return;
+      finished = true;
+      clearSilence();
       options.onError(err);
     };
 
     recognition.onend = () => {
-      options.onEnd();
+      // Chromium ends recognition on silence even in continuous mode. Keep the mic
+      // open until the speaker is genuinely done (silence timeout / manual stop) or
+      // the session cap is reached.
+      if (finished) { options.onEnd(); return; }
+      if (stopRequested || Date.now() - startedAt > maxMs) {
+        if (finalTranscript.trim()) finalize();
+        else { finished = true; options.onEnd(); }
+        return;
+      }
+      try { recognition.start(); } catch { finalize(); }
     };
 
     recognition.start();
   } catch (err: any) {
+    finished = true;
     options.onError(err?.message || 'Failed to initialize microphone');
     options.onEnd();
   }
 
   return {
-    stop: () => {
-      try {
-        recognition?.stop();
-      } catch {
-        // ignore
-      }
-    },
+    stop: () => { stopRequested = true; finalize(); },
     abort: () => {
-      try {
-        recognition?.abort();
-      } catch {
-        // ignore
-      }
+      finished = true;
+      clearSilence();
+      try { recognition?.abort(); } catch { /* ignore */ }
     }
   };
 }

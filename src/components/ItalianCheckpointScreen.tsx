@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useGame } from '../context/GameContext';
 import { L } from '../helpers';
 import { BilingualText } from '../types';
-import { speakItalian, startListening, isSpeechRecognitionAvailable, scorePronunciation, PronunciationScore } from '../speech/speechEngine';
+import { speakItalian, pauseSpeaking, resumeSpeaking, isCurrentlySpeaking, isSpeakingPaused, startListening, isSpeechRecognitionAvailable, scorePronunciation, PronunciationScore } from '../speech/speechEngine';
 
 type Choice = { id: string; label: BilingualText; spokenItalian: string };
 type Challenge = {
@@ -306,6 +306,7 @@ export const ItalianCheckpointScreen: React.FC = () => {
   const [isListening, setIsListening] = useState(false);
   const [pronunciationResult, setPronunciationResult] = useState<PronunciationScore | null>(null);
   const [speechStopFn, setSpeechStopFn] = useState<(() => void) | null>(null);
+  const modelKeyRef = useRef<string | null>(null);
 
   const stage = stages[currentStageIdx];
   const question = stage.questions[currentQIdx];
@@ -322,7 +323,15 @@ export const ItalianCheckpointScreen: React.FC = () => {
     };
   }, [speechStopFn]);
 
+  // A repeat click on the same model sentence pauses/resumes instead of restarting.
   const handleHearModel = (phrase: string, slow = false) => {
+    const key = `${slow ? 'slow' : 'normal'}|${phrase}`;
+    if (isCurrentlySpeaking() && modelKeyRef.current === key) {
+      if (isSpeakingPaused()) resumeSpeaking();
+      else pauseSpeaking();
+      return;
+    }
+    modelKeyRef.current = key;
     speakItalian(phrase, slow ? 'slow' : 'normal');
   };
 

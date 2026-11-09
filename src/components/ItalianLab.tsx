@@ -4,6 +4,10 @@ import { L } from '../helpers';
 import {
   speakItalian,
   stopSpeaking,
+  pauseSpeaking,
+  resumeSpeaking,
+  isCurrentlySpeaking,
+  isSpeakingPaused,
   listenItalian,
   scorePronunciation,
   isSpeechRecognitionSupported,
@@ -356,6 +360,8 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
   // Studio State
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState<number>(0);
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+  const [activeRate, setActiveRate] = useState<number | null>(null);
   const [isListening, setIsListening] = useState<boolean>(false);
   const [speechTranscript, setSpeechTranscript] = useState<string>('');
   const [manualInput, setManualInput] = useState<string>('');
@@ -364,6 +370,9 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
   const [audioError, setAudioError] = useState<string | null>(null);
 
   const speechControllerRef = useRef<SpeechRecognitionController | null>(null);
+  // Identifies the utterance currently loaded in the speech synth, so a second
+  // click on the same Listen button pauses/resumes instead of restarting.
+  const currentUtteranceRef = useRef<string | null>(null);
 
   // Dialogue State
   const [currentScenarioIndex, setCurrentScenarioIndex] = useState<number>(0);
@@ -397,16 +406,41 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
     }
   }, [initialPhrase, filteredPhrases]);
 
-  // Handle Playback
+  // Handle Playback — a repeat click on the same button pauses, then resumes
+  // from the same spot (instead of restarting the phrase).
   const handlePlayAudio = (text: string, rate: number = playbackSpeed) => {
+    const key = `${rate}|${text}`;
+    if (isCurrentlySpeaking() && currentUtteranceRef.current === key) {
+      if (isSpeakingPaused()) {
+        resumeSpeaking();
+        setIsPaused(false);
+      } else {
+        pauseSpeaking();
+        setIsPaused(true);
+      }
+      return;
+    }
+
+    // Fresh start (new phrase, new speed, or nothing playing).
     setAudioError(null);
+    currentUtteranceRef.current = key;
+    setActiveRate(rate);
+    setIsPaused(false);
     setIsSpeaking(true);
     speakItalian(text, {
       rate,
       onStart: () => setIsSpeaking(true),
-      onEnd: () => setIsSpeaking(false),
+      onEnd: () => {
+        setIsSpeaking(false);
+        setIsPaused(false);
+        setActiveRate(null);
+        currentUtteranceRef.current = null;
+      },
       onError: (err) => {
         setIsSpeaking(false);
+        setIsPaused(false);
+        setActiveRate(null);
+        currentUtteranceRef.current = null;
         setAudioError(typeof err === 'string' ? err : 'Audio playback error in this browser.');
       }
     });
@@ -640,24 +674,28 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
 
             {/* Audio Controls */}
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.75rem', marginTop: '1rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '0.75rem' }}>
-              {/* Normal Speed Listen */}
+              {/* Normal Speed Listen — toggles Listen → Pause → Resume */}
               <button
                 className="btn"
                 onClick={() => handlePlayAudio(activePhrase.targetIt, 1.0)}
-                disabled={isSpeaking}
+                aria-label={activeRate === 1.0 && isSpeaking ? (isPaused ? L(['Resume', 'Riprendi'], lang) : L(['Pause', 'Pausa'], lang)) : L(['Listen at normal speed', 'Ascolta a velocità normale'], lang)}
                 style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}
               >
-                🔊 {L(['Listen (1.0x)', 'Ascolta (1.0x)'], lang)}
+                {activeRate === 1.0 && isSpeaking
+                  ? (isPaused ? `▶️ ${L(['Resume', 'Riprendi'], lang)}` : `⏸️ ${L(['Pause', 'Pausa'], lang)}`)
+                  : `🔊 ${L(['Listen (1.0x)', 'Ascolta (1.0x)'], lang)}`}
               </button>
 
-              {/* Slow Speed Listen */}
+              {/* Slow Speed Listen — toggles Slow → Pause → Resume */}
               <button
                 className="btn"
                 onClick={() => handlePlayAudio(activePhrase.targetIt, 0.75)}
-                disabled={isSpeaking}
+                aria-label={activeRate === 0.75 && isSpeaking ? (isPaused ? L(['Resume', 'Riprendi'], lang) : L(['Pause', 'Pausa'], lang)) : L(['Listen slowly', 'Ascolta lentamente'], lang)}
                 style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}
               >
-                🐢 {L(['Slow (0.75x)', 'Lento (0.75x)'], lang)}
+                {activeRate === 0.75 && isSpeaking
+                  ? (isPaused ? `▶️ ${L(['Resume', 'Riprendi'], lang)}` : `⏸️ ${L(['Pause', 'Pausa'], lang)}`)
+                  : `🐢 ${L(['Slow (0.75x)', 'Lento (0.75x)'], lang)}`}
               </button>
 
               {/* Record Speech Button */}
