@@ -293,16 +293,35 @@ export const TestScreen: React.FC = () => {
                 }
               }
 
+              const isItalian = currentItem.q.subject === 'italian';
               return (
-                <button
-                  key={optIdx}
-                  type="button"
-                  className={optClass}
-                  disabled={answeredCurrent}
-                  onClick={() => handleSelectOption(optIdx)}
-                >
-                  {L(currentItem.q.a[answerIndex], lang)}
-                </button>
+                <div key={optIdx} style={{ display: 'flex', gap: '6px', alignItems: 'stretch' }}>
+                  <button
+                    type="button"
+                    className={optClass}
+                    style={{ flex: 1 }}
+                    disabled={answeredCurrent}
+                    onClick={() => handleSelectOption(optIdx)}
+                  >
+                    {L(currentItem.q.a[answerIndex], lang)}
+                  </button>
+                  {isItalian && (
+                    <button
+                      type="button"
+                      className="btn ghost sm"
+                      style={{ padding: '0 10px', fontSize: '13px' }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const rawOpt = currentItem.q.a[answerIndex];
+                        const itText = Array.isArray(rawOpt) ? rawOpt[1] || rawOpt[0] : rawOpt;
+                        speakItalian(itText, { rate: 0.9 });
+                      }}
+                      title={lang === 'it' ? 'Ascolta pronuncia' : 'Listen to pronunciation'}
+                    >
+                      🔊
+                    </button>
+                  )}
+                </div>
               );
             })}
           </div>

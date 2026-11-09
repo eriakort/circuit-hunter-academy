@@ -553,6 +553,13 @@ export const MapScreen: React.FC = () => {
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <button
               className="btn sm"
+              style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(0, 146, 70, 0.85)', borderColor: '#00c853' }}
+              onClick={() => goToView('it-lab')}
+            >
+              🎙️ {L(['Speaking Lab', 'Laboratorio Parlato'], lang)}
+            </button>
+            <button
+              className="btn sm"
               style={{ display: 'flex', alignItems: 'center', gap: 6 }}
               onClick={() => goToView('it-checkpoint')}
             >

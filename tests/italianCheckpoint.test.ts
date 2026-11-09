@@ -32,4 +32,23 @@ describe('Italian Checkpoint & Oral Proficiency Suite', () => {
     expect(score.score).toBeGreaterThan(70);
     expect(score.passed).toBe(true);
   });
+
+  it('verifies Italian practice phrases cover A1, A2, and B1 levels', async () => {
+    const { ITALIAN_PRACTICE_PHRASES } = await import('../src/components/ItalianLab');
+    expect(ITALIAN_PRACTICE_PHRASES.length).toBeGreaterThanOrEqual(10);
+
+    const a1Phrases = ITALIAN_PRACTICE_PHRASES.filter(p => p.level === 'A1');
+    const a2Phrases = ITALIAN_PRACTICE_PHRASES.filter(p => p.level === 'A2');
+    const b1Phrases = ITALIAN_PRACTICE_PHRASES.filter(p => p.level === 'B1');
+
+    expect(a1Phrases.length).toBeGreaterThanOrEqual(3);
+    expect(a2Phrases.length).toBeGreaterThanOrEqual(3);
+    expect(b1Phrases.length).toBeGreaterThanOrEqual(3);
+
+    ITALIAN_PRACTICE_PHRASES.forEach(phrase => {
+      expect(phrase.targetIt).toBeDefined();
+      expect(phrase.translationEn).toBeDefined();
+      expect(phrase.phoneticHint).toBeDefined();
+    });
+  });
 });
