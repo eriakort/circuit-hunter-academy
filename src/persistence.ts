@@ -38,6 +38,21 @@ const VALID_CHECKPOINT_IDS = new Set([
   'italian-cefr-proficiency'
 ]);
 
+/** Validate checkpoint writes before they can affect live progress or XP. */
+export const isValidCheckpointResult = (
+  checkpointId: unknown,
+  score: unknown,
+  total: unknown,
+  passed: unknown,
+  xpReward: unknown
+): boolean =>
+  typeof checkpointId === 'string' && VALID_CHECKPOINT_IDS.has(checkpointId)
+  && Number.isInteger(score) && (score as number) >= 0
+  && Number.isInteger(total) && (total as number) > 0 && (total as number) <= 12
+  && (score as number) <= (total as number)
+  && typeof passed === 'boolean'
+  && Number.isInteger(xpReward) && (xpReward as number) >= 0;
+
 /** Keep only known checkpoint records with internally consistent, bounded results. */
 export const sanitizeCheckpointProgress = (value: unknown): NonNullable<GameState['checkpointProgress']> => {
   if (!isRecord(value)) return {};
