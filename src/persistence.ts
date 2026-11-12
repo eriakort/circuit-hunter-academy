@@ -74,9 +74,14 @@ const sanitizeLearningMissionProgress = (value: unknown, mission: typeof MISSION
     return candidate.slice(-20).flatMap(item => {
       if (!isRecord(item) || !Number.isInteger(item.score) || (item.score as number) < 0
         || (item.score as number) > 100 || !isFiniteNonNegative(item.attemptedAt)
-        || !Number.isInteger(item.attempt) || (item.attempt as number) < 1
-        || (item.attempt as number) > 100000) return [];
-      const base = { score: item.score as number, attemptedAt: item.attemptedAt, attempt: item.attempt as number };
+        || (item.attempt !== undefined && (!Number.isInteger(item.attempt)
+          || (item.attempt as number) < 1 || (item.attempt as number) > 100000))) return [];
+      // Older valid saves recorded score and timestamp before attempt numbers were added.
+      const base = {
+        score: item.score as number,
+        attemptedAt: item.attemptedAt,
+        ...(item.attempt !== undefined ? { attempt: item.attempt as number } : {})
+      };
       if (!includeAnswers) return [base];
       if (!Array.isArray(item.answers) || item.answers.length !== assessmentQuestions.length
         || item.answers.some((answer, index) => !Number.isInteger(answer) || (answer as number) < 0
