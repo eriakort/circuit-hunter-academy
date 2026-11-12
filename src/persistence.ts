@@ -165,3 +165,20 @@ export const restoreSavedNavigation = (value: unknown, state: GameState): SavedN
     missionId: resolved?.mission.id ?? null
   };
 };
+
+
+/** Create a clean progress save while preserving the learner's curriculum and preferences. */
+export const createFreshProgressState = (state: GameState): GameState => ({
+  grade: state.grade,
+  name: '',
+  lang: state.lang,
+  xp: 0,
+  subject: state.subject,
+  unit: firstUnitForSubject(state.subject) < 0 ? 0 : firstUnitForSubject(state.subject),
+  cleared: {},
+  seen: {},
+  flawless: {},
+  learningProgress: {},
+  checkpointProgress: {},
+  v: SAVE_SCHEMA
+});
