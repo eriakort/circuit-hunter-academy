@@ -3,7 +3,7 @@ import { GameState, GradeId, Language, SubjectId, ViewMode, Mission, LearningMis
 import { MISSIONS, UNITS, ARCS, RANKS } from '../data/gameData';
 import { rankOf } from '../helpers';
 import { GRADE_SUBJECT_IDS } from '../data/gradeData';
-import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, createFreshProgressState, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
+import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, createFreshProgressState, isValidCheckpointResult, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
 
 
 
@@ -200,6 +200,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const saveCheckpointResult = (checkpointId: string, score: number, total: number, passed: boolean, xpReward: number) => {
+    if (!isValidCheckpointResult(checkpointId, score, total, passed, xpReward)) return;
     setState(s => {
       const existing = s.checkpointProgress?.[checkpointId] || {
         attempts: 0, bestScore: 0, lastScore: 0, completed: false
