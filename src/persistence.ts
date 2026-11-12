@@ -31,6 +31,28 @@ const validProgressMap = (value: unknown, validIds: Set<string>): Record<string,
   );
 };
 
+const VALID_CHECKPOINT_IDS = new Set([
+  'physics-foundations',
+  'computer-science-foundations',
+  'computer-science-applied-skills',
+  'italian-cefr-proficiency'
+]);
+
+/** Keep only known checkpoint records with internally consistent, bounded results. */
+export const sanitizeCheckpointProgress = (value: unknown): NonNullable<GameState['checkpointProgress']> => {
+  if (!isRecord(value)) return {};
+  return Object.fromEntries(Object.entries(value).filter(([id, entry]) => {
+    if (!VALID_CHECKPOINT_IDS.has(id) || !isRecord(entry)) return false;
+    const { attempts, bestScore, lastScore, completed, completedAt } = entry;
+    return Number.isInteger(attempts) && (attempts as number) >= 0 && (attempts as number) <= 100000
+      && Number.isInteger(bestScore) && (bestScore as number) >= 0 && (bestScore as number) <= 12
+      && Number.isInteger(lastScore) && (lastScore as number) >= 0 && (lastScore as number) <= 12
+      && (bestScore as number) >= (lastScore as number)
+      && typeof completed === 'boolean'
+      && (completedAt === undefined || (typeof completedAt === 'number' && Number.isFinite(completedAt) && completedAt >= 0));
+  })) as NonNullable<GameState['checkpointProgress']>;
+};
+
 export const sanitizeGameState = (value: unknown): GameState => {
   const saved = isRecord(value) ? value : {};
   const hasSavedGrade = Object.prototype.hasOwnProperty.call(saved, 'grade');
@@ -71,11 +93,7 @@ export const sanitizeGameState = (value: unknown): GameState => {
       ? Object.fromEntries(Object.entries(saved.flawless).filter(([key, entry]) => validMissionIds.has(key) && entry === true).map(([key]) => [key, true] as const)) as Record<string, boolean>
       : {},
     learningProgress: validProgressMap(saved.learningProgress, validMissionIds),
-    checkpointProgress: (isRecord(saved.checkpointProgress)
-      ? Object.fromEntries(Object.entries(saved.checkpointProgress).filter(([, entry]) =>
-          isRecord(entry) && Number.isInteger(entry.attempts) && Number.isFinite(entry.bestScore)
-          && Number.isFinite(entry.lastScore) && typeof entry.completed === 'boolean'))
-      : {}) as GameState['checkpointProgress'],
+    checkpointProgress: sanitizeCheckpointProgress(saved.checkpointProgress),
     v: SAVE_SCHEMA
   };
 };
