@@ -85,3 +85,44 @@ test('test answers expose a labelled answer group and live feedback', async ({ p
   await expect(page.locator('#qfb')).toHaveAttribute('role', 'status');
   await expect(page.locator('#qfb')).toHaveAttribute('aria-live', 'polite');
 });
+
+
+async function expectNoHorizontalPageOverflow(page: Page, viewportWidth: number) {
+  const pageWidth = await page.evaluate(() => Math.max(
+    document.documentElement.scrollWidth,
+    document.body.scrollWidth
+  ));
+  expect(
+    pageWidth,
+    `page should not overflow horizontally at ${viewportWidth}px`
+  ).toBeLessThanOrEqual(viewportWidth + 1);
+}
+
+test('grade, subject, dashboard, codex and test screens fit common viewport widths', async ({ page }) => {
+  for (const width of [320, 375, 768, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    await page.evaluate(() => window.localStorage.clear());
+    await page.reload();
+
+    await expect(page.locator('.grade-card-current')).toBeVisible();
+    await expectNoHorizontalPageOverflow(page, width);
+
+    await page.locator('.grade-card-current').click();
+    await expect(page.locator('.subjcard[data-s="cs"]')).toBeVisible();
+    await expectNoHorizontalPageOverflow(page, width);
+
+    await page.locator('.subjcard[data-s="cs"]').click();
+    await expect(page.locator('#nm')).toBeVisible();
+    await page.locator('#nm').fill('Responsive Tester');
+    await page.locator('#regf button[type="submit"]').click();
+    await expect(page.locator('.learning-dashboard')).toBeVisible();
+    await expectNoHorizontalPageOverflow(page, width);
+
+    await page.locator('#hCodex').click();
+    await expectNoHorizontalPageOverflow(page, width);
+
+    await page.locator('#hTest').click();
+    await expectNoHorizontalPageOverflow(page, width);
+  }
+});
