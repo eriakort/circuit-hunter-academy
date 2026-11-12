@@ -14,21 +14,21 @@ export const validateRaceProgress = (
   const value = payload as Record<string, unknown>;
   if (typeof value.id !== 'string' || !value.id || !knownPlayerIds.has(value.id)) return null;
   if (value.raceId !== raceId) return null;
-  if (!Number.isSafeInteger(value.step) || (value.step as number) < 1 || (value.step as number) > questionCount) return null;
-  if (!Number.isSafeInteger(value.score) || (value.score as number) < 0 || (value.score as number) > (value.step as number) * MAX_POINTS_PER_QUESTION) return null;
-  if (!Number.isSafeInteger(value.time) || (value.time as number) <= 0) return null;
+  if (typeof value.step !== 'number' || !Number.isSafeInteger(value.step) || value.step < 1 || value.step > questionCount) return null;
+  if (typeof value.score !== 'number' || !Number.isSafeInteger(value.score) || value.score < 0 || value.score > value.step * MAX_POINTS_PER_QUESTION) return null;
+  if (typeof value.time !== 'number' || !Number.isSafeInteger(value.time) || value.time <= 0) return null;
   if (typeof value.done !== 'boolean' || value.done !== (value.step === questionCount)) return null;
   if (previous && (
-    (value.step as number) < previous.step ||
-    (value.score as number) < previous.score ||
-    (value.time as number) < previous.time
+    value.step < previous.step ||
+    value.score < previous.score ||
+    value.time < previous.time
   )) return null;
 
   return {
     id: value.id,
-    step: value.step as number,
-    score: value.score as number,
-    time: value.time as number,
+    step: value.step,
+    score: value.score,
+    time: value.time,
     raceId,
     done: value.done
   };
