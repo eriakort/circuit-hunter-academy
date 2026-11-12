@@ -57,5 +57,6 @@ test('subject switcher is keyboard operable', async ({ page }) => {
   await page.keyboard.press('Enter');
 
   await expect(page.locator('.subjects')).toBeVisible();
-  await expect(page.getByRole('heading', { name: /choose your subject/i })).toBeVisible();
+  await expect(page.locator('.subjcard[data-s="cs"]')).toBeVisible();
+  await expect(page.locator('.subjcard[data-s="phys"]')).toBeVisible();
 });
