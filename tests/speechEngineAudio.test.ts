@@ -4,7 +4,9 @@ import {
   pauseSpeaking,
   resumeSpeaking,
   isCurrentlySpeaking,
-  isSpeakingPaused
+  isSpeakingPaused,
+  isSpeechRecognitionSupported,
+  speakItalian
 } from '../src/speech/speechEngine';
 
 // ---- Minimal, driveable Web Speech API mocks ----
@@ -116,6 +118,68 @@ describe('listenItalian — patient recognition', () => {
     expect(finals).toEqual([]);        // not yet — still within the quiet window
     await sleep(80);                   // let the silence timer fire
     expect(finals).toEqual(['ieri sono andata a firenze']);
+  });
+
+
+  it('enforces the maximum listening duration even if the browser never ends recognition', async () => {
+    const errors: string[] = [];
+    let ended = 0;
+    const controller = listenItalian({
+      onResult: () => {},
+      onError: error => errors.push(error),
+      onEnd: () => { ended++; },
+      silenceMs: 1_000,
+      maxMs: 35
+    });
+    await sleep(70);
+    expect(errors).toEqual(['Listening session timed out. Please try again.']);
+    expect(ended).toBe(1);
+    expect(lastRecognition!.starts).toBe(1);
+    controller.stop();
+    expect(ended).toBe(1);
+  });
+
+  it('reports a clear fallback when speech recognition is unavailable', () => {
+    const errors: string[] = [];
+    let ended = 0;
+    (globalThis as any).window = {};
+    const controller = listenItalian({
+      onResult: () => {},
+      onError: error => errors.push(error),
+      onEnd: () => { ended++; }
+    });
+    expect(isSpeechRecognitionSupported()).toBe(false);
+    expect(errors).toEqual(['Speech recognition API not available in this browser']);
+    expect(ended).toBe(1);
+    expect(() => controller.stop()).not.toThrow();
+  });
+
+  it('does not expose microphone recognition in an insecure browser context', () => {
+    const errors: string[] = [];
+    (globalThis as any).window = { isSecureContext: false, SpeechRecognition: MockRecognition };
+    expect(isSpeechRecognitionSupported()).toBe(false);
+    listenItalian({ onResult: () => {}, onError: error => errors.push(error), onEnd: () => {} });
+    expect(errors).toEqual(['Speech recognition API not available in this browser']);
+  });
+
+  it('handles a missing browser global without throwing', () => {
+    delete (globalThis as any).window;
+    const errors: string[] = [];
+    let ended = 0;
+    expect(() => listenItalian({
+      onResult: () => {},
+      onError: error => errors.push(error),
+      onEnd: () => { ended++; }
+    })).not.toThrow();
+    expect(errors).toEqual(['Speech recognition requires a browser environment']);
+    expect(ended).toBe(1);
+  });
+
+  it('does not attempt to speak empty text', () => {
+    const spoken: string[] = [];
+    synth.speak = function(utterance: any) { spoken.push(utterance.text); };
+    speakItalian('   ');
+    expect(spoken).toEqual([]);
   });
 
   it('keeps the mic open when the engine ends on silence (auto-restart)', () => {
