@@ -60,3 +60,14 @@ test('subject switcher is keyboard operable', async ({ page }) => {
   await expect(page.locator('.subjcard[data-s="cs"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="phys"]')).toBeVisible();
 });
+
+
+test('skip link moves keyboard focus to the main content', async ({ page }) => {
+  await page.goto('/');
+  await page.keyboard.press('Tab');
+
+  const skipLink = page.locator('.skip-link');
+  await expect(skipLink).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('#app')).toBeFocused();
+});
