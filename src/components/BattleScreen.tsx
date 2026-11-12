@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useGame } from '../context/GameContext';
 import { QuizQuestion, Mission } from '../types';
 import { MISSIONS } from '../data/gameData';
@@ -20,23 +20,29 @@ export const BattleScreen: React.FC = () => {
   const { lang, cleared } = state;
   const isDojo = battleContext?.isDojo || false;
 
-  const activeMission: Mission = isDojo
-    ? ({
-        id: 'dojo',
-        arc: 0,
-        sec: '',
-        pages: '',
-        hue: 220,
-        horns: 1,
-        eyes: 1,
-        title: ['Training Hall', "Sala d'allenamento"],
-        topic: ['Mixed review', 'Ripasso misto'],
-        demon: ['Training Dummy', "Manichino d'allenamento"],
-        tech: ['Training', 'Allenamento'],
-        scenes: [],
-        quiz: battleContext?.customQuestions || []
-      } as unknown as Mission)
-    : currentMission;
+  // Keep the synthetic Dojo mission stable across battle-state renders.
+  // Recreating this object on every render retriggered the battle initializer
+  // effect after every answer, immediately resetting answered/feedback state.
+  const activeMission: Mission = useMemo(
+    () => isDojo
+      ? ({
+          id: 'dojo',
+          arc: 0,
+          sec: '',
+          pages: '',
+          hue: 220,
+          horns: 1,
+          eyes: 1,
+          title: ['Training Hall', "Sala d'allenamento"],
+          topic: ['Mixed review', 'Ripasso misto'],
+          demon: ['Training Dummy', "Manichino d'allenamento"],
+          tech: ['Training', 'Allenamento'],
+          scenes: [],
+          quiz: battleContext?.customQuestions || []
+        } as unknown as Mission)
+      : currentMission,
+    [isDojo, battleContext?.customQuestions, currentMission]
+  );
 
   // Battle state
   const [queue, setQueue] = useState<QuizQuestion[]>([]);
