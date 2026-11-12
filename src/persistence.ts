@@ -161,7 +161,7 @@ export const isValidCheckpointResult = (
   && Number.isInteger(total) && (total as number) > 0 && (total as number) <= 12
   && (score as number) <= (total as number)
   && typeof passed === 'boolean'
-  && Number.isInteger(xpReward) && (xpReward as number) >= 0;
+  && Number.isSafeInteger(xpReward) && (xpReward as number) >= 0 && (xpReward as number) <= 10000;
 
 /** Keep only known checkpoint records with internally consistent, bounded results. */
 export const sanitizeCheckpointProgress = (value: unknown): NonNullable<GameState['checkpointProgress']> => {
