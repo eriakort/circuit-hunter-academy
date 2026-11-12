@@ -262,7 +262,7 @@ export const TestScreen: React.FC = () => {
 
         {/* Question Card */}
         <div className="card qbox">
-          <div className="qtxt" style={{ fontSize: '20px', marginBottom: '18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
+          <div className="qtxt" id="test-question" style={{ fontSize: '20px', marginBottom: '18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
             <span>{L(currentItem.q.q, lang)}</span>
             {currentItem.q.subject === 'italian' && (
               <button
@@ -280,7 +280,7 @@ export const TestScreen: React.FC = () => {
             )}
           </div>
 
-          <div className="opts">
+          <div className="opts" role="group" aria-labelledby="test-question">
             {currentItem.shuffledAnswerIndexes.map((answerIndex, optIdx) => {
               let optClass = 'btn ghost opt';
               if (answeredCurrent) {
@@ -328,7 +328,7 @@ export const TestScreen: React.FC = () => {
 
           {/* Feedback & Continue */}
           {answeredCurrent && (
-            <div id="qfb" className="qfb" style={{ marginTop: '16px' }}>
+            <div id="qfb" className="qfb" role="status" aria-live="polite" aria-atomic="true" style={{ marginTop: '16px' }}>
               {testMode === 'practice' && (
                 <div
                   className="why"
