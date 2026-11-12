@@ -66,8 +66,11 @@ const AppContent: React.FC = () => {
 
   return (
     <div className="wrap">
+      <a className="skip-link" href="#app">
+        {state.lang === 'it' ? 'Salta al contenuto principale' : 'Skip to main content'}
+      </a>
       <HUD />
-      <main id="app" aria-live="polite">
+      <main id="app" tabIndex={-1} aria-live="polite">
         {activeView === 'grades' && <GradePicker />}
         {activeView === 'subjects' && <SubjectPickerScreen />}
         {activeView === 'map' && <MapScreen />}
