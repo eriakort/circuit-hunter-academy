@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../context/GameContext';
 import { RacePlayer, RaceProgress, QuizQuestion } from '../types';
 import { MISSIONS, ARCS } from '../data/gameData';
-import { L, rng, sshuffle, hueOf, raceAvatar, raceXP, safeId, U } from '../helpers';
+import { L, rng, sshuffle, hueOf, raceAvatar, safeId, U } from '../helpers';
 import { createClient } from '@supabase/supabase-js';
 import { calculateRaceCompletionXP, haveRaceOpponentsFinished, shouldFinalizeRace } from '../raceCompletion';
 
