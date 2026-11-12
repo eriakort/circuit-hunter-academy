@@ -6,6 +6,10 @@ import type { GameState } from '../src/types';
 const validMission = MISSIONS.find(mission => (ARCS[mission.arc]?.subject || 'cs') === 'cs');
 assert.ok(validMission, 'the current curriculum contains a computer science mission');
 const validMissionIndex = MISSIONS.indexOf(validMission!);
+const learningMission = MISSIONS.find(mission => !!mission.learning);
+assert.ok(learningMission, 'the curriculum contains a mission with structured learning content');
+const learningConcept = learningMission!.learning!.concepts[0];
+const masteryQuestions = learningMission!.learning!.masteryAssessment?.questions || [];
 
 const legacy = sanitizeGameState({ name: '  Hana  ', xp: 120, lang: 'it', cleared: { [validMission!.id]: true } });
 assert.equal(legacy.grade, 'grade9', 'legacy saves without a grade retain the Grade 9 migration');
@@ -23,7 +27,7 @@ const grade5 = sanitizeGameState({
   name: 'A'.repeat(40),
   lang: 'fr',
   cleared: { [validMission!.id]: true, 'unknown-mission': true },
-  learningProgress: { [validMission!.id]: { mastered: true }, 'unknown-mission': { mastered: true } }
+  learningProgress: { [learningMission!.id]: { mastered: true }, 'unknown-mission': { mastered: true } }
 });
 assert.equal(grade5.grade, 'grade5');
 assert.equal(grade5.subject, 'science', 'a Grade 5 save cannot restore a Grade 9 subject');
@@ -180,3 +184,61 @@ assert.equal(isValidCheckpointResult('physics-foundations', 5, 0, false, 80), fa
 assert.equal(isValidCheckpointResult('physics-foundations', 5, 13, false, 80), false);
 assert.equal(isValidCheckpointResult('physics-foundations', 5, 12, 'false', 80), false);
 assert.equal(isValidCheckpointResult('physics-foundations', 5, 12, false, -1), false);
+
+
+const learningSave = sanitizeGameState({
+  grade: 'grade9',
+  subject: 'cs',
+  learningProgress: {
+    [learningMission!.id]: {
+      guidedPracticeComplete: true,
+      independentPracticeComplete: false,
+      mastered: true,
+      techniqueUnlocked: true,
+      knowledgeCheckScore: 85,
+      masteryScore: 90,
+      masteryAttempts: 2,
+      masteryConceptPerformance: {
+        [learningConcept.id]: { correct: 3, attempted: 4 },
+        'unknown-concept': { correct: 4, attempted: 4 },
+        'bad-counts': { correct: 5, attempted: 2 }
+      },
+      masteryLastAttemptWeakConcepts: [learningConcept.id, 'unknown-concept'],
+      masteryAttemptHistory: [
+        { score: 90, attemptedAt: 1700000000000, attempt: 2 },
+        { score: 101, attemptedAt: 1700000000000, attempt: 3 }
+      ],
+      masteryAttemptReviews: masteryQuestions.length ? [{
+        score: 90, attemptedAt: 1700000000000, attempt: 2,
+        answers: masteryQuestions.map(() => 0)
+      }, {
+        score: 90, attemptedAt: 1700000000000, attempt: 3,
+        answers: masteryQuestions.map(() => 999)
+      }] : [],
+      conceptReviewSchedule: {
+        [learningConcept.id]: { dueAt: 1700000000000, lastReviewedAt: 1690000000000, intervalDays: 7, repetitions: 2, lastScore: 90 },
+        'unknown-concept': { dueAt: 1700000000000, lastReviewedAt: 1690000000000, intervalDays: 7, repetitions: 2, lastScore: 90 }
+      },
+      conceptRevisionPerformance: {
+        [learningConcept.id]: { correct: 2, attempted: 3, sessions: 1, lastReviewedAt: 1700000000000, baselineMasteryPercent: 50, postRevisionMasteryPercent: 75, postRevisionAt: 1700000000001 },
+        'unknown-concept': { correct: 5, attempted: 2, sessions: 1, lastReviewedAt: 1700000000000 }
+      },
+      lastAttemptAt: 1700000000000,
+      unexpectedField: 'should not persist'
+    }
+  }
+});
+const savedLearning = learningSave.learningProgress[learningMission!.id];
+assert.equal(savedLearning.mastered, true);
+assert.equal(savedLearning.masteryScore, 90);
+assert.deepEqual(Object.keys(savedLearning.masteryConceptPerformance || {}), [learningConcept.id]);
+assert.deepEqual(savedLearning.masteryLastAttemptWeakConcepts, [learningConcept.id]);
+assert.equal(savedLearning.masteryAttemptHistory?.length, 1);
+assert.equal(savedLearning.masteryAttemptReviews?.length, masteryQuestions.length ? 1 : 0);
+assert.deepEqual(Object.keys(savedLearning.conceptReviewSchedule || {}), [learningConcept.id]);
+assert.deepEqual(Object.keys(savedLearning.conceptRevisionPerformance || {}), [learningConcept.id]);
+assert.equal('unexpectedField' in savedLearning, false);
+assert.deepEqual(sanitizeGameState({
+  grade: 'grade9', subject: 'cs',
+  learningProgress: { [learningMission!.id]: { masteryAttemptHistory: [{ score: 50, attemptedAt: Number.NaN, attempt: 1 }] } }
+}).learningProgress[learningMission!.id].masteryAttemptHistory, undefined, 'invalid timestamps are removed from mastery history');
