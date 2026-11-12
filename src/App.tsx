@@ -65,13 +65,14 @@ const AppContent: React.FC = () => {
   const activeView = !state.grade ? 'grades' : view;
   const mainRef = useRef<HTMLElement>(null);
   const previousView = useRef(activeView);
+  const previousLanguage = useRef(state.lang);
   const [navigationAnnouncement, setNavigationAnnouncement] = useState('');
   const viewNames: Record<string, [string, string]> = {
     grades: ['Grade selection', 'Scelta della classe'],
     subjects: ['Subject selection', 'Scelta della materia'],
     map: ['Missions', 'Missioni'],
     scene: ['Mission', 'Missione'],
-    battle: [battleContext?.isDojo ? 'Dojo challenge' : 'Mission challenge', battleContext?.isDojo ? 'Sfida Dojo' : 'Sfida della missione'],
+    battle: ['Challenge', 'Sfida'],
     result: ['Challenge results', 'Risultati della sfida'],
     ending: ['Mission complete', 'Missione completata'],
     dojo: ['Dojo', 'Dojo'],
@@ -87,13 +88,18 @@ const AppContent: React.FC = () => {
   };
 
   useEffect(() => {
-    if (previousView.current !== activeView) {
-      const [englishName, italianName] = viewNames[activeView] || ['Main content', 'Contenuto principale'];
-      setNavigationAnnouncement(state.lang === 'it' ? italianName : englishName);
+    const viewChanged = previousView.current !== activeView;
+    const languageChanged = previousLanguage.current !== state.lang;
+    if (viewChanged) {
       mainRef.current?.focus();
       previousView.current = activeView;
     }
-  }, [activeView, state.lang, battleContext]);
+    if (viewChanged || languageChanged) {
+      const [englishName, italianName] = viewNames[activeView] || ['Main content', 'Contenuto principale'];
+      setNavigationAnnouncement(state.lang === 'it' ? italianName : englishName);
+    }
+    previousLanguage.current = state.lang;
+  }, [activeView, state.lang]);
 
   return (
     <div className="wrap">
@@ -101,7 +107,7 @@ const AppContent: React.FC = () => {
         {state.lang === 'it' ? 'Salta al contenuto principale' : 'Skip to main content'}
       </a>
       <HUD />
-      <div className="sr-only" role="status" aria-live="polite" aria-atomic="true">{navigationAnnouncement ? `${state.lang === 'it' ? 'Sezione: ' : 'Section: '}${navigationAnnouncement}` : ''}</div>
+      <div className="sr-only" data-navigation-announcement="true" aria-live="polite" aria-atomic="true">{navigationAnnouncement ? `${state.lang === 'it' ? 'Sezione: ' : 'Section: '}${navigationAnnouncement}` : ''}</div>
       <main id="app" ref={mainRef} tabIndex={-1}>
         {activeView === 'grades' && <GradePicker />}
         {activeView === 'subjects' && <SubjectPickerScreen />}
