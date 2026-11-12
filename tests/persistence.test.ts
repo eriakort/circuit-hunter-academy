@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { MISSIONS, ARCS, UNITS } from '../src/data/gameData';
-import { createFreshProgressState, restoreSavedNavigation, sanitizeCheckpointProgress, sanitizeGameState, SAVE_SCHEMA } from '../src/persistence';
+import { createFreshProgressState, isValidCheckpointResult, restoreSavedNavigation, sanitizeCheckpointProgress, sanitizeGameState, SAVE_SCHEMA } from '../src/persistence';
 import type { GameState } from '../src/types';
 
 const validMission = MISSIONS.find(mission => (ARCS[mission.arc]?.subject || 'cs') === 'cs');
@@ -161,3 +161,22 @@ const checkpointSave = sanitizeCheckpointProgress({
 assert.deepEqual(Object.keys(checkpointSave), ['physics-foundations'], 'only known checkpoint IDs with bounded, consistent scores survive sanitization');
 assert.equal(checkpointSave['physics-foundations'].completedAt, 1700000000000);
 assert.deepEqual(sanitizeCheckpointProgress({ 'physics-foundations': { attempts: 1, bestScore: 5, lastScore: 4, completed: true, completedAt: Number.NaN } }), {}, 'invalid completion timestamps are discarded');
+
+
+const validCheckpointIds = [
+  'physics-foundations',
+  'computer-science-foundations',
+  'computer-science-applied-skills',
+  'italian-cefr-proficiency'
+];
+for (const checkpointId of validCheckpointIds) {
+  assert.equal(isValidCheckpointResult(checkpointId, 10, 12, true, 250), true);
+}
+assert.equal(isValidCheckpointResult('unknown-checkpoint', 10, 12, true, 250), false);
+assert.equal(isValidCheckpointResult('physics-foundations', 13, 12, true, 250), false);
+assert.equal(isValidCheckpointResult('physics-foundations', -1, 12, false, 80), false);
+assert.equal(isValidCheckpointResult('physics-foundations', 5.5, 12, false, 80), false);
+assert.equal(isValidCheckpointResult('physics-foundations', 5, 0, false, 80), false);
+assert.equal(isValidCheckpointResult('physics-foundations', 5, 13, false, 80), false);
+assert.equal(isValidCheckpointResult('physics-foundations', 5, 12, 'false', 80), false);
+assert.equal(isValidCheckpointResult('physics-foundations', 5, 12, false, -1), false);
