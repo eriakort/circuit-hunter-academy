@@ -33,7 +33,12 @@ test('dojo battle feedback and technique callout update during a live language s
   await expect(page.locator('#arena')).toBeVisible();
   await expect(page.locator('.qbox')).toBeVisible();
 
-  await page.locator('.opts button.opt').first().click();
+  const answerButtons = page.locator('.opts button.opt');
+  await expect(answerButtons.first()).toBeEnabled();
+  // Trigger the actual React button click directly; this avoids hit-target
+  // ambiguity from the arena's animated overlays in headless Chromium.
+  await answerButtons.first().evaluate((button: HTMLButtonElement) => button.click());
+  await expect(answerButtons.first()).toBeDisabled();
   await expect(page.locator('#qfb')).toBeVisible();
   await expect(page.locator('.shout')).toBeVisible();
 
