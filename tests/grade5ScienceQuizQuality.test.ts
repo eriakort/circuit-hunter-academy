@@ -13,7 +13,8 @@ const scienceMissions = MISSIONS.filter(mission => scienceArcIndexes.has(mission
 
 assert.equal(scienceMissions.length, 51, 'Grade 5 Science must contain all 51 missions');
 
-let questionCount = 0;\nconst optionCountIssues: string[] = [];
+let questionCount = 0;
+const optionCountIssues: string[] = [];
 for (const mission of scienceMissions) {
   assert.ok(mission.quiz.length > 0, `Mission ${mission.id} must have quiz questions`);
 
