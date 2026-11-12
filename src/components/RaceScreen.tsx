@@ -13,6 +13,8 @@ declare global {
   }
 }
 
+type RaceFeedback = { kind: 'timeout' | 'missed' } | { kind: 'speed'; points: number };
+
 const RACE_QTIME = 20000;
 const RACE_MAX = 8;
 const RACE_COMPLETION_GRACE_MS = 15000;
@@ -65,7 +67,7 @@ export const RaceScreen: React.FC = () => {
   const [timeRemaining, setTimeRemaining] = useState(RACE_QTIME);
   const [answered, setAnswered] = useState(false);
   const [selectedOpt, setSelectedOpt] = useState<number | null>(null);
-  const [feedback, setFeedback] = useState<{ text: string; ok: boolean } | null>(null);
+  const [feedback, setFeedback] = useState<RaceFeedback | null>(null);
 
   // Network channel ref
   const channelRef = useRef<any>(null);
@@ -298,10 +300,7 @@ export const RaceScreen: React.FC = () => {
   const handleAnswerTimeout = () => {
     if (answered) return;
     setAnswered(true);
-    setFeedback({
-      text: L(['Time up!', 'Tempo scaduto!'], lang),
-      ok: false
-    });
+    setFeedback({ kind: 'timeout' });
 
     sendProgress(currentQIndex + 1, score);
 
@@ -328,15 +327,9 @@ export const RaceScreen: React.FC = () => {
       newCorrect += 1;
       setScore(newScore);
       setCorrectCount(newCorrect);
-      setFeedback({
-        text: `+${points} ${L(['Speed bonus!', 'Bonus velocità!'], lang)}`,
-        ok: true
-      });
+      setFeedback({ kind: 'speed', points });
     } else {
-      setFeedback({
-        text: L(['Missed!', 'Sbagliato!'], lang),
-        ok: false
-      });
+      setFeedback({ kind: 'missed' });
     }
 
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
@@ -695,10 +688,14 @@ export const RaceScreen: React.FC = () => {
 
             {feedback && (
               <div
-                className={`fb ${feedback.ok ? 'ok' : 'no'}`}
+                className={`fb ${feedback.kind === 'speed' ? 'ok' : 'no'}`}
                 style={{ marginTop: '14px', fontWeight: 'bold' }}
               >
-                {feedback.text}
+                {feedback.kind === 'speed'
+                  ? `+${feedback.points} ${L(['Speed bonus!', 'Bonus velocità!'], lang)}`
+                  : feedback.kind === 'timeout'
+                    ? L(['Time up!', 'Tempo scaduto!'], lang)
+                    : L(['Missed!', 'Sbagliato!'], lang)}
               </div>
             )}
           </div>
