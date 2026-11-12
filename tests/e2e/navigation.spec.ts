@@ -78,8 +78,9 @@ test('test answers expose a labelled answer group and live feedback', async ({ p
   await page.locator('#hTest').click();
   await page.getByRole('button', { name: /Start Knowledge Test|Inizia il Test/ }).click();
 
-  const answers = page.getByRole('group', { name: /Question|Domanda/ });
-  await expect(answers).toBeVisible();
+  const answers = page.locator('.opts');
+  await expect(answers).toHaveAttribute('role', 'group');
+  await expect(answers).toHaveAttribute('aria-labelledby', 'test-question');
   await answers.getByRole('button').first().click();
   await expect(page.locator('#qfb')).toHaveAttribute('role', 'status');
   await expect(page.locator('#qfb')).toHaveAttribute('aria-live', 'polite');
