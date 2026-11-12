@@ -33,7 +33,7 @@ test('dojo battle feedback and technique callout update during a live language s
   await expect(page.locator('#arena')).toBeVisible();
   await expect(page.locator('.qbox')).toBeVisible();
 
-  await page.locator('.opts button').last().click();
+  await page.locator('.opts button.opt').last().click();
   await expect(page.locator('#qfb')).toBeVisible();
   await expect(page.locator('.shout')).toBeVisible();
 
