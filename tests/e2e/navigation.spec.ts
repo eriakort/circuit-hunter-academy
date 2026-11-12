@@ -145,3 +145,37 @@ test('screen transitions move focus and announce the destination in the active l
   await expect(page.locator('#app')).toBeFocused();
   await expect(announcement).toHaveText('Sezione: Test di conoscenza');
 });
+
+
+test('active knowledge test questions, answers and feedback update during a live language switch', async ({ page }) => {
+  await startCourse(page);
+  await page.locator('#hTest').click();
+
+  await page.getByRole('button', { name: '5', exact: true }).click();
+  await page.getByRole('button', { name: /Start Knowledge Test|Inizia il Test/ }).click();
+
+  const question = page.locator('#test-question > span');
+  const options = page.locator('.opts > div > button:first-child');
+  const englishQuestion = await question.textContent();
+  const englishOptions = await options.allTextContents();
+  expect(englishQuestion).toBeTruthy();
+  expect(englishOptions.length).toBeGreaterThan(1);
+
+  await page.locator('#lIT').click();
+  const italianQuestion = await question.textContent();
+  const italianOptions = await options.allTextContents();
+  expect(italianQuestion).not.toBe(englishQuestion);
+  expect(italianOptions).not.toEqual(englishOptions);
+  await expect(page.locator('.badge.go')).toContainText('Pratica');
+
+  await options.first().click();
+  const italianFeedback = await page.locator('#qfb').textContent();
+  expect(italianFeedback).toBeTruthy();
+
+  await page.locator('#lEN').click();
+  await expect(question).toHaveText(englishQuestion!);
+  await expect.poll(() => options.allTextContents()).toEqual(englishOptions);
+  const englishFeedback = await page.locator('#qfb').textContent();
+  expect(englishFeedback).not.toBe(italianFeedback);
+  await expect(page.locator('#qfb')).toContainText(/Correct!|Incorrect!/);
+});
