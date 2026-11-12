@@ -1,5 +1,5 @@
 import type { GameState, GradeId, SubjectId, ViewMode } from './types';
-import { MISSIONS, UNITS } from './data/gameData';
+import { MISSIONS, UNITS, ARCS } from './data/gameData';
 import { GRADE_SUBJECT_IDS } from './data/gradeData';
 
 export const SAVE_KEY = 'circuit-hunter-academy-v2';
@@ -114,26 +114,12 @@ export const restoreSavedNavigation = (value: unknown, state: GameState): SavedN
   if (value.grade !== undefined && value.grade !== state.grade) return null;
   if (value.subject !== undefined && value.subject !== state.subject) return null;
 
-  const subjectMissions = MISSIONS
-    .map((mission, index) => ({ mission, index }))
-    .filter(({ mission }) => (mission.subject || undefined) === undefined
-      ? (mission.arc >= 0 && (mission as any) && (mission.arc < Number.MAX_SAFE_INTEGER))
-      : true)
-    .filter(({ mission }) => {
-      const arc = mission.arc;
-      // ARCS are imported through gameData; the mission's subject is represented by its arc.
-      return arc >= 0 && arc < 1_000_000;
-    });
-
-  // Resolve against the selected subject, not the global mission index.
+  // Resolve against the selected grade and subject, never the global mission list.
   const subjectMissionIndexes = MISSIONS
     .map((mission, index) => ({ mission, index }))
-    .filter(({ mission }) => {
-      // Grade 5 science and the Grade 9 subjects have distinct arc subject tags.
-      const subjectForMission = (mission as any).subject;
-      if (subjectForMission) return subjectForMission === state.subject;
-      return true;
-    });
+    .filter(({ mission }) => (ARCS[mission.arc]?.subject || 'cs') === state.subject)
+    .filter(() => state.grade !== 'grade5' || state.subject === 'science' || state.subject === 'italian')
+    .filter(() => state.grade !== 'grade9' || state.subject !== 'science');
 
   const missionId = typeof value.missionId === 'string' ? value.missionId : null;
   let resolved = missionId
