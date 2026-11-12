@@ -11,3 +11,10 @@ export const isMissionOpen = (
   const previous = missions[index - 1];
   return !previous || previous.arc !== mission.arc || cleared[previous.id] === true;
 };
+
+/** XP awards are non-negative whole numbers with a defensive per-award ceiling. */
+export const isValidXpAward = (amount: unknown): amount is number =>
+  typeof amount === 'number'
+  && Number.isSafeInteger(amount)
+  && amount >= 0
+  && amount <= 10000;
