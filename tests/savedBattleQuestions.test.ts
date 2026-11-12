@@ -12,7 +12,7 @@ assert.deepEqual(sanitizeSavedBattleQuestions([
   { ...valid, a: Array(9).fill('answer') },
   { ...valid, a: ['ok', 42] },
   { ...valid, extra: 'ignored' }
-]), [valid]);
+]), [valid, valid]);
 assert.equal(sanitizeSavedBattleQuestions('not an array'), undefined);
 assert.equal(sanitizeSavedBattleQuestions(Array(101).fill(valid)), undefined);
 assert.deepEqual(sanitizeSavedBattleQuestions([]), []);
