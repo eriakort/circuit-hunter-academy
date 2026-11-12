@@ -71,3 +71,16 @@ test('skip link moves keyboard focus to the main content', async ({ page }) => {
   await page.keyboard.press('Enter');
   await expect(page.locator('#app')).toBeFocused();
 });
+
+
+test('test answers expose a labelled answer group and live feedback', async ({ page }) => {
+  await startCourse(page);
+  await page.locator('#hTest').click();
+  await page.getByRole('button', { name: /Start Knowledge Test|Inizia il Test/ }).click();
+
+  const answers = page.getByRole('group', { name: /Question|Domanda/ });
+  await expect(answers).toBeVisible();
+  await answers.getByRole('button').first().click();
+  await expect(page.locator('#qfb')).toHaveAttribute('role', 'status');
+  await expect(page.locator('#qfb')).toHaveAttribute('aria-live', 'polite');
+});
