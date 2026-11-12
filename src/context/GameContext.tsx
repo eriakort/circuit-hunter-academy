@@ -3,46 +3,9 @@ import { GameState, GradeId, Language, SubjectId, ViewMode, Mission, LearningMis
 import { MISSIONS, UNITS, ARCS, RANKS } from '../data/gameData';
 import { rankOf } from '../helpers';
 import { GRADE_SUBJECT_IDS } from '../data/gradeData';
+import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
 
-const SKEY = 'circuit-hunter-academy-v2';
-const SCHEMA = 3;
-const NAV_KEY = 'circuit-hunter-academy-navigation-v2';
-const VALID_VIEWS: ViewMode[] = ['grades', 'subjects', 'map', 'scene', 'battle', 'result', 'ending', 'dojo', 'codex', 'race', 'test', 'formula', 'checkpoint', 'cs-checkpoint', 'cs-applied-checkpoint', 'it-checkpoint', 'it-lab'];
 
-interface SavedNavigation {
-  view: ViewMode;
-  currentMissionIndex: number;
-  currentSceneIndex: number;
-  battleContext: { isDojo: boolean; customQuestions?: any[] } | null;
-}
-
-const readSavedNavigation = (): SavedNavigation | null => {
-  try {
-    const raw = localStorage.getItem(NAV_KEY);
-    if (!raw) return null;
-    const saved = JSON.parse(raw) as Partial<SavedNavigation>;
-    if (!saved.view || !VALID_VIEWS.includes(saved.view)) return null;
-
-    const missionIndex = Number.isInteger(saved.currentMissionIndex)
-      ? saved.currentMissionIndex as number
-      : 0;
-    const safeMissionIndex = Math.min(Math.max(missionIndex, 0), MISSIONS.length - 1);
-    const mission = MISSIONS[safeMissionIndex];
-    const sceneIndex = Number.isInteger(saved.currentSceneIndex)
-      ? saved.currentSceneIndex as number
-      : 0;
-
-    return {
-      view: saved.view,
-      currentMissionIndex: safeMissionIndex,
-      currentSceneIndex: Math.min(Math.max(sceneIndex, 0), Math.max(0, mission.scenes.length - 1)),
-      battleContext: saved.battleContext || null
-    };
-  } catch (e) {
-    console.error('Failed to restore navigation:', e);
-    return null;
-  }
-};
 
 const defaultState: GameState = {
   grade: null,
@@ -55,7 +18,7 @@ const defaultState: GameState = {
   seen: {},
   flawless: {},
   learningProgress: {},
-  v: SCHEMA
+  v: SAVE_SCHEMA
 };
 
 interface GameContextType {
@@ -93,32 +56,29 @@ const GameContext = createContext<GameContextType | undefined>(undefined);
 export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, setState] = useState<GameState>(() => {
     try {
-      const raw = localStorage.getItem(SKEY);
-      if (raw) {
-        const loaded = JSON.parse(raw);
-        if (!loaded.v || loaded.v < SCHEMA) {
-          loaded.v = SCHEMA;
-        }
-        // Existing saves predate grade selection and belong to the current Grade 9 curriculum.
-        const hasSavedGrade = Object.prototype.hasOwnProperty.call(loaded, 'grade');
-        const grade: GradeId | null = loaded.grade === 'grade5' || loaded.grade === 'grade9'
-          ? loaded.grade
-          : (hasSavedGrade ? null : 'grade9');
-        return { ...defaultState, ...loaded, grade };
-      }
+      const raw = localStorage.getItem(SAVE_KEY);
+      return raw ? sanitizeGameState(JSON.parse(raw)) : defaultState;
     } catch (e) {
-      console.error('Failed to load save state:', e);
+      console.error('Failed to load save state; starting with a safe default:', e);
+      return defaultState;
     }
-    return defaultState;
   });
 
-  const [initialNavigation] = useState<SavedNavigation | null>(() => readSavedNavigation());
+  const [initialNavigation] = useState<SavedNavigation | null>(() => {
+    try {
+      const raw = localStorage.getItem(NAVIGATION_KEY);
+      return raw ? restoreSavedNavigation(JSON.parse(raw), state) : null;
+    } catch (e) {
+      console.error('Failed to restore navigation; opening the learning map:', e);
+      return null;
+    }
+  });
   const [view, setView] = useState<ViewMode>(() => {
     if (!state.grade) return 'grades';
     return initialNavigation?.view || 'map';
   });
   const [currentMissionIndex, setCurrentMissionIndex] = useState<number>(
-    () => initialNavigation?.currentMissionIndex ?? 0
+    () => initialNavigation?.currentMissionIndex ?? Math.max(0, MISSIONS.findIndex(m => (ARCS[m.arc]?.subject || 'cs') === state.subject))
   );
   const [currentSceneIndex, setCurrentSceneIndex] = useState<number>(
     () => initialNavigation?.currentSceneIndex ?? 0
@@ -129,7 +89,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem(SKEY, JSON.stringify(state));
+      localStorage.setItem(SAVE_KEY, JSON.stringify(state));
     } catch (e) {
       console.error('Failed to save state:', e);
     }
@@ -137,11 +97,14 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem(NAV_KEY, JSON.stringify({
+      localStorage.setItem(NAVIGATION_KEY, JSON.stringify({
         view,
         currentMissionIndex,
         currentSceneIndex,
-        battleContext
+        battleContext,
+        grade: state.grade,
+        subject: state.subject,
+        missionId: MISSIONS[currentMissionIndex]?.id || null
       } satisfies SavedNavigation));
     } catch (e) {
       console.error('Failed to save navigation:', e);
@@ -150,15 +113,15 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
 
   const setGrade = (grade: GradeId) => {
-    setState(s => {
-      // Keep the current subject when it belongs to the new grade; otherwise
-      // move to the first subject available in that grade.
-      const subject = GRADE_SUBJECT_IDS[grade].includes(s.subject)
-        ? s.subject
-        : GRADE_SUBJECT_IDS[grade][0] as SubjectId;
-      const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === subject);
-      return { ...s, grade, subject, unit: firstUnit < 0 ? 0 : firstUnit };
-    });
+    const subject = GRADE_SUBJECT_IDS[grade].includes(state.subject)
+      ? state.subject
+      : GRADE_SUBJECT_IDS[grade][0] as SubjectId;
+    const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === subject);
+    const firstMission = MISSIONS.findIndex(m => (ARCS[m.arc]?.subject || 'cs') === subject);
+    setState(s => ({ ...s, grade, subject, unit: firstUnit < 0 ? 0 : firstUnit }));
+    setCurrentMissionIndex(firstMission < 0 ? 0 : firstMission);
+    setCurrentSceneIndex(0);
+    setBattleContext(null);
     setView('subjects');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -171,11 +134,17 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const activeGrade = state.grade || 'grade9';
     if (!GRADE_SUBJECT_IDS[activeGrade]?.includes(sub)) return;
     const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === sub);
+    const firstMission = MISSIONS.findIndex(m => (ARCS[m.arc]?.subject || 'cs') === sub);
     setState(s => ({ ...s, grade: s.grade || activeGrade, subject: sub, unit: firstUnit < 0 ? 0 : firstUnit }));
+    setCurrentMissionIndex(firstMission < 0 ? 0 : firstMission);
+    setCurrentSceneIndex(0);
+    setBattleContext(null);
     setView('map');
   };
 
   const setUnit = (unit: number) => {
+    if (!Number.isInteger(unit) || unit < 0 || unit >= UNITS.length) return;
+    if ((UNITS[unit].subject || 'cs') !== state.subject) return;
     setState(s => ({ ...s, unit }));
   };
 
@@ -189,7 +158,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const inMissionFirstTime = () => {
     const m = MISSIONS[currentMissionIndex];
-    return !state.cleared[m.id];
+    return !m || !state.cleared[m.id];
   };
 
   const award = (amount: number) => {
@@ -261,6 +230,8 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const openMission = (index: number) => {
+    const mission = MISSIONS[index];
+    if (!mission || (ARCS[mission.arc]?.subject || 'cs') !== state.subject) return;
     setCurrentMissionIndex(index);
     setCurrentSceneIndex(0);
     markSeen(index);
@@ -310,7 +281,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       seen: {},
       flawless: {},
       learningProgress: {},
-      v: SCHEMA
+      v: SAVE_SCHEMA
     };
     setState(fresh);
     setView('map');
