@@ -3,7 +3,7 @@ import { GameState, GradeId, Language, SubjectId, ViewMode, Mission, LearningMis
 import { MISSIONS, UNITS, ARCS, RANKS } from '../data/gameData';
 import { rankOf } from '../helpers';
 import { GRADE_SUBJECT_IDS } from '../data/gradeData';
-import { isMissionOpen } from '../missionAccess';
+import { isMissionOpen, isValidXpAward } from '../missionAccess';
 import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, createFreshProgressState, isValidCheckpointResult, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
 
 
@@ -154,6 +154,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const addXP = (amount: number) => {
+    if (!isValidXpAward(amount)) return;
     setState(s => ({ ...s, xp: s.xp + amount }));
   };
 
@@ -169,6 +170,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const clearMission = (missionId: string, flawless: boolean, xpGained: number) => {
+    if (!MISSIONS.some(mission => mission.id === missionId) || typeof flawless !== 'boolean' || !isValidXpAward(xpGained)) return;
     setState(s => {
       const first = !s.cleared[missionId];
       const newCleared = { ...s.cleared, [missionId]: true };
