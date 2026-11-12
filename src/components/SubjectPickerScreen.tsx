@@ -58,30 +58,34 @@ export const SubjectPickerScreen: React.FC = () => {
           >
             🇮🇹 {L(['Italian (A1–B1)', 'Italiano (A1–B1)'], lang)}
           </button>
-          <button
-            type="button"
-            className="btn ghost sm"
-            style={{ padding: '4px 10px', fontSize: '13px' }}
-            onClick={() => handleSelect('cs')}
-          >
-            💻 CS
-          </button>
-          <button
-            type="button"
-            className="btn ghost sm"
-            style={{ padding: '4px 10px', fontSize: '13px' }}
-            onClick={() => handleSelect('phys')}
-          >
-            ⚛️ Physics
-          </button>
-          <button
-            type="button"
-            className="btn ghost sm"
-            style={{ padding: '4px 10px', fontSize: '13px' }}
-            onClick={() => handleSelect('math')}
-          >
-            ∑ Math
-          </button>
+          {activeGrade === 'grade9' && (
+            <>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('cs')}
+              >
+                💻 CS
+              </button>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('phys')}
+              >
+                ⚛️ Physics
+              </button>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('math')}
+              >
+                ∑ Math
+              </button>
+            </>
+          )}
         </div>
       </div>
 
