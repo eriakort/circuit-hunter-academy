@@ -139,7 +139,7 @@ export const BattleScreen: React.FC = () => {
     setAnswered(false);
     setSelectedIndex(null);
     setCorrectIndex(null);
-    setFeedback('');
+    setFeedback(null);
     setShout(null);
     setDemonHit(false);
     setArenaOuch(false);
