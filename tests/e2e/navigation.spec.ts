@@ -126,3 +126,21 @@ test('grade, subject, dashboard, codex and test screens fit common viewport widt
     await expectNoHorizontalPageOverflow(page, width);
   }
 });
+
+
+test('screen transitions move focus to main content and announce the destination', async ({ page }) => {
+  await startCourse(page);
+
+  await page.locator('#hCodex').click();
+  await expect(page.locator('#app')).toBeFocused();
+  await expect(page.getByRole('status')).toHaveText('Section: Codex');
+  await expect(page.locator('#app')).not.toHaveAttribute('aria-live', 'polite');
+
+  await page.locator('#lIT').click();
+  await expect(page.locator('#app')).toBeFocused();
+  await expect(page.getByRole('status')).toHaveText('Sezione: Glossario');
+
+  await page.locator('#hTest').click();
+  await expect(page.locator('#app')).toBeFocused();
+  await expect(page.getByRole('status')).toHaveText('Sezione: Test di conoscenza');
+});
