@@ -35,10 +35,11 @@ test('dojo battle feedback and technique callout update during a live language s
 
   const answerButtons = page.locator('.opts button.opt');
   await expect(answerButtons.first()).toBeEnabled();
-  // The arena's animated layers can intercept normal pointer hit-testing in
-  // headless Chromium. Force the real Playwright pointer sequence to the
-  // React-managed answer button rather than invoking HTMLElement.click().
-  await answerButtons.first().click({ force: true });
+  // Activate the focused answer with the keyboard. This exercises the
+  // browser's native button activation and React's delegated click handler
+  // without relying on pointer hit-testing through animated arena layers.
+  await answerButtons.first().focus();
+  await page.keyboard.press('Enter');
   await expect(answerButtons.first()).toBeDisabled();
   await expect(page.locator('#qfb')).toBeVisible();
   await expect(page.locator('.shout')).toBeVisible();
