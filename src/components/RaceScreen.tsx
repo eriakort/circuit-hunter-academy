@@ -5,6 +5,7 @@ import { MISSIONS, ARCS } from '../data/gameData';
 import { L, rng, sshuffle, hueOf, raceAvatar, safeId, U } from '../helpers';
 import { createClient } from '@supabase/supabase-js';
 import { calculateRaceCompletionXP, haveRaceOpponentsFinished, shouldFinalizeRace } from '../raceCompletion';
+import { validateRaceProgress } from '../raceProtocol';
 
 declare global {
   interface Window {
@@ -229,19 +230,20 @@ export const RaceScreen: React.FC = () => {
     }, 900);
   };
 
-  const onProgressBroadcast = (p: any) => {
-    if (!p || typeof p !== 'object' || p.raceId !== raceIdRef.current) return;
-    if (typeof p.id !== 'string' || p.id === meRef.current?.id || !playersRef.current[p.id]) return;
-    const step = toNum(p.step, qCountRef.current);
-    const clean: RaceProgress = {
-      id: p.id,
-      step,
-      score: toNum(p.score, step * MAX_POINTS_PER_Q),
-      time: toNum(p.time, Number.MAX_SAFE_INTEGER),
-      raceId: raceIdRef.current,
-      done: step === qCountRef.current && p.done === true
-    };
-    setProgress(prev => ({ ...prev, [clean.id]: clean }));
+  const onProgressBroadcast = (payload: unknown) => {
+    if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return;
+    const payloadId = (payload as { id?: unknown }).id;
+    if (typeof payloadId !== 'string' || payloadId === meRef.current?.id) return;
+    setProgress(prev => {
+      const clean = validateRaceProgress(
+        payload,
+        raceIdRef.current,
+        new Set(Object.keys(playersRef.current).filter(id => id !== meRef.current?.id)),
+        prev[payloadId],
+        qCountRef.current
+      );
+      return clean ? { ...prev, [clean.id]: clean } : prev;
+    });
   };
 
   const handleHostStart = () => {
