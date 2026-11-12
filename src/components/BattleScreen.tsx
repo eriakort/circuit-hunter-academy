@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useGame } from '../context/GameContext';
 import { QuizQuestion, Mission } from '../types';
 import { MISSIONS } from '../data/gameData';
@@ -20,23 +20,29 @@ export const BattleScreen: React.FC = () => {
   const { lang, cleared } = state;
   const isDojo = battleContext?.isDojo || false;
 
-  const activeMission: Mission = isDojo
-    ? ({
-        id: 'dojo',
-        arc: 0,
-        sec: '',
-        pages: '',
-        hue: 220,
-        horns: 1,
-        eyes: 1,
-        title: ['Training Hall', "Sala d'allenamento"],
-        topic: ['Mixed review', 'Ripasso misto'],
-        demon: ['Training Dummy', "Manichino d'allenamento"],
-        tech: ['Training', 'Allenamento'],
-        scenes: [],
-        quiz: battleContext?.customQuestions || []
-      } as unknown as Mission)
-    : currentMission;
+  // Keep the synthetic Dojo mission stable across battle-state renders.
+  // Recreating this object on every render retriggered the battle initializer
+  // effect after every answer, immediately resetting answered/feedback state.
+  const activeMission: Mission = useMemo(
+    () => isDojo
+      ? ({
+          id: 'dojo',
+          arc: 0,
+          sec: '',
+          pages: '',
+          hue: 220,
+          horns: 1,
+          eyes: 1,
+          title: ['Training Hall', "Sala d'allenamento"],
+          topic: ['Mixed review', 'Ripasso misto'],
+          demon: ['Training Dummy', "Manichino d'allenamento"],
+          tech: ['Training', 'Allenamento'],
+          scenes: [],
+          quiz: battleContext?.customQuestions || []
+        } as unknown as Mission)
+      : currentMission,
+    [isDojo, battleContext?.customQuestions, currentMission]
+  );
 
   // Battle state
   const [queue, setQueue] = useState<QuizQuestion[]>([]);
@@ -50,8 +56,8 @@ export const BattleScreen: React.FC = () => {
   const [answered, setAnswered] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [correctIndex, setCorrectIndex] = useState<number | null>(null);
-  const [feedback, setFeedback] = useState<string>('');
-  const [shout, setShout] = useState<{ text: string; form?: string; tech?: string; comboText?: string; lvl: number } | null>(null);
+  const [feedback, setFeedback] = useState<{ correct: boolean; correctAnswerIndex: number } | null>(null);
+  const [shout, setShout] = useState<{ combo: number; lvl: number } | null>(null);
   const [demonHit, setDemonHit] = useState(false);
   const [arenaOuch, setArenaOuch] = useState(false);
   const [battleFinished, setBattleFinished] = useState<'win' | 'lose' | null>(null);
@@ -139,7 +145,7 @@ export const BattleScreen: React.FC = () => {
     setAnswered(false);
     setSelectedIndex(null);
     setCorrectIndex(null);
-    setFeedback('');
+    setFeedback(null);
     setShout(null);
     setDemonHit(false);
     setArenaOuch(false);
@@ -158,13 +164,7 @@ export const BattleScreen: React.FC = () => {
     setSelectedIndex(idx);
 
     const isCorrect = idx === correctIndex;
-    const rightText = currentQ.a[options[correctIndex!]] ? L(currentQ.a[options[correctIndex!]], lang) : '';
-
-    // Split tech name if formatted as "Form · Technique"
-    const fullTech = L(activeMission.tech, lang);
-    const techParts = fullTech.split('·').map(s => s.trim());
-    const formName = techParts.length > 1 ? techParts[0] : '';
-    const techName = techParts.length > 1 ? techParts.slice(1).join(' · ') : fullTech;
+    const correctAnswerIndex = options[correctIndex!];
 
     if (isCorrect) {
       const newCombo = combo + 1;
@@ -172,56 +172,23 @@ export const BattleScreen: React.FC = () => {
       setCombo(newCombo);
       setBestCombo(newBest);
       setHp(h => Math.max(0, h - 1));
-
       setDemonHit(true);
       const lvl = newCombo >= 5 ? 3 : newCombo >= 3 ? 2 : 1;
-      const chainTxt = newCombo >= 2 ? `×${newCombo} ${L(['CHAIN', 'CATENA'], lang)}` : '';
-      const lead =
-        newCombo >= 5
-          ? L(['Technique unleashed!', 'Tecnica scatenata!'], lang)
-          : newCombo >= 3
-          ? L(['Breathing in rhythm!', 'Respiro in ritmo!'], lang)
-          : L(['Direct hit!', 'Colpo a segno!'], lang);
-
-      setShout({
-        text: lead,
-        form: formName,
-        tech: techName,
-        comboText: chainTxt,
-        lvl
-      });
-
-      setFeedback(
-        `<div class="why"><b>⟐ ${techName} — ${lead}</b> ${L(currentQ.why, lang)}</div>`
-      );
+      setShout({ combo: newCombo, lvl });
+      setFeedback({ correct: true, correctAnswerIndex });
     } else {
       setCombo(0);
       setHearts(h => Math.max(0, h - 1));
       setArenaOuch(true);
 
-      // Move missed question to back of queue
+      // Move missed question to back of queue.
       setQueue(prev => {
         const nextQ = [...prev];
         const missed = nextQ.shift();
         if (missed) nextQ.push(missed);
         return nextQ;
       });
-
-      setFeedback(
-        `<div class="why"><b>${L(
-          ['The demon strikes back!', 'Il demone contrattacca!'],
-          lang
-        )}</b> ${L(
-          ['Your focus breaks and the chain resets.', 'La concentrazione si spezza e la catena si azzera.'],
-          lang
-        )} ${L(['The answer is', 'La risposta è'], lang)} "${rightText}". ${L(
-          currentQ.why,
-          lang
-        )}<br><span class="muted">${L(
-          ['This question will come back later in the fight.', 'Questa domanda tornerà più avanti nello scontro.'],
-          lang
-        )}</span></div>`
-      );
+      setFeedback({ correct: false, correctAnswerIndex });
     }
   };
 
@@ -474,15 +441,25 @@ export const BattleScreen: React.FC = () => {
         )}
       </div>
 
-      {shout && (
-        <div className={`shout show lvl${shout.lvl}`}>
-          {shout.form && <span className="sform">{shout.form}</span>}
-          <span className="stech">{shout.tech}!</span>
-          {shout.comboText && (
-            <span className="scombo" dangerouslySetInnerHTML={{ __html: shout.comboText }} />
-          )}
-        </div>
-      )}
+      {shout && (() => {
+        const fullTech = L(activeMission.tech, lang);
+        const techParts = fullTech.split('·').map(s => s.trim());
+        const formName = techParts.length > 1 ? techParts[0] : '';
+        const techName = techParts.length > 1 ? techParts.slice(1).join(' · ') : fullTech;
+        return (
+          <div className={`shout show lvl${shout.lvl}`}>
+            {formName && <span className="sform">{formName}</span>}
+            <span className="stech">{techName}!</span>
+            {shout.combo >= 2 && (
+              <span className="scombo">×{shout.combo} {L(['CHAIN', 'CATENA'], lang)}</span>
+            )}
+            <span className="sr-only">{L(
+              shout.combo >= 5 ? ['Technique unleashed!', 'Tecnica scatenata!'] : shout.combo >= 3 ? ['Breathing in rhythm!', 'Respiro in ritmo!'] : ['Direct hit!', 'Colpo a segno!'],
+              lang
+            )}</span>
+          </div>
+        );
+      })()}
 
       {currentQ && (
         <div className="qbox">
@@ -576,7 +553,27 @@ export const BattleScreen: React.FC = () => {
 
           {answered && (
             <div id="qfb" className="qfb">
-              <div dangerouslySetInnerHTML={{ __html: feedback }} />
+              {feedback && currentQ && (
+                <div className="why">
+                  {feedback.correct ? (
+                    <>
+                      <b>⟐ {L(activeMission.tech, lang)} — {L(
+                        combo >= 5 ? ['Technique unleashed!', 'Tecnica scatenata!'] : combo >= 3 ? ['Breathing in rhythm!', 'Respiro in ritmo!'] : ['Direct hit!', 'Colpo a segno!'],
+                        lang
+                      )}</b> {L(currentQ.why, lang)}
+                    </>
+                  ) : (
+                    <>
+                      <b>{L(['The demon strikes back!', 'Il demone contrattacca!'], lang)}</b> {L(
+                        ['Your focus breaks and the chain resets.', 'La concentrazione si spezza e la catena si azzera.'], lang
+                      )} {L(['The answer is', 'La risposta è'], lang)} "{L(currentQ.a[feedback.correctAnswerIndex], lang)}". {L(currentQ.why, lang)}
+                      <br /><span className="muted">{L(
+                        ['This question will come back later in the fight.', 'Questa domanda tornerà più avanti nello scontro.'], lang
+                      )}</span>
+                    </>
+                  )}
+                </div>
+              )}
               <button
                 className="btn"
                 style={{ marginTop: '12px' }}
