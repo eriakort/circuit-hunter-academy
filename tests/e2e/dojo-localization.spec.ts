@@ -35,9 +35,10 @@ test('dojo battle feedback and technique callout update during a live language s
 
   const answerButtons = page.locator('.opts button.opt');
   await expect(answerButtons.first()).toBeEnabled();
-  // Trigger the actual React button click directly; this avoids hit-target
-  // ambiguity from the arena's animated overlays in headless Chromium.
-  await answerButtons.first().evaluate((button: HTMLButtonElement) => button.click());
+  // The arena's animated layers can intercept normal pointer hit-testing in
+  // headless Chromium. Force the real Playwright pointer sequence to the
+  // React-managed answer button rather than invoking HTMLElement.click().
+  await answerButtons.first().click({ force: true });
   await expect(answerButtons.first()).toBeDisabled();
   await expect(page.locator('#qfb')).toBeVisible();
   await expect(page.locator('.shout')).toBeVisible();
