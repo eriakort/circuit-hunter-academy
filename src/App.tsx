@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React, { Component, ErrorInfo, ReactNode, useEffect, useRef, useState } from 'react';
 import { GameProvider, useGame } from './context/GameContext';
 import { HUD } from './components/HUD';
 import { GradePicker } from './components/GradePicker';
@@ -59,10 +59,41 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 }
 
 const AppContent: React.FC = () => {
-  const { view, state } = useGame();
+  const { view, state, battleContext } = useGame();
 
   // New learners choose a grade first; existing Grade 9 saves are migrated in GameContext.
   const activeView = !state.grade ? 'grades' : view;
+  const mainRef = useRef<HTMLElement>(null);
+  const previousView = useRef(activeView);
+  const [navigationAnnouncement, setNavigationAnnouncement] = useState('');
+  const viewNames: Record<string, [string, string]> = {
+    grades: ['Grade selection', 'Scelta della classe'],
+    subjects: ['Subject selection', 'Scelta della materia'],
+    map: ['Missions', 'Missioni'],
+    scene: ['Mission', 'Missione'],
+    battle: [battleContext?.isDojo ? 'Dojo challenge' : 'Mission challenge', battleContext?.isDojo ? 'Sfida Dojo' : 'Sfida della missione'],
+    result: ['Challenge results', 'Risultati della sfida'],
+    ending: ['Mission complete', 'Missione completata'],
+    dojo: ['Dojo', 'Dojo'],
+    codex: ['Codex', 'Glossario'],
+    race: ['Race', 'Gara'],
+    test: ['Knowledge test', 'Test di conoscenza'],
+    formula: ['Formulas', 'Formule'],
+    checkpoint: ['Physics checkpoint', 'Verifica di fisica'],
+    'cs-checkpoint': ['Computer Science checkpoint', 'Verifica di informatica'],
+    'cs-applied-checkpoint': ['Applied Computer Science trial', 'Prova di informatica applicata'],
+    'it-checkpoint': ['Italian oral trial', 'Esame orale di italiano'],
+    'it-lab': ['Italian speaking lab', 'Laboratorio di italiano']
+  };
+
+  useEffect(() => {
+    if (previousView.current !== activeView) {
+      const [englishName, italianName] = viewNames[activeView] || ['Main content', 'Contenuto principale'];
+      setNavigationAnnouncement(state.lang === 'it' ? italianName : englishName);
+      mainRef.current?.focus();
+      previousView.current = activeView;
+    }
+  }, [activeView, state.lang, battleContext]);
 
   return (
     <div className="wrap">
@@ -70,7 +101,8 @@ const AppContent: React.FC = () => {
         {state.lang === 'it' ? 'Salta al contenuto principale' : 'Skip to main content'}
       </a>
       <HUD />
-      <main id="app" tabIndex={-1} aria-live="polite">
+      <div className="sr-only" role="status" aria-live="polite" aria-atomic="true">{navigationAnnouncement ? `${state.lang === 'it' ? 'Sezione: ' : 'Section: '}${navigationAnnouncement}` : ''}</div>
+      <main id="app" ref={mainRef} tabIndex={-1}>
         {activeView === 'grades' && <GradePicker />}
         {activeView === 'subjects' && <SubjectPickerScreen />}
         {activeView === 'map' && <MapScreen />}
