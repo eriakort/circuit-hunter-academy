@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { MISSIONS, ARCS, UNITS } from '../src/data/gameData';
-import { createFreshProgressState, restoreSavedNavigation, sanitizeGameState, SAVE_SCHEMA } from '../src/persistence';
+import { createFreshProgressState, restoreSavedNavigation, sanitizeCheckpointProgress, sanitizeGameState, SAVE_SCHEMA } from '../src/persistence';
 import type { GameState } from '../src/types';
 
 const validMission = MISSIONS.find(mission => (ARCS[mission.arc]?.subject || 'cs') === 'cs');
@@ -149,3 +149,15 @@ assert.equal(resetState.xp, 0, 'reset clears XP');
 assert.deepEqual(resetState.cleared, {}, 'reset clears mission completions');
 assert.deepEqual(resetState.learningProgress, {}, 'reset clears learning progress');
 assert.deepEqual(resetState.checkpointProgress, {}, 'reset clears checkpoint completions and attempts');
+
+
+const checkpointSave = sanitizeCheckpointProgress({
+  'physics-foundations': { attempts: 2, bestScore: 11, lastScore: 9, completed: true, completedAt: 1700000000000 },
+  'computer-science-foundations': { attempts: -1, bestScore: 12, lastScore: 8, completed: false },
+  'computer-science-applied-skills': { attempts: 1, bestScore: 13, lastScore: 13, completed: true },
+  'italian-cefr-proficiency': { attempts: 3, bestScore: 10, lastScore: 11, completed: true },
+  'unknown-checkpoint': { attempts: 1, bestScore: 12, lastScore: 12, completed: true }
+});
+assert.deepEqual(Object.keys(checkpointSave), ['physics-foundations'], 'only known checkpoint IDs with bounded, consistent scores survive sanitization');
+assert.equal(checkpointSave['physics-foundations'].completedAt, 1700000000000);
+assert.deepEqual(sanitizeCheckpointProgress({ 'physics-foundations': { attempts: 1, bestScore: 5, lastScore: 4, completed: true, completedAt: Number.NaN } }), {}, 'invalid completion timestamps are discarded');
