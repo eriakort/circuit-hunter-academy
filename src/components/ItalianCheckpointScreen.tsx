@@ -303,6 +303,7 @@ export const ItalianCheckpointScreen: React.FC = () => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [finished, setFinished] = useState(false);
   const [spokenAttempt, setSpokenAttempt] = useState<string>('');
+  const [speechError, setSpeechError] = useState<string | null>(null);
   const [isListening, setIsListening] = useState(false);
   const [pronunciationResult, setPronunciationResult] = useState<PronunciationScore | null>(null);
   const [speechStopFn, setSpeechStopFn] = useState<(() => void) | null>(null);
@@ -337,7 +338,7 @@ export const ItalianCheckpointScreen: React.FC = () => {
 
   const handleStartSpeaking = () => {
     if (!isSpeechRecognitionAvailable()) {
-      alert(L(['Speech recognition is not supported in this browser. Please use Chrome, Edge, or Safari.', 'Il riconoscimento vocale non è supportato in questo browser. Usa Chrome, Edge o Safari.'], lang));
+      setSpeechError(L(['Voice input is unavailable in this browser or page context. You can still answer by selecting an option below.', 'L’inserimento vocale non è disponibile in questo browser o contesto. Puoi comunque rispondere selezionando un’opzione qui sotto.'], lang));
       return;
     }
 
@@ -347,6 +348,7 @@ export const ItalianCheckpointScreen: React.FC = () => {
       return;
     }
 
+    setSpeechError(null);
     setIsListening(true);
     setSpokenAttempt('');
     setPronunciationResult(null);
@@ -368,6 +370,10 @@ export const ItalianCheckpointScreen: React.FC = () => {
       onError: (err) => {
         console.warn('Speech error in checkpoint:', err);
         setIsListening(false);
+        const permissionError = ['not-allowed', 'permission-denied', 'service-not-allowed'].includes(err);
+        setSpeechError(permissionError
+          ? L(['Microphone access was blocked. Allow microphone access in your browser settings, then try again. You can also select an answer below.', 'L’accesso al microfono è stato bloccato. Consenti l’uso del microfono nelle impostazioni del browser e riprova. Puoi anche selezionare una risposta qui sotto.'], lang)
+          : L(['Voice input could not start. Check your microphone and browser permissions, or select an answer below.', 'Non è stato possibile avviare l’inserimento vocale. Controlla il microfono e i permessi del browser oppure seleziona una risposta qui sotto.'], lang));
       },
       onEnd: () => {
         setIsListening(false);
@@ -590,6 +596,18 @@ export const ItalianCheckpointScreen: React.FC = () => {
             )}
           </button>
         </div>
+
+        {speechError && (
+          <div role="status" className="muted" style={{
+            border: '1px solid var(--line)',
+            borderRadius: 10,
+            padding: '10px 14px',
+            marginBottom: 16,
+            fontSize: 13
+          }}>
+            {speechError}
+          </div>
+        )}
 
         {/* Live speech feedback if attempted */}
         {spokenAttempt && (
