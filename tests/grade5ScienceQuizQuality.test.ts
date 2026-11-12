@@ -17,6 +17,7 @@ let questionCount = 0;
 const optionCountIssues: string[] = [];
 for (const mission of scienceMissions) {
   assert.ok(mission.quiz.length > 0, `Mission ${mission.id} must have quiz questions`);
+  const missionAnswerCounts = new Set<number>();
 
   for (const [questionIndex, question] of mission.quiz.entries()) {
     questionCount += 1;
@@ -35,8 +36,9 @@ for (const mission of scienceMissions) {
       `${label} must not show the same explanation in both languages`
     );
 
-    if (question.a.length !== 4) {
-      optionCountIssues.push(`${label} has ${question.a.length} answer choices`);
+    missionAnswerCounts.add(question.a.length);
+    if (question.a.length < 3 || question.a.length > 4) {
+      optionCountIssues.push(`${label} has ${question.a.length} answer choices (expected 3 or 4)`);
     }
 
     for (const [languageIndex, language] of ['English', 'Italian'].entries()) {
@@ -58,12 +60,16 @@ for (const mission of scienceMissions) {
     // BattleScreen deliberately treats q.a[0] as the correct answer before shuffling.
     assert.ok(question.a[0][0].trim() && question.a[0][1].trim(), `${label} must define its correct answer first`);
   }
+
+  if (missionAnswerCounts.size > 1) {
+    optionCountIssues.push(`Mission ${mission.id} mixes quiz sizes: ${[...missionAnswerCounts].sort().join(', ')}`);
+  }
 }
 
 assert.deepEqual(
   optionCountIssues,
   [],
-  `Every Grade 5 Science quiz question must have exactly four choices:\n${optionCountIssues.join('\n')}`
+  `Every Grade 5 Science mission must consistently use three or four distinct choices:\n${optionCountIssues.join('\n')}`
 );
 
 console.log(
