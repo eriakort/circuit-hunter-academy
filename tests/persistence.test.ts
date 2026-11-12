@@ -101,6 +101,31 @@ const scienceNavigation = restoreSavedNavigation({
 assert.equal(scienceNavigation?.missionId, scienceMission!.id);
 assert.equal(scienceNavigation?.view, 'scene');
 
+const physicsState = sanitizeGameState({ grade: 'grade9', subject: 'phys' });
+const physicsCheckpoint = restoreSavedNavigation({
+  view: 'checkpoint', currentMissionIndex: 0, currentSceneIndex: 0,
+  grade: 'grade9', subject: 'phys', missionId: null
+}, physicsState);
+assert.equal(physicsCheckpoint?.view, 'checkpoint', 'Physics learners can restore their Physics checkpoint');
+
+const wrongPhysicsCheckpoint = restoreSavedNavigation({
+  view: 'checkpoint', currentMissionIndex: 0, currentSceneIndex: 0,
+  grade: 'grade9', subject: 'math', missionId: null
+}, grade9State);
+assert.equal(wrongPhysicsCheckpoint, null, 'a Mathematics learner cannot restore the Physics checkpoint');
+
+const wrongGradeCsCheckpoint = restoreSavedNavigation({
+  view: 'cs-checkpoint', currentMissionIndex: 0, currentSceneIndex: 0,
+  grade: 'grade5', subject: 'science', missionId: null
+}, grade5ScienceState);
+assert.equal(wrongGradeCsCheckpoint, null, 'Grade 5 cannot restore a Grade 9 Computer Science checkpoint');
+
+const wrongSubjectItalianLab = restoreSavedNavigation({
+  view: 'it-lab', currentMissionIndex: 0, currentSceneIndex: 0,
+  grade: 'grade9', subject: 'math', missionId: null
+}, grade9State);
+assert.equal(wrongSubjectItalianLab, null, 'non-Italian subjects cannot restore the Italian speaking lab');
+
 const corrupt = sanitizeGameState({ grade: 'unknown', subject: 'invalid', unit: -1, xp: Number.NaN });
 assert.equal(corrupt.grade, null);
 assert.equal(corrupt.subject, 'cs');

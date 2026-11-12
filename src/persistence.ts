@@ -98,6 +98,15 @@ const safeBattleContext = (value: unknown): SavedNavigation['battleContext'] => 
   return { isDojo: value.isDojo, ...(questions ? { customQuestions: questions } : {}) };
 };
 
+const isViewAvailableForCurriculum = (view: ViewMode, grade: GradeId, subject: SubjectId): boolean => {
+  if (view === 'checkpoint') return subject === 'phys';
+  if (view === 'cs-checkpoint' || view === 'cs-applied-checkpoint') {
+    return grade === 'grade9' && subject === 'cs';
+  }
+  if (view === 'it-checkpoint' || view === 'it-lab') return subject === 'italian';
+  return true;
+};
+
 export const restoreSavedNavigation = (value: unknown, state: GameState): SavedNavigation | null => {
   if (!isRecord(value) || !VALID_VIEWS.includes(value.view as ViewMode)) return null;
   if (!state.grade) {
@@ -115,6 +124,9 @@ export const restoreSavedNavigation = (value: unknown, state: GameState): SavedN
   // A navigation record written under another curriculum must never override the current selection.
   if (value.grade !== undefined && value.grade !== state.grade) return null;
   if (value.subject !== undefined && value.subject !== state.subject) return null;
+
+  // Dedicated checkpoints and labs must belong to the selected curriculum.
+  if (!isViewAvailableForCurriculum(value.view as ViewMode, state.grade, state.subject)) return null;
 
   // Resolve against the selected grade and subject, never the global mission list.
   const subjectMissionIndexes = MISSIONS
