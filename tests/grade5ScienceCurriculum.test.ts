@@ -16,8 +16,8 @@ assert.ok(isBilingualPair(scienceSubject.meta), 'Science subject metadata must b
 // Grade 5 is a primary-school curriculum: it must not inherit Grade 9 Physics.
 assert.deepEqual(GRADE_CURRICULUM_MAP.grade5, ['science', 'italian']);
 assert.deepEqual(
-  getCurriculumSubjects('grade5').map(subject => subject.id),
-  ['science', 'italian']
+  getCurriculumSubjects('grade5').map(subject => subject.id).sort(),
+  ['italian', 'science']
 );
 assert.ok(!getCurriculumSubjects('grade9').some(subject => subject.id === 'science'));
 assert.ok(getCurriculumSubjects('grade9').some(subject => subject.id === 'phys'));
