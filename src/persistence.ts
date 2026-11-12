@@ -1,4 +1,4 @@
-import type { GameState, GradeId, SubjectId, ViewMode } from './types';
+import type { GameState, GradeId, QuizQuestion, SubjectId, ViewMode } from './types';
 import { MISSIONS, UNITS, ARCS } from './data/gameData';
 import { GRADE_SUBJECT_IDS } from './data/gradeData';
 
@@ -227,17 +227,38 @@ export interface SavedNavigation {
   view: ViewMode;
   currentMissionIndex: number;
   currentSceneIndex: number;
-  battleContext: { isDojo: boolean; customQuestions?: any[] } | null;
+  battleContext: { isDojo: boolean; customQuestions?: QuizQuestion[] } | null;
   grade: GradeId | null;
   subject: SubjectId;
   missionId: string | null;
 }
 
+const sanitizeBilingualText = (value: unknown, maxLength: number): value is string | [string, string] => {
+  if (typeof value === 'string') return value.trim().length > 0 && value.length <= maxLength;
+  return Array.isArray(value) && value.length === 2
+    && value.every(item => typeof item === 'string' && item.trim().length > 0 && item.length <= maxLength);
+};
+
+/** Restore only well-formed, bounded quiz questions from untrusted saved navigation. */
+export const sanitizeSavedBattleQuestions = (value: unknown): QuizQuestion[] | undefined => {
+  if (!Array.isArray(value) || value.length > 100) return undefined;
+  const questions: QuizQuestion[] = [];
+  for (const item of value) {
+    if (!isRecord(item)
+      || !sanitizeBilingualText(item.q, 1000)
+      || !sanitizeBilingualText(item.why, 2000)
+      || !Array.isArray(item.a)
+      || item.a.length < 2
+      || item.a.length > 8
+      || !item.a.every(answer => sanitizeBilingualText(answer, 500))) continue;
+    questions.push({ q: item.q, a: item.a, why: item.why });
+  }
+  return questions;
+};
+
 const safeBattleContext = (value: unknown): SavedNavigation['battleContext'] => {
   if (!isRecord(value) || typeof value.isDojo !== 'boolean') return null;
-  const questions = Array.isArray(value.customQuestions) && value.customQuestions.length <= 100
-    ? value.customQuestions
-    : undefined;
+  const questions = sanitizeSavedBattleQuestions(value.customQuestions);
   return { isDojo: value.isDojo, ...(questions ? { customQuestions: questions } : {}) };
 };
 
