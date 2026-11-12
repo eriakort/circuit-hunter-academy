@@ -112,6 +112,21 @@ test.describe('Race Arena multiplayer completion', () => {
     await installRaceTransport(page);
   });
 
+  test('relocalizes answer feedback immediately when the language changes', async ({ page }) => {
+    await enterRace(page);
+
+    const feedback = page.locator('.qbox .fb');
+    await page.locator('.qbox .opts button').first().click();
+    await expect(feedback).toBeVisible();
+    await expect(feedback).toContainText(/Speed bonus!|Missed!/);
+
+    await page.locator('#lIT').click();
+    await expect(feedback).toContainText(/Bonus velocità!|Sbagliato!/);
+
+    await page.locator('#lEN').click();
+    await expect(feedback).toContainText(/Speed bonus!|Missed!/);
+  });
+
   test('finalizes when an opponent disconnects and awards XP only once', async ({ page }) => {
     await enterRace(page);
     const correctAnswers = await finishRaceAndCountCorrectAnswers(page);
