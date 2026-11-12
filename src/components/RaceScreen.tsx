@@ -1,12 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../context/GameContext';
 import { RacePlayer, RaceProgress, QuizQuestion } from '../types';
-import { MISSIONS, ARCS } from '../data/gameData';
+import { MISSIONS } from '../data/gameData';
 import { L, rng, sshuffle, hueOf, raceAvatar, raceXP, safeId, U } from '../helpers';
 import { createClient } from '@supabase/supabase-js';
 
 const RACE_QTIME = 20000;
 const RACE_MAX = 8;
+
+const MAX_POINTS_PER_Q = 100;
+
+/* Everything received from other players is untrusted: coerce it to known shapes before storing or rendering. */
+const toNum = (v: unknown, max: number): number => {
+  const n = Number(v);
+  return Number.isFinite(n) ? Math.min(max, Math.max(0, Math.round(n))) : 0;
+};
+
+const cleanPlayer = (id: string, p: any): RacePlayer | null => {
+  if (!p || typeof p !== 'object') return null;
+  const name = String(p.name ?? '').slice(0, 20).trim();
+  if (!name) return null;
+  return { id, name, joinedAt: toNum(p.joinedAt, Number.MAX_SAFE_INTEGER), hue: toNum(p.hue, 359) };
+};
+
+const isRaceMission = (id: unknown): id is string =>
+  id === 'mix' || MISSIONS.some(m => m.id === id && Array.isArray(m.quiz) && m.quiz.length > 0);
+
+const hostIdOf = (players: Record<string, RacePlayer>): string | undefined =>
+  Object.values(players).sort((a, b) => a.joinedAt - b.joinedAt || (a.id < b.id ? -1 : 1))[0]?.id;
 
 const defaultSupabaseUrl = 'https://yhzefqoplunmseuwcwku.supabase.co';
 const defaultSupabaseKey =
@@ -14,9 +35,7 @@ const defaultSupabaseKey =
 
 export const RaceScreen: React.FC = () => {
   const { state, addXP, goToView } = useGame();
-  const { lang, name, subject } = state;
-  const curSub = subject || 'cs';
-  const subjectMissions = MISSIONS.filter(m => (ARCS[m.arc]?.subject || 'cs') === curSub);
+  const { lang, name } = state;
 
   // Race UI State
   const [raceState, setRaceState] = useState<'home' | 'lobby' | 'countdown' | 'running' | 'done'>('home');
@@ -46,9 +65,18 @@ export const RaceScreen: React.FC = () => {
   const channelRef = useRef<any>(null);
   const timerIntervalRef = useRef<any>(null);
   const raceIdRef = useRef<string>('');
+  // Channel handlers are registered once per room, so they read live values from refs instead of stale state.
+  const playersRef = useRef<Record<string, RacePlayer>>({});
+  const meRef = useRef<RacePlayer | null>(null);
+  const qCountRef = useRef(0);
+
+  const updatePlayers = (next: Record<string, RacePlayer>) => {
+    playersRef.current = next;
+    setPlayers(next);
+  };
 
   // Sorted players by join order
-  const playerList = Object.values(players).sort((a, b) => a.joinedAt - b.joinedAt);
+  const playerList = Object.values(players).sort((a, b) => a.joinedAt - b.joinedAt || (a.id < b.id ? -1 : 1));
   const hostPlayer = playerList[0];
   const isHost = me && hostPlayer && me.id === hostPlayer.id;
 
@@ -57,11 +85,10 @@ export const RaceScreen: React.FC = () => {
     const r = rng(seed);
     const pool =
       missionId === 'mix'
-        ? sshuffle(subjectMissions.flatMap(m => m.quiz), r).slice(0, 10)
-        : sshuffle(subjectMissions.find(m => m.id === missionId)?.quiz.slice() || [], r);
+        ? sshuffle(MISSIONS.flatMap(m => m.quiz), r).slice(0, 10)
+        : sshuffle(MISSIONS.find(m => m.id === missionId)?.quiz.slice() || [], r);
 
-    // Some Grade 5 Science questions have three choices rather than four.
-    return pool.map(q => ({ q, order: sshuffle(q.a.map((_, index) => index), r) }));
+    return pool.map(q => ({ q, order: sshuffle([0, 1, 2, 3], r) }));
   };
 
   const handleJoinOrCreate = async (roomCode: string, create: boolean) => {
@@ -82,6 +109,7 @@ export const RaceScreen: React.FC = () => {
     };
 
     setMe(myPlayer);
+    meRef.current = myPlayer;
     setCode(cleanCode);
 
     try {
@@ -93,10 +121,12 @@ export const RaceScreen: React.FC = () => {
       ch.on('presence', { event: 'sync' }, () => {
         const presenceState = ch.presenceState();
         const pMap: Record<string, RacePlayer> = { [myPlayer.id]: myPlayer };
-        Object.values(presenceState).forEach((arr: any) => {
-          if (arr && arr[0]) pMap[arr[0].id] = arr[0];
+        Object.entries(presenceState).forEach(([key, arr]: [string, any]) => {
+          if (key === myPlayer.id) return;
+          const clean = cleanPlayer(key, arr && arr[0]);
+          if (clean) pMap[key] = clean;
         });
-        setPlayers(pMap);
+        updatePlayers(pMap);
       });
 
       ch.on('broadcast', { event: 'start' }, ({ payload }) => {
@@ -107,8 +137,8 @@ export const RaceScreen: React.FC = () => {
         onProgressBroadcast(payload);
       });
 
-      ch.on('broadcast', { event: 'lobby' }, () => {
-        setRaceState('lobby');
+      ch.on('broadcast', { event: 'lobby' }, ({ payload }) => {
+        if (payload && payload.from === hostIdOf(playersRef.current)) setRaceState('lobby');
       });
 
       await new Promise<void>((resolve, reject) => {
@@ -133,30 +163,31 @@ export const RaceScreen: React.FC = () => {
       });
 
       channelRef.current = ch;
-      setPlayers({ [myPlayer.id]: myPlayer });
+      if (!playersRef.current[myPlayer.id]) updatePlayers({ [myPlayer.id]: myPlayer });
       setRaceState('lobby');
       setIsPending(false);
     } catch (e) {
       console.warn('Realtime error, using offline room fallback:', e);
-      setPlayers({ [myPlayer.id]: myPlayer });
+      updatePlayers({ [myPlayer.id]: myPlayer });
       setRaceState('lobby');
       setIsPending(false);
     }
   };
 
-  const onStartBroadcast = (payload: { missionId: string; seed: number; raceId: string; subject?: string }) => {
+  const onStartBroadcast = (payload: any) => {
+    if (!payload || typeof payload !== 'object') return;
     if (payload.subject && payload.subject !== curSub) {
       setErrorMsg(L(['This room is using a different subject. Choose the same grade and subject as the host.', 'Questa stanza usa una materia diversa. Scegli la stessa classe e materia dell’host.'], lang));
       setRaceState('lobby');
       return;
     }
-    const qs = buildRaceQuestions(payload.missionId, payload.seed);
-    if (qs.length === 0) {
-      setErrorMsg(L(['The selected race topic is not available for your subject.', 'L’argomento scelto per la gara non è disponibile per la tua materia.'], lang));
-      setRaceState('lobby');
-      return;
-    }
-    raceIdRef.current = payload.raceId;
+    const { from, missionId, seed, raceId } = payload;
+    if (from !== hostIdOf(playersRef.current)) return;
+    if (typeof raceId !== 'string' || !raceId || raceId.length > 64) return;
+    if (!isRaceMission(missionId) || !Number.isInteger(seed)) return;
+    raceIdRef.current = raceId;
+    const qs = buildRaceQuestions(missionId, seed);
+    qCountRef.current = qs.length;
     setQuestions(qs);
     setCurrentQIndex(0);
     setScore(0);
@@ -180,15 +211,26 @@ export const RaceScreen: React.FC = () => {
     }, 900);
   };
 
-  const onProgressBroadcast = (p: RaceProgress) => {
-    if (p.raceId !== raceIdRef.current) return;
-    setProgress(prev => ({ ...prev, [p.id]: p }));
+  const onProgressBroadcast = (p: any) => {
+    if (!p || typeof p !== 'object' || p.raceId !== raceIdRef.current) return;
+    if (typeof p.id !== 'string' || p.id === meRef.current?.id || !playersRef.current[p.id]) return;
+    const n = qCountRef.current;
+    const step = toNum(p.step, n);
+    const clean: RaceProgress = {
+      id: p.id,
+      step,
+      score: toNum(p.score, step * MAX_POINTS_PER_Q),
+      time: toNum(p.time, Number.MAX_SAFE_INTEGER),
+      raceId: raceIdRef.current,
+      done: step >= n && p.done === true
+    };
+    setProgress(prev => ({ ...prev, [clean.id]: clean }));
   };
 
   const handleHostStart = () => {
     const seed = Math.floor(Math.random() * 1000000);
     const rId = safeId();
-    const payload = { missionId: selectedMission, seed, raceId: rId, subject: curSub };
+    const payload = { from: me?.id, missionId: selectedMission, seed, raceId: rId, subject: curSub };
 
     if (channelRef.current) {
       try {
@@ -309,13 +351,14 @@ export const RaceScreen: React.FC = () => {
     }
     setRaceState('home');
     setMe(null);
-    setPlayers({});
+    meRef.current = null;
+    updatePlayers({});
   };
 
   const handleBackToLobby = () => {
     if (channelRef.current && isHost) {
       try {
-        channelRef.current.send({ type: 'broadcast', event: 'lobby', payload: {} });
+        channelRef.current.send({ type: 'broadcast', event: 'lobby', payload: { from: me?.id } });
       } catch (e) {}
     }
     setRaceState('lobby');
@@ -462,7 +505,7 @@ export const RaceScreen: React.FC = () => {
               style={{ marginBottom: '14px' }}
             >
               <option value="mix">{L(['Mixed review (10 questions)', 'Ripasso misto (10 domande)'], lang)}</option>
-              {subjectMissions.map(m => (
+              {MISSIONS.map(m => (
                 <option key={m.id} value={m.id}>
                   § {m.sec} · {L(m.title, lang)}
                 </option>
