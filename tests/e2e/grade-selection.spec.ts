@@ -12,6 +12,10 @@ test('new learner chooses a grade before seeing its subjects and the choice surv
   await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
   await expect(page.locator('.subjcard')).toHaveCount(2);
+  const quickLaunch = page.getByRole('navigation', { name: 'Quick subject launch' });
+  await expect(quickLaunch.getByRole('button', { name: /Italian/ })).toBeVisible();
+  await expect(quickLaunch.getByRole('button')).toHaveCount(1);
+  await expect(quickLaunch.getByRole('button', { name: /CS|Physics|Math/ })).toHaveCount(0);
   await expect(page.locator('#hMap')).not.toHaveAttribute('aria-current', 'page');
   await expect(page.locator('#hCodex')).not.toHaveAttribute('aria-current', 'page');
 
@@ -26,6 +30,10 @@ test('new learner chooses a grade before seeing its subjects and the choice surv
   await expect(page.locator('.subjcard[data-s="phys"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="cs"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
+  await expect(quickLaunch.getByRole('button')).toHaveCount(4);
+  await expect(quickLaunch.getByRole('button', { name: /CS/ })).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /Physics/ })).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /Math/ })).toBeVisible();
 
   await page.locator('.subjcard[data-s="math"]').click();
   await expect(page.locator('.subject-indicator')).toContainText('Mathematics');
