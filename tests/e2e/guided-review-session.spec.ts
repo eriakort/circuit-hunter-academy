@@ -78,3 +78,40 @@ test('guided review session labels its progress and actions in Italian', async (
   await expect(page.locator('.review-session-summary')).toContainText('Riepilogo del ripasso');
   await expect(page.locator('.review-session-summary')).toContainText('Punteggio medio della sessione');
 });
+
+
+test('guided revision questions, options and feedback update during a live language switch', async ({ page }) => {
+  await startCourse(page);
+  await seedDueConcept(page);
+
+  const review = page.locator('.spaced-review');
+  await review.getByRole('button', { name: 'Start review session (1)' }).click();
+
+  const revision = page.locator('.concept-revision');
+  await expect(revision.getByRole('heading', { name: 'Targeted concept revision' })).toBeVisible();
+  const question = revision.locator('.guided-question > strong');
+  const options = revision.locator('.guided-option');
+  const englishQuestion = await question.textContent();
+  const englishOptions = await options.allTextContents();
+  expect(englishQuestion).toBeTruthy();
+  expect(englishOptions.length).toBeGreaterThan(1);
+
+  await page.locator('#lIT').click();
+  await expect(revision.getByRole('heading', { name: 'Ripasso mirato' })).toBeVisible();
+  await expect(revision).toContainText('Concetto 1 / 1');
+  const italianQuestion = await question.textContent();
+  const italianOptions = await options.allTextContents();
+  expect(italianQuestion).not.toBe(englishQuestion);
+  expect(italianOptions).not.toEqual(englishOptions);
+
+  await options.first().click();
+  const italianFeedback = await revision.locator('.guided-feedback').textContent();
+  expect(italianFeedback).toBeTruthy();
+  await page.locator('#lEN').click();
+  await expect(revision.getByRole('heading', { name: 'Targeted concept revision' })).toBeVisible();
+  await expect(question).toHaveText(englishQuestion!);
+  await expect.poll(() => options.allTextContents()).toEqual(englishOptions);
+  await expect(revision.locator('.guided-feedback')).toContainText('Correct');
+  const englishFeedback = await revision.locator('.guided-feedback').textContent();
+  expect(englishFeedback).not.toBe(italianFeedback);
+});
