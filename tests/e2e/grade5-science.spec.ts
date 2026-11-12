@@ -25,6 +25,15 @@ test('Grade 5 learners can enter the dedicated bilingual Science curriculum', as
   await page.locator('.mcard').first().click();
   await expect(page.getByText(/Plants are living things/)).toBeVisible();
   await expect(page.getByText(/photosynthesis/)).toBeVisible();
+
+  // Language changes must update the teaching dialogue without leaving the mission.
+  await page.locator('#lIT').click();
+  await expect(page.getByText(/Le piante sono esseri viventi/)).toBeVisible();
+  await expect(page.getByText(/fotosintesi clorofilliana/)).toBeVisible();
+
+  await page.locator('#lEN').click();
+  await expect(page.getByText(/Plants are living things/)).toBeVisible();
+  await expect(page.getByText(/photosynthesis/)).toBeVisible();
 });
 
 test('Grade 5 battle answers update immediately when the language changes', async ({ page }) => {
