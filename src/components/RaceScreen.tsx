@@ -231,25 +231,17 @@ export const RaceScreen: React.FC = () => {
   };
 
   const onProgressBroadcast = (payload: unknown) => {
-    const clean = validateRaceProgress(
-      payload,
-      raceIdRef.current,
-      new Set(Object.keys(playersRef.current).filter(id => id !== meRef.current?.id)),
-      (payload && typeof payload === 'object' && 'id' in payload && typeof payload.id === 'string')
-        ? progress[payload.id]
-        : undefined,
-      qCountRef.current
-    );
-    if (!clean || clean.id === meRef.current?.id) return;
+    if (!payload || typeof payload !== 'object' || !('id' in payload) || typeof payload.id !== 'string') return;
+    if (payload.id === meRef.current?.id) return;
     setProgress(prev => {
-      const latest = validateRaceProgress(
+      const clean = validateRaceProgress(
         payload,
         raceIdRef.current,
         new Set(Object.keys(playersRef.current).filter(id => id !== meRef.current?.id)),
-        prev[clean.id],
+        prev[payload.id],
         qCountRef.current
       );
-      return latest ? { ...prev, [latest.id]: latest } : prev;
+      return clean ? { ...prev, [clean.id]: clean } : prev;
     });
   };
 
