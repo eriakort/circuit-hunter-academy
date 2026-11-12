@@ -53,7 +53,7 @@ export const sanitizeGameState = (value: unknown): GameState => {
   const validSeenIndexes = new Set(MISSIONS.map((_, index) => String(index)));
   const seen = isRecord(saved.seen)
     ? Object.fromEntries(Object.entries(saved.seen).filter(([key, entry]) =>
-        validSeenIndexes.has(key) && entry === true))
+        validSeenIndexes.has(key) && entry === true).map(([key]) => [key, true] as const)) as Record<number, boolean>
     : {};
 
   return {
@@ -64,11 +64,11 @@ export const sanitizeGameState = (value: unknown): GameState => {
     subject,
     unit: unitMatchesSubject ? requestedUnit : (firstUnit < 0 ? 0 : firstUnit),
     cleared: isRecord(saved.cleared)
-      ? Object.fromEntries(Object.entries(saved.cleared).filter(([key, entry]) => validMissionIds.has(key) && entry === true))
+      ? Object.fromEntries(Object.entries(saved.cleared).filter(([key, entry]) => validMissionIds.has(key) && entry === true).map(([key]) => [key, true] as const)) as Record<string, boolean>
       : {},
     seen,
     flawless: isRecord(saved.flawless)
-      ? Object.fromEntries(Object.entries(saved.flawless).filter(([key, entry]) => validMissionIds.has(key) && entry === true))
+      ? Object.fromEntries(Object.entries(saved.flawless).filter(([key, entry]) => validMissionIds.has(key) && entry === true).map(([key]) => [key, true] as const)) as Record<string, boolean>
       : {},
     learningProgress: validProgressMap(saved.learningProgress, validMissionIds),
     checkpointProgress: (isRecord(saved.checkpointProgress)
