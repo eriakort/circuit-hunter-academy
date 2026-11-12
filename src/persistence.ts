@@ -128,7 +128,7 @@ export const restoreSavedNavigation = (value: unknown, state: GameState): SavedN
     ? subjectMissionIndexes.find(({ mission }) => mission.id === missionId)
     : undefined;
   const legacyIndex = Number.isInteger(value.currentMissionIndex) ? value.currentMissionIndex as number : -1;
-  if (!resolved && legacyIndex >= 0 && legacyIndex < MISSIONS.length) {
+  if (!missionId && legacyIndex >= 0 && legacyIndex < MISSIONS.length) {
     resolved = subjectMissionIndexes.find(({ index }) => index === legacyIndex);
   }
   const missionView = value.view === 'scene' || value.view === 'battle';
