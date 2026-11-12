@@ -16839,9 +16839,8 @@ export const MISSIONS: Mission[] = [
                 "Un numero come 45 × 10³ non è scritto in notazione scientifica standard."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "The coefficient must be at least 1 and less than 10, so write this value as 4.5 × 10⁴.",
+                "Il coefficiente deve essere almeno 1 e minore di 10, quindi scrivi questo valore come 4,5 × 10⁴."
             }
           ],
           "knowledgePrompts": [
@@ -16896,9 +16895,8 @@ export const MISSIONS: Mission[] = [
                 "L'esponente non è il valore del numero."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "The exponent tells you how many times to multiply or divide the coefficient by 10.",
+                "L'esponente indica quante volte moltiplicare o dividere il coefficiente per 10."
             }
           ],
           "knowledgePrompts": [
@@ -17735,9 +17733,8 @@ export const MISSIONS: Mission[] = [
                 "Volume e area della superficie non sono la stessa grandezza."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "Surface area measures the outside in square units; volume measures the space inside in cubic units.",
+                "L'area della superficie misura l'esterno in unità quadrate; il volume misura lo spazio interno in unità cubiche."
             }
           ],
           "knowledgePrompts": [
@@ -17792,9 +17789,8 @@ export const MISSIONS: Mission[] = [
                 "La densità non è il volume diviso per la massa."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "Density is mass divided by volume: ρ = m ÷ V.",
+                "La densità è la massa divisa per il volume: ρ = m ÷ V."
             }
           ],
           "knowledgePrompts": [
@@ -18574,9 +18570,8 @@ export const MISSIONS: Mission[] = [
                 "Più cifre decimali non significano automaticamente maggiore accuratezza."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "Accuracy depends on the measuring instrument and method, not simply on the number of decimal places recorded.",
+                "L'accuratezza dipende dallo strumento e dal metodo di misura, non solo dal numero di cifre decimali registrate."
             }
           ],
           "knowledgePrompts": [
@@ -18631,9 +18626,8 @@ export const MISSIONS: Mission[] = [
                 "Ripetere una lettura non garantisce errore zero."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "Repeated measurements can reduce random uncertainty, but they do not remove systematic errors such as poor calibration.",
+                "Le misure ripetute possono ridurre l'incertezza casuale, ma non eliminano gli errori sistematici come una calibrazione errata."
             }
           ],
           "knowledgePrompts": [
@@ -19470,9 +19464,8 @@ export const MISSIONS: Mission[] = [
                 "Non scambiare gli assi senza verificare quale variabile dipende dall'altra."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "Place the independent variable on the horizontal axis and the dependent variable on the vertical axis, unless the investigation specifies otherwise.",
+                "Metti la variabile indipendente sull'asse orizzontale e quella dipendente sull'asse verticale, salvo diversa indicazione dell'indagine."
             }
           ],
           "knowledgePrompts": [
@@ -19527,9 +19520,8 @@ export const MISSIONS: Mission[] = [
                 "Una retta che non passa per l'origine non rappresenta proporzionalità diretta."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "Direct proportionality has a constant ratio and its graph is a straight line through the origin.",
+                "La proporzionalità diretta ha un rapporto costante e il suo grafico è una retta che passa per l'origine."
             }
           ],
           "knowledgePrompts": [
@@ -20328,9 +20320,8 @@ export const MISSIONS: Mission[] = [
                 "Un vettore non è definito dal solo modulo."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "A vector is defined by magnitude, direction and sense; its application point may also matter in a physical situation.",
+                "Un vettore è definito da modulo, direzione e verso; in una situazione fisica può essere importante anche il punto di applicazione."
             }
           ],
           "knowledgePrompts": [
@@ -20385,9 +20376,8 @@ export const MISSIONS: Mission[] = [
                 "Non sommare i moduli di versi opposti senza considerare la direzione."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "Choose a positive direction and use signed components; opposite vectors subtract and may cancel.",
+                "Scegli un verso positivo e usa componenti con segno: vettori opposti si sottraggono e possono annullarsi."
             }
           ],
           "knowledgePrompts": [
@@ -21228,9 +21218,8 @@ export const MISSIONS: Mission[] = [
                 "La forza non è la stessa cosa del moto."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "A force is an interaction that can change an object's motion; an object can keep moving without a net force.",
+                "Una forza è un'interazione che può cambiare il moto di un oggetto; un oggetto può continuare a muoversi senza una forza risultante."
             }
           ],
           "knowledgePrompts": [
@@ -21285,9 +21274,8 @@ export const MISSIONS: Mission[] = [
                 "La massa resta uguale se cambia il campo gravitazionale; il peso può cambiare."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "Mass measures the amount of matter and stays constant; weight is the gravitational force and depends on field strength.",
+                "La massa misura la quantità di materia e resta costante; il peso è la forza gravitazionale e dipende dall'intensità del campo."
             }
           ],
           "knowledgePrompts": [
@@ -22074,9 +22062,8 @@ export const MISSIONS: Mission[] = [
                 "Non scambiare seno e coseno senza controllare il riferimento dell'angolo."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "The component adjacent to the reference angle uses cosine; the opposite component uses sine.",
+                "La componente adiacente all'angolo di riferimento usa il coseno; quella opposta usa il seno."
             }
           ],
           "knowledgePrompts": [
@@ -22131,9 +22118,8 @@ export const MISSIONS: Mission[] = [
                 "Le componenti non sono generalmente uguali al modulo originale."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "Each component is a projection of the vector; combine perpendicular components with Pythagoras to recover the magnitude.",
+                "Ogni componente è una proiezione del vettore; combina le componenti perpendicolari con Pitagora per ritrovare il modulo."
             }
           ],
           "knowledgePrompts": [
@@ -22916,9 +22902,8 @@ export const MISSIONS: Mission[] = [
                 "Il momento non è solo la forza: conta anche il braccio."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "Moment equals force multiplied by the perpendicular distance from the pivot: M = F × d.",
+                "Il momento è la forza moltiplicata per la distanza perpendicolare dal fulcro: M = F × d."
             }
           ],
           "knowledgePrompts": [
@@ -22973,9 +22958,8 @@ export const MISSIONS: Mission[] = [
                 "Il fulcro è il punto attorno al quale ruota la leva."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "A lever balances clockwise and anticlockwise moments about the pivot; the forces themselves need not be equal.",
+                "Una leva equilibra i momenti orari e antiorari rispetto al fulcro; le forze non devono necessariamente essere uguali."
             }
           ],
           "knowledgePrompts": [
@@ -23816,9 +23800,8 @@ export const MISSIONS: Mission[] = [
                 "La stabilità dipende dal baricentro rispetto alla base d'appoggio."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "An object is more stable when the vertical line through its centre of gravity stays within its support base.",
+                "Un oggetto è più stabile quando la verticale passante per il baricentro resta all'interno della base d'appoggio."
             }
           ],
           "knowledgePrompts": [
@@ -23873,9 +23856,8 @@ export const MISSIONS: Mission[] = [
                 "L'equilibrio stabile descrive la risposta a una piccola perturbazione, non a qualsiasi forza."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "After a small displacement, a stable system tends to return to its original equilibrium position.",
+                "Dopo un piccolo spostamento, un sistema in equilibrio stabile tende a tornare alla posizione iniziale."
             }
           ],
           "knowledgePrompts": [
@@ -24691,9 +24673,8 @@ export const MISSIONS: Mission[] = [
                 "La pressione non è la stessa cosa della forza: conta l'area."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "Pressure is force per unit area, so the same force produces greater pressure on a smaller area.",
+                "La pressione è la forza per unità di superficie: la stessa forza produce una pressione maggiore su un'area più piccola."
             }
           ],
           "knowledgePrompts": [
@@ -24742,16 +24723,7 @@ export const MISSIONS: Mission[] = [
             ]
           },
           "misconceptions": [
-            {
-              "belief": [
-                null,
-                null
-              ],
-              "correction": [
-                null,
-                null
-              ]
-            }
+            
           ],
           "knowledgePrompts": [
             [
@@ -25554,9 +25526,8 @@ export const MISSIONS: Mission[] = [
                 "Il galleggiamento non è dovuto all'assenza di peso del corpo."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "Buoyancy is an upward force caused by the pressure difference in a fluid; it acts even when an object has weight.",
+                "La spinta di Archimede è una forza verso l'alto causata dalla differenza di pressione nel fluido e agisce anche su un corpo dotato di peso."
             }
           ],
           "knowledgePrompts": [
@@ -25611,9 +25582,8 @@ export const MISSIONS: Mission[] = [
                 "Un oggetto grande non affonda automaticamente: contano la forma e il volume spostato."
               ],
               "correction": [
-                null,
-                null
-              ]
+                "Floating depends on the object's average density and the weight of displaced fluid, not size alone.",
+                "Il galleggiamento dipende dalla densità media del corpo e dal peso del fluido spostato, non soltanto dalle dimensioni."
             }
           ],
           "knowledgePrompts": [
