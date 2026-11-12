@@ -2,13 +2,19 @@
 
 [![Play now](https://img.shields.io/badge/%E2%96%B6%20Play%20now-Circuit%20Hunter-ff6a3d?style=for-the-badge)](https://eriakort.github.io/circuit-hunter-academy/)
 
-An anime-style study game for grade 9 (Italian *prima*), rewritten as a modern **React 19 + TypeScript + Vite** application. The player is a student hunter at an original academy who turns each school topic into a "technique" to defeat Glitch Demons.
+An anime-inspired, bilingual learning game built with **React 19 + TypeScript + Vite**. Learners choose an available school grade first, then select a subject and train through lessons, interactive activities and quiz battles. The academy uses an original hunter-and-technique theme.
 
-On opening the game, players choose their subject (**Computer Science**, **Physics** or **Mathematics**). The entire game can be toggled between **English and Italian** at any time (EN / IT button), and every key term includes bilingual tag pills with pronunciations/translations. Hunter names and XP are shared across subjects, while progress and certificates of mastery are tracked per subject in browser `localStorage`.
+The current pathways include **Grade 5 (quinta primaria)** with general Science and **Grade 9** with Computer Science, Physics and Mathematics. Available subjects depend on the selected grade. The interface and learning content support **English and Italian**. Learner progress is saved in the browser; multiplayer race features use Supabase Realtime when configured, with an offline preview fallback.
 
 ---
 
-## Subjects
+## Grade 5 — Primary school
+
+### Science
+
+Grade 5 Science is a general primary-science pathway, rather than a physics-only course. Its learning scope includes age-appropriate science and technology topics.
+
+## Grade 9 — Lower-secondary / early high-school pathway
 
 ### Computer Science — 3 units · 16 chapters · 44 missions
 Follows the Italian textbook *L'informatica e il computer* chapter by chapter.
@@ -61,21 +67,31 @@ Each mission features a narrative lesson with animated diagrams, an interactive 
 
 ---
 
-## Development & Build
+## Development, tests & build
+
+The project uses Bun in its CI workflow. Install Bun and a supported Node.js runtime before working locally.
 
 ```bash
-# Install dependencies
-npm install
+# Install dependencies from the committed Bun lockfile
+bun install --frozen-lockfile
 
 # Start the Vite development server (port 3000)
-npm run dev
+bun run dev
 
-# Type-check and production build
-npm run build
+# Type-check and create the production build
+bun run build
 
-# Run unit tests
-npx tsx tests/helpers.test.js
+# Run the complete unit-test suite
+bun run test:unit
+
+# Install Chromium for the browser tests (first run)
+bunx playwright install --with-deps chromium
+
+# Run the Playwright end-to-end suite
+bun run test:e2e
 ```
+
+`bun run test:unit` runs the TypeScript unit tests under `tests/` and the formula-data tests. `bun run test:e2e` runs the Playwright browser suite. The CI workflow runs the production build, helper regressions, the complete unit suite and browser tests.
 
 ### Deploy
 
