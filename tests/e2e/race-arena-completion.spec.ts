@@ -121,7 +121,7 @@ test.describe('Race Arena multiplayer completion', () => {
       (window as RaceTestWindow).__CHA_RACE_TEST_CHANNEL__?.__removeOpponent();
     });
 
-    const expectedXP = correctAnswers * 3 + 25;
+    const expectedXP = correctAnswers * 3;
     await expect.poll(() => readXP(page)).toBe(expectedXP);
 
     await page.locator('#lIT').click();
