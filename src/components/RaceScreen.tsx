@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../context/GameContext';
 import { RacePlayer, RaceProgress, QuizQuestion } from '../types';
 import { MISSIONS, ARCS } from '../data/gameData';
-import { L, rng, sshuffle, hueOf, raceAvatar, raceXP, safeId, U } from '../helpers';
+import { L, rng, sshuffle, hueOf, raceAvatar, safeId, U } from '../helpers';
 import { createClient } from '@supabase/supabase-js';
+import { calculateRaceCompletionXP, haveRaceOpponentsFinished, shouldFinalizeRace } from '../raceCompletion';
 
 const RACE_QTIME = 20000;
 const RACE_MAX = 8;
+const RACE_COMPLETION_GRACE_MS = 15000;
 
 const MAX_POINTS_PER_Q = 100;
 const toNum = (value: unknown, max: number): number => {
@@ -68,6 +70,8 @@ export const RaceScreen: React.FC = () => {
   const updatePlayers = (next: Record<string, RacePlayer>) => { playersRef.current = next; setPlayers(next); };
   const awardedRef = useRef(false);
   const [lastXP, setLastXP] = useState(0);
+  const [completionTimedOut, setCompletionTimedOut] = useState(false);
+  const completionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Sorted players by join order
   const playerList = Object.values(players).sort((a, b) => a.joinedAt - b.joinedAt || (a.id < b.id ? -1 : 1));
@@ -194,6 +198,9 @@ export const RaceScreen: React.FC = () => {
     setCorrectCount(0);
     setProgress({});
     awardedRef.current = false;
+    setCompletionTimedOut(false);
+    if (completionTimeoutRef.current) clearTimeout(completionTimeoutRef.current);
+    completionTimeoutRef.current = null;
     setLastXP(0);
 
     // Start countdown
@@ -352,6 +359,8 @@ export const RaceScreen: React.FC = () => {
 
   const handleLeave = () => {
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+    if (completionTimeoutRef.current) clearTimeout(completionTimeoutRef.current);
+    completionTimeoutRef.current = null;
     if (channelRef.current) {
       try {
         channelRef.current.unsubscribe();
@@ -372,21 +381,59 @@ export const RaceScreen: React.FC = () => {
     setRaceState('lobby');
   };
 
-  // Award XP once every racer has finished, so the winner bonus goes only to the actual winner.
+  const opponentsFinished = me
+    ? haveRaceOpponentsFinished(playerList.map(player => player.id), me.id, progress)
+    : false;
+
+  // A connected player can abandon a race without leaving presence. Release the podium
+  // after a grace period; incomplete opponents never qualify anyone for the winner bonus.
   useEffect(() => {
-    if (raceState !== 'done' || awardedRef.current || !me) return;
-    const others = playerList.filter(p => p.id !== me.id);
-    if (!others.every(p => progress[p.id]?.done)) return;
+    if (raceState !== 'done') {
+      if (completionTimeoutRef.current) clearTimeout(completionTimeoutRef.current);
+      completionTimeoutRef.current = null;
+      setCompletionTimedOut(false);
+      return;
+    }
+    if (opponentsFinished) {
+      if (completionTimeoutRef.current) clearTimeout(completionTimeoutRef.current);
+      completionTimeoutRef.current = null;
+      return;
+    }
+    if (!completionTimeoutRef.current) {
+      completionTimeoutRef.current = setTimeout(() => {
+        completionTimeoutRef.current = null;
+        setCompletionTimedOut(true);
+      }, RACE_COMPLETION_GRACE_MS);
+    }
+  }, [raceState, opponentsFinished]);
+
+  useEffect(() => () => {
+    if (completionTimeoutRef.current) clearTimeout(completionTimeoutRef.current);
+  }, []);
+
+  // Award exactly once when all opponents finish, leave, or the grace period expires.
+  useEffect(() => {
+    if (
+      raceState !== 'done' ||
+      awardedRef.current ||
+      !me ||
+      !shouldFinalizeRace(opponentsFinished, completionTimedOut)
+    ) return;
     awardedRef.current = true;
     const top = [...playerList].sort(
       (a, b) =>
         (b.id === me.id ? score : progress[b.id]?.score || 0) -
         (a.id === me.id ? score : progress[a.id]?.score || 0)
     )[0];
-    const xp = raceXP(correctCount, top?.id === me.id, playerList.length);
+    const xp = calculateRaceCompletionXP(
+      correctCount,
+      top?.id === me.id,
+      playerList.length,
+      opponentsFinished
+    );
     setLastXP(xp);
     addXP(xp);
-  }, [raceState, progress, players, me, score, correctCount]);
+  }, [raceState, progress, players, me, score, correctCount, opponentsFinished, completionTimedOut]);
 
   // 1. Home View: Join / Create Room
   if (raceState === 'home') {
@@ -663,6 +710,14 @@ export const RaceScreen: React.FC = () => {
     <div className="card result">
       <div className="eyebrow">{L(['Race Complete!', 'Gara Conclusa!'], lang)}</div>
       <h2>{L(['Podium', 'Podio'], lang)}</h2>
+      {completionTimedOut && (
+        <p className="muted" role="status">
+          {L(
+            ['Some players did not finish in time. The winner bonus was not awarded.', 'Alcuni giocatori non hanno terminato in tempo. Il bonus vittoria non è stato assegnato.'],
+            lang
+          )}
+        </p>
+      )}
 
       <div className="podium" style={{ margin: '24px 0' }}>
         {top3.map((p, idx) => {
