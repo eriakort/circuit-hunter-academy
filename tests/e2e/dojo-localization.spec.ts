@@ -24,6 +24,8 @@ test('dojo battle feedback and technique callout update during a live language s
     window.localStorage.setItem(key, JSON.stringify(state));
     // Make answer shuffling deterministic: the correct answer (source index 0)
     // is placed last, allowing the test to select it without test-only UI hooks.
+  });
+  await page.addInitScript(() => {
     Math.random = () => 0;
   });
   await page.reload();
