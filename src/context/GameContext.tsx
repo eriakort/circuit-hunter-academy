@@ -3,6 +3,7 @@ import { GameState, GradeId, Language, SubjectId, ViewMode, Mission, LearningMis
 import { MISSIONS, UNITS, ARCS, RANKS } from '../data/gameData';
 import { rankOf } from '../helpers';
 import { GRADE_SUBJECT_IDS } from '../data/gradeData';
+import { isMissionOpen } from '../missionAccess';
 import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, createFreshProgressState, isValidCheckpointResult, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
 
 
@@ -232,7 +233,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const openMission = (index: number) => {
     const mission = MISSIONS[index];
-    if (!mission || (ARCS[mission.arc]?.subject || 'cs') !== state.subject) return;
+    if (!mission || (ARCS[mission.arc]?.subject || 'cs') !== state.subject || !isMissionOpen(index, MISSIONS, state.cleared)) return;
     setCurrentMissionIndex(index);
     setCurrentSceneIndex(0);
     markSeen(index);
@@ -285,11 +286,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const isOpen = (i: number): boolean => {
-    const m = MISSIONS[i];
-    const prev = MISSIONS[i - 1];
-    return !prev || prev.arc !== m.arc || !!state.cleared[prev.id];
-  };
+  const isOpen = (i: number): boolean => isMissionOpen(i, MISSIONS, state.cleared);
 
   const curSub = () => state.subject || 'cs';
   const myMissions = () => MISSIONS.filter(m => (ARCS[m.arc]?.subject || 'cs') === curSub());
