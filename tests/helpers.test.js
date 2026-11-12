@@ -10,7 +10,7 @@ import { calculateLearningStreak } from '../src/learningStreak';
 const hostileAvatar = raceAvatar('<img src=x onerror=alert(1)>', Number('20\"/><script>alert(1)</script>'), 'avatar\" onload=\"alert(1)');
 assert.ok(!hostileAvatar.includes('<img'));
 assert.ok(!hostileAvatar.includes('<script>'));
-assert.ok(hostileAvatar.includes('&lt;img'));
+assert.ok(hostileAvatar.includes('>&lt;</text>'));
 assert.ok(hostileAvatar.includes('class="avatar&quot; onload=&quot;alert(1)"'));
 assert.ok(hostileAvatar.includes('hsl(0 55% 22%)'));
 const normalAvatar = raceAvatar('Hana', 210);
