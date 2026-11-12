@@ -3,7 +3,7 @@ import { GameState, GradeId, Language, SubjectId, ViewMode, Mission, LearningMis
 import { MISSIONS, UNITS, ARCS, RANKS } from '../data/gameData';
 import { rankOf } from '../helpers';
 import { GRADE_SUBJECT_IDS } from '../data/gradeData';
-import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
+import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, createFreshProgressState, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
 
 
 
@@ -269,20 +269,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const resetProgress = () => {
-    const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === state.subject);
-    const fresh: GameState = {
-      grade: state.grade,
-      name: '',
-      lang: state.lang,
-      xp: 0,
-      subject: state.subject,
-      unit: firstUnit < 0 ? 0 : firstUnit,
-      cleared: {},
-      seen: {},
-      flawless: {},
-      learningProgress: {},
-      v: SAVE_SCHEMA
-    };
+    const fresh = createFreshProgressState(state);
     setState(fresh);
     const firstMission = MISSIONS.findIndex(m => (ARCS[m.arc]?.subject || 'cs') === state.subject);
     setCurrentMissionIndex(firstMission < 0 ? 0 : firstMission);
