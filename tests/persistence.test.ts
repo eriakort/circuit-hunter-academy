@@ -101,7 +101,7 @@ const scienceNavigation = restoreSavedNavigation({
 assert.equal(scienceNavigation?.missionId, scienceMission!.id);
 assert.equal(scienceNavigation?.view, 'scene');
 
-const corrupt = sanitizeGameState(null);
+const corrupt = sanitizeGameState({ grade: 'unknown', subject: 'invalid', unit: -1, xp: Number.NaN });
 assert.equal(corrupt.grade, null);
 assert.equal(corrupt.subject, 'cs');
 assert.equal(corrupt.xp, 0);
