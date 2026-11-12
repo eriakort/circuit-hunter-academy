@@ -24,11 +24,116 @@ const isSubject = (value: unknown): value is SubjectId =>
 const firstUnitForSubject = (subject: SubjectId): number =>
   UNITS.findIndex(unit => (unit.subject || 'cs') === subject);
 
-const validProgressMap = (value: unknown, validIds: Set<string>): Record<string, any> => {
+const isFiniteNonNegative = (value: unknown): value is number =>
+  typeof value === 'number' && Number.isFinite(value) && value >= 0;
+
+const sanitizeLearningMissionProgress = (value: unknown, mission: typeof MISSIONS[number]) => {
+  if (!isRecord(value) || !mission.learning) return null;
+  const progress: Record<string, unknown> = {};
+  const concepts = new Set(mission.learning.concepts.map(concept => concept.id));
+  const assessmentQuestions = mission.learning.masteryAssessment?.questions || [];
+
+  for (const key of ['guidedPracticeComplete', 'independentPracticeComplete', 'mastered', 'techniqueUnlocked'] as const) {
+    if (typeof value[key] === 'boolean') progress[key] = value[key];
+  }
+  for (const key of ['knowledgeCheckScore', 'masteryScore'] as const) {
+    if (Number.isInteger(value[key]) && (value[key] as number) >= 0 && (value[key] as number) <= 100) {
+      progress[key] = value[key];
+    }
+  }
+  for (const key of ['masteryAttempts'] as const) {
+    if (Number.isInteger(value[key]) && (value[key] as number) >= 0 && (value[key] as number) <= 100000) {
+      progress[key] = value[key];
+    }
+  }
+  if (isFiniteNonNegative(value.lastAttemptAt)) progress.lastAttemptAt = value.lastAttemptAt;
+
+  const sanitizeConceptCounts = (candidate: unknown) => {
+    if (!isRecord(candidate)) return {};
+    return Object.fromEntries(Object.entries(candidate).flatMap(([id, item]) => {
+      if (!concepts.has(id) || !isRecord(item)) return [];
+      const { correct, attempted } = item;
+      if (!Number.isInteger(correct) || !Number.isInteger(attempted)
+        || (correct as number) < 0 || (attempted as number) < 0
+        || (correct as number) > (attempted as number) || (attempted as number) > 100000) return [];
+      return [[id, { correct, attempted }]];
+    }));
+  };
+
+  const conceptPerformance = sanitizeConceptCounts(value.masteryConceptPerformance);
+  if (Object.keys(conceptPerformance).length) progress.masteryConceptPerformance = conceptPerformance;
+
+  if (Array.isArray(value.masteryLastAttemptWeakConcepts)) {
+    progress.masteryLastAttemptWeakConcepts = [...new Set(value.masteryLastAttemptWeakConcepts.filter(
+      (id): id is string => typeof id === 'string' && concepts.has(id)
+    ))].slice(0, concepts.size);
+  }
+
+  const sanitizeAttempts = (candidate: unknown, includeAnswers: boolean) => {
+    if (!Array.isArray(candidate)) return undefined;
+    return candidate.slice(-20).flatMap(item => {
+      if (!isRecord(item) || !Number.isInteger(item.score) || (item.score as number) < 0
+        || (item.score as number) > 100 || !isFiniteNonNegative(item.attemptedAt)
+        || !Number.isInteger(item.attempt) || (item.attempt as number) < 1
+        || (item.attempt as number) > 100000) return [];
+      const base = { score: item.score as number, attemptedAt: item.attemptedAt, attempt: item.attempt as number };
+      if (!includeAnswers) return [base];
+      if (!Array.isArray(item.answers) || item.answers.length !== assessmentQuestions.length
+        || item.answers.some((answer, index) => !Number.isInteger(answer) || (answer as number) < 0
+          || (answer as number) >= assessmentQuestions[index].a.length)) return [];
+      return [{ ...base, answers: [...item.answers] as number[] }];
+    });
+  };
+  const history = sanitizeAttempts(value.masteryAttemptHistory, false);
+  if (history?.length) progress.masteryAttemptHistory = history;
+  const reviews = sanitizeAttempts(value.masteryAttemptReviews, true);
+  if (reviews?.length) progress.masteryAttemptReviews = reviews;
+
+  if (isRecord(value.conceptReviewSchedule)) {
+    const schedule = Object.fromEntries(Object.entries(value.conceptReviewSchedule).flatMap(([id, item]) => {
+      if (!concepts.has(id) || !isRecord(item)) return [];
+      const { dueAt, lastReviewedAt, intervalDays, repetitions, lastScore } = item;
+      if (!isFiniteNonNegative(dueAt) || !isFiniteNonNegative(lastReviewedAt)
+        || typeof intervalDays !== 'number' || !Number.isFinite(intervalDays) || intervalDays < 0 || intervalDays > 3650
+        || !Number.isInteger(repetitions) || (repetitions as number) < 0 || (repetitions as number) > 100000
+        || !Number.isInteger(lastScore) || (lastScore as number) < 0 || (lastScore as number) > 100) return [];
+      return [[id, { dueAt, lastReviewedAt, intervalDays, repetitions, lastScore }]];
+    }));
+    if (Object.keys(schedule).length) progress.conceptReviewSchedule = schedule;
+  }
+
+  if (isRecord(value.conceptRevisionPerformance)) {
+    const revisions = Object.fromEntries(Object.entries(value.conceptRevisionPerformance).flatMap(([id, item]) => {
+      if (!concepts.has(id) || !isRecord(item)) return [];
+      const { correct, attempted, sessions, lastReviewedAt, baselineMasteryPercent, postRevisionMasteryPercent, postRevisionAt } = item;
+      if (!Number.isInteger(correct) || (correct as number) < 0 || !Number.isInteger(attempted)
+        || (attempted as number) < 0 || (correct as number) > (attempted as number)
+        || !Number.isInteger(sessions) || (sessions as number) < 0 || (sessions as number) > 100000
+        || !isFiniteNonNegative(lastReviewedAt)) return [];
+      if (baselineMasteryPercent !== undefined && (!Number.isInteger(baselineMasteryPercent) || (baselineMasteryPercent as number) < 0 || (baselineMasteryPercent as number) > 100)) return [];
+      if (postRevisionMasteryPercent !== undefined && (!Number.isInteger(postRevisionMasteryPercent) || (postRevisionMasteryPercent as number) < 0 || (postRevisionMasteryPercent as number) > 100)) return [];
+      if (postRevisionAt !== undefined && !isFiniteNonNegative(postRevisionAt)) return [];
+      return [[id, { correct, attempted, sessions, lastReviewedAt,
+        ...(baselineMasteryPercent !== undefined ? { baselineMasteryPercent } : {}),
+        ...(postRevisionMasteryPercent !== undefined ? { postRevisionMasteryPercent } : {}),
+        ...(postRevisionAt !== undefined ? { postRevisionAt } : {})
+      }]];
+    }));
+    if (Object.keys(revisions).length) progress.conceptRevisionPerformance = revisions;
+  }
+
+  return progress;
+};
+
+const sanitizeLearningProgress = (value: unknown): Record<string, any> => {
   if (!isRecord(value)) return {};
-  return Object.fromEntries(
-    Object.entries(value).filter(([key, entry]) => validIds.has(key) && isRecord(entry))
-  );
+  const missionById = new Map(MISSIONS.map(mission => [mission.id, mission]));
+  return Object.fromEntries(Object.entries(value).flatMap(([id, entry]) => {
+    const mission = missionById.get(id);
+    if (!mission?.learning) return [];
+    const sanitized = sanitizeLearningMissionProgress(entry, mission);
+    return sanitized ? [[id, sanitized]] : [];
+  }));
 };
 
 const VALID_CHECKPOINT_IDS = new Set([
@@ -107,7 +212,7 @@ export const sanitizeGameState = (value: unknown): GameState => {
     flawless: isRecord(saved.flawless)
       ? Object.fromEntries(Object.entries(saved.flawless).filter(([key, entry]) => validMissionIds.has(key) && entry === true).map(([key]) => [key, true] as const)) as Record<string, boolean>
       : {},
-    learningProgress: validProgressMap(saved.learningProgress, validMissionIds),
+    learningProgress: sanitizeLearningProgress(saved.learningProgress),
     checkpointProgress: sanitizeCheckpointProgress(saved.checkpointProgress),
     v: SAVE_SCHEMA
   };
