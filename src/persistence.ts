@@ -71,9 +71,11 @@ export const sanitizeGameState = (value: unknown): GameState => {
       ? Object.fromEntries(Object.entries(saved.flawless).filter(([key, entry]) => validMissionIds.has(key) && entry === true))
       : {},
     learningProgress: validProgressMap(saved.learningProgress, validMissionIds),
-    checkpointProgress: isRecord(saved.checkpointProgress)
-      ? Object.fromEntries(Object.entries(saved.checkpointProgress).filter(([, entry]) => isRecord(entry)))
-      : {},
+    checkpointProgress: (isRecord(saved.checkpointProgress)
+      ? Object.fromEntries(Object.entries(saved.checkpointProgress).filter(([, entry]) =>
+          isRecord(entry) && Number.isInteger(entry.attempts) && Number.isFinite(entry.bestScore)
+          && Number.isFinite(entry.lastScore) && typeof entry.completed === 'boolean'))
+      : {}) as GameState['checkpointProgress'],
     v: SAVE_SCHEMA
   };
 };
