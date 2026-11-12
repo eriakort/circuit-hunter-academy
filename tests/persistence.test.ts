@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { MISSIONS, ARCS, UNITS } from '../src/data/gameData';
-import { restoreSavedNavigation, sanitizeGameState, SAVE_SCHEMA } from '../src/persistence';
+import { createFreshProgressState, restoreSavedNavigation, sanitizeGameState, SAVE_SCHEMA } from '../src/persistence';
 import type { GameState } from '../src/types';
 
 const validMission = MISSIONS.find(mission => (ARCS[mission.arc]?.subject || 'cs') === 'cs');
@@ -132,3 +132,20 @@ assert.equal(corrupt.subject, 'cs');
 assert.equal(corrupt.xp, 0);
 
 console.log('persistence.test.ts ok');
+
+
+const resetSource = sanitizeGameState({
+  grade: 'grade5', subject: 'science', lang: 'it', name: 'Learner', xp: 250,
+  cleared: { 'g5-science-intro': true },
+  checkpointProgress: {
+    'science-review': { attempts: 3, bestScore: 90, lastScore: 90, completed: true, completedAt: 123 }
+  }
+});
+const resetState = createFreshProgressState(resetSource);
+assert.equal(resetState.grade, 'grade5', 'reset preserves the selected grade');
+assert.equal(resetState.subject, 'science', 'reset preserves the selected subject');
+assert.equal(resetState.lang, 'it', 'reset preserves the selected language');
+assert.equal(resetState.xp, 0, 'reset clears XP');
+assert.deepEqual(resetState.cleared, {}, 'reset clears mission completions');
+assert.deepEqual(resetState.learningProgress, {}, 'reset clears learning progress');
+assert.deepEqual(resetState.checkpointProgress, {}, 'reset clears checkpoint completions and attempts');
