@@ -688,7 +688,7 @@ export const RaceScreen: React.FC = () => {
 
             {feedback && (
               <div
-                className={`fb ${feedback.ok ? 'ok' : 'no'}`}
+                className={`fb ${feedback.kind === 'speed' ? 'ok' : 'no'}`}
                 style={{ marginTop: '14px', fontWeight: 'bold' }}
               >
                 {feedback.kind === 'speed'
