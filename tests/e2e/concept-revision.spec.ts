@@ -68,7 +68,39 @@ test('targeted revision content follows the selected language', async ({ page })
   await seedWeakConcept(page);
   await page.locator('#lIT').click();
 
-  await page.getByRole('button', { name: 'Review concept: L\'architettura di von Neumann' }).click();
+  await page.getByRole('button', { name: 'Review concept: L\\'architettura di von Neumann' }).click();
   await expect(page.getByRole('heading', { name: 'Ripasso mirato' })).toBeVisible();
   await expect(page.getByText('VERIFICA DI RICHIAMO')).toBeVisible();
+});
+
+test('targeted revision study material updates during a live language switch', async ({ page }) => {
+  await startCourse(page);
+  await seedWeakConcept(page);
+
+  await page.getByRole('button', { name: 'Review concept: The von Neumann architecture' }).click();
+  const revision = page.locator('.concept-revision');
+  const explanation = revision.locator('.concept-revision-study article > p').first();
+  const workedScenario = revision.locator('.learning-scenario');
+  const misconception = revision.locator('.learning-misconception p');
+
+  await expect(explanation).toContainText('instructions and data share main memory');
+  await expect(workedScenario).toContainText('A computer opens a calculator app');
+  await expect(misconception).toContainText('The CPU permanently stores every program and file');
+  const englishExplanation = await explanation.textContent();
+  const englishScenario = await workedScenario.textContent();
+  const englishMisconception = await misconception.textContent();
+
+  await page.locator('#lIT').click();
+  await expect(revision.getByRole('heading', { name: 'Ripasso mirato' })).toBeVisible();
+  await expect(explanation).toContainText('istruzioni e dati condividono la memoria centrale');
+  await expect(workedScenario).toContainText('Un computer apre una calcolatrice');
+  await expect(misconception).toContainText('La CPU memorizza permanentemente ogni programma e file');
+  expect(await explanation.textContent()).not.toBe(englishExplanation);
+  expect(await workedScenario.textContent()).not.toBe(englishScenario);
+  expect(await misconception.textContent()).not.toBe(englishMisconception);
+
+  await page.locator('#lEN').click();
+  await expect(explanation).toHaveText(englishExplanation!);
+  await expect(workedScenario).toHaveText(englishScenario!);
+  await expect(misconception).toHaveText(englishMisconception!);
 });
