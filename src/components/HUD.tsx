@@ -36,20 +36,21 @@ export const HUD: React.FC = () => {
       </button>
 
       {grade && view !== 'grades' && view !== 'subjects' && grade && subject && (
-        <div
+        <button
+          type="button"
+          id="subject-switcher"
           className="subject-indicator"
           data-s={subject}
-          style={{ cursor: 'pointer' }}
           title={L(['Click to switch subject', 'Clicca per cambiare materia'], lang)}
           onClick={() => goToView('subjects')}
-          aria-label={`${L(['Current subject', 'Materia attiva'], lang)}: ${L(activeSubject.name, lang)}`}
+          aria-label={`${L(['Current subject', 'Materia attiva'], lang)}: ${L(activeSubject.name, lang)}. ${L(['Switch subject', 'Cambia materia'], lang)}`}
         >
           <span className="subject-indicator-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: activeSubject.art }} />
           <span className="subject-indicator-copy">
             <small>{L(grade === 'grade5' ? ['GRADE 5 · CURRENT SUBJECT', 'QUINTA PRIMARIA · MATERIA'] : ['GRADE 9 · CURRENT SUBJECT', 'CLASSE 3ª MEDIA · MATERIA'], lang)}</small>
             <strong>{L(activeSubject.name, lang)} ▾</strong>
           </span>
-        </div>
+        </button>
       )}
 
       <div className="hud-r">
