@@ -129,14 +129,17 @@ export const restoreSavedNavigation = (value: unknown, state: GameState): SavedN
   if (!resolved && legacyIndex >= 0 && legacyIndex < MISSIONS.length) {
     resolved = subjectMissionIndexes.find(({ index }) => index === legacyIndex);
   }
+  const missionView = value.view === 'scene' || value.view === 'battle';
+  const missionRestoreFailed = missionView && !resolved;
   if (!resolved) resolved = subjectMissionIndexes[0];
 
   const index = resolved?.index ?? 0;
   const sceneCount = resolved?.mission.scenes.length ?? 1;
   const requestedScene = Number.isInteger(value.currentSceneIndex) ? value.currentSceneIndex as number : 0;
   const requestedView = value.view as ViewMode;
-  const missionView = requestedView === 'scene' || requestedView === 'battle';
-  const view = missionView && !resolved ? 'map' : requestedView;
+  const view = missionRestoreFailed || (requestedView === 'battle' && !safeBattleContext(value.battleContext))
+    ? 'map'
+    : requestedView;
 
   return {
     view,
