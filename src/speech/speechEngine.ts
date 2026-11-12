@@ -155,8 +155,8 @@ export function listenItalian(options: {
   }
 
   const SpeechRec = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-  const silenceMs = Math.max(250, options.silenceMs ?? 2000);
-  const maxMs = Math.max(silenceMs, options.maxMs ?? 20000);
+  const silenceMs = Math.max(1, options.silenceMs ?? 2000);
+  const maxMs = Math.max(1, options.maxMs ?? 20000);
 
   let recognition: any = null;
   let finalTranscript = '';
