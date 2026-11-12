@@ -308,6 +308,7 @@ export const ItalianCheckpointScreen: React.FC = () => {
   const [pronunciationResult, setPronunciationResult] = useState<PronunciationScore | null>(null);
   const [speechStopFn, setSpeechStopFn] = useState<(() => void) | null>(null);
   const modelKeyRef = useRef<string | null>(null);
+  const savedResultRef = useRef(false);
 
   const stage = stages[currentStageIdx];
   const question = stage.questions[currentQIdx];
@@ -400,7 +401,16 @@ export const ItalianCheckpointScreen: React.FC = () => {
     }
   };
 
+  const finishCheckpoint = () => {
+    if (savedResultRef.current) return;
+    savedResultRef.current = true;
+    const passed = score >= PASS_SCORE;
+    saveCheckpointResult(CHECKPOINT_ID, score, TOTAL_QUESTIONS, passed, passed ? 250 : 80);
+    setFinished(true);
+  };
+
   const handleNext = () => {
+    if (savedResultRef.current) return;
     setSelectedOption(null);
     setFeedback(null);
     setIsCorrect(null);
@@ -413,10 +423,8 @@ export const ItalianCheckpointScreen: React.FC = () => {
       setCurrentStageIdx(s => s + 1);
       setCurrentQIdx(0);
     } else {
-      // Completed all questions!
-      const passed = score >= PASS_SCORE;
-      saveCheckpointResult(CHECKPOINT_ID, score, TOTAL_QUESTIONS, passed, passed ? 250 : 80);
-      setFinished(true);
+      // Completed all questions; persist the result at most once per attempt.
+      finishCheckpoint();
     }
   };
 
@@ -429,6 +437,7 @@ export const ItalianCheckpointScreen: React.FC = () => {
     setFeedback(null);
     setIsCorrect(null);
     setFinished(false);
+    savedResultRef.current = false;
     setSpokenAttempt('');
     setPronunciationResult(null);
   };
