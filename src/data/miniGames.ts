@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Language, Mission, Scene } from "../types";
-import { L as origL, PILL as origPILL, rich as origRich, cards as origCards, ICON, C, esc, demonSVG, U } from "../helpers";
+import { L as origL, PILL as origPILL, rich as origRich, cards as origCards, ICON, C, esc, escH, demonSVG, U, hl } from "../helpers";
 import { VIS } from "./visuals";
 import { JN, BOARD, ROBOT_LEVELS, BUILD, FN, SF } from "./gameData";
 
@@ -8,6 +8,7 @@ let LANG: Language = "en";
 let CURRENT_MISSION: Mission;
 let IN_FIRST_TIME = false;
 let ON_AWARD = (xp: number) => {};
+const S = { name: "" };
 const REDUCED = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const $ = (s: string, el: any = document) => el.querySelector(s);
@@ -24,11 +25,11 @@ const inMissionFirstTime = () => IN_FIRST_TIME;
 const award = (n: number) => ON_AWARD(n);
 
 function initPowercut(done){
-  let st=0; const b=$('#cut');
+  let st=0; const b=$('#cut'); const files0=$('#ramFiles').innerHTML, label0=b.textContent;
   b.onclick=()=>{
     if(st===0){ $('#ramFiles').classList.add('gone'); $('#pwr').textContent=L(['POWER OFF','SPENTO']); $('#pwr').classList.add('off'); b.textContent=L(['Turn the power back on','Riaccendi']); st=1; }
     else if(st===1){ $('#ramFiles').classList.remove('gone'); $('#ramFiles').innerHTML=`<span class="file" style="opacity:.7">${L(['(empty: the unsaved draft is gone)','(vuota: la bozza non salvata è sparita)'])}</span>`; $('#pwr').textContent=L(['POWER ON','ACCESO']); $('#pwr').classList.remove('off'); b.textContent=L(['Run it again','Riprova']); st=2; done(); }
-    else renderScene();
+    else { $('#ramFiles').innerHTML=files0; b.textContent=label0; st=0; }
   };
 }
 function initBoard(done){
@@ -816,9 +817,11 @@ export function runMiniGame(
   lang: Language,
   mission: Mission,
   isFirstTime: boolean,
-  awardFn: (xp: number) => void
+  awardFn: (xp: number) => void,
+  playerName = ""
 ) {
   LANG = lang;
+  S.name = playerName;
   CURRENT_MISSION = mission;
   IN_FIRST_TIME = isFirstTime;
   ON_AWARD = awardFn;
