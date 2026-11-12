@@ -35,6 +35,7 @@ export function isSpeechSynthesisSupported(): boolean {
 /** Check if Speech Recognition (Microphone STT) is supported */
 export function isSpeechRecognitionSupported(): boolean {
   if (typeof window === 'undefined') return false;
+  if ('isSecureContext' in window && !window.isSecureContext) return false;
   return Boolean(
     (window as any).SpeechRecognition ||
     (window as any).webkitSpeechRecognition
@@ -93,6 +94,7 @@ export function speakItalian(
   text: string,
   options: SpeakItalianOptions = 'normal'
 ): void {
+  if (!text.trim()) return;
   if (!isSpeechSynthesisSupported()) {
     if (typeof options === 'object') options.onError?.('SpeechSynthesis not supported');
     return;
@@ -139,55 +141,65 @@ export function listenItalian(options: {
   onResult: (transcript: string, isFinal: boolean) => void;
   onError: (error: string) => void;
   onEnd: () => void;
-  /** Quiet gap (ms) allowed AFTER the speaker has begun before the phrase is
-   *  finalized. Larger = more patient. Default 2000. Before any speech is heard
-   *  the recogniser waits indefinitely (up to maxMs). */
   silenceMs?: number;
-  /** Hard cap (ms) on one listening session so the mic never stays open forever. Default 20000. */
   maxMs?: number;
-  continuous?: boolean; // accepted for compatibility; patience is always on
+  continuous?: boolean;
   lang?: string;
 }): SpeechRecognitionController {
-  const SpeechRec = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-
-  if (!SpeechRec) {
-    options.onError('SpeechRecognition API not available in this browser');
+  if (typeof window === 'undefined' || !isSpeechRecognitionSupported()) {
+    options.onError(typeof window === 'undefined'
+      ? 'Speech recognition requires a browser environment'
+      : 'Speech recognition API not available in this browser');
     options.onEnd();
     return { stop: () => {}, abort: () => {} };
   }
 
-  const silenceMs = options.silenceMs ?? 2000;
-  const maxMs = options.maxMs ?? 20000;
-  const startedAt = Date.now();
+  const SpeechRec = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+  const silenceMs = Math.max(250, options.silenceMs ?? 2000);
+  const maxMs = Math.max(silenceMs, options.maxMs ?? 20000);
 
   let recognition: any = null;
   let finalTranscript = '';
-  let finished = false;      // finalized or aborted — ignore further events
-  let stopRequested = false; // user (or silence timer) asked to wrap up
+  let finished = false;
+  let stopRequested = false;
   let silenceTimer: ReturnType<typeof setTimeout> | null = null;
+  let sessionTimer: ReturnType<typeof setTimeout> | null = null;
+  let endNotified = false;
 
-  const clearSilence = () => { if (silenceTimer) { clearTimeout(silenceTimer); silenceTimer = null; } };
+  const clearTimers = () => {
+    if (silenceTimer) clearTimeout(silenceTimer);
+    if (sessionTimer) clearTimeout(sessionTimer);
+    silenceTimer = null;
+    sessionTimer = null;
+  };
+
+  const notifyEnd = () => {
+    if (endNotified) return;
+    endNotified = true;
+    options.onEnd();
+  };
 
   const finalize = () => {
     if (finished) return;
     finished = true;
-    clearSilence();
+    clearTimers();
     const result = finalTranscript.trim();
-    if (result) options.onResult(result, true); // single final result → caller scores
-    try { recognition?.stop(); } catch { options.onEnd(); }
+    if (result) options.onResult(result, true);
+    try { recognition?.stop(); } catch { notifyEnd(); }
   };
 
-  // (Re)start the quiet countdown each time speech is heard. It fires only after
-  // the speaker goes silent for silenceMs, so natural mid-sentence pauses are fine.
   const armSilence = () => {
-    clearSilence();
-    silenceTimer = setTimeout(() => { stopRequested = true; finalize(); }, silenceMs);
+    if (silenceTimer) clearTimeout(silenceTimer);
+    silenceTimer = setTimeout(() => {
+      stopRequested = true;
+      finalize();
+    }, silenceMs);
   };
 
   try {
     recognition = new SpeechRec();
     recognition.lang = options.lang || 'it-IT';
-    recognition.continuous = true;   // stay open through natural pauses
+    recognition.continuous = true;
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
 
@@ -201,45 +213,71 @@ export function listenItalian(options: {
       }
       const live = (finalTranscript + interim).trim();
       if (live) {
-        options.onResult(live, false); // live interim update — never ends the session
-        armSilence();                  // speech heard → restart the quiet countdown
+        options.onResult(live, false);
+        armSilence();
       }
     };
 
     recognition.onerror = (event: any) => {
-      const err = event.error || 'speech-recognition-error';
-      // Transient: nothing heard yet, or the engine auto-stopped — keep waiting.
-      if (err === 'no-speech' || err === 'aborted') return;
+      const error = event.error || 'speech-recognition-error';
+      if (error === 'no-speech' || error === 'aborted') return;
       finished = true;
-      clearSilence();
-      options.onError(err);
+      clearTimers();
+      options.onError(error);
+      notifyEnd();
     };
 
     recognition.onend = () => {
-      // Chromium ends recognition on silence even in continuous mode. Keep the mic
-      // open until the speaker is genuinely done (silence timeout / manual stop) or
-      // the session cap is reached.
-      if (finished) { options.onEnd(); return; }
-      if (stopRequested || Date.now() - startedAt > maxMs) {
-        if (finalTranscript.trim()) finalize();
-        else { finished = true; options.onEnd(); }
+      if (finished) {
+        notifyEnd();
         return;
       }
-      try { recognition.start(); } catch { finalize(); }
+      if (stopRequested) {
+        if (finalTranscript.trim()) finalize();
+        else {
+          finished = true;
+          clearTimers();
+          notifyEnd();
+        }
+        return;
+      }
+      try { recognition.start(); }
+      catch { finalize(); }
     };
 
     recognition.start();
-  } catch (err: any) {
+
+    // A real hard cap: some browsers do not emit onend while the microphone is open.
+    sessionTimer = setTimeout(() => {
+      if (finished) return;
+      stopRequested = true;
+      if (finalTranscript.trim()) {
+        finalize();
+      } else {
+        finished = true;
+        clearTimers();
+        options.onError('Listening session timed out. Please try again.');
+        try { recognition?.abort(); } catch { /* ignore */ }
+        notifyEnd();
+      }
+    }, maxMs);
+  } catch (error: any) {
     finished = true;
-    options.onError(err?.message || 'Failed to initialize microphone');
-    options.onEnd();
+    clearTimers();
+    options.onError(error?.message || 'Failed to initialize microphone');
+    notifyEnd();
   }
 
   return {
-    stop: () => { stopRequested = true; finalize(); },
+    stop: () => {
+      if (finished) return;
+      stopRequested = true;
+      finalize();
+    },
     abort: () => {
+      if (finished) return;
       finished = true;
-      clearSilence();
+      clearTimers();
       try { recognition?.abort(); } catch { /* ignore */ }
     }
   };
