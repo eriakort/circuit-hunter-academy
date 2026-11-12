@@ -29,13 +29,13 @@ test('shows current and best study streaks from mastery and revision activity', 
         mastered: false,
         techniqueUnlocked: false,
         masteryAttemptHistory: [
-          { score: 70, attemptedAt: now },
-          { score: 80, attemptedAt: now - day },
-          { score: 60, attemptedAt: now - 2 * day },
-          { score: 90, attemptedAt: now - 4 * day }
+          { score: 70, attemptedAt: now, attempt: 1 },
+          { score: 80, attemptedAt: now - day, attempt: 2 },
+          { score: 60, attemptedAt: now - 2 * day, attempt: 3 },
+          { score: 90, attemptedAt: now - 4 * day, attempt: 4 }
         ],
         conceptRevisionPerformance: {
-          'hardware-and-software': {
+          'input-processing-output-storage': {
             correct: 3, attempted: 4, sessions: 1, lastReviewedAt: now - 6 * day
           }
         }
