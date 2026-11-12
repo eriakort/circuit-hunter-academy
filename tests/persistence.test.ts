@@ -87,6 +87,20 @@ const brokenBattle = restoreSavedNavigation({
 }, grade9State);
 assert.equal(brokenBattle?.view, 'map', 'an invalid battle context must not reopen a broken battle');
 
+const scienceMission = MISSIONS.find(mission => (ARCS[mission.arc]?.subject || 'cs') === 'science');
+assert.ok(scienceMission, 'the Grade 5 science curriculum contains missions');
+const grade5ScienceState = sanitizeGameState({ grade: 'grade5', subject: 'science' });
+const scienceNavigation = restoreSavedNavigation({
+  view: 'scene',
+  missionId: scienceMission!.id,
+  currentMissionIndex: MISSIONS.indexOf(scienceMission!),
+  currentSceneIndex: 0,
+  grade: 'grade5',
+  subject: 'science'
+}, grade5ScienceState);
+assert.equal(scienceNavigation?.missionId, scienceMission!.id);
+assert.equal(scienceNavigation?.view, 'scene');
+
 const corrupt = sanitizeGameState(null);
 assert.equal(corrupt.grade, null);
 assert.equal(corrupt.subject, 'cs');
