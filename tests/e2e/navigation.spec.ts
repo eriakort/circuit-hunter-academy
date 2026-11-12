@@ -46,3 +46,16 @@ test('active navigation state is independent of the selected language', async ({
   await expect(page.locator('#hCodex')).toContainText('Glossario');
   await expect(page.locator('#hMap')).not.toHaveAttribute('aria-current', 'page');
 });
+
+
+test('subject switcher is keyboard operable', async ({ page }) => {
+  await startCourse(page);
+
+  const subjectSwitcher = page.locator('#subject-switcher');
+  await subjectSwitcher.focus();
+  await expect(subjectSwitcher).toBeFocused();
+  await page.keyboard.press('Enter');
+
+  await expect(page.locator('.subjects')).toBeVisible();
+  await expect(page.getByRole('heading', { name: /choose your subject/i })).toBeVisible();
+});
