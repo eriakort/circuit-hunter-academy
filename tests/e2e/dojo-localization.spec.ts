@@ -45,13 +45,13 @@ test('dojo battle feedback and technique callout update during a live language s
   await expect(page.locator('.shout')).toBeVisible();
 
   const englishFeedback = await page.locator('#qfb .why').innerText();
-  const englishTechnique = await page.locator('.shout').innerText();
+  const englishTechnique = await page.locator('.shout .sr-only').innerText();
   expect(englishFeedback).toContain('Direct hit!');
   expect(englishTechnique).toContain('Direct hit!');
 
   await page.locator('#lIT').click();
   const italianFeedback = await page.locator('#qfb .why').innerText();
-  const italianTechnique = await page.locator('.shout').innerText();
+  const italianTechnique = await page.locator('.shout .sr-only').innerText();
   expect(italianFeedback).not.toBe(englishFeedback);
   expect(italianFeedback).toContain('Colpo a segno!');
   expect(italianTechnique).not.toBe(englishTechnique);
@@ -59,5 +59,5 @@ test('dojo battle feedback and technique callout update during a live language s
 
   await page.locator('#lEN').click();
   await expect(page.locator('#qfb .why')).toHaveText(englishFeedback);
-  await expect(page.locator('.shout')).toHaveText(englishTechnique);
+  await expect(page.locator('.shout .sr-only')).toHaveText(englishTechnique);
 });
