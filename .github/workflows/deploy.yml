@@ -23,9 +23,10 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - run: bun install --no-save
       - run: bun run build
-      - run: bun tests/helpers.test.js
-      - name: Run question bank tests
-        run: bunx tsx tests/questionBank.test.ts
+      - name: Run helper regression tests
+        run: bun tests/helpers.test.js
+      - name: Run all unit tests
+        run: bun run test:unit
       - run: bunx playwright install --with-deps chromium
       - run: bun run test:e2e
       - uses: actions/upload-pages-artifact@v3
