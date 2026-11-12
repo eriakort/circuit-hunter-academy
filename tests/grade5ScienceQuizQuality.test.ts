@@ -60,6 +60,12 @@ for (const mission of scienceMissions) {
   }
 }
 
+assert.deepEqual(
+  optionCountIssues,
+  [],
+  `Every Grade 5 Science quiz question must have exactly four choices:\n${optionCountIssues.join('\n')}`
+);
+
 console.log(
   'grade5ScienceQuizQuality.test.ts ok! Validated',
   questionCount,
