@@ -65,11 +65,23 @@ test('assessment review is bilingual and older progress has a clear empty state'
   await expect(review).toContainText('Detailed assessment reviews will appear here after your next mastery attempt.');
 
   await seedAssessmentReview(page);
+  await review.locator('.assessment-review-attempt summary').click();
+  const englishQuestionReview = await review.locator('.assessment-review-question').allTextContents();
+  expect(englishQuestionReview.length).toBeGreaterThan(0);
+  await expect(review.getByRole('heading', { name: 'Mistake analysis' })).toBeVisible();
+
+  // Switching language while the review is expanded must translate question,
+  // selected/correct answers, and explanations in place.
   await page.locator('#lIT').click();
   await expect(review.getByRole('heading', { name: 'Revisione delle prove' })).toBeVisible();
-  await review.locator('.assessment-review-attempt summary').click();
   await expect(review.getByRole('heading', { name: 'Analisi degli errori' })).toBeVisible();
   await expect(review.getByRole('heading', { name: 'Revisione domanda per domanda' })).toBeVisible();
   await expect(review).toContainText('La tua risposta:');
   await expect(review).toContainText('Risposta corretta:');
+  const italianQuestionReview = await review.locator('.assessment-review-question').allTextContents();
+  expect(italianQuestionReview).not.toEqual(englishQuestionReview);
+
+  await page.locator('#lEN').click();
+  await expect(review.getByRole('heading', { name: 'Assessment review' })).toBeVisible();
+  await expect.poll(() => review.locator('.assessment-review-question').allTextContents()).toEqual(englishQuestionReview);
 });
