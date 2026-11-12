@@ -1,4 +1,5 @@
 // npx tsx tests/helpers.test.js
+import assert from 'node:assert/strict';
 import { rng, sshuffle, rankOf, nextRank, raceXP, raceAvatar } from '../src/helpers';
 import { recommendNextLearningAction } from '../src/adaptiveLearning';
 import { scheduleNextConceptReview, REVIEW_DAY_MS } from '../src/spacedRepetition';
@@ -7,14 +8,14 @@ import { calculateLearningStreak } from '../src/learningStreak';
 
 // Race avatars must treat peer-controlled names and CSS classes as untrusted.
 const hostileAvatar = raceAvatar('<img src=x onerror=alert(1)>', Number('20\"/><script>alert(1)</script>'), 'avatar\" onload=\"alert(1)');
-console.assert(!hostileAvatar.includes('<img'));
-console.assert(!hostileAvatar.includes('<script>'));
-console.assert(hostileAvatar.includes('&lt;img'));
-console.assert(hostileAvatar.includes('class="avatar&quot; onload=&quot;alert(1)"'));
-console.assert(hostileAvatar.includes('hsl(0 55% 22%)'));
+assert.ok(!hostileAvatar.includes('<img'));
+assert.ok(!hostileAvatar.includes('<script>'));
+assert.ok(hostileAvatar.includes('&lt;img'));
+assert.ok(hostileAvatar.includes('class="avatar&quot; onload=&quot;alert(1)"'));
+assert.ok(hostileAvatar.includes('hsl(0 55% 22%)'));
 const normalAvatar = raceAvatar('Hana', 210);
-console.assert(normalAvatar.includes('>H</text>'));
-console.assert(normalAvatar.includes('hsl(210 55% 22%)'));
+assert.ok(normalAvatar.includes('>H</text>'));
+assert.ok(normalAvatar.includes('hsl(210 55% 22%)'));
 
 const RANKS = [
   [0, 'Intern'],
