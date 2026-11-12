@@ -3,6 +3,15 @@ import { useGame } from '../context/GameContext';
 import { SUBJECTS, UNITS, ARCS, MISSIONS } from '../data/gameData';
 import { getVisualHtml } from '../data/visuals';
 import { L, demonSVG, esc, U } from '../helpers';
+import type { LearningConcept, Mission } from '../types';
+import { ConceptRevision } from './ConceptRevision';
+import { recommendNextLearningAction } from '../adaptiveLearning';
+import { MasteryInsights } from './MasteryInsights';
+import { AssessmentReview } from './AssessmentReview';
+import { SpacedReview } from './SpacedReview';
+import { scheduleNextConceptReview } from '../spacedRepetition';
+import { calculateLearningStreak } from '../learningStreak';
+import { LearningStreak } from './LearningStreak';
 
 export const MapScreen: React.FC = () => {
   const {
@@ -15,16 +24,23 @@ export const MapScreen: React.FC = () => {
     resetProgress,
     isOpen,
     myMissions,
-    allCleared
+    allCleared,
+    saveLearningProgress
   } = useGame();
 
   const { lang, name, subject, unit, cleared, flawless } = state;
   const [nameInput, setNameInput] = useState('');
   const [resetArmed, setResetArmed] = useState(false);
+  const [revisionTarget, setRevisionTarget] = useState<{ mission: Mission; concept: LearningConcept } | null>(null);
+  const [reviewQueue, setReviewQueue] = useState<Array<{ mission: Mission; concept: LearningConcept }>>([]);
+  const [reviewQueueIndex, setReviewQueueIndex] = useState(0);
+  const [reviewQueueResults, setReviewQueueResults] = useState<Array<{ title: any; score: number }>>([]);
+  const [reviewQueueActive, setReviewQueueActive] = useState(false);
+  const [reviewQueueSummary, setReviewQueueSummary] = useState(false);
 
   const curSub = subject || 'cs';
   const currentSubjectData = SUBJECTS.find(s => s.id === curSub) || SUBJECTS[0];
-  const titleSvgHtml = curSub === 'phys' ? getVisualHtml('titlePhys', lang) : getVisualHtml('title', lang);
+  const titleSvgHtml = curSub === 'math' || curSub === 'science' || curSub === 'italian' ? currentSubjectData.art : curSub === 'phys' ? getVisualHtml('titlePhys', lang) : getVisualHtml('title', lang);
 
   // If player hasn't entered a name yet
   if (!name) {
@@ -88,11 +104,150 @@ export const MapScreen: React.FC = () => {
   const MY = myMissions();
   const doneCount = MY.filter(m => cleared[m.id]).length;
   const isMastered = allCleared();
+  const learningRecords = MY.map(m => ({ mission: m, progress: state.learningProgress?.[m.id] }))
+    .filter(item => item.progress);
+  const masteredCount = learningRecords.filter(item => item.progress?.mastered).length;
+  const assessedCount = learningRecords.filter(item => item.progress?.masteryAttempts).length;
+  const averageMastery = assessedCount
+    ? Math.round(learningRecords.reduce((sum, item) => sum + (item.progress?.masteryScore ?? 0), 0) / assessedCount)
+    : null;
+  const conceptTotals = new Map<string, {
+    id: string;
+    missionId: string;
+    title: any;
+    correct: number;
+    attempted: number;
+    missionTitle: any;
+  }>();
+  MY.forEach(m => {
+    const progress = state.learningProgress?.[m.id];
+    m.learning?.concepts.forEach(concept => {
+      const performance = progress?.masteryConceptPerformance?.[concept.id];
+      if (!performance?.attempted) return;
+      const key = m.id + ':' + concept.id;
+      const current = conceptTotals.get(key) || {
+        id: concept.id,
+        missionId: m.id,
+        title: concept.title,
+        correct: 0,
+        attempted: 0,
+        missionTitle: m.title
+      };
+      current.correct += performance.correct;
+      current.attempted += performance.attempted;
+      conceptTotals.set(key, current);
+    });
+  });
+  const weakestConcepts = Array.from(conceptTotals.values())
+    .map(value => ({
+      ...value,
+      percent: Math.round((value.correct / value.attempted) * 100),
+      revision: state.learningProgress?.[value.missionId]?.conceptRevisionPerformance?.[value.id]
+    }))
+    .sort((a, b) => a.percent - b.percent || b.attempted - a.attempted)
+    .slice(0, 3);
+  const recentAttempts = learningRecords.flatMap(item =>
+    (item.progress?.masteryAttemptHistory || []).map(attempt => ({
+      ...attempt, missionTitle: item.mission.title
+    }))
+  ).sort((a, b) => b.attemptedAt - a.attemptedAt).slice(0, 5);
+  const learningActivityTimestamps = learningRecords.flatMap(item => [
+    ...(item.progress?.masteryAttemptHistory || []).map(attempt => attempt.attemptedAt),
+    ...Object.values(item.progress?.conceptRevisionPerformance || {}).map(revision => revision.lastReviewedAt)
+  ]).filter(timestamp => Number.isFinite(timestamp) && timestamp > 0);
+  const learningStreak = calculateLearningStreak(learningActivityTimestamps);
+
 
   // Find next playable mission
   const nextMissionIndex = MISSIONS.findIndex(
     (m, i) => (ARCS[m.arc]?.subject || 'cs') === curSub && !cleared[m.id] && isOpen(i)
   );
+  const nextMission = nextMissionIndex >= 0 ? MISSIONS[nextMissionIndex] : undefined;
+  const adaptiveRecommendation = recommendNextLearningAction(MY, state.learningProgress || {}, nextMission);
+
+  const startReviewQueue = (items: Array<{ mission: Mission; concept: LearningConcept }>) => {
+    if (!items.length) return;
+    setReviewQueue(items);
+    setReviewQueueIndex(0);
+    setReviewQueueResults([]);
+    setReviewQueueActive(true);
+    setReviewQueueSummary(false);
+    setRevisionTarget(items[0]);
+  };
+
+  const startSingleRevision = (item: { mission: Mission; concept: LearningConcept }) => {
+    setReviewQueue([item]);
+    setReviewQueueIndex(0);
+    setReviewQueueResults([]);
+    setReviewQueueActive(false);
+    setReviewQueueSummary(false);
+    setRevisionTarget(item);
+  };
+
+  const handleReviewQueueContinue = () => {
+    const nextIndex = reviewQueueIndex + 1;
+    if (nextIndex < reviewQueue.length) {
+      setReviewQueueIndex(nextIndex);
+      setRevisionTarget(reviewQueue[nextIndex]);
+      return;
+    }
+    setRevisionTarget(null);
+    setReviewQueueSummary(true);
+  };
+
+  const closeReviewQueue = () => {
+    setRevisionTarget(null);
+    setReviewQueue([]);
+    setReviewQueueIndex(0);
+    setReviewQueueActive(false);
+    setReviewQueueSummary(false);
+  };
+
+  const handleAdaptiveAction = () => {
+    if (adaptiveRecommendation.kind === 'review') {
+      startSingleRevision({ mission: adaptiveRecommendation.mission, concept: adaptiveRecommendation.concept });
+      return;
+    }
+    if (adaptiveRecommendation.kind === 'retry' || adaptiveRecommendation.kind === 'mission') {
+      openMission(MISSIONS.indexOf(adaptiveRecommendation.mission));
+      return;
+    }
+    startBattle(true);
+  };
+
+  const handleRevisionComplete = (result: { correct: number; attempted: number }) => {
+    if (!revisionTarget) return;
+    const missionId = revisionTarget.mission.id;
+    const conceptId = revisionTarget.concept.id;
+    const existing = state.learningProgress?.[missionId]?.conceptRevisionPerformance || {};
+    const previous = existing[conceptId] || { correct: 0, attempted: 0, sessions: 0, lastReviewedAt: 0 };
+    const masteryPerformance = state.learningProgress?.[missionId]?.masteryConceptPerformance?.[conceptId];
+    const reviewedAt = Date.now();
+    const reviewSchedule = { ...(state.learningProgress?.[missionId]?.conceptReviewSchedule || {}) };
+    const revisionScore = result.attempted ? Math.round((result.correct / result.attempted) * 100) : 0;
+    setReviewQueueResults(previousResults => [
+      ...previousResults,
+      { title: revisionTarget.concept.title, score: revisionScore }
+    ]);
+    reviewSchedule[conceptId] = scheduleNextConceptReview(reviewSchedule[conceptId], revisionScore, reviewedAt);
+    saveLearningProgress(missionId, {
+      conceptRevisionPerformance: {
+        ...existing,
+        [conceptId]: {
+          correct: previous.correct + result.correct,
+          attempted: previous.attempted + result.attempted,
+          sessions: previous.sessions + 1,
+          lastReviewedAt: reviewedAt,
+          baselineMasteryPercent: masteryPerformance?.attempted
+            ? Math.round((masteryPerformance.correct / masteryPerformance.attempted) * 100)
+            : undefined,
+          postRevisionMasteryPercent: undefined,
+          postRevisionAt: undefined
+        }
+      },
+      conceptReviewSchedule: reviewSchedule
+    });
+  };
 
   const handleResetClick = () => {
     if (!resetArmed) {
@@ -151,11 +306,275 @@ export const MapScreen: React.FC = () => {
             <button className="btn ghost" id="goRace" onClick={() => goToView('race')}>
               {L(['Race your friends', 'Sfida le amiche'], lang)}
             </button>
+            <button className="btn ghost" id="goTest" onClick={() => goToView('test')}>
+              {L(['Test Knowledge', 'Test del Sapere'], lang)}
+            </button>
           </div>
         </div>
 
         <div dangerouslySetInnerHTML={{ __html: titleSvgHtml }} />
       </section>
+
+      <section className="learning-dashboard card" aria-label={lang === 'it' ? 'Cruscotto dei progressi' : 'Learning progress dashboard'}>
+        <div className="learning-dashboard-heading">
+          <div>
+            <div className="eyebrow">{lang === 'it' ? 'IL TUO PERCORSO' : 'YOUR LEARNING JOURNEY'}</div>
+            <h2>{lang === 'it' ? 'Cruscotto dei progressi' : 'Learning progress'}</h2>
+            <p className="muted">{lang === 'it' ? 'Una panoramica dei risultati e dei prossimi passi.' : 'A course-wide view of your results and what to focus on next.'}</p>
+          </div>
+        </div>
+        <div className="learning-dashboard-stats">
+          <div className="learning-stat">
+            <strong>{doneCount}/{MY.length}</strong>
+            <span>{lang === 'it' ? 'Missioni completate' : 'Missions cleared'}</span>
+          </div>
+          <div className="learning-stat">
+            <strong>{masteredCount}/{MY.length}</strong>
+            <span>{lang === 'it' ? 'Prove superate' : 'Mastery passed'}</span>
+          </div>
+          <div className="learning-stat">
+            <strong>{averageMastery === null ? '—' : averageMastery + '%'}</strong>
+            <span>{lang === 'it' ? 'Media ultimo risultato' : 'Average latest score'}</span>
+          </div>
+          <div className="learning-stat">
+            <strong>{assessedCount}</strong>
+            <span>{lang === 'it' ? 'Missioni valutate' : 'Missions assessed'}</span>
+          </div>
+        </div>
+        <LearningStreak streak={learningStreak} lang={lang} />
+        <div className="learning-dashboard-grid">
+          <div className="learning-dashboard-panel">
+            <h3>{lang === 'it' ? 'Concetti da rinforzare' : 'Concepts to strengthen'}</h3>
+            {weakestConcepts.length ? (
+              <div className="learning-dashboard-concepts">
+                {weakestConcepts.map(concept => (
+                  <div className="learning-dashboard-concept" key={concept.missionId + ':' + concept.id}>
+                    <div className="learning-dashboard-concept-title">
+                      <strong>{L(concept.title, lang)}</strong>
+                      <span>{concept.percent}%</span>
+                    </div>
+                    <div className="learning-dashboard-track" role="img" aria-label={`${concept.percent}% correct`}>
+                      <i style={{ width: `${concept.percent}%` }} />
+                    </div>
+                    <small>{concept.correct}/{concept.attempted} {lang === 'it' ? 'risposte corrette' : 'correct responses'}</small>
+                    {concept.revision?.baselineMasteryPercent !== undefined && concept.revision.postRevisionMasteryPercent !== undefined && (
+                      <small className="concept-revision-impact">
+                        {lang === 'it' ? 'Maestria dopo il ripasso: ' : 'Mastery after revision: '}
+                        {concept.revision.postRevisionMasteryPercent}%
+                        {' ('}{concept.revision.postRevisionMasteryPercent - concept.revision.baselineMasteryPercent > 0 ? '+' : ''}
+                        {concept.revision.postRevisionMasteryPercent - concept.revision.baselineMasteryPercent} {lang === 'it' ? 'punti' : 'pp'}{')'}
+                      </small>
+                    )}
+                    {concept.revision?.sessions ? (
+                      <small className="concept-revision-history">
+                        {lang === 'it'
+                          ? `Ripassato ${concept.revision.sessions} ${concept.revision.sessions === 1 ? 'volta' : 'volte'}`
+                          : `Reviewed ${concept.revision.sessions} ${concept.revision.sessions === 1 ? 'session' : 'sessions'}`}
+                        {' · '}{new Date(concept.revision.lastReviewedAt).toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-CA')}
+                      </small>
+                    ) : null}
+                    <small className="concept-revision-mission">{L(concept.missionTitle, lang)}</small>
+                    <button
+                      type="button"
+                      className="btn ghost sm concept-revision-launch"
+                      aria-label={`Review concept: ${L(concept.title, lang)}`}
+                      onClick={() => {
+                        const mission = MY.find(item => item.id === concept.missionId);
+                        const selectedConcept = mission?.learning?.concepts.find(item => item.id === concept.id);
+                        if (mission && selectedConcept) startSingleRevision({ mission, concept: selectedConcept });
+                      }}
+                    >
+                      {lang === 'it' ? 'Ripassa concetto' : 'Review concept'}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="muted">{lang === 'it' ? 'Completa una prova di maestria per vedere quali concetti ripassare.' : 'Complete a mastery assessment to discover which concepts need revision.'}</p>
+            )}
+          </div>
+          <div className="learning-dashboard-panel">
+            <h3>{lang === 'it' ? 'Ultimi tentativi' : 'Recent attempts'}</h3>
+            {recentAttempts.length ? (
+              <ol className="learning-dashboard-history">
+                {recentAttempts.map((attempt, index) => (
+                  <li key={`${attempt.attemptedAt}-${index}`}>
+                    <span>{L(attempt.missionTitle, lang)}</span>
+                    <strong>{attempt.score}%</strong>
+                    <small>{new Date(attempt.attemptedAt).toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-CA')}</small>
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <p className="muted">{lang === 'it' ? 'I risultati delle prove appariranno qui.' : 'Your mastery scores will appear here as you complete assessments.'}</p>
+            )}
+          </div>
+        </div>
+        <MasteryInsights missions={MY} progressByMission={state.learningProgress || {}} lang={lang} />
+        <SpacedReview
+          missions={MY}
+          progressByMission={state.learningProgress || {}}
+          lang={lang}
+          onReviewConcept={(missionId, conceptId) => {
+            const mission = MY.find(item => item.id === missionId);
+            const concept = mission?.learning?.concepts.find(item => item.id === conceptId);
+            if (mission && concept) startSingleRevision({ mission, concept });
+          }}
+          onStartReviewQueue={items => startReviewQueue(items)}
+        />
+        <AssessmentReview
+          missions={MY}
+          progressByMission={state.learningProgress || {}}
+          lang={lang}
+          onReviewConcept={(missionId, conceptId) => {
+            const mission = MY.find(item => item.id === missionId);
+            const concept = mission?.learning?.concepts.find(item => item.id === conceptId);
+            if (mission && concept) setRevisionTarget({ mission, concept });
+          }}
+        />
+        <div className="learning-dashboard-next adaptive-recommendation" data-recommendation={adaptiveRecommendation.kind}>
+          <div>
+            <span className="learning-kicker">{lang === 'it' ? 'PERCORSO ADATTIVO' : 'ADAPTIVE LEARNING'}</span>
+            <strong>{lang === 'it' ? 'Il tuo prossimo passo' : 'Your recommended next step'}</strong>
+            <p>
+              {adaptiveRecommendation.kind === 'review' && (
+                <>
+                  {lang === 'it' ? 'Rinforza ' : 'Strengthen '}
+                  <b>{L(adaptiveRecommendation.concept.title, lang)}</b>
+                  {adaptiveRecommendation.reason === 'revision-needs-practice'
+                    ? (lang === 'it' ? `: il ripasso precedente ha ottenuto il ${adaptiveRecommendation.revisionAccuracy}%. Prova ancora prima di tornare alla prova.` : `: your previous review scored ${adaptiveRecommendation.revisionAccuracy}%. Practise it again before returning to mastery.`)
+                    : (lang === 'it' ? ': è uno dei concetti più deboli nella tua ultima prova di maestria.' : ': it was one of the weakest concepts in your latest mastery assessment.')}
+                </>
+              )}
+              {adaptiveRecommendation.kind === 'retry' && (
+                <>
+                  {lang === 'it' ? 'Hai ottenuto ' : 'You scored '}
+                  <b>{adaptiveRecommendation.revisionAccuracy}%</b>
+                  {lang === 'it' ? ' nel ripasso mirato di ' : ' in targeted revision for '}
+                  <b>{L(adaptiveRecommendation.concept.title, lang)}</b>
+                  {lang === 'it' ? '. Ora torna alla prova di maestria per verificare i progressi.' : '. Now return to the mastery assessment to check your progress.'}
+                </>
+              )}
+              {adaptiveRecommendation.kind === 'mission' && (
+                <>{lang === 'it' ? 'Continua con ' : 'Continue with '}<b>{L(adaptiveRecommendation.mission.title, lang)}</b>{lang === 'it' ? ' e completa il percorso.' : ' and complete its learning pathway.'}</>
+              )}
+              {adaptiveRecommendation.kind === 'dojo' && (
+                <>{lang === 'it' ? 'Hai completato tutte le missioni disponibili. Continua ad allenarti nel Dojo.' : 'You have cleared all available missions. Keep practising in the Dojo.'}</>
+              )}
+            </p>
+            {adaptiveRecommendation.kind === 'retry' && (
+              <small className="adaptive-recommendation-reason">
+                {lang === 'it' ? 'Consiglio basato sul risultato del ripasso e sulla prova di maestria ancora da superare.' : 'Suggested because your revision result is strong and this mission still needs mastery.'}
+              </small>
+            )}
+          </div>
+          <button className="btn sm" id="adaptiveNextAction" onClick={handleAdaptiveAction}>
+            {adaptiveRecommendation.kind === 'review'
+              ? (lang === 'it' ? 'Ripassa concetto' : 'Review concept')
+              : adaptiveRecommendation.kind === 'retry'
+                ? (lang === 'it' ? 'Riprova maestria' : 'Retry mastery')
+                : adaptiveRecommendation.kind === 'mission'
+                  ? (lang === 'it' ? 'Continua missione' : 'Continue mission')
+                  : (lang === 'it' ? 'Vai al Dojo' : 'Open Dojo')}
+          </button>
+        </div>
+      </section>
+
+      {reviewQueueSummary && (
+        <section className="review-session-summary card" aria-live="polite">
+          <div className="learning-kicker">{lang === 'it' ? 'SESSIONE COMPLETATA' : 'SESSION COMPLETE'}</div>
+          <h2>{lang === 'it' ? 'Riepilogo del ripasso' : 'Review session summary'}</h2>
+          <p>{lang === 'it'
+            ? `Hai completato ${reviewQueueResults.length} ${reviewQueueResults.length === 1 ? 'concetto' : 'concetti'}.`
+            : `You completed ${reviewQueueResults.length} ${reviewQueueResults.length === 1 ? 'concept' : 'concepts'}.`}</p>
+          <div className="review-session-results">
+            {reviewQueueResults.map((item, index) => (
+              <div className="review-session-result" key={index}>
+                <span>{L(item.title, lang)}</span>
+                <strong>{item.score}%</strong>
+              </div>
+            ))}
+          </div>
+          <div className="review-session-total">
+            <span>{lang === 'it' ? 'Punteggio medio della sessione' : 'Session average'}</span>
+            <strong>{reviewQueueResults.length
+              ? Math.round(reviewQueueResults.reduce((sum, item) => sum + item.score, 0) / reviewQueueResults.length)
+              : 0}%</strong>
+          </div>
+          <button type="button" className="btn" onClick={closeReviewQueue}>
+            {lang === 'it' ? 'Torna al percorso' : 'Return to learning path'}
+          </button>
+        </section>
+      )}
+
+      {revisionTarget && (
+        <ConceptRevision
+          mission={revisionTarget.mission}
+          concept={revisionTarget.concept}
+          lang={lang}
+          revisionPerformance={state.learningProgress?.[revisionTarget.mission.id]?.conceptRevisionPerformance?.[revisionTarget.concept.id]}
+          onClose={closeReviewQueue}
+          onComplete={handleRevisionComplete}
+          onContinue={reviewQueueActive ? handleReviewQueueContinue : undefined}
+          sessionPosition={reviewQueueActive ? reviewQueueIndex + 1 : undefined}
+          sessionLength={reviewQueueActive ? reviewQueue.length : undefined}
+        />
+      )}
+
+      {/* Italian CEFR Speaking & Checkpoint Banner */}
+      {curSub === 'italian' && (
+        <section className="card" style={{
+          background: 'linear-gradient(135deg, rgba(0, 146, 70, 0.12) 0%, rgba(206, 43, 55, 0.12) 100%)',
+          border: '1px solid rgba(255, 209, 102, 0.3)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: 16,
+          padding: '18px 22px',
+          marginBottom: 16
+        }}>
+          <div>
+            <div className="eyebrow" style={{ color: '#ffd166', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span>🇮🇹</span>
+              <span>{L(['CEFR LANGUAGE ACADEMY · A1 · A2 · B1', 'ACCADEMIA DI LINGUA QCER · A1 · A2 · B1'], lang)}</span>
+            </div>
+            <h3 style={{ margin: '4px 0 2px', fontSize: 20 }}>
+              {L(['Active Italian Speaking & Pronunciation Lab', 'Laboratorio di Parlato e Pronuncia Attiva'], lang)}
+            </h3>
+            <p className="muted" style={{ margin: 0, fontSize: 13.5 }}>
+              {L(
+                ['Every mission integrates dialogue simulation, Web Speech pronunciation scoring, and oral challenges.',
+                 'Ogni missione integra dialoghi al bar, valutazione fonetica con Web Speech e sfide orali.'],
+                lang
+              )}
+            </p>
+          </div>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+            <button
+              className="btn sm"
+              style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(0, 146, 70, 0.85)', borderColor: '#00c853' }}
+              onClick={() => goToView('it-lab')}
+            >
+              🎙️ {L(['Speaking Lab', 'Laboratorio Parlato'], lang)}
+            </button>
+            <button
+              className="btn sm"
+              style={{ display: 'flex', alignItems: 'center', gap: 6 }}
+              onClick={() => goToView('it-checkpoint')}
+            >
+              🎤 {L(['Take Oral Trial', 'Affronta l’Esame Orale'], lang)}
+            </button>
+            <button
+              className="btn ghost sm"
+              style={{ display: 'flex', alignItems: 'center', gap: 6 }}
+              onClick={() => goToView('formula')}
+            >
+              📖 {L(['Grammar Rules', 'Grammatica'], lang)}
+            </button>
+          </div>
+        </section>
+      )}
 
       {/* Units tabs navigation */}
       <nav className="units" aria-label="Units">
@@ -203,6 +622,7 @@ export const MapScreen: React.FC = () => {
                 const open = isOpen(i);
                 const isCleared = !!cleared[m.id];
                 const isFlawless = !!flawless[m.id];
+                const learning = state.learningProgress?.[m.id];
 
                 return (
                   <button
@@ -223,6 +643,25 @@ export const MapScreen: React.FC = () => {
                     </span>
                     <h3>{L(m.title, lang)}</h3>
                     <span className="topic">{L(m.topic, lang)}</span>
+                    {learning?.knowledgeCheckScore !== undefined && (
+                      <small className="learning-map-progress">
+                        {L(['Knowledge check', 'Verifica conoscenze'], lang)} · {learning.knowledgeCheckScore}%
+                      </small>
+                    )}
+                    {learning?.masteryScore !== undefined && (
+                      <small className={`learning-map-progress ${learning.mastered ? 'mastery-map-passed' : 'mastery-map-pending'}`}>
+                        {L(['Mastery', 'Maestria'], lang)} · {learning.mastered
+                          ? L(['Passed', 'Superata'], lang)
+                          : L(['Not yet passed', 'Non superata'], lang)} · {learning.masteryScore}%
+                      </small>
+                    )}
+                    {!!learning?.masteryLastAttemptWeakConcepts?.length && (
+                      <small className="learning-map-progress mastery-map-pending">
+                        {L(['Review', 'Ripasso'], lang)} · {m.learning?.concepts
+                          .filter(concept => learning.masteryLastAttemptWeakConcepts?.includes(concept.id))
+                          .map(concept => L(concept.title, lang)).join(', ')}
+                      </small>
+                    )}
 
                     <span className={`badge ${isCleared ? 'ok' : open ? 'go' : 'lock'}`}>
                       {isCleared

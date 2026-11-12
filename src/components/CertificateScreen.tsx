@@ -53,6 +53,47 @@ export const CertificateScreen: React.FC = () => {
             <div key={m.id}>{L(m.tech, lang)}</div>
           ))}
         </div>
+        {state.subject === 'italian' && (
+          <div style={{
+            marginTop: '16px',
+            padding: '12px 16px',
+            borderRadius: '12px',
+            background: 'rgba(0, 146, 70, 0.1)',
+            border: '1px solid rgba(0, 146, 70, 0.35)',
+            textAlign: 'center'
+          }}>
+            <div style={{ fontSize: '13px', color: '#4ade80', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              🇮🇹 {L(['CEFR Italian Speaking Certification', 'Certificazione Orale QCER di Lingua Italiana'], lang)}
+            </div>
+            {state.checkpointProgress?.['it_checkpoint_a1_b1']?.completed ? (
+              <p style={{ margin: '6px 0 0', fontSize: '14px', color: 'var(--text)' }}>
+                ★ {L(
+                  [`Distinction: CEFR A1, A2, and B1 Speaking Examination passed with ${state.checkpointProgress['it_checkpoint_a1_b1'].bestScore}% score!`,
+                   `Distinzione: Esame orale QCER A1, A2 e B1 superato con il ${state.checkpointProgress['it_checkpoint_a1_b1'].bestScore}%!`],
+                  lang
+                )}
+              </p>
+            ) : (
+              <div style={{ marginTop: '6px' }}>
+                <p style={{ margin: '0 0 8px', fontSize: '13.5px', color: 'var(--muted)' }}>
+                  {L(
+                    ['Ready for official speaking certification? Complete the oral examination to earn your CEFR diploma.',
+                     'Pronta per la certificazione orale ufficiale? Completa l’esame orale per ottenere il tuo diploma QCER.'],
+                    lang
+                  )}
+                </p>
+                <button
+                  type="button"
+                  className="btn sm"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                  onClick={() => goToView('it-checkpoint')}
+                >
+                  🎤 {L(['Take CEFR Oral Exam', 'Affronta l’Esame Orale QCER'], lang)}
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       <div className="card" style={{ marginTop: '18px' }}>
@@ -67,6 +108,11 @@ export const CertificateScreen: React.FC = () => {
         </p>
 
         <div className="row" style={{ marginTop: '12px' }}>
+          {state.subject === 'italian' && (
+            <button className="btn" onClick={() => goToView('it-lab')}>
+              🎙️ {L(['Speaking Lab', 'Laboratorio Parlato'], lang)}
+            </button>
+          )}
           <button className="btn" id="dj" onClick={() => startBattle(true)}>
             Dojo
           </button>

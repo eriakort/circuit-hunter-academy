@@ -1,14 +1,20 @@
 # Circuit Hunter Academy (React + TypeScript + Vite)
 
-[![Play now](https://img.shields.io/badge/%E2%96%B6%20Play%20now-Circuit%20Hunter-ff6a3d?style=for-the-badge)](#)
+[![Play now](https://img.shields.io/badge/%E2%96%B6%20Play%20now-Circuit%20Hunter-ff6a3d?style=for-the-badge)](https://eriakort.github.io/circuit-hunter-academy/)
 
-An anime-style study game for grade 9 (Italian *prima*), rewritten as a modern **React 19 + TypeScript + Vite** application. The player is a student hunter at an original academy who turns each school topic into a "technique" to defeat Glitch Demons.
+An anime-inspired, bilingual learning game built with **React 19 + TypeScript + Vite**. Learners choose an available school grade first, then select a subject and train through lessons, interactive activities and quiz battles. The academy uses an original hunter-and-technique theme.
 
-On opening the game, players choose their subject (**Computer Science** or **Physics**). The entire game can be toggled between **English and Italian** at any time (EN / IT button), and every key term includes bilingual tag pills with pronunciations/translations. Hunter names and XP are shared across subjects, while progress and certificates of mastery are tracked per subject in browser `localStorage`.
+The current pathways include **Grade 5 (quinta primaria)** with general Science and **Grade 9** with Computer Science, Physics and Mathematics. Available subjects depend on the selected grade. The interface and learning content support **English and Italian**. Learner progress is saved in the browser; multiplayer race features use Supabase Realtime when configured, with an offline preview fallback.
 
 ---
 
-## Subjects
+## Grade 5 — Primary school
+
+### Science
+
+Grade 5 Science is a general primary-science pathway, rather than a physics-only course. Its learning scope includes age-appropriate science and technology topics.
+
+## Grade 9 — Lower-secondary / early high-school pathway
 
 ### Computer Science — 3 units · 16 chapters · 44 missions
 Follows the Italian textbook *L'informatica e il computer* chapter by chapter.
@@ -20,11 +26,21 @@ Follows the Italian textbook *L'informatica e il computer* chapter by chapter.
 | 3 · Iniziare a programmare | 11 Flowcharts · 12 Python basics · 13 Selection · 14 Loops · 15 Strings, lists & files · 16 Functions |
 
 ### Physics — 1 unit · 5 chapters · 12 missions
-Follows *Il Walker. Corso di fisica. Per il primo biennio* (chapters 1–5).
+Aligned with the first-two-year physics course (chapters 1–5).
 
 | Unit | Chapters |
 |---|---|
 | Fisica · Misura e meccanica | 1 Le grandezze fisiche · 2 Misure e rappresentazioni · 3 I vettori e le forze · 4 L'equilibrio dei solidi · 5 L'equilibrio dei fluidi |
+
+### Mathematics — 6 chapters · 28 missions
+Based on *Massimo Bergamini & Graziella Barozzi, Matematica multimediale.blu, Terza edizione*. Current missions cover the first six chapters represented in the game; later chapters and geometry units are not yet included.
+
+| Coverage | Topics |
+|---|---|
+| Chapters 1–3 | Number sets, natural/integer/rational/real numbers, fractions, divisibility, powers and relations |
+| Chapter 4 | Algebraic expressions, monomials, polynomials, like terms and notable products |
+| Chapter 5 | Linear equations and equations with brackets |
+| Chapter 6 | Linear inequalities |
 
 ---
 
@@ -51,21 +67,35 @@ Each mission features a narrative lesson with animated diagrams, an interactive 
 
 ---
 
-## Development & Build
+## Development, tests & build
+
+The project uses Bun in its CI workflow. Install Bun and a supported Node.js runtime before working locally.
 
 ```bash
-# Install dependencies
-npm install
+# Install dependencies from the committed Bun lockfile
+bun install --frozen-lockfile
 
 # Start the Vite development server (port 3000)
-npm run dev
+bun run dev
 
-# Type-check and production build
-npm run build
+# Type-check and create the production build
+bun run build
 
-# Run unit tests
-npx tsx tests/helpers.test.js
+# Run the complete unit-test suite
+bun run test:unit
+
+# Install Chromium for the browser tests (first run)
+bunx playwright install --with-deps chromium
+
+# Run the Playwright end-to-end suite
+bun run test:e2e
 ```
+
+`bun run test:unit` runs the TypeScript unit tests under `tests/` and the formula-data tests. `bun run test:e2e` runs the Playwright browser suite. The CI workflow runs the production build, helper regressions, the complete unit suite and browser tests.
+
+### Deploy
+
+GitHub Pages is built by `.github/workflows/deploy.yml`: every push to `main` runs `bun install --frozen-lockfile && bun run build` and publishes `dist/`. In repo **Settings → Pages**, **Source** must be **GitHub Actions** (serving the branch root directly does not work, because the root `index.html` loads `/src/main.tsx`, which only Vite can run).
 
 ---
 

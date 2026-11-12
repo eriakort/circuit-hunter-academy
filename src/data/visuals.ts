@@ -823,6 +823,268 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
   <rect x="210" y="40" width="34" height="26" rx="4" fill="var(--gold)" opacity="0.85"/>
   <text x="160" y="146" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['deeper water pushes harder (Stevin)','più in profondità spinge di più (Stevino)'])}</text>
 </svg>`,
+  "algebra-parts": function algebraParts(){
+    return `<svg viewBox="0 0 640 210" class="dia" role="img" aria-label="Parts of the algebraic expression 3x plus 2">
+      <text x="320" y="35" text-anchor="middle" class="lbl">${L(['ONE EXPRESSION · TWO TERMS','UN’ESPRESSIONE · DUE TERMINI'])}</text>
+      <rect x="112" y="58" width="188" height="104" rx="14" fill="var(--data)" opacity=".16" stroke="var(--data)" stroke-width="2"/>
+      <rect x="340" y="58" width="188" height="104" rx="14" fill="var(--gold)" opacity=".13" stroke="var(--gold)" stroke-width="2"/>
+      <text x="206" y="111" text-anchor="middle" style="font-size:38px;font-weight:800;fill:var(--text)">3x</text>
+      <text x="434" y="111" text-anchor="middle" style="font-size:38px;font-weight:800;fill:var(--text)">+ 2</text>
+      <text x="206" y="143" text-anchor="middle" class="sm">${L(['coefficient 3 · variable x','coefficiente 3 · variabile x'])}</text>
+      <text x="434" y="143" text-anchor="middle" class="sm">${L(['constant term','termine costante'])}</text>
+      <text x="320" y="190" text-anchor="middle" class="sm">${L(['3x means 3 × x','3x significa 3 × x'])}</text>
+    </svg>`;
+  },
+  "algebra-substitution": function algebraSubstitution(){
+    return `<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;align-items:stretch;text-align:center">
+      ${[['1',['SUBSTITUTE','SOSTITUISCI'],'x = 4'],['2',['MULTIPLY','MOLTIPLICA'],'3 × 4 = 12'],['3',['KEEP + 2','MANTIENI + 2'],'12 + 2'],['4',['ANSWER','RISULTATO'],'14']].map(([n,label,value])=>`<div style="padding:12px 5px;border:1px solid var(--line);border-radius:12px;background:var(--panel2)"><div style="font-size:12px;color:var(--muted)">STEP ${n}</div><strong style="display:block;margin:8px 0;color:var(--gold)">${L(label)}</strong><div style="font-size:18px;font-weight:800;color:var(--text)">${value}</div></div>`).join('')}
+    </div><p class="muted" style="text-align:center;margin-top:10px">${L(['Replace the letter, then follow the order of operations.','Sostituisci la lettera, poi rispetta l’ordine delle operazioni.'])}</p>`;
+  },
+  "math-natural-line": function mathNaturalLine(){
+    return `<svg viewBox="0 0 640 180" class="dia" role="img" aria-label="Natural numbers on the half-line">
+      <text x="320" y="32" text-anchor="middle" class="lbl">${L(['THE NATURAL NUMBERS SET ℕ','L’INSIEME DEI NUMERI NATURALI ℕ'])}</text>
+      <rect x="20" y="48" width="600" height="118" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+      <line x1="60" y1="95" x2="570" y2="95" stroke="var(--muted)" stroke-width="3"/>
+      <polygon points="580,95 565,88 565,102" fill="var(--muted)"/>
+      ${[0,1,2,3,4,5,6].map(i => {
+        const x = 90 + i * 70;
+        return `<circle cx="${x}" cy="95" r="5" fill="${i===0?'var(--ember)':'var(--gold)'}"/>
+        <line x1="${x}" y1="88" x2="${x}" y2="102" stroke="${i===0?'var(--ember)':'var(--gold)'}" stroke-width="2"/>
+        <text x="${x}" y="125" text-anchor="middle" fill="var(--text)" font-size="16" font-weight="700">${i}</text>`;
+      }).join('')}
+      <text x="585" y="125" text-anchor="middle" fill="var(--gold)" font-size="20" font-weight="700">…</text>
+      <text x="320" y="152" text-anchor="middle" class="sm" fill="var(--muted)">${L(['Starts at 0 (no predecessor) · Infinite towards the right · Discrete (no natural between 2 and 3)','Inizia da 0 (nessun precedente) · Infinito verso destra · Discreto (nessun naturale tra 2 e 3)'])}</text>
+    </svg>`;
+  },
+  "math-integers-line": function mathIntegersLine(){
+    return `<svg viewBox="0 0 640 195" class="dia" role="img" aria-label="Integers line showing positive and negative numbers">
+      <text x="320" y="28" text-anchor="middle" class="lbl">${L(['THE INTEGERS SET ℤ (POSITIVE & NEGATIVE)','L’INSIEME DEI NUMERI INTERI RELATIVI ℤ'])}</text>
+      <rect x="20" y="42" width="600" height="142" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+      <polygon points="40,95 55,88 55,102" fill="var(--ember)"/>
+      <line x1="45" y1="95" x2="595" y2="95" stroke="var(--line)" stroke-width="3"/>
+      <polygon points="600,95 585,88 585,102" fill="var(--data)"/>
+      ${[-4,-3,-2,-1,0,1,2,3,4].map((v, idx) => {
+        const x = 80 + idx * 60;
+        const col = v < 0 ? 'var(--ember)' : v > 0 ? 'var(--data)' : 'var(--gold)';
+        return `<circle cx="${x}" cy="95" r="4.5" fill="${col}"/>
+        <text x="${x}" y="120" text-anchor="middle" fill="${col}" font-size="14" font-weight="700">${v > 0 ? '+'+v : v}</text>`;
+      }).join('')}
+      <!-- Jump from -3 to +2 -->
+      <path d="M 140 85 Q 260 48 380 85" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-dasharray="5,3"/>
+      <polygon points="380,85 370,78 375,90" fill="var(--gold)"/>
+      <text x="260" y="62" text-anchor="middle" fill="var(--gold)" font-size="13" font-weight="700">+ 5 passi a destra / steps right</text>
+      <text x="320" y="162" text-anchor="middle" class="sm">${L(['(-3) + (+5) = +2 · Add: move RIGHT · Subtract: move LEFT · (-) × (-) = (+)','(-3) + (+5) = +2 · Somma: verso DESTRA · Sottrai: verso SINISTRA · (-) × (-) = (+)'])}</text>
+    </svg>`;
+  },
+  "math-mcd-mcm": function mathMcdMcm(){
+    return `<svg viewBox="0 0 640 215" class="dia" role="img" aria-label="MCD and mcm prime factor diagram for 12 and 18">
+      <text x="320" y="26" text-anchor="middle" class="lbl">${L(['M.C.D. (GREATEST COMMON DIVISOR) & m.c.m. (LEAST COMMON MULTIPLE)','M.C.D. E m.c.m. CON I FATTORI PRIMI (12 e 18)'])}</text>
+      <rect x="20" y="38" width="600" height="168" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+      <!-- Circle 12 -->
+      <circle cx="260" cy="110" r="62" fill="var(--data)" opacity=".18" stroke="var(--data)" stroke-width="2"/>
+      <!-- Circle 18 -->
+      <circle cx="380" cy="110" r="62" fill="var(--ember)" opacity=".18" stroke="var(--ember)" stroke-width="2"/>
+      <!-- Factor 2 for 12 only -->
+      <text x="228" y="115" text-anchor="middle" fill="var(--data)" font-size="20" font-weight="800">2</text>
+      <text x="228" y="70" text-anchor="middle" fill="var(--data)" font-size="13" font-weight="700">12 = 2² × 3</text>
+      <!-- Intersection: factors 2 and 3 -->
+      <rect x="296" y="80" width="48" height="60" rx="8" fill="var(--gold)" opacity=".25" stroke="var(--gold)" stroke-width="1.5"/>
+      <text x="320" y="104" text-anchor="middle" fill="var(--gold)" font-size="18" font-weight="800">2</text>
+      <text x="320" y="128" text-anchor="middle" fill="var(--gold)" font-size="18" font-weight="800">3</text>
+      <!-- Factor 3 for 18 only -->
+      <text x="412" y="115" text-anchor="middle" fill="var(--ember)" font-size="20" font-weight="800">3</text>
+      <text x="412" y="70" text-anchor="middle" fill="var(--ember)" font-size="13" font-weight="700">18 = 2 × 3²</text>
+      <!-- Summary labels -->
+      <text x="120" y="186" text-anchor="middle" fill="var(--gold)" font-size="13" font-weight="700">M.C.D.(12, 18) = 2 × 3 = 6</text>
+      <text x="520" y="186" text-anchor="middle" fill="var(--sakura)" font-size="13" font-weight="700">m.c.m.(12, 18) = 2² × 3² = 36</text>
+      <text x="320" y="186" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['M.C.D. = common with min exponent · m.c.m. = all with max exponent','M.C.D. = solo comuni con esponente min · m.c.m. = tutti con esponente max'])}</text>
+    </svg>`;
+  },
+  "math-fractions-visual": function mathFractionsVisual(){
+    return `<svg viewBox="0 0 640 210" class="dia" role="img" aria-label="Equivalent fractions 1/2 = 2/4 = 4/8">
+      <text x="320" y="26" text-anchor="middle" class="lbl">${L(['EQUIVALENT FRACTIONS: SAME QUANTITY, DIFFERENT SLICES','FRAZIONI EQUIVALENTI: STESSA QUANTITÀ, PARTI DIVERSE'])}</text>
+      <rect x="20" y="38" width="600" height="162" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+      <!-- Fraction Bar 1/2 -->
+      <g transform="translate(140, 56)">
+        <text x="-40" y="24" fill="var(--text)" font-size="16" font-weight="800">1/2</text>
+        <rect x="0" y="6" width="360" height="26" rx="4" fill="none" stroke="var(--line)" stroke-width="2"/>
+        <rect x="0" y="6" width="180" height="26" rx="4" fill="var(--data)" opacity=".75"/>
+        <line x1="180" y1="6" x2="180" y2="32" stroke="var(--text)" stroke-width="2"/>
+        <text x="390" y="24" fill="var(--muted)" font-size="12">50% = 0.5</text>
+      </g>
+      <!-- Fraction Bar 2/4 -->
+      <g transform="translate(140, 96)">
+        <text x="-40" y="24" fill="var(--text)" font-size="16" font-weight="800">2/4</text>
+        <rect x="0" y="6" width="360" height="26" rx="4" fill="none" stroke="var(--line)" stroke-width="2"/>
+        <rect x="0" y="6" width="180" height="26" rx="4" fill="var(--gold)" opacity=".75"/>
+        <line x1="90" y1="6" x2="90" y2="32" stroke="var(--line)" stroke-width="1.5"/>
+        <line x1="180" y1="6" x2="180" y2="32" stroke="var(--text)" stroke-width="2"/>
+        <line x1="270" y1="6" x2="270" y2="32" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="390" y="24" fill="var(--muted)" font-size="12">50% = 0.5</text>
+      </g>
+      <!-- Fraction Bar 4/8 -->
+      <g transform="translate(140, 136)">
+        <text x="-40" y="24" fill="var(--text)" font-size="16" font-weight="800">4/8</text>
+        <rect x="0" y="6" width="360" height="26" rx="4" fill="none" stroke="var(--line)" stroke-width="2"/>
+        <rect x="0" y="6" width="180" height="26" rx="4" fill="var(--ember)" opacity=".75"/>
+        ${[45,90,135,180,225,270,315].map(x => `<line x1="${x}" y1="6" x2="${x}" y2="32" stroke="${x===180?'var(--text)':'var(--line)'}" stroke-width="${x===180?2:1}"/>`).join('')}
+        <text x="390" y="24" fill="var(--muted)" font-size="12">50% = 0.5</text>
+      </g>
+      <text x="320" y="188" text-anchor="middle" class="sm" fill="var(--gold)">${L(['Invariant Property: multiply or divide both top and bottom by the same number!','Proprietà Invariantiva: moltiplica o dividi sopra e sotto per lo stesso numero!'])}</text>
+    </svg>`;
+  },
+  "math-venn-diagram": function mathVennDiagram(){
+    return `<svg viewBox="0 0 640 210" class="dia" role="img" aria-label="Venn diagrams for intersection and union">
+      <text x="320" y="26" text-anchor="middle" class="lbl">${L(['SETS: INTERSECTION (A ∩ B) vs UNION (A ∪ B)','INSIEMI: INTERSEZIONE (A ∩ B) vs UNIONE (A ∪ B)'])}</text>
+      <rect x="20" y="38" width="600" height="162" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+      <!-- Left side: Intersection -->
+      <g transform="translate(160, 105)">
+        <circle cx="-35" cy="0" r="50" fill="none" stroke="var(--data)" stroke-width="2"/>
+        <circle cx="35" cy="0" r="50" fill="none" stroke="var(--ember)" stroke-width="2"/>
+        <!-- Shaded intersection -->
+        <path d="M 0 -35 A 50 50 0 0 1 0 35 A 50 50 0 0 1 0 -35 Z" fill="var(--gold)" opacity=".8"/>
+        <text x="-55" y="-35" fill="var(--data)" font-weight="700">A</text>
+        <text x="50" y="-35" fill="var(--ember)" font-weight="700">B</text>
+        <text x="0" y="65" text-anchor="middle" fill="var(--gold)" font-size="14" font-weight="800">A ∩ B (${L(['INTERSECTION / AND','INTERSEZIONE / E'])})</text>
+        <text x="0" y="80" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['Elements in BOTH A and B','Elementi in ENTRAMBI'])}</text>
+      </g>
+      <!-- Right side: Union -->
+      <g transform="translate(480, 105)">
+        <circle cx="-35" cy="0" r="50" fill="var(--sakura)" opacity=".35" stroke="var(--data)" stroke-width="2"/>
+        <circle cx="35" cy="0" r="50" fill="var(--sakura)" opacity=".35" stroke="var(--ember)" stroke-width="2"/>
+        <text x="-55" y="-35" fill="var(--data)" font-weight="700">A</text>
+        <text x="50" y="-35" fill="var(--ember)" font-weight="700">B</text>
+        <text x="0" y="65" text-anchor="middle" fill="var(--sakura)" font-size="14" font-weight="800">A ∪ B (${L(['UNION / OR','UNIONE / O'])})</text>
+        <text x="0" y="80" text-anchor="middle" fill="var(--muted)" font-size="11">${L(['Elements in A, B, or both','TUTTI gli elementi uniti'])}</text>
+      </g>
+    </svg>`;
+  },
+  "math-like-terms": function mathLikeTerms(){
+    return `<svg viewBox="0 0 640 215" class="dia" role="img" aria-label="Similar monomials like terms illustration">
+      <text x="320" y="26" text-anchor="middle" class="lbl">${L(['SIMILAR MONOMIALS (LIKE TERMS): SAME LITERAL PART','MONOMI SIMILI: STESSA PARTE LETTERALE'])}</text>
+      <rect x="20" y="38" width="600" height="168" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+      <!-- Left side: Like Terms (OK) -->
+      <rect x="40" y="52" width="260" height="110" rx="10" fill="var(--data)" opacity=".12" stroke="var(--good)" stroke-width="1.5"/>
+      <text x="170" y="78" text-anchor="middle" fill="var(--good)" font-size="14" font-weight="800">✓ ${L(['LIKE TERMS (ADD COEFFICIENTS)','TERMINI SIMILI (SOMMA I NUMERI)'])}</text>
+      <text x="170" y="112" text-anchor="middle" style="font-size:24px;font-weight:800;fill:var(--text)">3a² + 5a² = <tspan fill="var(--gold)">8a²</tspan></text>
+      <text x="170" y="142" text-anchor="middle" class="sm" fill="var(--muted)">${L(['Literal part a² stays identical!','La parte letterale a² rimane intatta!'])}</text>
+      <!-- Right side: Not Like Terms (NO) -->
+      <rect x="340" y="52" width="260" height="110" rx="10" fill="var(--bad)" opacity=".10" stroke="var(--bad)" stroke-width="1.5"/>
+      <text x="470" y="78" text-anchor="middle" fill="var(--bad)" font-size="14" font-weight="800">✗ ${L(['NOT SIMILAR (DO NOT COMBINE!)','NON SIMILI (NON SOMMARE!)'])}</text>
+      <text x="470" y="112" text-anchor="middle" style="font-size:24px;font-weight:800;fill:var(--bad)">3a² + 2a ≠ 5a³</text>
+      <text x="470" y="142" text-anchor="middle" class="sm" fill="var(--muted)">${L(['Apples and pears: exponents differ!','Mele e pere: esponenti diversi!'])}</text>
+      <text x="320" y="192" text-anchor="middle" class="sm" fill="var(--gold)">${L(['Rule: to add or subtract monomials, only the coefficient changes!','Regola d’oro: per sommare monomi simili, somma solo i coefficienti numerici!'])}</text>
+    </svg>`;
+  },
+  "math-square-binomial": function mathSquareBinomial(){
+    return `<svg viewBox="0 0 640 240" class="dia" role="img" aria-label="Geometric proof of square of a binomial a plus b squared">
+      <text x="320" y="24" text-anchor="middle" class="lbl">${L(['SPECIAL PRODUCT: (a + b)² = a² + 2ab + b²','PRODOTTO NOTEVOLE: (a + b)² = a² + 2ab + b²'])}</text>
+      <rect x="20" y="34" width="600" height="198" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+      <!-- Geometric Square on Left -->
+      <g transform="translate(60, 48)">
+        <!-- a² square -->
+        <rect x="0" y="0" width="80" height="80" fill="var(--data)" opacity=".75" stroke="var(--line)"/>
+        <text x="40" y="46" text-anchor="middle" fill="#fff" font-size="20" font-weight="800">a²</text>
+        <!-- ab top-right -->
+        <rect x="80" y="0" width="40" height="80" fill="var(--sakura)" opacity=".75" stroke="var(--line)"/>
+        <text x="100" y="46" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">ab</text>
+        <!-- ab bottom-left -->
+        <rect x="0" y="80" width="80" height="40" fill="var(--sakura)" opacity=".75" stroke="var(--line)"/>
+        <text x="40" y="106" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">ab</text>
+        <!-- b² square -->
+        <rect x="80" y="80" width="40" height="40" fill="var(--gold)" opacity=".85" stroke="var(--line)"/>
+        <text x="100" y="106" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">b²</text>
+        <!-- Side labels -->
+        <text x="40" y="-8" text-anchor="middle" fill="var(--data)" font-weight="700">a</text>
+        <text x="100" y="-8" text-anchor="middle" fill="var(--gold)" font-weight="700">b</text>
+      </g>
+      <!-- Explanation on Right -->
+      <g transform="translate(240, 60)">
+        <text x="0" y="24" fill="var(--text)" font-size="20" font-weight="800">(a + b)² = a² + <tspan fill="var(--sakura)">2ab</tspan> + b²</text>
+        <text x="0" y="55" fill="var(--gold)" font-size="14" font-weight="700">1° termine al quadrato: a²</text>
+        <text x="0" y="75" fill="var(--sakura)" font-size="14" font-weight="700">DOPPIO PRODOTTO: 2 × a × b = 2ab</text>
+        <text x="0" y="95" fill="var(--data)" font-size="14" font-weight="700">2° termine al quadrato: b²</text>
+        <rect x="0" y="112" width="360" height="36" rx="6" fill="var(--bad)" opacity=".15" stroke="var(--bad)"/>
+        <text x="180" y="135" text-anchor="middle" fill="var(--bad)" font-size="13" font-weight="800">ATTENZIONE AL TRANELLO: (a+b)² ≠ a² + b² !</text>
+      </g>
+      <text x="320" y="222" text-anchor="middle" class="sm" fill="var(--muted)">${L(['The two pink rectangles form the double product +2ab: never forget it!','I due rettangoli rosa formano il doppio prodotto +2ab: non dimenticarlo mai!'])}</text>
+    </svg>`;
+  },
+  "math-diff-squares": function mathDiffSquares(){
+    return `<svg viewBox="0 0 640 210" class="dia" role="img" aria-label="Difference of squares (a plus b)(a minus b) = a squared minus b squared">
+      <text x="320" y="26" text-anchor="middle" class="lbl">${L(['SPECIAL PRODUCT: (a + b)(a − b) = a² − b²','PRODOTTO NOTEVOLE: SOMMA PER DIFFERENZA'])}</text>
+      <rect x="20" y="38" width="600" height="162" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+      <g transform="translate(60, 60)">
+        <!-- a² square with b² cut out -->
+        <rect x="0" y="0" width="110" height="110" fill="var(--data)" opacity=".7"/>
+        <rect x="75" y="75" width="35" height="35" fill="var(--panel2)" stroke="var(--bad)" stroke-dasharray="3,3"/>
+        <text x="92" y="98" text-anchor="middle" fill="var(--bad)" font-size="12" font-weight="700">−b²</text>
+        <text x="45" y="55" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">a²</text>
+      </g>
+      <g transform="translate(240, 75)">
+        <text x="0" y="25" fill="var(--text)" font-size="22" font-weight="800">(a + b)(a − b) = <tspan fill="var(--gold)">a² − b²</tspan></text>
+        <text x="0" y="60" fill="var(--muted)" font-size="14">${L(['The inner products cancel out: (+ab) + (-ab) = 0!','I prodotti interni si elidono: (+ab) + (-ab) = 0!'])}</text>
+        <text x="0" y="85" fill="var(--gold)" font-size="14" font-weight="700">Esempio: (x + 3)(x − 3) = x² − 9</text>
+        <text x="0" y="108" fill="var(--data)" font-size="14" font-weight="700">Esempio: (2x + 1)(2x − 1) = 4x² − 1</text>
+      </g>
+    </svg>`;
+  },
+  "math-equation-balance": function mathEquationBalance(){
+    return `<svg viewBox="0 0 640 220" class="dia" role="img" aria-label="Equation two-pan balance scale principle">
+      <text x="320" y="24" text-anchor="middle" class="lbl">${L(['THE BALANCE PRINCIPLE FOR EQUATIONS (1st EQUIVALENCE PRINCIPLE)','IL PRINCIPIO DELLA BILANCIA (1° PRINCIPIO DI EQUIVALENZA)'])}</text>
+      <rect x="20" y="34" width="600" height="176" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+      <!-- Fulcrum triangle -->
+      <polygon points="320,130 305,160 335,160" fill="var(--gold)"/>
+      <!-- Balance beam -->
+      <line x1="120" y1="130" x2="520" y2="130" stroke="var(--gold)" stroke-width="4"/>
+      <!-- Left Pan (x + 3) -->
+      <line x1="180" y1="130" x2="180" y2="155" stroke="var(--line)" stroke-width="2"/>
+      <ellipse cx="180" cy="155" rx="65" ry="12" fill="var(--data)" opacity=".25" stroke="var(--data)" stroke-width="2"/>
+      <!-- Box x and 3 dots -->
+      <rect x="140" y="115" width="34" height="34" rx="6" fill="var(--ember)" stroke="#fff" stroke-width="1.5"/>
+      <text x="157" y="138" text-anchor="middle" fill="#fff" font-size="18" font-weight="800">x</text>
+      <circle cx="190" cy="132" r="8" fill="var(--gold)"/>
+      <circle cx="205" cy="132" r="8" fill="var(--gold)"/>
+      <circle cx="198" cy="116" r="8" fill="var(--gold)"/>
+      <text x="180" y="98" text-anchor="middle" fill="var(--text)" font-size="18" font-weight="800">x + 3</text>
+      <!-- Equal Sign in Middle -->
+      <text x="320" y="110" text-anchor="middle" fill="var(--gold)" font-size="28" font-weight="900">=</text>
+      <!-- Right Pan (7 dots) -->
+      <line x1="460" y1="130" x2="460" y2="155" stroke="var(--line)" stroke-width="2"/>
+      <ellipse cx="460" cy="155" rx="65" ry="12" fill="var(--data)" opacity=".25" stroke="var(--data)" stroke-width="2"/>
+      <text x="460" y="98" text-anchor="middle" fill="var(--text)" font-size="18" font-weight="800">7</text>
+      ${[0,1,2,3,4,5,6].map(i => `<circle cx="${435 + (i%4)*17}" cy="${118 + Math.floor(i/4)*16}" r="7" fill="var(--gold)"/>`).join('')}
+      <!-- Bottom explanation -->
+      <text x="320" y="194" text-anchor="middle" class="sm" fill="var(--gold)">${L(['Subtract 3 from BOTH sides: x + 3 − 3 = 7 − 3  ⟹  x = 4!','Togli 3 da ENTRAMBI i piatti della bilancia: x + 3 − 3 = 7 − 3  ⟹  x = 4!'])}</text>
+    </svg>`;
+  },
+  "math-inequality-line": function mathInequalityLine(){
+    return `<svg viewBox="0 0 640 215" class="dia" role="img" aria-label="Why multiplying by negative reverses inequality direction">
+      <text x="320" y="24" text-anchor="middle" class="lbl">${L(['WHY INEQUALITIES FLIP WHEN MULTIPLIED BY A NEGATIVE NUMBER','PERCHÉ LE DISEQUAZIONI CAMBIANO VERSO CON IL MENO (× −1)'])}</text>
+      <rect x="20" y="34" width="600" height="172" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+      <line x1="60" y1="90" x2="580" y2="90" stroke="var(--line)" stroke-width="2.5"/>
+      <polygon points="585,90 575,85 575,95" fill="var(--muted)"/>
+      <!-- Origin 0 -->
+      <circle cx="320" cy="90" r="5" fill="var(--muted)"/>
+      <text x="320" y="112" text-anchor="middle" fill="var(--muted)" font-size="14" font-weight="700">0</text>
+      <!-- Top: 2 < 5 -->
+      <circle cx="390" cy="90" r="5" fill="var(--data)"/>
+      <text x="390" y="112" text-anchor="middle" fill="var(--data)" font-size="15" font-weight="700">+2</text>
+      <circle cx="490" cy="90" r="5" fill="var(--data)"/>
+      <text x="490" y="112" text-anchor="middle" fill="var(--data)" font-size="15" font-weight="700">+5</text>
+      <text x="440" y="68" text-anchor="middle" fill="var(--data)" font-size="16" font-weight="800">2 &lt; 5 (2 sta a sinistra di 5)</text>
+      <!-- Bottom: -5 < -2 means -2 > -5 -->
+      <circle cx="250" cy="90" r="5" fill="var(--ember)"/>
+      <text x="250" y="112" text-anchor="middle" fill="var(--ember)" font-size="15" font-weight="700">−2</text>
+      <circle cx="150" cy="90" r="5" fill="var(--ember)"/>
+      <text x="150" y="112" text-anchor="middle" fill="var(--ember)" font-size="15" font-weight="700">−5</text>
+      <!-- Arrow showing flip -->
+      <path d="M 440 76 Q 320 135 200 135" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="4,3"/>
+      <polygon points="200,135 210,130 210,140" fill="var(--gold)"/>
+      <text x="200" y="162" text-anchor="middle" fill="var(--ember)" font-size="16" font-weight="800">−2 &gt; −5 (−2 sta a destra di −5!)</text>
+      <text x="320" y="192" text-anchor="middle" class="sm" fill="var(--gold)">${L(['Golden Rule: whenever you multiply or divide by a negative number, FLIP the sign! (< becomes >)','Regola d’oro: se moltiplichi o dividi per un numero negativo, INVERTI subito il verso! (< diventa >)'])}</text>
+    </svg>`;
+  },
 };
 
 export function getVisualHtml(key: string, lang: Language): string {

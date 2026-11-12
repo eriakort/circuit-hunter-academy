@@ -1,5 +1,8 @@
 import { SubjectInfo, UnitInfo, ArcInfo, Mission, Rank, CodexEntry } from "../types";
-
+import { PHYSICS_FOUNDATION_MISSIONS } from "./physicsFoundationsData";
+import { MATH_CODEX } from "./mathCodex";
+import { ITALIAN_CODEX } from "./italianCodex";
+import { ITALIAN_MISSIONS } from "./italianData";
 export const SUBJECTS: SubjectInfo[] = [
   {
     "id": "cs",
@@ -28,10 +31,42 @@ export const SUBJECTS: SubjectInfo[] = [
       "Misurare il mondo e la fisica dell'equilibrio — grandezze, vettori, forze, solidi e fluidi."
     ],
     "meta": [
-      "Il Walker · chapters 1–5 · prima",
-      "Il Walker · capitoli 1–5 · prima"
+      "Physics · first two years · chapters 1–5",
+      "Fisica · primo biennio · capitoli 1–5"
     ],
     "art": "<svg viewBox=\"0 0 120 120\" width=\"100%\" aria-hidden=\"true\"><defs><linearGradient id=\"phg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#ff9f45\"/><stop offset=\"1\" stop-color=\"#ff5d8f\"/></linearGradient></defs><ellipse cx=\"60\" cy=\"60\" rx=\"46\" ry=\"17\" fill=\"none\" stroke=\"url(#phg)\" stroke-width=\"3\" transform=\"rotate(32 60 60)\"/><ellipse cx=\"60\" cy=\"60\" rx=\"46\" ry=\"17\" fill=\"none\" stroke=\"url(#phg)\" stroke-width=\"3\" transform=\"rotate(-32 60 60)\"/><circle cx=\"60\" cy=\"60\" r=\"10\" fill=\"url(#phg)\"/><circle cx=\"99\" cy=\"81\" r=\"5.5\" fill=\"#ffd166\"/><circle cx=\"99\" cy=\"39\" r=\"5.5\" fill=\"#ffd166\"/></svg>"
+  },
+  {
+    "id": "math",
+    "name": [
+      "Mathematics",
+      "Matematica"
+    ],
+    "blurb": [
+      "Numbers, sets, algebra, geometry and statistics — turn each topic into a technique.",
+      "Numeri, insiemi, algebra, geometria e statistica — trasforma ogni argomento in una tecnica."
+    ],
+    "meta": [
+      "6 chapters · 28 missions",
+      "6 capitoli · 28 missioni"
+    ],
+    "art": "<svg viewBox=\"0 0 120 120\" width=\"100%\" aria-hidden=\"true\"><defs><linearGradient id=\"mg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#ffd166\"/><stop offset=\"1\" stop-color=\"#ff6a3d\"/></linearGradient></defs><text x=\"60\" y=\"72\" text-anchor=\"middle\" font-family=\"Dela Gothic One, Arial Black, sans-serif\" font-size=\"42\" fill=\"url(#mg)\">∑</text></svg>"
+  },
+  {
+    "id": "italian",
+    "name": [
+      "Italian Studies",
+      "Lingua Italiana"
+    ],
+    "blurb": [
+      "Master Italian through speaking and active conversation: CEFR A1, A2, and B1 levels.",
+      "Padroneggia l'italiano attraverso il parlato e la conversazione attiva: livelli QCER A1, A2 e B1."
+    ],
+    "meta": [
+      "A1 · A2 · B1 · Speaking & Grammar",
+      "A1 · A2 · B1 · Parlato e Grammatica"
+    ],
+    "art": "<svg viewBox=\"0 0 120 120\" width=\"100%\" aria-hidden=\"true\"><defs><linearGradient id=\"itg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#009246\"/><stop offset=\"50%\" stop-color=\"#ffffff\"/><stop offset=\"100%\" stop-color=\"#ce2b37\"/></linearGradient><linearGradient id=\"micg\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#ffd166\"/><stop offset=\"100%\" stop-color=\"#ff6a3d\"/></linearGradient></defs><rect x=\"22\" y=\"26\" width=\"76\" height=\"68\" rx=\"14\" fill=\"#111936\" stroke=\"url(#itg)\" stroke-width=\"3\"/><path d=\"M38 34 h14 v52 h-14 z\" fill=\"#009246\" opacity=\".8\"/><path d=\"M52 34 h16 v52 h-16 z\" fill=\"#f4f4f4\" opacity=\".85\"/><path d=\"M68 34 h14 v52 h-14 z\" fill=\"#ce2b37\" opacity=\".8\"/><rect x=\"54\" y=\"46\" width=\"12\" height=\"20\" rx=\"6\" fill=\"url(#micg)\"/><path d=\"M49 56 a11 11 0 0 0 22 0\" fill=\"none\" stroke=\"#ffd166\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><line x1=\"60\" y1=\"67\" x2=\"60\" y2=\"75\" stroke=\"#ffd166\" stroke-width=\"2.5\"/><line x1=\"52\" y1=\"75\" x2=\"68\" y2=\"75\" stroke=\"#ffd166\" stroke-width=\"2.5\" stroke-linecap=\"round\"/></svg>"
   }
 ];
 
@@ -64,6 +99,30 @@ export const UNITS: UnitInfo[] = [
     ],
     "ch": "1–5",
     "subject": "phys"
+  },
+  {
+    "title": [
+      "Numbers & Sets",
+      "Numeri e insiemi"
+    ],
+    "ch": "1–3",
+    "subject": "math"
+  },
+  {
+    "title": [
+      "Algebra",
+      "Algebra"
+    ],
+    "ch": "4–10",
+    "subject": "math"
+  },
+  {
+    "title": [
+      "Geometry & Statistics",
+      "Geometria e statistica"
+    ],
+    "ch": "11 + G1–G4",
+    "subject": "math"
   }
 ];
 
@@ -256,6 +315,66 @@ export const ARCS: ArcInfo[] = [
       "L'equilibrio dei fluidi"
     ],
     "pages": "117–146"
+  },
+  {
+    "n": 1,
+    "unit": 4,
+    "subject": "math",
+    "title": [
+      "Natural & Integer Numbers",
+      "Numeri naturali e numeri interi"
+    ],
+    "pages": "1–76"
+  },
+  {
+    "n": 2,
+    "unit": 4,
+    "subject": "math",
+    "title": [
+      "Rational & Real Numbers",
+      "Numeri razionali e numeri reali"
+    ],
+    "pages": "77–146"
+  },
+  {
+    "n": 3,
+    "unit": 4,
+    "subject": "math",
+    "title": [
+      "Sets, Logic & Relations",
+      "Insiemi, logica e relazioni"
+    ],
+    "pages": "147–222"
+  },
+  {
+    "n": 1,
+    "unit": 5,
+    "subject": "math",
+    "title": [
+      "Algebraic Expressions",
+      "Espressioni algebriche"
+    ],
+    "pages": "223–260"
+  },
+  {
+    "n": 2,
+    "unit": 5,
+    "subject": "math",
+    "title": [
+      "Equations",
+      "Equazioni"
+    ],
+    "pages": "261–310"
+  },
+  {
+    "n": 3,
+    "unit": 5,
+    "subject": "math",
+    "title": [
+      "Inequalities",
+      "Disequazioni"
+    ],
+    "pages": "311–350"
   }
 ];
 
@@ -2247,6 +2366,646 @@ export const MISSIONS: Mission[] = [
       "What a computer is; the von Neumann architecture",
       "Che cos'è un computer; l'architettura di von Neumann"
     ],
+    "learning": {
+          "version": 1,
+          "prerequisites": [
+                [
+                      "Know that a computer runs programs and works with information.",
+                      "Sapere che un computer esegue programmi ed elabora informazioni."
+                ]
+          ],
+          "objectives": [
+                {
+                      "id": "trace-computer-cycle",
+                      "description": [
+                            "Trace how a computer receives, processes, outputs and stores information.",
+                            "Descrivere come un computer riceve, elabora, produce e memorizza informazioni."
+                      ]
+                },
+                {
+                      "id": "hardware-vs-software",
+                      "description": [
+                            "Distinguish physical hardware from the software instructions it runs.",
+                            "Distinguere l'hardware fisico dalle istruzioni software che esegue."
+                      ]
+                },
+                {
+                      "id": "von-neumann-components",
+                      "description": [
+                            "Identify the main parts of the von Neumann architecture and explain the role of the bus.",
+                            "Identificare i componenti principali dell'architettura di von Neumann e spiegare il ruolo del bus."
+                      ]
+                }
+          ],
+          "guidedPractice": [
+  {
+    "id": "guided-hardware-cycle",
+    "title": [
+      "Guided practice: computer systems",
+      "Esercitazione guidata: sistemi informatici"
+    ],
+    "instructions": [
+      "Answer both questions. If you get stuck, reveal the hint; an incorrect answer lets you try again.",
+      "Rispondi a entrambe le domande. Se hai difficoltà, mostra il suggerimento; una risposta errata ti permette di riprovare."
+    ],
+    "sceneIndex": 0,
+    "hints": [
+      [
+        "Follow the direction of information: what enters, what processes it, and what presents the result?",
+        "Segui la direzione delle informazioni: cosa entra, cosa le elabora e cosa presenta il risultato?"
+      ],
+      [
+        "Separate physical components from programs and instructions.",
+        "Distingui i componenti fisici dai programmi e dalle istruzioni."
+      ]
+    ],
+    "questions": [
+      {
+        "q": [
+          "A student speaks into a microphone and sees their words appear on screen. Which sequence best describes the system?",
+          "Uno studente parla in un microfono e vede le parole apparire sullo schermo. Quale sequenza descrive meglio il sistema?"
+        ],
+        "a": [
+          [
+            "Microphone input → processing → screen output",
+            "Input microfono → elaborazione → output schermo"
+          ],
+          [
+            "Screen input → storage → microphone output",
+            "Input schermo → archiviazione → output microfono"
+          ],
+          [
+            "CPU input → keyboard processing → RAM output",
+            "Input CPU → elaborazione tastiera → output RAM"
+          ]
+        ],
+        "why": [
+          "The microphone sends information in, the computer processes it, and the screen presents the result.",
+          "Il microfono invia informazioni, il computer le elabora e lo schermo presenta il risultato."
+        ]
+      },
+      {
+        "q": [
+          "Which item is software rather than hardware?",
+          "Quale elemento è software anziché hardware?"
+        ],
+        "a": [
+          [
+            "A word-processing application",
+            "Un programma di videoscrittura"
+          ],
+          [
+            "A keyboard",
+            "Una tastiera"
+          ],
+          [
+            "An SSD",
+            "Un SSD"
+          ]
+        ],
+        "why": [
+          "An application is a set of instructions. A keyboard and SSD are physical components.",
+          "Un'applicazione è un insieme di istruzioni. Tastiera e SSD sono componenti fisici."
+        ]
+      }
+    ]
+  }
+],
+          "independentPractice": [
+  {
+    "id": "independent-hardware-cycle",
+    "title": [
+      "Independent challenge: computer systems",
+      "Sfida autonoma: sistemi informatici"
+    ],
+    "instructions": [
+      "Solve each new situation without hints. Choose the best answer, then review the explanation.",
+      "Risolvi ogni nuova situazione senza suggerimenti. Scegli la risposta migliore, poi leggi la spiegazione."
+    ],
+    "sceneIndex": 0,
+    "questions": [
+      {
+        "q": [
+          "A student edits a presentation, displays it on a projector and saves it. Which device is an output device?",
+          "Uno studente modifica una presentazione, la mostra con un proiettore e la salva. Quale dispositivo è di output?"
+        ],
+        "a": [
+          [
+            "The projector",
+            "Il proiettore"
+          ],
+          [
+            "The keyboard",
+            "La tastiera"
+          ],
+          [
+            "The SSD",
+            "L'SSD"
+          ]
+        ],
+        "why": [
+          "The projector presents information from the computer, so it is output. The keyboard is input and the SSD stores data.",
+          "Il proiettore presenta le informazioni del computer, quindi è output. La tastiera è input e l'SSD memorizza i dati."
+        ]
+      },
+      {
+        "q": [
+          "A computer follows instructions stored in memory. Which architecture principle does this describe?",
+          "Un computer esegue istruzioni memorizzate in memoria. Quale principio architetturale descrive?"
+        ],
+        "a": [
+          [
+            "Stored-program concept",
+            "Concetto di programma memorizzato"
+          ],
+          [
+            "Touchscreen sensing",
+            "Rilevamento touchscreen"
+          ],
+          [
+            "Cloud synchronisation",
+            "Sincronizzazione cloud"
+          ]
+        ],
+        "why": [
+          "The stored-program concept places program instructions and data in memory for the processor to use.",
+          "Il concetto di programma memorizzato prevede che istruzioni e dati siano in memoria per essere utilizzati dal processore."
+        ]
+      },
+      {
+        "q": [
+          "The CPU needs to read a memory location. Which bus carries the location identifier?",
+          "La CPU deve leggere una posizione di memoria. Quale bus trasporta l'identificatore della posizione?"
+        ],
+        "a": [
+          [
+            "Address bus",
+            "Bus degli indirizzi"
+          ],
+          [
+            "Data bus",
+            "Bus dei dati"
+          ],
+          [
+            "Control bus",
+            "Bus di controllo"
+          ]
+        ],
+        "why": [
+          "The address bus identifies where data should be read from or written to.",
+          "Il bus degli indirizzi indica da dove leggere o dove scrivere i dati."
+        ]
+      }
+    ]
+  }
+],
+          "knowledgeCheck": [
+            {
+              "q": [
+                "Which component processes instructions?",
+                "Quale componente elabora le istruzioni?"
+              ],
+              "a": [
+                [
+                  "CPU",
+                  "CPU"
+                ],
+                [
+                  "Monitor",
+                  "Monitor"
+                ],
+                [
+                  "Keyboard",
+                  "Tastiera"
+                ]
+              ],
+              "why": [
+                "The CPU processes instructions.",
+                "La CPU elabora le istruzioni."
+              ]
+            },
+            {
+              "q": [
+                "Which item is software?",
+                "Quale elemento è software?"
+              ],
+              "a": [
+                [
+                  "A browser",
+                  "Un browser"
+                ],
+                [
+                  "A mouse",
+                  "Un mouse"
+                ],
+                [
+                  "A motherboard",
+                  "Una scheda madre"
+                ]
+              ],
+              "why": [
+                "A browser is a program.",
+                "Un browser è un programma."
+              ]
+            },
+            {
+              "q": [
+                "Where are program instructions held while in use?",
+                "Dove sono conservate le istruzioni mentre vengono usate?"
+              ],
+              "a": [
+                [
+                  "Main memory",
+                  "Memoria principale"
+                ],
+                [
+                  "Monitor",
+                  "Monitor"
+                ],
+                [
+                  "Printer",
+                  "Stampante"
+                ]
+              ],
+              "why": [
+                "Instructions and data are stored in memory.",
+                "Istruzioni e dati sono conservati in memoria."
+              ]
+            },
+            {
+              "q": [
+                "What does a system bus do?",
+                "Cosa fa un bus di sistema?"
+              ],
+              "a": [
+                [
+                  "Connect components and transfer signals",
+                  "Collega componenti e trasferisce segnali"
+                ],
+                [
+                  "Cool the CPU",
+                  "Raffredda la CPU"
+                ],
+                [
+                  "Display images",
+                  "Visualizza immagini"
+                ]
+              ],
+              "why": [
+                "Buses enable communication between components.",
+                "I bus permettono la comunicazione tra componenti."
+              ]
+            }
+          ],
+          "masteryAssessment": {
+            "title": [
+              "Hardware & computer systems mastery",
+              "Padronanza di hardware e sistemi informatici"
+            ],
+            "instructions": [
+              "Answer all five questions independently. You need at least 80% to unlock the battle.",
+              "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
+            ],
+            "passingScore": 80,
+            "questionConceptIds": ["input-processing-output-storage", "hardware-and-software", "von-neumann-architecture", "von-neumann-architecture", "von-neumann-architecture"],
+            "questions": [
+              {
+                "q": [
+                  "A smart doorbell records a visitor and shows the video on a phone. Which sequence best describes the computer system?",
+                  "Un campanello smart registra un visitatore e mostra il video su un telefono. Quale sequenza descrive meglio il sistema?"
+                ],
+                "a": [
+                  [
+                    "Camera input → processing → screen output",
+                    "Input fotocamera → elaborazione → output schermo"
+                  ],
+                  [
+                    "Screen input → storage → camera output",
+                    "Input schermo → archiviazione → output fotocamera"
+                  ],
+                  [
+                    "Output → processing → input",
+                    "Output → elaborazione → input"
+                  ],
+                  [
+                    "Storage → keyboard input → processing",
+                    "Archiviazione → input tastiera → elaborazione"
+                  ]
+                ],
+                "why": [
+                  "The camera captures input, the system processes it, and the phone displays the result.",
+                  "La fotocamera acquisisce l'input, il sistema lo elabora e il telefono mostra il risultato."
+                ]
+              },
+              {
+                "q": [
+                  "Which item is software rather than hardware?",
+                  "Quale elemento è software anziché hardware?"
+                ],
+                "a": [
+                  [
+                    "A spreadsheet application",
+                    "Un'applicazione per fogli di calcolo"
+                  ],
+                  [
+                    "A graphics card",
+                    "Una scheda grafica"
+                  ],
+                  [
+                    "A keyboard",
+                    "Una tastiera"
+                  ],
+                  [
+                    "A monitor",
+                    "Un monitor"
+                  ]
+                ],
+                "why": [
+                  "An application is a set of programs and instructions, not a physical component.",
+                  "Un'applicazione è un insieme di programmi e istruzioni, non un componente fisico."
+                ]
+              },
+              {
+                "q": [
+                  "What is the key idea of the stored-program concept in von Neumann architecture?",
+                  "Qual è l'idea fondamentale del concetto di programma memorizzato nell'architettura di von Neumann?"
+                ],
+                "a": [
+                  [
+                    "Instructions are stored in memory",
+                    "Le istruzioni sono memorizzate in memoria"
+                  ],
+                  [
+                    "Instructions are built permanently into the monitor",
+                    "Le istruzioni sono incorporate permanentemente nel monitor"
+                  ],
+                  [
+                    "Programs are stored only on the keyboard",
+                    "I programmi sono memorizzati solo nella tastiera"
+                  ],
+                  [
+                    "The CPU works without memory",
+                    "La CPU funziona senza memoria"
+                  ]
+                ],
+                "why": [
+                  "The stored-program concept keeps program instructions in memory so the CPU can fetch them.",
+                  "Il concetto di programma memorizzato mantiene le istruzioni in memoria affinché la CPU possa prelevarle."
+                ]
+              },
+              {
+                "q": [
+                  "Which statement best describes the system bus?",
+                  "Quale affermazione descrive meglio il bus di sistema?"
+                ],
+                "a": [
+                  [
+                    "It carries data, address and control signals between components",
+                    "Trasporta dati, indirizzi e segnali di controllo tra i componenti"
+                  ],
+                  [
+                    "It supplies electrical power from the wall",
+                    "Fornisce energia elettrica dalla presa"
+                  ],
+                  [
+                    "It displays images on the monitor",
+                    "Visualizza immagini sul monitor"
+                  ],
+                  [
+                    "It stores files permanently",
+                    "Memorizza i file in modo permanente"
+                  ]
+                ],
+                "why": [
+                  "The system bus provides communication paths for data, addresses and control signals.",
+                  "Il bus di sistema offre percorsi di comunicazione per dati, indirizzi e segnali di controllo."
+                ]
+              },
+              {
+                "q": [
+                  "In a typical computer, which component carries out program instructions?",
+                  "In un computer tipico, quale componente esegue le istruzioni dei programmi?"
+                ],
+                "a": [
+                  [
+                    "The CPU",
+                    "La CPU"
+                  ],
+                  [
+                    "The monitor",
+                    "Il monitor"
+                  ],
+                  [
+                    "The power supply",
+                    "L'alimentatore"
+                  ],
+                  [
+                    "The case fan",
+                    "La ventola del case"
+                  ]
+                ],
+                "why": [
+                  "The CPU fetches, decodes and executes program instructions.",
+                  "La CPU preleva, decodifica ed esegue le istruzioni dei programmi."
+                ]
+              }
+            ]
+          },
+          "concepts": [
+                {
+                      "id": "input-processing-output-storage",
+                      "title": [
+                            "The computer cycle",
+                            "Il ciclo del computer"
+                      ],
+                      "explanation": [
+                            "A computer accepts input, processes data, produces output and can store information for later use.",
+                            "Un computer riceve input, elabora dati, produce output e può memorizzare informazioni per utilizzarle in seguito."
+                      ],
+                      "sceneIndexes": [
+                            0
+                      ],
+                      "visualKey": "ipos"
+                ,
+                      
+                      "example": ["When you search for a video: the keyboard sends your query, the CPU and app process it, the screen displays results, and the browser may store history.","Quando cerchi un video: la tastiera invia la ricerca, CPU e app la elaborano, lo schermo mostra i risultati e il browser può salvare la cronologia."],
+                      "workedExample": {
+  "scenario": [
+    "You type a search for a volcano video, press Enter, watch the result and save the link. Trace the computer cycle in this task.",
+    "Digiti una ricerca per un video sui vulcani, premi Invio, guardi il risultato e salvi il link. Descrivi il ciclo del computer in questa attività."
+  ],
+  "steps": [
+    [
+      "1. Input: the keyboard sends the search words to the computer.",
+      "1. Input: la tastiera invia le parole della ricerca al computer."
+    ],
+    [
+      "2. Processing: the CPU runs the browser and search instructions to handle the request.",
+      "2. Elaborazione: la CPU esegue il browser e le istruzioni di ricerca per gestire la richiesta."
+    ],
+    [
+      "3. Output: the screen presents the search results and video.",
+      "3. Output: lo schermo mostra i risultati e il video."
+    ],
+    [
+      "4. Storage: saving the link writes information to storage so it can be used later.",
+      "4. Memorizzazione: salvare il link scrive le informazioni in una memoria che potrai usare in seguito."
+    ]
+  ],
+  "answer": [
+    "The keyboard provides input, the CPU and software process it, the screen provides output, and storage keeps the saved link.",
+    "La tastiera fornisce l'input, CPU e software lo elaborano, lo schermo produce l'output e la memoria conserva il link salvato."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "The monitor is the input because it is where I see the result.",
+      "Il monitor è l'input perché è lì che vedo il risultato."
+    ],
+    "correction": [
+      "The monitor presents information, so it is output. Input is information sent into the computer, such as search words typed on the keyboard.",
+      "Il monitor presenta informazioni, quindi è output. L'input è l'informazione inviata al computer, ad esempio le parole digitate sulla tastiera."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain The computer cycle in your own words and give one practical example.",
+                          "Spiega Il ciclo del computer con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                },
+                {
+                      "id": "hardware-and-software",
+                      "title": [
+                            "Hardware and software",
+                            "Hardware e software"
+                      ],
+                      "explanation": [
+                            "Hardware is the physical equipment; software is the programs and instructions that tell the equipment what to do.",
+                            "L'hardware è la parte fisica; il software è l'insieme di programmi e istruzioni che indicano ai componenti cosa fare."
+                      ],
+                      "sceneIndexes": [
+                            1
+                      ],
+                      "visualKey": "hwsw"
+                ,
+                      
+                      "example": ["A laptop's keyboard is hardware; the operating system and browser running on it are software.","La tastiera di un portatile è hardware; il sistema operativo e il browser che vi funzionano sono software."],
+                      "workedExample": {
+  "scenario": [
+    "A student uses a laptop to write a report. Identify the hardware and software involved.",
+    "Uno studente usa un portatile per scrivere una relazione. Individua l'hardware e il software coinvolti."
+  ],
+  "steps": [
+    [
+      "1. Find the physical parts: laptop, keyboard, screen and SSD.",
+      "1. Individua le parti fisiche: portatile, tastiera, schermo e SSD."
+    ],
+    [
+      "2. Identify the programs: operating system and word processor.",
+      "2. Individua i programmi: sistema operativo e programma di videoscrittura."
+    ],
+    [
+      "3. Explain how they work together: software gives instructions and hardware carries them out.",
+      "3. Spiega come collaborano: il software fornisce istruzioni e l'hardware le esegue."
+    ],
+    [
+      "4. Closing the word processor stops the program, but the keyboard remains a physical component.",
+      "4. Chiudere il programma interrompe il software, ma la tastiera resta un componente fisico."
+    ]
+  ],
+  "answer": [
+    "The laptop, keyboard, screen and SSD are hardware. The operating system and word processor are software; they use the hardware to create and save the report.",
+    "Il portatile, la tastiera, lo schermo e l'SSD sono hardware. Il sistema operativo e il programma di videoscrittura sono software e usano l'hardware per creare e salvare la relazione."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "A word processor is hardware because I use it on a laptop.",
+      "Un programma di videoscrittura è hardware perché lo uso su un portatile."
+    ],
+    "correction": [
+      "A word processor is software: it is a program, not a physical component. The keyboard and screen are hardware.",
+      "Un programma di videoscrittura è software: è un programma, non un componente fisico. Tastiera e schermo sono hardware."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain Hardware and software in your own words and give one practical example.",
+                          "Spiega Hardware e software con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                },
+                {
+                      "id": "von-neumann-architecture",
+                      "title": [
+                            "The von Neumann architecture",
+                            "L'architettura di von Neumann"
+                      ],
+                      "explanation": [
+                            "In the von Neumann model, instructions and data share main memory. The CPU processes instructions, input/output devices communicate with the outside world, and buses connect the components.",
+                            "Nel modello di von Neumann, istruzioni e dati condividono la memoria centrale. La CPU esegue le istruzioni, le periferiche di input/output comunicano con l'esterno e i bus collegano i componenti."
+                      ],
+                      "sceneIndexes": [
+                            2
+                      ],
+                      "visualKey": "vonneumann"
+                ,
+                      
+                      "example": ["A calculator program's instructions and values are held in main memory while the CPU fetches and executes the instructions.","Le istruzioni e i valori di un programma calcolatrice sono conservati nella memoria centrale mentre la CPU li preleva ed esegue."],
+                      "workedExample": {
+  "scenario": [
+    "A computer opens a calculator app and works out 27 × 14. Use the von Neumann model to explain what happens.",
+    "Un computer apre una calcolatrice e calcola 27 × 14. Usa il modello di von Neumann per spiegare cosa accade."
+  ],
+  "steps": [
+    [
+      "1. The calculator instructions and values 27 and 14 are loaded into main memory.",
+      "1. Le istruzioni della calcolatrice e i valori 27 e 14 vengono caricati nella memoria centrale."
+    ],
+    [
+      "2. The CPU fetches an instruction and its required data from memory.",
+      "2. La CPU preleva dalla memoria un'istruzione e i dati necessari."
+    ],
+    [
+      "3. The control unit coordinates the operation and the ALU performs the multiplication.",
+      "3. L'unità di controllo coordina l'operazione e l'ALU esegue la moltiplicazione."
+    ],
+    [
+      "4. Buses carry data, addresses and control signals; the result is sent to the display.",
+      "4. I bus trasportano dati, indirizzi e segnali di controllo; il risultato viene inviato allo schermo."
+    ]
+  ],
+  "answer": [
+    "Instructions and data share main memory; the CPU fetches and executes instructions, while buses connect components and input/output devices communicate with the user.",
+    "Istruzioni e dati condividono la memoria centrale; la CPU preleva ed esegue le istruzioni, mentre i bus collegano i componenti e le periferiche comunicano con l'utente."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "The CPU permanently stores every program and file.",
+      "La CPU memorizza permanentemente ogni programma e file."
+    ],
+    "correction": [
+      "The CPU processes instructions. Main memory holds the instructions and data currently needed; long-term files are kept in storage.",
+      "La CPU elabora le istruzioni. La memoria centrale contiene istruzioni e dati necessari in quel momento; i file a lungo termine sono conservati nell'archiviazione."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain The von Neumann architecture in your own words and give one practical example.",
+                          "Spiega L'architettura di von Neumann con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                }
+          ]
+    },
     "demon": [
       "Static Imp",
       "Folletto Statico"
@@ -2594,6 +3353,724 @@ export const MISSIONS: Mission[] = [
       "Motherboard, CPU, fetch–decode–execute",
       "Scheda madre, CPU, ciclo fetch–decode–execute"
     ],
+    "learning": {
+          "version": 1,
+          "prerequisites": [
+                [
+                      "Understand the input–processing–output cycle and the difference between hardware and software.",
+                      "Comprendere il ciclo input–elaborazione–output e la differenza tra hardware e software."
+                ]
+          ],
+          "objectives": [
+                {
+                      "id": "motherboard-role",
+                      "description": [
+                            "Explain how the motherboard connects and allows computer components to communicate.",
+                            "Spiegare come la scheda madre collega i componenti e permette loro di comunicare."
+                      ]
+                },
+                {
+                      "id": "power-supply-role",
+                      "description": [
+                            "Describe why a power supply converts mains AC into suitable DC power for components.",
+                            "Descrivere perché l'alimentatore converte la corrente alternata di rete in corrente continua adatta ai componenti."
+                      ]
+                },
+                {
+                      "id": "cpu-components",
+                      "description": [
+                            "Identify the CPU's control unit, arithmetic logic unit and registers and describe their roles.",
+                            "Identificare unità di controllo, unità aritmetico-logica e registri della CPU e descriverne i ruoli."
+                      ]
+                },
+                {
+                      "id": "cpu-performance",
+                      "description": [
+                            "Interpret clock speed and core count without assuming that GHz alone determines performance.",
+                            "Interpretare frequenza di clock e numero di core senza presumere che i GHz da soli determinino le prestazioni."
+                      ]
+                },
+                {
+                      "id": "fetch-decode-execute",
+                      "description": [
+                            "Put fetch, decode and execute in the correct order and explain each stage.",
+                            "Ordinare correttamente fetch, decode ed execute e spiegare ogni fase."
+                      ]
+                }
+          ],
+          "guidedPractice": [
+  {
+    "id": "guided-cpu-components",
+    "title": [
+      "Guided practice: motherboard and CPU",
+      "Esercitazione guidata: scheda madre e CPU"
+    ],
+    "instructions": [
+      "Use the hints to reason about the role of each component. Both answers must be correct to finish.",
+      "Usa i suggerimenti per ragionare sul ruolo di ogni componente. Per completare, entrambe le risposte devono essere corrette."
+    ],
+    "sceneIndex": 0,
+    "hints": [
+      [
+        "Think of the motherboard as the connection platform, not the component that executes instructions.",
+        "Pensa alla scheda madre come alla piattaforma di collegamento, non al componente che esegue le istruzioni."
+      ],
+      [
+        "Remember: the control unit directs; the ALU calculates.",
+        "Ricorda: l'unità di controllo dirige; l'ALU calcola."
+      ]
+    ],
+    "questions": [
+      {
+        "q": [
+          "A new graphics card needs a compatible slot and a path to communicate with the CPU. Which component provides these connections?",
+          "Una nuova scheda video ha bisogno di uno slot compatibile e di un percorso per comunicare con la CPU. Quale componente fornisce queste connessioni?"
+        ],
+        "a": [
+          [
+            "The motherboard",
+            "La scheda madre"
+          ],
+          [
+            "The power supply",
+            "L'alimentatore"
+          ],
+          [
+            "The CPU cache",
+            "La cache della CPU"
+          ]
+        ],
+        "why": [
+          "The motherboard provides slots and communication pathways between components.",
+          "La scheda madre fornisce slot e percorsi di comunicazione tra i componenti."
+        ]
+      },
+      {
+        "q": [
+          "Which CPU component performs an addition such as 8 + 5?",
+          "Quale componente della CPU esegue un'addizione come 8 + 5?"
+        ],
+        "a": [
+          [
+            "The arithmetic logic unit (ALU)",
+            "L'unità aritmetico-logica (ALU)"
+          ],
+          [
+            "The control unit",
+            "L'unità di controllo"
+          ],
+          [
+            "The power supply unit",
+            "L'alimentatore"
+          ]
+        ],
+        "why": [
+          "The ALU performs arithmetic and logical operations; the control unit coordinates them.",
+          "L'ALU esegue operazioni aritmetiche e logiche; l'unità di controllo le coordina."
+        ]
+      }
+    ]
+  }
+],
+          "independentPractice": [
+  {
+    "id": "independent-cpu-core",
+    "title": [
+      "Independent challenge: motherboard and CPU",
+      "Sfida autonoma: scheda madre e CPU"
+    ],
+    "instructions": [
+      "Apply what you learned to new hardware scenarios. No hints are available in this challenge.",
+      "Applica ciò che hai imparato a nuovi scenari hardware. In questa sfida non sono disponibili suggerimenti."
+    ],
+    "sceneIndex": 0,
+    "questions": [
+      {
+        "q": [
+          "A PC turns off unexpectedly when the processor gets too hot. Which component helps remove heat from the CPU?",
+          "Un PC si spegne improvvisamente quando il processore si surriscalda. Quale componente aiuta a rimuovere il calore dalla CPU?"
+        ],
+        "a": [
+          [
+            "CPU cooler",
+            "Dissipatore della CPU"
+          ],
+          [
+            "RAM module",
+            "Modulo RAM"
+          ],
+          [
+            "Network card",
+            "Scheda di rete"
+          ]
+        ],
+        "why": [
+          "The cooler transfers heat away from the CPU to help keep it within a safe operating temperature.",
+          "Il dissipatore trasferisce il calore lontano dalla CPU per mantenerla a una temperatura operativa sicura."
+        ]
+      },
+      {
+        "q": [
+          "A processor has four cores. What does this most directly mean?",
+          "Un processore ha quattro core. Che cosa significa più direttamente?"
+        ],
+        "a": [
+          [
+            "It has four processing cores that can work on tasks",
+            "Ha quattro core di elaborazione che possono lavorare sulle attività"
+          ],
+          [
+            "It has four hard drives",
+            "Ha quattro dischi rigidi"
+          ],
+          [
+            "It always runs at four times the speed",
+            "Funziona sempre a una velocità quattro volte superiore"
+          ]
+        ],
+        "why": [
+          "More cores can handle multiple instruction streams, but performance also depends on clock speed, workload and design.",
+          "Più core possono gestire più flussi di istruzioni, ma le prestazioni dipendono anche da frequenza, carico e progettazione."
+        ]
+      },
+      {
+        "q": [
+          "During the fetch-decode-execute cycle, what happens during decode?",
+          "Durante il ciclo fetch-decode-execute, che cosa accade durante decode?"
+        ],
+        "a": [
+          [
+            "The control unit interprets the instruction",
+            "L'unità di controllo interpreta l'istruzione"
+          ],
+          [
+            "The instruction is permanently saved to an SSD",
+            "L'istruzione viene salvata permanentemente su un SSD"
+          ],
+          [
+            "The monitor displays the instruction",
+            "Il monitor visualizza l'istruzione"
+          ]
+        ],
+        "why": [
+          "Decode interprets the fetched instruction so the processor knows which operation to perform.",
+          "Decode interpreta l'istruzione recuperata affinché il processore sappia quale operazione eseguire."
+        ]
+      }
+    ]
+  }
+],
+          "knowledgeCheck": [
+            {
+              "q": [
+                "Which component connects CPU and RAM?",
+                "Quale componente collega CPU e RAM?"
+              ],
+              "a": [
+                [
+                  "Motherboard",
+                  "Scheda madre"
+                ],
+                [
+                  "Power supply",
+                  "Alimentatore"
+                ],
+                [
+                  "SSD",
+                  "SSD"
+                ]
+              ],
+              "why": [
+                "The motherboard connects components.",
+                "La scheda madre collega i componenti."
+              ]
+            },
+            {
+              "q": [
+                "What does the control unit do?",
+                "Cosa fa l'unità di controllo?"
+              ],
+              "a": [
+                [
+                  "Coordinates instruction execution",
+                  "Coordina l'esecuzione delle istruzioni"
+                ],
+                [
+                  "Stores files permanently",
+                  "Memorizza i file in modo permanente"
+                ],
+                [
+                  "Displays graphics",
+                  "Visualizza la grafica"
+                ]
+              ],
+              "why": [
+                "It directs CPU operations.",
+                "Dirige le operazioni della CPU."
+              ]
+            },
+            {
+              "q": [
+                "Which is the correct instruction cycle?",
+                "Qual è il ciclo corretto delle istruzioni?"
+              ],
+              "a": [
+                [
+                  "Fetch, decode, execute",
+                  "Fetch, decode, execute"
+                ],
+                [
+                  "Decode, execute, fetch",
+                  "Decode, execute, fetch"
+                ],
+                [
+                  "Execute, fetch, decode",
+                  "Execute, fetch, decode"
+                ]
+              ],
+              "why": [
+                "The CPU fetches, decodes, then executes.",
+                "La CPU recupera, decodifica ed esegue."
+              ]
+            },
+            {
+              "q": [
+                "What else affects CPU performance besides clock speed?",
+                "Cos'altro influisce sulle prestazioni oltre alla frequenza?"
+              ],
+              "a": [
+                [
+                  "Cores and architecture",
+                  "Core e architettura"
+                ],
+                [
+                  "Case colour",
+                  "Colore del case"
+                ],
+                [
+                  "Screen size",
+                  "Dimensione dello schermo"
+                ]
+              ],
+              "why": [
+                "Architecture and core count also matter.",
+                "Contano anche architettura e numero di core."
+              ]
+            }
+          ],
+          "masteryAssessment": {
+            "title": [
+              "CPU & processing mastery",
+              "Padronanza di CPU ed elaborazione"
+            ],
+            "instructions": [
+              "Answer all five questions independently. You need at least 80% to unlock the battle.",
+              "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
+            ],
+            "passingScore": 80,
+            "questionConceptIds": ["cpu-and-instruction-cycle", "cores-and-clock-speed", "cpu-and-instruction-cycle", "cpu-and-instruction-cycle", "power-supply"],
+            "questions": [
+              {
+                "q": [
+                  "Which sequence correctly describes the CPU instruction cycle?",
+                  "Quale sequenza descrive correttamente il ciclo delle istruzioni della CPU?"
+                ],
+                "a": [
+                  [
+                    "Fetch → Decode → Execute",
+                    "Prelievo → Decodifica → Esecuzione"
+                  ],
+                  [
+                    "Decode → Execute → Fetch",
+                    "Decodifica → Esecuzione → Prelievo"
+                  ],
+                  [
+                    "Execute → Fetch → Decode",
+                    "Esecuzione → Prelievo → Decodifica"
+                  ],
+                  [
+                    "Fetch → Execute → Decode",
+                    "Prelievo → Esecuzione → Decodifica"
+                  ]
+                ],
+                "why": [
+                  "The CPU retrieves an instruction, interprets it, and then carries it out.",
+                  "La CPU preleva un'istruzione, la interpreta e poi la esegue."
+                ]
+              },
+              {
+                "q": [
+                  "A processor runs at 2.5 GHz. What does this frequency represent?",
+                  "Un processore funziona a 2,5 GHz. Che cosa rappresenta questa frequenza?"
+                ],
+                "a": [
+                  [
+                    "About 2.5 billion clock cycles per second",
+                    "Circa 2,5 miliardi di cicli di clock al secondo"
+                  ],
+                  [
+                    "2.5 billion bytes of RAM",
+                    "2,5 miliardi di byte di RAM"
+                  ],
+                  [
+                    "Exactly 2.5 programs at a time",
+                    "Esattamente 2,5 programmi alla volta"
+                  ],
+                  [
+                    "2.5 processor cores",
+                    "2,5 core del processore"
+                  ]
+                ],
+                "why": [
+                  "A gigahertz is one billion hertz, and hertz means cycles per second.",
+                  "Un gigahertz equivale a un miliardo di hertz e l'hertz indica i cicli al secondo."
+                ]
+              },
+              {
+                "q": [
+                  "Which CPU component performs arithmetic calculations and logical comparisons?",
+                  "Quale componente della CPU esegue calcoli aritmetici e confronti logici?"
+                ],
+                "a": [
+                  [
+                    "The ALU",
+                    "L'ALU"
+                  ],
+                  [
+                    "The control unit",
+                    "L'unità di controllo"
+                  ],
+                  [
+                    "The cache",
+                    "La cache"
+                  ],
+                  [
+                    "The clock",
+                    "Il clock"
+                  ]
+                ],
+                "why": [
+                  "The arithmetic logic unit performs arithmetic and logical operations.",
+                  "L'unità aritmetico-logica esegue operazioni aritmetiche e logiche."
+                ]
+              },
+              {
+                "q": [
+                  "What is the main role of the CPU control unit?",
+                  "Qual è il ruolo principale dell'unità di controllo della CPU?"
+                ],
+                "a": [
+                  [
+                    "Directing and coordinating instruction execution",
+                    "Dirigere e coordinare l'esecuzione delle istruzioni"
+                  ],
+                  [
+                    "Permanently storing user documents",
+                    "Memorizzare permanentemente i documenti dell'utente"
+                  ],
+                  [
+                    "Converting AC wall power to DC",
+                    "Convertire la corrente alternata in continua"
+                  ],
+                  [
+                    "Displaying pixels on the screen",
+                    "Visualizzare i pixel sullo schermo"
+                  ]
+                ],
+                "why": [
+                  "The control unit coordinates the CPU's operations and control signals.",
+                  "L'unità di controllo coordina le operazioni della CPU e i segnali di controllo."
+                ]
+              },
+              {
+                "q": [
+                  "What does a computer power supply unit (PSU) do?",
+                  "Che cosa fa l'alimentatore di un computer (PSU)?"
+                ],
+                "a": [
+                  [
+                    "Converts mains AC into regulated DC power",
+                    "Converte la corrente alternata di rete in corrente continua regolata"
+                  ],
+                  [
+                    "Executes software instructions",
+                    "Esegue le istruzioni software"
+                  ],
+                  [
+                    "Stores files when power is off",
+                    "Memorizza i file quando manca corrente"
+                  ],
+                  [
+                    "Cools the processor with liquid",
+                    "Raffredda il processore con un liquido"
+                  ]
+                ],
+                "why": [
+                  "Computer components require regulated low-voltage DC power.",
+                  "I componenti del computer richiedono corrente continua regolata a bassa tensione."
+                ]
+              }
+            ]
+          },
+          "concepts": [
+                {
+                      "id": "motherboard",
+                      "title": [
+                            "The motherboard",
+                            "La scheda madre"
+                      ],
+                      "explanation": [
+                            "The motherboard is the main circuit board. It provides connections and communication paths for the CPU, memory, storage and expansion devices.",
+                            "La scheda madre è il circuito principale. Fornisce connessioni e percorsi di comunicazione per CPU, memoria, archiviazione e dispositivi di espansione."
+                      ],
+                      "sceneIndexes": [
+                            0
+                      ],
+                      "visualKey": "board"
+                ,
+                      
+                      "example": ["A compatible motherboard provides the CPU socket, RAM slots and connectors for storage and expansion cards.","Una scheda madre compatibile offre il socket della CPU, gli slot RAM e i connettori per archiviazione e schede di espansione."],
+                      "workedExample": {
+  "scenario": [
+    "You are checking whether a desktop PC can accept a new CPU, RAM kit and graphics card. What does the motherboard contribute?",
+    "Stai verificando se un PC desktop può ospitare una nuova CPU, un kit RAM e una scheda video. Qual è il ruolo della scheda madre?"
+  ],
+  "steps": [
+    [
+      "1. Locate the CPU socket and check that it supports the processor.",
+      "1. Individua il socket della CPU e verifica che sia compatibile con il processore."
+    ],
+    [
+      "2. Check the DIMM slots and supported memory type for the RAM.",
+      "2. Controlla gli slot DIMM e il tipo di memoria supportato per la RAM."
+    ],
+    [
+      "3. Check the PCIe slot and available space for the graphics card.",
+      "3. Controlla lo slot PCIe e lo spazio disponibile per la scheda video."
+    ],
+    [
+      "4. The board provides physical connections and communication paths; it does not perform all processing itself.",
+      "4. La scheda fornisce connessioni fisiche e percorsi di comunicazione; non esegue da sola tutta l'elaborazione."
+    ]
+  ],
+  "answer": [
+    "The motherboard connects the CPU, RAM, storage and expansion cards and provides pathways for communication. Compatibility depends on its sockets, slots and supported standards.",
+    "La scheda madre collega CPU, RAM, archiviazione e schede di espansione e fornisce percorsi per la comunicazione. La compatibilità dipende da socket, slot e standard supportati."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "The motherboard is the component that performs all calculations.",
+      "La scheda madre è il componente che esegue tutti i calcoli."
+    ],
+    "correction": [
+      "The CPU executes instructions and calculations. The motherboard connects components and allows them to communicate.",
+      "La CPU esegue istruzioni e calcoli. La scheda madre collega i componenti e permette loro di comunicare."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain The motherboard in your own words and give one practical example.",
+                          "Spiega La scheda madre con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                },
+                {
+                      "id": "power-supply",
+                      "title": [
+                            "The power supply unit",
+                            "L'alimentatore"
+                      ],
+                      "explanation": [
+                            "The PSU converts incoming alternating current into regulated low-voltage direct current required by computer components.",
+                            "L'alimentatore converte la corrente alternata in ingresso in corrente continua regolata a bassa tensione, necessaria ai componenti del computer."
+                      ],
+                      "sceneIndexes": [
+                            1
+                      ],
+                      "visualKey": "psu"
+                ,
+                      
+                      "example": ["A desktop PSU converts mains AC into regulated DC outputs such as 12 V, 5 V and 3.3 V for components.","Un alimentatore desktop converte la corrente alternata di rete in uscite continue regolate, ad esempio 12 V, 5 V e 3,3 V, per i componenti."],
+                      "workedExample": {
+  "scenario": [
+    "A desktop PC needs power for its CPU, motherboard, drives and graphics card. Explain the PSU's job.",
+    "Un PC desktop ha bisogno di alimentazione per CPU, scheda madre, unità e scheda video. Spiega il compito dell'alimentatore."
+  ],
+  "steps": [
+    [
+      "1. Electricity from the wall is alternating current (AC).",
+      "1. L'elettricità della presa è corrente alternata (CA)."
+    ],
+    [
+      "2. The PSU converts AC into regulated direct-current (DC) outputs.",
+      "2. L'alimentatore converte la CA in uscite regolate di corrente continua (CC)."
+    ],
+    [
+      "3. It supplies the voltage required by components through power connectors.",
+      "3. Fornisce le tensioni necessarie ai componenti tramite connettori di alimentazione."
+    ],
+    [
+      "4. Choose a PSU with suitable connectors and sufficient capacity.",
+      "4. Scegli un alimentatore con connettori adatti e potenza sufficiente."
+    ]
+  ],
+  "answer": [
+    "The PSU converts mains AC into regulated low-voltage DC and distributes it to computer components. It does not process program instructions.",
+    "L'alimentatore converte la CA di rete in CC regolata a bassa tensione e la distribuisce ai componenti. Non elabora le istruzioni dei programmi."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "The PSU stores files and sends instructions to the CPU.",
+      "L'alimentatore conserva file e invia istruzioni alla CPU."
+    ],
+    "correction": [
+      "The PSU supplies electrical power. Storage devices keep files, and the CPU executes instructions.",
+      "L'alimentatore fornisce energia elettrica. Le unità di archiviazione conservano i file e la CPU esegue le istruzioni."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain The power supply unit in your own words and give one practical example.",
+                          "Spiega L'alimentatore con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                },
+                {
+                      "id": "cpu-and-instruction-cycle",
+                      "title": [
+                            "The CPU and instruction cycle",
+                            "La CPU e il ciclo delle istruzioni"
+                      ],
+                      "explanation": [
+                            "The CPU executes program instructions. Its control unit coordinates operations, the arithmetic logic unit performs calculations and logic, and registers hold small amounts of data in immediate use. The fetch–decode–execute cycle repeats as instructions run.",
+                            "La CPU esegue le istruzioni dei programmi. L'unità di controllo coordina le operazioni, l'unità aritmetico-logica esegue calcoli e operazioni logiche e i registri conservano piccole quantità di dati in uso immediato. Il ciclo fetch–decode–execute si ripete durante l'esecuzione."
+                      ],
+                      "sceneIndexes": [
+                            2
+                      ],
+                      "visualKey": "cpu"
+                ,
+                      
+                      "example": ["For an ADD instruction, the CPU fetches the instruction, decodes it and uses the ALU to add the values.","Per un'istruzione ADD, la CPU preleva l'istruzione, la decodifica e usa l'ALU per sommare i valori."],
+                      "workedExample": {
+  "scenario": [
+    "A program adds 8 and 5, then compares the result with 10. Identify the CPU parts at work.",
+    "Un programma somma 8 e 5, poi confronta il risultato con 10. Individua le parti della CPU coinvolte."
+  ],
+  "steps": [
+    [
+      "1. The control unit fetches the next instruction and coordinates the operation.",
+      "1. L'unità di controllo preleva l'istruzione successiva e coordina l'operazione."
+    ],
+    [
+      "2. The instruction is decoded so the CPU knows which operation and data are required.",
+      "2. L'istruzione viene decodificata affinché la CPU sappia quale operazione e quali dati servono."
+    ],
+    [
+      "3. Registers hold the values 8 and 5 for immediate use.",
+      "3. I registri contengono i valori 8 e 5 per l'uso immediato."
+    ],
+    [
+      "4. The ALU adds them to produce 13, then performs the comparison with 10.",
+      "4. L'ALU li somma ottenendo 13, poi esegue il confronto con 10."
+    ]
+  ],
+  "answer": [
+    "The control unit coordinates fetch and decode, registers hold values in immediate use, and the ALU performs arithmetic and logical operations. The cycle repeats for further instructions.",
+    "L'unità di controllo coordina prelievo e decodifica, i registri contengono i valori necessari nell'immediato e l'ALU esegue operazioni aritmetiche e logiche. Il ciclo si ripete per le istruzioni successive."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "The control unit performs every calculation itself.",
+      "L'unità di controllo esegue da sola tutti i calcoli."
+    ],
+    "correction": [
+      "The control unit coordinates and directs operations. The ALU performs arithmetic and logical calculations.",
+      "L'unità di controllo coordina e dirige le operazioni. L'ALU esegue i calcoli aritmetici e logici."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain The CPU and instruction cycle in your own words and give one practical example.",
+                          "Spiega La CPU e il ciclo delle istruzioni con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                },
+                {
+                      "id": "cores-and-clock-speed",
+                      "title": [
+                            "Cores and clock speed",
+                            "Core e frequenza di clock"
+                      ],
+                      "explanation": [
+                            "Clock speed describes the number of clock cycles per second, while cores are processing units within a CPU. Real performance also depends on architecture, workload and other factors.",
+                            "La frequenza di clock indica il numero di cicli al secondo, mentre i core sono unità di elaborazione all'interno della CPU. Le prestazioni reali dipendono anche da architettura, carico di lavoro e altri fattori."
+                      ],
+                      "sceneIndexes": [
+                            3
+                      ],
+                      "visualKey": "cores"
+                ,
+                      
+                      "example": ["Video encoding may benefit from multiple cores, while a lightly threaded task may depend more on single-core performance.","La codifica video può beneficiare di più core, mentre un'attività con pochi thread può dipendere maggiormente dalle prestazioni di un singolo core."],
+                      "workedExample": {
+  "scenario": [
+    "CPU A has 4 cores at 4.0 GHz; CPU B has 8 cores at 3.2 GHz. Can you decide which is faster from these numbers alone?",
+    "La CPU A ha 4 core a 4,0 GHz; la CPU B ha 8 core a 3,2 GHz. Puoi decidere quale sia più veloce solo da questi numeri?"
+  ],
+  "steps": [
+    [
+      "1. GHz describes billions of clock cycles per second, not completed tasks per second.",
+      "1. GHz indica miliardi di cicli di clock al secondo, non attività completate al secondo."
+    ],
+    [
+      "2. Each core can execute instructions, allowing more work to run in parallel.",
+      "2. Ogni core può eseguire istruzioni, consentendo più attività in parallelo."
+    ],
+    [
+      "3. Software that uses many cores may benefit from CPU B; a lightly threaded task may not.",
+      "3. Un software che usa molti core può beneficiare della CPU B; un'attività con pochi thread potrebbe non farlo."
+    ],
+    [
+      "4. Check architecture, cache, power limits and relevant benchmarks before deciding.",
+      "4. Controlla architettura, cache, limiti energetici e benchmark pertinenti prima di decidere."
+    ]
+  ],
+  "answer": [
+    "Neither GHz nor core count alone proves which CPU is faster. Performance depends on the workload and other design factors, so compare relevant benchmarks.",
+    "Né i GHz né il numero di core, da soli, dimostrano quale CPU sia più veloce. Le prestazioni dipendono dal carico e da altri fattori: confronta benchmark pertinenti."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "A CPU with the highest GHz is always the fastest.",
+      "Una CPU con più GHz è sempre la più veloce."
+    ],
+    "correction": [
+      "Clock speed is only one factor. Core count, architecture, cache, thermal limits and software parallelism also affect performance.",
+      "La frequenza è solo uno dei fattori. Anche numero di core, architettura, cache, limiti termici e parallelismo del software influenzano le prestazioni."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain Cores and clock speed in your own words and give one practical example.",
+                          "Spiega Core e frequenza di clock con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                }
+          ]
+    },
     "demon": [
       "Lag Oni",
       "Oni del Lag"
@@ -2869,6 +4346,719 @@ export const MISSIONS: Mission[] = [
       "RAM, ROM, cache, buses, mass storage",
       "RAM, ROM, cache, bus, memoria di massa"
     ],
+    "learning": {
+          "version": 1,
+          "prerequisites": [
+                [
+                      "Know that the CPU needs fast access to instructions and data and that computers store files for later use.",
+                      "Sapere che la CPU deve accedere rapidamente a istruzioni e dati e che i computer conservano i file per utilizzarli in seguito."
+                ]
+          ],
+          "objectives": [
+                {
+                      "id": "ram-volatility",
+                      "description": [
+                            "Explain the role of RAM and why it is volatile.",
+                            "Spiegare il ruolo della RAM e perché è volatile."
+                      ]
+                },
+                {
+                      "id": "memory-types",
+                      "description": [
+                            "Compare cache, RAM, ROM and mass storage by purpose, speed and persistence.",
+                            "Confrontare cache, RAM, ROM e memoria di massa per funzione, velocità e permanenza dei dati."
+                      ]
+                },
+                {
+                      "id": "bus-types",
+                      "description": [
+                            "Distinguish data, address and control buses by the information each carries.",
+                            "Distinguere bus dati, indirizzi e controllo in base alle informazioni che trasportano."
+                      ]
+                },
+                {
+                      "id": "storage-technologies",
+                      "description": [
+                            "Compare HDD, SSD, optical media and cloud storage at a basic level.",
+                            "Confrontare a livello introduttivo HDD, SSD, supporti ottici e archiviazione cloud."
+                      ]
+                }
+          ],
+          "guidedPractice": [
+  {
+    "id": "guided-memory-buses",
+    "title": [
+      "Guided practice: memory and buses",
+      "Esercitazione guidata: memoria e bus"
+    ],
+    "instructions": [
+      "Work through each situation. Reveal a hint if needed, then choose the best answer.",
+      "Affronta ogni situazione. Se necessario, mostra un suggerimento, poi scegli la risposta migliore."
+    ],
+    "sceneIndex": 0,
+    "hints": [
+      [
+        "Volatile memory needs power. Ask where the file was saved, not just where it was being edited.",
+        "La memoria volatile ha bisogno di alimentazione. Chiediti dove era stato salvato il file, non solo dove veniva modificato."
+      ],
+      [
+        "Use the three questions: where? what? how/when?",
+        "Usa le tre domande: dove? cosa? come/quando?"
+      ]
+    ],
+    "questions": [
+      {
+        "q": [
+          "A power cut happens before a document is saved. Which copy is most likely to be lost?",
+          "Manca la corrente prima che un documento venga salvato. Quale copia rischia maggiormente di andare persa?"
+        ],
+        "a": [
+          [
+            "The unsaved working data in RAM",
+            "I dati di lavoro non salvati nella RAM"
+          ],
+          [
+            "The saved copy on an SSD",
+            "La copia salvata su un SSD"
+          ],
+          [
+            "Firmware stored in non-volatile memory",
+            "Il firmware conservato in memoria non volatile"
+          ]
+        ],
+        "why": [
+          "RAM is volatile. A saved SSD copy and non-volatile firmware normally remain without power.",
+          "La RAM è volatile. Una copia salvata su SSD e il firmware in memoria non volatile normalmente restano anche senza alimentazione."
+        ]
+      },
+      {
+        "q": [
+          "Which bus identifies the memory location the CPU wants to read?",
+          "Quale bus identifica la posizione di memoria che la CPU vuole leggere?"
+        ],
+        "a": [
+          [
+            "The address bus",
+            "Il bus indirizzi"
+          ],
+          [
+            "The data bus",
+            "Il bus dati"
+          ],
+          [
+            "The control bus",
+            "Il bus di controllo"
+          ]
+        ],
+        "why": [
+          "The address bus identifies the location; the data bus carries the value and control signals coordinate the operation.",
+          "Il bus indirizzi identifica la posizione; il bus dati trasporta il valore e i segnali di controllo coordinano l'operazione."
+        ]
+      }
+    ]
+  }
+],
+          "independentPractice": [
+  {
+    "id": "independent-memory-buses",
+    "title": [
+      "Independent challenge: memory and storage",
+      "Sfida autonoma: memoria e archiviazione"
+    ],
+    "instructions": [
+      "Choose the best solution for each memory and storage situation. Work independently, then read the feedback.",
+      "Scegli la soluzione migliore per ogni situazione relativa a memoria e archiviazione. Lavora in autonomia, poi leggi il feedback."
+    ],
+    "sceneIndex": 0,
+    "questions": [
+      {
+        "q": [
+          "A laptop needs to keep a saved file when the battery is removed. Where should the file be stored?",
+          "Un portatile deve conservare un file salvato quando la batteria viene rimossa. Dove va memorizzato il file?"
+        ],
+        "a": [
+          [
+            "On an SSD",
+            "Su un SSD"
+          ],
+          [
+            "Only in RAM",
+            "Solo nella RAM"
+          ],
+          [
+            "Only in CPU cache",
+            "Solo nella cache della CPU"
+          ]
+        ],
+        "why": [
+          "An SSD is non-volatile storage and retains saved data without power. RAM and cache are volatile.",
+          "Un SSD è una memoria non volatile e conserva i dati senza alimentazione. RAM e cache sono volatili."
+        ]
+      },
+      {
+        "q": [
+          "The CPU repeatedly uses the same small set of data. Which memory is designed to provide very fast access close to the CPU?",
+          "La CPU utilizza ripetutamente lo stesso piccolo insieme di dati. Quale memoria è progettata per offrire un accesso molto rapido vicino alla CPU?"
+        ],
+        "a": [
+          [
+            "Cache",
+            "Cache"
+          ],
+          [
+            "Optical disc",
+            "Disco ottico"
+          ],
+          [
+            "USB flash drive",
+            "Chiavetta USB"
+          ]
+        ],
+        "why": [
+          "CPU cache keeps frequently used data and instructions close to the processor to reduce access time.",
+          "La cache della CPU mantiene dati e istruzioni usati frequentemente vicino al processore per ridurre i tempi di accesso."
+        ]
+      },
+      {
+        "q": [
+          "A device wants to send the value 42 from memory to the CPU. Which bus carries the actual value?",
+          "Un dispositivo vuole inviare il valore 42 dalla memoria alla CPU. Quale bus trasporta il valore effettivo?"
+        ],
+        "a": [
+          [
+            "Data bus",
+            "Bus dei dati"
+          ],
+          [
+            "Address bus",
+            "Bus degli indirizzi"
+          ],
+          [
+            "Control bus",
+            "Bus di controllo"
+          ]
+        ],
+        "why": [
+          "The data bus carries the actual data. Address and control buses carry location and coordination signals.",
+          "Il bus dei dati trasporta i dati effettivi. I bus degli indirizzi e di controllo trasportano segnali di posizione e coordinamento."
+        ]
+      }
+    ]
+  }
+],
+          "knowledgeCheck": [
+            {
+              "q": [
+                "Why is RAM volatile?",
+                "Perché la RAM è volatile?"
+              ],
+              "a": [
+                [
+                  "It loses data without power",
+                  "Perde i dati senza alimentazione"
+                ],
+                [
+                  "It stores files permanently",
+                  "Conserva i file in modo permanente"
+                ],
+                [
+                  "It is an optical disc",
+                  "È un disco ottico"
+                ]
+              ],
+              "why": [
+                "RAM needs power to retain data.",
+                "La RAM richiede alimentazione per conservare i dati."
+              ]
+            },
+            {
+              "q": [
+                "Which memory is fastest and closest to CPU?",
+                "Quale memoria è più veloce e vicina alla CPU?"
+              ],
+              "a": [
+                [
+                  "Cache",
+                  "Cache"
+                ],
+                [
+                  "SSD",
+                  "SSD"
+                ],
+                [
+                  "DVD",
+                  "DVD"
+                ]
+              ],
+              "why": [
+                "Cache provides very fast access.",
+                "La cache offre accesso molto rapido."
+              ]
+            },
+            {
+              "q": [
+                "Which bus carries a memory location?",
+                "Quale bus trasporta un indirizzo di memoria?"
+              ],
+              "a": [
+                [
+                  "Address bus",
+                  "Bus degli indirizzi"
+                ],
+                [
+                  "Data bus",
+                  "Bus dati"
+                ],
+                [
+                  "Control bus",
+                  "Bus di controllo"
+                ]
+              ],
+              "why": [
+                "The address bus identifies a location.",
+                "Il bus degli indirizzi identifica una posizione."
+              ]
+            },
+            {
+              "q": [
+                "Which drive has no moving parts?",
+                "Quale unità non ha parti in movimento?"
+              ],
+              "a": [
+                [
+                  "SSD",
+                  "SSD"
+                ],
+                [
+                  "HDD",
+                  "HDD"
+                ],
+                [
+                  "DVD drive",
+                  "Lettore DVD"
+                ]
+              ],
+              "why": [
+                "An SSD uses flash memory.",
+                "Un SSD usa memoria flash."
+              ]
+            }
+          ],
+          "masteryAssessment": {
+            "title": [
+              "Memory & storage mastery",
+              "Padronanza di memoria e archiviazione"
+            ],
+            "instructions": [
+              "Answer all five questions independently. You need at least 80% to unlock the battle.",
+              "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
+            ],
+            "passingScore": 80,
+            "questionConceptIds": ["ram", "cache-and-rom", "mass-storage", "system-buses", "mass-storage"],
+            "questions": [
+              {
+                "q": [
+                  "What happens to the contents of ordinary RAM when the computer is switched off?",
+                  "Che cosa succede ai contenuti della normale RAM quando il computer viene spento?"
+                ],
+                "a": [
+                  [
+                    "They are lost because RAM is volatile",
+                    "Vengono persi perché la RAM è volatile"
+                  ],
+                  [
+                    "They are copied automatically to the monitor",
+                    "Vengono copiati automaticamente sul monitor"
+                  ],
+                  [
+                    "They remain permanently in RAM",
+                    "Rimangono permanentemente nella RAM"
+                  ],
+                  [
+                    "They are converted into CPU instructions",
+                    "Vengono convertiti in istruzioni della CPU"
+                  ]
+                ],
+                "why": [
+                  "Ordinary RAM needs power to retain its contents, so it is volatile.",
+                  "La normale RAM ha bisogno di alimentazione per mantenere i contenuti, quindi è volatile."
+                ]
+              },
+              {
+                "q": [
+                  "Why is CPU cache generally faster than main memory?",
+                  "Perché la cache della CPU è generalmente più veloce della memoria principale?"
+                ],
+                "a": [
+                  [
+                    "It is very close to the CPU and built for fast access",
+                    "È molto vicina alla CPU ed è progettata per accessi rapidi"
+                  ],
+                  [
+                    "It stores data on spinning magnetic disks",
+                    "Memorizza i dati su dischi magnetici rotanti"
+                  ],
+                  [
+                    "It is connected through the internet",
+                    "È collegata tramite Internet"
+                  ],
+                  [
+                    "It has a larger capacity than an SSD",
+                    "Ha una capacità maggiore di un SSD"
+                  ]
+                ],
+                "why": [
+                  "Cache is a small, fast memory located on or near the processor.",
+                  "La cache è una memoria piccola e veloce situata sul processore o vicino ad esso."
+                ]
+              },
+              {
+                "q": [
+                  "How does a typical SSD store data?",
+                  "Come memorizza i dati un normale SSD?"
+                ],
+                "a": [
+                  [
+                    "In flash memory chips with no moving parts",
+                    "In chip di memoria flash senza parti mobili"
+                  ],
+                  [
+                    "Magnetically on spinning platters",
+                    "Magneticamente su piatti rotanti"
+                  ],
+                  [
+                    "Optically on a laser-read disc",
+                    "Otticamente su un disco letto da un laser"
+                  ],
+                  [
+                    "Temporarily inside the CPU registers only",
+                    "Temporaneamente solo nei registri della CPU"
+                  ]
+                ],
+                "why": [
+                  "SSDs use flash memory, unlike HDDs with moving magnetic platters.",
+                  "Gli SSD usano memoria flash, a differenza degli HDD con piatti magnetici mobili."
+                ]
+              },
+              {
+                "q": [
+                  "Which bus carries the address of the memory location to access?",
+                  "Quale bus trasporta l'indirizzo della posizione di memoria da raggiungere?"
+                ],
+                "a": [
+                  [
+                    "Address bus",
+                    "Bus degli indirizzi"
+                  ],
+                  [
+                    "Data bus",
+                    "Bus dei dati"
+                  ],
+                  [
+                    "Control bus",
+                    "Bus di controllo"
+                  ],
+                  [
+                    "Power bus",
+                    "Bus di alimentazione"
+                  ]
+                ],
+                "why": [
+                  "The address bus identifies the memory location for a read or write operation.",
+                  "Il bus degli indirizzi identifica la posizione di memoria per un'operazione di lettura o scrittura."
+                ]
+              },
+              {
+                "q": [
+                  "How does a traditional hard disk drive (HDD) store data?",
+                  "Come memorizza i dati un tradizionale disco rigido (HDD)?"
+                ],
+                "a": [
+                  [
+                    "Magnetically on rotating platters",
+                    "Magneticamente su piatti rotanti"
+                  ],
+                  [
+                    "In flash memory cells",
+                    "In celle di memoria flash"
+                  ],
+                  [
+                    "As light pulses in fibre-optic cable",
+                    "Come impulsi luminosi in un cavo in fibra ottica"
+                  ],
+                  [
+                    "Only in volatile CPU cache",
+                    "Solo nella cache volatile della CPU"
+                  ]
+                ],
+                "why": [
+                  "An HDD uses magnetic surfaces on spinning platters and moving read/write heads.",
+                  "Un HDD usa superfici magnetiche su piatti rotanti e testine di lettura/scrittura mobili."
+                ]
+              }
+            ]
+          },
+          "concepts": [
+                {
+                      "id": "ram",
+                      "title": [
+                            "RAM and volatility",
+                            "RAM e volatilità"
+                      ],
+                      "explanation": [
+                            "RAM temporarily holds programs and data currently in use. It is volatile, so its contents are lost when power is removed.",
+                            "La RAM conserva temporaneamente programmi e dati in uso. È volatile: il suo contenuto si perde quando viene tolta l'alimentazione."
+                      ],
+                      "sceneIndexes": [
+                            0,
+                            1
+                      ],
+                      "visualKey": "ramstick"
+                ,
+                      
+                      "example": ["A document you are editing is held in working memory; saving it writes a persistent copy to an SSD or HDD.","Un documento che stai modificando è nella memoria di lavoro; salvarlo crea una copia persistente su SSD o HDD."],
+                      "workedExample": {
+  "scenario": [
+    "You edit a presentation, leave it unsaved, and the computer suddenly loses power. What happens to the working copy?",
+    "Modifichi una presentazione senza salvarla e il computer perde improvvisamente alimentazione. Cosa accade alla copia di lavoro?"
+  ],
+  "steps": [
+    [
+      "1. While editing, the open program and current presentation data are held in RAM.",
+      "1. Durante la modifica, il programma aperto e i dati correnti della presentazione sono nella RAM."
+    ],
+    [
+      "2. RAM is volatile memory and needs power to retain its contents.",
+      "2. La RAM è una memoria volatile e ha bisogno di alimentazione per conservare il contenuto."
+    ],
+    [
+      "3. When power is lost, unsaved data in RAM is lost.",
+      "3. Quando manca l'alimentazione, i dati non salvati nella RAM si perdono."
+    ],
+    [
+      "4. Saving writes a persistent copy to an SSD or HDD.",
+      "4. Salvare scrive una copia permanente su SSD o HDD."
+    ]
+  ],
+  "answer": [
+    "The unsaved working copy in RAM is lost when power is removed. A saved copy on non-volatile storage remains.",
+    "La copia di lavoro non salvata nella RAM si perde quando viene tolta l'alimentazione. Una copia salvata su memoria non volatile rimane disponibile."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "RAM keeps my files permanently even when the computer is unplugged.",
+      "La RAM conserva i miei file in modo permanente anche quando il computer è scollegato."
+    ],
+    "correction": [
+      "RAM is temporary and volatile. Use persistent storage such as an SSD or HDD to keep files when power is off.",
+      "La RAM è temporanea e volatile. Per conservare i file a computer spento usa una memoria persistente come SSD o HDD."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain RAM and volatility in your own words and give one practical example.",
+                          "Spiega RAM e volatilità con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                },
+                {
+                      "id": "cache-and-rom",
+                      "title": [
+                            "Cache and ROM",
+                            "Cache e ROM"
+                      ],
+                      "explanation": [
+                            "Cache is small, very fast memory that keeps frequently needed data close to the CPU. ROM is non-volatile memory used to retain essential firmware.",
+                            "La cache è una memoria piccola e molto veloce che conserva dati usati frequentemente vicino alla CPU. La ROM è una memoria non volatile usata per conservare firmware essenziale."
+                      ],
+                      "sceneIndexes": [
+                            2
+                      ],
+                      "visualKey": "pyramid"
+                ,
+                      
+                      "example": ["A CPU may find recently used data in cache; firmware stored in non-volatile memory helps a computer start.","La CPU può trovare nella cache dati usati di recente; il firmware conservato in memoria non volatile aiuta il computer ad avviarsi."],
+                      "workedExample": {
+  "scenario": [
+    "A computer starts up and then repeatedly accesses the same instructions while running an application. Explain the roles of cache and ROM.",
+    "Un computer si avvia e poi accede ripetutamente alle stesse istruzioni durante un'applicazione. Spiega i ruoli di cache e ROM."
+  ],
+  "steps": [
+    [
+      "1. Firmware in non-volatile memory helps initialise the computer during startup.",
+      "1. Il firmware in memoria non volatile aiuta a inizializzare il computer durante l'avvio."
+    ],
+    [
+      "2. While programs run, the CPU may need some data and instructions repeatedly.",
+      "2. Durante l'esecuzione dei programmi, la CPU può aver bisogno più volte di alcuni dati e istruzioni."
+    ],
+    [
+      "3. Cache keeps frequently needed information close to the CPU for faster access.",
+      "3. La cache conserva le informazioni usate spesso vicino alla CPU per accedervi più rapidamente."
+    ],
+    [
+      "4. Cache speeds access; ROM/firmware retains essential information without normal power.",
+      "4. La cache velocizza l'accesso; la ROM/firmware conserva informazioni essenziali anche senza alimentazione normale."
+    ]
+  ],
+  "answer": [
+    "Cache is small, fast memory that reduces access time for frequently used data. ROM is non-volatile memory used to retain firmware or essential instructions.",
+    "La cache è una memoria piccola e veloce che riduce il tempo di accesso ai dati frequenti. La ROM è una memoria non volatile usata per conservare firmware o istruzioni essenziali."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "Cache and ROM are both just extra RAM used for open apps.",
+      "Cache e ROM sono entrambe semplicemente RAM aggiuntiva per le app aperte."
+    ],
+    "correction": [
+      "Cache helps the CPU access frequently used data quickly, while ROM retains non-volatile firmware or essential instructions.",
+      "La cache aiuta la CPU ad accedere rapidamente ai dati frequenti, mentre la ROM conserva firmware o istruzioni essenziali in modo non volatile."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain Cache and ROM in your own words and give one practical example.",
+                          "Spiega Cache e ROM con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                },
+                {
+                      "id": "system-buses",
+                      "title": [
+                            "System buses",
+                            "I bus di sistema"
+                      ],
+                      "explanation": [
+                            "The data bus carries data, the address bus identifies a location, and the control bus carries signals that coordinate operations.",
+                            "Il bus dati trasporta i dati, il bus indirizzi identifica una posizione e il bus di controllo trasporta segnali che coordinano le operazioni."
+                      ],
+                      "sceneIndexes": [
+                            3
+                      ],
+                      "visualKey": "buses"
+                ,
+                      
+                      "example": ["When reading memory, the address bus identifies the location, control signals request a read, and the data bus carries the value back.","Durante una lettura della memoria, il bus indirizzi identifica la posizione, i segnali di controllo richiedono la lettura e il bus dati riporta il valore."],
+                      "workedExample": {
+  "scenario": [
+    "The CPU needs to read a value from a particular memory location. Explain how the three system buses help.",
+    "La CPU deve leggere un valore da una specifica posizione di memoria. Spiega come aiutano i tre bus di sistema."
+  ],
+  "steps": [
+    [
+      "1. The address bus carries the location the CPU wants to access.",
+      "1. Il bus indirizzi trasporta la posizione a cui la CPU vuole accedere."
+    ],
+    [
+      "2. The control bus carries signals such as read, write and timing to coordinate the operation.",
+      "2. Il bus di controllo trasporta segnali come lettura, scrittura e temporizzazione per coordinare l'operazione."
+    ],
+    [
+      "3. The data bus carries the value transferred between memory and the CPU.",
+      "3. Il bus dati trasporta il valore trasferito tra memoria e CPU."
+    ],
+    [
+      "4. Remember: where (address), what (data), and how/when (control).",
+      "4. Ricorda: dove (indirizzo), cosa (dati) e come/quando (controllo)."
+    ]
+  ],
+  "answer": [
+    "The address bus identifies the location, the control bus coordinates the read operation, and the data bus carries the value returned from memory.",
+    "Il bus indirizzi identifica la posizione, il bus di controllo coordina la lettura e il bus dati trasporta il valore restituito dalla memoria."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "The address bus carries the actual file contents.",
+      "Il bus indirizzi trasporta il contenuto effettivo del file."
+    ],
+    "correction": [
+      "The address bus identifies a location. The data bus carries the information stored there; control signals coordinate the transfer.",
+      "Il bus indirizzi identifica una posizione. Il bus dati trasporta le informazioni conservate lì; i segnali di controllo coordinano il trasferimento."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain System buses in your own words and give one practical example.",
+                          "Spiega I bus di sistema con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                },
+                {
+                      "id": "mass-storage",
+                      "title": [
+                            "Mass storage",
+                            "Memoria di massa"
+                      ],
+                      "explanation": [
+                            "Mass storage keeps files and programs when power is off. HDDs use magnetic disks, SSDs use flash memory, optical media use lasers, and cloud storage keeps data on remote systems.",
+                            "La memoria di massa conserva file e programmi anche a computer spento. Gli HDD usano dischi magnetici, gli SSD memoria flash, i supporti ottici usano laser e il cloud conserva i dati su sistemi remoti."
+                      ],
+                      "sceneIndexes": [
+                            4,
+                            5
+                      ],
+                      "visualKey": "hdd"
+                ,
+                      
+                      "example": ["An SSD keeps your photos after shutdown; an HDD can also retain them using magnetic platters.","Un SSD conserva le foto dopo lo spegnimento; anche un HDD può conservarle usando piatti magnetici."],
+                      "workedExample": {
+  "scenario": [
+    "You need to keep a 2 GB video after shutting down the computer and share it with a classmate. Compare storage choices.",
+    "Devi conservare un video da 2 GB dopo aver spento il computer e condividerlo con un compagno. Confronta le opzioni di archiviazione."
+  ],
+  "steps": [
+    [
+      "1. Rule out RAM: it is temporary working memory, not long-term storage.",
+      "1. Escludi la RAM: è memoria di lavoro temporanea, non archiviazione a lungo termine."
+    ],
+    [
+      "2. An SSD stores data in flash memory and offers fast access with no moving parts.",
+      "2. Un SSD conserva dati in memoria flash e offre accesso rapido senza parti mobili."
+    ],
+    [
+      "3. An HDD stores data magnetically on spinning disks and may offer lower cost per GB.",
+      "3. Un HDD conserva dati magneticamente su dischi rotanti e può costare meno per GB."
+    ],
+    [
+      "4. Cloud storage keeps a copy on remote servers and enables network sharing; consider connection and privacy.",
+      "4. Il cloud conserva una copia su server remoti e permette la condivisione in rete; considera connessione e privacy."
+    ]
+  ],
+  "answer": [
+    "An SSD or HDD can keep the video when power is off. Cloud storage can make it accessible to a classmate online; the best choice depends on speed, capacity, cost and sharing needs.",
+    "Un SSD o HDD può conservare il video a computer spento. Il cloud può renderlo accessibile a un compagno online; la scelta dipende da velocità, capacità, costo e necessità di condivisione."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "Cloud storage means the file is stored inside the laptop's RAM.",
+      "Il cloud significa che il file è conservato nella RAM del portatile."
+    ],
+    "correction": [
+      "Cloud storage keeps data on remote computers accessed through a network. It is different from local RAM and disk storage.",
+      "Il cloud conserva i dati su computer remoti accessibili tramite rete. È diverso dalla RAM locale e dall'archiviazione su disco locale."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain Mass storage in your own words and give one practical example.",
+                          "Spiega Memoria di massa con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                }
+          ]
+    },
     "demon": [
       "Amnesia Wraith",
       "Spettro dell'Amnesia"
@@ -3270,6 +5460,704 @@ export const MISSIONS: Mission[] = [
       "Input/output devices, touchscreens, e-waste, Moore's law",
       "Periferiche di input e output, touchscreen, RAEE, legge di Moore"
     ],
+    "learning": {
+          "version": 1,
+          "prerequisites": [
+                [
+                      "Understand input and output in the computer cycle and know that a computer communicates with its environment through devices.",
+                      "Comprendere input e output nel ciclo del computer e sapere che il computer comunica con l'ambiente tramite dispositivi."
+                ]
+          ],
+          "objectives": [
+                {
+                      "id": "classify-peripherals",
+                      "description": [
+                            "Classify common peripherals as input, output or both and justify each choice.",
+                            "Classificare le periferiche comuni come input, output o entrambe e motivare la scelta."
+                      ]
+                },
+                {
+                      "id": "embedded-systems",
+                      "description": [
+                            "Identify how sensors provide input and actuators produce output in an interactive system.",
+                            "Identificare come i sensori forniscono input e gli attuatori producono output in un sistema interattivo."
+                      ]
+                },
+                {
+                      "id": "capacitive-touchscreens",
+                      "description": [
+                            "Explain at a basic level how a capacitive touchscreen detects a touch.",
+                            "Spiegare a livello introduttivo come un touchscreen capacitivo rileva il tocco."
+                      ]
+                },
+                {
+                      "id": "responsible-technology",
+                      "description": [
+                            "Describe responsible e-waste disposal and the basic idea behind Moore's law.",
+                            "Descrivere il corretto smaltimento dei RAEE e il concetto di base della legge di Moore."
+                      ]
+                },
+                {
+                      "id": "graphics-processing",
+                      "description": [
+                            "Explain how a graphics processing unit accelerates graphics and image processing.",
+                            "Spiegare come un'unità di elaborazione grafica accelera l'elaborazione di grafica e immagini."
+                      ]
+                }
+          ],
+          "guidedPractice": [
+  {
+    "id": "guided-peripherals-touch",
+    "title": [
+      "Guided practice: peripherals and touchscreens",
+      "Esercitazione guidata: periferiche e touchscreen"
+    ],
+    "instructions": [
+      "Classify each device by the direction of information. Use a hint if you need help.",
+      "Classifica ogni dispositivo in base alla direzione delle informazioni. Usa un suggerimento se hai bisogno di aiuto."
+    ],
+    "sceneIndex": 0,
+    "hints": [
+      [
+        "A microphone sends sound into the computer; headphones send sound out.",
+        "Un microfono invia audio al computer; le cuffie inviano audio verso l'esterno."
+      ],
+      [
+        "A capacitive screen detects a change in an electrical property, not simply pressure.",
+        "Uno schermo capacitivo rileva una variazione elettrica, non semplicemente la pressione."
+      ]
+    ],
+    "questions": [
+      {
+        "q": [
+          "A headset has headphones and a microphone. How should it be classified?",
+          "Una cuffia ha auricolari e microfono. Come dovrebbe essere classificata?"
+        ],
+        "a": [
+          [
+            "Both input and output",
+            "Sia input sia output"
+          ],
+          [
+            "Input only",
+            "Solo input"
+          ],
+          [
+            "Output only",
+            "Solo output"
+          ]
+        ],
+        "why": [
+          "The microphone is input and the headphones are output, so the headset performs both roles.",
+          "Il microfono è input e gli auricolari sono output, quindi la cuffia svolge entrambi i ruoli."
+        ]
+      },
+      {
+        "q": [
+          "Why does a basic capacitive touchscreen usually detect a finger?",
+          "Perché un touchscreen capacitivo di base rileva normalmente un dito?"
+        ],
+        "a": [
+          [
+            "The finger changes capacitance in the screen's electrical field",
+            "Il dito modifica la capacità nel campo elettrico dello schermo"
+          ],
+          [
+            "The finger presses a mechanical switch",
+            "Il dito preme un interruttore meccanico"
+          ],
+          [
+            "The screen reads the finger's fingerprint image",
+            "Lo schermo legge l'immagine dell'impronta digitale"
+          ]
+        ],
+        "why": [
+          "A conductive finger changes capacitance; the controller detects and interprets the change as a touch.",
+          "Un dito conduttivo modifica la capacità; il controller rileva e interpreta la variazione come un tocco."
+        ]
+      }
+    ]
+  }
+],
+          "independentPractice": [
+  {
+    "id": "independent-peripherals-touch",
+    "title": [
+      "Independent challenge: peripherals and touchscreens",
+      "Sfida autonoma: periferiche e touchscreen"
+    ],
+    "instructions": [
+      "Solve each real-world device scenario without hints. Use the feedback to check your reasoning.",
+      "Risolvi ogni scenario reale sui dispositivi senza suggerimenti. Usa il feedback per verificare il tuo ragionamento."
+    ],
+    "sceneIndex": 0,
+    "questions": [
+      {
+        "q": [
+          "A student scans a paper worksheet and the computer receives a digital image. What role does the scanner perform?",
+          "Uno studente acquisisce una scheda cartacea e il computer riceve un'immagine digitale. Quale ruolo svolge lo scanner?"
+        ],
+        "a": [
+          [
+            "Input",
+            "Input"
+          ],
+          [
+            "Output",
+            "Output"
+          ],
+          [
+            "Storage",
+            "Archiviazione"
+          ]
+        ],
+        "why": [
+          "A scanner sends information into the computer, so it is an input device.",
+          "Uno scanner invia informazioni al computer, quindi è un dispositivo di input."
+        ]
+      },
+      {
+        "q": [
+          "Why can a capacitive touchscreen detect a finger but may not respond to an ordinary non-conductive plastic stylus?",
+          "Perché un touchscreen capacitivo rileva un dito ma potrebbe non rispondere a uno stilo di plastica non conduttivo?"
+        ],
+        "a": [
+          [
+            "It senses changes in the screen's electrical field",
+            "Rileva variazioni nel campo elettrico dello schermo"
+          ],
+          [
+            "It measures only the force of a press",
+            "Misura solo la forza della pressione"
+          ],
+          [
+            "It reads fingerprints using a camera",
+            "Legge le impronte digitali con una fotocamera"
+          ]
+        ],
+        "why": [
+          "A capacitive screen detects changes in capacitance caused by a conductive touch, rather than relying only on pressure.",
+          "Uno schermo capacitivo rileva variazioni di capacità causate da un tocco conduttivo, senza basarsi solo sulla pressione."
+        ]
+      },
+      {
+        "q": [
+          "A school replaces old computers. What is the most responsible way to handle devices that cannot be reused?",
+          "Una scuola sostituisce i vecchi computer. Qual è il modo più responsabile di gestire i dispositivi che non possono essere riutilizzati?"
+        ],
+        "a": [
+          [
+            "Use an authorised e-waste recycling route",
+            "Utilizzare un circuito autorizzato di riciclo dei RAEE"
+          ],
+          [
+            "Put them in ordinary mixed waste",
+            "Gettarli nei rifiuti indifferenziati"
+          ],
+          [
+            "Leave them outdoors",
+            "Lasciarli all'aperto"
+          ]
+        ],
+        "why": [
+          "Electronic waste should go through appropriate collection and recycling so materials can be recovered and hazardous substances managed safely.",
+          "I rifiuti elettronici devono essere raccolti e riciclati correttamente per recuperare i materiali e gestire in sicurezza le sostanze pericolose."
+        ]
+      }
+    ]
+  }
+],
+          "knowledgeCheck": [
+            {
+              "q": [
+                "A webcam sends video into a computer. It is what type?",
+                "Una webcam invia video al computer. Che tipo è?"
+              ],
+              "a": [
+                [
+                  "Input",
+                  "Input"
+                ],
+                [
+                  "Output",
+                  "Output"
+                ],
+                [
+                  "Storage",
+                  "Archiviazione"
+                ]
+              ],
+              "why": [
+                "A webcam sends information into the computer.",
+                "Una webcam invia informazioni al computer."
+              ]
+            },
+            {
+              "q": [
+                "Why is a touchscreen both input and output?",
+                "Perché un touchscreen è input e output?"
+              ],
+              "a": [
+                [
+                  "It displays and detects touch",
+                  "Visualizza e rileva il tocco"
+                ],
+                [
+                  "It only stores data",
+                  "Memorizza solo dati"
+                ],
+                [
+                  "It only plays sound",
+                  "Riproduce solo audio"
+                ]
+              ],
+              "why": [
+                "It displays content and detects user input.",
+                "Visualizza contenuti e rileva l'input."
+              ]
+            },
+            {
+              "q": [
+                "What does a capacitive screen detect?",
+                "Cosa rileva uno schermo capacitivo?"
+              ],
+              "a": [
+                [
+                  "A change in capacitance",
+                  "Una variazione di capacità elettrica"
+                ],
+                [
+                  "Room temperature",
+                  "La temperatura della stanza"
+                ],
+                [
+                  "Sound waves",
+                  "Onde sonore"
+                ]
+              ],
+              "why": [
+                "A finger changes local capacitance.",
+                "Un dito modifica la capacità elettrica locale."
+              ]
+            },
+            {
+              "q": [
+                "Where should an old phone be disposed of?",
+                "Dove va smaltito un vecchio telefono?"
+              ],
+              "a": [
+                [
+                  "An authorised e-waste point",
+                  "Un centro autorizzato RAEE"
+                ],
+                [
+                  "General waste",
+                  "Rifiuti indifferenziati"
+                ],
+                [
+                  "Outdoors",
+                  "All'aperto"
+                ]
+              ],
+              "why": [
+                "Electronics need appropriate recycling.",
+                "I dispositivi elettronici richiedono riciclo adeguato."
+              ]
+            }
+          ],
+          "masteryAssessment": {
+            "title": [
+              "Devices & modern computing mastery",
+              "Padronanza di dispositivi e informatica moderna"
+            ],
+            "instructions": [
+              "Answer all five questions independently. You need at least 80% to unlock the battle.",
+              "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."
+            ],
+            "passingScore": 80,
+            "questionConceptIds": ["input-output-peripherals", "input-output-peripherals", "graphics-processing", "ewaste-and-moores-law", "ewaste-and-moores-law"],
+            "questions": [
+              {
+                "q": [
+                  "A touchscreen displays an image and detects a finger tap. Which roles does it perform?",
+                  "Un touchscreen visualizza un'immagine e rileva il tocco di un dito. Quali ruoli svolge?"
+                ],
+                "a": [
+                  [
+                    "Both output and input",
+                    "Sia output sia input"
+                  ],
+                  [
+                    "Input only",
+                    "Solo input"
+                  ],
+                  [
+                    "Output only",
+                    "Solo output"
+                  ],
+                  [
+                    "Storage and processing only",
+                    "Solo archiviazione ed elaborazione"
+                  ]
+                ],
+                "why": [
+                  "It outputs visual information and inputs touch commands.",
+                  "Fornisce informazioni visive in output e riceve comandi tattili in input."
+                ]
+              },
+              {
+                "q": [
+                  "In a smart thermostat, what is the role of a temperature sensor?",
+                  "In un termostato smart, qual è il ruolo di un sensore di temperatura?"
+                ],
+                "a": [
+                  [
+                    "Input device",
+                    "Dispositivo di input"
+                  ],
+                  [
+                    "Output device",
+                    "Dispositivo di output"
+                  ],
+                  [
+                    "Permanent storage",
+                    "Memoria permanente"
+                  ],
+                  [
+                    "Power supply",
+                    "Alimentatore"
+                  ]
+                ],
+                "why": [
+                  "The sensor sends measured temperature data into the system.",
+                  "Il sensore invia i dati della temperatura misurata al sistema."
+                ]
+              },
+              {
+                "q": [
+                  "What is the main job of a graphics processing unit (GPU)?",
+                  "Qual è il compito principale di un'unità di elaborazione grafica (GPU)?"
+                ],
+                "a": [
+                  [
+                    "Processing graphics and image data",
+                    "Elaborare grafica e dati delle immagini"
+                  ],
+                  [
+                    "Storing files permanently",
+                    "Memorizzare file in modo permanente"
+                  ],
+                  [
+                    "Supplying power to every component",
+                    "Fornire alimentazione a tutti i componenti"
+                  ],
+                  [
+                    "Recording sound from a microphone",
+                    "Registrare il suono da un microfono"
+                  ]
+                ],
+                "why": [
+                  "A GPU accelerates graphics-related processing and rendering.",
+                  "Una GPU accelera l'elaborazione e il rendering legati alla grafica."
+                ]
+              },
+              {
+                "q": [
+                  "What is the responsible way to dispose of an old computer?",
+                  "Qual è il modo responsabile per smaltire un vecchio computer?"
+                ],
+                "a": [
+                  [
+                    "Take it to an approved e-waste collection or recycling point",
+                    "Portarlo in un centro autorizzato di raccolta o riciclo RAEE"
+                  ],
+                  [
+                    "Put it in ordinary household rubbish",
+                    "Gettarlo nei rifiuti domestici indifferenziati"
+                  ],
+                  [
+                    "Burn it to remove plastic parts",
+                    "Bruciarlo per eliminare le parti in plastica"
+                  ],
+                  [
+                    "Leave it outdoors for collection",
+                    "Lasciarlo all'aperto perché venga raccolto"
+                  ]
+                ],
+                "why": [
+                  "Approved e-waste recycling safely handles hazardous materials and recovers reusable resources.",
+                  "Il riciclo RAEE autorizzato gestisce in sicurezza i materiali pericolosi e recupera risorse riutilizzabili."
+                ]
+              },
+              {
+                "q": [
+                  "Moore's law was historically an observation about what trend?",
+                  "La legge di Moore era storicamente un'osservazione su quale tendenza?"
+                ],
+                "a": [
+                  [
+                    "The number of transistors on an integrated circuit roughly doubling over time",
+                    "Il numero di transistor in un circuito integrato che raddoppia approssimativamente nel tempo"
+                  ],
+                  [
+                    "The physical size of monitors doubling every year",
+                    "Le dimensioni fisiche dei monitor che raddoppiano ogni anno"
+                  ],
+                  [
+                    "The amount of RAM in every computer halving yearly",
+                    "La quantità di RAM in ogni computer che si dimezza ogni anno"
+                  ],
+                  [
+                    "Internet speed remaining constant for decades",
+                    "La velocità di Internet che rimane costante per decenni"
+                  ]
+                ],
+                "why": [
+                  "Moore's law described a historical trend in transistor density, not monitor size or internet speed.",
+                  "La legge di Moore descriveva una tendenza storica nella densità dei transistor, non nelle dimensioni dei monitor o nella velocità di Internet."
+                ]
+              }
+            ]
+          },
+          "concepts": [
+                {
+                      "id": "input-output-peripherals",
+                      "title": [
+                            "Input and output peripherals",
+                            "Periferiche di input e output"
+                      ],
+                      "explanation": [
+                            "Input devices send information to a computer; output devices present information from it. Some devices perform both roles.",
+                            "I dispositivi di input inviano informazioni al computer; quelli di output presentano le informazioni elaborate. Alcuni dispositivi svolgono entrambi i ruoli."
+                      ],
+                      "sceneIndexes": [
+                            0,
+                            1
+                      ],
+                      "visualKey": "ioflow"
+                ,
+                      
+                      "example": ["A headset microphone sends sound into the computer (input), while its headphones play sound from the computer (output).","Il microfono di una cuffia invia audio al computer (input), mentre gli auricolari riproducono l'audio del computer (output)."],
+                      "workedExample": {
+  "scenario": [
+    "A student joins an online lesson using a laptop, headset and webcam. Classify the devices by the direction of information.",
+    "Uno studente partecipa a una lezione online usando portatile, cuffie con microfono e webcam. Classifica i dispositivi in base alla direzione delle informazioni."
+  ],
+  "steps": [
+    [
+      "1. The webcam sends video into the computer; the microphone sends sound in.",
+      "1. La webcam invia video al computer; il microfono invia audio."
+    ],
+    [
+      "2. The screen displays the lesson and headphones play sound out.",
+      "2. Lo schermo mostra la lezione e le cuffie riproducono l'audio."
+    ],
+    [
+      "3. A touchscreen can do both: display output and detect touch input.",
+      "3. Un touchscreen può svolgere entrambe le funzioni: mostrare output e rilevare input tramite il tocco."
+    ],
+    [
+      "4. Classify by following the direction of information.",
+      "4. Classifica seguendo la direzione delle informazioni."
+    ]
+  ],
+  "answer": [
+    "The webcam and microphone are input devices; the screen and headphones are output devices. A touchscreen is both input and output.",
+    "Webcam e microfono sono dispositivi di input; schermo e cuffie sono dispositivi di output. Un touchscreen svolge entrambe le funzioni."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "A headset is only output because it has headphones.",
+      "Una cuffia è solo output perché ha gli auricolari."
+    ],
+    "correction": [
+      "A headset with a microphone has both roles: the microphone is input and the headphones are output.",
+      "Una cuffia con microfono svolge entrambe le funzioni: il microfono è input e gli auricolari sono output."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain Input and output peripherals in your own words and give one practical example.",
+                          "Spiega Periferiche di input e output con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                },
+                {
+                      "id": "capacitive-touchscreens",
+                      "title": [
+                            "Capacitive touchscreens",
+                            "Touchscreen capacitivi"
+                      ],
+                      "explanation": [
+                            "A capacitive screen detects a touch by sensing a change in the electrical field at its surface, typically caused by a conductive finger.",
+                            "Uno schermo capacitivo rileva il tocco percependo una variazione del campo elettrico sulla superficie, in genere causata da un dito conduttivo."
+                      ],
+                      "sceneIndexes": [
+                            2
+                      ],
+                      "visualKey": "touch",
+                      "example": ["A finger changes the capacitance at a screen location; the controller interprets the change as a touch.","Un dito modifica la capacità elettrica in un punto dello schermo; il controller interpreta la variazione come un tocco."],
+                      "workedExample": {
+  "scenario": [
+    "A phone registers a finger tap but does not respond to a non-conductive plastic stylus. Explain why.",
+    "Un telefono registra il tocco di un dito ma non risponde a uno stilo di plastica non conduttivo. Spiega perché."
+  ],
+  "steps": [
+    [
+      "1. The screen maintains an electrical field across its surface.",
+      "1. Lo schermo mantiene un campo elettrico sulla propria superficie."
+    ],
+    [
+      "2. A conductive finger changes capacitance at the point of contact.",
+      "2. Un dito conduttivo modifica la capacità elettrica nel punto di contatto."
+    ],
+    [
+      "3. Sensors and the controller interpret that change as a touch location.",
+      "3. Sensori e controller interpretano la variazione come una posizione di tocco."
+    ],
+    [
+      "4. Ordinary plastic may not cause the conductive change required for detection.",
+      "4. La normale plastica potrebbe non provocare la variazione conduttiva necessaria al rilevamento."
+    ]
+  ],
+  "answer": [
+    "A capacitive touchscreen detects changes in capacitance caused by a conductive object, usually a finger. The controller interprets the change as a touch.",
+    "Un touchscreen capacitivo rileva variazioni di capacità causate da un oggetto conduttivo, di solito un dito. Il controller interpreta la variazione come un tocco."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "The screen detects pressure because the finger pushes a mechanical button underneath.",
+      "Lo schermo rileva la pressione perché il dito preme un pulsante meccanico sottostante."
+    ],
+    "correction": [
+      "A capacitive screen detects an electrical change, not simply pressure on a mechanical button. Resistive screens work differently.",
+      "Uno schermo capacitivo rileva una variazione elettrica, non semplicemente la pressione su un pulsante meccanico. Gli schermi resistivi funzionano diversamente."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain Capacitive touchscreens in your own words and give one practical example.",
+                          "Spiega Touchscreen capacitivi con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                },
+                {
+                      "id": "graphics-processing",
+                      "title": [
+                            "Graphics processing",
+                            "Elaborazione grafica"
+                      ],
+                      "explanation": [
+                            "A graphics processing unit (GPU) is a specialised processor that handles graphics and image workloads. It can render images for display and accelerate parallel tasks; it does not replace the CPU for general-purpose instruction control.",
+                            "Un'unità di elaborazione grafica (GPU) è un processore specializzato che gestisce grafica e immagini. Può renderizzare immagini da visualizzare e accelerare attività parallele; non sostituisce la CPU nel controllo generale delle istruzioni."
+                      ],
+                      "example": [
+                            "A game uses the GPU to render a 3D scene while the CPU manages game logic and other general tasks.",
+                            "Un videogioco usa la GPU per renderizzare una scena 3D mentre la CPU gestisce la logica del gioco e altre attività generali."
+                      ],
+                      "workedExample": {
+                            "scenario": [
+                                  "A laptop displays a detailed 3D game. Which processor is especially suited to rendering the graphics, and why?",
+                                  "Un portatile mostra un videogioco 3D dettagliato. Quale processore è particolarmente adatto a renderizzare la grafica e perché?"
+                            ],
+                            "steps": [
+                                  [
+                                        "1. Identify the workload: many calculations are needed to draw pixels, textures and 3D objects.",
+                                        "1. Individua il carico di lavoro: servono molti calcoli per disegnare pixel, texture e oggetti 3D."
+                                  ],
+                                  [
+                                        "2. The GPU is designed to process many graphics operations efficiently, often in parallel.",
+                                        "2. La GPU è progettata per elaborare in modo efficiente molte operazioni grafiche, spesso in parallelo."
+                                  ],
+                                  [
+                                        "3. The CPU continues to manage general program instructions and game logic.",
+                                        "3. La CPU continua a gestire le istruzioni generali del programma e la logica del gioco."
+                                  ]
+                            ],
+                            "answer": [
+                                  "The GPU handles graphics rendering and image processing, while the CPU manages general-purpose instructions and application logic.",
+                                  "La GPU gestisce il rendering grafico e l'elaborazione delle immagini, mentre la CPU gestisce le istruzioni generali e la logica dell'applicazione."
+                            ]
+                      },
+                      "knowledgePrompts": [
+                            [
+                                  "Explain the role of a GPU and give one example of a graphics workload.",
+                                  "Spiega il ruolo di una GPU e fornisci un esempio di carico di lavoro grafico."
+                            ]
+                      ]
+                },
+                {
+                      "id": "ewaste-and-moores-law",
+                      "title": [
+                            "E-waste and Moore's law",
+                            "RAEE e legge di Moore"
+                      ],
+                      "explanation": [
+                            "Electronic waste should be collected and recycled responsibly to recover materials and reduce pollution. Moore's law describes a historical trend in the growth of transistor counts on integrated circuits; it is not a guarantee about every device's speed.",
+                            "I rifiuti elettronici devono essere raccolti e riciclati correttamente per recuperare materiali e ridurre l'inquinamento. La legge di Moore descrive una tendenza storica nella crescita del numero di transistor nei circuiti integrati; non garantisce la velocità di ogni dispositivo."
+                      ],
+                      "sceneIndexes": [
+                            3
+                      ],
+                      "visualKey": "earth"
+                ,
+                      
+                      "example": ["A school can securely erase and donate working laptops, then send unusable devices to an approved e-waste recycler.","Una scuola può cancellare in sicurezza e donare i portatili funzionanti, poi affidare i dispositivi inutilizzabili a un centro RAEE autorizzato."],
+                      "workedExample": {
+  "scenario": [
+    "A school replaces an old computer and hears that newer chips contain many more transistors. Explain responsible disposal and Moore's law.",
+    "Una scuola sostituisce un vecchio computer e scopre che i chip più recenti contengono molti più transistor. Spiega lo smaltimento responsabile e la legge di Moore."
+  ],
+  "steps": [
+    [
+      "1. Do not put electronic equipment in ordinary household waste; it may contain valuable and hazardous materials.",
+      "1. Non gettare le apparecchiature elettroniche nei rifiuti comuni: possono contenere materiali preziosi e pericolosi."
+    ],
+    [
+      "2. Reuse or donate working equipment where appropriate; send unusable devices to authorised e-waste collection or recycling.",
+      "2. Riutilizza o dona le apparecchiature funzionanti quando possibile; porta quelle inutilizzabili a un servizio autorizzato di raccolta o riciclo RAEE."
+    ],
+    [
+      "3. Moore's law describes a historical trend of rapid growth in transistor counts on integrated circuits, often described as doubling roughly every two years.",
+      "3. La legge di Moore descrive una tendenza storica di rapida crescita del numero di transistor nei circuiti integrati, spesso descritta come un raddoppio circa ogni due anni."
+    ],
+    [
+      "4. It does not guarantee that every computer's speed doubles on a fixed schedule.",
+      "4. Non garantisce che la velocità di ogni computer raddoppi secondo una scadenza fissa."
+    ]
+  ],
+  "answer": [
+    "Reuse electronics where possible or take them to authorised e-waste recycling. Moore's law describes a historical trend in transistor density, not a guaranteed speed increase for every device.",
+    "Riutilizza i dispositivi elettronici quando possibile o portali a un servizio autorizzato di riciclo RAEE. La legge di Moore descrive una tendenza storica della densità dei transistor, non un aumento garantito della velocità di ogni dispositivo."
+  ]
+},
+                      "misconceptions": [
+  {
+    "belief": [
+      "Moore's law says every computer becomes twice as fast every two years.",
+      "La legge di Moore dice che ogni computer diventa due volte più veloce ogni due anni."
+    ],
+    "correction": [
+      "Moore's law concerns historical growth in transistor counts on integrated circuits. It does not guarantee that overall computer performance doubles at that rate.",
+      "La legge di Moore riguarda la crescita storica del numero di transistor nei circuiti integrati. Non garantisce che le prestazioni complessive raddoppino a quel ritmo."
+    ]
+  }
+],
+                      "knowledgePrompts": [
+                        [
+                          "Explain E-waste and Moore's law in your own words and give one practical example.",
+                          "Spiega RAEE e legge di Moore con parole tue e fornisci un esempio pratico."
+                        ]
+                      ]
+                }
+          ]
+    },
     "demon": [
       "Ghost Signal",
       "Segnale Fantasma"
@@ -4897,8 +7785,8 @@ export const MISSIONS: Mission[] = [
     "horns": 2,
     "eyes": 3,
     "title": [
-      "Web Walker: Pages, Browsers & Search",
-      "Viandante del Web: pagine, browser e ricerche"
+      "Web Explorer: Pages, Browsers & Search",
+      "Esploratore del Web: pagine, browser e ricerche"
     ],
     "topic": [
       "World Wide Web, URL, browser, searching well",
@@ -13872,7 +16760,580 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p1m2-objective-1",
+          "description": [
+            "Write numbers in scientific notation",
+            "Scrivere numeri in notazione scientifica"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p1m2-objective-2",
+          "description": [
+            "Compare very large and very small quantities",
+            "Confrontare grandezze molto grandi e molto piccole"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "standard-form",
+          "title": [
+            "Scientific notation",
+            "Notazione scientifica"
+          ],
+          "explanation": [
+            "Write a number as a × 10ⁿ, with 1 ≤ |a| < 10. Move the decimal point left for a positive exponent and right for a negative exponent.",
+            "Scrivi un numero come a × 10ⁿ, con 1 ≤ |a| < 10. Sposta la virgola a sinistra per un esponente positivo e a destra per uno negativo."
+          ],
+          "example": [
+            "Convert 45 000: move the decimal point four places left → 4.5 × 10⁴.",
+            "Converti 45 000: sposta la virgola di quattro posti a sinistra → 4,5 × 10⁴."
+          ],
+          "workedExample": {
+            "scenario": [
+              "Convert 45 000: move the decimal point four places left → 4.5 × 10⁴.",
+              "Converti 45 000: sposta la virgola di quattro posti a sinistra → 4,5 × 10⁴."
+            ],
+            "steps": [
+              [
+                "4.5 × 10⁴",
+                "4,5 × 10⁴"
+              ],
+              [
+                "The coefficient must be at least 1 and less than 10.",
+                "Il coefficiente deve essere almeno 1 e minore di 10."
+              ]
+            ],
+            "answer": [
+              "The coefficient must be at least 1 and less than 10.",
+              "Il coefficiente deve essere almeno 1 e minore di 10."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "A number such as 45 × 10³ is not in standard scientific notation.",
+                "Un numero come 45 × 10³ non è scritto in notazione scientifica standard."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
+          ]
+        },
+        {
+          "id": "orders",
+          "title": [
+            "Orders of magnitude",
+            "Ordini di grandezza"
+          ],
+          "explanation": [
+            "Powers of ten help compare scales. With positive powers, a larger exponent means a larger number.",
+            "Le potenze di dieci aiutano a confrontare le scale. Con esponenti positivi, un esponente maggiore indica un numero maggiore."
+          ],
+          "example": [
+            "10⁶ is 1 000 times larger than 10³.",
+            "10⁶ è 1 000 volte maggiore di 10³."
+          ],
+          "workedExample": {
+            "scenario": [
+              "10⁶ is 1 000 times larger than 10³.",
+              "10⁶ è 1 000 volte maggiore di 10³."
+            ],
+            "steps": [
+              [
+                "10⁶ > 10³",
+                "10⁶ > 10³"
+              ],
+              [
+                "Compare the powers of ten first.",
+                "Confronta prima le potenze di dieci."
+              ]
+            ],
+            "answer": [
+              "Compare the powers of ten first.",
+              "Confronta prima le potenze di dieci."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "The exponent is not itself the value of the number.",
+                "L'esponente non è il valore del numero."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            2
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-1m2-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Write 72 000 in scientific notation.",
+                "Scrivi 72 000 in notazione scientifica."
+              ],
+              "a": [
+                [
+                  "7.2 × 10⁴",
+                  "7,2 × 10⁴"
+                ],
+                [
+                  "72 × 10³",
+                  "72 × 10³"
+                ],
+                [
+                  "7.2 × 10³",
+                  "7,2 × 10³"
+                ],
+                [
+                  "0.72 × 10⁴",
+                  "0,72 × 10⁴"
+                ]
+              ],
+              "why": [
+                "The decimal point moves four places left.",
+                "La virgola si sposta di quattro posti a sinistra."
+              ]
+            },
+            {
+              "q": [
+                "Which number is smallest?",
+                "Quale numero è il più piccolo?"
+              ],
+              "a": [
+                [
+                  "2 × 10²",
+                  "2 × 10²"
+                ],
+                [
+                  "2 × 10⁴",
+                  "2 × 10⁴"
+                ],
+                [
+                  "2 × 10⁶",
+                  "2 × 10⁶"
+                ],
+                [
+                  "2 × 10³",
+                  "2 × 10³"
+                ]
+              ],
+              "why": [
+                "With the same coefficient, the smallest exponent gives the smallest value.",
+                "Con lo stesso coefficiente, l'esponente più piccolo dà il valore minore."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ],
+          "sceneIndex": 3
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-1m2-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Write 0.0035 in scientific notation.",
+                "Scrivi 0,0035 in notazione scientifica."
+              ],
+              "a": [
+                [
+                  "3.5 × 10⁻³",
+                  "3,5 × 10⁻³"
+                ],
+                [
+                  "3.5 × 10³",
+                  "3,5 × 10³"
+                ],
+                [
+                  "35 × 10⁻³",
+                  "35 × 10⁻³"
+                ],
+                [
+                  "0.35 × 10⁻²",
+                  "0,35 × 10⁻²"
+                ]
+              ],
+              "why": [
+                "Move the decimal point three places right, so the exponent is −3.",
+                "Sposta la virgola di tre posti a destra: l'esponente è −3."
+              ]
+            },
+            {
+              "q": [
+                "Why is scientific notation useful?",
+                "Perché è utile la notazione scientifica?"
+              ],
+              "a": [
+                [
+                  "It makes very large and small numbers easier to read.",
+                  "Rende più facili da leggere numeri molto grandi e molto piccoli."
+                ],
+                [
+                  "It changes the value.",
+                  "Cambia il valore."
+                ],
+                [
+                  "It removes the unit.",
+                  "Elimina l'unità."
+                ],
+                [
+                  "It works only for whole numbers.",
+                  "Funziona solo con numeri interi."
+                ]
+              ],
+              "why": [
+                "It keeps the same value in a compact form.",
+                "Mantiene lo stesso valore in una forma compatta."
+              ]
+            }
+          ],
+          "sceneIndex": 4
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "Write 72 000 in scientific notation.",
+            "Scrivi 72 000 in notazione scientifica."
+          ],
+          "a": [
+            [
+              "7.2 × 10⁴",
+              "7,2 × 10⁴"
+            ],
+            [
+              "72 × 10³",
+              "72 × 10³"
+            ],
+            [
+              "7.2 × 10³",
+              "7,2 × 10³"
+            ],
+            [
+              "0.72 × 10⁴",
+              "0,72 × 10⁴"
+            ]
+          ],
+          "why": [
+            "The decimal point moves four places left.",
+            "La virgola si sposta di quattro posti a sinistra."
+          ]
+        },
+        {
+          "q": [
+            "Which number is smallest?",
+            "Quale numero è il più piccolo?"
+          ],
+          "a": [
+            [
+              "2 × 10²",
+              "2 × 10²"
+            ],
+            [
+              "2 × 10⁴",
+              "2 × 10⁴"
+            ],
+            [
+              "2 × 10⁶",
+              "2 × 10⁶"
+            ],
+            [
+              "2 × 10³",
+              "2 × 10³"
+            ]
+          ],
+          "why": [
+            "With the same coefficient, the smallest exponent gives the smallest value.",
+            "Con lo stesso coefficiente, l'esponente più piccolo dà il valore minore."
+          ]
+        },
+        {
+          "q": [
+            "Write 0.0035 in scientific notation.",
+            "Scrivi 0,0035 in notazione scientifica."
+          ],
+          "a": [
+            [
+              "3.5 × 10⁻³",
+              "3,5 × 10⁻³"
+            ],
+            [
+              "3.5 × 10³",
+              "3,5 × 10³"
+            ],
+            [
+              "35 × 10⁻³",
+              "35 × 10⁻³"
+            ],
+            [
+              "0.35 × 10⁻²",
+              "0,35 × 10⁻²"
+            ]
+          ],
+          "why": [
+            "Move the decimal point three places right, so the exponent is −3.",
+            "Sposta la virgola di tre posti a destra: l'esponente è −3."
+          ]
+        },
+        {
+          "q": [
+            "Why is scientific notation useful?",
+            "Perché è utile la notazione scientifica?"
+          ],
+          "a": [
+            [
+              "It makes very large and small numbers easier to read.",
+              "Rende più facili da leggere numeri molto grandi e molto piccoli."
+            ],
+            [
+              "It changes the value.",
+              "Cambia il valore."
+            ],
+            [
+              "It removes the unit.",
+              "Elimina l'unità."
+            ],
+            [
+              "It works only for whole numbers.",
+              "Funziona solo con numeri interi."
+            ]
+          ],
+          "why": [
+            "It keeps the same value in a compact form.",
+            "Mantiene lo stesso valore in una forma compatta."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "Write a number as a × 10ⁿ, with 1 ≤ |a| < 10. Move the decimal point left for a positive exponent and right for a negative exponent.",
+          "Scrivi un numero come a × 10ⁿ, con 1 ≤ |a| < 10. Sposta la virgola a sinistra per un esponente positivo e a destra per uno negativo."
+        ],
+        [
+          "Powers of ten help compare scales. With positive powers, a larger exponent means a larger number.",
+          "Le potenze di dieci aiutano a confrontare le scale. Con esponenti positivi, un esponente maggiore indica un numero maggiore."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "Write 72 000 in scientific notation.",
+              "Scrivi 72 000 in notazione scientifica."
+            ],
+            "a": [
+              [
+                "7.2 × 10⁴",
+                "7,2 × 10⁴"
+              ],
+              [
+                "72 × 10³",
+                "72 × 10³"
+              ],
+              [
+                "7.2 × 10³",
+                "7,2 × 10³"
+              ],
+              [
+                "0.72 × 10⁴",
+                "0,72 × 10⁴"
+              ]
+            ],
+            "why": [
+              "The decimal point moves four places left.",
+              "La virgola si sposta di quattro posti a sinistra."
+            ]
+          },
+          {
+            "q": [
+              "Which number is smallest?",
+              "Quale numero è il più piccolo?"
+            ],
+            "a": [
+              [
+                "2 × 10²",
+                "2 × 10²"
+              ],
+              [
+                "2 × 10⁴",
+                "2 × 10⁴"
+              ],
+              [
+                "2 × 10⁶",
+                "2 × 10⁶"
+              ],
+              [
+                "2 × 10³",
+                "2 × 10³"
+              ]
+            ],
+            "why": [
+              "With the same coefficient, the smallest exponent gives the smallest value.",
+              "Con lo stesso coefficiente, l'esponente più piccolo dà il valore minore."
+            ]
+          },
+          {
+            "q": [
+              "Write 0.0035 in scientific notation.",
+              "Scrivi 0,0035 in notazione scientifica."
+            ],
+            "a": [
+              [
+                "3.5 × 10⁻³",
+                "3,5 × 10⁻³"
+              ],
+              [
+                "3.5 × 10³",
+                "3,5 × 10³"
+              ],
+              [
+                "35 × 10⁻³",
+                "35 × 10⁻³"
+              ],
+              [
+                "0.35 × 10⁻²",
+                "0,35 × 10⁻²"
+              ]
+            ],
+            "why": [
+              "Move the decimal point three places right, so the exponent is −3.",
+              "Sposta la virgola di tre posti a destra: l'esponente è −3."
+            ]
+          },
+          {
+            "q": [
+              "Why is scientific notation useful?",
+              "Perché è utile la notazione scientifica?"
+            ],
+            "a": [
+              [
+                "It makes very large and small numbers easier to read.",
+                "Rende più facili da leggere numeri molto grandi e molto piccoli."
+              ],
+              [
+                "It changes the value.",
+                "Cambia il valore."
+              ],
+              [
+                "It removes the unit.",
+                "Elimina l'unità."
+              ],
+              [
+                "It works only for whole numbers.",
+                "Funziona solo con numeri interi."
+              ]
+            ],
+            "why": [
+              "It keeps the same value in a compact form.",
+              "Mantiene lo stesso valore in una forma compatta."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "standard-form",
+          "standard-form",
+          "orders",
+          "orders"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-1m2-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p1m3",
     "arc": 16,
@@ -14195,7 +17656,581 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p1m3-objective-1",
+          "description": [
+            "Calculate area and volume from dimensions",
+            "Calcolare area e volume dalle dimensioni"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p1m3-objective-2",
+          "description": [
+            "Calculate and interpret density",
+            "Calcolare e interpretare la densità"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "area-volume",
+          "title": [
+            "Area and volume",
+            "Area e volume"
+          ],
+          "explanation": [
+            "Area measures a surface; volume measures the space occupied. Rectangle area is A = l × w; rectangular volume is V = l × w × h.",
+            "L'area misura una superficie; il volume misura lo spazio occupato. L'area del rettangolo è A = b × h; il volume del parallelepipedo è V = l × w × h."
+          ],
+          "example": [
+            "A box measuring 2 m × 1 m × 0.5 m has V = 1 m³.",
+            "Una scatola di 2 m × 1 m × 0,5 m ha V = 1 m³."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A box measuring 2 m × 1 m × 0.5 m has V = 1 m³.",
+              "Una scatola di 2 m × 1 m × 0,5 m ha V = 1 m³."
+            ],
+            "steps": [
+              [
+                "1 m³",
+                "1 m³"
+              ],
+              [
+                "Area uses square units; volume uses cubic units.",
+                "L'area usa unità quadrate; il volume unità cubiche."
+              ]
+            ],
+            "answer": [
+              "Area uses square units; volume uses cubic units.",
+              "L'area usa unità quadrate; il volume unità cubiche."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "Volume and surface area are not the same quantity.",
+                "Volume e area della superficie non sono la stessa grandezza."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
+          ]
+        },
+        {
+          "id": "density",
+          "title": [
+            "Density",
+            "Densità"
+          ],
+          "explanation": [
+            "Density is mass divided by volume: ρ = m/V. It describes how much mass is packed into a given volume.",
+            "La densità è la massa divisa per il volume: ρ = m/V. Descrive quanta massa è contenuta in un certo volume."
+          ],
+          "example": [
+            "A 6 kg object occupying 2 m³ has density 3 kg/m³.",
+            "Un corpo di 6 kg che occupa 2 m³ ha densità 3 kg/m³."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A 6 kg object occupying 2 m³ has density 3 kg/m³.",
+              "Un corpo di 6 kg che occupa 2 m³ ha densità 3 kg/m³."
+            ],
+            "steps": [
+              [
+                "3 kg/m³",
+                "3 kg/m³"
+              ],
+              [
+                "Divide mass by volume and include the compound unit.",
+                "Dividi la massa per il volume e indica l'unità composta."
+              ]
+            ],
+            "answer": [
+              "Divide mass by volume and include the compound unit.",
+              "Dividi la massa per il volume e indica l'unità composta."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "Density is not volume divided by mass.",
+                "La densità non è il volume diviso per la massa."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            2
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-1m3-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "A rectangle is 4 m by 3 m. What is its area?",
+                "Un rettangolo misura 4 m per 3 m. Qual è la sua area?"
+              ],
+              "a": [
+                [
+                  "12 m²",
+                  "12 m²"
+                ],
+                [
+                  "7 m²",
+                  "7 m²"
+                ],
+                [
+                  "12 m³",
+                  "12 m³"
+                ],
+                [
+                  "14 m²",
+                  "14 m²"
+                ]
+              ],
+              "why": [
+                "Area = length × width = 4 × 3.",
+                "Area = lunghezza × larghezza = 4 × 3."
+              ]
+            },
+            {
+              "q": [
+                "Which unit is suitable for volume?",
+                "Quale unità è adatta al volume?"
+              ],
+              "a": [
+                [
+                  "m³",
+                  "m³"
+                ],
+                [
+                  "m",
+                  "m"
+                ],
+                [
+                  "m²",
+                  "m²"
+                ],
+                [
+                  "kg",
+                  "kg"
+                ]
+              ],
+              "why": [
+                "Volume is measured in cubic units.",
+                "Il volume si misura in unità cubiche."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ],
+          "sceneIndex": 3
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-1m3-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "A mass of 6 kg occupies 2 m³. Find its density.",
+                "Una massa di 6 kg occupa 2 m³. Calcola la densità."
+              ],
+              "a": [
+                [
+                  "3 kg/m³",
+                  "3 kg/m³"
+                ],
+                [
+                  "8 kg/m³",
+                  "8 kg/m³"
+                ],
+                [
+                  "12 kg/m³",
+                  "12 kg/m³"
+                ],
+                [
+                  "0.33 kg/m³",
+                  "0,33 kg/m³"
+                ]
+              ],
+              "why": [
+                "ρ = m/V = 6/2 = 3 kg/m³.",
+                "ρ = m/V = 6/2 = 3 kg/m³."
+              ]
+            },
+            {
+              "q": [
+                "Which formula defines density?",
+                "Quale formula definisce la densità?"
+              ],
+              "a": [
+                [
+                  "ρ = m/V",
+                  "ρ = m/V"
+                ],
+                [
+                  "ρ = V/m",
+                  "ρ = V/m"
+                ],
+                [
+                  "ρ = m × V",
+                  "ρ = m × V"
+                ],
+                [
+                  "ρ = m + V",
+                  "ρ = m + V"
+                ]
+              ],
+              "why": [
+                "Density is mass divided by volume.",
+                "La densità è la massa divisa per il volume."
+              ]
+            }
+          ],
+          "sceneIndex": 4
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "A rectangle is 4 m by 3 m. What is its area?",
+            "Un rettangolo misura 4 m per 3 m. Qual è la sua area?"
+          ],
+          "a": [
+            [
+              "12 m²",
+              "12 m²"
+            ],
+            [
+              "7 m²",
+              "7 m²"
+            ],
+            [
+              "12 m³",
+              "12 m³"
+            ],
+            [
+              "14 m²",
+              "14 m²"
+            ]
+          ],
+          "why": [
+            "Area = length × width = 4 × 3.",
+            "Area = lunghezza × larghezza = 4 × 3."
+          ]
+        },
+        {
+          "q": [
+            "Which unit is suitable for volume?",
+            "Quale unità è adatta al volume?"
+          ],
+          "a": [
+            [
+              "m³",
+              "m³"
+            ],
+            [
+              "m",
+              "m"
+            ],
+            [
+              "m²",
+              "m²"
+            ],
+            [
+              "kg",
+              "kg"
+            ]
+          ],
+          "why": [
+            "Volume is measured in cubic units.",
+            "Il volume si misura in unità cubiche."
+          ]
+        },
+        {
+          "q": [
+            "A mass of 6 kg occupies 2 m³. Find its density.",
+            "Una massa di 6 kg occupa 2 m³. Calcola la densità."
+          ],
+          "a": [
+            [
+              "3 kg/m³",
+              "3 kg/m³"
+            ],
+            [
+              "8 kg/m³",
+              "8 kg/m³"
+            ],
+            [
+              "12 kg/m³",
+              "12 kg/m³"
+            ],
+            [
+              "0.33 kg/m³",
+              "0,33 kg/m³"
+            ]
+          ],
+          "why": [
+            "ρ = m/V = 6/2 = 3 kg/m³.",
+            "ρ = m/V = 6/2 = 3 kg/m³."
+          ]
+        },
+        {
+          "q": [
+            "Which formula defines density?",
+            "Quale formula definisce la densità?"
+          ],
+          "a": [
+            [
+              "ρ = m/V",
+              "ρ = m/V"
+            ],
+            [
+              "ρ = V/m",
+              "ρ = V/m"
+            ],
+            [
+              "ρ = m × V",
+              "ρ = m × V"
+            ],
+            [
+              "ρ = m + V",
+              "ρ = m + V"
+            ]
+          ],
+          "why": [
+            "Density is mass divided by volume.",
+            "La densità è la massa divisa per il volume."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "Area measures a surface; volume measures the space occupied. Rectangle area is A = l × w; rectangular volume is V = l × w × h.",
+          "L'area misura una superficie; il volume misura lo spazio occupato. L'area del rettangolo è A = b × h; il volume del parallelepipedo è V = l × w × h."
+        ],
+        [
+          "Density is mass divided by volume: ρ = m/V. It describes how much mass is packed into a given volume.",
+          "La densità è la massa divisa per il volume: ρ = m/V. Descrive quanta massa è contenuta in un certo volume."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "A rectangle is 4 m by 3 m. What is its area?",
+              "Un rettangolo misura 4 m per 3 m. Qual è la sua area?"
+            ],
+            "a": [
+              [
+                "12 m²",
+                "12 m²"
+              ],
+              [
+                "7 m²",
+                "7 m²"
+              ],
+              [
+                "12 m³",
+                "12 m³"
+              ],
+              [
+                "14 m²",
+                "14 m²"
+              ]
+            ],
+            "why": [
+              "Area = length × width = 4 × 3.",
+              "Area = lunghezza × larghezza = 4 × 3."
+            ]
+          },
+          {
+            "q": [
+              "Which unit is suitable for volume?",
+              "Quale unità è adatta al volume?"
+            ],
+            "a": [
+              [
+                "m³",
+                "m³"
+              ],
+              [
+                "m",
+                "m"
+              ],
+              [
+                "m²",
+                "m²"
+              ],
+              [
+                "kg",
+                "kg"
+              ]
+            ],
+            "why": [
+              "Volume is measured in cubic units.",
+              "Il volume si misura in unità cubiche."
+            ]
+          },
+          {
+            "q": [
+              "A mass of 6 kg occupies 2 m³. Find its density.",
+              "Una massa di 6 kg occupa 2 m³. Calcola la densità."
+            ],
+            "a": [
+              [
+                "3 kg/m³",
+                "3 kg/m³"
+              ],
+              [
+                "8 kg/m³",
+                "8 kg/m³"
+              ],
+              [
+                "12 kg/m³",
+                "12 kg/m³"
+              ],
+              [
+                "0.33 kg/m³",
+                "0,33 kg/m³"
+              ]
+            ],
+            "why": [
+              "ρ = m/V = 6/2 = 3 kg/m³.",
+              "ρ = m/V = 6/2 = 3 kg/m³."
+            ]
+          },
+          {
+            "q": [
+              "Which formula defines density?",
+              "Quale formula definisce la densità?"
+            ],
+            "a": [
+              [
+                "ρ = m/V",
+                "ρ = m/V"
+              ],
+              [
+                "ρ = V/m",
+                "ρ = V/m"
+              ],
+              [
+                "ρ = m × V",
+                "ρ = m × V"
+              ],
+              [
+                "ρ = m + V",
+                "ρ = m + V"
+              ]
+            ],
+            "why": [
+              "Density is mass divided by volume.",
+              "La densità è la massa divisa per il volume."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "area-volume",
+          "area-volume",
+          "density",
+          "density"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-1m3-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
+  ...PHYSICS_FOUNDATION_MISSIONS,
   {
     "id": "p2m1",
     "arc": 17,
@@ -14460,7 +18495,580 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p2m1-objective-1",
+          "description": [
+            "Choose a suitable instrument and read its scale",
+            "Scegliere uno strumento adatto e leggerne la scala"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p2m1-objective-2",
+          "description": [
+            "Explain measurement errors and uncertainty",
+            "Spiegare errori e incertezza di misura"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "instruments",
+          "title": [
+            "Instruments and sensitivity",
+            "Strumenti e sensibilità"
+          ],
+          "explanation": [
+            "Choose an instrument with a suitable range and scale division. Sensitivity describes the smallest change it can detect.",
+            "Scegli uno strumento con portata e divisione della scala adatte. La sensibilità descrive la più piccola variazione che può rilevare."
+          ],
+          "example": [
+            "A ruler marked every millimetre can detect smaller length changes than one marked every centimetre.",
+            "Un righello graduato ogni millimetro rileva variazioni più piccole rispetto a uno graduato ogni centimetro."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A ruler marked every millimetre can detect smaller length changes than one marked every centimetre.",
+              "Un righello graduato ogni millimetro rileva variazioni più piccole rispetto a uno graduato ogni centimetro."
+            ],
+            "steps": [
+              [
+                "1 mm is a finer division than 1 cm.",
+                "1 mm è una divisione più fine di 1 cm."
+              ],
+              [
+                "Read a scale at eye level to reduce parallax error.",
+                "Leggi la scala all'altezza degli occhi per ridurre l'errore di parallasse."
+              ]
+            ],
+            "answer": [
+              "Read a scale at eye level to reduce parallax error.",
+              "Leggi la scala all'altezza degli occhi per ridurre l'errore di parallasse."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "More decimal places do not automatically mean greater accuracy.",
+                "Più cifre decimali non significano automaticamente maggiore accuratezza."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
+          ]
+        },
+        {
+          "id": "uncertainty",
+          "title": [
+            "Errors and uncertainty",
+            "Errori e incertezza"
+          ],
+          "explanation": [
+            "Random errors vary between readings; systematic errors shift readings consistently. Uncertainty describes the reasonable range around a measured value.",
+            "Gli errori casuali variano tra le letture; quelli sistematici spostano le misure in modo costante. L'incertezza descrive l'intervallo ragionevole attorno a un valore misurato."
+          ],
+          "example": [
+            "Repeat a measurement and compare readings. A constant offset can indicate a systematic error.",
+            "Ripeti una misura e confronta le letture. Uno scostamento costante può indicare un errore sistematico."
+          ],
+          "workedExample": {
+            "scenario": [
+              "Repeat a measurement and compare readings. A constant offset can indicate a systematic error.",
+              "Ripeti una misura e confronta le letture. Uno scostamento costante può indicare un errore sistematico."
+            ],
+            "steps": [
+              [
+                "Repeated readings reveal variation.",
+                "Le misure ripetute rivelano le variazioni."
+              ],
+              [
+                "Repeating helps reduce random uncertainty, not a persistent calibration error.",
+                "Ripetere aiuta a ridurre l'incertezza casuale, non un errore persistente di calibrazione."
+              ]
+            ],
+            "answer": [
+              "Repeating helps reduce random uncertainty, not a persistent calibration error.",
+              "Ripetere aiuta a ridurre l'incertezza casuale, non un errore persistente di calibrazione."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "Repeating a reading does not guarantee zero error.",
+                "Ripetere una lettura non garantisce errore zero."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            2
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-2m1-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "What does instrument sensitivity describe?",
+                "Che cosa descrive la sensibilità di uno strumento?"
+              ],
+              "a": [
+                [
+                  "The smallest change it can detect.",
+                  "La più piccola variazione che può rilevare."
+                ],
+                [
+                  "Its colour.",
+                  "Il suo colore."
+                ],
+                [
+                  "Its weight.",
+                  "Il suo peso."
+                ],
+                [
+                  "The largest object it can measure.",
+                  "L'oggetto più grande che può misurare."
+                ]
+              ],
+              "why": [
+                "Sensitivity concerns the smallest detectable change.",
+                "La sensibilità riguarda la più piccola variazione rilevabile."
+              ]
+            },
+            {
+              "q": [
+                "How can you reduce parallax error?",
+                "Come puoi ridurre l'errore di parallasse?"
+              ],
+              "a": [
+                [
+                  "Read the scale straight on at eye level.",
+                  "Leggi la scala frontalmente, all'altezza degli occhi."
+                ],
+                [
+                  "Look from the side.",
+                  "Guarda di lato."
+                ],
+                [
+                  "Tilt the ruler.",
+                  "Inclina il righello."
+                ],
+                [
+                  "Guess the reading.",
+                  "Indovina la lettura."
+                ]
+              ],
+              "why": [
+                "Align your eye with the scale mark.",
+                "Allinea l'occhio con la tacca della scala."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ],
+          "sceneIndex": 3
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-2m1-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "A balance always reads 0.2 kg too high. This is…",
+                "Una bilancia indica sempre 0,2 kg in più. Si tratta di…"
+              ],
+              "a": [
+                [
+                  "a systematic error.",
+                  "un errore sistematico."
+                ],
+                [
+                  "a random error.",
+                  "un errore casuale."
+                ],
+                [
+                  "no error.",
+                  "nessun errore."
+                ],
+                [
+                  "a unit conversion.",
+                  "una conversione di unità."
+                ]
+              ],
+              "why": [
+                "A repeated bias in one direction is systematic.",
+                "Uno scostamento ripetuto in una direzione è sistematico."
+              ]
+            },
+            {
+              "q": [
+                "Why repeat a measurement?",
+                "Perché ripetere una misura?"
+              ],
+              "a": [
+                [
+                  "To observe variation and obtain a more reliable estimate.",
+                  "Per osservare le variazioni e ottenere una stima più affidabile."
+                ],
+                [
+                  "To guarantee zero error.",
+                  "Per garantire errore zero."
+                ],
+                [
+                  "To change the unit.",
+                  "Per cambiare unità."
+                ],
+                [
+                  "To make the object larger.",
+                  "Per ingrandire l'oggetto."
+                ]
+              ],
+              "why": [
+                "Repeated readings help identify random variation.",
+                "Le letture ripetute aiutano a individuare variazioni casuali."
+              ]
+            }
+          ],
+          "sceneIndex": 4
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "What does instrument sensitivity describe?",
+            "Che cosa descrive la sensibilità di uno strumento?"
+          ],
+          "a": [
+            [
+              "The smallest change it can detect.",
+              "La più piccola variazione che può rilevare."
+            ],
+            [
+              "Its colour.",
+              "Il suo colore."
+            ],
+            [
+              "Its weight.",
+              "Il suo peso."
+            ],
+            [
+              "The largest object it can measure.",
+              "L'oggetto più grande che può misurare."
+            ]
+          ],
+          "why": [
+            "Sensitivity concerns the smallest detectable change.",
+            "La sensibilità riguarda la più piccola variazione rilevabile."
+          ]
+        },
+        {
+          "q": [
+            "How can you reduce parallax error?",
+            "Come puoi ridurre l'errore di parallasse?"
+          ],
+          "a": [
+            [
+              "Read the scale straight on at eye level.",
+              "Leggi la scala frontalmente, all'altezza degli occhi."
+            ],
+            [
+              "Look from the side.",
+              "Guarda di lato."
+            ],
+            [
+              "Tilt the ruler.",
+              "Inclina il righello."
+            ],
+            [
+              "Guess the reading.",
+              "Indovina la lettura."
+            ]
+          ],
+          "why": [
+            "Align your eye with the scale mark.",
+            "Allinea l'occhio con la tacca della scala."
+          ]
+        },
+        {
+          "q": [
+            "A balance always reads 0.2 kg too high. This is…",
+            "Una bilancia indica sempre 0,2 kg in più. Si tratta di…"
+          ],
+          "a": [
+            [
+              "a systematic error.",
+              "un errore sistematico."
+            ],
+            [
+              "a random error.",
+              "un errore casuale."
+            ],
+            [
+              "no error.",
+              "nessun errore."
+            ],
+            [
+              "a unit conversion.",
+              "una conversione di unità."
+            ]
+          ],
+          "why": [
+            "A repeated bias in one direction is systematic.",
+            "Uno scostamento ripetuto in una direzione è sistematico."
+          ]
+        },
+        {
+          "q": [
+            "Why repeat a measurement?",
+            "Perché ripetere una misura?"
+          ],
+          "a": [
+            [
+              "To observe variation and obtain a more reliable estimate.",
+              "Per osservare le variazioni e ottenere una stima più affidabile."
+            ],
+            [
+              "To guarantee zero error.",
+              "Per garantire errore zero."
+            ],
+            [
+              "To change the unit.",
+              "Per cambiare unità."
+            ],
+            [
+              "To make the object larger.",
+              "Per ingrandire l'oggetto."
+            ]
+          ],
+          "why": [
+            "Repeated readings help identify random variation.",
+            "Le letture ripetute aiutano a individuare variazioni casuali."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "Choose an instrument with a suitable range and scale division. Sensitivity describes the smallest change it can detect.",
+          "Scegli uno strumento con portata e divisione della scala adatte. La sensibilità descrive la più piccola variazione che può rilevare."
+        ],
+        [
+          "Random errors vary between readings; systematic errors shift readings consistently. Uncertainty describes the reasonable range around a measured value.",
+          "Gli errori casuali variano tra le letture; quelli sistematici spostano le misure in modo costante. L'incertezza descrive l'intervallo ragionevole attorno a un valore misurato."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "What does instrument sensitivity describe?",
+              "Che cosa descrive la sensibilità di uno strumento?"
+            ],
+            "a": [
+              [
+                "The smallest change it can detect.",
+                "La più piccola variazione che può rilevare."
+              ],
+              [
+                "Its colour.",
+                "Il suo colore."
+              ],
+              [
+                "Its weight.",
+                "Il suo peso."
+              ],
+              [
+                "The largest object it can measure.",
+                "L'oggetto più grande che può misurare."
+              ]
+            ],
+            "why": [
+              "Sensitivity concerns the smallest detectable change.",
+              "La sensibilità riguarda la più piccola variazione rilevabile."
+            ]
+          },
+          {
+            "q": [
+              "How can you reduce parallax error?",
+              "Come puoi ridurre l'errore di parallasse?"
+            ],
+            "a": [
+              [
+                "Read the scale straight on at eye level.",
+                "Leggi la scala frontalmente, all'altezza degli occhi."
+              ],
+              [
+                "Look from the side.",
+                "Guarda di lato."
+              ],
+              [
+                "Tilt the ruler.",
+                "Inclina il righello."
+              ],
+              [
+                "Guess the reading.",
+                "Indovina la lettura."
+              ]
+            ],
+            "why": [
+              "Align your eye with the scale mark.",
+              "Allinea l'occhio con la tacca della scala."
+            ]
+          },
+          {
+            "q": [
+              "A balance always reads 0.2 kg too high. This is…",
+              "Una bilancia indica sempre 0,2 kg in più. Si tratta di…"
+            ],
+            "a": [
+              [
+                "a systematic error.",
+                "un errore sistematico."
+              ],
+              [
+                "a random error.",
+                "un errore casuale."
+              ],
+              [
+                "no error.",
+                "nessun errore."
+              ],
+              [
+                "a unit conversion.",
+                "una conversione di unità."
+              ]
+            ],
+            "why": [
+              "A repeated bias in one direction is systematic.",
+              "Uno scostamento ripetuto in una direzione è sistematico."
+            ]
+          },
+          {
+            "q": [
+              "Why repeat a measurement?",
+              "Perché ripetere una misura?"
+            ],
+            "a": [
+              [
+                "To observe variation and obtain a more reliable estimate.",
+                "Per osservare le variazioni e ottenere una stima più affidabile."
+              ],
+              [
+                "To guarantee zero error.",
+                "Per garantire errore zero."
+              ],
+              [
+                "To change the unit.",
+                "Per cambiare unità."
+              ],
+              [
+                "To make the object larger.",
+                "Per ingrandire l'oggetto."
+              ]
+            ],
+            "why": [
+              "Repeated readings help identify random variation.",
+              "Le letture ripetute aiutano a individuare variazioni casuali."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "instruments",
+          "instruments",
+          "uncertainty",
+          "uncertainty"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-2m1-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p2m2",
     "arc": 17,
@@ -14783,7 +19391,580 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p2m2-objective-1",
+          "description": [
+            "Organise measurements in tables and graphs",
+            "Organizzare le misure in tabelle e grafici"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p2m2-objective-2",
+          "description": [
+            "Recognise direct proportionality",
+            "Riconoscere la proporzionalità diretta"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "graphs",
+          "title": [
+            "Tables and graphs",
+            "Tabelle e grafici"
+          ],
+          "explanation": [
+            "Tables organise paired values. Graphs show relationships: the independent variable is usually on the x-axis and the dependent variable on the y-axis.",
+            "Le tabelle organizzano coppie di valori. I grafici mostrano relazioni: la variabile indipendente è di solito sull'asse x e quella dipendente sull'asse y."
+          ],
+          "example": [
+            "For distance measured over time, put time on x and distance on y.",
+            "Per una distanza misurata nel tempo, metti il tempo su x e la distanza su y."
+          ],
+          "workedExample": {
+            "scenario": [
+              "For distance measured over time, put time on x and distance on y.",
+              "Per una distanza misurata nel tempo, metti il tempo su x e la distanza su y."
+            ],
+            "steps": [
+              [
+                "Label both axes and include units.",
+                "Indica entrambi gli assi e inserisci le unità."
+              ],
+              [
+                "A graph needs a clear scale and labelled axes.",
+                "Un grafico richiede una scala chiara e assi etichettati."
+              ]
+            ],
+            "answer": [
+              "A graph needs a clear scale and labelled axes.",
+              "Un grafico richiede una scala chiara e assi etichettati."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "Do not swap axes without checking which variable depends on the other.",
+                "Non scambiare gli assi senza verificare quale variabile dipende dall'altra."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
+          ]
+        },
+        {
+          "id": "proportionality",
+          "title": [
+            "Direct proportionality",
+            "Proporzionalità diretta"
+          ],
+          "explanation": [
+            "Two quantities are directly proportional when y/x is constant: y = kx. The graph is a straight line through the origin.",
+            "Due grandezze sono direttamente proporzionali quando y/x è costante: y = kx. Il grafico è una retta che passa per l'origine."
+          ],
+          "example": [
+            "If each notebook costs €2, total cost C = 2n; doubling n doubles C.",
+            "Se ogni quaderno costa 2 €, il costo totale C = 2n; raddoppiando n, raddoppia C."
+          ],
+          "workedExample": {
+            "scenario": [
+              "If each notebook costs €2, total cost C = 2n; doubling n doubles C.",
+              "Se ogni quaderno costa 2 €, il costo totale C = 2n; raddoppiando n, raddoppia C."
+            ],
+            "steps": [
+              [
+                "The constant k is the ratio y/x.",
+                "La costante k è il rapporto y/x."
+              ],
+              [
+                "Direct proportionality has a constant ratio and a line through (0,0).",
+                "La proporzionalità diretta ha rapporto costante e retta passante per (0,0)."
+              ]
+            ],
+            "answer": [
+              "Direct proportionality has a constant ratio and a line through (0,0).",
+              "La proporzionalità diretta ha rapporto costante e retta passante per (0,0)."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "A straight line not through the origin is not direct proportionality.",
+                "Una retta che non passa per l'origine non rappresenta proporzionalità diretta."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            2
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-2m2-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Where is the independent variable usually plotted?",
+                "Dove si rappresenta di solito la variabile indipendente?"
+              ],
+              "a": [
+                [
+                  "On the horizontal x-axis.",
+                  "Sull'asse orizzontale x."
+                ],
+                [
+                  "On the vertical y-axis.",
+                  "Sull'asse verticale y."
+                ],
+                [
+                  "Outside the graph.",
+                  "Fuori dal grafico."
+                ],
+                [
+                  "Only in the title.",
+                  "Solo nel titolo."
+                ]
+              ],
+              "why": [
+                "The independent variable is usually placed on x.",
+                "La variabile indipendente si colloca di solito su x."
+              ]
+            },
+            {
+              "q": [
+                "What does one point on a graph represent?",
+                "Che cosa rappresenta un punto su un grafico?"
+              ],
+              "a": [
+                [
+                  "A pair of values.",
+                  "Una coppia di valori."
+                ],
+                [
+                  "A unit only.",
+                  "Solo un'unità."
+                ],
+                [
+                  "A title.",
+                  "Un titolo."
+                ],
+                [
+                  "An instrument.",
+                  "Uno strumento."
+                ]
+              ],
+              "why": [
+                "Each point links one x-value to one y-value.",
+                "Ogni punto collega un valore di x a uno di y."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ],
+          "sceneIndex": 3
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-2m2-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Which equation represents direct proportionality?",
+                "Quale equazione rappresenta proporzionalità diretta?"
+              ],
+              "a": [
+                [
+                  "y = 4x",
+                  "y = 4x"
+                ],
+                [
+                  "y = x + 4",
+                  "y = x + 4"
+                ],
+                [
+                  "y = 4/x",
+                  "y = 4/x"
+                ],
+                [
+                  "y = x²",
+                  "y = x²"
+                ]
+              ],
+              "why": [
+                "Direct proportionality has the form y = kx.",
+                "La proporzionalità diretta ha forma y = kx."
+              ]
+            },
+            {
+              "q": [
+                "A graph of direct proportionality passes through…",
+                "Il grafico di proporzionalità diretta passa per…"
+              ],
+              "a": [
+                [
+                  "the origin (0,0).",
+                  "l'origine (0,0)."
+                ],
+                [
+                  "(0,5) only.",
+                  "solo (0,5)."
+                ],
+                [
+                  "every point on the y-axis.",
+                  "tutti i punti dell'asse y."
+                ],
+                [
+                  "no axes.",
+                  "nessun asse."
+                ]
+              ],
+              "why": [
+                "When x is zero, y is also zero.",
+                "Quando x è zero, anche y è zero."
+              ]
+            }
+          ],
+          "sceneIndex": 4
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "Where is the independent variable usually plotted?",
+            "Dove si rappresenta di solito la variabile indipendente?"
+          ],
+          "a": [
+            [
+              "On the horizontal x-axis.",
+              "Sull'asse orizzontale x."
+            ],
+            [
+              "On the vertical y-axis.",
+              "Sull'asse verticale y."
+            ],
+            [
+              "Outside the graph.",
+              "Fuori dal grafico."
+            ],
+            [
+              "Only in the title.",
+              "Solo nel titolo."
+            ]
+          ],
+          "why": [
+            "The independent variable is usually placed on x.",
+            "La variabile indipendente si colloca di solito su x."
+          ]
+        },
+        {
+          "q": [
+            "What does one point on a graph represent?",
+            "Che cosa rappresenta un punto su un grafico?"
+          ],
+          "a": [
+            [
+              "A pair of values.",
+              "Una coppia di valori."
+            ],
+            [
+              "A unit only.",
+              "Solo un'unità."
+            ],
+            [
+              "A title.",
+              "Un titolo."
+            ],
+            [
+              "An instrument.",
+              "Uno strumento."
+            ]
+          ],
+          "why": [
+            "Each point links one x-value to one y-value.",
+            "Ogni punto collega un valore di x a uno di y."
+          ]
+        },
+        {
+          "q": [
+            "Which equation represents direct proportionality?",
+            "Quale equazione rappresenta proporzionalità diretta?"
+          ],
+          "a": [
+            [
+              "y = 4x",
+              "y = 4x"
+            ],
+            [
+              "y = x + 4",
+              "y = x + 4"
+            ],
+            [
+              "y = 4/x",
+              "y = 4/x"
+            ],
+            [
+              "y = x²",
+              "y = x²"
+            ]
+          ],
+          "why": [
+            "Direct proportionality has the form y = kx.",
+            "La proporzionalità diretta ha forma y = kx."
+          ]
+        },
+        {
+          "q": [
+            "A graph of direct proportionality passes through…",
+            "Il grafico di proporzionalità diretta passa per…"
+          ],
+          "a": [
+            [
+              "the origin (0,0).",
+              "l'origine (0,0)."
+            ],
+            [
+              "(0,5) only.",
+              "solo (0,5)."
+            ],
+            [
+              "every point on the y-axis.",
+              "tutti i punti dell'asse y."
+            ],
+            [
+              "no axes.",
+              "nessun asse."
+            ]
+          ],
+          "why": [
+            "When x is zero, y is also zero.",
+            "Quando x è zero, anche y è zero."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "Tables organise paired values. Graphs show relationships: the independent variable is usually on the x-axis and the dependent variable on the y-axis.",
+          "Le tabelle organizzano coppie di valori. I grafici mostrano relazioni: la variabile indipendente è di solito sull'asse x e quella dipendente sull'asse y."
+        ],
+        [
+          "Two quantities are directly proportional when y/x is constant: y = kx. The graph is a straight line through the origin.",
+          "Due grandezze sono direttamente proporzionali quando y/x è costante: y = kx. Il grafico è una retta che passa per l'origine."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "Where is the independent variable usually plotted?",
+              "Dove si rappresenta di solito la variabile indipendente?"
+            ],
+            "a": [
+              [
+                "On the horizontal x-axis.",
+                "Sull'asse orizzontale x."
+              ],
+              [
+                "On the vertical y-axis.",
+                "Sull'asse verticale y."
+              ],
+              [
+                "Outside the graph.",
+                "Fuori dal grafico."
+              ],
+              [
+                "Only in the title.",
+                "Solo nel titolo."
+              ]
+            ],
+            "why": [
+              "The independent variable is usually placed on x.",
+              "La variabile indipendente si colloca di solito su x."
+            ]
+          },
+          {
+            "q": [
+              "What does one point on a graph represent?",
+              "Che cosa rappresenta un punto su un grafico?"
+            ],
+            "a": [
+              [
+                "A pair of values.",
+                "Una coppia di valori."
+              ],
+              [
+                "A unit only.",
+                "Solo un'unità."
+              ],
+              [
+                "A title.",
+                "Un titolo."
+              ],
+              [
+                "An instrument.",
+                "Uno strumento."
+              ]
+            ],
+            "why": [
+              "Each point links one x-value to one y-value.",
+              "Ogni punto collega un valore di x a uno di y."
+            ]
+          },
+          {
+            "q": [
+              "Which equation represents direct proportionality?",
+              "Quale equazione rappresenta proporzionalità diretta?"
+            ],
+            "a": [
+              [
+                "y = 4x",
+                "y = 4x"
+              ],
+              [
+                "y = x + 4",
+                "y = x + 4"
+              ],
+              [
+                "y = 4/x",
+                "y = 4/x"
+              ],
+              [
+                "y = x²",
+                "y = x²"
+              ]
+            ],
+            "why": [
+              "Direct proportionality has the form y = kx.",
+              "La proporzionalità diretta ha forma y = kx."
+            ]
+          },
+          {
+            "q": [
+              "A graph of direct proportionality passes through…",
+              "Il grafico di proporzionalità diretta passa per…"
+            ],
+            "a": [
+              [
+                "the origin (0,0).",
+                "l'origine (0,0)."
+              ],
+              [
+                "(0,5) only.",
+                "solo (0,5)."
+              ],
+              [
+                "every point on the y-axis.",
+                "tutti i punti dell'asse y."
+              ],
+              [
+                "no axes.",
+                "nessun asse."
+              ]
+            ],
+            "why": [
+              "When x is zero, y is also zero.",
+              "Quando x è zero, anche y è zero."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "graphs",
+          "graphs",
+          "proportionality",
+          "proportionality"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-2m2-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p3m1",
     "arc": 18,
@@ -15068,7 +20249,580 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p3m1-objective-1",
+          "description": [
+            "Distinguish scalar and vector quantities",
+            "Distinguere grandezze scalari e vettoriali"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p3m1-objective-2",
+          "description": [
+            "Add vectors along the same line",
+            "Sommare vettori sulla stessa linea"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "scalar-vector",
+          "title": [
+            "Scalars and vectors",
+            "Scalari e vettori"
+          ],
+          "explanation": [
+            "A scalar has magnitude only, such as mass or time. A vector has magnitude, direction and sense, such as force or displacement.",
+            "Uno scalare ha solo un valore, come massa o tempo. Un vettore ha modulo, direzione e verso, come forza o spostamento."
+          ],
+          "example": [
+            "A 5 N force to the right is a vector; a mass of 5 kg is a scalar.",
+            "Una forza di 5 N verso destra è un vettore; una massa di 5 kg è uno scalare."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A 5 N force to the right is a vector; a mass of 5 kg is a scalar.",
+              "Una forza di 5 N verso destra è un vettore; una massa di 5 kg è uno scalare."
+            ],
+            "steps": [
+              [
+                "A vector arrow shows magnitude by length and orientation by direction and sense.",
+                "La freccia mostra il modulo con la lunghezza e l'orientamento con direzione e verso."
+              ],
+              [
+                "A vector needs more information than a number alone.",
+                "Un vettore richiede più informazioni di un semplice numero."
+              ]
+            ],
+            "answer": [
+              "A vector needs more information than a number alone.",
+              "Un vettore richiede più informazioni di un semplice numero."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "A vector is not defined by magnitude alone.",
+                "Un vettore non è definito dal solo modulo."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
+          ]
+        },
+        {
+          "id": "addition",
+          "title": [
+            "Adding vectors on one line",
+            "Somma di vettori su una linea"
+          ],
+          "explanation": [
+            "For the same direction, add magnitudes. For opposite directions, subtract magnitudes and keep the direction of the larger vector.",
+            "Per lo stesso verso, somma i moduli. Per versi opposti, sottrai i moduli e mantieni il verso del vettore maggiore."
+          ],
+          "example": [
+            "3 N right + 2 N right = 5 N right; 5 N right + 2 N left = 3 N right.",
+            "3 N a destra + 2 N a destra = 5 N a destra; 5 N a destra + 2 N a sinistra = 3 N a destra."
+          ],
+          "workedExample": {
+            "scenario": [
+              "3 N right + 2 N right = 5 N right; 5 N right + 2 N left = 3 N right.",
+              "3 N a destra + 2 N a destra = 5 N a destra; 5 N a destra + 2 N a sinistra = 3 N a destra."
+            ],
+            "steps": [
+              [
+                "Choose one direction as positive before adding signed values.",
+                "Scegli una direzione come positiva prima di sommare i valori con segno."
+              ],
+              [
+                "Opposite vectors can partly or completely cancel.",
+                "Vettori opposti possono annullarsi in parte o completamente."
+              ]
+            ],
+            "answer": [
+              "Opposite vectors can partly or completely cancel.",
+              "Vettori opposti possono annullarsi in parte o completamente."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "Do not add opposite-direction magnitudes without considering direction.",
+                "Non sommare i moduli di versi opposti senza considerare la direzione."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            2
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-3m1-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Which is a vector quantity?",
+                "Quale è una grandezza vettoriale?"
+              ],
+              "a": [
+                [
+                  "Force.",
+                  "Forza."
+                ],
+                [
+                  "Mass.",
+                  "Massa."
+                ],
+                [
+                  "Time.",
+                  "Tempo."
+                ],
+                [
+                  "Temperature.",
+                  "Temperatura."
+                ]
+              ],
+              "why": [
+                "Force has magnitude, direction and sense.",
+                "La forza ha modulo, direzione e verso."
+              ]
+            },
+            {
+              "q": [
+                "A vector is described by…",
+                "Un vettore è descritto da…"
+              ],
+              "a": [
+                [
+                  "magnitude, direction and sense.",
+                  "modulo, direzione e verso."
+                ],
+                [
+                  "magnitude only.",
+                  "solo modulo."
+                ],
+                [
+                  "unit only.",
+                  "solo unità."
+                ],
+                [
+                  "colour and mass.",
+                  "colore e massa."
+                ]
+              ],
+              "why": [
+                "A vector includes size and orientation.",
+                "Un vettore comprende valore e orientamento."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ],
+          "sceneIndex": 3
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-3m1-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "4 N right plus 3 N right equals…",
+                "4 N verso destra più 3 N verso destra equivale a…"
+              ],
+              "a": [
+                [
+                  "7 N right.",
+                  "7 N verso destra."
+                ],
+                [
+                  "1 N left.",
+                  "1 N verso sinistra."
+                ],
+                [
+                  "12 N right.",
+                  "12 N verso destra."
+                ],
+                [
+                  "7 N left.",
+                  "7 N verso sinistra."
+                ]
+              ],
+              "why": [
+                "Same direction: add the magnitudes.",
+                "Stesso verso: somma i moduli."
+              ]
+            },
+            {
+              "q": [
+                "6 N right plus 2 N left equals…",
+                "6 N verso destra più 2 N verso sinistra equivale a…"
+              ],
+              "a": [
+                [
+                  "4 N right.",
+                  "4 N verso destra."
+                ],
+                [
+                  "8 N right.",
+                  "8 N verso destra."
+                ],
+                [
+                  "4 N left.",
+                  "4 N verso sinistra."
+                ],
+                [
+                  "12 N left.",
+                  "12 N verso sinistra."
+                ]
+              ],
+              "why": [
+                "Opposite directions: subtract and keep the larger vector's direction.",
+                "Versi opposti: sottrai e mantieni il verso del vettore maggiore."
+              ]
+            }
+          ],
+          "sceneIndex": 4
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "Which is a vector quantity?",
+            "Quale è una grandezza vettoriale?"
+          ],
+          "a": [
+            [
+              "Force.",
+              "Forza."
+            ],
+            [
+              "Mass.",
+              "Massa."
+            ],
+            [
+              "Time.",
+              "Tempo."
+            ],
+            [
+              "Temperature.",
+              "Temperatura."
+            ]
+          ],
+          "why": [
+            "Force has magnitude, direction and sense.",
+            "La forza ha modulo, direzione e verso."
+          ]
+        },
+        {
+          "q": [
+            "A vector is described by…",
+            "Un vettore è descritto da…"
+          ],
+          "a": [
+            [
+              "magnitude, direction and sense.",
+              "modulo, direzione e verso."
+            ],
+            [
+              "magnitude only.",
+              "solo modulo."
+            ],
+            [
+              "unit only.",
+              "solo unità."
+            ],
+            [
+              "colour and mass.",
+              "colore e massa."
+            ]
+          ],
+          "why": [
+            "A vector includes size and orientation.",
+            "Un vettore comprende valore e orientamento."
+          ]
+        },
+        {
+          "q": [
+            "4 N right plus 3 N right equals…",
+            "4 N verso destra più 3 N verso destra equivale a…"
+          ],
+          "a": [
+            [
+              "7 N right.",
+              "7 N verso destra."
+            ],
+            [
+              "1 N left.",
+              "1 N verso sinistra."
+            ],
+            [
+              "12 N right.",
+              "12 N verso destra."
+            ],
+            [
+              "7 N left.",
+              "7 N verso sinistra."
+            ]
+          ],
+          "why": [
+            "Same direction: add the magnitudes.",
+            "Stesso verso: somma i moduli."
+          ]
+        },
+        {
+          "q": [
+            "6 N right plus 2 N left equals…",
+            "6 N verso destra più 2 N verso sinistra equivale a…"
+          ],
+          "a": [
+            [
+              "4 N right.",
+              "4 N verso destra."
+            ],
+            [
+              "8 N right.",
+              "8 N verso destra."
+            ],
+            [
+              "4 N left.",
+              "4 N verso sinistra."
+            ],
+            [
+              "12 N left.",
+              "12 N verso sinistra."
+            ]
+          ],
+          "why": [
+            "Opposite directions: subtract and keep the larger vector's direction.",
+            "Versi opposti: sottrai e mantieni il verso del vettore maggiore."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "A scalar has magnitude only, such as mass or time. A vector has magnitude, direction and sense, such as force or displacement.",
+          "Uno scalare ha solo un valore, come massa o tempo. Un vettore ha modulo, direzione e verso, come forza o spostamento."
+        ],
+        [
+          "For the same direction, add magnitudes. For opposite directions, subtract magnitudes and keep the direction of the larger vector.",
+          "Per lo stesso verso, somma i moduli. Per versi opposti, sottrai i moduli e mantieni il verso del vettore maggiore."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "Which is a vector quantity?",
+              "Quale è una grandezza vettoriale?"
+            ],
+            "a": [
+              [
+                "Force.",
+                "Forza."
+              ],
+              [
+                "Mass.",
+                "Massa."
+              ],
+              [
+                "Time.",
+                "Tempo."
+              ],
+              [
+                "Temperature.",
+                "Temperatura."
+              ]
+            ],
+            "why": [
+              "Force has magnitude, direction and sense.",
+              "La forza ha modulo, direzione e verso."
+            ]
+          },
+          {
+            "q": [
+              "A vector is described by…",
+              "Un vettore è descritto da…"
+            ],
+            "a": [
+              [
+                "magnitude, direction and sense.",
+                "modulo, direzione e verso."
+              ],
+              [
+                "magnitude only.",
+                "solo modulo."
+              ],
+              [
+                "unit only.",
+                "solo unità."
+              ],
+              [
+                "colour and mass.",
+                "colore e massa."
+              ]
+            ],
+            "why": [
+              "A vector includes size and orientation.",
+              "Un vettore comprende valore e orientamento."
+            ]
+          },
+          {
+            "q": [
+              "4 N right plus 3 N right equals…",
+              "4 N verso destra più 3 N verso destra equivale a…"
+            ],
+            "a": [
+              [
+                "7 N right.",
+                "7 N verso destra."
+              ],
+              [
+                "1 N left.",
+                "1 N verso sinistra."
+              ],
+              [
+                "12 N right.",
+                "12 N verso destra."
+              ],
+              [
+                "7 N left.",
+                "7 N verso sinistra."
+              ]
+            ],
+            "why": [
+              "Same direction: add the magnitudes.",
+              "Stesso verso: somma i moduli."
+            ]
+          },
+          {
+            "q": [
+              "6 N right plus 2 N left equals…",
+              "6 N verso destra più 2 N verso sinistra equivale a…"
+            ],
+            "a": [
+              [
+                "4 N right.",
+                "4 N verso destra."
+              ],
+              [
+                "8 N right.",
+                "8 N verso destra."
+              ],
+              [
+                "4 N left.",
+                "4 N verso sinistra."
+              ],
+              [
+                "12 N left.",
+                "12 N verso sinistra."
+              ]
+            ],
+            "why": [
+              "Opposite directions: subtract and keep the larger vector's direction.",
+              "Versi opposti: sottrai e mantieni il verso del vettore maggiore."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "scalar-vector",
+          "scalar-vector",
+          "addition",
+          "addition"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-3m1-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p3m2",
     "arc": 18,
@@ -15395,7 +21149,580 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p3m2-objective-1",
+          "description": [
+            "Describe the effects of forces",
+            "Descrivere gli effetti delle forze"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p3m2-objective-2",
+          "description": [
+            "Explain weight, elastic force and friction",
+            "Spiegare peso, forza elastica e attrito"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "force-effects",
+          "title": [
+            "Forces and their effects",
+            "Forze e loro effetti"
+          ],
+          "explanation": [
+            "A force is an interaction that can change motion or shape. Force is measured in newtons (N).",
+            "Una forza è un'interazione che può cambiare il moto o la forma. La forza si misura in newton (N)."
+          ],
+          "example": [
+            "Pushing a stationary trolley can make it move; stretching a spring changes its shape.",
+            "Spingere un carrello fermo può metterlo in moto; allungare una molla ne cambia la forma."
+          ],
+          "workedExample": {
+            "scenario": [
+              "Pushing a stationary trolley can make it move; stretching a spring changes its shape.",
+              "Spingere un carrello fermo può metterlo in moto; allungare una molla ne cambia la forma."
+            ],
+            "steps": [
+              [
+                "A force can change speed, direction or shape.",
+                "Una forza può cambiare velocità, direzione o forma."
+              ],
+              [
+                "Forces arise from interactions between objects.",
+                "Le forze derivano dalle interazioni tra oggetti."
+              ]
+            ],
+            "answer": [
+              "Forces arise from interactions between objects.",
+              "Le forze derivano dalle interazioni tra oggetti."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "Force is not the same thing as motion.",
+                "La forza non è la stessa cosa del moto."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
+          ]
+        },
+        {
+          "id": "weight-elastic-friction",
+          "title": [
+            "Weight, elasticity and friction",
+            "Peso, elasticità e attrito"
+          ],
+          "explanation": [
+            "Weight is gravitational force: P = mg. Elastic force acts when a spring is stretched or compressed. Friction opposes sliding or the tendency to slide.",
+            "Il peso è la forza gravitazionale: P = mg. La forza elastica agisce quando una molla è allungata o compressa. L'attrito si oppone allo scorrimento o alla sua tendenza."
+          ],
+          "example": [
+            "For m = 2 kg and g ≈ 9.8 N/kg, P ≈ 19.6 N downward.",
+            "Per m = 2 kg e g ≈ 9,8 N/kg, P ≈ 19,6 N verso il basso."
+          ],
+          "workedExample": {
+            "scenario": [
+              "For m = 2 kg and g ≈ 9.8 N/kg, P ≈ 19.6 N downward.",
+              "Per m = 2 kg e g ≈ 9,8 N/kg, P ≈ 19,6 N verso il basso."
+            ],
+            "steps": [
+              [
+                "Mass is measured in kg; weight is measured in N.",
+                "La massa si misura in kg; il peso in N."
+              ],
+              [
+                "Friction acts against relative motion between surfaces.",
+                "L'attrito si oppone al moto relativo tra superfici."
+              ]
+            ],
+            "answer": [
+              "Friction acts against relative motion between surfaces.",
+              "L'attrito si oppone al moto relativo tra superfici."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "Mass stays the same when gravitational field strength changes; weight can change.",
+                "La massa resta uguale se cambia il campo gravitazionale; il peso può cambiare."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            2
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-3m2-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "What can a force change?",
+                "Che cosa può cambiare una forza?"
+              ],
+              "a": [
+                [
+                  "An object's motion or shape.",
+                  "Il moto o la forma di un oggetto."
+                ],
+                [
+                  "Only its colour.",
+                  "Solo il colore."
+                ],
+                [
+                  "Only its temperature.",
+                  "Solo la temperatura."
+                ],
+                [
+                  "Nothing measurable.",
+                  "Niente di misurabile."
+                ]
+              ],
+              "why": [
+                "Forces can change motion or deform objects.",
+                "Le forze possono cambiare il moto o deformare gli oggetti."
+              ]
+            },
+            {
+              "q": [
+                "What is the SI unit of force?",
+                "Qual è l'unità SI della forza?"
+              ],
+              "a": [
+                [
+                  "newton (N)",
+                  "newton (N)"
+                ],
+                [
+                  "kilogram (kg)",
+                  "chilogrammo (kg)"
+                ],
+                [
+                  "metre (m)",
+                  "metro (m)"
+                ],
+                [
+                  "second (s)",
+                  "secondo (s)"
+                ]
+              ],
+              "why": [
+                "Force is measured in newtons.",
+                "La forza si misura in newton."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ],
+          "sceneIndex": 3
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-3m2-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Which formula gives weight near Earth's surface?",
+                "Quale formula calcola il peso vicino alla superficie terrestre?"
+              ],
+              "a": [
+                [
+                  "P = mg",
+                  "P = mg"
+                ],
+                [
+                  "P = m/g",
+                  "P = m/g"
+                ],
+                [
+                  "P = m + g",
+                  "P = m + g"
+                ],
+                [
+                  "P = g/m",
+                  "P = g/m"
+                ]
+              ],
+              "why": [
+                "Weight equals mass multiplied by gravitational field strength.",
+                "Il peso è la massa moltiplicata per l'intensità del campo gravitazionale."
+              ]
+            },
+            {
+              "q": [
+                "Friction usually opposes…",
+                "L'attrito si oppone di solito a…"
+              ],
+              "a": [
+                [
+                  "sliding or the tendency to slide.",
+                  "lo scorrimento o la tendenza a scivolare."
+                ],
+                [
+                  "mass.",
+                  "la massa."
+                ],
+                [
+                  "time.",
+                  "il tempo."
+                ],
+                [
+                  "temperature.",
+                  "la temperatura."
+                ]
+              ],
+              "why": [
+                "Friction acts against relative motion between surfaces.",
+                "L'attrito agisce contro il moto relativo tra superfici."
+              ]
+            }
+          ],
+          "sceneIndex": 4
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "What can a force change?",
+            "Che cosa può cambiare una forza?"
+          ],
+          "a": [
+            [
+              "An object's motion or shape.",
+              "Il moto o la forma di un oggetto."
+            ],
+            [
+              "Only its colour.",
+              "Solo il colore."
+            ],
+            [
+              "Only its temperature.",
+              "Solo la temperatura."
+            ],
+            [
+              "Nothing measurable.",
+              "Niente di misurabile."
+            ]
+          ],
+          "why": [
+            "Forces can change motion or deform objects.",
+            "Le forze possono cambiare il moto o deformare gli oggetti."
+          ]
+        },
+        {
+          "q": [
+            "What is the SI unit of force?",
+            "Qual è l'unità SI della forza?"
+          ],
+          "a": [
+            [
+              "newton (N)",
+              "newton (N)"
+            ],
+            [
+              "kilogram (kg)",
+              "chilogrammo (kg)"
+            ],
+            [
+              "metre (m)",
+              "metro (m)"
+            ],
+            [
+              "second (s)",
+              "secondo (s)"
+            ]
+          ],
+          "why": [
+            "Force is measured in newtons.",
+            "La forza si misura in newton."
+          ]
+        },
+        {
+          "q": [
+            "Which formula gives weight near Earth's surface?",
+            "Quale formula calcola il peso vicino alla superficie terrestre?"
+          ],
+          "a": [
+            [
+              "P = mg",
+              "P = mg"
+            ],
+            [
+              "P = m/g",
+              "P = m/g"
+            ],
+            [
+              "P = m + g",
+              "P = m + g"
+            ],
+            [
+              "P = g/m",
+              "P = g/m"
+            ]
+          ],
+          "why": [
+            "Weight equals mass multiplied by gravitational field strength.",
+            "Il peso è la massa moltiplicata per l'intensità del campo gravitazionale."
+          ]
+        },
+        {
+          "q": [
+            "Friction usually opposes…",
+            "L'attrito si oppone di solito a…"
+          ],
+          "a": [
+            [
+              "sliding or the tendency to slide.",
+              "lo scorrimento o la tendenza a scivolare."
+            ],
+            [
+              "mass.",
+              "la massa."
+            ],
+            [
+              "time.",
+              "il tempo."
+            ],
+            [
+              "temperature.",
+              "la temperatura."
+            ]
+          ],
+          "why": [
+            "Friction acts against relative motion between surfaces.",
+            "L'attrito agisce contro il moto relativo tra superfici."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "A force is an interaction that can change motion or shape. Force is measured in newtons (N).",
+          "Una forza è un'interazione che può cambiare il moto o la forma. La forza si misura in newton (N)."
+        ],
+        [
+          "Weight is gravitational force: P = mg. Elastic force acts when a spring is stretched or compressed. Friction opposes sliding or the tendency to slide.",
+          "Il peso è la forza gravitazionale: P = mg. La forza elastica agisce quando una molla è allungata o compressa. L'attrito si oppone allo scorrimento o alla sua tendenza."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "What can a force change?",
+              "Che cosa può cambiare una forza?"
+            ],
+            "a": [
+              [
+                "An object's motion or shape.",
+                "Il moto o la forma di un oggetto."
+              ],
+              [
+                "Only its colour.",
+                "Solo il colore."
+              ],
+              [
+                "Only its temperature.",
+                "Solo la temperatura."
+              ],
+              [
+                "Nothing measurable.",
+                "Niente di misurabile."
+              ]
+            ],
+            "why": [
+              "Forces can change motion or deform objects.",
+              "Le forze possono cambiare il moto o deformare gli oggetti."
+            ]
+          },
+          {
+            "q": [
+              "What is the SI unit of force?",
+              "Qual è l'unità SI della forza?"
+            ],
+            "a": [
+              [
+                "newton (N)",
+                "newton (N)"
+              ],
+              [
+                "kilogram (kg)",
+                "chilogrammo (kg)"
+              ],
+              [
+                "metre (m)",
+                "metro (m)"
+              ],
+              [
+                "second (s)",
+                "secondo (s)"
+              ]
+            ],
+            "why": [
+              "Force is measured in newtons.",
+              "La forza si misura in newton."
+            ]
+          },
+          {
+            "q": [
+              "Which formula gives weight near Earth's surface?",
+              "Quale formula calcola il peso vicino alla superficie terrestre?"
+            ],
+            "a": [
+              [
+                "P = mg",
+                "P = mg"
+              ],
+              [
+                "P = m/g",
+                "P = m/g"
+              ],
+              [
+                "P = m + g",
+                "P = m + g"
+              ],
+              [
+                "P = g/m",
+                "P = g/m"
+              ]
+            ],
+            "why": [
+              "Weight equals mass multiplied by gravitational field strength.",
+              "Il peso è la massa moltiplicata per l'intensità del campo gravitazionale."
+            ]
+          },
+          {
+            "q": [
+              "Friction usually opposes…",
+              "L'attrito si oppone di solito a…"
+            ],
+            "a": [
+              [
+                "sliding or the tendency to slide.",
+                "lo scorrimento o la tendenza a scivolare."
+              ],
+              [
+                "mass.",
+                "la massa."
+              ],
+              [
+                "time.",
+                "il tempo."
+              ],
+              [
+                "temperature.",
+                "la temperatura."
+              ]
+            ],
+            "why": [
+              "Friction acts against relative motion between surfaces.",
+              "L'attrito agisce contro il moto relativo tra superfici."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "force-effects",
+          "force-effects",
+          "weight-elastic-friction",
+          "weight-elastic-friction"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-3m2-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p3m3",
     "arc": 18,
@@ -15668,7 +21995,580 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p3m3-objective-1",
+          "description": [
+            "Resolve a vector into perpendicular components",
+            "Scomporre un vettore in componenti perpendicolari"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p3m3-objective-2",
+          "description": [
+            "Reconstruct a vector from its components",
+            "Ricostruire un vettore dalle sue componenti"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "components",
+          "title": [
+            "Resolving a vector",
+            "Scomporre un vettore"
+          ],
+          "explanation": [
+            "For angle θ measured from the horizontal, Fx = F cos θ and Fy = F sin θ. The components are perpendicular sides of a right triangle.",
+            "Per un angolo θ misurato dall'orizzontale, Fx = F cos θ e Fy = F sin θ. Le componenti sono i cateti perpendicolari di un triangolo rettangolo."
+          ],
+          "example": [
+            "For F = 10 N at 30° above horizontal, Fx ≈ 8.66 N and Fy = 5 N.",
+            "Per F = 10 N a 30° sopra l'orizzontale, Fx ≈ 8,66 N e Fy = 5 N."
+          ],
+          "workedExample": {
+            "scenario": [
+              "For F = 10 N at 30° above horizontal, Fx ≈ 8.66 N and Fy = 5 N.",
+              "Per F = 10 N a 30° sopra l'orizzontale, Fx ≈ 8,66 N e Fy = 5 N."
+            ],
+            "steps": [
+              [
+                "Check which axis the angle is measured from before choosing sine or cosine.",
+                "Controlla da quale asse è misurato l'angolo prima di scegliere seno o coseno."
+              ],
+              [
+                "The components are projections of the original vector.",
+                "Le componenti sono proiezioni del vettore originale."
+              ]
+            ],
+            "answer": [
+              "The components are projections of the original vector.",
+              "Le componenti sono proiezioni del vettore originale."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "Do not swap sine and cosine without checking the angle reference.",
+                "Non scambiare seno e coseno senza controllare il riferimento dell'angolo."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
+          ]
+        },
+        {
+          "id": "reconstruct",
+          "title": [
+            "Combining components",
+            "Combinare le componenti"
+          ],
+          "explanation": [
+            "For perpendicular components, the magnitude is F = √(Fx² + Fy²). The angle from the horizontal can be found using tan θ = Fy/Fx.",
+            "Per componenti perpendicolari, il modulo è F = √(Fx² + Fy²). L'angolo rispetto all'orizzontale si trova con tan θ = Fy/Fx."
+          ],
+          "example": [
+            "If Fx = 3 N and Fy = 4 N, F = √(9 + 16) = 5 N.",
+            "Se Fx = 3 N e Fy = 4 N, F = √(9 + 16) = 5 N."
+          ],
+          "workedExample": {
+            "scenario": [
+              "If Fx = 3 N and Fy = 4 N, F = √(9 + 16) = 5 N.",
+              "Se Fx = 3 N e Fy = 4 N, F = √(9 + 16) = 5 N."
+            ],
+            "steps": [
+              [
+                "Use Pythagoras for perpendicular components.",
+                "Usa Pitagora per componenti perpendicolari."
+              ],
+              [
+                "Signs show the direction along each chosen axis.",
+                "I segni indicano il verso lungo ciascun asse scelto."
+              ]
+            ],
+            "answer": [
+              "Signs show the direction along each chosen axis.",
+              "I segni indicano il verso lungo ciascun asse scelto."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "The components are not generally equal to the original magnitude.",
+                "Le componenti non sono generalmente uguali al modulo originale."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            2
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-3m3-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "A vector is resolved into components along…",
+                "Un vettore viene scomposto in componenti lungo…"
+              ],
+              "a": [
+                [
+                  "perpendicular axes.",
+                  "assi perpendicolari."
+                ],
+                [
+                  "the same line only.",
+                  "solo la stessa linea."
+                ],
+                [
+                  "a circle.",
+                  "un cerchio."
+                ],
+                [
+                  "random directions.",
+                  "direzioni casuali."
+                ]
+              ],
+              "why": [
+                "Horizontal and vertical axes are perpendicular.",
+                "Gli assi orizzontale e verticale sono perpendicolari."
+              ]
+            },
+            {
+              "q": [
+                "For an angle measured from the horizontal, the horizontal component is…",
+                "Per un angolo misurato dall'orizzontale, la componente orizzontale è…"
+              ],
+              "a": [
+                [
+                  "Fx = F cos θ",
+                  "Fx = F cos θ"
+                ],
+                [
+                  "Fx = F sin θ",
+                  "Fx = F sin θ"
+                ],
+                [
+                  "Fx = F tan θ",
+                  "Fx = F tan θ"
+                ],
+                [
+                  "Fx = F/θ",
+                  "Fx = F/θ"
+                ]
+              ],
+              "why": [
+                "The adjacent side uses cosine.",
+                "Il cateto adiacente usa il coseno."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ],
+          "sceneIndex": 3
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-3m3-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "If Fx = 3 N and Fy = 4 N, what is F?",
+                "Se Fx = 3 N e Fy = 4 N, quanto vale F?"
+              ],
+              "a": [
+                [
+                  "5 N",
+                  "5 N"
+                ],
+                [
+                  "7 N",
+                  "7 N"
+                ],
+                [
+                  "1 N",
+                  "1 N"
+                ],
+                [
+                  "12 N",
+                  "12 N"
+                ]
+              ],
+              "why": [
+                "F = √(3² + 4²) = 5 N.",
+                "F = √(3² + 4²) = 5 N."
+              ]
+            },
+            {
+              "q": [
+                "What does a negative component indicate?",
+                "Che cosa indica una componente negativa?"
+              ],
+              "a": [
+                [
+                  "It points in the negative direction of that axis.",
+                  "Punta nel verso negativo di quell'asse."
+                ],
+                [
+                  "The vector is impossible.",
+                  "Il vettore è impossibile."
+                ],
+                [
+                  "The magnitude is zero.",
+                  "Il modulo è zero."
+                ],
+                [
+                  "The unit is wrong.",
+                  "L'unità è sbagliata."
+                ]
+              ],
+              "why": [
+                "The sign records direction relative to the chosen axes.",
+                "Il segno indica la direzione rispetto agli assi scelti."
+              ]
+            }
+          ],
+          "sceneIndex": 4
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "A vector is resolved into components along…",
+            "Un vettore viene scomposto in componenti lungo…"
+          ],
+          "a": [
+            [
+              "perpendicular axes.",
+              "assi perpendicolari."
+            ],
+            [
+              "the same line only.",
+              "solo la stessa linea."
+            ],
+            [
+              "a circle.",
+              "un cerchio."
+            ],
+            [
+              "random directions.",
+              "direzioni casuali."
+            ]
+          ],
+          "why": [
+            "Horizontal and vertical axes are perpendicular.",
+            "Gli assi orizzontale e verticale sono perpendicolari."
+          ]
+        },
+        {
+          "q": [
+            "For an angle measured from the horizontal, the horizontal component is…",
+            "Per un angolo misurato dall'orizzontale, la componente orizzontale è…"
+          ],
+          "a": [
+            [
+              "Fx = F cos θ",
+              "Fx = F cos θ"
+            ],
+            [
+              "Fx = F sin θ",
+              "Fx = F sin θ"
+            ],
+            [
+              "Fx = F tan θ",
+              "Fx = F tan θ"
+            ],
+            [
+              "Fx = F/θ",
+              "Fx = F/θ"
+            ]
+          ],
+          "why": [
+            "The adjacent side uses cosine.",
+            "Il cateto adiacente usa il coseno."
+          ]
+        },
+        {
+          "q": [
+            "If Fx = 3 N and Fy = 4 N, what is F?",
+            "Se Fx = 3 N e Fy = 4 N, quanto vale F?"
+          ],
+          "a": [
+            [
+              "5 N",
+              "5 N"
+            ],
+            [
+              "7 N",
+              "7 N"
+            ],
+            [
+              "1 N",
+              "1 N"
+            ],
+            [
+              "12 N",
+              "12 N"
+            ]
+          ],
+          "why": [
+            "F = √(3² + 4²) = 5 N.",
+            "F = √(3² + 4²) = 5 N."
+          ]
+        },
+        {
+          "q": [
+            "What does a negative component indicate?",
+            "Che cosa indica una componente negativa?"
+          ],
+          "a": [
+            [
+              "It points in the negative direction of that axis.",
+              "Punta nel verso negativo di quell'asse."
+            ],
+            [
+              "The vector is impossible.",
+              "Il vettore è impossibile."
+            ],
+            [
+              "The magnitude is zero.",
+              "Il modulo è zero."
+            ],
+            [
+              "The unit is wrong.",
+              "L'unità è sbagliata."
+            ]
+          ],
+          "why": [
+            "The sign records direction relative to the chosen axes.",
+            "Il segno indica la direzione rispetto agli assi scelti."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "For angle θ measured from the horizontal, Fx = F cos θ and Fy = F sin θ. The components are perpendicular sides of a right triangle.",
+          "Per un angolo θ misurato dall'orizzontale, Fx = F cos θ e Fy = F sin θ. Le componenti sono i cateti perpendicolari di un triangolo rettangolo."
+        ],
+        [
+          "For perpendicular components, the magnitude is F = √(Fx² + Fy²). The angle from the horizontal can be found using tan θ = Fy/Fx.",
+          "Per componenti perpendicolari, il modulo è F = √(Fx² + Fy²). L'angolo rispetto all'orizzontale si trova con tan θ = Fy/Fx."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "A vector is resolved into components along…",
+              "Un vettore viene scomposto in componenti lungo…"
+            ],
+            "a": [
+              [
+                "perpendicular axes.",
+                "assi perpendicolari."
+              ],
+              [
+                "the same line only.",
+                "solo la stessa linea."
+              ],
+              [
+                "a circle.",
+                "un cerchio."
+              ],
+              [
+                "random directions.",
+                "direzioni casuali."
+              ]
+            ],
+            "why": [
+              "Horizontal and vertical axes are perpendicular.",
+              "Gli assi orizzontale e verticale sono perpendicolari."
+            ]
+          },
+          {
+            "q": [
+              "For an angle measured from the horizontal, the horizontal component is…",
+              "Per un angolo misurato dall'orizzontale, la componente orizzontale è…"
+            ],
+            "a": [
+              [
+                "Fx = F cos θ",
+                "Fx = F cos θ"
+              ],
+              [
+                "Fx = F sin θ",
+                "Fx = F sin θ"
+              ],
+              [
+                "Fx = F tan θ",
+                "Fx = F tan θ"
+              ],
+              [
+                "Fx = F/θ",
+                "Fx = F/θ"
+              ]
+            ],
+            "why": [
+              "The adjacent side uses cosine.",
+              "Il cateto adiacente usa il coseno."
+            ]
+          },
+          {
+            "q": [
+              "If Fx = 3 N and Fy = 4 N, what is F?",
+              "Se Fx = 3 N e Fy = 4 N, quanto vale F?"
+            ],
+            "a": [
+              [
+                "5 N",
+                "5 N"
+              ],
+              [
+                "7 N",
+                "7 N"
+              ],
+              [
+                "1 N",
+                "1 N"
+              ],
+              [
+                "12 N",
+                "12 N"
+              ]
+            ],
+            "why": [
+              "F = √(3² + 4²) = 5 N.",
+              "F = √(3² + 4²) = 5 N."
+            ]
+          },
+          {
+            "q": [
+              "What does a negative component indicate?",
+              "Che cosa indica una componente negativa?"
+            ],
+            "a": [
+              [
+                "It points in the negative direction of that axis.",
+                "Punta nel verso negativo di quell'asse."
+              ],
+              [
+                "The vector is impossible.",
+                "Il vettore è impossibile."
+              ],
+              [
+                "The magnitude is zero.",
+                "Il modulo è zero."
+              ],
+              [
+                "The unit is wrong.",
+                "L'unità è sbagliata."
+              ]
+            ],
+            "why": [
+              "The sign records direction relative to the chosen axes.",
+              "Il segno indica la direzione rispetto agli assi scelti."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "components",
+          "components",
+          "reconstruct",
+          "reconstruct"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-3m3-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p4m1",
     "arc": 19,
@@ -15937,7 +22837,580 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p4m1-objective-1",
+          "description": [
+            "Calculate the moment of a force",
+            "Calcolare il momento di una forza"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p4m1-objective-2",
+          "description": [
+            "Explain how levers balance",
+            "Spiegare come si equilibrano le leve"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "moment",
+          "title": [
+            "Moment of a force",
+            "Momento di una forza"
+          ],
+          "explanation": [
+            "The moment measures a force's turning effect: M = F × d, where d is the perpendicular distance from the pivot to the force's line of action.",
+            "Il momento misura l'effetto rotatorio di una forza: M = F × d, dove d è la distanza perpendicolare dal fulcro alla retta d'azione della forza."
+          ],
+          "example": [
+            "A 10 N force applied 0.5 m from a pivot gives M = 5 N·m.",
+            "Una forza di 10 N applicata a 0,5 m dal fulcro dà M = 5 N·m."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A 10 N force applied 0.5 m from a pivot gives M = 5 N·m.",
+              "Una forza di 10 N applicata a 0,5 m dal fulcro dà M = 5 N·m."
+            ],
+            "steps": [
+              [
+                "Use the perpendicular distance, not any distance to the pivot.",
+                "Usa la distanza perpendicolare, non una distanza qualsiasi dal fulcro."
+              ],
+              [
+                "A larger force or longer arm creates a larger moment.",
+                "Una forza maggiore o un braccio più lungo crea un momento maggiore."
+              ]
+            ],
+            "answer": [
+              "A larger force or longer arm creates a larger moment.",
+              "Una forza maggiore o un braccio più lungo crea un momento maggiore."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "The moment is not just the force; the lever arm matters too.",
+                "Il momento non è solo la forza: conta anche il braccio."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
+          ]
+        },
+        {
+          "id": "lever-balance",
+          "title": [
+            "Levers and balance",
+            "Leve ed equilibrio"
+          ],
+          "explanation": [
+            "In rotational balance, clockwise and anticlockwise moments are equal: F₁d₁ = F₂d₂.",
+            "In equilibrio rotazionale, i momenti orario e antiorario sono uguali: F₁d₁ = F₂d₂."
+          ],
+          "example": [
+            "20 N at 0.2 m balances 10 N at 0.4 m: both moments are 4 N·m.",
+            "20 N a 0,2 m bilanciano 10 N a 0,4 m: entrambi i momenti sono 4 N·m."
+          ],
+          "workedExample": {
+            "scenario": [
+              "20 N at 0.2 m balances 10 N at 0.4 m: both moments are 4 N·m.",
+              "20 N a 0,2 m bilanciano 10 N a 0,4 m: entrambi i momenti sono 4 N·m."
+            ],
+            "steps": [
+              [
+                "A longer arm needs less force for the same moment.",
+                "Un braccio più lungo richiede meno forza per lo stesso momento."
+              ],
+              [
+                "A lever balances moments, not necessarily equal forces.",
+                "Una leva equilibra i momenti, non necessariamente forze uguali."
+              ]
+            ],
+            "answer": [
+              "A lever balances moments, not necessarily equal forces.",
+              "Una leva equilibra i momenti, non necessariamente forze uguali."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "The pivot is the point about which the lever turns.",
+                "Il fulcro è il punto attorno al quale ruota la leva."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            2
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-4m1-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "What is the formula for moment?",
+                "Qual è la formula del momento?"
+              ],
+              "a": [
+                [
+                  "M = F × d",
+                  "M = F × d"
+                ],
+                [
+                  "M = F + d",
+                  "M = F + d"
+                ],
+                [
+                  "M = F/d",
+                  "M = F/d"
+                ],
+                [
+                  "M = d/F",
+                  "M = d/F"
+                ]
+              ],
+              "why": [
+                "Moment equals force times perpendicular distance.",
+                "Il momento è la forza per la distanza perpendicolare."
+              ]
+            },
+            {
+              "q": [
+                "A 5 N force acts 2 m from a pivot. What is its moment?",
+                "Una forza di 5 N agisce a 2 m dal fulcro. Qual è il momento?"
+              ],
+              "a": [
+                [
+                  "10 N·m",
+                  "10 N·m"
+                ],
+                [
+                  "7 N·m",
+                  "7 N·m"
+                ],
+                [
+                  "2.5 N·m",
+                  "2,5 N·m"
+                ],
+                [
+                  "3 N·m",
+                  "3 N·m"
+                ]
+              ],
+              "why": [
+                "M = 5 × 2 = 10 N·m.",
+                "M = 5 × 2 = 10 N·m."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ],
+          "sceneIndex": 3
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-4m1-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "When is a lever in rotational equilibrium?",
+                "Quando una leva è in equilibrio rotazionale?"
+              ],
+              "a": [
+                [
+                  "Clockwise and anticlockwise moments are equal.",
+                  "I momenti orario e antiorario sono uguali."
+                ],
+                [
+                  "Both forces are zero.",
+                  "Entrambe le forze sono zero."
+                ],
+                [
+                  "The arms are equal.",
+                  "I bracci sono uguali."
+                ],
+                [
+                  "The pivot disappears.",
+                  "Il fulcro scompare."
+                ]
+              ],
+              "why": [
+                "Equal opposite moments balance turning effects.",
+                "Momenti opposti uguali bilanciano gli effetti rotatori."
+              ]
+            },
+            {
+              "q": [
+                "Why can a longer lever arm help lift a load?",
+                "Perché un braccio più lungo può aiutare a sollevare un carico?"
+              ],
+              "a": [
+                [
+                  "It produces a greater moment for the same force.",
+                  "Produce un momento maggiore con la stessa forza."
+                ],
+                [
+                  "It removes gravity.",
+                  "Elimina la gravità."
+                ],
+                [
+                  "It changes mass into force.",
+                  "Trasforma la massa in forza."
+                ],
+                [
+                  "It makes the pivot heavier.",
+                  "Rende più pesante il fulcro."
+                ]
+              ],
+              "why": [
+                "Moment increases with perpendicular distance.",
+                "Il momento aumenta con la distanza perpendicolare."
+              ]
+            }
+          ],
+          "sceneIndex": 4
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "What is the formula for moment?",
+            "Qual è la formula del momento?"
+          ],
+          "a": [
+            [
+              "M = F × d",
+              "M = F × d"
+            ],
+            [
+              "M = F + d",
+              "M = F + d"
+            ],
+            [
+              "M = F/d",
+              "M = F/d"
+            ],
+            [
+              "M = d/F",
+              "M = d/F"
+            ]
+          ],
+          "why": [
+            "Moment equals force times perpendicular distance.",
+            "Il momento è la forza per la distanza perpendicolare."
+          ]
+        },
+        {
+          "q": [
+            "A 5 N force acts 2 m from a pivot. What is its moment?",
+            "Una forza di 5 N agisce a 2 m dal fulcro. Qual è il momento?"
+          ],
+          "a": [
+            [
+              "10 N·m",
+              "10 N·m"
+            ],
+            [
+              "7 N·m",
+              "7 N·m"
+            ],
+            [
+              "2.5 N·m",
+              "2,5 N·m"
+            ],
+            [
+              "3 N·m",
+              "3 N·m"
+            ]
+          ],
+          "why": [
+            "M = 5 × 2 = 10 N·m.",
+            "M = 5 × 2 = 10 N·m."
+          ]
+        },
+        {
+          "q": [
+            "When is a lever in rotational equilibrium?",
+            "Quando una leva è in equilibrio rotazionale?"
+          ],
+          "a": [
+            [
+              "Clockwise and anticlockwise moments are equal.",
+              "I momenti orario e antiorario sono uguali."
+            ],
+            [
+              "Both forces are zero.",
+              "Entrambe le forze sono zero."
+            ],
+            [
+              "The arms are equal.",
+              "I bracci sono uguali."
+            ],
+            [
+              "The pivot disappears.",
+              "Il fulcro scompare."
+            ]
+          ],
+          "why": [
+            "Equal opposite moments balance turning effects.",
+            "Momenti opposti uguali bilanciano gli effetti rotatori."
+          ]
+        },
+        {
+          "q": [
+            "Why can a longer lever arm help lift a load?",
+            "Perché un braccio più lungo può aiutare a sollevare un carico?"
+          ],
+          "a": [
+            [
+              "It produces a greater moment for the same force.",
+              "Produce un momento maggiore con la stessa forza."
+            ],
+            [
+              "It removes gravity.",
+              "Elimina la gravità."
+            ],
+            [
+              "It changes mass into force.",
+              "Trasforma la massa in forza."
+            ],
+            [
+              "It makes the pivot heavier.",
+              "Rende più pesante il fulcro."
+            ]
+          ],
+          "why": [
+            "Moment increases with perpendicular distance.",
+            "Il momento aumenta con la distanza perpendicolare."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "The moment measures a force's turning effect: M = F × d, where d is the perpendicular distance from the pivot to the force's line of action.",
+          "Il momento misura l'effetto rotatorio di una forza: M = F × d, dove d è la distanza perpendicolare dal fulcro alla retta d'azione della forza."
+        ],
+        [
+          "In rotational balance, clockwise and anticlockwise moments are equal: F₁d₁ = F₂d₂.",
+          "In equilibrio rotazionale, i momenti orario e antiorario sono uguali: F₁d₁ = F₂d₂."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "What is the formula for moment?",
+              "Qual è la formula del momento?"
+            ],
+            "a": [
+              [
+                "M = F × d",
+                "M = F × d"
+              ],
+              [
+                "M = F + d",
+                "M = F + d"
+              ],
+              [
+                "M = F/d",
+                "M = F/d"
+              ],
+              [
+                "M = d/F",
+                "M = d/F"
+              ]
+            ],
+            "why": [
+              "Moment equals force times perpendicular distance.",
+              "Il momento è la forza per la distanza perpendicolare."
+            ]
+          },
+          {
+            "q": [
+              "A 5 N force acts 2 m from a pivot. What is its moment?",
+              "Una forza di 5 N agisce a 2 m dal fulcro. Qual è il momento?"
+            ],
+            "a": [
+              [
+                "10 N·m",
+                "10 N·m"
+              ],
+              [
+                "7 N·m",
+                "7 N·m"
+              ],
+              [
+                "2.5 N·m",
+                "2,5 N·m"
+              ],
+              [
+                "3 N·m",
+                "3 N·m"
+              ]
+            ],
+            "why": [
+              "M = 5 × 2 = 10 N·m.",
+              "M = 5 × 2 = 10 N·m."
+            ]
+          },
+          {
+            "q": [
+              "When is a lever in rotational equilibrium?",
+              "Quando una leva è in equilibrio rotazionale?"
+            ],
+            "a": [
+              [
+                "Clockwise and anticlockwise moments are equal.",
+                "I momenti orario e antiorario sono uguali."
+              ],
+              [
+                "Both forces are zero.",
+                "Entrambe le forze sono zero."
+              ],
+              [
+                "The arms are equal.",
+                "I bracci sono uguali."
+              ],
+              [
+                "The pivot disappears.",
+                "Il fulcro scompare."
+              ]
+            ],
+            "why": [
+              "Equal opposite moments balance turning effects.",
+              "Momenti opposti uguali bilanciano gli effetti rotatori."
+            ]
+          },
+          {
+            "q": [
+              "Why can a longer lever arm help lift a load?",
+              "Perché un braccio più lungo può aiutare a sollevare un carico?"
+            ],
+            "a": [
+              [
+                "It produces a greater moment for the same force.",
+                "Produce un momento maggiore con la stessa forza."
+              ],
+              [
+                "It removes gravity.",
+                "Elimina la gravità."
+              ],
+              [
+                "It changes mass into force.",
+                "Trasforma la massa in forza."
+              ],
+              [
+                "It makes the pivot heavier.",
+                "Rende più pesante il fulcro."
+              ]
+            ],
+            "why": [
+              "Moment increases with perpendicular distance.",
+              "Il momento aumenta con la distanza perpendicolare."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "moment",
+          "moment",
+          "lever-balance",
+          "lever-balance"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-4m1-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p4m2",
     "arc": 19,
@@ -16264,7 +23737,580 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p4m2-objective-1",
+          "description": [
+            "Explain the centre of gravity and stability",
+            "Spiegare il baricentro e la stabilità"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p4m2-objective-2",
+          "description": [
+            "Distinguish three types of equilibrium",
+            "Distinguere tre tipi di equilibrio"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "centre-gravity",
+          "title": [
+            "Centre of gravity",
+            "Baricentro"
+          ],
+          "explanation": [
+            "The centre of gravity is the point where an object's weight can be considered to act. A low centre of gravity and wide support base usually increase stability.",
+            "Il baricentro è il punto in cui si può considerare applicato il peso di un oggetto. Un baricentro basso e una base d'appoggio ampia aumentano di solito la stabilità."
+          ],
+          "example": [
+            "A wide, low stool is harder to tip than a tall, narrow one.",
+            "Uno sgabello basso e largo è più difficile da ribaltare di uno alto e stretto."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A wide, low stool is harder to tip than a tall, narrow one.",
+              "Uno sgabello basso e largo è più difficile da ribaltare di uno alto e stretto."
+            ],
+            "steps": [
+              [
+                "An object tends to topple when the vertical line through its centre of gravity falls outside its support base.",
+                "Un oggetto tende a ribaltarsi quando la verticale del baricentro cade fuori dalla base d'appoggio."
+              ],
+              [
+                "The centre of gravity is not always at the geometric centre.",
+                "Il baricentro non si trova sempre nel centro geometrico."
+              ]
+            ],
+            "answer": [
+              "The centre of gravity is not always at the geometric centre.",
+              "Il baricentro non si trova sempre nel centro geometrico."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "Stability depends on the centre of gravity relative to the support base.",
+                "La stabilità dipende dal baricentro rispetto alla base d'appoggio."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
+          ]
+        },
+        {
+          "id": "equilibrium-types",
+          "title": [
+            "Types of equilibrium",
+            "Tipi di equilibrio"
+          ],
+          "explanation": [
+            "Stable equilibrium returns after a small disturbance; unstable equilibrium moves farther away; neutral equilibrium stays in its new position.",
+            "L'equilibrio stabile ritorna dopo una piccola perturbazione; quello instabile si allontana ulteriormente; quello indifferente resta nella nuova posizione."
+          ],
+          "example": [
+            "A ball in a bowl is stable; on a hilltop it is unstable; on a flat surface it is neutral.",
+            "Una palla in una conca è stabile; in cima a una collina è instabile; su una superficie piana è indifferente."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A ball in a bowl is stable; on a hilltop it is unstable; on a flat surface it is neutral.",
+              "Una palla in una conca è stabile; in cima a una collina è instabile; su una superficie piana è indifferente."
+            ],
+            "steps": [
+              [
+                "Think about what happens after a small push.",
+                "Pensa a ciò che accade dopo una piccola spinta."
+              ],
+              [
+                "The response to a small displacement defines the type of equilibrium.",
+                "La risposta a un piccolo spostamento definisce il tipo di equilibrio."
+              ]
+            ],
+            "answer": [
+              "The response to a small displacement defines the type of equilibrium.",
+              "La risposta a un piccolo spostamento definisce il tipo di equilibrio."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "Stable equilibrium describes the response to a small disturbance, not every possible force.",
+                "L'equilibrio stabile descrive la risposta a una piccola perturbazione, non a qualsiasi forza."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            2
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-4m2-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Where can an object's weight be considered to act?",
+                "In quale punto si può considerare applicato il peso di un oggetto?"
+              ],
+              "a": [
+                [
+                  "At its centre of gravity.",
+                  "Nel suo baricentro."
+                ],
+                [
+                  "At every point equally.",
+                  "In ogni punto allo stesso modo."
+                ],
+                [
+                  "Only at its surface.",
+                  "Solo sulla superficie."
+                ],
+                [
+                  "Only at its support base.",
+                  "Solo alla base d'appoggio."
+                ]
+              ],
+              "why": [
+                "The centre of gravity is the effective point of action of weight.",
+                "Il baricentro è il punto efficace di applicazione del peso."
+              ]
+            },
+            {
+              "q": [
+                "Which change usually increases stability?",
+                "Quale cambiamento aumenta di solito la stabilità?"
+              ],
+              "a": [
+                [
+                  "Lower the centre of gravity and widen the base.",
+                  "Abbassare il baricentro e allargare la base."
+                ],
+                [
+                  "Raise the centre of gravity.",
+                  "Alzare il baricentro."
+                ],
+                [
+                  "Narrow the base.",
+                  "Restringere la base."
+                ],
+                [
+                  "Remove the support.",
+                  "Togliere il supporto."
+                ]
+              ],
+              "why": [
+                "A low centre of gravity and wide base make tipping harder.",
+                "Un baricentro basso e una base larga rendono più difficile il ribaltamento."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ],
+          "sceneIndex": 3
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-4m2-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "A ball in a bowl is an example of…",
+                "Una palla in una conca è un esempio di…"
+              ],
+              "a": [
+                [
+                  "stable equilibrium.",
+                  "equilibrio stabile."
+                ],
+                [
+                  "unstable equilibrium.",
+                  "equilibrio instabile."
+                ],
+                [
+                  "neutral equilibrium.",
+                  "equilibrio indifferente."
+                ],
+                [
+                  "no gravity.",
+                  "assenza di gravità."
+                ]
+              ],
+              "why": [
+                "After a small displacement, the ball tends to return.",
+                "Dopo un piccolo spostamento, la palla tende a tornare."
+              ]
+            },
+            {
+              "q": [
+                "A ball on a flat horizontal surface is approximately…",
+                "Una palla su una superficie piana orizzontale è approssimativamente…"
+              ],
+              "a": [
+                [
+                  "in neutral equilibrium.",
+                  "in equilibrio indifferente."
+                ],
+                [
+                  "in unstable equilibrium.",
+                  "in equilibrio instabile."
+                ],
+                [
+                  "in stable equilibrium.",
+                  "in equilibrio stabile."
+                ],
+                [
+                  "without weight.",
+                  "senza peso."
+                ]
+              ],
+              "why": [
+                "After a small move, it can remain in its new position.",
+                "Dopo un piccolo spostamento, può restare nella nuova posizione."
+              ]
+            }
+          ],
+          "sceneIndex": 4
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "Where can an object's weight be considered to act?",
+            "In quale punto si può considerare applicato il peso di un oggetto?"
+          ],
+          "a": [
+            [
+              "At its centre of gravity.",
+              "Nel suo baricentro."
+            ],
+            [
+              "At every point equally.",
+              "In ogni punto allo stesso modo."
+            ],
+            [
+              "Only at its surface.",
+              "Solo sulla superficie."
+            ],
+            [
+              "Only at its support base.",
+              "Solo alla base d'appoggio."
+            ]
+          ],
+          "why": [
+            "The centre of gravity is the effective point of action of weight.",
+            "Il baricentro è il punto efficace di applicazione del peso."
+          ]
+        },
+        {
+          "q": [
+            "Which change usually increases stability?",
+            "Quale cambiamento aumenta di solito la stabilità?"
+          ],
+          "a": [
+            [
+              "Lower the centre of gravity and widen the base.",
+              "Abbassare il baricentro e allargare la base."
+            ],
+            [
+              "Raise the centre of gravity.",
+              "Alzare il baricentro."
+            ],
+            [
+              "Narrow the base.",
+              "Restringere la base."
+            ],
+            [
+              "Remove the support.",
+              "Togliere il supporto."
+            ]
+          ],
+          "why": [
+            "A low centre of gravity and wide base make tipping harder.",
+            "Un baricentro basso e una base larga rendono più difficile il ribaltamento."
+          ]
+        },
+        {
+          "q": [
+            "A ball in a bowl is an example of…",
+            "Una palla in una conca è un esempio di…"
+          ],
+          "a": [
+            [
+              "stable equilibrium.",
+              "equilibrio stabile."
+            ],
+            [
+              "unstable equilibrium.",
+              "equilibrio instabile."
+            ],
+            [
+              "neutral equilibrium.",
+              "equilibrio indifferente."
+            ],
+            [
+              "no gravity.",
+              "assenza di gravità."
+            ]
+          ],
+          "why": [
+            "After a small displacement, the ball tends to return.",
+            "Dopo un piccolo spostamento, la palla tende a tornare."
+          ]
+        },
+        {
+          "q": [
+            "A ball on a flat horizontal surface is approximately…",
+            "Una palla su una superficie piana orizzontale è approssimativamente…"
+          ],
+          "a": [
+            [
+              "in neutral equilibrium.",
+              "in equilibrio indifferente."
+            ],
+            [
+              "in unstable equilibrium.",
+              "in equilibrio instabile."
+            ],
+            [
+              "in stable equilibrium.",
+              "in equilibrio stabile."
+            ],
+            [
+              "without weight.",
+              "senza peso."
+            ]
+          ],
+          "why": [
+            "After a small move, it can remain in its new position.",
+            "Dopo un piccolo spostamento, può restare nella nuova posizione."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "The centre of gravity is the point where an object's weight can be considered to act. A low centre of gravity and wide support base usually increase stability.",
+          "Il baricentro è il punto in cui si può considerare applicato il peso di un oggetto. Un baricentro basso e una base d'appoggio ampia aumentano di solito la stabilità."
+        ],
+        [
+          "Stable equilibrium returns after a small disturbance; unstable equilibrium moves farther away; neutral equilibrium stays in its new position.",
+          "L'equilibrio stabile ritorna dopo una piccola perturbazione; quello instabile si allontana ulteriormente; quello indifferente resta nella nuova posizione."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "Where can an object's weight be considered to act?",
+              "In quale punto si può considerare applicato il peso di un oggetto?"
+            ],
+            "a": [
+              [
+                "At its centre of gravity.",
+                "Nel suo baricentro."
+              ],
+              [
+                "At every point equally.",
+                "In ogni punto allo stesso modo."
+              ],
+              [
+                "Only at its surface.",
+                "Solo sulla superficie."
+              ],
+              [
+                "Only at its support base.",
+                "Solo alla base d'appoggio."
+              ]
+            ],
+            "why": [
+              "The centre of gravity is the effective point of action of weight.",
+              "Il baricentro è il punto efficace di applicazione del peso."
+            ]
+          },
+          {
+            "q": [
+              "Which change usually increases stability?",
+              "Quale cambiamento aumenta di solito la stabilità?"
+            ],
+            "a": [
+              [
+                "Lower the centre of gravity and widen the base.",
+                "Abbassare il baricentro e allargare la base."
+              ],
+              [
+                "Raise the centre of gravity.",
+                "Alzare il baricentro."
+              ],
+              [
+                "Narrow the base.",
+                "Restringere la base."
+              ],
+              [
+                "Remove the support.",
+                "Togliere il supporto."
+              ]
+            ],
+            "why": [
+              "A low centre of gravity and wide base make tipping harder.",
+              "Un baricentro basso e una base larga rendono più difficile il ribaltamento."
+            ]
+          },
+          {
+            "q": [
+              "A ball in a bowl is an example of…",
+              "Una palla in una conca è un esempio di…"
+            ],
+            "a": [
+              [
+                "stable equilibrium.",
+                "equilibrio stabile."
+              ],
+              [
+                "unstable equilibrium.",
+                "equilibrio instabile."
+              ],
+              [
+                "neutral equilibrium.",
+                "equilibrio indifferente."
+              ],
+              [
+                "no gravity.",
+                "assenza di gravità."
+              ]
+            ],
+            "why": [
+              "After a small displacement, the ball tends to return.",
+              "Dopo un piccolo spostamento, la palla tende a tornare."
+            ]
+          },
+          {
+            "q": [
+              "A ball on a flat horizontal surface is approximately…",
+              "Una palla su una superficie piana orizzontale è approssimativamente…"
+            ],
+            "a": [
+              [
+                "in neutral equilibrium.",
+                "in equilibrio indifferente."
+              ],
+              [
+                "in unstable equilibrium.",
+                "in equilibrio instabile."
+              ],
+              [
+                "in stable equilibrium.",
+                "in equilibrio stabile."
+              ],
+              [
+                "without weight.",
+                "senza peso."
+              ]
+            ],
+            "why": [
+              "After a small move, it can remain in its new position.",
+              "Dopo un piccolo spostamento, può restare nella nuova posizione."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "centre-gravity",
+          "centre-gravity",
+          "equilibrium-types",
+          "equilibrium-types"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-4m2-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p5m1",
     "arc": 20,
@@ -16566,7 +24612,580 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
-  },
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p5m1-objective-1",
+          "description": [
+            "Calculate pressure from force and area",
+            "Calcolare la pressione da forza e area"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p5m1-objective-2",
+          "description": [
+            "Explain pressure in fluids and at depth",
+            "Spiegare la pressione nei fluidi e in profondità"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "pressure",
+          "title": [
+            "Pressure",
+            "Pressione"
+          ],
+          "explanation": [
+            "Pressure is perpendicular force divided by area: p = F/A. Its SI unit is the pascal (Pa), equal to N/m².",
+            "La pressione è la forza perpendicolare divisa per l'area: p = F/A. L'unità SI è il pascal (Pa), pari a N/m²."
+          ],
+          "example": [
+            "A 100 N force spread over 2 m² gives p = 50 Pa.",
+            "Una forza di 100 N distribuita su 2 m² dà p = 50 Pa."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A 100 N force spread over 2 m² gives p = 50 Pa.",
+              "Una forza di 100 N distribuita su 2 m² dà p = 50 Pa."
+            ],
+            "steps": [
+              [
+                "The same force on a smaller area creates greater pressure.",
+                "La stessa forza su un'area minore produce una pressione maggiore."
+              ],
+              [
+                "Pressure increases with force and decreases as area increases.",
+                "La pressione aumenta con la forza e diminuisce se aumenta l'area."
+              ]
+            ],
+            "answer": [
+              "Pressure increases with force and decreases as area increases.",
+              "La pressione aumenta con la forza e diminuisce se aumenta l'area."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "Pressure is not the same as force; area matters.",
+                "La pressione non è la stessa cosa della forza: conta l'area."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
+          ]
+        },
+        {
+          "id": "fluid-pressure",
+          "title": [
+            "Pressure in fluids: Pascal and Stevin",
+            "Pressione nei fluidi: Pascal e Stevino"
+          ],
+          "explanation": [
+            "Pascal's principle describes pressure transmission in a confined fluid. Stevin's law gives the depth contribution: p = ρgh.",
+            "Il principio di Pascal descrive la trasmissione della pressione in un fluido confinato. La legge di Stevino dà il contributo della profondità: p = ρgh."
+          ],
+          "example": [
+            "In the same liquid, pressure increases with depth because p = ρgh grows with h.",
+            "Nello stesso liquido, la pressione aumenta con la profondità perché p = ρgh cresce con h."
+          ],
+          "workedExample": {
+            "scenario": [
+              "In the same liquid, pressure increases with depth because p = ρgh grows with h.",
+              "Nello stesso liquido, la pressione aumenta con la profondità perché p = ρgh cresce con h."
+            ],
+            "steps": [
+              [
+                "At the same depth in the same static fluid, pressure is the same in the ideal case.",
+                "Alla stessa profondità nello stesso fluido statico, nel caso ideale, la pressione è uguale."
+              ],
+              [
+                "Stevin's depth pressure does not depend on the container's shape.",
+                "La pressione idrostatica di Stevino non dipende dalla forma del recipiente."
+              ]
+            ],
+            "answer": [
+              "Stevin's depth pressure does not depend on the container's shape.",
+              "La pressione idrostatica di Stevino non dipende dalla forma del recipiente."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                null,
+                null
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            2
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-5m1-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "What is the formula for pressure?",
+                "Qual è la formula della pressione?"
+              ],
+              "a": [
+                [
+                  "p = F/A",
+                  "p = F/A"
+                ],
+                [
+                  "p = F × A",
+                  "p = F × A"
+                ],
+                [
+                  "p = A/F",
+                  "p = A/F"
+                ],
+                [
+                  "p = F + A",
+                  "p = F + A"
+                ]
+              ],
+              "why": [
+                "Pressure is perpendicular force divided by area.",
+                "La pressione è la forza perpendicolare divisa per l'area."
+              ]
+            },
+            {
+              "q": [
+                "What is the SI unit of pressure?",
+                "Qual è l'unità SI della pressione?"
+              ],
+              "a": [
+                [
+                  "pascal (Pa)",
+                  "pascal (Pa)"
+                ],
+                [
+                  "newton (N)",
+                  "newton (N)"
+                ],
+                [
+                  "joule (J)",
+                  "joule (J)"
+                ],
+                [
+                  "kilogram (kg)",
+                  "chilogrammo (kg)"
+                ]
+              ],
+              "why": [
+                "One pascal is one newton per square metre.",
+                "Un pascal è un newton per metro quadrato."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ],
+          "sceneIndex": 3
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-5m1-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "Same force on a smaller area: pressure…",
+                "Stessa forza su un'area minore: la pressione…"
+              ],
+              "a": [
+                [
+                  "increases.",
+                  "aumenta."
+                ],
+                [
+                  "decreases.",
+                  "diminuisce."
+                ],
+                [
+                  "becomes zero.",
+                  "diventa zero."
+                ],
+                [
+                  "becomes mass.",
+                  "diventa massa."
+                ]
+              ],
+              "why": [
+                "For fixed force, pressure is inversely proportional to area.",
+                "A forza costante, la pressione è inversamente proporzionale all'area."
+              ]
+            },
+            {
+              "q": [
+                "According to Stevin's law, liquid pressure increases with…",
+                "Secondo la legge di Stevino, la pressione di un liquido aumenta con…"
+              ],
+              "a": [
+                [
+                  "depth.",
+                  "la profondità."
+                ],
+                [
+                  "container colour.",
+                  "il colore del recipiente."
+                ],
+                [
+                  "container shape only.",
+                  "solo la forma del recipiente."
+                ],
+                [
+                  "surface area only.",
+                  "solo l'area della superficie."
+                ]
+              ],
+              "why": [
+                "The depth h makes pressure grow deeper in the liquid.",
+                "La profondità h fa aumentare la pressione nel liquido."
+              ]
+            }
+          ],
+          "sceneIndex": 4
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "What is the formula for pressure?",
+            "Qual è la formula della pressione?"
+          ],
+          "a": [
+            [
+              "p = F/A",
+              "p = F/A"
+            ],
+            [
+              "p = F × A",
+              "p = F × A"
+            ],
+            [
+              "p = A/F",
+              "p = A/F"
+            ],
+            [
+              "p = F + A",
+              "p = F + A"
+            ]
+          ],
+          "why": [
+            "Pressure is perpendicular force divided by area.",
+            "La pressione è la forza perpendicolare divisa per l'area."
+          ]
+        },
+        {
+          "q": [
+            "What is the SI unit of pressure?",
+            "Qual è l'unità SI della pressione?"
+          ],
+          "a": [
+            [
+              "pascal (Pa)",
+              "pascal (Pa)"
+            ],
+            [
+              "newton (N)",
+              "newton (N)"
+            ],
+            [
+              "joule (J)",
+              "joule (J)"
+            ],
+            [
+              "kilogram (kg)",
+              "chilogrammo (kg)"
+            ]
+          ],
+          "why": [
+            "One pascal is one newton per square metre.",
+            "Un pascal è un newton per metro quadrato."
+          ]
+        },
+        {
+          "q": [
+            "Same force on a smaller area: pressure…",
+            "Stessa forza su un'area minore: la pressione…"
+          ],
+          "a": [
+            [
+              "increases.",
+              "aumenta."
+            ],
+            [
+              "decreases.",
+              "diminuisce."
+            ],
+            [
+              "becomes zero.",
+              "diventa zero."
+            ],
+            [
+              "becomes mass.",
+              "diventa massa."
+            ]
+          ],
+          "why": [
+            "For fixed force, pressure is inversely proportional to area.",
+            "A forza costante, la pressione è inversamente proporzionale all'area."
+          ]
+        },
+        {
+          "q": [
+            "According to Stevin's law, liquid pressure increases with…",
+            "Secondo la legge di Stevino, la pressione di un liquido aumenta con…"
+          ],
+          "a": [
+            [
+              "depth.",
+              "la profondità."
+            ],
+            [
+              "container colour.",
+              "il colore del recipiente."
+            ],
+            [
+              "container shape only.",
+              "solo la forma del recipiente."
+            ],
+            [
+              "surface area only.",
+              "solo l'area della superficie."
+            ]
+          ],
+          "why": [
+            "The depth h makes pressure grow deeper in the liquid.",
+            "La profondità h fa aumentare la pressione nel liquido."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "Pressure is perpendicular force divided by area: p = F/A. Its SI unit is the pascal (Pa), equal to N/m².",
+          "La pressione è la forza perpendicolare divisa per l'area: p = F/A. L'unità SI è il pascal (Pa), pari a N/m²."
+        ],
+        [
+          "Pascal's principle describes pressure transmission in a confined fluid. Stevin's law gives the depth contribution: p = ρgh.",
+          "Il principio di Pascal descrive la trasmissione della pressione in un fluido confinato. La legge di Stevino dà il contributo della profondità: p = ρgh."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "What is the formula for pressure?",
+              "Qual è la formula della pressione?"
+            ],
+            "a": [
+              [
+                "p = F/A",
+                "p = F/A"
+              ],
+              [
+                "p = F × A",
+                "p = F × A"
+              ],
+              [
+                "p = A/F",
+                "p = A/F"
+              ],
+              [
+                "p = F + A",
+                "p = F + A"
+              ]
+            ],
+            "why": [
+              "Pressure is perpendicular force divided by area.",
+              "La pressione è la forza perpendicolare divisa per l'area."
+            ]
+          },
+          {
+            "q": [
+              "What is the SI unit of pressure?",
+              "Qual è l'unità SI della pressione?"
+            ],
+            "a": [
+              [
+                "pascal (Pa)",
+                "pascal (Pa)"
+              ],
+              [
+                "newton (N)",
+                "newton (N)"
+              ],
+              [
+                "joule (J)",
+                "joule (J)"
+              ],
+              [
+                "kilogram (kg)",
+                "chilogrammo (kg)"
+              ]
+            ],
+            "why": [
+              "One pascal is one newton per square metre.",
+              "Un pascal è un newton per metro quadrato."
+            ]
+          },
+          {
+            "q": [
+              "Same force on a smaller area: pressure…",
+              "Stessa forza su un'area minore: la pressione…"
+            ],
+            "a": [
+              [
+                "increases.",
+                "aumenta."
+              ],
+              [
+                "decreases.",
+                "diminuisce."
+              ],
+              [
+                "becomes zero.",
+                "diventa zero."
+              ],
+              [
+                "becomes mass.",
+                "diventa massa."
+              ]
+            ],
+            "why": [
+              "For fixed force, pressure is inversely proportional to area.",
+              "A forza costante, la pressione è inversamente proporzionale all'area."
+            ]
+          },
+          {
+            "q": [
+              "According to Stevin's law, liquid pressure increases with…",
+              "Secondo la legge di Stevino, la pressione di un liquido aumenta con…"
+            ],
+            "a": [
+              [
+                "depth.",
+                "la profondità."
+              ],
+              [
+                "container colour.",
+                "il colore del recipiente."
+              ],
+              [
+                "container shape only.",
+                "solo la forma del recipiente."
+              ],
+              [
+                "surface area only.",
+                "solo l'area della superficie."
+              ]
+            ],
+            "why": [
+              "The depth h makes pressure grow deeper in the liquid.",
+              "La profondità h fa aumentare la pressione nel liquido."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "pressure",
+          "pressure",
+          "fluid-pressure",
+          "fluid-pressure"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-5m1-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
   {
     "id": "p5m2",
     "arc": 20,
@@ -16856,7 +25475,1884 @@ export const MISSIONS: Mission[] = [
         ]
       }
     ]
+  ,
+    "learning": {
+      "version": 1,
+      "objectives": [
+        {
+          "id": "p5m2-objective-1",
+          "description": [
+            "Explain the buoyant force",
+            "Spiegare la spinta idrostatica"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        },
+        {
+          "id": "p5m2-objective-2",
+          "description": [
+            "Apply Archimedes' principle to floating and sinking",
+            "Applicare il principio di Archimede al galleggiamento e all'affondamento"
+          ],
+          "successCriteria": [
+            [
+              "Explain the idea and apply it correctly in a short exercise.",
+              "Spiegare il concetto e applicarlo correttamente in un breve esercizio."
+            ]
+          ]
+        }
+      ],
+      "prerequisites": [
+        [
+          "Review the key quantities and units from the previous mission.",
+          "Ripassa le grandezze e le unità chiave della missione precedente."
+        ]
+      ],
+      "concepts": [
+        {
+          "id": "buoyancy",
+          "title": [
+            "Buoyant force",
+            "Spinta idrostatica"
+          ],
+          "explanation": [
+            "A fluid exerts an upward buoyant force on an immersed object. The force is linked to the pressure difference between the lower and upper parts.",
+            "Un fluido esercita una spinta verso l'alto su un corpo immerso. La forza è collegata alla differenza di pressione tra la parte inferiore e quella superiore."
+          ],
+          "example": [
+            "A submerged block feels an upward push from the water.",
+            "Un blocco immerso sente una spinta verso l'alto esercitata dall'acqua."
+          ],
+          "workedExample": {
+            "scenario": [
+              "A submerged block feels an upward push from the water.",
+              "Un blocco immerso sente una spinta verso l'alto esercitata dall'acqua."
+            ],
+            "steps": [
+              [
+                "The buoyant force acts upward, opposite to weight.",
+                "La spinta idrostatica è diretta verso l'alto, opposta al peso."
+              ],
+              [
+                "Buoyancy exists in liquids and gases.",
+                "La spinta idrostatica esiste nei liquidi e nei gas."
+              ]
+            ],
+            "answer": [
+              "Buoyancy exists in liquids and gases.",
+              "La spinta idrostatica esiste nei liquidi e nei gas."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "Buoyancy is not caused by an object having no weight.",
+                "Il galleggiamento non è dovuto all'assenza di peso del corpo."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            0,
+            1
+          ]
+        },
+        {
+          "id": "archimedes",
+          "title": [
+            "Archimedes' principle",
+            "Principio di Archimede"
+          ],
+          "explanation": [
+            "The buoyant force equals the weight of the displaced fluid: Fb = ρfluid g Vdisplaced. A floating object is in vertical balance when buoyancy equals weight.",
+            "La spinta idrostatica è uguale al peso del fluido spostato: Fb = ρfluido g Vspostato. Un corpo galleggiante è in equilibrio verticale quando la spinta è uguale al peso."
+          ],
+          "example": [
+            "If 0.002 m³ of water is displaced, its mass is about 2 kg and its weight about 19.6 N.",
+            "Se vengono spostati 0,002 m³ d'acqua, la sua massa è circa 2 kg e il suo peso circa 19,6 N."
+          ],
+          "workedExample": {
+            "scenario": [
+              "If 0.002 m³ of water is displaced, its mass is about 2 kg and its weight about 19.6 N.",
+              "Se vengono spostati 0,002 m³ d'acqua, la sua massa è circa 2 kg e il suo peso circa 19,6 N."
+            ],
+            "steps": [
+              [
+                "Compare average object density with fluid density to predict floating or sinking in simple cases.",
+                "Confronta la densità media del corpo con quella del fluido per prevedere se galleggia o affonda nei casi semplici."
+              ],
+              [
+                "A floating object displaces fluid whose weight equals the object's weight.",
+                "Un corpo galleggiante sposta fluido il cui peso è uguale al peso del corpo."
+              ]
+            ],
+            "answer": [
+              "A floating object displaces fluid whose weight equals the object's weight.",
+              "Un corpo galleggiante sposta fluido il cui peso è uguale al peso del corpo."
+            ]
+          },
+          "misconceptions": [
+            {
+              "belief": [
+                "A large object does not automatically sink; shape and displaced volume matter.",
+                "Un oggetto grande non affonda automaticamente: contano la forma e il volume spostato."
+              ],
+              "correction": [
+                null,
+                null
+              ]
+            }
+          ],
+          "knowledgePrompts": [
+            [
+              "Explain the key idea, then solve a new example.",
+              "Spiega l'idea chiave, poi risolvi un nuovo esempio."
+            ]
+          ],
+          "sceneIndexes": [
+            2
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "physics-5m2-guided",
+          "title": [
+            "Guided practice",
+            "Esercitazione guidata"
+          ],
+          "instructions": [
+            "Answer the first two questions. Use the worked examples and feedback to check each step.",
+            "Rispondi alle prime due domande. Usa gli esempi svolti e il feedback per controllare ogni passaggio."
+          ],
+          "questions": [
+            {
+              "q": [
+                "In which direction does buoyant force act?",
+                "In quale direzione agisce la spinta idrostatica?"
+              ],
+              "a": [
+                [
+                  "Upward.",
+                  "Verso l'alto."
+                ],
+                [
+                  "Downward only.",
+                  "Solo verso il basso."
+                ],
+                [
+                  "Sideways only.",
+                  "Solo lateralmente."
+                ],
+                [
+                  "It has no direction.",
+                  "Non ha direzione."
+                ]
+              ],
+              "why": [
+                "Buoyant force acts upward on an immersed object.",
+                "La spinta idrostatica agisce verso l'alto su un corpo immerso."
+              ]
+            },
+            {
+              "q": [
+                "Archimedes' principle says buoyant force equals…",
+                "Il principio di Archimede afferma che la spinta è uguale a…"
+              ],
+              "a": [
+                [
+                  "the weight of the displaced fluid.",
+                  "il peso del fluido spostato."
+                ],
+                [
+                  "the object's volume.",
+                  "il volume dell'oggetto."
+                ],
+                [
+                  "the object's mass.",
+                  "la massa dell'oggetto."
+                ],
+                [
+                  "atmospheric pressure.",
+                  "la pressione atmosferica."
+                ]
+              ],
+              "why": [
+                "The displaced fluid's weight determines the buoyant force.",
+                "Il peso del fluido spostato determina la spinta."
+              ]
+            }
+          ],
+          "hints": [
+            [
+              "Identify the quantity, rule or definition before calculating.",
+              "Individua la grandezza, la regola o la definizione prima di calcolare."
+            ],
+            [
+              "Check the unit and the direction or scale in your answer.",
+              "Controlla l'unità e la direzione o la scala nella risposta."
+            ]
+          ],
+          "sceneIndex": 3
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "physics-5m2-independent",
+          "title": [
+            "Independent practice",
+            "Esercitazione autonoma"
+          ],
+          "instructions": [
+            "Answer without hints, then read the explanation and correct any mistake.",
+            "Rispondi senza suggerimenti, poi leggi la spiegazione e correggi gli eventuali errori."
+          ],
+          "questions": [
+            {
+              "q": [
+                "An object with average density lower than water will generally…",
+                "Un oggetto con densità media minore di quella dell'acqua generalmente…"
+              ],
+              "a": [
+                [
+                  "float in water.",
+                  "galleggia nell'acqua."
+                ],
+                [
+                  "always sink.",
+                  "affonda sempre."
+                ],
+                [
+                  "have no weight.",
+                  "non ha peso."
+                ],
+                [
+                  "turn into water.",
+                  "si trasforma in acqua."
+                ]
+              ],
+              "why": [
+                "A lower average density allows the object to float.",
+                "Una densità media minore permette al corpo di galleggiare."
+              ]
+            },
+            {
+              "q": [
+                "A floating object is in vertical balance when…",
+                "Un corpo galleggiante è in equilibrio verticale quando…"
+              ],
+              "a": [
+                [
+                  "buoyant force equals its weight.",
+                  "la spinta idrostatica è uguale al suo peso."
+                ],
+                [
+                  "buoyant force is zero.",
+                  "la spinta è zero."
+                ],
+                [
+                  "its mass is zero.",
+                  "la sua massa è zero."
+                ],
+                [
+                  "water pressure is absent.",
+                  "la pressione dell'acqua è assente."
+                ]
+              ],
+              "why": [
+                "Equal upward and downward forces give vertical equilibrium.",
+                "Forze uguali verso l'alto e verso il basso danno equilibrio verticale."
+              ]
+            }
+          ],
+          "sceneIndex": 4
+        }
+      ],
+      "knowledgeCheck": [
+        {
+          "q": [
+            "In which direction does buoyant force act?",
+            "In quale direzione agisce la spinta idrostatica?"
+          ],
+          "a": [
+            [
+              "Upward.",
+              "Verso l'alto."
+            ],
+            [
+              "Downward only.",
+              "Solo verso il basso."
+            ],
+            [
+              "Sideways only.",
+              "Solo lateralmente."
+            ],
+            [
+              "It has no direction.",
+              "Non ha direzione."
+            ]
+          ],
+          "why": [
+            "Buoyant force acts upward on an immersed object.",
+            "La spinta idrostatica agisce verso l'alto su un corpo immerso."
+          ]
+        },
+        {
+          "q": [
+            "Archimedes' principle says buoyant force equals…",
+            "Il principio di Archimede afferma che la spinta è uguale a…"
+          ],
+          "a": [
+            [
+              "the weight of the displaced fluid.",
+              "il peso del fluido spostato."
+            ],
+            [
+              "the object's volume.",
+              "il volume dell'oggetto."
+            ],
+            [
+              "the object's mass.",
+              "la massa dell'oggetto."
+            ],
+            [
+              "atmospheric pressure.",
+              "la pressione atmosferica."
+            ]
+          ],
+          "why": [
+            "The displaced fluid's weight determines the buoyant force.",
+            "Il peso del fluido spostato determina la spinta."
+          ]
+        },
+        {
+          "q": [
+            "An object with average density lower than water will generally…",
+            "Un oggetto con densità media minore di quella dell'acqua generalmente…"
+          ],
+          "a": [
+            [
+              "float in water.",
+              "galleggia nell'acqua."
+            ],
+            [
+              "always sink.",
+              "affonda sempre."
+            ],
+            [
+              "have no weight.",
+              "non ha peso."
+            ],
+            [
+              "turn into water.",
+              "si trasforma in acqua."
+            ]
+          ],
+          "why": [
+            "A lower average density allows the object to float.",
+            "Una densità media minore permette al corpo di galleggiare."
+          ]
+        },
+        {
+          "q": [
+            "A floating object is in vertical balance when…",
+            "Un corpo galleggiante è in equilibrio verticale quando…"
+          ],
+          "a": [
+            [
+              "buoyant force equals its weight.",
+              "la spinta idrostatica è uguale al suo peso."
+            ],
+            [
+              "buoyant force is zero.",
+              "la spinta è zero."
+            ],
+            [
+              "its mass is zero.",
+              "la sua massa è zero."
+            ],
+            [
+              "water pressure is absent.",
+              "la pressione dell'acqua è assente."
+            ]
+          ],
+          "why": [
+            "Equal upward and downward forces give vertical equilibrium.",
+            "Forze uguali verso l'alto e verso il basso danno equilibrio verticale."
+          ]
+        }
+      ],
+      "summary": [
+        [
+          "A fluid exerts an upward buoyant force on an immersed object. The force is linked to the pressure difference between the lower and upper parts.",
+          "Un fluido esercita una spinta verso l'alto su un corpo immerso. La forza è collegata alla differenza di pressione tra la parte inferiore e quella superiore."
+        ],
+        [
+          "The buoyant force equals the weight of the displaced fluid: Fb = ρfluid g Vdisplaced. A floating object is in vertical balance when buoyancy equals weight.",
+          "La spinta idrostatica è uguale al peso del fluido spostato: Fb = ρfluido g Vspostato. Un corpo galleggiante è in equilibrio verticale quando la spinta è uguale al peso."
+        ]
+      ],
+      "masteryAssessment": {
+        "title": [
+          "Mastery trial",
+          "Prova di maestria"
+        ],
+        "instructions": [
+          "Apply the ideas independently. You need at least 75% to pass this mastery check.",
+          "Applica le idee in autonomia. Serve almeno il 75% per superare questa verifica di maestria."
+        ],
+        "questions": [
+          {
+            "q": [
+              "In which direction does buoyant force act?",
+              "In quale direzione agisce la spinta idrostatica?"
+            ],
+            "a": [
+              [
+                "Upward.",
+                "Verso l'alto."
+              ],
+              [
+                "Downward only.",
+                "Solo verso il basso."
+              ],
+              [
+                "Sideways only.",
+                "Solo lateralmente."
+              ],
+              [
+                "It has no direction.",
+                "Non ha direzione."
+              ]
+            ],
+            "why": [
+              "Buoyant force acts upward on an immersed object.",
+              "La spinta idrostatica agisce verso l'alto su un corpo immerso."
+            ]
+          },
+          {
+            "q": [
+              "Archimedes' principle says buoyant force equals…",
+              "Il principio di Archimede afferma che la spinta è uguale a…"
+            ],
+            "a": [
+              [
+                "the weight of the displaced fluid.",
+                "il peso del fluido spostato."
+              ],
+              [
+                "the object's volume.",
+                "il volume dell'oggetto."
+              ],
+              [
+                "the object's mass.",
+                "la massa dell'oggetto."
+              ],
+              [
+                "atmospheric pressure.",
+                "la pressione atmosferica."
+              ]
+            ],
+            "why": [
+              "The displaced fluid's weight determines the buoyant force.",
+              "Il peso del fluido spostato determina la spinta."
+            ]
+          },
+          {
+            "q": [
+              "An object with average density lower than water will generally…",
+              "Un oggetto con densità media minore di quella dell'acqua generalmente…"
+            ],
+            "a": [
+              [
+                "float in water.",
+                "galleggia nell'acqua."
+              ],
+              [
+                "always sink.",
+                "affonda sempre."
+              ],
+              [
+                "have no weight.",
+                "non ha peso."
+              ],
+              [
+                "turn into water.",
+                "si trasforma in acqua."
+              ]
+            ],
+            "why": [
+              "A lower average density allows the object to float.",
+              "Una densità media minore permette al corpo di galleggiare."
+            ]
+          },
+          {
+            "q": [
+              "A floating object is in vertical balance when…",
+              "Un corpo galleggiante è in equilibrio verticale quando…"
+            ],
+            "a": [
+              [
+                "buoyant force equals its weight.",
+                "la spinta idrostatica è uguale al suo peso."
+              ],
+              [
+                "buoyant force is zero.",
+                "la spinta è zero."
+              ],
+              [
+                "its mass is zero.",
+                "la sua massa è zero."
+              ],
+              [
+                "water pressure is absent.",
+                "la pressione dell'acqua è assente."
+              ]
+            ],
+            "why": [
+              "Equal upward and downward forces give vertical equilibrium.",
+              "Forze uguali verso l'alto e verso il basso danno equilibrio verticale."
+            ]
+          }
+        ],
+        "questionConceptIds": [
+          "buoyancy",
+          "buoyancy",
+          "archimedes",
+          "archimedes"
+        ],
+        "passingScore": 75
+      },
+      "techniqueUnlock": {
+        "id": "physics-5m2-technique",
+        "name": [
+          "Physics Form · Applied Technique",
+          "Stile della Fisica · Tecnica applicata"
+        ],
+        "description": [
+          "Choose the correct physical model, show your reasoning and check units before striking.",
+          "Scegli il modello fisico corretto, mostra il ragionamento e controlla le unità prima di colpire."
+        ],
+        "xpReward": 25
+      }
+    }},
+  {
+    "id": "m1m1",
+    "arc": 21,
+    "sec": "1.1",
+    "pages": "1–6",
+    "hue": 45,
+    "horns": 2,
+    "eyes": 1,
+    "title": [
+      "Natural Numbers",
+      "Numeri naturali"
+    ],
+    "topic": [
+      "Natural numbers, order and basic operations",
+      "Numeri naturali, ordinamento e operazioni di base"
+    ],
+    
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [
+        ["Know how to count to 20 and compare small numbers.", "Sapere contare fino a 20 e confrontare piccoli numeri."]
+      ],
+      "objectives": [
+        {"id": "identify-natural", "description": ["Identify natural numbers and write ℕ.", "Riconoscere i numeri naturali e scrivere ℕ."]},
+        {"id": "order-number-line", "description": ["Order natural numbers and place them on a half-line.", "Ordinare i numeri naturali e posizionarli su una semiretta."]},
+        {"id": "zero-successor", "description": ["Explain that 0 has no predecessor and every number has a successor.", "Spiegare che lo 0 non ha precedente e che ogni numero ha un successivo."]}
+      ],
+      "concepts": [
+        {
+          "id": "natural-numbers",
+          "title": ["Natural numbers and the half-line", "Numeri naturali e la semiretta"],
+          "explanation": ["Natural numbers are 0, 1, 2, 3, 4, 5… The set is called ℕ. We can draw them on an oriented half-line: start at point O (zero) and always go right, equal steps. Between one number and the next there is no other natural number: that is why ℕ is discrete.", "I numeri naturali sono 0, 1, 2, 3, 4, 5… L’insieme si chiama ℕ. Possiamo disegnarli su una semiretta orientata: partiamo da un punto O (lo 0) e andiamo sempre verso destra, un passo uguale per ogni numero. Tra un numero e il successivo non c’è nessun altro numero naturale: per questo ℕ è discreto."],
+          "example": ["Draw the half-line: O—1—2—3—4—5→. The predecessor of 4 is 3, the successor of 4 is 5. Zero has no predecessor.", "Disegna la semiretta: O—1—2—3—4—5→. Il precedente di 4 è 3, il successivo di 4 è 5. Lo 0 non ha precedente."],
+          "workedExample": {
+            "scenario": ["Place the numbers 0, 3, 1, 5 on the half-line and order them from smallest to largest.", "Posiziona sulla semiretta i numeri 0, 3, 1, 5 e ordinali dal più piccolo al più grande."],
+            "steps": [
+              ["1. Draw the half-line with an arrow to the right and mark the origin O.", "1. Disegna la semiretta con freccia a destra e segna l’origine O."],
+              ["2. Mark points at equal distance: 0, then 1, 2, 3, 4, 5.", "2. Segna i punti a distanza uguale: 0, poi 1, 2, 3, 4, 5."],
+              ["3. Evidenzia 0, 1, 3, 5.", "3. Highlight 0, 1, 3, 5."],
+              ["4. Reading left to right gives the order: 0 < 1 < 3 < 5.", "4. Leggendo da sinistra a destra ottieni l’ordine: 0 < 1 < 3 < 5."]
+            ],
+            "answer": ["0, 1, 3, 5. On the half-line numbers always increase to the right.", "0, 1, 3, 5. Sulla semiretta i numeri crescono sempre verso destra."]
+          },
+          "misconceptions": [
+            {"belief": ["Natural numbers start from 1.", "I numeri naturali partono da 1."], "correction": ["In this book ℕ includes 0. Zero is a natural number.", "In questo libro ℕ include lo 0. Lo zero è un numero naturale."]},
+            {"belief": ["Between 2 and 3 there is another natural number.", "Tra 2 e 3 c’è un altro numero naturale."], "correction": ["No. ℕ is discrete: between two consecutive numbers there is no other natural number.", "No. ℕ è discreto: tra due numeri consecutivi non c’è nessun altro numero naturale."]}
+          ],
+          "knowledgePrompts": [
+            ["Draw the half-line and explain to a classmate why 0 has no predecessor.", "Disegna la semiretta e spiega a un compagno perché lo 0 non ha precedente."]
+          ]
+        }
+      ],
+      "guidedPractice": [
+        {"id": "gp-nat-1", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Use a mental half-line to answer.", "Usa la semiretta mentale per rispondere."], "questions": [
+          {"q": ["What is the successor of 7?", "Qual è il successivo di 7?"], "a": [["8", "8"], ["6", "6"], ["9", "9"], ["0", "0"]], "why": ["The successor is obtained by adding 1: 7 + 1 = 8.", "Il successivo si ottiene aggiungendo 1: 7 + 1 = 8."]}
+        ]}
+      ],
+      "independentPractice": [
+        {"id": "ip-nat-1", "title": ["Try on your own", "Prova da solo"], "instructions": ["Senza suggerimenti.", "Without hints."], "questions": [
+          {"q": ["Order from smallest to largest: 5, 0, 2, 8.", "Ordina dal più piccolo al più grande: 5, 0, 2, 8."], "a": [["0, 2, 5, 8", "0, 2, 5, 8"], ["5, 2, 0, 8", "5, 2, 0, 8"], ["8, 5, 2, 0", "8, 5, 2, 0"], ["0, 5, 2, 8", "0, 5, 2, 8"]], "why": ["On the half-line we read left to right: 0 < 2 < 5 < 8.", "Sulla semiretta si legge da sinistra a destra: 0 < 2 < 5 < 8."]}
+        ]}
+      ],
+      "knowledgeCheck": [
+        {"q": ["Does 0 have a predecessor in ℕ?", "Lo 0 ha un precedente in ℕ?"], "a": [["No", "No"], ["Sì", "Yes"], ["Solo a volte", "Only sometimes"], ["Yes, it is -1", "Sì, è -1"]], "why": ["Zero is the first natural number: it has no predecessor.", "Lo zero è il primo numero naturale: non ha precedente."]}
+      ],
+      "summary": [
+        ["ℕ = {0, 1, 2, 3, …}. It is ordered and discrete. It is represented on a half-line. 0 has no predecessor; every number has a successor.", "ℕ = {0, 1, 2, 3, …}. È ordinato e discreto. Si rappresenta su una semiretta. Lo 0 non ha precedente; ogni numero ha un successivo."]
+      ],
+            "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["Successor of 9?", "Successivo di 9?"], "a": [["10","10"],["8","8"],["11","11"],["0","0"]], "why": ["+1.", "+1."]}, {"q": ["Does 0 have predecessor?", "0 ha precedente?"], "a": [["No","No"],["Sì","Yes"],["A volte","Sometimes"],["-1","-1"]], "why": ["Primo.", "First."]}]},
+"techniqueUnlock": {
+        "id": "step-by-step-slash",
+        "name": ["Number Form · First Technique: Step-by-Step Slash", "Stile dei Numeri · Prima Tecnica: Fendente Passo-Passo"],
+        "description": ["Break any number problem into clear steps, just like steps on the half-line.", "Scomponi ogni problema numerico in passi chiari, proprio come i passi sulla semiretta."],
+        "xpReward": 25
+      }
+    },
+"demon": [
+      "Zero-Confusion Imp",
+      "Folletto della Confusione dello Zero"
+    ],
+    "tech": [
+      "Number Form · First Technique: Step-by-Step Slash",
+      "Stile dei Numeri · Prima Tecnica: Fendente Passo-Passo"
+    ],
+        "scenes": [
+      {"vis": "math-natural-line", "who": "s", "text": ["<p>Natural numbers are 0, 1, 2, 3, 4, 5… The set is called <b>ℕ</b>.</p><p>Draw a half-line: start at point O (zero) and always go right with equal steps.</p>", "<p>I numeri naturali sono 0, 1, 2, 3, 4, 5… L’insieme si chiama <b>ℕ</b>.</p><p>Disegna una semiretta: parti da un punto O (lo 0) e vai sempre a destra con passi uguali.</p>"]},
+      {"who": "y", "text": ["<p>Between 2 and 3 there is no other natural number. That is why ℕ is <b>discrete</b>.</p>", "<p>Tra 2 e 3 non c’è nessun altro numero naturale. Per questo ℕ è <b>discreto</b>.</p>"]},
+      {"who": "d", "text": ["<p>Zero has no predecessor. Every other number has one (the predecessor) and all have a successor.</p>", "<p>Lo 0 non ha precedente. Ogni altro numero ne ha uno (il precedente) e tutti hanno un successivo.</p>"]},
+      {"who": "s", "text": ["<p>Try placing 0, 3, 1, 5 on the half-line and read them from left to right.</p>", "<p>Prova a posizionare 0, 3, 1, 5 sulla semiretta e leggili da sinistra a destra.</p>"]}
+    ],
+"quiz": [
+      {
+        "q": [
+          "Which set symbol represents the natural numbers?",
+          "Quale simbolo indica l’insieme dei numeri naturali?"
+        ],
+        "a": [
+          ["ℕ", "ℕ"],
+          ["ℤ", "ℤ"],
+          ["ℚ", "ℚ"],
+          ["ℝ", "ℝ"]
+        ],
+        "why": [
+          "ℕ is the standard symbol for the set of natural numbers.",
+          "ℕ è il simbolo standard per l’insieme dei numeri naturali."
+        ]
+      },
+      {
+        "q": [
+          "Does 0 have a predecessor in ℕ?",
+          "Lo 0 ha un precedente in ℕ?"
+        ],
+        "a": [
+          ["No", "No"],
+          ["Yes", "Sì"],
+          ["Solo in alcune definizioni", "Only in some definitions"],
+          ["Always", "Sempre"]
+        ],
+        "why": [
+          "In the usual definition of ℕ that includes 0, zero has no predecessor.",
+          "Nella definizione usuale di ℕ che include lo 0, lo zero non ha precedente."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "m1m2",
+    "arc": 21,
+    "sec": "1.2",
+    "pages": "7–14",
+    "hue": 50,
+    "horns": 2,
+    "eyes": 2,
+    "title": [
+      "Operations & Expressions",
+      "Operazioni ed espressioni"
+    ],
+    "topic": [
+      "Addition, subtraction, multiplication, division and simple expressions with natural numbers",
+      "Addizione, sottrazione, moltiplicazione, divisione e semplici espressioni con i numeri naturali"
+    ],
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know natural numbers and their order.", "Conoscere i numeri naturali e il loro ordine."]],
+      "objectives": [
+        {"id": "four-ops", "description": ["Perform addition, subtraction, multiplication and division in ℕ.", "Eseguire addizione, sottrazione, moltiplicazione e divisione in ℕ."]},
+        {"id": "order-ops", "description": ["Follow the order of operations in expressions.", "Rispettare l’ordine delle operazioni nelle espressioni."]}
+      ],
+      "concepts": [
+        {
+          "id": "order-of-ops",
+          "title": ["Order of operations", "Ordine delle operazioni"],
+          "explanation": ["In an expression we do powers first, then multiplications and divisions (left to right), finally additions and subtractions. Imagine a queue: higher priority goes first.", "In un’espressione facciamo prima le potenze, poi moltiplicazioni e divisioni (da sinistra a destra), infine addizioni e sottrazioni. Immagina una coda: chi ha la priorità più alta passa prima."],
+          "example": ["3 + 2 × 4 = 3 + 8 = 11 (not 20). Multiplication goes first.", "3 + 2 × 4 = 3 + 8 = 11 (non 20). La moltiplicazione passa prima."],
+          "workedExample": {
+            "scenario": ["Calculate 10 − 2 × 3 + 4.", "Calcola 10 − 2 × 3 + 4."],
+            "steps": [
+              ["1. Multiplication first: 2 × 3 = 6.", "1. Prima la moltiplicazione: 2 × 3 = 6."],
+              ["2. The expression is now 10 − 6 + 4.", "2. Ora l’espressione è 10 − 6 + 4."],
+              ["3. Left to right: 10 − 6 = 4, then 4 + 4 = 8.", "3. Da sinistra a destra: 10 − 6 = 4, poi 4 + 4 = 8."]
+            ],
+            "answer": ["8", "8"]
+          },
+          "misconceptions": [
+            {"belief": ["We always go left to right with no priority.", "Si fa sempre da sinistra a destra, senza priorità."], "correction": ["No. Multiplication and division have priority over addition and subtraction.", "No. Moltiplicazione e divisione hanno priorità su addizione e sottrazione."]}
+          ]
+        }
+      ],
+      "guidedPractice": [{"id": "gp-ops", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Calculate.", "Calcola."], "questions": [{"q": ["What is 12 ÷ 3 + 5?", "Quanto fa 12 ÷ 3 + 5?"], "a": [["9", "9"], ["4", "4"], ["20", "20"], ["1", "1"]], "why": ["Division first: 4 + 5 = 9.", "Prima la divisione: 4 + 5 = 9."]}]}],
+      "independentPractice": [{"id": "ip-ops", "title": ["Try on your own", "Prova da solo"], "instructions": ["Senza suggerimenti.", "Without hints."], "questions": [{"q": ["What is 5 + 3 × 2?", "Quanto fa 5 + 3 × 2?"], "a": [["11", "11"], ["16", "16"], ["10", "10"], ["8", "8"]], "why": ["3 × 2 = 6, poi 5 + 6 = 11.", "3 × 2 = 6, then 5 + 6 = 11."]}]}],
+      "knowledgeCheck": [{"q": ["What is done first in 8 − 2 × 3?", "Cosa si fa prima in 8 − 2 × 3?"], "a": [["Moltiplicazione", "Multiplication"], ["Sottrazione", "Subtraction"], ["Indifferente", "Either"], ["Addizione", "Addition"]], "why": ["La moltiplicazione ha la priorità.", "Multiplication has priority."]}],
+      "summary": [["In expressions: powers → × and ÷ → + and −. Left to right when operations have the same priority.", "Nelle espressioni: potenze → × e ÷ → + e −. Da sinistra a destra quando le operazioni hanno la stessa priorità."]],
+            "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["6 + 2 × 3?", "6 + 2 × 3?"], "a": [["12","12"],["24","24"],["11","11"],["8","8"]], "why": ["× first.", "× first."]}]},
+"techniqueUnlock": {"id": "order-slash", "name": ["Number Form · Second Technique: Order Slash", "Stile dei Numeri · Seconda Tecnica: Fendente dell’Ordine"], "description": ["Cut through any expression by respecting the correct priority.", "Taglia qualsiasi espressione rispettando la priorità corretta."], "xpReward": 25}
+    },
+"demon": ["Order-Chaos Imp", "Folletto del Caos dell'Ordine"],
+    "tech": ["Number Form · Second Technique: Order Slash", "Stile dei Numeri · Seconda Tecnica: Fendente dell'Ordine"],
+    "scenes": [
+      {
+        "who": "s",
+        "text": ["<p>The four operations on natural numbers are addition, subtraction, multiplication and division.</p>", "<p>Le quattro operazioni sui numeri naturali sono addizione, sottrazione, moltiplicazione e divisione.</p>"]
+      },
+      {
+        "who": "y",
+        "text": ["<p>In an expression we always do × and ÷ before + and −.</p>", "<p>In un'espressione facciamo sempre × e ÷ prima di + e −.</p>"]
+      }
+    ],
+    "quiz": [
+      {
+        "q": ["What is 5 + 3 × 2?", "Quanto fa 5 + 3 × 2?"],
+        "a": [["11", "11"], ["16", "16"], ["10", "10"], ["8", "8"]],
+        "why": ["Multiplication first: 3 × 2 = 6, then 5 + 6 = 11.", "Prima la moltiplicazione: 3 × 2 = 6, poi 5 + 6 = 11."]
+      }
+    ]
+  },
+  {
+    "id": "m1m3",
+    "arc": 21,
+    "sec": "1.3",
+    "pages": "15–20",
+    "hue": 55,
+    "horns": 3,
+    "eyes": 2,
+    "title": ["Properties of Operations", "Proprietà delle operazioni"],
+    "topic": ["Commutative, associative and distributive properties", "Proprietà commutativa, associativa e distributiva"],
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know the four operations.", "Conoscere le quattro operazioni."]],
+      "objectives": [
+        {"id": "use-properties", "description": ["Use the commutative, associative and distributive properties to simplify.", "Usare le proprietà commutativa, associativa e distributiva per semplificare."]}
+      ],
+      "concepts": [
+        {
+          "id": "distributive",
+          "title": ["Distributive property", "Proprietà distributiva"],
+          "explanation": ["Multiplication distributes over addition: a × (b + c) = a × b + a × c. It’s like handing out sweets to two groups.", "La moltiplicazione si distribuisce sull’addizione: a × (b + c) = a × b + a × c. È come distribuire le caramelle a due gruppi."],
+          "example": ["7 × 12 = 7 × (10 + 2) = 70 + 14 = 84. Più facile a mente!", "7 × 12 = 7 × (10 + 2) = 70 + 14 = 84. Easier mentally!"],
+          "workedExample": {
+            "scenario": ["Calculate 6 × 15 using the distributive property.", "Calcola 6 × 15 usando la proprietà distributiva."],
+            "steps": [
+              ["1. Scrivi 15 = 10 + 5.", "1. Write 15 = 10 + 5."],
+              ["2. 6 × (10 + 5) = 6 × 10 + 6 × 5.", "2. 6 × (10 + 5) = 6 × 10 + 6 × 5."],
+              ["3. 60 + 30 = 90.", "3. 60 + 30 = 90."]
+            ],
+            "answer": ["90", "90"]
+          },
+          "misconceptions": [
+            {"belief": ["The commutative property also works for subtraction.", "La proprietà commutativa vale anche per la sottrazione."], "correction": ["No. 5 − 3 ≠ 3 − 5. It only works for addition and multiplication.", "No. 5 − 3 ≠ 3 − 5. Vale solo per addizione e moltiplicazione."]}
+          ]
+        }
+      ],
+      "guidedPractice": [{"id": "gp-props", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Identify the property.", "Riconosci la proprietà."], "questions": [{"q": ["Which property is 4 + 9 = 9 + 4?", "Quale proprietà è 4 + 9 = 9 + 4?"], "a": [["Commutativa", "Commutative"], ["Associativa", "Associative"], ["Distributiva", "Distributive"], ["Nessuna", "None"]], "why": ["We change the order of the addends.", "Si cambia l’ordine degli addendi."]}]}],
+      "knowledgeCheck": [{"q": ["a × (b + c) è uguale a…", "a × (b + c) equals…"], "a": [["a × b + a × c", "a × b + a × c"], ["a + b × c", "a + b × c"], ["a × b × c", "a × b × c"], ["(a × b) + c", "(a × b) + c"]], "why": ["This is the distributive property.", "Questa è la proprietà distributiva."]}],
+      "summary": [["The properties let us rearrange calculations without changing the result. The distributive property is very useful for mental calculation.", "Le proprietà ci permettono di riorganizzare i calcoli senza cambiare il risultato. La distributiva è molto utile per il calcolo mentale."]],
+            "independentPractice": [{"id":"ip3","title":["Try alone", "Prova da solo"],"instructions":["Applica.","Apply."],"questions":[{"q":["8×13 con distributiva?","8×13 distributive?"],"a":[["104","104"],["96","96"],["112","112"],["100","100"]],"why":["80+24.","80+24."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["5+7=7+5 is…", "5+7=7+5 è…"], "a": [["Commutativa","Commutative"],["Associativa","Associative"],["Distributiva","Distributive"],["Nessuna","None"]], "why": ["Ordine.","Order."]}]},
+"techniqueUnlock": {"id": "property-slash", "name": ["Number Form · Third Technique: Property Slash", "Stile dei Numeri · Terza Tecnica: Fendente delle Proprietà"], "description": ["Rewrite the calculation using the properties to make it easier.", "Riscrivi il calcolo usando le proprietà per renderlo più facile."], "xpReward": 25}
+    },
+"demon": ["Property Imp", "Folletto delle Proprietà"],
+    "tech": ["Number Form · Third Technique: Property Slash", "Stile dei Numeri · Terza Tecnica: Fendente delle Proprietà"],
+    "scenes": [
+      {
+        "who": "s",
+        "text": ["<p>The commutative property says the order of the numbers does not change the result of addition or multiplication.</p>", "<p>La proprietà commutativa dice che l'ordine dei numeri non cambia il risultato di addizione o moltiplicazione.</p>"]
+      },
+      {
+        "who": "d",
+        "text": ["<p>The distributive property is especially useful for mental calculation.</p>", "<p>La proprietà distributiva è particolarmente utile per il calcolo mentale.</p>"]
+      }
+    ],
+    "quiz": [
+      {
+        "q": ["Which property is 2 × (5 + 3) = 2 × 5 + 2 × 3?", "Quale proprietà è 2 × (5 + 3) = 2 × 5 + 2 × 3?"],
+        "a": [["Distributive", "Distributiva"], ["Commutative", "Commutativa"], ["Associative", "Associativa"], ["None", "Nessuna"]],
+        "why": ["Multiplication distributes over addition.", "La moltiplicazione si distribuisce sull'addizione."]
+      }
+    ]
+  },
+  {
+    "id": "m2m1",
+    "arc": 22,
+    "sec": "2.1",
+    "pages": "77–84",
+    "hue": 180,
+    "horns": 2,
+    "eyes": 1,
+    "title": ["Rational Numbers", "Numeri razionali"],
+    "topic": ["Fractions and the set of rational numbers ℚ", "Frazioni e l'insieme dei numeri razionali ℚ"],
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know natural numbers and the four operations.", "Conoscere i numeri naturali e le quattro operazioni."]],
+      "objectives": [
+        {"id": "identify-rationals", "description": ["Identify rational numbers and write ℚ.", "Riconoscere i numeri razionali e scrivere ℚ."]},
+        {"id": "fraction-visual", "description": ["Represent a fraction as part of a whole or of a segment.", "Rappresentare una frazione come parte di un intero o di un segmento."]}
+      ],
+      "concepts": [
+        {
+          "id": "rational-visual",
+          "title": ["Rational numbers and fractions", "Numeri razionali e frazioni"],
+          "explanation": ["A rational number can be written as a fraction a/b with b ≠ 0. Imagine a pizza divided into b equal slices: a/b means taking a of those slices. The set of all rational numbers is called ℚ.", "Un numero razionale si può scrivere come frazione a/b con b ≠ 0. Immagina una pizza divisa in b fette uguali: a/b significa prendere a di quelle fette. L’insieme di tutti i numeri razionali si chiama ℚ."],
+          "example": ["1/2 is half a pizza. 3/4 is three slices out of four. 0.5 = 1/2. √2 cannot be written as a fraction, so it is not rational.", "1/2 è mezza pizza. 3/4 sono tre fette su quattro. 0,5 = 1/2. √2 non si può scrivere come frazione, quindi non è razionale."],
+          "workedExample": {
+            "scenario": ["Draw 3/4 and explain why it is rational.", "Disegna 3/4 e spiega perché è razionale."],
+            "steps": [
+              ["1. Draw a rectangle and divide it into 4 equal parts.", "1. Disegna un rettangolo e dividilo in 4 parti uguali."],
+              ["2. Colour 3 of those parts.", "2. Colora 3 di quelle parti."],
+              ["3. Hai rappresentato 3/4.", "3. You have represented 3/4."],
+              ["4. Since it is a fraction of two integers, it belongs to ℚ.", "4. Poiché è una frazione di due interi, appartiene a ℚ."]
+            ],
+            "answer": ["3/4 is rational because it is written as a fraction of two integers.", "3/4 è razionale perché si scrive come frazione di due interi."]
+          },
+          "misconceptions": [
+            {"belief": ["0.5 is not a fraction.", "0,5 non è una frazione."], "correction": ["0.5 = 5/10 = 1/2, so it is rational.", "0,5 = 5/10 = 1/2, quindi è razionale."]}
+          ]
+        }
+      ],
+      "guidedPractice": [{"id": "gp-rat", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Choose the answer.", "Scegli la risposta."], "questions": [{"q": ["Which of these is rational?", "Quale di questi è razionale?"], "a": [["2/5", "2/5"], ["√3", "√3"], ["π", "π"], ["√7", "√7"]], "why": ["2/5 is a fraction of two integers.", "2/5 è una frazione di due interi."]}]}],
+      "knowledgeCheck": [{"q": ["The symbol for rational numbers is…", "Il simbolo dei numeri razionali è…"], "a": [["ℚ", "ℚ"], ["ℕ", "ℕ"], ["ℤ", "ℤ"], ["ℝ", "ℝ"]], "why": ["ℚ stands for rational numbers (quotient).", "ℚ indica i numeri razionali (quoziente)."]}],
+      "summary": [["Rational numbers (ℚ) are all numbers that can be written as a fraction a/b with b ≠ 0. They are easy to visualise as parts of a whole.", "I numeri razionali (ℚ) sono tutti i numeri che si possono scrivere come frazione a/b con b ≠ 0. Si visualizzano bene come parti di un intero."]],
+            "independentPractice": [{"id":"ip21","title":["Try alone", "Prova da solo"],"instructions":["Scegli.","Choose."],"questions":[{"q":["Razionale?","Rational?"],"a":[["3/7","3/7"],["√5","√5"],["π","π"],["√8","√8"]],"why":["Fraction.", "Frazione."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["Simbolo razionali?","Rationals symbol?"], "a": [["ℚ","ℚ"],["ℕ","ℕ"],["ℤ","ℤ"],["ℝ","ℝ"]], "why": ["ℚ.","ℚ."]}]},
+"techniqueUnlock": {"id": "fraction-slash", "name": ["Number Form · Fourth Technique: Fraction Slash", "Stile dei Numeri · Quarta Tecnica: Fendente della Frazione"], "description": ["Rewrite any rational number as a clean fraction and visualise it.", "Riscrivi qualsiasi numero razionale come frazione pulita e visualizzala."], "xpReward": 25}
+    },
+"demon": ["Fraction Imp", "Folletto delle Frazioni"],
+    "tech": ["Number Form · Fourth Technique: Fraction Slash", "Stile dei Numeri · Quarta Tecnica: Fendente della Frazione"],
+        "scenes": [
+      {"vis": "math-fractions-visual", "who": "s", "text": ["<p>A rational number can be written as a fraction <b>a/b</b> with b ≠ 0.</p><p>Imagine a pizza divided into b equal slices: a/b means taking a slices.</p>", "<p>Un numero razionale si può scrivere come frazione <b>a/b</b> con b ≠ 0.</p><p>Immagina una pizza divisa in b fette uguali: a/b significa prendere a fette.</p>"]},
+      {"who": "y", "text": ["<p>0.5 = 1/2, so it is rational. √2 cannot be written as a fraction, so it is not.</p>", "<p>0,5 = 1/2, quindi è razionale. √2 non si può scrivere come frazione, quindi non lo è.</p>"]},
+      {"who": "d", "text": ["<p>The set of all rational numbers is called <b>ℚ</b>.</p>", "<p>L’insieme di tutti i numeri razionali si chiama <b>ℚ</b>.</p>"]}
+    ],
+"quiz": [
+      {
+        "q": ["Is 0.5 a rational number?", "0,5 è un numero razionale?"],
+        "a": [["Yes", "Sì"], ["No", "No"], ["Only sometimes", "Solo a volte"], ["Never", "Mai"]],
+        "why": ["0.5 = 1/2, so it is rational.", "0,5 = 1/2, quindi è razionale."]
+      }
+    ]
+  },
+  {
+    "id": "m3m1",
+    "arc": 23,
+    "sec": "3.1",
+    "pages": "147–154",
+    "hue": 270,
+    "horns": 2,
+    "eyes": 3,
+    "title": ["Sets", "Insiemi"],
+    "topic": ["What a set is, membership and basic set notation", "Che cos'è un insieme, appartenenza e notazione di base"],
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know the sets ℕ, ℤ, ℚ.", "Conoscere gli insiemi ℕ, ℤ, ℚ."]],
+      "objectives": [
+        {"id": "describe-sets", "description": ["Describe a set by listing or by a property.", "Descrivere un insieme per elencazione o per proprietà."]},
+        {"id": "membership", "description": ["Use the symbols ∈ and ∉ correctly.", "Usare correttamente i simboli ∈ e ∉."]}
+      ],
+      "concepts": [
+        {
+          "id": "sets-visual",
+          "title": ["Sets and membership", "Insiemi e appartenenza"],
+          "explanation": ["A set is a collection of distinct objects called elements. We can draw it as a cloud or a circle and put the elements inside. We write a ∈ A if a is inside, a ∉ A if it is outside.", "Un insieme è una collezione di oggetti distinti chiamati elementi. Possiamo disegnarlo come una nuvola o un cerchio e mettere gli elementi dentro. Scriviamo a ∈ A se a sta dentro, a ∉ A se sta fuori."],
+          "example": ["A = {1, 2, 3}. Draw a circle with 1, 2 and 3 inside. Then 2 ∈ A and 5 ∉ A.", "A = {1, 2, 3}. Disegna un cerchio con 1, 2 e 3 dentro. Allora 2 ∈ A e 5 ∉ A."],
+          "workedExample": {
+            "scenario": ["Given A = {natural numbers less than 4}, list the elements and say if 3 ∈ A.", "Dato A = {numeri naturali minori di 4}, elenca gli elementi e di’ se 3 ∈ A."],
+            "steps": [
+              ["1. Natural numbers less than 4 are 0, 1, 2, 3.", "1. I numeri naturali minori di 4 sono 0, 1, 2, 3."],
+              ["2. Quindi A = {0, 1, 2, 3}.", "2. So A = {0, 1, 2, 3}."],
+              ["3. 3 is in the list, so 3 ∈ A.", "3. 3 è nell’elenco, quindi 3 ∈ A."]
+            ],
+            "answer": ["A = {0, 1, 2, 3} and 3 ∈ A.", "A = {0, 1, 2, 3} e 3 ∈ A."]
+          },
+          "misconceptions": [
+            {"belief": ["A set can contain the same element twice.", "Un insieme può contenere lo stesso elemento due volte."], "correction": ["No. Elements of a set are always distinct. {1, 1, 2} is the same as {1, 2}.", "No. Gli elementi di un insieme sono sempre distinti. {1, 1, 2} è uguale a {1, 2}."]}
+          ]
+        }
+      ],
+      "guidedPractice": [{"id": "gp-set", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Decidi.", "Decide."], "questions": [{"q": ["4 appartiene a {2, 4, 6}?", "Does 4 belong to {2, 4, 6}?"], "a": [["Sì", "Yes"], ["No", "No"], ["Only if even", "Solo se è pari"], ["Only if odd", "Solo se è dispari"]], "why": ["4 is listed in the set.", "4 è elencato nell’insieme."]}]}],
+      "knowledgeCheck": [{"q": ["The symbol for “belongs to” is…", "Il simbolo “appartiene a” è…"], "a": [["∈", "∈"], ["∉", "∉"], ["⊂", "⊂"], ["∪", "∪"]], "why": ["∈ indica l’appartenenza.", "∈ indicates membership."]}],
+      "summary": [["A set is a collection of distinct elements. It can be described by listing or by a property. We use ∈ and ∉ to say if an element is inside or outside.", "Un insieme è una collezione di elementi distinti. Si può descrivere per elencazione o per proprietà. Usiamo ∈ e ∉ per dire se un elemento sta dentro o fuori."]],
+            "independentPractice": [{"id":"ip31","title":["Try alone", "Prova da solo"],"instructions":["Decidi.","Decide."],"questions":[{"q":["5 ∈ {1,3,5}?","5 ∈ {1,3,5}?"],"a":[["Sì","Yes"],["No","No"],["Solo dispari","Only odd"],["Solo primo","Only prime"]],"why":["Elencato.","Listed."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["Simbolo appartenenza?","Membership symbol?"], "a": [["∈","∈"],["∉","∉"],["⊂","⊂"],["∪","∪"]], "why": ["∈.","∈."]}]},
+"techniqueUnlock": {"id": "set-slash", "name": ["Logic Form · First Technique: Set Slash", "Stile della Logica · Prima Tecnica: Fendente dell’Insieme"], "description": ["Clearly list or describe the elements and cut through the problem.", "Elenca o descrivi chiaramente gli elementi e taglia il problema."], "xpReward": 25}
+    },
+"demon": ["Empty-Set Imp", "Folletto dell'Insieme Vuoto"],
+    "tech": ["Logic Form · First Technique: Set Slash", "Stile della Logica · Prima Tecnica: Fendente dell'Insieme"],
+        "scenes": [
+      {"vis": "math-venn-diagram", "who": "s", "text": ["<p>A set is a collection of distinct objects called elements.</p><p>Draw it as a circle and put the elements inside.</p>", "<p>Un insieme è una collezione di oggetti distinti chiamati elementi.</p><p>Disegnalo come un cerchio e metti gli elementi dentro.</p>"]},
+      {"who": "y", "text": ["<p>We write <b>a ∈ A</b> if a is inside, <b>a ∉ A</b> if it is outside.</p>", "<p>Scriviamo <b>a ∈ A</b> se a sta dentro, <b>a ∉ A</b> se sta fuori.</p>"]},
+      {"who": "d", "text": ["<p>Elements are always distinct: {1, 1, 2} is the same as {1, 2}.</p>", "<p>Gli elementi sono sempre distinti: {1, 1, 2} è uguale a {1, 2}.</p>"]}
+    ],
+"quiz": [
+      {
+        "q": ["Which of these is an empty set?", "Quale di questi è un insieme vuoto?"],
+        "a": [["The set of natural numbers less than 0", "L'insieme dei numeri naturali minori di 0"], ["{0}", "{0}"], ["{1, 2}", "{1, 2}"], ["ℕ", "ℕ"]],
+        "why": ["There are no natural numbers less than 0, so the set is empty.", "Non esistono numeri naturali minori di 0, quindi l'insieme è vuoto."]
+      }
+    ]
+  },
+  {
+    "id": "m2m2",
+    "arc": 22,
+    "sec": "2.2",
+    "pages": "85–96",
+    "hue": 185,
+    "horns": 2,
+    "eyes": 2,
+    "title": ["Operations with Rationals", "Operazioni con i razionali"],
+    "topic": ["Addition, subtraction, multiplication and division of fractions", "Addizione, sottrazione, moltiplicazione e divisione di frazioni"],
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know what a rational number is.", "Sapere che cos’è un numero razionale."]],
+      "objectives": [
+        {"id": "frac-ops", "description": ["Add, subtract, multiply and divide fractions.", "Addizionare, sottrarre, moltiplicare e dividere frazioni."]}
+      ],
+      "concepts": [
+        {
+          "id": "multiply-fractions",
+          "title": ["Multiplying and dividing fractions", "Moltiplicazione e divisione di frazioni"],
+          "explanation": ["To multiply fractions multiply numerators and denominators. To divide, multiply by the reciprocal (swap numerator and denominator of the second fraction).", "Per moltiplicare frazioni si moltiplicano numeratori e denominatori. Per dividere si moltiplica per il reciproco (si scambia numeratore e denominatore della seconda frazione)."],
+          "example": ["2/3 × 4/5 = 8/15.  2/3 ÷ 1/6 = 2/3 × 6/1 = 4.", "2/3 × 4/5 = 8/15.  2/3 ÷ 1/6 = 2/3 × 6/1 = 4."],
+          "workedExample": {
+            "scenario": ["Calculate 1/2 × 3/4 and 3/5 ÷ 2/3.", "Calcola 1/2 × 3/4 e 3/5 ÷ 2/3."],
+            "steps": [
+              ["1. 1/2 × 3/4 = 3/8.", "1. 1/2 × 3/4 = 3/8."],
+              ["2. 3/5 ÷ 2/3 = 3/5 × 3/2 = 9/10.", "2. 3/5 ÷ 2/3 = 3/5 × 3/2 = 9/10."]
+            ],
+            "answer": ["3/8 and 9/10", "3/8 e 9/10"]
+          },
+          "misconceptions": [
+            {"belief": ["To multiply fractions we add the denominators.", "Per moltiplicare frazioni si sommano i denominatori."], "correction": ["No. We multiply both numerators and denominators.", "No. Si moltiplicano sia i numeratori sia i denominatori."]}
+          ]
+        }
+      ],
+      "guidedPractice": [{"id": "gp-fracops", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Calculate.", "Calcola."], "questions": [{"q": ["What is 1/2 × 3/4?", "Quanto fa 1/2 × 3/4?"], "a": [["3/8", "3/8"], ["4/6", "4/6"], ["3/6", "3/6"], ["2/3", "2/3"]], "why": ["1×3 / 2×4 = 3/8.", "1×3 / 2×4 = 3/8."]}]}],
+      "knowledgeCheck": [{"q": ["To divide by a fraction we…", "Per dividere per una frazione si…"], "a": [["Multiply by its reciprocal", "Moltiplica per il suo reciproco"], ["Add the denominators", "Somma i denominatori"], ["Subtract the numerators", "Sottrai i numeratori"], ["Niente di speciale", "Nothing special"]], "why": ["Dividing by a/b is the same as multiplying by b/a.", "Dividere per a/b equivale a moltiplicare per b/a."]}],
+      "summary": [["Fraction multiplication: multiply across. Division: multiply by the reciprocal.", "Moltiplicazione di frazioni: moltiplica in croce. Divisione: moltiplica per il reciproco."]],
+            "independentPractice": [{"id":"ip22","title":["Try alone", "Prova da solo"],"instructions":["Calculate.", "Calcola."],"questions":[{"q":["2/3 × 3/4?","2/3 × 3/4?"],"a":[["1/2","1/2"],["6/12","6/12"],["5/7","5/7"],["2/4","2/4"]],"why":["6/12=1/2.","6/12=1/2."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["1/2 ÷ 1/4?","1/2 ÷ 1/4?"], "a": [["2","2"],["1/8","1/8"],["1/2","1/2"],["4","4"]], "why": ["×4.","×4."]}]},
+"techniqueUnlock": {"id": "reciprocal-slash", "name": ["Number Form · Fifth Technique: Reciprocal Slash", "Stile dei Numeri · Quinta Tecnica: Fendente del Reciproco"], "description": ["Turn any division of fractions into a multiplication by the reciprocal.", "Trasforma qualsiasi divisione di frazioni in una moltiplicazione per il reciproco."], "xpReward": 25}
+    },
+"demon": ["Denominator Imp", "Folletto del Denominatore"],
+    "tech": ["Number Form · Fifth Technique: Reciprocal Slash", "Stile dei Numeri · Quinta Tecnica: Fendente del Reciproco"],
+    "scenes": [{"who": "s", "text": ["<p>To multiply fractions, multiply the numerators together and the denominators together.</p>", "<p>Per moltiplicare frazioni si moltiplicano tra loro i numeratori e i denominatori.</p>"]}, {"who": "y", "text": ["<p>To divide by a fraction, multiply by its reciprocal.</p>", "<p>Per dividere per una frazione si moltiplica per il suo reciproco.</p>"]}],
+    "quiz": [{"q": ["What is 2/3 ÷ 1/6?", "Quanto fa 2/3 ÷ 1/6?"], "a": [["4", "4"], ["1/9", "1/9"], ["2/18", "2/18"], ["12", "12"]], "why": ["2/3 × 6/1 = 12/3 = 4.", "2/3 × 6/1 = 12/3 = 4."]}]
+  },
+  {
+    "id": "m2m3",
+    "arc": 22,
+    "sec": "2.3",
+    "pages": "97–110",
+    "hue": 190,
+    "horns": 3,
+    "eyes": 1,
+    "title": ["Decimals and Real Numbers", "Decimali e numeri reali"],
+    "topic": ["Decimal representation and the set of real numbers ℝ", "Rappresentazione decimale e l'insieme dei numeri reali ℝ"],
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know rational numbers.", "Conoscere i numeri razionali."]],
+      "objectives": [
+        {"id": "decimals-reals", "description": ["Convert between fractions and decimals and recognise real numbers.", "Convertire tra frazioni e decimali e riconoscere i numeri reali."]}
+      ],
+      "concepts": [
+        {
+          "id": "reals-visual",
+          "title": ["Decimals and real numbers", "Decimali e numeri reali"],
+          "explanation": ["Every fraction can be written as a decimal (terminating or repeating). The real numbers ℝ also include irrationals such as √2 and π, which fill the entire number line.", "Ogni frazione si può scrivere come decimale (finito o periodico). I numeri reali ℝ comprendono anche gli irrazionali come √2 e π, che riempiono tutta la retta numerica."],
+          "example": ["1/2 = 0.5. 1/3 = 0.333… √2 ≈ 1.414… is not repeating, so it is irrational but real.", "1/2 = 0,5. 1/3 = 0,333… √2 ≈ 1,414… non è periodico, quindi è irrazionale ma reale."],
+          "workedExample": {
+            "scenario": ["Decide whether 0.25 and √2 are rational.", "Stabilisci se 0,25 e √2 sono razionali."],
+            "steps": [
+              ["1. 0,25 = 25/100 = 1/4 → razionale.", "1. 0.25 = 25/100 = 1/4 → rational."],
+              ["2. √2 cannot be written as a fraction of integers → irrational (but real).", "2. √2 non si può scrivere come frazione di interi → irrazionale (ma reale)."]
+            ],
+            "answer": ["0.25 is rational; √2 is irrational.", "0,25 è razionale; √2 è irrazionale."]
+          }
+        }
+      ],
+      "guidedPractice": [{"id": "gp-real", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Scegli.", "Choose."], "questions": [{"q": ["Which number is irrational?", "Quale numero è irrazionale?"], "a": [["√2", "√2"], ["1/3", "1/3"], ["0,25", "0.25"], ["-7", "-7"]], "why": ["√2 cannot be written as a fraction.", "√2 non si può scrivere come frazione."]}]}],
+      "knowledgeCheck": [{"q": ["Every rational number is also…", "Ogni numero razionale è anche…"], "a": [["Reale", "Real"], ["Irrazionale", "Irrational"], ["Naturale", "Natural"], ["Immaginario", "Imaginary"]], "why": ["ℚ ⊂ ℝ.", "ℚ ⊂ ℝ."]}],
+      "summary": [["Real numbers fill the entire line. Rationals are those that can be written as a fraction; the others are irrational.", "I numeri reali riempiono tutta la retta. I razionali sono quelli che si scrivono come frazione; gli altri sono irrazionali."]],
+            "independentPractice": [{"id":"ip23","title":["Try alone", "Prova da solo"],"instructions":["Scegli.","Choose."],"questions":[{"q":["Irrazionale?","Irrational?"],"a":[["√3","√3"],["0,75","0.75"],["2/5","2/5"],["-4","-4"]],"why":["√3.","√3."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["Is π real?", "π è reale?"], "a": [["Sì","Yes"],["No","No"],["A volte","Sometimes"],["Immaginario","Imaginary"]], "why": ["Sì.","Yes."]}]},
+"techniqueUnlock": {"id": "number-line-slash", "name": ["Number Form · Sixth Technique: Number-Line Slash", "Stile dei Numeri · Sesta Tecnica: Fendente della Retta"], "description": ["Place any real number on the line and compare it.", "Posiziona qualsiasi numero reale sulla retta e confrontalo."], "xpReward": 25}
+    },
+"demon": ["Irrational Imp", "Folletto dell'Irrazionale"],
+    "tech": ["Number Form · Sixth Technique: Number-Line Slash", "Stile dei Numeri · Sesta Tecnica: Fendente della Retta"],
+    "scenes": [{"who": "s", "text": ["<p>Every fraction can be written as a decimal, terminating or repeating.</p>", "<p>Ogni frazione si può scrivere come decimale, finito o periodico.</p>"]}, {"who": "d", "text": ["<p>The real numbers fill the whole number line.</p>", "<p>I numeri reali riempiono tutta la retta numerica.</p>"]}],
+    "quiz": [{"q": ["Is π a real number?", "π è un numero reale?"], "a": [["Yes", "Sì"], ["No", "No"], ["Only sometimes", "Solo a volte"], ["It is imaginary", "È immaginario"]], "why": ["π is irrational, therefore it is real.", "π è irrazionale, quindi è reale."]}]
+  },
+  {
+    "id": "m3m2",
+    "arc": 23,
+    "sec": "3.2",
+    "pages": "155–168",
+    "hue": 275,
+    "horns": 2,
+    "eyes": 2,
+    "title": ["Set Operations", "Operazioni tra insiemi"],
+    "topic": ["Union, intersection and difference", "Unione, intersezione e differenza"],
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know membership and sets.", "Conoscere l’appartenenza e gli insiemi."]],
+      "objectives": [
+        {"id": "set-ops", "description": ["Compute union, intersection and difference of two sets.", "Calcolare unione, intersezione e differenza di due insiemi."]}
+      ],
+      "concepts": [
+        {
+          "id": "ops-visual",
+          "title": ["Union and intersection", "Unione e intersezione"],
+          "explanation": ["Draw two overlapping circles. The union A ∪ B is everything in at least one circle. The intersection A ∩ B is only the overlapping part.", "Disegna due cerchi che si sovrappongono. L’unione A ∪ B è tutto ciò che sta in almeno uno dei due cerchi. L’intersezione A ∩ B è solo la parte sovrapposta."],
+          "example": ["{1,2} ∪ {2,3} = {1,2,3}. {1,2} ∩ {2,3} = {2}.", "{1,2} ∪ {2,3} = {1,2,3}. {1,2} ∩ {2,3} = {2}."],
+          "workedExample": {
+            "scenario": ["Given A = {a,b} and B = {b,c}, compute A ∪ B and A ∩ B.", "Dati A = {a,b} e B = {b,c}, calcola A ∪ B e A ∩ B."],
+            "steps": [
+              ["1. Union: all distinct elements → {a,b,c}.", "1. Unione: tutti gli elementi distinti → {a,b,c}."],
+              ["2. Intersection: only those in both → {b}.", "2. Intersezione: solo quelli in entrambi → {b}."]
+            ],
+            "answer": ["A ∪ B = {a,b,c}, A ∩ B = {b}.", "A ∪ B = {a,b,c}, A ∩ B = {b}."]
+          }
+        }
+      ],
+      "guidedPractice": [{"id": "gp-setops", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Calculate.", "Calcola."], "questions": [{"q": ["What is {a,b} ∩ {b,c}?", "Quanto fa {a,b} ∩ {b,c}?"], "a": [["{b}", "{b}"], ["{a,b,c}", "{a,b,c}"], ["{a,c}", "{a,c}"], ["∅", "∅"]], "why": ["Only b is in both.", "Solo b sta in entrambi."]}]}],
+      "knowledgeCheck": [{"q": ["A ∪ B is…", "A ∪ B è…"], "a": [["The set of elements in A or B", "L’insieme degli elementi in A o in B"], ["The set of elements in both", "L’insieme degli elementi in entrambi"], ["Sempre vuoto", "Always empty"], ["The same as A ∩ B", "Uguale a A ∩ B"]], "why": ["Union takes everything from either set.", "L’unione prende tutto da entrambi gli insiemi."]}],
+      "summary": [["Union = everything, intersection = only the common part, difference = remove. They are easy to see with Venn diagrams.", "Unione = tutto, intersezione = solo il comune, differenza = togli. Si visualizzano bene con i diagrammi di Venn."]],
+      "techniqueUnlock": {"id": "union-slash", "name": ["Logic Form · Second Technique: Union Slash", "Stile della Logica · Seconda Tecnica: Fendente dell’Unione"], "description": ["Combine or filter sets with union and intersection.", "Combina o filtra insiemi con unione e intersezione."], "xpReward": 25}
+    },
+"demon": ["Overlap Imp", "Folletto della Sovrapposizione"],
+    "tech": ["Logic Form · Second Technique: Union Slash", "Stile della Logica · Seconda Tecnica: Fendente dell'Unione"],
+    "scenes": [{"vis": "math-venn-diagram", "who": "s", "text": ["<p>The union of two sets contains every element that belongs to at least one of them.</p>", "<p>L'unione di due insiemi contiene ogni elemento che appartiene ad almeno uno di essi.</p>"]}, {"who": "y", "text": ["<p>The intersection contains only the elements that belong to both.</p>", "<p>L'intersezione contiene solo gli elementi che appartengono a entrambi.</p>"]}],
+    "quiz": [{"q": ["What is {1,2,3} ∪ {3,4}?", "Quanto fa {1,2,3} ∪ {3,4}?"], "a": [["{1,2,3,4}", "{1,2,3,4}"], ["{3}", "{3}"], ["{1,2}", "{1,2}"], ["{4}", "{4}"]], "why": ["Union keeps every distinct element.", "L'unione tiene ogni elemento distinto."]}]
+  },
+  {
+    "id": "m4m1",
+    "arc": 24,
+    "sec": "4.1",
+    "pages": "223–232",
+    "hue": 30,
+    "horns": 2,
+    "eyes": 1,
+    "title": ["Algebraic Expressions", "Espressioni algebriche"],
+    "topic": ["Variables, terms, coefficients, constants and evaluating expressions", "Variabili, termini, coefficienti, costanti e valutazione di espressioni"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [
+        ["Know the order of operations and the four basic operations.", "Conoscere l'ordine delle operazioni e le quattro operazioni."]
+      ],
+      "objectives": [
+        {
+          "id": "read-expressions",
+          "description": ["Identify variables, terms, coefficients and constant terms in simple algebraic expressions.", "Riconoscere variabili, termini, coefficienti e termini costanti nelle semplici espressioni algebriche."],
+          "successCriteria": [
+            ["I can explain what a letter represents in an expression.", "So spiegare che cosa rappresenta una lettera in un'espressione."],
+            ["I can identify the coefficient and the constant term.", "So individuare il coefficiente e il termine costante."]
+          ]
+        },
+        {
+          "id": "evaluate-expressions",
+          "description": ["Evaluate simple algebraic expressions by substituting values and following the order of operations.", "Calcolare semplici espressioni algebriche sostituendo i valori e rispettando l'ordine delle operazioni."],
+          "successCriteria": [
+            ["I replace each variable with its given value.", "Sostituisco ogni variabile con il valore assegnato."],
+            ["I calculate the result in the correct order.", "Calcolo il risultato rispettando l'ordine corretto."]
+          ]
+        }
+      ],
+      "concepts": [
+        {
+          "id": "variables",
+          "title": ["Variables and expressions", "Variabili ed espressioni"],
+          "explanation": ["A variable is a letter that represents a number. It is like an empty box: the letter can take different values. An algebraic expression combines numbers, variables and operations. For example, 3x + 2 means three times x, then add 2.", "Una variabile è una lettera che rappresenta un numero. È come una casella vuota: la lettera può assumere valori diversi. Un'espressione algebrica combina numeri, variabili e operazioni. Per esempio, 3x + 2 significa tre volte x, poi si aggiunge 2."],
+          "example": ["If x = 4, then 3x + 2 = 3 · 4 + 2 = 14.", "Se x = 4, allora 3x + 2 = 3 · 4 + 2 = 14."],
+          "misconceptions": [
+            {"belief": ["3x means 3 + x.", "3x significa 3 + x."], "correction": ["No. When a number and a letter are written next to each other, it means multiplication: 3x = 3 · x.", "No. Quando un numero e una lettera sono scritti vicini, significa moltiplicazione: 3x = 3 · x."]}
+          ],
+          "knowledgePrompts": [
+            ["If x changes, can the value of 3x + 2 change too?", "Se x cambia, può cambiare anche il valore di 3x + 2?"]
+          ],
+          "visualKey": "algebra-parts"
+        },
+        {
+          "id": "terms-coefficients",
+          "title": ["Terms, coefficients and constants", "Termini, coefficienti e costanti"],
+          "explanation": ["A term is a part of an expression separated by + or − signs. In 3x + 2, the terms are 3x and 2. The coefficient is the number multiplying the variable: here it is 3. The constant term has no variable: here it is 2.", "Un termine è una parte dell'espressione separata dai segni + o −. In 3x + 2, i termini sono 3x e 2. Il coefficiente è il numero che moltiplica la variabile: qui è 3. Il termine costante non contiene variabili: qui è 2."],
+          "example": ["In 5a − 7, the coefficient is 5, the variable is a and the constant term is −7.", "In 5a − 7, il coefficiente è 5, la variabile è a e il termine costante è −7."],
+          "misconceptions": [
+            {"belief": ["The constant term in 5a − 7 is 7.", "Il termine costante in 5a − 7 è 7."], "correction": ["The sign belongs to the term. The constant term is −7, not +7.", "Il segno fa parte del termine. Il termine costante è −7, non +7."]}
+          ],
+          "visualKey": "algebra-parts"
+        },
+        {
+          "id": "substitution",
+          "title": ["Substitution: replacing a letter with a number", "Sostituzione: rimpiazzare una lettera con un numero"],
+          "explanation": ["To evaluate an expression, replace every variable with its given value. Then calculate using the order of operations. Use brackets when the value is negative.", "Per calcolare un'espressione, sostituisci ogni variabile con il valore assegnato. Poi esegui i calcoli rispettando l'ordine delle operazioni. Usa le parentesi quando il valore è negativo."],
+          "example": ["If x = 3, then 2x + 5 = 2 · 3 + 5 = 6 + 5 = 11.", "Se x = 3, allora 2x + 5 = 2 · 3 + 5 = 6 + 5 = 11."],
+          "workedExample": {
+            "scenario": ["A notebook costs x euros. You buy 3 notebooks and a pen that costs 2 euros. If x = 4, how much do you spend?", "Un quaderno costa x euro. Compri 3 quaderni e una penna che costa 2 euro. Se x = 4, quanto spendi?"],
+            "steps": [
+              ["Write the expression: 3x + 2. The 3 notebooks cost 3 times x; the pen costs 2 euros.", "Scrivi l'espressione: 3x + 2. I 3 quaderni costano 3 volte x; la penna costa 2 euro."],
+              ["Replace x with 4: 3 · 4 + 2.", "Sostituisci x con 4: 3 · 4 + 2."],
+              ["Multiply first: 12 + 2.", "Esegui prima la moltiplicazione: 12 + 2."],
+              ["Add: 14.", "Somma: 14."]
+            ],
+            "answer": ["You spend 14 euros. The expression 3x + 2 describes the cost for any notebook price x.", "Spendi 14 euro. L'espressione 3x + 2 descrive il costo per qualsiasi prezzo x del quaderno."]
+          },
+          "misconceptions": [
+            {"belief": ["If x = −2, then x² = −4.", "Se x = −2, allora x² = −4."], "correction": ["Use brackets: (−2)² = (−2) · (−2) = 4. The square of a negative number is positive.", "Usa le parentesi: (−2)² = (−2) · (−2) = 4. Il quadrato di un numero negativo è positivo."]}
+          ],
+          "sceneIndexes": [3],
+          "visualKey": "algebra-substitution"
+        }
+      ],
+      "guidedPractice": [
+        {
+          "id": "gp-alg",
+          "title": ["Guided practice: read and evaluate", "Esercitazione guidata: riconosci e calcola"],
+          "instructions": ["Choose the correct answer. Use the hint if you need help.", "Scegli la risposta corretta. Usa il suggerimento se hai bisogno di aiuto."],
+          "sceneIndex": 2,
+          "hints": [
+            ["Remember: a number next to a letter means multiplication.", "Ricorda: un numero vicino a una lettera indica una moltiplicazione."],
+            ["The coefficient is the number multiplying the letter.", "Il coefficiente è il numero che moltiplica la lettera."],
+            ["Replace x with 4 first, then multiply before adding.", "Sostituisci prima x con 4, poi moltiplica prima di sommare."]
+          ],
+          "questions": [
+            {"q": ["What does 4y mean?", "Che cosa significa 4y?"], "a": [["4 multiplied by y", "4 moltiplicato per y"], ["4 plus y", "4 più y"], ["y minus 4", "y meno 4"], ["y divided by 4", "y diviso 4"]], "why": ["A number written next to a variable means multiplication: 4y = 4 · y.", "Un numero scritto vicino a una variabile indica una moltiplicazione: 4y = 4 · y."]},
+            {"q": ["In 6x + 9, what is the coefficient of x?", "In 6x + 9, qual è il coefficiente di x?"], "a": [["6", "6"], ["9", "9"], ["x", "x"], ["15", "15"]], "why": ["6 multiplies x, so 6 is the coefficient. 9 is the constant term.", "6 moltiplica x, quindi 6 è il coefficiente. 9 è il termine costante."]},
+            {"q": ["If x = 4, what is 2x + 3?", "Se x = 4, quanto fa 2x + 3?"], "a": [["11", "11"], ["14", "14"], ["9", "9"], ["7", "7"]], "why": ["Replace x with 4: 2 · 4 + 3 = 8 + 3 = 11.", "Sostituisci x con 4: 2 · 4 + 3 = 8 + 3 = 11."]}
+          ]
+        }
+      ],
+      "independentPractice": [
+        {
+          "id": "ip-alg",
+          "title": ["Independent practice", "Esercitazione autonoma"],
+          "instructions": ["Solve each question without a hint. Read the explanation after answering.", "Risolvi ogni domanda senza suggerimenti. Leggi la spiegazione dopo aver risposto."],
+          "sceneIndex": 4,
+          "questions": [
+            {"q": ["In 8a − 5, which part is the constant term?", "In 8a − 5, qual è il termine costante?"], "a": [["−5", "−5"], ["8", "8"], ["a", "a"], ["8a", "8a"]], "why": ["The constant term has no variable, and its sign is part of the term: −5.", "Il termine costante non contiene variabili e il suo segno fa parte del termine: −5."]},
+            {"q": ["If y = 5, what is 3y − 4?", "Se y = 5, quanto fa 3y − 4?"], "a": [["11", "11"], ["19", "19"], ["7", "7"], ["15", "15"]], "why": ["3 · 5 − 4 = 15 − 4 = 11.", "3 · 5 − 4 = 15 − 4 = 11."]},
+            {"q": ["If x = −2, what is x² + 3x?", "Se x = −2, quanto fa x² + 3x?"], "a": [["−2", "−2"], ["−10", "−10"], ["10", "10"], ["−1", "−1"]], "why": ["(−2)² + 3 · (−2) = 4 − 6 = −2. Remember the brackets when substituting a negative number.", "(−2)² + 3 · (−2) = 4 − 6 = −2. Ricorda le parentesi quando sostituisci un numero negativo."]}
+          ]
+        }
+      ],
+      "knowledgeCheck": [
+        {"q": ["In 7m + 4, which number is the coefficient?", "In 7m + 4, quale numero è il coefficiente?"], "a": [["7", "7"], ["4", "4"], ["m", "m"], ["11", "11"]], "why": ["The coefficient multiplies the variable: 7m.", "Il coefficiente moltiplica la variabile: 7m."]},
+        {"q": ["Which expression means 'five more than twice n'?", "Quale espressione significa 'cinque in più del doppio di n'?"], "a": [["2n + 5", "2n + 5"], ["5n + 2", "5n + 2"], ["2(n + 5)", "2(n + 5)"], ["n + 2 + 5", "n + 2 + 5"]], "why": ["Twice n is 2n; five more means add 5: 2n + 5.", "Il doppio di n è 2n; cinque in più significa aggiungere 5: 2n + 5."]},
+        {"q": ["If a = 3, what is a² + 2a?", "Se a = 3, quanto fa a² + 2a?"], "a": [["15", "15"], ["12", "12"], ["11", "11"], ["9", "9"]], "why": ["3² + 2 · 3 = 9 + 6 = 15.", "3² + 2 · 3 = 9 + 6 = 15."]}
+      ],
+      "masteryAssessment": {
+        "title": ["Algebra expressions mastery", "Prova di padronanza: espressioni algebriche"],
+        "instructions": ["Answer all five questions independently. You need at least 80% to unlock the battle.", "Rispondi autonomamente a tutte e cinque le domande. Serve almeno l'80% per sbloccare la battaglia."],
+        "passingScore": 80,
+        "questionConceptIds": ["variables", "terms-coefficients", "variables", "substitution", "substitution"],
+        "questions": [
+          {"q": ["In 4x + 3, what is the coefficient?", "In 4x + 3, qual è il coefficiente?"], "a": [["4", "4"], ["3", "3"], ["x", "x"], ["7", "7"]], "why": ["4 multiplies x, so it is the coefficient.", "4 moltiplica x, quindi è il coefficiente."]},
+          {"q": ["What is the constant term in 7a − 6?", "Qual è il termine costante in 7a − 6?"], "a": [["−6", "−6"], ["6", "6"], ["7", "7"], ["a", "a"]], "why": ["The constant term has no variable, and its sign is −: it is −6.", "Il termine costante non contiene variabili e il suo segno è −: è −6."]},
+          {"q": ["Which expression means 'three less than twice x'?", "Quale espressione significa 'tre in meno del doppio di x'?"], "a": [["2x − 3", "2x − 3"], ["3 − 2x", "3 − 2x"], ["2(x − 3)", "2(x − 3)"], ["3x − 2", "3x − 2"]], "why": ["Twice x is 2x; three less means subtract 3: 2x − 3.", "Il doppio di x è 2x; tre in meno significa sottrarre 3: 2x − 3."]},
+          {"q": ["If x = 5, what is 3x + 4?", "Se x = 5, quanto fa 3x + 4?"], "a": [["19", "19"], ["27", "27"], ["15", "15"], ["12", "12"]], "why": ["3 · 5 + 4 = 15 + 4 = 19.", "3 · 5 + 4 = 15 + 4 = 19."]},
+          {"q": ["If x = −3, what is x² + 2x?", "Se x = −3, quanto fa x² + 2x?"], "a": [["3", "3"], ["−15", "−15"], ["−3", "−3"], ["15", "15"]], "why": ["(−3)² + 2 · (−3) = 9 − 6 = 3.", "(−3)² + 2 · (−3) = 9 − 6 = 3."]}
+        ]
+      },
+      "summary": [
+        ["A variable is a letter for a number. Terms are separated by + or −. The coefficient multiplies the variable; the constant term has no variable. To evaluate, substitute and follow the order of operations.", "Una variabile è una lettera che rappresenta un numero. I termini sono separati da + o −. Il coefficiente moltiplica la variabile; il termine costante non contiene variabili. Per calcolare, sostituisci e rispetta l'ordine delle operazioni."]
+      ],
+      "techniqueUnlock": {
+        "id": "variable-slash",
+        "name": ["Algebra Form · First Technique: Variable Slash", "Stile dell'Algebra · Prima Tecnica: Fendente della Variabile"],
+        "description": ["Substitute values carefully, identify each part of an expression, and calculate in the right order.", "Sostituisci con attenzione i valori, riconosci ogni parte di un'espressione e calcola nell'ordine corretto."],
+        "xpReward": 25
+      }
+    },
+    "demon": ["Variable Imp", "Folletto della Variabile"],
+    "tech": ["Algebra Form · First Technique: Variable Slash", "Stile dell'Algebra · Prima Tecnica: Fendente della Variabile"],
+    "scenes": [
+      {"who": "s", "text": ["<p>Today we learn to read algebra: letters are not mysterious. They are simply numbers whose values we may not know yet.</p>", "<p>Oggi impariamo a leggere l'algebra: le lettere non sono misteriose. Sono semplicemente numeri di cui forse non conosciamo ancora il valore.</p>"]},
+      {"who": "y", "text": ["<p>Think of a variable as an empty box. If the box is called x, we can put a number inside it.</p><p><strong>x = 3</strong> means that the box contains 3.</p>", "<p>Pensa a una variabile come a una casella vuota. Se la casella si chiama x, possiamo inserirci un numero.</p><p><strong>x = 3</strong> significa che nella casella c'è 3.</p>"]},
+      {"who": "s", "vis": "algebra-parts", "text": ["<p>Look at <strong>3x + 2</strong>. The expression has two terms: <strong>3x</strong> and <strong>2</strong>. The coefficient is <strong>3</strong>, the variable is <strong>x</strong>, and the constant term is <strong>2</strong>.</p><p>Remember: <strong>3x = 3 · x</strong>, not 3 + x.</p>", "<p>Osserva <strong>3x + 2</strong>. L'espressione ha due termini: <strong>3x</strong> e <strong>2</strong>. Il coefficiente è <strong>3</strong>, la variabile è <strong>x</strong> e il termine costante è <strong>2</strong>.</p><p>Ricorda: <strong>3x = 3 · x</strong>, non 3 + x.</p>"]},
+      {"who": "y", "vis": "algebra-substitution", "text": ["<p>Now replace the letter with a number. If <strong>x = 4</strong>, then:</p><p><strong>3x + 2 = 3 · 4 + 2 = 12 + 2 = 14</strong>.</p><p>Multiply before adding.</p>", "<p>Ora sostituisci la lettera con un numero. Se <strong>x = 4</strong>, allora:</p><p><strong>3x + 2 = 3 · 4 + 2 = 12 + 2 = 14</strong>.</p><p>Moltiplica prima di sommare.</p>"]},
+      {"who": "d", "vis": "algebra-parts", "text": ["<p>Common trap! In <strong>5a − 7</strong>, the constant term is <strong>−7</strong>, not +7. The sign belongs to the term.</p><p>If <strong>a = 2</strong>, then <strong>5 · 2 − 7 = 10 − 7 = 3</strong>.</p>", "<p>Errore frequente! In <strong>5a − 7</strong>, il termine costante è <strong>−7</strong>, non +7. Il segno fa parte del termine.</p><p>Se <strong>a = 2</strong>, allora <strong>5 · 2 − 7 = 10 − 7 = 3</strong>.</p>"]} ,
+      {"type": "battle"}
+    ],
+    "quiz": [
+      {"q": ["If x = 2, what is x² + 3x?", "Se x = 2, quanto fa x² + 3x?"], "a": [["10", "10"], ["8", "8"], ["14", "14"], ["7", "7"]], "why": ["2² + 3 · 2 = 4 + 6 = 10.", "2² + 3 · 2 = 4 + 6 = 10."]}
+    ]
+  },
+  {
+    "id": "m1m4",
+    "arc": 21,
+    "sec": "1.4",
+    "pages": "21–32",
+    "hue": 60,
+    "horns": 2,
+    "eyes": 1,
+    "title": ["Powers and Divisibility", "Potenze e divisibilità"],
+    "topic": ["Powers of natural numbers, multiples, divisors and prime numbers", "Potenze di numeri naturali, multipli, divisori e numeri primi"],
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know the basic operations.", "Conoscere le operazioni di base."]],
+      "objectives": [
+        {"id": "powers", "description": ["Calculate simple powers.", "Calcolare semplici potenze."]},
+        {"id": "primes", "description": ["Recognise prime numbers and divisors.", "Riconoscere i numeri primi e i divisori."]}
+      ],
+      "concepts": [
+        {
+          "id": "powers-visual",
+          "title": ["Powers", "Potenze"],
+          "explanation": ["A power aⁿ means multiplying a by itself n times. The exponent tells us how many times. Draw n groups of a dots.", "Una potenza aⁿ significa moltiplicare a per se stesso n volte. L’esponente dice quante volte. Disegna n gruppi di a pallini."],
+          "example": ["2³ = 2 × 2 × 2 = 8. Three groups of two.", "2³ = 2 × 2 × 2 = 8. Tre gruppi di due."],
+          "workedExample": {
+            "scenario": ["Calculate 3² and 5¹.", "Calcola 3² e 5¹."],
+            "steps": [
+              ["1. 3² = 3 × 3 = 9.", "1. 3² = 3 × 3 = 9."],
+              ["2. 5¹ = 5 (any number to the power 1 stays itself).", "2. 5¹ = 5 (qualsiasi numero elevato a 1 resta se stesso)."]
+            ],
+            "answer": ["9 and 5", "9 e 5"]
+          },
+          "misconceptions": [
+            {"belief": ["2³ significa 2 × 3.", "2³ means 2 × 3."], "correction": ["No. The exponent tells how many times to multiply the base, not a product with the exponent.", "No. L’esponente indica quante volte moltiplicare la base, non un prodotto con l’esponente."]}
+          ]
+        }
+      ],
+      "guidedPractice": [{"id": "gp-pow", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Calculate.", "Calcola."], "questions": [{"q": ["What is 4²?", "Quanto fa 4²?"], "a": [["16", "16"], ["8", "8"], ["6", "6"], ["12", "12"]], "why": ["4 × 4 = 16.", "4 × 4 = 16."]}]}],
+      "knowledgeCheck": [{"q": ["Which of these is prime?", "Quale di questi è primo?"], "a": [["7", "7"], ["9", "9"], ["1", "1"], ["15", "15"]], "why": ["7 has only two divisors: 1 and 7.", "7 ha solo due divisori: 1 e 7."]}],
+      "summary": [["A power is repeated multiplication. A prime number has exactly two distinct divisors: 1 and itself.", "Una potenza è una moltiplicazione ripetuta. Un numero primo ha esattamente due divisori distinti: 1 e se stesso."]],
+            "independentPractice": [{"id":"ip4","title":["Try alone", "Prova da solo"],"instructions":["Calculate.", "Calcola."],"questions":[{"q":["5²?","5²?"],"a":[["25","25"],["10","10"],["7","7"],["15","15"]],"why":["5×5.","5×5."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["3²?","3²?"], "a": [["9","9"],["6","6"],["5","5"],["8","8"]], "why": ["9.","9."]}]},
+"techniqueUnlock": {"id": "power-slash", "name": ["Number Form · Fourth Technique: Power Slash", "Stile dei Numeri · Quarta Tecnica: Fendente della Potenza"], "description": ["Break calculations into powers and recognise primes at a glance.", "Scomponi i calcoli in potenze e riconosci i primi a colpo d’occhio."], "xpReward": 25}
+    },
+"demon": ["Composite Imp", "Folletto del Composto"],
+    "tech": ["Number Form · Fourth Technique: Power Slash", "Stile dei Numeri · Quarta Tecnica: Fendente della Potenza"],
+    "scenes": [{"who": "s", "text": ["<p>A power is a short way to write repeated multiplication.</p>", "<p>Una potenza è un modo breve per scrivere una moltiplicazione ripetuta.</p>"]}, {"who": "y", "text": ["<p>A prime number has exactly two divisors: 1 and itself.</p>", "<p>Un numero primo ha esattamente due divisori: 1 e se stesso.</p>"]}, {"who": "d", "text": ["<p>1 is not prime and not composite.</p>", "<p>1 non è primo e non è composto.</p>"]}],
+    "quiz": [{"q": ["What is 5²?", "Quanto fa 5²?"], "a": [["25", "25"], ["10", "10"], ["7", "7"], ["15", "15"]], "why": ["5 × 5 = 25.", "5 × 5 = 25."]}]
+  },
+  {
+    "id": "m1m5",
+    "arc": 21,
+    "sec": "1.5",
+    "pages": "33–40",
+    "hue": 65,
+    "horns": 3,
+    "eyes": 2,
+    "title": ["Chapter 1 Review", "Ripasso Capitolo 1"],
+    "topic": ["Review of natural numbers, operations, properties and powers", "Ripasso di numeri naturali, operazioni, proprietà e potenze"],
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Having completed the previous Chapter 1 missions.", "Aver completato le missioni precedenti del Capitolo 1."]],
+      "objectives": [
+        {"id": "mixed-ch1", "description": ["Solve mixed calculations that combine order of operations, properties and powers.", "Risolvere calcoli misti che uniscono ordine delle operazioni, proprietà e potenze."]}
+      ],
+      "concepts": [
+        {
+          "id": "mixed-calc",
+          "title": ["Calcoli misti", "Mixed calculations"],
+          "explanation": ["When an expression contains powers, multiplications and additions, always follow the priority: powers first, then × and ÷, finally + and −.", "Quando in un’espressione compaiono potenze, moltiplicazioni e addizioni, segui sempre la priorità: prima potenze, poi × e ÷, infine + e −."],
+          "example": ["2³ + 4 × 3 = 8 + 12 = 20.", "2³ + 4 × 3 = 8 + 12 = 20."],
+          "workedExample": {
+            "scenario": ["Calculate 3² + 2 × 4 − 1.", "Calcola 3² + 2 × 4 − 1."],
+            "steps": [
+              ["1. Power: 3² = 9.", "1. Potenza: 3² = 9."],
+              ["2. Moltiplicazione: 2 × 4 = 8.", "2. Multiplication: 2 × 4 = 8."],
+              ["3. Ora: 9 + 8 − 1 = 16.", "3. Now: 9 + 8 − 1 = 16."]
+            ],
+            "answer": ["16", "16"]
+          }
+        }
+      ],
+      "guidedPractice": [{"id": "gp-rev1", "title": ["Ripasso guidato", "Guided review"], "instructions": ["Calculate carefully.", "Calcola con attenzione."], "questions": [{"q": ["What is 2² × 3 + 1?", "Quanto fa 2² × 3 + 1?"], "a": [["13", "13"], ["10", "10"], ["7", "7"], ["16", "16"]], "why": ["4 × 3 + 1 = 13.", "4 × 3 + 1 = 13."]}]}],
+      "knowledgeCheck": [{"q": ["What comes first in 6 + 2³?", "Cosa viene prima in 6 + 2³?"], "a": [["The power", "La potenza"], ["L’addizione", "The addition"], ["Indifferente", "Either"], ["The subtraction", "La sottrazione"]], "why": ["Powers are done before addition.", "Le potenze si fanno prima dell’addizione."]}],
+      "summary": [["Chapter 1: ℕ, operations, properties, powers and primes. Always use the correct order and the properties to simplify.", "Capitolo 1: ℕ, operazioni, proprietà, potenze e primi. Usa sempre l’ordine corretto e le proprietà per semplificare."]],
+            "independentPractice": [{"id":"ip5","title":["Try alone", "Prova da solo"],"instructions":["Calculate.", "Calcola."],"questions":[{"q":["2³ + 3×2?","2³ + 3×2?"],"a":[["14","14"],["16","16"],["10","10"],["20","20"]],"why":["8+6.","8+6."]}]}],
+      "masteryAssessment": {"title": ["Verifica Cap.1", "Ch.1 check"], "instructions": ["80%.", "80%."], "passingScore": 80, "questions": [{"q": ["4² − 2×3?","4² − 2×3?"], "a": [["10","10"],["16","16"],["4","4"],["14","14"]], "why": ["16-6.","16-6."]}]},
+"techniqueUnlock": {"id": "review-slash", "name": ["Number Form · Fifth Technique: Review Slash", "Stile dei Numeri · Quinta Tecnica: Fendente del Ripasso"], "description": ["Combina tutte le tecniche del Capitolo 1 in una sequenza pulita.", "Combine all Chapter 1 techniques into one clean sequence."], "xpReward": 30}
+    },
+"demon": ["Review Imp", "Folletto del Ripasso"],
+    "tech": ["Number Form · Fifth Technique: Review Slash", "Stile dei Numeri · Quinta Tecnica: Fendente del Ripasso"],
+    "scenes": [{"who": "s", "text": ["<p>This mission reviews everything from Chapter 1.</p>", "<p>Questa missione ripassa tutto il Capitolo 1.</p>"]}, {"who": "y", "text": ["<p>Remember: powers first, then multiplication and division, then addition and subtraction.</p>", "<p>Ricorda: prima le potenze, poi moltiplicazione e divisione, poi addizione e sottrazione.</p>"]}],
+    "quiz": [{"q": ["What is 3² + 2 × 4?", "Quanto fa 3² + 2 × 4?"], "a": [["17", "17"], ["20", "20"], ["14", "14"], ["11", "11"]], "why": ["9 + 8 = 17.", "9 + 8 = 17."]}]
+  },
+  {
+    "id": "m2m4",
+    "arc": 22,
+    "sec": "2.4",
+    "pages": "111–122",
+    "hue": 195,
+    "horns": 2,
+    "eyes": 2,
+    "title": ["Comparing Rationals", "Confronto di razionali"],
+    "topic": ["Ordering fractions and decimals on the number line", "Ordinare frazioni e decimali sulla retta numerica"],
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know how to write rationals as fractions or decimals.", "Sapere scrivere i razionali come frazioni o decimali."]],
+      "objectives": [
+        {"id": "compare-rats", "description": ["Compare and order rational numbers on the line.", "Confrontare e ordinare numeri razionali sulla retta."]}
+      ],
+      "concepts": [
+        {
+          "id": "compare-visual",
+          "title": ["Confronto di razionali", "Comparing rationals"],
+          "explanation": ["To compare two fractions you can give them the same denominator or convert them to decimals and place them on the number line. The number further to the right is larger.", "Per confrontare due frazioni puoi ridurle allo stesso denominatore oppure convertirle in decimali e metterle sulla retta numerica. Il numero più a destra è il più grande."],
+          "example": ["1/2 = 0.5 and 1/3 ≈ 0.333. On the line 0.333 is left of 0.5, so 1/3 < 1/2.", "1/2 = 0,5 e 1/3 ≈ 0,333. Sulla retta 0,333 sta a sinistra di 0,5, quindi 1/3 < 1/2."],
+          "workedExample": {
+            "scenario": ["Which is larger between 3/4 and 2/3?", "Qual è più grande tra 3/4 e 2/3?"],
+            "steps": [
+              ["1. 3/4 = 0,75.", "1. 3/4 = 0.75."],
+              ["2. 2/3 ≈ 0,667.", "2. 2/3 ≈ 0.667."],
+              ["3. 0.75 > 0.667, so 3/4 is larger.", "3. 0,75 > 0,667, quindi 3/4 è più grande."]
+            ],
+            "answer": ["3/4", "3/4"]
+          }
+        }
+      ],
+      "guidedPractice": [{"id": "gp-comp", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Choose the larger one.", "Scegli il più grande."], "questions": [{"q": ["Which is larger: 3/4 or 2/3?", "Qual è più grande: 3/4 o 2/3?"], "a": [["3/4", "3/4"], ["2/3", "2/3"], ["They are equal", "Sono uguali"], ["Non si può dire", "Cannot tell"]], "why": ["0,75 > 0,667.", "0.75 > 0.667."]}]}],
+      "knowledgeCheck": [{"q": ["On the number line numbers increase…", "Sulla retta numerica i numeri crescono…"], "a": [["Verso destra", "To the right"], ["Verso sinistra", "To the left"], ["Verso l’alto", "Upwards"], ["A caso", "Randomly"]], "why": ["The line is ordered from left to right.", "La retta è ordinata da sinistra a destra."]}],
+      "summary": [["To compare rationals: same denominator or decimals. On the line the larger number is further right.", "Per confrontare razionali: stesso denominatore o decimali. Sulla retta il più grande sta più a destra."]],
+            "independentPractice": [{"id":"ip24","title":["Try alone", "Prova da solo"],"instructions":["Confronta.","Compare."],"questions":[{"q":["Smaller: 1/4 or 1/5?", "Più piccolo: 1/4 o 1/5?"],"a":[["1/5","1/5"],["1/4","1/4"],["Uguali","Equal"],["Dipende","Depends"]],"why":["0.2<0.25.","0.2<0.25."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["Larger: 2/3 or 3/5?", "Più grande: 2/3 o 3/5?"], "a": [["2/3","2/3"],["3/5","3/5"],["Uguali","Equal"],["?","?"]], "why": ["0.667>0.6.","0.667>0.6."]}]},
+"techniqueUnlock": {"id": "compare-slash", "name": ["Number Form · Seventh Technique: Compare Slash", "Stile dei Numeri · Settima Tecnica: Fendente del Confronto"], "description": ["Place and compare two rationals on the line in one go.", "Posiziona e confronta due razionali sulla retta in un colpo solo."], "xpReward": 25}
+    },
+"demon": ["Order Imp", "Folletto dell'Ordine"],
+    "tech": ["Number Form · Seventh Technique: Compare Slash", "Stile dei Numeri · Settima Tecnica: Fendente del Confronto"],
+    "scenes": [{"who": "s", "text": ["<p>To compare two fractions, rewrite them with the same denominator or as decimals.</p>", "<p>Per confrontare due frazioni riscrivile con lo stesso denominatore o come decimali.</p>"]}, {"who": "y", "text": ["<p>On the number line, larger numbers are always to the right.</p>", "<p>Sulla retta numerica i numeri più grandi stanno sempre a destra.</p>"]}],
+    "quiz": [{"q": ["Which is smaller: 1/4 or 1/5?", "Qual è più piccolo: 1/4 o 1/5?"], "a": [["1/5", "1/5"], ["1/4", "1/4"], ["They are equal", "Sono uguali"], ["Depends", "Dipende"]], "why": ["1/5 = 0.2 < 0.25 = 1/4.", "1/5 = 0,2 < 0,25 = 1/4."]}]
+  },
+  {
+    "id": "m2m5",
+    "arc": 22,
+    "sec": "2.5",
+    "pages": "123–134",
+    "hue": 200,
+    "horns": 3,
+    "eyes": 1,
+    "title": ["Percentages", "Percentuali"],
+    "topic": ["Percentages as fractions and decimals, calculating percentages", "Percentuali come frazioni e decimali, calcolo delle percentuali"],
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know how to work with fractions and decimals.", "Sapere lavorare con frazioni e decimali."]],
+      "objectives": [
+        {"id": "percentages", "description": ["Convert percentages to fractions/decimals and calculate percentages of a quantity.", "Convertire percentuali in frazioni/decimali e calcolare percentuali di una quantità."]}
+      ],
+      "concepts": [
+        {
+          "id": "percent-visual",
+          "title": ["Percentuali", "Percentages"],
+          "explanation": ["Percent means “out of 100”. 25% = 25/100 = 0.25. To find 20% of a number multiply by 0.20 (or by 20 and divide by 100).", "Percento significa “su 100”. 25% = 25/100 = 0,25. Per trovare il 20% di un numero moltiplica per 0,20 (o per 20 e dividi per 100)."],
+          "example": ["10% of 80 = 0.1 × 80 = 8. Imagine 80 sweets and take 1 out of 10.", "10% di 80 = 0,1 × 80 = 8. Immagina 80 caramelle e prendi 1 su 10."],
+          "workedExample": {
+            "scenario": ["Calculate 25% of 60.", "Calcola il 25% di 60."],
+            "steps": [
+              ["1. 25% = 0,25.", "1. 25% = 0.25."],
+              ["2. 0,25 × 60 = 15.", "2. 0.25 × 60 = 15."]
+            ],
+            "answer": ["15", "15"]
+          }
+        }
+      ],
+      "guidedPractice": [{"id": "gp-perc", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Calculate.", "Calcola."], "questions": [{"q": ["What is 10% of 80?", "Quanto è il 10% di 80?"], "a": [["8", "8"], ["10", "10"], ["18", "18"], ["0,8", "0.8"]], "why": ["0,1 × 80 = 8.", "0.1 × 80 = 8."]}]}],
+      "knowledgeCheck": [{"q": ["50% is equal to…", "50% è uguale a…"], "a": [["1/2", "1/2"], ["1/5", "1/5"], ["2/5", "2/5"], ["1/50", "1/50"]], "why": ["50/100 = 1/2.", "50/100 = 1/2."]}],
+      "summary": [["Percentages are fractions out of 100. Convert to a decimal and multiply to find a percentage of a quantity.", "Le percentuali sono frazioni su 100. Converti in decimale e moltiplica per trovare una percentuale di una quantità."]],
+            "independentPractice": [{"id":"ip25","title":["Try alone", "Prova da solo"],"instructions":["Calculate.", "Calcola."],"questions":[{"q":["20% of 50?", "20% di 50?"],"a":[["10","10"],["20","20"],["5","5"],["25","25"]],"why":["0.2×50.","0.2×50."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["25% of 80?", "25% di 80?"], "a": [["20","20"],["25","25"],["16","16"],["40","40"]], "why": ["0.25×80.","0.25×80."]}]},
+"techniqueUnlock": {"id": "percent-slash", "name": ["Number Form · Eighth Technique: Percent Slash", "Stile dei Numeri · Ottava Tecnica: Fendente della Percentuale"], "description": ["Turn any percentage into a decimal and cut through the calculation.", "Trasforma qualsiasi percentuale in decimale e taglia il calcolo."], "xpReward": 25}
+    },
+"demon": ["Percent Imp", "Folletto della Percentuale"],
+    "tech": ["Number Form · Eighth Technique: Percent Slash", "Stile dei Numeri · Ottava Tecnica: Fendente della Percentuale"],
+    "scenes": [{"who": "s", "text": ["<p>Percent means “out of 100”. 40% = 40/100 = 0.4.</p>", "<p>Percento significa “su 100”. 40% = 40/100 = 0,4.</p>"]}, {"who": "y", "text": ["<p>To find 15% of a number, multiply by 0.15.</p>", "<p>Per trovare il 15% di un numero moltiplica per 0,15.</p>"]}],
+    "quiz": [{"q": ["What is 25% of 60?", "Quanto è il 25% di 60?"], "a": [["15", "15"], ["25", "25"], ["12", "12"], ["20", "20"]], "why": ["0.25 × 60 = 15.", "0,25 × 60 = 15."]}]
+  },
+  {
+    "id": "m3m3",
+    "arc": 23,
+    "sec": "3.3",
+    "pages": "169–180",
+    "hue": 280,
+    "horns": 2,
+    "eyes": 2,
+    "title": ["Subsets and Power Set", "Sottoinsiemi e insieme delle parti"],
+    "topic": ["Subsets, proper subsets and the power set", "Sottoinsiemi, sottoinsiemi propri e insieme delle parti"],
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know the basic set operations.", "Conoscere le operazioni di base sugli insiemi."]],
+      "objectives": [
+        {"id": "subsets", "description": ["Decide whether one set is a subset of another and count the subsets.", "Decidere se un insieme è sottoinsieme di un altro e contare i sottoinsiemi."]}
+      ],
+      "concepts": [
+        {
+          "id": "subset-visual",
+          "title": ["Subsets", "Sottoinsiemi"],
+          "explanation": ["A is a subset of B (A ⊆ B) if every element of A is also in B. The empty set is a subset of every set. A set with n elements has 2ⁿ subsets.", "A è sottoinsieme di B (A ⊆ B) se ogni elemento di A sta anche in B. L’insieme vuoto è sottoinsieme di tutti. Un insieme con n elementi ha 2ⁿ sottoinsiemi."],
+          "example": ["{1,2} ⊆ {1,2,3}. The power set of {a,b} is {∅, {a}, {b}, {a,b}} (4 = 2²).", "{1,2} ⊆ {1,2,3}. L’insieme delle parti di {a,b} è {∅, {a}, {b}, {a,b}} (4 = 2²)."],
+          "workedExample": {
+            "scenario": ["How many subsets does {1,2,3} have?", "Quanti sottoinsiemi ha {1,2,3}?"],
+            "steps": [
+              ["1. n = 3 elements.", "1. n = 3 elementi."],
+              ["2. 2³ = 8.", "2. 2³ = 8."]
+            ],
+            "answer": ["8 subsets", "8 sottoinsiemi"]
+          }
+        }
+      ],
+      "guidedPractice": [{"id": "gp-sub", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Decidi.", "Decide."], "questions": [{"q": ["Is {1} a subset of {1,2,3}?", "{1} è sottoinsieme di {1,2,3}?"], "a": [["Sì", "Yes"], ["No", "No"], ["Only if 1 is prime", "Solo se 1 è primo"], ["Only the empty set", "Solo l’insieme vuoto"]], "why": ["Every element of {1} is in {1,2,3}.", "Ogni elemento di {1} sta in {1,2,3}."]}]}],
+      "knowledgeCheck": [{"q": ["How many subsets does a set with 2 elements have?", "Quanti sottoinsiemi ha un insieme con 2 elementi?"], "a": [["4", "4"], ["2", "2"], ["3", "3"], ["8", "8"]], "why": ["2² = 4.", "2² = 4."]}],
+      "summary": [["A ⊆ B if all elements of A are in B. A set with n elements has 2ⁿ subsets.", "A ⊆ B se tutti gli elementi di A stanno in B. Un insieme con n elementi ha 2ⁿ sottoinsiemi."]],
+            "independentPractice": [{"id":"ip33","title":["Try alone", "Prova da solo"],"instructions":["Conta.","Count."],"questions":[{"q":["Subsets of {a,b}?", "Sottoinsiemi di {a,b}?"],"a":[["4","4"],["2","2"],["3","3"],["8","8"]],"why":["2²=4.","2²=4."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["Subsets of 3 elements?", "Sottoinsiemi di 3 elementi?"], "a": [["8","8"],["6","6"],["3","3"],["9","9"]], "why": ["2³=8.","2³=8."]}]},
+"techniqueUnlock": {"id": "subset-slash", "name": ["Logic Form · Third Technique: Subset Slash", "Stile della Logica · Terza Tecnica: Fendente del Sottoinsieme"], "description": ["Decide subset relations and count the power set.", "Decidi le relazioni di sottoinsieme e conta l’insieme delle parti."], "xpReward": 25}
+    },
+"demon": ["Subset Imp", "Folletto del Sottoinsieme"],
+    "tech": ["Logic Form · Third Technique: Subset Slash", "Stile della Logica · Terza Tecnica: Fendente del Sottoinsieme"],
+    "scenes": [{"who": "s", "text": ["<p>A is a subset of B if every element of A also belongs to B.</p>", "<p>A è sottoinsieme di B se ogni elemento di A appartiene anche a B.</p>"]}, {"who": "y", "text": ["<p>The empty set is a subset of every set.</p>", "<p>L'insieme vuoto è sottoinsieme di ogni insieme.</p>"]}, {"who": "d", "text": ["<p>A set with n elements has 2ⁿ subsets.</p>", "<p>Un insieme con n elementi ha 2ⁿ sottoinsiemi.</p>"]}],
+    "quiz": [{"q": ["How many subsets does {1,2,3} have?", "Quanti sottoinsiemi ha {1,2,3}?"], "a": [["8", "8"], ["6", "6"], ["3", "3"], ["9", "9"]], "why": ["2³ = 8.", "2³ = 8."]}]
+  },
+  {
+    "id": "m3m4",
+    "arc": 23,
+    "sec": "3.4",
+    "pages": "181–194",
+    "hue": 285,
+    "horns": 3,
+    "eyes": 2,
+    "title": ["Venn Diagrams and Relations", "Diagrammi di Venn e relazioni"],
+    "topic": ["Using Venn diagrams to visualise set operations and simple relations", "Usare i diagrammi di Venn per visualizzare le operazioni e semplici relazioni"],
+    
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know union, intersection and subsets.", "Conoscere unione, intersezione e sottoinsiemi."]],
+      "objectives": [
+        {"id": "venn", "description": ["Read and draw simple Venn diagrams for two sets.", "Leggere e disegnare semplici diagrammi di Venn per due insiemi."]}
+      ],
+      "concepts": [
+        {
+          "id": "venn-visual",
+          "title": ["Diagrammi di Venn", "Venn diagrams"],
+          "explanation": ["Two overlapping circles. The overlapping part is the intersection. Everything covered by at least one circle is the union. The part of one circle outside the overlap is the difference.", "Due cerchi che si sovrappongono. La parte sovrapposta è l’intersezione. Tutto ciò che è coperto da almeno un cerchio è l’unione. La parte di un cerchio fuori dalla sovrapposizione è la differenza."],
+          "example": ["If A and B overlap, the central zone is A ∩ B. The part of A outside the centre is A − B.", "Se A e B si sovrappongono, la zona centrale è A ∩ B. La zona di A fuori dal centro è A − B."],
+          "workedExample": {
+            "scenario": ["In a Venn diagram, where are the elements that are in A but not in B?", "In un diagramma di Venn, dove si trovano gli elementi che stanno in A ma non in B?"],
+            "steps": [
+              ["1. Look at circle A.", "1. Guarda il cerchio di A."],
+              ["2. Exclude the part that overlaps B.", "2. Escludi la parte che si sovrappone a B."],
+              ["3. That zone is A − B.", "3. Quella zona è A − B."]
+            ],
+            "answer": ["In the part of A outside the overlap.", "Nella parte di A fuori dalla sovrapposizione."]
+          }
+        }
+      ],
+      "guidedPractice": [{"id": "gp-venn", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Interpreta.", "Interpret."], "questions": [{"q": ["The overlapping region represents…", "La regione sovrapposta rappresenta…"], "a": [["The intersection", "L’intersezione"], ["The union", "L’unione"], ["The empty set", "L’insieme vuoto"], ["The power set", "L’insieme delle parti"]], "why": ["The overlap contains the common elements.", "La sovrapposizione contiene gli elementi comuni."]}]}],
+      "knowledgeCheck": [{"q": ["Which region shows elements in A but not in B?", "Quale regione mostra gli elementi in A ma non in B?"], "a": [["The part of A outside the overlap", "La parte di A fuori dalla sovrapposizione"], ["The overlap", "La sovrapposizione"], ["The part of B outside the overlap", "La parte di B fuori dalla sovrapposizione"], ["Fuori da entrambi i cerchi", "Outside both circles"]], "why": ["That region is A − B.", "Quella regione è A − B."]}],
+      "summary": [["Venn diagrams make union, intersection and difference visible. The overlap is the intersection.", "I diagrammi di Venn rendono visibili unione, intersezione e differenza. La sovrapposizione è l’intersezione."]],
+            "independentPractice": [{"id":"ip34","title":["Try alone", "Prova da solo"],"instructions":["Interpreta.","Interpret."],"questions":[{"q":["Part of A outside overlap?", "Parte di A fuori sovrapposizione?"],"a":[["A−B","A−B"],["A∩B","A∩B"],["A∪B","A∪B"],["B−A","B−A"]],"why":["Differenza.","Difference."]}]}],
+      "masteryAssessment": {"title": ["Verifica", "Check"], "instructions": ["75%.", "75%."], "passingScore": 75, "questions": [{"q": ["Sovrapposizione = ?","Overlap = ?"], "a": [["Intersection", "Intersezione"],["Union", "Unione"],["Differenza","Difference"],["Vuoto","Empty"]], "why": ["∩.","∩."]}]},
+"techniqueUnlock": {"id": "venn-slash", "name": ["Stile della Logica · Quarta Tecnica: Fendente di Venn", "Logic Form · Fourth Technique: Venn Slash"], "description": ["Visualise any two-set problem with a clean diagram.", "Visualizza qualsiasi problema a due insiemi con un diagramma pulito."], "xpReward": 25}
+    },
+"demon": ["Overlap Imp", "Folletto della Sovrapposizione"],
+    "tech": ["Logic Form · Fourth Technique: Venn Slash", "Stile della Logica · Quarta Tecnica: Fendente di Venn"],
+    "scenes": [{"who": "s", "text": ["<p>A Venn diagram uses circles to show how sets overlap.</p>", "<p>Un diagramma di Venn usa cerchi per mostrare come gli insiemi si sovrappongono.</p>"]}, {"who": "y", "text": ["<p>The overlapping region is the intersection.</p>", "<p>La regione sovrapposta è l'intersezione.</p>"]}, {"who": "d", "text": ["<p>Elements outside both circles belong to neither set.</p>", "<p>Gli elementi fuori da entrambi i cerchi non appartengono a nessuno dei due insiemi.</p>"]}],
+    "quiz": [{"q": ["What does the overlap in a Venn diagram represent?", "Cosa rappresenta la sovrapposizione in un diagramma di Venn?"], "a": [["Intersection", "Intersezione"], ["Union", "Unione"], ["Difference", "Differenza"], ["Empty set", "Insieme vuoto"]], "why": ["The overlap contains elements common to both sets.", "La sovrapposizione contiene gli elementi comuni a entrambi gli insiemi."]}]
+  },
+  {
+    "id": "m1m6",
+    "arc": 21,
+    "sec": "1.6",
+    "pages": "41–52",
+    "hue": 70,
+    "horns": 2,
+    "eyes": 1,
+    "title": ["Integer Numbers", "Numeri interi"],
+    "topic": ["Positive and negative integers, the set ℤ, and the number line", "Numeri interi positivi e negativi, l’insieme ℤ e la retta numerica"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know natural numbers.", "Conoscere i numeri naturali."]],
+      "objectives": [{"id": "integers", "description": ["Recognise integers and place them on the line.", "Riconoscere i numeri interi e posizionarli sulla retta."]}],
+      "concepts": [{"id": "integers-visual", "title": ["Integers", "Numeri interi"], "explanation": ["Integers are … −3, −2, −1, 0, 1, 2, 3 … The set is called ℤ. They are represented on a full line, not only a half-line.", "I numeri interi sono … −3, −2, −1, 0, 1, 2, 3 … L’insieme si chiama ℤ. Si rappresentano su una retta completa, non solo una semiretta."], "example": ["−2 is left of 0. The predecessor of −3 is −4.", "−2 sta a sinistra dello 0. Il precedente di −3 è −4."], "workedExample": {"scenario": ["Place −2, 0, 3 on the line.", "Posiziona −2, 0, 3 sulla retta."], "steps": [["1. Draw the line with arrow to the right.", "1. Disegna la retta con freccia a destra."], ["2. Mark 0 in the centre.", "2. Segna lo 0 al centro."], ["3. −2 a sinistra, 3 a destra.", "3. −2 on the left, 3 on the right."]], "answer": ["−2 < 0 < 3.", "−2 < 0 < 3."]}, "misconceptions": [{"belief": ["Negative numbers are larger than positive ones.", "I numeri negativi sono più grandi dei positivi."], "correction": ["No. On the line negatives are left of 0, so they are smaller.", "No. Sulla retta i negativi stanno a sinistra dello 0, quindi sono più piccoli."]}]}],
+      "guidedPractice": [{"id": "gp-int", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Scegli.", "Choose."], "questions": [{"q": ["Which is larger: −5 or −2?", "Qual è più grande: −5 o −2?"], "a": [["−2", "−2"], ["−5", "−5"], ["Uguali", "Equal"], ["Dipende", "Depends"]], "why": ["−2 sta più a destra.", "−2 is further right."]}]}],
+      "independentPractice": [{"id": "ip-int", "title": ["Try alone", "Prova da solo"], "instructions": ["Ordina.", "Order."], "questions": [{"q": ["Ordina: 1, −3, 0, −1.", "Order: 1, −3, 0, −1."], "a": [["−3, −1, 0, 1", "−3, −1, 0, 1"], ["1, 0, −1, −3", "1, 0, −1, −3"], ["0, −1, 1, −3", "0, −1, 1, −3"], ["−1, −3, 0, 1", "−1, −3, 0, 1"]], "why": ["Left to right on the line.", "Da sinistra a destra sulla retta."]}]}],
+      "knowledgeCheck": [{"q": ["The symbol for integers is…", "Il simbolo degli interi è…"], "a": [["ℤ", "ℤ"], ["ℕ", "ℕ"], ["ℚ", "ℚ"], ["ℝ", "ℝ"]], "why": ["ℤ.", "ℤ."]}],
+      "summary": [["ℤ = {…, −2, −1, 0, 1, 2, …}. It is represented on the full line. Negatives are left of 0.", "ℤ = {…, −2, −1, 0, 1, 2, …}. Si rappresenta sulla retta completa. I negativi stanno a sinistra dello 0."]],
+      "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["Which is smaller: −4 or −1?", "Qual è più piccolo: −4 o −1?"], "a": [["−4", "−4"], ["−1", "−1"], ["Uguali", "Equal"], ["Dipende", "Depends"]], "why": ["−4 sta più a sinistra.", "−4 is further left."]}]},
+      "techniqueUnlock": {"id": "integer-slash", "name": ["Number Form · Sixth Technique: Integer Slash", "Stile dei Numeri · Sesta Tecnica: Fendente dell’Intero"], "description": ["Place any integer on the line and compare it.", "Posiziona qualsiasi intero sulla retta e confrontalo."], "xpReward": 25}
+    },
+    "demon": ["Negative Imp", "Folletto del Negativo"],
+    "tech": ["Number Form · Sixth Technique: Integer Slash", "Stile dei Numeri · Sesta Tecnica: Fendente dell’Intero"],
+    "scenes": [{"vis": "math-integers-line", "who": "s", "text": ["<p>Integers also include the negatives. The set is called ℤ.</p>", "<p>I numeri interi comprendono anche i negativi. L’insieme si chiama ℤ.</p>"]}, {"who": "y", "text": ["<p>On the line numbers increase from left to right. −5 < −2 < 0 < 3.</p>", "<p>Sulla retta i numeri crescono da sinistra a destra. −5 < −2 < 0 < 3.</p>"]}],
+    "quiz": [{"q": ["Which is larger: −3 or 1?", "Qual è più grande: −3 o 1?"], "a": [["1", "1"], ["−3", "−3"], ["Uguali", "Equal"], ["Dipende", "Depends"]], "why": ["1 is right of −3.", "1 sta a destra di −3."]}]
+  },
+  {
+    "id": "m2m6",
+    "arc": 22,
+    "sec": "2.6",
+    "pages": "135–146",
+    "hue": 205,
+    "horns": 2,
+    "eyes": 2,
+    "title": ["Proportions", "Proporzioni"],
+    "topic": ["What a proportion is and the fundamental property", "Che cos’è una proporzione e la proprietà fondamentale"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know fractions and percentages.", "Conoscere le frazioni e le percentuali."]],
+      "objectives": [{"id": "proportions", "description": ["Recognise a proportion and use the fundamental property.", "Riconoscere una proporzione e usare la proprietà fondamentale."]}],
+      "concepts": [{"id": "prop-concept", "title": ["Proporzioni", "Proportions"], "explanation": ["A proportion is an equality of two ratios: a:b = c:d. The fundamental property says the product of the means equals the product of the extremes: a×d = b×c.", "Una proporzione è un’uguaglianza di due rapporti: a:b = c:d. La proprietà fondamentale dice che il prodotto dei medi è uguale al prodotto degli estremi: a×d = b×c."], "example": ["2:4 = 3:6 because 2×6 = 4×3 = 12.", "2:4 = 3:6 perché 2×6 = 4×3 = 12."], "workedExample": {"scenario": ["Check whether 3:5 = 6:10 is a proportion.", "Verifica se 3:5 = 6:10 è una proporzione."], "steps": [["1. Product of extremes: 3 × 10 = 30.", "1. Prodotto degli estremi: 3 × 10 = 30."], ["2. Prodotto dei medi: 5 × 6 = 30.", "2. Product of means: 5 × 6 = 30."], ["3. They are equal, so it is a proportion.", "3. Sono uguali, quindi è una proporzione."]], "answer": ["Sì, 3:5 = 6:10.", "Yes, 3:5 = 6:10."]}}],
+      "guidedPractice": [{"id": "gp-prop", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Verifica.", "Check."], "questions": [{"q": ["Is 2:3 = 4:6 a proportion?", "2:3 = 4:6 è una proporzione?"], "a": [["Sì", "Yes"], ["No", "No"], ["Only if even", "Solo se pari"], ["Dipende", "Depends"]], "why": ["2×6 = 3×4 = 12.", "2×6 = 3×4 = 12."]}]}],
+      "independentPractice": [{"id": "ip-prop", "title": ["Try alone", "Prova da solo"], "instructions": ["Find the missing term.", "Trova il termine mancante."], "questions": [{"q": ["3:x = 6:8. What is x?", "3:x = 6:8. Quanto vale x?"], "a": [["4", "4"], ["2", "2"], ["5", "5"], ["6", "6"]], "why": ["3×8 = x×6 → 24 = 6x → x = 4.", "3×8 = x×6 → 24 = 6x → x = 4."]}]}],
+      "knowledgeCheck": [{"q": ["In a:b = c:d the means are…", "In a:b = c:d i medi sono…"], "a": [["b and c", "b e c"], ["a and d", "a e d"], ["a and b", "a e b"], ["c and d", "c e d"]], "why": ["The means are the two middle terms.", "I medi sono i due termini centrali."]}],
+      "summary": [["A proportion is an equality of ratios. Fundamental property: product of means = product of extremes.", "Una proporzione è un’uguaglianza di rapporti. La proprietà fondamentale: prodotto dei medi = prodotto degli estremi."]],
+      "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["4:6 = 2:3?", "4:6 = 2:3?"], "a": [["Sì", "Yes"], ["No", "No"], ["Only if integers", "Solo se interi"], ["Dipende", "Depends"]], "why": ["4×3 = 6×2 = 12.", "4×3 = 6×2 = 12."]}]},
+      "techniqueUnlock": {"id": "proportion-slash", "name": ["Number Form · Ninth Technique: Proportion Slash", "Stile dei Numeri · Nona Tecnica: Fendente della Proporzione"], "description": ["Check or complete any proportion with the fundamental property.", "Verifica o completa qualsiasi proporzione con la proprietà fondamentale."], "xpReward": 25}
+    },
+    "demon": ["Ratio Imp", "Folletto del Rapporto"],
+    "tech": ["Number Form · Ninth Technique: Proportion Slash", "Stile dei Numeri · Nona Tecnica: Fendente della Proporzione"],
+    "scenes": [{"who": "s", "text": ["<p>A proportion is an equality of two ratios: a:b = c:d.</p>", "<p>Una proporzione è un’uguaglianza tra due rapporti: a:b = c:d.</p>"]}, {"who": "y", "text": ["<p>The fundamental property says that a × d = b × c.</p>", "<p>La proprietà fondamentale dice che a × d = b × c.</p>"]}],
+    "quiz": [{"q": ["Is 2:4 = 5:10 a proportion?", "2:4 = 5:10 è una proporzione?"], "a": [["Sì", "Yes"], ["No", "No"], ["Solo a volte", "Only sometimes"], ["Mai", "Never"]], "why": ["2×10 = 4×5 = 20.", "2×10 = 4×5 = 20."]}]
+  },
+  {
+    "id": "m3m5",
+    "arc": 23,
+    "sec": "3.5",
+    "pages": "195–210",
+    "hue": 290,
+    "horns": 2,
+    "eyes": 1,
+    "title": ["Basic Logic", "Logica di base"],
+    "topic": ["Propositions, negation, and, or", "Proposizioni, negazione, e, o"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know sets and Venn diagrams.", "Conoscere gli insiemi e i diagrammi di Venn."]],
+      "objectives": [{"id": "logic", "description": ["Recognise true or false propositions and use the connectives not, and, or.", "Riconoscere proposizioni vere o false e usare i connettivi non, e, o."]}],
+      "concepts": [{"id": "logic-concept", "title": ["Propositions and connectives", "Proposizioni e connettivi"], "explanation": ["A proposition is a sentence that is true or false. Negation ¬p flips the value. p ∧ q (and) is true only if both are true. p ∨ q (or) is true if at least one is true.", "Una proposizione è una frase che è vera o falsa. La negazione ¬p inverte il valore. p ∧ q (e) è vera solo se entrambe sono vere. p ∨ q (o) è vera se almeno una è vera."], "example": ["“2 is even” is true. “2 is odd” is false. “2 is even and 3 is prime” is true.", "“2 è pari” è vera. “2 è dispari” è falsa. “2 è pari e 3 è primo” è vera."], "workedExample": {"scenario": ["p: “5 > 3” (true), q: “5 is even” (false). What are p ∧ q and p ∨ q?", "p: “5 > 3” (vera), q: “5 è pari” (falsa). Quanto valgono p ∧ q e p ∨ q?"], "steps": [["1. p ∧ q is true only if both are true → false.", "1. p ∧ q è vera solo se entrambe sono vere → falsa."], ["2. p ∨ q is true if at least one is true → true.", "2. p ∨ q è vera se almeno una è vera → vera."]], "answer": ["p ∧ q false, p ∨ q true.", "p ∧ q falsa, p ∨ q vera."]}}],
+      "guidedPractice": [{"id": "gp-logic", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Valuta.", "Evaluate."], "questions": [{"q": ["If p is true and q is false, p ∧ q is…", "Se p è vera e q è falsa, p ∧ q è…"], "a": [["False", "Falsa"], ["True", "Vera"], ["Dipende", "Depends"], ["Né vera né falsa", "Neither"]], "why": ["L’and richiede entrambe vere.", "And requires both true."]}]}],
+      "independentPractice": [{"id": "ip-logic", "title": ["Try alone", "Prova da solo"], "instructions": ["Valuta.", "Evaluate."], "questions": [{"q": ["If p is false, ¬p is…", "Se p è falsa, ¬p è…"], "a": [["True", "Vera"], ["False", "Falsa"], ["Uguale a p", "Same as p"], ["Dipende", "Depends"]], "why": ["La negazione inverte.", "Negation flips."]}]}],
+      "knowledgeCheck": [{"q": ["p ∨ q is true when…", "p ∨ q è vera quando…"], "a": [["At least one is true", "Almeno una è vera"], ["Both are true", "Entrambe sono vere"], ["Entrambe sono false", "Both are false"], ["None is true", "Nessuna è vera"]], "why": ["Or is true if at least one proposition is true.", "L’or è vero se almeno una proposizione è vera."]}],
+      "summary": [["A proposition is true or false. ¬ flips, ∧ requires both true, ∨ requires at least one true.", "Una proposizione è vera o falsa. ¬ inverte, ∧ richiede entrambe vere, ∨ richiede almeno una vera."]],
+      "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["If p and q are both true, p ∧ q is…", "Se p e q sono entrambe vere, p ∧ q è…"], "a": [["True", "Vera"], ["False", "Falsa"], ["Dipende", "Depends"], ["Né vera né falsa", "Neither"]], "why": ["Entrambe vere → and vera.", "Both true → and true."]}]},
+      "techniqueUnlock": {"id": "logic-slash", "name": ["Stile della Logica · Quinta Tecnica: Fendente Logico", "Logic Form · Fifth Technique: Logic Slash"], "description": ["Evaluate any compound proposition with not, and, or.", "Valuta qualsiasi proposizione composta con non, e, o."], "xpReward": 25}
+    },
+    "demon": ["Logic Imp", "Folletto della Logica"],
+    "tech": ["Stile della Logica · Quinta Tecnica: Fendente Logico", "Logic Form · Fifth Technique: Logic Slash"],
+    "scenes": [{"who": "s", "text": ["<p>A proposition is a sentence that can only be true or false.</p>", "<p>Una proposizione è una frase che può essere solo vera o falsa.</p>"]}, {"who": "y", "text": ["<p>“And” (∧) is true only if both parts are true. “Or” (∨) is true if at least one is true.</p>", "<p>“E” (∧) è vero solo se entrambe le parti sono vere. “O” (∨) è vero se almeno una è vera.</p>"]}],
+    "quiz": [{"q": ["The negation of a true proposition is…", "La negazione di una proposizione vera è…"], "a": [["False", "Falsa"], ["True", "Vera"], ["The same", "Uguale"], ["Dipende", "Depends"]], "why": ["Negation flips the truth value.", "La negazione inverte il valore di verità."]}]
+  },
+  {
+    "id": "m1m7",
+    "arc": 21,
+    "sec": "1.7",
+    "pages": "53–64",
+    "hue": 75,
+    "horns": 2,
+    "eyes": 2,
+    "title": ["MCD and mcm", "MCD e mcm"],
+    "topic": ["Greatest common divisor and least common multiple", "Massimo comune divisore e minimo comune multiplo"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know multiples, divisors and primes.", "Conoscere multipli, divisori e numeri primi."]],
+      "objectives": [{"id": "mcd-mcm", "description": ["Calculate GCD and LCM of two numbers.", "Calcolare MCD e mcm di due numeri."]}],
+      "concepts": [{"id": "mcd-concept", "title": ["GCD and LCM", "MCD e mcm"], "explanation": ["The GCD is the largest common divisor. The LCM is the smallest common multiple. They can be found with prime factorisation.", "Il MCD è il più grande divisore comune. Il mcm è il più piccolo multiplo comune. Si possono trovare con la scomposizione in fattori primi."], "example": ["12 = 2²×3, 18 = 2×3². MCD = 2×3 = 6. mcm = 2²×3² = 36.", "12 = 2²×3, 18 = 2×3². GCD = 2×3 = 6. LCM = 2²×3² = 36."], "workedExample": {"scenario": ["Calculate GCD and LCM of 8 and 12.", "Calcola MCD e mcm di 8 e 12."], "steps": [["1. 8 = 2³, 12 = 2²×3.", "1. 8 = 2³, 12 = 2²×3."], ["2. MCD = 2² = 4.", "2. GCD = 2² = 4."], ["3. mcm = 2³×3 = 24.", "3. LCM = 2³×3 = 24."]], "answer": ["MCD = 4, mcm = 24.", "GCD = 4, LCM = 24."]}}],
+      "guidedPractice": [{"id": "gp-mcd", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Calculate.", "Calcola."], "questions": [{"q": ["GCD of 6 and 9?", "MCD di 6 e 9?"], "a": [["3", "3"], ["6", "6"], ["9", "9"], ["18", "18"]], "why": ["3 is the largest common divisor.", "3 è il più grande divisore comune."]}]}],
+      "independentPractice": [{"id": "ip-mcd", "title": ["Try alone", "Prova da solo"], "instructions": ["Calculate.", "Calcola."], "questions": [{"q": ["LCM of 4 and 6?", "mcm di 4 e 6?"], "a": [["12", "12"], ["24", "24"], ["6", "6"], ["4", "4"]], "why": ["12 is the smallest common multiple.", "12 è il più piccolo multiplo comune."]}]}],
+      "knowledgeCheck": [{"q": ["The GCD of two distinct primes is…", "Il MCD di due numeri primi distinti è…"], "a": [["1", "1"], ["Il loro prodotto", "Their product"], ["The smaller one", "Il più piccolo"], ["0", "0"]], "why": ["They have no common divisors except 1.", "Non hanno divisori comuni tranne 1."]}],
+      "summary": [["GCD = largest common divisor. LCM = smallest common multiple. Found with prime factorisation.", "MCD = più grande divisore comune. mcm = più piccolo multiplo comune. Si trovano con la scomposizione in primi."]],
+      "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["GCD of 15 and 25?", "MCD di 15 e 25?"], "a": [["5", "5"], ["15", "15"], ["25", "25"], ["75", "75"]], "why": ["5.", "5."]}]},
+      "techniqueUnlock": {"id": "mcd-slash", "name": ["Number Form · Seventh Technique: GCD Slash", "Stile dei Numeri · Settima Tecnica: Fendente MCD"], "description": ["Factorise into primes and find GCD and LCM on the fly.", "Scomponi in primi e trova MCD e mcm al volo."], "xpReward": 25}
+    },
+    "demon": ["Divisor Imp", "Folletto del Divisore"],
+    "tech": ["Number Form · Seventh Technique: GCD Slash", "Stile dei Numeri · Settima Tecnica: Fendente MCD"],
+    "scenes": [{"vis": "math-mcd-mcm", "who": "s", "text": ["<p>The greatest common divisor (GCD) is the largest number that divides both.</p>", "<p>Il massimo comune divisore (MCD) è il più grande numero che divide entrambi.</p>"]}, {"who": "y", "text": ["<p>The least common multiple (LCM) is the smallest number that is a multiple of both.</p>", "<p>Il minimo comune multiplo (mcm) è il più piccolo numero che è multiplo di entrambi.</p>"]}],
+    "quiz": [{"q": ["GCD of 8 and 12?", "MCD di 8 e 12?"], "a": [["4", "4"], ["2", "2"], ["8", "8"], ["24", "24"]], "why": ["4 is the largest common divisor.", "4 è il più grande divisore comune."]}]
+  },
+  {
+    "id": "m1m8",
+    "arc": 21,
+    "sec": "1.8",
+    "pages": "65–76",
+    "hue": 80,
+    "horns": 3,
+    "eyes": 1,
+    "title": ["Divisibility Rules", "Regole di divisibilità"],
+    "topic": ["Simple rules to check divisibility by 2, 3, 5, 9, 10", "Regole semplici per verificare la divisibilità per 2, 3, 5, 9, 10"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know multiples and divisors.", "Conoscere multipli e divisori."]],
+      "objectives": [{"id": "div-rules", "description": ["Use the divisibility rules for 2, 3, 5, 9 and 10.", "Usare le regole di divisibilità per 2, 3, 5, 9 e 10."]}],
+      "concepts": [{"id": "div-rules-concept", "title": ["Regole di divisibilità", "Divisibility rules"], "explanation": ["A number is divisible by 2 if even, by 5 if it ends in 0 or 5, by 10 if it ends in 0, by 3 (and 9) if the sum of its digits is divisible by 3 (or 9).", "Un numero è divisibile per 2 se è pari, per 5 se finisce per 0 o 5, per 10 se finisce per 0, per 3 (e 9) se la somma delle cifre è divisibile per 3 (o 9)."], "example": ["123: 1+2+3=6, divisible by 3. 45 ends in 5, divisible by 5.", "123: 1+2+3=6, divisibile per 3. 45 finisce per 5, divisibile per 5."], "workedExample": {"scenario": ["Is 246 divisible by 2 and by 3?", "246 è divisibile per 2 e per 3?"], "steps": [["1. Ends in 6 → even → divisible by 2.", "1. Finisce per 6 → pari → divisibile per 2."], ["2. 2+4+6=12, 12÷3=4 → divisible by 3.", "2. 2+4+6=12, 12÷3=4 → divisibile per 3."]], "answer": ["Yes for both.", "Sì per entrambi."]}}],
+      "guidedPractice": [{"id": "gp-div", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Decidi.", "Decide."], "questions": [{"q": ["Is 315 divisible by 5?", "315 è divisibile per 5?"], "a": [["Sì", "Yes"], ["No", "No"], ["Only by 3", "Solo per 3"], ["Only by 2", "Solo per 2"]], "why": ["Finisce per 5.", "Ends in 5."]}]}],
+      "independentPractice": [{"id": "ip-div", "title": ["Try alone", "Prova da solo"], "instructions": ["Verifica.", "Check."], "questions": [{"q": ["Is 144 divisible by 9?", "144 è divisibile per 9?"], "a": [["Sì", "Yes"], ["No", "No"], ["Only by 3", "Solo per 3"], ["Only by 2", "Solo per 2"]], "why": ["1+4+4=9, divisible by 9.", "1+4+4=9, divisibile per 9."]}]}],
+      "knowledgeCheck": [{"q": ["A number is divisible by 10 if…", "Un numero è divisibile per 10 se…"], "a": [["Finisce per 0", "It ends in 0"], ["It is even", "È pari"], ["Digit sum is 10", "La somma delle cifre è 10"], ["Finisce per 5", "It ends in 5"]], "why": ["Deve finire per 0.", "It must end in 0."]}],
+      "summary": [["Quick rules: 2 (even), 5 (0 or 5), 10 (0), 3 and 9 (digit sum).", "Regole rapide: 2 (pari), 5 (0 o 5), 10 (0), 3 e 9 (somma delle cifre)."]],
+      "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["Is 126 divisible by 3?", "126 è divisibile per 3?"], "a": [["Sì", "Yes"], ["No", "No"], ["Only by 2", "Solo per 2"], ["Only by 9", "Solo per 9"]], "why": ["1+2+6=9, divisible by 3.", "1+2+6=9, divisibile per 3."]}]},
+      "techniqueUnlock": {"id": "div-slash", "name": ["Number Form · Eighth Technique: Divisibility Slash", "Stile dei Numeri · Ottava Tecnica: Fendente della Divisibilità"], "description": ["Check divisibility at a glance with the rules.", "Controlla la divisibilità a colpo d’occhio con le regole."], "xpReward": 25}
+    },
+    "demon": ["Digit Imp", "Folletto della Cifra"],
+    "tech": ["Number Form · Eighth Technique: Divisibility Slash", "Stile dei Numeri · Ottava Tecnica: Fendente della Divisibilità"],
+    "scenes": [{"who": "s", "text": ["<p>There are quick rules to know if a number is divisible by 2, 3, 5, 9 or 10 without dividing.</p>", "<p>Ci sono regole rapide per sapere se un numero è divisibile per 2, 3, 5, 9 o 10 senza fare la divisione.</p>"]}, {"who": "y", "text": ["<p>For 3 and 9 we add the digits. For 2, 5 and 10 we look at the last digit.</p>", "<p>Per 3 e 9 si somma le cifre. Per 2, 5 e 10 si guarda l’ultima cifra.</p>"]}],
+    "quiz": [{"q": ["Which number is divisible by 9?", "Quale numero è divisibile per 9?"], "a": [["18", "18"], ["14", "14"], ["22", "22"], ["25", "25"]], "why": ["1+8=9.", "1+8=9."]}]
+  },
+  {
+    "id": "m2m7",
+    "arc": 22,
+    "sec": "2.7",
+    "pages": "147–158",
+    "hue": 210,
+    "horns": 2,
+    "eyes": 1,
+    "title": ["Powers with Negative Exponents", "Potenze con esponente negativo"],
+    "topic": ["What a negative exponent means", "Che cosa significa un esponente negativo"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know powers and fractions.", "Conoscere le potenze e le frazioni."]],
+      "objectives": [{"id": "neg-exp", "description": ["Calculate powers with negative exponents.", "Calcolare potenze con esponente negativo."]}],
+      "concepts": [{"id": "neg-exp-concept", "title": ["Negative exponent", "Esponente negativo"], "explanation": ["a⁻ⁿ = 1 / aⁿ (with a ≠ 0). A negative exponent means the reciprocal of the positive power.", "a⁻ⁿ = 1 / aⁿ (con a ≠ 0). L’esponente negativo indica il reciproco della potenza positiva."], "example": ["2⁻³ = 1 / 2³ = 1/8. 10⁻² = 1/100 = 0,01.", "2⁻³ = 1 / 2³ = 1/8. 10⁻² = 1/100 = 0.01."], "workedExample": {"scenario": ["Calculate 5⁻².", "Calcola 5⁻²."], "steps": [["1. 5⁻² = 1 / 5².", "1. 5⁻² = 1 / 5²."], ["2. 5² = 25.", "2. 5² = 25."], ["3. 1/25.", "3. 1/25."]], "answer": ["1/25", "1/25"]}}],
+      "guidedPractice": [{"id": "gp-neg", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Calculate.", "Calcola."], "questions": [{"q": ["What is 3⁻¹?", "Quanto fa 3⁻¹?"], "a": [["1/3", "1/3"], ["-3", "-3"], ["3", "3"], ["0", "0"]], "why": ["1/3¹ = 1/3.", "1/3¹ = 1/3."]}]}],
+      "independentPractice": [{"id": "ip-neg", "title": ["Try alone", "Prova da solo"], "instructions": ["Calculate.", "Calcola."], "questions": [{"q": ["What is 10⁻³?", "Quanto fa 10⁻³?"], "a": [["0,001", "0.001"], ["-1000", "-1000"], ["1000", "1000"], ["0,1", "0.1"]], "why": ["1/1000 = 0,001.", "1/1000 = 0.001."]}]}],
+      "knowledgeCheck": [{"q": ["a⁻ⁿ è uguale a…", "a⁻ⁿ equals…"], "a": [["1/aⁿ", "1/aⁿ"], ["-aⁿ", "-aⁿ"], ["aⁿ", "aⁿ"], ["0", "0"]], "why": ["It is the reciprocal of the positive power.", "È il reciproco della potenza positiva."]}],
+      "summary": [["A negative exponent means the reciprocal: a⁻ⁿ = 1/aⁿ.", "Un esponente negativo indica il reciproco: a⁻ⁿ = 1/aⁿ."]],
+      "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["2⁻² = ?", "2⁻² = ?"], "a": [["1/4", "1/4"], ["-4", "-4"], ["4", "4"], ["1/2", "1/2"]], "why": ["1/4.", "1/4."]}]},
+      "techniqueUnlock": {"id": "neg-exp-slash", "name": ["Number Form · Tenth Technique: Exponent Slash", "Stile dei Numeri · Decima Tecnica: Fendente dell’Esponente"], "description": ["Turn any negative exponent into a fraction.", "Trasforma qualsiasi esponente negativo in una frazione."], "xpReward": 25}
+    },
+    "demon": ["Exponent Imp", "Folletto dell’Esponente"],
+    "tech": ["Number Form · Tenth Technique: Exponent Slash", "Stile dei Numeri · Decima Tecnica: Fendente dell’Esponente"],
+    "scenes": [{"who": "s", "text": ["<p>A negative exponent means “take the reciprocal of the positive power”.</p>", "<p>Un esponente negativo significa “fai il reciproco della potenza positiva”.</p>"]}, {"who": "y", "text": ["<p>2⁻³ = 1/8. It is not a negative number!</p>", "<p>2⁻³ = 1/8. Non è un numero negativo!</p>"]}],
+    "quiz": [{"q": ["What is 4⁻¹?", "Quanto fa 4⁻¹?"], "a": [["1/4", "1/4"], ["-4", "-4"], ["4", "4"], ["0", "0"]], "why": ["1/4.", "1/4."]}]
+  },
+  {
+    "id": "m2m8",
+    "arc": 22,
+    "sec": "2.8",
+    "pages": "159–170",
+    "hue": 215,
+    "horns": 3,
+    "eyes": 2,
+    "title": ["Approximate Calculation", "Calcolo approssimato"],
+    "topic": ["Rounding and estimating results", "Arrotondamento e stima dei risultati"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know decimals.", "Conoscere i decimali."]],
+      "objectives": [{"id": "approx", "description": ["Round numbers and estimate the result of a calculation.", "Arrotondare numeri e stimare il risultato di un calcolo."]}],
+      "concepts": [{"id": "approx-concept", "title": ["Arrotondamento", "Rounding"], "explanation": ["To round we look at the next digit: 0-4 leave it, 5-9 increase by 1. Estimating means replacing numbers with nearby easier values.", "Per arrotondare si guarda la cifra successiva: se è 0-4 si lascia, se è 5-9 si aumenta di 1. Stimare significa sostituire i numeri con valori vicini più facili."], "example": ["3.47 rounded to tenths is 3.5. 48 × 21 ≈ 50 × 20 = 1000.", "3,47 arrotondato ai decimi è 3,5. 48 × 21 ≈ 50 × 20 = 1000."], "workedExample": {"scenario": ["Round 6.38 to units and estimate 19 × 31.", "Arrotonda 6,38 alle unità e stima 19 × 31."], "steps": [["1. 6.38 → tenths digit is 3 < 5 → 6.", "1. 6,38 → la cifra dei decimi è 3 < 5 → 6."], ["2. 19 ≈ 20, 31 ≈ 30 → 20 × 30 = 600.", "2. 19 ≈ 20, 31 ≈ 30 → 20 × 30 = 600."]], "answer": ["6 and about 600.", "6 e circa 600."]}}],
+      "guidedPractice": [{"id": "gp-approx", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Arrotonda.", "Round."], "questions": [{"q": ["2,64 arrotondato ai decimi?", "2.64 rounded to tenths?"], "a": [["2,6", "2.6"], ["2,7", "2.7"], ["2,60", "2.60"], ["3", "3"]], "why": ["4 < 5, quindi resta 2,6.", "4 < 5, so it stays 2.6."]}]}],
+      "independentPractice": [{"id": "ip-approx", "title": ["Try alone", "Prova da solo"], "instructions": ["Stima.", "Estimate."], "questions": [{"q": ["Stima 48 + 53.", "Estimate 48 + 53."], "a": [["100", "100"], ["90", "90"], ["110", "110"], ["80", "80"]], "why": ["50 + 50 = 100.", "50 + 50 = 100."]}]}],
+      "knowledgeCheck": [{"q": ["To round we look at…", "Per arrotondare si guarda…"], "a": [["The next digit", "La cifra successiva"], ["Only the first digit", "Solo la prima cifra"], ["The number of digits", "Il numero di cifre"], ["Nothing", "Niente"]], "why": ["We look at the immediately following digit.", "Si guarda la cifra immediatamente successiva."]}],
+      "summary": [["Rounding: 0-4 leave, 5-9 increase. Estimating: replace with nearby easy numbers.", "Arrotondare: 0-4 lascia, 5-9 aumenta. Stimare: sostituisci con numeri vicini facili."]],
+      "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["7,85 arrotondato alle unità?", "7.85 rounded to units?"], "a": [["8", "8"], ["7", "7"], ["7,9", "7.9"], ["7,8", "7.8"]], "why": ["8 ≥ 5 → 8.", "8 ≥ 5 → 8."]}]},
+      "techniqueUnlock": {"id": "approx-slash", "name": ["Number Form · Eleventh Technique: Estimate Slash", "Stile dei Numeri · Undicesima Tecnica: Fendente della Stima"], "description": ["Round and estimate any calculation in seconds.", "Arrotonda e stima qualsiasi calcolo in pochi secondi."], "xpReward": 25}
+    },
+    "demon": ["Rounding Imp", "Folletto dell’Arrotondamento"],
+    "tech": ["Number Form · Eleventh Technique: Estimate Slash", "Stile dei Numeri · Undicesima Tecnica: Fendente della Stima"],
+    "scenes": [{"who": "s", "text": ["<p>Rounding means replacing a number with a nearby simpler one.</p>", "<p>Arrotondare significa sostituire un numero con uno vicino più semplice.</p>"]}, {"who": "y", "text": ["<p>If the next digit is 5 or more, we increase by 1. Otherwise we leave it.</p>", "<p>Se la cifra successiva è 5 o più, aumentiamo di 1. Altrimenti lasciamo com’è.</p>"]}],
+    "quiz": [{"q": ["3.2 rounded to units is…", "3,2 arrotondato alle unità è…"], "a": [["3", "3"], ["4", "4"], ["3,0", "3.0"], ["2", "2"]], "why": ["2 < 5.", "2 < 5."]}]
+  },
+  {
+    "id": "m3m6",
+    "arc": 23,
+    "sec": "3.6",
+    "pages": "211–222",
+    "hue": 295,
+    "horns": 2,
+    "eyes": 2,
+    "title": ["Relations", "Relazioni"],
+    "topic": ["What a relation is and simple examples", "Che cos’è una relazione e semplici esempi"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know sets.", "Conoscere gli insiemi."]],
+      "objectives": [{"id": "relations", "description": ["Recognise a relation between two sets and represent it.", "Riconoscere una relazione tra due insiemi e rappresentarla."]}],
+      "concepts": [{"id": "rel-concept", "title": ["Relazioni", "Relations"], "explanation": ["A relation between two sets A and B is a way of linking some elements of A with some elements of B. It can be drawn with arrows.", "Una relazione tra due insiemi A e B è un modo di collegare alcuni elementi di A con alcuni elementi di B. Si può disegnare con frecce."], "example": ["A = {1,2}, B = {a,b}. The relation “is linked to” can send 1→a and 2→b.", "A = {1,2}, B = {a,b}. La relazione “è collegato a” può mandare 1→a e 2→b."], "workedExample": {"scenario": ["Draw the relation “is greater than” between {2,4} and {1,3}.", "Disegna la relazione “è maggiore di” tra {2,4} e {1,3}."], "steps": [["1. 2 > 1, quindi freccia 2→1.", "1. 2 > 1, so arrow 2→1."], ["2. 4 > 1 and 4 > 3, so arrows 4→1 and 4→3.", "2. 4 > 1 e 4 > 3, quindi frecce 4→1 e 4→3."]], "answer": ["Frecce: 2→1, 4→1, 4→3.", "Arrows: 2→1, 4→1, 4→3."]}}],
+      "guidedPractice": [{"id": "gp-rel", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Decidi.", "Decide."], "questions": [{"q": ["In the relation “is double of”, 6 is linked to…", "Nella relazione “è doppio di”, 6 è collegato a…"], "a": [["3", "3"], ["12", "12"], ["6", "6"], ["2", "2"]], "why": ["6 = 2 × 3.", "6 = 2 × 3."]}]}],
+      "independentPractice": [{"id": "ip-rel", "title": ["Try alone", "Prova da solo"], "instructions": ["Collega.", "Link."], "questions": [{"q": ["In “is less than” between {1,3} and {2,4}, 1 is linked to…", "Nella relazione “è minore di” tra {1,3} e {2,4}, 1 è collegato a…"], "a": [["2 and 4", "2 e 4"], ["Solo 2", "Only 2"], ["Solo 4", "Only 4"], ["Nessuno", "None"]], "why": ["1 < 2 and 1 < 4.", "1 < 2 e 1 < 4."]}]}],
+      "knowledgeCheck": [{"q": ["A relation links elements of…", "Una relazione collega elementi di…"], "a": [["Two sets", "Due insiemi"], ["Always one set", "Un solo insieme sempre"], ["Only numbers", "Solo numeri"], ["Solo lettere", "Only letters"]], "why": ["It can link elements of two sets (even the same one).", "Può collegare elementi di due insiemi (anche lo stesso)."]}],
+      "summary": [["A relation links some elements of one set with some of another. It is well represented with arrows.", "Una relazione collega alcuni elementi di un insieme con alcuni di un altro. Si rappresenta bene con frecce."]],
+      "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["In the relation “is equal to”, every element is linked to…", "Nella relazione “è uguale a”, ogni elemento è collegato a…"], "a": [["Se stesso", "Itself"], ["Tutti", "Everyone"], ["Nessuno", "No one"], ["The next one", "Il successivo"]], "why": ["Only to itself.", "Solo a se stesso."]}]},
+      "techniqueUnlock": {"id": "relation-slash", "name": ["Logic Form · Sixth Technique: Relation Slash", "Stile della Logica · Sesta Tecnica: Fendente della Relazione"], "description": ["Draw the arrows and read any relation.", "Disegna le frecce e leggi qualsiasi relazione."], "xpReward": 25}
+    },
+    "demon": ["Arrow Imp", "Folletto della Freccia"],
+    "tech": ["Logic Form · Sixth Technique: Relation Slash", "Stile della Logica · Sesta Tecnica: Fendente della Relazione"],
+    "scenes": [{"who": "s", "text": ["<p>A relation links some elements of one set with some of another.</p>", "<p>Una relazione collega alcuni elementi di un insieme con alcuni di un altro.</p>"]}, {"who": "y", "text": ["<p>It can be drawn with arrows from one set to the other.</p>", "<p>Si può disegnare con frecce da un insieme all’altro.</p>"]}],
+    "quiz": [{"q": ["In the relation “is half of”, 4 is linked to…", "Nella relazione “è metà di”, 4 è collegato a…"], "a": [["8", "8"], ["2", "2"], ["4", "4"], ["16", "16"]], "why": ["4 is half of 8.", "4 è la metà di 8."]}]
+  },
+  {
+    "id": "m3m7",
+    "arc": 23,
+    "sec": "3.7",
+    "pages": "223–234",
+    "hue": 300,
+    "horns": 3,
+    "eyes": 1,
+    "title": ["Quantifiers", "Quantificatori"],
+    "topic": ["For all and there exists", "Per ogni e esiste"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know propositions.", "Conoscere le proposizioni."]],
+      "objectives": [{"id": "quantifiers", "description": ["Use the quantifiers ∀ (for all) and ∃ (there exists).", "Usare i quantificatori ∀ (per ogni) e ∃ (esiste)."]}],
+      "concepts": [{"id": "quant-concept", "title": ["Quantificatori", "Quantifiers"], "explanation": ["∀ means “for all”. ∃ means “there exists at least one”. They are used to talk about properties that hold for everyone or for someone.", "∀ significa “per ogni”. ∃ significa “esiste almeno uno”. Servono per parlare di proprietà che valgono per tutti o per qualcuno."], "example": ["∀ n ∈ ℕ, n + 0 = n. ∃ n ∈ ℕ tale che n > 100.", "∀ n ∈ ℕ, n + 0 = n. ∃ n ∈ ℕ such that n > 100."], "workedExample": {"scenario": ["The sentence “every natural number has a successor” is written with ∀ or ∃?", "La frase “ogni numero naturale ha un successivo” si scrive con ∀ o ∃?"], "steps": [["1. It talks about all natural numbers.", "1. Parla di tutti i numeri naturali."], ["2. Quindi si usa ∀.", "2. So we use ∀."]], "answer": ["∀ n ∈ ℕ, the successor of n exists.", "∀ n ∈ ℕ, esiste il successivo di n."]}}],
+      "guidedPractice": [{"id": "gp-quant", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Scegli.", "Choose."], "questions": [{"q": ["“There exists an even number” is written with…", "“Esiste un numero pari” si scrive con…"], "a": [["∃", "∃"], ["∀", "∀"], ["∈", "∈"], ["∉", "∉"]], "why": ["∃ significa esiste.", "∃ means there exists."]}]}],
+      "independentPractice": [{"id": "ip-quant", "title": ["Try alone", "Prova da solo"], "instructions": ["Traduci.", "Translate."], "questions": [{"q": ["“For every x, x × 1 = x” uses…", "“Per ogni x, x × 1 = x” usa…"], "a": [["∀", "∀"], ["∃", "∃"], ["∈", "∈"], ["∪", "∪"]], "why": ["For every = ∀.", "Per ogni = ∀."]}]}],
+      "knowledgeCheck": [{"q": ["∀ significa…", "∀ means…"], "a": [["For all", "Per ogni"], ["Esiste", "There exists"], ["Appartiene", "Belongs to"], ["Union", "Unione"]], "why": ["∀ = for all.", "∀ = per ogni."]}],
+      "summary": [["∀ = for all, ∃ = there exists at least one. Used to talk about properties over whole sets.", "∀ = per ogni, ∃ = esiste almeno uno. Servono per parlare di proprietà su interi insiemi."]],
+      "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["∃ significa…", "∃ means…"], "a": [["Esiste", "There exists"], ["For all", "Per ogni"], ["Does not exist", "Non esiste"], ["Appartiene", "Belongs"]], "why": ["∃ = esiste.", "∃ = there exists."]}]},
+      "techniqueUnlock": {"id": "quant-slash", "name": ["Stile della Logica · Settima Tecnica: Fendente del Quantificatore", "Logic Form · Seventh Technique: Quantifier Slash"], "description": ["Read and write sentences with ∀ and ∃.", "Leggi e scrivi frasi con ∀ e ∃."], "xpReward": 25}
+    },
+    "demon": ["Quantifier Imp", "Folletto del Quantificatore"],
+    "tech": ["Stile della Logica · Settima Tecnica: Fendente del Quantificatore", "Logic Form · Seventh Technique: Quantifier Slash"],
+    "scenes": [{"who": "s", "text": ["<p>∀ means “for all”. ∃ means “there exists at least one”.</p>", "<p>∀ significa “per ogni”. ∃ significa “esiste almeno uno”.</p>"]}, {"who": "y", "text": ["<p>They are used when we want to say something about all elements or about some of them.</p>", "<p>Servono quando vogliamo dire qualcosa su tutti gli elementi o su qualcuno di essi.</p>"]}],
+    "quiz": [{"q": ["Which symbol means “for all”?", "Quale simbolo significa “per ogni”?"], "a": [["∀", "∀"], ["∃", "∃"], ["∈", "∈"], ["∉", "∉"]], "why": ["∀ = for all.", "∀ = per ogni."]}]
+  },
+  {
+    "id": "m4m2",
+    "arc": 24,
+    "sec": "4.2",
+    "pages": "233–244",
+    "hue": 35,
+    "horns": 2,
+    "eyes": 2,
+    "title": ["Simplifying Expressions", "Semplificazione di espressioni"],
+    "topic": ["Combining like terms and using the distributive property", "Raggruppare termini simili e usare la proprietà distributiva"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know variables and algebraic expressions.", "Conoscere le variabili e le espressioni algebriche."]],
+      "objectives": [{"id": "simplify", "description": ["Simplify expressions by combining like terms.", "Semplificare espressioni raggruppando i termini simili."]}],
+      "concepts": [{"id": "like-terms", "title": ["Like terms", "Termini simili"], "explanation": ["Like terms have the same variable part. They can be added or subtracted by adding the coefficients. The distributive property helps remove brackets.", "Termini simili hanno la stessa parte letterale. Si possono sommare o sottrarre sommando i coefficienti. La proprietà distributiva aiuta a togliere le parentesi."], "example": ["3x + 5x = 8x. 2(x + 3) = 2x + 6.", "3x + 5x = 8x. 2(x + 3) = 2x + 6."], "workedExample": {"scenario": ["Simplify 4x + 3 + 2x − 1.", "Semplifica 4x + 3 + 2x − 1."], "steps": [["1. Group the x terms: 4x + 2x = 6x.", "1. Raggruppa i termini con x: 4x + 2x = 6x."], ["2. Group the numbers: 3 − 1 = 2.", "2. Raggruppa i numeri: 3 − 1 = 2."], ["3. Result: 6x + 2.", "3. Risultato: 6x + 2."]], "answer": ["6x + 2", "6x + 2"]}}],
+      "guidedPractice": [{"id": "gp-simp", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Simplify.", "Semplifica."], "questions": [{"q": ["3a + 5a = ?", "3a + 5a = ?"], "a": [["8a", "8a"], ["15a", "15a"], ["8", "8"], ["a⁸", "a⁸"]], "why": ["3 + 5 = 8, the variable part stays a.", "3 + 5 = 8, la parte letterale resta a."]}]}],
+      "independentPractice": [{"id": "ip-simp", "title": ["Try alone", "Prova da solo"], "instructions": ["Simplify.", "Semplifica."], "questions": [{"q": ["2(x + 4) = ?", "2(x + 4) = ?"], "a": [["2x + 8", "2x + 8"], ["2x + 4", "2x + 4"], ["x + 8", "x + 8"], ["6x", "6x"]], "why": ["Distribute the 2.", "Distribuisci il 2."]}]}],
+      "knowledgeCheck": [{"q": ["Which are like terms?", "Quali sono termini simili?"], "a": [["3x and 5x", "3x e 5x"], ["3x and 5y", "3x e 5y"], ["3x and 3", "3x e 3"], ["x² and x", "x² e x"]], "why": ["They have the same variable part.", "Hanno la stessa parte letterale."]}],
+      "summary": [["Like terms are added by adding coefficients. Use the distributive property to remove brackets.", "Termini simili si sommano sommando i coefficienti. Usa la distributiva per togliere le parentesi."]],
+      "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["5y − 2y + 3 = ?", "5y − 2y + 3 = ?"], "a": [["3y + 3", "3y + 3"], ["7y + 3", "7y + 3"], ["3y", "3y"], ["8y", "8y"]], "why": ["5y − 2y = 3y.", "5y − 2y = 3y."]}]},
+      "techniqueUnlock": {"id": "simplify-slash", "name": ["Algebra Form · Second Technique: Simplify Slash", "Stile dell’Algebra · Seconda Tecnica: Fendente della Semplificazione"], "description": ["Group like terms and simplify any expression.", "Raggruppa i termini simili e semplifica qualsiasi espressione."], "xpReward": 25}
+    },
+    "demon": ["Like-Term Imp", "Folletto dei Termini Simili"],
+    "tech": ["Algebra Form · Second Technique: Simplify Slash", "Stile dell’Algebra · Seconda Tecnica: Fendente della Semplificazione"],
+    "scenes": [
+      {"vis": "math-like-terms", "who": "s", "text": ["<p>Like terms have the same letter (or letters) with the same exponent.</p>", "<p>Termini simili hanno la stessa lettera (o le stesse lettere) con lo stesso esponente.</p>"]},
+      {"who": "y", "text": ["<p>You can add them by adding only the coefficients: 3x + 5x = 8x.</p>", "<p>Puoi sommarli sommando solo i coefficienti: 3x + 5x = 8x.</p>"]},
+      {"vis": "math-square-binomial", "who": "s", "text": ["<p>Watch out for the square of a binomial: <b>(a + b)² = a² + 2ab + b²</b>!</p><p>Never forget the middle term <b>+2ab</b>: it represents the two side rectangles in the geometric square dissection.</p>", "<p>Attenzione al quadrato di binomio: <b>(a + b)² = a² + 2ab + b²</b>!</p><p>Non dimenticare mai il doppio prodotto <b>+2ab</b>: rappresenta i due rettangoli laterali nella scomposizione geometrica del quadrato.</p>"]},
+      {"vis": "math-diff-squares", "who": "y", "text": ["<p>For product of sum and difference: <b>(a + b)(a − b) = a² − b²</b>.</p><p>The opposite cross terms cancel out: +ab − ab = 0, leaving only the difference of two squares.</p>", "<p>Per la somma per differenza: <b>(a + b)(a − b) = a² − b²</b>.</p><p>I termini misti opposti si annullano: +ab − ab = 0, lasciando solo la differenza di due quadrati.</p>"]}
+    ],
+    "quiz": [{"q": ["4x + 7x = ?", "4x + 7x = ?"], "a": [["11x", "11x"], ["11", "11"], ["28x", "28x"], ["x¹¹", "x¹¹"]], "why": ["4 + 7 = 11.", "4 + 7 = 11."]}]
+  },
+  {
+    "id": "m5m1",
+    "arc": 25,
+    "sec": "5.1",
+    "pages": "261–272",
+    "hue": 40,
+    "horns": 2,
+    "eyes": 1,
+    "title": ["Linear Equations", "Equazioni lineari"],
+    "topic": ["What an equation is and how to solve simple linear equations", "Che cos’è un’equazione e come risolvere semplici equazioni lineari"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know how to simplify algebraic expressions.", "Saper semplificare espressioni algebriche."]],
+      "objectives": [{"id": "solve-linear", "description": ["Solve linear equations of the form ax + b = c.", "Risolvere equazioni lineari del tipo ax + b = c."]}],
+      "concepts": [{"id": "equations", "title": ["Linear equations", "Equazioni lineari"], "explanation": ["An equation is an equality with an unknown. To solve linear equations we use inverse operations: add or subtract the same number from both sides, then divide or multiply.", "Un’equazione è un’uguaglianza con un’incognita. Per risolvere equazioni lineari usiamo le operazioni inverse: togliamo o aggiungiamo lo stesso numero a entrambi i membri, poi dividiamo o moltiplichiamo."], "example": ["2x + 3 = 11 → 2x = 8 → x = 4.", "2x + 3 = 11 → 2x = 8 → x = 4."], "workedExample": {"scenario": ["Solve 3x − 5 = 10.", "Risolvi 3x − 5 = 10."], "steps": [["1. Add 5 to both sides: 3x = 15.", "1. Aggiungi 5 a entrambi i membri: 3x = 15."], ["2. Divide by 3: x = 5.", "2. Dividi per 3: x = 5."], ["3. Check: 3×5 − 5 = 10. Correct.", "3. Verifica: 3×5 − 5 = 10. Corretto."]], "answer": ["x = 5", "x = 5"]}}],
+      "guidedPractice": [{"id": "gp-eq", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Solve.", "Risolvi."], "questions": [{"q": ["x + 4 = 9. x = ?", "x + 4 = 9. x = ?"], "a": [["5", "5"], ["13", "13"], ["4", "4"], ["9", "9"]], "why": ["Subtract 4.", "Sottrai 4."]}]}],
+      "independentPractice": [{"id": "ip-eq", "title": ["Try alone", "Prova da solo"], "instructions": ["Solve.", "Risolvi."], "questions": [{"q": ["2x = 14. x = ?", "2x = 14. x = ?"], "a": [["7", "7"], ["12", "12"], ["16", "16"], ["28", "28"]], "why": ["Divide by 2.", "Dividi per 2."]}]}],
+      "knowledgeCheck": [{"q": ["To isolate x in 5x = 20 we…", "Per isolare x in 5x = 20 si…"], "a": [["Divide by 5", "Dividi per 5"], ["Subtract 5", "Sottrae 5"], ["Add 5", "Aggiunge 5"], ["Multiply by 5", "Moltiplica per 5"]], "why": ["The inverse of multiplication is division.", "L’operazione inversa della moltiplicazione è la divisione."]}],
+      "summary": [["To solve a linear equation use inverse operations on both sides until the unknown is isolated. Always check by substituting.", "Per risolvere un’equazione lineare usa le operazioni inverse su entrambi i membri fino a isolare l’incognita. Controlla sempre sostituendo."]],
+      "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["4x + 2 = 18. x = ?", "4x + 2 = 18. x = ?"], "a": [["4", "4"], ["5", "5"], ["16", "16"], ["20", "20"]], "why": ["4x = 16 → x = 4.", "4x = 16 → x = 4."]}]},
+      "techniqueUnlock": {"id": "equation-slash", "name": ["Algebra Form · Third Technique: Equation Slash", "Stile dell’Algebra · Terza Tecnica: Fendente dell’Equazione"], "description": ["Isolate the unknown with inverse operations.", "Isola l’incognita con le operazioni inverse."], "xpReward": 25}
+    },
+    "demon": ["Unknown Imp", "Folletto dell’Incognita"],
+    "tech": ["Algebra Form · Third Technique: Equation Slash", "Stile dell’Algebra · Terza Tecnica: Fendente dell’Equazione"],
+    "scenes": [{"vis": "math-equation-balance", "who": "s", "text": ["<p>An equation is an equality that contains an unknown (usually x).</p>", "<p>Un’equazione è un’uguaglianza che contiene un’incognita (di solito x).</p>"]}, {"who": "y", "text": ["<p>To solve it we do the inverse operations on both sides.</p>", "<p>Per risolverla facciamo le operazioni inverse su entrambi i membri.</p>"]}],
+    "quiz": [{"q": ["x − 3 = 7. x = ?", "x − 3 = 7. x = ?"], "a": [["10", "10"], ["4", "4"], ["7", "7"], ["3", "3"]], "why": ["Aggiungi 3.", "Add 3."]}]
+  },
+  {
+    "id": "m5m2",
+    "arc": 25,
+    "sec": "5.2",
+    "pages": "273–286",
+    "hue": 45,
+    "horns": 3,
+    "eyes": 2,
+    "title": ["Equations with Brackets", "Equazioni con parentesi"],
+    "topic": ["Solving linear equations that contain brackets", "Risolvere equazioni lineari che contengono parentesi"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know how to solve simple linear equations and use the distributive property.", "Saper risolvere equazioni lineari semplici e usare la proprietà distributiva."]],
+      "objectives": [{"id": "eq-brackets", "description": ["Solve linear equations with brackets.", "Risolvere equazioni lineari con parentesi."]}],
+      "concepts": [{"id": "brackets-eq", "title": ["Equations with brackets", "Equazioni con parentesi"], "explanation": ["First remove the brackets with the distributive property, then proceed as with normal equations.", "Prima togli le parentesi con la proprietà distributiva, poi procedi come per le equazioni normali."], "example": ["2(x + 3) = 10 → 2x + 6 = 10 → 2x = 4 → x = 2.", "2(x + 3) = 10 → 2x + 6 = 10 → 2x = 4 → x = 2."], "workedExample": {"scenario": ["Solve 3(x − 2) = 9.", "Risolvi 3(x − 2) = 9."], "steps": [["1. Distribute: 3x − 6 = 9.", "1. Distribuisci: 3x − 6 = 9."], ["2. Add 6: 3x = 15.", "2. Aggiungi 6: 3x = 15."], ["3. Divide by 3: x = 5.", "3. Dividi per 3: x = 5."]], "answer": ["x = 5", "x = 5"]}}],
+      "guidedPractice": [{"id": "gp-br", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Solve.", "Risolvi."], "questions": [{"q": ["2(x + 1) = 8. x = ?", "2(x + 1) = 8. x = ?"], "a": [["3", "3"], ["4", "4"], ["2", "2"], ["7", "7"]], "why": ["2x + 2 = 8 → 2x = 6 → x = 3.", "2x + 2 = 8 → 2x = 6 → x = 3."]}]}],
+      "independentPractice": [{"id": "ip-br", "title": ["Try alone", "Prova da solo"], "instructions": ["Solve.", "Risolvi."], "questions": [{"q": ["4(x − 1) = 12. x = ?", "4(x − 1) = 12. x = ?"], "a": [["4", "4"], ["3", "3"], ["2", "2"], ["5", "5"]], "why": ["4x − 4 = 12 → 4x = 16 → x = 4.", "4x − 4 = 12 → 4x = 16 → x = 4."]}]}],
+      "knowledgeCheck": [{"q": ["Before solving an equation with brackets we…", "Prima di risolvere un’equazione con parentesi si…"], "a": [["Remove the brackets", "Toglie le parentesi"], ["Divide immediately", "Dividi subito"], ["Add the numbers", "Aggiunge i numeri"], ["Nothing", "Niente"]], "why": ["We use the distributive property.", "Si usa la proprietà distributiva."]}],
+      "summary": [["With brackets: first distribute, then solve the linear equation as usual.", "Con le parentesi: prima distribuisci, poi risolvi l’equazione lineare come al solito."]],
+      "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["5(x + 2) = 25. x = ?", "5(x + 2) = 25. x = ?"], "a": [["3", "3"], ["5", "5"], ["4", "4"], ["2", "2"]], "why": ["5x + 10 = 25 → 5x = 15 → x = 3.", "5x + 10 = 25 → 5x = 15 → x = 3."]}]},
+      "techniqueUnlock": {"id": "bracket-slash", "name": ["Stile dell’Algebra · Quarta Tecnica: Fendente della Parentesi", "Algebra Form · Fourth Technique: Bracket Slash"], "description": ["Open the brackets and solve the equation in one go.", "Apri le parentesi e risolvi l’equazione in un colpo solo."], "xpReward": 25}
+    },
+    "demon": ["Bracket Imp", "Folletto della Parentesi"],
+    "tech": ["Stile dell’Algebra · Quarta Tecnica: Fendente della Parentesi", "Algebra Form · Fourth Technique: Bracket Slash"],
+    "scenes": [{"who": "s", "text": ["<p>If the equation has brackets, first remove them with the distributive property.</p>", "<p>Se l’equazione ha parentesi, prima toglile con la proprietà distributiva.</p>"]}, {"who": "y", "text": ["<p>Then proceed as with a normal equation.</p>", "<p>Poi procedi come per un’equazione normale.</p>"]}],
+    "quiz": [{"q": ["3(x + 2) = 15. x = ?", "3(x + 2) = 15. x = ?"], "a": [["3", "3"], ["5", "5"], ["4", "4"], ["2", "2"]], "why": ["3x + 6 = 15 → 3x = 9 → x = 3.", "3x + 6 = 15 → 3x = 9 → x = 3."]}]
+  },
+  {
+    "id": "m6m1",
+    "arc": 26,
+    "sec": "6.1",
+    "pages": "311–322",
+    "hue": 50,
+    "horns": 2,
+    "eyes": 1,
+    "title": ["Linear Inequalities", "Disequazioni lineari"],
+    "topic": ["Solving simple linear inequalities", "Risolvere semplici disequazioni lineari"],
+    "learning": {
+      "version": 1,
+      "prerequisites": [["Know how to solve linear equations.", "Saper risolvere equazioni lineari."]],
+      "objectives": [{"id": "inequalities", "description": ["Solve linear inequalities and represent the solution on the line.", "Risolvere disequazioni lineari e rappresentare la soluzione sulla retta."]}],
+      "concepts": [{"id": "ineq-concept", "title": ["Linear inequalities", "Disequazioni lineari"], "explanation": ["An inequality uses <, >, ≤ or ≥. It is solved like an equation, but if we multiply or divide by a negative number the symbol flips. The solution is an interval on the line.", "Una disequazione usa <, >, ≤ o ≥. Si risolve come un’equazione, ma se si moltiplica o divide per un numero negativo il verso del simbolo si inverte. La soluzione è un intervallo sulla retta."], "example": ["2x + 1 < 7 → 2x < 6 → x < 3. On the line: all numbers left of 3.", "2x + 1 < 7 → 2x < 6 → x < 3. Sulla retta: tutti i numeri a sinistra di 3."], "workedExample": {"scenario": ["Solve −2x > 6.", "Risolvi −2x > 6."], "steps": [["1. Divide by −2 and flip the symbol: x < −3.", "1. Dividi per −2 e inverti il simbolo: x < −3."], ["2. Solution: all numbers less than −3.", "2. Soluzione: tutti i numeri minori di −3."]], "answer": ["x < −3", "x < −3"]}}],
+      "guidedPractice": [{"id": "gp-ineq", "title": ["Guided practice", "Esercitazione guidata"], "instructions": ["Solve.", "Risolvi."], "questions": [{"q": ["x + 5 > 8. x ?", "x + 5 > 8. x ?"], "a": [["x > 3", "x > 3"], ["x > 13", "x > 13"], ["x < 3", "x < 3"], ["x = 3", "x = 3"]], "why": ["Subtract 5.", "Sottrai 5."]}]}],
+      "independentPractice": [{"id": "ip-ineq", "title": ["Try alone", "Prova da solo"], "instructions": ["Solve.", "Risolvi."], "questions": [{"q": ["3x ≤ 12. x ?", "3x ≤ 12. x ?"], "a": [["x ≤ 4", "x ≤ 4"], ["x ≤ 9", "x ≤ 9"], ["x ≥ 4", "x ≥ 4"], ["x = 4", "x = 4"]], "why": ["Divide by 3 (positive, direction stays).", "Dividi per 3 (positivo, il verso resta)."]}]}],
+      "knowledgeCheck": [{"q": ["When we divide by a negative number the inequality direction…", "Quando si divide per un numero negativo il verso della disequazione…"], "a": [["Flips", "Si inverte"], ["Stays the same", "Resta uguale"], ["Becomes equal", "Diventa uguale"], ["Disappears", "Scompare"]], "why": ["We must flip the symbol.", "Bisogna invertire il simbolo."]}],
+      "summary": [["Inequalities are solved like equations, but the direction flips if we multiply or divide by a negative. The solution is an interval.", "Le disequazioni si risolvono come le equazioni, ma il verso si inverte se si moltiplica o divide per un negativo. La soluzione è un intervallo."]],
+      "masteryAssessment": {"title": ["Mastery check", "Verifica di padronanza"], "instructions": ["At least 75%.", "Almeno il 75%."], "passingScore": 75, "questions": [{"q": ["−x < 4. x ?", "−x < 4. x ?"], "a": [["x > −4", "x > −4"], ["x < −4", "x < −4"], ["x < 4", "x < 4"], ["x > 4", "x > 4"]], "why": ["Divide by −1 and flip.", "Dividi per −1 e inverti."]}]},
+      "techniqueUnlock": {"id": "inequality-slash", "name": ["Algebra Form · Fifth Technique: Inequality Slash", "Stile dell’Algebra · Quinta Tecnica: Fendente della Disequazione"], "description": ["Solve the inequality and draw the interval on the line.", "Risolvi la disequazione e disegna l’intervallo sulla retta."], "xpReward": 25}
+    },
+    "demon": ["Inequality Imp", "Folletto della Disequazione"],
+    "tech": ["Algebra Form · Fifth Technique: Inequality Slash", "Stile dell’Algebra · Quinta Tecnica: Fendente della Disequazione"],
+    "scenes": [{"vis": "math-inequality-line", "who": "s", "text": ["<p>An inequality uses the symbols <, >, ≤, ≥ instead of equals.</p>", "<p>Una disequazione usa i simboli <, >, ≤, ≥ al posto dell’uguale.</p>"]}, {"who": "y", "text": ["<p>If you multiply or divide by a negative number, you must flip the direction of the symbol.</p>", "<p>Se moltiplichi o dividi per un numero negativo, devi invertire il verso del simbolo.</p>"]}],
+    "quiz": [{"q": ["x − 2 ≥ 5. x ?", "x − 2 ≥ 5. x ?"], "a": [["x ≥ 7", "x ≥ 7"], ["x ≥ 3", "x ≥ 3"], ["x ≤ 7", "x ≤ 7"], ["x = 7", "x = 7"]], "why": ["Add 2.", "Aggiungi 2."]}]
   }
+
 ];
 
 export const RANKS: Rank[] = [
@@ -17912,7 +28408,9 @@ export const CODEX: CodexEntry[] = [
     "spinta di Archimede",
     "The upward push of a fluid on a submerged body.",
     "La spinta verso l'alto di un fluido su un corpo immerso."
-  ]
+  ],
+  ...MATH_CODEX,
+  ...ITALIAN_CODEX
 ];
 
 export const ROBOT_LEVELS = [
@@ -18198,3 +28696,177 @@ export const BUILD = {
     psu: ["The PSU's big cable goes into the 24-pin connector.", "Il cavo grande dell'alimentatore va nel connettore a 24 pin."]
   }
 };
+
+// Grade 5 Science is appended after the existing Grade 9 catalogue so all legacy
+// mission indexes and IDs remain stable.
+import {
+  GRADE5_SCIENCE_SUBJECT,
+  GRADE5_SCIENCE_UNITS,
+  GRADE5_SCIENCE_ARCS,
+  GRADE5_SCIENCE_MISSIONS
+} from './grade5ScienceData';
+if (!SUBJECTS.some(s => s.id === 'science')) {
+  SUBJECTS.push(GRADE5_SCIENCE_SUBJECT);
+}
+const grade5ScienceUnitOffset = UNITS.length;
+UNITS.push(...GRADE5_SCIENCE_UNITS);
+const grade5ScienceArcOffset = ARCS.length;
+ARCS.push(...GRADE5_SCIENCE_ARCS.map(arc => ({
+  ...arc,
+  unit: (arc.unit || 0) + grade5ScienceUnitOffset
+})));
+MISSIONS.push(...GRADE5_SCIENCE_MISSIONS.map(mission => ({
+  ...mission,
+  arc: mission.arc + grade5ScienceArcOffset
+})));
+
+// Grade 5 Science · The Universe is the next textbook unit (pages 7–25).
+import { GRADE5_UNIVERSE_MISSIONS } from './grade5ScienceUniverseData';
+
+const grade5UniverseUnitOffset = UNITS.length;
+UNITS.push({
+  title: ['The Universe', "L'Univers"],
+  ch: '3–13',
+  subject: 'science'
+});
+const grade5UniverseArcOffset = ARCS.length;
+ARCS.push({
+  n: 2,
+  unit: grade5UniverseUnitOffset,
+  subject: 'science',
+  title: ['The Universe', "L'Univers"],
+  pages: '7–25'
+});
+MISSIONS.push(...GRADE5_UNIVERSE_MISSIONS.map(mission => ({
+  ...mission,
+  arc: mission.arc + grade5UniverseArcOffset
+})));
+
+ 
+// Grade 5 Science · Energy and Forces is the third textbook unit (pages 27–49).
+import { GRADE5_ENERGY_FORCES_MISSIONS } from './grade5ScienceEnergyForcesData';
+
+const grade5EnergyForcesUnitOffset = UNITS.length;
+UNITS.push({
+  title: ['Energy and Forces', 'L’energia e le forze'],
+  ch: '14–26',
+  subject: 'science'
+});
+const grade5EnergyForcesArcOffset = ARCS.length;
+ARCS.push({
+  n: 3,
+  unit: grade5EnergyForcesUnitOffset,
+  subject: 'science',
+  title: ['Energy and Forces', 'L’energia e le forze'],
+  pages: '27–49'
+});
+MISSIONS.push(...GRADE5_ENERGY_FORCES_MISSIONS.map(mission => ({
+  ...mission,
+  arc: mission.arc + grade5EnergyForcesArcOffset
+})));
+
+ 
+// Grade 5 Science · The Human Body is the fourth textbook unit (pages 51–99).
+import { GRADE5_HUMAN_BODY_MISSIONS } from './grade5ScienceHumanBodyData';
+
+const grade5HumanBodyUnitOffset = UNITS.length;
+UNITS.push({
+  title: ['The Human Body', 'Il corpo umano'],
+  ch: '27–44',
+  subject: 'science'
+});
+const grade5HumanBodyArcOffset = ARCS.length;
+ARCS.push({
+  n: 4,
+  unit: grade5HumanBodyUnitOffset,
+  subject: 'science',
+  title: ['The Human Body', 'Il corpo umano'],
+  pages: '51–99'
+});
+MISSIONS.push(...GRADE5_HUMAN_BODY_MISSIONS.map(mission => ({
+  ...mission,
+  arc: mission.arc + grade5HumanBodyArcOffset
+})));
+
+
+// Grade 5 Science · Self-assessment and workbook practice (pages 100–120).
+import { GRADE5_SCIENCE_REVIEW_MISSIONS } from './grade5ScienceReviewData';
+
+const grade5ScienceReviewUnitOffset = UNITS.length;
+UNITS.push({
+  title: ['Self-Assessment & Workbook', 'Autovalutazione e quaderno operativo'],
+  ch: '45–46',
+  subject: 'science'
+});
+const grade5ScienceReviewArcOffset = ARCS.length;
+ARCS.push({
+  n: 5,
+  unit: grade5ScienceReviewUnitOffset,
+  subject: 'science',
+  title: ['Self-Assessment & Workbook', 'Autovalutazione e quaderno operativo'],
+  pages: '100–120'
+});
+MISSIONS.push(...GRADE5_SCIENCE_REVIEW_MISSIONS.map(mission => ({
+  ...mission,
+  arc: mission.arc + grade5ScienceReviewArcOffset
+})));
+
+// ============================================================================
+// Italian Studies · CEFR A1, A2, and B1 Curriculum
+// ============================================================================
+const italianA1UnitOffset = UNITS.length;
+UNITS.push({
+  title: ['Italian · A1 Principiante', 'Italiano · A1 Principiante'],
+  ch: 'A1.1–A1.3',
+  subject: 'italian'
+});
+const italianA1ArcOffset = ARCS.length;
+ARCS.push({
+  n: 1,
+  unit: italianA1UnitOffset,
+  subject: 'italian',
+  title: ['Saluti, Fonetica & Bar Italiano (A1)', 'Saluti, Fonetica e Bar Italiano (A1)'],
+  pages: '1–49'
+});
+
+const italianA2UnitOffset = UNITS.length;
+UNITS.push({
+  title: ['Italian · A2 Elementare', 'Italiano · A2 Elementare'],
+  ch: 'A2.1–A2.2',
+  subject: 'italian'
+});
+const italianA2ArcOffset = ARCS.length;
+ARCS.push({
+  n: 2,
+  unit: italianA2UnitOffset,
+  subject: 'italian',
+  title: ['Passato Prossimo & Vita in Città (A2)', 'Passato Prossimo e Vita in Città (A2)'],
+  pages: '50–99'
+});
+
+const italianB1UnitOffset = UNITS.length;
+UNITS.push({
+  title: ['Italian · B1 Intermedio', 'Italiano · B1 Intermedio'],
+  ch: 'B1.1–B1.2',
+  subject: 'italian'
+});
+const italianB1ArcOffset = ARCS.length;
+ARCS.push({
+  n: 3,
+  unit: italianB1UnitOffset,
+  subject: 'italian',
+  title: ['Futuro, Cortesia & Congiuntivo (B1)', 'Futuro, Cortesia e Congiuntivo (B1)'],
+  pages: '100–140'
+});
+
+const italianArcOffsets: Record<number, number> = {
+  0: italianA1ArcOffset,
+  1: italianA2ArcOffset,
+  2: italianB1ArcOffset
+};
+
+MISSIONS.push(...ITALIAN_MISSIONS.map(mission => ({
+  ...mission,
+  arc: (italianArcOffsets[mission.arc] ?? italianA1ArcOffset)
+})));
+

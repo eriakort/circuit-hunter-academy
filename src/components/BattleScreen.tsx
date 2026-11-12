@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useGame } from '../context/GameContext';
 import { QuizQuestion, Mission } from '../types';
+import { MISSIONS } from '../data/gameData';
 import { L, demonSVG, HEART, shuffle, U } from '../helpers';
+import { speakItalian, startListening, isSpeechRecognitionAvailable, scorePronunciation } from '../speech/speechEngine';
 
 export const BattleScreen: React.FC = () => {
   const {
@@ -44,7 +46,7 @@ export const BattleScreen: React.FC = () => {
   const [combo, setCombo] = useState(0);
   const [bestCombo, setBestCombo] = useState(0);
   const [currentQ, setCurrentQ] = useState<QuizQuestion | null>(null);
-  const [options, setOptions] = useState<string[]>([]);
+  const [options, setOptions] = useState<number[]>([]);
   const [answered, setAnswered] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [correctIndex, setCorrectIndex] = useState<number | null>(null);
@@ -53,6 +55,63 @@ export const BattleScreen: React.FC = () => {
   const [demonHit, setDemonHit] = useState(false);
   const [arenaOuch, setArenaOuch] = useState(false);
   const [battleFinished, setBattleFinished] = useState<'win' | 'lose' | null>(null);
+  // Captured before clearMission() runs, so the victory screen still knows this was the first clear.
+  const [firstClear, setFirstClear] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const [voiceTranscript, setVoiceTranscript] = useState('');
+  const [speechStopFn, setSpeechStopFn] = useState<(() => void) | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (speechStopFn) speechStopFn();
+    };
+  }, [speechStopFn]);
+
+  const handleVoiceCast = () => {
+    if (answered || !currentQ) return;
+    if (!isSpeechRecognitionAvailable()) {
+      alert(L(['Speech recognition is not supported in this browser.', 'Il riconoscimento vocale non è supportato in questo browser.'], lang));
+      return;
+    }
+
+    if (isListening && speechStopFn) {
+      speechStopFn();
+      setIsListening(false);
+      return;
+    }
+
+    setIsListening(true);
+    setVoiceTranscript('');
+
+    const stop = startListening({
+      lang: 'it-IT',
+      onResult: (transcript, isFinal) => {
+        setVoiceTranscript(transcript);
+        if (isFinal) {
+          setIsListening(false);
+          let bestMatchIdx = -1;
+          let bestScore = 0;
+          options.forEach((optIdx, displayIdx) => {
+            const rawOpt = currentQ.a[optIdx];
+            const optItalian = Array.isArray(rawOpt) ? rawOpt[1] || rawOpt[0] : rawOpt;
+            const res = scorePronunciation(transcript, optItalian);
+            if (res.score > bestScore) {
+              bestScore = res.score;
+              bestMatchIdx = displayIdx;
+            }
+          });
+
+          if (bestMatchIdx >= 0 && bestScore >= 50) {
+            handleSelectOption(bestMatchIdx);
+          }
+        }
+      },
+      onError: () => setIsListening(false),
+      onEnd: () => setIsListening(false)
+    });
+
+    setSpeechStopFn(() => stop);
+  };
 
   // Initialize battle queue
   useEffect(() => {
@@ -86,11 +145,11 @@ export const BattleScreen: React.FC = () => {
     setArenaOuch(false);
 
     // Shuffle options: the correct answer is always index 0 in q.a
-    const rawOptions = q.a.map(opt => L(opt, lang));
-    const rightAnswer = rawOptions[0];
-    const shuffledOpts = shuffle(rawOptions.slice());
-    setOptions(shuffledOpts);
-    setCorrectIndex(shuffledOpts.indexOf(rightAnswer));
+    // Keep shuffled answer indexes, not translated strings, so a language switch
+    // immediately re-renders every choice in the newly selected language.
+    const shuffledIndexes = shuffle(q.a.map((_, index) => index));
+    setOptions(shuffledIndexes);
+    setCorrectIndex(shuffledIndexes.indexOf(0));
   };
 
   const handleSelectOption = (idx: number) => {
@@ -99,7 +158,7 @@ export const BattleScreen: React.FC = () => {
     setSelectedIndex(idx);
 
     const isCorrect = idx === correctIndex;
-    const rightText = options[correctIndex!];
+    const rightText = currentQ.a[options[correctIndex!]] ? L(currentQ.a[options[correctIndex!]], lang) : '';
 
     // Split tech name if formatted as "Form · Technique"
     const fullTech = L(activeMission.tech, lang);
@@ -198,7 +257,7 @@ export const BattleScreen: React.FC = () => {
     setBattleFinished('win');
     if (isDojo) return;
 
-    const first = !cleared[activeMission.id];
+    setFirstClear(!cleared[activeMission.id]);
     const flawless = hearts === 3;
     const gained = 50 + (flawless ? 25 : 0);
     clearMission(activeMission.id, flawless, gained);
@@ -312,10 +371,11 @@ export const BattleScreen: React.FC = () => {
       );
     }
 
-    const first = !cleared[activeMission.id];
+    const first = firstClear;
     const flawless = hearts === 3;
     const gained = 50 + (flawless ? 25 : 0);
     const ni = currentMissionIndex + 1;
+    const nextMission = MISSIONS[ni];
 
     return (
       <div className="card result">
@@ -358,7 +418,7 @@ export const BattleScreen: React.FC = () => {
           ) : (
             <>
               <button className="btn" id="nx" onClick={() => openMission(ni)}>
-                {L(['Next', 'Avanti'], lang)}: {L(activeMission.title, lang)}
+                {L(['Next', 'Avanti'], lang)}: {L((nextMission || activeMission).title, lang)}
               </button>
               <button className="btn ghost" id="map" onClick={() => goToView('map')}>
                 {L(U.missions, lang)}
@@ -426,24 +486,90 @@ export const BattleScreen: React.FC = () => {
 
       {currentQ && (
         <div className="qbox">
-          <div className="qtxt">{L(currentQ.q, lang)}</div>
+          <div className="qtxt" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
+            <span>{L(currentQ.q, lang)}</span>
+            {currentMission.id.startsWith('it_') && (
+              <button
+                type="button"
+                className="btn sm"
+                onClick={() => {
+                  const itText = Array.isArray(currentQ.q) ? currentQ.q[1] || currentQ.q[0] : currentQ.q;
+                  speakItalian(itText, { rate: 0.88 });
+                }}
+                style={{ flexShrink: 0, padding: '4px 10px', fontSize: '13px' }}
+                title={lang === 'it' ? 'Ascolta domanda' : 'Listen to question'}
+              >
+                🔊
+              </button>
+            )}
+          </div>
+
+          {(currentMission.id.startsWith('it_') || state.subject === 'italian') && !answered && (
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              background: 'rgba(255, 209, 102, 0.08)',
+              border: '1px dashed rgba(255, 209, 102, 0.3)',
+              borderRadius: 10,
+              padding: '8px 14px',
+              margin: '10px 0'
+            }}>
+              <span style={{ fontSize: 13, color: '#ffd166' }}>
+                🎤 {L(['Voice Cast: Speak the answer to strike!', 'Colpo Vocale: Pronuncia la risposta ad alta voce!'], lang)}
+              </span>
+              <button
+                type="button"
+                className={`btn sm ${isListening ? 'bad' : 'ghost'}`}
+                onClick={handleVoiceCast}
+                style={{ padding: '4px 10px', fontSize: 12 }}
+              >
+                {isListening ? L(['Listening... Speak now!', 'Ascolto... Parla ora!'], lang) : L(['Voice Attack', 'Attacco Vocale'], lang)}
+              </button>
+            </div>
+          )}
+
+          {voiceTranscript && !answered && (
+            <div style={{ fontSize: 13, color: 'var(--muted)', marginBottom: 8 }}>
+              {L(['Heard: ', 'Ascoltato: '], lang)} <i>"{voiceTranscript}"</i>
+            </div>
+          )}
 
           <div className="opts">
-            {options.map((opt, idx) => {
+            {options.map((optionIndex, idx) => {
               let optClass = 'btn ghost opt';
               if (answered) {
                 if (idx === correctIndex) optClass = 'btn right opt';
                 else if (idx === selectedIndex) optClass = 'btn wrong opt';
               }
+              const isItalianMission = currentMission.id.startsWith('it_') || state.subject === 'italian';
               return (
-                <button
-                  key={idx}
-                  className={optClass}
-                  disabled={answered}
-                  onClick={() => handleSelectOption(idx)}
-                >
-                  {opt}
-                </button>
+                <div key={idx} style={{ display: 'flex', gap: 6, alignItems: 'stretch' }}>
+                  <button
+                    className={optClass}
+                    style={{ flex: 1 }}
+                    disabled={answered}
+                    onClick={() => handleSelectOption(idx)}
+                  >
+                    {L(currentQ.a[optionIndex], lang)}
+                  </button>
+                  {isItalianMission && (
+                    <button
+                      type="button"
+                      className="btn ghost sm"
+                      style={{ padding: '0 10px', fontSize: 13 }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const rawOpt = currentQ.a[optionIndex];
+                        const itText = Array.isArray(rawOpt) ? rawOpt[1] || rawOpt[0] : rawOpt;
+                        speakItalian(itText, { rate: 0.9 });
+                      }}
+                      title={L(['Listen', 'Ascolta'], lang)}
+                    >
+                      🔊
+                    </button>
+                  )}
+                </div>
               );
             })}
           </div>

@@ -1,12 +1,14 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { GameState, Language, SubjectId, ViewMode, Mission } from '../types';
+import { GameState, GradeId, Language, SubjectId, ViewMode, Mission, LearningMissionProgress } from '../types';
 import { MISSIONS, UNITS, ARCS, RANKS } from '../data/gameData';
 import { rankOf } from '../helpers';
+import { GRADE_SUBJECT_IDS } from '../data/gradeData';
+import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, createFreshProgressState, isValidCheckpointResult, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
 
-const SKEY = 'circuit-hunter-academy-v2';
-const SCHEMA = 2;
+
 
 const defaultState: GameState = {
+  grade: null,
   name: '',
   lang: 'en',
   xp: 0,
@@ -15,7 +17,8 @@ const defaultState: GameState = {
   cleared: {},
   seen: {},
   flawless: {},
-  v: SCHEMA
+  learningProgress: {},
+  v: SAVE_SCHEMA
 };
 
 interface GameContextType {
@@ -26,12 +29,15 @@ interface GameContextType {
   currentMission: Mission;
   battleContext: { isDojo: boolean; customQuestions?: any[] } | null;
   setLanguage: (lang: Language) => void;
+  setGrade: (grade: GradeId) => void;
   setSubject: (sub: SubjectId) => void;
   setUnit: (u: number) => void;
   setName: (name: string) => void;
   addXP: (amount: number) => void;
   award: (amount: number) => void;
   clearMission: (missionId: string, flawless: boolean, xpGained: number) => void;
+  saveLearningProgress: (missionId: string, progress: Partial<LearningMissionProgress>) => void;
+  saveCheckpointResult: (checkpointId: string, score: number, total: number, passed: boolean, xpReward: number) => void;
   markSeen: (missionIndex: number) => void;
   openMission: (index: number) => void;
   nextScene: () => void;
@@ -50,44 +56,95 @@ const GameContext = createContext<GameContextType | undefined>(undefined);
 export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, setState] = useState<GameState>(() => {
     try {
-      const raw = localStorage.getItem(SKEY);
-      if (raw) {
-        const loaded = JSON.parse(raw);
-        if (!loaded.v || loaded.v < SCHEMA) {
-          loaded.v = SCHEMA;
-        }
-        return { ...defaultState, ...loaded };
-      }
+      const raw = localStorage.getItem(SAVE_KEY);
+      return raw ? sanitizeGameState(JSON.parse(raw)) : defaultState;
     } catch (e) {
-      console.error('Failed to load save state:', e);
+      console.error('Failed to load save state; starting with a safe default:', e);
+      return defaultState;
     }
-    return defaultState;
   });
 
-  const [view, setView] = useState<ViewMode>(() => (state.subject ? 'map' : 'subjects'));
-  const [currentMissionIndex, setCurrentMissionIndex] = useState<number>(0);
-  const [currentSceneIndex, setCurrentSceneIndex] = useState<number>(0);
-  const [battleContext, setBattleContext] = useState<{ isDojo: boolean; customQuestions?: any[] } | null>(null);
+  const [initialNavigation] = useState<SavedNavigation | null>(() => {
+    try {
+      const raw = localStorage.getItem(NAVIGATION_KEY);
+      return raw ? restoreSavedNavigation(JSON.parse(raw), state) : null;
+    } catch (e) {
+      console.error('Failed to restore navigation; opening the learning map:', e);
+      return null;
+    }
+  });
+  const [view, setView] = useState<ViewMode>(() => {
+    if (!state.grade) return 'grades';
+    return initialNavigation?.view || 'map';
+  });
+  const [currentMissionIndex, setCurrentMissionIndex] = useState<number>(
+    () => initialNavigation?.currentMissionIndex ?? Math.max(0, MISSIONS.findIndex(m => (ARCS[m.arc]?.subject || 'cs') === state.subject))
+  );
+  const [currentSceneIndex, setCurrentSceneIndex] = useState<number>(
+    () => initialNavigation?.currentSceneIndex ?? 0
+  );
+  const [battleContext, setBattleContext] = useState<{ isDojo: boolean; customQuestions?: any[] } | null>(
+    () => initialNavigation?.battleContext ?? null
+  );
 
   useEffect(() => {
     try {
-      localStorage.setItem(SKEY, JSON.stringify(state));
+      localStorage.setItem(SAVE_KEY, JSON.stringify(state));
     } catch (e) {
       console.error('Failed to save state:', e);
     }
   }, [state]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(NAVIGATION_KEY, JSON.stringify({
+        view,
+        currentMissionIndex,
+        currentSceneIndex,
+        battleContext,
+        grade: state.grade,
+        subject: state.subject,
+        missionId: MISSIONS[currentMissionIndex]?.id || null
+      } satisfies SavedNavigation));
+    } catch (e) {
+      console.error('Failed to save navigation:', e);
+    }
+  }, [view, currentMissionIndex, currentSceneIndex, battleContext, state.grade, state.subject]);
+
+
+  const setGrade = (grade: GradeId) => {
+    const subject = GRADE_SUBJECT_IDS[grade].includes(state.subject)
+      ? state.subject
+      : GRADE_SUBJECT_IDS[grade][0] as SubjectId;
+    const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === subject);
+    const firstMission = MISSIONS.findIndex(m => (ARCS[m.arc]?.subject || 'cs') === subject);
+    setState(s => ({ ...s, grade, subject, unit: firstUnit < 0 ? 0 : firstUnit }));
+    setCurrentMissionIndex(firstMission < 0 ? 0 : firstMission);
+    setCurrentSceneIndex(0);
+    setBattleContext(null);
+    setView('subjects');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const setLanguage = (lang: Language) => {
     setState(s => ({ ...s, lang }));
   };
 
   const setSubject = (sub: SubjectId) => {
+    const activeGrade = state.grade || 'grade9';
+    if (!GRADE_SUBJECT_IDS[activeGrade]?.includes(sub)) return;
     const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === sub);
-    setState(s => ({ ...s, subject: sub, unit: firstUnit < 0 ? 0 : firstUnit }));
+    const firstMission = MISSIONS.findIndex(m => (ARCS[m.arc]?.subject || 'cs') === sub);
+    setState(s => ({ ...s, grade: s.grade || activeGrade, subject: sub, unit: firstUnit < 0 ? 0 : firstUnit }));
+    setCurrentMissionIndex(firstMission < 0 ? 0 : firstMission);
+    setCurrentSceneIndex(0);
+    setBattleContext(null);
     setView('map');
   };
 
   const setUnit = (unit: number) => {
+    if (!Number.isInteger(unit) || unit < 0 || unit >= UNITS.length) return;
+    if ((UNITS[unit].subject || 'cs') !== state.subject) return;
     setState(s => ({ ...s, unit }));
   };
 
@@ -101,7 +158,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const inMissionFirstTime = () => {
     const m = MISSIONS[currentMissionIndex];
-    return !state.cleared[m.id];
+    return !m || !state.cleared[m.id];
   };
 
   const award = (amount: number) => {
@@ -125,6 +182,47 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
   };
 
+  const saveLearningProgress = (missionId: string, progress: Partial<LearningMissionProgress>) => {
+    setState(s => ({
+      ...s,
+      learningProgress: {
+        ...(s.learningProgress || {}),
+        [missionId]: {
+          guidedPracticeComplete: false,
+          independentPracticeComplete: false,
+          mastered: false,
+          techniqueUnlocked: false,
+          ...(s.learningProgress?.[missionId] || {}),
+          ...progress
+        }
+      }
+    }));
+  };
+
+  const saveCheckpointResult = (checkpointId: string, score: number, total: number, passed: boolean, xpReward: number) => {
+    if (!isValidCheckpointResult(checkpointId, score, total, passed, xpReward)) return;
+    setState(s => {
+      const existing = s.checkpointProgress?.[checkpointId] || {
+        attempts: 0, bestScore: 0, lastScore: 0, completed: false
+      };
+      const newlyCompleted = passed && !existing.completed;
+      return {
+        ...s,
+        xp: newlyCompleted ? s.xp + xpReward : s.xp,
+        checkpointProgress: {
+          ...(s.checkpointProgress || {}),
+          [checkpointId]: {
+            attempts: existing.attempts + 1,
+            bestScore: Math.max(existing.bestScore, score),
+            lastScore: score,
+            completed: existing.completed || passed,
+            completedAt: newlyCompleted ? Date.now() : existing.completedAt
+          }
+        }
+      };
+    });
+  };
+
   const markSeen = (missionIndex: number) => {
     setState(s => ({
       ...s,
@@ -133,6 +231,8 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const openMission = (index: number) => {
+    const mission = MISSIONS[index];
+    if (!mission || (ARCS[mission.arc]?.subject || 'cs') !== state.subject) return;
     setCurrentMissionIndex(index);
     setCurrentSceneIndex(0);
     markSeen(index);
@@ -164,24 +264,23 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const startBattle = (isDojo = false, customQuestions?: any[]) => {
+    if (isDojo && !customQuestions) {
+      const pool = myMissions().filter(m => state.cleared[m.id]).flatMap(m => m.quiz || []);
+      if (!pool.length) return;
+      customQuestions = pool;
+    }
     setBattleContext({ isDojo, customQuestions });
     setView('battle');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const resetProgress = () => {
-    const fresh: GameState = {
-      name: '',
-      lang: state.lang,
-      xp: 0,
-      subject: state.subject,
-      unit: 0,
-      cleared: {},
-      seen: {},
-      flawless: {},
-      v: SCHEMA
-    };
+    const fresh = createFreshProgressState(state);
     setState(fresh);
+    const firstMission = MISSIONS.findIndex(m => (ARCS[m.arc]?.subject || 'cs') === state.subject);
+    setCurrentMissionIndex(firstMission < 0 ? 0 : firstMission);
+    setCurrentSceneIndex(0);
+    setBattleContext(null);
     setView('map');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -216,12 +315,15 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
         currentMission,
         battleContext,
         setLanguage,
+        setGrade,
         setSubject,
         setUnit,
         setName,
         addXP,
         award,
         clearMission,
+        saveLearningProgress,
+        saveCheckpointResult,
         markSeen,
         openMission,
         nextScene,

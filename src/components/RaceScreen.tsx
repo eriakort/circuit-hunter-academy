@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../context/GameContext';
 import { RacePlayer, RaceProgress, QuizQuestion } from '../types';
-import { MISSIONS } from '../data/gameData';
+import { MISSIONS, ARCS } from '../data/gameData';
 import { L, rng, sshuffle, hueOf, raceAvatar, raceXP, safeId, U } from '../helpers';
 import { createClient } from '@supabase/supabase-js';
 
@@ -11,7 +11,7 @@ const RACE_MAX = 8;
 const MAX_POINTS_PER_Q = 100;
 
 /* Everything received from other players is untrusted: coerce it to known shapes before storing or rendering. */
-const toNum = (v: unknown, max: number): number => {
+const toNum = (v: unknown, max: number): nhttps://github.com/eriakort/circuit-hunter-academy/pull/1/conflict?name=src%252Fcomponents%252FRaceScreen.tsx&ancestor_oid=db5dc4fc2fd99a5e605bca0bf0156ae58f50a97d&base_oid=ae3861e7a5c6b2488238488214bba7614baa315a&head_oid=c5840c51b3a3b8988fea08362051de0a17c92726umber => {
   const n = Number(v);
   return Number.isFinite(n) ? Math.min(max, Math.max(0, Math.round(n))) : 0;
 };
@@ -26,6 +26,18 @@ const cleanPlayer = (id: string, p: any): RacePlayer | null => {
 const isRaceMission = (id: unknown): id is string =>
   id === 'mix' || MISSIONS.some(m => m.id === id && Array.isArray(m.quiz) && m.quiz.length > 0);
 
+const toNum = (value: unknown, max: number): number => {
+  const n = Number(value);
+  return Number.isFinite(n) ? Math.min(max, Math.max(0, Math.round(n))) : 0;
+};
+const cleanPlayer = (id: string, player: any): RacePlayer | null => {
+  if (!player || typeof player !== 'object') return null;
+  const name = String(player.name ?? '').slice(0, 20).trim();
+  if (!name) return null;
+  return { id, name, joinedAt: toNum(player.joinedAt, Number.MAX_SAFE_INTEGER), hue: toNum(player.hue, 359) };
+};
+const isRaceMission = (id: unknown): id is string =>
+  id === 'mix' || MISSIONS.some(m => m.id === id && Array.isArray(m.quiz) && m.quiz.length > 0);
 const hostIdOf = (players: Record<string, RacePlayer>): string | undefined =>
   Object.values(players).sort((a, b) => a.joinedAt - b.joinedAt || (a.id < b.id ? -1 : 1))[0]?.id;
 
@@ -35,7 +47,9 @@ const defaultSupabaseKey =
 
 export const RaceScreen: React.FC = () => {
   const { state, addXP, goToView } = useGame();
-  const { lang, name } = state;
+  const { lang, name, subject } = state;
+  const curSub = subject || 'cs';
+  const subjectMissions = MISSIONS.filter(m => (ARCS[m.arc]?.subject || 'cs') === curSub);
 
   // Race UI State
   const [raceState, setRaceState] = useState<'home' | 'lobby' | 'countdown' | 'running' | 'done'>('home');
@@ -74,6 +88,12 @@ export const RaceScreen: React.FC = () => {
     playersRef.current = next;
     setPlayers(next);
   };
+  const playersRef = useRef<Record<string, RacePlayer>>({});
+  const meRef = useRef<RacePlayer | null>(null);
+  const qCountRef = useRef(0);
+  const updatePlayers = (next: Record<string, RacePlayer>) => { playersRef.current = next; setPlayers(next); };
+  const awardedRef = useRef(false);
+  const [lastXP, setLastXP] = useState(0);
 
   // Sorted players by join order
   const playerList = Object.values(players).sort((a, b) => a.joinedAt - b.joinedAt || (a.id < b.id ? -1 : 1));
@@ -85,10 +105,11 @@ export const RaceScreen: React.FC = () => {
     const r = rng(seed);
     const pool =
       missionId === 'mix'
-        ? sshuffle(MISSIONS.flatMap(m => m.quiz), r).slice(0, 10)
-        : sshuffle(MISSIONS.find(m => m.id === missionId)?.quiz.slice() || [], r);
+        ? sshuffle(subjectMissions.flatMap(m => m.quiz), r).slice(0, 10)
+        : sshuffle(subjectMissions.find(m => m.id === missionId)?.quiz.slice() || [], r);
 
-    return pool.map(q => ({ q, order: sshuffle([0, 1, 2, 3], r) }));
+    // Some Grade 5 Science questions have three choices rather than four.
+    return pool.map(q => ({ q, order: sshuffle(q.a.map((_, index) => index), r) }));
   };
 
   const handleJoinOrCreate = async (roomCode: string, create: boolean) => {
@@ -182,12 +203,30 @@ export const RaceScreen: React.FC = () => {
     if (!isRaceMission(missionId) || !Number.isInteger(seed)) return;
     raceIdRef.current = raceId;
     const qs = buildRaceQuestions(missionId, seed);
+    if (payload.subject && payload.subject !== curSub) {
+      setErrorMsg(L(['This room is using a different subject. Choose the same grade and subject as the host.', 'Questa stanza usa una materia diversa. Scegli la stessa classe e materia dell’host.'], lang));
+      setRaceState('lobby');
+      return;
+    }
+    const { from, missionId, seed, raceId } = payload;
+    if (from !== hostIdOf(playersRef.current)) return;
+    if (typeof raceId !== 'string' || !raceId || raceId.length > 64) return;
+    if (!isRaceMission(missionId) || !Number.isInteger(seed) || seed < 0 || seed > 1000000) return;
+    const qs = buildRaceQuestions(missionId, seed);
+    if (qs.length === 0) {
+      setErrorMsg(L(['The selected race topic is not available for your subject.', 'L’argomento scelto per la gara non è disponibile per la tua materia.'], lang));
+      setRaceState('lobby');
+      return;
+    }
+    raceIdRef.current = raceId;
     qCountRef.current = qs.length;
     setQuestions(qs);
     setCurrentQIndex(0);
     setScore(0);
     setCorrectCount(0);
     setProgress({});
+    awardedRef.current = false;
+    setLastXP(0);
 
     // Start countdown
     setRaceState('countdown');
@@ -211,6 +250,7 @@ export const RaceScreen: React.FC = () => {
     if (typeof p.id !== 'string' || p.id === meRef.current?.id || !playersRef.current[p.id]) return;
     const n = qCountRef.current;
     const step = toNum(p.step, n);
+    const step = toNum(p.step, qCountRef.current);
     const clean: RaceProgress = {
       id: p.id,
       step,
@@ -218,6 +258,7 @@ export const RaceScreen: React.FC = () => {
       time: toNum(p.time, Number.MAX_SAFE_INTEGER),
       raceId: raceIdRef.current,
       done: step >= n && p.done === true
+      done: step === qCountRef.current && p.done === true
     };
     setProgress(prev => ({ ...prev, [clean.id]: clean }));
   };
@@ -226,6 +267,7 @@ export const RaceScreen: React.FC = () => {
     const seed = Math.floor(Math.random() * 1000000);
     const rId = safeId();
     const payload = { from: me?.id, missionId: selectedMission, seed, raceId: rId };
+    const payload = { from: me?.id, missionId: selectedMission, seed, raceId: rId, subject: curSub };
 
     if (channelRef.current) {
       try {
@@ -251,9 +293,24 @@ export const RaceScreen: React.FC = () => {
 
       if (left <= 0) {
         clearInterval(timerIntervalRef.current);
-        handleAnswerTimeout();
+        timeoutRef.current();
       }
     }, 100);
+  };
+
+  const sendProgress = (step: number, curScore: number) => {
+    if (!channelRef.current || !me) return;
+    const myProg: RaceProgress = {
+      id: me.id,
+      step,
+      score: curScore,
+      time: Date.now(),
+      raceId: raceIdRef.current,
+      done: step >= questions.length
+    };
+    try {
+      channelRef.current.send({ type: 'broadcast', event: 'progress', payload: myProg });
+    } catch (e) {}
   };
 
   const handleAnswerTimeout = () => {
@@ -264,8 +321,10 @@ export const RaceScreen: React.FC = () => {
       ok: false
     });
 
+    sendProgress(currentQIndex + 1, score);
+
     setTimeout(() => {
-      advanceQuestion(score, correctCount);
+      advanceRef.current(score, correctCount);
     }, 1200);
   };
 
@@ -300,23 +359,10 @@ export const RaceScreen: React.FC = () => {
 
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
 
-    // Broadcast progress to opponents
-    if (channelRef.current && me) {
-      const myProg: RaceProgress = {
-        id: me.id,
-        step: currentQIndex + 1,
-        score: newScore,
-        time: Date.now(),
-        raceId: raceIdRef.current,
-        done: currentQIndex + 1 >= questions.length
-      };
-      try {
-        channelRef.current.send({ type: 'broadcast', event: 'progress', payload: myProg });
-      } catch (e) {}
-    }
+    sendProgress(currentQIndex + 1, newScore);
 
     setTimeout(() => {
-      advanceQuestion(newScore, newCorrect);
+      advanceRef.current(newScore, newCorrect);
     }, 1200);
   };
 
@@ -329,13 +375,16 @@ export const RaceScreen: React.FC = () => {
     }
   };
 
-  const finishRace = (_finalScore: number, finalCorrect: number) => {
+  const finishRace = (_finalScore: number, _finalCorrect: number) => {
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
     setRaceState('done');
-
-    const xpEarned = raceXP(finalCorrect, true, playerList.length);
-    addXP(xpEarned);
   };
+
+  // Timer and setTimeout callbacks outlive the render that created them; route them to the latest handlers.
+  const timeoutRef = useRef(handleAnswerTimeout);
+  timeoutRef.current = handleAnswerTimeout;
+  const advanceRef = useRef(advanceQuestion);
+  advanceRef.current = advanceQuestion;
 
   const handleLeave = () => {
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
@@ -358,6 +407,22 @@ export const RaceScreen: React.FC = () => {
     }
     setRaceState('lobby');
   };
+
+  // Award XP once every racer has finished, so the winner bonus goes only to the actual winner.
+  useEffect(() => {
+    if (raceState !== 'done' || awardedRef.current || !me) return;
+    const others = playerList.filter(p => p.id !== me.id);
+    if (!others.every(p => progress[p.id]?.done)) return;
+    awardedRef.current = true;
+    const top = [...playerList].sort(
+      (a, b) =>
+        (b.id === me.id ? score : progress[b.id]?.score || 0) -
+        (a.id === me.id ? score : progress[a.id]?.score || 0)
+    )[0];
+    const xp = raceXP(correctCount, top?.id === me.id, playerList.length);
+    setLastXP(xp);
+    addXP(xp);
+  }, [raceState, progress, players, me, score, correctCount]);
 
   // 1. Home View: Join / Create Room
   if (raceState === 'home') {
@@ -500,7 +565,7 @@ export const RaceScreen: React.FC = () => {
               style={{ marginBottom: '14px' }}
             >
               <option value="mix">{L(['Mixed review (10 questions)', 'Ripasso misto (10 domande)'], lang)}</option>
-              {MISSIONS.map(m => (
+              {subjectMissions.map(m => (
                 <option key={m.id} value={m.id}>
                   § {m.sec} · {L(m.title, lang)}
                 </option>
@@ -661,7 +726,7 @@ export const RaceScreen: React.FC = () => {
       </div>
 
       <p className="muted">
-        {L(['Your score', 'Il tuo punteggio'], lang)}: <b>{score} pts</b>. +{raceXP(correctCount, leaderboard[0]?.id === me?.id, playerList.length)} XP!
+        {L(['Your score', 'Il tuo punteggio'], lang)}: <b>{score} pts</b>. {awardedRef.current ? `+${lastXP} XP!` : L(['Waiting for other racers…', 'In attesa degli altri giocatori…'], lang)}
       </p>
 
       <div className="row" style={{ justifyContent: 'center', marginTop: '18px' }}>
