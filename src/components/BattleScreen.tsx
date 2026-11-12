@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useGame } from '../context/GameContext';
 import { QuizQuestion, Mission } from '../types';
+import { MISSIONS } from '../data/gameData';
 import { L, demonSVG, HEART, shuffle, U } from '../helpers';
 import { speakItalian, startListening, isSpeechRecognitionAvailable, scorePronunciation } from '../speech/speechEngine';
 
@@ -54,6 +55,8 @@ export const BattleScreen: React.FC = () => {
   const [demonHit, setDemonHit] = useState(false);
   const [arenaOuch, setArenaOuch] = useState(false);
   const [battleFinished, setBattleFinished] = useState<'win' | 'lose' | null>(null);
+  // Captured before clearMission() runs, so the victory screen still knows this was the first clear.
+  const [firstClear, setFirstClear] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [voiceTranscript, setVoiceTranscript] = useState('');
   const [speechStopFn, setSpeechStopFn] = useState<(() => void) | null>(null);
@@ -254,7 +257,7 @@ export const BattleScreen: React.FC = () => {
     setBattleFinished('win');
     if (isDojo) return;
 
-    const first = !cleared[activeMission.id];
+    setFirstClear(!cleared[activeMission.id]);
     const flawless = hearts === 3;
     const gained = 50 + (flawless ? 25 : 0);
     clearMission(activeMission.id, flawless, gained);
@@ -368,10 +371,11 @@ export const BattleScreen: React.FC = () => {
       );
     }
 
-    const first = !cleared[activeMission.id];
+    const first = firstClear;
     const flawless = hearts === 3;
     const gained = 50 + (flawless ? 25 : 0);
     const ni = currentMissionIndex + 1;
+    const nextMission = MISSIONS[ni];
 
     return (
       <div className="card result">
@@ -414,7 +418,7 @@ export const BattleScreen: React.FC = () => {
           ) : (
             <>
               <button className="btn" id="nx" onClick={() => openMission(ni)}>
-                {L(['Next', 'Avanti'], lang)}: {L(activeMission.title, lang)}
+                {L(['Next', 'Avanti'], lang)}: {L((nextMission || activeMission).title, lang)}
               </button>
               <button className="btn ghost" id="map" onClick={() => goToView('map')}>
                 {L(U.missions, lang)}
