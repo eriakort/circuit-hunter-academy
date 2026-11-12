@@ -12,6 +12,8 @@ assert.ok(scienceSubject, 'Grade 5 Science & Technology must be registered');
 assert.ok(isBilingualPair(scienceSubject.name), 'Science subject name must be bilingual');
 assert.ok(isBilingualPair(scienceSubject.blurb), 'Science subject description must be bilingual');
 assert.ok(isBilingualPair(scienceSubject.meta), 'Science subject metadata must be bilingual');
+assert.ok(scienceSubject.meta[0].includes('Self-Assessment & Workbook'), 'English subject metadata must list the fifth review/workbook unit');
+assert.ok(scienceSubject.meta[1].includes('Autovalutazione e quaderno operativo'), 'Italian subject metadata must list the fifth review/workbook unit');
 
 // Grade 5 is a primary-school curriculum: it must not inherit Grade 9 Physics.
 assert.deepEqual(GRADE_CURRICULUM_MAP.grade5, ['science', 'italian']);
