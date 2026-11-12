@@ -59,7 +59,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 }
 
 const AppContent: React.FC = () => {
-  const { view, state, battleContext } = useGame();
+  const { view, state } = useGame();
 
   // New learners choose a grade first; existing Grade 9 saves are migrated in GameContext.
   const activeView = !state.grade ? 'grades' : view;
