@@ -68,7 +68,7 @@ test('targeted revision content follows the selected language', async ({ page })
   await seedWeakConcept(page);
   await page.locator('#lIT').click();
 
-  await page.getByRole('button', { name: 'Review concept: L\\'architettura di von Neumann' }).click();
+  await page.getByRole("button", { name: "Review concept: L'architettura di von Neumann" }).click();
   await expect(page.getByRole('heading', { name: 'Ripasso mirato' })).toBeVisible();
   await expect(page.getByText('VERIFICA DI RICHIAMO')).toBeVisible();
 });
