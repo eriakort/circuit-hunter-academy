@@ -109,7 +109,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } catch (e) {
       console.error('Failed to save navigation:', e);
     }
-  }, [view, currentMissionIndex, currentSceneIndex, battleContext]);
+  }, [view, currentMissionIndex, currentSceneIndex, battleContext, state.grade, state.subject]);
 
 
   const setGrade = (grade: GradeId) => {
@@ -284,6 +284,10 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       v: SAVE_SCHEMA
     };
     setState(fresh);
+    const firstMission = MISSIONS.findIndex(m => (ARCS[m.arc]?.subject || 'cs') === state.subject);
+    setCurrentMissionIndex(firstMission < 0 ? 0 : firstMission);
+    setCurrentSceneIndex(0);
+    setBattleContext(null);
     setView('map');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
