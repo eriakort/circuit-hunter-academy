@@ -22,18 +22,18 @@ test('dojo battle feedback and technique callout update during a live language s
     const state = JSON.parse(window.localStorage.getItem(key) || '{}');
     state.cleared = { ...(state.cleared || {}), a1m1: true };
     window.localStorage.setItem(key, JSON.stringify(state));
-    // Make answer shuffling deterministic: the correct answer (source index 0)
-    // is placed last, allowing the test to select it without test-only UI hooks.
+    // Keep Fisher–Yates shuffles in their original order so source answer 0
+    // remains the first option, without test-only UI hooks.
   });
   await page.addInitScript(() => {
-    Math.random = () => 0;
+    Math.random = () => 0.999999;
   });
   await page.reload();
   await page.locator('#hDojo').click();
   await expect(page.locator('#arena')).toBeVisible();
   await expect(page.locator('.qbox')).toBeVisible();
 
-  await page.locator('.opts button.opt').last().click();
+  await page.locator('.opts button.opt').first().click();
   await expect(page.locator('#qfb')).toBeVisible();
   await expect(page.locator('.shout')).toBeVisible();
 
