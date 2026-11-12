@@ -6,6 +6,12 @@ import { L, rng, sshuffle, hueOf, raceAvatar, safeId, U } from '../helpers';
 import { createClient } from '@supabase/supabase-js';
 import { calculateRaceCompletionXP, haveRaceOpponentsFinished, shouldFinalizeRace } from '../raceCompletion';
 
+declare global {
+  interface Window {
+    __CHA_RACE_TEST_CHANNEL__?: any;
+  }
+}
+
 const RACE_QTIME = 20000;
 const RACE_MAX = 8;
 const RACE_COMPLETION_GRACE_MS = 15000;
@@ -112,8 +118,11 @@ export const RaceScreen: React.FC = () => {
     setCode(cleanCode);
 
     try {
-      const client = createClient(defaultSupabaseUrl, defaultSupabaseKey);
-      const ch = client.channel(`cha-race-${cleanCode}`, {
+      const testChannel = import.meta.env.VITE_CHA_RACE_TEST_MODE === 'true'
+        ? window.__CHA_RACE_TEST_CHANNEL__
+        : undefined;
+      const client = testChannel ? null : createClient(defaultSupabaseUrl, defaultSupabaseKey);
+      const ch = testChannel || client!.channel(`cha-race-${cleanCode}`, {
         config: { presence: { key: myPlayer.id }, broadcast: { self: false } }
       });
 

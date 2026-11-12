@@ -15,7 +15,7 @@ export default defineConfig({
     screenshot: 'only-on-failure'
   },
   webServer: {
-    command: 'bun run dev',
+    command: 'VITE_CHA_RACE_TEST_MODE=true bun run dev',
     url: 'http://127.0.0.1:3000',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000
