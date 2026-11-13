@@ -60,3 +60,18 @@ test('Application lab matches tasks to apps and explains mobile sensors and lice
   await page.getByLabel('Software licence type').selectOption('proprietary');
   await expect(page.getByRole('status')).toContainText('controlled by its owner');
 });
+
+
+test('File operation feedback updates immediately when the language changes', async ({ page }) => {
+  await openOperatingSystemsMission(page, 'a4m2', 'en');
+  await page.getByLabel('Choose an operation').selectOption('move');
+  await page.getByRole('button', { name: 'Run example' }).click();
+  const feedback = page.getByRole('status');
+  await expect(feedback).toContainText('The file is moved to the selected destination');
+
+  await page.locator('#lIT').click();
+  await expect(feedback).toContainText('Il file viene spostato nella destinazione scelta');
+
+  await page.locator('#lEN').click();
+  await expect(feedback).toContainText('The file is moved to the selected destination');
+});

@@ -101,7 +101,7 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
   const [functionInput, setFunctionInput] = useState(5);
   const [processStep, setProcessStep] = useState(0);
   const [fileOperation, setFileOperation] = useState<'copy'|'move'|'rename'|'delete'>('copy');
-  const [fileFeedback, setFileFeedback] = useState('');
+  const [fileFeedback, setFileFeedback] = useState<'copy' | 'move' | 'rename' | 'delete' | null>(null);
   const [appTask, setAppTask] = useState<'write'|'calculate'|'draw'|'navigate'>('write');
   const [phoneTilt, setPhoneTilt] = useState(0);
   const [softwareLicence, setSoftwareLicence] = useState<'open'|'free'|'proprietary'>('open');
@@ -348,9 +348,9 @@ export const ComputerScienceLab: React.FC<Props> = ({ missionId, lang }) => {
         </Panel>}
         {missionId === 'a4m2' && <Panel title={t(lang,'Practise safe file and folder operations','Esercitati con le operazioni su file e cartelle')}>
           <div className="csl-file-tree"><div><b>📁 Academy</b></div><div className="indent"><b>📁 Projects</b></div><div className="indent deeper">📄 Report.docx</div><div className="indent deeper">📄 Budget.xlsx</div></div>
-          <label className="csl-input">{t(lang,'Choose an operation','Scegli un’operazione')}<select value={fileOperation} onChange={e=>{setFileOperation(e.target.value as typeof fileOperation);setFileFeedback('');}}><option value="copy">{t(lang,'Copy','Copia')}</option><option value="move">{t(lang,'Move','Sposta')}</option><option value="rename">{t(lang,'Rename','Rinomina')}</option><option value="delete">{t(lang,'Delete','Elimina')}</option></select></label>
-          <button type="button" onClick={()=>setFileFeedback(fileOperation==='copy'?t(lang,'A second copy is created; the original stays in Projects.','Viene creata una seconda copia; l’originale resta in Projects.'):fileOperation==='move'?t(lang,'The file is moved to the selected destination; it is no longer in its old folder.','Il file viene spostato nella destinazione scelta; non si trova più nella cartella precedente.'):fileOperation==='rename'?t(lang,'The file keeps its contents but receives a new name.','Il file conserva il contenuto ma riceve un nuovo nome.'):t(lang,'The file moves to the Recycle Bin first, where it may be restored.','Il file viene prima spostato nel Cestino, da cui può essere ripristinato.') )}>{t(lang,'Run example','Esegui esempio')}</button>
-          {fileFeedback && <p role="status">{fileFeedback}</p>}
+          <label className="csl-input">{t(lang,'Choose an operation','Scegli un’operazione')}<select value={fileOperation} onChange={e=>{setFileOperation(e.target.value as typeof fileOperation);setFileFeedback(null);}}><option value="copy">{t(lang,'Copy','Copia')}</option><option value="move">{t(lang,'Move','Sposta')}</option><option value="rename">{t(lang,'Rename','Rinomina')}</option><option value="delete">{t(lang,'Delete','Elimina')}</option></select></label>
+          <button type="button" onClick={()=>setFileFeedback(fileOperation)}>{t(lang,'Run example','Esegui esempio')}</button>
+          {fileFeedback && <p role="status">{fileFeedback === 'copy' ? t(lang,'A second copy is created; the original stays in Projects.','Viene creata una seconda copia; l’originale resta in Projects.') : fileFeedback === 'move' ? t(lang,'The file is moved to the selected destination; it is no longer in its old folder.','Il file viene spostato nella destinazione scelta; non si trova più nella cartella precedente.') : fileFeedback === 'rename' ? t(lang,'The file keeps its contents but receives a new name.','Il file conserva il contenuto ma riceve un nuovo nome.') : t(lang,'The file moves to the Recycle Bin first, where it may be restored.','Il file viene prima spostato nel Cestino, da cui può essere ripristinato.')}</p>}
           <p>{t(lang,'A folder tree organises files. A path identifies where a file is stored; copying keeps the original, while moving changes its location.','Una struttura ad albero organizza i file. Un percorso indica dove si trova un file; copiare mantiene l’originale, mentre spostare ne cambia la posizione.')}</p>
         </Panel>}
         {missionId === 'a4m3' && <Panel title={t(lang,'Match apps, sensors and software licences','Abbina app, sensori e licenze software')}>
