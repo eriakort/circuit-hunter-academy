@@ -160,8 +160,8 @@ test('Italian oral checkpoint speech errors relocalize when the language changes
 
   await page.locator('.grade-card').nth(1).click();
   await page.locator('.subjcard[data-s="italian"]').click();
-  await page.locator('#hMap').click();
-  await expect(page.getByText('Active Italian Speaking & Pronunciation Lab')).toBeVisible();
+  await page.locator('#hItLab').click();
+  await expect(page.getByRole('heading', { name: 'Italian Speaking Lab' })).toBeVisible();
   await page.getByRole('button', { name: /Take Oral Trial/ }).click();
   await page.locator('#lEN').click();
 
