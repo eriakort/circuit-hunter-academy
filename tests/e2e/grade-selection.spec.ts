@@ -147,3 +147,31 @@ test('Italian Speaking Lab audio errors relocalize when the language changes', a
   await page.locator('#lEN').click();
   await expect(error).toContainText('Speech recognition is not supported in this browser');
 });
+
+
+test('Italian oral checkpoint speech errors relocalize when the language changes', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(window, 'SpeechRecognition', { configurable: true, value: undefined });
+    Object.defineProperty(window, 'webkitSpeechRecognition', { configurable: true, value: undefined });
+  });
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').nth(1).click();
+  await page.locator('.subjcard[data-s="italian"]').click();
+  await page.locator('#hItLab').click();
+  await expect(page.getByRole('heading', { name: 'Italian Speaking Lab' })).toBeVisible();
+  await page.getByRole('button', { name: /Take Oral Trial/ }).click();
+  await page.locator('#lEN').click();
+
+  await page.getByRole('button', { name: /Speak in Italian/ }).click();
+  const error = page.locator('.it-checkpoint-screen [role="status"]');
+  await expect(error).toContainText('Voice input is unavailable in this browser or page context');
+
+  await page.locator('#lIT').click();
+  await expect(error).toContainText('L’inserimento vocale non è disponibile in questo browser o contesto');
+
+  await page.locator('#lEN').click();
+  await expect(error).toContainText('Voice input is unavailable in this browser or page context');
+});
