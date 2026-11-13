@@ -28861,3 +28861,20 @@ MISSIONS.push(...ITALIAN_MISSIONS.map(mission => ({
   arc: (italianArcOffsets[mission.arc] ?? italianA1ArcOffset)
 })));
 
+
+// ============================================================================
+// Grade 5 Mathematics (Matematica · classe quinta primaria)
+// Appended last so every existing mission index and ID stays stable.
+// ============================================================================
+import { GRADE5_MATH_SUBJECT, GRADE5_MATH_UNITS } from './grade5MathData';
+
+if (!SUBJECTS.some(s => s.id === 'math5')) {
+  SUBJECTS.push(GRADE5_MATH_SUBJECT);
+}
+GRADE5_MATH_UNITS.forEach((unit, index) => {
+  const unitOffset = UNITS.length;
+  UNITS.push({ title: unit.title, ch: unit.ch, subject: 'math5' });
+  const arcOffset = ARCS.length;
+  ARCS.push({ n: index + 1, unit: unitOffset, subject: 'math5', title: unit.title, pages: unit.pages });
+  MISSIONS.push(...unit.missions.map(mission => ({ ...mission, arc: arcOffset })));
+});

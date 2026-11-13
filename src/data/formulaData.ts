@@ -1,4 +1,5 @@
 import { BilingualText, SubjectId } from '../types';
+import { GRADE5_MATH_FORMULA_CARDS, GRADE5_MATH_TOPICS } from './grade5MathFormulaData';
 
 export interface FormulaRule {
   name: BilingualText;
@@ -51,6 +52,7 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
     { id: 'forces-motion', subject: 'science', name: ['Speed, Motion & Gravity', 'Velocità, Movimento e Gravità'] },
     { id: 'photosynthesis-ecosystem', subject: 'science', name: ['Photosynthesis & Living Systems', 'Fotosintesi e Sistemi Viventi'] }
   ],
+  math5: GRADE5_MATH_TOPICS,
   italian: [
     { id: 'fonetica', subject: 'italian', name: ['Phonetics & Pronunciation (C/G, GLI, GN, Doppie)', 'Fonetica e Pronuncia (C/G, GLI, GN, Doppie)'] },
     { id: 'articoli-nomi', subject: 'italian', name: ['Articles, Gender & Plural Endings', 'Articoli, Genere e Desinenze del Plurale'] },
@@ -1334,4 +1336,7 @@ export const FORMULA_CARDS: FormulaCard[] = [
     ]
   }
 ];
+
+// Grade 5 Mathematics (classe quinta) formula cards.
+FORMULA_CARDS.push(...GRADE5_MATH_FORMULA_CARDS);
 

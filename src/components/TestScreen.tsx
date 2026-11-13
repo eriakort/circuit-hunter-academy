@@ -542,7 +542,8 @@ export const TestScreen: React.FC = () => {
                 { id: 'math', name: ['Maths', 'Matematica'] },
                 { id: 'phys', name: ['Physics', 'Fisica'] },
                 { id: 'cs', name: ['CS', 'Informatica'] },
-                { id: 'science', name: ['Science', 'Scienze'] }
+                { id: 'science', name: ['Science', 'Scienze'] },
+                { id: 'math5', name: ['Maths (Grade 5)', 'Matematica (5ª)'] }
               ].map(s => (
                 <button
                   key={s.id}

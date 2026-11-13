@@ -146,7 +146,8 @@ const SUBJECT_LIST: SubjectMeta[] = [
   { id: 'math', name: ['Mathematics', 'Matematica'], icon: '∑', badgeColor: 'var(--gold)' },
   { id: 'phys', name: ['Physics', 'Fisica'], icon: '⚡', badgeColor: 'var(--sakura)' },
   { id: 'cs', name: ['Computer Science', 'Informatica'], icon: '💾', badgeColor: 'var(--data)' },
-  { id: 'science', name: ['Grade 5 Science', 'Scienze (5ª Primaria)'], icon: '🔬', badgeColor: 'var(--good)' }
+  { id: 'science', name: ['Grade 5 Science', 'Scienze (5ª Primaria)'], icon: '🔬', badgeColor: 'var(--good)' },
+  { id: 'math5', name: ['Grade 5 Maths', 'Matematica (5ª Primaria)'], icon: '📐', badgeColor: 'var(--sakura)' }
 ];
 
 export const FormulaScreen: React.FC = () => {
@@ -155,7 +156,7 @@ export const FormulaScreen: React.FC = () => {
 
   // Active Subject Selection (defaults to current game subject if valid, else 'math')
   const [activeSubject, setActiveSubject] = useState<SubjectId | 'all'>(() => {
-    if (gameSubject && ['math', 'phys', 'cs', 'science', 'italian'].includes(gameSubject)) {
+    if (gameSubject && ['math', 'phys', 'cs', 'science', 'math5', 'italian'].includes(gameSubject)) {
       return gameSubject;
     }
     return 'math';

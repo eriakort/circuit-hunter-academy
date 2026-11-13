@@ -16,10 +16,10 @@ assert.ok(scienceSubject.meta[0].includes('Self-Assessment & Workbook'), 'Englis
 assert.ok(scienceSubject.meta[1].includes('Autovalutazione e quaderno operativo'), 'Italian subject metadata must list the fifth review/workbook unit');
 
 // Grade 5 is a primary-school curriculum: it must not inherit Grade 9 Physics.
-assert.deepEqual(GRADE_CURRICULUM_MAP.grade5, ['science', 'italian']);
+assert.deepEqual(GRADE_CURRICULUM_MAP.grade5, ['science', 'math5', 'italian']);
 assert.deepEqual(
   getCurriculumSubjects('grade5').map(subject => subject.id).sort(),
-  ['italian', 'science']
+  ['italian', 'math5', 'science']
 );
 assert.ok(!getCurriculumSubjects('grade9').some(subject => subject.id === 'science'));
 assert.ok(getCurriculumSubjects('grade9').some(subject => subject.id === 'phys'));

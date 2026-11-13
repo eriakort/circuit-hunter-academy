@@ -4,7 +4,7 @@
 
 An anime-inspired, bilingual learning game built with **React 19 + TypeScript + Vite**. Learners choose an available school grade first, then select a subject and train through lessons, interactive activities and quiz battles. The academy uses an original hunter-and-technique theme.
 
-The current pathways include **Grade 5 (quinta primaria)** with general Science and **Grade 9** with Computer Science, Physics and Mathematics. Available subjects depend on the selected grade. The interface and learning content support **English and Italian**. Learner progress is saved in the browser; multiplayer race features use Supabase Realtime when configured, with an offline preview fallback.
+The current pathways include **Grade 5 (quinta primaria)** with general Science and Mathematics, and **Grade 9** with Computer Science, Physics and Mathematics. Available subjects depend on the selected grade. The interface and learning content support **English and Italian**. Learner progress is saved in the browser; multiplayer race features use Supabase Realtime when configured, with an offline preview fallback.
 
 ---
 
@@ -13,6 +13,20 @@ The current pathways include **Grade 5 (quinta primaria)** with general Science 
 ### Science
 
 Grade 5 Science is a general primary-science pathway, rather than a physics-only course. Its learning scope includes age-appropriate science and technology topics.
+
+### Mathematics — 6 units · 69 missions
+Follows the table of contents of the Grade 5 textbook *Che meraviglia! 5 – Matematica* (Raffaello Scuola), unit by unit. Content is aligned with the national objectives for the end of *classe quinta* in the *Indicazioni nazionali* (2012), which still apply to Grade 5 classes in 2026/2027 while the 2025 *Indicazioni* are phased in from the first classes, and with the four INVALSI Grade 5 areas (Numbers, Space and Figures, Data and Predictions, Relations and Functions). Grade 5 Mathematics (`math5`) is a separate subject from Grade 9 Mathematics (`math`).
+
+| Unit | Textbook pages | Topics |
+|---|---|---|
+| Per cominciare | 4–7 | Warm-up: numbers, fractions, decimals, measures, shapes, problem steps |
+| Problemi, dati e previsioni | 8–35 | Problem method, diagrams and expressions, strategies, proportional problems, classifications, statements and connectives, statistics and graphs, mode/mean/median, probability |
+| Numeri | 36–75 | Place value, Roman numerals, millions and billions, powers, integers, decimals, rounding, the four operations and their properties, × ÷ 10/100/1 000, decimal division, mental calculation and estimates, expressions, multiples, divisibility, primes |
+| Frazioni e numeri decimali | 76–95 | Classifying, equivalent and comparing fractions, fractions and decimals, fraction of a quantity and the whole, percentages, managing money |
+| Misura | 96–117 | Length, capacity, mass, area, volume, time, speed, buying and selling, currency exchange and shopping online |
+| Spazio e figure | 118–164 | Cartesian plane, isometries, similarity and fractals, lines and angles, polygons, perimeter and area of all polygons, regular polygons, circle and π, solids, surface area, volume, final Invalsi-style test |
+
+Lessons include visual tables of measures (as in the textbook), and the Formula Book has a Grade 5 Maths section.
 
 ## Grade 9 — Lower-secondary / early high-school pathway
 
