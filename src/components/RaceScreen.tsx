@@ -50,7 +50,7 @@ export const RaceScreen: React.FC = () => {
   const [code, setCode] = useState('');
   const [codeInput, setCodeInput] = useState('');
   const [isPending, setIsPending] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState<'room-code' | 'subject-mismatch' | 'topic-unavailable' | null>(null);
   const [selectedMission, setSelectedMission] = useState('mix');
   const [countdownNum, setCountdownNum] = useState(3);
 
@@ -102,12 +102,12 @@ export const RaceScreen: React.FC = () => {
   const handleJoinOrCreate = async (roomCode: string, create: boolean) => {
     const cleanCode = roomCode.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
     if (cleanCode.length < 4) {
-      setErrorMsg(L(['Room codes have 4 characters.', 'I codici stanza hanno 4 caratteri.'], lang));
+      setErrorMsg('room-code');
       return;
     }
 
     setIsPending(true);
-    setErrorMsg('');
+    setErrorMsg(null);
 
     const myPlayer: RacePlayer = {
       id: safeId(),
@@ -188,7 +188,7 @@ export const RaceScreen: React.FC = () => {
   const onStartBroadcast = (payload: any) => {
     if (!payload || typeof payload !== 'object') return;
     if (payload.subject && payload.subject !== curSub) {
-      setErrorMsg(L(['This room is using a different subject. Choose the same grade and subject as the host.', 'Questa stanza usa una materia diversa. Scegli la stessa classe e materia dell’host.'], lang));
+      setErrorMsg('subject-mismatch');
       setRaceState('lobby');
       return;
     }
@@ -198,7 +198,7 @@ export const RaceScreen: React.FC = () => {
     if (!isRaceMission(missionId) || !Number.isInteger(seed) || seed < 0 || seed > 1000000) return;
     const qs = buildRaceQuestions(missionId, seed);
     if (qs.length === 0) {
-      setErrorMsg(L(['The selected race topic is not available for your subject.', 'L’argomento scelto per la gara non è disponibile per la tua materia.'], lang));
+      setErrorMsg('topic-unavailable');
       setRaceState('lobby');
       return;
     }
@@ -462,7 +462,11 @@ export const RaceScreen: React.FC = () => {
 
         {errorMsg && (
           <div className="fb no" style={{ marginBottom: '14px' }}>
-            {errorMsg}
+            {errorMsg === 'room-code'
+              ? L(['Room codes have 4 characters.', 'I codici stanza hanno 4 caratteri.'], lang)
+              : errorMsg === 'subject-mismatch'
+                ? L(['This room is using a different subject. Choose the same grade and subject as the host.', 'Questa stanza usa una materia diversa. Scegli la stessa classe e materia dell’host.'], lang)
+                : L(['The selected race topic is not available for your subject.', 'L’argomento scelto per la gara non è disponibile per la tua materia.'], lang)}
           </div>
         )}
 

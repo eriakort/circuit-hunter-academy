@@ -112,6 +112,31 @@ test.describe('Race Arena multiplayer completion', () => {
     await installRaceTransport(page);
   });
 
+  test('relocalizes room validation errors immediately when the language changes', async ({ page }) => {
+    await page.goto('/');
+    await page.evaluate(() => window.localStorage.clear());
+    await page.reload();
+
+    await page.locator('.grade-card').nth(1).click();
+    await page.locator('.subjcard[data-s="cs"]').click();
+    await page.locator('#nm').fill('Race Tester');
+    await page.locator('#regf button[type="submit"]').click();
+    await expect(page.locator('.learning-dashboard')).toBeVisible();
+
+    await page.locator('#hRace').click();
+    await page.locator('input.race-sel').fill('ABC');
+    await page.getByRole('button', { name: /Join/i }).click();
+
+    const error = page.locator('.fb.no').first();
+    await expect(error).toContainText('Room codes have 4 characters.');
+
+    await page.locator('#lIT').click();
+    await expect(error).toContainText('I codici stanza hanno 4 caratteri.');
+
+    await page.locator('#lEN').click();
+    await expect(error).toContainText('Room codes have 4 characters.');
+  });
+
   test('relocalizes answer feedback immediately when the language changes', async ({ page }) => {
     await enterRace(page);
 
