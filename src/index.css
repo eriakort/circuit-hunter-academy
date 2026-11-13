@@ -1164,3 +1164,31 @@ table.g5m-formulas td:first-child{font-family:inherit;text-align:left}
   table.g5m-table th small{display:none}
   table.g5m-table td.big{font-size:18px;min-width:30px}
 }
+
+/* Italian grammar: verb tables (tavole attive dei verbi) */
+.itv{margin:0;display:flex;flex-direction:column;gap:10px}
+.itv figcaption{font-family:var(--display,inherit);font-size:18px;color:var(--sakura);text-align:center}
+.itv-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:10px}
+.itv-col{display:flex;flex-direction:column;gap:10px}
+.itv-mood{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.02)}
+.itv-mood h4{margin:0;padding:6px 10px;background:rgba(255,93,143,.22);font-size:13px;letter-spacing:.06em;text-align:center}
+.itv-mood h4 small,.itv-tname small{font-weight:400;letter-spacing:0;text-transform:none;color:var(--muted)}
+.itv-heads{display:grid;grid-template-columns:1fr 1fr;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--sakura);text-align:center;padding:4px 0;background:rgba(255,93,143,.08)}
+.itv-pair{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.itv-pair>div{padding:6px 8px;min-width:0}
+.itv-pair>div+div{border-left:1px solid var(--line)}
+.itv-tname{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--good);margin-bottom:2px}
+.itv-tense ol{list-style:none;margin:0;padding:0;font-size:13px;line-height:1.45}
+.itv-p{color:var(--muted);font-size:12px}
+.itv-imp{margin:0;padding:8px 10px;font-size:14px}
+.itv-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.itv-small .itv-pair>div{font-size:13px}
+.itv-small .itv-pair b{display:block;font-size:11px;color:var(--good)}
+.itv-core{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.itv-core span{border-radius:10px;padding:6px 10px;font-weight:600}
+.itv-core .nuc{background:rgba(255,106,61,.25);border:1px solid var(--ember)}
+.itv-core .nuc.verb{background:rgba(255,106,61,.45)}
+.itv-core .exp{background:rgba(169,168,204,.15);border:1px dashed var(--muted)}
+table.itv-ref td:first-child{font-weight:700}
+@media (max-width:720px){.itv-grid,.itv-row{grid-template-columns:1fr}}
+@media (max-width:420px){.itv-pair{grid-template-columns:1fr}.itv-pair>div+div{border-left:0;border-top:1px dashed var(--line)}.itv-heads{display:none}}

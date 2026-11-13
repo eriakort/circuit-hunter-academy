@@ -1,5 +1,6 @@
 import { BilingualText, SubjectId } from '../types';
 import { GRADE5_MATH_FORMULA_CARDS, GRADE5_MATH_TOPICS } from './grade5MathFormulaData';
+import { ITALIAN_GRAMMAR_FORMULA_CARDS, ITALIAN_GRAMMAR_TOPIC } from './italianGrammarFormulaData';
 
 export interface FormulaRule {
   name: BilingualText;
@@ -58,7 +59,8 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
     { id: 'articoli-nomi', subject: 'italian', name: ['Articles, Gender & Plural Endings', 'Articoli, Genere e Desinenze del Plurale'] },
     { id: 'verbi-tempi', subject: 'italian', name: ['Verb Tenses & Auxiliaries (Essere vs Avere)', 'Tempi Verbali e Ausiliari (Essere vs Avere)'] },
     { id: 'pronomi', subject: 'italian', name: ['Direct, Indirect & Combined Pronouns', 'Pronomi Diretti, Indiretti e Combinati'] },
-    { id: 'congiuntivo-condizionale', subject: 'italian', name: ['Subjunctive & Conditional of Courtesy', 'Congiuntivo e Condizionale di Cortesia'] }
+    { id: 'congiuntivo-condizionale', subject: 'italian', name: ['Subjunctive & Conditional of Courtesy', 'Congiuntivo e Condizionale di Cortesia'] },
+    ITALIAN_GRAMMAR_TOPIC
   ]
 };
 
@@ -1340,3 +1342,5 @@ export const FORMULA_CARDS: FormulaCard[] = [
 // Grade 5 Mathematics (classe quinta) formula cards.
 FORMULA_CARDS.push(...GRADE5_MATH_FORMULA_CARDS);
 
+// Italian grammar (grammatica di quinta) cards.
+FORMULA_CARDS.push(...ITALIAN_GRAMMAR_FORMULA_CARDS);

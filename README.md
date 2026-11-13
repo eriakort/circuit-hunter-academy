@@ -28,6 +28,23 @@ Follows the table of contents of the Grade 5 textbook *Che meraviglia! 5 – Mat
 
 Lessons include visual tables of measures (as in the textbook), and the Formula Book has a Grade 5 Maths section.
 
+## Italian Studies — both grades
+
+Italian Studies is shared by Grade 5 and Grade 9. It has the CEFR A1–B1 speaking units (with the Speaking Lab and oral checkpoint) plus **8 grammar units · 43 missions** that follow the table of contents of the Grade 5 grammar textbook *L'albero delle storie 5 – Grammatica* (il capitello):
+
+| Unit | Textbook pages | Topics |
+|---|---|---|
+| Ortografia | 4–19 | ce/cie, gli/li, gn/ni, doubles, h, syllables, apostrophe and truncation, accents, punctuation, direct and indirect speech |
+| Lessico | 20–33 | dictionary, synonyms, hypernyms, scales of meaning, figurative meaning, specialised language, origins of Italian, loanwords |
+| Nomi e articoli | 34–49 | gender, number, meaning and structure of nouns, articles |
+| Aggettivi e pronomi | 50–71 | qualifying adjectives and degrees, organic forms, possessives, demonstratives, indefinites, numerals, personal, paired and relative pronouns |
+| Il verbo | 72–105 | conjugations, essere/avere, all moods and tenses, transitive/intransitive, passive, reflexive, impersonal, modal and irregular verbs |
+| Parti invariabili | 106–117 | adverbs, prepositions, conjunctions, exclamations |
+| Sintassi | 118–145 | minimal core sentence, subject and predicate, direct object and indirect complements, attribute, apposition, logical analysis |
+| Tavole dei verbi | 146–153 | full conjugation tables: essere, avere, amare, credere, dormire, essere amato, lavarsi, irregular verbs |
+
+Lessons include the textbook-style conjugation tables, and the Codex and Formula Book have Italian grammar entries.
+
 ## Grade 9 — Lower-secondary / early high-school pathway
 
 ### Computer Science — 3 units · 16 chapters · 44 missions

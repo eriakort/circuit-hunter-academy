@@ -49,10 +49,10 @@ describe('Italian Studies Curriculum & Data Verification', () => {
 
   it('verifies Italian units and arcs exist in gameData', () => {
     const italianUnits = UNITS.filter(u => u.subject === 'italian');
-    expect(italianUnits.length).toBe(3); // A1, A2, B1
+    expect(italianUnits.length).toBe(11); // A1, A2, B1 + 8 grammar units
 
     const italianArcs = ARCS.filter(a => a.subject === 'italian');
-    expect(italianArcs.length).toBe(3);
+    expect(italianArcs.length).toBe(11);
 
     const italianMissionsInGame = MISSIONS.filter(m => m.id.startsWith('it_'));
     expect(italianMissionsInGame.length).toBe(ITALIAN_MISSIONS.length);
