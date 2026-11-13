@@ -16,6 +16,22 @@ import {
   SpeechRecognitionController
 } from '../speech/speechEngine';
 
+type ItalianLabAudioError =
+  | 'speech-recognition-unsupported'
+  | 'speech-recognition-timeout'
+  | 'speech-recognition-permission'
+  | 'speech-recognition-network'
+  | 'speech-recognition-failed'
+  | 'speech-playback-unsupported'
+  | 'speech-playback-failed';
+
+const recognitionErrorKey = (error: string): ItalianLabAudioError => {
+  if (error.includes('timed out')) return 'speech-recognition-timeout';
+  if (error === 'not-allowed' || error === 'service-not-allowed') return 'speech-recognition-permission';
+  if (error === 'network') return 'speech-recognition-network';
+  return 'speech-recognition-failed';
+};
+
 export interface PracticePhrase {
   id: string;
   level: 'A1' | 'A2' | 'B1';
@@ -367,7 +383,7 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
   const [manualInput, setManualInput] = useState<string>('');
   const [pronunciationResult, setPronunciationResult] = useState<PronunciationScoreResult | null>(null);
   const [playbackSpeed, setPlaybackSpeed] = useState<number>(0.9);
-  const [audioError, setAudioError] = useState<string | null>(null);
+  const [audioError, setAudioError] = useState<ItalianLabAudioError | null>(null);
 
   const speechControllerRef = useRef<SpeechRecognitionController | null>(null);
   // Identifies the utterance currently loaded in the speech synth, so a second
@@ -441,7 +457,7 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
         setIsPaused(false);
         setActiveRate(null);
         currentUtteranceRef.current = null;
-        setAudioError(typeof err === 'string' ? err : 'Audio playback error in this browser.');
+        setAudioError(err === 'SpeechSynthesis not supported' ? 'speech-playback-unsupported' : 'speech-playback-failed');
       }
     });
   };
@@ -455,10 +471,7 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
     }
 
     if (!isSpeechRecognitionSupported()) {
-      setAudioError(L([
-        'Speech recognition is not supported in this browser. Please use the text input below to practice!',
-        'Il riconoscimento vocale non è supportato in questo browser. Usa il campo di testo qui sotto per esercitarti!'
-      ], lang));
+      setAudioError('speech-recognition-unsupported');
       return;
     }
 
@@ -481,7 +494,7 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
       },
       onError: (err) => {
         setIsListening(false);
-        setAudioError(err);
+        setAudioError(recognitionErrorKey(err));
       },
       onEnd: () => {
         setIsListening(false);
@@ -591,8 +604,23 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
       </div>
 
       {audioError && (
-        <div style={{ padding: '0.75rem 1rem', background: 'rgba(255, 93, 143, 0.15)', borderLeft: '3px solid var(--sakura)', borderRadius: '4px', marginBottom: '1rem', fontSize: '0.85rem' }}>
-          ⚠️ {audioError}
+        <div className="italian-lab-audio-error" role="alert" aria-live="polite" style={{ padding: '0.75rem 1rem', background: 'rgba(255, 93, 143, 0.15)', borderLeft: '3px solid var(--sakura)', borderRadius: '4px', marginBottom: '1rem', fontSize: '0.85rem' }}>
+          ⚠️ {L(
+            audioError === 'speech-recognition-unsupported'
+              ? ['Speech recognition is not supported in this browser. Please use the text input below to practice!', 'Il riconoscimento vocale non è supportato in questo browser. Usa il campo di testo qui sotto per esercitarti!']
+              : audioError === 'speech-recognition-timeout'
+                ? ['Listening timed out. Please try again.', 'Il tempo di ascolto è scaduto. Riprova.']
+                : audioError === 'speech-recognition-permission'
+                  ? ['Microphone access was denied. Check your browser permissions and try again.', 'L’accesso al microfono è stato negato. Controlla i permessi del browser e riprova.']
+                  : audioError === 'speech-recognition-network'
+                    ? ['A network error interrupted speech recognition. Check your connection and try again.', 'Un errore di rete ha interrotto il riconoscimento vocale. Controlla la connessione e riprova.']
+                    : audioError === 'speech-playback-unsupported'
+                      ? ['Audio playback is not supported in this browser.', 'La riproduzione audio non è supportata in questo browser.']
+                      : audioError === 'speech-playback-failed'
+                        ? ['Audio playback failed in this browser. Please try again.', 'La riproduzione audio non è riuscita in questo browser. Riprova.']
+                        : ['Speech recognition failed. Check your microphone settings and try again.', 'Il riconoscimento vocale non è riuscito. Controlla le impostazioni del microfono e riprova.'],
+            lang
+          )}
         </div>
       )}
 
