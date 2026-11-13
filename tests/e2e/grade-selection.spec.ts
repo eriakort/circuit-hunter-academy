@@ -11,7 +11,8 @@ test('new learner chooses a grade before seeing its subjects and the choice surv
   await page.locator('.grade-card').first().click();
   await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
-  await expect(page.locator('.subjcard')).toHaveCount(2);
+  await expect(page.locator('.subjcard[data-s="math5"]')).toBeVisible();
+  await expect(page.locator('.subjcard')).toHaveCount(3);
   const quickLaunch = page.getByRole('navigation', { name: 'Quick subject launch' });
   await expect(quickLaunch.getByRole('button', { name: /Italian/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button')).toHaveCount(1);
@@ -21,7 +22,7 @@ test('new learner chooses a grade before seeing its subjects and the choice surv
 
   await page.reload();
   await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
-  await expect(page.locator('.subjcard')).toHaveCount(2);
+  await expect(page.locator('.subjcard')).toHaveCount(3);
 
   await page.getByRole('button', { name: /Change grade/ }).click();
   await page.locator('.grade-card-current').click();
@@ -91,7 +92,7 @@ test('changing grades keeps the selected subject within that grade curriculum', 
   // Switching back selects Science automatically and does not expose Grade 9 subjects.
   await page.locator('#hGrade').click();
   await page.locator('.grade-card').first().click();
-  await expect(page.locator('.subjcard')).toHaveCount(2);
+  await expect(page.locator('.subjcard')).toHaveCount(3);
   await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
   await page.locator('.subjcard[data-s="science"]').click();

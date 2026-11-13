@@ -4,7 +4,7 @@ export type BilingualText = [string, string] | string;
 
 export type GradeId = 'grade5' | 'grade9';
 
-export type SubjectId = 'cs' | 'phys' | 'math' | 'science' | 'italian';
+export type SubjectId = 'cs' | 'phys' | 'math' | 'science' | 'math5' | 'italian';
 
 export interface SubjectInfo {
   id: SubjectId;

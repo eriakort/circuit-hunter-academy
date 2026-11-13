@@ -40,7 +40,7 @@ export const MapScreen: React.FC = () => {
 
   const curSub = subject || 'cs';
   const currentSubjectData = SUBJECTS.find(s => s.id === curSub) || SUBJECTS[0];
-  const titleSvgHtml = curSub === 'math' || curSub === 'science' || curSub === 'italian' ? currentSubjectData.art : curSub === 'phys' ? getVisualHtml('titlePhys', lang) : getVisualHtml('title', lang);
+  const titleSvgHtml = curSub === 'math' || curSub === 'math5' || curSub === 'science' || curSub === 'italian' ? currentSubjectData.art : curSub === 'phys' ? getVisualHtml('titlePhys', lang) : getVisualHtml('title', lang);
 
   // If player hasn't entered a name yet
   if (!name) {

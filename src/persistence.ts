@@ -19,7 +19,7 @@ const isGrade = (value: unknown): value is GradeId =>
   value === 'grade5' || value === 'grade9';
 
 const isSubject = (value: unknown): value is SubjectId =>
-  value === 'cs' || value === 'phys' || value === 'math' || value === 'science' || value === 'italian';
+  value === 'cs' || value === 'phys' || value === 'math' || value === 'science' || value === 'math5' || value === 'italian';
 
 const firstUnitForSubject = (subject: SubjectId): number =>
   UNITS.findIndex(unit => (unit.subject || 'cs') === subject);
@@ -296,8 +296,7 @@ export const restoreSavedNavigation = (value: unknown, state: GameState): SavedN
   const subjectMissionIndexes = MISSIONS
     .map((mission, index) => ({ mission, index }))
     .filter(({ mission }) => (ARCS[mission.arc]?.subject || 'cs') === state.subject)
-    .filter(() => state.grade !== 'grade5' || state.subject === 'science' || state.subject === 'italian')
-    .filter(() => state.grade !== 'grade9' || state.subject !== 'science');
+    .filter(() => GRADE_SUBJECT_IDS[state.grade as GradeId]?.includes(state.subject));
 
   const missionId = typeof value.missionId === 'string' ? value.missionId : null;
   let resolved = missionId

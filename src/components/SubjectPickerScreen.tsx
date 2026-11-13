@@ -35,10 +35,10 @@ export const SubjectPickerScreen: React.FC = () => {
           {L(
             [
               grade === 'grade5'
-                ? 'Explore Science & Technology or Italian Studies. More subjects will be added as curricula prepare.'
+                ? 'Explore Science & Technology, Mathematics or Italian Studies.'
                 : 'Choose a subject for Grade 9: Computer Science, Physics, Mathematics, or Italian Studies (CEFR A1–B1 with Speech).',
               grade === 'grade5'
-                ? 'Esplora Scienze e Tecnologia o Lingua Italiana. Altre materie saranno aggiunte via via.'
+                ? 'Esplora Scienze e Tecnologia, Matematica o Lingua Italiana.'
                 : 'Scegli una materia per la classe 3ª: Informatica, Fisica, Matematica o Lingua Italiana (QCER A1–B1 con parlato).'
             ],
             lang
