@@ -122,3 +122,28 @@ test('Grade 9 knowledge tests identify Computer Science, Physics and Mathematics
   await expect(page.locator('.mhead .eyebrow')).toContainText('Mathematics');
   await expect(page.locator('#catSelect option').first()).toContainText('All Mathematics Topics');
 });
+
+test('Italian Speaking Lab audio errors relocalize when the language changes', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(window, 'SpeechRecognition', { configurable: true, value: undefined });
+    Object.defineProperty(window, 'webkitSpeechRecognition', { configurable: true, value: undefined });
+  });
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="italian"]').click();
+  await page.locator('#hItLab').click();
+  await page.locator('#lEN').click();
+
+  await page.getByRole('button', { name: /Speak Now \(Italian\)/ }).click();
+  const error = page.locator('.italian-lab-audio-error');
+  await expect(error).toContainText('Speech recognition is not supported in this browser');
+
+  await page.locator('#lIT').click();
+  await expect(error).toContainText('Il riconoscimento vocale non è supportato in questo browser');
+
+  await page.locator('#lEN').click();
+  await expect(error).toContainText('Speech recognition is not supported in this browser');
+});
