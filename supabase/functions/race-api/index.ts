@@ -164,7 +164,7 @@ Deno.serve(async (req) => {
   }
 
   if (action === "answer") {
-    if (typeof body.selectedIndex !== "number" || !Number.isSafeInteger(body.selectedIndex) || body.selectedIndex < 0) {
+    if (typeof body.selectedIndex !== "number" || !Number.isSafeInteger(body.selectedIndex) || body.selectedIndex < -1) {
       return fail("Invalid answer");
     }
     const { count: roomQuestionCount, error: roomQuestionError } = await admin
