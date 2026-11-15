@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useGame } from '../context/GameContext';
-import { BilingualText, RacePlayer } from '../types';
+import { RacePlayer } from '../types';
 import { MISSIONS, ARCS } from '../data/gameData';
 import { L, hueOf, raceAvatar, U } from '../helpers';
 import {
@@ -8,7 +8,6 @@ import {
   createRaceSupabaseClient,
   ensureRaceSession,
   normalizeRaceQuestions,
-  type RaceArenaLeaderboard,
   type RaceArenaQuestion
 } from '../raceArenaClient';
 import { calculateRaceCompletionXP } from '../raceCompletion';
@@ -74,9 +73,7 @@ export const RaceScreen: React.FC = () => {
   const [selectedOpt, setSelectedOpt] = useState<number | null>(null);
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [lastXP, setLastXP] = useState(0);
-  const [serverStatus, setServerStatus] = useState<RaceSnapshot['status']>('lobby');
   const [questionStartedAt, setQuestionStartedAt] = useState<string | null>(null);
-  const [leaderboard, setLeaderboard] = useState<RaceArenaLeaderboard | null>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const answerInFlightRef = useRef(false);
@@ -85,7 +82,6 @@ export const RaceScreen: React.FC = () => {
 
   const playerList = players;
   const myId = userIdRef.current;
-  const myPlayer = playerList.find(p => p.id === myId);
   const hostPlayer = playerList[0];
   const activeQuestion = questions[currentQIndex];
   const playerCount = Math.max(1, playerList.length);
@@ -93,7 +89,6 @@ export const RaceScreen: React.FC = () => {
   const getSnapshot = async (id: string) => {
     const snapshot = await callRaceApi<RaceSnapshot>(client, { action: 'state', roomId: id });
     const normalized = normalizeRaceQuestions(snapshot.questions);
-    setServerStatus(snapshot.status);
     setIsHost(snapshot.isHost);
     setSelectedMission(snapshot.missionId || 'mix');
     setQuestions(normalized);
@@ -267,19 +262,16 @@ export const RaceScreen: React.FC = () => {
     setScores({});
     setProgress({});
     setQuestions([]);
-    setLeaderboard(null);
     setRaceState('home');
     setErrorMsg('');
-    setServerStatus('lobby');
   };
 
-  const handleBackToLobby = async () => {
+  const refreshResults = async () => {
     if (!roomId) return;
     try {
       await getSnapshot(roomId);
-      setRaceState('lobby');
     } catch (error) {
-      setErrorMsg(error instanceof Error ? error.message : 'Could not return to the lobby.');
+      setErrorMsg(error instanceof Error ? error.message : 'Could not refresh the results.');
     }
   };
 
@@ -432,7 +424,7 @@ export const RaceScreen: React.FC = () => {
       </div>
       <p className="muted">{L(['Your verified score', 'Il tuo punteggio verificato'], lang)}: <b>{score} pts</b>. {lastXP > 0 ? `+${lastXP} XP!` : ''}</p>
       <div className="row" style={{ justifyContent: 'center', marginTop: 18 }}>
-        <button className="btn" onClick={() => void handleBackToLobby()}>{L(['Refresh room', 'Aggiorna stanza'], lang)}</button>
+        <button className="btn" onClick={() => void refreshResults()}>{L(['Refresh results', 'Aggiorna risultati'], lang)}</button>
         <button className="btn ghost" onClick={handleLeave}>{L(U.missions, lang)}</button>
       </div>
     </div>
