@@ -72,4 +72,4 @@ alter table public.race_answer_events enable row level security;
 
 -- No direct client access: the Edge Function authenticates the caller and uses a server-only key.
 revoke all on public.race_rooms, public.race_room_members, public.race_question_bank,
-  public.race_room_questions, public.race_answer_events from anon, authenticated;
+  public.race_room_questions, public.race_answer_events from public, anon, authenticated;
