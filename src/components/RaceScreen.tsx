@@ -127,7 +127,7 @@ export const RaceScreen: React.FC = () => {
   const handleJoinOrCreate = async (roomCode: string, create: boolean) => {
     const cleanCode = roomCode.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 4);
     if (!create && cleanCode.length !== 4) {
-      setErrorMsg(L(['Room codes have 4 characters.', 'I codici stanza hanno 4 caratteri.'], lang));
+      setErrorMsg('invalid-room-code');
       return;
     }
     setIsPending(true);
@@ -293,7 +293,7 @@ export const RaceScreen: React.FC = () => {
         <p className="muted" style={{ maxWidth: '62ch', margin: '10px 0 16px' }}>
           {L(['Race your friends through missions in real time! Up to 8 players. Scores and answers are verified by the race server.', 'Gareggia con le tue amiche in tempo reale! Fino a 8 giocatrici. Punteggi e risposte sono verificati dal server.'], lang)}
         </p>
-        {errorMsg && <div className="fb no" role="alert" style={{ marginBottom: 14 }}>{errorMsg}</div>}
+        {errorMsg && <div className="fb no" role="alert" style={{ marginBottom: 14 }}>{errorMsg === 'invalid-room-code' ? L(['Room codes have 4 characters.', 'I codici stanza hanno 4 caratteri.'], lang) : errorMsg}</div>}
         <div className="row" style={{ gap: 14, alignItems: 'stretch' }}>
           <div className="panel" style={{ flex: 1, minWidth: 240 }}>
             <h3>{L(['Create a Room', 'Crea una Stanza'], lang)}</h3>
