@@ -3,6 +3,7 @@ import { Language } from "../types";
 import { L as origL, PILL as origPILL, H as origH, rich as origRich, cards as origCards, ICON, C, esc, demonSVG, hl } from "../helpers";
 import { JN, BOARD, ROBOT_LEVELS } from "./gameData";
 import { getGrade5MathVisual } from "./grade5MathVisuals";
+import { getChemVisual } from "./chemVisuals";
 
 let currentLang: Language = "en";
 const L: any = (x: any) => origL(x, currentLang);
@@ -1086,6 +1087,42 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
       <text x="320" y="192" text-anchor="middle" class="sm" fill="var(--gold)">${L(['Golden Rule: whenever you multiply or divide by a negative number, FLIP the sign! (< becomes >)','Regola d’oro: se moltiplichi o dividi per un numero negativo, INVERTI subito il verso! (< diventa >)'])}</text>
     </svg>`;
   },
+  "g5s-plants": function g5sPlants(){
+    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="Plant parts and photosynthesis">
+      <rect x="18" y="20" width="186" height="164" rx="12" fill="rgba(255,209,102,.08)" stroke="#ffd166"/>
+      <text x="111" y="48" text-anchor="middle" fill="#ffd166" font-size="14" font-weight="800">${L(['LEAVES · Solar Kitchen','FOGLIE · Cucina Solare'])}</text>
+      <text x="111" y="88" text-anchor="middle" fill="#ffffff" font-size="14">☀️ + CO₂ + H₂O</text>
+      <text x="111" y="118" text-anchor="middle" fill="#38ef7d" font-size="15" font-weight="800">→ ${L(['Sugar + O₂','Zuccheri + O₂'])}</text>
+      <text x="111" y="152" text-anchor="middle" class="sm">${L(['Photosynthesis makes food','Fotosintesi clorofilliana'])}</text>
+
+      <rect x="227" y="20" width="186" height="164" rx="12" fill="rgba(56,239,125,.08)" stroke="#38ef7d"/>
+      <text x="320" y="48" text-anchor="middle" fill="#38ef7d" font-size="14" font-weight="800">${L(['STEM & ROOTS','FUSTO E RADICI'])}</text>
+      <text x="320" y="88" text-anchor="middle" class="sm">${L(['Stem carries water upward','Il fusto sostiene e trasporta'])}</text>
+      <text x="320" y="118" text-anchor="middle" class="sm">${L(['Roots drink water & anchor','Le radici assorbono acqua'])}</text>
+      <text x="320" y="152" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="700">${L(['Flowers → Seeds','Fiori → Frutti e Semi'])}</text>
+
+      <rect x="436" y="20" width="186" height="164" rx="12" fill="rgba(69,216,255,.08)" stroke="#45d8ff"/>
+      <text x="529" y="48" text-anchor="middle" fill="#45d8ff" font-size="14" font-weight="800">${L(['SIMPLE VS COMPLEX','SEMPLICI E COMPLESSE'])}</text>
+      <text x="529" y="88" text-anchor="middle" class="sm">${L(['Mosses/Algae: spores, no flowers','Muschi/Alghe: spore, senza fiori'])}</text>
+      <text x="529" y="118" text-anchor="middle" class="sm">${L(['Flowering plants: seeds','Piante con fiore: semi'])}</text>
+      <text x="529" y="152" text-anchor="middle" fill="#38ef7d" font-size="12" font-weight="700">${L(['All vital to ecosystems','Tutte utili all’ambiente'])}</text>
+    </svg>`;
+  },
+  "g5s-animals": function g5sAnimals(){
+    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="Vertebrates vs Invertebrates">
+      <rect x="18" y="20" width="292" height="164" rx="14" fill="rgba(56,239,125,.08)" stroke="#38ef7d" stroke-width="2"/>
+      <text x="164" y="48" text-anchor="middle" fill="#38ef7d" font-size="15" font-weight="800">${L(['VERTEBRATES (Backbone ✓)','VERTEBRATI (Colonna Vertebrale ✓)'])}</text>
+      <text x="164" y="84" text-anchor="middle" fill="#ffffff" font-size="13.5" font-weight="700">${L(['Mammals · Birds · Fish · Reptiles · Amphibians','Mammiferi · Uccelli · Pesci · Rettili · Anfibi'])}</text>
+      <text x="164" y="122" text-anchor="middle" class="sm">${L(['Milk / Feathers / Gills / Dry scales / Water+Land','Latte / Piume / Branchie / Squame / Acqua+Terra'])}</text>
+      <text x="164" y="152" text-anchor="middle" fill="#ffd166" font-size="12" font-weight="700">${L(['Internal skeleton supports body','Scheletro interno sostiene il corpo'])}</text>
+
+      <rect x="330" y="20" width="292" height="164" rx="14" fill="rgba(69,216,255,.08)" stroke="#45d8ff" stroke-width="2"/>
+      <text x="476" y="48" text-anchor="middle" fill="#45d8ff" font-size="15" font-weight="800">${L(['INVERTEBRATES (No Backbone ✕)','INVERTEBRATI (Senza Colonna ✕)'])}</text>
+      <text x="476" y="84" text-anchor="middle" fill="#ffffff" font-size="13.5" font-weight="700">${L(['Insects (6 legs) · Spiders (8 legs) · Molluscs','Insetti (6 zampe) · Ragni (8 zampe) · Molluschi'])}</text>
+      <text x="476" y="122" text-anchor="middle" class="sm">${L(['Crustaceans & worms included too','Comprendono anche crostacei e vermi'])}</text>
+      <text x="476" y="152" text-anchor="middle" fill="#ffd166" font-size="12" font-weight="700">${L(['Outer shell / exoskeleton or soft body','Conchiglia, esoscheletro o corpo molle'])}</text>
+    </svg>`;
+  },
 };
 
 export function getVisualHtml(key: string, lang: Language): string {
@@ -1093,5 +1130,7 @@ export function getVisualHtml(key: string, lang: Language): string {
   if (VIS[key]) return VIS[key]();
   const grade5Math = getGrade5MathVisual(key, lang);
   if (grade5Math !== null) return grade5Math;
+  const chemVisual = getChemVisual(key, lang);
+  if (chemVisual !== null) return chemVisual;
   return "";
 }

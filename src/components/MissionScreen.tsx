@@ -7,6 +7,8 @@ import { LearningPathway } from './LearningPathway';
 import { PhysicsLab } from './PhysicsLab';
 import { MathLab } from './MathLab';
 import { ComputerScienceLab } from './ComputerScienceLab';
+import { ChemistryLab } from './ChemistryLab';
+import { ScienceLab } from './ScienceLab';
 import { ItalianLab } from './ItalianLab';
 import { speakItalian } from '../speech/speechEngine';
 import { scheduleNextConceptReview } from '../spacedRepetition';
@@ -294,8 +296,14 @@ export const MissionScreen: React.FC = () => {
       {currentMission.id.startsWith('m') && currentSceneIndex === 1 && (
         <MathLab missionId={currentMission.id} lang={lang} />
       )}
-      {(currentMission.id.startsWith('a') || currentMission.id.startsWith('c')) && currentSceneIndex === 1 && (
+      {(currentMission.id.startsWith('a') || /^c\d/.test(currentMission.id)) && currentSceneIndex === 1 && (
         <ComputerScienceLab missionId={currentMission.id} lang={lang} />
+      )}
+      {currentMission.id.startsWith('chem_') && currentSceneIndex === 1 && (
+        <ChemistryLab missionId={currentMission.id} lang={lang} />
+      )}
+      {currentMission.id.startsWith('g5s-') && currentSceneIndex === 1 && (
+        <ScienceLab missionId={currentMission.id} lang={lang} />
       )}
       {currentMission.id.startsWith('it_') && currentSceneIndex === 1 && (
         <ItalianLab />

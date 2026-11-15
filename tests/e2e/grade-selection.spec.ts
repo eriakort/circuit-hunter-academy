@@ -6,7 +6,7 @@ test('new learner chooses a grade before seeing its subjects and the choice surv
   await page.reload();
 
   await expect(page.getByRole('heading', { name: 'Circuit Hunter Academy' })).toBeVisible();
-  await expect(page.locator('.grade-card')).toHaveCount(2);
+  await expect(page.locator('.grade-card')).toHaveCount(4);
 
   await page.locator('.grade-card').first().click();
   await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
@@ -25,17 +25,40 @@ test('new learner chooses a grade before seeing its subjects and the choice surv
   await expect(page.locator('.subjcard')).toHaveCount(3);
 
   await page.getByRole('button', { name: /Change grade/ }).click();
-  await page.locator('.grade-card-current').click();
-  await expect(page.locator('.subjcard')).toHaveCount(4);
+  await page.locator('.grade-card[data-grade="grade9"]').click();
+  await expect(page.locator('.subjcard')).toHaveCount(5);
   await expect(page.locator('.subjcard[data-s="math"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="phys"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="cs"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
-  await expect(quickLaunch.getByRole('button')).toHaveCount(4);
+  await expect(page.locator('.subjcard[data-s="chem"]')).toBeVisible();
+  await expect(quickLaunch.getByRole('button')).toHaveCount(5);
   await expect(quickLaunch.getByRole('button', { name: /CS/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Physics/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Math/ })).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /Chemistry \(L1\)/ })).toBeVisible();
 
+  await page.getByRole('button', { name: /Change grade/ }).click();
+  await page.locator('.grade-card[data-grade="grade10"]').click();
+  await expect(page.locator('.subjcard')).toHaveCount(2);
+  await expect(page.locator('.subjcard[data-s="chem10"]')).toBeVisible();
+  await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /Chemistry \(L2\)/ })).toBeVisible();
+
+  await page.getByRole('button', { name: /Change grade/ }).click();
+  await page.locator('.grade-card[data-grade="grade11"]').click();
+  await expect(page.locator('.subjcard')).toHaveCount(2);
+  await expect(page.locator('.subjcard[data-s="chem11"]')).toBeVisible();
+  await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /Chemistry \(L3\)/ })).toBeVisible();
+
+  await page.locator('.subjcard[data-s="chem11"]').click();
+  await expect(page.locator('.subject-indicator')).toContainText('Chemistry (Level 3)');
+  await expect(page.locator('#hGrade')).toContainText('11');
+  await expect(page.locator('#hMap')).toHaveAttribute('aria-current', 'page');
+
+  await page.getByRole('button', { name: /Change grade/ }).click();
+  await page.locator('.grade-card[data-grade="grade9"]').click();
   await page.locator('.subjcard[data-s="math"]').click();
   await expect(page.locator('.subject-indicator')).toContainText('Mathematics');
   await expect(page.locator('#hMap')).toHaveAttribute('aria-current', 'page');

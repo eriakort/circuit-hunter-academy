@@ -1,5 +1,6 @@
 import { BilingualText, SubjectId } from '../types';
 import { GRADE5_MATH_FORMULA_CARDS, GRADE5_MATH_TOPICS } from './grade5MathFormulaData';
+import { CHEM_FORMULA_CARDS, CHEM_TOPICS, CHEM10_TOPICS, CHEM11_TOPICS } from './chemFormulaData';
 
 export interface FormulaRule {
   name: BilingualText;
@@ -59,7 +60,10 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
     { id: 'verbi-tempi', subject: 'italian', name: ['Verb Tenses & Auxiliaries (Essere vs Avere)', 'Tempi Verbali e Ausiliari (Essere vs Avere)'] },
     { id: 'pronomi', subject: 'italian', name: ['Direct, Indirect & Combined Pronouns', 'Pronomi Diretti, Indiretti e Combinati'] },
     { id: 'congiuntivo-condizionale', subject: 'italian', name: ['Subjunctive & Conditional of Courtesy', 'Congiuntivo e Condizionale di Cortesia'] }
-  ]
+  ],
+  chem: CHEM_TOPICS,
+  chem10: CHEM10_TOPICS,
+  chem11: CHEM11_TOPICS
 };
 
 export const FORMULA_CARDS: FormulaCard[] = [
@@ -1339,4 +1343,7 @@ export const FORMULA_CARDS: FormulaCard[] = [
 
 // Grade 5 Mathematics (classe quinta) formula cards.
 FORMULA_CARDS.push(...GRADE5_MATH_FORMULA_CARDS);
+
+// Chemistry (Scienze Naturali - Chimica) formula cards.
+FORMULA_CARDS.push(...CHEM_FORMULA_CARDS);
 

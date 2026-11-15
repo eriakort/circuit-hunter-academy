@@ -35,6 +35,7 @@ export const GRADE5_SCIENCE_MISSIONS: Mission[] = [
     scenes: [
       {
         who: 's',
+        vis: 'g5s-plants',
         text: [
           '<p>Welcome, young scientist! Plants are living things. Most plants need <b>water, air, light and a suitable temperature</b> to grow. They do not eat food like animals: green parts use light to make their own food. This process is called <b>photosynthesis</b>.</p>',
           '<p>Benvenuta, giovane scienziata! Le piante sono esseri viventi. La maggior parte delle piante ha bisogno di <b>acqua, aria, luce e una temperatura adatta</b> per crescere. Non mangiano come gli animali: le parti verdi usano la luce per produrre il proprio nutrimento. Questo processo si chiama <b>fotosintesi clorofilliana</b>.</p>'
@@ -42,6 +43,7 @@ export const GRADE5_SCIENCE_MISSIONS: Mission[] = [
       },
       {
         who: 's',
+        vis: 'g5s-plants',
         text: [
           '<p>Many familiar plants have three main parts:</p><ul><li><b>Roots</b> take in water and help hold the plant in the soil.</li><li><b>The stem</b> supports the plant and carries water and nutrients.</li><li><b>Leaves</b> capture light and make food.</li></ul><p>Flowers, fruits and seeds help many plants reproduce. Mosses and ferns reproduce in different ways and do not make flowers or seeds.</p>',
           '<p>Molte piante conosciute hanno tre parti principali:</p><ul><li>Le <b>radici</b> assorbono acqua e aiutano a tenere la pianta nel terreno.</li><li>Il <b>fusto</b> sostiene la pianta e trasporta acqua e sostanze nutritive.</li><li>Le <b>foglie</b> catturano la luce e producono nutrimento.</li></ul><p>Fiori, frutti e semi aiutano molte piante a riprodursi. Muschi e felci si riproducono in modo diverso e non producono fiori o semi.</p>'
@@ -49,6 +51,7 @@ export const GRADE5_SCIENCE_MISSIONS: Mission[] = [
       },
       {
         who: 's',
+        vis: 'g5s-plants',
         text: [
           '<p>We can compare plants by how they are built. <b>Simple plants</b>, such as many algae and mosses, do not have all the specialised organs found in more complex plants. <b>Complex plants</b> have organised structures such as roots, stems and leaves; flowering plants also make flowers and seeds.</p><p>Remember: “simple” does not mean useless or unimportant. Every plant has a role in its environment.</p>',
           '<p>Possiamo confrontare le piante osservando come sono fatte. Le <b>piante semplici</b>, come molte alghe e i muschi, non possiedono tutti gli organi specializzati delle piante più complesse. Le <b>piante complesse</b> hanno strutture organizzate come radici, fusto e foglie; le piante con fiore producono anche fiori e semi.</p><p>Ricorda: “semplice” non significa inutile o poco importante. Ogni pianta ha un ruolo nell’ambiente.</p>'
@@ -79,6 +82,7 @@ export const GRADE5_SCIENCE_MISSIONS: Mission[] = [
     scenes: [
       {
         who: 's',
+        vis: 'g5s-animals',
         text: [
           '<p>Animals are living things that cannot make their own food like green plants. Scientists group animals by features they share. One important question is: <b>does the animal have a backbone?</b></p><p>Animals with a backbone are called <b>vertebrates</b>. Animals without a backbone are called <b>invertebrates</b>.</p>',
           '<p>Gli animali sono esseri viventi che non producono da soli il proprio nutrimento come fanno le piante verdi. Gli scienziati li raggruppano in base alle caratteristiche che hanno in comune. Una domanda importante è: <b>l’animale possiede una colonna vertebrale?</b></p><p>Gli animali con la colonna vertebrale si chiamano <b>vertebrati</b>. Quelli senza colonna vertebrale si chiamano <b>invertebrati</b>.</p>'
@@ -86,6 +90,7 @@ export const GRADE5_SCIENCE_MISSIONS: Mission[] = [
       },
       {
         who: 's',
+        vis: 'g5s-animals',
         text: [
           '<p>The main vertebrate groups are <b>mammals, birds, fish, reptiles and amphibians</b>. They have different features: mammals feed their young with milk; birds have feathers; fish usually breathe through gills; reptiles have dry scales; amphibians often live part of their lives in water and part on land.</p>',
           '<p>I principali gruppi di vertebrati sono <b>mammiferi, uccelli, pesci, rettili e anfibi</b>. Hanno caratteristiche diverse: i mammiferi allattano i piccoli; gli uccelli hanno piume; i pesci respirano generalmente con le branchie; i rettili hanno squame asciutte; gli anfibi spesso vivono una parte della vita in acqua e una sulla terraferma.</p>'
@@ -93,6 +98,7 @@ export const GRADE5_SCIENCE_MISSIONS: Mission[] = [
       },
       {
         who: 's',
+        vis: 'g5s-animals',
         text: [
           '<p>Invertebrates are a very large group. They include <b>insects, spiders, crustaceans, molluscs and worms</b>. Many have an external skeleton or a shell for protection, while others have soft bodies. An insect has six legs; a spider has eight.</p><p>Classification helps us compare living things, understand biodiversity and protect habitats.</p>',
           '<p>Gli invertebrati formano un gruppo molto numeroso. Comprendono <b>insetti, ragni, crostacei, molluschi e vermi</b>. Molti hanno uno scheletro esterno o una conchiglia che li protegge, mentre altri hanno il corpo molle. Un insetto ha sei zampe; un ragno ne ha otto.</p><p>La classificazione ci aiuta a confrontare gli esseri viventi, comprendere la biodiversità e proteggere gli habitat.</p>'

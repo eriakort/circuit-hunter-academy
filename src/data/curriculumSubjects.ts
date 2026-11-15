@@ -1,6 +1,7 @@
 import { SubjectInfo, GradeId } from '../types';
 import { GRADE5_SCIENCE_SUBJECT } from './grade5ScienceData';
 import { GRADE5_MATH_SUBJECT } from './grade5MathData';
+import { CHEM_SUBJECT, CHEM10_SUBJECT, CHEM11_SUBJECT } from './chemCommon';
 
 export const ITALIAN_SUBJECT: SubjectInfo = {
   id: 'italian',
@@ -57,17 +58,22 @@ export const SUBJECTS: SubjectInfo[] = [
     art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd166"/><stop offset="1" stop-color="#ff6a3d"/></linearGradient></defs><text x="60" y="72" text-anchor="middle" font-family="Dela Gothic One, Arial Black, sans-serif" font-size="42" fill="url(#mg)">∑</text></svg>'
   },
   ITALIAN_SUBJECT,
+  CHEM_SUBJECT,
+  CHEM10_SUBJECT,
+  CHEM11_SUBJECT,
   GRADE5_SCIENCE_SUBJECT,
   GRADE5_MATH_SUBJECT
 ];
 
 export const GRADE_CURRICULUM_MAP: Record<GradeId, string[]> = {
   grade5: ['science', 'math5', 'italian'],
-  grade9: ['cs', 'phys', 'math', 'italian']
+  grade9: ['cs', 'phys', 'math', 'italian', 'chem'],
+  grade10: ['chem10', 'italian'],
+  grade11: ['chem11', 'italian']
 };
 
 export function getCurriculumSubjects(grade?: GradeId | null): SubjectInfo[] {
-  const targetGrade: GradeId = (grade === 'grade5' || grade === 'grade9') ? grade : 'grade9';
+  const targetGrade: GradeId = (grade && grade in GRADE_CURRICULUM_MAP) ? grade : 'grade9';
   const allowed = new Set(GRADE_CURRICULUM_MAP[targetGrade]);
   const list = SUBJECTS.filter(s => allowed.has(s.id));
   // Guarantee Italian is never excluded

@@ -2,9 +2,9 @@ export type Language = 'en' | 'it';
 
 export type BilingualText = [string, string] | string;
 
-export type GradeId = 'grade5' | 'grade9';
+export type GradeId = 'grade5' | 'grade9' | 'grade10' | 'grade11';
 
-export type SubjectId = 'cs' | 'phys' | 'math' | 'science' | 'math5' | 'italian';
+export type SubjectId = 'cs' | 'phys' | 'math' | 'science' | 'math5' | 'italian' | 'chem' | 'chem10' | 'chem11';
 
 export interface SubjectInfo {
   id: SubjectId;

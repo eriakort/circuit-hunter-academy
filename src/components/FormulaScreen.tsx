@@ -147,7 +147,10 @@ const SUBJECT_LIST: SubjectMeta[] = [
   { id: 'phys', name: ['Physics', 'Fisica'], icon: '⚡', badgeColor: 'var(--sakura)' },
   { id: 'cs', name: ['Computer Science', 'Informatica'], icon: '💾', badgeColor: 'var(--data)' },
   { id: 'science', name: ['Grade 5 Science', 'Scienze (5ª Primaria)'], icon: '🔬', badgeColor: 'var(--good)' },
-  { id: 'math5', name: ['Grade 5 Maths', 'Matematica (5ª Primaria)'], icon: '📐', badgeColor: 'var(--sakura)' }
+  { id: 'math5', name: ['Grade 5 Maths', 'Matematica (5ª Primaria)'], icon: '📐', badgeColor: 'var(--sakura)' },
+  { id: 'chem', name: ['Chemistry · Grade 9 (L1)', 'Chimica · 1° Sup. (L1)'], icon: '🧪', badgeColor: 'var(--good)' },
+  { id: 'chem10', name: ['Chemistry · Grade 10 (L2)', 'Chimica · 2° Sup. (L2)'], icon: '⚗️', badgeColor: 'var(--data)' },
+  { id: 'chem11', name: ['Chemistry · Grade 11 (L3)', 'Chimica · 3°/4° Sup. (L3)'], icon: '🧬', badgeColor: 'var(--sakura)' }
 ];
 
 export const FormulaScreen: React.FC = () => {
@@ -156,7 +159,7 @@ export const FormulaScreen: React.FC = () => {
 
   // Active Subject Selection (defaults to current game subject if valid, else 'math')
   const [activeSubject, setActiveSubject] = useState<SubjectId | 'all'>(() => {
-    if (gameSubject && ['math', 'phys', 'cs', 'science', 'math5', 'italian'].includes(gameSubject)) {
+    if (gameSubject && ['math', 'phys', 'cs', 'science', 'math5', 'italian', 'chem', 'chem10', 'chem11'].includes(gameSubject)) {
       return gameSubject;
     }
     return 'math';
@@ -222,7 +225,7 @@ export const FormulaScreen: React.FC = () => {
 
   // Counts per subject
   const subjectCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: FORMULA_CARDS.length, math: 0, phys: 0, cs: 0, science: 0 };
+    const counts: Record<string, number> = { all: FORMULA_CARDS.length, math: 0, phys: 0, cs: 0, science: 0, math5: 0, italian: 0, chem: 0, chem10: 0, chem11: 0 };
     for (const card of FORMULA_CARDS) {
       if (counts[card.subject] !== undefined) {
         counts[card.subject]++;
@@ -598,8 +601,8 @@ export const FormulaScreen: React.FC = () => {
         <p className="muted" style={{ margin: '8px 0 0', maxWidth: '72ch' }}>
           {L(
             [
-              'Browse formulas categorized by subject (Mathematics, Physics, Computer Science, Grade 5 Science). Filter by all formulas in a subject or dive into specific topics with worked examples and exam trap warnings.',
-              'Esplora le formule suddivise per materia (Matematica, Fisica, Informatica, Scienze 5ª). Visualizza tutte le formule della materia o scegli uno specifico argomento con esempi svolti e tranelli d\'esame.'
+              'Browse formulas categorized by subject (Mathematics, Physics, Chemistry, Computer Science, Grade 5 Science). Filter by all formulas in a subject or dive into specific topics with worked examples and exam trap warnings.',
+              'Esplora le formule suddivise per materia (Matematica, Fisica, Chimica, Informatica, Scienze 5ª). Visualizza tutte le formule della materia o scegli uno specifico argomento con esempi svolti e tranelli d\'esame.'
             ],
             lang
           )}

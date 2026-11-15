@@ -13,12 +13,15 @@ export const CodexScreen: React.FC = () => {
   const q = searchQuery.trim().toLowerCase();
   const anyMatch =
     !q ||
-    CODEX.some(
-      e =>
-        (ARCS[MISSIONS[e[0] as number]?.arc]?.subject || 'cs') === curSub &&
-        !!seen[e[0] as number] &&
+    CODEX.some(e => {
+      const mi = typeof e[0] === 'number' ? e[0] : MISSIONS.findIndex(m => m.id === e[0]);
+      if (mi < 0) return false;
+      return (
+        (ARCS[MISSIONS[mi]?.arc]?.subject || 'cs') === curSub &&
+        !!seen[mi] &&
         e.slice(1).join(' ').toLowerCase().includes(q)
-    );
+      );
+    });
 
   return (
     <>

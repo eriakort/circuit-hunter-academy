@@ -1,13 +1,16 @@
 import React from 'react';
 import { useGame } from '../context/GameContext';
 import { getCurriculumSubjects, ITALIAN_SUBJECT } from '../data/curriculumSubjects';
-import { SubjectId } from '../types';
+import { GradeId, SubjectId } from '../types';
 import { L } from '../helpers';
 
 export const SubjectPickerScreen: React.FC = () => {
   const { state, setSubject, goToView } = useGame();
   const { lang, grade } = state;
-  const activeGrade = (grade === 'grade5' || grade === 'grade9') ? grade : 'grade9';
+  const activeGrade: GradeId =
+    grade === 'grade5' || grade === 'grade9' || grade === 'grade10' || grade === 'grade11'
+      ? grade
+      : 'grade9';
 
   // Obtain authoritative list from curriculumSubjects registry
   const baseSubjects = getCurriculumSubjects(activeGrade);
@@ -20,29 +23,43 @@ export const SubjectPickerScreen: React.FC = () => {
     setSubject(id);
   };
 
+  const eyebrowByGrade: Record<GradeId, [string, string]> = {
+    grade5: ['GRADE 5 · SUBJECTS', 'QUINTA PRIMARIA · MATERIE'],
+    grade9: ['GRADE 9 · CHOOSE YOUR SUBJECT', 'CLASSE 1ª SUPERIORE / 3ª MEDIA · SCEGLI LA MATERIA'],
+    grade10: ['GRADE 10 · CHOOSE YOUR SUBJECT', 'CLASSE 2ª SUPERIORE · SCEGLI LA MATERIA'],
+    grade11: ['GRADE 11 · CHOOSE YOUR SUBJECT', 'CLASSE 3ª / 4ª SUPERIORE · SCEGLI LA MATERIA']
+  };
+
+  const ledeByGrade: Record<GradeId, [string, string]> = {
+    grade5: [
+      'Explore Science & Technology, Mathematics or Italian Studies.',
+      'Esplora Scienze e Tecnologia, Matematica o Lingua Italiana.'
+    ],
+    grade9: [
+      'Choose a subject for Grade 9: Computer Science, Physics, Mathematics, Italian Studies (CEFR A1–B1), or Chemistry Level 1 (Matter, Laws & Atom).',
+      'Scegli una materia per la 1ª Superiore / 3ª Media: Informatica, Fisica, Matematica, Lingua Italiana (QCER A1–B1) o Chimica Livello 1 (Materia, Leggi e Atomo).'
+    ],
+    grade10: [
+      'Grade 10 (2° Superiore): Chemistry Level 2 (Bonding, VSEPR, Nomenclature, Balancing, Stoichiometry & Solutions) and Italian Studies (CEFR A1–B1).',
+      '2° Superiore: Chimica Livello 2 (Legami, VSEPR, Nomenclatura, Bilanciamento, Stechiometria e Soluzioni) e Lingua Italiana (QCER A1–B1).'
+    ],
+    grade11: [
+      'Grade 11 (3°/4° Superiore): Chemistry Level 3 (Thermochemistry, Kinetics, Equilibrium, Acids/Bases, Redox & Organic Intro) and Italian Studies (CEFR A1–B1).',
+      '3°/4° Superiore: Chimica Livello 3 (Termochimica, Cinetica, Equilibrio, Acidi e Basi, Redox e Chimica Organica) e Lingua Italiana (QCER A1–B1).'
+    ]
+  };
+
   return (
     <section className="hero card">
       <div>
         <div className="eyebrow">
-          {grade === 'grade5'
-            ? L(['GRADE 5 · SUBJECTS', 'QUINTA PRIMARIA · MATERIE'], lang)
-            : L(['GRADE 9 · CHOOSE YOUR SUBJECT', 'CLASSE 3ª MEDIA · SCEGLI LA MATERIA'], lang)}
+          {L(eyebrowByGrade[activeGrade], lang)}
         </div>
         <h1>
           Circuit Hunter <span>Academy</span>
         </h1>
         <p className="lede">
-          {L(
-            [
-              grade === 'grade5'
-                ? 'Explore Science & Technology, Mathematics or Italian Studies.'
-                : 'Choose a subject for Grade 9: Computer Science, Physics, Mathematics, or Italian Studies (CEFR A1–B1 with Speech).',
-              grade === 'grade5'
-                ? 'Esplora Scienze e Tecnologia, Matematica o Lingua Italiana.'
-                : 'Scegli una materia per la classe 3ª: Informatica, Fisica, Matematica o Lingua Italiana (QCER A1–B1 con parlato).'
-            ],
-            lang
-          )}
+          {L(ledeByGrade[activeGrade], lang)}
         </p>
 
         {/* Quick Launch Pills for instant 1-tap switching */}
@@ -84,7 +101,35 @@ export const SubjectPickerScreen: React.FC = () => {
               >
                 ∑ Math
               </button>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('chem')}
+              >
+                🧪 {L(['Chemistry (L1)', 'Chimica (L1)'], lang)}
+              </button>
             </>
+          )}
+          {activeGrade === 'grade10' && (
+            <button
+              type="button"
+              className="btn ghost sm"
+              style={{ padding: '4px 10px', fontSize: '13px' }}
+              onClick={() => handleSelect('chem10')}
+            >
+              ⚗️ {L(['Chemistry (L2)', 'Chimica (L2)'], lang)}
+            </button>
+          )}
+          {activeGrade === 'grade11' && (
+            <button
+              type="button"
+              className="btn ghost sm"
+              style={{ padding: '4px 10px', fontSize: '13px' }}
+              onClick={() => handleSelect('chem11')}
+            >
+              🧬 {L(['Chemistry (L3)', 'Chimica (L3)'], lang)}
+            </button>
           )}
         </div>
       </div>

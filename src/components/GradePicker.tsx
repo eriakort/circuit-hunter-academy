@@ -24,9 +24,21 @@ export const GradePicker: React.FC = () => {
         {GRADES.map(grade => {
           const selected = state.grade === grade.id;
           const ready = grade.status === 'ready';
+          const statusCopy: [string, string] =
+            grade.id === 'grade5'
+              ? ['Science, Maths & Italian available', 'Scienze, Matematica e Italiano disponibili']
+              : ready
+                ? grade.id === 'grade9'
+                  ? ['CS, Physics, Math, Italian & Chemistry L1 · Ready', 'Informatica, Fisica, Matematica, Italiano e Chimica L1 · Pronte']
+                  : grade.id === 'grade10'
+                    ? ['Chemistry Level 2 & Italian · Ready', 'Chimica Livello 2 e Italiano · Pronte']
+                    : ['Chemistry Level 3 & Italian · Ready', 'Chimica Livello 3 e Italiano · Pronte']
+                : ['Curriculum setup next', 'Programma in preparazione'];
+
           return (
             <button
               key={grade.id}
+              data-grade={grade.id}
               className={`grade-card${ready ? ' grade-card-current' : ''}${selected ? ' grade-card-selected' : ''}`}
               aria-pressed={selected}
               onClick={() => setGrade(grade.id)}
@@ -36,11 +48,7 @@ export const GradePicker: React.FC = () => {
               <strong>{L(grade.name, lang)}</strong>
               <span className="grade-card-detail">{L(grade.ageRange, lang)}</span>
               <span className="grade-card-status">
-                {grade.id === 'grade5'
-                  ? L(['Science & Italian available', 'Scienze e Italiano disponibili'], lang)
-                  : ready
-                    ? L(['CS, Physics, Math & Italian · Ready', 'Informatica, Fisica, Matematica e Italiano · Pronte'], lang)
-                    : L(['Curriculum setup next', 'Programma in preparazione'], lang)}
+                {L(statusCopy, lang)}
               </span>
             </button>
           );

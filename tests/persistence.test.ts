@@ -135,6 +135,18 @@ assert.equal(corrupt.grade, null);
 assert.equal(corrupt.subject, 'cs');
 assert.equal(corrupt.xp, 0);
 
+const grade10Chem = sanitizeGameState({ grade: 'grade10', subject: 'chem10', cleared: { chem_l2_m1: true } });
+assert.equal(grade10Chem.grade, 'grade10');
+assert.equal(grade10Chem.subject, 'chem10');
+assert.equal(grade10Chem.unit, UNITS.findIndex(unit => unit.subject === 'chem10'));
+assert.equal(sanitizeGameState({ grade: 'grade10', subject: 'cs' }).subject, 'chem10', 'Grade 10 falls back to its own curriculum');
+
+const grade11Chem = sanitizeGameState({ grade: 'grade11', subject: 'chem11', cleared: { chem_l3_m1: true } });
+assert.equal(grade11Chem.grade, 'grade11');
+assert.equal(grade11Chem.subject, 'chem11');
+assert.equal(grade11Chem.unit, UNITS.findIndex(unit => unit.subject === 'chem11'));
+assert.equal(sanitizeGameState({ grade: 'grade11', subject: 'chem10' }).subject, 'chem11', 'Grade 11 cannot restore Grade 10 Chemistry');
+
 console.log('persistence.test.ts ok');
 
 

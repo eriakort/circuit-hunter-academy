@@ -47,7 +47,18 @@ export const HUD: React.FC = () => {
         >
           <span className="subject-indicator-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: activeSubject.art }} />
           <span className="subject-indicator-copy">
-            <small>{L(grade === 'grade5' ? ['GRADE 5 · CURRENT SUBJECT', 'QUINTA PRIMARIA · MATERIA'] : ['GRADE 9 · CURRENT SUBJECT', 'CLASSE 3ª MEDIA · MATERIA'], lang)}</small>
+            <small>
+              {L(
+                grade === 'grade5'
+                  ? ['GRADE 5 · CURRENT SUBJECT', 'QUINTA PRIMARIA · MATERIA']
+                  : grade === 'grade10'
+                    ? ['GRADE 10 · CURRENT SUBJECT', '2ª SUPERIORE · MATERIA']
+                    : grade === 'grade11'
+                      ? ['GRADE 11 · CURRENT SUBJECT', '3ª/4ª SUPERIORE · MATERIA']
+                      : ['GRADE 9 · CURRENT SUBJECT', '1ª SUP. / 3ª MEDIA · MATERIA'],
+                lang
+              )}
+            </small>
             <strong>{L(activeSubject.name, lang)} ▾</strong>
           </span>
         </button>
@@ -60,7 +71,7 @@ export const HUD: React.FC = () => {
           aria-current={currentPage(view === 'grades')}
           onClick={() => goToView('grades')}
         >
-          {L(['Change grade', 'Cambia classe'], lang)}{grade === 'grade5' ? ' · 5' : grade === 'grade9' ? ' · 9' : ''}
+          {L(['Change grade', 'Cambia classe'], lang)}{grade ? ` · ${grade.replace('grade', '')}` : ''}
         </button>
         {name && (
           <div className="who-hud">

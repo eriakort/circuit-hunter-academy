@@ -3,6 +3,7 @@ import { PHYSICS_FOUNDATION_MISSIONS } from "./physicsFoundationsData";
 import { MATH_CODEX } from "./mathCodex";
 import { ITALIAN_CODEX } from "./italianCodex";
 import { ITALIAN_MISSIONS } from "./italianData";
+import { CHEM_CODEX } from "./chemCodex";
 export const SUBJECTS: SubjectInfo[] = [
   {
     "id": "cs",
@@ -28401,7 +28402,8 @@ export const CODEX: CodexEntry[] = [
     "La spinta verso l'alto di un fluido su un corpo immerso."
   ],
   ...MATH_CODEX,
-  ...ITALIAN_CODEX
+  ...ITALIAN_CODEX,
+  ...CHEM_CODEX
 ];
 
 export const ROBOT_LEVELS = [
@@ -28878,3 +28880,58 @@ GRADE5_MATH_UNITS.forEach((unit, index) => {
   ARCS.push({ n: index + 1, unit: unitOffset, subject: 'math5', title: unit.title, pages: unit.pages });
   MISSIONS.push(...unit.missions.map(mission => ({ ...mission, arc: arcOffset })));
 });
+
+// ============================================================================
+// Chemistry (Scienze Naturali - Chimica · 1°–3°/4° Superiore)
+// Phase 1: Level 1 (1° Superiore · Matter, Laws & Atom)
+// Phase 2: Level 2 (2° Superiore · Bonding, Nomenclature, Stoich & Solutions)
+// Phase 3: Level 3 (3°/4° Superiore · Equilibrium, pH, Redox & Organic Intro)
+// Appended last so every existing mission index and ID stays stable.
+// ============================================================================
+import { CHEM_SUBJECT, CHEM10_SUBJECT, CHEM11_SUBJECT } from './chemCommon';
+import { CHEM_LEVEL1_UNIT, CHEM_LEVEL1_ARCS, CHEM_LEVEL1_MISSIONS } from './chemLevel1Data';
+import { CHEM_LEVEL2_UNIT, CHEM_LEVEL2_ARCS, CHEM_LEVEL2_MISSIONS } from './chemLevel2Data';
+import { CHEM_LEVEL3_UNIT, CHEM_LEVEL3_ARCS, CHEM_LEVEL3_MISSIONS } from './chemLevel3Data';
+
+if (!SUBJECTS.some(s => s.id === 'chem')) {
+  SUBJECTS.push(CHEM_SUBJECT);
+}
+if (!SUBJECTS.some(s => s.id === 'chem10')) {
+  SUBJECTS.push(CHEM10_SUBJECT);
+}
+if (!SUBJECTS.some(s => s.id === 'chem11')) {
+  SUBJECTS.push(CHEM11_SUBJECT);
+}
+
+const chemL1UnitOffset = UNITS.length;
+UNITS.push(CHEM_LEVEL1_UNIT);
+const chemL1ArcOffset = ARCS.length;
+CHEM_LEVEL1_ARCS.forEach(arc => {
+  ARCS.push({ ...arc, unit: chemL1UnitOffset, subject: 'chem' });
+});
+MISSIONS.push(...CHEM_LEVEL1_MISSIONS.map(mission => ({
+  ...mission,
+  arc: chemL1ArcOffset + mission.arc
+})));
+
+const chemL2UnitOffset = UNITS.length;
+UNITS.push(CHEM_LEVEL2_UNIT);
+const chemL2ArcOffset = ARCS.length;
+CHEM_LEVEL2_ARCS.forEach(arc => {
+  ARCS.push({ ...arc, unit: chemL2UnitOffset, subject: 'chem10' });
+});
+MISSIONS.push(...CHEM_LEVEL2_MISSIONS.map(mission => ({
+  ...mission,
+  arc: chemL2ArcOffset + mission.arc
+})));
+
+const chemL3UnitOffset = UNITS.length;
+UNITS.push(CHEM_LEVEL3_UNIT);
+const chemL3ArcOffset = ARCS.length;
+CHEM_LEVEL3_ARCS.forEach(arc => {
+  ARCS.push({ ...arc, unit: chemL3UnitOffset, subject: 'chem11' });
+});
+MISSIONS.push(...CHEM_LEVEL3_MISSIONS.map(mission => ({
+  ...mission,
+  arc: chemL3ArcOffset + mission.arc
+})));
