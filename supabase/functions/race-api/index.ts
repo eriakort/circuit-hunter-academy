@@ -77,12 +77,16 @@ Deno.serve(async (req) => {
     if (!/^[A-Z0-9]{4}$/.test(code)) return fail("Invalid room code");
     const { data: room } = await admin.from("race_rooms").select("id,grade,subject,mission_id,status").eq("code", code).maybeSingle();
     if (!room || room.status !== "lobby") return fail("Room not found or no longer accepting players", 404);
-    const { data: existing } = await admin.from("race_room_members").select("id").eq("room_id", room.id).eq("user_id", user.id).maybeSingle();
-    if (!existing) {
-      const { count } = await admin.from("race_room_members").select("id", { count: "exact", head: true }).eq("room_id", room.id);
-      if ((count ?? MAX_PLAYERS) >= MAX_PLAYERS) return fail("Room is full", 409);
-      const { error } = await admin.from("race_room_members").insert({ room_id: room.id, user_id: user.id, display_name: displayName });
-      if (error) return fail("Could not join room", 409);
+    const { error: joinError } = await admin.rpc("race_join_atomic", {
+      p_room_id: room.id,
+      p_user_id: user.id,
+      p_display_name: displayName,
+      p_max_players: MAX_PLAYERS,
+    });
+    if (joinError) {
+      const status = joinError.code === "P0002" ? 404
+        : joinError.code === "40001" || joinError.code === "23514" ? 409 : 500;
+      return fail(joinError.message || "Could not join room", status);
     }
     return json({ roomId: room.id, grade: room.grade, subject: room.subject, missionId: room.mission_id, status: room.status });
   }
