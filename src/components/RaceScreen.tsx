@@ -6,6 +6,7 @@ import { L, rng, sshuffle, hueOf, raceAvatar, safeId, U } from '../helpers';
 import { createClient } from '@supabase/supabase-js';
 import { calculateRaceCompletionXP, haveRaceOpponentsFinished, shouldFinalizeRace } from '../raceCompletion';
 import { validateRaceProgress } from '../raceProtocol';
+import { getRaceHostId, isRaceHostControlMessage, sanitizeRacePlayer, validateRaceStartPayload } from '../raceSecurity';
 
 declare global {
   interface Window {
@@ -20,20 +21,8 @@ const RACE_MAX = 8;
 const RACE_COMPLETION_GRACE_MS = 15000;
 
 const MAX_POINTS_PER_Q = 100;
-const toNum = (value: unknown, max: number): number => {
-  const n = Number(value);
-  return Number.isFinite(n) ? Math.min(max, Math.max(0, Math.round(n))) : 0;
-};
-const cleanPlayer = (id: string, player: any): RacePlayer | null => {
-  if (!player || typeof player !== 'object') return null;
-  const name = String(player.name ?? '').slice(0, 20).trim();
-  if (!name) return null;
-  return { id, name, joinedAt: toNum(player.joinedAt, Number.MAX_SAFE_INTEGER), hue: toNum(player.hue, 359) };
-};
 const isRaceMission = (id: unknown): id is string =>
   id === 'mix' || MISSIONS.some(m => m.id === id && Array.isArray(m.quiz) && m.quiz.length > 0);
-const hostIdOf = (players: Record<string, RacePlayer>): string | undefined =>
-  Object.values(players).sort((a, b) => a.joinedAt - b.joinedAt || (a.id < b.id ? -1 : 1))[0]?.id;
 
 const defaultSupabaseUrl = 'https://yhzefqoplunmseuwcwku.supabase.co';
 const defaultSupabaseKey =
@@ -134,7 +123,7 @@ export const RaceScreen: React.FC = () => {
         const pMap: Record<string, RacePlayer> = { [myPlayer.id]: myPlayer };
         Object.entries(presenceState).forEach(([key, arr]: [string, any]) => {
           if (key === myPlayer.id) return;
-          const clean = cleanPlayer(key, arr && arr[0]);
+          const clean = sanitizeRacePlayer(key, arr && arr[0]);
           if (clean) pMap[key] = clean;
         });
         updatePlayers(pMap);
@@ -149,7 +138,7 @@ export const RaceScreen: React.FC = () => {
       });
 
       ch.on('broadcast', { event: 'lobby' }, ({ payload }) => {
-        if (payload && payload.from === hostIdOf(playersRef.current)) setRaceState('lobby');
+        if (isRaceHostControlMessage(payload, getRaceHostId(playersRef.current))) setRaceState('lobby');
       });
 
       await new Promise<void>((resolve, reject) => {
@@ -185,17 +174,15 @@ export const RaceScreen: React.FC = () => {
     }
   };
 
-  const onStartBroadcast = (payload: any) => {
-    if (!payload || typeof payload !== 'object') return;
-    if (payload.subject && payload.subject !== curSub) {
+  const onStartBroadcast = (payload: unknown) => {
+    const validated = validateRaceStartPayload(payload, getRaceHostId(playersRef.current), isRaceMission);
+    if (!validated) return;
+    const { missionId, seed, raceId, subject: payloadSubject } = validated;
+    if (payloadSubject && payloadSubject !== curSub) {
       setErrorMsg('subject-mismatch');
       setRaceState('lobby');
       return;
     }
-    const { from, missionId, seed, raceId } = payload;
-    if (from !== hostIdOf(playersRef.current)) return;
-    if (typeof raceId !== 'string' || !raceId || raceId.length > 64) return;
-    if (!isRaceMission(missionId) || !Number.isInteger(seed) || seed < 0 || seed > 1000000) return;
     const qs = buildRaceQuestions(missionId, seed);
     if (qs.length === 0) {
       setErrorMsg('topic-unavailable');
