@@ -1,0 +1,156 @@
+import { createClient } from "npm:@supabase/supabase-js@2";
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+};
+const json = (body: unknown, status = 200) =>
+  new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+const fail = (message: string, status = 400) => json({ error: message }, status);
+const MAX_PLAYERS = 8;
+const QUESTION_TIME_MS = 20_000;
+const QUESTION_COUNT = 10;
+const CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+Deno.serve(async (req) => {
+  if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
+  if (req.method !== "POST") return fail("Method not allowed", 405);
+
+  const url = Deno.env.get("SUPABASE_URL");
+  const anonKey = Deno.env.get("SUPABASE_ANON_KEY");
+  const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  const authHeader = req.headers.get("Authorization");
+  if (!url || !anonKey || !serviceKey || !authHeader?.startsWith("Bearer ")) {
+    return fail("Authentication is required", 401);
+  }
+
+  const authClient = createClient(url, anonKey, { global: { headers: { Authorization: authHeader } }, auth: { persistSession: false } });
+  const { data: { user }, error: authError } = await authClient.auth.getUser();
+  if (authError || !user) return fail("Invalid or expired session", 401);
+
+  const admin = createClient(url, serviceKey, { auth: { persistSession: false, autoRefreshToken: false } });
+  let body: Record<string, unknown>;
+  try {
+    const parsed = await req.json();
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return fail("Invalid request body");
+    body = parsed;
+  } catch { return fail("Invalid JSON body"); }
+
+  const action = body.action;
+  const displayName = typeof body.displayName === "string" ? body.displayName.trim().slice(0, 20) : "";
+  if (["create", "join"].includes(String(action)) && !displayName) return fail("A display name is required");
+
+  if (action === "create") {
+    const grade = typeof body.grade === "string" ? body.grade : "";
+    const subject = typeof body.subject === "string" ? body.subject : "";
+    const missionId = typeof body.missionId === "string" ? body.missionId : "";
+    if (!/^grade[0-9]+$/.test(grade) || !/^[a-z0-9-]{1,40}$/.test(subject) || !/^[a-z0-9-]{1,80}$/.test(missionId)) return fail("Invalid race configuration");
+    let code = "";
+    for (let attempt = 0; attempt < 8; attempt++) {
+      const bytes = crypto.getRandomValues(new Uint8Array(4));
+      code = Array.from(bytes, b => CODE_CHARS[b % CODE_CHARS.length]).join("");
+      const { data: existing } = await admin.from("race_rooms").select("id").eq("code", code).maybeSingle();
+      if (!existing) break;
+      code = "";
+    }
+    if (!code) return fail("Could not allocate a room code", 503);
+    const { data: room, error: roomError } = await admin.from("race_rooms")
+      .insert({ code, created_by: user.id, grade, subject, mission_id: missionId }).select().single();
+    if (roomError || !room) return fail("Could not create room", 500);
+    const { error: memberError } = await admin.from("race_room_members").insert({ room_id: room.id, user_id: user.id, display_name: displayName });
+    if (memberError) {
+      await admin.from("race_rooms").delete().eq("id", room.id);
+      return fail("Could not join the new room", 500);
+    }
+    return json({ roomId: room.id, code: room.code, status: room.status });
+  }
+
+  if (action === "join") {
+    const code = typeof body.code === "string" ? body.code.toUpperCase().replace(/[^A-Z0-9]/g, "") : "";
+    if (!/^[A-Z0-9]{4}$/.test(code)) return fail("Invalid room code");
+    const { data: room } = await admin.from("race_rooms").select("id,grade,subject,mission_id,status").eq("code", code).maybeSingle();
+    if (!room || room.status !== "lobby") return fail("Room not found or no longer accepting players", 404);
+    const { data: existing } = await admin.from("race_room_members").select("id").eq("room_id", room.id).eq("user_id", user.id).maybeSingle();
+    if (!existing) {
+      const { count } = await admin.from("race_room_members").select("id", { count: "exact", head: true }).eq("room_id", room.id);
+      if ((count ?? MAX_PLAYERS) >= MAX_PLAYERS) return fail("Room is full", 409);
+      const { error } = await admin.from("race_room_members").insert({ room_id: room.id, user_id: user.id, display_name: displayName });
+      if (error) return fail("Could not join room", 409);
+    }
+    return json({ roomId: room.id, grade: room.grade, subject: room.subject, missionId: room.mission_id, status: room.status });
+  }
+
+  const roomId = typeof body.roomId === "string" ? body.roomId : "";
+  if (!/^[0-9a-f-]{36}$/i.test(roomId)) return fail("Invalid room");
+  const { data: membership } = await admin.from("race_room_members").select("id,score,correct_count,next_question_index,question_started_at,finished_at")
+    .eq("room_id", roomId).eq("user_id", user.id).maybeSingle();
+  if (!membership) return fail("You are not a member of this room", 403);
+  const { data: room } = await admin.from("race_rooms").select("*").eq("id", roomId).maybeSingle();
+  if (!room) return fail("Room not found", 404);
+
+  if (action === "start") {
+    if (room.created_by !== user.id) return fail("Only the room host can start the race", 403);
+    if (room.status !== "lobby") return fail("Race has already started", 409);
+    const { data: questions, error } = await admin.from("race_question_bank").select("id,prompt,choices")
+      .eq("grade", room.grade).eq("subject", room.subject).eq("mission_id", room.mission_id).eq("active", true);
+    if (error || !questions || questions.length < QUESTION_COUNT) return fail("Not enough approved questions are available for this race", 409);
+    const shuffled = questions.sort(() => Math.random() - 0.5).slice(0, QUESTION_COUNT);
+    const startedAt = new Date().toISOString();
+    const { error: insertError } = await admin.from("race_room_questions").insert(shuffled.map((q, position) => ({ room_id: roomId, position, question_id: q.id })));
+    if (insertError) return fail("Could not prepare race questions", 500);
+    const { error: updateError } = await admin.from("race_rooms").update({ status: "running", started_at: startedAt }).eq("id", roomId).eq("status", "lobby");
+    if (updateError) return fail("Could not start race", 500);
+    await admin.from("race_room_members").update({ question_started_at: startedAt }).eq("room_id", roomId);
+    return json({ status: "running", questions: shuffled.map(q => ({ id: q.id, prompt: q.prompt, choices: q.choices })) });
+  }
+
+  if (action === "answer") {
+    if (room.status !== "running" || membership.finished_at) return fail("Race is not accepting answers", 409);
+    const position = membership.next_question_index;
+    const selectedIndex = body.selectedIndex;
+    if (!Number.isSafeInteger(selectedIndex) || (selectedIndex as number) < 0) return fail("Invalid answer");
+    const { data: link } = await admin.from("race_room_questions").select("question_id").eq("room_id", roomId).eq("position", position).maybeSingle();
+    if (!link) return fail("No question is pending", 409);
+    const { data: question } = await admin.from("race_question_bank").select("choices,correct_index").eq("id", link.question_id).single();
+    if (!question || (selectedIndex as number) >= question.choices.length) return fail("Answer is out of range");
+    const answeredAt = Date.now();
+    const startedAt = membership.question_started_at ? new Date(membership.question_started_at).getTime() : answeredAt;
+    const withinTime = answeredAt - startedAt <= QUESTION_TIME_MS;
+    const correct = withinTime && selectedIndex === question.correct_index;
+    const points = correct ? 50 + Math.round(Math.max(0, QUESTION_TIME_MS - (answeredAt - startedAt)) / QUESTION_TIME_MS * 50) : 0;
+    const { error: eventError } = await admin.from("race_answer_events").insert({
+      room_id: roomId, user_id: user.id, position, selected_index: selectedIndex, is_correct: correct, points,
+    });
+    if (eventError) return fail("This question has already been answered", 409);
+    const nextIndex = position + 1;
+    const complete = nextIndex >= QUESTION_COUNT;
+    const { data: updated, error: updateError } = await admin.from("race_room_members").update({
+      score: membership.score + points,
+      correct_count: membership.correct_count + (correct ? 1 : 0),
+      next_question_index: nextIndex,
+      question_started_at: complete ? null : new Date().toISOString(),
+      finished_at: complete ? new Date().toISOString() : null,
+    }).eq("id", membership.id).eq("next_question_index", position).select("score,correct_count,next_question_index,finished_at").maybeSingle();
+    if (updateError || !updated) return fail("Answer could not be recorded", 409);
+    if (complete) {
+      const { count } = await admin.from("race_room_members").select("id", { count: "exact", head: true }).eq("room_id", roomId).not("finished_at", "is", null);
+      const { count: total } = await admin.from("race_room_members").select("id", { count: "exact", head: true }).eq("room_id", roomId);
+      if (count !== null && total !== null && count >= total) {
+        await admin.from("race_rooms").update({ status: "finished", finished_at: new Date().toISOString() }).eq("id", roomId).eq("status", "running");
+      }
+    }
+    const { data: next } = complete ? { data: null } : await admin.from("race_room_questions").select("question_id, race_question_bank(id,prompt,choices)").eq("room_id", roomId).eq("position", nextIndex).maybeSingle();
+    return json({
+      correct, points, score: updated.score, correctCount: updated.correct_count,
+      finished: complete, nextQuestion: next?.race_question_bank ?? null,
+    });
+  }
+
+  if (action === "leaderboard") {
+    const { data: members } = await admin.from("race_room_members").select("user_id,display_name,score,correct_count,finished_at,joined_at")
+      .eq("room_id", roomId).order("score", { ascending: false }).order("joined_at", { ascending: true });
+    return json({ status: room.status, members: members ?? [] });
+  }
+  return fail("Unknown action");
+});
