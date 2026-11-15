@@ -2,7 +2,7 @@
 create or replace function public.race_start_atomic(p_room_id uuid, p_user_id uuid, p_question_count integer default 10)
 returns jsonb
 language plpgsql
-security definer
+security invoker
 set search_path = public, pg_temp
 as $$
 declare
@@ -56,7 +56,7 @@ create or replace function public.race_submit_answer_atomic(
 )
 returns jsonb
 language plpgsql
-security definer
+security invoker
 set search_path = public, pg_temp
 as $$
 declare
