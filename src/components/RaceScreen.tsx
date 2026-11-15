@@ -113,7 +113,7 @@ export const RaceScreen: React.FC = () => {
       else if (snapshot.status === 'lobby') setRaceState('lobby');
     }
     if (snapshot.status === 'finished') setRaceState('done');
-    if (snapshot.status === 'cancelled') setErrorMsg('This room has been closed.');
+    if (snapshot.status === 'cancelled') { setErrorMsg('This room has been closed.'); setRaceState('home'); }
   };
 
   const startPolling = (id: string) => {
@@ -254,6 +254,7 @@ export const RaceScreen: React.FC = () => {
   }, []);
 
   const handleLeave = () => {
+    if (roomId) void callRaceApi(client, { action: 'leave', roomId }).catch(() => undefined);
     if (pollRef.current) clearInterval(pollRef.current);
     if (timerRef.current) clearInterval(timerRef.current);
     pollRef.current = null;
