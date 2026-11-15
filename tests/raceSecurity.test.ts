@@ -11,7 +11,7 @@ const clean = sanitizeRacePlayer('presence-key-1', {
 });
 assert.deepEqual(clean, {
   id: 'presence-key-1',
-  name: '<img src=x onerror=',
+  name: '<img src=x onerror=a',
   joinedAt: 123,
   hue: 359
 });
