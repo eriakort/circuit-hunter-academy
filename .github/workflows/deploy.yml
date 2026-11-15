@@ -29,6 +29,15 @@ jobs:
         run: bun run test:unit
       - run: bunx playwright install --with-deps chromium
       - run: bun run test:e2e
+      - name: Generate Race Arena question bank seed
+        run: bun run race:seed:generate
+      - name: Upload Race Arena question bank seed
+        uses: actions/upload-artifact@v4
+        with:
+          name: race-question-bank-seed
+          path: supabase/seed/race_question_bank.sql
+          if-no-files-found: error
+          retention-days: 7
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
