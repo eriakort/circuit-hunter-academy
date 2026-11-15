@@ -39,7 +39,7 @@ export const GradePicker: React.FC = () => {
             <button
               key={grade.id}
               data-grade={grade.id}
-              className={`grade-card${ready ? ' grade-card-current' : ''}${selected ? ' grade-card-selected' : ''}`}
+              className={`grade-card${ready ? ' grade-card-ready' : ''}${selected ? ' grade-card-selected' : ''}`}
               aria-pressed={selected}
               onClick={() => setGrade(grade.id)}
             >
