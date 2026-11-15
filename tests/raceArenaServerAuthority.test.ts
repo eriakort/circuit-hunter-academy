@@ -25,6 +25,10 @@ describe("Race Arena server-authoritative client", () => {
     expect(api).toContain("question_started_at");
   });
 
+  test("mission ID validation accepts existing curriculum IDs with underscores", () => {
+    expect(api).toContain("/^[a-z0-9_-]{1,80}$/");
+  });
+
   test("timeouts are submitted as a server-validated sentinel and recorded distinctly", () => {
     expect(api).toContain("body.selectedIndex < -1");
     expect(timeoutMigration).toContain("add column if not exists timed_out boolean");

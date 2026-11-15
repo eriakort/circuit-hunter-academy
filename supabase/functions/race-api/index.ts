@@ -51,7 +51,7 @@ Deno.serve(async (req) => {
     const grade = typeof body.grade === "string" ? body.grade : "";
     const subject = typeof body.subject === "string" ? body.subject : "";
     const missionId = typeof body.missionId === "string" ? body.missionId : "";
-    if (!GRADE_SUBJECTS[grade]?.includes(subject) || !/^[a-z0-9-]{1,80}$/.test(missionId)) return fail("Invalid grade, subject, or mission configuration");
+    if (!GRADE_SUBJECTS[grade]?.includes(subject) || !/^[a-z0-9_-]{1,80}$/.test(missionId)) return fail("Invalid grade, subject, or mission configuration");
     let code = "";
     for (let attempt = 0; attempt < 8; attempt++) {
       const bytes = crypto.getRandomValues(new Uint8Array(4));
@@ -121,7 +121,7 @@ Deno.serve(async (req) => {
     if (room.created_by !== user.id) return fail("Only the room host can configure the race", 403);
     if (room.status !== "lobby") return fail("Race configuration is locked after start", 409);
     const missionId = typeof body.missionId === "string" ? body.missionId : "";
-    if (!/^[a-z0-9-]{1,80}$/.test(missionId)) return fail("Invalid race topic");
+    if (!/^[a-z0-9_-]{1,80}$/.test(missionId)) return fail("Invalid race topic");
     const { count, error } = await admin.from("race_question_bank")
       .select("id", { count: "exact", head: true })
       .eq("grade", room.grade).eq("subject", room.subject).eq("mission_id", missionId).eq("active", true);
