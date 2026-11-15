@@ -2,6 +2,7 @@ import { SubjectInfo, GradeId } from '../types';
 import { GRADE5_SCIENCE_SUBJECT } from './grade5ScienceData';
 import { GRADE5_MATH_SUBJECT } from './grade5MathData';
 import { CHEM_SUBJECT, CHEM10_SUBJECT, CHEM11_SUBJECT } from './chemCommon';
+import { HIST_GEO_SUBJECTS } from './histGeoCommon';
 
 export const ITALIAN_SUBJECT: SubjectInfo = {
   id: 'italian',
@@ -62,14 +63,15 @@ export const SUBJECTS: SubjectInfo[] = [
   CHEM10_SUBJECT,
   CHEM11_SUBJECT,
   GRADE5_SCIENCE_SUBJECT,
-  GRADE5_MATH_SUBJECT
+  GRADE5_MATH_SUBJECT,
+  ...HIST_GEO_SUBJECTS
 ];
 
 export const GRADE_CURRICULUM_MAP: Record<GradeId, string[]> = {
-  grade5: ['science', 'math5', 'italian'],
-  grade9: ['cs', 'phys', 'math', 'italian', 'chem'],
-  grade10: ['chem10', 'italian'],
-  grade11: ['chem11', 'italian']
+  grade5: ['science', 'math5', 'italian', 'hist5', 'geo5'],
+  grade9: ['cs', 'phys', 'math', 'italian', 'chem', 'hist9', 'geo9'],
+  grade10: ['chem10', 'italian', 'hist10', 'geo10'],
+  grade11: ['chem11', 'italian', 'hist11', 'geo11']
 };
 
 export function getCurriculumSubjects(grade?: GradeId | null): SubjectInfo[] {

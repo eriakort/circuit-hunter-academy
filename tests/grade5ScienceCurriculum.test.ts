@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
+import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { ARCS, MISSIONS, SUBJECTS, UNITS } from '../src/data/gameData';
 import { GRADE_CURRICULUM_MAP, getCurriculumSubjects } from '../src/data/curriculumSubjects';
+import { ScienceLab } from '../src/components/ScienceLab';
+import { getVisualHtml } from '../src/data/visuals';
 
 const isBilingualPair = (value: unknown): value is [string, string] =>
   Array.isArray(value) &&
@@ -16,10 +20,10 @@ assert.ok(scienceSubject.meta[0].includes('Self-Assessment & Workbook'), 'Englis
 assert.ok(scienceSubject.meta[1].includes('Autovalutazione e quaderno operativo'), 'Italian subject metadata must list the fifth review/workbook unit');
 
 // Grade 5 is a primary-school curriculum: it must not inherit Grade 9 Physics.
-assert.deepEqual(GRADE_CURRICULUM_MAP.grade5, ['science', 'math5', 'italian']);
+assert.deepEqual(GRADE_CURRICULUM_MAP.grade5, ['science', 'math5', 'italian', 'hist5', 'geo5']);
 assert.deepEqual(
   getCurriculumSubjects('grade5').map(subject => subject.id).sort(),
-  ['italian', 'math5', 'science']
+  ['geo5', 'hist5', 'italian', 'math5', 'science']
 );
 assert.ok(!getCurriculumSubjects('grade9').some(subject => subject.id === 'science'));
 assert.ok(getCurriculumSubjects('grade9').some(subject => subject.id === 'phys'));
@@ -83,6 +87,15 @@ const requiredUniverseMissionIds = [
 ];
 for (const id of requiredUniverseMissionIds) {
   assert.ok(missionIds.includes(id), `Grade 5 Science is missing required Universe mission: ${id}`);
+}
+
+for (const id of ['g5s-plants', 'g5s-animals']) {
+  for (const lang of ['en', 'it'] as const) {
+    const visHtml = getVisualHtml(id, lang);
+    assert.ok(visHtml.includes('<svg') && !/\bundefined\b/.test(visHtml) && !/\bNaN\b/.test(visHtml), `Visual ${id} (${lang}) must render cleanly`);
+    const labMarkup = renderToStaticMarkup(React.createElement(ScienceLab, { missionId: id, lang }));
+    assert.ok(labMarkup.includes('<svg') && !/\bundefined\b/.test(labMarkup) && !/\bNaN\b/.test(labMarkup), `ScienceLab ${id} (${lang}) must render cleanly`);
+  }
 }
 
 console.log(

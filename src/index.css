@@ -1032,6 +1032,22 @@ body{overflow-x:hidden}
 .subject-indicator[data-s="chem"] .subject-indicator-copy strong,
 .subject-indicator[data-s="chem10"] .subject-indicator-copy strong,
 .subject-indicator[data-s="chem11"] .subject-indicator-copy strong{color:var(--good)}
+.subject-indicator[data-s="hist5"],
+.subject-indicator[data-s="hist9"],
+.subject-indicator[data-s="hist10"],
+.subject-indicator[data-s="hist11"]{border-color:rgba(255,209,102,.52)}
+.subject-indicator[data-s="hist5"] .subject-indicator-copy strong,
+.subject-indicator[data-s="hist9"] .subject-indicator-copy strong,
+.subject-indicator[data-s="hist10"] .subject-indicator-copy strong,
+.subject-indicator[data-s="hist11"] .subject-indicator-copy strong{color:var(--gold)}
+.subject-indicator[data-s="geo5"],
+.subject-indicator[data-s="geo9"],
+.subject-indicator[data-s="geo10"],
+.subject-indicator[data-s="geo11"]{border-color:rgba(69,216,255,.52)}
+.subject-indicator[data-s="geo5"] .subject-indicator-copy strong,
+.subject-indicator[data-s="geo9"] .subject-indicator-copy strong,
+.subject-indicator[data-s="geo10"] .subject-indicator-copy strong,
+.subject-indicator[data-s="geo11"] .subject-indicator-copy strong{color:var(--data)}
 @media(max-width:600px){.subject-indicator{padding:4px 8px 4px 5px;gap:6px}.subject-indicator-art{flex-basis:30px;width:30px;height:30px}.subject-indicator-art svg{max-width:30px;max-height:30px}.subject-indicator-copy small{font-size:8px}.subject-indicator-copy strong{font-size:12px}}
 
 
@@ -1173,6 +1189,12 @@ table.g5m-formulas td:first-child{font-family:inherit;text-align:left}
 
 /* Chemistry Visual Lab */
 .chem-lab{background:linear-gradient(145deg,rgba(56,239,125,.09),rgba(69,216,255,.07)),var(--panel);border:1px solid rgba(56,239,125,.42);border-radius:16px;padding:18px;margin:4px 0 18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.chem-lab.hist-lab{background:linear-gradient(145deg,rgba(255,209,102,.09),rgba(255,106,61,.07)),var(--panel);border-color:rgba(255,209,102,.45)}
+.chem-lab.hist-lab .cl-kicker{color:var(--gold)}
+.chem-lab.hist-lab .cl-mode-tabs button.active,.chem-lab.hist-lab .cl-btn.primary{border-color:var(--gold);color:var(--gold);background:rgba(255,209,102,.13)}
+.chem-lab.geo-lab{background:linear-gradient(145deg,rgba(69,216,255,.09),rgba(56,239,125,.06)),var(--panel);border-color:rgba(69,216,255,.45)}
+.chem-lab.geo-lab .cl-kicker{color:var(--data)}
+.chem-lab.geo-lab .cl-mode-tabs button.active,.chem-lab.geo-lab .cl-btn.primary{border-color:var(--data);color:var(--data);background:rgba(69,216,255,.13)}
 .cl-heading{display:flex;flex-direction:column;gap:5px}
 .cl-kicker{font:700 11px var(--mono);letter-spacing:.13em;color:var(--good)}
 .cl-heading h3{font-size:clamp(18px,3vw,23px)}

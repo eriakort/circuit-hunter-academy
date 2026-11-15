@@ -327,7 +327,7 @@ export const MixturesLensLab: React.FC<{ lang: Language }> = ({ lang }) => {
             label={pick(lang, 'Category', 'Categoria')}
             value={sample === 'elem' || sample === 'comp' ? pick(lang, 'Pure Substance', 'Sostanza Pura') : pick(lang, 'Mixture', 'Miscuglio')}
           />
-          <Readout label={pick(lang, 'Visible Phases', 'Fasi Visibili')} value={sample === 'hetero' ? '3 (Oil, H₂O, Sand)' : '1'} />
+          <Readout label={pick(lang, 'Visible Phases', 'Fasi Visibili')} value={sample === 'hetero' ? pick(lang, '3 (Oil, H₂O, Sand)', '3 (Olio, H₂O, Sabbia)') : '1'} />
         </div>
         <button type="button" className="cl-btn" onClick={() => setStirSeed(s => s + 1)}>
           🌀 {pick(lang, 'Stir sample', 'Mescola campione')}
@@ -403,7 +403,7 @@ export const SeparationLab: React.FC<{ lang: Language }> = ({ lang }) => {
                 {pick(lang, 'CENTRIFUGATION · Spin forces denser solids to tip', 'CENTRIFUGAZIONE · La rotazione spinge i solidi densi sul fondo')}
               </text>
               <g transform="translate(115, 118)">
-                <g className={rpm > 0 ? 'chem-anim-orbit-fast' : ''} style={{ animationDuration: `${Math.max(0.4, 3000 / Math.max(500, rpm))}s` }}>
+                <g className={rpm > 0 ? 'chem-anim-orbit-fast' : ''} style={{ transformBox: 'fill-box', transformOrigin: 'center', animationDuration: `${Math.max(0.4, 3000 / Math.max(500, rpm))}s` }}>
                   <circle cx="0" cy="0" r="50" fill="none" stroke="#ffd166" strokeWidth="2" strokeDasharray="6 4" />
                   <rect x="-10" y="-48" width="20" height="32" rx="8" fill="rgba(69,216,255,.25)" stroke="#ffd166" />
                   <rect x="-10" y="16" width="20" height="32" rx="8" fill="rgba(69,216,255,.25)" stroke="#ffd166" />
@@ -578,7 +578,7 @@ export const LawsScaleLab: React.FC<{ lang: Language }> = ({ lang }) => {
               {reacted ? pick(lang, '↺ Reset Reactants', '↺ Ripristina Reagenti') : pick(lang, '⚡ Mix Vinegar + Soda', '⚡ Fai Reagire')}
             </button>
             <div className="cl-readout-row">
-              <Readout label={pick(lang, 'Before', 'Prima')} value="150,0 g" />
+              <Readout label={pick(lang, 'Before', 'Prima')} value={`${fmt(lang, 150, 1)} g`} />
               <Readout label={pick(lang, 'After Reaction', 'Dopo Reazione')} value={`${fmt(lang, finalMass, 1)} g`} />
             </div>
           </>
@@ -661,7 +661,7 @@ export const MoleLab: React.FC<{ lang: Language }> = ({ lang }) => {
         </div>
         <Analogy
           lang={lang}
-          en="A dozen eggs is always 12 whether quail eggs or ostrich eggs; 1 mole is always 6,022×10²³ particles—heavier molecules just weigh more per mole!"
+          en="A dozen eggs is always 12 whether quail eggs or ostrich eggs; 1 mole is always 6.022×10²³ particles—heavier molecules just weigh more per mole!"
           it="Una dozzina vale sempre 12 (uova piccole o grandi); una mole vale sempre 6,022×10²³ particelle: cambia solo quanto pesa in grammi!"
         />
       </div>

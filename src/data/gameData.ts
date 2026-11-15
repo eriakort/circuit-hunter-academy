@@ -4,6 +4,8 @@ import { MATH_CODEX } from "./mathCodex";
 import { ITALIAN_CODEX } from "./italianCodex";
 import { ITALIAN_MISSIONS } from "./italianData";
 import { CHEM_CODEX } from "./chemCodex";
+import { HIST_GEO_CODEX } from "./histGeoCodex";
+import type { SubjectId } from "../types";
 export const SUBJECTS: SubjectInfo[] = [
   {
     "id": "cs",
@@ -28403,7 +28405,8 @@ export const CODEX: CodexEntry[] = [
   ],
   ...MATH_CODEX,
   ...ITALIAN_CODEX,
-  ...CHEM_CODEX
+  ...CHEM_CODEX,
+  ...HIST_GEO_CODEX
 ];
 
 export const ROBOT_LEVELS = [
@@ -28935,3 +28938,44 @@ MISSIONS.push(...CHEM_LEVEL3_MISSIONS.map(mission => ({
   ...mission,
   arc: chemL3ArcOffset + mission.arc
 })));
+
+// ============================================================================
+// History & Geography (Storia e Geografia · 5ª Primaria, 1°–3°/4° Superiore)
+// Appended last so every existing mission index and ID stays stable.
+// ============================================================================
+import { HIST_GEO_SUBJECTS } from './histGeoCommon';
+import { HIST5_UNIT, HIST5_ARCS, HIST5_MISSIONS, HIST9_UNIT, HIST9_ARCS, HIST9_MISSIONS } from './historyG5_9Data';
+import { HIST10_UNIT, HIST10_ARCS, HIST10_MISSIONS } from './historyG10Data';
+import { HIST11_UNIT, HIST11_ARCS, HIST11_MISSIONS } from './historyG11Data';
+import { GEO5_UNIT, GEO5_ARCS, GEO5_MISSIONS, GEO9_UNIT, GEO9_ARCS, GEO9_MISSIONS } from './geographyG5_9Data';
+import { GEO10_UNIT, GEO10_ARCS, GEO10_MISSIONS, GEO11_UNIT, GEO11_ARCS, GEO11_MISSIONS } from './geographyG10_11Data';
+
+for (const subj of HIST_GEO_SUBJECTS) {
+  if (!SUBJECTS.some(s => s.id === subj.id)) {
+    SUBJECTS.push(subj);
+  }
+}
+
+const histGeoCatalogue: Array<[SubjectId, UnitInfo, ArcInfo[], Mission[]]> = [
+  ['hist5', HIST5_UNIT, HIST5_ARCS, HIST5_MISSIONS],
+  ['geo5', GEO5_UNIT, GEO5_ARCS, GEO5_MISSIONS],
+  ['hist9', HIST9_UNIT, HIST9_ARCS, HIST9_MISSIONS],
+  ['geo9', GEO9_UNIT, GEO9_ARCS, GEO9_MISSIONS],
+  ['hist10', HIST10_UNIT, HIST10_ARCS, HIST10_MISSIONS],
+  ['geo10', GEO10_UNIT, GEO10_ARCS, GEO10_MISSIONS],
+  ['hist11', HIST11_UNIT, HIST11_ARCS, HIST11_MISSIONS],
+  ['geo11', GEO11_UNIT, GEO11_ARCS, GEO11_MISSIONS]
+];
+
+for (const [subj, unitInfo, arcs, missions] of histGeoCatalogue) {
+  const unitOffset = UNITS.length;
+  UNITS.push({ ...unitInfo, subject: subj });
+  const arcOffset = ARCS.length;
+  arcs.forEach(arc => {
+    ARCS.push({ ...arc, unit: unitOffset, subject: subj });
+  });
+  MISSIONS.push(...missions.map(mission => ({
+    ...mission,
+    arc: arcOffset + mission.arc
+  })));
+}

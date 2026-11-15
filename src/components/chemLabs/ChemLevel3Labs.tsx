@@ -252,10 +252,10 @@ export const TitrationLab: React.FC<{ lang: Language }> = ({ lang }) => {
         </svg>
       </div>
       <div className="cl-controls">
-        <Slider label={pick(lang, '0,10 M NaOH Volume', 'Volume NaOH 0,10 M')} value={vb} min={0} max={50} step={1} decimals={1} unit="mL" lang={lang} onChange={setVb} />
+        <Slider label={pick(lang, '0.10 M NaOH Volume', 'Volume NaOH 0,10 M')} value={vb} min={0} max={50} step={1} decimals={1} unit="mL" lang={lang} onChange={setVb} />
         <div className="cl-actions">
           <button type="button" className="cl-btn" onClick={() => setVb(v => Math.min(50, v + 1))}>+1 mL</button>
-          <button type="button" className="cl-btn primary" onClick={() => setVb(25)}>{pick(lang, 'Equivalence (25,0 mL)', 'Equivalenza (25,0 mL)')}</button>
+          <button type="button" className="cl-btn primary" onClick={() => setVb(25)}>{pick(lang, 'Equivalence (25.0 mL)', 'Equivalenza (25,0 mL)')}</button>
           <button type="button" className="cl-btn" onClick={() => setVb(0)}>0 mL</button>
         </div>
         <div className="cl-readout-row">
@@ -303,8 +303,8 @@ export const GalvanicCellLab: React.FC<{ lang: Language }> = ({ lang }) => {
       </div>
       <div className="cl-controls">
         <div className="cl-mode-tabs">
-          <button type="button" className={pair === 'zn-cu' ? 'active' : ''} onClick={() => setPair('zn-cu')}>Zn | Cu (+1,10 V)</button>
-          <button type="button" className={pair === 'mg-cu' ? 'active' : ''} onClick={() => setPair('mg-cu')}>Mg | Cu (+2,71 V)</button>
+          <button type="button" className={pair === 'zn-cu' ? 'active' : ''} onClick={() => setPair('zn-cu')}>Zn | Cu (+{fmt(lang, 1.1, 2)} V)</button>
+          <button type="button" className={pair === 'mg-cu' ? 'active' : ''} onClick={() => setPair('mg-cu')}>Mg | Cu (+{fmt(lang, 2.71, 2)} V)</button>
         </div>
         <PlayToggle playing={playing} onToggle={() => setPlaying(p => !p)} lang={lang} />
         <Analogy
@@ -322,7 +322,7 @@ export const HydrocarbonBuilderLab: React.FC<{ lang: Language }> = ({ lang }) =>
   const [order, setOrder] = useState<1 | 2 | 3>(1);
   const info =
     order === 1
-      ? { name: ['Ethane (C₂H₆)', 'Etano (C₂H₆)'], hyb: 'sp³ · 109,5°', kind: ['Alkane (Single)', 'Alcano (Singolo)'], col: '#38ef7d' }
+      ? { name: ['Ethane (C₂H₆)', 'Etano (C₂H₆)'], hyb: pick(lang, 'sp³ · 109.5°', 'sp³ · 109,5°'), kind: ['Alkane (Single)', 'Alcano (Singolo)'], col: '#38ef7d' }
       : order === 2
         ? { name: ['Ethene (C₂H₄)', 'Etene (C₂H₄)'], hyb: 'sp² · 120°', kind: ['Alkene (Double)', 'Alchene (Doppio)'], col: '#45d8ff' }
         : { name: ['Ethyne (C₂H₂)', 'Etino (C₂H₂)'], hyb: 'sp · 180°', kind: ['Alkyne (Triple)', 'Alchino (Triplo)'], col: '#ffd166' };
@@ -361,7 +361,7 @@ export const HydrocarbonBuilderLab: React.FC<{ lang: Language }> = ({ lang }) =>
         </div>
         <div className="cl-readout-row">
           <Readout label={pick(lang, 'Family', 'Famiglia')} value={pick(lang, info.kind[0], info.kind[1])} />
-          <Readout label={pick(lang, 'Bonds per Carbon', 'Legami per Carbonio')} value="4 (always / sempre!)" />
+          <Readout label={pick(lang, 'Bonds per Carbon', 'Legami per Carbonio')} value={pick(lang, '4 (always!)', '4 (sempre!)')} />
         </div>
         <Analogy
           lang={lang}

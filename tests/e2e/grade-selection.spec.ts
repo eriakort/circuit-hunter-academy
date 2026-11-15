@@ -12,45 +12,61 @@ test('new learner chooses a grade before seeing its subjects and the choice surv
   await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="math5"]')).toBeVisible();
-  await expect(page.locator('.subjcard')).toHaveCount(3);
+  await expect(page.locator('.subjcard[data-s="hist5"]')).toBeVisible();
+  await expect(page.locator('.subjcard[data-s="geo5"]')).toBeVisible();
+  await expect(page.locator('.subjcard')).toHaveCount(5);
   const quickLaunch = page.getByRole('navigation', { name: 'Quick subject launch' });
   await expect(quickLaunch.getByRole('button', { name: /Italian/ })).toBeVisible();
-  await expect(quickLaunch.getByRole('button')).toHaveCount(1);
-  await expect(quickLaunch.getByRole('button', { name: /CS|Physics|Math/ })).toHaveCount(0);
+  await expect(quickLaunch.getByRole('button', { name: /History/ })).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /Geography/ })).toBeVisible();
+  await expect(quickLaunch.getByRole('button')).toHaveCount(5);
+  await expect(quickLaunch.getByRole('button', { name: /CS|Physics/ })).toHaveCount(0);
   await expect(page.locator('#hMap')).not.toHaveAttribute('aria-current', 'page');
   await expect(page.locator('#hCodex')).not.toHaveAttribute('aria-current', 'page');
 
   await page.reload();
   await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
-  await expect(page.locator('.subjcard')).toHaveCount(3);
+  await expect(page.locator('.subjcard')).toHaveCount(5);
 
   await page.getByRole('button', { name: /Change grade/ }).click();
   await page.locator('.grade-card[data-grade="grade9"]').click();
-  await expect(page.locator('.subjcard')).toHaveCount(5);
+  await expect(page.locator('.subjcard')).toHaveCount(7);
   await expect(page.locator('.subjcard[data-s="math"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="phys"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="cs"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="chem"]')).toBeVisible();
-  await expect(quickLaunch.getByRole('button')).toHaveCount(5);
+  await expect(page.locator('.subjcard[data-s="hist9"]')).toBeVisible();
+  await expect(page.locator('.subjcard[data-s="geo9"]')).toBeVisible();
+  await expect(quickLaunch.getByRole('button')).toHaveCount(7);
   await expect(quickLaunch.getByRole('button', { name: /CS/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Physics/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Math/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Chemistry \(L1\)/ })).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /History \(L1\)/ })).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /Geography \(L1\)/ })).toBeVisible();
 
   await page.getByRole('button', { name: /Change grade/ }).click();
   await page.locator('.grade-card[data-grade="grade10"]').click();
-  await expect(page.locator('.subjcard')).toHaveCount(2);
+  await expect(page.locator('.subjcard')).toHaveCount(4);
   await expect(page.locator('.subjcard[data-s="chem10"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
+  await expect(page.locator('.subjcard[data-s="hist10"]')).toBeVisible();
+  await expect(page.locator('.subjcard[data-s="geo10"]')).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Chemistry \(L2\)/ })).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /History \(L2\)/ })).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /Geography \(L2\)/ })).toBeVisible();
 
   await page.getByRole('button', { name: /Change grade/ }).click();
   await page.locator('.grade-card[data-grade="grade11"]').click();
-  await expect(page.locator('.subjcard')).toHaveCount(2);
+  await expect(page.locator('.subjcard')).toHaveCount(4);
   await expect(page.locator('.subjcard[data-s="chem11"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
+  await expect(page.locator('.subjcard[data-s="hist11"]')).toBeVisible();
+  await expect(page.locator('.subjcard[data-s="geo11"]')).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Chemistry \(L3\)/ })).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /History \(L3\)/ })).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /Geography \(L3\)/ })).toBeVisible();
 
   await page.locator('.subjcard[data-s="chem11"]').click();
   await expect(page.locator('.subject-indicator')).toContainText('Chemistry (Level 3)');
@@ -96,7 +112,7 @@ test('changing grades keeps the selected subject within that grade curriculum', 
   await page.evaluate(() => window.localStorage.clear());
   await page.reload();
 
-  // Grade 5 offers Science and Italian.
+  // Grade 5 offers Science, Maths, Italian, History and Geography.
   await page.locator('.grade-card').first().click();
   await page.locator('.subjcard[data-s="science"]').click();
   await expect(page.locator('.subject-indicator')).toContainText('Science & Technology');
@@ -115,7 +131,7 @@ test('changing grades keeps the selected subject within that grade curriculum', 
   // Switching back selects Science automatically and does not expose Grade 9 subjects.
   await page.locator('#hGrade').click();
   await page.locator('.grade-card').first().click();
-  await expect(page.locator('.subjcard')).toHaveCount(3);
+  await expect(page.locator('.subjcard')).toHaveCount(5);
   await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
   await page.locator('.subjcard[data-s="science"]').click();

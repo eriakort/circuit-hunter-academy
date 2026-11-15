@@ -16,8 +16,8 @@ const isBilingualPair = (value: unknown): value is [string, string] =>
 const subject = SUBJECTS.find(item => item.id === 'math5');
 assert.ok(subject, 'Grade 5 Mathematics must be registered');
 assert.ok(isBilingualPair(subject.name) && isBilingualPair(subject.blurb) && isBilingualPair(subject.meta));
-assert.deepEqual(GRADE_CURRICULUM_MAP.grade5, ['science', 'math5', 'italian']);
-assert.deepEqual(GRADE_SUBJECT_IDS.grade5, ['science', 'math5', 'italian']);
+assert.deepEqual(GRADE_CURRICULUM_MAP.grade5, ['science', 'math5', 'italian', 'hist5', 'geo5']);
+assert.deepEqual(GRADE_SUBJECT_IDS.grade5, ['science', 'math5', 'italian', 'hist5', 'geo5']);
 assert.ok(getCurriculumSubjects('grade5').some(item => item.id === 'math5'));
 assert.ok(!getCurriculumSubjects('grade5').some(item => item.id === 'math'), 'Grade 5 must not inherit Grade 9 Mathematics');
 assert.ok(!getCurriculumSubjects('grade9').some(item => item.id === 'math5'), 'Grade 9 must not show Grade 5 Mathematics');

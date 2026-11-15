@@ -1,10 +1,12 @@
 import assert from 'node:assert/strict';
+import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { ARCS, CODEX, MISSIONS, SUBJECTS, UNITS } from '../src/data/gameData';
 import { GRADE_CURRICULUM_MAP, getCurriculumSubjects } from '../src/data/curriculumSubjects';
 import { GRADE_SUBJECT_IDS, GRADES } from '../src/data/gradeData';
 import { FORMULA_CARDS, SUBJECT_TOPICS } from '../src/data/formulaData';
 import { CHEM_VISUAL_KEYS, getChemVisual } from '../src/data/chemVisuals';
-import { hasChemistryLab } from '../src/components/ChemistryLab';
+import { ChemistryLab, hasChemistryLab } from '../src/components/ChemistryLab';
 import { getVisualHtml } from '../src/data/visuals';
 import { CHEM_CODEX } from '../src/data/chemCodex';
 import { getCategories } from '../src/data/questionBank';
@@ -150,6 +152,15 @@ for (const key of CHEM_VISUAL_KEYS) {
     assert.ok(direct && direct.length > 50, `Visual ${key} must render in ${lang}`);
     assert.equal(routed, direct, `getVisualHtml(${key}, ${lang}) must delegate to getChemVisual`);
     assert.ok(!direct.includes('undefined') && !/\bNaN\b/.test(direct), `Visual ${key} must not contain undefined/NaN`);
+  }
+}
+
+// --- Every interactive ChemistryLab renders cleanly in both EN and IT.
+for (const mission of allChemMissions) {
+  for (const lang of ['en', 'it'] as const) {
+    const markup = renderToStaticMarkup(React.createElement(ChemistryLab, { missionId: mission.id, lang }));
+    assert.ok(markup.includes('<svg'), `ChemistryLab ${mission.id} (${lang}) must render an SVG simulation`);
+    assert.ok(!/\bundefined\b/.test(markup) && !/\bNaN\b/.test(markup), `ChemistryLab ${mission.id} (${lang}) must not contain undefined/NaN`);
   }
 }
 

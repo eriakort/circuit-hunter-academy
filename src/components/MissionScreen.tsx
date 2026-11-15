@@ -10,6 +10,8 @@ import { ComputerScienceLab } from './ComputerScienceLab';
 import { ChemistryLab } from './ChemistryLab';
 import { ScienceLab } from './ScienceLab';
 import { ItalianLab } from './ItalianLab';
+import { HistoryLab } from './HistoryLab';
+import { GeographyLab } from './GeographyLab';
 import { speakItalian } from '../speech/speechEngine';
 import { scheduleNextConceptReview } from '../spacedRepetition';
 import { HARDWARE_LEARNING_PILOT } from '../data/learningPilot';
@@ -307,6 +309,12 @@ export const MissionScreen: React.FC = () => {
       )}
       {currentMission.id.startsWith('it_') && currentSceneIndex === 1 && (
         <ItalianLab />
+      )}
+      {currentMission.id.startsWith('hist_') && currentSceneIndex === 1 && (
+        <HistoryLab missionId={currentMission.id} lang={lang} />
+      )}
+      {currentMission.id.startsWith('geo_') && currentSceneIndex === 1 && (
+        <GeographyLab missionId={currentMission.id} lang={lang} />
       )}
 
       {guidedPractice && guidedQuestion && !guidedComplete && (

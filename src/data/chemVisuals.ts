@@ -669,9 +669,9 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <rect x="24" y="22" width="592" height="160" rx="14" fill="rgba(255,209,102,.07)" stroke="#ffd166" stroke-width="2"/>
         <text x="320" y="52" text-anchor="middle" fill="#ffd166" font-size="15" font-weight="800">${pick(lang, 'WHY KELVIN (K)? Gas formulas NEVER want negative °C or 0 °C division!', 'PERCHÉ I KELVIN (K)? Con i °C negativi o 0 °C la formula esploderebbe!')}</text>
         <line x1="80" y1="98" x2="560" y2="98" stroke="#45d8ff" stroke-width="4" stroke-linecap="round"/>
-        <circle cx="110" cy="98" r="8" fill="#45d8ff"/><text x="110" y="82" text-anchor="middle" fill="#45d8ff" font-size="12" font-weight="800">0 K</text><text x="110" y="126" text-anchor="middle" class="sm">${pick(lang, '−273,15 °C', '−273,15 °C')}</text><text x="110" y="144" text-anchor="middle" class="sm">${pick(lang, 'Atoms stop!', 'Atomi fermi!')}</text>
-        <circle cx="320" cy="98" r="8" fill="#38ef7d"/><text x="320" y="82" text-anchor="middle" fill="#38ef7d" font-size="12" font-weight="800">273,15 K</text><text x="320" y="126" text-anchor="middle" class="sm">0 °C (${pick(lang, 'Ice', 'Ghiaccio')})</text>
-        <circle cx="520" cy="98" r="8" fill="#ff6a3d"/><text x="520" y="82" text-anchor="middle" fill="#ff6a3d" font-size="12" font-weight="800">373,15 K</text><text x="520" y="126" text-anchor="middle" class="sm">100 °C (${pick(lang, 'Boil', 'Bolle')})</text>
+        <circle cx="110" cy="98" r="8" fill="#45d8ff"/><text x="110" y="82" text-anchor="middle" fill="#45d8ff" font-size="12" font-weight="800">0 K</text><text x="110" y="126" text-anchor="middle" class="sm">${pick(lang, '−273.15 °C', '−273,15 °C')}</text><text x="110" y="144" text-anchor="middle" class="sm">${pick(lang, 'Atoms stop!', 'Atomi fermi!')}</text>
+        <circle cx="320" cy="98" r="8" fill="#38ef7d"/><text x="320" y="82" text-anchor="middle" fill="#38ef7d" font-size="12" font-weight="800">${pick(lang, '273.15 K', '273,15 K')}</text><text x="320" y="126" text-anchor="middle" class="sm">0 °C (${pick(lang, 'Ice', 'Ghiaccio')})</text>
+        <circle cx="520" cy="98" r="8" fill="#ff6a3d"/><text x="520" y="82" text-anchor="middle" fill="#ff6a3d" font-size="12" font-weight="800">${pick(lang, '373.15 K', '373,15 K')}</text><text x="520" y="126" text-anchor="middle" class="sm">100 °C (${pick(lang, 'Boil', 'Bolle')})</text>
         <text x="320" y="168" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="800">T(K) = t(°C) + ${pick(lang, '273.15', '273,15')}</text>
       </svg>`;
 
@@ -762,15 +762,15 @@ export function getChemVisual(key: string, lang: Language): string | null {
     case 'chemDilutionPour':
       return `<svg viewBox="0 0 640 205" class="dia" width="100%" aria-hidden="true">
         <rect x="34" y="24" width="230" height="156" rx="14" fill="rgba(255,93,143,.14)" stroke="#ff5d8f" stroke-width="2"/>
-        <text x="149" y="54" text-anchor="middle" fill="#ff5d8f" font-size="14" font-weight="800">${pick(lang, 'CONCENTRATED (M₁ = 2,0 M)', 'CONCENTRATA (M₁ = 2,0 M)')}</text>
-        <text x="149" y="94" text-anchor="middle" fill="#ffffff" font-size="20">●●●●●● (0,5 mol)</text>
+        <text x="149" y="54" text-anchor="middle" fill="#ff5d8f" font-size="14" font-weight="800">${pick(lang, 'CONCENTRATED (M₁ = 2.0 M)', 'CONCENTRATA (M₁ = 2,0 M)')}</text>
+        <text x="149" y="94" text-anchor="middle" fill="#ffffff" font-size="20">${pick(lang, '●●●●●● (0.5 mol)', '●●●●●● (0,5 mol)')}</text>
         <text x="149" y="132" text-anchor="middle" class="sm">${pick(lang, 'Packed tight in 0.25 L', 'Molto concentrata in 0,25 L')}</text>
 
         <text x="320" y="98" text-anchor="middle" fill="#45d8ff" font-size="20" font-weight="800">+ H₂O →</text>
 
         <rect x="376" y="24" width="230" height="156" rx="14" fill="rgba(69,216,255,.1)" stroke="#45d8ff" stroke-width="2"/>
-        <text x="491" y="54" text-anchor="middle" fill="#45d8ff" font-size="14" font-weight="800">${pick(lang, 'DILUTED (M₂ = 0,5 M)', 'DILUITA (M₂ = 0,5 M)')}</text>
-        <text x="491" y="94" text-anchor="middle" fill="#ffffff" font-size="20">●  ●  ●  ●  ●  ● (0,5 mol)</text>
+        <text x="491" y="54" text-anchor="middle" fill="#45d8ff" font-size="14" font-weight="800">${pick(lang, 'DILUTED (M₂ = 0.5 M)', 'DILUITA (M₂ = 0,5 M)')}</text>
+        <text x="491" y="94" text-anchor="middle" fill="#ffffff" font-size="20">${pick(lang, '●  ●  ●  ●  ●  ● (0.5 mol)', '●  ●  ●  ●  ●  ● (0,5 mol)')}</text>
         <text x="491" y="132" text-anchor="middle" class="sm">${pick(lang, 'Exact SAME 6 dots in 1.0 L!', 'STESSI 6 punti in 1,0 L!')}</text>
         <text x="491" y="156" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="800">M₁ · V₁ = M₂ · V₂</text>
       </svg>`;

@@ -32,20 +32,20 @@ export const SubjectPickerScreen: React.FC = () => {
 
   const ledeByGrade: Record<GradeId, [string, string]> = {
     grade5: [
-      'Explore Science & Technology, Mathematics or Italian Studies.',
-      'Esplora Scienze e Tecnologia, Matematica o Lingua Italiana.'
+      'Explore Science & Technology, Mathematics, Italian Studies, History (Greece to Rome) or Italian Geography.',
+      'Esplora Scienze e Tecnologia, Matematica, Lingua Italiana, Storia (Grecia e Roma) o Geografia dell’Italia.'
     ],
     grade9: [
-      'Choose a subject for Grade 9: Computer Science, Physics, Mathematics, Italian Studies (CEFR A1–B1), or Chemistry Level 1 (Matter, Laws & Atom).',
-      'Scegli una materia per la 1ª Superiore / 3ª Media: Informatica, Fisica, Matematica, Lingua Italiana (QCER A1–B1) o Chimica Livello 1 (Materia, Leggi e Atomo).'
+      'Choose a subject for Grade 9: Computer Science, Physics, Mathematics, Italian, Chemistry L1, History (Prehistory to SPQR) or Physical & European Geography.',
+      'Scegli una materia per la 1ª Superiore: Informatica, Fisica, Matematica, Italiano, Chimica L1, Storia (Preistoria–SPQR) o Geografia Fisica ed Europea.'
     ],
     grade10: [
-      'Grade 10 (2° Superiore): Chemistry Level 2 (Bonding, VSEPR, Nomenclature, Balancing, Stoichiometry & Solutions) and Italian Studies (CEFR A1–B1).',
-      '2° Superiore: Chimica Livello 2 (Legami, VSEPR, Nomenclatura, Bilanciamento, Stechiometria e Soluzioni) e Lingua Italiana (QCER A1–B1).'
+      'Grade 10 (2° Superiore): Chemistry L2, Italian Studies, History (Roman Empire to Comuni) & World & Continents Geography.',
+      '2° Superiore: Chimica L2, Lingua Italiana, Storia (Impero Romano e Comuni) e Geografia dei Continenti e Globalizzazione.'
     ],
     grade11: [
-      'Grade 11 (3°/4° Superiore): Chemistry Level 3 (Thermochemistry, Kinetics, Equilibrium, Acids/Bases, Redox & Organic Intro) and Italian Studies (CEFR A1–B1).',
-      '3°/4° Superiore: Chimica Livello 3 (Termochimica, Cinetica, Equilibrio, Acidi e Basi, Redox e Chimica Organica) e Lingua Italiana (QCER A1–B1).'
+      'Grade 11 (3°/4° Superiore): Chemistry L3, Italian Studies, Modern History (Renaissance to 1870) & Geopolitics & Italian Territory.',
+      '3°/4° Superiore: Chimica L3, Lingua Italiana, Storia Moderna (Rinascimento–1870) e Geopolitica e Territorio Italiano.'
     ]
   };
 
@@ -75,6 +75,42 @@ export const SubjectPickerScreen: React.FC = () => {
           >
             🇮🇹 {L(['Italian (A1–B1)', 'Italiano (A1–B1)'], lang)}
           </button>
+          {activeGrade === 'grade5' && (
+            <>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('science')}
+              >
+                🔬 {L(['Science', 'Scienze'], lang)}
+              </button>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('math5')}
+              >
+                📐 {L(['Math 5', 'Mat. 5ª'], lang)}
+              </button>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('hist5')}
+              >
+                🏛️ {L(['History', 'Storia'], lang)}
+              </button>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('geo5')}
+              >
+                🧭 {L(['Geography', 'Geografia'], lang)}
+              </button>
+            </>
+          )}
           {activeGrade === 'grade9' && (
             <>
               <button
@@ -109,27 +145,79 @@ export const SubjectPickerScreen: React.FC = () => {
               >
                 🧪 {L(['Chemistry (L1)', 'Chimica (L1)'], lang)}
               </button>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('hist9')}
+              >
+                🏛️ {L(['History (L1)', 'Storia (L1)'], lang)}
+              </button>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('geo9')}
+              >
+                🌍 {L(['Geography (L1)', 'Geografia (L1)'], lang)}
+              </button>
             </>
           )}
           {activeGrade === 'grade10' && (
-            <button
-              type="button"
-              className="btn ghost sm"
-              style={{ padding: '4px 10px', fontSize: '13px' }}
-              onClick={() => handleSelect('chem10')}
-            >
-              ⚗️ {L(['Chemistry (L2)', 'Chimica (L2)'], lang)}
-            </button>
+            <>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('chem10')}
+              >
+                ⚗️ {L(['Chemistry (L2)', 'Chimica (L2)'], lang)}
+              </button>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('hist10')}
+              >
+                🏰 {L(['History (L2)', 'Storia (L2)'], lang)}
+              </button>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('geo10')}
+              >
+                🌐 {L(['Geography (L2)', 'Geografia (L2)'], lang)}
+              </button>
+            </>
           )}
           {activeGrade === 'grade11' && (
-            <button
-              type="button"
-              className="btn ghost sm"
-              style={{ padding: '4px 10px', fontSize: '13px' }}
-              onClick={() => handleSelect('chem11')}
-            >
-              🧬 {L(['Chemistry (L3)', 'Chimica (L3)'], lang)}
-            </button>
+            <>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('chem11')}
+              >
+                🧬 {L(['Chemistry (L3)', 'Chimica (L3)'], lang)}
+              </button>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('hist11')}
+              >
+                📜 {L(['History (L3)', 'Storia (L3)'], lang)}
+              </button>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('geo11')}
+              >
+                🗺️ {L(['Geography (L3)', 'Geografia (L3)'], lang)}
+              </button>
+            </>
           )}
         </div>
       </div>

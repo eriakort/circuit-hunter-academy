@@ -4,6 +4,7 @@ import { FORMULA_CARDS, SUBJECT_TOPICS, FormulaCard } from '../data/formulaData'
 import { SubjectId } from '../types';
 import { L } from '../helpers';
 import { speakItalian } from '../speech/speechEngine';
+import { getVisualHtml } from '../data/visuals';
 
 // Helper for fraction simplification
 function reduceFraction(num: number, den: number): [number, number] {
@@ -150,7 +151,15 @@ const SUBJECT_LIST: SubjectMeta[] = [
   { id: 'math5', name: ['Grade 5 Maths', 'Matematica (5ª Primaria)'], icon: '📐', badgeColor: 'var(--sakura)' },
   { id: 'chem', name: ['Chemistry · Grade 9 (L1)', 'Chimica · 1° Sup. (L1)'], icon: '🧪', badgeColor: 'var(--good)' },
   { id: 'chem10', name: ['Chemistry · Grade 10 (L2)', 'Chimica · 2° Sup. (L2)'], icon: '⚗️', badgeColor: 'var(--data)' },
-  { id: 'chem11', name: ['Chemistry · Grade 11 (L3)', 'Chimica · 3°/4° Sup. (L3)'], icon: '🧬', badgeColor: 'var(--sakura)' }
+  { id: 'chem11', name: ['Chemistry · Grade 11 (L3)', 'Chimica · 3°/4° Sup. (L3)'], icon: '🧬', badgeColor: 'var(--sakura)' },
+  { id: 'hist5', name: ['History · Grade 5', 'Storia · 5ª Primaria'], icon: '🏛️', badgeColor: 'var(--gold)' },
+  { id: 'geo5', name: ['Geography · Grade 5', 'Geografia · 5ª Primaria'], icon: '🧭', badgeColor: 'var(--data)' },
+  { id: 'hist9', name: ['History · Grade 9 (L1)', 'Storia · 1° Sup. (L1)'], icon: '🏺', badgeColor: 'var(--ember)' },
+  { id: 'geo9', name: ['Geography · Grade 9 (L1)', 'Geografia · 1° Sup. (L1)'], icon: '🌍', badgeColor: 'var(--good)' },
+  { id: 'hist10', name: ['History · Grade 10 (L2)', 'Storia · 2° Sup. (L2)'], icon: '🏰', badgeColor: 'var(--gold)' },
+  { id: 'geo10', name: ['Geography · Grade 10 (L2)', 'Geografia · 2° Sup. (L2)'], icon: '🌐', badgeColor: 'var(--data)' },
+  { id: 'hist11', name: ['History · Grade 11 (L3)', 'Storia · 3°/4° Sup. (L3)'], icon: '📜', badgeColor: 'var(--ember)' },
+  { id: 'geo11', name: ['Geography · Grade 11 (L3)', 'Geografia · 3°/4° Sup. (L3)'], icon: '🗺️', badgeColor: 'var(--good)' }
 ];
 
 export const FormulaScreen: React.FC = () => {
@@ -159,7 +168,7 @@ export const FormulaScreen: React.FC = () => {
 
   // Active Subject Selection (defaults to current game subject if valid, else 'math')
   const [activeSubject, setActiveSubject] = useState<SubjectId | 'all'>(() => {
-    if (gameSubject && ['math', 'phys', 'cs', 'science', 'math5', 'italian', 'chem', 'chem10', 'chem11'].includes(gameSubject)) {
+    if (gameSubject && ['math', 'phys', 'cs', 'science', 'math5', 'italian', 'chem', 'chem10', 'chem11', 'hist5', 'geo5', 'hist9', 'geo9', 'hist10', 'geo10', 'hist11', 'geo11'].includes(gameSubject)) {
       return gameSubject;
     }
     return 'math';
@@ -225,7 +234,7 @@ export const FormulaScreen: React.FC = () => {
 
   // Counts per subject
   const subjectCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: FORMULA_CARDS.length, math: 0, phys: 0, cs: 0, science: 0, math5: 0, italian: 0, chem: 0, chem10: 0, chem11: 0 };
+    const counts: Record<string, number> = { all: FORMULA_CARDS.length, math: 0, phys: 0, cs: 0, science: 0, math5: 0, italian: 0, chem: 0, chem10: 0, chem11: 0, hist5: 0, geo5: 0, hist9: 0, geo9: 0, hist10: 0, geo10: 0, hist11: 0, geo11: 0 };
     for (const card of FORMULA_CARDS) {
       if (counts[card.subject] !== undefined) {
         counts[card.subject]++;
@@ -559,6 +568,17 @@ export const FormulaScreen: React.FC = () => {
             </text>
           </svg>
         </div>
+      );
+    }
+
+    const html = getVisualHtml(key, lang);
+    if (html) {
+      return (
+        <div
+          className="visual"
+          style={{ margin: '14px 0', background: 'var(--panel2)', borderRadius: '12px', padding: '14px', border: '1px solid var(--line)' }}
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
       );
     }
 

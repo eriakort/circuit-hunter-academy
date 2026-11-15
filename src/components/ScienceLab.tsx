@@ -68,10 +68,10 @@ export const ScienceLab: React.FC<Props> = ({ missionId, lang }) => {
 
   if (missionId === 'g5s-animals') {
     const animals = [
-      { name: ['Eagle (Bird)', 'Aquila (Uccello)'], vert: true, legs: '2 + 2 wings', feat: ['Feathers + backbone', 'Piume + colonna vertebrale'], col: '#ffd166' },
-      { name: ['Frog (Amphibian)', 'Rana (Anfibio)'], vert: true, legs: '4', feat: ['Lives in water & land + backbone', 'Acqua e terra + colonna vertebrale'], col: '#38ef7d' },
-      { name: ['Bee (Insect)', 'Ape (Insetto)'], vert: false, legs: '6', feat: ['No backbone · exoskeleton', 'Senza colonna · 6 zampe'], col: '#45d8ff' },
-      { name: ['Spider (Arachnid)', 'Ragno (Aracnide)'], vert: false, legs: '8', feat: ['No backbone · 8 legs', 'Senza colonna · 8 zampe'], col: '#ff5d8f' }
+      { name: ['Eagle (Bird)', 'Aquila (Uccello)'], vert: true, legs: ['2 + 2 wings', '2 + 2 ali'], feat: ['Feathers + backbone', 'Piume + colonna vertebrale'], col: '#ffd166' },
+      { name: ['Frog (Amphibian)', 'Rana (Anfibio)'], vert: true, legs: ['4', '4'], feat: ['Lives in water & land + backbone', 'Acqua e terra + colonna vertebrale'], col: '#38ef7d' },
+      { name: ['Bee (Insect)', 'Ape (Insetto)'], vert: false, legs: ['6', '6'], feat: ['No backbone · exoskeleton', 'Senza colonna · 6 zampe'], col: '#45d8ff' },
+      { name: ['Spider (Arachnid)', 'Ragno (Aracnide)'], vert: false, legs: ['8', '8'], feat: ['No backbone · 8 legs', 'Senza colonna · 8 zampe'], col: '#ff5d8f' }
     ] as const;
     const cur = animals[animalIdx];
 
@@ -112,7 +112,7 @@ export const ScienceLab: React.FC<Props> = ({ missionId, lang }) => {
             </div>
             <div className="cl-readout-row">
               <Readout label={pick(lang, 'Group', 'Gruppo')} value={cur.vert ? pick(lang, 'Vertebrate', 'Vertebrato') : pick(lang, 'Invertebrate', 'Invertebrato')} />
-              <Readout label={pick(lang, 'Legs', 'Zampe')} value={cur.legs} />
+              <Readout label={pick(lang, 'Legs', 'Zampe')} value={pick(lang, cur.legs[0], cur.legs[1])} />
             </div>
             <Analogy lang={lang} en={cur.feat[0]} it={cur.feat[1]} />
           </div>

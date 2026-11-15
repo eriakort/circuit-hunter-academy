@@ -528,7 +528,7 @@ export const MoleBridgeLab: React.FC<{ lang: Language }> = ({ lang }) => {
             </g>
           ))}
           <text x="180" y="162" textAnchor="middle" fill="#99a8cc" fontSize="11.5">
-            {pick(lang, '÷ 2,02 g/mol   →   × (2/2 ratio)   →   × 18,02 g/mol', '÷ 2,02 g/mol   →   × (rapporto 2/2)   →   × 18,02 g/mol')}
+            {`÷ ${fmt(lang, 2.02, 2)} g/mol   →   × ${pick(lang, '(2/2 ratio)', '(rapporto 2/2)')}   →   × ${fmt(lang, 18.02, 2)} g/mol`}
           </text>
         </svg>
       </div>

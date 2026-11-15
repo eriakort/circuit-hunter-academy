@@ -26,13 +26,13 @@ export const GradePicker: React.FC = () => {
           const ready = grade.status === 'ready';
           const statusCopy: [string, string] =
             grade.id === 'grade5'
-              ? ['Science, Maths & Italian available', 'Scienze, Matematica e Italiano disponibili']
+              ? ['Science, Maths, Italian, History & Geography available', 'Scienze, Matematica, Italiano, Storia e Geografia disponibili']
               : ready
                 ? grade.id === 'grade9'
-                  ? ['CS, Physics, Math, Italian & Chemistry L1 · Ready', 'Informatica, Fisica, Matematica, Italiano e Chimica L1 · Pronte']
+                  ? ['CS, Physics, Math, Italian, Chem L1, History & Geo · Ready', 'Informatica, Fisica, Matematica, Italiano, Chimica L1, Storia e Geo · Pronte']
                   : grade.id === 'grade10'
-                    ? ['Chemistry Level 2 & Italian · Ready', 'Chimica Livello 2 e Italiano · Pronte']
-                    : ['Chemistry Level 3 & Italian · Ready', 'Chimica Livello 3 e Italiano · Pronte']
+                    ? ['Chemistry L2, Italian, History & World Geo · Ready', 'Chimica L2, Italiano, Storia e Geografia · Pronte']
+                    : ['Chemistry L3, Italian, Modern History & Geopolitics · Ready', 'Chimica L3, Italiano, Storia Moderna e Geopolitica · Pronte']
                 : ['Curriculum setup next', 'Programma in preparazione'];
 
           return (

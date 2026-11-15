@@ -1,6 +1,17 @@
 import { BilingualText, SubjectId } from '../types';
 import { GRADE5_MATH_FORMULA_CARDS, GRADE5_MATH_TOPICS } from './grade5MathFormulaData';
 import { CHEM_FORMULA_CARDS, CHEM_TOPICS, CHEM10_TOPICS, CHEM11_TOPICS } from './chemFormulaData';
+import {
+  HIST5_TOPICS,
+  GEO5_TOPICS,
+  HIST9_TOPICS,
+  GEO9_TOPICS,
+  HIST10_TOPICS,
+  GEO10_TOPICS,
+  HIST11_TOPICS,
+  GEO11_TOPICS,
+  HIST_GEO_FORMULA_CARDS
+} from './histGeoFormulaData';
 
 export interface FormulaRule {
   name: BilingualText;
@@ -63,7 +74,15 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
   ],
   chem: CHEM_TOPICS,
   chem10: CHEM10_TOPICS,
-  chem11: CHEM11_TOPICS
+  chem11: CHEM11_TOPICS,
+  hist5: HIST5_TOPICS,
+  geo5: GEO5_TOPICS,
+  hist9: HIST9_TOPICS,
+  geo9: GEO9_TOPICS,
+  hist10: HIST10_TOPICS,
+  geo10: GEO10_TOPICS,
+  hist11: HIST11_TOPICS,
+  geo11: GEO11_TOPICS
 };
 
 export const FORMULA_CARDS: FormulaCard[] = [
@@ -1346,4 +1365,7 @@ FORMULA_CARDS.push(...GRADE5_MATH_FORMULA_CARDS);
 
 // Chemistry (Scienze Naturali - Chimica) formula cards.
 FORMULA_CARDS.push(...CHEM_FORMULA_CARDS);
+
+// History & Geography (Storia e Geografia · Grades 5, 9, 10, 11) formula cards.
+FORMULA_CARDS.push(...HIST_GEO_FORMULA_CARDS);
 
