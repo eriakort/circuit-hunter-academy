@@ -91,60 +91,33 @@ Deno.serve(async (req) => {
 
   if (action === "start") {
     if (room.created_by !== user.id) return fail("Only the room host can start the race", 403);
-    if (room.status !== "lobby") return fail("Race has already started", 409);
-    const { data: questions, error } = await admin.from("race_question_bank").select("id,prompt,choices")
-      .eq("grade", room.grade).eq("subject", room.subject).eq("mission_id", room.mission_id).eq("active", true);
-    if (error || !questions || questions.length < QUESTION_COUNT) return fail("Not enough approved questions are available for this race", 409);
-    const shuffled = questions.sort(() => Math.random() - 0.5).slice(0, QUESTION_COUNT);
-    const startedAt = new Date().toISOString();
-    const { error: insertError } = await admin.from("race_room_questions").insert(shuffled.map((q, position) => ({ room_id: roomId, position, question_id: q.id })));
-    if (insertError) return fail("Could not prepare race questions", 500);
-    const { error: updateError } = await admin.from("race_rooms").update({ status: "running", started_at: startedAt }).eq("id", roomId).eq("status", "lobby");
-    if (updateError) return fail("Could not start race", 500);
-    await admin.from("race_room_members").update({ question_started_at: startedAt }).eq("room_id", roomId);
-    return json({ status: "running", questions: shuffled.map(q => ({ id: q.id, prompt: q.prompt, choices: q.choices })) });
+    const { data, error } = await admin.rpc("race_start_atomic", {
+      p_room_id: roomId,
+      p_user_id: user.id,
+      p_question_count: QUESTION_COUNT,
+    });
+    if (error) {
+      const status = error.code === "42501" ? 403 : error.code === "40001" ? 409 : 500;
+      return fail(error.message || "Could not start race", status);
+    }
+    return json(data);
   }
 
   if (action === "answer") {
-    if (room.status !== "running" || membership.finished_at) return fail("Race is not accepting answers", 409);
-    const position = membership.next_question_index;
-    const selectedIndex = body.selectedIndex;
-    if (!Number.isSafeInteger(selectedIndex) || (selectedIndex as number) < 0) return fail("Invalid answer");
-    const { data: link } = await admin.from("race_room_questions").select("question_id").eq("room_id", roomId).eq("position", position).maybeSingle();
-    if (!link) return fail("No question is pending", 409);
-    const { data: question } = await admin.from("race_question_bank").select("choices,correct_index").eq("id", link.question_id).single();
-    if (!question || (selectedIndex as number) >= question.choices.length) return fail("Answer is out of range");
-    const answeredAt = Date.now();
-    const startedAt = membership.question_started_at ? new Date(membership.question_started_at).getTime() : answeredAt;
-    const withinTime = answeredAt - startedAt <= QUESTION_TIME_MS;
-    const correct = withinTime && selectedIndex === question.correct_index;
-    const points = correct ? 50 + Math.round(Math.max(0, QUESTION_TIME_MS - (answeredAt - startedAt)) / QUESTION_TIME_MS * 50) : 0;
-    const { error: eventError } = await admin.from("race_answer_events").insert({
-      room_id: roomId, user_id: user.id, position, selected_index: selectedIndex, is_correct: correct, points,
-    });
-    if (eventError) return fail("This question has already been answered", 409);
-    const nextIndex = position + 1;
-    const complete = nextIndex >= QUESTION_COUNT;
-    const { data: updated, error: updateError } = await admin.from("race_room_members").update({
-      score: membership.score + points,
-      correct_count: membership.correct_count + (correct ? 1 : 0),
-      next_question_index: nextIndex,
-      question_started_at: complete ? null : new Date().toISOString(),
-      finished_at: complete ? new Date().toISOString() : null,
-    }).eq("id", membership.id).eq("next_question_index", position).select("score,correct_count,next_question_index,finished_at").maybeSingle();
-    if (updateError || !updated) return fail("Answer could not be recorded", 409);
-    if (complete) {
-      const { count } = await admin.from("race_room_members").select("id", { count: "exact", head: true }).eq("room_id", roomId).not("finished_at", "is", null);
-      const { count: total } = await admin.from("race_room_members").select("id", { count: "exact", head: true }).eq("room_id", roomId);
-      if (count !== null && total !== null && count >= total) {
-        await admin.from("race_rooms").update({ status: "finished", finished_at: new Date().toISOString() }).eq("id", roomId).eq("status", "running");
-      }
+    if (typeof body.selectedIndex !== "number" || !Number.isSafeInteger(body.selectedIndex) || body.selectedIndex < 0) {
+      return fail("Invalid answer");
     }
-    const { data: next } = complete ? { data: null } : await admin.from("race_room_questions").select("question_id, race_question_bank(id,prompt,choices)").eq("room_id", roomId).eq("position", nextIndex).maybeSingle();
-    return json({
-      correct, points, score: updated.score, correctCount: updated.correct_count,
-      finished: complete, nextQuestion: next?.race_question_bank ?? null,
+    const { data, error } = await admin.rpc("race_submit_answer_atomic", {
+      p_room_id: roomId,
+      p_user_id: user.id,
+      p_selected_index: body.selectedIndex,
+      p_question_count: QUESTION_COUNT,
     });
+    if (error) {
+      const status = error.code === "42501" ? 403 : error.code === "P0002" ? 404 : error.code === "40001" ? 409 : 400;
+      return fail(error.message || "Answer could not be recorded", status);
+    }
+    return json(data);
   }
 
   if (action === "leaderboard") {
