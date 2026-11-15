@@ -9,7 +9,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test:e2e": "playwright test",
-    "test:unit": "bun test tests/*.test.ts && bunx tsx tests/formulaData.test.ts"
+    "test:unit": "bun test tests/*.test.ts && bunx tsx tests/formulaData.test.ts",
+    "race:seed:generate": "tsx scripts/generateRaceQuestionSeed.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.118.0",

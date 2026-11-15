@@ -11,6 +11,12 @@ const fail = (message: string, status = 400) => json({ error: message }, status)
 const MAX_PLAYERS = 8;
 const QUESTION_TIME_MS = 20_000;
 const QUESTION_COUNT = 10;
+const GRADE_SUBJECTS: Record<string, string[]> = {
+  grade5: ["science", "math5", "italian"],
+  grade9: ["cs", "phys", "math", "italian", "chem"],
+  grade10: ["chem10", "italian"],
+  grade11: ["chem11", "italian"],
+};
 const CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
 Deno.serve(async (req) => {
@@ -45,7 +51,7 @@ Deno.serve(async (req) => {
     const grade = typeof body.grade === "string" ? body.grade : "";
     const subject = typeof body.subject === "string" ? body.subject : "";
     const missionId = typeof body.missionId === "string" ? body.missionId : "";
-    if (!/^grade[0-9]+$/.test(grade) || !/^[a-z0-9-]{1,40}$/.test(subject) || !/^[a-z0-9-]{1,80}$/.test(missionId)) return fail("Invalid race configuration");
+    if (!GRADE_SUBJECTS[grade]?.includes(subject) || !/^[a-z0-9-]{1,80}$/.test(missionId)) return fail("Invalid grade, subject, or mission configuration");
     let code = "";
     for (let attempt = 0; attempt < 8; attempt++) {
       const bytes = crypto.getRandomValues(new Uint8Array(4));
@@ -91,10 +97,20 @@ Deno.serve(async (req) => {
 
   if (action === "start") {
     if (room.created_by !== user.id) return fail("Only the room host can start the race", 403);
+    const { count: availableCount, error: countError } = await admin
+      .from("race_question_bank")
+      .select("id", { count: "exact", head: true })
+      .eq("grade", room.grade)
+      .eq("subject", room.subject)
+      .eq("mission_id", room.mission_id)
+      .eq("active", true);
+    if (countError) return fail("Could not verify the question pool", 500);
+    const questionCount = Math.min(QUESTION_COUNT, availableCount ?? 0);
+    if (questionCount < 1) return fail("No approved questions are available for this topic", 409);
     const { data, error } = await admin.rpc("race_start_atomic", {
       p_room_id: roomId,
       p_user_id: user.id,
-      p_question_count: QUESTION_COUNT,
+      p_question_count: questionCount,
     });
     if (error) {
       const status = error.code === "42501" ? 403 : error.code === "40001" ? 409 : 500;
@@ -107,11 +123,16 @@ Deno.serve(async (req) => {
     if (typeof body.selectedIndex !== "number" || !Number.isSafeInteger(body.selectedIndex) || body.selectedIndex < 0) {
       return fail("Invalid answer");
     }
+    const { count: roomQuestionCount, error: roomQuestionError } = await admin
+      .from("race_room_questions")
+      .select("position", { count: "exact", head: true })
+      .eq("room_id", roomId);
+    if (roomQuestionError || !roomQuestionCount) return fail("Race question set is unavailable", 409);
     const { data, error } = await admin.rpc("race_submit_answer_atomic", {
       p_room_id: roomId,
       p_user_id: user.id,
       p_selected_index: body.selectedIndex,
-      p_question_count: QUESTION_COUNT,
+      p_question_count: roomQuestionCount,
     });
     if (error) {
       const status = error.code === "42501" ? 403 : error.code === "P0002" ? 404 : error.code === "40001" ? 409 : 400;
