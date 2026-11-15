@@ -30,6 +30,8 @@ for (const row of rows) {
   assert.ok(row.prompt.every(part => part.trim().length > 0));
   assert.ok(row.choices.length >= 2 && row.choices.length <= 6);
   assert.ok(row.choices.every(choice => choice.every(part => part.trim().length > 0)));
+  assert.equal(new Set(row.choices.map(choice => choice[0].trim().toLowerCase())).size, row.choices.length);
+  assert.equal(new Set(row.choices.map(choice => choice[1].trim().toLowerCase())).size, row.choices.length);
   assert.equal(row.correctIndex, 0, 'The current Academy quiz source stores the correct choice at index zero');
 }
 
