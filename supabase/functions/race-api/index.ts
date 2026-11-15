@@ -95,6 +95,28 @@ Deno.serve(async (req) => {
   const { data: room } = await admin.from("race_rooms").select("*").eq("id", roomId).maybeSingle();
   if (!room) return fail("Room not found", 404);
 
+  if (action === "leave") {
+    if (room.status === "lobby") {
+      if (room.created_by === user.id) {
+        await admin.from("race_rooms").update({ status: "cancelled" }).eq("id", roomId).eq("status", "lobby");
+      } else {
+        await admin.from("race_room_members").delete().eq("room_id", roomId).eq("user_id", user.id);
+      }
+      return json({ status: room.created_by === user.id ? "cancelled" : "lobby" });
+    }
+    if (room.status === "running" && !membership.finished_at) {
+      await admin.from("race_room_members").update({ finished_at: new Date().toISOString(), question_started_at: null })
+        .eq("room_id", roomId).eq("user_id", user.id).is("finished_at", null);
+      const { count: unfinishedCount } = await admin.from("race_room_members")
+        .select("id", { count: "exact", head: true }).eq("room_id", roomId).is("finished_at", null);
+      if ((unfinishedCount ?? 0) === 0) {
+        await admin.from("race_rooms").update({ status: "finished", finished_at: new Date().toISOString() })
+          .eq("id", roomId).eq("status", "running");
+      }
+    }
+    return json({ status: room.status });
+  }
+
   if (action === "configure") {
     if (room.created_by !== user.id) return fail("Only the room host can configure the race", 403);
     if (room.status !== "lobby") return fail("Race configuration is locked after start", 409);
