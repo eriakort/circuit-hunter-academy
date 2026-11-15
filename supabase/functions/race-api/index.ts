@@ -95,6 +95,72 @@ Deno.serve(async (req) => {
   const { data: room } = await admin.from("race_rooms").select("*").eq("id", roomId).maybeSingle();
   if (!room) return fail("Room not found", 404);
 
+  if (action === "leave") {
+    if (room.status === "lobby") {
+      if (room.created_by === user.id) {
+        await admin.from("race_rooms").update({ status: "cancelled" }).eq("id", roomId).eq("status", "lobby");
+      } else {
+        await admin.from("race_room_members").delete().eq("room_id", roomId).eq("user_id", user.id);
+      }
+      return json({ status: room.created_by === user.id ? "cancelled" : "lobby" });
+    }
+    if (room.status === "running" && !membership.finished_at) {
+      await admin.from("race_room_members").update({ finished_at: new Date().toISOString(), question_started_at: null })
+        .eq("room_id", roomId).eq("user_id", user.id).is("finished_at", null);
+      const { count: unfinishedCount } = await admin.from("race_room_members")
+        .select("id", { count: "exact", head: true }).eq("room_id", roomId).is("finished_at", null);
+      if ((unfinishedCount ?? 0) === 0) {
+        await admin.from("race_rooms").update({ status: "finished", finished_at: new Date().toISOString() })
+          .eq("id", roomId).eq("status", "running");
+      }
+    }
+    return json({ status: room.status });
+  }
+
+  if (action === "configure") {
+    if (room.created_by !== user.id) return fail("Only the room host can configure the race", 403);
+    if (room.status !== "lobby") return fail("Race configuration is locked after start", 409);
+    const missionId = typeof body.missionId === "string" ? body.missionId : "";
+    if (!/^[a-z0-9-]{1,80}$/.test(missionId)) return fail("Invalid race topic");
+    const { count, error } = await admin.from("race_question_bank")
+      .select("id", { count: "exact", head: true })
+      .eq("grade", room.grade).eq("subject", room.subject).eq("mission_id", missionId).eq("active", true);
+    if (error) return fail("Could not verify the question pool", 500);
+    if (!count) return fail("No approved questions are available for this topic", 409);
+    const { error: updateError } = await admin.from("race_rooms").update({ mission_id: missionId })
+      .eq("id", roomId).eq("status", "lobby");
+    if (updateError) return fail("Could not update race topic", 500);
+    return json({ status: "lobby", missionId });
+  }
+
+  if (action === "state") {
+    const { data: questionRows, error: questionError } = await admin.from("race_room_questions")
+      .select("position,question_id").eq("room_id", roomId).order("position", { ascending: true });
+    if (questionError) return fail("Could not load race questions", 500);
+    const questionIds = (questionRows ?? []).map((row: { question_id: string }) => row.question_id);
+    let questions: Array<{ id: string; prompt: unknown; choices: unknown }> = [];
+    if (questionIds.length) {
+      const { data: bankRows, error: bankError } = await admin.from("race_question_bank")
+        .select("id,prompt,choices").in("id", questionIds);
+      if (bankError) return fail("Could not load race questions", 500);
+      const byId = new Map((bankRows ?? []).map((row: any) => [row.id, row]));
+      questions = (questionRows ?? []).flatMap((row: any) => {
+        const q = byId.get(row.question_id);
+        return q ? [{ id: q.id, prompt: q.prompt, choices: q.choices }] : [];
+      });
+    }
+    const { data: members, error: membersError } = await admin.from("race_room_members")
+      .select("user_id,display_name,score,correct_count,next_question_index,question_started_at,finished_at,joined_at")
+      .eq("room_id", roomId).order("joined_at", { ascending: true });
+    if (membersError) return fail("Could not load room members", 500);
+    return json({
+      status: room.status, grade: room.grade, subject: room.subject, missionId: room.mission_id,
+      isHost: room.created_by === user.id, questions,
+      member: members?.find((m: any) => m.user_id === user.id) ?? null,
+      members: members ?? []
+    });
+  }
+
   if (action === "start") {
     if (room.created_by !== user.id) return fail("Only the room host can start the race", 403);
     const { count: availableCount, error: countError } = await admin
@@ -120,7 +186,7 @@ Deno.serve(async (req) => {
   }
 
   if (action === "answer") {
-    if (typeof body.selectedIndex !== "number" || !Number.isSafeInteger(body.selectedIndex) || body.selectedIndex < 0) {
+    if (typeof body.selectedIndex !== "number" || !Number.isSafeInteger(body.selectedIndex) || body.selectedIndex < -1) {
       return fail("Invalid answer");
     }
     const { count: roomQuestionCount, error: roomQuestionError } = await admin
@@ -142,7 +208,7 @@ Deno.serve(async (req) => {
   }
 
   if (action === "leaderboard") {
-    const { data: members } = await admin.from("race_room_members").select("user_id,display_name,score,correct_count,finished_at,joined_at")
+    const { data: members } = await admin.from("race_room_members").select("user_id,display_name,score,correct_count,next_question_index,question_started_at,finished_at,joined_at")
       .eq("room_id", roomId).order("score", { ascending: false }).order("joined_at", { ascending: true });
     return json({ status: room.status, members: members ?? [] });
   }
