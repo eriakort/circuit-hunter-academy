@@ -38,6 +38,17 @@ jobs:
           path: supabase/seed/race_question_bank.sql
           if-no-files-found: error
           retention-days: 7
+      - name: Load Race Arena question bank into Supabase
+        if: github.event_name != 'pull_request'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
+            echo "::warning::Race Arena seed not loaded. Configure SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY repository secrets to enable automatic loading."
+            exit 0
+          fi
+          bun run race:seed:load
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
