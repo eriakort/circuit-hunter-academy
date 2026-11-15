@@ -45,8 +45,8 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
           if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
-            echo "::warning::Race Arena seed not loaded. Configure SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY repository secrets to enable automatic loading."
-            exit 0
+            echo "::error::Race Arena seed loading requires SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY repository secrets."
+            exit 1
           fi
           bun run race:seed:load
       - uses: actions/upload-pages-artifact@v3
