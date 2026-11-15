@@ -5,8 +5,8 @@ async function startCourse(page: Page) {
   await page.evaluate(() => window.localStorage.clear());
   await page.reload();
 
-  await expect(page.locator('.grade-card-current')).toBeVisible();
-  await page.locator('.grade-card-current').click();
+  await expect(page.locator('.grade-card[data-grade="grade9"]')).toBeVisible();
+  await page.locator('.grade-card[data-grade="grade9"]').click();
   await expect(page.locator('.subjcard[data-s="cs"]')).toBeVisible();
   await page.locator('.subjcard[data-s="cs"]').click();
   await expect(page.locator('#nm')).toBeVisible();
@@ -105,10 +105,10 @@ test('grade, subject, dashboard, codex and test screens fit common viewport widt
     await page.evaluate(() => window.localStorage.clear());
     await page.reload();
 
-    await expect(page.locator('.grade-card-current')).toBeVisible();
+    await expect(page.locator('.grade-card[data-grade="grade9"]')).toBeVisible();
     await expectNoHorizontalPageOverflow(page, width);
 
-    await page.locator('.grade-card-current').click();
+    await page.locator('.grade-card[data-grade="grade9"]').click();
     await expect(page.locator('.subjcard[data-s="cs"]')).toBeVisible();
     await expectNoHorizontalPageOverflow(page, width);
 

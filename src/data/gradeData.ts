@@ -21,13 +21,13 @@ export const GRADES: GradeInfo[] = [
     schoolLevel: ['Primary school', 'Scuola primaria'],
     ageRange: ['Usually ages 10–11', 'Generalmente 10–11 anni'],
     description: ['A dedicated primary-school curriculum.', 'Un programma dedicato alla scuola primaria.'],
-    status: 'preparing'
+    status: 'ready'
   },
   {
     id: 'grade9',
-    name: ['Grade 9', 'Terza media / 1° Sup.'],
-    schoolLevel: ['Secondary transition · Year 1', 'Passaggio alle superiori · 1° Superiore'],
-    ageRange: ['Usually ages 13–15', 'Generalmente 13–15 anni'],
+    name: ['Grade 9', '1° Superiore'],
+    schoolLevel: ['Upper secondary school · Year 1', 'Scuola secondaria di II grado · 1° anno'],
+    ageRange: ['Usually ages 14–15', 'Generalmente 14–15 anni'],
     description: ['CS, Physics, Math, Italian & Chemistry Level 1.', 'Informatica, Fisica, Matematica, Italiano e Chimica Livello 1.'],
     status: 'ready'
   },
@@ -41,9 +41,9 @@ export const GRADES: GradeInfo[] = [
   },
   {
     id: 'grade11',
-    name: ['Grade 11', '3° / 4° Superiore'],
-    schoolLevel: ['Upper secondary school · Years 3–4', 'Scuola secondaria di II grado · Triennio'],
-    ageRange: ['Usually ages 16–18', 'Generalmente 16–18 anni'],
+    name: ['Grade 11', '3° Superiore'],
+    schoolLevel: ['Upper secondary school · Year 3', 'Scuola secondaria di II grado · 3° anno'],
+    ageRange: ['Usually ages 16–17', 'Generalmente 16–17 anni'],
     description: ['Chemistry Level 3 (equilibrium, pH, redox & organic intro) & Italian.', 'Chimica Livello 3 (equilibrio, pH, redox e chimica organica) e Italiano.'],
     status: 'ready'
   }

@@ -8,8 +8,8 @@ async function startCourse(page: Page) {
   await page.reload();
 
   // New learners select Grade 9 and Computer Science before registering a hunter name.
-  await expect(page.locator('.grade-card-current')).toBeVisible();
-  await page.locator('.grade-card-current').click();
+  await expect(page.locator('.grade-card[data-grade="grade9"]')).toBeVisible();
+  await page.locator('.grade-card[data-grade="grade9"]').click();
   await expect(page.locator('.subjcard[data-s="cs"]')).toBeVisible();
   await page.locator('.subjcard[data-s="cs"]').click();
   await expect(page.locator('#nm')).toBeVisible();
