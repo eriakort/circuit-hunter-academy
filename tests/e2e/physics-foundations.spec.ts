@@ -5,8 +5,8 @@ async function startPhysics(page: import('@playwright/test').Page) {
   await page.evaluate(() => window.localStorage.clear());
   await page.reload();
 
-  await expect(page.locator('.grade-card')).toHaveCount(2);
-  await page.locator('.grade-card').nth(1).click();
+  await expect(page.locator('.grade-card[data-grade="grade9"]')).toBeVisible();
+  await page.locator('.grade-card[data-grade="grade9"]').click();
   await expect(page.locator('.subjcard[data-s="phys"]')).toBeVisible();
   await page.locator('.subjcard[data-s="phys"]').click();
 
