@@ -5,7 +5,18 @@ import { GRADE_SUBJECT_IDS } from '../src/data/gradeData';
 import { buildRaceQuestionSeed, renderRaceQuestionSeedSql } from '../src/raceQuestionSeed';
 
 const outputPath = resolve(process.cwd(), 'supabase/seed/race_question_bank.sql');
+const sourceQuestionCount = Object.entries(GRADE_SUBJECT_IDS).reduce((total, [grade, subjects]) => {
+  return total + subjects.reduce((subjectTotal, subject) => {
+    const missionSet = new Set(
+      MISSIONS.filter(mission => (ARCS[mission.arc]?.subject ?? 'cs') === subject).map(mission => mission.id)
+    );
+    return subjectTotal + MISSIONS
+      .filter(mission => missionSet.has(mission.id))
+      .reduce((count, mission) => count + mission.quiz.length, 0);
+  }, 0);
+}, 0);
 const rows = buildRaceQuestionSeed(MISSIONS, ARCS, GRADE_SUBJECT_IDS);
+const validMissionRows = rows.filter(row => row.missionId !== 'mix').length;
 const sql = renderRaceQuestionSeedSql(rows);
 
 mkdirSync(dirname(outputPath), { recursive: true });
@@ -20,4 +31,5 @@ const summaries = Object.entries(GRADE_SUBJECT_IDS).flatMap(([grade, subjects]) 
 );
 
 console.log(`Generated ${rows.length} idempotent question rows at ${outputPath}`);
+console.log(`Excluded ${sourceQuestionCount - validMissionRows} source questions with duplicate answer choices.`);
 console.table(summaries);
