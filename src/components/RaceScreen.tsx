@@ -73,6 +73,7 @@ export const RaceScreen: React.FC = () => {
   const [selectedOpt, setSelectedOpt] = useState<number | null>(null);
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [lastXP, setLastXP] = useState(0);
+  const [serverStatus, setServerStatus] = useState<RaceSnapshot['status']>('lobby');
   const [questionStartedAt, setQuestionStartedAt] = useState<string | null>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -89,6 +90,7 @@ export const RaceScreen: React.FC = () => {
   const getSnapshot = async (id: string) => {
     const snapshot = await callRaceApi<RaceSnapshot>(client, { action: 'state', roomId: id });
     const normalized = normalizeRaceQuestions(snapshot.questions);
+    setServerStatus(snapshot.status);
     setIsHost(snapshot.isHost);
     setSelectedMission(snapshot.missionId || 'mix');
     setQuestions(normalized);
@@ -237,14 +239,14 @@ export const RaceScreen: React.FC = () => {
   }, [currentQIndex]);
 
   useEffect(() => {
-    if (raceState !== 'done' || awardedRef.current || !myId) return;
+    if (raceState !== 'done' || serverStatus !== 'finished' || awardedRef.current || !myId) return;
     awardedRef.current = true;
     const ranked = [...playerList].sort((a, b) => (scores[b.id] || 0) - (scores[a.id] || 0));
     const winner = ranked[0]?.id === myId;
     const xp = calculateRaceCompletionXP(correctCount, winner, playerCount, true);
     setLastXP(xp);
     addXP(xp);
-  }, [raceState, myId, playerList, scores, correctCount, playerCount, addXP]);
+  }, [raceState, serverStatus, myId, playerList, scores, correctCount, playerCount, addXP]);
 
   useEffect(() => () => {
     if (pollRef.current) clearInterval(pollRef.current);
@@ -422,7 +424,7 @@ export const RaceScreen: React.FC = () => {
           );
         })}
       </div>
-      <p className="muted">{L(['Your verified score', 'Il tuo punteggio verificato'], lang)}: <b>{score} pts</b>. {lastXP > 0 ? `+${lastXP} XP!` : ''}</p>
+      <p className="muted">{L(['Your verified score', 'Il tuo punteggio verificato'], lang)}: <b>{score} pts</b>. {lastXP > 0 ? `+${lastXP} XP!` : L(['Waiting for other racers to finish…', 'In attesa che gli altri finiscano…'], lang)}</p>
       <div className="row" style={{ justifyContent: 'center', marginTop: 18 }}>
         <button className="btn" onClick={() => void refreshResults()}>{L(['Refresh results', 'Aggiorna risultati'], lang)}</button>
         <button className="btn ghost" onClick={handleLeave}>{L(U.missions, lang)}</button>
