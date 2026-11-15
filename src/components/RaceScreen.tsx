@@ -144,7 +144,7 @@ export const RaceScreen: React.FC = () => {
             action: 'join', displayName, code: cleanCode
           });
       setRoomId(result.roomId);
-      setCode(create ? result.code : cleanCode);
+      setCode(create && 'code' in result ? result.code : cleanCode);
       setRaceState('lobby');
       setScore(0);
       setCorrectCount(0);
