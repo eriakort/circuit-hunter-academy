@@ -12,10 +12,10 @@ const MAX_PLAYERS = 8;
 const QUESTION_TIME_MS = 20_000;
 const QUESTION_COUNT = 10;
 const GRADE_SUBJECTS: Record<string, string[]> = {
-  grade5: ["science", "math5", "italian"],
-  grade9: ["cs", "phys", "math", "italian", "chem"],
-  grade10: ["chem10", "italian"],
-  grade11: ["chem11", "italian"],
+  grade5: ["science", "math5", "italian", "hist5", "geo5"],
+  grade9: ["cs", "phys", "math", "italian", "chem", "hist9", "geo9"],
+  grade10: ["chem10", "italian", "hist10", "geo10"],
+  grade11: ["chem11", "italian", "hist11", "geo11"],
 };
 const CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
