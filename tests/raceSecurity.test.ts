@@ -24,7 +24,7 @@ assert.equal(sanitizeRacePlayer('guest', { name: 'Guest', joinedAt: 1, hue: -20 
 
 const maliciousAvatar = raceAvatar('<svg onload=alert(1)>', 360, 'avatar\" onload=\"alert(1)');
 assert.ok(!maliciousAvatar.includes('<svg onload'));
-assert.ok(maliciousAvatar.includes('&lt;svg onload=alert(1)&gt;'));
+assert.ok(maliciousAvatar.includes('>\u0026lt;</text>'));
 assert.ok(maliciousAvatar.includes('class="avatar&quot; onload=&quot;alert(1)"'));
 assert.ok(maliciousAvatar.includes('hsl(360 55% 22%)'));
 
