@@ -127,7 +127,7 @@ export const RaceScreen: React.FC = () => {
   const handleJoinOrCreate = async (roomCode: string, create: boolean) => {
     const cleanCode = roomCode.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 4);
     if (!create && cleanCode.length !== 4) {
-      setErrorMsg('Enter a valid four-character room code.');
+      setErrorMsg(L(['Room codes have 4 characters.', 'I codici stanza hanno 4 caratteri.'], lang));
       return;
     }
     setIsPending(true);
