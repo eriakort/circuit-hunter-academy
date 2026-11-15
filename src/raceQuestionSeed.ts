@@ -33,7 +33,9 @@ const normalizeQuestion = (question: QuizQuestion, label: string) => {
   const uniqueEnglish = new Set(choices.map(choice => choice[0].trim().toLocaleLowerCase()));
   const uniqueItalian = new Set(choices.map(choice => choice[1].trim().toLocaleLowerCase()));
   if (uniqueEnglish.size !== choices.length || uniqueItalian.size !== choices.length) {
-    throw new Error(`Race question choices must be distinct in both languages: ${label}`);
+    // A duplicated option makes the answer ambiguous. Exclude it from multiplayer
+    // without rewriting the learner-facing curriculum question.
+    return null;
   }
   // The existing Academy quiz convention stores the correct answer at index zero.
   return { prompt, choices, correctIndex: 0 as const };
@@ -62,6 +64,7 @@ export function buildRaceQuestionSeed(
         seenMissionIds.add(`${grade}:${subject}:${mission.id}`);
         mission.quiz.forEach((question, index) => {
           const normalized = normalizeQuestion(question, `${grade}/${subject}/${mission.id}/Q${index + 1}`);
+          if (!normalized) return;
           rows.push({
             grade,
             subject,
