@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { useGame } from '../context/GameContext';
 import { L } from '../helpers';
 import { GrammarLevel, ITALIAN_GRAMMAR_TOPICS } from '../data/italianGrammar';
-import { getGrammarActivities, GrammarActivityType } from '../data/italianGrammarActivities';
+import { getGrammarActivities, GrammarActivityType, normaliseGrammarAnswer, matchesGrammarAnswer } from '../data/italianGrammarActivities';
 
 export const ItalianGrammarScreen: React.FC = () => {
   const { state, goToView, recordGrammarResult } = useGame();
@@ -23,13 +23,12 @@ export const ItalianGrammarScreen: React.FC = () => {
   const question = lesson.exercises[questionIndex];
   const availableActivityTypes = (['correct', 'order', 'translate', 'write'] as GrammarActivityType[]).filter(type => getGrammarActivities(topicId, level, type).length > 0);
   const activity = getGrammarActivities(topicId, level, activityType)[0] || getGrammarActivities('sentence-building', level, activityType)[0];
-  const normaliseAnswer = (value: string) => value.toLocaleLowerCase().replace(/[.!?]/g, '').replace(/[’]/g, "'").replace(/\s+/g, ' ').trim();
   const activityResponse = activityType === 'order' && activity.words
     ? orderedWordIndexes.map(index => activity.words![index]).join(' ')
     : activityInput;
   const activityCorrect = activityType === 'order'
-    ? normaliseAnswer(activityResponse) === normaliseAnswer(activity.modelAnswer)
-    : !!activity.acceptedAnswers?.some(answer => normaliseAnswer(answer) === normaliseAnswer(activityInput));
+    ? normaliseGrammarAnswer(activityResponse) === normaliseGrammarAnswer(activity.modelAnswer)
+    : !!activity.acceptedAnswers && matchesGrammarAnswer(activityInput, activity.acceptedAnswers);
   const trackedIds = [...lesson.exercises.map(item => item.id), ...(['correct', 'order', 'translate', 'write'] as GrammarActivityType[]).flatMap(type => getGrammarActivities(topicId, level, type).map(item => item.id))];
   const masteredCount = trackedIds.filter(id => state.grammarProgress?.[id]?.correct).length;
   const grammarXp = Object.values(state.grammarProgress || {}).filter(item => item.xpAwarded).length * 5;
