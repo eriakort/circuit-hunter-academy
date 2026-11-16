@@ -10,6 +10,9 @@ assert.deepEqual(passatoProssimoA2Correction.acceptedAnswers, ['Io sono andato a
 const reflexiveA2Translation = getGrammarActivities('reflexive', 'A2', 'translate')[0];
 assert.deepEqual(reflexiveA2Translation.acceptedAnswers, ['Mi sono vestito rapidamente.', 'Mi sono vestita rapidamente.']);
 const sentenceA2Translation = getGrammarActivities('sentence-building', 'A2', 'translate')[0];
+const sentenceA2Write = getGrammarActivities('sentence-building', 'A2', 'write')[0];
+assert.equal(sentenceA2Write.modelAnswer, 'Ieri ho studiato italiano. Poi ho guardato un film.');
+assert.equal(sentenceA2Write.modelAnswer.split(/[.!?]+/).filter(Boolean).length, 2, 'A2 daily-activities model should contain two connected sentences as requested');
 assert.deepEqual(sentenceA2Translation.acceptedAnswers, ['Ho chiamato Giulia e le ho parlato.', 'Ho chiamato Giulia e ho parlato con lei.']);
 const partitiveA2Translation = getGrammarActivities('partitive', 'A2', 'translate')[0];
 assert.deepEqual(partitiveA2Translation.acceptedAnswers, ['Vuoi della verdura?', 'Vuoi delle verdure?']);
