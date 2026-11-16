@@ -26,7 +26,9 @@ export const GHANA_CORE_MATH_SS1_ARCS: ArcInfo[] = [
   { n: 2, unit: 0, subject: 'ghcoremath', title: 'Fractions, Decimals and Percentages', pages: 'NaCCA SHS 1 · Pilot' },
   { n: 3, unit: 0, subject: 'ghcoremath', title: 'Ratio, Rate and Proportion', pages: 'NaCCA SHS 1 · Pilot' },
   { n: 4, unit: 0, subject: 'ghcoremath', title: 'Sets and Surveys', pages: 'NaCCA SHS 1 · pp. 36–37' }
-];\n\nconst question = (prompt: string, answers: string[], explanation: string) => ({
+];
+
+const question = (prompt: string, answers: string[], explanation: string) => ({
   q: prompt,
   a: answers,
   why: explanation
