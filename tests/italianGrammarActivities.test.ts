@@ -79,3 +79,27 @@ for (const level of levels) {
   }
 }
 console.log('italianGrammarActivities.test.ts ok! Four activity formats across A1, A2 and B1.');
+
+const localizedPromptExpectations: Record<string, string> = {
+  "passato-prossimo-a1-correct": "Correggi l’ausiliare in questa frase.",
+  "passato-prossimo-a1-order": "Metti le parole nell’ordine corretto per formare una frase.",
+  "passato-prossimo-a1-write": "Scrivi una frase su qualcosa che hai fatto ieri.",
+  "partitive-a1-correct": "Correggi l’articolo partitivo.",
+  "partitive-a1-order": "Metti le parole nell’ordine corretto per formare una frase.",
+  "partitive-a1-write": "Scrivi una frase sugli acquisti usando due forme partititive.",
+  "partitive-a2-correct": "Correggi l’articolo partitivo.",
+  "partitive-a2-order": "Metti le parole nell’ordine corretto per formare una frase.",
+  "partitive-a2-write": "Scrivi una breve ricetta usando almeno tre forme partititive.",
+  "reflexive-a1-correct": "Correggi il pronome riflessivo.",
+  "reflexive-a1-order": "Metti le parole nell’ordine corretto per formare una frase.",
+  "reflexive-a1-write": "Descrivi la tua routine mattutina usando due verbi riflessivi.",
+  "reflexive-a2-correct": "Correggi il pronome riflessivo.",
+  "reflexive-a2-order": "Metti le parole nell’ordine corretto per formare una frase.",
+  "reflexive-a2-write": "Scrivi due frasi sulla tua routine: una al presente e una al passato."
+};
+for (const [activityId, expectedPrompt] of Object.entries(localizedPromptExpectations)) {
+  const activity = ITALIAN_GRAMMAR_ACTIVITIES.find(item => item.id === activityId);
+  assert.ok(activity, 'Missing activity: ' + activityId);
+  assert.equal(activity.prompt[1], expectedPrompt, activityId + ' should have a complete Italian prompt');
+  assert.notEqual(activity.prompt[1], 'Scrivi la tua risposta.', activityId + ' should not use a generic placeholder');
+}
