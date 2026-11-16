@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { useGame } from '../context/GameContext';
 import { L } from '../helpers';
 import { GrammarLevel, ITALIAN_GRAMMAR_TOPICS } from '../data/italianGrammar';
+import { getGrammarActivities, GrammarActivityType } from '../data/italianGrammarActivities';
 
 export const ItalianGrammarScreen: React.FC = () => {
   const { state, goToView } = useGame();
@@ -10,12 +11,24 @@ export const ItalianGrammarScreen: React.FC = () => {
   const [level, setLevel] = useState<GrammarLevel>('A1');
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [activityType, setActivityType] = useState<GrammarActivityType>('correct');
+  const [activityInput, setActivityInput] = useState('');
+  const [orderedWordIndexes, setOrderedWordIndexes] = useState<number[]>([]);
+  const [activitySubmitted, setActivitySubmitted] = useState(false);
   const topic = useMemo(
     () => ITALIAN_GRAMMAR_TOPICS.find(item => item.id === topicId) || ITALIAN_GRAMMAR_TOPICS[0],
     [topicId]
   );
   const lesson = topic.levels[level];
   const question = lesson.exercises[questionIndex];
+  const activity = getGrammarActivities(level, activityType)[0];
+  const normaliseAnswer = (value: string) => value.toLocaleLowerCase().replace(/[.!?]/g, '').replace(/[’]/g, "'").replace(/\s+/g, ' ').trim();
+  const activityResponse = activityType === 'order' && activity.words
+    ? orderedWordIndexes.map(index => activity.words![index]).join(' ')
+    : activityInput;
+  const activityCorrect = activityType === 'order'
+    ? normaliseAnswer(activityResponse) === normaliseAnswer(activity.modelAnswer)
+    : !!activity.acceptedAnswers?.some(answer => normaliseAnswer(answer) === normaliseAnswer(activityInput));
 
   const chooseTopic = (id: string) => {
     setTopicId(id);
@@ -26,6 +39,10 @@ export const ItalianGrammarScreen: React.FC = () => {
     setLevel(nextLevel);
     setQuestionIndex(0);
     setSelectedAnswer(null);
+    setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false);
+  };
+  const chooseActivityType = (nextType: GrammarActivityType) => {
+    setActivityType(nextType); setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false);
   };
   const nextQuestion = () => {
     setQuestionIndex(index => (index + 1) % lesson.exercises.length);
@@ -108,6 +125,54 @@ export const ItalianGrammarScreen: React.FC = () => {
           </div>
         )}
       </section>
+
+      {topicId === 'sentence-building' && (
+        <section className="card">
+          <div className="mhead">
+            <div><div className="eyebrow">{L(['STEP 4 · ACTIVE PRACTICE', 'PASSO 4 · ESERCIZI ATTIVI'], lang)}</div><h2>{L(['Use the grammar yourself', 'Usa la grammatica in prima persona'], lang)}</h2></div>
+            <span className="badge">{level}</span>
+          </div>
+          <p className="muted" style={{ lineHeight: 1.55 }}>{L(['Move beyond multiple choice: correct, build, translate and write complete sentences.', 'Vai oltre la scelta multipla: correggi, costruisci, traduci e scrivi frasi complete.'], lang)}</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7, margin: '12px 0' }}>
+            {([
+              ['correct', ['Correct', 'Correggi']], ['order', ['Word order', 'Ordina']],
+              ['translate', ['Translate', 'Traduci']], ['write', ['Write', 'Scrivi']]
+            ] as [GrammarActivityType, [string, string]][]).map(([type, label]) => (
+              <button key={type} type="button" className={activityType === type ? 'btn cyan sm' : 'btn ghost sm'} onClick={() => chooseActivityType(type)}>{L(label, lang)}</button>
+            ))}
+          </div>
+          <h3 style={{ marginBottom: 6 }}>{L(activity.title, lang)}</h3>
+          <p style={{ lineHeight: 1.55 }}>{L(activity.prompt, lang)}</p>
+          {activity.source && <div style={{ padding: 12, borderRadius: 9, background: 'rgba(255,255,255,.06)', fontSize: 17, fontWeight: 650, marginBottom: 12 }}>{activity.source}</div>}
+          {activityType === 'order' && activity.words && (
+            <div style={{ display: 'grid', gap: 10 }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7, minHeight: 42, padding: 10, borderRadius: 9, border: '1px dashed rgba(255,255,255,.25)' }}>
+                {orderedWordIndexes.length === 0 ? <span className="muted">{L(['Your sentence will appear here.', 'La tua frase apparirà qui.'], lang)}</span> : orderedWordIndexes.map((wordIndex, index) => <button key={index} className="btn sm" type="button" disabled={activitySubmitted} onClick={() => setOrderedWordIndexes(items => items.filter((_, i) => i !== index))}>{activity.words![wordIndex]}</button>)}
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+                {activity.words.map((word, index) => <button key={index} type="button" className="btn ghost sm" disabled={activitySubmitted || orderedWordIndexes.includes(index)} onClick={() => setOrderedWordIndexes(items => [...items, index])}>{word}</button>)}
+              </div>
+              <button type="button" className="btn ghost sm" disabled={activitySubmitted || orderedWordIndexes.length === 0} onClick={() => setOrderedWordIndexes([])}>{L(['Clear sentence', 'Cancella la frase'], lang)}</button>
+            </div>
+          )}
+          {(activityType === 'correct' || activityType === 'translate' || activityType === 'write') && (
+            <textarea value={activityInput} onChange={event => { setActivityInput(event.target.value); setActivitySubmitted(false); }} rows={activityType === 'write' ? 4 : 2} placeholder={L(['Write your answer in Italian…', 'Scrivi la tua risposta in italiano…'], lang)} style={{ width: '100%', boxSizing: 'border-box', padding: 12, borderRadius: 9, resize: 'vertical', font: 'inherit', background: 'rgba(255,255,255,.05)', color: 'inherit', border: '1px solid rgba(255,255,255,.2)' }} disabled={activitySubmitted} />
+          )}
+          <div style={{ marginTop: 12, padding: 12, borderRadius: 9, background: 'rgba(0,146,70,.08)', border: '1px solid rgba(0,146,70,.2)' }}>
+            <strong>{L(['Hint', 'Suggerimento'], lang)}</strong><p style={{ margin: '5px 0 0', lineHeight: 1.5 }}>{L(activity.hint, lang)}</p>
+          </div>
+          {!activitySubmitted ? (
+            <button type="button" className="btn sm" style={{ marginTop: 12 }} disabled={activityType === 'order' ? orderedWordIndexes.length !== activity.words?.length : !activityInput.trim()} onClick={() => setActivitySubmitted(true)}>{L(['Check my answer', 'Controlla la risposta'], lang)}</button>
+          ) : (
+            <div role="status" aria-live="polite" style={{ marginTop: 14, padding: 14, borderRadius: 10, border: '1px solid rgba(74,222,128,.4)', background: 'rgba(34,197,94,.07)' }}>
+              <strong>{activityType === 'write' ? L(['Self-review: compare your sentence with the model.', 'Autovalutazione: confronta la tua frase con il modello.'], lang) : activityCorrect ? L(['Correct! Ben fatto!', 'Corretto! Ben fatto!'], lang) : L(['Not quite — compare with the model answer.', 'Non proprio — confronta con la risposta modello.'], lang)}</strong>
+              <p style={{ margin: '6px 0', lineHeight: 1.5 }}>{L(activity.explanation, lang)}</p>
+              <div style={{ padding: 10, borderRadius: 8, background: 'rgba(255,255,255,.05)' }}><span className="eyebrow">{L(['MODEL ANSWER', 'RISPOSTA MODELLO'], lang)}</span><div style={{ fontWeight: 700, marginTop: 4 }}>{activity.modelAnswer}</div></div>
+              <button type="button" className="btn ghost sm" style={{ marginTop: 12 }} onClick={() => { setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false); }}>{L(['Try again', 'Riprova'], lang)}</button>
+            </div>
+          )}
+        </section>
+      )}
     </div>
   );
 };
