@@ -35,7 +35,7 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     contentStandardIds: ['1.1.1.CS.1'],
     learningOutcomeIds: ['1.1.1.LO.1'],
     learningIndicatorIds: ['1.1.1.LI.2'],
-    printedPages: [28, 29],
+    printedPages: [26, 31],
     alignment: 'direct',
     note: 'Covers the real-number system, rational and irrational numbers, and their representation on a number line. This is a partial introduction to rational and irrational numbers; closure properties and set-survey outcomes are covered separately.'
   },
