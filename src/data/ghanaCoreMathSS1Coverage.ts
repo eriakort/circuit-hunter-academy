@@ -64,9 +64,9 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     contentStandards: 2,
     learningOutcomes: 2,
     learningIndicators: 4,
-    status: 'not-started',
-    pilotMissionIds: [],
-    note: 'No SHS 1 pilot mission is currently mapped to this sub-strand.'
+    status: 'partial',
+    pilotMissionIds: ['gh-core-ss1-patterns-functions'],
+    note: 'The pilot covers relations and functions, mapping rules, domain/range, and introductory linear-function graphs under the first content standard. The second content standard and remaining indicators are not yet covered.'
   },
   {
     strand: 'Geometry Around Us',
