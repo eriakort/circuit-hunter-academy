@@ -25,9 +25,8 @@ export const GHANA_CORE_MATH_SS1_ARCS: ArcInfo[] = [
   { n: 1, unit: 0, subject: 'ghcoremath', title: 'Number Sets and Ordering', pages: 'NaCCA SHS 1 · Pilot' },
   { n: 2, unit: 0, subject: 'ghcoremath', title: 'Fractions, Decimals and Percentages', pages: 'NaCCA SHS 1 · Pilot' },
   { n: 3, unit: 0, subject: 'ghcoremath', title: 'Ratio, Rate and Proportion', pages: 'NaCCA SHS 1 · Pilot' }
-];
-
-const question = (prompt: string, answers: string[], explanation: string) => ({
+  { n: 4, unit: 0, subject: 'ghcoremath', title: 'Sets and Surveys', pages: 'NaCCA SHS 1 · pp. 36–37' }
+];\n\nconst question = (prompt: string, answers: string[], explanation: string) => ({
   q: prompt,
   a: answers,
   why: explanation
@@ -115,6 +114,35 @@ export const GHANA_CORE_MATH_SS1_MISSIONS: Mission[] = [
       question('If 4 exercise books cost GH₵28, what is the cost of one book at the same rate?', ['GH₵7', 'GH₵6', 'GH₵8', 'GH₵24'], 'GH₵28 ÷ 4 = GH₵7 per book.'),
       question('At a constant rate, 5 oranges cost GH₵20. What do 10 oranges cost?', ['GH₵40', 'GH₵25', 'GH₵30', 'GH₵10'], 'Doubling the quantity doubles the cost: GH₵40.'),
       question('A bus travels 150 km in 3 hours at a constant speed. What is its average speed?', ['50 km/h', '45 km/h', '75 km/h', '450 km/h'], 'Average speed = distance ÷ time = 150 ÷ 3 = 50 km/h.')
+    ]
+  }
+  ,
+  {
+    id: 'gh-core-ss1-sets-surveys',
+    arc: 3,
+    sec: 'Number and sets',
+    pages: 'NaCCA SHS 1 · pp. 36–37',
+    hue: 292,
+    horns: 2,
+    eyes: 2,
+    title: 'The Venn Diagram Investigation',
+    topic: 'Use set notation, Venn diagrams, complements and two-set and three-set survey data to solve real-life problems.',
+    demon: 'The Overlap Illusionist',
+    tech: 'Set Form · Fourth Technique: Union and Intersection',
+    scenes: [
+      lesson('<p>A set is a collection of clearly defined items. For example, A = {1, 2, 3} is a set of numbers. The universal set U contains everything being considered. We write x ∈ A when x belongs to A, and x ∉ A when it does not.</p>'),
+      lesson('<p>Venn diagrams use circles to show relationships. The union A ∪ B means everything in A or B or both. The intersection A ∩ B means items shared by both sets. The complement A′ means everything in the universal set that is not in A.</p>'),
+      lesson('<p>For two sets, count the overlap only once: n(A ∪ B) = n(A) + n(B) − n(A ∩ B). Example: 18 learners like football, 12 like basketball and 5 like both. Then 18 + 12 − 5 = 25 like at least one.</p>'),
+      lesson('<p>For three sets, add the three set totals, subtract the three pairwise overlaps, then add the triple overlap back once. This helps avoid counting learners more than once. De Morgan’s law also tells us (A ∪ B)′ = A′ ∩ B′ and (A ∩ B)′ = A′ ∪ B′.</p>'),
+      lesson('<p>Use a simple survey to collect data, define the universal set, and place each response in the correct Venn region. Check that the regions add up to the total number surveyed.</p>'),
+      { who: 'd', vis: 'demon', text: 'I will hide the overlaps and make your survey totals impossible!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('What does A ∩ B represent?', ['Elements in both A and B', 'Elements in A or B but never both', 'Elements outside A and B only', 'Every element in the universal set'], 'The intersection contains only the elements common to both sets.'),
+      question('In a survey, 18 learners like football, 12 like basketball and 5 like both. How many like at least one sport?', ['25', '30', '35', '23'], 'Use n(A ∪ B) = 18 + 12 − 5 = 25.'),
+      question('If the universal set has 40 learners and 27 belong to set A, how many are in A′?', ['13', '27', '40', '67'], 'The complement contains those outside A: 40 − 27 = 13.'),
+      question('Which identity is De Morgan’s law?', ['(A ∪ B)′ = A′ ∩ B′', '(A ∪ B)′ = A ∪ B', 'A ∩ B = A′ ∩ B′', 'A ∪ B = A′ ∪ B′'], 'The complement of a union is the intersection of the complements.')
     ]
   }
 ];
