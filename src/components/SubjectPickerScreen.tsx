@@ -58,7 +58,7 @@ export const SubjectPickerScreen: React.FC = () => {
           Circuit Hunter <span>Academy</span>
         </h1>
         <p className="lede">
-          {isGhana ? 'Select a Ghana NaCCA pathway. Ghana-specific lessons and assessments will appear here when the SS1 pilot is ready.' : L(ledeByGrade[activeGrade], lang)}
+          {isGhana ? 'Explore the Ghana NaCCA SHS 1 Core Mathematics pilot. This pathway contains an initial set of lessons; broader SS1 coverage is still being developed.' : L(ledeByGrade[activeGrade], lang)}
         </p>
 
         {/* Quick Launch Pills are only available for the Italian catalogue. */}
@@ -238,46 +238,32 @@ export const SubjectPickerScreen: React.FC = () => {
       </div>
 
       <div className="subjects">
-        {isGhana ? (
-          <div className="grade-coming-soon card" role="status" data-curriculum="ghana-nacca">
-            <div className="grade-coming-icon" aria-hidden="true">🇬🇭</div>
-            <h2>Ghana SHS · NaCCA pathways</h2>
-            <p>Choose a pathway to see its curriculum status. Ghana learning content is kept separate from the Italian catalogue.</p>
-            <div className="pathway-list">
-              <article className="card" data-pathway="ghana-core-mathematics">
-                <h3>Core Mathematics</h3>
-                <p>Common SHS Mathematics aligned to NaCCA learning indicators.</p>
-                <span className="pg">In preparation · SS1 pilot planned</span>
-              </article>
-              <article className="card" data-pathway="ghana-additional-mathematics">
-                <h3>Additional Mathematics</h3>
-                <p>Separate advanced Mathematics pathway for learners taking the additional subject.</p>
-                <span className="pg">In preparation</span>
-              </article>
-            </div>
-            <button className="btn" onClick={() => goToView('grades')}>Choose another curriculum</button>
-          </div>
-        ) : gradeSubjects.length === 0 ? (
+        {gradeSubjects.length === 0 ? (
           <div className="grade-coming-soon card" role="status">
             <div className="grade-coming-icon" aria-hidden="true">✦</div>
             <h2>{L(['Subjects are being prepared', 'Le materie sono in preparazione'], lang)}</h2>
             <p>{L(['We will add this curriculum separately.', 'Aggiungeremo un programma dedicato.'], lang)}</p>
             <button className="btn" onClick={() => goToView('grades')}>{L(['Choose another grade', 'Scegli un’altra classe'], lang)}</button>
           </div>
-        ) : gradeSubjects.map(s => (
-          <button
-            key={s.id}
-            className={`subjcard${s.id === 'italian' ? ' subjcard-italian' : ''}`}
-            data-s={s.id}
-            onClick={() => handleSelect(s.id)}
-            style={s.id === 'italian' ? { borderColor: 'rgba(0, 146, 70, 0.5)', background: 'linear-gradient(145deg, rgba(17, 25, 54, 0.95), rgba(206, 43, 55, 0.08))' } : undefined}
-          >
-            <div className="subjart" dangerouslySetInnerHTML={{ __html: s.art }} />
-            <h2>{L(s.name, lang)}</h2>
-            <p>{L(s.blurb, lang)}</p>
-            <span className="pg">{L(s.meta, lang)}</span>
-          </button>
-        ))}
+        ) : (
+          <>
+            {gradeSubjects.map(s => (
+              <button key={s.id} className={`subjcard${s.id === 'italian' ? ' subjcard-italian' : ''}`} data-s={s.id} onClick={() => handleSelect(s.id)}
+                style={s.id === 'italian' ? { borderColor: 'rgba(0, 146, 70, 0.5)', background: 'linear-gradient(145deg, rgba(17, 25, 54, 0.95), rgba(206, 43, 55, 0.08))' } : undefined}>
+                <div className="subjart" dangerouslySetInnerHTML={{ __html: s.art }} />
+                <h2>{L(s.name, lang)}</h2><p>{L(s.blurb, lang)}</p><span className="pg">{L(s.meta, lang)}</span>
+              </button>
+            ))}
+            {isGhana && (
+              <article className="subjcard" data-pathway="ghana-additional-mathematics" aria-label="Additional Mathematics in preparation">
+                <div className="subjart" aria-hidden="true">∑+</div>
+                <h2>Additional Mathematics</h2>
+                <p>A separate advanced Mathematics pathway. Its SS1 content is still being prepared and is not yet selectable.</p>
+                <span className="pg">In preparation</span>
+              </article>
+            )}
+          </>
+        )}
       </div>
     </section>
   );
