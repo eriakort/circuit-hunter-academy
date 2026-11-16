@@ -14,7 +14,8 @@ assert.deepEqual(sentenceA2Translation.acceptedAnswers, ['Ho chiamato Giulia e l
 const partitiveA2Translation = getGrammarActivities('partitive', 'A2', 'translate')[0];
 assert.deepEqual(partitiveA2Translation.acceptedAnswers, ['Vuoi della verdura?', 'Vuoi delle verdure?']);
 const articlesA2Write = getGrammarActivities('articles', 'A2', 'write')[0];
-assert.equal(articlesA2Write.modelAnswer, 'Nel mio quartiere ci sono una piazza, un bar e delle case antiche.');
+assert.equal(articlesA2Write.modelAnswer, 'Nel mio quartiere ci sono una piazza e un bar. Le case del centro sono antiche.');
+assert.equal(articlesA2Write.modelAnswer.split(/[.!?]+/).filter(Boolean).length, 2, 'A2 place-description model should contain two sentences as requested');
 const articlesA2Order = getGrammarActivities('articles', 'A2', 'order')[0];
 assert.equal(articlesA2Order.modelAnswer, 'Ho degli amici simpatici e generosi.');
 const partitiveA2Write = getGrammarActivities('partitive', 'A2', 'write')[0];
