@@ -28,7 +28,7 @@ const reflexiveA1Translation = getGrammarActivities('reflexive', 'A1', 'translat
 assert.equal(reflexiveA1Translation.prompt[1], 'Traduci in italiano: “She gets up at seven”.');
 assert.equal(reflexiveA1Translation.source, 'She gets up at seven.');
 const reflexiveA2Translation = getGrammarActivities('reflexive', 'A2', 'translate')[0];
-assert.deepEqual(reflexiveA2Translation.acceptedAnswers, ['Mi sono vestito rapidamente.', 'Mi sono vestita rapidamente.']);
+assert.deepEqual(reflexiveA2Translation.acceptedAnswers, ['Mi sono vestito rapidamente.', 'Mi sono vestita rapidamente.', 'Mi sono vestito in fretta.', 'Mi sono vestita in fretta.']);
 assert.equal(reflexiveA2Translation.prompt[0], 'Translate into Italian: I got dressed quickly. Use the form that agrees with you.');
 assert.equal(reflexiveA2Translation.prompt[1], 'Traduci in italiano: “I got dressed quickly”. Usa la forma che concorda con te.');
 assert.equal(reflexiveA2Translation.source, 'I got dressed quickly.');
