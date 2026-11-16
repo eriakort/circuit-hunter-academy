@@ -104,7 +104,7 @@ export const ItalianGrammarScreen: React.FC = () => {
           <div role="status" aria-live="polite" style={{ marginTop: 14, padding: 14, borderRadius: 10, border: '1px solid ' + (selectedAnswer === question.answer ? 'rgba(74,222,128,.45)' : 'rgba(248,113,113,.45)'), background: selectedAnswer === question.answer ? 'rgba(34,197,94,.08)' : 'rgba(248,113,113,.08)' }}>
             <strong>{selectedAnswer === question.answer ? L(['Correct! Ben fatto!', 'Corretto! Ben fatto!'], lang) : L(['Not quite — review the rule.', 'Non proprio — ripassa la regola.'], lang)}</strong>
             <p style={{ margin: '6px 0 0', lineHeight: 1.55 }}>{L(question.explanation, lang)}</p>
-            <button type="button" className="btn sm" style={{ marginTop: 12 }} onClick={nextQuestion}>{L(['Next exercise', 'Prossimo esercizio']} →</button>
+            <button type="button" className="btn sm" style={{ marginTop: 12 }} onClick={nextQuestion}>{L(['Next exercise', 'Prossimo esercizio'])} →</button>
           </div>
         )}
       </section>
