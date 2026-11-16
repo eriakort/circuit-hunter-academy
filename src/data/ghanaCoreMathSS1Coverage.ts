@@ -95,8 +95,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 3,
     learningIndicators: 8,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-statistical-reasoning-data-types'],
-    note: 'The pilot covers the first statistical-reasoning content standard and its data-classification/collection indicator. The remaining two standards and seven indicators are not yet covered.'
+    pilotMissionIds: ['gh-core-ss1-statistical-reasoning-data-types', 'gh-core-ss1-statistical-data-collection-methods'],
+    note: 'The pilot covers the first content standard and its three indicators on data classification and appropriate quantitative and qualitative collection methods. Data organisation/presentation and the school-community project standards remain outstanding.'
   },
   {
     strand: 'Making Sense of and Using Data',
