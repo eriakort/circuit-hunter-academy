@@ -29,7 +29,18 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await expect(page.locator('.grade-card[data-grade="grade10"]')).toContainText('SHS 2 (SS2)');
   await expect(page.locator('.grade-card[data-grade="grade11"]')).toContainText('SHS 3 (SS3)');
   await expect(page.locator('.grade-card')).toHaveCount(3);
-  await expect(page.locator('.grade-card').first()).toBeDisabled();
+  await expect(page.locator('.grade-card[data-grade="grade9"]')).toBeEnabled();
+  await expect(page.locator('.grade-card[data-grade="grade10"]')).toBeDisabled();
+  await expect(page.locator('.grade-card[data-grade="grade11"]')).toBeDisabled();
+  await page.locator('.grade-card[data-grade="grade9"]').click();
+  await expect(page.locator('[data-s="ghcoremath"]')).toBeVisible();
+  await expect(page.getByText('Additional Mathematics', { exact: true })).toBeVisible();
+  await page.locator('[data-s="ghcoremath"]').click();
+  await expect(page.getByText('The Number Map', { exact: true })).toBeVisible();
+  await expect(page.getByText('The Market Percentage Challenge', { exact: true })).toBeVisible();
+  const ghanaSaveAfterSelection = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:ghana-nacca') || '{}'));
+  expect(ghanaSaveAfterSelection.grade).toBe('grade9');
+  expect(ghanaSaveAfterSelection.subject).toBe('ghcoremath');
 
   const ghanaProfile = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-curriculum-profile-v1') || '{}'));
   expect(ghanaProfile.activeCurriculumId).toBe('ghana-nacca');
