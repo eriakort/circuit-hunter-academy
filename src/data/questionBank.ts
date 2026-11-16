@@ -2,6 +2,7 @@ import { TaggedQuestion, SubjectId, BilingualText } from '../types';
 import { MISSIONS, ARCS, UNITS, SUBJECTS } from './gameData';
 import { EXTRA_PHYSICS_QUESTIONS } from './physicsQuestions';
 import { EXTRA_MATH_QUESTIONS } from './mathQuestions';
+import { ITALIAN_GRAMMAR_TOPICS } from './italianGrammar';
 import { shuffle } from '../helpers';
 
 // Compile all questions from missions into an indexed bank
@@ -33,20 +34,43 @@ export function getCompleteQuestionBank(): TaggedQuestion[] {
     }
   });
 
-  // Include supplemental physics and Bergamini-Barozzi math questions
+  // Include supplemental physics and Bergamini-Barozzi math questions.
   bank.push(...EXTRA_PHYSICS_QUESTIONS);
   bank.push(...EXTRA_MATH_QUESTIONS);
+
+  // Reuse the exact grammar MCQs shown in Grammar Training; keep one source of truth.
+  ITALIAN_GRAMMAR_TOPICS.forEach(topic => {
+    (['A1', 'A2', 'B1'] as const).forEach(level => {
+      topic.levels[level].exercises.forEach(exercise => {
+        const correctOption = exercise.options[exercise.answer];
+        const answers = [correctOption, ...exercise.options.filter((_, index) => index !== exercise.answer)];
+        bank.push({
+          id: 'italian-grammar-' + exercise.id,
+          q: exercise.prompt,
+          a: answers.map(answer => [answer, answer]),
+          why: exercise.explanation,
+          subject: 'italian',
+          unitIndex: -1,
+          arcIndex: -1,
+          missionId: 'italian-grammar-' + topic.id,
+          chapterTitle: topic.title,
+          missionTitle: [topic.title[0] + ' · ' + level, topic.title[1] + ' · ' + level]
+        });
+      });
+    });
+  });
 
   cachedBank = bank;
   return bank;
 }
 
 export interface CategoryOption {
-  type: 'all' | 'unit' | 'arc' | 'mission';
+  type: 'all' | 'unit' | 'arc' | 'mission' | 'grammar';
   id: string;
   unitIndex?: number;
   arcIndex?: number;
   missionId?: string;
+  grammarTopicId?: string;
   label: BilingualText;
   chapterNumber?: number;
   count: number;
@@ -86,7 +110,16 @@ export function getCategories(subject: SubjectId): CategoryOption[] {
     }
   });
 
-  // 3. Arcs / Chapters
+  // 3. Grammar topics are selectable test categories and reuse Grammar Training questions.
+  if (subject === 'italian') {
+    ITALIAN_GRAMMAR_TOPICS.forEach(topic => {
+      const missionId = 'italian-grammar-' + topic.id;
+      const count = bank.filter(question => question.missionId === missionId).length;
+      if (count > 0) categories.push({ type: 'grammar', id: 'grammar-' + topic.id, grammarTopicId: topic.id, missionId, label: topic.title, count });
+    });
+  }
+
+  // 4. Arcs / Chapters
   ARCS.forEach((a, ai) => {
     if ((a.subject || 'cs') !== subject) return;
     const count = bank.filter(q => q.arcIndex === ai).length;
@@ -123,7 +156,7 @@ export function filterQuestionPool(
   if (selectedCategory.type === 'arc' && selectedCategory.arcIndex !== undefined) {
     return bank.filter(q => q.arcIndex === selectedCategory.arcIndex);
   }
-  if (selectedCategory.type === 'mission' && selectedCategory.missionId) {
+  if ((selectedCategory.type === 'mission' || selectedCategory.type === 'grammar') && selectedCategory.missionId) {
     return bank.filter(q => q.missionId === selectedCategory.missionId);
   }
 
