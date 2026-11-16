@@ -47,14 +47,14 @@ export function getCompleteQuestionBank(): TaggedQuestion[] {
         bank.push({
           id: 'italian-grammar-' + exercise.id,
           q: exercise.prompt,
-          a: answers.map(answer => [answer, answer]),
+          a: answers.map(answer => [answer, answer] as BilingualText),
           why: exercise.explanation,
           subject: 'italian',
           unitIndex: -1,
           arcIndex: -1,
           missionId: 'italian-grammar-' + topic.id,
           chapterTitle: topic.title,
-          missionTitle: [topic.title[0] + ' · ' + level, topic.title[1] + ' · ' + level]
+          missionTitle: topic.title
         });
       });
     });
