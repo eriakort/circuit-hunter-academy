@@ -54,7 +54,8 @@ export function getCompleteQuestionBank(): TaggedQuestion[] {
           arcIndex: -1,
           missionId: 'italian-grammar-' + topic.id,
           chapterTitle: topic.title,
-          missionTitle: topic.title
+          missionTitle: topic.title,
+          grammarLevel: level
         });
       });
     });
@@ -71,6 +72,7 @@ export interface CategoryOption {
   arcIndex?: number;
   missionId?: string;
   grammarTopicId?: string;
+  grammarLevel?: 'A1' | 'A2' | 'B1';
   label: BilingualText;
   chapterNumber?: number;
   count: number;
@@ -115,7 +117,26 @@ export function getCategories(subject: SubjectId): CategoryOption[] {
     ITALIAN_GRAMMAR_TOPICS.forEach(topic => {
       const missionId = 'italian-grammar-' + topic.id;
       const count = bank.filter(question => question.missionId === missionId).length;
-      if (count > 0) categories.push({ type: 'grammar', id: 'grammar-' + topic.id, grammarTopicId: topic.id, missionId, label: topic.title, count });
+      if (count > 0) {
+        // Keep the complete topic pool and add focused CEFR-level test options.
+        categories.push({ type: 'grammar', id: 'grammar-' + topic.id, grammarTopicId: topic.id, missionId, label: topic.title, count });
+        (['A1', 'A2', 'B1'] as const).forEach(level => {
+          const levelCount = bank.filter(question => question.missionId === missionId && question.grammarLevel === level).length;
+          if (levelCount > 0) {
+            const enTitle = Array.isArray(topic.title) ? topic.title[0] : topic.title;
+            const itTitle = Array.isArray(topic.title) ? topic.title[1] : topic.title;
+            categories.push({
+              type: 'grammar',
+              id: 'grammar-' + topic.id + '-' + level.toLowerCase(),
+              grammarTopicId: topic.id,
+              grammarLevel: level,
+              missionId,
+              label: [enTitle + ' · ' + level, itTitle + ' · ' + level],
+              count: levelCount
+            });
+          }
+        });
+      }
     });
   }
 
@@ -157,7 +178,7 @@ export function filterQuestionPool(
     return bank.filter(q => q.arcIndex === selectedCategory.arcIndex);
   }
   if ((selectedCategory.type === 'mission' || selectedCategory.type === 'grammar') && selectedCategory.missionId) {
-    return bank.filter(q => q.missionId === selectedCategory.missionId);
+    return bank.filter(q => q.missionId === selectedCategory.missionId && (!selectedCategory.grammarLevel || q.grammarLevel === selectedCategory.grammarLevel));
   }
 
   return bank;
