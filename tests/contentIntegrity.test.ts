@@ -33,6 +33,16 @@ for (const question of bank) {
   });
 
   assert.ok(subjectIds.has(question.subject), `Unknown question subject: ${question.subject} (${question.id})`);
+
+  // Grammar assessment questions are topic-scoped rather than attached to a mission chapter.
+  if (question.id.startsWith('italian-grammar-')) {
+    assert.equal(question.subject, 'italian', `Grammar assessment question must belong to Italian: ${question.id}`);
+    assert.ok(question.missionId.startsWith('italian-grammar-'), `Grammar question must retain its topic category: ${question.id}`);
+    assert.equal(question.arcIndex, -1, `Grammar question must not masquerade as a mission chapter: ${question.id}`);
+    assert.equal(question.unitIndex, -1, `Grammar question must not masquerade as a curriculum unit: ${question.id}`);
+    continue;
+  }
+
   const arc = ARCS[question.arcIndex];
   assert.ok(arc, `Question references a missing chapter: ${question.id} (arc ${question.arcIndex})`);
   assert.equal(arc.subject || 'cs', question.subject, `Question subject does not match its chapter: ${question.id}`);
