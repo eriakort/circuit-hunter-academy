@@ -21,7 +21,8 @@ export const ItalianGrammarScreen: React.FC = () => {
   );
   const lesson = topic.levels[level];
   const question = lesson.exercises[questionIndex];
-  const activity = getGrammarActivities(level, activityType)[0];
+  const availableActivityTypes = (['correct', 'order', 'translate', 'write'] as GrammarActivityType[]).filter(type => getGrammarActivities(topicId, level, type).length > 0);
+  const activity = getGrammarActivities(topicId, level, activityType)[0] || getGrammarActivities('sentence-building', level, activityType)[0];
   const normaliseAnswer = (value: string) => value.toLocaleLowerCase().replace(/[.!?]/g, '').replace(/[’]/g, "'").replace(/\s+/g, ' ').trim();
   const activityResponse = activityType === 'order' && activity.words
     ? orderedWordIndexes.map(index => activity.words![index]).join(' ')
@@ -32,6 +33,8 @@ export const ItalianGrammarScreen: React.FC = () => {
 
   const chooseTopic = (id: string) => {
     setTopicId(id);
+    const firstAvailable = (['correct', 'order', 'translate', 'write'] as GrammarActivityType[]).find(type => getGrammarActivities(id, level, type).length > 0);
+    if (firstAvailable) chooseActivityType(firstAvailable);
     setQuestionIndex(0);
     setSelectedAnswer(null);
   };
@@ -126,7 +129,7 @@ export const ItalianGrammarScreen: React.FC = () => {
         )}
       </section>
 
-      {topicId === 'sentence-building' && (
+      {availableActivityTypes.length > 0 && activity && (
         <section className="card">
           <div className="mhead">
             <div><div className="eyebrow">{L(['STEP 4 · ACTIVE PRACTICE', 'PASSO 4 · ESERCIZI ATTIVI'], lang)}</div><h2>{L(['Use the grammar yourself', 'Usa la grammatica in prima persona'], lang)}</h2></div>
@@ -137,7 +140,7 @@ export const ItalianGrammarScreen: React.FC = () => {
             {([
               ['correct', ['Correct', 'Correggi']], ['order', ['Word order', 'Ordina']],
               ['translate', ['Translate', 'Traduci']], ['write', ['Write', 'Scrivi']]
-            ] as [GrammarActivityType, [string, string]][]).map(([type, label]) => (
+            ] as [GrammarActivityType, [string, string]][]).filter(([type]) => availableActivityTypes.includes(type)).map(([type, label]) => (
               <button key={type} type="button" className={activityType === type ? 'btn cyan sm' : 'btn ghost sm'} onClick={() => chooseActivityType(type)}>{L(label, lang)}</button>
             ))}
           </div>
