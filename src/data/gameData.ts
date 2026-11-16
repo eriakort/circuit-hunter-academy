@@ -28979,3 +28979,37 @@ for (const [subj, unitInfo, arcs, missions] of histGeoCatalogue) {
     arc: arcOffset + mission.arc
   })));
 }
+
+// ============================================================================
+// Mathematics (Matematica · Level 2 Grade 10 & Level 3 Grade 11)
+// Appended last so every existing mission index and ID stays stable.
+// ============================================================================
+import { MATH10_SUBJECT, MATH11_SUBJECT } from './mathAdvCommon';
+import { MATH10_UNIT, MATH10_ARCS, MATH10_MISSIONS } from './math10Data';
+import { MATH11_UNIT, MATH11_ARCS, MATH11_MISSIONS } from './math11Data';
+
+if (!SUBJECTS.some(s => s.id === 'math10')) {
+  SUBJECTS.push(MATH10_SUBJECT);
+}
+if (!SUBJECTS.some(s => s.id === 'math11')) {
+  SUBJECTS.push(MATH11_SUBJECT);
+}
+
+const mathAdvCatalogue: Array<[SubjectId, UnitInfo, ArcInfo[], Mission[]]> = [
+  ['math10', MATH10_UNIT, MATH10_ARCS, MATH10_MISSIONS],
+  ['math11', MATH11_UNIT, MATH11_ARCS, MATH11_MISSIONS]
+];
+
+for (const [subj, unitInfo, arcs, missions] of mathAdvCatalogue) {
+  const unitOffset = UNITS.length;
+  UNITS.push({ ...unitInfo, subject: subj });
+  const arcOffset = ARCS.length;
+  arcs.forEach(arc => {
+    ARCS.push({ ...arc, unit: unitOffset, subject: subj });
+  });
+  MISSIONS.push(...missions.map(mission => ({
+    ...mission,
+    arc: arcOffset + mission.arc
+  })));
+}
+

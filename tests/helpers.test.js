@@ -128,5 +128,5 @@ console.assert(GRADES.some(grade => grade.id === 'grade11' && grade.status === '
 console.assert(GRADE_SUBJECT_IDS.grade5.join(',') === 'science,math5,italian,hist5,geo5');
 console.assert(getSubjectsForGrade('grade9', SUBJECTS).map(subject => subject.id).join(',') === 'cs,phys,math,italian,chem,hist9,geo9');
 console.assert(getSubjectsForGrade('grade5', SUBJECTS).map(subject => subject.id).join(',') === 'italian,science,math5,hist5,geo5');
-console.assert(getSubjectsForGrade('grade10', SUBJECTS).map(subject => subject.id).join(',') === 'italian,chem10,hist10,geo10');
-console.assert(getSubjectsForGrade('grade11', SUBJECTS).map(subject => subject.id).join(',') === 'italian,chem11,hist11,geo11');
+console.assert(getSubjectsForGrade('grade10', SUBJECTS).map(subject => subject.id).join(',') === 'italian,chem10,hist10,geo10,math10');
+console.assert(getSubjectsForGrade('grade11', SUBJECTS).map(subject => subject.id).join(',') === 'italian,chem11,hist11,geo11,math11');

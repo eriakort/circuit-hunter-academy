@@ -1020,8 +1020,12 @@ body{overflow-x:hidden}
 .subject-indicator-copy{display:flex;flex-direction:column;gap:1px;min-width:0;line-height:1.25}
 .subject-indicator-copy small{font:700 9px var(--mono);letter-spacing:.09em;color:var(--muted)}
 .subject-indicator-copy strong{font-size:13px;white-space:nowrap}
-.subject-indicator[data-s="math"]{border-color:rgba(255,209,102,.55)}
-.subject-indicator[data-s="math"] .subject-indicator-copy strong{color:var(--gold)}
+.subject-indicator[data-s="math"],
+.subject-indicator[data-s="math10"]{border-color:rgba(255,209,102,.55)}
+.subject-indicator[data-s="math"] .subject-indicator-copy strong,
+.subject-indicator[data-s="math10"] .subject-indicator-copy strong{color:var(--gold)}
+.subject-indicator[data-s="math11"]{border-color:rgba(176,139,255,.55)}
+.subject-indicator[data-s="math11"] .subject-indicator-copy strong{color:#b08bff}
 .subject-indicator[data-s="phys"]{border-color:rgba(255,143,192,.5)}
 .subject-indicator[data-s="phys"] .subject-indicator-copy strong{color:var(--sakura)}
 .subject-indicator[data-s="cs"]{border-color:rgba(69,216,255,.5)}
@@ -1195,6 +1199,11 @@ table.g5m-formulas td:first-child{font-family:inherit;text-align:left}
 .chem-lab.geo-lab{background:linear-gradient(145deg,rgba(69,216,255,.09),rgba(56,239,125,.06)),var(--panel);border-color:rgba(69,216,255,.45)}
 .chem-lab.geo-lab .cl-kicker{color:var(--data)}
 .chem-lab.geo-lab .cl-mode-tabs button.active,.chem-lab.geo-lab .cl-btn.primary{border-color:var(--data);color:var(--data);background:rgba(69,216,255,.13)}
+.chem-lab.math-adv-lab{background:linear-gradient(145deg,rgba(255,209,102,.08),rgba(176,139,255,.09)),var(--panel);border-color:rgba(255,209,102,.46)}
+.chem-lab.math-adv-lab .cl-kicker{color:var(--gold)}
+.chem-lab.math-adv-lab .cl-control b{color:var(--gold)}
+.chem-lab.math-adv-lab .cl-control input[type=range]{accent-color:var(--gold)}
+.chem-lab.math-adv-lab .cl-mode-tabs button.active,.chem-lab.math-adv-lab .cl-btn.primary{border-color:var(--gold);color:var(--gold);background:rgba(255,209,102,.14)}
 .cl-heading{display:flex;flex-direction:column;gap:5px}
 .cl-kicker{font:700 11px var(--mono);letter-spacing:.13em;color:var(--good)}
 .cl-heading h3{font-size:clamp(18px,3vw,23px)}

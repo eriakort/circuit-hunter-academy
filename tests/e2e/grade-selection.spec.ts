@@ -48,22 +48,26 @@ test('new learner chooses a grade before seeing its subjects and the choice surv
 
   await page.getByRole('button', { name: /Change grade/ }).click();
   await page.locator('.grade-card[data-grade="grade10"]').click();
-  await expect(page.locator('.subjcard')).toHaveCount(4);
+  await expect(page.locator('.subjcard')).toHaveCount(5);
+  await expect(page.locator('.subjcard[data-s="math10"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="chem10"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="hist10"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="geo10"]')).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /Math \(L2\)/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Chemistry \(L2\)/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /History \(L2\)/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Geography \(L2\)/ })).toBeVisible();
 
   await page.getByRole('button', { name: /Change grade/ }).click();
   await page.locator('.grade-card[data-grade="grade11"]').click();
-  await expect(page.locator('.subjcard')).toHaveCount(4);
+  await expect(page.locator('.subjcard')).toHaveCount(5);
+  await expect(page.locator('.subjcard[data-s="math11"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="chem11"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="hist11"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="geo11"]')).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /Math \(L3\)/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Chemistry \(L3\)/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /History \(L3\)/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Geography \(L3\)/ })).toBeVisible();

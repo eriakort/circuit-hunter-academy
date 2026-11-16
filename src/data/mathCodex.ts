@@ -657,5 +657,142 @@ export const MATH_CODEX: CodexEntry[] = [
     'Notazione per intervalli',
     'Using brackets for included endpoints [ ] (≤, ≥, filled dot) and parentheses for excluded endpoints ( ) (<, >, open dot).',
     'Parentesi quadre per estremi inclusi [ ] (pallino pieno) e tonde per estremi esclusi ( ) (pallino vuoto).'
+  ],
+
+  // Grade 10 Mathematics (Level 2 · math_l2_m1..m9)
+  [
+    'math_l2_m1',
+    'Linear system & Cramer determinant',
+    'Sistema lineare e determinante D',
+    'Two linear equations solved together: D = a₁b₂ − a₂b₁. D ≠ 0 gives 1 solution; D = 0 gives parallel (0) or coincident (∞) lines.',
+    'Due equazioni lineari risolte insieme: D = a₁b₂ − a₂b₁. Con D ≠ 0 c’è 1 soluzione; con D = 0 le rette sono parallele (0) o coincidenti (∞).'
+  ],
+  [
+    'math_l2_m2',
+    'Existence condition of a radical (C.E.)',
+    'Condizione di esistenza di un radicale (C.E.)',
+    'An even-index root √[2k]{A} exists in ℝ only when radicand A ≥ 0; odd-index roots exist for all ℝ.',
+    'Una radice di indice pari √[2k]{A} esiste in ℝ solo se A ≥ 0; quelle di indice dispari esistono per qualsiasi reale.'
+  ],
+  [
+    'math_l2_m2',
+    'Rationalization of denominator',
+    'Razionalizzazione del denominatore',
+    'Rewriting a fraction to remove radicals from the denominator (e.g. multiplying by √a or the conjugate √a ± √b).',
+    'Trasformare una frazione per eliminare le radici dal denominatore moltiplicando sopra e sotto per il fattore adatto o coniugato.'
+  ],
+  [
+    'math_l2_m3',
+    'Slope & perpendicularity',
+    'Coefficiente angolare e perpendicolarità',
+    'In y = mx + q, slope m = Δy/Δx. Parallel lines satisfy m₁ = m₂; perpendicular lines satisfy m₁ · m₂ = −1.',
+    'In y = mx + q, la pendenza è m = Δy/Δx. Rette parallele hanno m₁ = m₂; perpendicolari hanno m₁ · m₂ = −1.'
+  ],
+  [
+    'math_l2_m4',
+    'Discriminant (Δ = b² − 4ac)',
+    'Discriminante (Δ = b² − 4ac)',
+    'Determines real solutions of ax² + bx + c = 0: Δ > 0 gives 2 distinct roots, Δ = 0 gives 1 double root, Δ < 0 gives none in ℝ.',
+    'Stabilisce le radici reali di ax² + bx + c = 0: Δ > 0 dà 2 radici distinte, Δ = 0 1 doppia, Δ < 0 nessuna in ℝ.'
+  ],
+  [
+    'math_l2_m5',
+    'Viète’s sum & product relations',
+    'Relazioni di Viète (somma e prodotto)',
+    'For ax² + bx + c = 0 with Δ ≥ 0: sum of roots S = x₁ + x₂ = −b/a and product P = x₁ · x₂ = c/a.',
+    'Per ax² + bx + c = 0 (Δ ≥ 0): la somma delle radici è S = x₁ + x₂ = −b/a e il prodotto P = x₁ · x₂ = c/a.'
+  ],
+  [
+    'math_l2_m6',
+    'Quadratic inequality parabola rule',
+    'Regola della parabola per disequazioni di 2° grado',
+    'With a > 0, ax² + bx + c > 0 holds on outer intervals (x < x₁ ∨ x > x₂), while < 0 holds between roots (x₁ < x < x₂).',
+    'Con a > 0, ax² + bx + c > 0 vale per valori esterni alle radici (x < x₁ ∨ x > x₂), mentre < 0 vale per valori interni.'
+  ],
+  [
+    'math_l2_m7',
+    'Euclid’s First & Second Theorems',
+    'Primo e Secondo Teorema di Euclide',
+    'In a right triangle with altitude to hypotenuse: leg² = hypotenuse · projection (1st) and altitude² = proj₁ · proj₂ (2nd).',
+    'In un triangolo rettangolo: cateto² = ipotenusa · proiezione (1° Euclide) e altezza² = proiezione₁ · proiezione₂ (2° Euclide).'
+  ],
+  [
+    'math_l2_m8',
+    'Thales’ Theorem & similarity scaling',
+    'Teorema di Talete e similitudine',
+    'Parallel lines cut transversals into proportional segments; if sides scale by k, perimeter scales by k and area by k².',
+    'Un fascio di rette parallele taglia due trasversali in segmenti proporzionali; se i lati scalano di k, le aree scalano di k².'
+  ],
+  [
+    'math_l2_m9',
+    'Classical probability & complement',
+    'Probabilità classica ed evento contrario',
+    'P(E) = favorable outcomes / total equally likely outcomes; P(not E) = 1 − P(E), always between 0 and 1.',
+    'P(E) = casi favorevoli / casi possibili (equiprobabili); P(Ē) = 1 − P(E), sempre compresa tra 0 e 1.'
+  ],
+
+  // Grade 11 Mathematics (Level 3 · math_l3_m1..m9)
+  [
+    'math_l3_m1',
+    'Domain, parity & inverse function',
+    'Dominio, parità e funzione inversa',
+    'Domain is allowed x values; even f(−x)=f(x) mirrors across y-axis; odd f(−x)=−f(x) across origin; inverse f⁻¹ swaps x and y.',
+    'Il dominio è l’insieme delle x ammesse; pari f(−x)=f(x), dispari f(−x)=−f(x); l’inversa f⁻¹ si ottiene riflettendo su y = x.'
+  ],
+  [
+    'math_l3_m2',
+    'Modulus distance inequality',
+    'Disequazioni con valore assoluto',
+    '|x − c| < k (k > 0) means distance from c is less than k (c−k < x < c+k); |x − c| > k takes outer rays.',
+    '|x − c| < k indica i punti a distanza minore di k da c (intervallo interno); |x − c| > k prende i valori esterni.'
+  ],
+  [
+    'math_l3_m3',
+    'Irrational concordance condition',
+    'Condizione di concordanza negli irrazionali',
+    'Before squaring √A(x) = B(x), require both A(x) ≥ 0 and B(x) ≥ 0 so extraneous negative roots are rejected.',
+    'Prima di elevare al quadrato √A(x) = B(x), imponi A(x) ≥ 0 e B(x) ≥ 0 per evitare soluzioni estranee.'
+  ],
+  [
+    'math_l3_m4',
+    'Parabola vertex & circle center',
+    'Vertice della parabola e centro della circonferenza',
+    'Parabola y = ax²+bx+c has x_V = −b/(2a); circle x²+y²+ax+by+c = 0 has center C(−a/2, −b/2) and R = √((a/2)²+(b/2)²−c).',
+    'La parabola y = ax²+bx+c ha x_V = −b/(2a); la circonferenza x²+y²+ax+by+c = 0 ha centro C(−a/2, −b/2).'
+  ],
+  [
+    'math_l3_m5',
+    'Eccentricity & asymptotes of conics',
+    'Eccentricità e asintoti di ellisse e iperbole',
+    'Ellipse: c² = |a² − b²| with eccentricity e = c/a < 1; Hyperbola: c² = a² + b² with e = c/a > 1 and asymptotes y = ±(b/a)x.',
+    'Ellisse: c² = |a² − b²| ed e = c/a < 1; Iperbole: c² = a² + b² con e = c/a > 1 e asintoti y = ±(b/a)x.'
+  ],
+  [
+    'math_l3_m6',
+    'Tangency condition (Δ = 0 / d = R)',
+    'Condizione di tangenza (Δ = 0 oppure d = R)',
+    'A line is tangent to a conic when the intersection quadratic has Δ = 0, or for a circle when distance from center equals radius R.',
+    'Una retta è tangente a una conica quando l’equazione risolvente ha Δ = 0 (o d(Centro, retta) = R per la circonferenza).'
+  ],
+  [
+    'math_l3_m7',
+    'Logarithm definition & rules',
+    'Definizione e proprietà dei logaritmi',
+    'logₐ(b) = x ⇔ aˣ = b (a > 0, a ≠ 1, b > 0). Key laws: log(xy) = log x + log y, log(x/y) = log x − log y, log(xᵏ) = k log x.',
+    'logₐ(b) = x ⇔ aˣ = b (a > 0, a ≠ 1, b > 0). Regole: log(xy) = log x + log y, log(x/y) = log x − log y, log(xᵏ) = k log x.'
+  ],
+  [
+    'math_l3_m8',
+    'Radian & Pythagorean trig identity',
+    'Radiante e prima relazione fondamentale',
+    'π rad = 180°. On the unit circle, cos²α + sin²α = 1 and tan α = sin α / cos α.',
+    'π rad = 180°. Sulla circonferenza goniometrica vale sempre cos²α + sin²α = 1 e tan α = sin α / cos α.'
+  ],
+  [
+    'math_l3_m9',
+    'Sine Law & Carnot’s Cosine Theorem',
+    'Teorema dei Seni e Teorema di Carnot',
+    'Sine Law: a/sin α = b/sin β = c/sin γ = 2R. Carnot: a² = b² + c² − 2bc cos α. Area: ½ b c sin α.',
+    'Teorema dei Seni: a/sin α = b/sin β = c/sin γ = 2R. Carnot: a² = b² + c² − 2bc cos α. Area: ½ b c sin α.'
   ]
 ];

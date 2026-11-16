@@ -36,7 +36,7 @@ export const GRADES: GradeInfo[] = [
     name: ['Grade 10', '2° Superiore'],
     schoolLevel: ['Upper secondary school · Year 2', 'Scuola secondaria di II grado · 2° anno'],
     ageRange: ['Usually ages 15–16', 'Generalmente 15–16 anni'],
-    description: ['Chemistry L2, Italian, History (Empire to Communes) & World Geography.', 'Chimica L2, Italiano, Storia (Impero e Comuni) e Geografia Mondiale.'],
+    description: ['Math L2, Chemistry L2, Italian, History (Empire to Communes) & World Geography.', 'Matematica L2, Chimica L2, Italiano, Storia (Impero e Comuni) e Geografia Mondiale.'],
     status: 'ready'
   },
   {
@@ -44,7 +44,7 @@ export const GRADES: GradeInfo[] = [
     name: ['Grade 11', '3° / 4° Superiore'],
     schoolLevel: ['Upper secondary school · Years 3–4', 'Scuola secondaria di II grado · Triennio'],
     ageRange: ['Usually ages 16–18', 'Generalmente 16–18 anni'],
-    description: ['Chemistry L3, Italian, Modern History (Renaissance–1870) & Geopolitics.', 'Chimica L3, Italiano, Storia Moderna e Geopolitica dell’Italia.'],
+    description: ['Math L3, Chemistry L3, Italian, Modern History (Renaissance–1870) & Geopolitics.', 'Matematica L3, Chimica L3, Italiano, Storia Moderna e Geopolitica dell’Italia.'],
     status: 'ready'
   }
 ];
@@ -52,8 +52,8 @@ export const GRADES: GradeInfo[] = [
 export const GRADE_SUBJECT_IDS: Record<GradeId, string[]> = {
   grade5: ['science', 'math5', 'italian', 'hist5', 'geo5'],
   grade9: ['cs', 'phys', 'math', 'italian', 'chem', 'hist9', 'geo9'],
-  grade10: ['chem10', 'italian', 'hist10', 'geo10'],
-  grade11: ['chem11', 'italian', 'hist11', 'geo11']
+  grade10: ['chem10', 'italian', 'hist10', 'geo10', 'math10'],
+  grade11: ['chem11', 'italian', 'hist11', 'geo11', 'math11']
 };
 
 export const getSubjectsForGrade = (grade: GradeId, subjects: SubjectInfo[]): SubjectInfo[] => {

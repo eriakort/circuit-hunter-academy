@@ -27051,6 +27051,1086 @@ where not exists (
 );
 
 insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m1', '["Solve the system: x + y = 9 and x − y = 3.","Risolvi il sistema: x + y = 9 e x − y = 3."]'::jsonb, '[["x = 6, y = 3","x = 6, y = 3"],["x = 3, y = 6","x = 3, y = 6"],["x = 5, y = 4","x = 5, y = 4"],["No solution","Nessuna soluzione"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m1'
+    and existing.prompt = '["Solve the system: x + y = 9 and x − y = 3.","Risolvi il sistema: x + y = 9 e x − y = 3."]'::jsonb
+    and existing.choices = '[["x = 6, y = 3","x = 6, y = 3"],["x = 3, y = 6","x = 3, y = 6"],["x = 5, y = 4","x = 5, y = 4"],["No solution","Nessuna soluzione"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Solve the system: x + y = 9 and x − y = 3.","Risolvi il sistema: x + y = 9 e x − y = 3."]'::jsonb, '[["x = 6, y = 3","x = 6, y = 3"],["x = 3, y = 6","x = 3, y = 6"],["x = 5, y = 4","x = 5, y = 4"],["No solution","Nessuna soluzione"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve the system: x + y = 9 and x − y = 3.","Risolvi il sistema: x + y = 9 e x − y = 3."]'::jsonb
+    and existing.choices = '[["x = 6, y = 3","x = 6, y = 3"],["x = 3, y = 6","x = 3, y = 6"],["x = 5, y = 4","x = 5, y = 4"],["No solution","Nessuna soluzione"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m1', '["Geometrically, what is an IMPOSSIBLE 2×2 linear system?","Geometricamente, che cosa rappresenta un sistema lineare 2×2 IMPOSSIBILE?"]'::jsonb, '[["Two distinct parallel lines that never intersect","Due rette parallele e distinte che non si incontrano mai"],["Two perpendicular lines crossing at 90°","Due rette perpendicolari a 90°"],["Two coincident lines overlapping everywhere","Due rette coincidenti punto per punto"],["A parabola intersecting the x-axis twice","Una parabola che taglia l’asse x due volte"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m1'
+    and existing.prompt = '["Geometrically, what is an IMPOSSIBLE 2×2 linear system?","Geometricamente, che cosa rappresenta un sistema lineare 2×2 IMPOSSIBILE?"]'::jsonb
+    and existing.choices = '[["Two distinct parallel lines that never intersect","Due rette parallele e distinte che non si incontrano mai"],["Two perpendicular lines crossing at 90°","Due rette perpendicolari a 90°"],["Two coincident lines overlapping everywhere","Due rette coincidenti punto per punto"],["A parabola intersecting the x-axis twice","Una parabola che taglia l’asse x due volte"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Geometrically, what is an IMPOSSIBLE 2×2 linear system?","Geometricamente, che cosa rappresenta un sistema lineare 2×2 IMPOSSIBILE?"]'::jsonb, '[["Two distinct parallel lines that never intersect","Due rette parallele e distinte che non si incontrano mai"],["Two perpendicular lines crossing at 90°","Due rette perpendicolari a 90°"],["Two coincident lines overlapping everywhere","Due rette coincidenti punto per punto"],["A parabola intersecting the x-axis twice","Una parabola che taglia l’asse x due volte"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Geometrically, what is an IMPOSSIBLE 2×2 linear system?","Geometricamente, che cosa rappresenta un sistema lineare 2×2 IMPOSSIBILE?"]'::jsonb
+    and existing.choices = '[["Two distinct parallel lines that never intersect","Due rette parallele e distinte che non si incontrano mai"],["Two perpendicular lines crossing at 90°","Due rette perpendicolari a 90°"],["Two coincident lines overlapping everywhere","Due rette coincidenti punto per punto"],["A parabola intersecting the x-axis twice","Una parabola che taglia l’asse x due volte"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m1', '["For a₁x + b₁y = c₁ and a₂x + b₂y = c₂, when is Cramer’s system determined?","Quando un sistema lineare è determinato con il metodo di Cramer?"]'::jsonb, '[["When D = a₁b₂ − a₂b₁ ≠ 0","Quando D = a₁b₂ − a₂b₁ ≠ 0"],["When D = 0 and Dx ≠ 0","Quando D = 0 e Dx ≠ 0"],["When all constants c₁ and c₂ are zero","Quando entrambi i termini noti sono zero"],["Only when a₁ = b₂","Solo quando a₁ = b₂"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m1'
+    and existing.prompt = '["For a₁x + b₁y = c₁ and a₂x + b₂y = c₂, when is Cramer’s system determined?","Quando un sistema lineare è determinato con il metodo di Cramer?"]'::jsonb
+    and existing.choices = '[["When D = a₁b₂ − a₂b₁ ≠ 0","Quando D = a₁b₂ − a₂b₁ ≠ 0"],["When D = 0 and Dx ≠ 0","Quando D = 0 e Dx ≠ 0"],["When all constants c₁ and c₂ are zero","Quando entrambi i termini noti sono zero"],["Only when a₁ = b₂","Solo quando a₁ = b₂"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["For a₁x + b₁y = c₁ and a₂x + b₂y = c₂, when is Cramer’s system determined?","Quando un sistema lineare è determinato con il metodo di Cramer?"]'::jsonb, '[["When D = a₁b₂ − a₂b₁ ≠ 0","Quando D = a₁b₂ − a₂b₁ ≠ 0"],["When D = 0 and Dx ≠ 0","Quando D = 0 e Dx ≠ 0"],["When all constants c₁ and c₂ are zero","Quando entrambi i termini noti sono zero"],["Only when a₁ = b₂","Solo quando a₁ = b₂"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["For a₁x + b₁y = c₁ and a₂x + b₂y = c₂, when is Cramer’s system determined?","Quando un sistema lineare è determinato con il metodo di Cramer?"]'::jsonb
+    and existing.choices = '[["When D = a₁b₂ − a₂b₁ ≠ 0","Quando D = a₁b₂ − a₂b₁ ≠ 0"],["When D = 0 and Dx ≠ 0","Quando D = 0 e Dx ≠ 0"],["When all constants c₁ and c₂ are zero","Quando entrambi i termini noti sono zero"],["Only when a₁ = b₂","Solo quando a₁ = b₂"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m1', '["What kind of system is 2x + 3y = 6 and 4x + 6y = 12?","Che tipo di sistema è 2x + 3y = 6 e 4x + 6y = 12?"]'::jsonb, '[["Indeterminate (coincident lines, infinitely many solutions)","Indeterminato (rette coincidenti, infinite soluzioni)"],["Impossible (parallel distinct lines)","Impossibile (rette parallele distinte)"],["Determined with unique solution (2, 3)","Determinato con unica soluzione (2, 3)"],["Quadratic system of degree 4","Sistema di quarto grado"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m1'
+    and existing.prompt = '["What kind of system is 2x + 3y = 6 and 4x + 6y = 12?","Che tipo di sistema è 2x + 3y = 6 e 4x + 6y = 12?"]'::jsonb
+    and existing.choices = '[["Indeterminate (coincident lines, infinitely many solutions)","Indeterminato (rette coincidenti, infinite soluzioni)"],["Impossible (parallel distinct lines)","Impossibile (rette parallele distinte)"],["Determined with unique solution (2, 3)","Determinato con unica soluzione (2, 3)"],["Quadratic system of degree 4","Sistema di quarto grado"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["What kind of system is 2x + 3y = 6 and 4x + 6y = 12?","Che tipo di sistema è 2x + 3y = 6 e 4x + 6y = 12?"]'::jsonb, '[["Indeterminate (coincident lines, infinitely many solutions)","Indeterminato (rette coincidenti, infinite soluzioni)"],["Impossible (parallel distinct lines)","Impossibile (rette parallele distinte)"],["Determined with unique solution (2, 3)","Determinato con unica soluzione (2, 3)"],["Quadratic system of degree 4","Sistema di quarto grado"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What kind of system is 2x + 3y = 6 and 4x + 6y = 12?","Che tipo di sistema è 2x + 3y = 6 e 4x + 6y = 12?"]'::jsonb
+    and existing.choices = '[["Indeterminate (coincident lines, infinitely many solutions)","Indeterminato (rette coincidenti, infinite soluzioni)"],["Impossible (parallel distinct lines)","Impossibile (rette parallele distinte)"],["Determined with unique solution (2, 3)","Determinato con unica soluzione (2, 3)"],["Quadratic system of degree 4","Sistema di quarto grado"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m1', '["Solve by substitution: y = 2x and 3x + y = 15.","Risolvi per sostituzione: y = 2x e 3x + y = 15."]'::jsonb, '[["x = 3, y = 6","x = 3, y = 6"],["x = 6, y = 3","x = 6, y = 3"],["x = 5, y = 10","x = 5, y = 10"],["x = 2, y = 9","x = 2, y = 9"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m1'
+    and existing.prompt = '["Solve by substitution: y = 2x and 3x + y = 15.","Risolvi per sostituzione: y = 2x e 3x + y = 15."]'::jsonb
+    and existing.choices = '[["x = 3, y = 6","x = 3, y = 6"],["x = 6, y = 3","x = 6, y = 3"],["x = 5, y = 10","x = 5, y = 10"],["x = 2, y = 9","x = 2, y = 9"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Solve by substitution: y = 2x and 3x + y = 15.","Risolvi per sostituzione: y = 2x e 3x + y = 15."]'::jsonb, '[["x = 3, y = 6","x = 3, y = 6"],["x = 6, y = 3","x = 6, y = 3"],["x = 5, y = 10","x = 5, y = 10"],["x = 2, y = 9","x = 2, y = 9"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve by substitution: y = 2x and 3x + y = 15.","Risolvi per sostituzione: y = 2x e 3x + y = 15."]'::jsonb
+    and existing.choices = '[["x = 3, y = 6","x = 3, y = 6"],["x = 6, y = 3","x = 6, y = 3"],["x = 5, y = 10","x = 5, y = 10"],["x = 2, y = 9","x = 2, y = 9"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m2', '["What is the existence condition (C.E.) in ℝ for √(x − 5)?","Qual è la condizione di esistenza (C.E.) in ℝ per √(x − 5)?"]'::jsonb, '[["x ≥ 5","x ≥ 5"],["x > 5 strictly","x > 5 strettamente"],["All real numbers ℝ","Tutti i numeri reali ℝ"],["x ≤ 5","x ≤ 5"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m2'
+    and existing.prompt = '["What is the existence condition (C.E.) in ℝ for √(x − 5)?","Qual è la condizione di esistenza (C.E.) in ℝ per √(x − 5)?"]'::jsonb
+    and existing.choices = '[["x ≥ 5","x ≥ 5"],["x > 5 strictly","x > 5 strettamente"],["All real numbers ℝ","Tutti i numeri reali ℝ"],["x ≤ 5","x ≤ 5"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["What is the existence condition (C.E.) in ℝ for √(x − 5)?","Qual è la condizione di esistenza (C.E.) in ℝ per √(x − 5)?"]'::jsonb, '[["x ≥ 5","x ≥ 5"],["x > 5 strictly","x > 5 strettamente"],["All real numbers ℝ","Tutti i numeri reali ℝ"],["x ≤ 5","x ≤ 5"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What is the existence condition (C.E.) in ℝ for √(x − 5)?","Qual è la condizione di esistenza (C.E.) in ℝ per √(x − 5)?"]'::jsonb
+    and existing.choices = '[["x ≥ 5","x ≥ 5"],["x > 5 strictly","x > 5 strettamente"],["All real numbers ℝ","Tutti i numeri reali ℝ"],["x ≤ 5","x ≤ 5"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m2', '["Simplify √50 into standard radical form.","Semplifica √50 portando i fattori fuori radice."]'::jsonb, '[["5√2","5√2"],["2√5","2√5"],["25√2","25√2"],["10√5","10√5"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m2'
+    and existing.prompt = '["Simplify √50 into standard radical form.","Semplifica √50 portando i fattori fuori radice."]'::jsonb
+    and existing.choices = '[["5√2","5√2"],["2√5","2√5"],["25√2","25√2"],["10√5","10√5"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Simplify √50 into standard radical form.","Semplifica √50 portando i fattori fuori radice."]'::jsonb, '[["5√2","5√2"],["2√5","2√5"],["25√2","25√2"],["10√5","10√5"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Simplify √50 into standard radical form.","Semplifica √50 portando i fattori fuori radice."]'::jsonb
+    and existing.choices = '[["5√2","5√2"],["2√5","2√5"],["25√2","25√2"],["10√5","10√5"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m2', '["Rationalize the denominator of 6 / √3.","Razionalizza il denominatore di 6 / √3."]'::jsonb, '[["2√3","2√3"],["6√3","6√3"],["3√2","3√2"],["2 / √3","2 / √3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m2'
+    and existing.prompt = '["Rationalize the denominator of 6 / √3.","Razionalizza il denominatore di 6 / √3."]'::jsonb
+    and existing.choices = '[["2√3","2√3"],["6√3","6√3"],["3√2","3√2"],["2 / √3","2 / √3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Rationalize the denominator of 6 / √3.","Razionalizza il denominatore di 6 / √3."]'::jsonb, '[["2√3","2√3"],["6√3","6√3"],["3√2","3√2"],["2 / √3","2 / √3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Rationalize the denominator of 6 / √3.","Razionalizza il denominatore di 6 / √3."]'::jsonb
+    and existing.choices = '[["2√3","2√3"],["6√3","6√3"],["3√2","3√2"],["2 / √3","2 / √3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m2', '["What is the real value of ∛(−27)?","Quanto vale nei numeri reali ∛(−27)?"]'::jsonb, '[["−3","−3"],["Does not exist in ℝ","Non esiste in ℝ"],["+3 only","Solo +3"],["−9","−9"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m2'
+    and existing.prompt = '["What is the real value of ∛(−27)?","Quanto vale nei numeri reali ∛(−27)?"]'::jsonb
+    and existing.choices = '[["−3","−3"],["Does not exist in ℝ","Non esiste in ℝ"],["+3 only","Solo +3"],["−9","−9"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["What is the real value of ∛(−27)?","Quanto vale nei numeri reali ∛(−27)?"]'::jsonb, '[["−3","−3"],["Does not exist in ℝ","Non esiste in ℝ"],["+3 only","Solo +3"],["−9","−9"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What is the real value of ∛(−27)?","Quanto vale nei numeri reali ∛(−27)?"]'::jsonb
+    and existing.choices = '[["−3","−3"],["Does not exist in ℝ","Non esiste in ℝ"],["+3 only","Solo +3"],["−9","−9"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m2', '["Simplify the expression: 4√3 + 2√12 − √3.","Semplifica l’espressione: 4√3 + 2√12 − √3."]'::jsonb, '[["7√3","7√3"],["5√3","5√3"],["3√12","3√12"],["6√3","6√3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m2'
+    and existing.prompt = '["Simplify the expression: 4√3 + 2√12 − √3.","Semplifica l’espressione: 4√3 + 2√12 − √3."]'::jsonb
+    and existing.choices = '[["7√3","7√3"],["5√3","5√3"],["3√12","3√12"],["6√3","6√3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Simplify the expression: 4√3 + 2√12 − √3.","Semplifica l’espressione: 4√3 + 2√12 − √3."]'::jsonb, '[["7√3","7√3"],["5√3","5√3"],["3√12","3√12"],["6√3","6√3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Simplify the expression: 4√3 + 2√12 − √3.","Semplifica l’espressione: 4√3 + 2√12 − √3."]'::jsonb
+    and existing.choices = '[["7√3","7√3"],["5√3","5√3"],["3√12","3√12"],["6√3","6√3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m3', '["Find the slope m of the line passing through A(1, 2) and B(4, 11).","Calcola il coefficiente angolare m della retta per A(1, 2) e B(4, 11)."]'::jsonb, '[["m = 3","m = 3"],["m = 1/3","m = 1/3"],["m = 9","m = 9"],["m = −3","m = −3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m3'
+    and existing.prompt = '["Find the slope m of the line passing through A(1, 2) and B(4, 11).","Calcola il coefficiente angolare m della retta per A(1, 2) e B(4, 11)."]'::jsonb
+    and existing.choices = '[["m = 3","m = 3"],["m = 1/3","m = 1/3"],["m = 9","m = 9"],["m = −3","m = −3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Find the slope m of the line passing through A(1, 2) and B(4, 11).","Calcola il coefficiente angolare m della retta per A(1, 2) e B(4, 11)."]'::jsonb, '[["m = 3","m = 3"],["m = 1/3","m = 1/3"],["m = 9","m = 9"],["m = −3","m = −3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Find the slope m of the line passing through A(1, 2) and B(4, 11).","Calcola il coefficiente angolare m della retta per A(1, 2) e B(4, 11)."]'::jsonb
+    and existing.choices = '[["m = 3","m = 3"],["m = 1/3","m = 1/3"],["m = 9","m = 9"],["m = −3","m = −3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m3', '["Which slope is perpendicular to the line y = (2/5)x − 1?","Quale retta è perpendicolare a y = (2/5)x − 1?"]'::jsonb, '[["y = −(5/2)x + 3","y = −(5/2)x + 3"],["y = (5/2)x + 3","y = (5/2)x + 3"],["y = −(2/5)x + 3","y = −(2/5)x + 3"],["y = (2/5)x + 7","y = (2/5)x + 7"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m3'
+    and existing.prompt = '["Which slope is perpendicular to the line y = (2/5)x − 1?","Quale retta è perpendicolare a y = (2/5)x − 1?"]'::jsonb
+    and existing.choices = '[["y = −(5/2)x + 3","y = −(5/2)x + 3"],["y = (5/2)x + 3","y = (5/2)x + 3"],["y = −(2/5)x + 3","y = −(2/5)x + 3"],["y = (2/5)x + 7","y = (2/5)x + 7"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Which slope is perpendicular to the line y = (2/5)x − 1?","Quale retta è perpendicolare a y = (2/5)x − 1?"]'::jsonb, '[["y = −(5/2)x + 3","y = −(5/2)x + 3"],["y = (5/2)x + 3","y = (5/2)x + 3"],["y = −(2/5)x + 3","y = −(2/5)x + 3"],["y = (2/5)x + 7","y = (2/5)x + 7"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Which slope is perpendicular to the line y = (2/5)x − 1?","Quale retta è perpendicolare a y = (2/5)x − 1?"]'::jsonb
+    and existing.choices = '[["y = −(5/2)x + 3","y = −(5/2)x + 3"],["y = (5/2)x + 3","y = (5/2)x + 3"],["y = −(2/5)x + 3","y = −(2/5)x + 3"],["y = (2/5)x + 7","y = (2/5)x + 7"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m3', '["What is the distance between P(1, 1) and Q(4, 5)?","Qual è la distanza tra P(1, 1) e Q(4, 5)?"]'::jsonb, '[["5","5"],["7","7"],["√7","√7"],["25","25"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m3'
+    and existing.prompt = '["What is the distance between P(1, 1) and Q(4, 5)?","Qual è la distanza tra P(1, 1) e Q(4, 5)?"]'::jsonb
+    and existing.choices = '[["5","5"],["7","7"],["√7","√7"],["25","25"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["What is the distance between P(1, 1) and Q(4, 5)?","Qual è la distanza tra P(1, 1) e Q(4, 5)?"]'::jsonb, '[["5","5"],["7","7"],["√7","√7"],["25","25"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What is the distance between P(1, 1) and Q(4, 5)?","Qual è la distanza tra P(1, 1) e Q(4, 5)?"]'::jsonb
+    and existing.choices = '[["5","5"],["7","7"],["√7","√7"],["25","25"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m3', '["What is the midpoint M of segment AB with A(−2, 6) and B(8, 2)?","Qual è il punto medio M tra A(−2, 6) e B(8, 2)?"]'::jsonb, '[["(3, 4)","(3, 4)"],["(5, 2)","(5, 2)"],["(6, 8)","(6, 8)"],["(−5, 4)","(−5, 4)"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m3'
+    and existing.prompt = '["What is the midpoint M of segment AB with A(−2, 6) and B(8, 2)?","Qual è il punto medio M tra A(−2, 6) e B(8, 2)?"]'::jsonb
+    and existing.choices = '[["(3, 4)","(3, 4)"],["(5, 2)","(5, 2)"],["(6, 8)","(6, 8)"],["(−5, 4)","(−5, 4)"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["What is the midpoint M of segment AB with A(−2, 6) and B(8, 2)?","Qual è il punto medio M tra A(−2, 6) e B(8, 2)?"]'::jsonb, '[["(3, 4)","(3, 4)"],["(5, 2)","(5, 2)"],["(6, 8)","(6, 8)"],["(−5, 4)","(−5, 4)"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What is the midpoint M of segment AB with A(−2, 6) and B(8, 2)?","Qual è il punto medio M tra A(−2, 6) e B(8, 2)?"]'::jsonb
+    and existing.choices = '[["(3, 4)","(3, 4)"],["(5, 2)","(5, 2)"],["(6, 8)","(6, 8)"],["(−5, 4)","(−5, 4)"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m3', '["Find the slope m of the implicit line 6x + 2y − 10 = 0.","Trova il coefficiente angolare m della retta 6x + 2y − 10 = 0."]'::jsonb, '[["m = −3","m = −3"],["m = +3","m = +3"],["m = −1/3","m = −1/3"],["m = 5","m = 5"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m3'
+    and existing.prompt = '["Find the slope m of the implicit line 6x + 2y − 10 = 0.","Trova il coefficiente angolare m della retta 6x + 2y − 10 = 0."]'::jsonb
+    and existing.choices = '[["m = −3","m = −3"],["m = +3","m = +3"],["m = −1/3","m = −1/3"],["m = 5","m = 5"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Find the slope m of the implicit line 6x + 2y − 10 = 0.","Trova il coefficiente angolare m della retta 6x + 2y − 10 = 0."]'::jsonb, '[["m = −3","m = −3"],["m = +3","m = +3"],["m = −1/3","m = −1/3"],["m = 5","m = 5"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Find the slope m of the implicit line 6x + 2y − 10 = 0.","Trova il coefficiente angolare m della retta 6x + 2y − 10 = 0."]'::jsonb
+    and existing.choices = '[["m = −3","m = −3"],["m = +3","m = +3"],["m = −1/3","m = −1/3"],["m = 5","m = 5"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m4', '["Solve 2x² − 7x + 3 = 0.","Risolvi 2x² − 7x + 3 = 0."]'::jsonb, '[["x = 3 and x = 1/2","x = 3 e x = 1/2"],["x = −3 and x = −1/2","x = −3 e x = −1/2"],["x = 3 and x = 2","x = 3 e x = 2"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m4'
+    and existing.prompt = '["Solve 2x² − 7x + 3 = 0.","Risolvi 2x² − 7x + 3 = 0."]'::jsonb
+    and existing.choices = '[["x = 3 and x = 1/2","x = 3 e x = 1/2"],["x = −3 and x = −1/2","x = −3 e x = −1/2"],["x = 3 and x = 2","x = 3 e x = 2"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Solve 2x² − 7x + 3 = 0.","Risolvi 2x² − 7x + 3 = 0."]'::jsonb, '[["x = 3 and x = 1/2","x = 3 e x = 1/2"],["x = −3 and x = −1/2","x = −3 e x = −1/2"],["x = 3 and x = 2","x = 3 e x = 2"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve 2x² − 7x + 3 = 0.","Risolvi 2x² − 7x + 3 = 0."]'::jsonb
+    and existing.choices = '[["x = 3 and x = 1/2","x = 3 e x = 1/2"],["x = −3 and x = −1/2","x = −3 e x = −1/2"],["x = 3 and x = 2","x = 3 e x = 2"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m4', '["How many real solutions does x² + 4x + 7 = 0 have?","Quante soluzioni reali ha l’equazione x² + 4x + 7 = 0?"]'::jsonb, '[["0 real solutions (Δ = −12 < 0)","0 soluzioni reali (Δ = −12 < 0)"],["1 double real solution","1 soluzione reale doppia"],["2 distinct real solutions","2 soluzioni reali distinte"],["Infinitely many solutions","Infinite soluzioni"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m4'
+    and existing.prompt = '["How many real solutions does x² + 4x + 7 = 0 have?","Quante soluzioni reali ha l’equazione x² + 4x + 7 = 0?"]'::jsonb
+    and existing.choices = '[["0 real solutions (Δ = −12 < 0)","0 soluzioni reali (Δ = −12 < 0)"],["1 double real solution","1 soluzione reale doppia"],["2 distinct real solutions","2 soluzioni reali distinte"],["Infinitely many solutions","Infinite soluzioni"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["How many real solutions does x² + 4x + 7 = 0 have?","Quante soluzioni reali ha l’equazione x² + 4x + 7 = 0?"]'::jsonb, '[["0 real solutions (Δ = −12 < 0)","0 soluzioni reali (Δ = −12 < 0)"],["1 double real solution","1 soluzione reale doppia"],["2 distinct real solutions","2 soluzioni reali distinte"],["Infinitely many solutions","Infinite soluzioni"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["How many real solutions does x² + 4x + 7 = 0 have?","Quante soluzioni reali ha l’equazione x² + 4x + 7 = 0?"]'::jsonb
+    and existing.choices = '[["0 real solutions (Δ = −12 < 0)","0 soluzioni reali (Δ = −12 < 0)"],["1 double real solution","1 soluzione reale doppia"],["2 distinct real solutions","2 soluzioni reali distinte"],["Infinitely many solutions","Infinite soluzioni"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m4', '["Solve the spurious equation 5x² − 15x = 0.","Risolvi l’equazione spuria 5x² − 15x = 0."]'::jsonb, '[["x = 0 and x = 3","x = 0 e x = 3"],["x = 3 only","Solo x = 3"],["x = ±3","x = ±3"],["x = 0 and x = −3","x = 0 e x = −3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m4'
+    and existing.prompt = '["Solve the spurious equation 5x² − 15x = 0.","Risolvi l’equazione spuria 5x² − 15x = 0."]'::jsonb
+    and existing.choices = '[["x = 0 and x = 3","x = 0 e x = 3"],["x = 3 only","Solo x = 3"],["x = ±3","x = ±3"],["x = 0 and x = −3","x = 0 e x = −3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Solve the spurious equation 5x² − 15x = 0.","Risolvi l’equazione spuria 5x² − 15x = 0."]'::jsonb, '[["x = 0 and x = 3","x = 0 e x = 3"],["x = 3 only","Solo x = 3"],["x = ±3","x = ±3"],["x = 0 and x = −3","x = 0 e x = −3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve the spurious equation 5x² − 15x = 0.","Risolvi l’equazione spuria 5x² − 15x = 0."]'::jsonb
+    and existing.choices = '[["x = 0 and x = 3","x = 0 e x = 3"],["x = 3 only","Solo x = 3"],["x = ±3","x = ±3"],["x = 0 and x = −3","x = 0 e x = −3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m4', '["What condition on Δ guarantees two EQUAL (double) real roots?","Quale condizione su Δ garantisce due soluzioni reali coincidenti (una radice doppia)?"]'::jsonb, '[["Δ = 0","Δ = 0"],["Δ > 0","Δ > 0"],["Δ < 0","Δ < 0"],["b = 0","b = 0"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m4'
+    and existing.prompt = '["What condition on Δ guarantees two EQUAL (double) real roots?","Quale condizione su Δ garantisce due soluzioni reali coincidenti (una radice doppia)?"]'::jsonb
+    and existing.choices = '[["Δ = 0","Δ = 0"],["Δ > 0","Δ > 0"],["Δ < 0","Δ < 0"],["b = 0","b = 0"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["What condition on Δ guarantees two EQUAL (double) real roots?","Quale condizione su Δ garantisce due soluzioni reali coincidenti (una radice doppia)?"]'::jsonb, '[["Δ = 0","Δ = 0"],["Δ > 0","Δ > 0"],["Δ < 0","Δ < 0"],["b = 0","b = 0"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What condition on Δ guarantees two EQUAL (double) real roots?","Quale condizione su Δ garantisce due soluzioni reali coincidenti (una radice doppia)?"]'::jsonb
+    and existing.choices = '[["Δ = 0","Δ = 0"],["Δ > 0","Δ > 0"],["Δ < 0","Δ < 0"],["b = 0","b = 0"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m4', '["Solve the pure equation 4x² − 25 = 0.","Risolvi l’equazione pura 4x² − 25 = 0."]'::jsonb, '[["x = ± 5/2","x = ± 5/2"],["x = +5/2 only","Solo x = +5/2"],["x = ± 25/4","x = ± 25/4"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m4'
+    and existing.prompt = '["Solve the pure equation 4x² − 25 = 0.","Risolvi l’equazione pura 4x² − 25 = 0."]'::jsonb
+    and existing.choices = '[["x = ± 5/2","x = ± 5/2"],["x = +5/2 only","Solo x = +5/2"],["x = ± 25/4","x = ± 25/4"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Solve the pure equation 4x² − 25 = 0.","Risolvi l’equazione pura 4x² − 25 = 0."]'::jsonb, '[["x = ± 5/2","x = ± 5/2"],["x = +5/2 only","Solo x = +5/2"],["x = ± 25/4","x = ± 25/4"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve the pure equation 4x² − 25 = 0.","Risolvi l’equazione pura 4x² − 25 = 0."]'::jsonb
+    and existing.choices = '[["x = ± 5/2","x = ± 5/2"],["x = +5/2 only","Solo x = +5/2"],["x = ± 25/4","x = ± 25/4"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m5', '["Without solving, what are the sum S and product P of the roots of 3x² − 12x + 6 = 0?","Senza risolvere, quanto valgono somma S e prodotto P delle radici di 3x² − 12x + 6 = 0?"]'::jsonb, '[["S = 4, P = 2","S = 4, P = 2"],["S = −4, P = 2","S = −4, P = 2"],["S = 12, P = 6","S = 12, P = 6"],["S = 4, P = −2","S = 4, P = −2"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m5'
+    and existing.prompt = '["Without solving, what are the sum S and product P of the roots of 3x² − 12x + 6 = 0?","Senza risolvere, quanto valgono somma S e prodotto P delle radici di 3x² − 12x + 6 = 0?"]'::jsonb
+    and existing.choices = '[["S = 4, P = 2","S = 4, P = 2"],["S = −4, P = 2","S = −4, P = 2"],["S = 12, P = 6","S = 12, P = 6"],["S = 4, P = −2","S = 4, P = −2"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Without solving, what are the sum S and product P of the roots of 3x² − 12x + 6 = 0?","Senza risolvere, quanto valgono somma S e prodotto P delle radici di 3x² − 12x + 6 = 0?"]'::jsonb, '[["S = 4, P = 2","S = 4, P = 2"],["S = −4, P = 2","S = −4, P = 2"],["S = 12, P = 6","S = 12, P = 6"],["S = 4, P = −2","S = 4, P = −2"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Without solving, what are the sum S and product P of the roots of 3x² − 12x + 6 = 0?","Senza risolvere, quanto valgono somma S e prodotto P delle radici di 3x² − 12x + 6 = 0?"]'::jsonb
+    and existing.choices = '[["S = 4, P = 2","S = 4, P = 2"],["S = −4, P = 2","S = −4, P = 2"],["S = 12, P = 6","S = 12, P = 6"],["S = 4, P = −2","S = 4, P = −2"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m5', '["Write a quadratic equation whose solutions are x₁ = 2 and x₂ = 5.","Scrivi un’equazione di 2° grado che ha per soluzioni x₁ = 2 e x₂ = 5."]'::jsonb, '[["x² − 7x + 10 = 0","x² − 7x + 10 = 0"],["x² + 7x + 10 = 0","x² + 7x + 10 = 0"],["x² − 10x + 7 = 0","x² − 10x + 7 = 0"],["x² − 3x − 10 = 0","x² − 3x − 10 = 0"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m5'
+    and existing.prompt = '["Write a quadratic equation whose solutions are x₁ = 2 and x₂ = 5.","Scrivi un’equazione di 2° grado che ha per soluzioni x₁ = 2 e x₂ = 5."]'::jsonb
+    and existing.choices = '[["x² − 7x + 10 = 0","x² − 7x + 10 = 0"],["x² + 7x + 10 = 0","x² + 7x + 10 = 0"],["x² − 10x + 7 = 0","x² − 10x + 7 = 0"],["x² − 3x − 10 = 0","x² − 3x − 10 = 0"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Write a quadratic equation whose solutions are x₁ = 2 and x₂ = 5.","Scrivi un’equazione di 2° grado che ha per soluzioni x₁ = 2 e x₂ = 5."]'::jsonb, '[["x² − 7x + 10 = 0","x² − 7x + 10 = 0"],["x² + 7x + 10 = 0","x² + 7x + 10 = 0"],["x² − 10x + 7 = 0","x² − 10x + 7 = 0"],["x² − 3x − 10 = 0","x² − 3x − 10 = 0"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Write a quadratic equation whose solutions are x₁ = 2 and x₂ = 5.","Scrivi un’equazione di 2° grado che ha per soluzioni x₁ = 2 e x₂ = 5."]'::jsonb
+    and existing.choices = '[["x² − 7x + 10 = 0","x² − 7x + 10 = 0"],["x² + 7x + 10 = 0","x² + 7x + 10 = 0"],["x² − 10x + 7 = 0","x² − 10x + 7 = 0"],["x² − 3x − 10 = 0","x² − 3x − 10 = 0"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m5', '["Factor the trinomial 2x² − 10x + 12 using its roots (2 and 3).","Scomponi il trinomio 2x² − 10x + 12 usando le sue radici (2 e 3)."]'::jsonb, '[["2(x − 2)(x − 3)","2(x − 2)(x − 3)"],["(x − 2)(x − 3)","(x − 2)(x − 3)"],["2(x + 2)(x + 3)","2(x + 2)(x + 3)"],["(2x − 2)(2x − 3)","(2x − 2)(2x − 3)"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m5'
+    and existing.prompt = '["Factor the trinomial 2x² − 10x + 12 using its roots (2 and 3).","Scomponi il trinomio 2x² − 10x + 12 usando le sue radici (2 e 3)."]'::jsonb
+    and existing.choices = '[["2(x − 2)(x − 3)","2(x − 2)(x − 3)"],["(x − 2)(x − 3)","(x − 2)(x − 3)"],["2(x + 2)(x + 3)","2(x + 2)(x + 3)"],["(2x − 2)(2x − 3)","(2x − 2)(2x − 3)"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Factor the trinomial 2x² − 10x + 12 using its roots (2 and 3).","Scomponi il trinomio 2x² − 10x + 12 usando le sue radici (2 e 3)."]'::jsonb, '[["2(x − 2)(x − 3)","2(x − 2)(x − 3)"],["(x − 2)(x − 3)","(x − 2)(x − 3)"],["2(x + 2)(x + 3)","2(x + 2)(x + 3)"],["(2x − 2)(2x − 3)","(2x − 2)(2x − 3)"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Factor the trinomial 2x² − 10x + 12 using its roots (2 and 3).","Scomponi il trinomio 2x² − 10x + 12 usando le sue radici (2 e 3)."]'::jsonb
+    and existing.choices = '[["2(x − 2)(x − 3)","2(x − 2)(x − 3)"],["(x − 2)(x − 3)","(x − 2)(x − 3)"],["2(x + 2)(x + 3)","2(x + 2)(x + 3)"],["(2x − 2)(2x − 3)","(2x − 2)(2x − 3)"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m5', '["Solve the biquadratic equation x⁴ − 13x² + 36 = 0.","Risolvi l’equazione biquadratica x⁴ − 13x² + 36 = 0."]'::jsonb, '[["x = ±2 and x = ±3","x = ±2 e x = ±3"],["x = 4 and x = 9 only","Solo x = 4 e x = 9"],["x = +2 and x = +3 only","Solo x = +2 e x = +3"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m5'
+    and existing.prompt = '["Solve the biquadratic equation x⁴ − 13x² + 36 = 0.","Risolvi l’equazione biquadratica x⁴ − 13x² + 36 = 0."]'::jsonb
+    and existing.choices = '[["x = ±2 and x = ±3","x = ±2 e x = ±3"],["x = 4 and x = 9 only","Solo x = 4 e x = 9"],["x = +2 and x = +3 only","Solo x = +2 e x = +3"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Solve the biquadratic equation x⁴ − 13x² + 36 = 0.","Risolvi l’equazione biquadratica x⁴ − 13x² + 36 = 0."]'::jsonb, '[["x = ±2 and x = ±3","x = ±2 e x = ±3"],["x = 4 and x = 9 only","Solo x = 4 e x = 9"],["x = +2 and x = +3 only","Solo x = +2 e x = +3"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve the biquadratic equation x⁴ − 13x² + 36 = 0.","Risolvi l’equazione biquadratica x⁴ − 13x² + 36 = 0."]'::jsonb
+    and existing.choices = '[["x = ±2 and x = ±3","x = ±2 e x = ±3"],["x = 4 and x = 9 only","Solo x = 4 e x = 9"],["x = +2 and x = +3 only","Solo x = +2 e x = +3"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m5', '["Find the intersections of the system: y = x² and y = x + 6.","Trova le intersezioni del sistema: y = x² e y = x + 6."]'::jsonb, '[["(−2, 4) and (3, 9)","(−2, 4) e (3, 9)"],["(2, 4) and (−3, 9)","(2, 4) e (−3, 9)"],["(0, 6) and (6, 36)","(0, 6) e (6, 36)"],["Only (3, 9)","Solo (3, 9)"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m5'
+    and existing.prompt = '["Find the intersections of the system: y = x² and y = x + 6.","Trova le intersezioni del sistema: y = x² e y = x + 6."]'::jsonb
+    and existing.choices = '[["(−2, 4) and (3, 9)","(−2, 4) e (3, 9)"],["(2, 4) and (−3, 9)","(2, 4) e (−3, 9)"],["(0, 6) and (6, 36)","(0, 6) e (6, 36)"],["Only (3, 9)","Solo (3, 9)"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Find the intersections of the system: y = x² and y = x + 6.","Trova le intersezioni del sistema: y = x² e y = x + 6."]'::jsonb, '[["(−2, 4) and (3, 9)","(−2, 4) e (3, 9)"],["(2, 4) and (−3, 9)","(2, 4) e (−3, 9)"],["(0, 6) and (6, 36)","(0, 6) e (6, 36)"],["Only (3, 9)","Solo (3, 9)"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Find the intersections of the system: y = x² and y = x + 6.","Trova le intersezioni del sistema: y = x² e y = x + 6."]'::jsonb
+    and existing.choices = '[["(−2, 4) and (3, 9)","(−2, 4) e (3, 9)"],["(2, 4) and (−3, 9)","(2, 4) e (−3, 9)"],["(0, 6) and (6, 36)","(0, 6) e (6, 36)"],["Only (3, 9)","Solo (3, 9)"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m6', '["Solve the inequality: x² − 5x + 6 < 0.","Risolvi la disequazione: x² − 5x + 6 < 0."]'::jsonb, '[["2 < x < 3","2 < x < 3"],["x < 2 ∨ x > 3","x < 2 ∨ x > 3"],["−3 < x < −2","−3 < x < −2"],["∀ x ∈ ℝ","∀ x ∈ ℝ"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m6'
+    and existing.prompt = '["Solve the inequality: x² − 5x + 6 < 0.","Risolvi la disequazione: x² − 5x + 6 < 0."]'::jsonb
+    and existing.choices = '[["2 < x < 3","2 < x < 3"],["x < 2 ∨ x > 3","x < 2 ∨ x > 3"],["−3 < x < −2","−3 < x < −2"],["∀ x ∈ ℝ","∀ x ∈ ℝ"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Solve the inequality: x² − 5x + 6 < 0.","Risolvi la disequazione: x² − 5x + 6 < 0."]'::jsonb, '[["2 < x < 3","2 < x < 3"],["x < 2 ∨ x > 3","x < 2 ∨ x > 3"],["−3 < x < −2","−3 < x < −2"],["∀ x ∈ ℝ","∀ x ∈ ℝ"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve the inequality: x² − 5x + 6 < 0.","Risolvi la disequazione: x² − 5x + 6 < 0."]'::jsonb
+    and existing.choices = '[["2 < x < 3","2 < x < 3"],["x < 2 ∨ x > 3","x < 2 ∨ x > 3"],["−3 < x < −2","−3 < x < −2"],["∀ x ∈ ℝ","∀ x ∈ ℝ"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m6', '["Solve the inequality: x² − 4 ≥ 0.","Risolvi la disequazione: x² − 4 ≥ 0."]'::jsonb, '[["x ≤ −2 ∨ x ≥ 2","x ≤ −2 ∨ x ≥ 2"],["−2 ≤ x ≤ 2","−2 ≤ x ≤ 2"],["x ≥ 2 only","Solo x ≥ 2"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m6'
+    and existing.prompt = '["Solve the inequality: x² − 4 ≥ 0.","Risolvi la disequazione: x² − 4 ≥ 0."]'::jsonb
+    and existing.choices = '[["x ≤ −2 ∨ x ≥ 2","x ≤ −2 ∨ x ≥ 2"],["−2 ≤ x ≤ 2","−2 ≤ x ≤ 2"],["x ≥ 2 only","Solo x ≥ 2"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Solve the inequality: x² − 4 ≥ 0.","Risolvi la disequazione: x² − 4 ≥ 0."]'::jsonb, '[["x ≤ −2 ∨ x ≥ 2","x ≤ −2 ∨ x ≥ 2"],["−2 ≤ x ≤ 2","−2 ≤ x ≤ 2"],["x ≥ 2 only","Solo x ≥ 2"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve the inequality: x² − 4 ≥ 0.","Risolvi la disequazione: x² − 4 ≥ 0."]'::jsonb
+    and existing.choices = '[["x ≤ −2 ∨ x ≥ 2","x ≤ −2 ∨ x ≥ 2"],["−2 ≤ x ≤ 2","−2 ≤ x ≤ 2"],["x ≥ 2 only","Solo x ≥ 2"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m6', '["What is the solution of −x² + 9 > 0?","Qual è la soluzione di −x² + 9 > 0?"]'::jsonb, '[["−3 < x < 3","−3 < x < 3"],["x < −3 ∨ x > 3","x < −3 ∨ x > 3"],["x > 3","x > 3"],["Impossible","Impossibile"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m6'
+    and existing.prompt = '["What is the solution of −x² + 9 > 0?","Qual è la soluzione di −x² + 9 > 0?"]'::jsonb
+    and existing.choices = '[["−3 < x < 3","−3 < x < 3"],["x < −3 ∨ x > 3","x < −3 ∨ x > 3"],["x > 3","x > 3"],["Impossible","Impossibile"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["What is the solution of −x² + 9 > 0?","Qual è la soluzione di −x² + 9 > 0?"]'::jsonb, '[["−3 < x < 3","−3 < x < 3"],["x < −3 ∨ x > 3","x < −3 ∨ x > 3"],["x > 3","x > 3"],["Impossible","Impossibile"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What is the solution of −x² + 9 > 0?","Qual è la soluzione di −x² + 9 > 0?"]'::jsonb
+    and existing.choices = '[["−3 < x < 3","−3 < x < 3"],["x < −3 ∨ x > 3","x < −3 ∨ x > 3"],["x > 3","x > 3"],["Impossible","Impossibile"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m6', '["What is the solution set of (x − 4)² > 0?","Qual è l’insieme delle soluzioni di (x − 4)² > 0?"]'::jsonb, '[["∀ x ∈ ℝ with x ≠ 4","∀ x ∈ ℝ con x ≠ 4"],["Only x = 4","Solo x = 4"],["∀ x ∈ ℝ (including 4)","∀ x ∈ ℝ (incluso 4)"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m6'
+    and existing.prompt = '["What is the solution set of (x − 4)² > 0?","Qual è l’insieme delle soluzioni di (x − 4)² > 0?"]'::jsonb
+    and existing.choices = '[["∀ x ∈ ℝ with x ≠ 4","∀ x ∈ ℝ con x ≠ 4"],["Only x = 4","Solo x = 4"],["∀ x ∈ ℝ (including 4)","∀ x ∈ ℝ (incluso 4)"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["What is the solution set of (x − 4)² > 0?","Qual è l’insieme delle soluzioni di (x − 4)² > 0?"]'::jsonb, '[["∀ x ∈ ℝ with x ≠ 4","∀ x ∈ ℝ con x ≠ 4"],["Only x = 4","Solo x = 4"],["∀ x ∈ ℝ (including 4)","∀ x ∈ ℝ (incluso 4)"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What is the solution set of (x − 4)² > 0?","Qual è l’insieme delle soluzioni di (x − 4)² > 0?"]'::jsonb
+    and existing.choices = '[["∀ x ∈ ℝ with x ≠ 4","∀ x ∈ ℝ con x ≠ 4"],["Only x = 4","Solo x = 4"],["∀ x ∈ ℝ (including 4)","∀ x ∈ ℝ (incluso 4)"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m6', '["What is the solution of x² + 16 < 0 in ℝ?","Qual è la soluzione di x² + 16 < 0 in ℝ?"]'::jsonb, '[["Impossible (empty set ∅)","Impossibile (insieme vuoto ∅)"],["−4 < x < 4","−4 < x < 4"],["x < −4 ∨ x > 4","x < −4 ∨ x > 4"],["∀ x ∈ ℝ","∀ x ∈ ℝ"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m6'
+    and existing.prompt = '["What is the solution of x² + 16 < 0 in ℝ?","Qual è la soluzione di x² + 16 < 0 in ℝ?"]'::jsonb
+    and existing.choices = '[["Impossible (empty set ∅)","Impossibile (insieme vuoto ∅)"],["−4 < x < 4","−4 < x < 4"],["x < −4 ∨ x > 4","x < −4 ∨ x > 4"],["∀ x ∈ ℝ","∀ x ∈ ℝ"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["What is the solution of x² + 16 < 0 in ℝ?","Qual è la soluzione di x² + 16 < 0 in ℝ?"]'::jsonb, '[["Impossible (empty set ∅)","Impossibile (insieme vuoto ∅)"],["−4 < x < 4","−4 < x < 4"],["x < −4 ∨ x > 4","x < −4 ∨ x > 4"],["∀ x ∈ ℝ","∀ x ∈ ℝ"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What is the solution of x² + 16 < 0 in ℝ?","Qual è la soluzione di x² + 16 < 0 in ℝ?"]'::jsonb
+    and existing.choices = '[["Impossible (empty set ∅)","Impossibile (insieme vuoto ∅)"],["−4 < x < 4","−4 < x < 4"],["x < −4 ∨ x > 4","x < −4 ∨ x > 4"],["∀ x ∈ ℝ","∀ x ∈ ℝ"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m7', '["In a right triangle, the projections of the legs on the hypotenuse are p₁ = 4 cm and p₂ = 9 cm. Find altitude h.","In un triangolo rettangolo le proiezioni dei cateti sull’ipotenusa misurano 4 cm e 9 cm. Trova l’altezza h."]'::jsonb, '[["6 cm","6 cm"],["13 cm","13 cm"],["36 cm","36 cm"],["6.5 cm","6,5 cm"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m7'
+    and existing.prompt = '["In a right triangle, the projections of the legs on the hypotenuse are p₁ = 4 cm and p₂ = 9 cm. Find altitude h.","In un triangolo rettangolo le proiezioni dei cateti sull’ipotenusa misurano 4 cm e 9 cm. Trova l’altezza h."]'::jsonb
+    and existing.choices = '[["6 cm","6 cm"],["13 cm","13 cm"],["36 cm","36 cm"],["6.5 cm","6,5 cm"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["In a right triangle, the projections of the legs on the hypotenuse are p₁ = 4 cm and p₂ = 9 cm. Find altitude h.","In un triangolo rettangolo le proiezioni dei cateti sull’ipotenusa misurano 4 cm e 9 cm. Trova l’altezza h."]'::jsonb, '[["6 cm","6 cm"],["13 cm","13 cm"],["36 cm","36 cm"],["6.5 cm","6,5 cm"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["In a right triangle, the projections of the legs on the hypotenuse are p₁ = 4 cm and p₂ = 9 cm. Find altitude h.","In un triangolo rettangolo le proiezioni dei cateti sull’ipotenusa misurano 4 cm e 9 cm. Trova l’altezza h."]'::jsonb
+    and existing.choices = '[["6 cm","6 cm"],["13 cm","13 cm"],["36 cm","36 cm"],["6.5 cm","6,5 cm"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m7', '["Hypotenuse a = 25 cm and projection p₁ = 9 cm. Find leg b using Euclid’s 1st Theorem.","Ipotenusa a = 25 cm e proiezione p₁ = 9 cm. Trova il cateto b col 1° Teorema di Euclide."]'::jsonb, '[["15 cm","15 cm"],["12 cm","12 cm"],["16 cm","16 cm"],["20 cm","20 cm"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m7'
+    and existing.prompt = '["Hypotenuse a = 25 cm and projection p₁ = 9 cm. Find leg b using Euclid’s 1st Theorem.","Ipotenusa a = 25 cm e proiezione p₁ = 9 cm. Trova il cateto b col 1° Teorema di Euclide."]'::jsonb
+    and existing.choices = '[["15 cm","15 cm"],["12 cm","12 cm"],["16 cm","16 cm"],["20 cm","20 cm"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Hypotenuse a = 25 cm and projection p₁ = 9 cm. Find leg b using Euclid’s 1st Theorem.","Ipotenusa a = 25 cm e proiezione p₁ = 9 cm. Trova il cateto b col 1° Teorema di Euclide."]'::jsonb, '[["15 cm","15 cm"],["12 cm","12 cm"],["16 cm","16 cm"],["20 cm","20 cm"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Hypotenuse a = 25 cm and projection p₁ = 9 cm. Find leg b using Euclid’s 1st Theorem.","Ipotenusa a = 25 cm e proiezione p₁ = 9 cm. Trova il cateto b col 1° Teorema di Euclide."]'::jsonb
+    and existing.choices = '[["15 cm","15 cm"],["12 cm","12 cm"],["16 cm","16 cm"],["20 cm","20 cm"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m7', '["If a triangle has sides 6 cm, 8 cm, and 10 cm, what type of triangle is it?","Un triangolo ha lati 6 cm, 8 cm e 10 cm. Di che triangolo si tratta?"]'::jsonb, '[["Right triangle (6² + 8² = 10²)","Triangolo rettangolo (6² + 8² = 10²)"],["Equilateral triangle","Triangolo equilatero"],["Obtuse triangle","Triangolo ottusangolo"],["Impossible triangle","Triangolo impossibile"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m7'
+    and existing.prompt = '["If a triangle has sides 6 cm, 8 cm, and 10 cm, what type of triangle is it?","Un triangolo ha lati 6 cm, 8 cm e 10 cm. Di che triangolo si tratta?"]'::jsonb
+    and existing.choices = '[["Right triangle (6² + 8² = 10²)","Triangolo rettangolo (6² + 8² = 10²)"],["Equilateral triangle","Triangolo equilatero"],["Obtuse triangle","Triangolo ottusangolo"],["Impossible triangle","Triangolo impossibile"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["If a triangle has sides 6 cm, 8 cm, and 10 cm, what type of triangle is it?","Un triangolo ha lati 6 cm, 8 cm e 10 cm. Di che triangolo si tratta?"]'::jsonb, '[["Right triangle (6² + 8² = 10²)","Triangolo rettangolo (6² + 8² = 10²)"],["Equilateral triangle","Triangolo equilatero"],["Obtuse triangle","Triangolo ottusangolo"],["Impossible triangle","Triangolo impossibile"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["If a triangle has sides 6 cm, 8 cm, and 10 cm, what type of triangle is it?","Un triangolo ha lati 6 cm, 8 cm e 10 cm. Di che triangolo si tratta?"]'::jsonb
+    and existing.choices = '[["Right triangle (6² + 8² = 10²)","Triangolo rettangolo (6² + 8² = 10²)"],["Equilateral triangle","Triangolo equilatero"],["Obtuse triangle","Triangolo ottusangolo"],["Impossible triangle","Triangolo impossibile"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m7', '["For a square of side L, what is the exact diagonal length?","Per un quadrato di lato L, quanto vale esattamente la diagonale?"]'::jsonb, '[["L√2","L√2"],["2L","2L"],["L√3","L√3"],["L / 2","L / 2"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m7'
+    and existing.prompt = '["For a square of side L, what is the exact diagonal length?","Per un quadrato di lato L, quanto vale esattamente la diagonale?"]'::jsonb
+    and existing.choices = '[["L√2","L√2"],["2L","2L"],["L√3","L√3"],["L / 2","L / 2"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["For a square of side L, what is the exact diagonal length?","Per un quadrato di lato L, quanto vale esattamente la diagonale?"]'::jsonb, '[["L√2","L√2"],["2L","2L"],["L√3","L√3"],["L / 2","L / 2"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["For a square of side L, what is the exact diagonal length?","Per un quadrato di lato L, quanto vale esattamente la diagonale?"]'::jsonb
+    and existing.choices = '[["L√2","L√2"],["2L","2L"],["L√3","L√3"],["L / 2","L / 2"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m7', '["In an equilateral triangle of side 6 cm, what is the height h?","In un triangolo equilatero di lato 6 cm, quanto misura l’altezza h?"]'::jsonb, '[["3√3 cm","3√3 cm"],["3√2 cm","3√2 cm"],["6 cm","6 cm"],["3 cm","3 cm"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m7'
+    and existing.prompt = '["In an equilateral triangle of side 6 cm, what is the height h?","In un triangolo equilatero di lato 6 cm, quanto misura l’altezza h?"]'::jsonb
+    and existing.choices = '[["3√3 cm","3√3 cm"],["3√2 cm","3√2 cm"],["6 cm","6 cm"],["3 cm","3 cm"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["In an equilateral triangle of side 6 cm, what is the height h?","In un triangolo equilatero di lato 6 cm, quanto misura l’altezza h?"]'::jsonb, '[["3√3 cm","3√3 cm"],["3√2 cm","3√2 cm"],["6 cm","6 cm"],["3 cm","3 cm"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["In an equilateral triangle of side 6 cm, what is the height h?","In un triangolo equilatero di lato 6 cm, quanto misura l’altezza h?"]'::jsonb
+    and existing.choices = '[["3√3 cm","3√3 cm"],["3√2 cm","3√2 cm"],["6 cm","6 cm"],["3 cm","3 cm"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m8', '["Two similar triangles have side ratio k = 3. What is the ratio of their AREAS?","Due triangoli simili hanno rapporto tra i lati k = 3. Qual è il rapporto tra le loro AREE?"]'::jsonb, '[["9 (k² = 3²)","9 (k² = 3²)"],["3","3"],["6","6"],["27","27"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m8'
+    and existing.prompt = '["Two similar triangles have side ratio k = 3. What is the ratio of their AREAS?","Due triangoli simili hanno rapporto tra i lati k = 3. Qual è il rapporto tra le loro AREE?"]'::jsonb
+    and existing.choices = '[["9 (k² = 3²)","9 (k² = 3²)"],["3","3"],["6","6"],["27","27"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Two similar triangles have side ratio k = 3. What is the ratio of their AREAS?","Due triangoli simili hanno rapporto tra i lati k = 3. Qual è il rapporto tra le loro AREE?"]'::jsonb, '[["9 (k² = 3²)","9 (k² = 3²)"],["3","3"],["6","6"],["27","27"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Two similar triangles have side ratio k = 3. What is the ratio of their AREAS?","Due triangoli simili hanno rapporto tra i lati k = 3. Qual è il rapporto tra le loro AREE?"]'::jsonb
+    and existing.choices = '[["9 (k² = 3²)","9 (k² = 3²)"],["3","3"],["6","6"],["27","27"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m8', '["A central angle measures 110°. How big is an inscribed angle on the same arc?","Un angolo al centro misura 110°. Quanto misura l’angolo alla circonferenza sullo stesso arco?"]'::jsonb, '[["55°","55°"],["220°","220°"],["110°","110°"],["70°","70°"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m8'
+    and existing.prompt = '["A central angle measures 110°. How big is an inscribed angle on the same arc?","Un angolo al centro misura 110°. Quanto misura l’angolo alla circonferenza sullo stesso arco?"]'::jsonb
+    and existing.choices = '[["55°","55°"],["220°","220°"],["110°","110°"],["70°","70°"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["A central angle measures 110°. How big is an inscribed angle on the same arc?","Un angolo al centro misura 110°. Quanto misura l’angolo alla circonferenza sullo stesso arco?"]'::jsonb, '[["55°","55°"],["220°","220°"],["110°","110°"],["70°","70°"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["A central angle measures 110°. How big is an inscribed angle on the same arc?","Un angolo al centro misura 110°. Quanto misura l’angolo alla circonferenza sullo stesso arco?"]'::jsonb
+    and existing.choices = '[["55°","55°"],["220°","220°"],["110°","110°"],["70°","70°"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m8', '["What is always true about a triangle inscribed in a semicircle with the diameter as one side?","Cosa vale sempre per un triangolo inscritto in una semicirconferenza con il diametro come lato?"]'::jsonb, '[["It is a right triangle (90° opposite the diameter)","È un triangolo rettangolo (90° opposto al diametro)"],["It is always equilateral","È sempre equilatero"],["Its perimeter equals πd","Il perimetro vale πd"],["It has an obtuse angle of 120°","Ha un angolo ottuso di 120°"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m8'
+    and existing.prompt = '["What is always true about a triangle inscribed in a semicircle with the diameter as one side?","Cosa vale sempre per un triangolo inscritto in una semicirconferenza con il diametro come lato?"]'::jsonb
+    and existing.choices = '[["It is a right triangle (90° opposite the diameter)","È un triangolo rettangolo (90° opposto al diametro)"],["It is always equilateral","È sempre equilatero"],["Its perimeter equals πd","Il perimetro vale πd"],["It has an obtuse angle of 120°","Ha un angolo ottuso di 120°"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["What is always true about a triangle inscribed in a semicircle with the diameter as one side?","Cosa vale sempre per un triangolo inscritto in una semicirconferenza con il diametro come lato?"]'::jsonb, '[["It is a right triangle (90° opposite the diameter)","È un triangolo rettangolo (90° opposto al diametro)"],["It is always equilateral","È sempre equilatero"],["Its perimeter equals πd","Il perimetro vale πd"],["It has an obtuse angle of 120°","Ha un angolo ottuso di 120°"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What is always true about a triangle inscribed in a semicircle with the diameter as one side?","Cosa vale sempre per un triangolo inscritto in una semicirconferenza con il diametro come lato?"]'::jsonb
+    and existing.choices = '[["It is a right triangle (90° opposite the diameter)","È un triangolo rettangolo (90° opposto al diametro)"],["It is always equilateral","È sempre equilatero"],["Its perimeter equals πd","Il perimetro vale πd"],["It has an obtuse angle of 120°","Ha un angolo ottuso di 120°"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m8', '["By Thales’ Theorem, three parallels cut two lines into segments 4, 6 on line 1 and 6, x on line 2. Find x.","Per il teorema di Talete, tre parallele tagliano segmenti 4 e 6 su r₁ e 6, x su r₂. Trova x."]'::jsonb, '[["x = 9","x = 9"],["x = 8","x = 8"],["x = 4","x = 4"],["x = 12","x = 12"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m8'
+    and existing.prompt = '["By Thales’ Theorem, three parallels cut two lines into segments 4, 6 on line 1 and 6, x on line 2. Find x.","Per il teorema di Talete, tre parallele tagliano segmenti 4 e 6 su r₁ e 6, x su r₂. Trova x."]'::jsonb
+    and existing.choices = '[["x = 9","x = 9"],["x = 8","x = 8"],["x = 4","x = 4"],["x = 12","x = 12"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["By Thales’ Theorem, three parallels cut two lines into segments 4, 6 on line 1 and 6, x on line 2. Find x.","Per il teorema di Talete, tre parallele tagliano segmenti 4 e 6 su r₁ e 6, x su r₂. Trova x."]'::jsonb, '[["x = 9","x = 9"],["x = 8","x = 8"],["x = 4","x = 4"],["x = 12","x = 12"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["By Thales’ Theorem, three parallels cut two lines into segments 4, 6 on line 1 and 6, x on line 2. Find x.","Per il teorema di Talete, tre parallele tagliano segmenti 4 e 6 su r₁ e 6, x su r₂. Trova x."]'::jsonb
+    and existing.choices = '[["x = 9","x = 9"],["x = 8","x = 8"],["x = 4","x = 4"],["x = 12","x = 12"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m8', '["In any quadrilateral inscribed in a circle, what is the sum of two opposite angles?","In un quadrilatero inscritto in una circonferenza, quanto vale la somma di due angoli opposti?"]'::jsonb, '[["180° (supplementary)","180° (supplementari)"],["90° (complementary)","90° (complementari)"],["360°","360°"],["120°","120°"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m8'
+    and existing.prompt = '["In any quadrilateral inscribed in a circle, what is the sum of two opposite angles?","In un quadrilatero inscritto in una circonferenza, quanto vale la somma di due angoli opposti?"]'::jsonb
+    and existing.choices = '[["180° (supplementary)","180° (supplementari)"],["90° (complementary)","90° (complementari)"],["360°","360°"],["120°","120°"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["In any quadrilateral inscribed in a circle, what is the sum of two opposite angles?","In un quadrilatero inscritto in una circonferenza, quanto vale la somma di due angoli opposti?"]'::jsonb, '[["180° (supplementary)","180° (supplementari)"],["90° (complementary)","90° (complementari)"],["360°","360°"],["120°","120°"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["In any quadrilateral inscribed in a circle, what is the sum of two opposite angles?","In un quadrilatero inscritto in una circonferenza, quanto vale la somma di due angoli opposti?"]'::jsonb
+    and existing.choices = '[["180° (supplementary)","180° (supplementari)"],["90° (complementary)","90° (complementari)"],["360°","360°"],["120°","120°"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m9', '["A bag contains 3 red, 5 blue, and 2 green marbles. What is the probability of drawing a marble that is NOT red?","Un’urna contiene 3 palline rosse, 5 blu e 2 verdi. Qual è la probabilità di estrarre una pallina NON rossa?"]'::jsonb, '[["7/10 (or 0.7)","7/10 (oppure 0,7)"],["3/10","3/10"],["5/10","5/10"],["1/3","1/3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m9'
+    and existing.prompt = '["A bag contains 3 red, 5 blue, and 2 green marbles. What is the probability of drawing a marble that is NOT red?","Un’urna contiene 3 palline rosse, 5 blu e 2 verdi. Qual è la probabilità di estrarre una pallina NON rossa?"]'::jsonb
+    and existing.choices = '[["7/10 (or 0.7)","7/10 (oppure 0,7)"],["3/10","3/10"],["5/10","5/10"],["1/3","1/3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["A bag contains 3 red, 5 blue, and 2 green marbles. What is the probability of drawing a marble that is NOT red?","Un’urna contiene 3 palline rosse, 5 blu e 2 verdi. Qual è la probabilità di estrarre una pallina NON rossa?"]'::jsonb, '[["7/10 (or 0.7)","7/10 (oppure 0,7)"],["3/10","3/10"],["5/10","5/10"],["1/3","1/3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["A bag contains 3 red, 5 blue, and 2 green marbles. What is the probability of drawing a marble that is NOT red?","Un’urna contiene 3 palline rosse, 5 blu e 2 verdi. Qual è la probabilità di estrarre una pallina NON rossa?"]'::jsonb
+    and existing.choices = '[["7/10 (or 0.7)","7/10 (oppure 0,7)"],["3/10","3/10"],["5/10","5/10"],["1/3","1/3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m9', '["Two fair 6-sided dice are rolled. What is the probability that the sum equals 7?","Lanciando due dadi equi a 6 facce, qual è la probabilità che la somma sia 7?"]'::jsonb, '[["6/36 = 1/6","6/36 = 1/6"],["1/36","1/36"],["7/36","7/36"],["1/12","1/12"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m9'
+    and existing.prompt = '["Two fair 6-sided dice are rolled. What is the probability that the sum equals 7?","Lanciando due dadi equi a 6 facce, qual è la probabilità che la somma sia 7?"]'::jsonb
+    and existing.choices = '[["6/36 = 1/6","6/36 = 1/6"],["1/36","1/36"],["7/36","7/36"],["1/12","1/12"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Two fair 6-sided dice are rolled. What is the probability that the sum equals 7?","Lanciando due dadi equi a 6 facce, qual è la probabilità che la somma sia 7?"]'::jsonb, '[["6/36 = 1/6","6/36 = 1/6"],["1/36","1/36"],["7/36","7/36"],["1/12","1/12"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Two fair 6-sided dice are rolled. What is the probability that the sum equals 7?","Lanciando due dadi equi a 6 facce, qual è la probabilità che la somma sia 7?"]'::jsonb
+    and existing.choices = '[["6/36 = 1/6","6/36 = 1/6"],["1/36","1/36"],["7/36","7/36"],["1/12","1/12"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m9', '["From a standard 52-card deck, what is P(Heart OR King)? (13 Hearts, 4 Kings, 1 King of Hearts)","Da un mazzo da 52 carte, qual è P(Cuori O Re)? (13 Cuori, 4 Re, 1 Re di Cuori)"]'::jsonb, '[["16/52 = 4/13","16/52 = 4/13"],["17/52","17/52"],["13/52","13/52"],["52/52","52/52"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m9'
+    and existing.prompt = '["From a standard 52-card deck, what is P(Heart OR King)? (13 Hearts, 4 Kings, 1 King of Hearts)","Da un mazzo da 52 carte, qual è P(Cuori O Re)? (13 Cuori, 4 Re, 1 Re di Cuori)"]'::jsonb
+    and existing.choices = '[["16/52 = 4/13","16/52 = 4/13"],["17/52","17/52"],["13/52","13/52"],["52/52","52/52"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["From a standard 52-card deck, what is P(Heart OR King)? (13 Hearts, 4 Kings, 1 King of Hearts)","Da un mazzo da 52 carte, qual è P(Cuori O Re)? (13 Cuori, 4 Re, 1 Re di Cuori)"]'::jsonb, '[["16/52 = 4/13","16/52 = 4/13"],["17/52","17/52"],["13/52","13/52"],["52/52","52/52"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["From a standard 52-card deck, what is P(Heart OR King)? (13 Hearts, 4 Kings, 1 King of Hearts)","Da un mazzo da 52 carte, qual è P(Cuori O Re)? (13 Cuori, 4 Re, 1 Re di Cuori)"]'::jsonb
+    and existing.choices = '[["16/52 = 4/13","16/52 = 4/13"],["17/52","17/52"],["13/52","13/52"],["52/52","52/52"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m9', '["A coin is tossed 3 times independently. What is the probability of getting AT LEAST one Head?","Lanciando una moneta 3 volte, qual è la probabilità di ottenere ALMENO una Testa?"]'::jsonb, '[["7/8","7/8"],["1/8","1/8"],["3/8","3/8"],["1/2","1/2"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m9'
+    and existing.prompt = '["A coin is tossed 3 times independently. What is the probability of getting AT LEAST one Head?","Lanciando una moneta 3 volte, qual è la probabilità di ottenere ALMENO una Testa?"]'::jsonb
+    and existing.choices = '[["7/8","7/8"],["1/8","1/8"],["3/8","3/8"],["1/2","1/2"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["A coin is tossed 3 times independently. What is the probability of getting AT LEAST one Head?","Lanciando una moneta 3 volte, qual è la probabilità di ottenere ALMENO una Testa?"]'::jsonb, '[["7/8","7/8"],["1/8","1/8"],["3/8","3/8"],["1/2","1/2"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["A coin is tossed 3 times independently. What is the probability of getting AT LEAST one Head?","Lanciando una moneta 3 volte, qual è la probabilità di ottenere ALMENO una Testa?"]'::jsonb
+    and existing.choices = '[["7/8","7/8"],["1/8","1/8"],["3/8","3/8"],["1/2","1/2"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'math_l2_m9', '["Combined review: A parabola-like quadratic x² − 5x + 4 ≤ 0 gives integer solutions. How many integers satisfy it?","Verifica finale: quanti numeri interi soddisfano x² − 5x + 4 ≤ 0?"]'::jsonb, '[["4 integers (1, 2, 3, 4)","4 numeri interi (1, 2, 3, 4)"],["2 integers (1 and 4)","2 numeri interi (1 e 4)"],["3 integers (2, 3, 4)","3 numeri interi (2, 3, 4)"],["Infinitely many integers","Infiniti numeri interi"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'math_l2_m9'
+    and existing.prompt = '["Combined review: A parabola-like quadratic x² − 5x + 4 ≤ 0 gives integer solutions. How many integers satisfy it?","Verifica finale: quanti numeri interi soddisfano x² − 5x + 4 ≤ 0?"]'::jsonb
+    and existing.choices = '[["4 integers (1, 2, 3, 4)","4 numeri interi (1, 2, 3, 4)"],["2 integers (1 and 4)","2 numeri interi (1 e 4)"],["3 integers (2, 3, 4)","3 numeri interi (2, 3, 4)"],["Infinitely many integers","Infiniti numeri interi"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade10', 'math10', 'mix', '["Combined review: A parabola-like quadratic x² − 5x + 4 ≤ 0 gives integer solutions. How many integers satisfy it?","Verifica finale: quanti numeri interi soddisfano x² − 5x + 4 ≤ 0?"]'::jsonb, '[["4 integers (1, 2, 3, 4)","4 numeri interi (1, 2, 3, 4)"],["2 integers (1 and 4)","2 numeri interi (1 e 4)"],["3 integers (2, 3, 4)","3 numeri interi (2, 3, 4)"],["Infinitely many integers","Infiniti numeri interi"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade10'
+    and existing.subject = 'math10'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Combined review: A parabola-like quadratic x² − 5x + 4 ≤ 0 gives integer solutions. How many integers satisfy it?","Verifica finale: quanti numeri interi soddisfano x² − 5x + 4 ≤ 0?"]'::jsonb
+    and existing.choices = '[["4 integers (1, 2, 3, 4)","4 numeri interi (1, 2, 3, 4)"],["2 integers (1 and 4)","2 numeri interi (1 e 4)"],["3 integers (2, 3, 4)","3 numeri interi (2, 3, 4)"],["Infinitely many integers","Infiniti numeri interi"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
 select 'grade11', 'chem11', 'chem_l3_m1', '["Under what sign combination of ΔH and ΔS is a reaction spontaneous (ΔG < 0) at ALL temperatures?","Per quale combinazione di segni di ΔH e ΔS una reazione è spontanea (ΔG < 0) a TUTTE le temperature?"]'::jsonb, '[["ΔH < 0 (exothermic) and ΔS > 0 (entropy increases)","ΔH < 0 (esotermica) e ΔS > 0 (entropia aumenta)"],["ΔH > 0 (endothermic) and ΔS < 0 (entropy decreases)","ΔH > 0 (endotermica) e ΔS < 0 (entropia diminuisce)"],["ΔH > 0 and ΔS > 0","ΔH > 0 e ΔS > 0"],["ΔH < 0 and ΔS < 0","ΔH < 0 e ΔS < 0"]]'::jsonb, 0
 where not exists (
   select 1 from public.race_question_bank existing
@@ -29447,5 +30527,1085 @@ where not exists (
     and existing.mission_id = 'mix'
     and existing.prompt = '["Why do retreating Alpine glaciers combine BOTH a water-supply risk and a mountain-safety risk?","Perché il ritiro dei ghiacciai alpini genera sia un rischio idrico sia un rischio di instabilità in quota?"]'::jsonb
     and existing.choices = '[["Less summer meltwater starves valleys while melting permafrost destabilizes steep high slopes","Meno riserva idrica estiva riduce la portata dei fiumi mentre lo scongelamento del permafrost rende instabili le pareti"],["Melting glaciers freeze coastal southern ports in August","I ghiacciai in ritiro congelano i porti del Sud"],["Glacier retreat creates volcanic eruptions in Turin","Genera eruzioni vulcaniche a Torino"],["It stops winter rainfall everywhere across Sicily","Blocca le piogge in Sicilia"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m1', '["Find the natural domain of f(x) = √(x − 2) / (x − 6).","Determina il dominio naturale di f(x) = √(x − 2) / (x − 6)."]'::jsonb, '[["x ≥ 2 with x ≠ 6","x ≥ 2 con x ≠ 6"],["x > 2 with x ≠ 6","x > 2 con x ≠ 6"],["All real numbers except 6","Tutti i reali tranne 6"],["x ≥ 6","x ≥ 6"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m1'
+    and existing.prompt = '["Find the natural domain of f(x) = √(x − 2) / (x − 6).","Determina il dominio naturale di f(x) = √(x − 2) / (x − 6)."]'::jsonb
+    and existing.choices = '[["x ≥ 2 with x ≠ 6","x ≥ 2 con x ≠ 6"],["x > 2 with x ≠ 6","x > 2 con x ≠ 6"],["All real numbers except 6","Tutti i reali tranne 6"],["x ≥ 6","x ≥ 6"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Find the natural domain of f(x) = √(x − 2) / (x − 6).","Determina il dominio naturale di f(x) = √(x − 2) / (x − 6)."]'::jsonb, '[["x ≥ 2 with x ≠ 6","x ≥ 2 con x ≠ 6"],["x > 2 with x ≠ 6","x > 2 con x ≠ 6"],["All real numbers except 6","Tutti i reali tranne 6"],["x ≥ 6","x ≥ 6"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Find the natural domain of f(x) = √(x − 2) / (x − 6).","Determina il dominio naturale di f(x) = √(x − 2) / (x − 6)."]'::jsonb
+    and existing.choices = '[["x ≥ 2 with x ≠ 6","x ≥ 2 con x ≠ 6"],["x > 2 with x ≠ 6","x > 2 con x ≠ 6"],["All real numbers except 6","Tutti i reali tranne 6"],["x ≥ 6","x ≥ 6"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m1', '["Which property defines an ODD function?","Quale relazione definisce una funzione DISPARI?"]'::jsonb, '[["f(−x) = −f(x)","f(−x) = −f(x)"],["f(−x) = f(x)","f(−x) = f(x)"],["f(x) > 0 for all x","f(x) > 0 per ogni x"],["f(0) = 1","f(0) = 1"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m1'
+    and existing.prompt = '["Which property defines an ODD function?","Quale relazione definisce una funzione DISPARI?"]'::jsonb
+    and existing.choices = '[["f(−x) = −f(x)","f(−x) = −f(x)"],["f(−x) = f(x)","f(−x) = f(x)"],["f(x) > 0 for all x","f(x) > 0 per ogni x"],["f(0) = 1","f(0) = 1"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Which property defines an ODD function?","Quale relazione definisce una funzione DISPARI?"]'::jsonb, '[["f(−x) = −f(x)","f(−x) = −f(x)"],["f(−x) = f(x)","f(−x) = f(x)"],["f(x) > 0 for all x","f(x) > 0 per ogni x"],["f(0) = 1","f(0) = 1"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Which property defines an ODD function?","Quale relazione definisce una funzione DISPARI?"]'::jsonb
+    and existing.choices = '[["f(−x) = −f(x)","f(−x) = −f(x)"],["f(−x) = f(x)","f(−x) = f(x)"],["f(x) > 0 for all x","f(x) > 0 per ogni x"],["f(0) = 1","f(0) = 1"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m1', '["If f(x) = 2x − 6, what is the inverse function f⁻¹(x)?","Se f(x) = 2x − 6, qual è la funzione inversa f⁻¹(x)?"]'::jsonb, '[["f⁻¹(x) = (x + 6) / 2","f⁻¹(x) = (x + 6) / 2"],["f⁻¹(x) = 1 / (2x − 6)","f⁻¹(x) = 1 / (2x − 6)"],["f⁻¹(x) = 2x + 6","f⁻¹(x) = 2x + 6"],["f⁻¹(x) = (x − 6) / 2","f⁻¹(x) = (x − 6) / 2"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m1'
+    and existing.prompt = '["If f(x) = 2x − 6, what is the inverse function f⁻¹(x)?","Se f(x) = 2x − 6, qual è la funzione inversa f⁻¹(x)?"]'::jsonb
+    and existing.choices = '[["f⁻¹(x) = (x + 6) / 2","f⁻¹(x) = (x + 6) / 2"],["f⁻¹(x) = 1 / (2x − 6)","f⁻¹(x) = 1 / (2x − 6)"],["f⁻¹(x) = 2x + 6","f⁻¹(x) = 2x + 6"],["f⁻¹(x) = (x − 6) / 2","f⁻¹(x) = (x − 6) / 2"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["If f(x) = 2x − 6, what is the inverse function f⁻¹(x)?","Se f(x) = 2x − 6, qual è la funzione inversa f⁻¹(x)?"]'::jsonb, '[["f⁻¹(x) = (x + 6) / 2","f⁻¹(x) = (x + 6) / 2"],["f⁻¹(x) = 1 / (2x − 6)","f⁻¹(x) = 1 / (2x − 6)"],["f⁻¹(x) = 2x + 6","f⁻¹(x) = 2x + 6"],["f⁻¹(x) = (x − 6) / 2","f⁻¹(x) = (x − 6) / 2"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["If f(x) = 2x − 6, what is the inverse function f⁻¹(x)?","Se f(x) = 2x − 6, qual è la funzione inversa f⁻¹(x)?"]'::jsonb
+    and existing.choices = '[["f⁻¹(x) = (x + 6) / 2","f⁻¹(x) = (x + 6) / 2"],["f⁻¹(x) = 1 / (2x − 6)","f⁻¹(x) = 1 / (2x − 6)"],["f⁻¹(x) = 2x + 6","f⁻¹(x) = 2x + 6"],["f⁻¹(x) = (x − 6) / 2","f⁻¹(x) = (x − 6) / 2"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m1', '["Given f(x) = x + 3 and g(x) = x², what is the composite function g(f(x))?","Date f(x) = x + 3 e g(x) = x², quanto vale la funzione composta g(f(x))?"]'::jsonb, '[["(x + 3)²","(x + 3)²"],["x² + 3","x² + 3"],["x² + 3x","x² + 3x"],["(x² + 3)²","(x² + 3)²"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m1'
+    and existing.prompt = '["Given f(x) = x + 3 and g(x) = x², what is the composite function g(f(x))?","Date f(x) = x + 3 e g(x) = x², quanto vale la funzione composta g(f(x))?"]'::jsonb
+    and existing.choices = '[["(x + 3)²","(x + 3)²"],["x² + 3","x² + 3"],["x² + 3x","x² + 3x"],["(x² + 3)²","(x² + 3)²"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Given f(x) = x + 3 and g(x) = x², what is the composite function g(f(x))?","Date f(x) = x + 3 e g(x) = x², quanto vale la funzione composta g(f(x))?"]'::jsonb, '[["(x + 3)²","(x + 3)²"],["x² + 3","x² + 3"],["x² + 3x","x² + 3x"],["(x² + 3)²","(x² + 3)²"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Given f(x) = x + 3 and g(x) = x², what is the composite function g(f(x))?","Date f(x) = x + 3 e g(x) = x², quanto vale la funzione composta g(f(x))?"]'::jsonb
+    and existing.choices = '[["(x + 3)²","(x + 3)²"],["x² + 3","x² + 3"],["x² + 3x","x² + 3x"],["(x² + 3)²","(x² + 3)²"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m1', '["Why is f(x) = x² (over all ℝ) NOT invertible unless we restrict its domain?","Perché f(x) = x² su tutto ℝ NON è invertibile senza restringere il dominio?"]'::jsonb, '[["It fails the horizontal line test (not injective: f(−2) = f(2) = 4)","Non è iniettiva (f(−2) = f(2) = 4)"],["Its graph crosses the y-axis","Il grafico tocca l’asse y"],["It has a denominator of zero","Ha un denominatore nullo"],["Squaring numbers is never continuous","L’elevamento al quadrato non è continuo"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m1'
+    and existing.prompt = '["Why is f(x) = x² (over all ℝ) NOT invertible unless we restrict its domain?","Perché f(x) = x² su tutto ℝ NON è invertibile senza restringere il dominio?"]'::jsonb
+    and existing.choices = '[["It fails the horizontal line test (not injective: f(−2) = f(2) = 4)","Non è iniettiva (f(−2) = f(2) = 4)"],["Its graph crosses the y-axis","Il grafico tocca l’asse y"],["It has a denominator of zero","Ha un denominatore nullo"],["Squaring numbers is never continuous","L’elevamento al quadrato non è continuo"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Why is f(x) = x² (over all ℝ) NOT invertible unless we restrict its domain?","Perché f(x) = x² su tutto ℝ NON è invertibile senza restringere il dominio?"]'::jsonb, '[["It fails the horizontal line test (not injective: f(−2) = f(2) = 4)","Non è iniettiva (f(−2) = f(2) = 4)"],["Its graph crosses the y-axis","Il grafico tocca l’asse y"],["It has a denominator of zero","Ha un denominatore nullo"],["Squaring numbers is never continuous","L’elevamento al quadrato non è continuo"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Why is f(x) = x² (over all ℝ) NOT invertible unless we restrict its domain?","Perché f(x) = x² su tutto ℝ NON è invertibile senza restringere il dominio?"]'::jsonb
+    and existing.choices = '[["It fails the horizontal line test (not injective: f(−2) = f(2) = 4)","Non è iniettiva (f(−2) = f(2) = 4)"],["Its graph crosses the y-axis","Il grafico tocca l’asse y"],["It has a denominator of zero","Ha un denominatore nullo"],["Squaring numbers is never continuous","L’elevamento al quadrato non è continuo"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m2', '["Solve the inequality |x − 3| ≤ 4.","Risolvi la disequazione |x − 3| ≤ 4."]'::jsonb, '[["−1 ≤ x ≤ 7","−1 ≤ x ≤ 7"],["x ≤ −1 ∨ x ≥ 7","x ≤ −1 ∨ x ≥ 7"],["3 ≤ x ≤ 7","3 ≤ x ≤ 7"],["−7 ≤ x ≤ 1","−7 ≤ x ≤ 1"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m2'
+    and existing.prompt = '["Solve the inequality |x − 3| ≤ 4.","Risolvi la disequazione |x − 3| ≤ 4."]'::jsonb
+    and existing.choices = '[["−1 ≤ x ≤ 7","−1 ≤ x ≤ 7"],["x ≤ −1 ∨ x ≥ 7","x ≤ −1 ∨ x ≥ 7"],["3 ≤ x ≤ 7","3 ≤ x ≤ 7"],["−7 ≤ x ≤ 1","−7 ≤ x ≤ 1"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Solve the inequality |x − 3| ≤ 4.","Risolvi la disequazione |x − 3| ≤ 4."]'::jsonb, '[["−1 ≤ x ≤ 7","−1 ≤ x ≤ 7"],["x ≤ −1 ∨ x ≥ 7","x ≤ −1 ∨ x ≥ 7"],["3 ≤ x ≤ 7","3 ≤ x ≤ 7"],["−7 ≤ x ≤ 1","−7 ≤ x ≤ 1"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve the inequality |x − 3| ≤ 4.","Risolvi la disequazione |x − 3| ≤ 4."]'::jsonb
+    and existing.choices = '[["−1 ≤ x ≤ 7","−1 ≤ x ≤ 7"],["x ≤ −1 ∨ x ≥ 7","x ≤ −1 ∨ x ≥ 7"],["3 ≤ x ≤ 7","3 ≤ x ≤ 7"],["−7 ≤ x ≤ 1","−7 ≤ x ≤ 1"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m2', '["Solve the equation |2x − 5| = 3.","Risolvi l’equazione |2x − 5| = 3."]'::jsonb, '[["x = 4 and x = 1","x = 4 e x = 1"],["x = 4 only","Solo x = 4"],["x = −4 and x = −1","x = −4 e x = −1"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m2'
+    and existing.prompt = '["Solve the equation |2x − 5| = 3.","Risolvi l’equazione |2x − 5| = 3."]'::jsonb
+    and existing.choices = '[["x = 4 and x = 1","x = 4 e x = 1"],["x = 4 only","Solo x = 4"],["x = −4 and x = −1","x = −4 e x = −1"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Solve the equation |2x − 5| = 3.","Risolvi l’equazione |2x − 5| = 3."]'::jsonb, '[["x = 4 and x = 1","x = 4 e x = 1"],["x = 4 only","Solo x = 4"],["x = −4 and x = −1","x = −4 e x = −1"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve the equation |2x − 5| = 3.","Risolvi l’equazione |2x − 5| = 3."]'::jsonb
+    and existing.choices = '[["x = 4 and x = 1","x = 4 e x = 1"],["x = 4 only","Solo x = 4"],["x = −4 and x = −1","x = −4 e x = −1"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m2', '["Solve the fractional inequality (x − 2) / (x + 1) ≥ 0.","Risolvi la disequazione fratta (x − 2) / (x + 1) ≥ 0."]'::jsonb, '[["x < −1 ∨ x ≥ 2","x < −1 ∨ x ≥ 2"],["x ≤ −1 ∨ x ≥ 2","x ≤ −1 ∨ x ≥ 2"],["−1 < x ≤ 2","−1 < x ≤ 2"],["x ≥ 2 only","Solo x ≥ 2"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m2'
+    and existing.prompt = '["Solve the fractional inequality (x − 2) / (x + 1) ≥ 0.","Risolvi la disequazione fratta (x − 2) / (x + 1) ≥ 0."]'::jsonb
+    and existing.choices = '[["x < −1 ∨ x ≥ 2","x < −1 ∨ x ≥ 2"],["x ≤ −1 ∨ x ≥ 2","x ≤ −1 ∨ x ≥ 2"],["−1 < x ≤ 2","−1 < x ≤ 2"],["x ≥ 2 only","Solo x ≥ 2"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Solve the fractional inequality (x − 2) / (x + 1) ≥ 0.","Risolvi la disequazione fratta (x − 2) / (x + 1) ≥ 0."]'::jsonb, '[["x < −1 ∨ x ≥ 2","x < −1 ∨ x ≥ 2"],["x ≤ −1 ∨ x ≥ 2","x ≤ −1 ∨ x ≥ 2"],["−1 < x ≤ 2","−1 < x ≤ 2"],["x ≥ 2 only","Solo x ≥ 2"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve the fractional inequality (x − 2) / (x + 1) ≥ 0.","Risolvi la disequazione fratta (x − 2) / (x + 1) ≥ 0."]'::jsonb
+    and existing.choices = '[["x < −1 ∨ x ≥ 2","x < −1 ∨ x ≥ 2"],["x ≤ −1 ∨ x ≥ 2","x ≤ −1 ∨ x ≥ 2"],["−1 < x ≤ 2","−1 < x ≤ 2"],["x ≥ 2 only","Solo x ≥ 2"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m2', '["What is the solution set of |x + 7| = −3?","Qual è la soluzione di |x + 7| = −3?"]'::jsonb, '[["Impossible (∅)","Impossibile (∅)"],["x = −10 and x = −4","x = −10 e x = −4"],["x = −4","x = −4"],["∀ x ∈ ℝ","∀ x ∈ ℝ"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m2'
+    and existing.prompt = '["What is the solution set of |x + 7| = −3?","Qual è la soluzione di |x + 7| = −3?"]'::jsonb
+    and existing.choices = '[["Impossible (∅)","Impossibile (∅)"],["x = −10 and x = −4","x = −10 e x = −4"],["x = −4","x = −4"],["∀ x ∈ ℝ","∀ x ∈ ℝ"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["What is the solution set of |x + 7| = −3?","Qual è la soluzione di |x + 7| = −3?"]'::jsonb, '[["Impossible (∅)","Impossibile (∅)"],["x = −10 and x = −4","x = −10 e x = −4"],["x = −4","x = −4"],["∀ x ∈ ℝ","∀ x ∈ ℝ"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What is the solution set of |x + 7| = −3?","Qual è la soluzione di |x + 7| = −3?"]'::jsonb
+    and existing.choices = '[["Impossible (∅)","Impossibile (∅)"],["x = −10 and x = −4","x = −10 e x = −4"],["x = −4","x = −4"],["∀ x ∈ ℝ","∀ x ∈ ℝ"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m2', '["Solve |x| > 2.","Risolvi |x| > 2."]'::jsonb, '[["x < −2 ∨ x > 2","x < −2 ∨ x > 2"],["−2 < x < 2","−2 < x < 2"],["x > 2 only","Solo x > 2"],["x > −2","x > −2"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m2'
+    and existing.prompt = '["Solve |x| > 2.","Risolvi |x| > 2."]'::jsonb
+    and existing.choices = '[["x < −2 ∨ x > 2","x < −2 ∨ x > 2"],["−2 < x < 2","−2 < x < 2"],["x > 2 only","Solo x > 2"],["x > −2","x > −2"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Solve |x| > 2.","Risolvi |x| > 2."]'::jsonb, '[["x < −2 ∨ x > 2","x < −2 ∨ x > 2"],["−2 < x < 2","−2 < x < 2"],["x > 2 only","Solo x > 2"],["x > −2","x > −2"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve |x| > 2.","Risolvi |x| > 2."]'::jsonb
+    and existing.choices = '[["x < −2 ∨ x > 2","x < −2 ∨ x > 2"],["−2 < x < 2","−2 < x < 2"],["x > 2 only","Solo x > 2"],["x > −2","x > −2"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m3', '["Solve the irrational equation √(x + 7) = x + 1.","Risolvi l’equazione irrazionale √(x + 7) = x + 1."]'::jsonb, '[["x = 2 only (x = −3 is extraneous)","Solo x = 2 (x = −3 è estranea)"],["x = 2 and x = −3","x = 2 e x = −3"],["x = −3 only","Solo x = −3"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m3'
+    and existing.prompt = '["Solve the irrational equation √(x + 7) = x + 1.","Risolvi l’equazione irrazionale √(x + 7) = x + 1."]'::jsonb
+    and existing.choices = '[["x = 2 only (x = −3 is extraneous)","Solo x = 2 (x = −3 è estranea)"],["x = 2 and x = −3","x = 2 e x = −3"],["x = −3 only","Solo x = −3"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Solve the irrational equation √(x + 7) = x + 1.","Risolvi l’equazione irrazionale √(x + 7) = x + 1."]'::jsonb, '[["x = 2 only (x = −3 is extraneous)","Solo x = 2 (x = −3 è estranea)"],["x = 2 and x = −3","x = 2 e x = −3"],["x = −3 only","Solo x = −3"],["No real solutions","Nessuna soluzione reale"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve the irrational equation √(x + 7) = x + 1.","Risolvi l’equazione irrazionale √(x + 7) = x + 1."]'::jsonb
+    and existing.choices = '[["x = 2 only (x = −3 is extraneous)","Solo x = 2 (x = −3 è estranea)"],["x = 2 and x = −3","x = 2 e x = −3"],["x = −3 only","Solo x = −3"],["No real solutions","Nessuna soluzione reale"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m3', '["What is the solution of √(3x − 2) = −4?","Qual è la soluzione di √(3x − 2) = −4?"]'::jsonb, '[["Impossible (no solution)","Impossibile (nessuna soluzione)"],["x = 6","x = 6"],["x = 2/3","x = 2/3"],["x = −14/3","x = −14/3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m3'
+    and existing.prompt = '["What is the solution of √(3x − 2) = −4?","Qual è la soluzione di √(3x − 2) = −4?"]'::jsonb
+    and existing.choices = '[["Impossible (no solution)","Impossibile (nessuna soluzione)"],["x = 6","x = 6"],["x = 2/3","x = 2/3"],["x = −14/3","x = −14/3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["What is the solution of √(3x − 2) = −4?","Qual è la soluzione di √(3x − 2) = −4?"]'::jsonb, '[["Impossible (no solution)","Impossibile (nessuna soluzione)"],["x = 6","x = 6"],["x = 2/3","x = 2/3"],["x = −14/3","x = −14/3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What is the solution of √(3x − 2) = −4?","Qual è la soluzione di √(3x − 2) = −4?"]'::jsonb
+    and existing.choices = '[["Impossible (no solution)","Impossibile (nessuna soluzione)"],["x = 6","x = 6"],["x = 2/3","x = 2/3"],["x = −14/3","x = −14/3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m3', '["Solve the cube-root equation ∛(x + 5) = −2.","Risolvi l’equazione con radice cubica ∛(x + 5) = −2."]'::jsonb, '[["x = −13","x = −13"],["x = 3","x = 3"],["Impossible in ℝ","Impossibile in ℝ"],["x = −3","x = −3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m3'
+    and existing.prompt = '["Solve the cube-root equation ∛(x + 5) = −2.","Risolvi l’equazione con radice cubica ∛(x + 5) = −2."]'::jsonb
+    and existing.choices = '[["x = −13","x = −13"],["x = 3","x = 3"],["Impossible in ℝ","Impossibile in ℝ"],["x = −3","x = −3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Solve the cube-root equation ∛(x + 5) = −2.","Risolvi l’equazione con radice cubica ∛(x + 5) = −2."]'::jsonb, '[["x = −13","x = −13"],["x = 3","x = 3"],["Impossible in ℝ","Impossibile in ℝ"],["x = −3","x = −3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve the cube-root equation ∛(x + 5) = −2.","Risolvi l’equazione con radice cubica ∛(x + 5) = −2."]'::jsonb
+    and existing.choices = '[["x = −13","x = −13"],["x = 3","x = 3"],["Impossible in ℝ","Impossibile in ℝ"],["x = −3","x = −3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m3', '["Which condition system is equivalent to √A(x) < B(x)?","Quale sistema è equivalente alla disequazione √A(x) < B(x)?"]'::jsonb, '[["A(x) ≥ 0 ∧ B(x) > 0 ∧ A(x) < [B(x)]²","A(x) ≥ 0 ∧ B(x) > 0 ∧ A(x) < [B(x)]²"],["A(x) < [B(x)]² only","Solo A(x) < [B(x)]²"],["B(x) < 0 ∧ A(x) ≥ 0","B(x) < 0 ∧ A(x) ≥ 0"],["A(x) > [B(x)]²","A(x) > [B(x)]²"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m3'
+    and existing.prompt = '["Which condition system is equivalent to √A(x) < B(x)?","Quale sistema è equivalente alla disequazione √A(x) < B(x)?"]'::jsonb
+    and existing.choices = '[["A(x) ≥ 0 ∧ B(x) > 0 ∧ A(x) < [B(x)]²","A(x) ≥ 0 ∧ B(x) > 0 ∧ A(x) < [B(x)]²"],["A(x) < [B(x)]² only","Solo A(x) < [B(x)]²"],["B(x) < 0 ∧ A(x) ≥ 0","B(x) < 0 ∧ A(x) ≥ 0"],["A(x) > [B(x)]²","A(x) > [B(x)]²"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Which condition system is equivalent to √A(x) < B(x)?","Quale sistema è equivalente alla disequazione √A(x) < B(x)?"]'::jsonb, '[["A(x) ≥ 0 ∧ B(x) > 0 ∧ A(x) < [B(x)]²","A(x) ≥ 0 ∧ B(x) > 0 ∧ A(x) < [B(x)]²"],["A(x) < [B(x)]² only","Solo A(x) < [B(x)]²"],["B(x) < 0 ∧ A(x) ≥ 0","B(x) < 0 ∧ A(x) ≥ 0"],["A(x) > [B(x)]²","A(x) > [B(x)]²"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Which condition system is equivalent to √A(x) < B(x)?","Quale sistema è equivalente alla disequazione √A(x) < B(x)?"]'::jsonb
+    and existing.choices = '[["A(x) ≥ 0 ∧ B(x) > 0 ∧ A(x) < [B(x)]²","A(x) ≥ 0 ∧ B(x) > 0 ∧ A(x) < [B(x)]²"],["A(x) < [B(x)]² only","Solo A(x) < [B(x)]²"],["B(x) < 0 ∧ A(x) ≥ 0","B(x) < 0 ∧ A(x) ≥ 0"],["A(x) > [B(x)]²","A(x) > [B(x)]²"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m3', '["Solve √(x − 1) > −2.","Risolvi la disequazione √(x − 1) > −2."]'::jsonb, '[["x ≥ 1 (every x where the root exists)","x ≥ 1 (ovunque esista la radice)"],["x > 5","x > 5"],["Impossible","Impossibile"],["1 ≤ x < 5","1 ≤ x < 5"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m3'
+    and existing.prompt = '["Solve √(x − 1) > −2.","Risolvi la disequazione √(x − 1) > −2."]'::jsonb
+    and existing.choices = '[["x ≥ 1 (every x where the root exists)","x ≥ 1 (ovunque esista la radice)"],["x > 5","x > 5"],["Impossible","Impossibile"],["1 ≤ x < 5","1 ≤ x < 5"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Solve √(x − 1) > −2.","Risolvi la disequazione √(x − 1) > −2."]'::jsonb, '[["x ≥ 1 (every x where the root exists)","x ≥ 1 (ovunque esista la radice)"],["x > 5","x > 5"],["Impossible","Impossibile"],["1 ≤ x < 5","1 ≤ x < 5"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve √(x − 1) > −2.","Risolvi la disequazione √(x − 1) > −2."]'::jsonb
+    and existing.choices = '[["x ≥ 1 (every x where the root exists)","x ≥ 1 (ovunque esista la radice)"],["x > 5","x > 5"],["Impossible","Impossibile"],["1 ≤ x < 5","1 ≤ x < 5"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m4', '["Find the vertex V of the parabola y = x² − 6x + 5.","Trova il vertice V della parabola y = x² − 6x + 5."]'::jsonb, '[["V(3, −4)","V(3, −4)"],["V(−3, 32)","V(−3, 32)"],["V(6, 5)","V(6, 5)"],["V(3, 5)","V(3, 5)"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m4'
+    and existing.prompt = '["Find the vertex V of the parabola y = x² − 6x + 5.","Trova il vertice V della parabola y = x² − 6x + 5."]'::jsonb
+    and existing.choices = '[["V(3, −4)","V(3, −4)"],["V(−3, 32)","V(−3, 32)"],["V(6, 5)","V(6, 5)"],["V(3, 5)","V(3, 5)"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Find the vertex V of the parabola y = x² − 6x + 5.","Trova il vertice V della parabola y = x² − 6x + 5."]'::jsonb, '[["V(3, −4)","V(3, −4)"],["V(−3, 32)","V(−3, 32)"],["V(6, 5)","V(6, 5)"],["V(3, 5)","V(3, 5)"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Find the vertex V of the parabola y = x² − 6x + 5.","Trova il vertice V della parabola y = x² − 6x + 5."]'::jsonb
+    and existing.choices = '[["V(3, −4)","V(3, −4)"],["V(−3, 32)","V(−3, 32)"],["V(6, 5)","V(6, 5)"],["V(3, 5)","V(3, 5)"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m4', '["Find the center C and radius r of the circle x² + y² − 4x + 2y − 4 = 0.","Trova centro C e raggio r di x² + y² − 4x + 2y − 4 = 0."]'::jsonb, '[["C(2, −1) and r = 3","C(2, −1) e r = 3"],["C(−4, 2) and r = 4","C(−4, 2) e r = 4"],["C(−2, 1) and r = 3","C(−2, 1) e r = 3"],["C(2, −1) and r = 9","C(2, −1) e r = 9"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m4'
+    and existing.prompt = '["Find the center C and radius r of the circle x² + y² − 4x + 2y − 4 = 0.","Trova centro C e raggio r di x² + y² − 4x + 2y − 4 = 0."]'::jsonb
+    and existing.choices = '[["C(2, −1) and r = 3","C(2, −1) e r = 3"],["C(−4, 2) and r = 4","C(−4, 2) e r = 4"],["C(−2, 1) and r = 3","C(−2, 1) e r = 3"],["C(2, −1) and r = 9","C(2, −1) e r = 9"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Find the center C and radius r of the circle x² + y² − 4x + 2y − 4 = 0.","Trova centro C e raggio r di x² + y² − 4x + 2y − 4 = 0."]'::jsonb, '[["C(2, −1) and r = 3","C(2, −1) e r = 3"],["C(−4, 2) and r = 4","C(−4, 2) e r = 4"],["C(−2, 1) and r = 3","C(−2, 1) e r = 3"],["C(2, −1) and r = 9","C(2, −1) e r = 9"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Find the center C and radius r of the circle x² + y² − 4x + 2y − 4 = 0.","Trova centro C e raggio r di x² + y² − 4x + 2y − 4 = 0."]'::jsonb
+    and existing.choices = '[["C(2, −1) and r = 3","C(2, −1) e r = 3"],["C(−4, 2) and r = 4","C(−4, 2) e r = 4"],["C(−2, 1) and r = 3","C(−2, 1) e r = 3"],["C(2, −1) and r = 9","C(2, −1) e r = 9"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m4', '["Write the equation of the circle with center C(1, −3) and radius r = 5.","Scrivi l’equazione della circonferenza di centro C(1, −3) e raggio r = 5."]'::jsonb, '[["(x − 1)² + (y + 3)² = 25","(x − 1)² + (y + 3)² = 25"],["(x + 1)² + (y − 3)² = 25","(x + 1)² + (y − 3)² = 25"],["(x − 1)² + (y + 3)² = 5","(x − 1)² + (y + 3)² = 5"],["x² + y² = 25","x² + y² = 25"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m4'
+    and existing.prompt = '["Write the equation of the circle with center C(1, −3) and radius r = 5.","Scrivi l’equazione della circonferenza di centro C(1, −3) e raggio r = 5."]'::jsonb
+    and existing.choices = '[["(x − 1)² + (y + 3)² = 25","(x − 1)² + (y + 3)² = 25"],["(x + 1)² + (y − 3)² = 25","(x + 1)² + (y − 3)² = 25"],["(x − 1)² + (y + 3)² = 5","(x − 1)² + (y + 3)² = 5"],["x² + y² = 25","x² + y² = 25"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Write the equation of the circle with center C(1, −3) and radius r = 5.","Scrivi l’equazione della circonferenza di centro C(1, −3) e raggio r = 5."]'::jsonb, '[["(x − 1)² + (y + 3)² = 25","(x − 1)² + (y + 3)² = 25"],["(x + 1)² + (y − 3)² = 25","(x + 1)² + (y − 3)² = 25"],["(x − 1)² + (y + 3)² = 5","(x − 1)² + (y + 3)² = 5"],["x² + y² = 25","x² + y² = 25"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Write the equation of the circle with center C(1, −3) and radius r = 5.","Scrivi l’equazione della circonferenza di centro C(1, −3) e raggio r = 5."]'::jsonb
+    and existing.choices = '[["(x − 1)² + (y + 3)² = 25","(x − 1)² + (y + 3)² = 25"],["(x + 1)² + (y − 3)² = 25","(x + 1)² + (y − 3)² = 25"],["(x − 1)² + (y + 3)² = 5","(x − 1)² + (y + 3)² = 5"],["x² + y² = 25","x² + y² = 25"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m4', '["For parabola y = ax², what is the focus coordinate F?","Per la parabola con vertice nell’origine y = ax², quali sono le coordinate del fuoco F?"]'::jsonb, '[["F(0, 1 / (4a))","F(0, 1 / (4a))"],["F(0, a)","F(0, a)"],["F(1 / (4a), 0)","F(1 / (4a), 0)"],["F(0, −1 / (2a))","F(0, −1 / (2a))"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m4'
+    and existing.prompt = '["For parabola y = ax², what is the focus coordinate F?","Per la parabola con vertice nell’origine y = ax², quali sono le coordinate del fuoco F?"]'::jsonb
+    and existing.choices = '[["F(0, 1 / (4a))","F(0, 1 / (4a))"],["F(0, a)","F(0, a)"],["F(1 / (4a), 0)","F(1 / (4a), 0)"],["F(0, −1 / (2a))","F(0, −1 / (2a))"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["For parabola y = ax², what is the focus coordinate F?","Per la parabola con vertice nell’origine y = ax², quali sono le coordinate del fuoco F?"]'::jsonb, '[["F(0, 1 / (4a))","F(0, 1 / (4a))"],["F(0, a)","F(0, a)"],["F(1 / (4a), 0)","F(1 / (4a), 0)"],["F(0, −1 / (2a))","F(0, −1 / (2a))"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["For parabola y = ax², what is the focus coordinate F?","Per la parabola con vertice nell’origine y = ax², quali sono le coordinate del fuoco F?"]'::jsonb
+    and existing.choices = '[["F(0, 1 / (4a))","F(0, 1 / (4a))"],["F(0, a)","F(0, a)"],["F(1 / (4a), 0)","F(1 / (4a), 0)"],["F(0, −1 / (2a))","F(0, −1 / (2a))"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m4', '["If c = 0 in the circle equation x² + y² + ax + by + c = 0, what must be true?","Se c = 0 nell’equazione x² + y² + ax + by + c = 0, cosa è sempre vero?"]'::jsonb, '[["The circle passes through the origin (0, 0)","La circonferenza passa per l’origine (0, 0)"],["The center lies at (0, 0)","Il centro è in (0, 0)"],["The radius equals zero","Il raggio è zero"],["The circle is tangent to x = 1","È tangente a x = 1"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m4'
+    and existing.prompt = '["If c = 0 in the circle equation x² + y² + ax + by + c = 0, what must be true?","Se c = 0 nell’equazione x² + y² + ax + by + c = 0, cosa è sempre vero?"]'::jsonb
+    and existing.choices = '[["The circle passes through the origin (0, 0)","La circonferenza passa per l’origine (0, 0)"],["The center lies at (0, 0)","Il centro è in (0, 0)"],["The radius equals zero","Il raggio è zero"],["The circle is tangent to x = 1","È tangente a x = 1"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["If c = 0 in the circle equation x² + y² + ax + by + c = 0, what must be true?","Se c = 0 nell’equazione x² + y² + ax + by + c = 0, cosa è sempre vero?"]'::jsonb, '[["The circle passes through the origin (0, 0)","La circonferenza passa per l’origine (0, 0)"],["The center lies at (0, 0)","Il centro è in (0, 0)"],["The radius equals zero","Il raggio è zero"],["The circle is tangent to x = 1","È tangente a x = 1"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["If c = 0 in the circle equation x² + y² + ax + by + c = 0, what must be true?","Se c = 0 nell’equazione x² + y² + ax + by + c = 0, cosa è sempre vero?"]'::jsonb
+    and existing.choices = '[["The circle passes through the origin (0, 0)","La circonferenza passa per l’origine (0, 0)"],["The center lies at (0, 0)","Il centro è in (0, 0)"],["The radius equals zero","Il raggio è zero"],["The circle is tangent to x = 1","È tangente a x = 1"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m5', '["For the ellipse x²/25 + y²/9 = 1, find semi-axes a, b and eccentricity e.","Per l’ellisse x²/25 + y²/9 = 1, calcola semiassi a, b ed eccentricità e."]'::jsonb, '[["a = 5, b = 3, e = 4/5 = 0.8","a = 5, b = 3, e = 4/5 = 0,8"],["a = 25, b = 9, e = 16/25","a = 25, b = 9, e = 16/25"],["a = 5, b = 3, e = √34/5","a = 5, b = 3, e = √34/5"],["a = 3, b = 5, e = 0.6","a = 3, b = 5, e = 0,6"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m5'
+    and existing.prompt = '["For the ellipse x²/25 + y²/9 = 1, find semi-axes a, b and eccentricity e.","Per l’ellisse x²/25 + y²/9 = 1, calcola semiassi a, b ed eccentricità e."]'::jsonb
+    and existing.choices = '[["a = 5, b = 3, e = 4/5 = 0.8","a = 5, b = 3, e = 4/5 = 0,8"],["a = 25, b = 9, e = 16/25","a = 25, b = 9, e = 16/25"],["a = 5, b = 3, e = √34/5","a = 5, b = 3, e = √34/5"],["a = 3, b = 5, e = 0.6","a = 3, b = 5, e = 0,6"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["For the ellipse x²/25 + y²/9 = 1, find semi-axes a, b and eccentricity e.","Per l’ellisse x²/25 + y²/9 = 1, calcola semiassi a, b ed eccentricità e."]'::jsonb, '[["a = 5, b = 3, e = 4/5 = 0.8","a = 5, b = 3, e = 4/5 = 0,8"],["a = 25, b = 9, e = 16/25","a = 25, b = 9, e = 16/25"],["a = 5, b = 3, e = √34/5","a = 5, b = 3, e = √34/5"],["a = 3, b = 5, e = 0.6","a = 3, b = 5, e = 0,6"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["For the ellipse x²/25 + y²/9 = 1, find semi-axes a, b and eccentricity e.","Per l’ellisse x²/25 + y²/9 = 1, calcola semiassi a, b ed eccentricità e."]'::jsonb
+    and existing.choices = '[["a = 5, b = 3, e = 4/5 = 0.8","a = 5, b = 3, e = 4/5 = 0,8"],["a = 25, b = 9, e = 16/25","a = 25, b = 9, e = 16/25"],["a = 5, b = 3, e = √34/5","a = 5, b = 3, e = √34/5"],["a = 3, b = 5, e = 0.6","a = 3, b = 5, e = 0,6"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m5', '["What are the asymptote equations of the hyperbola x²/9 − y²/16 = 1?","Quali sono le equazioni degli asintoti dell’iperbole x²/9 − y²/16 = 1?"]'::jsonb, '[["y = ±(4/3)x","y = ±(4/3)x"],["y = ±(3/4)x","y = ±(3/4)x"],["y = ±(16/9)x","y = ±(16/9)x"],["x = ±3 and y = ±4","x = ±3 e y = ±4"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m5'
+    and existing.prompt = '["What are the asymptote equations of the hyperbola x²/9 − y²/16 = 1?","Quali sono le equazioni degli asintoti dell’iperbole x²/9 − y²/16 = 1?"]'::jsonb
+    and existing.choices = '[["y = ±(4/3)x","y = ±(4/3)x"],["y = ±(3/4)x","y = ±(3/4)x"],["y = ±(16/9)x","y = ±(16/9)x"],["x = ±3 and y = ±4","x = ±3 e y = ±4"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["What are the asymptote equations of the hyperbola x²/9 − y²/16 = 1?","Quali sono le equazioni degli asintoti dell’iperbole x²/9 − y²/16 = 1?"]'::jsonb, '[["y = ±(4/3)x","y = ±(4/3)x"],["y = ±(3/4)x","y = ±(3/4)x"],["y = ±(16/9)x","y = ±(16/9)x"],["x = ±3 and y = ±4","x = ±3 e y = ±4"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What are the asymptote equations of the hyperbola x²/9 − y²/16 = 1?","Quali sono le equazioni degli asintoti dell’iperbole x²/9 − y²/16 = 1?"]'::jsonb
+    and existing.choices = '[["y = ±(4/3)x","y = ±(4/3)x"],["y = ±(3/4)x","y = ±(3/4)x"],["y = ±(16/9)x","y = ±(16/9)x"],["x = ±3 and y = ±4","x = ±3 e y = ±4"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m5', '["Find the foci distance c for the hyperbola x²/16 − y²/9 = 1.","Trova la semidistanza focale c dell’iperbole x²/16 − y²/9 = 1."]'::jsonb, '[["c = 5 (since c² = 16 + 9 = 25)","c = 5 (poiché c² = 16 + 9 = 25)"],["c = √7","c = √7"],["c = 7","c = 7"],["c = 4","c = 4"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m5'
+    and existing.prompt = '["Find the foci distance c for the hyperbola x²/16 − y²/9 = 1.","Trova la semidistanza focale c dell’iperbole x²/16 − y²/9 = 1."]'::jsonb
+    and existing.choices = '[["c = 5 (since c² = 16 + 9 = 25)","c = 5 (poiché c² = 16 + 9 = 25)"],["c = √7","c = √7"],["c = 7","c = 7"],["c = 4","c = 4"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Find the foci distance c for the hyperbola x²/16 − y²/9 = 1.","Trova la semidistanza focale c dell’iperbole x²/16 − y²/9 = 1."]'::jsonb, '[["c = 5 (since c² = 16 + 9 = 25)","c = 5 (poiché c² = 16 + 9 = 25)"],["c = √7","c = √7"],["c = 7","c = 7"],["c = 4","c = 4"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Find the foci distance c for the hyperbola x²/16 − y²/9 = 1.","Trova la semidistanza focale c dell’iperbole x²/16 − y²/9 = 1."]'::jsonb
+    and existing.choices = '[["c = 5 (since c² = 16 + 9 = 25)","c = 5 (poiché c² = 16 + 9 = 25)"],["c = √7","c = √7"],["c = 7","c = 7"],["c = 4","c = 4"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m5', '["If an ellipse has eccentricity e = 0, what shape does it become?","Se un’ellisse ha eccentricità e = 0, che figura diventa?"]'::jsonb, '[["A circle (a = b, c = 0)","Una circonferenza (a = b, c = 0)"],["A flat straight line","Un segmento piatto"],["A parabola","Una parabola"],["An equilateral hyperbola","Un’iperbole equilatera"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m5'
+    and existing.prompt = '["If an ellipse has eccentricity e = 0, what shape does it become?","Se un’ellisse ha eccentricità e = 0, che figura diventa?"]'::jsonb
+    and existing.choices = '[["A circle (a = b, c = 0)","Una circonferenza (a = b, c = 0)"],["A flat straight line","Un segmento piatto"],["A parabola","Una parabola"],["An equilateral hyperbola","Un’iperbole equilatera"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["If an ellipse has eccentricity e = 0, what shape does it become?","Se un’ellisse ha eccentricità e = 0, che figura diventa?"]'::jsonb, '[["A circle (a = b, c = 0)","Una circonferenza (a = b, c = 0)"],["A flat straight line","Un segmento piatto"],["A parabola","Una parabola"],["An equilateral hyperbola","Un’iperbole equilatera"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["If an ellipse has eccentricity e = 0, what shape does it become?","Se un’ellisse ha eccentricità e = 0, che figura diventa?"]'::jsonb
+    and existing.choices = '[["A circle (a = b, c = 0)","Una circonferenza (a = b, c = 0)"],["A flat straight line","Un segmento piatto"],["A parabola","Una parabola"],["An equilateral hyperbola","Un’iperbole equilatera"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m5', '["Which graph represents the equilateral hyperbola xy = 6?","Quale proprietà vale per l’iperbole equilatera xy = 6?"]'::jsonb, '[["Asymptotes are the x- and y-axes; curve lies in Quadrants I and III","Gli asintoti sono gli assi cartesiani; rami nel 1° e 3° quadrante"],["It passes through (0, 0)","Passa per l’origine (0, 0)"],["It is a circle of radius √6","È una circonferenza di raggio √6"],["Its branches lie only in Quadrant II","I rami stanno solo nel 2° quadrante"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m5'
+    and existing.prompt = '["Which graph represents the equilateral hyperbola xy = 6?","Quale proprietà vale per l’iperbole equilatera xy = 6?"]'::jsonb
+    and existing.choices = '[["Asymptotes are the x- and y-axes; curve lies in Quadrants I and III","Gli asintoti sono gli assi cartesiani; rami nel 1° e 3° quadrante"],["It passes through (0, 0)","Passa per l’origine (0, 0)"],["It is a circle of radius √6","È una circonferenza di raggio √6"],["Its branches lie only in Quadrant II","I rami stanno solo nel 2° quadrante"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Which graph represents the equilateral hyperbola xy = 6?","Quale proprietà vale per l’iperbole equilatera xy = 6?"]'::jsonb, '[["Asymptotes are the x- and y-axes; curve lies in Quadrants I and III","Gli asintoti sono gli assi cartesiani; rami nel 1° e 3° quadrante"],["It passes through (0, 0)","Passa per l’origine (0, 0)"],["It is a circle of radius √6","È una circonferenza di raggio √6"],["Its branches lie only in Quadrant II","I rami stanno solo nel 2° quadrante"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Which graph represents the equilateral hyperbola xy = 6?","Quale proprietà vale per l’iperbole equilatera xy = 6?"]'::jsonb
+    and existing.choices = '[["Asymptotes are the x- and y-axes; curve lies in Quadrants I and III","Gli asintoti sono gli assi cartesiani; rami nel 1° e 3° quadrante"],["It passes through (0, 0)","Passa per l’origine (0, 0)"],["It is a circle of radius √6","È una circonferenza di raggio √6"],["Its branches lie only in Quadrant II","I rami stanno solo nel 2° quadrante"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m6', '["What conic section is represented by 3x² + 3y² − 6x + 12y − 5 = 0?","Che conica rappresenta l’equazione 3x² + 3y² − 6x + 12y − 5 = 0?"]'::jsonb, '[["A circle","Una circonferenza"],["An ellipse with unequal axes","Un’ellisse con assi diversi"],["A hyperbola","Un’iperbole"],["A parabola","Una parabola"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m6'
+    and existing.prompt = '["What conic section is represented by 3x² + 3y² − 6x + 12y − 5 = 0?","Che conica rappresenta l’equazione 3x² + 3y² − 6x + 12y − 5 = 0?"]'::jsonb
+    and existing.choices = '[["A circle","Una circonferenza"],["An ellipse with unequal axes","Un’ellisse con assi diversi"],["A hyperbola","Un’iperbole"],["A parabola","Una parabola"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["What conic section is represented by 3x² + 3y² − 6x + 12y − 5 = 0?","Che conica rappresenta l’equazione 3x² + 3y² − 6x + 12y − 5 = 0?"]'::jsonb, '[["A circle","Una circonferenza"],["An ellipse with unequal axes","Un’ellisse con assi diversi"],["A hyperbola","Un’iperbole"],["A parabola","Una parabola"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What conic section is represented by 3x² + 3y² − 6x + 12y − 5 = 0?","Che conica rappresenta l’equazione 3x² + 3y² − 6x + 12y − 5 = 0?"]'::jsonb
+    and existing.choices = '[["A circle","Una circonferenza"],["An ellipse with unequal axes","Un’ellisse con assi diversi"],["A hyperbola","Un’iperbole"],["A parabola","Una parabola"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m6', '["What algebraic condition makes a line TANGENT to a parabola?","Quale condizione algebrica rende una retta TANGENTE a una parabola?"]'::jsonb, '[["The solving quadratic equation has discriminant Δ = 0","L’equazione risolvente del sistema ha Δ = 0"],["The solving quadratic has Δ > 0","L’equazione risolvente ha Δ > 0"],["The solving quadratic has Δ < 0","L’equazione risolvente ha Δ < 0"],["The line must pass through the origin","La retta deve passare per l’origine"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m6'
+    and existing.prompt = '["What algebraic condition makes a line TANGENT to a parabola?","Quale condizione algebrica rende una retta TANGENTE a una parabola?"]'::jsonb
+    and existing.choices = '[["The solving quadratic equation has discriminant Δ = 0","L’equazione risolvente del sistema ha Δ = 0"],["The solving quadratic has Δ > 0","L’equazione risolvente ha Δ > 0"],["The solving quadratic has Δ < 0","L’equazione risolvente ha Δ < 0"],["The line must pass through the origin","La retta deve passare per l’origine"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["What algebraic condition makes a line TANGENT to a parabola?","Quale condizione algebrica rende una retta TANGENTE a una parabola?"]'::jsonb, '[["The solving quadratic equation has discriminant Δ = 0","L’equazione risolvente del sistema ha Δ = 0"],["The solving quadratic has Δ > 0","L’equazione risolvente ha Δ > 0"],["The solving quadratic has Δ < 0","L’equazione risolvente ha Δ < 0"],["The line must pass through the origin","La retta deve passare per l’origine"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What algebraic condition makes a line TANGENT to a parabola?","Quale condizione algebrica rende una retta TANGENTE a una parabola?"]'::jsonb
+    and existing.choices = '[["The solving quadratic equation has discriminant Δ = 0","L’equazione risolvente del sistema ha Δ = 0"],["The solving quadratic has Δ > 0","L’equazione risolvente ha Δ > 0"],["The solving quadratic has Δ < 0","L’equazione risolvente ha Δ < 0"],["The line must pass through the origin","La retta deve passare per l’origine"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m6', '["For a circle of radius R = 5, if center-to-line distance is d = 3, the line is:","Per una circonferenza di raggio R = 5, se la distanza centro-retta vale d = 3, la retta è:"]'::jsonb, '[["Secant (cuts in 2 points)","Secante (taglia in 2 punti)"],["Tangent (touches in 1 point)","Tangente (tocca in 1 punto)"],["External (0 points)","Esterna (0 punti)"],["An asymptote","Un asintoto"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m6'
+    and existing.prompt = '["For a circle of radius R = 5, if center-to-line distance is d = 3, the line is:","Per una circonferenza di raggio R = 5, se la distanza centro-retta vale d = 3, la retta è:"]'::jsonb
+    and existing.choices = '[["Secant (cuts in 2 points)","Secante (taglia in 2 punti)"],["Tangent (touches in 1 point)","Tangente (tocca in 1 punto)"],["External (0 points)","Esterna (0 punti)"],["An asymptote","Un asintoto"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["For a circle of radius R = 5, if center-to-line distance is d = 3, the line is:","Per una circonferenza di raggio R = 5, se la distanza centro-retta vale d = 3, la retta è:"]'::jsonb, '[["Secant (cuts in 2 points)","Secante (taglia in 2 punti)"],["Tangent (touches in 1 point)","Tangente (tocca in 1 punto)"],["External (0 points)","Esterna (0 punti)"],["An asymptote","Un asintoto"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["For a circle of radius R = 5, if center-to-line distance is d = 3, the line is:","Per una circonferenza di raggio R = 5, se la distanza centro-retta vale d = 3, la retta è:"]'::jsonb
+    and existing.choices = '[["Secant (cuts in 2 points)","Secante (taglia in 2 punti)"],["Tangent (touches in 1 point)","Tangente (tocca in 1 punto)"],["External (0 points)","Esterna (0 punti)"],["An asymptote","Un asintoto"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m6', '["Identify the conic: 9x² − 4y² = 36.","Riconosci la conica: 9x² − 4y² = 36."]'::jsonb, '[["Hyperbola","Iperbole"],["Ellipse","Ellisse"],["Circle","Circonferenza"],["Parabola","Parabola"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m6'
+    and existing.prompt = '["Identify the conic: 9x² − 4y² = 36.","Riconosci la conica: 9x² − 4y² = 36."]'::jsonb
+    and existing.choices = '[["Hyperbola","Iperbole"],["Ellipse","Ellisse"],["Circle","Circonferenza"],["Parabola","Parabola"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Identify the conic: 9x² − 4y² = 36.","Riconosci la conica: 9x² − 4y² = 36."]'::jsonb, '[["Hyperbola","Iperbole"],["Ellipse","Ellisse"],["Circle","Circonferenza"],["Parabola","Parabola"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Identify the conic: 9x² − 4y² = 36.","Riconosci la conica: 9x² − 4y² = 36."]'::jsonb
+    and existing.choices = '[["Hyperbola","Iperbole"],["Ellipse","Ellisse"],["Circle","Circonferenza"],["Parabola","Parabola"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m6', '["How many tangent lines can be drawn to a circle from a point strictly OUTSIDE it?","Quante rette tangenti a una circonferenza passano per un punto ESTERNO ad essa?"]'::jsonb, '[["2 tangent lines","2 rette tangenti"],["1 tangent line","1 sola retta tangente"],["0 tangent lines","Nessuna retta tangente"],["Infinitely many","Infinite"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m6'
+    and existing.prompt = '["How many tangent lines can be drawn to a circle from a point strictly OUTSIDE it?","Quante rette tangenti a una circonferenza passano per un punto ESTERNO ad essa?"]'::jsonb
+    and existing.choices = '[["2 tangent lines","2 rette tangenti"],["1 tangent line","1 sola retta tangente"],["0 tangent lines","Nessuna retta tangente"],["Infinitely many","Infinite"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["How many tangent lines can be drawn to a circle from a point strictly OUTSIDE it?","Quante rette tangenti a una circonferenza passano per un punto ESTERNO ad essa?"]'::jsonb, '[["2 tangent lines","2 rette tangenti"],["1 tangent line","1 sola retta tangente"],["0 tangent lines","Nessuna retta tangente"],["Infinitely many","Infinite"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["How many tangent lines can be drawn to a circle from a point strictly OUTSIDE it?","Quante rette tangenti a una circonferenza passano per un punto ESTERNO ad essa?"]'::jsonb
+    and existing.choices = '[["2 tangent lines","2 rette tangenti"],["1 tangent line","1 sola retta tangente"],["0 tangent lines","Nessuna retta tangente"],["Infinitely many","Infinite"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m7', '["Compute log₃(81).","Calcola il valore di log₃(81)."]'::jsonb, '[["4 (because 3⁴ = 81)","4 (perché 3⁴ = 81)"],["27","27"],["3","3"],["−4","−4"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m7'
+    and existing.prompt = '["Compute log₃(81).","Calcola il valore di log₃(81)."]'::jsonb
+    and existing.choices = '[["4 (because 3⁴ = 81)","4 (perché 3⁴ = 81)"],["27","27"],["3","3"],["−4","−4"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Compute log₃(81).","Calcola il valore di log₃(81)."]'::jsonb, '[["4 (because 3⁴ = 81)","4 (perché 3⁴ = 81)"],["27","27"],["3","3"],["−4","−4"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Compute log₃(81).","Calcola il valore di log₃(81)."]'::jsonb
+    and existing.choices = '[["4 (because 3⁴ = 81)","4 (perché 3⁴ = 81)"],["27","27"],["3","3"],["−4","−4"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m7', '["Solve the exponential equation 2ˣ⁺¹ = 32.","Risolvi l’equazione esponenziale 2ˣ⁺¹ = 32."]'::jsonb, '[["x = 4","x = 4"],["x = 5","x = 5"],["x = 15","x = 15"],["x = 3","x = 3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m7'
+    and existing.prompt = '["Solve the exponential equation 2ˣ⁺¹ = 32.","Risolvi l’equazione esponenziale 2ˣ⁺¹ = 32."]'::jsonb
+    and existing.choices = '[["x = 4","x = 4"],["x = 5","x = 5"],["x = 15","x = 15"],["x = 3","x = 3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Solve the exponential equation 2ˣ⁺¹ = 32.","Risolvi l’equazione esponenziale 2ˣ⁺¹ = 32."]'::jsonb, '[["x = 4","x = 4"],["x = 5","x = 5"],["x = 15","x = 15"],["x = 3","x = 3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve the exponential equation 2ˣ⁺¹ = 32.","Risolvi l’equazione esponenziale 2ˣ⁺¹ = 32."]'::jsonb
+    and existing.choices = '[["x = 4","x = 4"],["x = 5","x = 5"],["x = 15","x = 15"],["x = 3","x = 3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m7', '["What is the solution of 5ˣ = −25 in ℝ?","Qual è la soluzione di 5ˣ = −25 in ℝ?"]'::jsonb, '[["Impossible (5ˣ is always > 0)","Impossibile (5ˣ è sempre > 0)"],["x = −2","x = −2"],["x = 2","x = 2"],["x = −5","x = −5"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m7'
+    and existing.prompt = '["What is the solution of 5ˣ = −25 in ℝ?","Qual è la soluzione di 5ˣ = −25 in ℝ?"]'::jsonb
+    and existing.choices = '[["Impossible (5ˣ is always > 0)","Impossibile (5ˣ è sempre > 0)"],["x = −2","x = −2"],["x = 2","x = 2"],["x = −5","x = −5"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["What is the solution of 5ˣ = −25 in ℝ?","Qual è la soluzione di 5ˣ = −25 in ℝ?"]'::jsonb, '[["Impossible (5ˣ is always > 0)","Impossibile (5ˣ è sempre > 0)"],["x = −2","x = −2"],["x = 2","x = 2"],["x = −5","x = −5"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What is the solution of 5ˣ = −25 in ℝ?","Qual è la soluzione di 5ˣ = −25 in ℝ?"]'::jsonb
+    and existing.choices = '[["Impossible (5ˣ is always > 0)","Impossibile (5ˣ è sempre > 0)"],["x = −2","x = −2"],["x = 2","x = 2"],["x = −5","x = −5"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m7', '["If [H⁺] = 10⁻⁴ M in Chemistry, what is pH = −log₁₀[H⁺]?","In Chimica, se [H⁺] = 10⁻⁴ M, quanto vale il pH = −log₁₀[H⁺]?"]'::jsonb, '[["pH = 4","pH = 4"],["pH = −4","pH = −4"],["pH = 10","pH = 10"],["pH = 1/4","pH = 1/4"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m7'
+    and existing.prompt = '["If [H⁺] = 10⁻⁴ M in Chemistry, what is pH = −log₁₀[H⁺]?","In Chimica, se [H⁺] = 10⁻⁴ M, quanto vale il pH = −log₁₀[H⁺]?"]'::jsonb
+    and existing.choices = '[["pH = 4","pH = 4"],["pH = −4","pH = −4"],["pH = 10","pH = 10"],["pH = 1/4","pH = 1/4"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["If [H⁺] = 10⁻⁴ M in Chemistry, what is pH = −log₁₀[H⁺]?","In Chimica, se [H⁺] = 10⁻⁴ M, quanto vale il pH = −log₁₀[H⁺]?"]'::jsonb, '[["pH = 4","pH = 4"],["pH = −4","pH = −4"],["pH = 10","pH = 10"],["pH = 1/4","pH = 1/4"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["If [H⁺] = 10⁻⁴ M in Chemistry, what is pH = −log₁₀[H⁺]?","In Chimica, se [H⁺] = 10⁻⁴ M, quanto vale il pH = −log₁₀[H⁺]?"]'::jsonb
+    and existing.choices = '[["pH = 4","pH = 4"],["pH = −4","pH = −4"],["pH = 10","pH = 10"],["pH = 1/4","pH = 1/4"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m7', '["Solve the logarithmic inequality log₁/₂(x) > 2 (with x > 0).","Risolvi la disequazione logaritmica log₁/₂(x) > 2 (con x > 0)."]'::jsonb, '[["0 < x < 1/4","0 < x < 1/4"],["x > 1/4","x > 1/4"],["x > 4","x > 4"],["0 < x < 4","0 < x < 4"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m7'
+    and existing.prompt = '["Solve the logarithmic inequality log₁/₂(x) > 2 (with x > 0).","Risolvi la disequazione logaritmica log₁/₂(x) > 2 (con x > 0)."]'::jsonb
+    and existing.choices = '[["0 < x < 1/4","0 < x < 1/4"],["x > 1/4","x > 1/4"],["x > 4","x > 4"],["0 < x < 4","0 < x < 4"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Solve the logarithmic inequality log₁/₂(x) > 2 (with x > 0).","Risolvi la disequazione logaritmica log₁/₂(x) > 2 (con x > 0)."]'::jsonb, '[["0 < x < 1/4","0 < x < 1/4"],["x > 1/4","x > 1/4"],["x > 4","x > 4"],["0 < x < 4","0 < x < 4"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Solve the logarithmic inequality log₁/₂(x) > 2 (with x > 0).","Risolvi la disequazione logaritmica log₁/₂(x) > 2 (con x > 0)."]'::jsonb
+    and existing.choices = '[["0 < x < 1/4","0 < x < 1/4"],["x > 1/4","x > 1/4"],["x > 4","x > 4"],["0 < x < 4","0 < x < 4"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m8', '["Convert 60° into radians.","Converti l’angolo di 60° in radianti."]'::jsonb, '[["π / 3 rad","π / 3 rad"],["π / 6 rad","π / 6 rad"],["π / 4 rad","π / 4 rad"],["2π / 3 rad","2π / 3 rad"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m8'
+    and existing.prompt = '["Convert 60° into radians.","Converti l’angolo di 60° in radianti."]'::jsonb
+    and existing.choices = '[["π / 3 rad","π / 3 rad"],["π / 6 rad","π / 6 rad"],["π / 4 rad","π / 4 rad"],["2π / 3 rad","2π / 3 rad"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Convert 60° into radians.","Converti l’angolo di 60° in radianti."]'::jsonb, '[["π / 3 rad","π / 3 rad"],["π / 6 rad","π / 6 rad"],["π / 4 rad","π / 4 rad"],["2π / 3 rad","2π / 3 rad"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Convert 60° into radians.","Converti l’angolo di 60° in radianti."]'::jsonb
+    and existing.choices = '[["π / 3 rad","π / 3 rad"],["π / 6 rad","π / 6 rad"],["π / 4 rad","π / 4 rad"],["2π / 3 rad","2π / 3 rad"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m8', '["If α is in Quadrant I (0° < α < 90°) and sin α = 3/5, find cos α.","Se α è nel 1° quadrante e sin α = 3/5, quanto vale cos α?"]'::jsonb, '[["4/5","4/5"],["2/5","2/5"],["−4/5","−4/5"],["5/3","5/3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m8'
+    and existing.prompt = '["If α is in Quadrant I (0° < α < 90°) and sin α = 3/5, find cos α.","Se α è nel 1° quadrante e sin α = 3/5, quanto vale cos α?"]'::jsonb
+    and existing.choices = '[["4/5","4/5"],["2/5","2/5"],["−4/5","−4/5"],["5/3","5/3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["If α is in Quadrant I (0° < α < 90°) and sin α = 3/5, find cos α.","Se α è nel 1° quadrante e sin α = 3/5, quanto vale cos α?"]'::jsonb, '[["4/5","4/5"],["2/5","2/5"],["−4/5","−4/5"],["5/3","5/3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["If α is in Quadrant I (0° < α < 90°) and sin α = 3/5, find cos α.","Se α è nel 1° quadrante e sin α = 3/5, quanto vale cos α?"]'::jsonb
+    and existing.choices = '[["4/5","4/5"],["2/5","2/5"],["−4/5","−4/5"],["5/3","5/3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m8', '["What are the exact values of sin(30°) and cos(30°)?","Quanto valgono esattamente sin(30°) e cos(30°)?"]'::jsonb, '[["sin 30° = 1/2,  cos 30° = √3/2","sin 30° = 1/2,  cos 30° = √3/2"],["sin 30° = √3/2,  cos 30° = 1/2","sin 30° = √3/2,  cos 30° = 1/2"],["sin 30° = √2/2,  cos 30° = √2/2","sin 30° = √2/2,  cos 30° = √2/2"],["sin 30° = 1,  cos 30° = 0","sin 30° = 1,  cos 30° = 0"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m8'
+    and existing.prompt = '["What are the exact values of sin(30°) and cos(30°)?","Quanto valgono esattamente sin(30°) e cos(30°)?"]'::jsonb
+    and existing.choices = '[["sin 30° = 1/2,  cos 30° = √3/2","sin 30° = 1/2,  cos 30° = √3/2"],["sin 30° = √3/2,  cos 30° = 1/2","sin 30° = √3/2,  cos 30° = 1/2"],["sin 30° = √2/2,  cos 30° = √2/2","sin 30° = √2/2,  cos 30° = √2/2"],["sin 30° = 1,  cos 30° = 0","sin 30° = 1,  cos 30° = 0"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["What are the exact values of sin(30°) and cos(30°)?","Quanto valgono esattamente sin(30°) e cos(30°)?"]'::jsonb, '[["sin 30° = 1/2,  cos 30° = √3/2","sin 30° = 1/2,  cos 30° = √3/2"],["sin 30° = √3/2,  cos 30° = 1/2","sin 30° = √3/2,  cos 30° = 1/2"],["sin 30° = √2/2,  cos 30° = √2/2","sin 30° = √2/2,  cos 30° = √2/2"],["sin 30° = 1,  cos 30° = 0","sin 30° = 1,  cos 30° = 0"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What are the exact values of sin(30°) and cos(30°)?","Quanto valgono esattamente sin(30°) e cos(30°)?"]'::jsonb
+    and existing.choices = '[["sin 30° = 1/2,  cos 30° = √3/2","sin 30° = 1/2,  cos 30° = √3/2"],["sin 30° = √3/2,  cos 30° = 1/2","sin 30° = √3/2,  cos 30° = 1/2"],["sin 30° = √2/2,  cos 30° = √2/2","sin 30° = √2/2,  cos 30° = √2/2"],["sin 30° = 1,  cos 30° = 0","sin 30° = 1,  cos 30° = 0"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m8', '["Where is tangent tan α = sin α / cos α UNDEFINED?","Per quali angoli (tra 0° e 360°) NON esiste la tangente tan α = sin α / cos α?"]'::jsonb, '[["90° and 270° (where cos α = 0)","90° e 270° (dove cos α = 0)"],["0° and 180° (where sin α = 0)","0° e 180° (dove sin α = 0)"],["45° and 225°","45° e 225°"],["Nowhere, tan α is defined everywhere","Da nessuna parte, esiste sempre"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m8'
+    and existing.prompt = '["Where is tangent tan α = sin α / cos α UNDEFINED?","Per quali angoli (tra 0° e 360°) NON esiste la tangente tan α = sin α / cos α?"]'::jsonb
+    and existing.choices = '[["90° and 270° (where cos α = 0)","90° e 270° (dove cos α = 0)"],["0° and 180° (where sin α = 0)","0° e 180° (dove sin α = 0)"],["45° and 225°","45° e 225°"],["Nowhere, tan α is defined everywhere","Da nessuna parte, esiste sempre"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Where is tangent tan α = sin α / cos α UNDEFINED?","Per quali angoli (tra 0° e 360°) NON esiste la tangente tan α = sin α / cos α?"]'::jsonb, '[["90° and 270° (where cos α = 0)","90° e 270° (dove cos α = 0)"],["0° and 180° (where sin α = 0)","0° e 180° (dove sin α = 0)"],["45° and 225°","45° e 225°"],["Nowhere, tan α is defined everywhere","Da nessuna parte, esiste sempre"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Where is tangent tan α = sin α / cos α UNDEFINED?","Per quali angoli (tra 0° e 360°) NON esiste la tangente tan α = sin α / cos α?"]'::jsonb
+    and existing.choices = '[["90° and 270° (where cos α = 0)","90° e 270° (dove cos α = 0)"],["0° and 180° (where sin α = 0)","0° e 180° (dove sin α = 0)"],["45° and 225°","45° e 225°"],["Nowhere, tan α is defined everywhere","Da nessuna parte, esiste sempre"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m8', '["Which basic equation has NO real solution?","Quale equazione goniometrica elementare è IMPOSSIBILE?"]'::jsonb, '[["sin x = 1.5","sin x = 1,5"],["cos x = −1","cos x = −1"],["tan x = 10","tan x = 10"],["sin x = 0","sin x = 0"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m8'
+    and existing.prompt = '["Which basic equation has NO real solution?","Quale equazione goniometrica elementare è IMPOSSIBILE?"]'::jsonb
+    and existing.choices = '[["sin x = 1.5","sin x = 1,5"],["cos x = −1","cos x = −1"],["tan x = 10","tan x = 10"],["sin x = 0","sin x = 0"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Which basic equation has NO real solution?","Quale equazione goniometrica elementare è IMPOSSIBILE?"]'::jsonb, '[["sin x = 1.5","sin x = 1,5"],["cos x = −1","cos x = −1"],["tan x = 10","tan x = 10"],["sin x = 0","sin x = 0"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Which basic equation has NO real solution?","Quale equazione goniometrica elementare è IMPOSSIBILE?"]'::jsonb
+    and existing.choices = '[["sin x = 1.5","sin x = 1,5"],["cos x = −1","cos x = −1"],["tan x = 10","tan x = 10"],["sin x = 0","sin x = 0"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m9', '["In a right triangle with hypotenuse 12 cm and acute angle 30°, how long is the leg OPPOSITE 30°?","In un triangolo rettangolo con ipotenusa 12 cm e angolo acuto di 30°, quanto misura il cateto OPPOSTO a 30°?"]'::jsonb, '[["6 cm","6 cm"],["6√3 cm","6√3 cm"],["6√2 cm","6√2 cm"],["24 cm","24 cm"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m9'
+    and existing.prompt = '["In a right triangle with hypotenuse 12 cm and acute angle 30°, how long is the leg OPPOSITE 30°?","In un triangolo rettangolo con ipotenusa 12 cm e angolo acuto di 30°, quanto misura il cateto OPPOSTO a 30°?"]'::jsonb
+    and existing.choices = '[["6 cm","6 cm"],["6√3 cm","6√3 cm"],["6√2 cm","6√2 cm"],["24 cm","24 cm"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["In a right triangle with hypotenuse 12 cm and acute angle 30°, how long is the leg OPPOSITE 30°?","In un triangolo rettangolo con ipotenusa 12 cm e angolo acuto di 30°, quanto misura il cateto OPPOSTO a 30°?"]'::jsonb, '[["6 cm","6 cm"],["6√3 cm","6√3 cm"],["6√2 cm","6√2 cm"],["24 cm","24 cm"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["In a right triangle with hypotenuse 12 cm and acute angle 30°, how long is the leg OPPOSITE 30°?","In un triangolo rettangolo con ipotenusa 12 cm e angolo acuto di 30°, quanto misura il cateto OPPOSTO a 30°?"]'::jsonb
+    and existing.choices = '[["6 cm","6 cm"],["6√3 cm","6√3 cm"],["6√2 cm","6√2 cm"],["24 cm","24 cm"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m9', '["Use Carnot’s Theorem: b = 5, c = 8, included angle α = 60° (cos 60° = 1/2). Find side a.","Applica Carnot: b = 5, c = 8, angolo compreso α = 60° (cos 60° = 1/2). Trova il lato a."]'::jsonb, '[["7","7"],["√89","√89"],["√129","√129"],["49","49"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m9'
+    and existing.prompt = '["Use Carnot’s Theorem: b = 5, c = 8, included angle α = 60° (cos 60° = 1/2). Find side a.","Applica Carnot: b = 5, c = 8, angolo compreso α = 60° (cos 60° = 1/2). Trova il lato a."]'::jsonb
+    and existing.choices = '[["7","7"],["√89","√89"],["√129","√129"],["49","49"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Use Carnot’s Theorem: b = 5, c = 8, included angle α = 60° (cos 60° = 1/2). Find side a.","Applica Carnot: b = 5, c = 8, angolo compreso α = 60° (cos 60° = 1/2). Trova il lato a."]'::jsonb, '[["7","7"],["√89","√89"],["√129","√129"],["49","49"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Use Carnot’s Theorem: b = 5, c = 8, included angle α = 60° (cos 60° = 1/2). Find side a.","Applica Carnot: b = 5, c = 8, angolo compreso α = 60° (cos 60° = 1/2). Trova il lato a."]'::jsonb
+    and existing.choices = '[["7","7"],["√89","√89"],["√129","√129"],["49","49"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m9', '["What is the area of a triangle with sides b = 6 cm, c = 10 cm, and included angle α = 30°?","Quanto vale l’area di un triangolo con lati 6 cm e 10 cm e angolo compreso di 30°?"]'::jsonb, '[["15 cm²","15 cm²"],["30 cm²","30 cm²"],["15√3 cm²","15√3 cm²"],["60 cm²","60 cm²"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m9'
+    and existing.prompt = '["What is the area of a triangle with sides b = 6 cm, c = 10 cm, and included angle α = 30°?","Quanto vale l’area di un triangolo con lati 6 cm e 10 cm e angolo compreso di 30°?"]'::jsonb
+    and existing.choices = '[["15 cm²","15 cm²"],["30 cm²","30 cm²"],["15√3 cm²","15√3 cm²"],["60 cm²","60 cm²"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["What is the area of a triangle with sides b = 6 cm, c = 10 cm, and included angle α = 30°?","Quanto vale l’area di un triangolo con lati 6 cm e 10 cm e angolo compreso di 30°?"]'::jsonb, '[["15 cm²","15 cm²"],["30 cm²","30 cm²"],["15√3 cm²","15√3 cm²"],["60 cm²","60 cm²"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["What is the area of a triangle with sides b = 6 cm, c = 10 cm, and included angle α = 30°?","Quanto vale l’area di un triangolo con lati 6 cm e 10 cm e angolo compreso di 30°?"]'::jsonb
+    and existing.choices = '[["15 cm²","15 cm²"],["30 cm²","30 cm²"],["15√3 cm²","15√3 cm²"],["60 cm²","60 cm²"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m9', '["In a triangle, a = 10, α = 30° (sin 30° = 1/2), and β = 90° (sin 90° = 1). Find side b via Law of Sines.","In un triangolo a = 10, α = 30° e β = 90°. Trova b col Teorema dei Seni."]'::jsonb, '[["b = 20","b = 20"],["b = 5","b = 5"],["b = 10√2","b = 10√2"],["b = 10√3","b = 10√3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m9'
+    and existing.prompt = '["In a triangle, a = 10, α = 30° (sin 30° = 1/2), and β = 90° (sin 90° = 1). Find side b via Law of Sines.","In un triangolo a = 10, α = 30° e β = 90°. Trova b col Teorema dei Seni."]'::jsonb
+    and existing.choices = '[["b = 20","b = 20"],["b = 5","b = 5"],["b = 10√2","b = 10√2"],["b = 10√3","b = 10√3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["In a triangle, a = 10, α = 30° (sin 30° = 1/2), and β = 90° (sin 90° = 1). Find side b via Law of Sines.","In un triangolo a = 10, α = 30° e β = 90°. Trova b col Teorema dei Seni."]'::jsonb, '[["b = 20","b = 20"],["b = 5","b = 5"],["b = 10√2","b = 10√2"],["b = 10√3","b = 10√3"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["In a triangle, a = 10, α = 30° (sin 30° = 1/2), and β = 90° (sin 90° = 1). Find side b via Law of Sines.","In un triangolo a = 10, α = 30° e β = 90°. Trova b col Teorema dei Seni."]'::jsonb
+    and existing.choices = '[["b = 20","b = 20"],["b = 5","b = 5"],["b = 10√2","b = 10√2"],["b = 10√3","b = 10√3"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'math_l3_m9', '["Capstone question: Which equation defines a hyperbola with vertices (±3, 0) and asymptotes y = ±(4/3)x?","Domanda finale: quale equazione descrive un’iperbole con vertici (±3, 0) e asintoti y = ±(4/3)x?"]'::jsonb, '[["x²/9 − y²/16 = 1","x²/9 − y²/16 = 1"],["x²/9 + y²/16 = 1","x²/9 + y²/16 = 1"],["x²/16 − y²/9 = 1","x²/16 − y²/9 = 1"],["y²/9 − x²/16 = 1","y²/9 − x²/16 = 1"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'math_l3_m9'
+    and existing.prompt = '["Capstone question: Which equation defines a hyperbola with vertices (±3, 0) and asymptotes y = ±(4/3)x?","Domanda finale: quale equazione descrive un’iperbole con vertici (±3, 0) e asintoti y = ±(4/3)x?"]'::jsonb
+    and existing.choices = '[["x²/9 − y²/16 = 1","x²/9 − y²/16 = 1"],["x²/9 + y²/16 = 1","x²/9 + y²/16 = 1"],["x²/16 − y²/9 = 1","x²/16 − y²/9 = 1"],["y²/9 − x²/16 = 1","y²/9 − x²/16 = 1"]]'::jsonb
+    and existing.correct_index = 0
+);
+
+insert into public.race_question_bank (grade, subject, mission_id, prompt, choices, correct_index)
+select 'grade11', 'math11', 'mix', '["Capstone question: Which equation defines a hyperbola with vertices (±3, 0) and asymptotes y = ±(4/3)x?","Domanda finale: quale equazione descrive un’iperbole con vertici (±3, 0) e asintoti y = ±(4/3)x?"]'::jsonb, '[["x²/9 − y²/16 = 1","x²/9 − y²/16 = 1"],["x²/9 + y²/16 = 1","x²/9 + y²/16 = 1"],["x²/16 − y²/9 = 1","x²/16 − y²/9 = 1"],["y²/9 − x²/16 = 1","y²/9 − x²/16 = 1"]]'::jsonb, 0
+where not exists (
+  select 1 from public.race_question_bank existing
+  where existing.grade = 'grade11'
+    and existing.subject = 'math11'
+    and existing.mission_id = 'mix'
+    and existing.prompt = '["Capstone question: Which equation defines a hyperbola with vertices (±3, 0) and asymptotes y = ±(4/3)x?","Domanda finale: quale equazione descrive un’iperbole con vertici (±3, 0) e asintoti y = ±(4/3)x?"]'::jsonb
+    and existing.choices = '[["x²/9 − y²/16 = 1","x²/9 − y²/16 = 1"],["x²/9 + y²/16 = 1","x²/9 + y²/16 = 1"],["x²/16 − y²/9 = 1","x²/16 − y²/9 = 1"],["y²/9 − x²/16 = 1","y²/9 − x²/16 = 1"]]'::jsonb
     and existing.correct_index = 0
 );

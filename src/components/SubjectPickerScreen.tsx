@@ -40,12 +40,12 @@ export const SubjectPickerScreen: React.FC = () => {
       'Scegli una materia per la 1ª Superiore: Informatica, Fisica, Matematica, Italiano, Chimica L1, Storia (Preistoria–SPQR) o Geografia Fisica ed Europea.'
     ],
     grade10: [
-      'Grade 10 (2° Superiore): Chemistry L2, Italian Studies, History (Roman Empire to Comuni) & World & Continents Geography.',
-      '2° Superiore: Chimica L2, Lingua Italiana, Storia (Impero Romano e Comuni) e Geografia dei Continenti e Globalizzazione.'
+      'Grade 10 (2° Superiore): Mathematics L2, Chemistry L2, Italian Studies, History (Roman Empire to Comuni) & World & Continents Geography.',
+      '2° Superiore: Matematica L2, Chimica L2, Lingua Italiana, Storia (Impero Romano e Comuni) e Geografia dei Continenti e Globalizzazione.'
     ],
     grade11: [
-      'Grade 11 (3°/4° Superiore): Chemistry L3, Italian Studies, Modern History (Renaissance to 1870) & Geopolitics & Italian Territory.',
-      '3°/4° Superiore: Chimica L3, Lingua Italiana, Storia Moderna (Rinascimento–1870) e Geopolitica e Territorio Italiano.'
+      'Grade 11 (3°/4° Superiore): Mathematics L3, Chemistry L3, Italian Studies, Modern History (Renaissance to 1870) & Geopolitics & Italian Territory.',
+      '3°/4° Superiore: Matematica L3, Chimica L3, Lingua Italiana, Storia Moderna (Rinascimento–1870) e Geopolitica e Territorio Italiano.'
     ]
   };
 
@@ -169,6 +169,14 @@ export const SubjectPickerScreen: React.FC = () => {
                 type="button"
                 className="btn ghost sm"
                 style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('math10')}
+              >
+                ∑ {L(['Math (L2)', 'Mat. (L2)'], lang)}
+              </button>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
                 onClick={() => handleSelect('chem10')}
               >
                 ⚗️ {L(['Chemistry (L2)', 'Chimica (L2)'], lang)}
@@ -193,6 +201,14 @@ export const SubjectPickerScreen: React.FC = () => {
           )}
           {activeGrade === 'grade11' && (
             <>
+              <button
+                type="button"
+                className="btn ghost sm"
+                style={{ padding: '4px 10px', fontSize: '13px' }}
+                onClick={() => handleSelect('math11')}
+              >
+                📈 {L(['Math (L3)', 'Mat. (L3)'], lang)}
+              </button>
               <button
                 type="button"
                 className="btn ghost sm"

@@ -6,6 +6,7 @@ import { L, CODE, fill, demonSVG, SENSEI, YOU, esc, U, GUIDE } from '../helpers'
 import { LearningPathway } from './LearningPathway';
 import { PhysicsLab } from './PhysicsLab';
 import { MathLab } from './MathLab';
+import { MathAdvancedLab } from './MathAdvancedLab';
 import { ComputerScienceLab } from './ComputerScienceLab';
 import { ChemistryLab } from './ChemistryLab';
 import { ScienceLab } from './ScienceLab';
@@ -295,8 +296,11 @@ export const MissionScreen: React.FC = () => {
       {currentMission.id.startsWith('p') && currentSceneIndex === 1 && (
         <PhysicsLab missionId={currentMission.id} lang={lang} />
       )}
-      {currentMission.id.startsWith('m') && currentSceneIndex === 1 && (
+      {/^m\d/.test(currentMission.id) && currentSceneIndex === 1 && (
         <MathLab missionId={currentMission.id} lang={lang} />
+      )}
+      {(currentMission.id.startsWith('math_l2_') || currentMission.id.startsWith('math_l3_')) && currentSceneIndex === 1 && (
+        <MathAdvancedLab missionId={currentMission.id} lang={lang} />
       )}
       {(currentMission.id.startsWith('a') || /^c\d/.test(currentMission.id)) && currentSceneIndex === 1 && (
         <ComputerScienceLab missionId={currentMission.id} lang={lang} />

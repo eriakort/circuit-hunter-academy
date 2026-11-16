@@ -6,8 +6,8 @@ const migration = readFileSync(
   "utf8"
 );
 
-const histGeoMigration = readFileSync(
-  new URL("../supabase/migrations/20261115060000_race_arena_hist_geo_subjects.sql", import.meta.url),
+const latestMigration = readFileSync(
+  new URL("../supabase/migrations/20261116010000_race_arena_math_g10_11.sql", import.meta.url),
   "utf8"
 );
 const raceApiSource = readFileSync(
@@ -26,7 +26,7 @@ describe("Race Arena curriculum scoping", () => {
   test("latest migration and edge function allow every grade and subject in GRADE_SUBJECT_IDS", () => {
     for (const [grade, subjects] of Object.entries(GRADE_SUBJECT_IDS)) {
       for (const subject of subjects) {
-        expect(histGeoMigration).toMatch(new RegExp(`grade = '${grade}'[\\s\\S]*'${subject}'`));
+        expect(latestMigration).toMatch(new RegExp(`grade = '${grade}'[\\s\\S]*'${subject}'`));
         expect(raceApiSource).toMatch(new RegExp(`${grade}:[\\s\\S]*"${subject}"`));
       }
     }

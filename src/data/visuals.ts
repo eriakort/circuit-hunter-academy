@@ -5,6 +5,7 @@ import { JN, BOARD, ROBOT_LEVELS } from "./gameData";
 import { getGrade5MathVisual } from "./grade5MathVisuals";
 import { getChemVisual } from "./chemVisuals";
 import { getHistGeoVisual } from "./histGeoVisuals";
+import { getMathAdvVisual } from "./mathAdvVisuals";
 
 let currentLang: Language = "en";
 const L: any = (x: any) => origL(x, currentLang);
@@ -1135,5 +1136,7 @@ export function getVisualHtml(key: string, lang: Language): string {
   if (chemVisual !== null) return chemVisual;
   const histGeoVisual = getHistGeoVisual(key, lang);
   if (histGeoVisual !== null) return histGeoVisual;
+  const mathAdvVisual = getMathAdvVisual(key, lang);
+  if (mathAdvVisual !== null) return mathAdvVisual;
   return "";
 }

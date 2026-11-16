@@ -540,6 +540,8 @@ export const TestScreen: React.FC = () => {
               {[
                 { id: 'all', name: ['All', 'Tutte'] },
                 { id: 'math', name: ['Maths', 'Matematica'] },
+                { id: 'math10', name: ['Math 10 (L2)', 'Mat. 2°'] },
+                { id: 'math11', name: ['Math 11 (L3)', 'Mat. 3°/4°'] },
                 { id: 'phys', name: ['Physics', 'Fisica'] },
                 { id: 'chem', name: ['Chem 9 (L1)', 'Chimica 1°'] },
                 { id: 'chem10', name: ['Chem 10 (L2)', 'Chimica 2°'] },

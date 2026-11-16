@@ -14,8 +14,8 @@ const QUESTION_COUNT = 10;
 const GRADE_SUBJECTS: Record<string, string[]> = {
   grade5: ["science", "math5", "italian", "hist5", "geo5"],
   grade9: ["cs", "phys", "math", "italian", "chem", "hist9", "geo9"],
-  grade10: ["chem10", "italian", "hist10", "geo10"],
-  grade11: ["chem11", "italian", "hist11", "geo11"],
+  grade10: ["math10", "chem10", "italian", "hist10", "geo10"],
+  grade11: ["math11", "chem11", "italian", "hist11", "geo11"],
 };
 const CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 

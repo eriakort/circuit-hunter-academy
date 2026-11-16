@@ -7,7 +7,7 @@ if (!FORMULA_CARDS || FORMULA_CARDS.length === 0) {
 }
 
 const subjectsInCards = new Set(FORMULA_CARDS.map(c => c.subject));
-const requiredSubjects = ['math', 'phys', 'cs', 'science', 'math5', 'chem', 'chem10', 'chem11', 'hist5', 'geo5', 'hist9', 'geo9', 'hist10', 'geo10', 'hist11', 'geo11'];
+const requiredSubjects = ['math', 'math10', 'math11', 'phys', 'cs', 'science', 'math5', 'chem', 'chem10', 'chem11', 'hist5', 'geo5', 'hist9', 'geo9', 'hist10', 'geo10', 'hist11', 'geo11'];
 
 for (const req of requiredSubjects) {
   if (!subjectsInCards.has(req as any)) {

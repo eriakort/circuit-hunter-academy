@@ -145,6 +145,8 @@ const SUBJECT_LIST: SubjectMeta[] = [
   { id: 'all', name: ['All Subjects', 'Tutte le Materie'], icon: '🌐', badgeColor: 'var(--data)' },
   { id: 'italian', name: ['Italian Studies', 'Lingua Italiana'], icon: '🇮🇹', badgeColor: 'var(--accent)' },
   { id: 'math', name: ['Mathematics', 'Matematica'], icon: '∑', badgeColor: 'var(--gold)' },
+  { id: 'math10', name: ['Math · Grade 10 (L2)', 'Matematica · 2° Sup. (L2)'], icon: '∑', badgeColor: 'var(--gold)' },
+  { id: 'math11', name: ['Math · Grade 11 (L3)', 'Matematica · 3°/4° Sup. (L3)'], icon: '📈', badgeColor: 'var(--ember)' },
   { id: 'phys', name: ['Physics', 'Fisica'], icon: '⚡', badgeColor: 'var(--sakura)' },
   { id: 'cs', name: ['Computer Science', 'Informatica'], icon: '💾', badgeColor: 'var(--data)' },
   { id: 'science', name: ['Grade 5 Science', 'Scienze (5ª Primaria)'], icon: '🔬', badgeColor: 'var(--good)' },
@@ -168,7 +170,7 @@ export const FormulaScreen: React.FC = () => {
 
   // Active Subject Selection (defaults to current game subject if valid, else 'math')
   const [activeSubject, setActiveSubject] = useState<SubjectId | 'all'>(() => {
-    if (gameSubject && ['math', 'phys', 'cs', 'science', 'math5', 'italian', 'chem', 'chem10', 'chem11', 'hist5', 'geo5', 'hist9', 'geo9', 'hist10', 'geo10', 'hist11', 'geo11'].includes(gameSubject)) {
+    if (gameSubject && ['math', 'math10', 'math11', 'phys', 'cs', 'science', 'math5', 'italian', 'chem', 'chem10', 'chem11', 'hist5', 'geo5', 'hist9', 'geo9', 'hist10', 'geo10', 'hist11', 'geo11'].includes(gameSubject)) {
       return gameSubject;
     }
     return 'math';
@@ -234,7 +236,7 @@ export const FormulaScreen: React.FC = () => {
 
   // Counts per subject
   const subjectCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: FORMULA_CARDS.length, math: 0, phys: 0, cs: 0, science: 0, math5: 0, italian: 0, chem: 0, chem10: 0, chem11: 0, hist5: 0, geo5: 0, hist9: 0, geo9: 0, hist10: 0, geo10: 0, hist11: 0, geo11: 0 };
+    const counts: Record<string, number> = { all: FORMULA_CARDS.length, math: 0, math10: 0, math11: 0, phys: 0, cs: 0, science: 0, math5: 0, italian: 0, chem: 0, chem10: 0, chem11: 0, hist5: 0, geo5: 0, hist9: 0, geo9: 0, hist10: 0, geo10: 0, hist11: 0, geo11: 0 };
     for (const card of FORMULA_CARDS) {
       if (counts[card.subject] !== undefined) {
         counts[card.subject]++;

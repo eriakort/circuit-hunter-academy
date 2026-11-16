@@ -1,6 +1,7 @@
 import { BilingualText, SubjectId } from '../types';
 import { GRADE5_MATH_FORMULA_CARDS, GRADE5_MATH_TOPICS } from './grade5MathFormulaData';
 import { CHEM_FORMULA_CARDS, CHEM_TOPICS, CHEM10_TOPICS, CHEM11_TOPICS } from './chemFormulaData';
+import { MATH10_TOPICS, MATH11_TOPICS, MATH_ADV_FORMULA_CARDS } from './mathAdvFormulaData';
 import {
   HIST5_TOPICS,
   GEO5_TOPICS,
@@ -75,6 +76,8 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
   chem: CHEM_TOPICS,
   chem10: CHEM10_TOPICS,
   chem11: CHEM11_TOPICS,
+  math10: MATH10_TOPICS,
+  math11: MATH11_TOPICS,
   hist5: HIST5_TOPICS,
   geo5: GEO5_TOPICS,
   hist9: HIST9_TOPICS,
@@ -1368,4 +1371,7 @@ FORMULA_CARDS.push(...CHEM_FORMULA_CARDS);
 
 // History & Geography (Storia e Geografia · Grades 5, 9, 10, 11) formula cards.
 FORMULA_CARDS.push(...HIST_GEO_FORMULA_CARDS);
+
+// Grade 10 & Grade 11 Mathematics (Matematica L2 & L3) formula cards.
+FORMULA_CARDS.push(...MATH_ADV_FORMULA_CARDS);
 
