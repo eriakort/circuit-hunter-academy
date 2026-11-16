@@ -38,6 +38,9 @@ export function getCompleteQuestionBank(): TaggedQuestion[] {
   bank.push(...EXTRA_PHYSICS_QUESTIONS);
   bank.push(...EXTRA_MATH_QUESTIONS);
 
+  const italianGrammarUnitIndex = UNITS.findIndex(unit => unit.subject === 'italian');
+  const italianGrammarArcIndex = ARCS.findIndex(arc => arc.subject === 'italian');
+
   // Adapt the canonical A1–B1 grammar exercises into the shared test bank.
   // The grammar-training screen and formal tests therefore use the same source content.
   ITALIAN_GRAMMAR_TOPICS.forEach(topic => {
@@ -51,8 +54,8 @@ export function getCompleteQuestionBank(): TaggedQuestion[] {
           a: [correctOption, ...options],
           why: exercise.explanation,
           subject: 'italian',
-          unitIndex: 0,
-          arcIndex: -1,
+          unitIndex: italianGrammarUnitIndex,
+          arcIndex: italianGrammarArcIndex,
           missionId: `grammar-${topic.id}-${level}`,
           chapterTitle: topic.title,
           missionTitle: [`${topic.title[0]} · ${level}`, `${topic.title[1]} · ${level}`]
