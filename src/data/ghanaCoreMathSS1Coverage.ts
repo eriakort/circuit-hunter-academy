@@ -94,9 +94,9 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     contentStandards: 3,
     learningOutcomes: 3,
     learningIndicators: 8,
-    status: 'not-started',
-    pilotMissionIds: [],
-    note: 'No SHS 1 pilot mission is currently mapped to this sub-strand.'
+    status: 'partial',
+    pilotMissionIds: ['gh-core-ss1-statistical-reasoning-data-types'],
+    note: 'The pilot covers the first statistical-reasoning content standard and its data-classification/collection indicator. The remaining two standards and seven indicators are not yet covered.'
   },
   {
     strand: 'Making Sense of and Using Data',
