@@ -4,6 +4,7 @@ import { GRADE5_MATH_SUBJECT } from './grade5MathData';
 import { CHEM_SUBJECT, CHEM10_SUBJECT, CHEM11_SUBJECT } from './chemCommon';
 import { MATH10_SUBJECT, MATH11_SUBJECT } from './mathAdvCommon';
 import { HIST_GEO_SUBJECTS } from './histGeoCommon';
+import { GHANA_CORE_MATH_SUBJECT } from './ghanaCoreMathSS1Data';
 
 export const ITALIAN_SUBJECT: SubjectInfo = {
   id: 'italian',
@@ -79,6 +80,7 @@ export const GRADE_CURRICULUM_MAP: Record<GradeId, string[]> = {
 
 export function getCurriculumSubjects(grade?: GradeId | null, curriculumId: 'italy-national' | 'ghana-nacca' = 'italy-national'): SubjectInfo[] {
   // Ghana has its own NaCCA pathways; never fall back to Italian subject content.
+  if (curriculumId === 'ghana-nacca') return grade === 'grade9' ? [GHANA_CORE_MATH_SUBJECT] : [];
   if (curriculumId !== 'italy-national') return [];
   const targetGrade: GradeId = (grade && grade in GRADE_CURRICULUM_MAP) ? grade : 'grade9';
   const allowed = new Set(GRADE_CURRICULUM_MAP[targetGrade]);
