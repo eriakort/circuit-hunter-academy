@@ -126,11 +126,6 @@ export const UNITS: UnitInfo[] = [
     ],
     "ch": "11 + G1–G4",
     "subject": "math"
-  },
-  {
-    "title": ["Italian Grammar · CEFR A1–B1", "Grammatica italiana · QCER A1–B1"],
-    "ch": "A1–B1",
-    "subject": "italian"
   }
 ];
 
@@ -383,13 +378,6 @@ export const ARCS: ArcInfo[] = [
       "Disequazioni"
     ],
     "pages": "311–350"
-  },
-  {
-    "n": 1,
-    "unit": 7,
-    "subject": "italian",
-    "title": ["Italian Grammar · A1–B1", "Grammatica italiana · A1–B1"],
-    "pages": "Grammar Training"
   }
 ];
 
