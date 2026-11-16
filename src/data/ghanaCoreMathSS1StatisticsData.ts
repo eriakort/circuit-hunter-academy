@@ -91,5 +91,43 @@ export const GHANA_SS1_STATISTICS_MISSIONS: Mission[] = [
       ], 'Choosing only close friends is a convenience sample that may leave out other views. Conclusions should match the limits of the sample.')
     ]
   }
+,
+  {
+    id: 'gh-core-ss1-statistical-data-organisation-presentation',
+    arc: 0,
+    sec: 'Making sense of and using data',
+    pages: 'NaCCA SHS 1 · pp. 135–138',
+    hue: 248,
+    horns: 2,
+    eyes: 2,
+    title: 'The Data Display Studio',
+    topic: 'Organise grouped and ungrouped data in frequency tables and present findings with suitable graphs, charts and infographics.',
+    demon: 'The Misleading Graph Maker',
+    tech: 'Data Form · Twelfth Technique: Clear Presentation',
+    scenes: [
+      lesson('<p>Once data have been collected, organise them before drawing conclusions. <b>Ungrouped data</b> show individual values or responses. <b>Grouped data</b> combine values into categories or class intervals. A frequency table tells you how often each value or group occurs.</p>'),
+      lesson('<p><b>Build a frequency table:</b> Suppose 12 learners report how they travel to school: walk, trotro, walk, bus, trotro, walk, bus, walk, trotro, walk, bus, trotro. Tally each response, then count the tallies. The frequencies are walk = 5, trotro = 4 and bus = 3. Check that 5 + 4 + 3 = 12, the number of responses.</p>'),
+      lesson('<p><b>Choose a suitable display.</b> A line graph is useful for change over time, such as daily library visits during a school week. A pie chart shows how a whole is divided into categories; each sector angle is its fraction of the total multiplied by 360°. A multiple bar graph compares two or more related groups, such as boys’ and girls’ choices across sports. An infographic combines key numbers with concise labels and visuals.</p>'),
+      lesson('<p><b>Grouped data:</b> If you record the heights of many learners, you can organise the measurements into class intervals such as 140–149 cm, 150–159 cm and 160–169 cm, then record each interval’s frequency. Use equal, non-overlapping intervals and make sure every observation is counted once. Do not confuse the interval with its frequency.</p>'),
+      lesson('<p><b>Digital presentation:</b> Spreadsheet and graphing tools can create line graphs, pie charts, multiple bar graphs, infographics and, where appropriate, 3D graphs or charts. A 3D effect does not make data more accurate. Check labels, scales, units, titles and source notes; avoid visual effects that hide differences or exaggerate values.</p>'),
+      lesson('<p><b>Investigation example:</b> A school records the number of learners visiting its library from Monday to Friday. Put the days on the horizontal axis and the daily totals on the vertical axis, then join the plotted points to make a line graph. If you want to compare visits by year group, use a multiple bar graph with a separate bar for each group on each day. State what the graph shows and avoid claiming that it explains why the pattern occurred.</p>'),
+      { who: 'd', vis: 'demon', text: 'I will hide totals, distort scales and dress weak evidence in flashy charts. Can you make the data clear?' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('A class records the transport choices of 20 learners. Which display is best for showing how many chose each category?', [
+        'A frequency table or bar chart', 'A line graph showing change over time', 'A map with no counts', 'A paragraph with no totals'
+      ], 'A frequency table or bar chart shows the count in each category clearly.'),
+      question('A school wants to show how library visits change from Monday to Friday. Which graph is most suitable?', [
+        'A line graph', 'A pie chart with no time order', 'A Venn diagram', 'A single number with no labels'
+      ], 'A line graph is suitable for showing how a quantity changes over an ordered time period.'),
+      question('A pie chart represents 30 learners, and 10 chose football. What angle should the football sector have?', [
+        '120°', '30°', '90°', '180°'
+      ], 'The fraction is 10/30. Its sector angle is (10/30) × 360° = 120°.'),
+      question('What is an important check when creating a graph with digital technology?', [
+        'Use a clear title, labelled axes and an honest scale', 'Remove units so the graph looks simpler', 'Choose a 3D effect even when it hides values', 'Change the scale to make a small difference look large'
+      ], 'A clear title, labels, units and an honest scale help readers interpret the data without being misled.')
+    ]
+  }
 
 ];
