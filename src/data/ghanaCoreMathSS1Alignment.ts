@@ -62,7 +62,6 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [182, 183],
     alignment: 'cross-year-extension',
     note: 'Ratios, rates and proportions are explicitly mapped here to the SHS 2 proportional-reasoning standard. Keep this mission labelled as an optional early extension; do not count it as evidence of SHS 1 curriculum coverage.'
-  }
   },
   {
     missionId: 'gh-core-ss1-sets-surveys',
