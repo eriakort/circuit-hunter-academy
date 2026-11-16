@@ -5,8 +5,8 @@ export const GHANA_SS1_STATISTICS_ARCS: ArcInfo[] = [
     n: 11,
     unit: 0,
     subject: 'ghcoremath',
-    title: 'Statistical Reasoning: Collecting Reliable Data',
-    pages: 'NaCCA SHS 1 · pp. 126–134'
+    title: 'Statistical Reasoning: From Evidence to Action',
+    pages: 'NaCCA SHS 1 · pp. 126–147'
   }
 ];
 
@@ -127,6 +127,46 @@ export const GHANA_SS1_STATISTICS_MISSIONS: Mission[] = [
       question('What is an important check when creating a graph with digital technology?', [
         'Use a clear title, labelled axes and an honest scale', 'Remove units so the graph looks simpler', 'Choose a 3D effect even when it hides values', 'Change the scale to make a small difference look large'
       ], 'A clear title, labels, units and an honest scale help readers interpret the data without being misled.')
+    ]
+  }
+,
+  {
+    id: 'gh-core-ss1-school-community-data-project',
+    arc: 0,
+    sec: 'Making sense of and using data',
+    pages: 'NaCCA SHS 1 · p. 147',
+    hue: 142,
+    horns: 2,
+    eyes: 2,
+    title: 'The School Insight Project',
+    topic: 'Plan and carry out a team investigation using school-community data, analyse quantitative and qualitative evidence, make recommendations and present a responsible project report.',
+    demon: 'The Conclusion Thief',
+    tech: 'Data Form · Thirteenth Technique: Evidence into Action',
+    scenes: [
+      lesson('<p><b>A real project begins with a useful question.</b> Choose an issue that matters to your school community and can be investigated safely and fairly. Examples include library access, student transport, access to sports facilities or ways to reduce litter. Make the question specific, answerable and neutral. Refine it with your team before collecting information.</p>'),
+      lesson('<p><b>Plan as a team.</b> Agree on the purpose, the people or records you need, the collection methods, the timeline and each person’s role. Decide whether you need quantitative evidence (counts, ratings or measurements), qualitative evidence (reasons and experiences), or both. Explain why each method fits the question. A short questionnaire can collect comparable responses; interviews can explore reasons; observation can record what happens in a setting; suitable school records can provide existing data with permission.</p>'),
+      lesson('<p><b>Choose a fair sample.</b> Identify the group your question is about, then decide how to select participants. A random or appropriately stratified sample can help represent different year groups; a convenience sample of only your friends may be biased. State the sample size, how people were selected and what limits this places on your conclusions. Do not claim that a small sample represents everyone.</p>'),
+      lesson('<p><b>Collect responsibly.</b> Explain the purpose, obtain the required permission and follow your school’s safeguarding procedures. Participation should be voluntary where appropriate. Do not collect names or sensitive details unless genuinely necessary and authorised. Keep records secure, report results in a way that does not identify individuals, and never invent, alter or selectively hide responses. If you cannot obtain permission for a record or interview, choose another method.</p>'),
+      lesson('<p><b>Analyse both kinds of evidence.</b> Check entries for errors and missing values. For quantitative data, organise counts and responses in frequency tables, calculate useful totals or percentages, and select a clear graph such as a bar chart, line graph or pie chart. For qualitative data, group similar comments into themes, keep the meaning of responses and include short anonymous examples only when permitted. Compare the two forms of evidence where they help answer the same question.</p>'),
+      lesson('<p><b>Interpret, do not overclaim.</b> Describe the main patterns and differences, connect each conclusion to evidence, and consider other possible explanations. Mention limitations such as a small sample, unanswered questions or a short collection period. A graph can show what happened; it does not automatically explain why it happened. Separate observed results from your team’s interpretation.</p>'),
+      lesson('<p><b>Make useful recommendations.</b> Each recommendation should follow from a finding, be realistic for the school and identify a possible next step. For example, if a properly sampled survey and interviews show that library opening hours are a barrier, your team might recommend a supervised trial of revised hours and a follow-up review. Do not recommend a solution that your evidence does not support.</p>'),
+      lesson('<p><b>Present and share the report.</b> Include the project question, purpose, team roles, methods, sample, findings, tables/graphs, interpretation, limitations, conclusions and recommendations. Present to your class or a school forum using slides, an infographic, a document or a clear poster. Publish only an approved, anonymised summary through an authorised school magazine, notice board or school platform. Ask a teacher or school leader to approve publication first.</p>'),
+      { who: 'd', vis: 'demon', text: 'I will turn a handful of opinions into sweeping claims, hide the limits and publish private details. Can your team protect the evidence and make a sound recommendation?' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('A team wants to understand why learners do not use the school library. Which plan gives useful evidence?', [
+        'Survey a varied sample and interview some learners about their reasons', 'Ask only the team members and assume everyone agrees', 'Copy figures from an unrelated website', 'Choose a conclusion before collecting any data'
+      ], 'A varied sample gives broader quantitative evidence, while interviews can explain learners’ experiences. The team must still describe its sample and limitations.'),
+      question('A team surveys only its five closest friends, then claims the whole school has the same opinion. What should it do?', [
+        'Acknowledge the convenience-sample bias and improve the sample', 'Present the result as a school-wide fact', 'Delete responses that disagree', 'Change the question after seeing the answers'
+      ], 'A convenience sample of close friends may not represent the school. The team should use a more suitable sampling plan or limit its claim.'),
+      question('Which practice is most appropriate when collecting information from classmates?', [
+        'Explain the purpose, follow school permission rules and protect identities', 'Publish names with every response', 'Collect sensitive details even when they are unnecessary', 'Share raw responses publicly without approval'
+      ], 'Responsible research follows safeguarding and permission requirements, minimises personal data and protects participants’ identities.'),
+      question('What should a project recommendation be based on?', [
+        'Findings and conclusions supported by the collected evidence', 'The team’s favourite idea, regardless of results', 'A dramatic claim that attracts attention', 'A graph with missing labels and no source'
+      ], 'Recommendations should follow logically from evidence and acknowledge the limits of the investigation.')
     ]
   }
 

@@ -172,6 +172,19 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Covers organising grouped and ungrouped data in frequency tables and presenting findings with line graphs, pie charts, multiple bar graphs, infographics and appropriate digital tools, including 3D graphs/charts where available. Descriptive statistics and the separate school-community project standard are not claimed as covered.'
   }
+,
+  {
+    missionId: 'gh-core-ss1-school-community-data-project',
+    curriculumYear: 'SHS 1',
+    strand: '4 · Making Sense of and Using Data',
+    subStrand: '1 · Statistical Reasoning and Its Application in Real Life',
+    contentStandardIds: ['1.4.1.CS.3'],
+    learningOutcomeIds: ['1.4.1.LO.3'],
+    learningIndicatorIds: ['1.4.1.LI.1', '1.4.1.LI.2'],
+    printedPages: [147],
+    alignment: 'direct',
+    note: 'Covers a team project to pose and refine a school-community question, collect and analyse quantitative and/or qualitative data, interpret findings, draw evidence-based conclusions and recommendations, and present an approved report to a class or school forum. Publication is limited to anonymised material approved by the school.'
+  }
 ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
