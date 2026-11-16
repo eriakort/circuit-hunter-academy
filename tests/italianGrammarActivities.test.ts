@@ -9,6 +9,10 @@ assert.ok(passatoProssimoA2Correction.source?.includes('Io ho andato a scuola ie
 assert.deepEqual(passatoProssimoA2Correction.acceptedAnswers, ['Io sono andato a scuola ieri.', 'Io sono andata a scuola ieri.']);
 const reflexiveA2Translation = getGrammarActivities('reflexive', 'A2', 'translate')[0];
 assert.deepEqual(reflexiveA2Translation.acceptedAnswers, ['Mi sono vestito rapidamente.', 'Mi sono vestita rapidamente.']);
+const articlesA2Order = getGrammarActivities('articles', 'A2', 'order')[0];
+assert.equal(articlesA2Order.modelAnswer, 'Ho degli amici simpatici e generosi.');
+const partitiveA2Write = getGrammarActivities('partitive', 'A2', 'write')[0];
+assert.equal(partitiveA2Write.modelAnswer, 'Per preparare la pasta, aggiungi dell’acqua, del sale e delle verdure.');
 for (const level of levels) {
   for (const type of types) {
     const topics = ['sentence-building', 'articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive'];
