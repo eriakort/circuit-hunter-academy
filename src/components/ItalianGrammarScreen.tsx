@@ -30,7 +30,7 @@ export const ItalianGrammarScreen: React.FC = () => {
   const activityCorrect = activityType === 'order'
     ? normaliseAnswer(activityResponse) === normaliseAnswer(activity.modelAnswer)
     : !!activity.acceptedAnswers?.some(answer => normaliseAnswer(answer) === normaliseAnswer(activityInput));
-  const trackedIds = [...lesson.exercises.map(item => item.id), ...getGrammarActivities(topicId, level).map(item => item.id)];
+  const trackedIds = [...lesson.exercises.map(item => item.id), ...(['correct', 'order', 'translate', 'write'] as GrammarActivityType[]).flatMap(type => getGrammarActivities(topicId, level, type).map(item => item.id))];
   const masteredCount = trackedIds.filter(id => state.grammarProgress?.[id]?.correct).length;
   const grammarXp = Object.values(state.grammarProgress || {}).filter(item => item.xpAwarded).length * 5;
 
