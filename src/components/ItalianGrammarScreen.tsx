@@ -100,6 +100,10 @@ export const ItalianGrammarScreen: React.FC = () => {
             <strong>{L(lesson.example, lang)}</strong>
           </div>
         </div>
+        <div role="status" aria-live="polite" style={{ marginTop: 12, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, fontSize: 13 }}>
+          <strong>{L(['Mastered exercises', 'Esercizi completati'], lang)}: {masteredCount}/{trackedIds.length}</strong>
+          <span>⭐ {grammarXp} {L(['grammar XP earned', 'XP di grammatica ottenuti'], lang)}</span>
+        </div>
       </section>
 
       <section className="card">
