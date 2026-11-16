@@ -218,6 +218,13 @@ export interface CheckpointProgress {
   completedAt?: number;
 }
 
+export interface GrammarActivityProgress {
+  attempts: number;
+  correct: boolean;
+  completedAt?: number;
+  xpAwarded: boolean;
+}
+
 export interface GameState {
   /** Selected school grade; null means the learner has not chosen a grade yet. */
   grade: GradeId | null;
@@ -231,6 +238,7 @@ export interface GameState {
   flawless: Record<string, boolean>;
   learningProgress: Record<string, LearningMissionProgress>;
   checkpointProgress?: Record<string, CheckpointProgress>;
+  grammarProgress?: Record<string, GrammarActivityProgress>;
   v: number;
 }
 
