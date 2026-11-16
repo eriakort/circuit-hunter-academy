@@ -126,7 +126,7 @@ export const UNITS: UnitInfo[] = [
     ],
     "ch": "11 + G1–G4",
     "subject": "math"
-  }
+  },
   {
     "title": ["Italian Grammar · CEFR A1–B1", "Grammatica italiana · QCER A1–B1"],
     "ch": "A1–B1",
