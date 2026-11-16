@@ -5,6 +5,8 @@ const expectedTopics = ['articles', 'pronouns', 'passato-prossimo', 'partitive',
 assert.deepEqual(ITALIAN_GRAMMAR_TOPICS.map(topic => topic.id), expectedTopics);
 
 const levels = ['A1', 'A2', 'B1'] as const;
+const exerciseIds = new Set<string>();
+let totalExercises = 0;
 for (const topic of ITALIAN_GRAMMAR_TOPICS) {
   for (const level of levels) {
     const content = topic.levels[level];
@@ -13,6 +15,9 @@ for (const topic of ITALIAN_GRAMMAR_TOPICS) {
     assert.ok(content.example[0].length > 0 && content.example[1].length > 0, `${topic.id} ${level} needs bilingual examples`);
     assert.ok(content.exercises.length >= 3, `${topic.id} ${level} should include at least three practice questions`);
     for (const item of content.exercises) {
+      assert.ok(!exerciseIds.has(item.id), `Duplicate exercise ID: ${item.id}`);
+      exerciseIds.add(item.id);
+      totalExercises += 1;
       assert.ok(item.prompt[0].length > 0 && item.prompt[1].length > 0, `${item.id} needs a bilingual prompt`);
       assert.ok(item.explanation[0].length > 0 && item.explanation[1].length > 0, `${item.id} needs bilingual feedback`);
       assert.ok(item.options.length >= 2, `${item.id} needs answer choices`);
@@ -21,4 +26,5 @@ for (const topic of ITALIAN_GRAMMAR_TOPICS) {
   }
 }
 
-console.log('italianGrammar.test.ts ok! Six topics, three CEFR levels and bilingual practice verified.');
+assert.equal(totalExercises, 54, `Expected 54 starter exercises, got ${totalExercises}`);
+console.log('italianGrammar.test.ts ok! Six topics, three CEFR levels and 54 bilingual exercises verified.');
