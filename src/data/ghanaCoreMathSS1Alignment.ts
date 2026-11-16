@@ -74,6 +74,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [36, 37],
     alignment: 'direct',
     note: 'Covers set vocabulary, union, intersection, complements, two-set and three-set Venn problems, survey interpretation and De Morgan’s laws. The mission is an introductory practice set rather than the full set-algebra sequence.'
+  },
+  {
+    missionId: 'gh-core-ss1-financial-mathematics',
+    curriculumYear: 'SHS 1',
+    strand: '1 · Numbers for Everyday Life',
+    subStrand: '2 · Proportional Reasoning',
+    contentStandardIds: ['1.1.2.CS.2'],
+    learningOutcomeIds: ['1.1.2.LO.2'],
+    learningIndicatorIds: ['1.1.2.LI.3', '1.1.2.LI.4'],
+    printedPages: [50, 52],
+    alignment: 'direct',
+    note: 'Introduces simple interest, profit and loss, and commission using Ghanaian financial examples. It is a focused practice mission and does not claim to cover the full personal-finance sequence.'
   }
 ];
 
