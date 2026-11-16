@@ -54,14 +54,14 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
   {
     missionId: 'gh-core-ss1-ratio-rate',
     curriculumYear: 'SHS 2',
-    strand: '2 · Algebraic Reasoning',
-    subStrand: '2 · Patterns and Relationships',
+    strand: '1 · Numbers for Everyday Life',
+    subStrand: '2 · Proportional Reasoning',
     contentStandardIds: ['2.1.2.CS.2'],
     learningOutcomeIds: [],
     learningIndicatorIds: ['2.1.2.LI.1', '2.1.2.LI.2'],
     printedPages: [182, 183],
     alignment: 'cross-year-extension',
-    note: 'Ratios, rates and proportions are explicitly mapped here to the SHS 2 standard. Keep this mission labelled as an optional early extension; do not count it as evidence of SHS 1 curriculum coverage.'
+    note: 'Ratios, rates and proportions are explicitly mapped here to the SHS 2 proportional-reasoning standard. Keep this mission labelled as an optional early extension; do not count it as evidence of SHS 1 curriculum coverage.'
   }
 ];
 
