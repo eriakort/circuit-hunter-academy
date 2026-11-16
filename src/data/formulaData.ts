@@ -85,7 +85,9 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
   hist10: HIST10_TOPICS,
   geo10: GEO10_TOPICS,
   hist11: HIST11_TOPICS,
-  geo11: GEO11_TOPICS
+  geo11: GEO11_TOPICS,
+  // Ghana Core Mathematics has its own formula/topic catalogue; none are published yet.
+  ghcoremath: []
 };
 
 export const FORMULA_CARDS: FormulaCard[] = [
