@@ -28,7 +28,7 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     const number = getGhanaMissionAlignment('gh-core-ss1-number-sets');
     expect(number?.curriculumYear).toBe('SHS 1');
     expect(number?.contentStandardIds).toContain('1.1.1.CS.1');
-    expect(number?.learningIndicatorIds).toEqual(['1.1.1.LI.1', '1.1.1.LI.2']);
+    expect(number?.learningIndicatorIds).toEqual(['1.1.1.LI.2']);
     expect(number?.printedPages).toEqual([28, 29]);
 
     const percentages = getGhanaMissionAlignment('gh-core-ss1-fractions-percentages');
@@ -44,5 +44,14 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(ratio?.contentStandardIds).toEqual(['2.1.2.CS.2']);
     expect(ratio?.learningIndicatorIds).toEqual(['2.1.2.LI.1', '2.1.2.LI.2']);
     expect(ratio?.note).toContain('do not count it as evidence of SHS 1 curriculum coverage');
+  });
+
+  test('maps sets, Venn diagrams and survey work to the separate SHS 1 set outcome', () => {
+    const sets = getGhanaMissionAlignment('gh-core-ss1-sets-surveys');
+    expect(sets?.curriculumYear).toBe('SHS 1');
+    expect(sets?.contentStandardIds).toEqual(['1.1.1.CS.2']);
+    expect(sets?.learningOutcomeIds).toEqual(['1.1.1.LO.2']);
+    expect(sets?.learningIndicatorIds).toEqual(['1.1.1.LI.1', '1.1.1.LI.2', '1.1.1.LI.3']);
+    expect(sets?.printedPages).toEqual([36, 37]);
   });
 });
