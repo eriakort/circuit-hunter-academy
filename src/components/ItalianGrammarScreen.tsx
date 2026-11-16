@@ -22,7 +22,7 @@ export const ItalianGrammarScreen: React.FC = () => {
   const lesson = topic.levels[level];
   const question = lesson.exercises[questionIndex];
   const activity = getGrammarActivities(level, activityType)[0];
-  const normaliseAnswer = (value: string) => value.toLocaleLowerCase().replace(/[.!?]/g, '').replace(/[’]/g, "'").replace(/\\s+/g, ' ').trim();
+  const normaliseAnswer = (value: string) => value.toLocaleLowerCase().replace(/[.!?]/g, '').replace(/[’]/g, "'").replace(/\s+/g, ' ').trim();
   const activityResponse = activityType === 'order' && activity.words
     ? orderedWordIndexes.map(index => activity.words![index]).join(' ')
     : activityInput;
@@ -39,6 +39,7 @@ export const ItalianGrammarScreen: React.FC = () => {
     setLevel(nextLevel);
     setQuestionIndex(0);
     setSelectedAnswer(null);
+    setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false);
   };
   const chooseActivityType = (nextType: GrammarActivityType) => {\n    setActivityType(nextType); setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false);\n  };\n  const nextQuestion = () => {
     setQuestionIndex(index => (index + 1) % lesson.exercises.length);
