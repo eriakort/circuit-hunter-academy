@@ -54,9 +54,9 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     contentStandards: 2,
     learningOutcomes: 3,
     learningIndicators: 6,
-    status: 'not-started',
-    pilotMissionIds: [],
-    note: 'No SHS 1 pilot mission is currently mapped to this sub-strand.'
+    status: 'partial',
+    pilotMissionIds: ['gh-core-ss1-algebraic-expressions'],
+    note: 'The pilot introduces expression formation and simplification against the first learning indicator only. Equations, inequalities and the remaining algebraic-expression indicators are not yet covered.'
   },
   {
     strand: 'Algebraic Reasoning',
