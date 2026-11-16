@@ -29,13 +29,27 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await expect(page.locator('.grade-card[data-grade="grade10"]')).toContainText('SHS 2 (SS2)');
   await expect(page.locator('.grade-card[data-grade="grade11"]')).toContainText('SHS 3 (SS3)');
   await expect(page.locator('.grade-card')).toHaveCount(3);
-  await expect(page.locator('.grade-card').first()).toBeDisabled();
+  await expect(page.locator('.grade-card[data-grade="grade9"]')).toBeEnabled();
+  await expect(page.locator('.grade-card[data-grade="grade10"]')).toBeDisabled();
+  await expect(page.locator('.grade-card[data-grade="grade11"]')).toBeDisabled();
+  await page.locator('.grade-card[data-grade="grade9"]').click();
+  await expect(page.locator('[data-s="ghcoremath"]')).toBeVisible();
+  await expect(page.getByText('Additional Mathematics', { exact: true })).toBeVisible();
+  await page.locator('[data-s="ghcoremath"]').click();
+  await page.locator('#nm').fill('Ghana Hunter');
+  await page.getByRole('button', { name: /Join the academy/ }).click();
+  await expect(page.locator('h3').filter({ hasText: 'The Number Map' })).toBeVisible();
+  await expect(page.locator('h3').filter({ hasText: 'The Market Percentage Challenge' })).toBeVisible();
+  const ghanaSaveAfterSelection = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:ghana-nacca') || '{}'));
+  expect(ghanaSaveAfterSelection.grade).toBe('grade9');
+  expect(ghanaSaveAfterSelection.subject).toBe('ghcoremath');
 
   const ghanaProfile = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-curriculum-profile-v1') || '{}'));
   expect(ghanaProfile.activeCurriculumId).toBe('ghana-nacca');
   expect(ghanaProfile.enabledCurriculumIds).toContain('italy-national');
   expect(ghanaProfile.enabledCurriculumIds).toContain('ghana-nacca');
 
+  await page.locator('#hGrade').click();
   await page.getByRole('button', { name: /Italy/ }).click();
   await expect(page.getByRole('button', { name: /Italy/ })).toHaveAttribute('aria-pressed', 'true');
   const italianSave = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:italy-national') || '{}'));

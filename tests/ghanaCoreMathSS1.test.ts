@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'bun:test';
+import { ARCS, MISSIONS, SUBJECTS, UNITS } from '../src/data/gameData';
 import {
   GHANA_CORE_MATH_SS1_ARCS,
   GHANA_CORE_MATH_SS1_MISSIONS,
@@ -41,4 +42,15 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
     expect(text).not.toContain('Matematica');
     expect(text).not.toContain('Lingua Italiana');
   });
+});
+
+test('Ghana SS1 pilot is registered in the playable catalogue with stable local arc mapping', () => {
+  expect(SUBJECTS.some(subject => subject.id === 'ghcoremath')).toBe(true);
+  const unitIndex = UNITS.findIndex(unit => unit.subject === 'ghcoremath');
+  expect(unitIndex).toBeGreaterThanOrEqual(0);
+  const registeredArcs = ARCS.map((arc, index) => ({ arc, index })).filter(item => item.arc.subject === 'ghcoremath');
+  expect(registeredArcs.length).toBe(GHANA_CORE_MATH_SS1_ARCS.length);
+  const registeredMissions = MISSIONS.filter(mission => ARCS[mission.arc]?.subject === 'ghcoremath');
+  expect(registeredMissions.map(mission => mission.id)).toEqual(GHANA_CORE_MATH_SS1_MISSIONS.map(mission => mission.id));
+  expect(registeredMissions.every(mission => ARCS[mission.arc]?.unit === unitIndex)).toBe(true);
 });

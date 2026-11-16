@@ -29013,3 +29013,12 @@ for (const [subj, unitInfo, arcs, missions] of mathAdvCatalogue) {
   })));
 }
 
+
+ // Ghana NaCCA · SHS 1 Core Mathematics pilot. Appended to preserve all existing mission indices.
+import { GHANA_CORE_MATH_SUBJECT, GHANA_CORE_MATH_SS1_UNIT, GHANA_CORE_MATH_SS1_ARCS, GHANA_CORE_MATH_SS1_MISSIONS } from './ghanaCoreMathSS1Data';
+if (!SUBJECTS.some(subject => subject.id === 'ghcoremath')) SUBJECTS.push(GHANA_CORE_MATH_SUBJECT);
+const ghanaCoreMathUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_CORE_MATH_SS1_UNIT, subject: 'ghcoremath' });
+const ghanaCoreMathArcOffset = ARCS.length;
+GHANA_CORE_MATH_SS1_ARCS.forEach(arc => ARCS.push({ ...arc, unit: ghanaCoreMathUnitOffset, subject: 'ghcoremath' }));
+MISSIONS.push(...GHANA_CORE_MATH_SS1_MISSIONS.map(mission => ({ ...mission, arc: ghanaCoreMathArcOffset + mission.arc })));

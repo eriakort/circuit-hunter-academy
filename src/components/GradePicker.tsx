@@ -46,14 +46,14 @@ export const GradePicker: React.FC = () => {
       {isGhana && (
         <div className="grade-coming-soon card" role="status">
           <h2>Ghana SHS curriculum selected</h2>
-          <p>SS1, SS2 and SS3 are mapped to the academy grade structure. Ghana Core Mathematics and Additional Mathematics are being prepared as separate learning pathways. Your Italian progress remains saved independently.</p>
+          <p>SS1, SS2 and SS3 are mapped to the academy grade structure. The SS1 Core Mathematics pilot is available; SS2, SS3 and Additional Mathematics remain in preparation. Your Italian progress remains saved independently.</p>
         </div>
       )}
 
       <div className="grade-options" role="group" aria-label={L(['Choose your grade', 'Scegli la tua classe'], lang)}>
         {GRADES.filter(grade => !isGhana || ['grade9', 'grade10', 'grade11'].includes(grade.id)).map(grade => {
           const selected = state.grade === grade.id;
-          const ready = !isGhana && grade.status === 'ready';
+          const ready = isGhana ? grade.id === 'grade9' : grade.status === 'ready';
           const statusCopy: [string, string] =
             grade.id === 'grade5'
               ? ['Science, Maths, Italian, History & Geography available', 'Scienze, Matematica, Italiano, Storia e Geografia disponibili']
@@ -72,14 +72,14 @@ export const GradePicker: React.FC = () => {
               className={`grade-card${ready ? ' grade-card-ready' : ''}${selected ? ' grade-card-selected' : ''}`}
               aria-pressed={selected}
               onClick={() => setGrade(grade.id)}
-              disabled={isGhana}
+              disabled={isGhana ? grade.id !== 'grade9' : false}
             >
               <span className="grade-card-art" aria-hidden="true">{grade.id.replace('grade', '')}</span>
               <span className="grade-card-kicker">{L(grade.schoolLevel, lang)}</span>
               <strong>{isGhana ? ({ grade9: 'SHS 1 (SS1)', grade10: 'SHS 2 (SS2)', grade11: 'SHS 3 (SS3)' } as Record<string, string>)[grade.id] : L(grade.name, lang)}</strong>
               <span className="grade-card-detail">{L(grade.ageRange, lang)}</span>
               <span className="grade-card-status">
-                {isGhana ? 'Ghana pathway content is being prepared' : L(statusCopy, lang)}
+                {isGhana ? (grade.id === 'grade9' ? 'Core Mathematics · SS1 pilot available' : 'Ghana pathway content is being prepared') : L(statusCopy, lang)}
               </span>
             </button>
           );
