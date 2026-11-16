@@ -11,7 +11,7 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
   test('uses a dedicated subject and curriculum-specific unit and arcs', () => {
     expect(GHANA_CORE_MATH_SUBJECT.id).toBe('ghcoremath');
     expect(GHANA_CORE_MATH_SS1_UNIT.subject).toBe('ghcoremath');
-    expect(GHANA_CORE_MATH_SS1_ARCS).toHaveLength(3);
+    expect(GHANA_CORE_MATH_SS1_ARCS).toHaveLength(4);
     expect(GHANA_CORE_MATH_SS1_ARCS.every(arc => arc.subject === 'ghcoremath')).toBe(true);
   });
 
@@ -39,6 +39,8 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
     expect(text).toContain('GH₵');
     expect(text).toContain('Kumasi');
     expect(text).toContain('trotro');
+    expect(text).toContain('Venn diagrams');
+    expect(text).toContain('De Morgan');
     expect(text).not.toContain('Matematica');
     expect(text).not.toContain('Lingua Italiana');
   });
