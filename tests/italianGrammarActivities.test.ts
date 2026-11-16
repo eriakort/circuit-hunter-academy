@@ -28,6 +28,8 @@ assert.deepEqual(partitiveA2Translation.acceptedAnswers, ['Vuoi della verdura?',
 const articlesA2Write = getGrammarActivities('articles', 'A2', 'write')[0];
 assert.equal(articlesA2Write.modelAnswer, 'Nel mio quartiere ci sono una piazza e un bar. Le case del centro sono antiche.');
 assert.equal(articlesA2Write.modelAnswer.split(/[.!?]+/).filter(Boolean).length, 2, 'A2 place-description model should contain two sentences as requested');
+assert.equal(articlesA2Write.explanation[0], 'Check agreement and contractions: nel = in + il; una agrees with piazza; le agrees with case; del = di + il.');
+assert.equal(articlesA2Write.explanation[1], 'Controlla l’accordo e le preposizioni articolate: nel = in + il; una concorda con piazza; le concorda con case; del = di + il.');
 const articlesA2Order = getGrammarActivities('articles', 'A2', 'order')[0];
 assert.equal(articlesA2Order.modelAnswer, 'Ho degli amici simpatici e generosi.');
 const partitiveA2Write = getGrammarActivities('partitive', 'A2', 'write')[0];
