@@ -16,6 +16,7 @@ import { ComputerScienceCheckpointScreen } from './components/ComputerScienceChe
 import { ComputerScienceAppliedCheckpointScreen } from './components/ComputerScienceAppliedCheckpointScreen';
 import { ItalianCheckpointScreen } from './components/ItalianCheckpointScreen';
 import { ItalianLabScreen } from './components/ItalianLabScreen';
+import { ItalianGrammarScreen } from './components/ItalianGrammarScreen';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -84,7 +85,8 @@ const AppContent: React.FC = () => {
     'cs-checkpoint': ['Computer Science checkpoint', 'Verifica di informatica'],
     'cs-applied-checkpoint': ['Applied Computer Science trial', 'Prova di informatica applicata'],
     'it-checkpoint': ['Italian oral trial', 'Esame orale di italiano'],
-    'it-lab': ['Italian speaking lab', 'Laboratorio di italiano']
+    'it-lab': ['Italian speaking lab', 'Laboratorio di italiano'],
+    'it-grammar': ['Italian grammar training', 'Allenamento di grammatica italiana']
   };
 
   useEffect(() => {
@@ -124,6 +126,7 @@ const AppContent: React.FC = () => {
         {activeView === 'cs-applied-checkpoint' && <ComputerScienceAppliedCheckpointScreen />}
         {activeView === 'it-checkpoint' && <ItalianCheckpointScreen />}
         {activeView === 'it-lab' && <ItalianLabScreen />}
+        {activeView === 'it-grammar' && <ItalianGrammarScreen />}
       </main>
     </div>
   );
