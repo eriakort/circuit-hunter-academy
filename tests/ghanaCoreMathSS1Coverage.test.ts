@@ -26,13 +26,14 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
 
   test('marks only the two pilot sub-strands as partial', () => {
     const summary = getGhanaCoreMathSS1CoverageSummary();
-    expect(summary.partial).toBe(4);
-    expect(summary.notStarted).toBe(4);
+    expect(summary.partial).toBe(5);
+    expect(summary.notStarted).toBe(3);
     expect(GHANA_CORE_MATH_SS1_COVERAGE.filter(item => item.status === 'partial').map(item => item.subStrand)).toEqual([
       'Real Number System',
       'Proportional Reasoning',
       'Applications of Expressions, Equations and Inequalities',
-      'Patterns and Relationships'
+      'Patterns and Relationships',
+      'Spatial Sense'
     ]);
   });
 
@@ -50,6 +51,12 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
     const algebra = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Applications of Expressions, Equations and Inequalities');
     expect(algebra?.status).toBe('partial');
     expect(algebra?.pilotMissionIds).toEqual(['gh-core-ss1-algebraic-expressions']);
+  });
+
+  test('counts the spatial sense mission only in its matching Geometry Around Us sub-strand', () => {
+    const spatial = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Spatial Sense');
+    expect(spatial?.status).toBe('partial');
+    expect(spatial?.pilotMissionIds).toEqual(['gh-core-ss1-spatial-sense']);
   });
 
   test('does not count the SHS 2 ratio extension as SHS 1 coverage', () => {

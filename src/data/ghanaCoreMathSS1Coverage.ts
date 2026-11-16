@@ -74,9 +74,9 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     contentStandards: 1,
     learningOutcomes: 1,
     learningIndicators: 5,
-    status: 'not-started',
-    pilotMissionIds: [],
-    note: 'No SHS 1 pilot mission is currently mapped to this sub-strand.'
+    status: 'partial',
+    pilotMissionIds: ['gh-core-ss1-spatial-sense'],
+    note: 'The pilot introduces all five listed spatial-sense indicators through guided examples and practice. Further varied and higher-demand applications should be added before treating the sub-strand as fully mastered.'
   },
   {
     strand: 'Geometry Around Us',
