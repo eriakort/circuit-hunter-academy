@@ -52,13 +52,13 @@ export const SubjectPickerScreen: React.FC = () => {
     <section className="hero card">
       <div>
         <div className="eyebrow">
-          {L(eyebrowByGrade[activeGrade], lang)}
+          {isGhana ? 'GHANA SHS · CHOOSE A LEARNING PATHWAY' : L(eyebrowByGrade[activeGrade], lang)}
         </div>
         <h1>
           Circuit Hunter <span>Academy</span>
         </h1>
         <p className="lede">
-          {L(ledeByGrade[activeGrade], lang)}
+          {isGhana ? 'Select a Ghana NaCCA pathway. Ghana-specific lessons and assessments will appear here when the SS1 pilot is ready.' : L(ledeByGrade[activeGrade], lang)}
         </p>
 
         {/* Quick Launch Pills are only available for the Italian catalogue. */}
