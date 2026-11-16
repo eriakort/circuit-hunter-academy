@@ -252,6 +252,8 @@ export interface TaggedQuestion extends QuizQuestion {
   missionId: string;
   chapterTitle: BilingualText;
   missionTitle: BilingualText;
+  /** CEFR level for questions sourced from Italian Grammar Training. */
+  grammarLevel?: 'A1' | 'A2' | 'B1';
 }
 
 export interface RacePlayer {
