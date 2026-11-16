@@ -7,6 +7,8 @@ assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 72);
 const passatoProssimoA2Correction = getGrammarActivities('passato-prossimo', 'A2', 'correct')[0];
 assert.ok(passatoProssimoA2Correction.source?.includes('Io ho andato a scuola ieri'), 'A2 correction should cover the common ho/sono auxiliary error');
 assert.deepEqual(passatoProssimoA2Correction.acceptedAnswers, ['Io sono andato a scuola ieri.', 'Io sono andata a scuola ieri.']);
+const reflexiveA2Translation = getGrammarActivities('reflexive', 'A2', 'translate')[0];
+assert.deepEqual(reflexiveA2Translation.acceptedAnswers, ['Mi sono vestito rapidamente.', 'Mi sono vestita rapidamente.']);
 for (const level of levels) {
   for (const type of types) {
     const topics = ['sentence-building', 'articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive'];
