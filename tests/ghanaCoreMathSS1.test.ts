@@ -17,7 +17,7 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
 
   test('contains unique pilot missions with valid local arc references', () => {
     const ids = GHANA_CORE_MATH_SS1_MISSIONS.map(mission => mission.id);
-    expect(ids).toHaveLength(9);
+    expect(ids).toHaveLength(10);
     expect(new Set(ids).size).toBe(ids.length);
     expect(ids.every(id => id.startsWith('gh-core-ss1-'))).toBe(true);
     expect(GHANA_CORE_MATH_SS1_MISSIONS.every(mission => mission.arc >= 0 && mission.arc < GHANA_CORE_MATH_SS1_ARCS.length)).toBe(true);
@@ -54,12 +54,12 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
     expect(text).toContain('polygon');
     expect(text).toContain('bearing');
     expect(text).toContain('magnitude and direction');
-    expect(text).toContain('primary data');
-    expect(text).toContain('secondary data');
-    expect(text).toContain('discrete data');
-    expect(text).toContain('continuous data');
-    expect(text).toContain('nominal data');
-    expect(text).toContain('ordinal data');
+    expect(text).toContain('Primary data');
+    expect(text).toContain('Secondary data');
+    expect(text).toContain('Discrete data');
+    expect(text).toContain('Continuous data');
+    expect(text).toContain('Nominal data');
+    expect(text).toContain('Ordinal data');
     expect(text).toContain('grouped');
     expect(text).toContain('The Data Detective');
     expect(text).not.toContain('Matematica');
