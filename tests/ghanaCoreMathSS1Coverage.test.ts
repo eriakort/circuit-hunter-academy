@@ -26,11 +26,12 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
 
   test('marks only the two pilot sub-strands as partial', () => {
     const summary = getGhanaCoreMathSS1CoverageSummary();
-    expect(summary.partial).toBe(2);
-    expect(summary.notStarted).toBe(6);
+    expect(summary.partial).toBe(3);
+    expect(summary.notStarted).toBe(5);
     expect(GHANA_CORE_MATH_SS1_COVERAGE.filter(item => item.status === 'partial').map(item => item.subStrand)).toEqual([
       'Real Number System',
-      'Proportional Reasoning'
+      'Proportional Reasoning',
+      'Applications of Expressions, Equations and Inequalities'
     ]);
   });
 
@@ -42,6 +43,12 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
       }
       expect(item.status === 'not-started').toBe(item.pilotMissionIds.length === 0);
     }
+  });
+
+  test('counts the expression mission only in its matching SHS 1 algebra sub-strand', () => {
+    const algebra = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Applications of Expressions, Equations and Inequalities');
+    expect(algebra?.status).toBe('partial');
+    expect(algebra?.pilotMissionIds).toEqual(['gh-core-ss1-algebraic-expressions']);
   });
 
   test('does not count the SHS 2 ratio extension as SHS 1 coverage', () => {
