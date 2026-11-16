@@ -159,6 +159,19 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Covers identifying, validating and applying quantitative collection methods (surveys/questionnaires, interviews, observation, existing data and probability-based sampling) and qualitative methods (interviews, observation, focus groups, oral histories and responsible online/social-media monitoring).'
   }
+,
+  {
+    missionId: 'gh-core-ss1-statistical-data-organisation-presentation',
+    curriculumYear: 'SHS 1',
+    strand: '4 · Making Sense of and Using Data',
+    subStrand: '1 · Statistical Reasoning and Its Application in Real Life',
+    contentStandardIds: ['1.4.1.CS.2'],
+    learningOutcomeIds: ['1.4.1.LO.2'],
+    learningIndicatorIds: ['1.4.1.LI.2'],
+    printedPages: [135, 138],
+    alignment: 'direct',
+    note: 'Covers organising grouped and ungrouped data in frequency tables and presenting findings with line graphs, pie charts, multiple bar graphs, infographics and appropriate digital tools, including 3D graphs/charts where available. Descriptive statistics and the separate school-community project standard are not claimed as covered.'
+  }
 ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
