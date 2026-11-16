@@ -99,6 +99,19 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Introduces variables, translating simple verbal and pattern-based situations into expressions, combining like terms and using the distributive property. Quadratic factorisation, perfect-square identities, algebraic fractions, equations and inequalities are not claimed as covered.'
   },
+  {
+    missionId: 'gh-core-ss1-patterns-functions',
+    curriculumYear: 'SHS 1',
+    strand: '2 · Algebraic Reasoning',
+    subStrand: '2 · Patterns and Relationships',
+    contentStandardIds: ['1.2.2.CS.1'],
+    learningOutcomeIds: ['1.2.2.LO.1'],
+    learningIndicatorIds: ['1.2.2.LI.1', '1.2.2.LI.2'],
+    printedPages: [74, 78],
+    alignment: 'direct',
+    note: 'Focused coverage of the first Patterns and Relationships content standard: distinguishing relations and functions, mapping rules, domain and range, and drawing/interpreting simple linear-function graphs. The second content standard on gradient/equations of straight lines and distance between points is not claimed as covered.'
+  },
+
 ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
