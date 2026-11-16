@@ -3,12 +3,12 @@ import { ITALIAN_GRAMMAR_ACTIVITIES, getGrammarActivities } from '../src/data/it
 const levels = ['A1', 'A2', 'B1'] as const;
 const types = ['correct', 'order', 'translate', 'write'] as const;
 const ids = new Set<string>();
-assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 36);
+assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 72);
 for (const level of levels) {
   for (const type of types) {
-    const topics = ['sentence-building', 'articles', 'pronouns'];
+    const topics = ['sentence-building', 'articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive'];
     const items = topics.flatMap(topic => getGrammarActivities(topic, level, type));
-    assert.equal(items.length, 3, level + ' should have one ' + type + ' activity per topic');
+    assert.equal(items.length, 6, level + ' should have one ' + type + ' activity per topic');
     for (const item of items) {
       assert.ok(!ids.has(item.id), 'Duplicate activity id: ' + item.id);
       ids.add(item.id);
