@@ -14,6 +14,10 @@ const sentenceA2Write = getGrammarActivities('sentence-building', 'A2', 'write')
 assert.equal(sentenceA2Write.modelAnswer, 'Ieri ho studiato italiano. Poi ho guardato un film.');
 assert.equal(sentenceA2Write.modelAnswer.split(/[.!?]+/).filter(Boolean).length, 2, 'A2 daily-activities model should contain two connected sentences as requested');
 assert.deepEqual(sentenceA2Translation.acceptedAnswers, ['Ho chiamato Giulia e le ho parlato.', 'Ho chiamato Giulia e ho parlato con lei.']);
+const weekendA2Write = getGrammarActivities('passato-prossimo', 'A2', 'write')[0];
+assert.equal(weekendA2Write.prompt[1], 'Scrivi due frasi sul fine settimana scorso. Usa il passato prossimo.');
+assert.equal(weekendA2Write.modelAnswer, 'Sabato ho visitato un museo. Domenica ho visto una mostra.');
+assert.equal(weekendA2Write.modelAnswer.split(/[.!?]+/).filter(Boolean).length, 2, 'A2 weekend model should contain the two sentences requested');
 const partitiveA2Translation = getGrammarActivities('partitive', 'A2', 'translate')[0];
 assert.deepEqual(partitiveA2Translation.acceptedAnswers, ['Vuoi della verdura?', 'Vuoi delle verdure?']);
 const articlesA2Write = getGrammarActivities('articles', 'A2', 'write')[0];
