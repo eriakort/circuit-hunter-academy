@@ -46,6 +46,14 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(ratio?.note).toContain('do not count it as evidence of SHS 1 curriculum coverage');
   });
 
+  test('maps financial mathematics to the SHS 1 personal-finance indicators', () => {
+    const finance = getGhanaMissionAlignment('gh-core-ss1-financial-mathematics');
+    expect(finance?.curriculumYear).toBe('SHS 1');
+    expect(finance?.contentStandardIds).toContain('1.1.2.CS.2');
+    expect(finance?.learningIndicatorIds).toEqual(['1.1.2.LI.3', '1.1.2.LI.4']);
+    expect(finance?.printedPages).toEqual([50, 52]);
+  });
+
   test('maps sets, Venn diagrams and survey work to the separate SHS 1 set outcome', () => {
     const sets = getGhanaMissionAlignment('gh-core-ss1-sets-surveys');
     expect(sets?.curriculumYear).toBe('SHS 1');
