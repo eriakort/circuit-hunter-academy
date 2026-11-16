@@ -20,6 +20,9 @@ assert.ok(passatoProssimoA2Correction.source?.includes('Io ho andato a scuola ie
 assert.deepEqual(passatoProssimoA2Correction.acceptedAnswers, ['Io sono andato a scuola ieri.', 'Io sono andata a scuola ieri.']);
 const reflexiveA2Translation = getGrammarActivities('reflexive', 'A2', 'translate')[0];
 assert.deepEqual(reflexiveA2Translation.acceptedAnswers, ['Mi sono vestito rapidamente.', 'Mi sono vestita rapidamente.']);
+assert.equal(reflexiveA2Translation.prompt[0], 'Translate into Italian: I got dressed quickly. Use the form that agrees with you.');
+assert.equal(reflexiveA2Translation.prompt[1], 'Traduci in italiano: “I got dressed quickly”. Usa la forma che concorda con te.');
+assert.equal(reflexiveA2Translation.source, 'I got dressed quickly.');
 const sentenceA2Translation = getGrammarActivities('sentence-building', 'A2', 'translate')[0];
 const sentenceA2Write = getGrammarActivities('sentence-building', 'A2', 'write')[0];
 assert.equal(sentenceA2Write.modelAnswer, 'Ieri ho studiato italiano. Poi ho guardato un film.');
