@@ -23,7 +23,7 @@ export const GHANA_SS1_PATTERNS_MISSIONS: Mission[] = [
     horns: 2,
     eyes: 2,
     title: 'The Mapping Maze',
-    topic: 'Distinguish relations from functions, identify mapping rules and draw and interpret simple linear-function graphs.',
+    topic: 'Distinguish relations and functions, identify mapping rules and draw and interpret simple linear-function graphs.',
     demon: 'The Rule Reverser',
     tech: 'Function Form · Seventh Technique: Input-to-Output',
     scenes: [
