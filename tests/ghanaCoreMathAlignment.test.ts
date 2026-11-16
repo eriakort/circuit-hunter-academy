@@ -100,6 +100,16 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(measurement?.note).toContain('Trigonometry and area/perimeter standards are not claimed as covered');
   });
 
+  test('maps quantitative and qualitative collection methods to the next NaCCA indicators', () => {
+    const collection = getGhanaMissionAlignment('gh-core-ss1-statistical-data-collection-methods');
+    expect(collection?.curriculumYear).toBe('SHS 1');
+    expect(collection?.contentStandardIds).toEqual(['1.4.1.CS.1']);
+    expect(collection?.learningOutcomeIds).toEqual(['1.4.1.LO.1']);
+    expect(collection?.learningIndicatorIds).toEqual(['1.4.1.LI.2', '1.4.1.LI.3']);
+    expect(collection?.printedPages).toEqual([133, 134]);
+    expect(collection?.note).toContain('focus groups');
+  });
+
   test('maps the first Statistical Reasoning standard and indicator to the SHS 1 mission', () => {
     const statistics = getGhanaMissionAlignment('gh-core-ss1-statistical-reasoning-data-types');
     expect(statistics?.curriculumYear).toBe('SHS 1');
@@ -107,6 +117,6 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(statistics?.learningOutcomeIds).toEqual(['1.4.1.LO.1']);
     expect(statistics?.learningIndicatorIds).toEqual(['1.4.1.LI.1']);
     expect(statistics?.printedPages).toEqual([126, 133]);
-    expect(statistics?.note).toContain('seven indicators');
+    expect(statistics?.note).toContain('separate mission');
   });
 });
