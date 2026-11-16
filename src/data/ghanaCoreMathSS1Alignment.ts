@@ -145,7 +145,7 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     learningIndicatorIds: ['1.4.1.LI.1'],
     printedPages: [126, 133],
     alignment: 'direct',
-    note: 'Focused coverage of the first statistical-reasoning standard and indicator: classifying primary/secondary, quantitative (discrete/continuous), qualitative (nominal/ordinal), numerical/categorical, and grouped/ungrouped data; selecting and justifying suitable methods to collect qualitative and quantitative data. Later statistical standards and indicators are not claimed as covered.'
+    note: 'Focused coverage of the first statistical-reasoning standard and indicator: classifying primary/secondary, quantitative (discrete/continuous), qualitative (nominal/ordinal), numerical/categorical, and grouped/ungrouped data; selecting and justifying suitable methods to collect qualitative and quantitative data. The remaining two statistical content standards and seven indicators are not claimed as covered.'
   }
 ];
 
