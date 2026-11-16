@@ -146,7 +146,7 @@ export const GHANA_CORE_MATH_SS1_MISSIONS: Mission[] = [
       question('In a three-set survey, the set totals are 20, 18 and 15; pair overlaps are 8, 6 and 5; and 3 learners are in all three. How many are in at least one set?', ['37', '35', '53', '40'], 'Use inclusion-exclusion: 20 + 18 + 15 − 8 − 6 − 5 + 3 = 37.'),
       question('Which identity is De Morgan’s law?', ['(A ∪ B)′ = A′ ∩ B′', '(A ∪ B)′ = A ∪ B', 'A ∩ B = A′ ∩ B′', 'A ∪ B = A′ ∪ B′'], 'The complement of a union is the intersection of the complements.')
     ]
-  }
+  },
   {
     id: 'gh-core-ss1-financial-mathematics',
     arc: 4,
