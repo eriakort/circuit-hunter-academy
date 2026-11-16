@@ -1,10 +1,12 @@
 import type { GameState, GradeId, QuizQuestion, SubjectId, ViewMode } from './types';
 import { MISSIONS, UNITS, ARCS } from './data/gameData';
 import { GRADE_SUBJECT_IDS } from './data/gradeData';
+import { ITALIAN_GRAMMAR_TOPICS } from './data/italianGrammar';
+import { ITALIAN_GRAMMAR_ACTIVITIES } from './data/italianGrammarActivities';
 
 export const SAVE_KEY = 'circuit-hunter-academy-v2';
 export const NAVIGATION_KEY = 'circuit-hunter-academy-navigation-v2';
-export const SAVE_SCHEMA = 4;
+export const SAVE_SCHEMA = 5;
 
 export const VALID_VIEWS: ViewMode[] = [
   'grades', 'subjects', 'map', 'scene', 'battle', 'result', 'ending',
@@ -24,6 +26,27 @@ const isSubject = (value: unknown): value is SubjectId =>
 
 const firstUnitForSubject = (subject: SubjectId): number =>
   UNITS.findIndex(unit => (unit.subject || 'cs') === subject);
+
+const VALID_GRAMMAR_ACTIVITY_IDS = new Set([
+  ...ITALIAN_GRAMMAR_TOPICS.flatMap(topic => Object.values(topic.levels).flatMap(level => level.exercises.map(exercise => exercise.id))),
+  ...ITALIAN_GRAMMAR_ACTIVITIES.map(activity => activity.id)
+]);
+
+export const isValidGrammarActivityId = (value: unknown): value is string =>
+  typeof value === 'string' && VALID_GRAMMAR_ACTIVITY_IDS.has(value);
+
+export const sanitizeGrammarProgress = (value: unknown): NonNullable<GameState['grammarProgress']> => {
+  if (!isRecord(value)) return {};
+  return Object.fromEntries(Object.entries(value).flatMap(([id, entry]) => {
+    if (!VALID_GRAMMAR_ACTIVITY_IDS.has(id) || !isRecord(entry)) return [];
+    const { attempts, correct, completedAt, xpAwarded } = entry;
+    if (!Number.isInteger(attempts) || (attempts as number) < 0 || (attempts as number) > 100000
+      || typeof correct !== 'boolean' || typeof xpAwarded !== 'boolean'
+      || (completedAt !== undefined && !isFiniteNonNegative(completedAt))
+      || (xpAwarded && !correct)) return [];
+    return [[id, { attempts, correct, xpAwarded, ...(completedAt !== undefined ? { completedAt } : {}) }]];
+  }));
+};
 
 const isFiniteNonNegative = (value: unknown): value is number =>
   typeof value === 'number' && Number.isFinite(value) && value >= 0;
@@ -220,6 +243,7 @@ export const sanitizeGameState = (value: unknown): GameState => {
       : {},
     learningProgress: sanitizeLearningProgress(saved.learningProgress),
     checkpointProgress: sanitizeCheckpointProgress(saved.checkpointProgress),
+    grammarProgress: sanitizeGrammarProgress(saved.grammarProgress),
     v: SAVE_SCHEMA
   };
 };
@@ -344,5 +368,6 @@ export const createFreshProgressState = (state: GameState): GameState => ({
   flawless: {},
   learningProgress: {},
   checkpointProgress: {},
+  grammarProgress: {},
   v: SAVE_SCHEMA
 });
