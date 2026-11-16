@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { ITALIAN_GRAMMAR_ACTIVITIES, getGrammarActivities } from '../src/data/italianGrammarActivities';
+import { ITALIAN_GRAMMAR_ACTIVITIES, getGrammarActivities, normaliseGrammarAnswer, matchesGrammarAnswer } from '../src/data/italianGrammarActivities';
 const sentenceA1Translation = getGrammarActivities('sentence-building', 'A1', 'translate')[0];
 assert.equal(sentenceA1Translation.hint[0], 'Use la with the feminine noun ragazza and un with the masculine noun libro.');
 assert.equal(sentenceA1Translation.hint[1], 'Usa la con il nome femminile ragazza e un con il nome maschile libro.');
@@ -73,7 +73,21 @@ for (const level of levels) {
       assert.ok(item.explanation[0] && item.explanation[1], item.id + ' needs bilingual explanation');
       assert.ok(item.modelAnswer.length > 0, item.id + ' needs a model answer');
       if (type === 'order') assert.ok(item.words && item.words.length >= 3, item.id + ' needs word tiles');
-      if (type === 'correct' || type === 'translate') assert.ok(item.acceptedAnswers && item.acceptedAnswers.length > 0, item.id + ' needs accepted answers');
+      if (type === 'translate') {
+        assert.ok(item.source?.trim(), item.id + ' needs a non-empty English source sentence');
+      }
+      if (type === 'correct' || type === 'translate') {
+        assert.ok(item.acceptedAnswers && item.acceptedAnswers.length > 0, item.id + ' needs accepted answers');
+        const normalizedAnswers = item.acceptedAnswers.map(answer => {
+          assert.ok(answer.trim(), item.id + ' must not contain an empty accepted answer');
+          return normaliseGrammarAnswer(answer);
+        });
+        assert.equal(
+          new Set(normalizedAnswers).size,
+          normalizedAnswers.length,
+          item.id + ' must not contain accepted answers that are duplicates after normalization'
+        );
+      }
       if (type === 'write') assert.ok(!item.acceptedAnswers, item.id + ' should use self-review');
     }
   }
@@ -130,7 +144,6 @@ const reflexiveA2TranslationVariants = getGrammarActivities('reflexive', 'A2', '
 assert.deepEqual(reflexiveA2TranslationVariants.acceptedAnswers, ['Mi sono vestito rapidamente.', 'Mi sono vestita rapidamente.', 'Mi sono vestito in fretta.', 'Mi sono vestita in fretta.']);
 
 
-import { normaliseGrammarAnswer, matchesGrammarAnswer } from '../src/data/italianGrammarActivities';
 assert.equal(normaliseGrammarAnswer('  L’  amica!  '), "l'amica");
 assert.equal(normaliseGrammarAnswer('un\u2019amica.'), "un'amica");
 assert.equal(normaliseGrammarAnswer('perché'), 'perché', 'Answer normalization must preserve Italian accents');
