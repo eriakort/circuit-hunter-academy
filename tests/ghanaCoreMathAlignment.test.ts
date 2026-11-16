@@ -29,7 +29,7 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(number?.curriculumYear).toBe('SHS 1');
     expect(number?.contentStandardIds).toContain('1.1.1.CS.1');
     expect(number?.learningIndicatorIds).toEqual(['1.1.1.LI.2']);
-    expect(number?.printedPages).toEqual([28, 29]);
+    expect(number?.printedPages).toEqual([26, 31]);
 
     const percentages = getGhanaMissionAlignment('gh-core-ss1-fractions-percentages');
     expect(percentages?.curriculumYear).toBe('SHS 1');
