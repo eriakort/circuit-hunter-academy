@@ -142,7 +142,7 @@ export const GHANA_CORE_MATH_SS1_MISSIONS: Mission[] = [
     quiz: [
       question('What does A ∩ B represent?', ['Elements in both A and B', 'Elements in A or B but never both', 'Elements outside A and B only', 'Every element in the universal set'], 'The intersection contains only the elements common to both sets.'),
       question('In a survey, 18 learners like football, 12 like basketball and 5 like both. How many like at least one sport?', ['25', '30', '35', '23'], 'Use n(A ∪ B) = 18 + 12 − 5 = 25.'),
-      question('If the universal set has 40 learners and 27 belong to set A, how many are in A′?', ['13', '27', '40', '67'], 'The complement contains those outside A: 40 − 27 = 13.'),
+      question('In a three-set survey, the set totals are 20, 18 and 15; pair overlaps are 8, 6 and 5; and 3 learners are in all three. How many are in at least one set?', ['37', '35', '53', '40'], 'Use inclusion-exclusion: 20 + 18 + 15 − 8 − 6 − 5 + 3 = 37.'),
       question('Which identity is De Morgan’s law?', ['(A ∪ B)′ = A′ ∩ B′', '(A ∪ B)′ = A ∪ B', 'A ∩ B = A′ ∩ B′', 'A ∪ B = A′ ∪ B′'], 'The complement of a union is the intersection of the complements.')
     ]
   }
