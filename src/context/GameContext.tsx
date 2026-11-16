@@ -5,7 +5,7 @@ import { rankOf } from '../helpers';
 import { GRADE_SUBJECT_IDS } from '../data/gradeData';
 import { isMissionOpen, isValidXpAward } from '../missionAccess';
 import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, createFreshProgressState, isValidCheckpointResult, isValidGrammarActivityId, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
-import type { CurriculumId } from '../data/curricula';
+import { DEFAULT_CURRICULUM_ID, type CurriculumId } from '../data/curricula';
 import { CURRICULUM_PROFILE_KEY, createDefaultCurriculumProfile, getCurriculumNavigationKey, getCurriculumSaveKey, migrateLegacyItalianSave, sanitizeCurriculumProfile, switchActiveCurriculum, type CurriculumProfile } from '../data/curriculumProfile';
 
 
@@ -109,15 +109,18 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem(activeSaveKey, JSON.stringify(state));
+      const serialized = JSON.stringify(state);
+      localStorage.setItem(activeSaveKey, serialized);
+      // Keep the legacy Italian key in sync for backwards compatibility with older clients.
+      if (curriculumProfile.activeCurriculumId === DEFAULT_CURRICULUM_ID) localStorage.setItem(SAVE_KEY, serialized);
     } catch (e) {
       console.error('Failed to save state:', e);
     }
-  }, [state, activeSaveKey]);
+  }, [state, activeSaveKey, curriculumProfile.activeCurriculumId]);
 
   useEffect(() => {
     try {
-      localStorage.setItem(activeNavigationKey, JSON.stringify({
+      const serialized = JSON.stringify({
         view,
         currentMissionIndex,
         currentSceneIndex,
@@ -125,11 +128,13 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
         grade: state.grade,
         subject: state.subject,
         missionId: MISSIONS[currentMissionIndex]?.id || null
-      } satisfies SavedNavigation));
+      } satisfies SavedNavigation);
+      localStorage.setItem(activeNavigationKey, serialized);
+      if (curriculumProfile.activeCurriculumId === DEFAULT_CURRICULUM_ID) localStorage.setItem(NAVIGATION_KEY, serialized);
     } catch (e) {
       console.error('Failed to save navigation:', e);
     }
-  }, [view, currentMissionIndex, currentSceneIndex, battleContext, state.grade, state.subject, activeNavigationKey]);
+  }, [view, currentMissionIndex, currentSceneIndex, battleContext, state.grade, state.subject, activeNavigationKey, curriculumProfile.activeCurriculumId]);
 
 
   useEffect(() => {
