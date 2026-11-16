@@ -77,7 +77,9 @@ export const GRADE_CURRICULUM_MAP: Record<GradeId, string[]> = {
   grade11: ['chem11', 'italian', 'hist11', 'geo11', 'math11']
 };
 
-export function getCurriculumSubjects(grade?: GradeId | null): SubjectInfo[] {
+export function getCurriculumSubjects(grade?: GradeId | null, curriculumId: 'italy-national' | 'ghana-nacca' = 'italy-national'): SubjectInfo[] {
+  // Ghana has its own NaCCA pathways; never fall back to Italian subject content.
+  if (curriculumId !== 'italy-national') return [];
   const targetGrade: GradeId = (grade && grade in GRADE_CURRICULUM_MAP) ? grade : 'grade9';
   const allowed = new Set(GRADE_CURRICULUM_MAP[targetGrade]);
   const list = SUBJECTS.filter(s => allowed.has(s.id));
