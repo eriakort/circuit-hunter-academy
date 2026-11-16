@@ -49,6 +49,7 @@ test('learner can switch countries while curriculum progress stays isolated', as
   expect(ghanaProfile.enabledCurriculumIds).toContain('italy-national');
   expect(ghanaProfile.enabledCurriculumIds).toContain('ghana-nacca');
 
+  await page.locator('#hGrade').click();
   await page.getByRole('button', { name: /Italy/ }).click();
   await expect(page.getByRole('button', { name: /Italy/ })).toHaveAttribute('aria-pressed', 'true');
   const italianSave = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:italy-national') || '{}'));
