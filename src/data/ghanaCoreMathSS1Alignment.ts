@@ -111,7 +111,19 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Focused coverage of the first Patterns and Relationships content standard: distinguishing relations and functions, mapping rules, domain and range, and drawing/interpreting simple linear-function graphs. The second content standard on gradient/equations of straight lines and distance between points is not claimed as covered.'
   },
-
+,
+  {
+    missionId: 'gh-core-ss1-spatial-sense',
+    curriculumYear: 'SHS 1',
+    strand: '3 · Geometry Around Us',
+    subStrand: '1 · Spatial Sense',
+    contentStandardIds: ['I.3.1.CS.1'],
+    learningOutcomeIds: ['I.3.1.LO.1'],
+    learningIndicatorIds: ['I.3.1.LI.1', 'I.3.1.LI.2', 'I.3.1.LI.3', 'I.3.1.LI.4', 'I.3.1.IL.5'],
+    printedPages: [84, 100],
+    alignment: 'direct',
+    note: 'Covers angle types and angle sums, parallel/perpendicular lines and transversal relationships, the triangle exterior-angle theorem, Pythagoras’ theorem in right triangles, and polygon interior-angle sums. The final indicator is transcribed as I.3.1.IL.5 because that is how its code appears in the NaCCA curriculum table.'
+  }
 ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
