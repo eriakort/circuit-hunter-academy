@@ -1,5 +1,10 @@
 import assert from 'node:assert/strict';
 import { ITALIAN_GRAMMAR_ACTIVITIES, getGrammarActivities } from '../src/data/italianGrammarActivities';
+const articlesA1Write = getGrammarActivities('articles', 'A1', 'write')[0];
+assert.equal(articlesA1Write.prompt[0], 'Write one sentence using a masculine noun and a feminine noun.');
+assert.equal(articlesA1Write.prompt[1], 'Scrivi una frase usando un nome maschile e un nome femminile.');
+assert.equal(articlesA1Write.modelAnswer, 'Ho un libro e una penna.');
+assert.equal(articlesA1Write.modelAnswer.split(/[.!?]+/).filter(Boolean).length, 1, 'A1 article model should contain the one sentence requested');
 const levels = ['A1', 'A2', 'B1'] as const;
 const types = ['correct', 'order', 'translate', 'write'] as const;
 const ids = new Set<string>();
