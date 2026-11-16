@@ -11,6 +11,8 @@ const reflexiveA2Translation = getGrammarActivities('reflexive', 'A2', 'translat
 assert.deepEqual(reflexiveA2Translation.acceptedAnswers, ['Mi sono vestito rapidamente.', 'Mi sono vestita rapidamente.']);
 const sentenceA2Translation = getGrammarActivities('sentence-building', 'A2', 'translate')[0];
 assert.deepEqual(sentenceA2Translation.acceptedAnswers, ['Ho chiamato Giulia e le ho parlato.', 'Ho chiamato Giulia e ho parlato con lei.']);
+const partitiveA2Translation = getGrammarActivities('partitive', 'A2', 'translate')[0];
+assert.deepEqual(partitiveA2Translation.acceptedAnswers, ['Vuoi della verdura?', 'Vuoi delle verdure?']);
 const articlesA2Order = getGrammarActivities('articles', 'A2', 'order')[0];
 assert.equal(articlesA2Order.modelAnswer, 'Ho degli amici simpatici e generosi.');
 const partitiveA2Write = getGrammarActivities('partitive', 'A2', 'write')[0];
