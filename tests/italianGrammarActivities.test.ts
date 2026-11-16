@@ -128,3 +128,15 @@ const reflexiveA1TranslationVariants = getGrammarActivities('reflexive', 'A1', '
 assert.deepEqual(reflexiveA1TranslationVariants.acceptedAnswers, ['Lei si alza alle sette.', 'Si alza alle sette.']);
 const reflexiveA2TranslationVariants = getGrammarActivities('reflexive', 'A2', 'translate')[0];
 assert.deepEqual(reflexiveA2TranslationVariants.acceptedAnswers, ['Mi sono vestito rapidamente.', 'Mi sono vestita rapidamente.', 'Mi sono vestito in fretta.', 'Mi sono vestita in fretta.']);
+
+
+import { normaliseGrammarAnswer, matchesGrammarAnswer } from '../src/data/italianGrammarActivities';
+assert.equal(normaliseGrammarAnswer('  L’  amica!  '), "l' amica");
+assert.equal(normaliseGrammarAnswer('un\u2019amica.'), "un'amica");
+assert.equal(normaliseGrammarAnswer('perché'), 'perché', 'Answer normalization must preserve Italian accents');
+assert.notEqual(normaliseGrammarAnswer('papa'), normaliseGrammarAnswer('papà'), 'Different accented words must remain distinct');
+assert.ok(matchesGrammarAnswer('  GLI STUDENTI SONO QUA!  ', ['Gli studenti sono qui.', 'Gli studenti sono qua.']));
+assert.ok(matchesGrammarAnswer('Mi sono vestito in fretta', ['Mi sono vestito rapidamente.', 'Mi sono vestito in fretta.']));
+assert.ok(!matchesGrammarAnswer('Mi sono vestita in fretta', ['Mi sono vestito rapidamente.']), 'Gender agreement must not be normalized away');
+assert.ok(!matchesGrammarAnswer('Ho mangiato una pizza', ['Ho mangiato due pizze.']), 'Different words must not be accepted');
+console.log('Italian grammar answer normalization tests ok!');
