@@ -4,7 +4,7 @@ import { MISSIONS, UNITS, ARCS, RANKS } from '../data/gameData';
 import { rankOf } from '../helpers';
 import { GRADE_SUBJECT_IDS } from '../data/gradeData';
 import { isMissionOpen, isValidXpAward } from '../missionAccess';
-import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, createFreshProgressState, isValidCheckpointResult, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
+import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, createFreshProgressState, isValidCheckpointResult, isValidGrammarActivityId, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
 
 
 
@@ -19,6 +19,7 @@ const defaultState: GameState = {
   seen: {},
   flawless: {},
   learningProgress: {},
+  grammarProgress: {},
   v: SAVE_SCHEMA
 };
 
@@ -39,6 +40,7 @@ interface GameContextType {
   clearMission: (missionId: string, flawless: boolean, xpGained: number) => void;
   saveLearningProgress: (missionId: string, progress: Partial<LearningMissionProgress>) => void;
   saveCheckpointResult: (checkpointId: string, score: number, total: number, passed: boolean, xpReward: number) => void;
+  recordGrammarResult: (activityId: string, correct: boolean) => void;
   markSeen: (missionIndex: number) => void;
   openMission: (index: number) => void;
   nextScene: () => void;
@@ -202,6 +204,29 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }));
   };
 
+  const recordGrammarResult = (activityId: string, correct: boolean) => {
+    if (!isValidGrammarActivityId(activityId) || typeof correct !== 'boolean') return;
+    const reward = 5;
+    setState(s => {
+      const existing = s.grammarProgress?.[activityId] || { attempts: 0, correct: false, xpAwarded: false };
+      const newlyMastered = correct && !existing.correct;
+      const shouldAwardXp = correct && !existing.xpAwarded;
+      return {
+        ...s,
+        xp: shouldAwardXp ? s.xp + reward : s.xp,
+        grammarProgress: {
+          ...(s.grammarProgress || {}),
+          [activityId]: {
+            attempts: existing.attempts + 1,
+            correct: existing.correct || correct,
+            xpAwarded: existing.xpAwarded || shouldAwardXp,
+            ...(existing.completedAt !== undefined || newlyMastered ? { completedAt: existing.completedAt ?? Date.now() } : {})
+          }
+        }
+      };
+    });
+  };
+
   const saveCheckpointResult = (checkpointId: string, score: number, total: number, passed: boolean, xpReward: number) => {
     if (!isValidCheckpointResult(checkpointId, score, total, passed, xpReward)) return;
     setState(s => {
@@ -323,6 +348,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
         clearMission,
         saveLearningProgress,
         saveCheckpointResult,
+        recordGrammarResult,
         markSeen,
         openMission,
         nextScene,

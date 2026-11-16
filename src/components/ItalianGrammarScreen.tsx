@@ -5,7 +5,7 @@ import { GrammarLevel, ITALIAN_GRAMMAR_TOPICS } from '../data/italianGrammar';
 import { getGrammarActivities, GrammarActivityType } from '../data/italianGrammarActivities';
 
 export const ItalianGrammarScreen: React.FC = () => {
-  const { state, goToView } = useGame();
+  const { state, goToView, recordGrammarResult } = useGame();
   const { lang } = state;
   const [topicId, setTopicId] = useState(ITALIAN_GRAMMAR_TOPICS[0].id);
   const [level, setLevel] = useState<GrammarLevel>('A1');
@@ -30,6 +30,9 @@ export const ItalianGrammarScreen: React.FC = () => {
   const activityCorrect = activityType === 'order'
     ? normaliseAnswer(activityResponse) === normaliseAnswer(activity.modelAnswer)
     : !!activity.acceptedAnswers?.some(answer => normaliseAnswer(answer) === normaliseAnswer(activityInput));
+  const trackedIds = [...lesson.exercises.map(item => item.id), ...(['correct', 'order', 'translate', 'write'] as GrammarActivityType[]).flatMap(type => getGrammarActivities(topicId, level, type).map(item => item.id))];
+  const masteredCount = trackedIds.filter(id => state.grammarProgress?.[id]?.correct).length;
+  const grammarXp = Object.values(state.grammarProgress || {}).filter(item => item.xpAwarded).length * 5;
 
   const chooseTopic = (id: string) => {
     setTopicId(id);
@@ -97,6 +100,10 @@ export const ItalianGrammarScreen: React.FC = () => {
             <strong>{L(lesson.example, lang)}</strong>
           </div>
         </div>
+        <div role="status" aria-live="polite" style={{ marginTop: 12, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, fontSize: 13 }}>
+          <strong>{L(['Mastered exercises', 'Esercizi completati'], lang)}: {masteredCount}/{trackedIds.length}</strong>
+          <span>⭐ {grammarXp} {L(['grammar XP earned', 'XP di grammatica ottenuti'], lang)}</span>
+        </div>
       </section>
 
       <section className="card">
@@ -112,7 +119,7 @@ export const ItalianGrammarScreen: React.FC = () => {
             const isCorrect = index === question.answer;
             const reveal = selectedAnswer !== null;
             return (
-              <button key={option} type="button" className={reveal && isCorrect ? 'btn' : isChosen ? 'btn ghost' : 'btn ghost'} disabled={reveal} onClick={() => setSelectedAnswer(index)} style={{ textAlign: 'left', whiteSpace: 'normal', borderColor: reveal && isCorrect ? '#4ade80' : isChosen ? '#f87171' : undefined, background: reveal && isCorrect ? 'rgba(34,197,94,.12)' : isChosen ? 'rgba(248,113,113,.10)' : undefined }}>
+              <button key={option} type="button" className={reveal && isCorrect ? 'btn' : isChosen ? 'btn ghost' : 'btn ghost'} disabled={reveal} onClick={() => { setSelectedAnswer(index); recordGrammarResult(question.id, index === question.answer); }} style={{ textAlign: 'left', whiteSpace: 'normal', borderColor: reveal && isCorrect ? '#4ade80' : isChosen ? '#f87171' : undefined, background: reveal && isCorrect ? 'rgba(34,197,94,.12)' : isChosen ? 'rgba(248,113,113,.10)' : undefined }}>
                 <span style={{ display: 'inline-block', minWidth: 24, fontWeight: 800 }}>{String.fromCharCode(65 + index)}.</span> {option}
                 {reveal && isCorrect && <span style={{ float: 'right' }}>✓</span>}
                 {reveal && isChosen && !isCorrect && <span style={{ float: 'right' }}>✕</span>}
@@ -165,7 +172,7 @@ export const ItalianGrammarScreen: React.FC = () => {
             <strong>{L(['Hint', 'Suggerimento'], lang)}</strong><p style={{ margin: '5px 0 0', lineHeight: 1.5 }}>{L(activity.hint, lang)}</p>
           </div>
           {!activitySubmitted ? (
-            <button type="button" className="btn sm" style={{ marginTop: 12 }} disabled={activityType === 'order' ? orderedWordIndexes.length !== activity.words?.length : !activityInput.trim()} onClick={() => setActivitySubmitted(true)}>{L(['Check my answer', 'Controlla la risposta'], lang)}</button>
+            <button type="button" className="btn sm" style={{ marginTop: 12 }} disabled={activityType === 'order' ? orderedWordIndexes.length !== activity.words?.length : !activityInput.trim()} onClick={() => { setActivitySubmitted(true); recordGrammarResult(activity.id, activityType !== 'write' && activityCorrect); }}>{L(['Check my answer', 'Controlla la risposta'], lang)}</button>
           ) : (
             <div role="status" aria-live="polite" style={{ marginTop: 14, padding: 14, borderRadius: 10, border: '1px solid rgba(74,222,128,.4)', background: 'rgba(34,197,94,.07)' }}>
               <strong>{activityType === 'write' ? L(['Self-review: compare your sentence with the model.', 'Autovalutazione: confronta la tua frase con il modello.'], lang) : activityCorrect ? L(['Correct! Ben fatto!', 'Corretto! Ben fatto!'], lang) : L(['Not quite — compare with the model answer.', 'Non proprio — confronta con la risposta modello.'], lang)}</strong>

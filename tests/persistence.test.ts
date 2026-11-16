@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { MISSIONS, ARCS, UNITS } from '../src/data/gameData';
-import { createFreshProgressState, isValidCheckpointResult, restoreSavedNavigation, sanitizeCheckpointProgress, sanitizeGameState, SAVE_SCHEMA } from '../src/persistence';
+import { createFreshProgressState, isValidCheckpointResult, isValidGrammarActivityId, restoreSavedNavigation, sanitizeCheckpointProgress, sanitizeGrammarProgress, sanitizeGameState, SAVE_SCHEMA } from '../src/persistence';
 import type { GameState } from '../src/types';
 
 const validMission = MISSIONS.find(mission => (ARCS[mission.arc]?.subject || 'cs') === 'cs');
@@ -254,3 +254,19 @@ assert.deepEqual(sanitizeGameState({
   grade: 'grade9', subject: 'cs',
   learningProgress: { [learningMission!.id]: { masteryAttemptHistory: [{ score: 50, attemptedAt: Number.NaN, attempt: 1 }] } }
 }).learningProgress[learningMission!.id].masteryAttemptHistory, undefined, 'invalid timestamps are removed from mastery history');
+
+
+assert.equal(isValidGrammarActivityId('art-a1-1'), true, 'known grammar quiz questions can record progress');
+assert.equal(isValidGrammarActivityId('sentence-a1-correct'), true, 'known active grammar activities can record progress');
+assert.equal(isValidGrammarActivityId('unknown-grammar-item'), false, 'unknown grammar activity IDs cannot award XP');
+const grammarSave = sanitizeGrammarProgress({
+  'art-a1-1': { attempts: 3, correct: true, completedAt: 1700000000000, xpAwarded: true },
+  'sentence-a1-correct': { attempts: 2, correct: false, xpAwarded: false },
+  'unknown-grammar-item': { attempts: 1, correct: true, xpAwarded: true },
+  'pro-a1-1': { attempts: -1, correct: true, xpAwarded: true },
+  'art-a1-2': { attempts: 1, correct: true, xpAwarded: true, completedAt: Number.NaN },
+  'art-a1-3': { attempts: 1, correct: false, xpAwarded: true }
+});
+assert.deepEqual(Object.keys(grammarSave), ['art-a1-1', 'sentence-a1-correct'], 'only known, internally consistent grammar progress survives sanitization');
+assert.equal(sanitizeGameState({ grade: 'grade9', subject: 'italian', grammarProgress: { 'art-a1-1': { attempts: 1, correct: true, xpAwarded: true } } }).grammarProgress?.['art-a1-1'].correct, true, 'grammar mastery survives save restoration');
+assert.deepEqual(createFreshProgressState(sanitizeGameState({ grade: 'grade9', subject: 'italian', grammarProgress: { 'art-a1-1': { attempts: 1, correct: true, xpAwarded: true } } })).grammarProgress, {}, 'reset clears grammar progress');
