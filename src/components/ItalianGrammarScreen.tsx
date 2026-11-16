@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { useGame } from '../context/GameContext';
 import { L } from '../helpers';
 import { GrammarLevel, ITALIAN_GRAMMAR_TOPICS } from '../data/italianGrammar';
+import { getGrammarActivities, GrammarActivityType } from '../data/italianGrammarActivities';
 
 export const ItalianGrammarScreen: React.FC = () => {
   const { state, goToView } = useGame();
@@ -10,12 +11,24 @@ export const ItalianGrammarScreen: React.FC = () => {
   const [level, setLevel] = useState<GrammarLevel>('A1');
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [activityType, setActivityType] = useState<GrammarActivityType>('correct');
+  const [activityInput, setActivityInput] = useState('');
+  const [orderedWordIndexes, setOrderedWordIndexes] = useState<number[]>([]);
+  const [activitySubmitted, setActivitySubmitted] = useState(false);
   const topic = useMemo(
     () => ITALIAN_GRAMMAR_TOPICS.find(item => item.id === topicId) || ITALIAN_GRAMMAR_TOPICS[0],
     [topicId]
   );
   const lesson = topic.levels[level];
   const question = lesson.exercises[questionIndex];
+  const activity = getGrammarActivities(level, activityType)[0];
+  const normaliseAnswer = (value: string) => value.toLocaleLowerCase().replace(/[.!?]/g, '').replace(/[’]/g, "'").replace(/\\s+/g, ' ').trim();
+  const activityResponse = activityType === 'order' && activity.words
+    ? orderedWordIndexes.map(index => activity.words![index]).join(' ')
+    : activityInput;
+  const activityCorrect = activityType === 'order'
+    ? normaliseAnswer(activityResponse) === normaliseAnswer(activity.modelAnswer)
+    : !!activity.acceptedAnswers?.some(answer => normaliseAnswer(answer) === normaliseAnswer(activityInput));
 
   const chooseTopic = (id: string) => {
     setTopicId(id);
