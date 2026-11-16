@@ -116,12 +116,24 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     curriculumYear: 'SHS 1',
     strand: '3 · Geometry Around Us',
     subStrand: '1 · Spatial Sense',
-    contentStandardIds: ['I.3.1.CS.1'],
-    learningOutcomeIds: ['I.3.1.LO.1'],
-    learningIndicatorIds: ['I.3.1.LI.1', 'I.3.1.LI.2', 'I.3.1.LI.3', 'I.3.1.LI.4', 'I.3.1.IL.5'],
+    contentStandardIds: ['1.3.1.CS.1'],
+    learningOutcomeIds: ['1.3.1.LO.1'],
+    learningIndicatorIds: ['1.3.1.LI.1', '1.3.1.LI.2', '1.3.1.LI.3', '1.3.1.LI.4', '1.3.1.LI.5'],
     printedPages: [84, 100],
     alignment: 'direct',
-    note: 'Covers angle types and angle sums, parallel/perpendicular lines and transversal relationships, the triangle exterior-angle theorem, Pythagoras’ theorem in right triangles, and polygon interior-angle sums. The final indicator is transcribed as I.3.1.IL.5 because that is how its code appears in the NaCCA curriculum table.'
+    note: 'Covers angle types and angle sums, parallel/perpendicular lines and transversal relationships, the triangle exterior-angle theorem, Pythagoras’ theorem in right triangles, and polygon interior-angle sums. The curriculum PDF extraction renders the leading numeral 1 as a capital I in some table cells; the consistent indicator sequence is 1.3.1.LI.1–1.3.1.LI.5.'
+  },
+  {
+    missionId: 'gh-core-ss1-vectors-bearings',
+    curriculumYear: 'SHS 1',
+    strand: '3 · Geometry Around Us',
+    subStrand: '2 · Measurement',
+    contentStandardIds: ['1.3.2.CS.1'],
+    learningOutcomeIds: ['1.3.2.LO.1'],
+    learningIndicatorIds: ['1.3.2.LI.1', '1.3.2.LI.2'],
+    printedPages: [110, 112],
+    alignment: 'direct',
+    note: 'Focused coverage of the first Measurement content standard: recognising vectors as quantities with magnitude and direction, interpreting real-world vector examples, representing vectors as directed line segments, reading compass bearings, and recognising equal vectors at different positions. Trigonometry and area/perimeter standards are not claimed as covered.'
   }
 ];
 

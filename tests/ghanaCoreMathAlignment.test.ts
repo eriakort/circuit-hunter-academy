@@ -84,10 +84,20 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
   test('maps spatial sense to the official SHS 1 Geometry Around Us standard', () => {
     const spatial = getGhanaMissionAlignment('gh-core-ss1-spatial-sense');
     expect(spatial?.curriculumYear).toBe('SHS 1');
-    expect(spatial?.contentStandardIds).toEqual(['I.3.1.CS.1']);
-    expect(spatial?.learningOutcomeIds).toEqual(['I.3.1.LO.1']);
-    expect(spatial?.learningIndicatorIds).toEqual(['I.3.1.LI.1', 'I.3.1.LI.2', 'I.3.1.LI.3', 'I.3.1.LI.4', 'I.3.1.IL.5']);
+    expect(spatial?.contentStandardIds).toEqual(['1.3.1.CS.1']);
+    expect(spatial?.learningOutcomeIds).toEqual(['1.3.1.LO.1']);
+    expect(spatial?.learningIndicatorIds).toEqual(['1.3.1.LI.1', '1.3.1.LI.2', '1.3.1.LI.3', '1.3.1.LI.4', '1.3.1.LI.5']);
     expect(spatial?.printedPages).toEqual([84, 100]);
+  });
+
+  test('maps the vectors and bearings mission to the first SHS 1 Measurement standard', () => {
+    const measurement = getGhanaMissionAlignment('gh-core-ss1-vectors-bearings');
+    expect(measurement?.curriculumYear).toBe('SHS 1');
+    expect(measurement?.contentStandardIds).toEqual(['1.3.2.CS.1']);
+    expect(measurement?.learningOutcomeIds).toEqual(['1.3.2.LO.1']);
+    expect(measurement?.learningIndicatorIds).toEqual(['1.3.2.LI.1', '1.3.2.LI.2']);
+    expect(measurement?.printedPages).toEqual([110, 112]);
+    expect(measurement?.note).toContain('Trigonometry and area/perimeter standards are not claimed as covered');
   });
 
 });
