@@ -34,10 +34,10 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     subStrand: '1 · Real Number System',
     contentStandardIds: ['1.1.1.CS.1'],
     learningOutcomeIds: ['1.1.1.LO.1'],
-    learningIndicatorIds: ['1.1.1.LI.1', '1.1.1.LI.2'],
+    learningIndicatorIds: ['1.1.1.LI.2'],
     printedPages: [28, 29],
     alignment: 'direct',
-    note: 'Covers the real-number system, rational and irrational numbers, and their representation on a number line. The mission does not yet teach the full closure-property or set-survey scope of the standards.'
+    note: 'Covers the real-number system, rational and irrational numbers, and their representation on a number line. This is a partial introduction to rational and irrational numbers; closure properties and set-survey outcomes are covered separately.'
   },
   {
     missionId: 'gh-core-ss1-fractions-percentages',
@@ -45,11 +45,11 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     strand: '1 · Numbers for Everyday Life',
     subStrand: '2 · Proportional Reasoning',
     contentStandardIds: ['1.1.2.CS.2'],
-    learningOutcomeIds: ['1.1.2.LO.1', '1.1.2.LO.2'],
+    learningOutcomeIds: ['1.1.2.LO.2'],
     learningIndicatorIds: ['1.1.2.LI.1', '1.1.2.LI.2'],
-    printedPages: [39, 47, 48],
+    printedPages: [43, 50],
     alignment: 'direct',
-    note: 'Covers fraction/decimal/percentage connections and practical percentage-change problems. The pilot is introductory and does not yet cover the full financial-mathematics scope.'
+    note: 'Maps to the personal-finance percentage outcome and indicators, including discounts and percentage calculations. Simple interest, profit, loss, commission and wider household-finance contexts remain to be added.'
   },
   {
     missionId: 'gh-core-ss1-ratio-rate',
@@ -62,6 +62,19 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [182, 183],
     alignment: 'cross-year-extension',
     note: 'Ratios, rates and proportions are explicitly mapped here to the SHS 2 proportional-reasoning standard. Keep this mission labelled as an optional early extension; do not count it as evidence of SHS 1 curriculum coverage.'
+  }
+  },
+  {
+    missionId: 'gh-core-ss1-sets-surveys',
+    curriculumYear: 'SHS 1',
+    strand: '1 · Numbers for Everyday Life',
+    subStrand: '1 · Real Number System',
+    contentStandardIds: ['1.1.1.CS.2'],
+    learningOutcomeIds: ['1.1.1.LO.2'],
+    learningIndicatorIds: ['1.1.1.LI.1', '1.1.1.LI.2', '1.1.1.LI.3'],
+    printedPages: [36, 37],
+    alignment: 'direct',
+    note: 'Covers set vocabulary, union, intersection, complements, two-set and three-set Venn problems, survey interpretation and De Morgan’s laws. The mission is an introductory practice set rather than the full set-algebra sequence.'
   }
 ];
 
