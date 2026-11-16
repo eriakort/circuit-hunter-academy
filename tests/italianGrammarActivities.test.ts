@@ -131,7 +131,7 @@ assert.deepEqual(reflexiveA2TranslationVariants.acceptedAnswers, ['Mi sono vesti
 
 
 import { normaliseGrammarAnswer, matchesGrammarAnswer } from '../src/data/italianGrammarActivities';
-assert.equal(normaliseGrammarAnswer('  L’  amica!  '), "l' amica");
+assert.equal(normaliseGrammarAnswer('  L’  amica!  '), "l'amica");
 assert.equal(normaliseGrammarAnswer('un\u2019amica.'), "un'amica");
 assert.equal(normaliseGrammarAnswer('perché'), 'perché', 'Answer normalization must preserve Italian accents');
 assert.notEqual(normaliseGrammarAnswer('papa'), normaliseGrammarAnswer('papà'), 'Different accented words must remain distinct');
