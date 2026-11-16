@@ -57,7 +57,11 @@ assert.equal(migrateLegacyItalianSave(storage), true);
 assert.equal(storage.getItem(getCurriculumSaveKey('italy-national')), '{"grade":"grade9","xp":120}');
 assert.equal(storage.getItem(getCurriculumNavigationKey('italy-national')), '{"view":"map"}');
 assert.equal(storage.getItem('circuit-hunter-academy-v2'), '{"grade":"grade9","xp":120}', 'legacy data is retained');
-assert.equal(migrateLegacyItalianSave(storage), false, 'migration is idempotent');
+assert.equal(migrateLegacyItalianSave(storage), false, 'migration is idempotent when legacy data is unchanged');
+storage.setItem('circuit-hunter-academy-v2', '{"grade":"grade10","xp":180}');
+assert.equal(migrateLegacyItalianSave(storage), true, 'legacy Italian updates are reconciled');
+assert.equal(storage.getItem(getCurriculumSaveKey('italy-national')), '{"grade":"grade10","xp":180}');
+assert.equal(storage.getItem(getCurriculumSaveKey('ghana-nacca')), null, 'reconciliation never touches Ghana progress');
 
 const emptyStorage = new MemoryStorage();
 assert.equal(migrateLegacyItalianSave(emptyStorage), false);

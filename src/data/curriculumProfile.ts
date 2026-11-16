@@ -62,20 +62,25 @@ export const switchActiveCurriculum = (
 });
 
 /**
- * Copy a pre-curriculum save into Italy's namespace once. The legacy key is
- * intentionally retained so this migration is non-destructive and repeatable.
+ * Keep Italy's namespace synchronized with the legacy keys. The app writes both
+ * while Italy is active, but older clients and existing integrations may still
+ * update the legacy keys directly. Reconciling them before state initialization
+ * preserves that compatibility without ever touching another curriculum.
  */
 export const migrateLegacyItalianSave = (storage: Pick<Storage, 'getItem' | 'setItem'>): boolean => {
-  const italianKey = getCurriculumSaveKey(DEFAULT_CURRICULUM_ID);
-  if (storage.getItem(italianKey) !== null) return false;
-
   const legacySave = storage.getItem(SAVE_KEY);
-  if (legacySave === null) return false;
-
-  storage.setItem(italianKey, legacySave);
   const legacyNavigation = storage.getItem(NAVIGATION_KEY);
-  if (legacyNavigation !== null) {
-    storage.setItem(getCurriculumNavigationKey(DEFAULT_CURRICULUM_ID), legacyNavigation);
+  const italianKey = getCurriculumSaveKey(DEFAULT_CURRICULUM_ID);
+  const italianNavigationKey = getCurriculumNavigationKey(DEFAULT_CURRICULUM_ID);
+  let changed = false;
+
+  if (legacySave !== null && storage.getItem(italianKey) !== legacySave) {
+    storage.setItem(italianKey, legacySave);
+    changed = true;
   }
-  return true;
+  if (legacyNavigation !== null && storage.getItem(italianNavigationKey) !== legacyNavigation) {
+    storage.setItem(italianNavigationKey, legacyNavigation);
+    changed = true;
+  }
+  return changed;
 };
