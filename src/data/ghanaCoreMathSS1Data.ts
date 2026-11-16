@@ -27,34 +27,7 @@ export const GHANA_CORE_MATH_SS1_ARCS: ArcInfo[] = [
   { n: 4, unit: 0, subject: 'ghcoremath', title: 'Sets and Surveys', pages: 'NaCCA SHS 1 · pp. 36–37' },
   { n: 5, unit: 0, subject: 'ghcoremath', title: 'Financial Mathematics', pages: 'NaCCA SHS 1 · pp. 50–52' },
   { n: 6, unit: 0, subject: 'ghcoremath', title: 'Algebraic Expressions', pages: 'NaCCA SHS 1 · pp. 57–58' },
-  {
-    id: 'gh-core-ss1-algebraic-expressions',
-    arc: 5,
-    sec: 'Algebraic reasoning',
-    pages: 'NaCCA SHS 1 · pp. 52, 57–58',
-    hue: 34,
-    horns: 2,
-    eyes: 2,
-    title: 'The Expression Forge',
-    topic: 'Use numbers, patterns and variables to write and simplify algebraic expressions in practical situations.',
-    demon: 'The Like-Term Shifter',
-    tech: 'Algebra Form · Sixth Technique: Variable Clarity',
-    scenes: [
-      lesson('<p>Algebra uses letters to stand for numbers. A letter such as x is a variable: its value can change. In 3x + 5, the number 3 is the coefficient of x, and 5 is a constant.</p>'),
-      lesson('<p>Turn words into mathematics. If one notebook costs GH₵x, then 4 notebooks cost 4x. If a learner has x exercise books and receives 3 more, the total is x + 3. The order and meaning of the words matter.</p>'),
-      lesson('<p>Like terms have the same variable part. We can combine 3x + 2x to get 5x, just as 3 oranges plus 2 oranges make 5 oranges. But 3x + 2y cannot be combined because x and y represent different quantities.</p>'),
-      lesson('<p>Use the distributive property to multiply a number across brackets: 3(x + 4) = 3x + 12. Check by substituting a number, such as x = 2: both expressions equal 18.</p>'),
-      lesson('<p>A pattern can also be described with a rule. If a row of market stalls has 2 support poles at each stall, then n stalls use 2n poles. Add 1 entrance pole and the expression becomes 2n + 1.</p>'),
-      { who: 'd', vis: 'demon', text: 'I will mix your variables and constants until every expression is wrong!' },
-      { type: 'battle' }
-    ],
-    quiz: [
-      question('A pencil costs GH₵x. What is the cost of 5 pencils?', ['5x', 'x + 5', 'x ÷ 5', '5 + x'], 'Five groups of x cedis are represented by 5x.'),
-      question('Simplify 4a + 3a.', ['7a', '7a²', '12a', 'a'], 'These are like terms, so add the coefficients: 4 + 3 = 7.'),
-      question('Which pair contains unlike terms?', ['3x and 2y', '4a and 6a', '5m and m', '2p and 7p'], 'The variables differ, so 3x and 2y cannot be combined.'),
-      question('Expand 2(x + 6).', ['2x + 12', '2x + 6', 'x + 12', '2x + 8'], 'Multiply both terms inside the bracket by 2.')
-    ]
-  }
+
 ];
 
 const question = (prompt: string, answers: string[], explanation: string) => ({
@@ -200,6 +173,34 @@ export const GHANA_CORE_MATH_SS1_MISSIONS: Mission[] = [
       question('A trader buys an item for GH₵80 and sells it for GH₵100. What is the profit?', ['GH₵20', 'GH₵80', 'GH₵100', 'GH₵180'], 'Profit = selling price − cost price = 100 − 80 = GH₵20.'),
       question('An item costs GH₵150 and is sold for GH₵120. What is the loss?', ['GH₵30', 'GH₵20', 'GH₵120', 'GH₵270'], 'Loss = cost price − selling price = 150 − 120 = GH₵30.'),
       question('A sales agent earns 5% commission on GH₵2,000 of sales. How much commission is earned?', ['GH₵100', 'GH₵50', 'GH₵200', 'GH₵400'], 'Commission = 0.05 × 2,000 = GH₵100.')
+    ]
+  },
+  {
+    id: 'gh-core-ss1-algebraic-expressions',
+    arc: 5,
+    sec: 'Algebraic reasoning',
+    pages: 'NaCCA SHS 1 · pp. 52, 57–58',
+    hue: 34,
+    horns: 2,
+    eyes: 2,
+    title: 'The Expression Forge',
+    topic: 'Use numbers, patterns and variables to write and simplify algebraic expressions in practical situations.',
+    demon: 'The Like-Term Shifter',
+    tech: 'Algebra Form · Sixth Technique: Variable Clarity',
+    scenes: [
+      lesson('<p>Algebra uses letters to stand for numbers. A letter such as x is a variable: its value can change. In 3x + 5, the number 3 is the coefficient of x, and 5 is a constant.</p>'),
+      lesson('<p>Turn words into mathematics. If one notebook costs GH₵x, then 4 notebooks cost 4x. If a learner has x exercise books and receives 3 more, the total is x + 3. The order and meaning of the words matter.</p>'),
+      lesson('<p>Like terms have the same variable part. We can combine 3x + 2x to get 5x, just as 3 oranges plus 2 oranges make 5 oranges. But 3x + 2y cannot be combined because x and y represent different quantities.</p>'),
+      lesson('<p>Use the distributive property to multiply a number across brackets: 3(x + 4) = 3x + 12. Check by substituting a number, such as x = 2: both expressions equal 18.</p>'),
+      lesson('<p>A pattern can also be described with a rule. If a row of market stalls has 2 support poles at each stall, then n stalls use 2n poles. Add 1 entrance pole and the expression becomes 2n + 1.</p>'),
+      { who: 'd', vis: 'demon', text: 'I will mix your variables and constants until every expression is wrong!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('A pencil costs GH₵x. What is the cost of 5 pencils?', ['5x', 'x + 5', 'x ÷ 5', '5 + x'], 'Five groups of x cedis are represented by 5x.'),
+      question('Simplify 4a + 3a.', ['7a', '7a²', '12a', 'a'], 'These are like terms, so add the coefficients: 4 + 3 = 7.'),
+      question('Which pair contains unlike terms?', ['3x and 2y', '4a and 6a', '5m and m', '2p and 7p'], 'The variables differ, so 3x and 2y cannot be combined.'),
+      question('Expand 2(x + 6).', ['2x + 12', '2x + 6', 'x + 12', '2x + 8'], 'Multiply both terms inside the bracket by 2.')
     ]
   }
 ];
