@@ -8,7 +8,7 @@ for (const level of levels) {
   for (const type of types) {
     const topics = ['sentence-building', 'articles', 'pronouns'];
     const items = topics.flatMap(topic => getGrammarActivities(topic, level, type));
-    assert.equal(items.length, 9, level + ' should have one ' + type + ' activity per topic');
+    assert.equal(items.length, 3, level + ' should have one ' + type + ' activity per topic');
     for (const item of items) {
       assert.ok(!ids.has(item.id), 'Duplicate activity id: ' + item.id);
       ids.add(item.id);
