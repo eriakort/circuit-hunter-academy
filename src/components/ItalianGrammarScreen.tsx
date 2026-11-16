@@ -41,7 +41,10 @@ export const ItalianGrammarScreen: React.FC = () => {
     setSelectedAnswer(null);
     setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false);
   };
-  const chooseActivityType = (nextType: GrammarActivityType) => {\n    setActivityType(nextType); setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false);\n  };\n  const nextQuestion = () => {
+  const chooseActivityType = (nextType: GrammarActivityType) => {
+    setActivityType(nextType); setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false);
+  };
+  const nextQuestion = () => {
     setQuestionIndex(index => (index + 1) % lesson.exercises.length);
     setSelectedAnswer(null);
   };
