@@ -31,6 +31,13 @@ export const ItalianLabScreen: React.FC = () => {
             <button
               type="button"
               className="btn sm"
+              onClick={() => goToView('it-grammar')}
+            >
+              📚 {L(['Grammar Training', 'Allenamento Grammaticale'], lang)}
+            </button>
+            <button
+              type="button"
+              className="btn sm"
               onClick={() => goToView('it-checkpoint')}
               style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
             >
