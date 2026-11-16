@@ -10,6 +10,7 @@ export const normaliseGrammarAnswer = (value: string): string => value
   .normalize('NFKC')
   .toLocaleLowerCase()
   .replace(/[’‘ʼ＇]/g, "'")
+  .replace(/'\s+/g, "'")
   .replace(/[.!?]/g, '')
   .replace(/\s+/g, ' ')
   .trim();
