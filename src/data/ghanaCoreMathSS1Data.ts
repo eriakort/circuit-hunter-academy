@@ -11,7 +11,7 @@ export const GHANA_CORE_MATH_SUBJECT: SubjectInfo = {
   id: 'ghcoremath',
   name: 'Core Mathematics',
   blurb: 'The Ghana SHS Core Mathematics pathway: number, proportional reasoning and practical problem-solving.',
-  meta: 'Ghana NaCCA · SHS 1 pilot · 4 missions',
+  meta: 'Ghana NaCCA · SHS 1 pilot · 5 missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="38" fill="none" stroke="#ffd166" stroke-width="4"/><path d="M36 66 L52 82 L86 40" fill="none" stroke="#38ef7d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
@@ -25,7 +25,8 @@ export const GHANA_CORE_MATH_SS1_ARCS: ArcInfo[] = [
   { n: 1, unit: 0, subject: 'ghcoremath', title: 'Number Sets and Ordering', pages: 'NaCCA SHS 1 · Pilot' },
   { n: 2, unit: 0, subject: 'ghcoremath', title: 'Fractions, Decimals and Percentages', pages: 'NaCCA SHS 1 · Pilot' },
   { n: 3, unit: 0, subject: 'ghcoremath', title: 'Ratio, Rate and Proportion', pages: 'NaCCA SHS 1 · Pilot' },
-  { n: 4, unit: 0, subject: 'ghcoremath', title: 'Sets and Surveys', pages: 'NaCCA SHS 1 · pp. 36–37' }
+  { n: 4, unit: 0, subject: 'ghcoremath', title: 'Sets and Surveys', pages: 'NaCCA SHS 1 · pp. 36–37' },
+  { n: 5, unit: 0, subject: 'ghcoremath', title: 'Financial Mathematics', pages: 'NaCCA SHS 1 · pp. 50–52' }
 ];
 
 const question = (prompt: string, answers: string[], explanation: string) => ({
@@ -144,6 +145,33 @@ export const GHANA_CORE_MATH_SS1_MISSIONS: Mission[] = [
       question('In a survey, 18 learners like football, 12 like basketball and 5 like both. How many like at least one sport?', ['25', '30', '35', '23'], 'Use n(A ∪ B) = 18 + 12 − 5 = 25.'),
       question('In a three-set survey, the set totals are 20, 18 and 15; pair overlaps are 8, 6 and 5; and 3 learners are in all three. How many are in at least one set?', ['37', '35', '53', '40'], 'Use inclusion-exclusion: 20 + 18 + 15 − 8 − 6 − 5 + 3 = 37.'),
       question('Which identity is De Morgan’s law?', ['(A ∪ B)′ = A′ ∩ B′', '(A ∪ B)′ = A ∪ B', 'A ∩ B = A′ ∩ B′', 'A ∪ B = A′ ∪ B′'], 'The complement of a union is the intersection of the complements.')
+    ]
+  }
+  {
+    id: 'gh-core-ss1-financial-mathematics',
+    arc: 4,
+    sec: 'Proportional reasoning',
+    pages: 'NaCCA SHS 1 · pp. 50–52',
+    hue: 128,
+    horns: 2,
+    eyes: 2,
+    title: 'The Smart Money Mission',
+    topic: 'Calculate simple interest, profit, loss and commission in everyday financial situations.',
+    demon: 'The Market Money Mimic',
+    tech: 'Finance Form · Fifth Technique: Wise Calculation',
+    scenes: [
+      lesson('<p>Financial mathematics helps you make informed decisions about money. Always identify the original amount, the rate and the time before choosing a calculation.</p>'),
+      lesson('<p>Simple interest is calculated on the original principal: I = P × R × T, where R is written as a decimal and T is measured in years. For GH₵500 at 10% per year for 2 years, I = 500 × 0.10 × 2 = GH₵100.</p>'),
+      lesson('<p>Profit = selling price − cost price. Loss = cost price − selling price. If a trader buys a basket for GH₵80 and sells it for GH₵100, the profit is GH₵20. Profit percentage is calculated using the cost price as the base.</p>'),
+      lesson('<p>Commission is payment based on sales. At 5% commission, a sales agent earns 0.05 × GH₵2,000 = GH₵100. Compare the final amount with your estimate to catch mistakes.</p>'),
+      { who: 'd', vis: 'demon', text: 'I will make you confuse profit, interest and commission!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('What is the simple interest on GH₵500 at 10% per year for 2 years?', ['GH₵100', 'GH₵50', 'GH₵110', 'GH₵1,000'], 'I = P × R × T = 500 × 0.10 × 2 = GH₵100.'),
+      question('A trader buys an item for GH₵80 and sells it for GH₵100. What is the profit?', ['GH₵20', 'GH₵80', 'GH₵100', 'GH₵180'], 'Profit = selling price − cost price = 100 − 80 = GH₵20.'),
+      question('An item costs GH₵150 and is sold for GH₵120. What is the loss?', ['GH₵30', 'GH₵20', 'GH₵120', 'GH₵270'], 'Loss = cost price − selling price = 150 − 120 = GH₵30.'),
+      question('A sales agent earns 5% commission on GH₵2,000 of sales. How much commission is earned?', ['GH₵100', 'GH₵50', 'GH₵200', 'GH₵400'], 'Commission = 0.05 × 2,000 = GH₵100.')
     ]
   }
 ];
