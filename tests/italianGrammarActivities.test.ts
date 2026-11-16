@@ -87,6 +87,10 @@ for (const level of levels) {
           normalizedAnswers.length,
           item.id + ' must not contain accepted answers that are duplicates after normalization'
         );
+        assert.ok(
+          normalizedAnswers.includes(normaliseGrammarAnswer(item.modelAnswer)),
+          item.id + ' model answer must be one of the accepted answer variants'
+        );
       }
       if (type === 'write') assert.ok(!item.acceptedAnswers, item.id + ' should use self-review');
     }
