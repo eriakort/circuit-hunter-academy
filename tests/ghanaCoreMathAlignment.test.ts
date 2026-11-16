@@ -62,4 +62,13 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(sets?.learningIndicatorIds).toEqual(['1.1.1.LI.1', '1.1.1.LI.2', '1.1.1.LI.3']);
     expect(sets?.printedPages).toEqual([36, 37]);
   });
+  test('maps the introductory expression mission only to its verified SHS 1 indicator', () => {
+    const algebra = getGhanaMissionAlignment('gh-core-ss1-algebraic-expressions');
+    expect(algebra?.curriculumYear).toBe('SHS 1');
+    expect(algebra?.contentStandardIds).toEqual(['1.2.1.CS.1']);
+    expect(algebra?.learningOutcomeIds).toEqual(['1.2.1.LO.1']);
+    expect(algebra?.learningIndicatorIds).toEqual(['1.2.1.LI.1']);
+    expect(algebra?.printedPages).toEqual([52, 57]);
+    expect(algebra?.note).toContain('not claimed as covered');
+  });
 });

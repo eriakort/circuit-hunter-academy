@@ -49,7 +49,7 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     learningIndicatorIds: ['1.1.2.LI.1', '1.1.2.LI.2'],
     printedPages: [43, 50],
     alignment: 'direct',
-    note: 'Maps to the personal-finance percentage outcome and indicators, including discounts and percentage calculations. Simple interest, profit, loss, commission and wider household-finance contexts remain to be added.'
+    note: 'Maps to the personal-finance outcome and the listed percentage indicators. Further household-finance topics, including compound interest and tax, remain outside this focused mission.'
   },
   {
     missionId: 'gh-core-ss1-ratio-rate',
@@ -86,7 +86,19 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [50, 52],
     alignment: 'direct',
     note: 'Introduces simple interest, profit and loss, and commission using Ghanaian financial examples. It is a focused practice mission and does not claim to cover the full personal-finance sequence.'
-  }
+  },
+  {
+    missionId: 'gh-core-ss1-algebraic-expressions',
+    curriculumYear: 'SHS 1',
+    strand: '2 · Algebraic Reasoning',
+    subStrand: '1 · Applications of Expressions, Equations and Inequalities',
+    contentStandardIds: ['1.2.1.CS.1'],
+    learningOutcomeIds: ['1.2.1.LO.1'],
+    learningIndicatorIds: ['1.2.1.LI.1'],
+    printedPages: [52, 57],
+    alignment: 'direct',
+    note: 'Introduces variables, translating simple verbal and pattern-based situations into expressions, combining like terms and using the distributive property. Quadratic factorisation, perfect-square identities, algebraic fractions, equations and inequalities are not claimed as covered.'
+  },
 ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
