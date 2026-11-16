@@ -130,4 +130,15 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(presentation?.note).toContain('3D graphs/charts');
   });
 
+
+  test('maps the school-community data project to the third NaCCA Statistical Reasoning standard', () => {
+    const project = getGhanaMissionAlignment('gh-core-ss1-school-community-data-project');
+    expect(project?.curriculumYear).toBe('SHS 1');
+    expect(project?.contentStandardIds).toEqual(['1.4.1.CS.3']);
+    expect(project?.learningOutcomeIds).toEqual(['1.4.1.LO.3']);
+    expect(project?.learningIndicatorIds).toEqual(['1.4.1.LI.1', '1.4.1.LI.2']);
+    expect(project?.printedPages).toEqual([147]);
+    expect(project?.note).toContain('approved report');
+  });
+
 });
