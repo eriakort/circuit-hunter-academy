@@ -44,7 +44,7 @@ export const sanitizeGrammarProgress = (value: unknown): NonNullable<GameState['
       || typeof correct !== 'boolean' || typeof xpAwarded !== 'boolean'
       || (completedAt !== undefined && !isFiniteNonNegative(completedAt))
       || (xpAwarded && !correct)) return [];
-    return [[id, { attempts, correct, xpAwarded, ...(completedAt !== undefined ? { completedAt } : {}) }]];
+    return [[id, { attempts: attempts as number, correct, xpAwarded, ...(completedAt !== undefined ? { completedAt: completedAt as number } : {}) }]];
   }));
 };
 
