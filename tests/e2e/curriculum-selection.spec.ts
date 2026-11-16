@@ -24,7 +24,7 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await expect(page.getByRole('button', { name: /Italy/ })).toHaveAttribute('aria-pressed', 'true');
   await page.getByRole('button', { name: /Ghana/ }).click();
   await expect(page.getByRole('heading', { name: 'Ghana SHS curriculum selected' })).toBeVisible();
-  await expect(page.getByRole('button', { name: /Ghana/ })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('.grade-card[data-grade="grade9"]')).toContainText('SHS 1 (SS1)');
   await expect(page.locator('.grade-card[data-grade="grade10"]')).toContainText('SHS 2 (SS2)');
   await expect(page.locator('.grade-card[data-grade="grade11"]')).toContainText('SHS 3 (SS3)');
