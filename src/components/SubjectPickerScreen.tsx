@@ -1,23 +1,22 @@
 import React from 'react';
 import { useGame } from '../context/GameContext';
-import { getCurriculumSubjects, ITALIAN_SUBJECT } from '../data/curriculumSubjects';
+import { getCurriculumSubjects } from '../data/curriculumSubjects';
+import { getCurriculum } from '../data/curricula';
 import { GradeId, SubjectId } from '../types';
 import { L } from '../helpers';
 
 export const SubjectPickerScreen: React.FC = () => {
-  const { state, setSubject, goToView } = useGame();
+  const { state, setSubject, goToView, curriculumProfile } = useGame();
   const { lang, grade } = state;
+  const activeCurriculum = getCurriculum(curriculumProfile.activeCurriculumId);
+  const isGhana = activeCurriculum?.countryCode === 'GH';
   const activeGrade: GradeId =
     grade === 'grade5' || grade === 'grade9' || grade === 'grade10' || grade === 'grade11'
       ? grade
       : 'grade9';
 
   // Obtain authoritative list from curriculumSubjects registry
-  const baseSubjects = getCurriculumSubjects(activeGrade);
-  // Fail-safe guarantee: Italian is never omitted
-  const gradeSubjects = baseSubjects.some(s => s.id === 'italian')
-    ? baseSubjects
-    : [...baseSubjects, ITALIAN_SUBJECT];
+  const gradeSubjects = getCurriculumSubjects(activeGrade, curriculumProfile.activeCurriculumId);
 
   const handleSelect = (id: SubjectId) => {
     setSubject(id);
@@ -53,17 +52,17 @@ export const SubjectPickerScreen: React.FC = () => {
     <section className="hero card">
       <div>
         <div className="eyebrow">
-          {L(eyebrowByGrade[activeGrade], lang)}
+          {isGhana ? 'GHANA SHS · CHOOSE A LEARNING PATHWAY' : L(eyebrowByGrade[activeGrade], lang)}
         </div>
         <h1>
           Circuit Hunter <span>Academy</span>
         </h1>
         <p className="lede">
-          {L(ledeByGrade[activeGrade], lang)}
+          {isGhana ? 'Select a Ghana NaCCA pathway. Ghana-specific lessons and assessments will appear here when the SS1 pilot is ready.' : L(ledeByGrade[activeGrade], lang)}
         </p>
 
-        {/* Quick Launch Pills for instant 1-tap switching */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '16px' }} role="navigation" aria-label={L(['Quick subject launch', 'Avvio rapido materie'], lang)}>
+        {/* Quick Launch Pills are only available for the Italian catalogue. */}
+        {!isGhana && <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '16px' }} role="navigation" aria-label={L(['Quick subject launch', 'Avvio rapido materie'], lang)}>
           <span style={{ fontSize: '12px', color: 'var(--muted)', alignSelf: 'center', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             {L(['Direct Launch:', 'Avvio Rapido:'], lang)}
           </span>
@@ -235,15 +234,34 @@ export const SubjectPickerScreen: React.FC = () => {
               </button>
             </>
           )}
-        </div>
+        </div>}
       </div>
 
       <div className="subjects">
-        {gradeSubjects.length === 0 ? (
+        {isGhana ? (
+          <div className="grade-coming-soon card" role="status" data-curriculum="ghana-nacca">
+            <div className="grade-coming-icon" aria-hidden="true">🇬🇭</div>
+            <h2>Ghana SHS · NaCCA pathways</h2>
+            <p>Choose a pathway to see its curriculum status. Ghana learning content is kept separate from the Italian catalogue.</p>
+            <div className="pathway-list">
+              <article className="card" data-pathway="ghana-core-mathematics">
+                <h3>Core Mathematics</h3>
+                <p>Common SHS Mathematics aligned to NaCCA learning indicators.</p>
+                <span className="pg">In preparation · SS1 pilot planned</span>
+              </article>
+              <article className="card" data-pathway="ghana-additional-mathematics">
+                <h3>Additional Mathematics</h3>
+                <p>Separate advanced Mathematics pathway for learners taking the additional subject.</p>
+                <span className="pg">In preparation</span>
+              </article>
+            </div>
+            <button className="btn" onClick={() => goToView('grades')}>Choose another curriculum</button>
+          </div>
+        ) : gradeSubjects.length === 0 ? (
           <div className="grade-coming-soon card" role="status">
             <div className="grade-coming-icon" aria-hidden="true">✦</div>
-            <h2>{L(['Grade 5 subjects are being prepared', 'Le materie della quinta primaria sono in preparazione'], lang)}</h2>
-            <p>{L(['We will add the Grade 5 curriculum separately.', 'Aggiungeremo un programma dedicato.'], lang)}</p>
+            <h2>{L(['Subjects are being prepared', 'Le materie sono in preparazione'], lang)}</h2>
+            <p>{L(['We will add this curriculum separately.', 'Aggiungeremo un programma dedicato.'], lang)}</p>
             <button className="btn" onClick={() => goToView('grades')}>{L(['Choose another grade', 'Scegli un’altra classe'], lang)}</button>
           </div>
         ) : gradeSubjects.map(s => (
