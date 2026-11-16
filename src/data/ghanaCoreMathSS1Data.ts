@@ -11,7 +11,7 @@ export const GHANA_CORE_MATH_SUBJECT: SubjectInfo = {
   id: 'ghcoremath',
   name: 'Core Mathematics',
   blurb: 'The Ghana SHS Core Mathematics pathway: number, proportional reasoning and practical problem-solving.',
-  meta: 'Ghana NaCCA · SHS 1 pilot · 3 missions',
+  meta: 'Ghana NaCCA · SHS 1 pilot · 4 missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="38" fill="none" stroke="#ffd166" stroke-width="4"/><path d="M36 66 L52 82 L86 40" fill="none" stroke="#38ef7d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
@@ -24,7 +24,7 @@ export const GHANA_CORE_MATH_SS1_UNIT: UnitInfo = {
 export const GHANA_CORE_MATH_SS1_ARCS: ArcInfo[] = [
   { n: 1, unit: 0, subject: 'ghcoremath', title: 'Number Sets and Ordering', pages: 'NaCCA SHS 1 · Pilot' },
   { n: 2, unit: 0, subject: 'ghcoremath', title: 'Fractions, Decimals and Percentages', pages: 'NaCCA SHS 1 · Pilot' },
-  { n: 3, unit: 0, subject: 'ghcoremath', title: 'Ratio, Rate and Proportion', pages: 'NaCCA SHS 1 · Pilot' }
+  { n: 3, unit: 0, subject: 'ghcoremath', title: 'Ratio, Rate and Proportion', pages: 'NaCCA SHS 1 · Pilot' },
   { n: 4, unit: 0, subject: 'ghcoremath', title: 'Sets and Surveys', pages: 'NaCCA SHS 1 · pp. 36–37' }
 ];\n\nconst question = (prompt: string, answers: string[], explanation: string) => ({
   q: prompt,
@@ -115,8 +115,7 @@ export const GHANA_CORE_MATH_SS1_MISSIONS: Mission[] = [
       question('At a constant rate, 5 oranges cost GH₵20. What do 10 oranges cost?', ['GH₵40', 'GH₵25', 'GH₵30', 'GH₵10'], 'Doubling the quantity doubles the cost: GH₵40.'),
       question('A bus travels 150 km in 3 hours at a constant speed. What is its average speed?', ['50 km/h', '45 km/h', '75 km/h', '450 km/h'], 'Average speed = distance ÷ time = 150 ÷ 3 = 50 km/h.')
     ]
-  }
-  ,
+  },
   {
     id: 'gh-core-ss1-sets-surveys',
     arc: 3,
