@@ -22,7 +22,7 @@ export const ItalianGrammarScreen: React.FC = () => {
   const lesson = topic.levels[level];
   const question = lesson.exercises[questionIndex];
   const availableActivityTypes = (['correct', 'order', 'translate', 'write'] as GrammarActivityType[]).filter(type => getGrammarActivities(topicId, level, type).length > 0);
-  const activity = getGrammarActivities(topicId, level, activityType)[0] || getGrammarActivities(topicId, level, availableActivityTypes[0])[0];
+  const activity = getGrammarActivities(topicId, level, activityType)[0] || getGrammarActivities('sentence-building', level, activityType)[0];
   const normaliseAnswer = (value: string) => value.toLocaleLowerCase().replace(/[.!?]/g, '').replace(/[’]/g, "'").replace(/\s+/g, ' ').trim();
   const activityResponse = activityType === 'order' && activity.words
     ? orderedWordIndexes.map(index => activity.words![index]).join(' ')
@@ -129,7 +129,7 @@ export const ItalianGrammarScreen: React.FC = () => {
         )}
       </section>
 
-      {activity && (
+      {availableActivityTypes.length > 0 && activity && (
         <section className="card">
           <div className="mhead">
             <div><div className="eyebrow">{L(['STEP 4 · ACTIVE PRACTICE', 'PASSO 4 · ESERCIZI ATTIVI'], lang)}</div><h2>{L(['Use the grammar yourself', 'Usa la grammatica in prima persona'], lang)}</h2></div>
