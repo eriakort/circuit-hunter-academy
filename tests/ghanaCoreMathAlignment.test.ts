@@ -107,6 +107,6 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(statistics?.learningOutcomeIds).toEqual(['1.4.1.LO.1']);
     expect(statistics?.learningIndicatorIds).toEqual(['1.4.1.LI.1']);
     expect(statistics?.printedPages).toEqual([126, 133]);
-    expect(statistics?.note).toContain('remaining two statistical content standards');
+    expect(statistics?.note).toContain('seven indicators');
   });
 });
