@@ -103,3 +103,12 @@ for (const [activityId, expectedPrompt] of Object.entries(localizedPromptExpecta
   assert.equal(activity.prompt[1], expectedPrompt, activityId + ' should have a complete Italian prompt');
   assert.notEqual(activity.prompt[1], 'Scrivi la tua risposta.', activityId + ' should not use a generic placeholder');
 }
+
+const articlesA1Correction = getGrammarActivities('articles', 'A1', 'correct')[0];
+assert.equal(articlesA1Correction.explanation[0], 'Use il with a masculine singular noun beginning with a consonant that does not require lo.');
+assert.equal(articlesA1Correction.explanation[1], 'Usa il con un nome maschile singolare che inizia con una consonante che non richiede lo.');
+const pronounsA1Translation = getGrammarActivities('pronouns', 'A1', 'translate')[0];
+assert.equal(pronounsA1Translation.hint[1], 'Il pronome soggetto per “she” è lei.');
+const pronounsA2Correction = getGrammarActivities('pronouns', 'A2', 'correct')[0];
+assert.equal(pronounsA2Correction.hint[0], 'The noun libri is masculine plural.');
+assert.equal(pronounsA2Correction.hint[1], 'Il nome libri è maschile plurale.');
