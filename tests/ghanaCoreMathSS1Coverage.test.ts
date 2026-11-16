@@ -71,7 +71,7 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('counts the first Statistical Reasoning mission only in its matching data sub-strand', () => {
     const statistics = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Statistical Reasoning and Its Application in Real Life');
     expect(statistics?.status).toBe('partial');
-    expect(statistics?.pilotMissionIds).toEqual(['gh-core-ss1-statistical-reasoning-data-types']);
+    expect(statistics?.pilotMissionIds).toEqual(['gh-core-ss1-statistical-reasoning-data-types', 'gh-core-ss1-statistical-data-collection-methods']);
     expect(statistics?.learningIndicators).toBe(8);
   });
 
