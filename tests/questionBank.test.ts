@@ -69,7 +69,7 @@ assert.ok(scienceCategories[0]?.count === scienceQuestions.length, 'Science subj
 // Grammar Training and Italian subject tests share the same source exercises.
 const italianCategories = getCategories('italian');
 const grammarCategories = italianCategories.filter(category => category.type === 'grammar');
-assert.equal(grammarCategories.length, ITALIAN_GRAMMAR_TOPICS.length, 'Each grammar topic should have a dedicated Italian test category');
+assert.equal(grammarCategories.length, ITALIAN_GRAMMAR_TOPICS.length * 4, 'Each grammar topic should have an all-level category and three CEFR-specific categories');
 const grammarQuestions = bank.filter(question => question.subject === 'italian' && question.id.startsWith('italian-grammar-'));
 const expectedGrammarCount = ITALIAN_GRAMMAR_TOPICS.reduce((total, topic) => total + (['A1', 'A2', 'B1'] as const).reduce((levelTotal, level) => levelTotal + topic.levels[level].exercises.length, 0), 0);
 assert.equal(grammarQuestions.length, expectedGrammarCount, 'Every Grammar Training multiple-choice exercise should appear once in the test bank');
@@ -78,10 +78,18 @@ for (const topic of ITALIAN_GRAMMAR_TOPICS) {
   assert.ok(category, 'Missing Italian grammar test category: ' + topic.id);
   const pool = filterQuestionPool('italian', category!);
   assert.equal(pool.length, 9, topic.id + ' should expose its A1, A2 and B1 questions');
+  for (const level of ['A1', 'A2', 'B1'] as const) {
+    const levelCategory = grammarCategories.find(item => item.grammarTopicId === topic.id && item.grammarLevel === level);
+    assert.ok(levelCategory, 'Missing ' + level + ' test category for ' + topic.id);
+    const levelPool = filterQuestionPool('italian', levelCategory!);
+    assert.equal(levelPool.length, 3, topic.id + ' ' + level + ' should expose exactly three questions');
+    assert.ok(levelPool.every(question => question.grammarLevel === level), topic.id + ' ' + level + ' filter must not mix CEFR levels');
+    assert.equal(levelCategory!.count, levelPool.length, topic.id + ' ' + level + ' category count should match its pool');
+  }
   assert.equal(new Set(pool.map(question => question.id)).size, pool.length, topic.id + ' questions should have unique IDs');
   assert.ok(pool.every(question => question.a.length === 3 && question.a[0][0].length > 0), 'Grammar questions should be valid multiple-choice items');
   for (const question of pool) {
-    const source = (['A1', 'A2', 'B1'] as const).flatMap(level => topic.levels[level].exercises).find(exercise => 'italian-grammar-' + exercise.id === question.id);
+    const source = topic.levels[question.grammarLevel || 'A1'].exercises.find(exercise => 'italian-grammar-' + exercise.id === question.id);
     assert.ok(source, 'Test question must map back to the Grammar Training source exercise');
     assert.equal(question.a[0][0], source!.options[source!.answer], 'Correct answer must be preserved when adapting to the test-bank format');
     assert.deepEqual(question.q, source!.prompt, 'Prompt must be reused without duplication');
