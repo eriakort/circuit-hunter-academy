@@ -204,6 +204,6 @@ export const GHANA_CORE_MATH_SS1_MISSIONS: Mission[] = [
       question('Which pair contains unlike terms?', ['3x and 2y', '4a and 6a', '5m and m', '2p and 7p'], 'The variables differ, so 3x and 2y cannot be combined.'),
       question('Expand 2(x + 6).', ['2x + 12', '2x + 6', 'x + 12', '2x + 8'], 'Multiply both terms inside the bracket by 2.')
     ]
-  }
+  },
   ...GHANA_SS1_PATTERNS_MISSIONS,
 ];
