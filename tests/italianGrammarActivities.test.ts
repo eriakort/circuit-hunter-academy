@@ -116,3 +116,15 @@ assert.equal(pronounsA1Translation.hint[1], 'Il pronome soggetto per “she” �
 const pronounsA2Correction = getGrammarActivities('pronouns', 'A2', 'correct')[0];
 assert.equal(pronounsA2Correction.hint[0], 'The noun libri is masculine plural.');
 assert.equal(pronounsA2Correction.hint[1], 'Il nome libri è maschile plurale.');
+
+
+const passatoProssimoA1CorrectionVariants = getGrammarActivities('passato-prossimo', 'A1', 'correct')[0];
+assert.deepEqual(passatoProssimoA1CorrectionVariants.acceptedAnswers, ['Ieri ho mangiato una pizza.', 'Ho mangiato una pizza ieri.']);
+const articlesA1TranslationVariants = getGrammarActivities('articles', 'A1', 'translate')[0];
+assert.deepEqual(articlesA1TranslationVariants.acceptedAnswers, ['Gli studenti sono qui.', 'Gli studenti sono qua.']);
+const articlesA2TranslationVariants = getGrammarActivities('articles', 'A2', 'translate')[0];
+assert.deepEqual(articlesA2TranslationVariants.acceptedAnswers, ['Ho visto le ragazze in giardino.', 'Ho visto le ragazze nel giardino.']);
+const reflexiveA1TranslationVariants = getGrammarActivities('reflexive', 'A1', 'translate')[0];
+assert.deepEqual(reflexiveA1TranslationVariants.acceptedAnswers, ['Lei si alza alle sette.', 'Si alza alle sette.']);
+const reflexiveA2TranslationVariants = getGrammarActivities('reflexive', 'A2', 'translate')[0];
+assert.deepEqual(reflexiveA2TranslationVariants.acceptedAnswers, ['Mi sono vestito rapidamente.', 'Mi sono vestita rapidamente.', 'Mi sono vestito in fretta.', 'Mi sono vestita in fretta.']);
