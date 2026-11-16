@@ -100,4 +100,13 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(measurement?.note).toContain('Trigonometry and area/perimeter standards are not claimed as covered');
   });
 
+  test('maps the first Statistical Reasoning standard and indicator to the SHS 1 mission', () => {
+    const statistics = getGhanaMissionAlignment('gh-core-ss1-statistical-reasoning-data-types');
+    expect(statistics?.curriculumYear).toBe('SHS 1');
+    expect(statistics?.contentStandardIds).toEqual(['1.4.1.CS.1']);
+    expect(statistics?.learningOutcomeIds).toEqual(['1.4.1.LO.1']);
+    expect(statistics?.learningIndicatorIds).toEqual(['1.4.1.LI.1']);
+    expect(statistics?.printedPages).toEqual([126, 133]);
+    expect(statistics?.note).toContain('seven indicators');
+  });
 });

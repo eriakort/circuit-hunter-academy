@@ -26,15 +26,16 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
 
   test('marks only the two pilot sub-strands as partial', () => {
     const summary = getGhanaCoreMathSS1CoverageSummary();
-    expect(summary.partial).toBe(6);
-    expect(summary.notStarted).toBe(2);
+    expect(summary.partial).toBe(7);
+    expect(summary.notStarted).toBe(1);
     expect(GHANA_CORE_MATH_SS1_COVERAGE.filter(item => item.status === 'partial').map(item => item.subStrand)).toEqual([
       'Real Number System',
       'Proportional Reasoning',
       'Applications of Expressions, Equations and Inequalities',
       'Patterns and Relationships',
       'Spatial Sense',
-      'Measurement'
+      'Measurement',
+      'Statistical Reasoning and Its Application in Real Life'
     ]);
   });
 
@@ -65,6 +66,13 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
     expect(measurement?.status).toBe('partial');
     expect(measurement?.pilotMissionIds).toEqual(['gh-core-ss1-vectors-bearings']);
     expect(measurement?.learningIndicators).toBe(9);
+  });
+
+  test('counts the first Statistical Reasoning mission only in its matching data sub-strand', () => {
+    const statistics = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Statistical Reasoning and Its Application in Real Life');
+    expect(statistics?.status).toBe('partial');
+    expect(statistics?.pilotMissionIds).toEqual(['gh-core-ss1-statistical-reasoning-data-types']);
+    expect(statistics?.learningIndicators).toBe(8);
   });
 
   test('does not count the SHS 2 ratio extension as SHS 1 coverage', () => {
