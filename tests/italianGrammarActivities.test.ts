@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict';
 import { ITALIAN_GRAMMAR_ACTIVITIES, getGrammarActivities } from '../src/data/italianGrammarActivities';
+const sentenceA1Translation = getGrammarActivities('sentence-building', 'A1', 'translate')[0];
+assert.equal(sentenceA1Translation.hint[0], 'Use la with the feminine noun ragazza and un with the masculine noun libro.');
+assert.equal(sentenceA1Translation.hint[1], 'Usa la con il nome femminile ragazza e un con il nome maschile libro.');
 const articlesA1Write = getGrammarActivities('articles', 'A1', 'write')[0];
 assert.equal(articlesA1Write.prompt[0], 'Write one sentence using a masculine noun and a feminine noun.');
 assert.equal(articlesA1Write.prompt[1], 'Scrivi una frase usando un nome maschile e un nome femminile.');
