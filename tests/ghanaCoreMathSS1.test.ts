@@ -63,10 +63,10 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
     expect(text).toContain('grouped');
     expect(text).toContain('The Data Detective');
     expect(text).toContain('The Evidence Expedition');
-    expect(text).toContain('focus groups');
-    expect(text).toContain('oral histories');
-    expect(text).toContain('quantitative methods');
-    expect(text).toContain('qualitative methods');
+    expect(text).toContain('Focus groups');
+    expect(text).toContain('Oral histories');
+    expect(text).toContain('Quantitative methods');
+    expect(text).toContain('Qualitative methods');
     expect(text).not.toContain('Matematica');
     expect(text).not.toContain('Lingua Italiana');
   });
