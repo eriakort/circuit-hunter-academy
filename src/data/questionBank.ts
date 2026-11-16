@@ -2,6 +2,7 @@ import { TaggedQuestion, SubjectId, BilingualText } from '../types';
 import { MISSIONS, ARCS, UNITS, SUBJECTS } from './gameData';
 import { EXTRA_PHYSICS_QUESTIONS } from './physicsQuestions';
 import { EXTRA_MATH_QUESTIONS } from './mathQuestions';
+import { ITALIAN_GRAMMAR_TOPICS, GrammarLevel } from './italianGrammar';
 import { shuffle } from '../helpers';
 
 // Compile all questions from missions into an indexed bank
@@ -36,6 +37,29 @@ export function getCompleteQuestionBank(): TaggedQuestion[] {
   // Include supplemental physics and Bergamini-Barozzi math questions
   bank.push(...EXTRA_PHYSICS_QUESTIONS);
   bank.push(...EXTRA_MATH_QUESTIONS);
+
+  // Adapt the canonical A1–B1 grammar exercises into the shared test bank.
+  // The grammar-training screen and formal tests therefore use the same source content.
+  ITALIAN_GRAMMAR_TOPICS.forEach(topic => {
+    (['A1', 'A2', 'B1'] as GrammarLevel[]).forEach(level => {
+      topic.levels[level].exercises.forEach(exercise => {
+        const options = exercise.options.map(option => [option, option] as BilingualText);
+        const correctOption = options.splice(exercise.answer, 1)[0];
+        bank.push({
+          id: `it-grammar-${topic.id}-${level}-${exercise.id}`,
+          q: exercise.prompt,
+          a: [correctOption, ...options],
+          why: exercise.explanation,
+          subject: 'italian',
+          unitIndex: 0,
+          arcIndex: -1,
+          missionId: `grammar-${topic.id}-${level}`,
+          chapterTitle: topic.title,
+          missionTitle: [`${topic.title[0]} · ${level}`, `${topic.title[1]} · ${level}`]
+        });
+      });
+    });
+  });
 
   cachedBank = bank;
   return bank;
@@ -104,6 +128,25 @@ export function getCategories(subject: SubjectId): CategoryOption[] {
       });
     }
   });
+
+  // Grammar topic + CEFR-level categories are available in Italian subject tests.
+  if (subject === 'italian') {
+    ITALIAN_GRAMMAR_TOPICS.forEach(topic => {
+      (['A1', 'A2', 'B1'] as GrammarLevel[]).forEach(level => {
+        const missionId = `grammar-${topic.id}-${level}`;
+        const count = bank.filter(question => question.missionId === missionId).length;
+        if (count > 0) {
+          categories.push({
+            type: 'mission',
+            id: missionId,
+            missionId,
+            label: [`${topic.title[0]} · ${level}`, `${topic.title[1]} · ${level}`],
+            count
+          });
+        }
+      });
+    });
+  }
 
   return categories;
 }
