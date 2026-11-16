@@ -43,6 +43,8 @@ export const ItalianGrammarScreen: React.FC = () => {
   };
   const chooseLevel = (nextLevel: GrammarLevel) => {
     setLevel(nextLevel);
+    const firstAvailable = (['correct', 'order', 'translate', 'write'] as GrammarActivityType[]).find(type => getGrammarActivities(topicId, nextLevel, type).length > 0);
+    if (firstAvailable) setActivityType(firstAvailable);
     setQuestionIndex(0);
     setSelectedAnswer(null);
     setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false);
