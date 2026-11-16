@@ -84,9 +84,9 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     contentStandards: 3,
     learningOutcomes: 3,
     learningIndicators: 9,
-    status: 'not-started',
-    pilotMissionIds: [],
-    note: 'No SHS 1 pilot mission is currently mapped to this sub-strand.'
+    status: 'partial',
+    pilotMissionIds: ['gh-core-ss1-vectors-bearings'],
+    note: 'The pilot covers the first measurement content standard on vectors and bearings. The trigonometry and perimeter/area standards remain not yet covered.'
   },
   {
     strand: 'Making Sense of and Using Data',
