@@ -32,7 +32,14 @@ const weekendA2Write = getGrammarActivities('passato-prossimo', 'A2', 'write')[0
 assert.equal(weekendA2Write.prompt[1], 'Scrivi due frasi sul fine settimana scorso. Usa il passato prossimo.');
 assert.equal(weekendA2Write.modelAnswer, 'Sabato ho visitato un museo. Domenica ho visto una mostra.');
 assert.equal(weekendA2Write.modelAnswer.split(/[.!?]+/).filter(Boolean).length, 2, 'A2 weekend model should contain the two sentences requested');
+const partitiveA1Translation = getGrammarActivities('partitive', 'A1', 'translate')[0];
+assert.equal(partitiveA1Translation.prompt[0], 'Translate: I eat some cheese.');
+assert.equal(partitiveA1Translation.prompt[1], 'Traduci in italiano: “I eat some cheese”.');
+assert.equal(partitiveA1Translation.source, 'I eat some cheese.');
 const partitiveA2Translation = getGrammarActivities('partitive', 'A2', 'translate')[0];
+assert.equal(partitiveA2Translation.prompt[0], 'Translate: Would you like some vegetables?');
+assert.equal(partitiveA2Translation.prompt[1], 'Traduci in italiano: “Would you like some vegetables?”.');
+assert.equal(partitiveA2Translation.source, 'Would you like some vegetables?');
 assert.deepEqual(partitiveA2Translation.acceptedAnswers, ['Vuoi della verdura?', 'Vuoi delle verdure?']);
 const articlesA2Write = getGrammarActivities('articles', 'A2', 'write')[0];
 assert.equal(articlesA2Write.modelAnswer, 'Nel mio quartiere ci sono una piazza e un bar. Le case del centro sono antiche.');
