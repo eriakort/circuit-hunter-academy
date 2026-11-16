@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { GRADE_SUBJECT_IDS } from '../src/data/gradeData';
+import { getCurriculumSubjects } from '../src/data/curriculumSubjects';
 import {
   COUNTRIES,
   DEFAULT_COUNTRY_CODE,
@@ -57,6 +58,8 @@ assert.equal(getCurriculumGrade('ghana-nacca', 'grade10')?.label, 'SHS 2 (SS2)')
 assert.equal(getCurriculumGrade('ghana-nacca', 'grade5'), undefined);
 assert.equal(getCurriculumPathway('ghana-nacca', 'ghana-core-mathematics')?.name, 'Core Mathematics');
 assert.equal(getCurriculumPathway('ghana-nacca', 'italy-standard'), undefined);
+assert.deepEqual(getCurriculumSubjects('grade9', 'ghana-nacca'), [], 'Ghana must never inherit Italian subjects');
+assert.deepEqual(getCurriculumSubjects('grade9', 'italy-national').map(subject => subject.id), GRADE_SUBJECT_IDS.grade9);
 assert.equal(getCurriculum('unknown' as never), undefined);
 assert.equal(getCountry('US' as never), undefined);
 
