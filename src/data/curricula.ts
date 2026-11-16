@@ -60,8 +60,7 @@ const italianSubjects: Partial<Record<GradeId, readonly SubjectId[]>> = {
 /**
  * The country registry is the source of truth for country/curriculum labels.
  * Ghana reuses Grade 9–11 internally for compatibility, but presents SS1–SS3.
- * Ghana pathways remain planned until their own content and progress namespaces
- * are introduced in subsequent implementation stages.
+ * Core Mathematics is available as an initial SS1 pilot; wider coverage and Additional Mathematics remain in preparation.
  */
 export const COUNTRIES: readonly CountryDefinition[] = [
   {
@@ -118,7 +117,8 @@ export const COUNTRIES: readonly CountryDefinition[] = [
             id: 'ghana-core-mathematics',
             name: 'Core Mathematics',
             description: 'The common NaCCA Mathematics pathway for Senior High School learners.',
-            status: 'planned'
+            status: 'available',
+            subjectIdsByGrade: { grade9: ['ghcoremath'] }
           },
           {
             id: 'ghana-additional-mathematics',
