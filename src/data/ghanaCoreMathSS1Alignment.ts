@@ -145,7 +145,19 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     learningIndicatorIds: ['1.4.1.LI.1'],
     printedPages: [126, 133],
     alignment: 'direct',
-    note: 'Focused coverage of the first statistical-reasoning standard and indicator: classifying primary/secondary, quantitative (discrete/continuous), qualitative (nominal/ordinal), numerical/categorical, and grouped/ungrouped data; selecting and justifying suitable methods to collect qualitative and quantitative data. The remaining two statistical content standards and seven indicators are not claimed as covered.'
+    note: 'Focused coverage of the first statistical-reasoning indicator: classifying primary/secondary, quantitative (discrete/continuous), qualitative (nominal/ordinal), numerical/categorical, and grouped/ungrouped data. Collection-method selection is practised further in a separate mission.'
+  },
+  {
+    missionId: 'gh-core-ss1-statistical-data-collection-methods',
+    curriculumYear: 'SHS 1',
+    strand: '4 · Making Sense of and Using Data',
+    subStrand: '1 · Statistical Reasoning and Its Application in Real Life',
+    contentStandardIds: ['1.4.1.CS.1'],
+    learningOutcomeIds: ['1.4.1.LO.1'],
+    learningIndicatorIds: ['1.4.1.LI.2', '1.4.1.LI.3'],
+    printedPages: [133, 134],
+    alignment: 'direct',
+    note: 'Covers identifying, validating and applying quantitative collection methods (surveys/questionnaires, interviews, observation, existing data and probability-based sampling) and qualitative methods (interviews, observation, focus groups, oral histories and responsible online/social-media monitoring).'
   }
 ];
 

@@ -14,7 +14,7 @@ export const GHANA_CORE_MATH_SUBJECT: SubjectInfo = {
   id: 'ghcoremath',
   name: 'Core Mathematics',
   blurb: 'The Ghana SHS Core Mathematics pathway: number, algebra, geometry, statistics and practical problem-solving.',
-  meta: 'Ghana NaCCA · SHS 1 pilot · 10 missions',
+  meta: 'Ghana NaCCA · SHS 1 pilot · 11 missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="38" fill="none" stroke="#ffd166" stroke-width="4"/><path d="M36 66 L52 82 L86 40" fill="none" stroke="#38ef7d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
@@ -35,7 +35,7 @@ export const GHANA_CORE_MATH_SS1_ARCS: ArcInfo[] = [
   ...GHANA_SS1_PATTERNS_ARCS.map(arc => ({ ...arc, n: 7 })),
   ...GHANA_SS1_SPATIAL_ARCS.map(arc => ({ ...arc, n: 8 })),
   ...GHANA_SS1_MEASUREMENT_ARCS.map(arc => ({ ...arc, n: 9 })),
-  ...GHANA_SS1_STATISTICS_ARCS.map(arc => ({ ...arc, n: 10 })),
+  ...GHANA_SS1_STATISTICS_ARCS.map(arc => ({ ...arc, n: 11 })),
 ];
 
 const question = (prompt: string, answers: string[], explanation: string) => ({
