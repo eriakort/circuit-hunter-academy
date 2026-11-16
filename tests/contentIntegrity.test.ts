@@ -25,11 +25,12 @@ for (const question of bank) {
   assert.ok(!questionIds.has(question.id), `Duplicate question ID: ${question.id}`);
   questionIds.add(question.id);
 
-  assert.ok(isCompleteBilingualPair(question.q), `Question prompt must be complete in English and Italian: ${question.id}`);
-  assert.ok(isCompleteBilingualPair(question.why), `Question explanation must be complete in English and Italian: ${question.id}`);
+  const isGhanaEnglishQuestion = question.subject === 'ghcoremath';
+  assert.ok(isGhanaEnglishQuestion ? typeof question.q === 'string' && question.q.trim().length > 0 : isCompleteBilingualPair(question.q), `Question prompt must follow its curriculum language policy: ${question.id}`);
+  assert.ok(isGhanaEnglishQuestion ? typeof question.why === 'string' && question.why.trim().length > 0 : isCompleteBilingualPair(question.why), `Question explanation must follow its curriculum language policy: ${question.id}`);
   assert.ok(Array.isArray(question.a) && question.a.length >= 2, `Question needs at least two answer options: ${question.id}`);
   question.a.forEach((answer, index) => {
-    assert.ok(isCompleteBilingualPair(answer), `Answer ${index + 1} must be complete in English and Italian: ${question.id}`);
+    assert.ok(isGhanaEnglishQuestion ? typeof answer === 'string' && answer.trim().length > 0 : isCompleteBilingualPair(answer), `Answer ${index + 1} must follow its curriculum language policy: ${question.id}`);
   });
 
   assert.ok(subjectIds.has(question.subject), `Unknown question subject: ${question.subject} (${question.id})`);
