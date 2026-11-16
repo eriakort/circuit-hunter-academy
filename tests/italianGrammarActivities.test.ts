@@ -104,10 +104,10 @@ for (const [activityId, expectedPrompt] of Object.entries(localizedPromptExpecta
   assert.notEqual(activity.prompt[1], 'Scrivi la tua risposta.', activityId + ' should not use a generic placeholder');
 }
 
-const articlesA1Translation = getGrammarActivities('articles', 'A1', 'translate')[0];
-assert.equal(articlesA1Translation.prompt[0], 'Translate into Italian: “The students are here”.');
-assert.equal(articlesA1Translation.prompt[1], 'Traduci in italiano: “The students are here”.');
-assert.equal(articlesA1Translation.source, 'The students are here.');
+const articlesA1TranslationPrompt = getGrammarActivities('articles', 'A1', 'translate')[0];
+assert.equal(articlesA1TranslationPrompt.prompt[0], 'Translate into Italian: “The students are here”.');
+assert.equal(articlesA1TranslationPrompt.prompt[1], 'Traduci in italiano: “The students are here”.');
+assert.equal(articlesA1TranslationPrompt.source, 'The students are here.');
 const articlesA1Correction = getGrammarActivities('articles', 'A1', 'correct')[0];
 assert.equal(articlesA1Correction.explanation[0], 'Use il with a masculine singular noun beginning with a consonant that does not require lo.');
 assert.equal(articlesA1Correction.explanation[1], 'Usa il con un nome maschile singolare che inizia con una consonante che non richiede lo.');
