@@ -5,6 +5,8 @@ import { rankOf } from '../helpers';
 import { GRADE_SUBJECT_IDS } from '../data/gradeData';
 import { isMissionOpen, isValidXpAward } from '../missionAccess';
 import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, createFreshProgressState, isValidCheckpointResult, isValidGrammarActivityId, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
+import type { CurriculumId } from '../data/curricula';
+import { CURRICULUM_PROFILE_KEY, createDefaultCurriculumProfile, getCurriculumNavigationKey, getCurriculumSaveKey, migrateLegacyItalianSave, sanitizeCurriculumProfile, switchActiveCurriculum, type CurriculumProfile } from '../data/curriculumProfile';
 
 
 
@@ -25,6 +27,8 @@ const defaultState: GameState = {
 
 interface GameContextType {
   state: GameState;
+  curriculumProfile: CurriculumProfile;
+  setCurriculum: (curriculumId: CurriculumId) => void;
   view: ViewMode;
   currentMissionIndex: number;
   currentSceneIndex: number;
@@ -57,9 +61,22 @@ interface GameContextType {
 const GameContext = createContext<GameContextType | undefined>(undefined);
 
 export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [curriculumProfile, setCurriculumProfile] = useState<CurriculumProfile>(() => {
+    try {
+      migrateLegacyItalianSave(localStorage);
+      const raw = localStorage.getItem(CURRICULUM_PROFILE_KEY);
+      return raw ? sanitizeCurriculumProfile(JSON.parse(raw)) : createDefaultCurriculumProfile();
+    } catch (e) {
+      console.error('Failed to load curriculum profile; using the default curriculum:', e);
+      return createDefaultCurriculumProfile();
+    }
+  });
+  const activeSaveKey = getCurriculumSaveKey(curriculumProfile.activeCurriculumId);
+  const activeNavigationKey = getCurriculumNavigationKey(curriculumProfile.activeCurriculumId);
+
   const [state, setState] = useState<GameState>(() => {
     try {
-      const raw = localStorage.getItem(SAVE_KEY);
+      const raw = localStorage.getItem(activeSaveKey);
       return raw ? sanitizeGameState(JSON.parse(raw)) : defaultState;
     } catch (e) {
       console.error('Failed to load save state; starting with a safe default:', e);
@@ -69,7 +86,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const [initialNavigation] = useState<SavedNavigation | null>(() => {
     try {
-      const raw = localStorage.getItem(NAVIGATION_KEY);
+      const raw = localStorage.getItem(activeNavigationKey);
       return raw ? restoreSavedNavigation(JSON.parse(raw), state) : null;
     } catch (e) {
       console.error('Failed to restore navigation; opening the learning map:', e);
@@ -92,15 +109,15 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     try {
-      localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+      localStorage.setItem(activeSaveKey, JSON.stringify(state));
     } catch (e) {
       console.error('Failed to save state:', e);
     }
-  }, [state]);
+  }, [state, activeSaveKey]);
 
   useEffect(() => {
     try {
-      localStorage.setItem(NAVIGATION_KEY, JSON.stringify({
+      localStorage.setItem(activeNavigationKey, JSON.stringify({
         view,
         currentMissionIndex,
         currentSceneIndex,
@@ -112,8 +129,39 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } catch (e) {
       console.error('Failed to save navigation:', e);
     }
-  }, [view, currentMissionIndex, currentSceneIndex, battleContext, state.grade, state.subject]);
+  }, [view, currentMissionIndex, currentSceneIndex, battleContext, state.grade, state.subject, activeNavigationKey]);
 
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(CURRICULUM_PROFILE_KEY, JSON.stringify(curriculumProfile));
+    } catch (e) {
+      console.error('Failed to save curriculum profile:', e);
+    }
+  }, [curriculumProfile]);
+
+  const setCurriculum = (curriculumId: CurriculumId) => {
+    if (curriculumId === curriculumProfile.activeCurriculumId) return;
+    try {
+      const nextProfile = switchActiveCurriculum(curriculumProfile, curriculumId);
+      const nextSave = localStorage.getItem(getCurriculumSaveKey(curriculumId));
+      const nextState = nextSave ? sanitizeGameState(JSON.parse(nextSave)) : defaultState;
+      const nextNavigationRaw = localStorage.getItem(getCurriculumNavigationKey(curriculumId));
+      const nextNavigation = nextNavigationRaw
+        ? restoreSavedNavigation(JSON.parse(nextNavigationRaw), nextState)
+        : null;
+
+      setCurriculumProfile(nextProfile);
+      setState(nextState);
+      setCurrentMissionIndex(nextNavigation?.currentMissionIndex ?? Math.max(0, MISSIONS.findIndex(m => (ARCS[m.arc]?.subject || 'cs') === nextState.subject)));
+      setCurrentSceneIndex(nextNavigation?.currentSceneIndex ?? 0);
+      setBattleContext(nextNavigation?.battleContext ?? null);
+      setView(nextState.grade ? (nextNavigation?.view || 'map') : 'grades');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) {
+      console.error('Unable to switch curriculum safely:', e);
+    }
+  };
 
   const setGrade = (grade: GradeId) => {
     const subject = GRADE_SUBJECT_IDS[grade].includes(state.subject)
@@ -333,6 +381,8 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     <GameContext.Provider
       value={{
         state,
+        curriculumProfile,
+        setCurriculum,
         view,
         currentMissionIndex,
         currentSceneIndex,
