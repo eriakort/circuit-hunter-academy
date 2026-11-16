@@ -5,6 +5,18 @@ export interface GrammarActivity {
   title: BilingualText; prompt: BilingualText; source?: string; words?: string[];
   acceptedAnswers?: string[]; modelAnswer: string; hint: BilingualText; explanation: BilingualText;
 }
+
+export const normaliseGrammarAnswer = (value: string): string => value
+  .normalize('NFKC')
+  .toLocaleLowerCase()
+  .replace(/[’‘ʼ＇]/g, "'")
+  .replace(/'\s+/g, "'")
+  .replace(/[.!?]/g, '')
+  .replace(/\s+/g, ' ')
+  .trim();
+
+export const matchesGrammarAnswer = (response: string, acceptedAnswers: string[]): boolean =>
+  acceptedAnswers.some(answer => normaliseGrammarAnswer(answer) === normaliseGrammarAnswer(response));
 export const ITALIAN_GRAMMAR_ACTIVITIES: GrammarActivity[] = [
 {topicId:'sentence-building',id:'sentence-a1-correct',level:'A1',type:'correct',title:['Correct the sentence','Correggi la frase'],prompt:['Find and correct the article error.','Trova e correggi l’errore nell’articolo.'],source:'Io ho una amica italiana.',acceptedAnswers:['Io ho un’amica italiana.'],modelAnswer:'Ho un’amica italiana.',hint:['Use un’ before a feminine singular noun beginning with a vowel.','Usa un’ davanti a un nome femminile singolare che inizia per vocale.'],explanation:['Una becomes un’ before amica. The masculine form un amico has no apostrophe.','Una diventa un’ davanti ad amica. La forma maschile un amico non ha l’apostrofo.']},
 {topicId:'sentence-building',id:'sentence-a1-order',level:'A1',type:'order',title:['Build the sentence','Costruisci la frase'],prompt:['Tap the words in the correct order.','Tocca le parole nell’ordine corretto.'],words:['italiano.','Ogni','studio','mattina','io'],modelAnswer:'Ogni mattina io studio italiano.',hint:['A time expression can come first, followed by subject + verb + object.','Un’espressione di tempo può venire prima, seguita da soggetto + verbo + complemento.'],explanation:['The sentence follows a natural order: time, subject, verb, object.','La frase segue un ordine naturale: tempo, soggetto, verbo, complemento.']},
