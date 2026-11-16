@@ -1,4 +1,5 @@
 import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
+import { GHANA_SS1_PATTERNS_ARCS, GHANA_SS1_PATTERNS_MISSIONS } from './ghanaCoreMathSS1PatternsData';
 
 /**
  * Ghana NaCCA SHS 1 Core Mathematics pilot.
@@ -10,7 +11,7 @@ export const GHANA_CORE_MATH_SUBJECT: SubjectInfo = {
   id: 'ghcoremath',
   name: 'Core Mathematics',
   blurb: 'The Ghana SHS Core Mathematics pathway: number, proportional reasoning and practical problem-solving.',
-  meta: 'Ghana NaCCA · SHS 1 pilot · 6 missions',
+  meta: 'Ghana NaCCA · SHS 1 pilot · 7 missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="38" fill="none" stroke="#ffd166" stroke-width="4"/><path d="M36 66 L52 82 L86 40" fill="none" stroke="#38ef7d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
@@ -28,6 +29,7 @@ export const GHANA_CORE_MATH_SS1_ARCS: ArcInfo[] = [
   { n: 5, unit: 0, subject: 'ghcoremath', title: 'Financial Mathematics', pages: 'NaCCA SHS 1 · pp. 50–52' },
   { n: 6, unit: 0, subject: 'ghcoremath', title: 'Algebraic Expressions', pages: 'NaCCA SHS 1 · pp. 57–58' },
 
+  ...GHANA_SS1_PATTERNS_ARCS.map(arc => ({ ...arc, n: 7 })),
 ];
 
 const question = (prompt: string, answers: string[], explanation: string) => ({
@@ -202,5 +204,6 @@ export const GHANA_CORE_MATH_SS1_MISSIONS: Mission[] = [
       question('Which pair contains unlike terms?', ['3x and 2y', '4a and 6a', '5m and m', '2p and 7p'], 'The variables differ, so 3x and 2y cannot be combined.'),
       question('Expand 2(x + 6).', ['2x + 12', '2x + 6', 'x + 12', '2x + 8'], 'Multiply both terms inside the bracket by 2.')
     ]
-  }
+  },
+  ...GHANA_SS1_PATTERNS_MISSIONS,
 ];

@@ -26,12 +26,13 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
 
   test('marks only the two pilot sub-strands as partial', () => {
     const summary = getGhanaCoreMathSS1CoverageSummary();
-    expect(summary.partial).toBe(3);
-    expect(summary.notStarted).toBe(5);
+    expect(summary.partial).toBe(4);
+    expect(summary.notStarted).toBe(4);
     expect(GHANA_CORE_MATH_SS1_COVERAGE.filter(item => item.status === 'partial').map(item => item.subStrand)).toEqual([
       'Real Number System',
       'Proportional Reasoning',
-      'Applications of Expressions, Equations and Inequalities'
+      'Applications of Expressions, Equations and Inequalities',
+      'Patterns and Relationships'
     ]);
   });
 
