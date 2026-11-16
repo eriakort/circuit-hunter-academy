@@ -36,6 +36,8 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await expect(page.locator('[data-s="ghcoremath"]')).toBeVisible();
   await expect(page.getByText('Additional Mathematics', { exact: true })).toBeVisible();
   await page.locator('[data-s="ghcoremath"]').click();
+  await page.locator('#nm').fill('Ghana Hunter');
+  await page.getByRole('button', { name: /Join the academy/ }).click();
   await expect(page.getByText('The Number Map', { exact: true })).toBeVisible();
   await expect(page.getByText('The Market Percentage Challenge', { exact: true })).toBeVisible();
   const ghanaSaveAfterSelection = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:ghana-nacca') || '{}'));
