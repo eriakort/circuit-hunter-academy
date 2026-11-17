@@ -24,7 +24,7 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
     });
   });
 
-  test('marks only the two pilot sub-strands as partial', () => {
+  test('marks all nine represented sub-strands as partial rather than complete', () => {
     const summary = getGhanaCoreMathSS1CoverageSummary();
     expect(summary.partial).toBe(9);
     expect(summary.notStarted).toBe(0);
