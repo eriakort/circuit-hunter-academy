@@ -29091,3 +29091,23 @@ MISSIONS.push(...GHANA_CORE_MATH_SS2_PROPORTIONAL_MISSIONS.map(mission => ({
   ...mission,
   arc: ghanaCoreMathSS2ProportionalArcOffset + mission.arc
 })));
+
+
+// Ghana NaCCA · SHS 2 Geometry Around Us · Spatial Sense and transformations.
+import {
+  GHANA_CORE_MATH_SS2_SPATIAL_UNIT,
+  GHANA_CORE_MATH_SS2_SPATIAL_ARCS,
+  GHANA_CORE_MATH_SS2_SPATIAL_MISSIONS
+} from './ghanaCoreMathSS2Data';
+const ghanaCoreMathSS2SpatialUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_CORE_MATH_SS2_SPATIAL_UNIT, subject: 'ghcoremath2' });
+const ghanaCoreMathSS2SpatialArcOffset = ARCS.length;
+GHANA_CORE_MATH_SS2_SPATIAL_ARCS.forEach(arc => ARCS.push({
+  ...arc,
+  unit: ghanaCoreMathSS2SpatialUnitOffset,
+  subject: 'ghcoremath2'
+}));
+MISSIONS.push(...GHANA_CORE_MATH_SS2_SPATIAL_MISSIONS.map(mission => ({
+  ...mission,
+  arc: ghanaCoreMathSS2SpatialArcOffset + mission.arc
+})));
