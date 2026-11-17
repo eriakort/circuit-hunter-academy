@@ -72,7 +72,7 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('counts vectors only in the matching Geometry Around Us Measurement sub-strand', () => {
     const measurement = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Measurement');
     expect(measurement?.status).toBe('partial');
-    expect(measurement?.pilotMissionIds).toEqual(['gh-core-ss1-vectors-bearings', 'gh-core-ss1-trigonometry']);
+    expect(measurement?.pilotMissionIds).toEqual(['gh-core-ss1-vectors-bearings', 'gh-core-ss1-trigonometry', 'gh-core-ss1-perimeter-area']);
     expect(measurement?.learningIndicators).toBe(9);
   });
 
