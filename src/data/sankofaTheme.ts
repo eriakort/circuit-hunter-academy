@@ -40,11 +40,11 @@ export const SANKOFA_THEME = {
 
 export const SANKOFA_RANKS: readonly SankofaRank[] = [
   { id: 'curious-seeker', title: 'Curious Seeker', threshold: 0, description: 'Begin exploring and asking questions.' },
-  { id: 'trail-explorer', title: 'Trail Explorer', threshold: 100, description: 'Build confidence through introductory missions.' },
-  { id: 'pattern-finder', title: 'Pattern Finder', threshold: 300, description: 'Recognise relationships and connect ideas.' },
-  { id: 'problem-solver', title: 'Problem Solver', threshold: 600, description: 'Apply knowledge to unfamiliar challenges.' },
-  { id: 'knowledge-keeper', title: 'Knowledge Keeper', threshold: 1000, description: 'Demonstrate consistent understanding.' },
-  { id: 'community-innovator', title: 'Community Innovator', threshold: 1600, description: 'Use knowledge creatively to help others.' }
+  { id: 'trail-explorer', title: 'Trail Explorer', threshold: 250, description: 'Build confidence through introductory missions.' },
+  { id: 'pattern-finder', title: 'Pattern Finder', threshold: 800, description: 'Recognise relationships and connect ideas.' },
+  { id: 'problem-solver', title: 'Problem Solver', threshold: 1600, description: 'Apply knowledge to unfamiliar challenges.' },
+  { id: 'knowledge-keeper', title: 'Knowledge Keeper', threshold: 2700, description: 'Demonstrate consistent understanding.' },
+  { id: 'community-innovator', title: 'Community Innovator', threshold: 5500, description: 'Use knowledge creatively to help others.' }
 ] as const;
 
 export const SANKOFA_REGIONS: readonly SankofaRegion[] = [
