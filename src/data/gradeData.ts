@@ -28,7 +28,7 @@ export const GRADES: GradeInfo[] = [
     name: ['Grade 9', 'Terza media / 1° Sup.'],
     schoolLevel: ['Secondary transition · Year 1', 'Passaggio alle superiori · 1° Superiore'],
     ageRange: ['Usually ages 13–15', 'Generalmente 13–15 anni'],
-    description: ['CS, Physics, Math, Italian, Chemistry L1, History & Geography.', 'Informatica, Fisica, Matematica, Italiano, Chimica L1, Storia e Geografia.'],
+    description: ['CS, Physics, Math, Ghana Core Mathematics, Italian, Chemistry L1, History & Geography.', 'Informatica, Fisica, Matematica, Matematica di base del Ghana, Italiano, Chimica L1, Storia e Geografia.'],
     status: 'ready'
   },
   {
@@ -51,7 +51,7 @@ export const GRADES: GradeInfo[] = [
 
 export const GRADE_SUBJECT_IDS: Record<GradeId, string[]> = {
   grade5: ['science', 'math5', 'italian', 'hist5', 'geo5'],
-  grade9: ['cs', 'phys', 'math', 'italian', 'chem', 'hist9', 'geo9'],
+  grade9: ['cs', 'phys', 'math', 'ghcoremath', 'italian', 'chem', 'hist9', 'geo9'],
   grade10: ['chem10', 'italian', 'hist10', 'geo10', 'math10'],
   grade11: ['chem11', 'italian', 'hist11', 'geo11', 'math11']
 };
