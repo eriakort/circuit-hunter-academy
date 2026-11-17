@@ -10,6 +10,7 @@ import {
   GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT,
   GHANA_CORE_MATH_SS2_STATISTICS_ALIGNMENT
 } from '../src/data/ghanaCoreMathSS2Alignment';
+import { GHANA_CORE_MATH_SS2_PROBABILITY_ALIGNMENT } from '../src/data/ghanaCoreMathSS2ProbabilityAlignment';
 import {
   GHANA_CORE_MATH_SS2_SUBJECT,
   GHANA_CORE_MATH_SS2_UNIT,
@@ -34,6 +35,7 @@ import {
   GHANA_CORE_MATH_SS2_STATISTICS_ARCS,
   GHANA_CORE_MATH_SS2_STATISTICS_MISSIONS
 } from '../src/data/ghanaCoreMathSS2Data';
+import { GHANA_CORE_MATH_SS2_PROBABILITY_UNIT, GHANA_CORE_MATH_SS2_PROBABILITY_ARCS, GHANA_CORE_MATH_SS2_PROBABILITY_MISSIONS } from '../src/data/ghanaCoreMathSS2ProbabilityData';
 
 assert.equal(GHANA_NACCA_SS2_MATHEMATICS_SOURCE.publicationDate, 'September 2023');
 assert.equal(GHANA_NACCA_SS2_MATHEMATICS_SOURCE.publisher, 'National Council for Curriculum and Assessment (NaCCA), Ghana');
@@ -129,7 +131,7 @@ assert.deepEqual(GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS.map(m => m.id), [
   'gh-core-ss2-solid-measurement-surface-volume-capacity'
 ]);
 assert.ok(GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
-assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · fourteen learning missions');
+assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · sixteen learning missions');
 console.log('Ghana SHS 2 measurement coverage ok');
 
 
@@ -155,5 +157,25 @@ assert.deepEqual(GHANA_CORE_MATH_SS2_STATISTICS_MISSIONS.map(m => m.id), [
   'gh-core-ss2-statistical-inference-community-project'
 ]);
 assert.ok(GHANA_CORE_MATH_SS2_STATISTICS_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
-assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · fourteen learning missions');
+assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · sixteen learning missions');
 console.log('Ghana SHS 2 statistical reasoning coverage ok');
+
+
+assert.equal(GHANA_CORE_MATH_SS2_PROBABILITY_ALIGNMENT.strand, '4 · Making Sense of and Using Data');
+assert.equal(GHANA_CORE_MATH_SS2_PROBABILITY_ALIGNMENT.subStrand, '2 · Probability/Chance');
+assert.deepEqual(GHANA_CORE_MATH_SS2_PROBABILITY_ALIGNMENT.printedPages, [290, 296]);
+assert.equal(GHANA_CORE_MATH_SS2_PROBABILITY_ALIGNMENT.contentStandards[0].id, '2.4.2.CS.1');
+assert.equal(GHANA_CORE_MATH_SS2_PROBABILITY_ALIGNMENT.learningOutcomes[0].id, '2.4.2.LO.1');
+assert.deepEqual(GHANA_CORE_MATH_SS2_PROBABILITY_ALIGNMENT.learningIndicators.map(item => item.id), ['2.4.2.LI.1', '2.4.2.LI.2']);
+assert.deepEqual(GHANA_CORE_MATH_SS2_PROBABILITY_ALIGNMENT.learningIndicators.map(item => item.printedPage), [293, 296]);
+assert.equal(GHANA_CORE_MATH_SS2_PROBABILITY_ALIGNMENT.coverage.length, 2);
+assert.match(GHANA_CORE_MATH_SS2_PROBABILITY_ALIGNMENT.curriculumNote, /dependent events.*independent events/);
+assert.equal(GHANA_CORE_MATH_SS2_PROBABILITY_UNIT.subject, 'ghcoremath2');
+assert.equal(GHANA_CORE_MATH_SS2_PROBABILITY_ARCS[0].pages, 'NaCCA SHS 2 · pp. 290–296');
+assert.deepEqual(GHANA_CORE_MATH_SS2_PROBABILITY_MISSIONS.map(m => m.id), [
+  'gh-core-ss2-dependent-events-sample-space',
+  'gh-core-ss2-independent-events-everyday-probability'
+]);
+assert.ok(GHANA_CORE_MATH_SS2_PROBABILITY_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
+assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · sixteen learning missions');
+console.log('Ghana SHS 2 probability/chance coverage ok');
