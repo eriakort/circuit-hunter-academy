@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { ITALIAN_GRAMMAR_TOPICS } from '../src/data/italianGrammar';
-import { buildAdaptiveGrammarReview, getGrammarTopicProgress } from '../src/data/italianGrammarReview';
+import { buildAdaptiveGrammarReview, getGrammarLevelProgress, getGrammarTopicProgress, getLeastMasteredGrammarTopic } from '../src/data/italianGrammarReview';
 
 const level = 'A1' as const;
 const allQuestions = ITALIAN_GRAMMAR_TOPICS.flatMap(topic => topic.levels[level].exercises);
@@ -29,5 +29,13 @@ const reflexive = ITALIAN_GRAMMAR_TOPICS.find(item => item.id === 'reflexive')!;
 const topicProgress = getGrammarTopicProgress(reflexive, level, progress);
 assert.deepEqual(topicProgress, { mastered: 1, total: reflexive.levels.A1.exercises.length });
 assert.deepEqual(getGrammarTopicProgress(reflexive, level), { mastered: 0, total: reflexive.levels.A1.exercises.length });
+
+const levelProgress = getGrammarLevelProgress(ITALIAN_GRAMMAR_TOPICS, level, progress);
+assert.equal(levelProgress.mastered, 1);
+assert.equal(levelProgress.total, allQuestions.length);
+assert.equal(levelProgress.percentage, Math.round(100 / allQuestions.length));
+assert.equal(getLeastMasteredGrammarTopic(ITALIAN_GRAMMAR_TOPICS, level, progress)?.id, 'articles');
+assert.equal(getLeastMasteredGrammarTopic([], level, progress), null);
+
 
 console.log('italianGrammarReview.test.ts ok! Adaptive prioritisation, mixed topics and mastery summaries verified.');
