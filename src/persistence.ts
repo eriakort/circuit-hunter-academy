@@ -23,7 +23,7 @@ const isGrade = (value: unknown): value is GradeId =>
 const isSubject = (value: unknown): value is SubjectId =>
   value === 'cs' || value === 'phys' || value === 'math' || value === 'science' || value === 'math5' || value === 'italian' || value === 'chem' || value === 'chem10' || value === 'chem11'
   || value === 'math10' || value === 'math11'
-  || value === 'hist5' || value === 'geo5' || value === 'hist9' || value === 'geo9' || value === 'hist10' || value === 'geo10' || value === 'hist11' || value === 'geo11';
+  || value === 'hist5' || value === 'geo5' || value === 'hist9' || value === 'geo9' || value === 'hist10' || value === 'geo10' || value === 'hist11' || value === 'geo11' || value === 'ghcoremath';
 
 const firstUnitForSubject = (subject: SubjectId): number =>
   UNITS.findIndex(unit => (unit.subject || 'cs') === subject);
