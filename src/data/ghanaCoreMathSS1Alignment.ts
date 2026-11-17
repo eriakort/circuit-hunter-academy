@@ -179,8 +179,8 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     subStrand: '1 · Statistical Reasoning and Its Application in Real Life',
     contentStandardIds: ['1.4.1.CS.2'],
     learningOutcomeIds: ['1.4.1.LO.2'],
-    learningIndicatorIds: ['1.4.1.LI.1'],
-    printedPages: [135, 137],
+    learningIndicatorIds: ['1.4.1.LI.2'],
+    printedPages: [135, 138],
     alignment: 'direct',
     note: 'Covers organising grouped and ungrouped data in frequency tables and presenting findings with line graphs, pie charts, multiple bar graphs, infographics and appropriate digital tools, including 3D graphs/charts where available. Descriptive statistics are addressed separately.'
   }
@@ -297,13 +297,13 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     missionId: 'gh-core-ss1-statistical-averages-inference',
     curriculumYear: 'SHS 1',
     strand: '4 · Making Sense of and Using Data',
-    subStrand: '1 · Statistical Reasoning and Its Application in Real Life',
-    contentStandardIds: ['1.4.1.CS.2'],
-    learningOutcomeIds: ['1.4.1.LO.2'],
-    learningIndicatorIds: ['1.4.1.LI.2', '1.4.1.LI.3'],
-    printedPages: [137, 143],
+    subStrand: '3 · Descriptive Statistics and Inference',
+    contentStandardIds: ['1.4.3.CS.1'],
+    learningOutcomeIds: [],
+    learningIndicatorIds: ['1.4.3.LI.2'],
+    printedPages: [140, 143],
     alignment: 'direct',
-    note: 'Covers descriptive statistics for grouped and ungrouped data (mean, median, mode, minimum, maximum and range), the effect of extreme values, choosing and justifying a representative average, and using mathematical arguments to make evidence-based inferences and decisions. The curriculum PDF contains inconsistent OCR for one indicator label; this mapping follows the SHS 1 sequence and the content under CS.2 on printed pages 137–143.'
+    note: 'Maps to NaCCA Sub-Strand 3, content standard 1.4.3.CS.1 and indicator 1.4.3.LI.2: analyse and interpret data using descriptive statistics, including measures of central tendency/location and minimum/maximum values, and justify the most representative average. The curriculum extraction does not expose a separately coded learning outcome for this sub-strand, so none is asserted.'
   },
   {
     missionId: 'gh-core-ss1-prism-volume',
