@@ -55,8 +55,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 3,
     learningIndicators: 6,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-algebraic-expressions', 'gh-core-ss1-linear-equations-inequalities'],
-    note: 'The pilot introduces expression formation and simplification, formula rearrangement, linear equations and inequalities in one variable, number-line solution sets and practical applications. The remaining first-standard indicators on quadratic factorisation, perfect squares and algebraic fractions are not yet covered.'
+    pilotMissionIds: ['gh-core-ss1-algebraic-expressions', 'gh-core-ss1-linear-equations-inequalities', 'gh-core-ss1-quadratic-factorisation-algebraic-fractions'],
+    note: 'The pilot introduces expression formation and simplification, formula rearrangement, linear equations and inequalities in one variable, number-line solution sets and practical applications. The pilot now also covers quadratic factorisation, perfect-square identities, differences of two squares, and simple algebraic-fraction operations with zero/undefined conditions. Additional varied practice is still needed to establish mastery.'
   },
   {
     strand: 'Algebraic Reasoning',
