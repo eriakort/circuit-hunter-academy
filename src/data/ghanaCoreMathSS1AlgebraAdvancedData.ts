@@ -16,7 +16,7 @@ const question = (q: string, a: string[], why: string) => ({ q, a, why });
 export const GHANA_SS1_ALGEBRA_MISSIONS: Mission[] = [
   {
     id: 'gh-core-ss1-quadratic-factorisation-algebraic-fractions',
-    arc: 0,
+    arc: 15,
     sec: 'Algebraic reasoning',
     pages: 'NaCCA SHS 1 · pp. 57–61',
     hue: 286,
