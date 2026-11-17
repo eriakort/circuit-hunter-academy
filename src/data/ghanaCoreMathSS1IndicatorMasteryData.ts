@@ -1934,11 +1934,11 @@ export const GHANA_SS1_INDICATOR_MASTERY_MISSIONS: Mission[] = [
       ),
       lesson(
         '<b>Making Sense of and Using Data:</b> Classify data, select collection methods, organise and present information, plan a fair school investigation and support conclusions with evidence.',
-        '<b>Interpretare e utilizzare i dati:</b> Classifica i dati, scegli i metodi di raccolta, organizza e presenta le informazioni, pianifica un'indagine scolastica corretta e sostieni le conclusioni con prove.'
+        '<b>Interpretare e utilizzare i dati:</b> Classifica i dati, scegli i metodi di raccolta, organizza e presenta le informazioni, pianifica un\'indagine scolastica corretta e sostieni le conclusioni con prove.'
       ),
       lesson(
         '<b>Probability and Chance:</b> List sample spaces, recognise independent events and multiply probabilities only when the independence condition is satisfied. A replacement draw is a useful example because the probabilities stay the same.',
-        '<b>Probabilità e caso:</b> Elenca gli spazi campionari, riconosci gli eventi indipendenti e moltiplica le probabilità solo quando vale la condizione di indipendenza. Un'estrazione con reinserimento è un esempio utile perché le probabilità restano invariate.'
+        '<b>Probabilità e caso:</b> Elenca gli spazi campionari, riconosci gli eventi indipendenti e moltiplica le probabilità solo quando vale la condizione di indipendenza. Un\'estrazione con reinserimento è un esempio utile perché le probabilità restano invariate.'
       ),
       lesson(
         '<b>How your diagnostic works:</b> Answer all 45 questions independently. Each question records evidence for one curriculum indicator. The pass mark is 80% (36 correct answers). A missed answer is linked to a named concept so the revision panel can point you to the exact skill to practise.',
