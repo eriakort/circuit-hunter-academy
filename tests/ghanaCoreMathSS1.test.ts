@@ -93,6 +93,8 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
     expect(text).toContain('The Proportional Reasoning Mastery Expedition');
     expect(text).toContain('The Algebraic Thinking Mastery Expedition');
     expect(text).toContain('The Patterns and Relationships Mastery Expedition');
+    expect(text).toContain('The 45-Indicator Mastery Expedition');
+    expect(text).toContain('45 learning indicators');
     expect(text).toContain('exponential mapping');
     expect(text).toContain('The Percentage Mirage');
     expect(text).toContain('annual compounding');
