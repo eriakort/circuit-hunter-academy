@@ -119,6 +119,15 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(algebra?.printedPages).toEqual([52, 57]);
     expect(algebra?.note).toContain('not claimed as covered');
   });
+  test('maps straight-line geometry to the second SHS 1 Patterns and Relationships standard', () => {
+    const lines = getGhanaMissionAlignment('gh-core-ss1-straight-lines-distance');
+    expect(lines?.curriculumYear).toBe('SHS 1');
+    expect(lines?.contentStandardIds).toEqual(['1.2.2.CS.2']);
+    expect(lines?.learningOutcomeIds).toEqual(['1.2.2.LO.2']);
+    expect(lines?.learningIndicatorIds).toEqual(['1.2.2.LI.1', '1.2.2.LI.2']);
+    expect(lines?.printedPages).toEqual([80, 83]);
+  });
+
   test('maps spatial sense to the official SHS 1 Geometry Around Us standard', () => {
     const spatial = getGhanaMissionAlignment('gh-core-ss1-spatial-sense');
     expect(spatial?.curriculumYear).toBe('SHS 1');
