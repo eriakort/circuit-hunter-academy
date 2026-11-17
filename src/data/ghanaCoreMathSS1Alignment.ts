@@ -416,7 +416,6 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Integrated retrieval and transfer across the two SHS 1 Proportional Reasoning standards and both learning outcomes. NaCCA reuses the printed indicator labels 1.1.2.LI.1 and 1.1.2.LI.2 under each content standard; this mapping lists the unique printed labels once while covering both contexts. The mission reinforces the existing four-indicator scope and does not claim additional curriculum coverage. SHS 2 ratios and rates are excluded.'
   },
-,
   {
     missionId: 'gh-core-ss1-algebraic-thinking-mastery',
     curriculumYear: 'SHS 1',
