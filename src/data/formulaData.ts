@@ -98,7 +98,10 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
     { id: 'variation', subject: 'ghcoremath3', name: 'Direct, Inverse, Joint and Partial Variation' },
     { id: 'quadratic-equations', subject: 'ghcoremath3', name: 'Quadratic Equations and Factorisation' },
     { id: 'quadratic-functions', subject: 'ghcoremath3', name: 'Quadratic Functions and Graphs' },
-    { id: 'quadratic-relationships', subject: 'ghcoremath3', name: 'Quadratic Roots, Symmetry and Intervals' }
+    { id: 'quadratic-relationships', subject: 'ghcoremath3', name: 'Quadratic Roots, Symmetry and Intervals' },
+    { id: 'circle-geometry', subject: 'ghcoremath3', name: 'Circle Geometry and Theorems' },
+    { id: 'tangent-theorems', subject: 'ghcoremath3', name: 'Tangents and Circle Theorems' },
+    { id: 'geometric-constructions', subject: 'ghcoremath3', name: 'Geometric Constructions and Loci' }
   ]
 };
 

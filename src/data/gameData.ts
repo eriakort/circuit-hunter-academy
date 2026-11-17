@@ -29214,3 +29214,22 @@ MISSIONS.push(...GHANA_CORE_MATH_SS3_QUADRATICS_MISSIONS.map(mission => ({
   ...mission,
   arc: ghanaCoreMathSS3QuadraticsArcOffset + mission.arc
 })));
+
+// Ghana NaCCA · SHS 3 Geometry Around Us · Spatial Sense.
+import {
+  GHANA_CORE_MATH_SS3_SPATIAL_UNIT,
+  GHANA_CORE_MATH_SS3_SPATIAL_ARCS,
+  GHANA_CORE_MATH_SS3_SPATIAL_MISSIONS
+} from './ghanaCoreMathSS3SpatialData';
+const ghanaCoreMathSS3SpatialUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_CORE_MATH_SS3_SPATIAL_UNIT, subject: 'ghcoremath3' });
+const ghanaCoreMathSS3SpatialArcOffset = ARCS.length;
+GHANA_CORE_MATH_SS3_SPATIAL_ARCS.forEach(arc => ARCS.push({
+  ...arc,
+  unit: ghanaCoreMathSS3SpatialUnitOffset,
+  subject: 'ghcoremath3'
+}));
+MISSIONS.push(...GHANA_CORE_MATH_SS3_SPATIAL_MISSIONS.map(mission => ({
+  ...mission,
+  arc: ghanaCoreMathSS3SpatialArcOffset + mission.arc
+})));

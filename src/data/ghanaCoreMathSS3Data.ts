@@ -8,13 +8,13 @@ import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
 export const GHANA_CORE_MATH_SS3_SUBJECT: SubjectInfo = {
   id: 'ghcoremath3',
   name: 'Core Mathematics · SHS 3',
-  blurb: 'Ghana NaCCA SHS 3 Core Mathematics: logical reasoning, variation and the final-year mathematics pathway.',
-  meta: 'Ghana NaCCA · SHS 3 · two foundation missions',
+  blurb: 'Ghana NaCCA SHS 3 Core Mathematics: reasoning, algebra, geometry and the final-year mathematics pathway.',
+  meta: 'Ghana NaCCA · SHS 3 · three learning units',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><path d="M60 15 L100 38 L100 82 L60 105 L20 82 L20 38 Z" fill="none" stroke="#ffd166" stroke-width="4"/><path d="M38 62 L53 77 L84 43" fill="none" stroke="#7bdff2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
 export const GHANA_CORE_MATH_SS3_UNIT: UnitInfo = {
-  title: 'Numbers for Everyday Life · Proportional Reasoning',
+  title: 'Numbers for Everyday Life · Logical Reasoning and Variation',
   ch: 'SS3 · NaCCA pp. 300–309',
   subject: 'ghcoremath3'
 };
