@@ -1,4 +1,5 @@
 import type { ArcInfo, BilingualText, LearningConcept, Mission } from '../types';
+import { GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS } from './ghanaCoreMathSS1IndicatorQuestionVariants';
 
 interface IndicatorItem {
   id: string;
@@ -3706,6 +3707,7 @@ export const GHANA_SS1_INDICATOR_MASTERY_MISSIONS: Mission[] = [
         instructions: ['Answer all 45 questions. Each item is mapped to one curriculum indicator. You need at least 36 correct answers (80%) to unlock the battle. Review the indicator concepts shown after an attempt.', 'Rispondi a tutte le 45 domande. Ogni quesito è associato a un indicatore del programma. Servono almeno 36 risposte corrette (80%) per sbloccare la battaglia. Dopo il tentativo, ripassa i concetti-indicatore evidenziati.'],
         questions: assessmentQuestions,
         questionConceptIds: INDICATORS.map(item => item.id),
+        questionVariants: INDICATORS.map(item => [GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS[item.id]]),
         passingScore: 80
       },
       techniqueUnlock: {
