@@ -42,7 +42,7 @@ export const GHANA_SS1_MASTERY_MISSIONS: Mission[] = [
       question('A triangular prism has a triangular cross-section of area 12 cm² and length 8 cm. What is its volume?', ['96 cm³', '20 cm³', '48 cm³', '96 cm²'], 'Volume = cross-sectional area × length = 12 × 8 = 96 cm³.'),
       question('The data values are 4, 5, 5, 6 and 30. Which average best represents a typical value when the extreme value 30 is not typical?', ['Median: 5', 'Mean: 10', 'Maximum: 30', 'Range: 26'], 'The median is 5 and is less affected by the unusually high value 30 than the mean.')
     ]
-  }
+  },
   {
     id: 'gh-core-ss1-measurement-mastery-challenge',
     arc: 22,
