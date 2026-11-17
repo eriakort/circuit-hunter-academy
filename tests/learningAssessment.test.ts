@@ -35,6 +35,11 @@ describe('multi-form assessment helpers', () => {
     expect(resolveAssessmentQuestions(assessment, indexes).map(item => item.q[0])).toEqual(['base A', 'alternate B']);
   });
 
+  test('guarantees a different question form for every eligible indicator on retry', () => {
+    const retryIndexes = createAssessmentQuestionVariantIndexes(assessment, () => 0.1, [0, 1]);
+    expect(retryIndexes).toEqual([1, 0]);
+  });
+
   test('falls back to canonical questions for legacy attempts and invalid indexes', () => {
     expect(resolveAssessmentQuestions(assessment).map(item => item.q[0])).toEqual(['base A', 'base B']);
     expect(resolveAssessmentQuestions(assessment, [9, -1]).map(item => item.q[0])).toEqual(['base A', 'base B']);
