@@ -273,10 +273,10 @@ export const MapScreen: React.FC = () => {
       <section className="hero card">
         <div>
           <div className="eyebrow">
-            {L([isGhana ? 'Welcome back to your journey' : ['Welcome back', 'Bentornata']], lang)}, {esc(name)}
+            {isGhana ? 'Welcome back to your journey' : L(['Welcome back', 'Bentornata'], lang)}, {esc(name)}
           </div>
           <h1>
-            Circuit Hunter <span>Academy</span>
+            {isGhana ? <>Sankofa <span>Knowledge Quest</span></> : <>Circuit Hunter <span>Academy</span></>}
           </h1>
           <p className="lede">
             {isMastered
