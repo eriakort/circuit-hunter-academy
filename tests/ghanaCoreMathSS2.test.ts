@@ -131,7 +131,7 @@ assert.deepEqual(GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS.map(m => m.id), [
   'gh-core-ss2-solid-measurement-surface-volume-capacity'
 ]);
 assert.ok(GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
-assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · sixteen learning missions');
+assert.equal(Array.isArray(GHANA_CORE_MATH_SS2_SUBJECT.meta) ? GHANA_CORE_MATH_SS2_SUBJECT.meta[0] : GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · sixteen learning missions');
 console.log('Ghana SHS 2 measurement coverage ok');
 
 
@@ -157,7 +157,7 @@ assert.deepEqual(GHANA_CORE_MATH_SS2_STATISTICS_MISSIONS.map(m => m.id), [
   'gh-core-ss2-statistical-inference-community-project'
 ]);
 assert.ok(GHANA_CORE_MATH_SS2_STATISTICS_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
-assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · sixteen learning missions');
+assert.equal(Array.isArray(GHANA_CORE_MATH_SS2_SUBJECT.meta) ? GHANA_CORE_MATH_SS2_SUBJECT.meta[0] : GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · sixteen learning missions');
 console.log('Ghana SHS 2 statistical reasoning coverage ok');
 
 
@@ -177,5 +177,5 @@ assert.deepEqual(GHANA_CORE_MATH_SS2_PROBABILITY_MISSIONS.map(m => m.id), [
   'gh-core-ss2-independent-events-everyday-probability'
 ]);
 assert.ok(GHANA_CORE_MATH_SS2_PROBABILITY_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
-assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · sixteen learning missions');
+assert.equal(Array.isArray(GHANA_CORE_MATH_SS2_SUBJECT.meta) ? GHANA_CORE_MATH_SS2_SUBJECT.meta[0] : GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · sixteen learning missions');
 console.log('Ghana SHS 2 probability/chance coverage ok');

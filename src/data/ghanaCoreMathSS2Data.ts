@@ -1,4 +1,4 @@
-import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
+import type { ArcInfo, BilingualText, Mission, SubjectInfo, UnitInfo } from '../types';
 
 /**
  * Ghana NaCCA SHS 2 Core Mathematics — first implementation slice.
@@ -7,14 +7,14 @@ import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
  */
 export const GHANA_CORE_MATH_SS2_SUBJECT: SubjectInfo = {
   id: 'ghcoremath2',
-  name: 'Core Mathematics · SHS 2',
-  blurb: 'Ghana NaCCA SHS 2 Core Mathematics: number systems, proportional reasoning, algebra, progressions, financial models, geometry, measurement, statistical reasoning and probability.',
-  meta: 'Ghana NaCCA · SHS 2 · sixteen learning missions',
+  name: ['Core Mathematics · SHS 2', 'Matematica di base · SHS 2'],
+  blurb: ['Ghana NaCCA SHS 2 Core Mathematics: number systems, proportional reasoning, algebra, progressions, financial models, geometry, measurement, statistical reasoning and probability.', 'Matematica di base SHS 2 secondo il curriculum NaCCA del Ghana: sistemi numerici, proporzioni, algebra, successioni, modelli finanziari, geometria, misurazione, statistica e probabilità.'],
+  meta: ['Ghana NaCCA · SHS 2 · sixteen learning missions', 'Ghana NaCCA · SHS 2 · sedici missioni didattiche'],
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="38" fill="none" stroke="#7bdff2" stroke-width="4"/><path d="M37 76 L54 42 L67 66 L83 42" fill="none" stroke="#ffd166" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
 export const GHANA_CORE_MATH_SS2_UNIT: UnitInfo = {
-  title: 'Numbers for Everyday Life · Real Number and Numeration System',
+  title: ['Numbers for Everyday Life · Real Number and Numeration System', 'Numeri nella vita quotidiana · Sistema dei numeri reali e numerazione'],
   ch: 'SS2 · NaCCA pp. 166–173',
   subject: 'ghcoremath2'
 };
@@ -24,13 +24,13 @@ export const GHANA_CORE_MATH_SS2_ARCS: ArcInfo[] = [
     n: 1,
     unit: 0,
     subject: 'ghcoremath2',
-    title: 'Surds, Indices, Logarithms and Modular Arithmetic',
+    title: ['Surds, Indices, Logarithms and Modular Arithmetic', 'Radicali, potenze, logaritmi e aritmetica modulare'],
     pages: 'NaCCA SHS 2 · pp. 166–173'
   }
 ];
 
-const question = (q: string, a: string[], why: string) => ({ q, a, why });
-const lesson = (text: string) => ({ who: 's' as const, vis: 'infowords', text });
+const question = (q: BilingualText, a: BilingualText[], why: BilingualText) => ({ q, a, why });
+const lesson = (text: BilingualText) => ({ who: 's' as const, vis: 'infowords', text });
 
 export const GHANA_CORE_MATH_SS2_MISSIONS: Mission[] = [
   {
@@ -41,30 +41,30 @@ export const GHANA_CORE_MATH_SS2_MISSIONS: Mission[] = [
     hue: 190,
     horns: 2,
     eyes: 3,
-    title: 'The Number Codebreaker',
-    topic: 'Explore surds, laws of indices, logarithms and modular arithmetic.',
-    demon: 'The Remainder Wraith',
-    tech: 'Number Form · SHS 2 Technique: Pattern Breaker',
+    title: ['The Number Codebreaker', 'Il decifratore dei numeri'],
+    topic: ['Explore surds, laws of indices, logarithms and modular arithmetic.', 'Esplora i radicali, le proprietà delle potenze, i logaritmi e l’aritmetica modulare.'],
+    demon: ['The Remainder Wraith', 'Lo spettro del resto'],
+    tech: ['Number Form · SHS 2 Technique: Pattern Breaker', 'Forma numerica · Tecnica SHS 2: Spezza-modelli'],
     scenes: [
-      lesson('<p>Welcome to SHS 2 Core Mathematics. This mission begins the NaCCA strand <b>Numbers for Everyday Life</b>. We will connect four powerful ideas: surds, indices, logarithms and modular arithmetic.</p>'),
-      lesson('<p>A <b>surd</b> is an irrational root such as √2. You can simplify √12 by finding a square factor: √12 = √(4 × 3) = 2√3. To rationalise a monomial denominator, multiply the numerator and denominator by the radical needed to make the denominator rational. For example, 1/√5 = √5/5.</p>'),
-      lesson('<p><b>Indices</b> are a short way to write repeated multiplication. For the same non-zero base, aᵐ × aⁿ = aᵐ⁺ⁿ and aᵐ ÷ aⁿ = aᵐ⁻ⁿ. A negative index means reciprocal: a⁻ⁿ = 1/aⁿ. A logarithm answers the question: “What power gives this number?” Since 10² = 100, log₁₀(100) = 2.</p>'),
-      lesson('<p><b>Modulo arithmetic</b> is arithmetic with remainders. A 12-hour clock is a familiar model: 10 o’clock plus 5 hours is 3 o’clock, because 15 leaves remainder 3 when divided by 12. We write 15 ≡ 3 (mod 12).</p>'),
-      { type: 'sort', title: 'Choose the matching idea', cats: [['Surds', 'Surds'], ['Indices', 'Indices'], ['Logarithms', 'Logarithms'], ['Modulo', 'Modulo']], items: [
-        { n: '√18 = 3√2', c: 0, i: 'root' },
-        { n: '2³ × 2² = 2⁵', c: 1, i: 'power' },
-        { n: 'log₁₀(1000) = 3', c: 2, i: 'calculate' },
-        { n: '17 ≡ 2 (mod 5)', c: 3, i: 'clock' }
+      lesson(['<p>Welcome to SHS 2 Core Mathematics. This mission begins the NaCCA strand <b>Numbers for Everyday Life</b>. We will connect four powerful ideas: surds, indices, logarithms and modular arithmetic.</p>', '<p>Benvenuto o benvenuta a Matematica di base SHS 2. Questa missione introduce il filone NaCCA <b>Numeri nella vita quotidiana</b>. Collegheremo quattro idee importanti: radicali, potenze, logaritmi e aritmetica modulare.</p>']),
+      lesson(['<p>A <b>surd</b> is an irrational root such as √2. You can simplify √12 by finding a square factor: √12 = √(4 × 3) = 2√3. To rationalise a monomial denominator, multiply the numerator and denominator by the radical needed to make the denominator rational. For example, 1/√5 = √5/5.</p>', '<p>Un <b>radicale irrazionale</b> è una radice irrazionale come √2. Puoi semplificare √12 individuando un fattore quadrato perfetto: √12 = √(4 × 3) = 2√3. Per razionalizzare un denominatore monomio, moltiplica numeratore e denominatore per il radicale necessario a rendere razionale il denominatore. Per esempio, 1/√5 = √5/5.</p>']),
+      lesson(['<p><b>Indices</b> are a short way to write repeated multiplication. For the same non-zero base, aᵐ × aⁿ = aᵐ⁺ⁿ and aᵐ ÷ aⁿ = aᵐ⁻ⁿ. A negative index means reciprocal: a⁻ⁿ = 1/aⁿ. A logarithm answers the question: “What power gives this number?” Since 10² = 100, log₁₀(100) = 2.</p>', '<p>Le <b>potenze</b> permettono di scrivere in modo compatto una moltiplicazione ripetuta. Per la stessa base diversa da zero, aᵐ × aⁿ = aᵐ⁺ⁿ e aᵐ ÷ aⁿ = aᵐ⁻ⁿ. Un esponente negativo indica il reciproco: a⁻ⁿ = 1/aⁿ. Un logaritmo risponde alla domanda: «A quale esponente devo elevare la base per ottenere questo numero?». Poiché 10² = 100, log₁₀(100) = 2.</p>']),
+      lesson(['<p><b>Modulo arithmetic</b> is arithmetic with remainders. A 12-hour clock is a familiar model: 10 o’clock plus 5 hours is 3 o’clock, because 15 leaves remainder 3 when divided by 12. We write 15 ≡ 3 (mod 12).</p>', '<p>L’<b>aritmetica modulare</b> lavora con i resti delle divisioni. Un orologio a 12 ore è un esempio familiare: le 10 più 5 ore diventano le 3, perché 15 diviso 12 lascia resto 3. Scriviamo 15 ≡ 3 (mod 12).</p>']),
+      { type: 'sort', title: ['Choose the matching idea', 'Scegli il concetto corrispondente'], cats: [['Surds', 'Radicali'], ['Indices', 'Potenze'], ['Logarithms', 'Logaritmi'], ['Modulo', 'Modulo']], items: [
+        { n: ['√18 = 3√2', '√18 = 3√2'], c: 0, i: 'root' },
+        { n: ['2³ × 2² = 2⁵', '2³ × 2² = 2⁵'], c: 1, i: 'power' },
+        { n: ['log₁₀(1000) = 3', 'log₁₀(1000) = 3'], c: 2, i: 'calculate' },
+        { n: ['17 ≡ 2 (mod 5)', '17 ≡ 2 (mod 5)'], c: 3, i: 'clock' }
       ] },
-      { who: 'd', vis: 'demon', text: 'I have scrambled the number patterns. Can you decode them?' },
+      { who: 'd', vis: 'demon', text: ['I have scrambled the number patterns. Can you decode them?', 'Ho mescolato gli schemi numerici. Riuscirai a decifrarli?'] },
       { type: 'battle' }
     ],
     quiz: [
-      question('Simplify √20.', ['2√5', '4√5', '5√2', '10√2'], '√20 = √(4 × 5) = 2√5.'),
-      question('Evaluate 3² × 3³.', ['3⁵', '3⁶', '3¹', '9⁵'], 'When multiplying powers with the same base, add the indices: 2 + 3 = 5.'),
-      question('What is log₁₀(100)?', ['2', '10', '20', '100'], '10² = 100, so log₁₀(100) = 2.'),
-      question('What is 23 modulo 6?', ['5', '3', '6', '4'], '23 = 6 × 3 + 5, so the remainder is 5.'),
-      question('Rationalise 1/√3.', ['√3/3', '3/√3', '1/3', '√3'], 'Multiply top and bottom by √3: √3/3.')
+      question(['Simplify √20.', 'Semplifica √20.'], [['2√5', '2√5'], ['4√5', '4√5'], ['5√2', '5√2'], ['10√2', '10√2']], ['√20 = √(4 × 5) = 2√5.', '√20 = √(4 × 5) = 2√5.']),
+      question(['Evaluate 3² × 3³.', 'Calcola 3² × 3³.'], [['3⁵', '3⁵'], ['3⁶', '3⁶'], ['3¹', '3¹'], ['9⁵', '9⁵']], ['When multiplying powers with the same base, add the indices: 2 + 3 = 5.', 'Quando moltiplichi potenze con la stessa base, somma gli esponenti: 2 + 3 = 5.']),
+      question(['What is log₁₀(100)?', 'Quanto vale log₁₀(100)?'], [['2', '2'], ['10', '10'], ['20', '20'], ['100', '100']], ['10² = 100, so log₁₀(100) = 2.', '10² = 100, quindi log₁₀(100) = 2.']),
+      question(['What is 23 modulo 6?', 'Quanto fa 23 modulo 6?'], [['5', '5'], ['3', '3'], ['6', '6'], ['4', '4']], ['23 = 6 × 3 + 5, so the remainder is 5.', '23 = 6 × 3 + 5, quindi il resto è 5.']),
+      question(['Rationalise 1/√3.', 'Razionalizza 1/√3.'], [['√3/3', '√3/3'], ['3/√3', '3/√3'], ['1/3', '1/3'], ['√3', '√3']], ['Multiply top and bottom by √3: √3/3.', 'Moltiplica numeratore e denominatore per √3: ottieni √3/3.'])
     ]
   }
 ];
