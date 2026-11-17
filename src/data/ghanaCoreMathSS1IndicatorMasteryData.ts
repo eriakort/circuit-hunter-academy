@@ -1566,7 +1566,7 @@ const INDICATORS = [
       "steps": [
         [
           "Midpoint: ((1 + 5)/2, (2 + 5)/2) = (3, 3.5).",
-          "Punto medio: ((1 + 5)/2, (2 + 5)/2) = (3, 3,5)."
+          "Punto medio: ((1 + 5)/2, (2 + 5)/2) = (3; 3,5)."
         ],
         [
           "Distance: √((5 − 1)² + (5 − 2)²) = √(16 + 9) = 5.",
@@ -1575,7 +1575,7 @@ const INDICATORS = [
       ],
       "answer": [
         "The midpoint is (3, 3.5) and the distance is 5 units.",
-        "Il punto medio è (3, 3,5) e la distanza è 5 unità."
+        "Il punto medio è (3; 3,5) e la distanza è 5 unità."
       ]
     },
     "misconceptions": [
