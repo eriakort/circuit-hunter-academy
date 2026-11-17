@@ -404,6 +404,19 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     note: 'Integrated retrieval and transfer practice across number-family classification and ordering, closure and operation properties, set notation, Venn diagrams, survey calculations and De Morgan’s laws. It reinforces the two existing Real Number System content standards and their outcomes; it does not claim additional curriculum coverage.'
   },
 
+  {
+    missionId: 'gh-core-ss1-proportional-reasoning-mastery',
+    curriculumYear: 'SHS 1',
+    strand: '1 · Numbers for Everyday Life',
+    subStrand: '2 · Proportional Reasoning',
+    contentStandardIds: ['1.1.2.CS.1', '1.1.2.CS.2'],
+    learningOutcomeIds: ['1.1.2.LO.1', '1.1.2.LO.2'],
+    learningIndicatorIds: ['1.1.2.LI.1', '1.1.2.LI.2'],
+    printedPages: [41, 50],
+    alignment: 'direct',
+    note: 'Integrated retrieval and transfer across the two SHS 1 Proportional Reasoning standards and both learning outcomes. NaCCA reuses the printed indicator labels 1.1.2.LI.1 and 1.1.2.LI.2 under each content standard; this mapping lists the unique printed labels once while covering both contexts. The mission reinforces the existing four-indicator scope and does not claim additional curriculum coverage. SHS 2 ratios and rates are excluded.'
+  },
+
  ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>

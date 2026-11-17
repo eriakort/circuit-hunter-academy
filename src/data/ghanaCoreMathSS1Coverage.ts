@@ -45,8 +45,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 2,
     learningIndicators: 4,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-fraction-operations', 'gh-core-ss1-fractions-percentages', 'gh-core-ss1-financial-mathematics', 'gh-core-ss1-percentage-change-finance', 'gh-core-ss1-compound-interest-tax'],
-    note: 'Fraction-decimal connections and fraction operations are introduced; percentage-change and household-finance practice now includes utility bills, exchange rates, project budgets, school fees, shopping, annual compound interest and tax-inclusive/exclusive calculations using rates stated in each problem. The ratio/rate mission remains an SHS 2 extension and is not counted as SHS 1 coverage.'
+    pilotMissionIds: ['gh-core-ss1-fraction-operations', 'gh-core-ss1-fractions-percentages', 'gh-core-ss1-financial-mathematics', 'gh-core-ss1-percentage-change-finance', 'gh-core-ss1-compound-interest-tax', 'gh-core-ss1-proportional-reasoning-mastery'],
+    note: 'The pilot introduces fraction-decimal-percentage connections, rational-number operations and inverses, rounding, percentage change, household finance, simple and compound interest, discount, profit, loss, commission and tax. The Proportional Reasoning Mastery Expedition adds an integrated household-budget and school-enterprise investigation across the same four official indicators. Ratio/rate remains an SHS 2 extension and is not counted as SHS 1 coverage.'
   },
   {
     strand: 'Algebraic Reasoning',

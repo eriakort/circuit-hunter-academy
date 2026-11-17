@@ -302,4 +302,15 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(mastery?.note).toContain('does not claim additional curriculum coverage');
   });
 
+  test('maps integrated proportional-reasoning mastery to both existing SHS 1 standards and outcomes', () => {
+    const mastery = getGhanaMissionAlignment('gh-core-ss1-proportional-reasoning-mastery');
+    expect(mastery?.curriculumYear).toBe('SHS 1');
+    expect(mastery?.contentStandardIds).toEqual(['1.1.2.CS.1', '1.1.2.CS.2']);
+    expect(mastery?.learningOutcomeIds).toEqual(['1.1.2.LO.1', '1.1.2.LO.2']);
+    expect(mastery?.learningIndicatorIds).toEqual(['1.1.2.LI.1', '1.1.2.LI.2']);
+    expect(mastery?.printedPages).toEqual([41, 50]);
+    expect(mastery?.note).toContain('NaCCA reuses the printed indicator labels');
+    expect(mastery?.note).toContain('SHS 2 ratios and rates are excluded');
+  });
+
 });

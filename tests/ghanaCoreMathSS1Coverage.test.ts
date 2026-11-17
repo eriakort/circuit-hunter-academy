@@ -134,6 +134,8 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
     expect(proportional?.pilotMissionIds).toContain('gh-core-ss1-fraction-operations');
     expect(proportional?.pilotMissionIds).toContain('gh-core-ss1-percentage-change-finance');
     expect(proportional?.pilotMissionIds).toContain('gh-core-ss1-compound-interest-tax');
+    expect(proportional?.pilotMissionIds).toContain('gh-core-ss1-proportional-reasoning-mastery');
+    expect(proportional?.learningIndicators).toBe(4);
     expect(proportional?.pilotMissionIds).not.toContain('gh-core-ss1-ratio-rate');
   });
   test('includes integrated mastery practice across the Real Number System standards', () => {
@@ -144,6 +146,17 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
     const realNumbers = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Real Number System');
     expect(realNumbers?.pilotMissionIds).toContain('gh-core-ss1-real-number-mastery-challenge');
     expect(realNumbers?.learningIndicators).toBe(6);
+  });
+
+  test('includes integrated mastery practice across both Proportional Reasoning standards', () => {
+    const mission = GHANA_CORE_MATH_SS1_MISSIONS.find(item => item.id === 'gh-core-ss1-proportional-reasoning-mastery');
+    expect(mission).toBeDefined();
+    expect(mission?.quiz).toHaveLength(10);
+    expect(mission?.scenes.length).toBeGreaterThanOrEqual(15);
+    const proportional = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Proportional Reasoning');
+    expect(proportional?.pilotMissionIds).toContain('gh-core-ss1-proportional-reasoning-mastery');
+    expect(proportional?.learningIndicators).toBe(4);
+    expect(proportional?.pilotMissionIds).not.toContain('gh-core-ss1-ratio-rate');
   });
 
 });
