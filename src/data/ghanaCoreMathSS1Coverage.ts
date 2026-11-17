@@ -85,8 +85,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 3,
     learningIndicators: 9,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-vectors-bearings', 'gh-core-ss1-trigonometry', 'gh-core-ss1-perimeter-area'],
-    note: 'The pilot covers vectors and bearings, trigonometry, and perimeter/area of circles and quadrilaterals. The new mission addresses SI/imperial area referents, regular/composite/irregular shapes, perimeter estimation, unit conversions, and contextual problems. The volume-of-prisms indicator remains outside this mission.'
+    pilotMissionIds: ['gh-core-ss1-vectors-bearings', 'gh-core-ss1-trigonometry', 'gh-core-ss1-perimeter-area', 'gh-core-ss1-prism-volume'],
+    note: 'The pilot covers vectors and bearings, trigonometry, and perimeter/area of circles and quadrilaterals. The new mission addresses SI/imperial area referents, regular/composite/irregular shapes, perimeter estimation, unit conversions, and contextual problems. The volume-of-prisms indicator is now addressed in the separate Prism Vault mission; additional varied practice and assessment are still needed before claiming full mastery.'
   },
   {
     strand: 'Making Sense of and Using Data',
