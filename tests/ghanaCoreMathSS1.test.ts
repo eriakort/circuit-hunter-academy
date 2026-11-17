@@ -11,13 +11,13 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
   test('uses a dedicated subject and curriculum-specific unit and arcs', () => {
     expect(GHANA_CORE_MATH_SUBJECT.id).toBe('ghcoremath');
     expect(GHANA_CORE_MATH_SS1_UNIT.subject).toBe('ghcoremath');
-    expect(GHANA_CORE_MATH_SS1_ARCS).toHaveLength(22);
+    expect(GHANA_CORE_MATH_SS1_ARCS).toHaveLength(23);
     expect(GHANA_CORE_MATH_SS1_ARCS.every(arc => arc.subject === 'ghcoremath')).toBe(true);
   });
 
   test('contains unique pilot missions with valid local arc references', () => {
     const ids = GHANA_CORE_MATH_SS1_MISSIONS.map(mission => mission.id);
-    expect(ids).toHaveLength(25);
+    expect(ids).toHaveLength(26);
     expect(new Set(ids).size).toBe(ids.length);
     expect(ids.every(id => id.startsWith('gh-core-ss1-'))).toBe(true);
     expect(GHANA_CORE_MATH_SS1_MISSIONS.every(mission => mission.arc >= 0 && mission.arc < GHANA_CORE_MATH_SS1_ARCS.length)).toBe(true);
@@ -46,6 +46,9 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
     expect(text).toContain('commission');
     expect(text).toContain('compound interest');
     expect(text).toContain('tax-inclusive');
+    expect(text).toContain('The Grand Mastery Trial');
+    expect(text).toContain('cross-sectional area × length');
+    expect(text).toContain('Median: 5');
     expect(text).toContain('distributive property');
     expect(text).toContain('variables');
     expect(text).toContain('relations and functions');
