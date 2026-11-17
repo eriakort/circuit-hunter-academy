@@ -17,6 +17,7 @@ import { ComputerScienceAppliedCheckpointScreen } from './components/ComputerSci
 import { ItalianCheckpointScreen } from './components/ItalianCheckpointScreen';
 import { ItalianLabScreen } from './components/ItalianLabScreen';
 import { ItalianGrammarScreen } from './components/ItalianGrammarScreen';
+import { SankofaDashboard } from './components/SankofaDashboard';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -60,7 +61,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 }
 
 const AppContent: React.FC = () => {
-  const { view, state } = useGame();
+  const { view, state, curriculumProfile } = useGame();
+  const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
 
   // New learners choose a grade first; existing Grade 9 saves are migrated in GameContext.
   const activeView = !state.grade ? 'grades' : view;
@@ -90,6 +92,11 @@ const AppContent: React.FC = () => {
   };
 
   useEffect(() => {
+    document.documentElement.dataset.curriculumTheme = isGhana ? 'sankofa' : 'italian';
+    return () => { delete document.documentElement.dataset.curriculumTheme; };
+  }, [isGhana]);
+
+  useEffect(() => {
     const viewChanged = previousView.current !== activeView;
     const languageChanged = previousLanguage.current !== state.lang;
     if (viewChanged) {
@@ -104,7 +111,7 @@ const AppContent: React.FC = () => {
   }, [activeView, state.lang]);
 
   return (
-    <div className="wrap">
+    <div className={'wrap ' + (isGhana ? 'theme-sankofa' : 'theme-italian')} data-curriculum={isGhana ? 'ghana-nacca' : 'italy-national'}>
       <a className="skip-link" href="#app">
         {state.lang === 'it' ? 'Salta al contenuto principale' : 'Skip to main content'}
       </a>
@@ -113,7 +120,7 @@ const AppContent: React.FC = () => {
       <main id="app" ref={mainRef} tabIndex={-1}>
         {activeView === 'grades' && <GradePicker />}
         {activeView === 'subjects' && <SubjectPickerScreen />}
-        {activeView === 'map' && <MapScreen />}
+        {activeView === 'map' && (isGhana ? <SankofaDashboard /> : <MapScreen />)}
         {activeView === 'scene' && <MissionScreen />}
         {activeView === 'battle' && <BattleScreen />}
         {activeView === 'codex' && <CodexScreen />}
