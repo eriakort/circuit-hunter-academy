@@ -22,8 +22,10 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await page.reload();
 
   await expect(page.getByRole('button', { name: /Italy/ })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'italian');
+  await expect(page.getByTestId('sankofa-experience')).toHaveCount(0);
   await page.getByRole('button', { name: /Ghana/ }).click();
-  await expect(page.getByRole('heading', { name: 'Ghana SHS curriculum selected' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Your Sankofa journey begins here' })).toBeVisible();
   await expect(page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('.grade-card[data-grade="grade9"]')).toContainText('SHS 1 (SS1)');
   await expect(page.locator('.grade-card[data-grade="grade10"]')).toContainText('SHS 2 (SS2)');
@@ -34,12 +36,21 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await expect(page.locator('.grade-card[data-grade="grade11"]')).toBeDisabled();
   await page.locator('.grade-card[data-grade="grade9"]').click();
   await expect(page.locator('[data-s="ghcoremath"]')).toBeVisible();
+  await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'sankofa');
+  await expect(page.locator('.theme-sankofa')).toHaveAttribute('data-curriculum', 'ghana-nacca');
   await expect(page.getByText('Additional Mathematics', { exact: true })).toBeVisible();
   await page.locator('[data-s="ghcoremath"]').click();
   await page.locator('#nm').fill('Ghana Hunter');
-  await page.getByRole('button', { name: /Join the academy/ }).click();
+  await page.getByRole('button', { name: /Begin your journey/ }).click();
   await expect(page.locator('h3').filter({ hasText: 'The Number Map' })).toBeVisible();
   await expect(page.locator('h3').filter({ hasText: 'The Market Percentage Challenge' })).toBeVisible();
+  await expect(page.getByTestId('sankofa-experience')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Sankofa – The Knowledge Quest' })).toBeVisible();
+  await expect(page.locator('.sankofa-region')).toHaveCount(5);
+  await expect(page.locator('.sankofa-progress-heading').getByRole('heading', { name: 'Curious Seeker' })).toBeVisible();
+  await page.locator('.mcard').filter({ hasText: 'The Number Map' }).click();
+  await expect(page.locator('.bubble .who')).toHaveText('The Elder Guide');
+  await expect(page.getByText('Sensei Kaito', { exact: true })).toHaveCount(0);
   const ghanaSaveAfterSelection = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:ghana-nacca') || '{}'));
   expect(ghanaSaveAfterSelection.grade).toBe('grade9');
   expect(ghanaSaveAfterSelection.subject).toBe('ghcoremath');
@@ -51,6 +62,8 @@ test('learner can switch countries while curriculum progress stays isolated', as
 
   await page.locator('#hGrade').click();
   await page.getByRole('button', { name: /Italy/ }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'italian');
+  await expect(page.getByTestId('sankofa-experience')).toHaveCount(0);
   await expect(page.getByRole('button', { name: /Italy/ })).toHaveAttribute('aria-pressed', 'true');
   const italianSave = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:italy-national') || '{}'));
   expect(italianSave.xp).toBe(135);
@@ -104,8 +117,9 @@ test('Ghana SHS 2 opens its own Core Mathematics pathway and mission', async ({ 
   await page.locator('.grade-card[data-grade="grade10"]').click();
   await expect(page.locator('[data-s="ghcoremath2"]')).toBeVisible();
   await page.locator('[data-s="ghcoremath2"]').click();
-  await page.locator('#nm').fill('SS2 Hunter');
-  await page.getByRole('button', { name: /Join the academy/ }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'sankofa');
+  await page.locator('#nm').fill('SS2 Explorer');
+  await page.getByRole('button', { name: /Begin your journey/ }).click();
   await expect(page.locator('h3').filter({ hasText: 'The Number Codebreaker' })).toBeVisible();
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:ghana-nacca') || '{}'));
   expect(saved.grade).toBe('grade10');

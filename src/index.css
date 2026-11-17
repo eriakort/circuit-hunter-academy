@@ -1350,3 +1350,102 @@ table.g5m-formulas td:first-child{font-family:inherit;text-align:left}
 .ghana-readiness-next-copy small{font-size:11px;color:var(--muted)}
 .ghana-readiness-complete{margin:0;font-size:13px;line-height:1.5;color:var(--good)}
 @media(max-width:640px){.ghana-readiness-next-list li{grid-template-columns:26px minmax(0,1fr)}.ghana-readiness-next-list li button{grid-column:2;justify-self:start}}
+
+
+/* Sankofa — Ghana curriculum theme. Scoped to the active curriculum so Italian styling remains unchanged. */
+:root[data-curriculum-theme="sankofa"]{
+  --ink:#171b18;--panel:#f2e8d5;--panel2:#e8dcc4;--line:#c8b894;--text:#282a27;--muted:#625f55;
+  --ember:#b9573f;--data:#174b36;--sakura:#293b60;--good:#286b45;--bad:#a83c35;--gold:#a87919;
+  --display:"Trebuchet MS","Segoe UI",system-ui,sans-serif;
+  --body:"Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+:root[data-curriculum-theme="sankofa"] body{
+  background-color:#e9dfcc;
+  background-image:radial-gradient(circle at 85% -5%,rgba(213,164,59,.2),transparent 42%),radial-gradient(circle at 0% 35%,rgba(23,75,54,.12),transparent 40%);
+}
+.theme-sankofa .hud,.theme-sankofa .card,.theme-sankofa .mcard,.theme-sankofa .bubble,.theme-sankofa .visual{
+  box-shadow:0 8px 24px rgba(40,42,39,.06);
+}
+.theme-sankofa .brand b,.theme-sankofa .hero h1 span{color:var(--gold)}
+.theme-sankofa .eyebrow{color:var(--data)}
+.theme-sankofa .btn{background:var(--ember);color:#fffaf0}
+.theme-sankofa .btn.ghost{color:var(--text);border-color:var(--line)}
+.theme-sankofa .xpbar{background:#d4c7ac}
+.theme-sankofa .xpbar i{background:linear-gradient(90deg,#174b36,#d5a43b)}
+.theme-sankofa .mcard:hover:not(:disabled){border-color:var(--gold)}
+.theme-sankofa .mcard.cleared{border-color:rgba(40,107,69,.55)}
+.theme-sankofa .badge.go{background:rgba(185,87,63,.14);color:#8e3c2c}
+.theme-sankofa .badge.lock{background:#e2d7c2;color:#625f55}
+.theme-sankofa .bubble .who{color:var(--data)}
+.theme-sankofa .bubble.demon .who{color:var(--bad)}
+.theme-sankofa .visual{background:#e8dcc4}
+.theme-sankofa .rank{color:#8b671c}
+.theme-sankofa :focus-visible{outline-color:#a87919}
+.sankofa-experience{display:flex;flex-direction:column;gap:18px}
+.sankofa-world-banner{
+  position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;overflow:hidden;
+  padding:clamp(22px,4vw,38px);border-radius:20px;border:1px solid rgba(213,164,59,.45);
+  color:#f8f0df;background:linear-gradient(118deg,#174b36 0%,#1d513d 54%,#293b60 100%);
+}
+.sankofa-world-banner:after{
+  content:"";position:absolute;width:290px;height:290px;border:1px solid rgba(242,232,213,.13);
+  border-radius:50%;right:5%;top:-145px;box-shadow:0 0 0 24px rgba(242,232,213,.035),0 0 0 52px rgba(242,232,213,.025);
+}
+.sankofa-banner-copy{position:relative;z-index:1;max-width:680px}
+.sankofa-kicker{display:block;font:700 11px/1.4 var(--mono);letter-spacing:.15em;color:#a8c7a8}
+.sankofa-world-banner h1{font-size:clamp(27px,5vw,44px);margin:10px 0;color:#fff7e8}
+.sankofa-world-banner h1 span{color:#e9c56d}
+.sankofa-world-banner p{max-width:58ch;color:#e8e0cf}
+.sankofa-identity{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:18px;font-weight:700;color:#f0d99e}
+.sankofa-bird{font-size:24px}
+.sankofa-emblem{position:relative;z-index:1;flex:0 0 116px;width:116px;height:116px;border:2px solid #d5a43b;border-radius:50%;display:grid;place-content:center;text-align:center;color:#f0d99e;background:rgba(0,0,0,.12)}
+.sankofa-emblem span{font-size:56px;line-height:1}
+.sankofa-emblem small{font:700 9px var(--mono);letter-spacing:.2em}
+.sankofa-progress-panel{padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+.sankofa-progress-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.sankofa-progress-heading h2,.sankofa-section-heading h2,.sankofa-missions-heading h2{font-size:clamp(19px,3vw,25px);margin:5px 0}
+.sankofa-progress-heading p{color:var(--muted);font-size:14px}
+.sankofa-xp{display:flex;flex-direction:column;text-align:right}
+.sankofa-xp strong{font-size:26px;color:var(--data)}
+.sankofa-xp span{font-size:11px;color:var(--muted)}
+.sankofa-progress-track{height:10px;margin-top:16px;border-radius:20px;background:var(--panel2);overflow:hidden}
+.sankofa-progress-track span{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,#174b36,#d5a43b);transition:width .3s ease}
+.sankofa-progress-foot{display:flex;justify-content:space-between;gap:12px;margin-top:8px;color:var(--muted);font-size:12px}
+.sankofa-regions{padding:20px;border-radius:16px;background:rgba(242,232,213,.58);border:1px solid var(--line)}
+.sankofa-section-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.sankofa-section-heading h2{color:var(--text)}
+.sankofa-map-mark{font-size:28px;color:var(--gold)}
+.sankofa-region-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:11px}
+.sankofa-region{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:12px;background:var(--panel);border:1px solid var(--line);min-width:0}
+.sankofa-region-symbol{flex:0 0 38px;width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:rgba(23,75,54,.1);color:var(--data);font-size:24px}
+.sankofa-region-copy{min-width:0}
+.sankofa-region-copy h3{font-size:16px;color:var(--text)}
+.sankofa-region-copy>span{display:block;margin:3px 0 7px;color:var(--gold);font-size:11px;font-weight:800}
+.sankofa-region-copy p{font-size:12px;line-height:1.5;color:var(--muted)}
+.sankofa-region-copy small{display:block;margin-top:8px;font-size:10px;color:var(--data);font-weight:700}
+.sankofa-cultural-note{margin-top:12px;font-size:11px;color:var(--muted)}
+.sankofa-missions-heading{padding:2px 4px}
+@media(max-width:620px){
+  .sankofa-world-banner{align-items:flex-start}
+  .sankofa-emblem{flex-basis:76px;width:76px;height:76px}
+  .sankofa-emblem span{font-size:38px}
+  .sankofa-progress-heading{align-items:flex-start}
+  .sankofa-progress-foot{flex-direction:column;gap:3px}
+}
+@media(prefers-reduced-motion:reduce){
+  .sankofa-progress-track span{transition:none}
+}
+
+.theme-sankofa .mcard .dm{display:none}
+.theme-sankofa .mcard h3{padding-right:0}
+
+.theme-sankofa .bubble.challenge .who{color:var(--ember)}
+.sankofa-scene-prompt{
+  display:grid;place-items:center;min-height:150px;padding:24px;text-align:center;border:1px solid rgba(213,164,59,.6);
+  border-radius:12px;background:radial-gradient(circle at 50% 20%,rgba(213,164,59,.18),transparent 55%),linear-gradient(135deg,#174b36,#293b60);
+  color:#f2e8d5;font:700 18px var(--display);letter-spacing:.03em;
+}
+
+.theme-sankofa .sankofa-experience .hero{grid-template-columns:1fr}
+.theme-sankofa .sankofa-experience .hero>div:last-child{display:none}

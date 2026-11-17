@@ -2,15 +2,18 @@ import React from 'react';
 import { useGame } from '../context/GameContext';
 import { RANKS, SUBJECTS } from '../data/gameData';
 import { L, rankOf, nextRank, esc } from '../helpers';
+import { getSankofaRank, getSankofaRankProgress } from '../data/sankofaTheme';
 
 export const HUD: React.FC = () => {
-  const { state, view, battleContext, setLanguage, goToView, startBattle } = useGame();
+  const { state, view, battleContext, setLanguage, goToView, startBattle, curriculumProfile } = useGame();
+  const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
   const { lang, name, xp, subject, grade, cleared } = state;
   const activeSubject = SUBJECTS.find(item => item.id === subject) || SUBJECTS[0];
 
   const currentRank = rankOf(xp, RANKS);
   const next = nextRank(xp, RANKS);
-  const pct = next ? Math.min(100, Math.max(0, ((xp - currentRank[0]) / (next[0] - currentRank[0])) * 100)) : 100;
+  const pct = isGhana ? getSankofaRankProgress(xp) : next ? Math.min(100, Math.max(0, ((xp - currentRank[0]) / (next[0] - currentRank[0])) * 100)) : 100;
+  const displayedRank = isGhana ? getSankofaRank(xp).title : L(currentRank[1], lang);
   const anyClear = Object.keys(cleared).length > 0;
   const physicsCheckpointUnlocked = subject === 'phys' && ['p1m1', 'p1m2', 'p1m3', 'p1m4', 'p1m5'].every(id => !!cleared[id]);
   const csCheckpointMissions = ['a1m1', 'a1m2', 'a1m3', 'a2m1', 'a2m2', 'a2m3', 'a2m4', 'a3m1', 'a3m2', 'a3m3', 'a3m4', 'a5m1', 'a5m2', 'a5m3', 'a5m4'];
@@ -32,7 +35,7 @@ export const HUD: React.FC = () => {
   return (
     <header className="hud" id="hud">
       <button className="brand" id="hHome" onClick={() => goToView(grade === 'grade5' ? 'subjects' : 'map')}>
-        CIRCUIT <b>HUNTER</b> ACADEMY
+        {isGhana ? <>SANKOFA <b>KNOWLEDGE QUEST</b></> : <>CIRCUIT <b>HUNTER</b> ACADEMY</>}
       </button>
 
       {grade && view !== 'grades' && view !== 'subjects' && grade && subject && (
@@ -76,9 +79,9 @@ export const HUD: React.FC = () => {
         {name && (
           <div className="who-hud">
             <span className="nm">
-              {esc(name)} · {xp} XP
+              {esc(name)} · {xp} {isGhana ? 'Wisdom points' : 'XP'}
             </span>
-            <span className="rank">{L(currentRank[1], lang)}</span>
+            <span className="rank">{displayedRank}</span>
             <div className="xpbar">
               <i style={{ width: `${pct}%` }}></i>
             </div>

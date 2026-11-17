@@ -18,9 +18,14 @@ import { scheduleNextConceptReview } from '../spacedRepetition';
 import { createAssessmentQuestionVariantIndexes, resolveAssessmentQuestions } from '../learningAssessment';
 import { HARDWARE_LEARNING_PILOT } from '../data/learningPilot';
 
+const SANKOFA_GUIDE_AVATAR = '<svg viewBox="0 0 80 80" role="img" aria-label="The Elder Guide"><circle cx="40" cy="40" r="37" fill="#174b36" stroke="#d5a43b" stroke-width="3"/><path d="M19 67c2-14 10-21 21-21s19 7 21 21" fill="#d5a43b"/><circle cx="40" cy="31" r="13" fill="#f2e8d5"/><path d="M26 29c2-15 26-19 29 1-8-5-19-6-29-1" fill="#282a27"/></svg>';
+const SANKOFA_EXPLORER_AVATAR = '<svg viewBox="0 0 80 80" role="img" aria-label="Knowledge Seeker"><circle cx="40" cy="40" r="37" fill="#293b60" stroke="#d5a43b" stroke-width="3"/><path d="M17 68c3-16 12-23 23-23s20 7 23 23" fill="#b9573f"/><circle cx="40" cy="31" r="13" fill="#d5a43b"/></svg>';
+const SANKOFA_CHALLENGE_AVATAR = '<svg viewBox="0 0 80 80" role="img" aria-label="Learning challenge"><circle cx="40" cy="40" r="36" fill="#b9573f" stroke="#d5a43b" stroke-width="3"/><path d="M27 24h26v9H42v7h11v9H42v7H31V39h11v-6H27z" fill="#f2e8d5"/></svg>';
+
 export const MissionScreen: React.FC = () => {
   const {
     state,
+    curriculumProfile,
     currentMission,
     currentSceneIndex,
     nextScene,
@@ -32,6 +37,7 @@ export const MissionScreen: React.FC = () => {
   } = useGame();
 
   const { lang, name } = state;
+  const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
   const sc = currentMission.scenes[currentSceneIndex];
   const masteryAssessment = currentMission.learning?.masteryAssessment;
   const [canProceed, setCanProceed] = useState(false);
@@ -131,16 +137,18 @@ export const MissionScreen: React.FC = () => {
   // Speaker avatar and styling
   const speaker = () => {
     if (sc.who === 'y') {
-      return { cls: 'you', name: esc(name || 'Hunter'), avatar: YOU(name) };
+      return { cls: 'you', name: esc(name || (isGhana ? 'Explorer' : 'Hunter')), avatar: isGhana ? SANKOFA_EXPLORER_AVATAR : YOU(name) };
     }
     if (sc.who === 'd') {
-      return {
-        cls: 'demon',
-        name: L(currentMission.demon, lang),
-        avatar: demonSVG(currentMission.hue, currentMission.horns, currentMission.eyes, 'avatar')
-      };
+      return isGhana
+        ? { cls: 'challenge', name: 'The Challenge', avatar: SANKOFA_CHALLENGE_AVATAR }
+        : {
+            cls: 'demon',
+            name: L(currentMission.demon, lang),
+            avatar: demonSVG(currentMission.hue, currentMission.horns, currentMission.eyes, 'avatar')
+          };
     }
-    return { cls: '', name: 'Sensei Kaito', avatar: SENSEI };
+    return { cls: '', name: isGhana ? 'The Elder Guide' : 'Sensei Kaito', avatar: isGhana ? SANKOFA_GUIDE_AVATAR : SENSEI };
   };
 
   const sp = speaker();
@@ -148,7 +156,9 @@ export const MissionScreen: React.FC = () => {
 
   let visualContent = '';
   if (!sc.type) {
-    if (sc.vis === 'demon') {
+    if (sc.vis === 'demon' && isGhana) {
+      visualContent = '<div class="sankofa-scene-prompt">A challenge to explore</div>';
+    } else if (sc.vis === 'demon') {
       visualContent = `<div style="display:flex;justify-content:center"><div style="width:min(220px,60%)">${demonSVG(
         currentMission.hue,
         currentMission.horns,
@@ -286,10 +296,10 @@ export const MissionScreen: React.FC = () => {
           />
 
           {guideText && (
-            <section className="mission-guide" aria-label="Sensei Kaito lesson guidance">
-              <div className="avatar" aria-hidden="true" dangerouslySetInnerHTML={{ __html: SENSEI }} />
+            <section className="mission-guide" aria-label={isGhana ? "The Elder Guide lesson guidance" : "Sensei Kaito lesson guidance"}>
+              <div className="avatar" aria-hidden="true" dangerouslySetInnerHTML={{ __html: isGhana ? SANKOFA_GUIDE_AVATAR : SENSEI }} />
               <div className="bubble">
-                <div className="who">Sensei Kaito</div>
+                <div className="who">{isGhana ? "The Elder Guide" : "Sensei Kaito"}</div>
                 <div dangerouslySetInnerHTML={{ __html: L(guideText, lang) }} />
               </div>
             </section>

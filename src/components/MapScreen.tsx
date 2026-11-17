@@ -17,6 +17,7 @@ import { GhanaSS1ReadinessDashboard } from './GhanaSS1ReadinessDashboard';
 export const MapScreen: React.FC = () => {
   const {
     state,
+    curriculumProfile,
     setName,
     setUnit,
     openMission,
@@ -30,6 +31,7 @@ export const MapScreen: React.FC = () => {
   } = useGame();
 
   const { lang, name, subject, unit, cleared, flawless } = state;
+  const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
   const [nameInput, setNameInput] = useState('');
   const [resetArmed, setResetArmed] = useState(false);
   const [revisionTarget, setRevisionTarget] = useState<{ mission: Mission; concept: LearningConcept } | null>(null);
@@ -57,40 +59,50 @@ export const MapScreen: React.FC = () => {
         <div>
           <div className="eyebrow">{L(currentSubjectData.name, lang)}</div>
           <h1>
-            Circuit Hunter <span>Academy</span>
+            {isGhana ? <>Sankofa <span>Knowledge Quest</span></> : <>Circuit Hunter <span>Academy</span></>}
           </h1>
           <p className="lede">
             {L(
-              [
-                'Glitch Demons have invaded the academy. Learn your subject chapter by chapter, turn that knowledge into techniques, and drive them out.',
-                "I Demoni Glitch hanno invaso l'accademia. Impara la tua materia capitolo per capitolo, trasforma ciò che impari in tecniche e scacciali."
-              ],
+              isGhana
+                ? [
+                    'A new challenge awaits. Explore your subject, build understanding and use what you learn to help your community.',
+                    'A new challenge awaits. Explore your subject, build understanding and use what you learn to help your community.'
+                  ]
+                : [
+                    'Glitch Demons have invaded the academy. Learn your subject chapter by chapter, turn that knowledge into techniques, and drive them out.',
+                    "I Demoni Glitch hanno invaso l'accademia. Impara la tua materia capitolo per capitolo, trasforma ciò che impari in tecniche e scacciali."
+                  ],
               lang
             )}
           </p>
 
           <form className="reg" id="regf" style={{ marginTop: '16px' }} onSubmit={handleRegister}>
             <label htmlFor="nm" className="eyebrow">
-              {L(['Enter your hunter name', 'Scrivi il tuo nome da cacciatrice'], lang)}
+              {L(isGhana ? ['Choose your explorer name', 'Choose your explorer name'] : ['Enter your hunter name', 'Scrivi il tuo nome da cacciatrice'], lang)}
             </label>
             <input
               id="nm"
               maxLength={20}
               autoComplete="off"
-              placeholder="Hana"
+              placeholder={isGhana ? "Ama" : "Hana"}
               value={nameInput}
               onChange={e => setNameInput(e.target.value)}
               autoFocus
             />
             <button className="btn" type="submit">
-              {L(["Join the academy", "Entra nell'accademia"], lang)}
+              {L(isGhana ? ['Begin your journey', 'Begin your journey'] : ["Join the academy", "Entra nell'accademia"], lang)}
             </button>
             <span className="muted" style={{ fontSize: '14px' }}>
               {L(
-                [
-                  'You can switch between English and Italian at any time with EN / IT at the top.',
-                  "Puoi passare dall'inglese all'italiano in qualsiasi momento con EN / IT in alto."
-                ],
+                isGhana
+                  ? [
+                      'Your learning journey is saved in this browser. You can return to your discoveries at any time.',
+                      'Your learning journey is saved in this browser. You can return to your discoveries at any time.'
+                    ]
+                  : [
+                      'You can switch between English and Italian at any time with EN / IT at the top.',
+                      "Puoi passare dall'inglese all'italiano in qualsiasi momento con EN / IT in alto."
+                    ],
                 lang
               )}
             </span>
@@ -271,25 +283,35 @@ export const MapScreen: React.FC = () => {
       <section className="hero card">
         <div>
           <div className="eyebrow">
-            {L(['Welcome back', 'Bentornata'], lang)}, {esc(name)}
+            {isGhana ? 'Welcome back to your journey' : L(['Welcome back', 'Bentornata'], lang)}, {esc(name)}
           </div>
           <h1>
-            Circuit Hunter <span>Academy</span>
+            {isGhana ? <>Sankofa <span>Knowledge Quest</span></> : <>Circuit Hunter <span>Academy</span></>}
           </h1>
           <p className="lede">
             {isMastered
               ? L(
-                  [
-                    'Every Glitch Demon is defeated. Keep your techniques sharp in the Dojo.',
-                    'Tutti i Demoni Glitch sono sconfitti. Tieni allenate le tue tecniche nel Dojo.'
-                  ],
+                  isGhana
+                    ? [
+                        'You have completed this learning path. Keep your knowledge sharp by revisiting concepts and challenges.',
+                        'You have completed this learning path. Keep your knowledge sharp by revisiting concepts and challenges.'
+                      ]
+                    : [
+                        'Every Glitch Demon is defeated. Keep your techniques sharp in the Dojo.',
+                        'Tutti i Demoni Glitch sono sconfitti. Tieni allenate le tue tecniche nel Dojo.'
+                      ],
                   lang
                 )
               : L(
-                  [
-                    `${doneCount} of ${MY.length} missions cleared. The units are the tabs below; each arc is one chapter, and every arc's first mission is open, so you can start from the chapter you're studying in class.`,
-                    `${doneCount} missioni superate su ${MY.length}. Le unità sono le schede qui sotto; ogni arco è un capitolo, e la prima missione di ogni arco è già aperta: puoi partire dal capitolo che state studiando in classe.`
-                  ],
+                  isGhana
+                    ? [
+                        `${doneCount} of ${MY.length} missions completed. Explore each topic, practise new ideas and apply your knowledge to the next challenge.`,
+                        `${doneCount} of ${MY.length} missions completed. Explore each topic, practise new ideas and apply your knowledge to the next challenge.`
+                      ]
+                    : [
+                        `${doneCount} of ${MY.length} missions cleared. The units are the tabs below; each arc is one chapter, and every arc's first mission is open, so you can start from the chapter you're studying in class.`,
+                        `${doneCount} missioni superate su ${MY.length}. Le unità sono le schede qui sotto; ogni arco è un capitolo, e la prima missione di ogni arco è già aperta: puoi partire dal capitolo che state studiando in classe.`
+                      ],
                   lang
                 )}
           </p>
@@ -704,7 +726,7 @@ export const MapScreen: React.FC = () => {
       {/* Techniques learned & Reset */}
       <section className="card">
         <div className="eyebrow" style={{ marginBottom: '8px' }}>
-          {L(['Techniques learned', 'Tecniche apprese'], lang)}
+          {L(isGhana ? ['Knowledge discovered', 'Knowledge discovered'] : ['Techniques learned', 'Tecniche apprese'], lang)}
         </div>
         <div className="techlist">
           {doneCount ? (
@@ -715,8 +737,8 @@ export const MapScreen: React.FC = () => {
             <span className="muted">
               {L(
                 [
-                  'None yet. Clear a mission to learn your first technique.',
-                  'Ancora nessuna. Supera una missione per imparare la prima tecnica.'
+                  isGhana ? 'Your discoveries will appear here as you complete missions.' : 'None yet. Clear a mission to learn your first technique.',
+                  isGhana ? 'Your discoveries will appear here as you complete missions.' : 'Ancora nessuna. Supera una missione per imparare la prima tecnica.'
                 ],
                 lang
               )}
