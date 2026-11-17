@@ -101,7 +101,10 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
     { id: 'quadratic-relationships', subject: 'ghcoremath3', name: 'Quadratic Roots, Symmetry and Intervals' },
     { id: 'circle-geometry', subject: 'ghcoremath3', name: 'Circle Geometry and Theorems' },
     { id: 'tangent-theorems', subject: 'ghcoremath3', name: 'Tangents and Circle Theorems' },
-    { id: 'geometric-constructions', subject: 'ghcoremath3', name: 'Geometric Constructions and Loci' }
+    { id: 'geometric-constructions', subject: 'ghcoremath3', name: 'Geometric Constructions and Loci' },
+    { id: 'trigonometric-graphs', subject: 'ghcoremath3', name: 'Sine, Cosine and Tangent Graphs' },
+    { id: 'trigonometric-transformations', subject: 'ghcoremath3', name: 'Trigonometric Graph Transformations' },
+    { id: 'trigonometric-equations', subject: 'ghcoremath3', name: 'Solving and Decoding Trigonometric Equations' }
   ]
 };
 
