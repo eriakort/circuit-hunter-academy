@@ -35,8 +35,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 2,
     learningIndicators: 6,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-number-sets', 'gh-core-ss1-sets-surveys'],
-    note: 'The pilot introduces number families and set/survey work; the full real-number indicator sequence is not yet covered.'
+    pilotMissionIds: ['gh-core-ss1-number-sets', 'gh-core-ss1-real-number-properties', 'gh-core-ss1-sets-surveys'],
+    note: 'The pilot now introduces number families, rational/irrational classification, closure under the four operations, core real-number properties and set/survey work. Additional differentiated practice can strengthen mastery across all six indicators.'
   },
   {
     strand: 'Numbers for Everyday Life',
