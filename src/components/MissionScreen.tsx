@@ -565,7 +565,7 @@ export const MissionScreen: React.FC = () => {
                 setMasteryIndex(0);
                 setMasteryAnswers([]);
                 setMasteryFeedback(null);
-                setMasteryVariantIndexes(createAssessmentQuestionVariantIndexes(masteryAssessment));
+                setMasteryVariantIndexes(createAssessmentQuestionVariantIndexes(masteryAssessment, Math.random, masteryVariantIndexes));
                 setMasteryStarted(true);
               }}>{lang === 'it' ? 'Riprova la prova' : 'Retry assessment'}</button>
             </div>
