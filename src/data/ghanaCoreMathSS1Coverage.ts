@@ -105,8 +105,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 1,
     learningIndicators: 3,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-probability-chance'],
-    note: 'The pilot introduces sample spaces for simple and compound experiments, independent-event probability, multiple probability representations and everyday applications. Further varied practice and assessment can deepen coverage.'
+    pilotMissionIds: ['gh-core-ss1-probability-chance', 'gh-core-ss1-probability-practice-lab'],
+    note: 'The Chance Compass introduces random experiments, trials, outcomes, sample spaces and independent-event probability. The Fair Games Probability Lab adds graduated practice with organised sample-space tables, tree diagrams, complements, combined independent events, theoretical probability and experimental relative frequency. Both missions reinforce the same three NaCCA indicators; the second adds practice, not additional curriculum coverage.'
   }
 ];
 
