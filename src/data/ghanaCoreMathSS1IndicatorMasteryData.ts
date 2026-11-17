@@ -3623,7 +3623,7 @@ export const GHANA_SS1_INDICATOR_MASTERY_MISSIONS: Mission[] = [
     horns: 2,
     eyes: 2,
     title: 'The 45-Indicator Mastery Expedition',
-    topic: 'A curriculum-mapped diagnostic with one question for each of the 45 SHS 1 learning indicators, followed by targeted revision for every missed indicator.',
+    topic: 'A curriculum-mapped diagnostic with two bilingual question forms for each of the 45 SHS 1 learning indicators. Each attempt uses one question per indicator, with a different form on retries, followed by targeted revision.',
     demon: 'The Coverage Warden',
     tech: 'Mastery Form · Final Technique: One Indicator at a Time',
     scenes: [
@@ -3704,7 +3704,7 @@ export const GHANA_SS1_INDICATOR_MASTERY_MISSIONS: Mission[] = [
       ],
       masteryAssessment: {
         title: ['NaCCA SHS 1 Diagnostic · 45 indicators', 'Verifica diagnostica NaCCA SHS 1 · 45 indicatori'],
-        instructions: ['Answer all 45 questions. Each item is mapped to one curriculum indicator. You need at least 36 correct answers (80%) to unlock the battle. Review the indicator concepts shown after an attempt.', 'Rispondi a tutte le 45 domande. Ogni quesito è associato a un indicatore del programma. Servono almeno 36 risposte corrette (80%) per sbloccare la battaglia. Dopo il tentativo, ripassa i concetti-indicatore evidenziati.'],
+        instructions: ['Answer all 45 questions. Each item is mapped to one curriculum indicator. You need at least 36 correct answers (80%) to unlock the battle. A retry switches to the alternate question form for every indicator. Review the indicator concepts shown after an attempt.', 'Rispondi a tutte le 45 domande. Ogni quesito è associato a un indicatore del programma. Servono almeno 36 risposte corrette (80%) per sbloccare la battaglia. A ogni nuovo tentativo viene proposta la forma alternativa per ciascun indicatore. Dopo il tentativo, ripassa i concetti evidenziati.'],
         questions: assessmentQuestions,
         questionConceptIds: INDICATORS.map(item => item.id),
         questionVariants: INDICATORS.map(item => [GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS[item.id]]),
