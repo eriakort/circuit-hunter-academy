@@ -72,7 +72,8 @@ export const MissionScreen: React.FC = () => {
     'stackq',
     'vectors',
     'torque',
-    'fluids'
+    'fluids',
+    'dataviz'
   ].includes(sc?.type || '') || sc?.init === 'board' || sc?.init === 'powercut' || !!sc?.needDone;
 
   const isGated = isGatedType && inMissionFirstTime();
