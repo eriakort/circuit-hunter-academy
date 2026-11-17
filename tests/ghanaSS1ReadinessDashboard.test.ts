@@ -3,7 +3,8 @@ import type { LearningMissionProgress } from '../src/types';
 import { GHANA_SS1_INDICATOR_BLUEPRINT } from '../src/data/ghanaCoreMathSS1IndicatorMasteryData';
 import {
   getGhanaSS1IndicatorReadiness,
-  getGhanaSS1ReadinessSummary
+  getGhanaSS1ReadinessSummary,
+  getGhanaSS1RecommendedIndicators
 } from '../src/ghanaSS1Readiness';
 
 describe('Ghana SHS 1 indicator readiness model', () => {
@@ -60,4 +61,34 @@ describe('Ghana SHS 1 indicator readiness model', () => {
     expect(item.percent).toBe(100);
     expect(item.status).toBe('mastered');
   });
+  test('prioritizes the weakest assessed indicators before unassessed topics', () => {
+    const progress = {
+      masteryConceptPerformance: {
+        'ss1-real-cs1-li1': { correct: 4, attempted: 5 },
+        'ss1-real-cs1-li2': { correct: 1, attempted: 5 },
+        'ss1-real-cs1-li3': { correct: 3, attempted: 5 }
+      }
+    } as LearningMissionProgress;
+    const indicators = getGhanaSS1IndicatorReadiness(progress);
+    const recommended = getGhanaSS1RecommendedIndicators(indicators, 3);
+
+    expect(recommended.map(item => item.id)).toEqual([
+      'ss1-real-cs1-li2',
+      'ss1-real-cs1-li3',
+      'ss1-real-cs1-li1'
+    ]);
+  });
+
+  test('returns no recommendations when every indicator is mastered and respects limits', () => {
+    const indicators = getGhanaSS1IndicatorReadiness({
+      masteryConceptPerformance: Object.fromEntries(
+        GHANA_SS1_INDICATOR_BLUEPRINT.map(item => [item.id, { correct: 4, attempted: 5 }])
+      )
+    } as LearningMissionProgress);
+
+    expect(getGhanaSS1RecommendedIndicators(indicators)).toHaveLength(0);
+    expect(getGhanaSS1RecommendedIndicators(getGhanaSS1IndicatorReadiness(), 2)).toHaveLength(2);
+    expect(getGhanaSS1RecommendedIndicators(indicators, -1)).toHaveLength(0);
+  });
+
 });
