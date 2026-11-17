@@ -56,6 +56,13 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
     expect(algebra?.pilotMissionIds).toEqual(['gh-core-ss1-algebraic-expressions', 'gh-core-ss1-linear-equations-inequalities', 'gh-core-ss1-quadratic-factorisation-algebraic-fractions']);
   });
 
+  test('counts both Patterns and Relationships missions in their matching sub-strand', () => {
+    const patterns = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Patterns and Relationships');
+    expect(patterns?.status).toBe('partial');
+    expect(patterns?.pilotMissionIds).toEqual(['gh-core-ss1-patterns-functions', 'gh-core-ss1-straight-lines-distance']);
+    expect(patterns?.learningIndicators).toBe(4);
+  });
+
   test('counts the spatial sense mission only in its matching Geometry Around Us sub-strand', () => {
     const spatial = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Spatial Sense');
     expect(spatial?.status).toBe('partial');

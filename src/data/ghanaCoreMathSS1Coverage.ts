@@ -65,8 +65,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 2,
     learningIndicators: 4,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-patterns-functions'],
-    note: 'The pilot covers relations and functions, mapping rules, domain/range, and introductory linear-function graphs under the first content standard. The second content standard and remaining indicators are not yet covered.'
+    pilotMissionIds: ['gh-core-ss1-patterns-functions', 'gh-core-ss1-straight-lines-distance'],
+    note: 'The pilot covers relations and functions, mapping rules, domain/range, linear-function graphs, coordinates, midpoint, gradient, equations of straight lines, distance between points, and parallel/perpendicular gradient relationships. Further varied practice can deepen mastery.'
   },
   {
     strand: 'Geometry Around Us',
