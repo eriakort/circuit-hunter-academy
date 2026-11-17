@@ -297,13 +297,13 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     missionId: 'gh-core-ss1-statistical-averages-inference',
     curriculumYear: 'SHS 1',
     strand: '4 · Making Sense of and Using Data',
-    subStrand: '3 · Descriptive Statistics and Inference',
-    contentStandardIds: ['1.4.3.CS.1'],
-    learningOutcomeIds: [],
+    subStrand: '1 · Statistical Reasoning and Its Application in Real Life',
+    contentStandardIds: ['1.4.1.CS.2'],
+    learningOutcomeIds: ['1.4.1.LO.2'],
     learningIndicatorIds: ['1.4.3.LI.2'],
-    printedPages: [140, 143],
+    printedPages: [138, 141],
     alignment: 'direct',
-    note: 'Maps to NaCCA Sub-Strand 3, content standard 1.4.3.CS.1 and indicator 1.4.3.LI.2: analyse and interpret data using descriptive statistics, including measures of central tendency/location and minimum/maximum values, and justify the most representative average. The curriculum extraction does not expose a separately coded learning outcome for this sub-strand, so none is asserted.'
+    note: 'Maps descriptive statistics to the second Statistical Reasoning content standard and learning outcome (1.4.1.CS.2 / 1.4.1.LO.2). The NaCCA PDF explicitly labels this descriptive-statistics passage as 1.4.3.LI.2 on printed page 138, although the SHS 1 scope table lists only two Data sub-strands and no 1.4.3 content standard. The indicator reference is preserved as printed; no unsupported 1.4.3.CS.1 is asserted.'
   },
   {
     missionId: 'gh-core-ss1-prism-volume',
