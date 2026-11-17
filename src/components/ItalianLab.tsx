@@ -850,7 +850,7 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
                   🗣️ Pronunciation guide: {activePhrase.phoneticHint}
                 </div>
               )}
-              {activePhrase.notes && (
+              {activePhrase.grammarTopicId && activePhrase.notes && (
                 <div style={{ marginTop: '0.65rem', padding: '0.65rem 0.8rem', borderRadius: 7, background: 'rgba(0,146,70,.08)', border: '1px solid rgba(0,146,70,.22)' }}>
                   <strong style={{ fontSize: '0.78rem', color: '#4ade80' }}>
                     {L(['Grammar focus', 'Focus grammaticale'], lang)}
