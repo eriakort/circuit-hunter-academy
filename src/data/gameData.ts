@@ -29051,3 +29051,23 @@ MISSIONS.push(...GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS.map(mission => ({
   ...mission,
   arc: ghanaCoreMathSS2AlgebraArcOffset + mission.arc
 })));
+
+
+// Ghana NaCCA · SHS 2 Patterns and Relations · progressions and financial models.
+import {
+  GHANA_CORE_MATH_SS2_PATTERNS_UNIT,
+  GHANA_CORE_MATH_SS2_PATTERNS_ARCS,
+  GHANA_CORE_MATH_SS2_PATTERNS_MISSIONS
+} from './ghanaCoreMathSS2Data';
+const ghanaCoreMathSS2PatternsUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_CORE_MATH_SS2_PATTERNS_UNIT, subject: 'ghcoremath2' });
+const ghanaCoreMathSS2PatternsArcOffset = ARCS.length;
+GHANA_CORE_MATH_SS2_PATTERNS_ARCS.forEach(arc => ARCS.push({
+  ...arc,
+  unit: ghanaCoreMathSS2PatternsUnitOffset,
+  subject: 'ghcoremath2'
+}));
+MISSIONS.push(...GHANA_CORE_MATH_SS2_PATTERNS_MISSIONS.map(mission => ({
+  ...mission,
+  arc: ghanaCoreMathSS2PatternsArcOffset + mission.arc
+})));
