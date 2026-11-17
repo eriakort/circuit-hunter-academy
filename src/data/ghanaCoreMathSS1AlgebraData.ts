@@ -16,7 +16,7 @@ const question = (q: string, a: string[], why: string) => ({ q, a, why });
 export const GHANA_SS1_ALGEBRA_MISSIONS: Mission[] = [
   {
     id: 'gh-core-ss1-linear-equations-inequalities',
-    arc: 0,
+    arc: 14,
     sec: 'Algebraic reasoning',
     pages: 'NaCCA SHS 1 · pp. 62–66',
     hue: 268,
