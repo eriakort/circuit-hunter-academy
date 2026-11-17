@@ -152,4 +152,15 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(probability?.note).toContain('Conditional probability is introduced only as prerequisite context');
   });
 
+
+  test('maps real-number closure and operation properties to SHS 1 standard 1.1.1.CS.1', () => {
+    const realNumbers = getGhanaMissionAlignment('gh-core-ss1-real-number-properties');
+    expect(realNumbers?.curriculumYear).toBe('SHS 1');
+    expect(realNumbers?.contentStandardIds).toEqual(['1.1.1.CS.1']);
+    expect(realNumbers?.learningOutcomeIds).toEqual(['1.1.1.LO.1']);
+    expect(realNumbers?.learningIndicatorIds).toEqual(['1.1.1.LI.1', '1.1.1.LI.3']);
+    expect(realNumbers?.printedPages).toEqual([31, 33]);
+    expect(realNumbers?.note).toContain('non-zero divisor condition');
+  });
+
 });
