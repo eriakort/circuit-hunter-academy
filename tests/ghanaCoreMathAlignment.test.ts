@@ -221,4 +221,15 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
   });
 
 
+  test('maps perimeter and area to the third SHS 1 Measurement standard', () => {
+    const perimeterArea = getGhanaMissionAlignment('gh-core-ss1-perimeter-area');
+    expect(perimeterArea?.curriculumYear).toBe('SHS 1');
+    expect(perimeterArea?.contentStandardIds).toEqual(['1.3.2.CS.3']);
+    expect(perimeterArea?.learningOutcomeIds).toEqual(['1.3.2.LO.3']);
+    expect(perimeterArea?.learningIndicatorIds).toEqual(['1.3.2.LI.1', '1.3.2.LI.2', '1.3.2.LI.3']);
+    expect(perimeterArea?.printedPages).toEqual([118, 123]);
+    expect(perimeterArea?.note).toContain('1.3.2.LI.4');
+  });
+
+
 });
