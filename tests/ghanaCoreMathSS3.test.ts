@@ -45,4 +45,5 @@ assert.equal(GHANA_CORE_MATH_SS3_QUADRATICS_ALIGNMENT.learningOutcomes[0].id, '3
 assert.deepEqual(GHANA_CORE_MATH_SS3_QUADRATICS_ALIGNMENT.learningIndicators.map(item => item.id), ['3.2.2.LI.1', '3.2.2.LI.2', '3.2.2.LI.3', '3.2.2.LI.4']);
 assert.equal(GHANA_CORE_MATH_SS3_QUADRATICS_MISSIONS.length, 3);
 assert.ok(GHANA_CORE_MATH_SS3_QUADRATICS_MISSIONS.every(mission => mission.quiz.length === 5));
-\nconsole.log('ghanaCoreMathSS3.test.ts ok');
+
+console.log('ghanaCoreMathSS3.test.ts ok');
