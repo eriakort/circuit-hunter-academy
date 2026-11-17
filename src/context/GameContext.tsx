@@ -109,7 +109,9 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return initialNavigation?.view || 'map';
   });
   const [currentMissionIndex, setCurrentMissionIndex] = useState<number>(
-    () => initialNavigation && isMissionIndexForSubject(initialNavigation.currentMissionIndex, state.subject)\n      ? initialNavigation.currentMissionIndex\n      : getFirstMissionIndexForSubject(state.subject)
+    () => initialNavigation && isMissionIndexForSubject(initialNavigation.currentMissionIndex, state.subject)
+      ? initialNavigation.currentMissionIndex
+      : getFirstMissionIndexForSubject(state.subject)
   );
   const [currentSceneIndex, setCurrentSceneIndex] = useState<number>(
     () => initialNavigation?.currentSceneIndex ?? 0
@@ -170,7 +172,9 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       setCurriculumProfile(nextProfile);
       setState(normalizedNextState);
-      setCurrentMissionIndex(nextNavigation && isMissionIndexForSubject(nextNavigation.currentMissionIndex, normalizedNextState.subject)\n        ? nextNavigation.currentMissionIndex\n        : getFirstMissionIndexForSubject(normalizedNextState.subject));
+      setCurrentMissionIndex(nextNavigation && isMissionIndexForSubject(nextNavigation.currentMissionIndex, normalizedNextState.subject)
+        ? nextNavigation.currentMissionIndex
+        : getFirstMissionIndexForSubject(normalizedNextState.subject));
       setCurrentSceneIndex(nextNavigation?.currentSceneIndex ?? 0);
       setBattleContext(nextNavigation?.battleContext ?? null);
       setView(normalizedNextState.grade ? (nextNavigation?.view || 'map') : 'grades');
@@ -402,7 +406,10 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const safeCurrentMissionIndex = isMissionIndexForSubject(currentMissionIndex, state.subject)\n    ? currentMissionIndex\n    : getFirstMissionIndexForSubject(state.subject);\n  const currentMission = MISSIONS[safeCurrentMissionIndex] || MISSIONS[0];
+  const safeCurrentMissionIndex = isMissionIndexForSubject(currentMissionIndex, state.subject)
+    ? currentMissionIndex
+    : getFirstMissionIndexForSubject(state.subject);
+  const currentMission = MISSIONS[safeCurrentMissionIndex] || MISSIONS[0];
 
   return (
     <GameContext.Provider
