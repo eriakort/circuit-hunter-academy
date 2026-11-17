@@ -158,3 +158,48 @@ export const GHANA_CORE_MATH_SS2_PROPORTIONAL_ALIGNMENT = {
     { missionId: 'gh-core-ss2-proportional-real-world', topics: ['financial mathematics', 'percentages', 'tax', 'utilities', 'depreciation', 'currency exchange', 'real-world applications'] }
   ]
 } as const;
+
+
+// Strand 3 · Geometry Around Us · Sub-strand 1 · Spatial Sense
+// Source: NaCCA Mathematics Curriculum for Secondary Education (SHS 1–3),
+// September 2023. SHS 2 spatial transformations, printed pp. 213–227.
+export const GHANA_CORE_MATH_SS2_SPATIAL_ALIGNMENT = {
+  strand: '3 · Geometry Around Us',
+  subStrand: '1 · Spatial Sense',
+  printedPages: [213, 227],
+  contentStandards: [
+    {
+      id: '2.3.1.CS.1',
+      printedPage: 213,
+      description: 'Demonstrate a conceptual understanding of spatial sense regarding changes and invariance achieved by performing a combination of successive transformations (reflection, translation, rotation) in a 2D shape.'
+    }
+  ],
+  learningOutcomes: [
+    {
+      id: '2.3.1.LO.1',
+      description: 'Carry out a variety of transformations through translation, reflection, rotation and enlargement of plane shapes and identify scale drawing as an enlargement/reduction of a plane shape.'
+    }
+  ],
+  learningIndicators: [
+    {
+      id: '2.3.1.LI.1',
+      printedPage: 213,
+      description: 'Identify and translate an object or point by a translating vector and describe the image.'
+    },
+    { id: '2.3.1.LI.2', printedPage: 218, topic: 'Reflection of points and plane shapes; mirror lines and image coordinates.' },
+    { id: '2.3.1.LI.3', printedPage: 223, topic: 'Rotation of points and plane shapes about a centre through a given angle and direction.' },
+    { id: '2.3.1.LI.4', printedPage: 227, topic: 'Apply transformations, including enlargement and reduction, and interpret scale drawings.' }
+  ],
+  coverage: [
+    {
+      missionId: 'gh-core-ss2-transformations-vectors-reflections',
+      learningIndicators: ['2.3.1.LI.1', '2.3.1.LI.2'],
+      topics: ['translation vectors', 'preimage and image', 'reflection', 'mirror line', 'congruence', 'invariant lengths and angles']
+    },
+    {
+      missionId: 'gh-core-ss2-rotations-successive-transformations',
+      learningIndicators: ['2.3.1.LI.3', '2.3.1.LI.4'],
+      topics: ['rotation', 'centre and angle of rotation', 'successive transformations', 'enlargement', 'scale factor', 'scale drawings']
+    }
+  ]
+} as const;
