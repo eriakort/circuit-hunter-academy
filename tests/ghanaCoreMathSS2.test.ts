@@ -7,7 +7,8 @@ import {
   GHANA_CORE_MATH_SS2_PATTERNS_ALIGNMENT,
   GHANA_CORE_MATH_SS2_PROPORTIONAL_ALIGNMENT,
   GHANA_CORE_MATH_SS2_SPATIAL_ALIGNMENT,
-  GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT
+  GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT,
+  GHANA_CORE_MATH_SS2_STATISTICS_ALIGNMENT
 } from '../src/data/ghanaCoreMathSS2Alignment';
 import {
   GHANA_CORE_MATH_SS2_SUBJECT,
@@ -28,7 +29,10 @@ import {
   GHANA_CORE_MATH_SS2_SPATIAL_MISSIONS,
   GHANA_CORE_MATH_SS2_MEASUREMENT_UNIT,
   GHANA_CORE_MATH_SS2_MEASUREMENT_ARCS,
-  GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS
+  GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS,
+  GHANA_CORE_MATH_SS2_STATISTICS_UNIT,
+  GHANA_CORE_MATH_SS2_STATISTICS_ARCS,
+  GHANA_CORE_MATH_SS2_STATISTICS_MISSIONS
 } from '../src/data/ghanaCoreMathSS2Data';
 
 assert.equal(GHANA_NACCA_SS2_MATHEMATICS_SOURCE.publicationDate, 'September 2023');
@@ -125,5 +129,31 @@ assert.deepEqual(GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS.map(m => m.id), [
   'gh-core-ss2-solid-measurement-surface-volume-capacity'
 ]);
 assert.ok(GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
-assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · eleven learning missions');
+assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · fourteen learning missions');
 console.log('Ghana SHS 2 measurement coverage ok');
+
+
+assert.equal(GHANA_CORE_MATH_SS2_STATISTICS_ALIGNMENT.strand, '4 · Making Sense of and Using Data');
+assert.equal(GHANA_CORE_MATH_SS2_STATISTICS_ALIGNMENT.subStrand, '1 · Statistical Reasoning and its Application in Real Life');
+assert.deepEqual(GHANA_CORE_MATH_SS2_STATISTICS_ALIGNMENT.printedPages, [264, 289]);
+assert.deepEqual(
+  GHANA_CORE_MATH_SS2_STATISTICS_ALIGNMENT.contentStandards.map(item => item.id),
+  ['2.4.1.CS.1', '2.4.1.CS.2', '2.4.1.CS.3']
+);
+assert.equal(GHANA_CORE_MATH_SS2_STATISTICS_ALIGNMENT.learningOutcomes.length, 3);
+assert.equal(GHANA_CORE_MATH_SS2_STATISTICS_ALIGNMENT.learningIndicators.length, 7);
+assert.deepEqual(
+  GHANA_CORE_MATH_SS2_STATISTICS_ALIGNMENT.learningIndicators.map(item => item.printedPage),
+  [273, 274, 276, 282, 287, 289, 290]
+);
+assert.equal(GHANA_CORE_MATH_SS2_STATISTICS_ALIGNMENT.coverage.length, 4);
+assert.equal(GHANA_CORE_MATH_SS2_STATISTICS_UNIT.subject, 'ghcoremath2');
+assert.equal(GHANA_CORE_MATH_SS2_STATISTICS_ARCS[0].pages, 'NaCCA SHS 2 · pp. 264–289');
+assert.deepEqual(GHANA_CORE_MATH_SS2_STATISTICS_MISSIONS.map(m => m.id), [
+  'gh-core-ss2-survey-design-data-quality',
+  'gh-core-ss2-data-displays-dispersion',
+  'gh-core-ss2-statistical-inference-community-project'
+]);
+assert.ok(GHANA_CORE_MATH_SS2_STATISTICS_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
+assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · fourteen learning missions');
+console.log('Ghana SHS 2 statistical reasoning coverage ok');

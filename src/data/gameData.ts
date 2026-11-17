@@ -29131,3 +29131,23 @@ MISSIONS.push(...GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS.map(mission => ({
   ...mission,
   arc: ghanaCoreMathSS2MeasurementArcOffset + mission.arc
 })));
+
+
+// Ghana NaCCA · SHS 2 Making Sense of and Using Data · Statistical Reasoning.
+import {
+  GHANA_CORE_MATH_SS2_STATISTICS_UNIT,
+  GHANA_CORE_MATH_SS2_STATISTICS_ARCS,
+  GHANA_CORE_MATH_SS2_STATISTICS_MISSIONS
+} from './ghanaCoreMathSS2Data';
+const ghanaCoreMathSS2StatisticsUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_CORE_MATH_SS2_STATISTICS_UNIT, subject: 'ghcoremath2' });
+const ghanaCoreMathSS2StatisticsArcOffset = ARCS.length;
+GHANA_CORE_MATH_SS2_STATISTICS_ARCS.forEach(arc => ARCS.push({
+  ...arc,
+  unit: ghanaCoreMathSS2StatisticsUnitOffset,
+  subject: 'ghcoremath2'
+}));
+MISSIONS.push(...GHANA_CORE_MATH_SS2_STATISTICS_MISSIONS.map(mission => ({
+  ...mission,
+  arc: ghanaCoreMathSS2StatisticsArcOffset + mission.arc
+})));
