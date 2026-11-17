@@ -34,7 +34,16 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     const percentages = getGhanaMissionAlignment('gh-core-ss1-fractions-percentages');
     expect(percentages?.curriculumYear).toBe('SHS 1');
     expect(percentages?.contentStandardIds).toContain('1.1.2.CS.2');
-    expect(percentages?.learningIndicatorIds).toEqual(['1.1.2.LI.1', '1.1.2.LI.2']);
+    expect(percentages?.learningIndicatorIds).toEqual(['1.1.2.LI.1']);
+  });
+
+  test('maps household percentage change to the SHS 1 proportional-reasoning indicator', () => {
+    const budget = getGhanaMissionAlignment('gh-core-ss1-percentage-change-finance');
+    expect(budget?.curriculumYear).toBe('SHS 1');
+    expect(budget?.contentStandardIds).toEqual(['1.1.2.CS.2']);
+    expect(budget?.learningOutcomeIds).toEqual(['1.1.2.LO.2']);
+    expect(budget?.learningIndicatorIds).toEqual(['1.1.2.LI.2']);
+    expect(budget?.printedPages).toEqual([48, 49]);
   });
 
   test('maps fraction operations and inverses to the SHS 1 proportional-reasoning standard', () => {
@@ -69,8 +78,8 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     const finance = getGhanaMissionAlignment('gh-core-ss1-financial-mathematics');
     expect(finance?.curriculumYear).toBe('SHS 1');
     expect(finance?.contentStandardIds).toContain('1.1.2.CS.2');
-    expect(finance?.learningIndicatorIds).toEqual(['1.1.2.LI.3', '1.1.2.LI.4']);
-    expect(finance?.printedPages).toEqual([50, 52]);
+    expect(finance?.learningIndicatorIds).toEqual(['1.1.2.LI.2']);
+    expect(finance?.printedPages).toEqual([47, 49]);
   });
 
   test('maps sets, Venn diagrams and survey work to the separate SHS 1 set outcome', () => {
