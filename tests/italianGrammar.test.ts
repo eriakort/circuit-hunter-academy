@@ -26,7 +26,9 @@ for (const topic of ITALIAN_GRAMMAR_TOPICS) {
   }
 }
 
-assert.equal(totalExercises, 60, `Expected 60 starter exercises, got ${totalExercises}`);
+assert.equal(totalExercises, 66, `Expected 66 starter exercises, got ${totalExercises}`);
 assert.equal(ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'pronouns')?.levels.A1.exercises.length, 6);
 assert.equal(ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'pronouns')?.levels.A2.exercises.length, 6);
-console.log('italianGrammar.test.ts ok! Six topics, three CEFR levels and 54 bilingual exercises verified.');
+assert.equal(ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'passato-prossimo')?.levels.A1.exercises.length, 6);
+assert.equal(ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'passato-prossimo')?.levels.A2.exercises.length, 6);
+console.log('italianGrammar.test.ts ok! Six topics, three CEFR levels and 66 bilingual exercises verified.');
