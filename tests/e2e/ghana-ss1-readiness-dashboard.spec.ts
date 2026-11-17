@@ -24,6 +24,8 @@ test('Ghana SHS 1 dashboard shows all 45 indicators and their initial states', a
   await expect(page.getByTestId('ghana-readiness-mastered')).toHaveText('0/45');
   await expect(page.getByTestId('ghana-readiness-needs-revision')).toHaveText('0');
   await expect(page.getByTestId('ghana-readiness-not-assessed')).toHaveText('45');
+  await expect(page.getByTestId('ghana-readiness-next')).toBeVisible();
+  await expect(page.locator('[data-recommended-indicator]')).toHaveCount(3);
 
   const firstGroup = page.locator('[data-sub-strand="Real Number System"]');
   await expect(firstGroup.locator('[data-indicator-id]')).toHaveCount(6);
