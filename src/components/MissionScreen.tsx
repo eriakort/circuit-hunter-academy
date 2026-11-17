@@ -15,6 +15,7 @@ import { HistoryLab } from './HistoryLab';
 import { GeographyLab } from './GeographyLab';
 import { speakItalian } from '../speech/speechEngine';
 import { scheduleNextConceptReview } from '../spacedRepetition';
+import { createAssessmentQuestionVariantIndexes, resolveAssessmentQuestions } from '../learningAssessment';
 import { HARDWARE_LEARNING_PILOT } from '../data/learningPilot';
 
 export const MissionScreen: React.FC = () => {
@@ -47,6 +48,7 @@ export const MissionScreen: React.FC = () => {
   const [masteryAnswers, setMasteryAnswers] = useState<number[]>([]);
   const [masteryFeedback, setMasteryFeedback] = useState<{ score: number; passed: boolean; attempt: number } | null>(null);
   const [masteryStarted, setMasteryStarted] = useState(false);
+  const [masteryVariantIndexes, setMasteryVariantIndexes] = useState<number[]>(() => createAssessmentQuestionVariantIndexes(masteryAssessment));
   const gameContainerRef = useRef<HTMLDivElement>(null);
 
   // Scene gating check
@@ -96,6 +98,7 @@ export const MissionScreen: React.FC = () => {
     setMasteryAnswers([]);
     setMasteryFeedback(null);
     setMasteryStarted(false);
+    setMasteryVariantIndexes(createAssessmentQuestionVariantIndexes(masteryAssessment));
   }, [currentMission.id, currentSceneIndex]);
 
   // Mount mini-game or interactive scene
@@ -178,7 +181,7 @@ export const MissionScreen: React.FC = () => {
   const knowledgeQuestion = knowledgeQuestions[knowledgeIndex];
   const masteryAssessment = currentMission.learning?.masteryAssessment;
   const techniqueUnlock = HARDWARE_LEARNING_PILOT[currentMission.id]?.techniqueUnlock ?? currentMission.learning?.techniqueUnlock;
-  const masteryQuestions = masteryAssessment?.questions || [];
+  const masteryQuestions = resolveAssessmentQuestions(masteryAssessment, masteryVariantIndexes);
   const masteryReviewConceptIds = masteryFeedback && !masteryFeedback.passed
     ? masteryQuestions.reduce<string[]>((ids, question, index) => {
         const conceptId = masteryAssessment?.questionConceptIds?.[index];
@@ -562,6 +565,7 @@ export const MissionScreen: React.FC = () => {
                 setMasteryIndex(0);
                 setMasteryAnswers([]);
                 setMasteryFeedback(null);
+                setMasteryVariantIndexes(createAssessmentQuestionVariantIndexes(masteryAssessment));
                 setMasteryStarted(true);
               }}>{lang === 'it' ? 'Riprova la prova' : 'Retry assessment'}</button>
             </div>
@@ -591,7 +595,7 @@ export const MissionScreen: React.FC = () => {
                         const attemptedAt = Date.now();
                         const attemptHistory = [...(savedLearning?.masteryAttemptHistory || []), { score, attemptedAt, attempt }].slice(-20);
                         const attemptReviews = [...(savedLearning?.masteryAttemptReviews || []), {
-                          score, attemptedAt, attempt, answers: [...answers]
+                          score, attemptedAt, attempt, answers: [...answers], questionVariantIndexes: [...masteryVariantIndexes]
                         }].slice(-20);
                         const weakConcepts: string[] = [];
                         const conceptAttemptResults: Record<string, { correct: number; attempted: number }> = {};
