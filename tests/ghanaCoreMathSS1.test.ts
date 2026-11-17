@@ -64,6 +64,9 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
     expect(text).toContain('The Data Detective');
     expect(text).toContain('The Evidence Expedition');
     expect(text).toContain('The Data Display Studio');
+    expect(text).toContain('The Average Arena');
+    expect(text).toContain('mean, median and mode');
+    expect(text).toContain('outlier');
     expect(text).toContain('The School Insight Project');
     expect(text).toContain('The Chance Compass');
     expect(text).toContain('The Closure Forge');
