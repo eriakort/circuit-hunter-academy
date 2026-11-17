@@ -11,16 +11,16 @@ import { GHANA_SS1_STATISTICS_MISSIONS } from '../src/data/ghanaCoreMathSS1Stati
 function assertEnglishOnlyPairs(value: unknown, path: string): void {
   if (Array.isArray(value)) {
     if (value.length === 2 && value.every(item => typeof item === 'string')) {
-      assert.equal(value[1], value[0], \`\${path} must not contain a non-English alternate\`);
+      assert.equal(value[1], value[0], path + ' must not contain a non-English alternate');
       return;
     }
-    value.forEach((item, index) => assertEnglishOnlyPairs(item, \`\${path}[\${index}]\`));
+    value.forEach((item, index) => assertEnglishOnlyPairs(item, path + '[' + index + ']'));
     return;
   }
 
   if (value && typeof value === 'object') {
     Object.entries(value).forEach(([key, item]) =>
-      assertEnglishOnlyPairs(item, \`\${path}.\${key}\`)
+      assertEnglishOnlyPairs(item, path + '.' + key)
     );
   }
 }
