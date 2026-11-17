@@ -326,7 +326,7 @@ export const MapScreen: React.FC = () => {
       {indicatorDiagnosticMission && (
         <GhanaSS1ReadinessDashboard
           lang={lang}
-          progress={state.learningProgress?.[indicatorDiagnosticMission.id]}
+          progressByMission={state.learningProgress || {}}
           onStartDiagnostic={() => {
             if (indicatorDiagnosticMissionIndex >= 0) openMission(indicatorDiagnosticMissionIndex);
           }}
@@ -651,6 +651,7 @@ export const MapScreen: React.FC = () => {
                     key={m.id}
                     className={`mcard ${isCleared ? 'cleared' : ''}`}
                     data-i={i}
+                    data-mission-id={m.id}
                     disabled={!open}
                     onClick={() => openMission(i)}
                   >
