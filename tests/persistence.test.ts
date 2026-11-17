@@ -270,3 +270,58 @@ const grammarSave = sanitizeGrammarProgress({
 assert.deepEqual(Object.keys(grammarSave), ['art-a1-1', 'sentence-a1-correct'], 'only known, internally consistent grammar progress survives sanitization');
 assert.equal(sanitizeGameState({ grade: 'grade9', subject: 'italian', grammarProgress: { 'art-a1-1': { attempts: 1, correct: true, xpAwarded: true } } }).grammarProgress?.['art-a1-1'].correct, true, 'grammar mastery survives save restoration');
 assert.deepEqual(createFreshProgressState(sanitizeGameState({ grade: 'grade9', subject: 'italian', grammarProgress: { 'art-a1-1': { attempts: 1, correct: true, xpAwarded: true } } })).grammarProgress, {}, 'reset clears grammar progress');
+
+
+const ghanaAssessmentMission = MISSIONS.find(mission => mission.id === 'gh-core-ss1-45-indicator-diagnostic');
+assert.ok(ghanaAssessmentMission?.learning?.masteryAssessment, 'the Ghana SHS 1 diagnostic has a structured assessment');
+const ghanaQuestionCount = ghanaAssessmentMission!.learning!.masteryAssessment!.questions.length;
+const selectedAlternateForms = Array.from({ length: ghanaQuestionCount }, () => 1);
+const savedAlternateReview = sanitizeGameState({
+  grade: 'grade9',
+  subject: 'ghcoremath',
+  learningProgress: {
+    [ghanaAssessmentMission!.id]: {
+      masteryAttemptReviews: [{
+        score: 82,
+        attemptedAt: 1700000000000,
+        attempt: 1,
+        answers: Array.from({ length: ghanaQuestionCount }, () => 0),
+        questionVariantIndexes: selectedAlternateForms
+      }]
+    }
+  }
+}).learningProgress[ghanaAssessmentMission!.id].masteryAttemptReviews?.[0];
+assert.deepEqual(savedAlternateReview?.questionVariantIndexes, selectedAlternateForms, 'saved reviews preserve the exact alternate question form for each indicator');
+
+const invalidAlternateReview = sanitizeGameState({
+  grade: 'grade9',
+  subject: 'ghcoremath',
+  learningProgress: {
+    [ghanaAssessmentMission!.id]: {
+      masteryAttemptReviews: [{
+        score: 82,
+        attemptedAt: 1700000000000,
+        attempt: 1,
+        answers: Array.from({ length: ghanaQuestionCount }, () => 0),
+        questionVariantIndexes: [...selectedAlternateForms.slice(0, -1), 2]
+      }]
+    }
+  }
+}).learningProgress[ghanaAssessmentMission!.id].masteryAttemptReviews;
+assert.equal(invalidAlternateReview, undefined, 'out-of-range variant selections are rejected');
+
+const legacyAlternateReview = sanitizeGameState({
+  grade: 'grade9',
+  subject: 'ghcoremath',
+  learningProgress: {
+    [ghanaAssessmentMission!.id]: {
+      masteryAttemptReviews: [{
+        score: 80,
+        attemptedAt: 1700000000000,
+        attempt: 1,
+        answers: Array.from({ length: ghanaQuestionCount }, () => 0)
+      }]
+    }
+  }
+}).learningProgress[ghanaAssessmentMission!.id].masteryAttemptReviews?.[0];
+assert.equal(legacyAlternateReview?.questionVariantIndexes, undefined, 'legacy assessment reviews remain valid and default to canonical questions');
