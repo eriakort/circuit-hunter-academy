@@ -329,6 +329,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Extends the percentage-change and personal-finance indicator with annual compound interest, comparison against simple interest, tax calculations, and tax-inclusive/exclusive prices. All tax rates are supplied in the learning examples and assessment; no current statutory rate is assumed.'
   },
+  {
+    missionId: 'gh-core-ss1-integrated-mastery-trial',
+    curriculumYear: 'SHS 1',
+    strand: 'Integrated review · Strands 1–4',
+    subStrand: 'Cross-strand retrieval and transfer practice',
+    contentStandardIds: ['1.1.2.CS.2', '1.2.1.CS.2', '1.3.2.CS.3', '1.4.1.CS.2'],
+    learningOutcomeIds: ['1.1.2.LO.2', '1.2.1.LO.2', '1.3.2.LO.3', '1.4.1.LO.2'],
+    learningIndicatorIds: ['1.1.2.LI.2', '1.2.1.LI.1', '1.2.1.LI.2', '1.3.2.LI.4', '1.4.1.LI.2', '1.4.1.LI.3'],
+    printedPages: [50, 62, 124, 143],
+    alignment: 'direct',
+    note: 'An integrated retrieval and transfer mission using previously taught SHS 1 content from financial mathematics, equations and inequalities, prism measurement, and statistical reasoning. This is revision across existing indicators, not a claim of additional curriculum coverage.'
+  },
 ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
