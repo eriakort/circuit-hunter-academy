@@ -23,7 +23,10 @@ for (const level of ['A1', 'A2'] as const) {
   }
 }
 
-assert.ok(getGrammarActivities('passato-prossimo', 'A1', 'write')[0].prompt[0].includes('two short sentences'));
-assert.ok(getGrammarActivities('passato-prossimo', 'A2', 'write')[0].prompt[0].includes('three connected sentences'));
+const a1Write = getGrammarActivities('passato-prossimo', 'A1', 'write')[0];
+const a2Write = getGrammarActivities('passato-prossimo', 'A2', 'write')[0];
+assert.ok(a1Write.prompt[0].includes('one sentence about something you did yesterday'));
+assert.ok(a2Write.prompt[0].includes('two sentences about last weekend'));
+assert.ok(a1Write.modelAnswer.length > 0 && a2Write.modelAnswer.length > 0);
 
 console.log('italianGrammarPassatoProssimo.test.ts ok! A1/A2 auxiliaries, participles, agreement and writing activities verified.');
