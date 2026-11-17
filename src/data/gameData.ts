@@ -29214,23 +29214,3 @@ MISSIONS.push(...GHANA_CORE_MATH_SS3_QUADRATICS_MISSIONS.map(mission => ({
   ...mission,
   arc: ghanaCoreMathSS3QuadraticsArcOffset + mission.arc
 })));
-// Ghana NaCCA · SHS 3 Numbers for Everyday Life · Logical Reasoning and Variation.
-import {
-  GHANA_CORE_MATH_SS3_SUBJECT,
-  GHANA_CORE_MATH_SS3_UNIT,
-  GHANA_CORE_MATH_SS3_ARCS,
-  GHANA_CORE_MATH_SS3_MISSIONS
-} from './ghanaCoreMathSS3Data';
-if (!SUBJECTS.some(subject => subject.id === 'ghcoremath3')) SUBJECTS.push(GHANA_CORE_MATH_SS3_SUBJECT);
-const ghanaCoreMathSS3UnitOffset = UNITS.length;
-UNITS.push({ ...GHANA_CORE_MATH_SS3_UNIT, subject: 'ghcoremath3' });
-const ghanaCoreMathSS3ArcOffset = ARCS.length;
-GHANA_CORE_MATH_SS3_ARCS.forEach(arc => ARCS.push({
-  ...arc,
-  unit: ghanaCoreMathSS3UnitOffset,
-  subject: 'ghcoremath3'
-}));
-MISSIONS.push(...GHANA_CORE_MATH_SS3_MISSIONS.map(mission => ({
-  ...mission,
-  arc: ghanaCoreMathSS3ArcOffset + mission.arc
-})));
