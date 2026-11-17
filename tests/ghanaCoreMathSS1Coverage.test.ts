@@ -94,6 +94,7 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('does not count the SHS 2 ratio extension as SHS 1 coverage', () => {
     const proportional = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Proportional Reasoning');
     expect(proportional?.pilotMissionIds).toContain('gh-core-ss1-fraction-operations');
+    expect(proportional?.pilotMissionIds).toContain('gh-core-ss1-percentage-change-finance');
     expect(proportional?.pilotMissionIds).not.toContain('gh-core-ss1-ratio-rate');
   });
 });
