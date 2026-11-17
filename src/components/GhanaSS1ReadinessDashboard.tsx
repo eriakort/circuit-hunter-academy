@@ -133,7 +133,7 @@ export const GhanaSS1ReadinessDashboard: React.FC<GhanaSS1ReadinessDashboardProp
                   <span className="needs-revision">{groupNeedsRevision} {isItalian ? 'da ripassare' : 'to revise'}</span>
                   <span className="not-assessed">{groupNotAssessed} {isItalian ? 'non valutati' : 'not assessed'}</span>
                 </span>
-                <span className="ghana-readiness-group-total">{group.indicators.length} / {group.indicators.length}</span>
+                <span className="ghana-readiness-group-total">{groupMastered} / {group.indicators.length}</span>
               </summary>
               <ol className="ghana-readiness-indicators">
                 {group.indicators.map(indicator => (
