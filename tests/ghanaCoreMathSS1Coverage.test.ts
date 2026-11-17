@@ -14,19 +14,19 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
     expect(GHANA_NACCA_SS1_SCOPE_SOURCE.url).toContain('nacca.gov.gh');
   });
 
-  test('reconciles all eight SHS 1 sub-strands to the official scope totals', () => {
+  test('reconciles all nine SHS 1 sub-strands to the official scope totals', () => {
     const summary = getGhanaCoreMathSS1CoverageSummary();
     expect(summary).toMatchObject({
-      contentStandards: 16,
+      contentStandards: 17,
       learningOutcomes: 17,
-      learningIndicators: 45,
-      subStrands: 8
+      learningIndicators: 44,
+      subStrands: 9
     });
   });
 
   test('marks only the two pilot sub-strands as partial', () => {
     const summary = getGhanaCoreMathSS1CoverageSummary();
-    expect(summary.partial).toBe(8);
+    expect(summary.partial).toBe(9);
     expect(summary.notStarted).toBe(0);
     expect(GHANA_CORE_MATH_SS1_COVERAGE.filter(item => item.status === 'partial').map(item => item.subStrand)).toEqual([
       'Real Number System',
@@ -36,6 +36,7 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
       'Spatial Sense',
       'Measurement',
       'Statistical Reasoning and Its Application in Real Life',
+      'Descriptive Statistics and Inference',
       'Probability/Chance'
     ]);
   });
@@ -87,8 +88,8 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('counts the first Statistical Reasoning mission only in its matching data sub-strand', () => {
     const statistics = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Statistical Reasoning and Its Application in Real Life');
     expect(statistics?.status).toBe('partial');
-    expect(statistics?.pilotMissionIds).toEqual(['gh-core-ss1-statistical-reasoning-data-types', 'gh-core-ss1-statistical-data-collection-methods', 'gh-core-ss1-statistical-data-organisation-presentation', 'gh-core-ss1-statistical-averages-inference', 'gh-core-ss1-school-community-data-project']);
-    expect(statistics?.learningIndicators).toBe(8);
+    expect(statistics?.pilotMissionIds).toEqual(['gh-core-ss1-statistical-reasoning-data-types', 'gh-core-ss1-statistical-data-collection-methods', 'gh-core-ss1-statistical-data-organisation-presentation', 'gh-core-ss1-school-community-data-project']);
+    expect(statistics?.learningIndicators).toBe(6);
   });
 
 
@@ -97,6 +98,15 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
     expect(realNumbers?.status).toBe('partial');
     expect(realNumbers?.pilotMissionIds).toEqual(['gh-core-ss1-number-sets', 'gh-core-ss1-real-number-properties', 'gh-core-ss1-sets-surveys']);
     expect(realNumbers?.learningIndicators).toBe(6);
+  });
+
+  test('tracks descriptive statistics in the separate third Data sub-strand', () => {
+    const descriptive = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Descriptive Statistics and Inference');
+    expect(descriptive?.status).toBe('partial');
+    expect(descriptive?.contentStandards).toBe(1);
+    expect(descriptive?.learningOutcomes).toBe(0);
+    expect(descriptive?.learningIndicators).toBe(1);
+    expect(descriptive?.pilotMissionIds).toEqual(['gh-core-ss1-statistical-averages-inference']);
   });
 
   test('counts the probability mission only in the Probability/Chance sub-strand', () => {
