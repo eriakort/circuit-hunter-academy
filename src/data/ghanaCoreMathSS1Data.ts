@@ -1,5 +1,6 @@
 import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
 import { GHANA_SS1_PATTERNS_ARCS, GHANA_SS1_PATTERNS_MISSIONS } from './ghanaCoreMathSS1PatternsData';
+import { GHANA_SS1_STRAIGHT_LINES_ARCS, GHANA_SS1_STRAIGHT_LINES_MISSIONS } from './ghanaCoreMathSS1StraightLinesData';
 import { GHANA_SS1_SPATIAL_ARCS, GHANA_SS1_SPATIAL_MISSIONS } from './ghanaCoreMathSS1SpatialData';
 import { GHANA_SS1_MEASUREMENT_ARCS, GHANA_SS1_MEASUREMENT_MISSIONS } from './ghanaCoreMathSS1MeasurementData';
 import { GHANA_SS1_STATISTICS_ARCS, GHANA_SS1_STATISTICS_MISSIONS } from './ghanaCoreMathSS1StatisticsData';
@@ -38,6 +39,7 @@ export const GHANA_CORE_MATH_SS1_ARCS: ArcInfo[] = [
   { n: 6, unit: 0, subject: 'ghcoremath', title: 'Algebraic Expressions', pages: 'NaCCA SHS 1 · pp. 57–58' },
 
   ...GHANA_SS1_PATTERNS_ARCS.map(arc => ({ ...arc, n: 7 })),
+  ...GHANA_SS1_STRAIGHT_LINES_ARCS.map(arc => ({ ...arc, n: 7 })),
   ...GHANA_SS1_SPATIAL_ARCS.map(arc => ({ ...arc, n: 8 })),
   ...GHANA_SS1_MEASUREMENT_ARCS.map(arc => ({ ...arc, n: 9 })),
   ...GHANA_SS1_STATISTICS_ARCS.map(arc => ({ ...arc, n: 11 })),
@@ -222,6 +224,7 @@ export const GHANA_CORE_MATH_SS1_MISSIONS: Mission[] = [
     ]
   },
   ...GHANA_SS1_PATTERNS_MISSIONS,
+  ...GHANA_SS1_STRAIGHT_LINES_MISSIONS,
   ...GHANA_SS1_SPATIAL_MISSIONS,
   ...GHANA_SS1_MEASUREMENT_MISSIONS,
   ...GHANA_SS1_STATISTICS_MISSIONS,
