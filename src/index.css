@@ -1436,3 +1436,6 @@ table.g5m-formulas td:first-child{font-family:inherit;text-align:left}
 @media(prefers-reduced-motion:reduce){
   .sankofa-progress-track span{transition:none}
 }
+
+.theme-sankofa .mcard .dm{display:none}
+.theme-sankofa .mcard h3{padding-right:0}
