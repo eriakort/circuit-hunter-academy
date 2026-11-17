@@ -28,9 +28,8 @@ export const GHANA_SS1_STATISTICS_REASONING_MISSIONS: Mission[] = [
       question('The travel times are 10, 12, 12, 16 and 20 minutes. What is the mean?', ['14 minutes', '12 minutes', '16 minutes', '70 minutes'], 'Add the values to get 70, then divide by 5: 14 minutes.'),
       question('What is the median of 4, 7, 9, 12, 18, 20?', ['10.5', '9', '12', '11'], 'There are six values, so average the two middle values: (9 + 12) ÷ 2 = 10.5.'),
       question('A data set contains one value much larger than all the others. Which measure is often more representative?', ['Median', 'Mean', 'Range', 'Maximum'], 'The extreme value can pull the mean upward. The median is less affected by an outlier.'),
-      question('Which measure identifies the most common transport type?', ['Mode', 'Mean', 'Median', 'Range'], 'Transport type is categorical, so the most frequent category—the mode—is useful.'),
-      question('A data set has a minimum of 8 and a maximum of 31. What is its range?', ['23', '39', '8', '31'], 'Range = maximum − minimum = 31 − 8 = 23.'),
-      question('A team surveys only four close friends and claims its average travel time represents the whole school. What is the best response?', ['The sample is too limited to support a school-wide claim', 'The mean is always correct for every sample', 'The range proves the sample is representative', 'Remove values the team does not like'], 'A small convenience sample may be biased. Conclusions must reflect sampling limits or use a more representative sample.')
+      question('A data set has a minimum of 8 and a maximum of 31. What is its range?', ['23', '39', '8', '31'], 'Range = maximum − minimum = 31 − 8 = 23.')
+
     ]
   }
 ];
