@@ -45,8 +45,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 2,
     learningIndicators: 4,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-fraction-operations', 'gh-core-ss1-fractions-percentages', 'gh-core-ss1-financial-mathematics'],
-    note: 'Fraction-decimal connections, fraction operations and inverses are introduced alongside percentage and personal-finance practice. The ratio/rate mission is mapped separately as an SHS 2 extension and is not counted as SHS 1 coverage.'
+    pilotMissionIds: ['gh-core-ss1-fraction-operations', 'gh-core-ss1-fractions-percentages', 'gh-core-ss1-financial-mathematics', 'gh-core-ss1-percentage-change-finance'],
+    note: 'Fraction-decimal connections and fraction operations are introduced; percentage-change and household-finance practice now includes utility bills, exchange rates, project budgets, school fees and shopping. The ratio/rate mission remains an SHS 2 extension and is not counted as SHS 1 coverage.'
   },
   {
     strand: 'Algebraic Reasoning',

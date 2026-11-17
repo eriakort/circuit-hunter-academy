@@ -46,8 +46,8 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     subStrand: '2 · Proportional Reasoning',
     contentStandardIds: ['1.1.2.CS.2'],
     learningOutcomeIds: ['1.1.2.LO.2'],
-    learningIndicatorIds: ['1.1.2.LI.1', '1.1.2.LI.2'],
-    printedPages: [43, 50],
+    learningIndicatorIds: ['1.1.2.LI.1'],
+    printedPages: [43, 45],
     alignment: 'direct',
     note: 'Maps to the personal-finance outcome and the listed percentage indicators. Further household-finance topics, including compound interest and tax, remain outside this focused mission.'
   },
@@ -82,10 +82,10 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     subStrand: '2 · Proportional Reasoning',
     contentStandardIds: ['1.1.2.CS.2'],
     learningOutcomeIds: ['1.1.2.LO.2'],
-    learningIndicatorIds: ['1.1.2.LI.3', '1.1.2.LI.4'],
-    printedPages: [50, 52],
+    learningIndicatorIds: ['1.1.2.LI.2'],
+    printedPages: [47, 49],
     alignment: 'direct',
-    note: 'Introduces simple interest, profit and loss, and commission using Ghanaian financial examples. It is a focused practice mission and does not claim to cover the full personal-finance sequence.'
+    note: 'Introduces simple interest, profit and loss, and commission using Ghanaian financial examples as practical proportional-reasoning applications. It is a focused practice mission and does not claim to cover the full personal-finance sequence.'
   },
   {
     missionId: 'gh-core-ss1-algebraic-expressions',
@@ -208,6 +208,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [31, 33],
     alignment: 'direct',
     note: 'Covers closure tests for addition, subtraction, multiplication and division across real-number subsets (including the non-zero divisor condition), plus commutative, associative, distributive, identity and inverse properties. The existing Number Map mission remains the focused introduction to rational/irrational classification.'
+  },
+  {
+    missionId: 'gh-core-ss1-percentage-change-finance',
+    curriculumYear: 'SHS 1',
+    strand: '1 · Numbers for Everyday Life',
+    subStrand: '2 · Proportional Reasoning',
+    contentStandardIds: ['1.1.2.CS.2'],
+    learningOutcomeIds: ['1.1.2.LO.2'],
+    learningIndicatorIds: ['1.1.2.LI.2'],
+    printedPages: [48, 49],
+    alignment: 'direct',
+    note: 'Covers percentage increase/decrease using the original amount as the base, utility-bill changes, exchange-rate comparisons, school-fee and project-budget changes, shopping discounts, and budget overruns/savings.'
   },
   {
     missionId: 'gh-core-ss1-fraction-operations',

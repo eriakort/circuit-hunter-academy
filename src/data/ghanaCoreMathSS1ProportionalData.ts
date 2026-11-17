@@ -7,6 +7,13 @@ export const GHANA_SS1_PROPORTIONAL_ARCS: ArcInfo[] = [
     subject: 'ghcoremath',
     title: 'Fractions: Operations and Inverses',
     pages: 'NaCCA SHS 1 · pp. 44–46'
+  },
+  {
+    n: 15,
+    unit: 0,
+    subject: 'ghcoremath',
+    title: 'Percentage Change and Household Finance',
+    pages: 'NaCCA SHS 1 · pp. 48–49'
   }
 ];
 
@@ -45,4 +52,36 @@ export const GHANA_SS1_PROPORTIONAL_MISSIONS: Mission[] = [
       question('Round 0.004786 to two significant figures.', ['0.0048', '0.0047', '0.0050', '0.00479'], 'The first two significant digits are 4 and 7; the next digit is 8, so round 7 up to 8.')
     ]
   }
+  ,
+  {
+    id: 'gh-core-ss1-percentage-change-finance',
+    arc: 1,
+    sec: 'Proportional reasoning',
+    pages: 'NaCCA SHS 1 · pp. 48–49',
+    hue: 42, horns: 2, eyes: 2,
+    title: 'The Household Budget Guardian',
+    topic: 'Analyse percentage increase and decrease in everyday situations and use percentages to make informed household and project-budget decisions.',
+    demon: 'The Budget Mirage',
+    tech: 'Proportion Form · Seventeenth Technique: Change and Balance',
+    scenes: [
+      lesson('<p><b>Percentage change compares a change with the original amount.</b> Percentage change = (amount of change ÷ original amount) × 100%. Always identify the starting value first.</p>'),
+      lesson('<p><b>Fuel price increase:</b> A litre rises from GH₵9.50 to GH₵13.20. The increase is GH₵3.70. Percentage increase = (3.70 ÷ 9.50) × 100 ≈ 38.95%. Use the original price as the denominator.</p>'),
+      lesson('<p><b>Later decrease:</b> The price falls from GH₵13.20 to GH₵12.50. Percentage decrease = (0.70 ÷ 13.20) × 100 ≈ 5.30%. The base is now GH₵13.20, the value immediately before the decrease.</p>'),
+      lesson('<p><b>Utility bills:</b> A family’s electricity bill rises from GH₵240 to GH₵276. The increase is GH₵36, so (36 ÷ 240) × 100 = 15%. If it falls from GH₵276 to GH₵248.40, the decrease is 10% of GH₵276.</p>'),
+      lesson('<p><b>Exchange rates:</b> If GH₵1 buys US$0.08 and later buys US$0.075, the dollar amount per cedi decreases by (0.005 ÷ 0.08) × 100 = 6.25%. Keep units and direction clear; use the rate supplied in the question.</p>'),
+      lesson('<p><b>Project and school budgets:</b> A class plans GH₵1,200 for a science project. Materials cost 12% more, an increase of GH₵144, so the revised budget is GH₵1,344. A school fee of GH₵850 reduced by 4% becomes GH₵816.</p>'),
+      lesson('<p><b>Shopping:</b> Shoes marked GH₵320 are discounted by 15%. The discount is GH₵48, so the sale price is GH₵272. A later increase from GH₵272 to GH₵300 must use GH₵272 as its original amount.</p>'),
+      lesson('<p><b>Build a balanced budget:</b> List income, then essential costs such as food, transport, utilities and school expenses. Add the costs and subtract them from the available amount. Compare the result with the planned budget and express any overrun or saving as a percentage of the original budget.</p>'),
+      lesson('<p><b>Common mistake:</b> Do not divide by the new amount when finding percentage change. A 20% increase followed by a 20% decrease does not return to the starting value because the second percentage uses a different base.</p>'),
+      { who: 'd', vis: 'demon', text: 'I will swap your starting values and hide your budget overrun. Protect every cedi with careful reasoning!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('A utility bill rises from GH₵240 to GH₵276. What is the percentage increase?', ['15%', '12%', '36%', '10%'], '36 ÷ 240 × 100 = 15%.'),
+      question('A price falls from GH₵13.20 to GH₵12.50. What is the percentage decrease to 2 decimal places?', ['5.30%', '5.60%', '0.70%', '4.90%'], '0.70 ÷ 13.20 × 100 ≈ 5.30%.'),
+      question('A class budget of GH₵1,200 increases by 12%. What is the new budget?', ['GH₵1,344', 'GH₵1,212', 'GH₵1,320', 'GH₵1,056'], '12% of 1,200 is 144; the new budget is GH₵1,344.'),
+      question('A GH₵320 item is discounted by 15%. What is the sale price?', ['GH₵272', 'GH₵305', 'GH₵48', 'GH₵288'], '15% of 320 is 48; 320 − 48 = GH₵272.')
+    ]
+  }
+
 ];
