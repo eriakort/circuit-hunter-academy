@@ -53,13 +53,13 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('counts the expression mission only in its matching SHS 1 algebra sub-strand', () => {
     const algebra = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Applications of Expressions, Equations and Inequalities');
     expect(algebra?.status).toBe('partial');
-    expect(algebra?.pilotMissionIds).toEqual(['gh-core-ss1-algebraic-expressions', 'gh-core-ss1-linear-equations-inequalities', 'gh-core-ss1-quadratic-factorisation-algebraic-fractions', 'gh-core-ss1-algebraic-thinking-mastery']);
+    expect(algebra?.pilotMissionIds).toEqual(['gh-core-ss1-algebraic-expressions', 'gh-core-ss1-linear-equations-inequalities', 'gh-core-ss1-quadratic-factorisation-algebraic-fractions', 'gh-core-ss1-algebraic-thinking-mastery', 'gh-core-ss1-45-indicator-diagnostic']);
   });
 
   test('counts both Patterns and Relationships missions in their matching sub-strand', () => {
     const patterns = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Patterns and Relationships');
     expect(patterns?.status).toBe('partial');
-    expect(patterns?.pilotMissionIds).toEqual(['gh-core-ss1-patterns-functions', 'gh-core-ss1-straight-lines-distance', 'gh-core-ss1-patterns-relationships-mastery']);
+    expect(patterns?.pilotMissionIds).toEqual(['gh-core-ss1-patterns-functions', 'gh-core-ss1-straight-lines-distance', 'gh-core-ss1-patterns-relationships-mastery', 'gh-core-ss1-45-indicator-diagnostic']);
     expect(patterns?.learningIndicators).toBe(4);
   });
 
@@ -77,7 +77,7 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('counts the spatial sense mission only in its matching Geometry Around Us sub-strand', () => {
     const spatial = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Spatial Sense');
     expect(spatial?.status).toBe('partial');
-    expect(spatial?.pilotMissionIds).toEqual(['gh-core-ss1-spatial-sense', 'gh-core-ss1-spatial-sense-field-challenge']);
+    expect(spatial?.pilotMissionIds).toEqual(['gh-core-ss1-spatial-sense', 'gh-core-ss1-spatial-sense-field-challenge', 'gh-core-ss1-45-indicator-diagnostic']);
   });
 
 
@@ -91,7 +91,7 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('counts vectors only in the matching Geometry Around Us Measurement sub-strand', () => {
     const measurement = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Measurement');
     expect(measurement?.status).toBe('partial');
-    expect(measurement?.pilotMissionIds).toEqual(['gh-core-ss1-vectors-bearings', 'gh-core-ss1-trigonometry', 'gh-core-ss1-perimeter-area', 'gh-core-ss1-prism-volume', 'gh-core-ss1-measurement-mastery-challenge']);
+    expect(measurement?.pilotMissionIds).toEqual(['gh-core-ss1-vectors-bearings', 'gh-core-ss1-trigonometry', 'gh-core-ss1-perimeter-area', 'gh-core-ss1-prism-volume', 'gh-core-ss1-measurement-mastery-challenge', 'gh-core-ss1-45-indicator-diagnostic']);
     expect(measurement?.learningIndicators).toBe(9);
   });
 
@@ -113,7 +113,7 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('counts the first Statistical Reasoning mission only in its matching data sub-strand', () => {
     const statistics = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Statistical Reasoning and Its Application in Real Life');
     expect(statistics?.status).toBe('partial');
-    expect(statistics?.pilotMissionIds).toEqual(['gh-core-ss1-statistical-reasoning-data-types', 'gh-core-ss1-statistical-data-collection-methods', 'gh-core-ss1-statistical-data-organisation-presentation', 'gh-core-ss1-statistical-averages-inference', 'gh-core-ss1-school-community-data-project', 'gh-core-ss1-statistical-investigation-mastery']);
+    expect(statistics?.pilotMissionIds).toEqual(['gh-core-ss1-statistical-reasoning-data-types', 'gh-core-ss1-statistical-data-collection-methods', 'gh-core-ss1-statistical-data-organisation-presentation', 'gh-core-ss1-statistical-averages-inference', 'gh-core-ss1-school-community-data-project', 'gh-core-ss1-statistical-investigation-mastery', 'gh-core-ss1-45-indicator-diagnostic']);
     expect(statistics?.learningIndicators).toBe(8);
   });
 
@@ -121,14 +121,14 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('counts real-number properties only in the Real Number System sub-strand', () => {
     const realNumbers = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Real Number System');
     expect(realNumbers?.status).toBe('partial');
-    expect(realNumbers?.pilotMissionIds).toEqual(['gh-core-ss1-number-sets', 'gh-core-ss1-real-number-properties', 'gh-core-ss1-sets-surveys', 'gh-core-ss1-real-number-mastery-challenge']);
+    expect(realNumbers?.pilotMissionIds).toEqual(['gh-core-ss1-number-sets', 'gh-core-ss1-real-number-properties', 'gh-core-ss1-sets-surveys', 'gh-core-ss1-real-number-mastery-challenge', 'gh-core-ss1-45-indicator-diagnostic']);
     expect(realNumbers?.learningIndicators).toBe(6);
   });
 
   test('counts the probability mission only in the Probability/Chance sub-strand', () => {
     const probability = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Probability/Chance');
     expect(probability?.status).toBe('partial');
-    expect(probability?.pilotMissionIds).toEqual(['gh-core-ss1-probability-chance', 'gh-core-ss1-probability-practice-lab']);
+    expect(probability?.pilotMissionIds).toEqual(['gh-core-ss1-probability-chance', 'gh-core-ss1-probability-practice-lab', 'gh-core-ss1-45-indicator-diagnostic']);
     expect(probability?.learningIndicators).toBe(3);
   });
 

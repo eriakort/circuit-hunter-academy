@@ -334,4 +334,15 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(mastery?.note).toContain('without claiming additional curriculum coverage');
   });
 
+  test('maps the integrated diagnostic to all SHS 1 standards and 45 indicator entries', () => {
+    const diagnostic = getGhanaMissionAlignment('gh-core-ss1-45-indicator-diagnostic');
+    expect(diagnostic?.curriculumYear).toBe('SHS 1');
+    expect(diagnostic?.contentStandardIds).toHaveLength(16);
+    expect(diagnostic?.learningIndicatorIds).toHaveLength(45);
+    expect(diagnostic?.learningIndicatorIds).toContain('1.4.3.LI.2');
+    expect(diagnostic?.printedPages).toEqual([24, 155]);
+    expect(diagnostic?.note).toContain('45 SHS 1 indicator entries');
+    expect(diagnostic?.note).toContain('does not change official curriculum totals');
+  });
+
 });
