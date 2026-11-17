@@ -244,7 +244,19 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [44, 46],
     alignment: 'direct',
     note: 'Covers fraction-decimal connections, conversion to percentages, rational-number operations and word problems, positive rational numbers raised to whole-number powers, rounding to decimal places and significant figures, and additive and multiplicative inverses of fractions.'
-  }
+  },
+  {
+    missionId: 'gh-core-ss1-quadratic-factorisation-algebraic-fractions',
+    curriculumYear: 'SHS 1',
+    strand: '2 · Algebraic Reasoning',
+    subStrand: '1 · Applications of Expressions, Equations and Inequalities',
+    contentStandardIds: ['1.2.1.CS.1'],
+    learningOutcomeIds: ['1.2.1.LO.1'],
+    learningIndicatorIds: ['1.2.1.LI.2', '1.2.1.LI.3', '1.2.1.LI.4'],
+    printedPages: [57, 61],
+    alignment: 'direct',
+    note: 'Covers factorisation of quadratic trinomials, recognition and use of perfect-square identities including the difference of two squares, and operations on simple algebraic fractions with monomial and binomial denominators. It also teaches the conditions under which a fraction is zero or undefined. Linear equations and inequalities are mapped separately.'
+  },
 ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>

@@ -53,7 +53,7 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('counts the expression mission only in its matching SHS 1 algebra sub-strand', () => {
     const algebra = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Applications of Expressions, Equations and Inequalities');
     expect(algebra?.status).toBe('partial');
-    expect(algebra?.pilotMissionIds).toEqual(['gh-core-ss1-algebraic-expressions', 'gh-core-ss1-linear-equations-inequalities']);
+    expect(algebra?.pilotMissionIds).toEqual(['gh-core-ss1-algebraic-expressions', 'gh-core-ss1-linear-equations-inequalities', 'gh-core-ss1-quadratic-factorisation-algebraic-fractions']);
   });
 
   test('counts the spatial sense mission only in its matching Geometry Around Us sub-strand', () => {
