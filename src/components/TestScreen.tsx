@@ -13,7 +13,8 @@ import { L, shuffle, esc, U } from '../helpers';
 import { speakItalian } from '../speech/speechEngine';
 
 export const TestScreen: React.FC = () => {
-  const { state, addXP, goToView } = useGame();
+  const { state, addXP, goToView, curriculumProfile } = useGame();
+  const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
   const { lang, subject, name } = state;
   const curSub = subject || 'cs';
   const activeSubject = SUBJECTS.find(item => item.id === curSub) || SUBJECTS[0];
@@ -37,7 +38,7 @@ export const TestScreen: React.FC = () => {
   const [selectedOptIdx, setSelectedOptIdx] = useState<number | null>(null);
   const [showFormulaModal, setShowFormulaModal] = useState(false);
   const [formulaModalSearch, setFormulaModalSearch] = useState('');
-  const [modalSubject, setModalSubject] = useState<string>(curSub);
+  const [modalSubject, setModalSubject] = useState<string>(isGhana ? 'math' : curSub);
 
   const selectedCategory = useMemo(() => {
     return categories.find(c => c.id === selectedCatId) || categories[0];
@@ -537,7 +538,11 @@ export const TestScreen: React.FC = () => {
 
             {/* Subject Selector Tabs in Modal */}
             <div className="row" style={{ gap: '6px', marginBottom: '12px', overflowX: 'auto' }}>
-              {[
+              {(isGhana ? [
+                { id: 'math', name: ['Number & Algebra', 'Number & Algebra'] },
+                { id: 'math10', name: ['Surds, Quadratics & Probability', 'Surds, Quadratics & Probability'] },
+                { id: 'math11', name: ['Functions & Trigonometry', 'Functions & Trigonometry'] }
+              ] : [
                 { id: 'all', name: ['All', 'Tutte'] },
                 { id: 'math', name: ['Maths', 'Matematica'] },
                 { id: 'math10', name: ['Math 10 (L2)', 'Mat. 2°'] },
@@ -549,7 +554,7 @@ export const TestScreen: React.FC = () => {
                 { id: 'cs', name: ['CS', 'Informatica'] },
                 { id: 'science', name: ['Science', 'Scienze'] },
                 { id: 'math5', name: ['Maths (Grade 5)', 'Matematica (5ª)'] }
-              ].map(s => (
+              ]).map(s => (
                 <button
                   key={s.id}
                   type="button"
@@ -573,6 +578,7 @@ export const TestScreen: React.FC = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {FORMULA_CARDS.filter(c => {
                 if (modalSubject !== 'all' && c.subject !== modalSubject) return false;
+                if (isGhana && !['math', 'math10', 'math11'].includes(c.subject)) return false;
                 if (!formulaModalSearch) return true;
                 const q = formulaModalSearch.toLowerCase();
                 return (

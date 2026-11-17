@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../context/GameContext';
 import { getVisualHtml } from '../data/visuals';
+import { ARCS } from '../data/gameData';
 import { runMiniGame } from '../data/miniGames';
 import { L, CODE, fill, demonSVG, SENSEI, YOU, esc, U, GUIDE } from '../helpers';
 import { LearningPathway } from './LearningPathway';
@@ -217,8 +218,10 @@ export const MissionScreen: React.FC = () => {
       <div className="mhead">
         <div>
           <div className="eyebrow">
-            {L(U.arc, lang)} {currentMission.arc + 1} · § {currentMission.sec} · pp.{' '}
-            {currentMission.pages}
+            {isGhana
+              ? `Topic ${ARCS[currentMission.arc]?.n ?? currentMission.arc + 1} · § ${currentMission.sec} · ${currentMission.pages}`
+              : <>{L(U.arc, lang)} {currentMission.arc + 1} · § {currentMission.sec} · pp.{' '}
+            {currentMission.pages}</>}
           </div>
           <h2>{L(currentMission.title, lang)}</h2>
         </div>

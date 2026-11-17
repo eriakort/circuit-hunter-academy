@@ -3587,7 +3587,7 @@ export const GHANA_SS1_INDICATOR_BLUEPRINT = INDICATORS.map((item, questionIndex
 
 const lesson = (en: string, _it: string) => ({
   who: 's' as const,
-  vis: 'infowords',
+  vis: 'ghmath',
   text: `<p>${en}</p>`
 });
 

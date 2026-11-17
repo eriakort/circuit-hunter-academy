@@ -1,0 +1,51 @@
+import { expect, test, type Page } from '@playwright/test';
+
+const enterGhana = async (page: Page, grade: 'grade9' | 'grade10' | 'grade11', subject: string) => {
+  await page.goto('/');
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ }).click();
+  await page.locator(`.grade-card[data-grade="${grade}"]`).click();
+  await page.locator(`.subjcard[data-s="${subject}"]`).click();
+  if (await page.locator('#nm').count()) {
+    await page.locator('#nm').fill('Kofi');
+    await page.locator('#regf button').first().click();
+  }
+};
+
+test('Ghana maths lessons show maths visuals, not computer science, and offer English only', async ({ page }) => {
+  await enterGhana(page, 'grade9', 'ghcoremath');
+  await expect(page.locator('#lIT')).toHaveCount(0);
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('.ghmath-visual')).toContainText('Numbers for Everyday Life');
+  await expect(page.locator('main')).not.toContainText(/INFORMATIC/i);
+  await expect(page.locator('.eyebrow').first()).toContainText('Topic 1');
+});
+
+test('Ghana SHS 2 lessons use the strand visual too', async ({ page }) => {
+  await enterGhana(page, 'grade10', 'ghcoremath2');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('.ghmath-visual')).toBeVisible();
+  await expect(page.locator('main')).not.toContainText(/INFORMATIC/i);
+});
+
+test('Ghana Formula Book, Codex and Test only show English maths content', async ({ page }) => {
+  await enterGhana(page, 'grade9', 'ghcoremath');
+
+  await page.locator('#hFormula').click();
+  const main = page.locator('main');
+  await expect(main).toContainText('Number, Algebra & Sets');
+  for (const banned of ['Computer Science', 'Physics', 'Italian Studies', 'Chemistry', 'Grade 5', 'Vera solo']) {
+    await expect(main).not.toContainText(banned);
+  }
+  await page.getByRole('button', { name: /Interactive Maths Lab/ }).click();
+  await expect(main).not.toContainText('0101₂');
+  await expect(main).not.toContainText('Essere vs Avere');
+
+  await page.locator('#hCodex').click();
+  await expect(main).not.toContainText(/Italian|Italiano/);
+  await expect(page.getByTestId('codex-empty')).toBeVisible();
+
+  await page.locator('#hTest').click();
+  await expect(main).toContainText('All Core Mathematics Topics');
+});

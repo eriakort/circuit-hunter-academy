@@ -1,7 +1,7 @@
 import type { ArcInfo, Mission, UnitInfo } from '../types';
 
 const question = (q: string, a: string[], why: string) => ({ q, a, why });
-const lesson = (text: string) => ({ who: 's' as const, vis: 'infowords', text });
+const lesson = (text: string) => ({ who: 's' as const, vis: 'ghmath', text });
 
 export const GHANA_CORE_MATH_SS2_PROBABILITY_UNIT: UnitInfo = {
   title: 'Making Sense of and Using Data · Probability and Chance',

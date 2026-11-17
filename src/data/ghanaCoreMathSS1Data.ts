@@ -39,7 +39,51 @@ export const GHANA_CORE_MATH_SS1_UNIT: UnitInfo = {
   subject: 'ghcoremath'
 };
 
-export const GHANA_CORE_MATH_SS1_ARCS: ArcInfo[] = [
+/**
+ * Each SS1 module contributes its own arcs and missions. Module files are not
+ * consistent about mission.arc: some use a module-local index (0, 1, 2 …) and
+ * some an index into the combined SS1 arc list. placeModuleMissions() maps both
+ * onto the combined list so every mission sits under its own module's topic.
+ */
+const GHANA_SS1_MODULES: { arcs: ArcInfo[]; missions: Mission[] }[] = [
+  { arcs: GHANA_SS1_PATTERNS_ARCS, missions: GHANA_SS1_PATTERNS_MISSIONS },
+  { arcs: GHANA_SS1_STRAIGHT_LINES_ARCS, missions: GHANA_SS1_STRAIGHT_LINES_MISSIONS },
+  { arcs: GHANA_SS1_SPATIAL_ARCS, missions: GHANA_SS1_SPATIAL_MISSIONS },
+  { arcs: GHANA_SS1_MEASUREMENT_ARCS, missions: GHANA_SS1_MEASUREMENT_MISSIONS },
+  { arcs: GHANA_SS1_TRIGONOMETRY_ARCS, missions: GHANA_SS1_TRIGONOMETRY_MISSIONS },
+  { arcs: GHANA_SS1_PERIMETER_AREA_ARCS, missions: GHANA_SS1_PERIMETER_AREA_MISSIONS },
+  { arcs: GHANA_SS1_PRISM_VOLUME_ARCS, missions: GHANA_SS1_PRISM_VOLUME_MISSIONS },
+  { arcs: GHANA_SS1_STATISTICS_ARCS, missions: GHANA_SS1_STATISTICS_MISSIONS },
+  { arcs: GHANA_SS1_STATISTICS_REASONING_ARCS, missions: GHANA_SS1_STATISTICS_REASONING_MISSIONS },
+  { arcs: GHANA_SS1_PROBABILITY_ARCS, missions: GHANA_SS1_PROBABILITY_MISSIONS },
+  { arcs: GHANA_SS1_REAL_NUMBER_ARCS, missions: GHANA_SS1_REAL_NUMBER_MISSIONS },
+  { arcs: GHANA_SS1_NUMBER_MASTERY_ARCS, missions: GHANA_SS1_NUMBER_MASTERY_MISSIONS },
+  { arcs: GHANA_SS1_PROPORTIONAL_ARCS, missions: GHANA_SS1_PROPORTIONAL_MISSIONS },
+  { arcs: GHANA_SS1_ALGEBRA_ARCS, missions: GHANA_SS1_ALGEBRA_MISSIONS },
+  { arcs: GHANA_SS1_ALGEBRA_ADVANCED_ARCS, missions: GHANA_SS1_ALGEBRA_ADVANCED_MISSIONS },
+  { arcs: GHANA_SS1_MASTERY_ARCS, missions: GHANA_SS1_MASTERY_MISSIONS },
+  { arcs: GHANA_SS1_PROPORTIONAL_MASTERY_ARCS, missions: GHANA_SS1_PROPORTIONAL_MASTERY_MISSIONS },
+  { arcs: GHANA_SS1_ALGEBRAIC_THINKING_MASTERY_ARCS, missions: GHANA_SS1_ALGEBRAIC_THINKING_MASTERY_MISSIONS },
+  { arcs: GHANA_SS1_INDICATOR_MASTERY_ARCS, missions: GHANA_SS1_INDICATOR_MASTERY_MISSIONS },
+];
+
+const GHANA_SS1_BASE_ARC_COUNT = 6;
+
+const placeModuleMissions = (): Mission[] => {
+  let start = GHANA_SS1_BASE_ARC_COUNT;
+  return GHANA_SS1_MODULES.flatMap(module => {
+    const moduleStart = start;
+    start += module.arcs.length;
+    return module.missions.map(mission => {
+      const isLocal = mission.arc >= 0 && mission.arc < module.arcs.length;
+      const isCombined = mission.arc >= moduleStart && mission.arc < moduleStart + module.arcs.length;
+      const arc = module.arcs.length === 1 ? moduleStart : isCombined ? mission.arc : isLocal ? moduleStart + mission.arc : moduleStart;
+      return { ...mission, arc };
+    });
+  });
+};
+
+const GHANA_SS1_ARC_LIST: ArcInfo[] = [
   { n: 1, unit: 0, subject: 'ghcoremath', title: 'Number Sets and Ordering', pages: 'NaCCA SHS 1 · Pilot' },
   { n: 2, unit: 0, subject: 'ghcoremath', title: 'Fractions, Decimals and Percentages', pages: 'NaCCA SHS 1 · Pilot' },
   { n: 3, unit: 0, subject: 'ghcoremath', title: 'Ratio, Rate and Proportion', pages: 'NaCCA SHS 1 · Pilot' },
@@ -47,26 +91,12 @@ export const GHANA_CORE_MATH_SS1_ARCS: ArcInfo[] = [
   { n: 5, unit: 0, subject: 'ghcoremath', title: 'Financial Mathematics', pages: 'NaCCA SHS 1 · pp. 50–52' },
   { n: 6, unit: 0, subject: 'ghcoremath', title: 'Algebraic Expressions', pages: 'NaCCA SHS 1 · pp. 57–58' },
 
-  ...GHANA_SS1_PATTERNS_ARCS.map(arc => ({ ...arc, n: 7 })),
-  ...GHANA_SS1_STRAIGHT_LINES_ARCS.map(arc => ({ ...arc, n: 7 })),
-  ...GHANA_SS1_SPATIAL_ARCS.map(arc => ({ ...arc, n: 8 })),
-  ...GHANA_SS1_MEASUREMENT_ARCS.map(arc => ({ ...arc, n: 9 })),
-  ...GHANA_SS1_TRIGONOMETRY_ARCS.map(arc => ({ ...arc, n: 9 })),
-  ...GHANA_SS1_PERIMETER_AREA_ARCS.map(arc => ({ ...arc, n: 9 })),
-  ...GHANA_SS1_PRISM_VOLUME_ARCS.map(arc => ({ ...arc, n: 9 })),
-  ...GHANA_SS1_STATISTICS_ARCS.map(arc => ({ ...arc, n: 11 })),
-  ...GHANA_SS1_STATISTICS_REASONING_ARCS.map(arc => ({ ...arc, n: 11 })),
-  ...GHANA_SS1_PROBABILITY_ARCS.map(arc => ({ ...arc, n: 12 })),
-  ...GHANA_SS1_REAL_NUMBER_ARCS.map(arc => ({ ...arc, n: 13 })),
-  ...GHANA_SS1_NUMBER_MASTERY_ARCS.map(arc => ({ ...arc, n: 13 })),
-  ...GHANA_SS1_PROPORTIONAL_ARCS.map(arc => ({ ...arc })),
-  ...GHANA_SS1_ALGEBRA_ARCS.map(arc => ({ ...arc })),
-  ...GHANA_SS1_ALGEBRA_ADVANCED_ARCS.map(arc => ({ ...arc })),
-  ...GHANA_SS1_MASTERY_ARCS.map(arc => ({ ...arc })),
-  ...GHANA_SS1_PROPORTIONAL_MASTERY_ARCS.map(arc => ({ ...arc })),
-  ...GHANA_SS1_ALGEBRAIC_THINKING_MASTERY_ARCS.map(arc => ({ ...arc })),
-  ...GHANA_SS1_INDICATOR_MASTERY_ARCS.map(arc => ({ ...arc })),
+  ...GHANA_SS1_MODULES.flatMap(module => module.arcs)
 ];
+
+/** Topics are numbered 1, 2, 3 … in the order learners meet them. */
+export const GHANA_CORE_MATH_SS1_ARCS: ArcInfo[] = GHANA_SS1_ARC_LIST.map((arc, index) => ({ ...arc, n: index + 1 }));
+
 
 const question = (prompt: string, answers: string[], explanation: string) => ({
   q: prompt,
@@ -74,7 +104,7 @@ const question = (prompt: string, answers: string[], explanation: string) => ({
   why: explanation
 });
 
-const lesson = (text: string) => ({ who: 's' as const, vis: 'infowords', text });
+const lesson = (text: string) => ({ who: 's' as const, vis: 'ghmath', text });
 
 export const GHANA_CORE_MATH_SS1_MISSIONS: Mission[] = [
   {
@@ -241,23 +271,5 @@ export const GHANA_CORE_MATH_SS1_MISSIONS: Mission[] = [
       question('Expand 2(x + 6).', ['2x + 12', '2x + 6', 'x + 12', '2x + 8'], 'Multiply both terms inside the bracket by 2.')
     ]
   },
-  ...GHANA_SS1_PATTERNS_MISSIONS,
-  ...GHANA_SS1_STRAIGHT_LINES_MISSIONS,
-  ...GHANA_SS1_SPATIAL_MISSIONS,
-  ...GHANA_SS1_MEASUREMENT_MISSIONS,
-  ...GHANA_SS1_TRIGONOMETRY_MISSIONS,
-  ...GHANA_SS1_PERIMETER_AREA_MISSIONS,
-  ...GHANA_SS1_PRISM_VOLUME_MISSIONS,
-  ...GHANA_SS1_STATISTICS_MISSIONS,
-  ...GHANA_SS1_STATISTICS_REASONING_MISSIONS,
-  ...GHANA_SS1_PROBABILITY_MISSIONS,
-  ...GHANA_SS1_REAL_NUMBER_MISSIONS,
-  ...GHANA_SS1_NUMBER_MASTERY_MISSIONS,
-  ...GHANA_SS1_PROPORTIONAL_MISSIONS,
-  ...GHANA_SS1_ALGEBRA_MISSIONS,
-  ...GHANA_SS1_ALGEBRA_ADVANCED_MISSIONS,
-  ...GHANA_SS1_MASTERY_MISSIONS,
-  ...GHANA_SS1_PROPORTIONAL_MASTERY_MISSIONS,
-  ...GHANA_SS1_ALGEBRAIC_THINKING_MASTERY_MISSIONS,
-  ...GHANA_SS1_INDICATOR_MASTERY_MISSIONS,
+  ...placeModuleMissions()
 ];
