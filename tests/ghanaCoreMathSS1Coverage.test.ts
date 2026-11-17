@@ -80,8 +80,15 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('counts vectors only in the matching Geometry Around Us Measurement sub-strand', () => {
     const measurement = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Measurement');
     expect(measurement?.status).toBe('partial');
-    expect(measurement?.pilotMissionIds).toEqual(['gh-core-ss1-vectors-bearings', 'gh-core-ss1-trigonometry', 'gh-core-ss1-perimeter-area', 'gh-core-ss1-prism-volume']);
+    expect(measurement?.pilotMissionIds).toEqual(['gh-core-ss1-vectors-bearings', 'gh-core-ss1-trigonometry', 'gh-core-ss1-perimeter-area', 'gh-core-ss1-prism-volume', 'gh-core-ss1-measurement-mastery-challenge']);
     expect(measurement?.learningIndicators).toBe(9);
+  });
+
+  test('includes integrated graduated practice across all four Measurement indicators', () => {
+    const mission = GHANA_CORE_MATH_SS1_MISSIONS.find(item => item.id === 'gh-core-ss1-measurement-mastery-challenge');
+    expect(mission).toBeDefined();
+    expect(mission?.quiz).toHaveLength(8);
+    expect(mission?.scenes.length).toBeGreaterThanOrEqual(9);
   });
 
   test('counts the first Statistical Reasoning mission only in its matching data sub-strand', () => {
