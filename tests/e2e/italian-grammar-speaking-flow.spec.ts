@@ -12,6 +12,10 @@ async function startItalianCourse(page: Page) {
   await page.locator('#nm').fill('Italian Grammar Tester');
   await page.locator('#regf button[type="submit"]').click();
   await expect(page.locator('.learning-dashboard')).toBeVisible();
+  await page.locator('#lIT').click();
+  await expect(page.locator('#hItLab')).toContainText('Laboratorio');
+  await page.locator('#lEN').click();
+  await expect(page.locator('#hItLab')).toContainText('Speaking Lab');
 }
 
 test('Italian speaking, adaptive grammar revision and oral trial share CEFR mastery progress', async ({ page }) => {

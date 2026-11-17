@@ -43,13 +43,14 @@ test('Ghana SHS 1 dashboard shows all 45 indicators and their initial states', a
   await expect(page.locator('.mhead h2')).toContainText('The 45-Indicator Mastery Expedition');
 });
 
-test('Ghana SHS 1 readiness dashboard localizes its labels into Italian', async ({ page }) => {
+test('Ghana SHS 1 readiness dashboard remains English-only', async ({ page }) => {
   await startGhanaCoreMath(page);
-  await page.locator('#lIT').click();
 
-  await expect(page.getByRole('heading', { name: 'Prontezza di matematica SHS 1' })).toBeVisible();
+  await expect(page.locator('#lEN')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('#lIT')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'SHS 1 Mathematics readiness' })).toBeVisible();
   await expect(page.getByTestId('ghana-readiness-not-assessed')).toHaveText('45');
-  await expect(page.getByRole('button', { name: 'Avvia la verifica dei 45 indicatori' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Take 45-indicator diagnostic' })).toBeVisible();
 });
 
 
