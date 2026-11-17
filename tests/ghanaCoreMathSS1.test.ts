@@ -70,7 +70,7 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
     expect(text).toContain('The Fraction Foundry');
     expect(text).toContain('The Household Budget Guardian');
     expect(text).toContain('percentage increase');
-    expect(text).toContain('utility bills');
+    expect(text).toContain('Utility bills');
     expect(text).toContain('exchange rates');
     expect(text).toContain('additive inverse');
     expect(text).toContain('significant figures');
