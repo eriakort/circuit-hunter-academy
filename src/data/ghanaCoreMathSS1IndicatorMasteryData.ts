@@ -681,34 +681,34 @@ const INDICATORS = [
       "Relazioni, funzioni e regole di corrispondenza"
     ],
     "explanation": [
-      "A function assigns exactly one output to each input. Use mapping diagrams, tables and patterns to identify rules.",
-      "Una funzione assegna esattamente un risultato a ogni valore in ingresso. Usa diagrammi, tabelle e schemi per individuare le regole."
+      "Distinguish a relation from a function and use input-output patterns to determine a mapping rule.",
+      "Distingui una relazione da una funzione e usa schemi ingresso-uscita per determinare una regola di corrispondenza."
     ],
     "q": [
-      "A mapping sends input 2 to both 5 and 7. Can this mapping be a function?",
-      "Una corrispondenza associa all'ingresso 2 sia 5 sia 7. Può essere una funzione?"
+      "A mapping sends 1 to 4, 2 to 7 and 3 to 10. Which statement is correct?",
+      "Una corrispondenza associa 1 a 4, 2 a 7 e 3 a 10. Quale affermazione è corretta?"
     ],
     "a": [
       [
-        "No, because one input has two different outputs.",
-        "No, perché un ingresso ha due risultati diversi."
+        "It is a function with rule y = 3x + 1.",
+        "È una funzione con regola y = 3x + 1."
       ],
       [
-        "Yes, every relation is a function.",
-        "Sì, ogni relazione è una funzione."
+        "It is not a function because every output is different.",
+        "Non è una funzione perché ogni risultato è diverso."
       ],
       [
-        "Yes, because the outputs are positive.",
-        "Sì, perché i risultati sono positivi."
+        "It is a function with rule y = x + 3.",
+        "È una funzione con regola y = x + 3."
       ],
       [
-        "No, because functions cannot use whole numbers.",
-        "No, perché le funzioni non possono usare numeri interi."
+        "It is not a function because the inputs are positive.",
+        "Non è una funzione perché gli ingressi sono positivi."
       ]
     ],
     "why": [
-      "A function must assign exactly one output to each input. One input mapped to two outputs fails this rule.",
-      "Una funzione deve assegnare un solo risultato a ogni ingresso. Un ingresso associato a due risultati non rispetta questa regola."
+      "Each input has exactly one output, and the outputs follow y = 3x + 1.",
+      "Ogni ingresso ha un solo risultato e i risultati seguono la regola y = 3x + 1."
     ]
   },
   {
@@ -718,38 +718,38 @@ const INDICATORS = [
     "contentStandardId": "1.2.2.CS.1",
     "learningIndicatorId": "1.2.2.LI.2",
     "title": [
-      "Exponential mapping patterns",
-      "Schemi di corrispondenza esponenziale"
+      "Graph and interpret linear functions",
+      "Rappresentare e interpretare funzioni lineari"
     ],
     "explanation": [
-      "Recognise exponential patterns in which a quantity is multiplied by the same factor at each step, and use the rule to predict later values.",
-      "Riconosci gli schemi esponenziali in cui una quantità viene moltiplicata per lo stesso fattore a ogni passaggio e usa la regola per prevedere i valori successivi."
+      "Recognise that a linear function graphs as a straight line and interpret its gradient and y-intercept.",
+      "Riconosci che il grafico di una funzione lineare è una retta e interpreta il gradiente e l'intercetta sull'asse y."
     ],
     "q": [
-      "The sequence is 3, 9, 27, 81. What is the next term?",
-      "La sequenza è 3, 9, 27, 81. Qual è il termine successivo?"
+      "For the linear function y = 2x + 3, where does its graph cross the y-axis?",
+      "Per la funzione lineare y = 2x + 3, in quale punto il grafico incontra l'asse y?"
     ],
     "a": [
       [
-        "243",
-        "243"
+        "At (0, 3)",
+        "Nel punto (0, 3)"
       ],
       [
-        "162",
-        "162"
+        "At (3, 0)",
+        "Nel punto (3, 0)"
       ],
       [
-        "108",
-        "108"
+        "At (0, 2)",
+        "Nel punto (0, 2)"
       ],
       [
-        "324",
-        "324"
+        "At (2, 0)",
+        "Nel punto (2, 0)"
       ]
     ],
     "why": [
-      "Each term is multiplied by 3. Therefore 81 × 3 = 243.",
-      "Ogni termine viene moltiplicato per 3. Quindi 81 × 3 = 243."
+      "The y-intercept is c = 3, so the line crosses the y-axis when x = 0 at (0, 3).",
+      "L'intercetta y è c = 3, quindi la retta incontra l'asse y quando x = 0, nel punto (0, 3)."
     ]
   },
   {
@@ -1251,38 +1251,38 @@ const INDICATORS = [
     "contentStandardId": "1.3.2.CS.3",
     "learningIndicatorId": "1.3.2.LI.1",
     "title": [
-      "Measurement referents and unit conversions",
-      "Riferimenti di misura e conversioni di unità"
+      "SI and imperial area referents",
+      "Riferimenti per le misure di area SI e imperiali"
     ],
     "explanation": [
-      "Choose sensible referents and convert units accurately before comparing or calculating measurements.",
-      "Scegli riferimenti di misura sensati e converti correttamente le unità prima di confrontare o calcolare misure."
+      "Identify and compare familiar referents for area measurements, such as a square metre and a square foot, before estimating a surface.",
+      "Individua e confronta riferimenti familiari per le misure di area, come il metro quadrato e il piede quadrato, prima di stimare una superficie."
     ],
     "q": [
-      "Convert 2.4 metres to centimetres.",
-      "Converti 2,4 metri in centimetri."
+      "Which object is a useful real-world referent for an area of 1 m²?",
+      "Quale oggetto è un riferimento concreto utile per un'area di 1 m²?"
     ],
     "a": [
       [
-        "240 cm",
-        "240 cm"
+        "A square measuring 1 m by 1 m",
+        "Un quadrato di 1 m per 1 m"
       ],
       [
-        "24 cm",
-        "24 cm"
+        "A line segment 1 m long",
+        "Un segmento lungo 1 m"
       ],
       [
-        "2400 cm",
-        "2400 cm"
+        "A cube with edges 1 m long",
+        "Un cubo con spigoli lunghi 1 m"
       ],
       [
-        "0.24 cm",
-        "0,24 cm"
+        "A rectangle measuring 1 cm by 1 cm",
+        "Un rettangolo di 1 cm per 1 cm"
       ]
     ],
     "why": [
-      "1 metre = 100 centimetres, so 2.4 × 100 = 240 cm.",
-      "1 metro = 100 centimetri, quindi 2,4 × 100 = 240 cm."
+      "Area is measured in square units. A 1 m by 1 m square has area 1 m².",
+      "L'area si misura in unità quadrate. Un quadrato di 1 m per 1 m ha area 1 m²."
     ]
   },
   {
@@ -1532,44 +1532,44 @@ const INDICATORS = [
     ]
   },
   {
-    "id": "ss1-stats-cs2-li1",
+    "id": "ss1-stats-cs2-descriptive",
     "strand": "Making Sense of and Using Data",
     "subStrand": "Statistical Reasoning and Its Application in Real Life",
     "contentStandardId": "1.4.1.CS.2",
-    "learningIndicatorId": "1.4.1.LI.1",
+    "learningIndicatorId": "1.4.3.LI.2",
     "title": [
-      "Frequency tables for data",
-      "Tabelle di frequenza"
+      "Descriptive statistics and outliers",
+      "Statistica descrittiva e valori anomali"
     ],
     "explanation": [
-      "Organise grouped or ungrouped observations into frequency tables so the number of occurrences of each value or class is clear.",
-      "Organizza osservazioni raggruppate o non raggruppate in tabelle di frequenza, rendendo chiaro il numero di occorrenze di ogni valore o classe."
+      "Calculate and interpret mean, median and mode, and choose a measure that represents the data appropriately when extreme values are present.",
+      "Calcola e interpreta media, mediana e moda e scegli la misura che rappresenta adeguatamente i dati quando sono presenti valori estremi."
     ],
     "q": [
-      "The data are 2, 3, 2, 4, 3, 2. What is the frequency of the value 2?",
-      "I dati sono 2, 3, 2, 4, 3, 2. Qual è la frequenza del valore 2?"
+      "The values are 4, 5, 5, 6 and 30. Which average best represents a typical value when 30 is an outlier?",
+      "I valori sono 4, 5, 5, 6 e 30. Quale media rappresenta meglio un valore tipico quando 30 è un valore anomalo?"
     ],
     "a": [
       [
-        "3",
-        "3"
+        "Median = 5",
+        "Mediana = 5"
       ],
       [
-        "2",
-        "2"
+        "Mean = 10",
+        "Media aritmetica = 10"
       ],
       [
-        "1",
-        "1"
+        "Maximum = 30",
+        "Massimo = 30"
       ],
       [
-        "4",
-        "4"
+        "Range = 26",
+        "Intervallo = 26"
       ]
     ],
     "why": [
-      "The value 2 appears three times in the data set.",
-      "Il valore 2 compare tre volte nell'insieme dei dati."
+      "The median is 5 and is less affected by the outlier than the mean.",
+      "La mediana è 5 ed è meno influenzata dal valore anomalo rispetto alla media aritmetica."
     ]
   },
   {
@@ -1696,18 +1696,18 @@ const INDICATORS = [
     ]
   },
   {
-    "id": "ss1-stats-cs3-li3",
+    "id": "ss1-stats-cs2-li3",
     "strand": "Making Sense of and Using Data",
     "subStrand": "Statistical Reasoning and Its Application in Real Life",
-    "contentStandardId": "1.4.1.CS.3",
+    "contentStandardId": "1.4.1.CS.2",
     "learningIndicatorId": "1.4.1.LI.3",
     "title": [
       "Make evidence-based inferences from data",
       "Ricavare inferenze dai dati basate su prove"
     ],
     "explanation": [
-      "Use mathematical arguments to support choices and make careful inferences, recognising when sampling or data quality limits a conclusion.",
-      "Usa argomentazioni matematiche per sostenere scelte e formulare inferenze prudenti, riconoscendo quando il campionamento o la qualità dei dati limitano una conclusione."
+      "Use mathematical arguments to support personal choices and make careful inferences from everyday data, recognising limits in the evidence.",
+      "Usa argomentazioni matematiche per sostenere scelte personali e formulare inferenze prudenti dai dati quotidiani, riconoscendo i limiti delle prove."
     ],
     "q": [
       "A survey about the whole school asked only one class. What is the main limitation?",
