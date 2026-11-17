@@ -85,8 +85,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 3,
     learningIndicators: 9,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-vectors-bearings'],
-    note: 'The pilot covers the first measurement content standard on vectors and bearings. The trigonometry and perimeter/area standards remain not yet covered.'
+    pilotMissionIds: ['gh-core-ss1-vectors-bearings', 'gh-core-ss1-trigonometry'],
+    note: 'The pilot covers vectors and bearings plus the trigonometry standard: sine, cosine and tangent, special angles, calculator values, and right-triangle applications. The perimeter/area standard remains not yet covered.'
   },
   {
     strand: 'Making Sense of and Using Data',
