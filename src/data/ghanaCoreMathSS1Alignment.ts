@@ -367,7 +367,19 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Supplementary differentiated practice reinforcing the existing three Probability/Chance indicators through complete sample-space tables and tree diagrams, equally likely outcomes, complements, independent combined events, and theoretical versus experimental relative frequency. This is additional practice, not an additional curriculum indicator.'
   },
-];
+  {
+    missionId: 'gh-core-ss1-measurement-mastery-challenge',
+    curriculumYear: 'SHS 1',
+    strand: '3 · Geometry Around Us',
+    subStrand: '2 · Measurement',
+    contentStandardIds: ['1.3.2.CS.1', '1.3.2.CS.2', '1.3.2.CS.3'],
+    learningOutcomeIds: ['1.3.2.LO.1', '1.3.2.LO.2', '1.3.2.LO.3'],
+    learningIndicatorIds: ['1.3.2.LI.1', '1.3.2.LI.2', '1.3.2.LI.3', '1.3.2.LI.4'],
+    printedPages: [110, 124],
+    alignment: 'direct',
+    note: 'Integrated retrieval and transfer practice across the three existing Measurement standards: vectors and bearings, trigonometry, perimeter and area, and prism volume. The challenge reinforces indicators already taught in the focused missions; it does not claim additional curriculum coverage.'
+  },
+ ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
   GHANA_CORE_MATH_SS1_ALIGNMENT.find(item => item.missionId === missionId);
