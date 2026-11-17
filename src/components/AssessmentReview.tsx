@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Language, LearningMissionProgress, Mission } from '../types';
 import { L } from '../helpers';
+import { resolveAssessmentQuestions } from '../learningAssessment';
 
 interface AssessmentReviewProps {
   missions: Mission[];
@@ -33,7 +34,8 @@ export const AssessmentReview: React.FC<AssessmentReviewProps> = ({
       {attempts.length ? (
         <div className="assessment-review-list">
           {attempts.map(({ mission, assessment, review }) => {
-            const missed = assessment.questions.flatMap((question, index) => {
+            const reviewQuestions = resolveAssessmentQuestions(assessment, review.questionVariantIndexes);
+            const missed = reviewQuestions.flatMap((question, index) => {
               if (review.answers[index] === 0) return [];
               const conceptId = assessment.questionConceptIds?.[index];
               const concept = mission.learning?.concepts.find(item => item.id === conceptId);
@@ -77,7 +79,7 @@ export const AssessmentReview: React.FC<AssessmentReviewProps> = ({
                   )}
                   <section className="assessment-review-questions">
                     <h4>{isItalian ? 'Revisione domanda per domanda' : 'Question-by-question review'}</h4>
-                    {assessment.questions.map((question, index) => {
+                    {reviewQuestions.map((question, index) => {
                       const selected = review.answers[index];
                       const correct = selected === 0;
                       return (
