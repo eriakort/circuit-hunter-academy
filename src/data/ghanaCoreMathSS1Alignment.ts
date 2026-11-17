@@ -179,10 +179,10 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     subStrand: '1 · Statistical Reasoning and Its Application in Real Life',
     contentStandardIds: ['1.4.1.CS.2'],
     learningOutcomeIds: ['1.4.1.LO.2'],
-    learningIndicatorIds: ['1.4.1.LI.2'],
-    printedPages: [135, 138],
+    learningIndicatorIds: ['1.4.1.LI.1'],
+    printedPages: [135, 137],
     alignment: 'direct',
-    note: 'Covers organising grouped and ungrouped data in frequency tables and presenting findings with line graphs, pie charts, multiple bar graphs, infographics and appropriate digital tools, including 3D graphs/charts where available. Descriptive statistics and the separate school-community project standard are not claimed as covered.'
+    note: 'Covers organising grouped and ungrouped data in frequency tables and presenting findings with line graphs, pie charts, multiple bar graphs, infographics and appropriate digital tools, including 3D graphs/charts where available. Descriptive statistics are addressed separately.'
   }
 ,
   {
@@ -292,6 +292,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [118, 123],
     alignment: 'direct',
     note: 'Covers SI and imperial area referents and comparisons; perimeter and area estimation for circles, quadrilaterals, and regular, composite and irregular 2D shapes; area formulas for parallelograms, rhombi, kites and trapezoids; decomposition and grid estimation; and contextual perimeter/area problems with unit conversion. The separate volume-of-prisms indicator 1.3.2.LI.4 is not claimed as covered.'
+  },
+  {
+    missionId: 'gh-core-ss1-statistical-averages-inference',
+    curriculumYear: 'SHS 1',
+    strand: '4 · Making Sense of and Using Data',
+    subStrand: '1 · Statistical Reasoning and Its Application in Real Life',
+    contentStandardIds: ['1.4.1.CS.2'],
+    learningOutcomeIds: ['1.4.1.LO.2'],
+    learningIndicatorIds: ['1.4.1.LI.2', '1.4.1.LI.3'],
+    printedPages: [137, 143],
+    alignment: 'direct',
+    note: 'Covers descriptive statistics for grouped and ungrouped data (mean, median, mode, minimum, maximum and range), the effect of extreme values, choosing and justifying a representative average, and using mathematical arguments to make evidence-based inferences and decisions. The curriculum PDF contains inconsistent OCR for one indicator label; this mapping follows the SHS 1 sequence and the content under CS.2 on printed pages 137–143.'
   },
   {
     missionId: 'gh-core-ss1-prism-volume',
