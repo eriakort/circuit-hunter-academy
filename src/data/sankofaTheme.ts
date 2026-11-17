@@ -107,5 +107,6 @@ export const getSankofaRankProgress = (xp: number): number => {
   const current = getSankofaRank(xp);
   const next = getNextSankofaRank(xp);
   if (!next) return 100;
-  return Math.min(100, Math.max(0, ((Math.max(0, xp) - current.threshold) / (next.threshold - current.threshold)) * 100));
+  const safeXp = Number.isFinite(xp) ? Math.max(0, xp) : 0;
+  return Math.min(100, Math.max(0, ((safeXp - current.threshold) / (next.threshold - current.threshold)) * 100));
 };
