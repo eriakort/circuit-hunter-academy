@@ -8,8 +8,8 @@ import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
 export const GHANA_CORE_MATH_SS2_SUBJECT: SubjectInfo = {
   id: 'ghcoremath2',
   name: 'Core Mathematics · SHS 2',
-  blurb: 'Ghana NaCCA SHS 2 Core Mathematics: number systems, simultaneous equations, progressions and financial models.',
-  meta: 'Ghana NaCCA · SHS 2 · four learning missions',
+  blurb: 'Ghana NaCCA SHS 2 Core Mathematics: number systems, ratios, algebra, progressions and financial models.',
+  meta: 'Ghana NaCCA · SHS 2 · six learning missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="38" fill="none" stroke="#7bdff2" stroke-width="4"/><path d="M37 76 L54 42 L67 66 L83 42" fill="none" stroke="#ffd166" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
@@ -218,6 +218,100 @@ export const GHANA_CORE_MATH_SS2_PATTERNS_MISSIONS: Mission[] = [
       question('A car loses 20% of its value each year. What fraction of its value remains each year?', ['0.8', '1.2', '0.2', '0.08'], '100% − 20% = 80%, which is 0.8.'),
       question('A population of 200 grows by 5% in one period. What is the new population?', ['210', '205', '250', '190'], '200 × 1.05 = 210.'),
       question('Which model represents depreciation of 15% per period from initial value P?', ['P × 0.85ⁿ', 'P × 1.15ⁿ', 'P × 0.15ⁿ', 'P + 0.85n'], 'A 15% decrease leaves 85% each period, so the multiplier is 0.85.')
+    ]
+  }
+];
+
+
+// ---------------------------------------------------------------------------
+// Strand 1 · Numbers for Everyday Life · Sub-strand 2
+// Proportional Reasoning (NaCCA SHS 2 · pp. 182–185)
+// ---------------------------------------------------------------------------
+export const GHANA_CORE_MATH_SS2_PROPORTIONAL_UNIT: UnitInfo = {
+  title: 'Numbers for Everyday Life · Proportional Reasoning',
+  ch: 'SS2 · NaCCA pp. 182–185',
+  subject: 'ghcoremath2'
+};
+
+export const GHANA_CORE_MATH_SS2_PROPORTIONAL_ARCS: ArcInfo[] = [
+  {
+    n: 2,
+    unit: 0,
+    subject: 'ghcoremath2',
+    title: 'Ratios, Rates and Proportions',
+    pages: 'NaCCA SHS 2 · pp. 182–185'
+  }
+];
+
+export const GHANA_CORE_MATH_SS2_PROPORTIONAL_MISSIONS: Mission[] = [
+  {
+    id: 'gh-core-ss2-ratios-rates-proportions',
+    arc: 0,
+    sec: '2.1.2',
+    pages: 'NaCCA SHS 2 · pp. 182–183',
+    hue: 205,
+    horns: 2,
+    eyes: 3,
+    title: 'The Ratio Pathfinder',
+    topic: 'Compare quantities with ratios and rates, simplify equivalent ratios and solve proportions.',
+    demon: 'The Scale Shifter',
+    tech: 'Number Form · SHS 2 Technique: Balanced Scale',
+    scenes: [
+      lesson('<p>A <b>ratio</b> compares two quantities by division. If a club has 12 learners who play football and 8 who play basketball, the ratio of football to basketball is 12:8, which simplifies to 3:2. Keep the order clear: reversing the quantities gives 2:3.</p>'),
+      lesson('<p>A <b>rate</b> compares quantities with different units. If a bus travels 180 kilometres in 3 hours, its average speed is 180 ÷ 3 = 60 kilometres per hour (km/h). Always include the units so the meaning is clear.</p>'),
+      lesson('<p>A <b>proportion</b> states that two ratios are equal. For example, 2:3 = 4:6. If a:b = c:d, then a × d = b × c (when the terms are defined). This cross-product relationship helps you find a missing value.</p>'),
+      lesson('<p>For similar shapes, corresponding sides are in the same ratio. If a drawing uses a scale of 1:100, then 1 cm on the drawing represents 100 cm in real life. A scale drawing is useful only when you apply the same scale consistently.</p>'),
+      lesson('<p>To solve a proportion, write the two ratios in the same order, form an equation, and solve for the unknown. Check that the answer makes sense in the original situation. A ratio compares quantities; a rate also tells you how one quantity changes relative to another.</p>'),
+      { type: 'sort', title: 'Ratio, rate or proportion?', cats: [['Ratio', 'Ratio'], ['Rate', 'Rate'], ['Proportion', 'Proportion']], items: [
+        { n: 'Red beads to blue beads = 3:5', c: 0, i: 'beads' },
+        { n: 'A cyclist travels 24 km in 2 hours', c: 1, i: 'speed' },
+        { n: '2:3 = 8:12', c: 2, i: 'equal' },
+        { n: 'GH₵45 for 3 notebooks', c: 1, i: 'price' }
+      ] },
+      { who: 'd', vis: 'demon', text: 'I have stretched and squeezed every comparison. Restore the correct scale!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('Simplify the ratio 18:24.', ['3:4', '4:3', '6:8', '2:3'], 'Divide both terms by their highest common factor, 6: 18:24 = 3:4.'),
+      question('A car travels 150 km in 3 hours. What is its average speed?', ['50 km/h', '45 km/h', '150 km/h', '450 km/h'], 'Speed = distance ÷ time = 150 ÷ 3 = 50 km/h.'),
+      question('Which statement is a proportion?', ['3:4 = 6:8', '3:4 = 6:7', '3 + 4 = 6 + 8', '3 × 4 = 6 + 8'], 'Both ratios simplify to 3:4, so they are equivalent.'),
+      question('If 5 exercise books cost GH₵40, what is the cost of 8 at the same rate?', ['GH₵64', 'GH₵45', 'GH₵80', 'GH₵60'], 'One book costs 40 ÷ 5 = GH₵8; eight cost 8 × 8 = GH₵64.'),
+      question('A map scale is 1:50,000. What real distance does 2 cm represent?', ['1 km', '100 m', '10 km', '500 m'], '2 × 50,000 = 100,000 cm = 1,000 m = 1 km.')
+    ]
+  },
+  {
+    id: 'gh-core-ss2-proportional-real-world',
+    arc: 0,
+    sec: '2.1.2',
+    pages: 'NaCCA SHS 2 · pp. 184–185',
+    hue: 42,
+    horns: 1,
+    eyes: 4,
+    title: 'The Proportion Problem-Solver',
+    topic: 'Apply proportional reasoning to financial mathematics, tax, utilities, depreciation, health, sport and currency exchange.',
+    demon: 'The Market Mirage',
+    tech: 'Number Form · SHS 2 Technique: Real-World Multiplier',
+    scenes: [
+      lesson('<p>Ratios and proportions help us compare prices, plan recipes, interpret sports statistics and solve financial problems. Before calculating, identify the quantities, their units and whether the relationship is direct or inverse.</p>'),
+      lesson('<p><b>Percentages and finance:</b> a percentage is a ratio out of 100. If an item costs GH₵250 and a hypothetical 12% tax is added, the tax is 250 × 0.12 = GH₵30, so the total is GH₵280. Always distinguish the tax amount from the final price.</p>'),
+      lesson('<p><b>Utilities:</b> if 6 units of electricity cost GH₵18 at a constant unit price, then 1 unit costs GH₵3 and 10 units cost GH₵30. Real utility bills can include fixed charges and changing tariffs, so use the assumptions stated in each question.</p>'),
+      lesson('<p><b>Exchange rates:</b> multiply or divide according to the direction of the quoted rate. If a practice rate is GH₵12 for €1, then €15 is GH₵180. This is a learning example, not a live exchange quote; actual rates and fees change.</p>'),
+      lesson('<p><b>Depreciation and compound interest:</b> both use repeated percentage change. A 10% increase uses a multiplier of 1.10; a 10% decrease uses 0.90. Check whether the question asks for the change itself or the new total after the change.</p>'),
+      { type: 'sort', title: 'Choose the correct operation', cats: [['Multiply', 'Multiply'], ['Divide', 'Divide'], ['Percentage', 'Percent']], items: [
+        { n: 'Convert €20 at GH₵12 per euro', c: 0, i: 'exchange' },
+        { n: 'Find the unit price from total cost ÷ quantity', c: 1, i: 'unit-price' },
+        { n: 'Find 15% of GH₵200', c: 2, i: 'percent' },
+        { n: 'Apply a 20% decrease to a value', c: 2, i: 'decrease' }
+      ] },
+      { who: 'd', vis: 'demon', text: 'The market figures look convincing, but one hidden assumption can ruin the answer. Show your working!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('A bag costs GH₵200. What is 15% of its price?', ['GH₵30', 'GH₵15', 'GH₵185', 'GH₵215'], '15% = 0.15, and 200 × 0.15 = GH₵30.'),
+      question('At a practice exchange rate of GH₵12 for €1, how many cedis equal €8?', ['GH₵96', 'GH₵20', 'GH₵120', 'GH₵0.67'], 'Multiply euros by cedis per euro: 8 × 12 = GH₵96.'),
+      question('Six litres of water cost GH₵24 at a constant rate. What do 10 litres cost?', ['GH₵40', 'GH₵30', 'GH₵34', 'GH₵60'], 'The unit price is 24 ÷ 6 = GH₵4, so 10 litres cost GH₵40.'),
+      question('A phone worth GH₵1,000 depreciates by 10% in one year. What is its new value?', ['GH₵900', 'GH₵990', 'GH₵1,100', 'GH₵100'], 'It keeps 90% of its value: 1,000 × 0.90 = GH₵900.'),
+      question('A total bill is GH₵280 after adding a 12% tax to the original price. What was the original price?', ['GH₵250', 'GH₵268', 'GH₵240', 'GH₵300'], 'The total is 112% of the original: 280 ÷ 1.12 = GH₵250.')
     ]
   }
 ];

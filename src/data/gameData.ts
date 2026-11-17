@@ -29071,3 +29071,23 @@ MISSIONS.push(...GHANA_CORE_MATH_SS2_PATTERNS_MISSIONS.map(mission => ({
   ...mission,
   arc: ghanaCoreMathSS2PatternsArcOffset + mission.arc
 })));
+
+
+// Ghana NaCCA · SHS 2 Numbers for Everyday Life · Proportional Reasoning (pp. 182–185).
+import {
+  GHANA_CORE_MATH_SS2_PROPORTIONAL_UNIT,
+  GHANA_CORE_MATH_SS2_PROPORTIONAL_ARCS,
+  GHANA_CORE_MATH_SS2_PROPORTIONAL_MISSIONS
+} from './ghanaCoreMathSS2Data';
+const ghanaCoreMathSS2ProportionalUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_CORE_MATH_SS2_PROPORTIONAL_UNIT, subject: 'ghcoremath2' });
+const ghanaCoreMathSS2ProportionalArcOffset = ARCS.length;
+GHANA_CORE_MATH_SS2_PROPORTIONAL_ARCS.forEach(arc => ARCS.push({
+  ...arc,
+  unit: ghanaCoreMathSS2ProportionalUnitOffset,
+  subject: 'ghcoremath2'
+}));
+MISSIONS.push(...GHANA_CORE_MATH_SS2_PROPORTIONAL_MISSIONS.map(mission => ({
+  ...mission,
+  arc: ghanaCoreMathSS2ProportionalArcOffset + mission.arc
+})));

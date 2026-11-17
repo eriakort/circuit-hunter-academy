@@ -115,3 +115,46 @@ export const GHANA_CORE_MATH_SS2_PATTERNS_ALIGNMENT = {
     { missionId: 'gh-core-ss2-financial-exponential-models', topics: ['compound interest', 'depreciation', 'exponential growth', 'repeated percentage change'] }
   ]
 } as const;
+
+
+// Strand 1 · Numbers for Everyday Life · Sub-strand 2
+// Source: official NaCCA SHS 1–3 Mathematics Curriculum, printed pp. 182–185.
+export const GHANA_CORE_MATH_SS2_PROPORTIONAL_ALIGNMENT = {
+  strand: '1 · Numbers for Everyday Life',
+  subStrand: '2 · Proportional Reasoning',
+  printedPages: [182, 185],
+  contentStandards: [
+    {
+      id: '2.1.2.CS.1',
+      printedPage: 182,
+      description: 'Demonstrate knowledge and understanding of ratios, rates and proportions and use them to solve real-world problems.'
+    },
+    {
+      id: '2.1.2.CS.2',
+      printedPage: 185,
+      description: 'Demonstrate understanding of proportional reasoning using mathematical connections among ratios, rates and proportions to solve daily problems, including compound interest, tax, utilities and depreciation.'
+    }
+  ],
+  learningOutcomes: [
+    {
+      id: '2.1.2.LO.1',
+      printedPage: 176,
+      description: 'Establish the similarities among ratios, rates and proportions and use these to solve problems.'
+    },
+    {
+      id: '2.1.2.LO.2',
+      printedPage: 178,
+      description: 'Analyse the relevance of ratios, rates and proportions in solving day-to-day problems.'
+    }
+  ],
+  learningIndicators: [
+    { id: '2.1.2.LI.1', printedPage: 182, description: 'Explain the concepts of ratios and rates as a comparison of quantities.' },
+    { id: '2.1.2.LI.2', printedPage: 183, description: 'Establish relationships among ratios, rates and proportions and use them to find unknown quantities.' },
+    { id: '2.1.2.LI.1', printedPage: 185, description: 'Apply the concepts of ratios, rates and proportions to solve problems in financial mathematics, health and sports.' },
+    { id: '2.1.2.LI.2', printedPage: 185, description: 'Establish the relevance of ratios, rates and proportions in day-to-day activities, make generalisations and apply them to solve real-world problems.' }
+  ],
+  coverage: [
+    { missionId: 'gh-core-ss2-ratios-rates-proportions', topics: ['ratios', 'rates', 'equivalent ratios', 'proportions', 'scale drawings', 'similar shapes'] },
+    { missionId: 'gh-core-ss2-proportional-real-world', topics: ['financial mathematics', 'percentages', 'tax', 'utilities', 'depreciation', 'currency exchange', 'real-world applications'] }
+  ]
+} as const;
