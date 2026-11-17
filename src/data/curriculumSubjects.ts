@@ -6,6 +6,7 @@ import { MATH10_SUBJECT, MATH11_SUBJECT } from './mathAdvCommon';
 import { HIST_GEO_SUBJECTS } from './histGeoCommon';
 import { GHANA_CORE_MATH_SUBJECT } from './ghanaCoreMathSS1Data';
 import { GHANA_CORE_MATH_SS2_SUBJECT } from './ghanaCoreMathSS2Data';
+import { GHANA_CORE_MATH_SS3_SUBJECT } from './ghanaCoreMathSS3Data';
 
 export const ITALIAN_SUBJECT: SubjectInfo = {
   id: 'italian',
@@ -84,6 +85,7 @@ export function getCurriculumSubjects(grade?: GradeId | null, curriculumId: 'ita
   if (curriculumId === 'ghana-nacca') {
     if (grade === 'grade9') return [GHANA_CORE_MATH_SUBJECT];
     if (grade === 'grade10') return [GHANA_CORE_MATH_SS2_SUBJECT];
+    if (grade === 'grade11') return [GHANA_CORE_MATH_SS3_SUBJECT];
     return [];
   }
   if (curriculumId !== 'italy-national') return [];
