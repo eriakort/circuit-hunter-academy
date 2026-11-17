@@ -97,6 +97,7 @@ export const HUD: React.FC = () => {
           >
             EN
           </button>
+          {!isGhana && (
           <button
             id="lIT"
             className={lang === 'it' ? 'on' : ''}
@@ -105,6 +106,7 @@ export const HUD: React.FC = () => {
           >
             IT
           </button>
+          )}
         </div>
 
         {grade && subject && (
