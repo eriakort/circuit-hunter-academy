@@ -6,6 +6,7 @@ import { GRADE_SUBJECT_IDS } from '../data/gradeData';
 import { isMissionOpen, isValidXpAward } from '../missionAccess';
 import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, createFreshProgressState, isValidCheckpointResult, isValidGrammarActivityId, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
 import { DEFAULT_CURRICULUM_ID, type CurriculumId } from '../data/curricula';
+import { getCurriculumContentLanguage } from '../data/curriculumLanguage';
 import { CURRICULUM_PROFILE_KEY, createDefaultCurriculumProfile, getCurriculumNavigationKey, getCurriculumSaveKey, migrateLegacyItalianSave, sanitizeCurriculumProfile, switchActiveCurriculum, type CurriculumProfile } from '../data/curriculumProfile';
 
 
@@ -77,7 +78,8 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [state, setState] = useState<GameState>(() => {
     try {
       const raw = localStorage.getItem(activeSaveKey);
-      return raw ? sanitizeGameState(JSON.parse(raw), curriculumProfile.activeCurriculumId) : defaultState;
+      const restoredState = raw ? sanitizeGameState(JSON.parse(raw), curriculumProfile.activeCurriculumId) : defaultState;
+      return { ...restoredState, lang: getCurriculumContentLanguage(curriculumProfile.activeCurriculumId, restoredState.lang) };
     } catch (e) {
       console.error('Failed to load save state; starting with a safe default:', e);
       return defaultState;
@@ -151,17 +153,18 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const nextProfile = switchActiveCurriculum(curriculumProfile, curriculumId);
       const nextSave = localStorage.getItem(getCurriculumSaveKey(curriculumId));
       const nextState = nextSave ? sanitizeGameState(JSON.parse(nextSave), curriculumId) : defaultState;
+      const normalizedNextState = { ...nextState, lang: getCurriculumContentLanguage(curriculumId, nextState.lang) };
       const nextNavigationRaw = localStorage.getItem(getCurriculumNavigationKey(curriculumId));
       const nextNavigation = nextNavigationRaw
         ? restoreSavedNavigation(JSON.parse(nextNavigationRaw), nextState, curriculumId)
         : null;
 
       setCurriculumProfile(nextProfile);
-      setState(nextState);
+      setState(normalizedNextState);
       setCurrentMissionIndex(nextNavigation?.currentMissionIndex ?? Math.max(0, MISSIONS.findIndex(m => (ARCS[m.arc]?.subject || 'cs') === nextState.subject)));
       setCurrentSceneIndex(nextNavigation?.currentSceneIndex ?? 0);
       setBattleContext(nextNavigation?.battleContext ?? null);
-      setView(nextState.grade ? (nextNavigation?.view || 'map') : 'grades');
+      setView(normalizedNextState.grade ? (nextNavigation?.view || 'map') : 'grades');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (e) {
       console.error('Unable to switch curriculum safely:', e);
@@ -188,6 +191,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const setLanguage = (lang: Language) => {
+    if (curriculumProfile.activeCurriculumId === 'ghana-nacca' && lang !== 'en') return;
     setState(s => ({ ...s, lang }));
   };
 
