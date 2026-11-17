@@ -1095,30 +1095,30 @@ const INDICATORS = [
       "Rappresenta i vettori con segmenti orientati o in forma algebrica. Due vettori sono uguali se hanno lo stesso modulo e la stessa direzione, anche in posizioni diverse."
     ],
     "q": [
-      "When are two vectors equal?",
-      "Quando due vettori sono uguali?"
+      "A vector has a bearing of 320°. Which statement is correct?",
+      "Un vettore ha una direzione di 320°. Quale affermazione è corretta?"
     ],
     "a": [
       [
-        "When they have the same magnitude and direction.",
-        "Quando hanno lo stesso modulo e la stessa direzione."
+        "It points N40°W; a vector with the same magnitude and direction is equal even if it is shifted.",
+        "Punta verso N40°O; un vettore con lo stesso modulo e la stessa direzione è uguale anche se traslato."
       ],
       [
-        "When they start at the same point.",
-        "Quando partono dallo stesso punto."
+        "It points N40°E; equal vectors must start at the same point.",
+        "Punta verso N40°E; i vettori uguali devono partire dallo stesso punto."
       ],
       [
-        "When they have the same direction but different magnitudes.",
-        "Quando hanno la stessa direzione ma moduli diversi."
+        "It points S40°W; equal vectors need only have the same length.",
+        "Punta verso S40°O; per essere uguali i vettori devono avere solo la stessa lunghezza."
       ],
       [
-        "When they have the same length but opposite directions.",
-        "Quando hanno la stessa lunghezza ma direzioni opposte."
+        "It points due west; position determines its direction.",
+        "Punta esattamente verso ovest; la posizione determina la sua direzione."
       ]
     ],
     "why": [
-      "Position does not determine vector equality; magnitude and direction do.",
-      "La posizione non determina l'uguaglianza dei vettori: contano modulo e direzione."
+      "A 320° bearing is 40° west of north, written N40°W. Equal vectors have the same magnitude and direction, even at different positions.",
+      "Una direzione di 320° corrisponde a 40° a ovest del nord, cioè N40°O. I vettori uguali hanno lo stesso modulo e la stessa direzione, anche in posizioni diverse."
     ]
   },
   {
@@ -1259,30 +1259,30 @@ const INDICATORS = [
       "Individua e confronta riferimenti familiari per le misure di area, come il metro quadrato e il piede quadrato, prima di stimare una superficie."
     ],
     "q": [
-      "Which object is a useful real-world referent for an area of 1 m²?",
-      "Quale oggetto è un riferimento concreto utile per un'area di 1 m²?"
+      "Which pair correctly matches familiar area referents?",
+      "Quale coppia associa correttamente due riferimenti familiari per le misure di area?"
     ],
     "a": [
       [
-        "A square measuring 1 m by 1 m",
-        "Un quadrato di 1 m per 1 m"
+        "A floor tile is about 1 ft²; an exterior house door is about 2 m².",
+        "Una piastrella misura circa 1 ft²; una porta esterna misura circa 2 m²."
       ],
       [
-        "A line segment 1 m long",
-        "Un segmento lungo 1 m"
+        "A floor tile is about 1 m²; an exterior house door is about 2 ft².",
+        "Una piastrella misura circa 1 m²; una porta esterna misura circa 2 ft²."
       ],
       [
-        "A cube with edges 1 m long",
-        "Un cubo con spigoli lunghi 1 m"
+        "A postage stamp is about 1 m²; an exercise book is about 1 ft².",
+        "Un francobollo misura circa 1 m²; un quaderno misura circa 1 ft²."
       ],
       [
-        "A rectangle measuring 1 cm by 1 cm",
-        "Un rettangolo di 1 cm per 1 cm"
+        "A fingernail is about 1 m²; an ice rink is about 15 m².",
+        "Un'unghia misura circa 1 m²; una pista di pattinaggio misura circa 15 m²."
       ]
     ],
     "why": [
-      "Area is measured in square units. A 1 m by 1 m square has area 1 m².",
-      "L'area si misura in unità quadrate. Un quadrato di 1 m per 1 m ha area 1 m²."
+      "NaCCA gives a floor tile as a referent of about 1 ft² and an exterior house door as about 2 m².",
+      "NaCCA indica una piastrella come riferimento di circa 1 ft² e una porta esterna come riferimento di circa 2 m²."
     ]
   },
   {
