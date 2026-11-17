@@ -100,7 +100,7 @@ test('Ghana SHS 2 opens its own Core Mathematics pathway and mission', async ({ 
     }));
   });
   await page.reload();
-  await page.getByRole('button', { name: /Ghana/ }).click();
+  await page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ }).click();
   await page.locator('.grade-card[data-grade="grade10"]').click();
   await expect(page.locator('[data-s="ghcoremath2"]')).toBeVisible();
   await page.locator('[data-s="ghcoremath2"]').click();
