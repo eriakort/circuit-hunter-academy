@@ -292,4 +292,14 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
   });
 
 
+  test('maps integrated number-system mastery to the two existing SHS 1 Real Number System standards', () => {
+    const mastery = getGhanaMissionAlignment('gh-core-ss1-real-number-mastery-challenge');
+    expect(mastery?.curriculumYear).toBe('SHS 1');
+    expect(mastery?.contentStandardIds).toEqual(['1.1.1.CS.1', '1.1.1.CS.2']);
+    expect(mastery?.learningOutcomeIds).toEqual(['1.1.1.LO.1', '1.1.1.LO.2']);
+    expect(mastery?.learningIndicatorIds).toEqual(['1.1.1.LI.1', '1.1.1.LI.2', '1.1.1.LI.3']);
+    expect(mastery?.printedPages).toEqual([26, 37]);
+    expect(mastery?.note).toContain('does not claim additional curriculum coverage');
+  });
+
 });
