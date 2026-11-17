@@ -291,17 +291,27 @@ export const MapScreen: React.FC = () => {
           <p className="lede">
             {isMastered
               ? L(
-                  [
-                    'You have completed this learning path. Keep your knowledge sharp by revisiting concepts and challenges.',
-                    'You have completed this learning path. Keep your knowledge sharp by revisiting concepts and challenges.'
-                  ],
+                  isGhana
+                    ? [
+                        'You have completed this learning path. Keep your knowledge sharp by revisiting concepts and challenges.',
+                        'You have completed this learning path. Keep your knowledge sharp by revisiting concepts and challenges.'
+                      ]
+                    : [
+                        'Every Glitch Demon is defeated. Keep your techniques sharp in the Dojo.',
+                        'Tutti i Demoni Glitch sono sconfitti. Tieni allenate le tue tecniche nel Dojo.'
+                      ],
                   lang
                 )
               : L(
-                  [
-                    `${doneCount} of ${MY.length} missions completed. Explore each topic, practise new ideas and apply your knowledge to the next challenge.`,
-                    `${doneCount} of ${MY.length} missions completed. Explore each topic, practise new ideas and apply your knowledge to the next challenge.`
-                  ],
+                  isGhana
+                    ? [
+                        \`\${doneCount} of \${MY.length} missions completed. Explore each topic, practise new ideas and apply your knowledge to the next challenge.\`,
+                        \`\${doneCount} of \${MY.length} missions completed. Explore each topic, practise new ideas and apply your knowledge to the next challenge.\`
+                      ]
+                    : [
+                        \`\${doneCount} of \${MY.length} missions cleared. The units are the tabs below; each arc is one chapter, and every arc's first mission is open, so you can start from the chapter you're studying in class.\`,
+                        \`\${doneCount} missioni superate su \${MY.length}. Le unità sono le schede qui sotto; ogni arco è un capitolo, e la prima missione di ogni arco è già aperta: puoi partire dal capitolo che state studiando in classe.\`
+                      ],
                   lang
                 )}
           </p>
