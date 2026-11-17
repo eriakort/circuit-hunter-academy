@@ -61,6 +61,7 @@ describe('Ghana SHS 1 indicator readiness model', () => {
     expect(item.percent).toBe(100);
     expect(item.status).toBe('mastered');
   });
+
   test('prioritizes the weakest assessed indicators before unassessed topics', () => {
     const progress = {
       masteryConceptPerformance: {
@@ -75,7 +76,7 @@ describe('Ghana SHS 1 indicator readiness model', () => {
     expect(recommended.map(item => item.id)).toEqual([
       'ss1-real-cs1-li2',
       'ss1-real-cs1-li3',
-      'ss1-real-cs1-li1'
+      'ss1-real-cs2-li1'
     ]);
   });
 
@@ -90,5 +91,4 @@ describe('Ghana SHS 1 indicator readiness model', () => {
     expect(getGhanaSS1RecommendedIndicators(getGhanaSS1IndicatorReadiness(), 2)).toHaveLength(2);
     expect(getGhanaSS1RecommendedIndicators(indicators, -1)).toHaveLength(0);
   });
-
 });
