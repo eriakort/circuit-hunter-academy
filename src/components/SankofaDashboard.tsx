@@ -23,7 +23,7 @@ export const SankofaDashboard: React.FC = () => {
           <h1 id="sankofa-title">{SANKOFA_THEME.name}</h1>
           <p>{SANKOFA_THEME.tagline}</p>
           <div className="sankofa-identity">
-            <span className="sankofa-bird" aria-hidden="true">𓅃</span>
+            <span className="sankofa-bird" aria-hidden="true">↶</span>
             <span>Knowledge Seeker</span>
             <span aria-hidden="true">·</span>
             <span>{rank.title}</span>
