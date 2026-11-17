@@ -208,6 +208,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [31, 33],
     alignment: 'direct',
     note: 'Covers closure tests for addition, subtraction, multiplication and division across real-number subsets (including the non-zero divisor condition), plus commutative, associative, distributive, identity and inverse properties. The existing Number Map mission remains the focused introduction to rational/irrational classification.'
+  },
+  {
+    missionId: 'gh-core-ss1-fraction-operations',
+    curriculumYear: 'SHS 1',
+    strand: '1 · Numbers for Everyday Life',
+    subStrand: '2 · Proportional Reasoning',
+    contentStandardIds: ['1.1.2.CS.1'],
+    learningOutcomeIds: ['1.1.2.LO.1'],
+    learningIndicatorIds: ['1.1.2.LI.1', '1.1.2.LI.2'],
+    printedPages: [44, 46],
+    alignment: 'direct',
+    note: 'Covers fraction-decimal connections, conversion to percentages, rational-number operations and word problems, positive rational numbers raised to whole-number powers, rounding to decimal places and significant figures, and additive and multiplicative inverses of fractions.'
   }
 ];
 

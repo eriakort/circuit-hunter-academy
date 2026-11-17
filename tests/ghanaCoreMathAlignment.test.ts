@@ -37,6 +37,15 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(percentages?.learningIndicatorIds).toEqual(['1.1.2.LI.1', '1.1.2.LI.2']);
   });
 
+  test('maps fraction operations and inverses to the SHS 1 proportional-reasoning standard', () => {
+    const fractions = getGhanaMissionAlignment('gh-core-ss1-fraction-operations');
+    expect(fractions?.curriculumYear).toBe('SHS 1');
+    expect(fractions?.contentStandardIds).toEqual(['1.1.2.CS.1']);
+    expect(fractions?.learningOutcomeIds).toEqual(['1.1.2.LO.1']);
+    expect(fractions?.learningIndicatorIds).toEqual(['1.1.2.LI.1', '1.1.2.LI.2']);
+    expect(fractions?.printedPages).toEqual([44, 46]);
+  });
+
   test('maps relations and functions to the verified SHS 1 Patterns and Relationships standard', () => {
     const patterns = getGhanaMissionAlignment('gh-core-ss1-patterns-functions');
     expect(patterns?.curriculumYear).toBe('SHS 1');
