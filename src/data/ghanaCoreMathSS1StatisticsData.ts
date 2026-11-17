@@ -187,34 +187,34 @@ export const GHANA_SS1_STATISTICS_MISSIONS: Mission[] = [
       conceptIds: GHANA_SS1_STATISTICAL_INDICATOR_IDS,
       assessmentTitle: [
         'Community Data Lab · Eight-Indicator Mastery Trial',
-        'Laboratorio Dati della Comunità · Prova di maestria sugli otto indicatori'
+        'Community Data Lab · Eight-Indicator Mastery Trial'
       ],
       assessmentInstructions: [
         'Answer one question for each of the eight SHS 1 Statistical Reasoning indicators. You need at least 80% to unlock the final battle. Each retry switches to the alternate question form for every indicator.',
-        'Rispondi a una domanda per ciascuno degli otto indicatori SHS 1 di Ragionamento statistico. Serve almeno l’80% per sbloccare la battaglia finale. A ogni nuovo tentativo viene proposta la forma alternativa per ciascun indicatore.'
+        'Answer one question for each of the eight SHS 1 Statistical Reasoning indicators. You need at least 80% to unlock the final battle. Each retry switches to the alternate question form for every indicator.'
       ],
       prerequisites: [
         [
           'Review data types, collection methods, frequency tables, graphs and averages in the lesson scenes.',
-          'Ripassa tipi di dati, metodi di raccolta, tabelle di frequenza, grafici e medie nelle scene della lezione.'
+          'Review data types, collection methods, frequency tables, graphs and averages in the lesson scenes.'
         ]
       ],
       summary: [
         [
           'A trustworthy investigation moves from a clear question to fair sampling, ethical collection, accurate organisation and evidence-based conclusions.',
-          'Un’indagine affidabile parte da una domanda chiara e procede con un campionamento corretto, una raccolta etica, un’organizzazione accurata e conclusioni basate sui dati.'
+          'A trustworthy investigation moves from a clear question to fair sampling, ethical collection, accurate organisation and evidence-based conclusions.'
         ],
         [
           'Choose tables, graphs and descriptive measures that fit the question. Explain unusual values and the limits of the sample instead of hiding inconvenient evidence.',
-          'Scegli tabelle, grafici e misure descrittive adatti alla domanda. Spiega i valori insoliti e i limiti del campione invece di nascondere dati scomodi.'
+          'Choose tables, graphs and descriptive measures that fit the question. Explain unusual values and the limits of the sample instead of hiding inconvenient evidence.'
         ]
       ],
       techniqueUnlock: {
         id: 'ghana-ss1-evidence-into-action',
-        name: ['Evidence into Action', 'Dai dati all’azione'],
+        name: ['Evidence into Action', 'Evidence into Action'],
         description: [
           'You can plan, analyse and communicate a school-community investigation while explaining its evidence and limitations.',
-          'Sai pianificare, analizzare e comunicare un’indagine scolastica o comunitaria, spiegandone prove e limiti.'
+          'You can plan, analyse and communicate a school-community investigation while explaining its evidence and limitations.'
         ],
         xpReward: 20
       }

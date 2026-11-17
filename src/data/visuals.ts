@@ -28,8 +28,11 @@ export const VIS: Record<string, () => string> = {
 },
   "boss": function boss(){ return `<div style="display:flex;justify-content:center"><div style="width:min(240px,70%)">${demonSVG(275,5,3,'dia')}</div></div>`; },
   "infowords": function infowords(){
-  return `<div class="wordfx"><span class="a">INFORmazione</span><span class="op">+</span><span class="b">autoMATICA</span><span class="op">=</span><span>INFORMATICA</span></div>
-   <p class="muted" style="text-align:center;margin-top:10px">${L(['information + automatic = computer science','informazione + automatica = informatica'])}</p>`;
+  const wordBuild = currentLang === "it"
+    ? '<span class="a">INFORmazione</span><span class="op">+</span><span class="b">autoMATICA</span><span class="op">=</span><span>INFORMATICA</span>'
+    : '<span class="a">INFORmation</span><span class="op">+</span><span class="b">autoMATIC</span><span class="op">=</span><span>INFORMATICS</span>';
+  return `<div class="wordfx">${wordBuild}</div>
+   <p class="muted" style="text-align:center;margin-top:10px">${L(['information + automatic processing = informatics','informazione + elaborazione automatica = informatica'])}</p>`;
 },
   "recipe": function recipe(){
   const st=L([['Fill a pot with water','Put the pot on the stove and boil the water','Put the noodles in a bowl','Pour the boiling water over the noodles','Wait 3 minutes','Add the seasoning and stir'],['Riempi una pentola d\'acqua','Metti la pentola sul fuoco e porta a ebollizione','Metti i noodles in una ciotola','Versa l\'acqua bollente sui noodles','Aspetta 3 minuti','Aggiungi il condimento e mescola']]);

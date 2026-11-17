@@ -1,16 +1,16 @@
 import type { QuizQuestion } from '../types';
 
-/** One alternate bilingual item for each of the 45 official SHS 1 indicator concepts. */
+/** One alternate English-only item for each of the 45 official SHS 1 indicator concepts. */
 export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestion> = {
   "ss1-real-cs1-li1": {
     "q": [
       "Which operation shows that the integers are not closed?",
-      "Quale operazione mostra che gli interi non sono chiusi?"
+      "Which operation shows that the integers are not closed?"
     ],
     "a": [
       [
         "7 ÷ 2 = 3.5, which is not an integer",
-        "7 ÷ 2 = 3,5, che non è un intero"
+        "7 ÷ 2 = 3.5, which is not an integer"
       ],
       [
         "7 − 2 = 5",
@@ -27,13 +27,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Closure requires every result to remain in the set. Dividing two integers can produce a non-integer.",
-      "La chiusura richiede che ogni risultato resti nell'insieme. Dividere due interi può produrre un numero non intero."
+      "Closure requires every result to remain in the set. Dividing two integers can produce a non-integer."
     ]
   },
   "ss1-real-cs1-li2": {
     "q": [
       "Which value is irrational?",
-      "Quale valore è irrazionale?"
+      "Which value is irrational?"
     ],
     "a": [
       [
@@ -42,7 +42,7 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
       ],
       [
         "0.6",
-        "0,6"
+        "0.6"
       ],
       [
         "−3/4",
@@ -50,18 +50,18 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
       ],
       [
         "1.272727…",
-        "1,272727…"
+        "1.272727…"
       ]
     ],
     "why": [
       "11 is not a perfect square, so √11 cannot be written as a ratio of integers. The other values are rational.",
-      "11 non è un quadrato perfetto, quindi √11 non può essere scritto come rapporto tra interi. Gli altri valori sono razionali."
+      "11 is not a perfect square, so √11 cannot be written as a ratio of integers. The other values are rational."
     ]
   },
   "ss1-real-cs1-li3": {
     "q": [
       "Which equality shows the multiplicative identity property?",
-      "Quale uguaglianza mostra la proprietà dell'elemento neutro moltiplicativo?"
+      "Which equality shows the multiplicative identity property?"
     ],
     "a": [
       [
@@ -83,13 +83,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Multiplying any real number by 1 leaves it unchanged.",
-      "Moltiplicare un numero reale per 1 lascia invariato il numero."
+      "Multiplying any real number by 1 leaves it unchanged."
     ]
   },
   "ss1-real-cs2-li1": {
     "q": [
       "If A = {1, 3, 5, 7} and B = {3, 4, 7}, what is A ∪ B?",
-      "Se A = {1, 3, 5, 7} e B = {3, 4, 7}, quanto vale A ∪ B?"
+      "If A = {1, 3, 5, 7} and B = {3, 4, 7}, what is A ∪ B?"
     ],
     "a": [
       [
@@ -111,13 +111,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "The union contains every distinct element that belongs to A or B.",
-      "L'unione contiene tutti gli elementi distinti che appartengono ad A oppure a B."
+      "The union contains every distinct element that belongs to A or B."
     ]
   },
   "ss1-real-cs2-li2": {
     "q": [
       "In a survey, 30 learners like football, 22 like netball and 8 like both. How many like at least one?",
-      "In un sondaggio, 30 studenti preferiscono il calcio, 22 la pallavolo e 8 entrambi. Quanti ne preferiscono almeno uno?"
+      "In a survey, 30 learners like football, 22 like netball and 8 like both. How many like at least one?"
     ],
     "a": [
       [
@@ -139,13 +139,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Use inclusion–exclusion: 30 + 22 − 8 = 44. The overlap is counted only once.",
-      "Usa il principio di inclusione-esclusione: 30 + 22 − 8 = 44. L'intersezione va contata una sola volta."
+      "Use inclusion–exclusion: 30 + 22 − 8 = 44. The overlap is counted only once."
     ]
   },
   "ss1-real-cs2-li3": {
     "q": [
       "Which identity is the second De Morgan law?",
-      "Quale identità rappresenta la seconda legge di De Morgan?"
+      "Which identity is the second De Morgan law?"
     ],
     "a": [
       [
@@ -167,69 +167,69 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "The complement of an intersection equals the union of the complements.",
-      "Il complementare di un'intersezione è uguale all'unione dei complementari."
+      "The complement of an intersection equals the union of the complements."
     ]
   },
   "ss1-prop-cs1-li1": {
     "q": [
       "What are the decimal and percentage equivalents of 3/8?",
-      "Quali sono gli equivalenti decimale e percentuale di 3/8?"
+      "What are the decimal and percentage equivalents of 3/8?"
     ],
     "a": [
       [
         "0.375 and 37.5%",
-        "0,375 e 37,5%"
+        "0.375 and 37.5%"
       ],
       [
         "0.38 and 38%",
-        "0,38 e 38%"
+        "0.38 and 38%"
       ],
       [
         "0.35 and 35%",
-        "0,35 e 35%"
+        "0.35 and 35%"
       ],
       [
         "0.625 and 62.5%",
-        "0,625 e 62,5%"
+        "0.625 and 62.5%"
       ]
     ],
     "why": [
       "3 ÷ 8 = 0.375; multiplying by 100 gives 37.5%.",
-      "3 ÷ 8 = 0,375; moltiplicando per 100 si ottiene 37,5%."
+      "3 ÷ 8 = 0.375; multiplying by 100 gives 37.5%."
     ]
   },
   "ss1-prop-cs1-li2": {
     "q": [
       "For −4/7, what are the additive inverse and multiplicative inverse, in that order?",
-      "Per −4/7, quali sono l'inverso additivo e quello moltiplicativo, in quest'ordine?"
+      "For −4/7, what are the additive inverse and multiplicative inverse, in that order?"
     ],
     "a": [
       [
         "4/7 and −7/4",
-        "4/7 e −7/4"
+        "4/7 and −7/4"
       ],
       [
         "−4/7 and 7/4",
-        "−4/7 e 7/4"
+        "−4/7 and 7/4"
       ],
       [
         "7/4 and 4/7",
-        "7/4 e 4/7"
+        "7/4 and 4/7"
       ],
       [
         "4/7 and 7/4",
-        "4/7 e 7/4"
+        "4/7 and 7/4"
       ]
     ],
     "why": [
       "The additive inverse changes the sign; the multiplicative inverse is the reciprocal and keeps the negative sign.",
-      "L'inverso additivo cambia il segno; quello moltiplicativo è il reciproco e mantiene il segno negativo."
+      "The additive inverse changes the sign; the multiplicative inverse is the reciprocal and keeps the negative sign."
     ]
   },
   "ss1-prop-cs2-li1": {
     "q": [
       "Find 15% of 240.",
-      "Calcola il 15% di 240."
+      "Find 15% of 240."
     ],
     "a": [
       [
@@ -251,13 +251,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "10% of 240 is 24 and 5% is 12; together they make 36.",
-      "Il 10% di 240 è 24 e il 5% è 12; insieme fanno 36."
+      "10% of 240 is 24 and 5% is 12; together they make 36."
     ]
   },
   "ss1-prop-cs2-li2": {
     "q": [
       "A trader buys a bag for GH₵150 and sells it for GH₵180. What is the profit percentage on cost?",
-      "Un commerciante compra una borsa a GH₵150 e la vende a GH₵180. Qual è la percentuale di profitto sul costo?"
+      "A trader buys a bag for GH₵150 and sells it for GH₵180. What is the profit percentage on cost?"
     ],
     "a": [
       [
@@ -266,7 +266,7 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
       ],
       [
         "16.7%",
-        "16,7%"
+        "16.7%"
       ],
       [
         "30%",
@@ -279,13 +279,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Profit = 180 − 150 = GH₵30. Profit percentage = 30 ÷ 150 × 100 = 20%.",
-      "Profitto = 180 − 150 = GH₵30. Percentuale di profitto = 30 ÷ 150 × 100 = 20%."
+      "Profit = 180 − 150 = GH₵30. Profit percentage = 30 ÷ 150 × 100 = 20%."
     ]
   },
   "ss1-algebra-cs1-li1": {
     "q": [
       "Simplify 5y − 2(3 − y).",
-      "Semplifica 5y − 2(3 − y)."
+      "Simplify 5y − 2(3 − y)."
     ],
     "a": [
       [
@@ -307,13 +307,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Distribute −2: 5y − 6 + 2y = 7y − 6.",
-      "Distribuisci −2: 5y − 6 + 2y = 7y − 6."
+      "Distribute −2: 5y − 6 + 2y = 7y − 6."
     ]
   },
   "ss1-algebra-cs1-li2": {
     "q": [
       "Factorise x² + 9x + 20.",
-      "Scomponi x² + 9x + 20."
+      "Factorise x² + 9x + 20."
     ],
     "a": [
       [
@@ -335,13 +335,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "The numbers 4 and 5 multiply to 20 and add to 9.",
-      "I numeri 4 e 5 hanno prodotto 20 e somma 9."
+      "The numbers 4 and 5 multiply to 20 and add to 9."
     ]
   },
   "ss1-algebra-cs1-li3": {
     "q": [
       "Factorise 16p² − 81.",
-      "Scomponi 16p² − 81."
+      "Factorise 16p² − 81."
     ],
     "a": [
       [
@@ -363,41 +363,41 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "This is a difference of squares: (4p)² − 9² = (4p − 9)(4p + 9).",
-      "È una differenza di quadrati: (4p)² − 9² = (4p − 9)(4p + 9)."
+      "This is a difference of squares: (4p)² − 9² = (4p − 9)(4p + 9)."
     ]
   },
   "ss1-algebra-cs1-li4": {
     "q": [
       "Simplify (x² − 16)/(x − 4), stating the restriction.",
-      "Semplifica (x² − 16)/(x − 4), indicando la condizione."
+      "Simplify (x² − 16)/(x − 4), stating the restriction."
     ],
     "a": [
       [
         "x + 4, where x ≠ 4",
-        "x + 4, con x ≠ 4"
+        "x + 4, where x ≠ 4"
       ],
       [
         "x − 4, where x ≠ 4",
-        "x − 4, con x ≠ 4"
+        "x − 4, where x ≠ 4"
       ],
       [
         "x + 4, for every real x",
-        "x + 4, per ogni numero reale x"
+        "x + 4, for every real x"
       ],
       [
         "x − 4, where x ≠ −4",
-        "x − 4, con x ≠ −4"
+        "x − 4, where x ≠ −4"
       ]
     ],
     "why": [
       "Factor the numerator as (x − 4)(x + 4), cancel the common factor, but keep x ≠ 4.",
-      "Scomponi il numeratore in (x − 4)(x + 4), semplifica il fattore comune, ma mantieni x ≠ 4."
+      "Factor the numerator as (x − 4)(x + 4), cancel the common factor, but keep x ≠ 4."
     ]
   },
   "ss1-algebra-cs2-li1": {
     "q": [
       "The perimeter of a rectangle is P = 2l + 2w. Make l the subject.",
-      "Il perimetro di un rettangolo è P = 2l + 2w. Ricava l."
+      "The perimeter of a rectangle is P = 2l + 2w. Make l the subject."
     ],
     "a": [
       [
@@ -419,13 +419,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Subtract 2w from both sides, then divide by 2.",
-      "Sottrai 2w da entrambi i membri, poi dividi per 2."
+      "Subtract 2w from both sides, then divide by 2."
     ]
   },
   "ss1-algebra-cs2-li2": {
     "q": [
       "Solve 5x + 4 > 19.",
-      "Risolvi 5x + 4 > 19."
+      "Solve 5x + 4 > 19."
     ],
     "a": [
       [
@@ -447,13 +447,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Subtract 4 to get 5x > 15, then divide by positive 5.",
-      "Sottrai 4 ottenendo 5x > 15, poi dividi per 5 positivo."
+      "Subtract 4 to get 5x > 15, then divide by positive 5."
     ]
   },
   "ss1-patterns-cs1-li1": {
     "q": [
       "A function maps 0 to 2, 1 to 5 and 2 to 8. Which rule describes it?",
-      "Una funzione associa 0 a 2, 1 a 5 e 2 a 8. Quale regola la descrive?"
+      "A function maps 0 to 2, 1 to 5 and 2 to 8. Which rule describes it?"
     ],
     "a": [
       [
@@ -475,41 +475,41 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Each output is three times the input plus 2, so the rule is y = 3x + 2.",
-      "Ogni risultato è tre volte il valore iniziale più 2, quindi la regola è y = 3x + 2."
+      "Each output is three times the input plus 2, so the rule is y = 3x + 2."
     ]
   },
   "ss1-patterns-cs1-li2": {
     "q": [
       "Where does the graph of y = −3x + 5 cross the y-axis?",
-      "Dove interseca l'asse y il grafico di y = −3x + 5?"
+      "Where does the graph of y = −3x + 5 cross the y-axis?"
     ],
     "a": [
       [
         "At (0, 5)",
-        "Nel punto (0, 5)"
+        "At (0, 5)"
       ],
       [
         "At (5, 0)",
-        "Nel punto (5, 0)"
+        "At (5, 0)"
       ],
       [
         "At (0, −3)",
-        "Nel punto (0, −3)"
+        "At (0, −3)"
       ],
       [
         "At (−3, 0)",
-        "Nel punto (−3, 0)"
+        "At (−3, 0)"
       ]
     ],
     "why": [
       "The y-intercept is the value of y when x = 0; here it is 5.",
-      "L'intercetta sull'asse y è il valore di y quando x = 0; qui è 5."
+      "The y-intercept is the value of y when x = 0; here it is 5."
     ]
   },
   "ss1-patterns-cs2-li1": {
     "q": [
       "Find the gradient of the line through (2, 1) and (4, 9).",
-      "Calcola il coefficiente angolare della retta passante per (2, 1) e (4, 9)."
+      "Find the gradient of the line through (2, 1) and (4, 9)."
     ],
     "a": [
       [
@@ -531,69 +531,69 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Gradient = (9 − 1) ÷ (4 − 2) = 8 ÷ 2 = 4.",
-      "Coefficiente angolare = (9 − 1) ÷ (4 − 2) = 8 ÷ 2 = 4."
+      "Gradient = (9 − 1) ÷ (4 − 2) = 8 ÷ 2 = 4."
     ]
   },
   "ss1-patterns-cs2-li2": {
     "q": [
       "What is the midpoint of the segment joining (−2, 3) and (4, 7)?",
-      "Qual è il punto medio del segmento che unisce (−2, 3) e (4, 7)?"
+      "What is the midpoint of the segment joining (−2, 3) and (4, 7)?"
     ],
     "a": [
       [
         "(1, 5)",
-        "(1; 5)"
+        "(1, 5)"
       ],
       [
         "(2, 5)",
-        "(2; 5)"
+        "(2, 5)"
       ],
       [
         "(1, 4)",
-        "(1; 4)"
+        "(1, 4)"
       ],
       [
         "(−3, 10)",
-        "(−3; 10)"
+        "(−3, 10)"
       ]
     ],
     "why": [
       "Average the x-coordinates and the y-coordinates: ((−2 + 4)/2, (3 + 7)/2) = (1, 5).",
-      "Calcola la media delle coordinate x e delle coordinate y: ((−2 + 4)/2, (3 + 7)/2) = (1; 5)."
+      "Average the x-coordinates and the y-coordinates: ((−2 + 4)/2, (3 + 7)/2) = (1, 5)."
     ]
   },
   "ss1-spatial-li1": {
     "q": [
       "An angle measures 135°. How is it classified?",
-      "Un angolo misura 135°. Come si classifica?"
+      "An angle measures 135°. How is it classified?"
     ],
     "a": [
       [
         "Obtuse angle",
-        "Angolo ottuso"
+        "Obtuse angle"
       ],
       [
         "Acute angle",
-        "Angolo acuto"
+        "Acute angle"
       ],
       [
         "Right angle",
-        "Angolo retto"
+        "Right angle"
       ],
       [
         "Reflex angle",
-        "Angolo concavo"
+        "Reflex angle"
       ]
     ],
     "why": [
       "135° is greater than 90° and less than 180°, so it is obtuse.",
-      "135° è maggiore di 90° e minore di 180°, quindi è ottuso."
+      "135° is greater than 90° and less than 180°, so it is obtuse."
     ]
   },
   "ss1-spatial-li2": {
     "q": [
       "Co-interior angles on parallel lines add to 180°. If one is 112°, find the other.",
-      "Gli angoli coniugati interni su rette parallele sommano 180°. Se uno misura 112°, quanto misura l'altro?"
+      "Co-interior angles on parallel lines add to 180°. If one is 112°, find the other."
     ],
     "a": [
       [
@@ -615,13 +615,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Co-interior angles are supplementary: 180° − 112° = 68°.",
-      "Gli angoli coniugati interni sono supplementari: 180° − 112° = 68°."
+      "Co-interior angles are supplementary: 180° − 112° = 68°."
     ]
   },
   "ss1-spatial-li3": {
     "q": [
       "Two interior angles of a triangle are 48° and 67°. Find the third angle.",
-      "Due angoli interni di un triangolo misurano 48° e 67°. Calcola il terzo angolo."
+      "Two interior angles of a triangle are 48° and 67°. Find the third angle."
     ],
     "a": [
       [
@@ -643,13 +643,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Angles in a triangle total 180°: 180° − 48° − 67° = 65°.",
-      "La somma degli angoli interni di un triangolo è 180°: 180° − 48° − 67° = 65°."
+      "Angles in a triangle total 180°: 180° − 48° − 67° = 65°."
     ]
   },
   "ss1-spatial-li4": {
     "q": [
       "A right triangle has legs of 5 cm and 12 cm. Find the hypotenuse.",
-      "Un triangolo rettangolo ha cateti di 5 cm e 12 cm. Calcola l'ipotenusa."
+      "A right triangle has legs of 5 cm and 12 cm. Find the hypotenuse."
     ],
     "a": [
       [
@@ -671,13 +671,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "By Pythagoras, c = √(5² + 12²) = √169 = 13 cm.",
-      "Per Pitagora, c = √(5² + 12²) = √169 = 13 cm."
+      "By Pythagoras, c = √(5² + 12²) = √169 = 13 cm."
     ]
   },
   "ss1-spatial-li5": {
     "q": [
       "What is the sum of the interior angles of a decagon?",
-      "Qual è la somma degli angoli interni di un decagono?"
+      "What is the sum of the interior angles of a decagon?"
     ],
     "a": [
       [
@@ -699,69 +699,69 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "A decagon has 10 sides: (10 − 2) × 180° = 1440°.",
-      "Un decagono ha 10 lati: (10 − 2) × 180° = 1440°."
+      "A decagon has 10 sides: (10 − 2) × 180° = 1440°."
     ]
   },
   "ss1-measure-cs1-li1": {
     "q": [
       "Which description identifies displacement as a vector?",
-      "Quale descrizione identifica lo spostamento come grandezza vettoriale?"
+      "Which description identifies displacement as a vector?"
     ],
     "a": [
       [
         "It states how far and in which direction an object moves.",
-        "Indica quanto si sposta un oggetto e in quale direzione."
+        "It states how far and in which direction an object moves."
       ],
       [
         "It gives only the distance travelled.",
-        "Indica soltanto la distanza percorsa."
+        "It gives only the distance travelled."
       ],
       [
         "It gives only the time taken.",
-        "Indica soltanto il tempo impiegato."
+        "It gives only the time taken."
       ],
       [
         "It gives only the object's mass.",
-        "Indica soltanto la massa dell'oggetto."
+        "It gives only the object's mass."
       ]
     ],
     "why": [
       "A vector has both magnitude and direction; displacement includes both.",
-      "Un vettore ha modulo e direzione; lo spostamento comprende entrambi."
+      "A vector has both magnitude and direction; displacement includes both."
     ]
   },
   "ss1-measure-cs1-li2": {
     "q": [
       "A vector has a bearing of 045°. Which direction does it point?",
-      "Un vettore ha una direzione di 045°. Verso dove punta?"
+      "A vector has a bearing of 045°. Which direction does it point?"
     ],
     "a": [
       [
         "N45°E; an equal vector has the same magnitude and direction.",
-        "N45°E; un vettore uguale ha lo stesso modulo e la stessa direzione."
+        "N45°E; an equal vector has the same magnitude and direction."
       ],
       [
         "S45°W; an equal vector has the same length only.",
-        "S45°O; un vettore uguale ha soltanto la stessa lunghezza."
+        "S45°W; an equal vector has the same length only."
       ],
       [
         "N45°W; an equal vector must start at the same point.",
-        "N45°O; un vettore uguale deve partire dallo stesso punto."
+        "N45°W; an equal vector must start at the same point."
       ],
       [
         "Due east; an equal vector has the same endpoint.",
-        "Est; un vettore uguale ha lo stesso punto finale."
+        "Due east; an equal vector has the same endpoint."
       ]
     ],
     "why": [
       "Bearings are measured clockwise from north, so 045° is 45° east of north. Equal vectors need not share a starting point.",
-      "Le direzioni si misurano in senso orario dal nord, quindi 045° è 45° a est del nord. Vettori uguali non devono avere lo stesso punto iniziale."
+      "Bearings are measured clockwise from north, so 045° is 45° east of north. Equal vectors need not share a starting point."
     ]
   },
   "ss1-measure-cs2-li1": {
     "q": [
       "In a right triangle, the opposite side is 8 cm and the adjacent side is 6 cm. What is tan θ?",
-      "In un triangolo rettangolo, il cateto opposto misura 8 cm e quello adiacente 6 cm. Quanto vale tan θ?"
+      "In a right triangle, the opposite side is 8 cm and the adjacent side is 6 cm. What is tan θ?"
     ],
     "a": [
       [
@@ -783,13 +783,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "tan θ = opposite ÷ adjacent = 8 ÷ 6 = 4/3.",
-      "tan θ = cateto opposto ÷ cateto adiacente = 8 ÷ 6 = 4/3."
+      "tan θ = opposite ÷ adjacent = 8 ÷ 6 = 4/3."
     ]
   },
   "ss1-measure-cs2-li2": {
     "q": [
       "What is the exact value of cos 60°?",
-      "Qual è il valore esatto di cos 60°?"
+      "What is the exact value of cos 60°?"
     ],
     "a": [
       [
@@ -811,13 +811,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "At 60°, cosine is one half.",
-      "A 60°, il coseno vale un mezzo."
+      "At 60°, cosine is one half."
     ]
   },
   "ss1-measure-cs2-li3": {
     "q": [
       "What is the value of cos 240°?",
-      "Quanto vale cos 240°?"
+      "What is the value of cos 240°?"
     ],
     "a": [
       [
@@ -839,41 +839,41 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "240° is in quadrant III, where cosine is negative; its reference angle is 60°.",
-      "240° si trova nel terzo quadrante, dove il coseno è negativo; l'angolo di riferimento è 60°."
+      "240° is in quadrant III, where cosine is negative; its reference angle is 60°."
     ]
   },
   "ss1-measure-cs3-li1": {
     "q": [
       "Which is a reasonable estimate for the area of a standard exterior house door?",
-      "Qual è una stima ragionevole dell'area di una normale porta esterna di casa?"
+      "Which is a reasonable estimate for the area of a standard exterior house door?"
     ],
     "a": [
       [
         "About 2 m²",
-        "Circa 2 m²"
+        "About 2 m²"
       ],
       [
         "About 2 cm²",
-        "Circa 2 cm²"
+        "About 2 cm²"
       ],
       [
         "About 20 m²",
-        "Circa 20 m²"
+        "About 20 m²"
       ],
       [
         "About 200 m²",
-        "Circa 200 m²"
+        "About 200 m²"
       ]
     ],
     "why": [
       "A door is roughly 2 metres high and about 1 metre wide, giving an area near 2 m².",
-      "Una porta è alta circa 2 metri e larga circa 1 metro, quindi ha un'area vicina a 2 m²."
+      "A door is roughly 2 metres high and about 1 metre wide, giving an area near 2 m²."
     ]
   },
   "ss1-measure-cs3-li2": {
     "q": [
       "A shape covers 20 full grid squares and 8 half-squares. Each square is 1 cm². Estimate its area.",
-      "Una figura copre 20 quadratini interi e 8 mezzi quadratini. Ogni quadratino misura 1 cm². Stima l'area."
+      "A shape covers 20 full grid squares and 8 half-squares. Each square is 1 cm². Estimate its area."
     ],
     "a": [
       [
@@ -895,13 +895,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Eight half-squares make four full squares, so the estimated area is 20 + 4 = 24 cm².",
-      "Otto mezzi quadratini formano quattro quadratini interi, quindi l'area stimata è 20 + 4 = 24 cm²."
+      "Eight half-squares make four full squares, so the estimated area is 20 + 4 = 24 cm²."
     ]
   },
   "ss1-measure-cs3-li3": {
     "q": [
       "An L-shaped garden is made from two non-overlapping rectangles: 12 m × 7 m and 3 m × 4 m. Find its area.",
-      "Un giardino a L è formato da due rettangoli non sovrapposti: 12 m × 7 m e 3 m × 4 m. Calcola l'area."
+      "An L-shaped garden is made from two non-overlapping rectangles: 12 m × 7 m and 3 m × 4 m. Find its area."
     ],
     "a": [
       [
@@ -923,13 +923,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Add the two rectangle areas: (12 × 7) + (3 × 4) = 84 + 12 = 96 m².",
-      "Somma le aree dei due rettangoli: (12 × 7) + (3 × 4) = 84 + 12 = 96 m²."
+      "Add the two rectangle areas: (12 × 7) + (3 × 4) = 84 + 12 = 96 m²."
     ]
   },
   "ss1-measure-cs3-li4": {
     "q": [
       "A prism has a cross-sectional area of 15 cm² and a perpendicular length of 9 cm. Find its volume.",
-      "Un prisma ha un'area di sezione di 15 cm² e una lunghezza perpendicolare di 9 cm. Calcola il volume."
+      "A prism has a cross-sectional area of 15 cm² and a perpendicular length of 9 cm. Find its volume."
     ],
     "a": [
       [
@@ -951,125 +951,125 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Volume of a prism = cross-sectional area × perpendicular length = 15 × 9 = 135 cm³.",
-      "Volume del prisma = area di sezione × lunghezza perpendicolare = 15 × 9 = 135 cm³."
+      "Volume of a prism = cross-sectional area × perpendicular length = 15 × 9 = 135 cm³."
     ]
   },
   "ss1-stats-cs1-li1": {
     "q": [
       "The time each learner spends travelling to school is which type of data?",
-      "Il tempo impiegato da ciascuno studente per raggiungere la scuola è quale tipo di dato?"
+      "The time each learner spends travelling to school is which type of data?"
     ],
     "a": [
       [
         "Continuous quantitative data",
-        "Dato quantitativo continuo"
+        "Continuous quantitative data"
       ],
       [
         "Discrete quantitative data",
-        "Dato quantitativo discreto"
+        "Discrete quantitative data"
       ],
       [
         "Qualitative nominal data",
-        "Dato qualitativo nominale"
+        "Qualitative nominal data"
       ],
       [
         "Qualitative ordinal data",
-        "Dato qualitativo ordinale"
+        "Qualitative ordinal data"
       ]
     ],
     "why": [
       "Travel time is measured and can take decimal values, so it is continuous quantitative data.",
-      "Il tempo di viaggio si misura e può assumere valori decimali, quindi è un dato quantitativo continuo."
+      "Travel time is measured and can take decimal values, so it is continuous quantitative data."
     ]
   },
   "ss1-stats-cs1-li2": {
     "q": [
       "A school wants each learner's height recorded as primary quantitative data. What should it do?",
-      "Una scuola vuole registrare l'altezza di ogni studente come dato quantitativo primario. Che cosa dovrebbe fare?"
+      "A school wants each learner's height recorded as primary quantitative data. What should it do?"
     ],
     "a": [
       [
         "Measure each learner with the same calibrated measuring device.",
-        "Misurare ogni studente con lo stesso strumento tarato."
+        "Measure each learner with the same calibrated measuring device."
       ],
       [
         "Estimate heights from photographs.",
-        "Stimare le altezze dalle fotografie."
+        "Estimate heights from photographs."
       ],
       [
         "Copy heights from an unrelated online article.",
-        "Copiare le altezze da un articolo online non pertinente."
+        "Copy heights from an unrelated online article."
       ],
       [
         "Ask learners to choose a height category only.",
-        "Chiedere agli studenti di scegliere soltanto una categoria di altezza."
+        "Ask learners to choose a height category only."
       ]
     ],
     "why": [
       "Direct, consistent measurement produces primary quantitative data suitable for comparison.",
-      "Una misurazione diretta e coerente produce dati quantitativi primari adatti al confronto."
+      "Direct, consistent measurement produces primary quantitative data suitable for comparison."
     ]
   },
   "ss1-stats-cs1-li3": {
     "q": [
       "A school wants detailed reasons why learners prefer different clubs. Which method is most suitable?",
-      "Una scuola vuole conoscere in dettaglio i motivi per cui gli studenti preferiscono club diversi. Quale metodo è più adatto?"
+      "A school wants detailed reasons why learners prefer different clubs. Which method is most suitable?"
     ],
     "a": [
       [
         "Conduct open-ended interviews with a sample of learners.",
-        "Condurre interviste aperte con un campione di studenti."
+        "Conduct open-ended interviews with a sample of learners."
       ],
       [
         "Count how many learners attend each club only.",
-        "Contare soltanto quanti studenti frequentano ogni club."
+        "Count how many learners attend each club only."
       ],
       [
         "Measure the length of the club meetings.",
-        "Misurare la durata degli incontri dei club."
+        "Measure the length of the club meetings."
       ],
       [
         "Record only each learner's age.",
-        "Registrare soltanto l'età di ogni studente."
+        "Record only each learner's age."
       ]
     ],
     "why": [
       "Open-ended interviews allow learners to explain opinions and reasons in their own words.",
-      "Le interviste aperte permettono agli studenti di spiegare opinioni e motivazioni con parole proprie."
+      "Open-ended interviews allow learners to explain opinions and reasons in their own words."
     ]
   },
   "ss1-stats-cs2-descriptive": {
     "q": [
       "The values are 2, 3, 4, 5 and 26. Which measure is least affected by the outlier 26?",
-      "I valori sono 2, 3, 4, 5 e 26. Quale misura è meno influenzata dal valore anomalo 26?"
+      "The values are 2, 3, 4, 5 and 26. Which measure is least affected by the outlier 26?"
     ],
     "a": [
       [
         "The median, which is 4",
-        "La mediana, che è 4"
+        "The median, which is 4"
       ],
       [
         "The mean, which is 8",
-        "La media aritmetica, che è 8"
+        "The mean, which is 8"
       ],
       [
         "The maximum, which is 26",
-        "Il massimo, che è 26"
+        "The maximum, which is 26"
       ],
       [
         "The range, which is 24",
-        "L'escursione, che è 24"
+        "The range, which is 24"
       ]
     ],
     "why": [
       "The median is the middle value and is less sensitive to an extreme value than the mean.",
-      "La mediana è il valore centrale ed è meno sensibile a un valore estremo rispetto alla media aritmetica."
+      "The median is the middle value and is less sensitive to an extreme value than the mean."
     ]
   },
   "ss1-stats-cs2-li2": {
     "q": [
       "The data are 5, 7, 5, 6, 5, 7 and 8. What is the frequency of 5?",
-      "I dati sono 5, 7, 5, 6, 5, 7 e 8. Qual è la frequenza del valore 5?"
+      "The data are 5, 7, 5, 6, 5, 7 and 8. What is the frequency of 5?"
     ],
     "a": [
       [
@@ -1091,97 +1091,97 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "The value 5 appears three times in the list.",
-      "Il valore 5 compare tre volte nell'elenco."
+      "The value 5 appears three times in the list."
     ]
   },
   "ss1-stats-cs3-li1": {
     "q": [
       "A school has four year groups and wants every group represented. Which sampling plan is best?",
-      "Una scuola ha quattro anni scolastici e vuole rappresentarli tutti. Quale piano di campionamento è migliore?"
+      "A school has four year groups and wants every group represented. Which sampling plan is best?"
     ],
     "a": [
       [
         "Randomly select learners from each year group.",
-        "Selezionare casualmente studenti da ogni anno scolastico."
+        "Randomly select learners from each year group."
       ],
       [
         "Ask only learners in the oldest year group.",
-        "Chiedere soltanto agli studenti dell'ultimo anno."
+        "Ask only learners in the oldest year group."
       ],
       [
         "Ask only the researcher's friends.",
-        "Chiedere soltanto agli amici del ricercatore."
+        "Ask only the researcher's friends."
       ],
       [
         "Choose only learners who volunteer first.",
-        "Scegliere soltanto gli studenti che si offrono per primi."
+        "Choose only learners who volunteer first."
       ]
     ],
     "why": [
       "Sampling randomly within each year group ensures that every group is represented.",
-      "Il campionamento casuale all'interno di ogni anno garantisce che tutti i gruppi siano rappresentati."
+      "Sampling randomly within each year group ensures that every group is represented."
     ]
   },
   "ss1-stats-cs3-li2": {
     "q": [
       "What should a responsible school survey report include?",
-      "Che cosa dovrebbe includere un rapporto responsabile su un sondaggio scolastico?"
+      "What should a responsible school survey report include?"
     ],
     "a": [
       [
         "The method, sample size, anonymised results, limitations and evidence-based conclusions.",
-        "Il metodo, la dimensione del campione, risultati anonimi, limiti e conclusioni basate su prove."
+        "The method, sample size, anonymised results, limitations and evidence-based conclusions."
       ],
       [
         "Names of every learner and unsupported claims.",
-        "I nomi di tutti gli studenti e affermazioni non supportate."
+        "Names of every learner and unsupported claims."
       ],
       [
         "Only a colourful chart with no labels.",
-        "Soltanto un grafico colorato senza etichette."
+        "Only a colourful chart with no labels."
       ],
       [
         "A conclusion that hides results that disagree with the writer.",
-        "Una conclusione che nasconde i risultati in disaccordo con l'autore."
+        "A conclusion that hides results that disagree with the writer."
       ]
     ],
     "why": [
       "A responsible report is transparent about methods, protects privacy and explains limitations.",
-      "Un rapporto responsabile è trasparente sui metodi, tutela la privacy e spiega i limiti."
+      "A responsible report is transparent about methods, protects privacy and explains limitations."
     ]
   },
   "ss1-stats-cs2-li3": {
     "q": [
       "A survey about the whole school asks only the researcher's close friends. What is the main problem?",
-      "Un sondaggio su tutta la scuola interroga soltanto gli amici stretti del ricercatore. Qual è il problema principale?"
+      "A survey about the whole school asks only the researcher's close friends. What is the main problem?"
     ],
     "a": [
       [
         "The sample is likely biased and may not represent the school.",
-        "Il campione è probabilmente distorto e potrebbe non rappresentare la scuola."
+        "The sample is likely biased and may not represent the school."
       ],
       [
         "The sample is automatically random.",
-        "Il campione è automaticamente casuale."
+        "The sample is automatically random."
       ],
       [
         "The results must be correct because friends know each other.",
-        "I risultati devono essere corretti perché gli amici si conoscono."
+        "The results must be correct because friends know each other."
       ],
       [
         "The survey becomes a census.",
-        "Il sondaggio diventa un censimento."
+        "The survey becomes a census."
       ]
     ],
     "why": [
       "Selecting close friends is a convenience sample and can create selection bias.",
-      "Selezionare amici stretti è un campionamento di convenienza e può creare una distorsione di selezione."
+      "Selecting close friends is a convenience sample and can create selection bias."
     ]
   },
   "ss1-prob-cs1-li1": {
     "q": [
       "Two fair six-sided dice are rolled. How many ordered outcomes are in the sample space?",
-      "Si lanciano due dadi equi a sei facce. Quanti esiti ordinati contiene lo spazio campionario?"
+      "Two fair six-sided dice are rolled. How many ordered outcomes are in the sample space?"
     ],
     "a": [
       [
@@ -1203,13 +1203,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "Each die has six possible outcomes, so there are 6 × 6 = 36 ordered pairs.",
-      "Ogni dado ha sei esiti possibili, quindi ci sono 6 × 6 = 36 coppie ordinate."
+      "Each die has six possible outcomes, so there are 6 × 6 = 36 ordered pairs."
     ]
   },
   "ss1-prob-cs1-li2": {
     "q": [
       "A fair four-section spinner and a fair coin are used. What is the probability of landing on red and getting heads if one spinner section is red?",
-      "Si usa una ruota equa con quattro settori e una moneta equa. Qual è la probabilità di ottenere rosso e testa se un settore è rosso?"
+      "A fair four-section spinner and a fair coin are used. What is the probability of landing on red and getting heads if one spinner section is red?"
     ],
     "a": [
       [
@@ -1231,13 +1231,13 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "The events are independent: P(red and heads) = 1/4 × 1/2 = 1/8.",
-      "Gli eventi sono indipendenti: P(rosso e testa) = 1/4 × 1/2 = 1/8."
+      "The events are independent: P(red and heads) = 1/4 × 1/2 = 1/8."
     ]
   },
   "ss1-prob-cs1-li3": {
     "q": [
       "A bag contains 4 green and 1 yellow counter. A counter is replaced after each draw. What is the probability of drawing green twice?",
-      "Un sacchetto contiene 4 gettoni verdi e 1 giallo. Il gettone viene reinserito dopo ogni estrazione. Qual è la probabilità di estrarre verde due volte?"
+      "A bag contains 4 green and 1 yellow counter. A counter is replaced after each draw. What is the probability of drawing green twice?"
     ],
     "a": [
       [
@@ -1259,7 +1259,7 @@ export const GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS: Record<string, QuizQuestio
     ],
     "why": [
       "With replacement, the probability remains 4/5 on each draw: 4/5 × 4/5 = 16/25.",
-      "Con reinserimento, la probabilità resta 4/5 a ogni estrazione: 4/5 × 4/5 = 16/25."
+      "With replacement, the probability remains 4/5 on each draw: 4/5 × 4/5 = 16/25."
     ]
   }
 };

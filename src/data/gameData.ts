@@ -419,7 +419,7 @@ export const MISSIONS: Mission[] = [
         "who": "s",
         "vis": "infowords",
         "text": [
-          "<p>[[Computer science|informatica]] is the science of processing information automatically. The Italian word <i>informatica</i> comes from <b>information + automatic</b>.</p><p>[[Coding|coding]] means writing instructions that a computer can follow, using a programming language. But before you write any code, you must solve the problem in your head.</p>",
+          "<p>[[Computer science|informatica]] is the science of processing information automatically. The term <i>informatics</i> combines the ideas of information and automatic processing.</p><p>[[Coding|coding]] means writing instructions that a computer can follow, using a programming language. But before you write any code, you must solve the problem in your head.</p>",
           "<p>L'[[Computer science|informatica]] è la scienza che elabora l'informazione in modo automatico. La parola viene da <b>informazione + automatica</b>.</p><p>Fare [[coding|coding]] significa scrivere istruzioni che un computer può eseguire, usando un linguaggio di programmazione. Ma prima di scrivere codice, il problema va risolto nella testa.</p>"
         ]
       },
@@ -527,7 +527,7 @@ export const MISSIONS: Mission[] = [
       },
       {
         "q": [
-          "Where does the word \"informatica\" come from?",
+          "Which two ideas form the term \"informatics\"?",
           "Da dove viene la parola \"informatica\"?"
         ],
         "a": [
@@ -549,7 +549,7 @@ export const MISSIONS: Mission[] = [
           ]
         ],
         "why": [
-          "Informatica = INFORmazione autoMATICA: processing information automatically.",
+          "Informatics combines the ideas of information and automatic processing.",
           "Informatica = INFORmazione autoMATICA: elaborare l'informazione in modo automatico."
         ]
       },
