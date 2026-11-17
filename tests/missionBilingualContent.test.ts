@@ -11,7 +11,9 @@ const requiredMissionFields = ['title', 'topic', 'demon', 'tech'] as const;
 for (const mission of MISSIONS) {
   assert.ok(mission.id.trim(), 'Every mission must have an ID');
 
-  const isGhanaEnglishMission = ['ghcoremath', 'ghcoremath2', 'ghcoremath3'].includes(ARCS[mission.arc]?.subject || '');
+  const isGhanaCurriculumMission = ['ghcoremath', 'ghcoremath2', 'ghcoremath3'].includes(ARCS[mission.arc]?.subject || '');
+  const isBilingualGhanaMission = mission.id === 'gh-core-ss2-surds-indices-modulo';
+  const isGhanaEnglishMission = isGhanaCurriculumMission && !isBilingualGhanaMission;
   for (const field of requiredMissionFields) {
     const value = mission[field];
     assert.ok(
@@ -50,4 +52,10 @@ for (const mission of MISSIONS) {
   });
 }
 
+const surdsMission = MISSIONS.find(mission => mission.id === 'gh-core-ss2-surds-indices-modulo');
+assert.ok(surdsMission, 'SHS 2 surds mission must be registered');
+assert.ok(isBilingualPair(surdsMission.title));
+assert.ok(isBilingualPair(surdsMission.scenes[1].text));
+assert.ok(surdsMission.scenes[1].text[1].includes('Un <b>radicale irrazionale</b>'));
+assert.ok(!surdsMission.scenes[1].text[1].includes('A <b>surd</b> is'));
 console.log('missionBilingualContent.test.ts ok! Validated', MISSIONS.length, 'missions.');
