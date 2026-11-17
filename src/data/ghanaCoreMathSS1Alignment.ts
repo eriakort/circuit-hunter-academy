@@ -184,6 +184,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [147],
     alignment: 'direct',
     note: 'Covers a team project to pose and refine a school-community question, collect and analyse quantitative and/or qualitative data, interpret findings, draw evidence-based conclusions and recommendations, and present an approved report to a class or school forum. Publication is limited to anonymised material approved by the school.'
+  },
+  {
+    missionId: 'gh-core-ss1-probability-chance',
+    curriculumYear: 'SHS 1',
+    strand: '4 · Making Sense of and Using Data',
+    subStrand: '2 · Probability/Chance',
+    contentStandardIds: ['1.4.2.CS.1'],
+    learningOutcomeIds: ['1.4.2.LO.1'],
+    learningIndicatorIds: ['1.4.2.LI.1', '1.4.2.LI.2', '1.4.2.LI.3'],
+    printedPages: [149, 152],
+    alignment: 'direct',
+    note: 'Covers random experiments, trials, outcomes, sample spaces and events; listing outcomes for simple and compound experiments; determining probabilities of independent events and expressing results as fractions, decimals, percentages and ratios; and solving everyday problems. Conditional probability is introduced only as prerequisite context, not claimed as a separate learning indicator.'
   }
 ];
 
