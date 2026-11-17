@@ -1871,16 +1871,16 @@ export const GHANA_SS1_INDICATOR_BLUEPRINT = INDICATORS.map((item, questionIndex
   title: item.title
 }));
 
-const lesson = (en: string, it: string) => ({
+const lesson = (en: string, _it: string) => ({
   who: 's' as const,
   vis: 'infowords',
-  text: [`<p>${en}</p>`, `<p>${it}</p>`] as [string, string]
+  text: `<p>${en}</p>`
 });
 
-const question = (en: string, it: string, answers: BilingualText[], whyEn: string, whyIt: string) => ({
-  q: [en, it] as [string, string],
-  a: answers,
-  why: [whyEn, whyIt] as [string, string]
+const question = (en: string, _it: string, answers: [string, string][], whyEn: string, _whyIt: string) => ({
+  q: en,
+  a: answers.map(answer => answer[0]),
+  why: whyEn
 });
 
 const assessmentQuestions = INDICATORS.map(item => ({
@@ -1894,7 +1894,7 @@ export const GHANA_SS1_INDICATOR_MASTERY_ARCS: ArcInfo[] = [
     n: 19,
     unit: 0,
     subject: 'ghcoremath',
-    title: ['The 45-Indicator Mastery Expedition', 'La spedizione di padronanza dei 45 indicatori'],
+    title: 'The 45-Indicator Mastery Expedition',
     pages: 'NaCCA SHS 1 · pp. 24–155 · 45 learning indicators'
   }
 ];
@@ -1908,13 +1908,10 @@ export const GHANA_SS1_INDICATOR_MASTERY_MISSIONS: Mission[] = [
     hue: 318,
     horns: 2,
     eyes: 2,
-    title: ['The 45-Indicator Mastery Expedition', 'La spedizione di padronanza dei 45 indicatori'],
-    topic: [
-      'A curriculum-mapped diagnostic with one question for each of the 45 SHS 1 learning indicators, followed by targeted revision for every missed indicator.',
-      'Una verifica diagnostica allineata al programma, con una domanda per ciascuno dei 45 indicatori di apprendimento SHS 1, seguita da un ripasso mirato per ogni indicatore non superato.'
-    ],
-    demon: ['The Coverage Warden', 'Il Guardiano delle Competenze'],
-    tech: ['Mastery Form · Final Technique: One Indicator at a Time', 'Forma della Padronanza · Tecnica Finale: Un Indicatore alla Volta'],
+    title: 'The 45-Indicator Mastery Expedition',
+    topic: 'A curriculum-mapped diagnostic with one question for each of the 45 SHS 1 learning indicators, followed by targeted revision for every missed indicator.',
+    demon: 'The Coverage Warden',
+    tech: 'Mastery Form · Final Technique: One Indicator at a Time',
     scenes: [
       lesson(
         '<b>Welcome to the 45-Indicator Mastery Expedition.</b> This is a diagnostic, not a race. Each question is linked to one printed SHS 1 learning-indicator entry in the NaCCA Mathematics Curriculum. Your result will show which ideas are secure and which deserve another look.',
@@ -1948,7 +1945,7 @@ export const GHANA_SS1_INDICATOR_MASTERY_MISSIONS: Mission[] = [
         '<b>Be thoughtful, not rushed.</b> Read the full question, show working on paper when useful, and check units, signs and restrictions. The diagnostic reinforces the existing SHS 1 scope; it does not add or replace curriculum requirements.',
         '<b>Ragiona con calma, senza fretta.</b> Leggi tutta la domanda, svolgi i passaggi su carta quando serve e controlla unità, segni e condizioni. La verifica consolida il programma SHS 1 esistente: non aggiunge né sostituisce requisiti curriculari.'
       ),
-      { who: 'd', vis: 'demon', text: ['I have scattered your knowledge across eight sub-strands. Prove that you can retrieve each skill, and let every missed indicator reveal the next technique you must train!', 'Ho disperso le tue conoscenze in otto sotto-ambiti. Dimostra di saper recuperare ogni abilità e lascia che ogni indicatore mancato riveli la prossima tecnica da allenare!'] },
+      { who: 'd', vis: 'demon', text: 'I have scattered your knowledge across eight sub-strands. Prove that you can retrieve each skill, and let every missed indicator reveal the next technique you must train!' },
       { type: 'battle' }
     ],
     quiz: [
