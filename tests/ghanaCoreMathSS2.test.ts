@@ -129,7 +129,7 @@ assert.deepEqual(GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS.map(m => m.id), [
   'gh-core-ss2-solid-measurement-surface-volume-capacity'
 ]);
 assert.ok(GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
-assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · eleven learning missions');
+assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · fourteen learning missions');
 console.log('Ghana SHS 2 measurement coverage ok');
 
 
