@@ -108,10 +108,24 @@ const sanitizeLearningMissionProgress = (value: unknown, mission: typeof MISSION
         ...(item.attempt !== undefined ? { attempt: item.attempt as number } : {})
       };
       if (!includeAnswers) return [base];
+      const variantIndexes = item.questionVariantIndexes;
+      if (variantIndexes !== undefined && (!Array.isArray(variantIndexes)
+        || variantIndexes.length !== assessmentQuestions.length
+        || variantIndexes.some((variantIndex, index) => {
+          const poolSize = 1 + (mission.learning?.masteryAssessment?.questionVariants?.[index]?.length || 0);
+          return !Number.isInteger(variantIndex) || (variantIndex as number) < 0 || (variantIndex as number) >= poolSize;
+        }))) return [];
       if (!Array.isArray(item.answers) || item.answers.length !== assessmentQuestions.length
-        || item.answers.some((answer, index) => !Number.isInteger(answer) || (answer as number) < 0
-          || (answer as number) >= assessmentQuestions[index].a.length)) return [];
-      return [{ ...base, answers: [...item.answers] as number[] }];
+        || item.answers.some((answer, index) => {
+          const selectedVariant = Array.isArray(variantIndexes) ? variantIndexes[index] as number : 0;
+          const question = [assessmentQuestions[index], ...(mission.learning?.masteryAssessment?.questionVariants?.[index] || [])][selectedVariant];
+          return !Number.isInteger(answer) || (answer as number) < 0 || (answer as number) >= (question?.a.length || assessmentQuestions[index].a.length);
+        })) return [];
+      return [{
+        ...base,
+        answers: [...item.answers] as number[],
+        ...(Array.isArray(variantIndexes) ? { questionVariantIndexes: [...variantIndexes] as number[] } : {})
+      }];
     });
   };
   const history = sanitizeAttempts(value.masteryAttemptHistory, false);
