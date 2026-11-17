@@ -83,7 +83,7 @@ for (const topic of ITALIAN_GRAMMAR_TOPICS) {
     const levelCategory = grammarCategories.find(item => item.grammarTopicId === topic.id && item.grammarLevel === level);
     assert.ok(levelCategory, 'Missing ' + level + ' test category for ' + topic.id);
     const levelPool = filterQuestionPool('italian', levelCategory!);
-    assert.equal(levelPool.length, 3, topic.id + ' ' + level + ' should expose exactly three questions');
+    assert.equal(levelPool.length, topic.levels[level].exercises.length, topic.id + ' ' + level + ' should expose every level question');
     assert.ok(levelPool.every(question => question.grammarLevel === level), topic.id + ' ' + level + ' filter must not mix CEFR levels');
     assert.equal(levelCategory!.count, levelPool.length, topic.id + ' ' + level + ' category count should match its pool');
   }
