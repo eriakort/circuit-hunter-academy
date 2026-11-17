@@ -1579,38 +1579,38 @@ const INDICATORS = [
     "contentStandardId": "1.4.1.CS.2",
     "learningIndicatorId": "1.4.1.LI.2",
     "title": [
-      "Present data with appropriate graphs",
-      "Presentare i dati con grafici adeguati"
+      "Organise and present data",
+      "Organizzare e presentare i dati"
     ],
     "explanation": [
-      "Choose a suitable visual display for the question and data type, such as line graphs for change over time and multiple bar graphs for group comparisons.",
-      "Scegli una rappresentazione visiva adatta alla domanda e al tipo di dati, come grafici a linee per l'andamento nel tempo e grafici a barre multiple per confrontare gruppi."
+      "Organise grouped and ungrouped observations in frequency tables and select clear visual displays such as line graphs, pie charts and multiple bar graphs.",
+      "Organizza osservazioni raggruppate e non raggruppate in tabelle di frequenza e scegli rappresentazioni visive chiare come grafici a linee, diagrammi circolari e grafici a barre multiple."
     ],
     "q": [
-      "A researcher wants to compare the same four subjects' results across three school years. Which display is most suitable?",
-      "Un ricercatore vuole confrontare i risultati delle stesse quattro materie in tre anni scolastici. Quale rappresentazione è più adatta?"
+      "The data are 2, 3, 2, 4, 3, 2. What is the frequency of the value 2?",
+      "I dati sono 2, 3, 2, 4, 3, 2. Qual è la frequenza del valore 2?"
     ],
     "a": [
       [
-        "A multiple bar graph",
-        "Un grafico a barre multiple"
+        "3",
+        "3"
       ],
       [
-        "A single number line",
-        "Una sola retta numerica"
+        "2",
+        "2"
       ],
       [
-        "A Venn diagram",
-        "Un diagramma di Venn"
+        "1",
+        "1"
       ],
       [
-        "A single unlabelled circle",
-        "Un cerchio senza etichette"
+        "4",
+        "4"
       ]
     ],
     "why": [
-      "A multiple bar graph compares several categories across more than one group or time period.",
-      "Un grafico a barre multiple confronta diverse categorie tra più gruppi o periodi."
+      "The value 2 appears three times in the data set.",
+      "Il valore 2 compare tre volte nell'insieme dei dati."
     ]
   },
   {
