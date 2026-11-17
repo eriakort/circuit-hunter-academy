@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useGame } from '../context/GameContext';
 import { L } from '../helpers';
 import { BilingualText } from '../types';
+import { GrammarLevel, ITALIAN_GRAMMAR_TOPICS } from '../data/italianGrammar';
+import { getGrammarLevelProgress, getLeastMasteredGrammarTopic } from '../data/italianGrammarReview';
 import { speakItalian, pauseSpeaking, resumeSpeaking, isCurrentlySpeaking, isSpeakingPaused, startListening, isSpeechRecognitionAvailable, scorePronunciation, PronunciationScore } from '../speech/speechEngine';
 
 type Choice = { id: string; label: BilingualText; spokenItalian: string };
@@ -312,6 +314,13 @@ export const ItalianCheckpointScreen: React.FC = () => {
 
   const stage = stages[currentStageIdx];
   const question = stage.questions[currentQIdx];
+  const grammarLevel = question.cefrLevel as GrammarLevel;
+  const grammarReadiness = getGrammarLevelProgress(ITALIAN_GRAMMAR_TOPICS, grammarLevel, state.grammarProgress || {});
+  const suggestedGrammarTopic = getLeastMasteredGrammarTopic(ITALIAN_GRAMMAR_TOPICS, grammarLevel, state.grammarProgress || {});
+  const grammarLevelSummaries = (['A1', 'A2', 'B1'] as GrammarLevel[]).map(level => ({
+    level,
+    ...getGrammarLevelProgress(ITALIAN_GRAMMAR_TOPICS, level, state.grammarProgress || {})
+  }));
 
   // Check if Italian prerequisite missions are cleared
   const clearedPrereqs = REQUIRED_MISSIONS.filter(id => !!cleared[id]).length;
@@ -468,6 +477,26 @@ export const ItalianCheckpointScreen: React.FC = () => {
               ], lang)}
         </p>
 
+        <section className="it-grammar-readiness-summary" aria-label={L(['Grammar mastery by CEFR level', 'Padronanza grammaticale per livello QCER'], lang)} style={{ margin: '22px auto', maxWidth: 660, textAlign: 'left', border: '1px solid var(--line)', borderRadius: 14, padding: 16, background: 'var(--panel)' }}>
+          <strong>{L(['Grammar mastery snapshot', 'Riepilogo della padronanza grammaticale'], lang)}</strong>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 10, marginTop: 12 }}>
+            {grammarLevelSummaries.map(item => (
+              <div key={item.level} style={{ border: '1px solid var(--line)', borderRadius: 10, padding: 10 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 6, fontWeight: 750 }}>
+                  <span>{item.level}</span><span>{item.percentage}%</span>
+                </div>
+                <div style={{ fontSize: 12, color: 'var(--sub)', marginTop: 4 }}>{item.mastered}/{item.total} {L(['mastered', 'padroneggiati'], lang)}</div>
+                <div role="progressbar" aria-label={item.level + ' grammar mastery'} aria-valuemin={0} aria-valuemax={100} aria-valuenow={item.percentage} style={{ height: 5, borderRadius: 4, background: 'var(--panel2)', marginTop: 8, overflow: 'hidden' }}>
+                  <div style={{ height: '100%', width: item.percentage + '%', background: '#009246' }} />
+                </div>
+              </div>
+            ))}
+          </div>
+          <button className="btn ghost sm" style={{ marginTop: 12 }} onClick={() => goToView('it-grammar')}>
+            📚 {L(['Continue grammar training', 'Continua l’allenamento grammaticale'], lang)}
+          </button>
+        </section>
+
         {passed && (
           <div style={{
             background: 'linear-gradient(135deg, rgba(0, 146, 70, 0.15) 0%, rgba(206, 43, 55, 0.15) 100%)',
@@ -535,6 +564,25 @@ export const ItalianCheckpointScreen: React.FC = () => {
           </button>
         </div>
       </div>
+
+      <section className="it-grammar-readiness" aria-label={L(['Italian grammar readiness', 'Preparazione grammaticale italiana'], lang)} style={{ border: '1px solid rgba(0,146,70,.3)', borderRadius: 12, padding: 14, marginBottom: 18, background: 'rgba(0,146,70,.06)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+          <div style={{ flex: 1, minWidth: 220 }}>
+            <div className="eyebrow" style={{ color: '#4ade80' }}>{L(['GRAMMAR READINESS', 'PREPARAZIONE GRAMMATICALE'], lang)} · {grammarLevel}</div>
+            <strong>{grammarReadiness.mastered}/{grammarReadiness.total} {L(['questions mastered', 'domande padroneggiate'], lang)} · {grammarReadiness.percentage}%</strong>
+            <p className="muted" style={{ margin: '5px 0 0', fontSize: 12, lineHeight: 1.45 }}>
+              {L(['Optional guidance only — grammar mastery does not block this oral trial.', 'Suggerimento facoltativo: la padronanza grammaticale non blocca questa prova orale.'], lang)}
+            </p>
+            {suggestedGrammarTopic && <div style={{ fontSize: 13, marginTop: 7 }}><strong>{L(['Suggested review:', 'Ripasso consigliato:'], lang)}</strong> {L(suggestedGrammarTopic.title, lang)}</div>}
+          </div>
+          <button type="button" className="btn ghost sm" onClick={() => goToView('it-grammar')}>
+            📚 {L(['Review grammar', 'Ripassa la grammatica'], lang)}
+          </button>
+        </div>
+        <div role="progressbar" aria-label={grammarLevel + ' grammar readiness'} aria-valuemin={0} aria-valuemax={100} aria-valuenow={grammarReadiness.percentage} style={{ height: 6, borderRadius: 4, background: 'var(--panel2)', marginTop: 12, overflow: 'hidden' }}>
+          <div style={{ height: '100%', width: grammarReadiness.percentage + '%', background: '#009246', transition: 'width .2s ease' }} />
+        </div>
+      </section>
 
       {/* Progress Track */}
       <div style={{ background: 'var(--panel2)', height: 8, borderRadius: 4, overflow: 'hidden', marginBottom: 24 }}>
