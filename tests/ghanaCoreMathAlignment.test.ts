@@ -46,6 +46,16 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(budget?.printedPages).toEqual([48, 49]);
   });
 
+  test('maps linear equations, inequalities and formula rearrangement to SHS 1 Algebraic Reasoning', () => {
+    const equations = getGhanaMissionAlignment('gh-core-ss1-linear-equations-inequalities');
+    expect(equations?.curriculumYear).toBe('SHS 1');
+    expect(equations?.contentStandardIds).toEqual(['1.2.1.CS.2']);
+    expect(equations?.learningOutcomeIds).toEqual(['1.2.1.LO.2']);
+    expect(equations?.learningIndicatorIds).toEqual(['1.2.1.LI.1', '1.2.1.LI.2']);
+    expect(equations?.printedPages).toEqual([62, 66]);
+    expect(equations?.note).toContain('quadratic factorisation');
+  });
+
   test('maps fraction operations and inverses to the SHS 1 proportional-reasoning standard', () => {
     const fractions = getGhanaMissionAlignment('gh-core-ss1-fraction-operations');
     expect(fractions?.curriculumYear).toBe('SHS 1');
