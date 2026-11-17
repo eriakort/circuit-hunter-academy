@@ -25,7 +25,7 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'italian');
   await expect(page.getByTestId('sankofa-experience')).toHaveCount(0);
   await page.getByRole('button', { name: /Ghana/ }).click();
-  await expect(page.getByRole('heading', { name: 'Ghana SHS curriculum selected' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Your Sankofa journey begins here' })).toBeVisible();
   await expect(page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('.grade-card[data-grade="grade9"]')).toContainText('SHS 1 (SS1)');
   await expect(page.locator('.grade-card[data-grade="grade10"]')).toContainText('SHS 2 (SS2)');
@@ -59,6 +59,8 @@ test('learner can switch countries while curriculum progress stays isolated', as
 
   await page.locator('#hGrade').click();
   await page.getByRole('button', { name: /Italy/ }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'italian');
+  await expect(page.getByTestId('sankofa-experience')).toHaveCount(0);
   await expect(page.getByRole('button', { name: /Italy/ })).toHaveAttribute('aria-pressed', 'true');
   const italianSave = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:italy-national') || '{}'));
   expect(italianSave.xp).toBe(135);
