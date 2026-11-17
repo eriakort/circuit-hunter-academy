@@ -141,14 +141,14 @@ export const MissionScreen: React.FC = () => {
     }
     if (sc.who === 'd') {
       return isGhana
-        ? { cls: 'challenge', name: 'The Challenge', avatar: SANKOFA_CHALLENGE_AVATAR }
+        ? { cls: 'challenge', name: lang === 'it' ? 'La Sfida' : 'The Challenge', avatar: SANKOFA_CHALLENGE_AVATAR }
         : {
             cls: 'demon',
             name: L(currentMission.demon, lang),
             avatar: demonSVG(currentMission.hue, currentMission.horns, currentMission.eyes, 'avatar')
           };
     }
-    return { cls: '', name: isGhana ? 'The Elder Guide' : 'Sensei Kaito', avatar: isGhana ? SANKOFA_GUIDE_AVATAR : SENSEI };
+    return { cls: '', name: isGhana ? (lang === 'it' ? 'La Guida Anziana' : 'The Elder Guide') : 'Sensei Kaito', avatar: isGhana ? SANKOFA_GUIDE_AVATAR : SENSEI };
   };
 
   const sp = speaker();
