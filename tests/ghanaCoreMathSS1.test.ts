@@ -66,6 +66,10 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
     expect(text).toContain('The Data Display Studio');
     expect(text).toContain('The School Insight Project');
     expect(text).toContain('The Chance Compass');
+    expect(text).toContain('The Closure Forge');
+    expect(text).toContain('commutative');
+    expect(text).toContain('multiplicative inverse');
+    expect(text).toContain('closed under addition');
     expect(text).toContain('independent events');
     expect(text).toContain('sample space');
     expect(text).toContain('with replacement');
