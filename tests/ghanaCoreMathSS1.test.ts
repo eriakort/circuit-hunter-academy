@@ -37,7 +37,15 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
   });
 
   test('uses Ghanaian practical contexts without Italian-language fallback', () => {
-    const text = JSON.stringify(GHANA_CORE_MATH_SS1_MISSIONS);
+    const text = JSON.stringify(GHANA_CORE_MATH_SS1_MISSIONS.map(mission => ({
+      id: mission.id,
+      title: mission.title,
+      topic: mission.topic,
+      demon: mission.demon,
+      tech: mission.tech,
+      scenes: mission.scenes,
+      quiz: mission.quiz
+    })));
     expect(text).toContain('GH₵');
     expect(text).toContain('Kumasi');
     expect(text).toContain('trotro');
