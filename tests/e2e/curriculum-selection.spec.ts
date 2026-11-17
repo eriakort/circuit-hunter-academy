@@ -47,6 +47,31 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await expect(page.getByTestId('sankofa-experience')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Sankofa – The Knowledge Quest' })).toBeVisible();
   await expect(page.locator('.sankofa-region')).toHaveCount(5);
+
+  const sankofaContrast = await page.evaluate(() => {
+    const parse = (value: string) => {
+      const hex = value.trim().replace(/^#/, '');
+      const full = hex.length === 3 ? hex.split('').map((part) => part + part).join('') : hex;
+      const channels = [0, 2, 4].map((index) => parseInt(full.slice(index, index + 2), 16) / 255);
+      const linear = channels.map((channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4);
+      return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2];
+    };
+    const contrast = (foreground: string, background: string) => {
+      const first = parse(foreground);
+      const second = parse(background);
+      return (Math.max(first, second) + 0.05) / (Math.min(first, second) + 0.05);
+    };
+    const styles = getComputedStyle(document.querySelector('.theme-sankofa')!);
+    const background = '#fffaf0';
+    return {
+      muted: contrast(styles.getPropertyValue('--muted'), background),
+      gold: contrast(styles.getPropertyValue('--gold'), background),
+      ember: contrast(styles.getPropertyValue('--ember'), background)
+    };
+  });
+  expect(sankofaContrast.muted).toBeGreaterThanOrEqual(4.5);
+  expect(sankofaContrast.gold).toBeGreaterThanOrEqual(4.5);
+  expect(sankofaContrast.ember).toBeGreaterThanOrEqual(4.5);
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'sankofa');
   await expect(page.getByTestId('sankofa-experience')).toBeVisible();
