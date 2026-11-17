@@ -186,7 +186,7 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(averages?.learningIndicatorIds).toEqual(['1.4.3.LI.2']);
     expect(averages?.printedPages).toEqual([140, 143]);
     expect(averages?.subStrand).toContain('Descriptive Statistics');
-    expect(averages?.note).toContain('mean, median, mode');
+    expect(averages?.note).toContain('most representative average');
   });
 
   test('maps the school-community data project to the third NaCCA Statistical Reasoning standard', () => {
