@@ -95,7 +95,10 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
   ],
   ghcoremath3: [
     { id: 'logical-reasoning', subject: 'ghcoremath3', name: 'Logical Reasoning' },
-    { id: 'variation', subject: 'ghcoremath3', name: 'Direct, Inverse, Joint and Partial Variation' }
+    { id: 'variation', subject: 'ghcoremath3', name: 'Direct, Inverse, Joint and Partial Variation' },
+    { id: 'quadratic-equations', subject: 'ghcoremath3', name: 'Quadratic Equations and Factorisation' },
+    { id: 'quadratic-functions', subject: 'ghcoremath3', name: 'Quadratic Functions and Graphs' },
+    { id: 'quadratic-relationships', subject: 'ghcoremath3', name: 'Quadratic Roots, Symmetry and Intervals' }
   ]
 };
 
