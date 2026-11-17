@@ -28,7 +28,8 @@ export const resolveAssessmentQuestions = (
 /** Select one item from each indicator pool; inject a random source for deterministic tests. */
 export const createAssessmentQuestionVariantIndexes = (
   assessment: LearningMasteryAssessment | undefined,
-  random: () => number = Math.random
+  random: () => number = Math.random,
+  previousVariantIndexes: readonly number[] = []
 ): number[] => {
   if (!assessment) return [];
   return assessment.questions.map((_, index) => {
@@ -36,7 +37,11 @@ export const createAssessmentQuestionVariantIndexes = (
     if (pool.length <= 1) return 0;
     const sample = random();
     const normalized = Number.isFinite(sample) ? Math.min(0.999999999999, Math.max(0, sample)) : 0;
-    return Math.floor(normalized * pool.length);
+    const selected = Math.floor(normalized * pool.length);
+    // When retrying, guarantee a different form whenever an alternate exists.
+    return pool.length > 1 && previousVariantIndexes[index] === selected
+      ? (selected + 1) % pool.length
+      : selected;
   });
 };
 
