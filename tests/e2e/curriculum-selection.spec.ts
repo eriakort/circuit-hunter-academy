@@ -117,8 +117,9 @@ test('Ghana SHS 2 opens its own Core Mathematics pathway and mission', async ({ 
   await page.locator('.grade-card[data-grade="grade10"]').click();
   await expect(page.locator('[data-s="ghcoremath2"]')).toBeVisible();
   await page.locator('[data-s="ghcoremath2"]').click();
-  await page.locator('#nm').fill('SS2 Hunter');
-  await page.getByRole('button', { name: /Join the academy/ }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'sankofa');
+  await page.locator('#nm').fill('SS2 Explorer');
+  await page.getByRole('button', { name: /Begin your journey/ }).click();
   await expect(page.locator('h3').filter({ hasText: 'The Number Codebreaker' })).toBeVisible();
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:ghana-nacca') || '{}'));
   expect(saved.grade).toBe('grade10');
