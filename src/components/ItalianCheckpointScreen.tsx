@@ -479,7 +479,7 @@ export const ItalianCheckpointScreen: React.FC = () => {
 
         <section className="it-grammar-readiness-summary" aria-label={L(['Grammar mastery by CEFR level', 'Padronanza grammaticale per livello QCER'], lang)} style={{ margin: '22px auto', maxWidth: 660, textAlign: 'left', border: '1px solid var(--line)', borderRadius: 14, padding: 16, background: 'var(--panel)' }}>
           <strong>{L(['Grammar mastery snapshot', 'Riepilogo della padronanza grammaticale'], lang)}</strong>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 10, marginTop: 12 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 10, marginTop: 12 }}>
             {grammarLevelSummaries.map(item => (
               <div key={item.level} style={{ border: '1px solid var(--line)', borderRadius: 10, padding: 10 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: 6, fontWeight: 750 }}>
