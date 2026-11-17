@@ -33,7 +33,7 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await expect(page.locator('.grade-card')).toHaveCount(3);
   await expect(page.locator('.grade-card[data-grade="grade9"]')).toBeEnabled();
   await expect(page.locator('.grade-card[data-grade="grade10"]')).toBeEnabled();
-  await expect(page.locator('.grade-card[data-grade="grade11"]')).toBeDisabled();
+  await expect(page.locator('.grade-card[data-grade="grade11"]')).toBeEnabled();
   await page.locator('.grade-card[data-grade="grade9"]').click();
   await expect(page.locator('[data-s="ghcoremath"]')).toBeVisible();
   await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'sankofa');
@@ -153,4 +153,32 @@ test('Ghana SHS 2 opens its own Core Mathematics pathway and mission', async ({ 
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:ghana-nacca') || '{}'));
   expect(saved.grade).toBe('grade10');
   expect(saved.subject).toBe('ghcoremath2');
+});
+
+
+test('Ghana SHS 3 opens its own Core Mathematics pathway and missions', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => {
+    localStorage.clear();
+    localStorage.setItem('circuit-hunter-academy-v2:ghana-nacca', JSON.stringify({
+      grade: null, name: '', lang: 'en', xp: 0, subject: 'ghcoremath3', unit: 0,
+      cleared: {}, seen: {}, flawless: {}, learningProgress: {}, v: 5
+    }));
+    localStorage.setItem('circuit-hunter-academy-curriculum-profile-v1', JSON.stringify({
+      activeCurriculumId: 'ghana-nacca', enabledCurriculumIds: ['ghana-nacca']
+    }));
+  });
+  await page.reload();
+  await page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ }).click();
+  await page.locator('.grade-card[data-grade="grade11"]').click();
+  await expect(page.locator('[data-s="ghcoremath3"]')).toBeVisible();
+  await page.locator('[data-s="ghcoremath3"]').click();
+  await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'sankofa');
+  await page.locator('#nm').fill('SS3 Explorer');
+  await page.getByRole('button', { name: /Begin your journey/ }).click();
+  await expect(page.locator('h3').filter({ hasText: 'The Logic Pathfinder' })).toBeVisible();
+  await expect(page.locator('h3').filter({ hasText: 'The Variation Engineer' })).toBeVisible();
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:ghana-nacca') || '{}'));
+  expect(saved.grade).toBe('grade11');
+  expect(saved.subject).toBe('ghcoremath3');
 });

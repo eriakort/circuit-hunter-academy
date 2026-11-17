@@ -118,7 +118,7 @@ export const COUNTRIES: readonly CountryDefinition[] = [
             name: 'Core Mathematics',
             description: 'The common NaCCA Mathematics pathway for Senior High School learners.',
             status: 'available',
-            subjectIdsByGrade: { grade9: ['ghcoremath'], grade10: ['ghcoremath2'] }
+            subjectIdsByGrade: { grade9: ['ghcoremath'], grade10: ['ghcoremath2'], grade11: ['ghcoremath3'] }
           },
           {
             id: 'ghana-additional-mathematics',

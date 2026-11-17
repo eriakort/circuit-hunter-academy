@@ -92,6 +92,10 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
     { id: 'simultaneous-equations', subject: 'ghcoremath2', name: 'Simultaneous Linear Equations' },
     { id: 'sequences-progressions', subject: 'ghcoremath2', name: 'Sequences and Progressions' },
     { id: 'financial-exponential-models', subject: 'ghcoremath2', name: 'Financial Mathematics and Exponential Growth' }
+  ],
+  ghcoremath3: [
+    { id: 'logical-reasoning', subject: 'ghcoremath3', name: 'Logical Reasoning' },
+    { id: 'variation', subject: 'ghcoremath3', name: 'Direct, Inverse, Joint and Partial Variation' }
   ]
 };
 
