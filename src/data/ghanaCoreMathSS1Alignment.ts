@@ -354,6 +354,19 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Supplementary differentiated practice reinforcing all five Spatial Sense indicators through applied angle relationships, parallel lines and transversals, triangle angle properties, Pythagoras’ theorem and polygon angle sums. This is additional practice against the existing SHS 1 outcome, not additional curriculum coverage.'
   },
+
+  {
+    missionId: 'gh-core-ss1-probability-practice-lab',
+    curriculumYear: 'SHS 1',
+    strand: '4 · Making Sense of and Using Data',
+    subStrand: '2 · Probability/Chance',
+    contentStandardIds: ['1.4.2.CS.1'],
+    learningOutcomeIds: ['1.4.2.LO.1'],
+    learningIndicatorIds: ['1.4.2.LI.1', '1.4.2.LI.2', '1.4.2.LI.3'],
+    printedPages: [149, 152],
+    alignment: 'direct',
+    note: 'Supplementary differentiated practice reinforcing the existing three Probability/Chance indicators through complete sample-space tables and tree diagrams, equally likely outcomes, complements, independent combined events, and theoretical versus experimental relative frequency. This is additional practice, not an additional curriculum indicator.'
+  },
 ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
