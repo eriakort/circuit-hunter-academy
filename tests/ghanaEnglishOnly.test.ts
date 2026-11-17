@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { GHANA_SS1_INDICATOR_MASTERY_MISSIONS } from '../src/data/ghanaCoreMathSS1IndicatorMasteryData';
+import { GHANA_SS1_INDICATOR_BLUEPRINT, GHANA_SS1_INDICATOR_MASTERY_MISSIONS } from '../src/data/ghanaCoreMathSS1IndicatorMasteryData';
 import { GHANA_SS1_INDICATOR_ALTERNATE_QUESTIONS } from '../src/data/ghanaCoreMathSS1IndicatorQuestionVariants';
 import { GHANA_SS1_STATISTICS_MISSIONS } from '../src/data/ghanaCoreMathSS1StatisticsData';
 
@@ -25,6 +25,10 @@ function assertEnglishOnlyPairs(value: unknown, path: string): void {
   }
 }
 
+assertEnglishOnlyPairs(
+  GHANA_SS1_INDICATOR_BLUEPRINT,
+  'Ghana SHS 1 indicator blueprint'
+);
 assertEnglishOnlyPairs(
   GHANA_SS1_INDICATOR_MASTERY_MISSIONS,
   'Ghana SHS 1 indicator mastery missions'
