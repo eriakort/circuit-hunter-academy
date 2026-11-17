@@ -441,8 +441,7 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [67, 83],
     alignment: 'direct',
     note: 'Integrated retrieval and transfer across relations and functions, mapping rules, exponential mappings, linear-function graphs, gradients, equations of straight lines and distance between points. NaCCA reuses the printed LI.1 and LI.2 labels under both content standards; this mapping lists the unique labels once and reinforces the existing four-indicator sub-strand without claiming additional curriculum coverage.'
-  }
-
+  },
   {
     missionId: 'gh-core-ss1-45-indicator-diagnostic',
     curriculumYear: 'SHS 1',
