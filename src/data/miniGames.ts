@@ -550,7 +550,7 @@ function gameDataDisplay(sc, host, done) {
   };
 
   const markChoice = (selected) => {
-    $('.dataviz-choice', host).forEach(button => {
+    $$('.dataviz-choice', host).forEach(button => {
       const active = button.dataset.chartChoice === selected;
       button.setAttribute('aria-pressed', active ? 'true' : 'false');
       button.classList.toggle('cyan', active);
@@ -650,7 +650,7 @@ function gameDataDisplay(sc, host, done) {
         <select id="line-highest"><option value="">—</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option></select>
         <button type="button" class="btn" id="chart-check">${L(['Check graph choice', 'Verifica il grafico'])}</button>`;
       let selected = '';
-      $('.dataviz-choice', host).forEach(button => button.addEventListener('click', () => {
+      $$('.dataviz-choice', host).forEach(button => button.addEventListener('click', () => {
         selected = button.dataset.chartChoice;
         markChoice(selected);
       }));
@@ -697,7 +697,7 @@ function gameDataDisplay(sc, host, done) {
         <select id="girls-most"><option value="">—</option><option>Football</option><option>Netball</option><option>Athletics</option></select>
         <button type="button" class="btn" id="chart-check">${L(['Check comparison', 'Verifica confronto'])}</button>`;
       let selected = '';
-      $('.dataviz-choice', host).forEach(button => button.addEventListener('click', () => {
+      $$('.dataviz-choice', host).forEach(button => button.addEventListener('click', () => {
         selected = button.dataset.chartChoice;
         markChoice(selected);
       }));
@@ -723,7 +723,7 @@ function gameDataDisplay(sc, host, done) {
         </div>
         <button type="button" class="btn" id="chart-check">${L(['Check infographic', 'Verifica infografica'])}</button>`;
       let selected = '';
-      $('.dataviz-choice', host).forEach(button => button.addEventListener('click', () => {
+      $$('.dataviz-choice', host).forEach(button => button.addEventListener('click', () => {
         selected = button.dataset.chartChoice;
         markChoice(selected);
       }));
