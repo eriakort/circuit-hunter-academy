@@ -29173,6 +29173,26 @@ MISSIONS.push(...GHANA_CORE_MATH_SS2_PROBABILITY_MISSIONS.map(mission => ({
 })));
 
 
+
+// Ghana NaCCA · SHS 3 Algebraic Reasoning · Quadratic Functions and Equations.
+import {
+  GHANA_CORE_MATH_SS3_QUADRATICS_UNIT,
+  GHANA_CORE_MATH_SS3_QUADRATICS_ARCS,
+  GHANA_CORE_MATH_SS3_QUADRATICS_MISSIONS
+} from './ghanaCoreMathSS3QuadraticsData';
+const ghanaCoreMathSS3QuadraticsUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_CORE_MATH_SS3_QUADRATICS_UNIT, subject: 'ghcoremath3' });
+const ghanaCoreMathSS3QuadraticsArcOffset = ARCS.length;
+GHANA_CORE_MATH_SS3_QUADRATICS_ARCS.forEach(arc => ARCS.push({
+  ...arc,
+  unit: ghanaCoreMathSS3QuadraticsUnitOffset,
+  subject: 'ghcoremath3'
+}));
+MISSIONS.push(...GHANA_CORE_MATH_SS3_QUADRATICS_MISSIONS.map(mission => ({
+  ...mission,
+  arc: ghanaCoreMathSS3QuadraticsArcOffset + mission.arc
+})));
+
 // Ghana NaCCA · SHS 3 Numbers for Everyday Life · Logical Reasoning and Variation.
 import {
   GHANA_CORE_MATH_SS3_SUBJECT,
