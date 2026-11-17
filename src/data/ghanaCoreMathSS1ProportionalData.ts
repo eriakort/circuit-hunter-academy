@@ -14,6 +14,9 @@ export const GHANA_SS1_PROPORTIONAL_ARCS: ArcInfo[] = [
     subject: 'ghcoremath',
     title: 'Percentage Change and Household Finance',
     pages: 'NaCCA SHS 1 · pp. 48–49'
+  },
+  {
+    n: 16, unit: 0, subject: 'ghcoremath', title: 'Compound Interest and Tax', pages: 'NaCCA SHS 1 · p. 50'
   }
 ];
 
@@ -81,6 +84,37 @@ export const GHANA_SS1_PROPORTIONAL_MISSIONS: Mission[] = [
       question('A price falls from GH₵13.20 to GH₵12.50. What is the percentage decrease to 2 decimal places?', ['5.30%', '5.60%', '0.70%', '4.90%'], '0.70 ÷ 13.20 × 100 ≈ 5.30%.'),
       question('A class budget of GH₵1,200 increases by 12%. What is the new budget?', ['GH₵1,344', 'GH₵1,212', 'GH₵1,320', 'GH₵1,056'], '12% of 1,200 is 144; the new budget is GH₵1,344.'),
       question('A GH₵320 item is discounted by 15%. What is the sale price?', ['GH₵272', 'GH₵305', 'GH₵48', 'GH₵288'], '15% of 320 is 48; 320 − 48 = GH₵272.')
+    ]
+  }
+
+  ,
+  {
+    id: 'gh-core-ss1-compound-interest-tax',
+    arc: 2,
+    sec: 'Proportional reasoning',
+    pages: 'NaCCA SHS 1 · p. 50',
+    hue: 48, horns: 2, eyes: 2,
+    title: 'The Compound Growth and Tax Forge',
+    topic: 'Calculate compound interest and percentage growth, and solve tax-inclusive and tax-exclusive price problems using a stated tax rate.',
+    demon: 'The Hidden Rate Collector',
+    tech: 'Proportion Form · Eighteenth Technique: Growth and Fair Value',
+    scenes: [
+      lesson('<p><b>Simple and compound interest are different.</b> Simple interest is calculated on the original principal each period. Compound interest is calculated on the new balance, so interest can earn interest. Always identify the principal, rate, time and compounding period.</p>'),
+      lesson('<p><b>Annual compound interest:</b> when interest is compounded once each year, use A = P(1 + r)ⁿ, where P is the starting principal, r is the annual rate as a decimal, and n is the number of years. Compound interest earned is A − P. The rate and time must use matching periods.</p>'),
+      lesson('<p><b>Worked example:</b> GH₵2,000 is saved at 5% compound interest per year for 2 years. A = 2,000 × (1.05)² = GH₵2,205. Interest earned = 2,205 − 2,000 = GH₵205. After year one the balance is GH₵2,100; year two interest is calculated on GH₵2,100, not just the original GH₵2,000.</p>'),
+      lesson('<p><b>Compare with simple interest:</b> on the same GH₵2,000 at 5% for 2 years, simple interest is 2,000 × 0.05 × 2 = GH₵200. The compound amount is GH₵2,205, while the simple-interest amount is GH₵2,200. The difference comes from interest earned on the first year’s interest.</p>'),
+      lesson('<p><b>Tax as a percentage:</b> a tax amount is calculated from a stated taxable price using the rate supplied in the problem. Tax = rate × taxable price. For example, if a product costs GH₵500 before tax and the exercise gives a tax rate of 10%, tax is GH₵50 and the total is GH₵550.</p>'),
+      lesson('<p><b>Tax-inclusive prices:</b> if the displayed total already includes a 10% tax, do not add another 10%. The total represents 110% of the pre-tax price. Pre-tax price = total ÷ 1.10. For a tax-inclusive total of GH₵550, the pre-tax price is GH₵500 and the included tax is GH₵50.</p>'),
+      lesson('<p><b>Real-life decisions:</b> compare savings options by calculating the final amount for the same starting principal and time. Compare purchases using the pre-tax price, stated tax rate and final total. Tax rates and rules can change, so use the rate given in the question rather than assuming a current statutory rate.</p>'),
+      lesson('<p><b>Check your answer:</b> a positive compound rate should increase the balance. A tax-inclusive total should be greater than the pre-tax price when the tax rate is positive. Keep money to two decimal places when appropriate, but do not round intermediate steps too early.</p>'),
+      { who: 'd', vis: 'demon', text: 'I will make interest grow on the wrong balance and add tax twice. Track the base amount and defeat my hidden calculations!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('GH₵1,000 is invested at 10% compound interest annually for 2 years. What is the final amount?', ['GH₵1,210', 'GH₵1,200', 'GH₵1,100', 'GH₵1,020'], 'A = 1,000 × 1.1² = GH₵1,210.'),
+      question('What compound interest is earned on GH₵2,000 at 5% annually for 2 years?', ['GH₵205', 'GH₵200', 'GH₵210', 'GH₵2,205'], 'The amount is GH₵2,205, so interest earned is 2,205 − 2,000 = GH₵205.'),
+      question('A product costs GH₵500 before tax. The exercise gives a tax rate of 10%. What is the total price?', ['GH₵550', 'GH₵510', 'GH₵500', 'GH₵600'], 'Tax is 10% × 500 = GH₵50. Total = GH₵550.'),
+      question('A tax-inclusive total is GH₵550 and includes 10% tax. What was the pre-tax price?', ['GH₵500', 'GH₵495', 'GH₵540', 'GH₵605'], 'The total is 110% of the pre-tax price, so 550 ÷ 1.10 = GH₵500.')
     ]
   }
 

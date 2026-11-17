@@ -241,6 +241,16 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(volume?.note).toContain('triangular prisms');
   });
 
+  test('maps compound interest and tax to the SHS 1 proportional-finance indicator', () => {
+    const finance = getGhanaMissionAlignment('gh-core-ss1-compound-interest-tax');
+    expect(finance?.curriculumYear).toBe('SHS 1');
+    expect(finance?.contentStandardIds).toEqual(['1.1.2.CS.2']);
+    expect(finance?.learningOutcomeIds).toEqual(['1.1.2.LO.2']);
+    expect(finance?.learningIndicatorIds).toEqual(['1.1.2.LI.2']);
+    expect(finance?.printedPages).toEqual([50]);
+    expect(finance?.note).toContain('annual compound interest');
+  });
+
   test('maps perimeter and area to the third SHS 1 Measurement standard', () => {
     const perimeterArea = getGhanaMissionAlignment('gh-core-ss1-perimeter-area');
     expect(perimeterArea?.curriculumYear).toBe('SHS 1');

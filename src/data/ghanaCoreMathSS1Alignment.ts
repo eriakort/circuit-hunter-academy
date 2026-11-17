@@ -317,6 +317,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Covers volume of rectangular prisms, square-faced cuboids and triangular prisms using cross-sectional area multiplied by prism length, including reverse-dimension problems and everyday contexts. This maps specifically to indicator 1.3.2.LI.4 and does not claim to replace the separate perimeter/area learning indicators.'
   },
+  {
+    missionId: 'gh-core-ss1-compound-interest-tax',
+    curriculumYear: 'SHS 1',
+    strand: '1 · Numbers for Everyday Life',
+    subStrand: '2 · Proportional Reasoning',
+    contentStandardIds: ['1.1.2.CS.2'],
+    learningOutcomeIds: ['1.1.2.LO.2'],
+    learningIndicatorIds: ['1.1.2.LI.2'],
+    printedPages: [50],
+    alignment: 'direct',
+    note: 'Extends the percentage-change and personal-finance indicator with annual compound interest, comparison against simple interest, tax calculations, and tax-inclusive/exclusive prices. All tax rates are supplied in the learning examples and assessment; no current statutory rate is assumed.'
+  },
 ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
