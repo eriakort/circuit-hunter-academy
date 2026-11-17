@@ -2,7 +2,7 @@ import React from 'react';
 import { useGame } from '../context/GameContext';
 import { GRADES } from '../data/gradeData';
 import { L } from '../helpers';
-import { COUNTRIES, getCurriculum } from '../data/curricula';
+import { COUNTRIES, getCurriculum, getCurriculumGradeLevel } from '../data/curricula';
 
 export const GradePicker: React.FC = () => {
   const { state, setGrade, curriculumProfile, setCurriculum } = useGame();
@@ -53,16 +53,17 @@ export const GradePicker: React.FC = () => {
       <div className="grade-options" role="group" aria-label={L(['Choose your grade', 'Scegli la tua classe'], lang)}>
         {GRADES.filter(grade => !isGhana || ['grade9', 'grade10', 'grade11'].includes(grade.id)).map(grade => {
           const selected = state.grade === grade.id;
+          const ghanaLevel = isGhana ? getCurriculumGradeLevel('ghana-nacca', grade.id) : undefined;
           const ready = isGhana ? ['grade9', 'grade10', 'grade11'].includes(grade.id) : grade.status === 'ready';
           const statusCopy: [string, string] =
             grade.id === 'grade5'
-              ? ['Science, Maths, Italian, History & Geography available', 'Scienze, Matematica, Italiano, Storia e Geografia disponibili']
+              ? ['Science, Maths, Italian, History & Geography · Ready', 'Scienze, Matematica, Italiano, Storia e Geografia · Pronte']
               : ready
                 ? grade.id === 'grade9'
                   ? ['CS, Physics, Math, Italian, Chem L1, History & Geo · Ready', 'Informatica, Fisica, Matematica, Italiano, Chimica L1, Storia e Geo · Pronte']
                   : grade.id === 'grade10'
-                    ? ['Chemistry L2, Italian, History & World Geo · Ready', 'Chimica L2, Italiano, Storia e Geografia · Pronte']
-                    : ['Chemistry L3, Italian, Modern History & Geopolitics · Ready', 'Chimica L3, Italiano, Storia Moderna e Geopolitica · Pronte']
+                    ? ['Maths L2, Chemistry L2, Italian, History & World Geo · Ready', 'Matematica L2, Chimica L2, Italiano, Storia e Geografia · Pronte']
+                    : ['Maths L3, Chemistry L3, Italian, Modern History & Geopolitics · Ready', 'Matematica L3, Chimica L3, Italiano, Storia Moderna e Geopolitica · Pronte']
                 : ['Curriculum setup next', 'Programma in preparazione'];
 
           return (
@@ -74,10 +75,10 @@ export const GradePicker: React.FC = () => {
               onClick={() => setGrade(grade.id)}
               disabled={isGhana ? !['grade9', 'grade10', 'grade11'].includes(grade.id) : false}
             >
-              <span className="grade-card-art" aria-hidden="true">{grade.id.replace('grade', '')}</span>
-              <span className="grade-card-kicker">{L(grade.schoolLevel, lang)}</span>
-              <strong>{isGhana ? ({ grade9: 'SHS 1 (SS1)', grade10: 'SHS 2 (SS2)', grade11: 'SHS 3 (SS3)' } as Record<string, string>)[grade.id] : L(grade.name, lang)}</strong>
-              <span className="grade-card-detail">{L(grade.ageRange, lang)}</span>
+              <span className="grade-card-art" aria-hidden="true">{ghanaLevel?.badge ?? grade.id.replace('grade', '')}</span>
+              <span className="grade-card-kicker">{ghanaLevel?.kicker ?? L(grade.schoolLevel, lang)}</span>
+              <strong>{ghanaLevel?.label ?? L(grade.name, lang)}</strong>
+              <span className="grade-card-detail">{ghanaLevel?.ageRange ?? L(grade.ageRange, lang)}</span>
               <span className="grade-card-status">
                 {isGhana ? (grade.id === 'grade9' ? 'Core Mathematics · SS1 pilot available' : grade.id === 'grade10' ? 'Core Mathematics · SS2 foundation available' : 'Core Mathematics · SS3 foundation available') : L(statusCopy, lang)}
               </span>

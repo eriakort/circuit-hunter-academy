@@ -88,7 +88,7 @@ test('Grade 5 Science includes the complete bilingual Universe unit', async ({ p
   await expect(page.getByRole('heading', { name: 'Universe Review: Mission Complete' })).toBeVisible();
 
   await page.locator('#lIT').click();
-  await expect(page.getByRole('heading', { name: "L'Univers" })).toBeVisible();
+  await expect(page.getByRole('heading', { name: "L'Universo" })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Il cielo oltre la Terra' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'STEM: Il pendolo di Foucault' })).toBeVisible();
 });

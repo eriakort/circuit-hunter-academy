@@ -20,6 +20,14 @@ export interface CurriculumGradeLevel {
   /** Optional second-language label for the existing bilingual UI. */
   alternateLabel?: string;
   order: number;
+  /** Compact label for headers and buttons, e.g. “SHS 2”. */
+  shortLabel?: string;
+  /** Text for the large badge on the level card, e.g. “2”. */
+  badge?: string;
+  /** School stage line shown above the level name. */
+  kicker?: string;
+  /** Typical learner ages for this level. */
+  ageRange?: string;
 }
 
 export interface CurriculumPathway {
@@ -108,9 +116,10 @@ export const COUNTRIES: readonly CountryDefinition[] = [
         primaryLanguage: 'en',
         supportedLanguages: ['en'],
         gradeLevels: [
-          { gradeId: 'grade9', label: 'SHS 1 (SS1)', order: 1 },
-          { gradeId: 'grade10', label: 'SHS 2 (SS2)', order: 2 },
-          { gradeId: 'grade11', label: 'SHS 3 (SS3)', order: 3 }
+          // Ghana SHS is a three-year stage that usually starts around age 15, after JHS 3.
+          { gradeId: 'grade9', label: 'SHS 1 (SS1)', order: 1, shortLabel: 'SHS 1', badge: '1', kicker: 'Senior High School · Year 1', ageRange: 'Usually about ages 15–16' },
+          { gradeId: 'grade10', label: 'SHS 2 (SS2)', order: 2, shortLabel: 'SHS 2', badge: '2', kicker: 'Senior High School · Year 2', ageRange: 'Usually about ages 16–17' },
+          { gradeId: 'grade11', label: 'SHS 3 (SS3)', order: 3, shortLabel: 'SHS 3', badge: '3', kicker: 'Senior High School · Year 3', ageRange: 'Usually about ages 17–18' }
         ],
         pathways: [
           {
@@ -152,3 +161,9 @@ export const getCurriculumPathway = (
   pathwayId: CurriculumPathwayId
 ): CurriculumPathway | undefined =>
   getCurriculum(curriculumId)?.pathways.find(pathway => pathway.id === pathwayId);
+
+/** The level metadata a curriculum shows for an internal grade ID, if it defines one. */
+export const getCurriculumGradeLevel = (curriculumId: CurriculumId, gradeId: GradeId): CurriculumGradeLevel | undefined =>
+  COUNTRIES.flatMap(country => country.curricula)
+    .find(curriculum => curriculum.id === curriculumId)
+    ?.gradeLevels.find(level => level.gradeId === gradeId);
