@@ -391,7 +391,7 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     learningIndicatorIds: ['1.4.1.LI.1', '1.4.1.LI.2', '1.4.1.LI.3', '1.4.3.LI.2'],
     printedPages: [126, 147],
     alignment: 'direct',
-    note: 'Integrated application across data classification and collection, organisation/presentation, descriptive statistics and a school-community investigation report. The unusual descriptive-statistics reference 1.4.3.LI.2 is preserved exactly as printed on page 138 within Statistical Reasoning; no additional Data sub-strand or unsupported content standard is asserted. The mission reinforces existing scope and does not claim extra curriculum coverage.'
+    note: 'Integrated application across data classification and collection, organisation/presentation, descriptive statistics and a school-community investigation report. Its structured mastery pathway maps eight distinct content-standard/indicator entries to eight bilingual concepts and questions; the repeated LI labels are disambiguated by their content standards. The unusual descriptive-statistics reference 1.4.3.LI.2 is preserved exactly as printed on page 138 within Statistical Reasoning; no additional Data sub-strand or unsupported content standard is asserted. The mission reinforces existing scope and does not claim extra curriculum coverage.'
   },
   {
     missionId: 'gh-core-ss1-real-number-mastery-challenge',
