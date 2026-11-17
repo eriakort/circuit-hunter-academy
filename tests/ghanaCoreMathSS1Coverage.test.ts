@@ -102,8 +102,16 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('counts the probability mission only in the Probability/Chance sub-strand', () => {
     const probability = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Probability/Chance');
     expect(probability?.status).toBe('partial');
-    expect(probability?.pilotMissionIds).toEqual(['gh-core-ss1-probability-chance']);
+    expect(probability?.pilotMissionIds).toEqual(['gh-core-ss1-probability-chance', 'gh-core-ss1-probability-practice-lab']);
     expect(probability?.learningIndicators).toBe(3);
+  });
+
+
+  test('includes differentiated applied practice for the three Probability/Chance indicators', () => {
+    const mission = GHANA_CORE_MATH_SS1_MISSIONS.find(item => item.id === 'gh-core-ss1-probability-practice-lab');
+    expect(mission).toBeDefined();
+    expect(mission?.quiz).toHaveLength(6);
+    expect(mission?.scenes.length).toBeGreaterThanOrEqual(9);
   });
 
   test('does not count the SHS 2 ratio extension as SHS 1 coverage', () => {
