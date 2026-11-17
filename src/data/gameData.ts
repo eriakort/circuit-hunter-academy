@@ -29175,10 +29175,12 @@ MISSIONS.push(...GHANA_CORE_MATH_SS2_PROBABILITY_MISSIONS.map(mission => ({
 
 // Ghana NaCCA · SHS 3 Numbers for Everyday Life · Logical Reasoning and Variation.
 import {
+  GHANA_CORE_MATH_SS3_SUBJECT,
   GHANA_CORE_MATH_SS3_UNIT,
   GHANA_CORE_MATH_SS3_ARCS,
   GHANA_CORE_MATH_SS3_MISSIONS
 } from './ghanaCoreMathSS3Data';
+if (!SUBJECTS.some(subject => subject.id === 'ghcoremath3')) SUBJECTS.push(GHANA_CORE_MATH_SS3_SUBJECT);
 const ghanaCoreMathSS3UnitOffset = UNITS.length;
 UNITS.push({ ...GHANA_CORE_MATH_SS3_UNIT, subject: 'ghcoremath3' });
 const ghanaCoreMathSS3ArcOffset = ARCS.length;
