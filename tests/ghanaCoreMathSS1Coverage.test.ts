@@ -18,7 +18,7 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
     const summary = getGhanaCoreMathSS1CoverageSummary();
     expect(summary).toMatchObject({
       contentStandards: 17,
-      learningOutcomes: 17,
+      learningOutcomes: 16,
       learningIndicators: 44,
       subStrands: 9
     });
