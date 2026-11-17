@@ -112,6 +112,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     note: 'Focused coverage of the first Patterns and Relationships content standard: distinguishing relations and functions, mapping rules, domain and range, and drawing/interpreting simple linear-function graphs. The second content standard on gradient/equations of straight lines and distance between points is not claimed as covered.'
   },
   {
+    missionId: 'gh-core-ss1-straight-lines-distance',
+    curriculumYear: 'SHS 1',
+    strand: '2 · Algebraic Reasoning',
+    subStrand: '2 · Patterns and Relationships',
+    contentStandardIds: ['1.2.2.CS.2'],
+    learningOutcomeIds: ['1.2.2.LO.2'],
+    learningIndicatorIds: ['1.2.2.LI.1', '1.2.2.LI.2'],
+    printedPages: [80, 83],
+    alignment: 'direct',
+    note: 'Covers coordinate pairs, midpoint, gradient, equations of straight lines, distance between two points using Pythagoras, and parallel/perpendicular gradient relationships. The earlier Mapping Maze mission covers the separate first content standard on relations, functions and graph interpretation.'
+  },
+  {
     missionId: 'gh-core-ss1-spatial-sense',
     curriculumYear: 'SHS 1',
     strand: '3 · Geometry Around Us',
