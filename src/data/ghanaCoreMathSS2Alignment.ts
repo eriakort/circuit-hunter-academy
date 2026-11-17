@@ -95,3 +95,23 @@ export const GHANA_CORE_MATH_SS2_SIMULTANEOUS_EQUATIONS_ALIGNMENT = {
     { id: '2.2.1.LI.3', printedPage: 198, description: 'Analyse, model and solve word problems of simultaneous linear equations involving numbers, age and other contexts.' }
   ]
 } as const;
+
+
+// Strand 2 · Algebraic Reasoning · Sub-strand 2
+// NaCCA source: SHS 2 Patterns and Relations, printed pp. 198–206.
+export const GHANA_CORE_MATH_SS2_PATTERNS_ALIGNMENT = {
+  strand: '2 · Algebraic Reasoning',
+  subStrand: '2 · Patterns and Relations',
+  printedPages: [198, 206],
+  learningOutcomes: [
+    {
+      id: '2.2.2.LO.1',
+      printedPage: 198,
+      description: 'Explore patterns of a sequence using plane figures and find the nth and the sum of the nth term of an arithmetic and geometric progression. Analyse, model, and solve real-life problems involving financial mathematics and exponential growth.'
+    }
+  ],
+  coverage: [
+    { missionId: 'gh-core-ss2-sequences-progressions', topics: ['plane-figure patterns', 'arithmetic progressions', 'geometric progressions', 'nth term', 'sum of an arithmetic progression'] },
+    { missionId: 'gh-core-ss2-financial-exponential-models', topics: ['compound interest', 'depreciation', 'exponential growth', 'repeated percentage change'] }
+  ]
+} as const;
