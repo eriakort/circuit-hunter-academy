@@ -26,7 +26,7 @@ export type GhanaSS1SubStrandCoverage = {
   note: string;
 };
 
-/** Official SHS 1 scope totals are 17 content standards, 16 outcomes and 44 indicators across nine sub-strands. */
+/** Official SHS 1 scope totals are 16 content standards, 17 outcomes and 45 indicators across eight sub-strands. */
 export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
   {
     strand: 'Numbers for Everyday Life',
@@ -52,7 +52,7 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     strand: 'Algebraic Reasoning',
     subStrand: 'Applications of Expressions, Equations and Inequalities',
     contentStandards: 2,
-    learningOutcomes: 2,
+    learningOutcomes: 3,
     learningIndicators: 6,
     status: 'partial',
     pilotMissionIds: ['gh-core-ss1-algebraic-expressions', 'gh-core-ss1-linear-equations-inequalities', 'gh-core-ss1-quadratic-factorisation-algebraic-fractions'],
@@ -93,20 +93,10 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     subStrand: 'Statistical Reasoning and Its Application in Real Life',
     contentStandards: 3,
     learningOutcomes: 3,
-    learningIndicators: 6,
+    learningIndicators: 8,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-statistical-reasoning-data-types', 'gh-core-ss1-statistical-data-collection-methods', 'gh-core-ss1-statistical-data-organisation-presentation', 'gh-core-ss1-school-community-data-project'],
-    note: 'The pilot covers data classification, quantitative/qualitative collection methods, frequency tables and visual presentation, plus the school-community data project. Descriptive statistics are tracked separately under NaCCA Sub-Strand 3. Additional varied practice and assessment are still needed before claiming full mastery.'
-  },
-  {
-    strand: 'Making Sense of and Using Data',
-    subStrand: 'Descriptive Statistics and Inference',
-    contentStandards: 1,
-    learningOutcomes: 0,
-    learningIndicators: 1,
-    status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-statistical-averages-inference'],
-    note: 'NaCCA Sub-Strand 3 (1.4.3.CS.1) focuses on analysing and interpreting data with descriptive statistics, including measures of central tendency/location and minimum/maximum values, and justifying which average best represents the data. The pilot mission introduces mean, median, mode, grouped-data calculations and the effect of extreme values; further varied practice is still needed.'
+    pilotMissionIds: ['gh-core-ss1-statistical-reasoning-data-types', 'gh-core-ss1-statistical-data-collection-methods', 'gh-core-ss1-statistical-data-organisation-presentation', 'gh-core-ss1-statistical-averages-inference', 'gh-core-ss1-school-community-data-project'],
+    note: 'This is the single SHS 1 Statistical Reasoning sub-strand in NaCCA’s scope-and-sequence table. The pilot covers data classification and collection methods; frequency tables and visual presentation; descriptive statistics and justified choice of average (the PDF labels this curriculum reference 1.4.3.LI.2 within the Statistical Reasoning section); and the school-community project. Further varied practice and assessment are still needed before claiming full mastery.'
   },
   {
     strand: 'Making Sense of and Using Data',
