@@ -36,6 +36,28 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
     }
   });
 
+
+  test('adds bilingual guided and independent reinforcement across all eight SHS 1 sub-strands', () => {
+    const mission = GHANA_CORE_MATH_SS1_MISSIONS.find(item => item.id === 'gh-core-ss1-45-indicator-diagnostic');
+    expect(mission).toBeDefined();
+    const guided = mission!.learning?.guidedPractice || [];
+    const independent = mission!.learning?.independentPractice || [];
+    expect(guided).toHaveLength(1);
+    expect(independent).toHaveLength(1);
+    expect(guided[0].questions).toHaveLength(8);
+    expect(independent[0].questions).toHaveLength(8);
+    expect(guided[0].sceneIndex).toBe(0);
+    expect(independent[0].sceneIndex).toBe(0);
+    for (const activity of [...guided, ...independent]) {
+      expect(activity.questions!.every(question =>
+        Array.isArray(question.q) && question.q.length === 2 &&
+        Array.isArray(question.why) && question.why.length === 2 &&
+        question.a.length === 4 && question.a.every(option => Array.isArray(option) && option.length === 2)
+      )).toBe(true);
+      expect(activity.hints).toHaveLength(8);
+    }
+  });
+
   test('uses Ghanaian practical contexts without Italian-language fallback', () => {
     const text = JSON.stringify(GHANA_CORE_MATH_SS1_MISSIONS.map(mission => ({
       id: mission.id,
