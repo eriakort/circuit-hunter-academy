@@ -6,6 +6,7 @@ import { GHANA_SS1_STATISTICS_ARCS, GHANA_SS1_STATISTICS_MISSIONS } from './ghan
 import { GHANA_SS1_PROBABILITY_ARCS, GHANA_SS1_PROBABILITY_MISSIONS } from './ghanaCoreMathSS1ProbabilityData';
 import { GHANA_SS1_REAL_NUMBER_ARCS, GHANA_SS1_REAL_NUMBER_MISSIONS } from './ghanaCoreMathSS1RealNumberData';
 import { GHANA_SS1_PROPORTIONAL_ARCS, GHANA_SS1_PROPORTIONAL_MISSIONS } from './ghanaCoreMathSS1ProportionalData';
+import { GHANA_SS1_ALGEBRA_ARCS, GHANA_SS1_ALGEBRA_MISSIONS } from './ghanaCoreMathSS1AlgebraData';
 
 /**
  * Ghana NaCCA SHS 1 Core Mathematics pilot.
@@ -42,6 +43,7 @@ export const GHANA_CORE_MATH_SS1_ARCS: ArcInfo[] = [
   ...GHANA_SS1_PROBABILITY_ARCS.map(arc => ({ ...arc, n: 12 })),
   ...GHANA_SS1_REAL_NUMBER_ARCS.map(arc => ({ ...arc, n: 13 })),
   ...GHANA_SS1_PROPORTIONAL_ARCS.map(arc => ({ ...arc })),
+  ...GHANA_SS1_ALGEBRA_ARCS.map(arc => ({ ...arc })),
 ];
 
 const question = (prompt: string, answers: string[], explanation: string) => ({
@@ -224,4 +226,5 @@ export const GHANA_CORE_MATH_SS1_MISSIONS: Mission[] = [
   ...GHANA_SS1_PROBABILITY_MISSIONS,
   ...GHANA_SS1_REAL_NUMBER_MISSIONS,
   ...GHANA_SS1_PROPORTIONAL_MISSIONS,
+  ...GHANA_SS1_ALGEBRA_MISSIONS,
 ];
