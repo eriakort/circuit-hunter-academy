@@ -10,7 +10,7 @@ export const GHANA_CORE_MATH_SS2_PROBABILITY_UNIT: UnitInfo = {
 };
 
 export const GHANA_CORE_MATH_SS2_PROBABILITY_ARCS: ArcInfo[] = [{
-  n: 9,
+  n: 8,
   unit: 0,
   subject: 'ghcoremath2',
   title: 'Probability/Chance · Dependent and Independent Events',
