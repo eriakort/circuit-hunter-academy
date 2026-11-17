@@ -29151,3 +29151,23 @@ MISSIONS.push(...GHANA_CORE_MATH_SS2_STATISTICS_MISSIONS.map(mission => ({
   ...mission,
   arc: ghanaCoreMathSS2StatisticsArcOffset + mission.arc
 })));
+
+
+// Ghana NaCCA · SHS 2 Making Sense of and Using Data · Probability/Chance.
+import {
+  GHANA_CORE_MATH_SS2_PROBABILITY_UNIT,
+  GHANA_CORE_MATH_SS2_PROBABILITY_ARCS,
+  GHANA_CORE_MATH_SS2_PROBABILITY_MISSIONS
+} from './ghanaCoreMathSS2ProbabilityData';
+const ghanaCoreMathSS2ProbabilityUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_CORE_MATH_SS2_PROBABILITY_UNIT, subject: 'ghcoremath2' });
+const ghanaCoreMathSS2ProbabilityArcOffset = ARCS.length;
+GHANA_CORE_MATH_SS2_PROBABILITY_ARCS.forEach(arc => ARCS.push({
+  ...arc,
+  unit: ghanaCoreMathSS2ProbabilityUnitOffset,
+  subject: 'ghcoremath2'
+}));
+MISSIONS.push(...GHANA_CORE_MATH_SS2_PROBABILITY_MISSIONS.map(mission => ({
+  ...mission,
+  arc: ghanaCoreMathSS2ProbabilityArcOffset + mission.arc
+})));
