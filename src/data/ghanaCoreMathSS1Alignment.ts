@@ -293,6 +293,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Covers SI and imperial area referents and comparisons; perimeter and area estimation for circles, quadrilaterals, and regular, composite and irregular 2D shapes; area formulas for parallelograms, rhombi, kites and trapezoids; decomposition and grid estimation; and contextual perimeter/area problems with unit conversion. The separate volume-of-prisms indicator 1.3.2.LI.4 is not claimed as covered.'
   },
+  {
+    missionId: 'gh-core-ss1-prism-volume',
+    curriculumYear: 'SHS 1',
+    strand: '3 · Geometry Around Us',
+    subStrand: '2 · Measurement',
+    contentStandardIds: ['1.3.2.CS.3'],
+    learningOutcomeIds: ['1.3.2.LO.3'],
+    learningIndicatorIds: ['1.3.2.LI.4'],
+    printedPages: [124],
+    alignment: 'direct',
+    note: 'Covers volume of rectangular prisms, square-faced cuboids and triangular prisms using cross-sectional area multiplied by prism length, including reverse-dimension problems and everyday contexts. This maps specifically to indicator 1.3.2.LI.4 and does not claim to replace the separate perimeter/area learning indicators.'
+  },
 ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
