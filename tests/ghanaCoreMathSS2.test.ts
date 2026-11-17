@@ -3,7 +3,8 @@ import {
   GHANA_NACCA_SS2_MATHEMATICS_SOURCE,
   GHANA_CORE_MATH_SS2_SCOPE,
   GHANA_CORE_MATH_SS2_REAL_NUMBER_ALIGNMENT,
-  GHANA_CORE_MATH_SS2_SIMULTANEOUS_EQUATIONS_ALIGNMENT
+  GHANA_CORE_MATH_SS2_SIMULTANEOUS_EQUATIONS_ALIGNMENT,
+  GHANA_CORE_MATH_SS2_PATTERNS_ALIGNMENT
 } from '../src/data/ghanaCoreMathSS2Alignment';
 import {
   GHANA_CORE_MATH_SS2_SUBJECT,
@@ -12,7 +13,10 @@ import {
   GHANA_CORE_MATH_SS2_MISSIONS,
   GHANA_CORE_MATH_SS2_ALGEBRA_UNIT,
   GHANA_CORE_MATH_SS2_ALGEBRA_ARCS,
-  GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS
+  GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS,
+  GHANA_CORE_MATH_SS2_PATTERNS_UNIT,
+  GHANA_CORE_MATH_SS2_PATTERNS_ARCS,
+  GHANA_CORE_MATH_SS2_PATTERNS_MISSIONS
 } from '../src/data/ghanaCoreMathSS2Data';
 
 assert.equal(GHANA_NACCA_SS2_MATHEMATICS_SOURCE.publicationDate, 'September 2023');
@@ -42,4 +46,11 @@ assert.equal(GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS[0].id, 'gh-core-ss2-simultaneo
 assert.equal(GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS[0].quiz.length, 5);
 assert.ok(GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS[0].scenes.some(scene => scene.type === 'sort'));
 assert.ok(GHANA_CORE_MATH_SS2_MISSIONS[0].scenes.some(scene => scene.type === 'sort'));
+assert.equal(GHANA_CORE_MATH_SS2_PATTERNS_ALIGNMENT.learningOutcomes[0].id, '2.2.2.LO.1');
+assert.equal(GHANA_CORE_MATH_SS2_PATTERNS_ALIGNMENT.coverage.length, 2);
+assert.equal(GHANA_CORE_MATH_SS2_PATTERNS_UNIT.subject, 'ghcoremath2');
+assert.equal(GHANA_CORE_MATH_SS2_PATTERNS_ARCS[0].pages, 'NaCCA SHS 2 · pp. 198–206');
+assert.equal(GHANA_CORE_MATH_SS2_PATTERNS_MISSIONS.length, 2);
+assert.deepEqual(GHANA_CORE_MATH_SS2_PATTERNS_MISSIONS.map(m => m.id), ['gh-core-ss2-sequences-progressions', 'gh-core-ss2-financial-exponential-models']);
+assert.ok(GHANA_CORE_MATH_SS2_PATTERNS_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
 console.log('ghanaCoreMathSS2.test.ts ok');

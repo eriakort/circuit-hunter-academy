@@ -8,8 +8,8 @@ import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
 export const GHANA_CORE_MATH_SS2_SUBJECT: SubjectInfo = {
   id: 'ghcoremath2',
   name: 'Core Mathematics · SHS 2',
-  blurb: 'Ghana NaCCA SHS 2 Core Mathematics: number systems, algebraic reasoning and problem-solving.',
-  meta: 'Ghana NaCCA · SHS 2 · two learning missions',
+  blurb: 'Ghana NaCCA SHS 2 Core Mathematics: number systems, simultaneous equations, progressions and financial models.',
+  meta: 'Ghana NaCCA · SHS 2 · four learning missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="38" fill="none" stroke="#7bdff2" stroke-width="4"/><path d="M37 76 L54 42 L67 66 L83 42" fill="none" stroke="#ffd166" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
@@ -124,6 +124,100 @@ export const GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS: Mission[] = [
       question('Which step is elimination?', ['Add 2x + y = 11 and x − y = 1 to cancel y', 'Replace x with 7 − y', 'Draw both equations on axes', 'Choose values without checking'], 'The y terms are opposites, so adding the equations removes y.'),
       question('Two adult tickets and one child ticket cost GH₵26. One adult and two children cost GH₵22. What is the adult ticket price?', ['GH₵10', 'GH₵6', 'GH₵12', 'GH₵8'], 'The equations are 2a + c = 26 and a + 2c = 22. Solving gives a = 10 and c = 6.'),
       question('Why should you check a solution in both original equations?', ['To confirm the same values satisfy both conditions', 'To make the numbers larger', 'To change the variables', 'To avoid showing working'], 'A simultaneous solution must make both original equations true.')
+    ]
+  }
+];
+
+
+// ---------------------------------------------------------------------------
+// Strand 2 · Algebraic Reasoning · Sub-strand 2
+// Patterns and Relations (NaCCA SHS 2 · pp. 198–206)
+// ---------------------------------------------------------------------------
+export const GHANA_CORE_MATH_SS2_PATTERNS_UNIT: UnitInfo = {
+  title: 'Algebraic Reasoning · Patterns, Progressions and Financial Models',
+  ch: 'SS2 · NaCCA pp. 198–206',
+  subject: 'ghcoremath2'
+};
+
+export const GHANA_CORE_MATH_SS2_PATTERNS_ARCS: ArcInfo[] = [
+  {
+    n: 3,
+    unit: 0,
+    subject: 'ghcoremath2',
+    title: 'Patterns and Relations',
+    pages: 'NaCCA SHS 2 · pp. 198–206'
+  }
+];
+
+export const GHANA_CORE_MATH_SS2_PATTERNS_MISSIONS: Mission[] = [
+  {
+    id: 'gh-core-ss2-sequences-progressions',
+    arc: 0,
+    sec: '2.2.2',
+    pages: 'NaCCA SHS 2 · pp. 198–206',
+    hue: 265,
+    horns: 2,
+    eyes: 3,
+    title: 'The Sequence Architect',
+    topic: 'Explore plane-figure patterns, arithmetic and geometric progressions, nth terms and sums.',
+    demon: 'The Pattern Mimic',
+    tech: 'Algebra Form · SHS 2 Technique: Sequence Forge',
+    scenes: [
+      lesson('<p>A <b>sequence</b> is an ordered list that follows a rule. Look at 4, 7, 10, 13. Each term increases by 3, so the common difference is 3. A sequence rule helps us predict terms without writing every earlier term.</p>'),
+      lesson('<p>An <b>arithmetic progression (AP)</b> adds the same number each time. Its nth term is <b>Tₙ = a + (n − 1)d</b>, where a is the first term and d is the common difference. For 4, 7, 10, …, Tₙ = 4 + 3(n − 1), so T₁₀ = 31.</p>'),
+      lesson('<p>The sum of the first n terms of an AP is <b>Sₙ = n/2 [2a + (n − 1)d]</b>. For 4, 7, 10, 13, 16, the sum is 5/2 × (8 + 12) = 50.</p>'),
+      lesson('<p>A <b>geometric progression (GP)</b> multiplies by the same non-zero number each time. This number is the common ratio r. Its nth term is <b>Tₙ = arⁿ⁻¹</b>. For 3, 6, 12, 24, …, a = 3 and r = 2, so T₅ = 48.</p>'),
+      lesson('<p>Plane figures can reveal sequences too. If each new shape adds four tiles, the tile counts might be 4, 8, 12, 16. Describe what changes from one figure to the next, then write a rule for figure n. Always test your rule against the first few terms.</p>'),
+      { type: 'sort', title: 'Identify the progression', cats: [['Arithmetic', 'AP'], ['Geometric', 'GP'], ['Visual pattern', 'Shape']], items: [
+        { n: '5, 8, 11, 14 …', c: 0, i: 'plus-three' },
+        { n: '2, 6, 18, 54 …', c: 1, i: 'times-three' },
+        { n: 'Each new tile design adds 4 tiles', c: 2, i: 'tiles' },
+        { n: '20, 15, 10, 5 …', c: 0, i: 'minus-five' }
+      ] },
+      { who: 'd', vis: 'demon', text: 'The next term is hidden. Discover the rule before the pattern changes again!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('What is the common difference in 6, 10, 14, 18, …?', ['4', '2', '6', '−4'], 'Subtract consecutive terms: 10 − 6 = 4.'),
+      question('Find the 8th term of the AP 3, 7, 11, …', ['31', '27', '35', '29'], 'T₈ = 3 + (8 − 1) × 4 = 31.'),
+      question('What is the common ratio in 5, 10, 20, 40, …?', ['2', '5', '10', '4'], 'Divide a term by the previous term: 10 ÷ 5 = 2.'),
+      question('Find the 5th term of the GP 2, 6, 18, …', ['162', '54', '108', '486'], 'T₅ = 2 × 3⁴ = 162.'),
+      question('Which formula gives the sum of the first n terms of an AP?', ['Sₙ = n/2[2a + (n − 1)d]', 'Tₙ = arⁿ', 'Sₙ = a + nd', 'Tₙ = a + nr'], 'The AP sum formula combines the first term, common difference and number of terms.')
+    ]
+  },
+  {
+    id: 'gh-core-ss2-financial-exponential-models',
+    arc: 0,
+    sec: '2.2.2',
+    pages: 'NaCCA SHS 2 · pp. 198–206',
+    hue: 145,
+    horns: 1,
+    eyes: 4,
+    title: 'The Growth Strategist',
+    topic: 'Model financial mathematics and exponential growth using repeated percentage change and geometric progressions.',
+    demon: 'The Compound Phantom',
+    tech: 'Algebra Form · SHS 2 Technique: Growth Multiplier',
+    scenes: [
+      lesson('<p>Many real situations change by a percentage each period: savings can earn interest, equipment can lose value, and populations can grow. Repeated percentage change is <b>multiplicative</b>, so it is often modelled with a geometric progression.</p>'),
+      lesson('<p>For compound interest, the amount after n periods is <b>A = P(1 + r)ⁿ</b>, when r is the interest rate per period written as a decimal. If GH₵1,000 earns 10% per year for 2 years, A = 1000 × 1.1² = GH₵1,210.</p>'),
+      lesson('<p>For depreciation at a fixed rate, multiply by the remaining fraction. If a machine worth GH₵5,000 loses 20% of its value each year, it keeps 80% each year: V = 5000 × 0.8ⁿ. After two years, V = GH₵3,200.</p>'),
+      lesson('<p>For exponential growth, multiply by a constant factor over equal time intervals. A quantity that starts at 200 and grows by 5% each period follows 200 × 1.05ⁿ. The multiplier is 1.05, not 0.05.</p>'),
+      lesson('<p>Read the question carefully: identify the starting amount, rate, time period and whether the quantity grows or decreases. Convert percentages to decimals, choose the correct multiplier, and check whether the answer should be larger or smaller than the starting value.</p>'),
+      { type: 'sort', title: 'Choose the correct multiplier', cats: [['Growth', 'Growth'], ['Depreciation', 'Decrease'], ['Compound interest', 'Interest']], items: [
+        { n: 'Increase by 8% each year', c: 0, i: '1.08' },
+        { n: 'Lose 15% of value each year', c: 1, i: '0.85' },
+        { n: 'Earn 6% interest per period', c: 2, i: '1.06' },
+        { n: 'Reduce by 30% each period', c: 1, i: '0.70' }
+      ] },
+      { who: 'd', vis: 'demon', text: 'One wrong multiplier can change the whole forecast. Calculate carefully!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('What is 10% written as a decimal?', ['0.10', '1.10', '10', '0.01'], 'Divide the percentage by 100: 10% = 0.10.'),
+      question('What is the amount on GH₵1,000 at 10% compound interest for 2 years?', ['GH₵1,210', 'GH₵1,200', 'GH₵1,100', 'GH₵1,020'], 'A = 1000 × 1.1² = GH₵1,210.'),
+      question('A car loses 20% of its value each year. What fraction of its value remains each year?', ['0.8', '1.2', '0.2', '0.08'], '100% − 20% = 80%, which is 0.8.'),
+      question('A population of 200 grows by 5% in one period. What is the new population?', ['210', '205', '250', '190'], '200 × 1.05 = 210.'),
+      question('Which model represents depreciation of 15% per period from initial value P?', ['P × 0.85ⁿ', 'P × 1.15ⁿ', 'P × 0.15ⁿ', 'P + 0.85n'], 'A 15% decrease leaves 85% each period, so the multiplier is 0.85.')
     ]
   }
 ];
