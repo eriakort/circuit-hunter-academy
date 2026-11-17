@@ -77,7 +77,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [state, setState] = useState<GameState>(() => {
     try {
       const raw = localStorage.getItem(activeSaveKey);
-      return raw ? sanitizeGameState(JSON.parse(raw)) : defaultState;
+      return raw ? sanitizeGameState(JSON.parse(raw), curriculumProfile.activeCurriculumId) : defaultState;
     } catch (e) {
       console.error('Failed to load save state; starting with a safe default:', e);
       return defaultState;
@@ -87,7 +87,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [initialNavigation] = useState<SavedNavigation | null>(() => {
     try {
       const raw = localStorage.getItem(activeNavigationKey);
-      return raw ? restoreSavedNavigation(JSON.parse(raw), state) : null;
+      return raw ? restoreSavedNavigation(JSON.parse(raw), state, curriculumProfile.activeCurriculumId) : null;
     } catch (e) {
       console.error('Failed to restore navigation; opening the learning map:', e);
       return null;
@@ -150,10 +150,10 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const nextProfile = switchActiveCurriculum(curriculumProfile, curriculumId);
       const nextSave = localStorage.getItem(getCurriculumSaveKey(curriculumId));
-      const nextState = nextSave ? sanitizeGameState(JSON.parse(nextSave)) : defaultState;
+      const nextState = nextSave ? sanitizeGameState(JSON.parse(nextSave), curriculumId) : defaultState;
       const nextNavigationRaw = localStorage.getItem(getCurriculumNavigationKey(curriculumId));
       const nextNavigation = nextNavigationRaw
-        ? restoreSavedNavigation(JSON.parse(nextNavigationRaw), nextState)
+        ? restoreSavedNavigation(JSON.parse(nextNavigationRaw), nextState, curriculumId)
         : null;
 
       setCurriculumProfile(nextProfile);
