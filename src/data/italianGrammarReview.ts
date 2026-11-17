@@ -51,3 +51,37 @@ export const buildAdaptiveGrammarReview = (
     })
     .map(item => item.question);
 };
+
+export interface GrammarLevelProgress extends GrammarTopicProgress {
+  percentage: number;
+}
+
+export const getGrammarLevelProgress = (
+  topics: GrammarTopic[],
+  level: GrammarLevel,
+  progress: GrammarProgressMap = {}
+): GrammarLevelProgress => {
+  const topicProgress = topics.map(topic => getGrammarTopicProgress(topic, level, progress));
+  const total = topicProgress.reduce((sum, item) => sum + item.total, 0);
+  const mastered = topicProgress.reduce((sum, item) => sum + item.mastered, 0);
+  return {
+    mastered,
+    total,
+    percentage: total > 0 ? Math.round((mastered / total) * 100) : 0
+  };
+};
+
+export const getLeastMasteredGrammarTopic = (
+  topics: GrammarTopic[],
+  level: GrammarLevel,
+  progress: GrammarProgressMap = {}
+): GrammarTopic | null => {
+  if (topics.length === 0) return null;
+  return topics.reduce((least, candidate) => {
+    const leastProgress = getGrammarTopicProgress(least, level, progress);
+    const candidateProgress = getGrammarTopicProgress(candidate, level, progress);
+    const leastRatio = leastProgress.total > 0 ? leastProgress.mastered / leastProgress.total : 1;
+    const candidateRatio = candidateProgress.total > 0 ? candidateProgress.mastered / candidateProgress.total : 1;
+    return candidateRatio < leastRatio ? candidate : least;
+  });
+};
