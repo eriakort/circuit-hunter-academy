@@ -8,8 +8,8 @@ import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
 export const GHANA_CORE_MATH_SS2_SUBJECT: SubjectInfo = {
   id: 'ghcoremath2',
   name: 'Core Mathematics · SHS 2',
-  blurb: 'Ghana NaCCA SHS 2 Core Mathematics: number systems, ratios, algebra, progressions and financial models.',
-  meta: 'Ghana NaCCA · SHS 2 · six learning missions',
+  blurb: 'Ghana NaCCA SHS 2 Core Mathematics: number systems, proportional reasoning, algebra, progressions, financial models and geometry.',
+  meta: 'Ghana NaCCA · SHS 2 · eight learning missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="38" fill="none" stroke="#7bdff2" stroke-width="4"/><path d="M37 76 L54 42 L67 66 L83 42" fill="none" stroke="#ffd166" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
@@ -312,6 +312,99 @@ export const GHANA_CORE_MATH_SS2_PROPORTIONAL_MISSIONS: Mission[] = [
       question('Six litres of water cost GH₵24 at a constant rate. What do 10 litres cost?', ['GH₵40', 'GH₵30', 'GH₵34', 'GH₵60'], 'The unit price is 24 ÷ 6 = GH₵4, so 10 litres cost GH₵40.'),
       question('A phone worth GH₵1,000 depreciates by 10% in one year. What is its new value?', ['GH₵900', 'GH₵990', 'GH₵1,100', 'GH₵100'], 'It keeps 90% of its value: 1,000 × 0.90 = GH₵900.'),
       question('A total bill is GH₵280 after adding a 12% tax to the original price. What was the original price?', ['GH₵250', 'GH₵268', 'GH₵240', 'GH₵300'], 'The total is 112% of the original: 280 ÷ 1.12 = GH₵250.')
+    ]
+  }
+];
+
+
+// ---------------------------------------------------------------------------
+// Strand 3 · Geometry Around Us · Sub-strand 1
+// Spatial Sense: transformations of plane shapes (NaCCA SHS 2 · pp. 213–227)
+// ---------------------------------------------------------------------------
+export const GHANA_CORE_MATH_SS2_SPATIAL_UNIT: UnitInfo = {
+  title: 'Geometry Around Us · Spatial Sense and Transformations',
+  ch: 'SS2 · NaCCA pp. 213–227',
+  subject: 'ghcoremath2'
+};
+
+export const GHANA_CORE_MATH_SS2_SPATIAL_ARCS: ArcInfo[] = [
+  {
+    n: 1,
+    unit: 0,
+    subject: 'ghcoremath2',
+    title: 'Spatial Sense · Transformations of Plane Shapes',
+    pages: 'NaCCA SHS 2 · pp. 213–227'
+  }
+];
+
+export const GHANA_CORE_MATH_SS2_SPATIAL_MISSIONS: Mission[] = [
+  {
+    id: 'gh-core-ss2-transformations-vectors-reflections',
+    arc: 0,
+    sec: '2.3.1',
+    pages: 'NaCCA SHS 2 · pp. 213–227',
+    hue: 175,
+    horns: 2,
+    eyes: 3,
+    title: 'The Vector Navigator',
+    topic: 'Translate and reflect points and plane shapes, describe their images, and recognise what stays unchanged.',
+    demon: 'The Mirror Maze',
+    tech: 'Geometry Form · SHS 2 Technique: Image Shift',
+    scenes: [
+      lesson('<p>A <b>transformation</b> moves or changes a shape according to a rule. The shape before the move is the <b>object</b> (or preimage); the result is its <b>image</b>. We label image points with a prime, such as A′.</p>'),
+      lesson('<p>A <b>translation</b> slides every point the same distance in the same direction. A vector tells us the horizontal and vertical movement. For example, vector (3, −2) means 3 units right and 2 units down. Point A(1, 4) becomes A′(4, 2). Every vertex uses the same vector.</p>'),
+      lesson('<p>A <b>reflection</b> flips a point or shape across a mirror line. In a reflection, each point and its image are the same perpendicular distance from the mirror line, on opposite sides. Reflecting (x, y) in the x-axis gives (x, −y); reflecting in the y-axis gives (−x, y).</p>'),
+      lesson('<p>Translations and reflections preserve lengths and angle sizes. The image has the same shape and size as the original, so the two shapes are <b>congruent</b>. Their positions or orientations may change, but their side lengths and corresponding angles do not.</p>'),
+      { type: 'sort', title: 'Identify the transformation', cats: [['Translation', 'Slide'], ['Reflection', 'Mirror']], items: [
+        { n: 'Move every vertex 4 right and 1 up', c: 0, i: 'vector' },
+        { n: 'Flip a point across the x-axis', c: 1, i: 'x-axis' },
+        { n: 'Add the same vector to A, B and C', c: 0, i: 'same-move' },
+        { n: 'Place an image the same distance behind a mirror line', c: 1, i: 'mirror' }
+      ] },
+      { who: 'd', vis: 'demon', text: 'The Mirror Maze has shifted every vertex. Use the vector and mirror rules to recover the correct image!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('Point P(−2, 3) is translated by vector (4, −1). What is P′?', ['(2, 2)', '(−6, 4)', '(2, 4)', '(−3, 7)'], 'Add the vector components: (−2 + 4, 3 − 1) = (2, 2).'),
+      question('What is the image of (5, −3) reflected in the y-axis?', ['(−5, −3)', '(5, 3)', '(−5, 3)', '(3, −5)'], 'Reflection in the y-axis changes the sign of x and keeps y unchanged.'),
+      question('Reflect (−2, 4) in the x-axis.', ['(−2, −4)', '(2, 4)', '(2, −4)', '(−4, −2)'], 'Reflection in the x-axis keeps x and changes the sign of y.'),
+      question('Which statement describes a translation?', ['Every point moves by the same vector', 'Only one vertex moves', 'The shape must become larger', 'Every point changes its distance from the others'], 'A translation applies the same displacement to every point.'),
+      question('What is preserved by a reflection?', ['Side lengths and angle sizes', 'The original position', 'The direction each vertex faces', 'The coordinates of every point'], 'A reflection changes orientation and position but preserves lengths and angle sizes.') 
+    ]
+  },
+  {
+    id: 'gh-core-ss2-rotations-successive-transformations',
+    arc: 0,
+    sec: '2.3.1',
+    pages: 'NaCCA SHS 2 · pp. 213–227',
+    hue: 225,
+    horns: 1,
+    eyes: 4,
+    title: 'The Rotation Tactician',
+    topic: 'Rotate plane shapes, combine transformations in a stated order, and connect enlargement with scale drawings.',
+    demon: 'The Turning Labyrinth',
+    tech: 'Geometry Form · SHS 2 Technique: Transformation Chain',
+    scenes: [
+      lesson('<p>A <b>rotation</b> turns a point or shape around a fixed centre through a stated angle and direction. A quarter-turn is 90°, a half-turn is 180°, and a full turn is 360°. Unless a question says otherwise, a positive rotation is anticlockwise.</p>'),
+      lesson('<p>For a rotation about the origin, a 90° anticlockwise turn maps (x, y) to (−y, x). A 180° turn maps (x, y) to (−x, −y). A 90° clockwise turn maps (x, y) to (y, −x). Always check the centre and direction before changing coordinates.</p>'),
+      lesson('<p>Sometimes a shape undergoes <b>successive transformations</b>. Apply the first stated transformation, label the new image, and then apply the next rule to that image. The order matters: changing the order can produce a different final position.</p>'),
+      lesson('<p>An <b>enlargement</b> changes the size of a shape from a centre using a scale factor. A scale factor greater than 1 makes it larger; a factor between 0 and 1 makes it smaller. Corresponding lengths are multiplied by the scale factor, while angles stay the same. A scale drawing uses this relationship to represent a real object at a chosen size.</p>'),
+      lesson('<p>Translations, reflections and rotations preserve size and shape. Enlargements preserve angle sizes and proportions but change lengths. For a scale factor k, areas are multiplied by k². For example, doubling every side makes the area four times as large.</p>'),
+      { type: 'sort', title: 'Match the rule to the transformation', cats: [['Rotation', 'Turn'], ['Successive', 'In order'], ['Enlargement', 'Scale']], items: [
+        { n: 'Turn a shape 90° anticlockwise about O', c: 0, i: 'quarter-turn' },
+        { n: 'Reflect first, then translate the new image', c: 1, i: 'two-steps' },
+        { n: 'Multiply every length by 3', c: 2, i: 'scale-three' },
+        { n: 'Apply each move to the image from the previous step', c: 1, i: 'chain' }
+      ] },
+      { who: 'd', vis: 'demon', text: 'The Turning Labyrinth changes direction at every stage. Follow the order, track each image, and defeat the confusion!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('A point (2, 5) is rotated 90° anticlockwise about the origin. What is its image?', ['(−5, 2)', '(5, −2)', '(−2, −5)', '(2, −5)'], 'A 90° anticlockwise rotation maps (x, y) to (−y, x), giving (−5, 2).'),
+      question('What is the image of (3, −4) after a 180° rotation about the origin?', ['(−3, 4)', '(3, 4)', '(−4, 3)', '(4, −3)'], 'A 180° rotation maps (x, y) to (−x, −y).'),
+      question('Why must you follow the stated order in successive transformations?', ['A different order can produce a different final image', 'The order changes the number of vertices', 'The first transformation is always cancelled', 'Every order gives the same result'], 'Transformations are applied to the current image, so changing the order can change the final position.'),
+      question('A 4 cm side is enlarged by scale factor 2. What is the corresponding image side?', ['8 cm', '6 cm', '4 cm', '2 cm'], 'Multiply the original length by the scale factor: 4 × 2 = 8 cm.'),
+      question('A shape is enlarged by scale factor 3. By what factor does its area change?', ['9', '3', '6', '12'], 'Area scales by the square of the length factor: 3² = 9.')
     ]
   }
 ];
