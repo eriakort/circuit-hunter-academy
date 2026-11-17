@@ -5,7 +5,8 @@ import {
   GHANA_CORE_MATH_SS2_REAL_NUMBER_ALIGNMENT,
   GHANA_CORE_MATH_SS2_SIMULTANEOUS_EQUATIONS_ALIGNMENT,
   GHANA_CORE_MATH_SS2_PATTERNS_ALIGNMENT,
-  GHANA_CORE_MATH_SS2_PROPORTIONAL_ALIGNMENT
+  GHANA_CORE_MATH_SS2_PROPORTIONAL_ALIGNMENT,
+  GHANA_CORE_MATH_SS2_SPATIAL_ALIGNMENT
 } from '../src/data/ghanaCoreMathSS2Alignment';
 import {
   GHANA_CORE_MATH_SS2_SUBJECT,
@@ -20,7 +21,10 @@ import {
   GHANA_CORE_MATH_SS2_PATTERNS_MISSIONS,
   GHANA_CORE_MATH_SS2_PROPORTIONAL_UNIT,
   GHANA_CORE_MATH_SS2_PROPORTIONAL_ARCS,
-  GHANA_CORE_MATH_SS2_PROPORTIONAL_MISSIONS
+  GHANA_CORE_MATH_SS2_PROPORTIONAL_MISSIONS,
+  GHANA_CORE_MATH_SS2_SPATIAL_UNIT,
+  GHANA_CORE_MATH_SS2_SPATIAL_ARCS,
+  GHANA_CORE_MATH_SS2_SPATIAL_MISSIONS
 } from '../src/data/ghanaCoreMathSS2Data';
 
 assert.equal(GHANA_NACCA_SS2_MATHEMATICS_SOURCE.publicationDate, 'September 2023');
@@ -72,3 +76,24 @@ assert.deepEqual(GHANA_CORE_MATH_SS2_PROPORTIONAL_MISSIONS.map(m => m.id), [
 ]);
 assert.ok(GHANA_CORE_MATH_SS2_PROPORTIONAL_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
 console.log('Ghana SHS 2 proportional reasoning coverage ok');
+
+
+
+assert.equal(GHANA_CORE_MATH_SS2_SPATIAL_ALIGNMENT.strand, '3 · Geometry Around Us');
+assert.equal(GHANA_CORE_MATH_SS2_SPATIAL_ALIGNMENT.subStrand, '1 · Spatial Sense');
+assert.deepEqual(GHANA_CORE_MATH_SS2_SPATIAL_ALIGNMENT.printedPages, [213, 227]);
+assert.equal(GHANA_CORE_MATH_SS2_SPATIAL_ALIGNMENT.contentStandards[0].id, '2.3.1.CS.1');
+assert.equal(GHANA_CORE_MATH_SS2_SPATIAL_ALIGNMENT.learningOutcomes[0].id, '2.3.1.LO.1');
+assert.deepEqual(
+  GHANA_CORE_MATH_SS2_SPATIAL_ALIGNMENT.learningIndicators.map(item => item.id),
+  ['2.3.1.LI.1', '2.3.1.LI.2', '2.3.1.LI.3', '2.3.1.LI.4']
+);
+assert.equal(GHANA_CORE_MATH_SS2_SPATIAL_ALIGNMENT.coverage.length, 2);
+assert.equal(GHANA_CORE_MATH_SS2_SPATIAL_UNIT.subject, 'ghcoremath2');
+assert.equal(GHANA_CORE_MATH_SS2_SPATIAL_ARCS[0].pages, 'NaCCA SHS 2 · pp. 213–227');
+assert.deepEqual(GHANA_CORE_MATH_SS2_SPATIAL_MISSIONS.map(m => m.id), [
+  'gh-core-ss2-transformations-vectors-reflections',
+  'gh-core-ss2-rotations-successive-transformations'
+]);
+assert.ok(GHANA_CORE_MATH_SS2_SPATIAL_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
+console.log('Ghana SHS 2 spatial sense coverage ok');
