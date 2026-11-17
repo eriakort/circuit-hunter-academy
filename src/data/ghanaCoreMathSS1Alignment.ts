@@ -179,8 +179,8 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     subStrand: '1 · Statistical Reasoning and Its Application in Real Life',
     contentStandardIds: ['1.4.1.CS.2'],
     learningOutcomeIds: ['1.4.1.LO.2'],
-    learningIndicatorIds: ['1.4.1.LI.1'],
-    printedPages: [135, 137],
+    learningIndicatorIds: ['1.4.1.LI.2'],
+    printedPages: [135, 138],
     alignment: 'direct',
     note: 'Covers organising grouped and ungrouped data in frequency tables and presenting findings with line graphs, pie charts, multiple bar graphs, infographics and appropriate digital tools, including 3D graphs/charts where available. Descriptive statistics are addressed separately.'
   }
