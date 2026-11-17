@@ -63,10 +63,15 @@ export const MapScreen: React.FC = () => {
           </h1>
           <p className="lede">
             {L(
-              [
-                'A new challenge awaits. Explore your subject, build understanding and use what you learn to help your community.',
-                'A new challenge awaits. Explore your subject, build understanding and use what you learn to help your community.'
-              ],
+              isGhana
+                ? [
+                    'A new challenge awaits. Explore your subject, build understanding and use what you learn to help your community.',
+                    'A new challenge awaits. Explore your subject, build understanding and use what you learn to help your community.'
+                  ]
+                : [
+                    'Glitch Demons have invaded the academy. Learn your subject chapter by chapter, turn that knowledge into techniques, and drive them out.',
+                    "I Demoni Glitch hanno invaso l'accademia. Impara la tua materia capitolo per capitolo, trasforma ciò che impari in tecniche e scacciali."
+                  ],
               lang
             )}
           </p>
@@ -89,10 +94,15 @@ export const MapScreen: React.FC = () => {
             </button>
             <span className="muted" style={{ fontSize: '14px' }}>
               {L(
-                [
-                  'Your learning journey is saved in this browser. You can return to your discoveries at any time.',
-                  'Your learning journey is saved in this browser. You can return to your discoveries at any time.'
-                ],
+                isGhana
+                  ? [
+                      'Your learning journey is saved in this browser. You can return to your discoveries at any time.',
+                      'Your learning journey is saved in this browser. You can return to your discoveries at any time.'
+                    ]
+                  : [
+                      'You can switch between English and Italian at any time with EN / IT at the top.',
+                      "Puoi passare dall'inglese all'italiano in qualsiasi momento con EN / IT in alto."
+                    ],
                 lang
               )}
             </span>
@@ -717,8 +727,8 @@ export const MapScreen: React.FC = () => {
             <span className="muted">
               {L(
                 [
-                  'Your discoveries will appear here as you complete missions.',
-                  'Your discoveries will appear here as you complete missions.'
+                  isGhana ? 'Your discoveries will appear here as you complete missions.' : 'None yet. Clear a mission to learn your first technique.',
+                  isGhana ? 'Your discoveries will appear here as you complete missions.' : 'Ancora nessuna. Supera una missione per imparare la prima tecnica.'
                 ],
                 lang
               )}
