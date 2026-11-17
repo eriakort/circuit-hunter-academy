@@ -341,6 +341,19 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'An integrated retrieval and transfer mission using previously taught SHS 1 content from financial mathematics, equations and inequalities, prism measurement, and statistical reasoning. This is revision across existing indicators, not a claim of additional curriculum coverage.'
   },
+
+  {
+    missionId: 'gh-core-ss1-spatial-sense-field-challenge',
+    curriculumYear: 'SHS 1',
+    strand: '3 · Geometry Around Us',
+    subStrand: '1 · Spatial Sense',
+    contentStandardIds: ['1.3.1.CS.1'],
+    learningOutcomeIds: ['1.3.1.LO.1'],
+    learningIndicatorIds: ['1.3.1.LI.1', '1.3.1.LI.2', '1.3.1.LI.3', '1.3.1.LI.4', '1.3.1.LI.5'],
+    printedPages: [84, 100],
+    alignment: 'direct',
+    note: 'Supplementary differentiated practice reinforcing all five Spatial Sense indicators through applied angle relationships, parallel lines and transversals, triangle angle properties, Pythagoras’ theorem and polygon angle sums. This is additional practice against the existing SHS 1 outcome, not additional curriculum coverage.'
+  },
 ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
