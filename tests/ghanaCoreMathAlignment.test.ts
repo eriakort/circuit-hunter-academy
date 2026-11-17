@@ -233,6 +233,16 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
   });
 
 
+  test('maps the Community Data Lab across existing Statistical Reasoning standards', () => {
+    const dataLab = getGhanaMissionAlignment('gh-core-ss1-statistical-investigation-mastery');
+    expect(dataLab?.curriculumYear).toBe('SHS 1');
+    expect(dataLab?.contentStandardIds).toEqual(['1.4.1.CS.1', '1.4.1.CS.2', '1.4.1.CS.3']);
+    expect(dataLab?.learningOutcomeIds).toEqual(['1.4.1.LO.1', '1.4.1.LO.2', '1.4.1.LO.3']);
+    expect(dataLab?.learningIndicatorIds).toEqual(['1.4.1.LI.1', '1.4.1.LI.2', '1.4.1.LI.3', '1.4.3.LI.2']);
+    expect(dataLab?.printedPages).toEqual([126, 147]);
+    expect(dataLab?.note).toContain('does not claim extra curriculum coverage');
+  });
+
   test('maps integrated measurement mastery to existing SHS 1 standards and indicators', () => {
     const mastery = getGhanaMissionAlignment('gh-core-ss1-measurement-mastery-challenge');
     expect(mastery?.curriculumYear).toBe('SHS 1');
