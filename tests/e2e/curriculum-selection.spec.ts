@@ -48,6 +48,9 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await expect(page.getByRole('heading', { name: 'Sankofa – The Knowledge Quest' })).toBeVisible();
   await expect(page.locator('.sankofa-region')).toHaveCount(5);
   await expect(page.locator('.sankofa-progress-heading').getByRole('heading', { name: 'Curious Seeker' })).toBeVisible();
+  await page.locator('.mcard').filter({ hasText: 'The Number Map' }).click();
+  await expect(page.locator('.bubble .who')).toHaveText('The Elder Guide');
+  await expect(page.getByText('Sensei Kaito', { exact: true })).toHaveCount(0);
   const ghanaSaveAfterSelection = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:ghana-nacca') || '{}'));
   expect(ghanaSaveAfterSelection.grade).toBe('grade9');
   expect(ghanaSaveAfterSelection.subject).toBe('ghcoremath');
