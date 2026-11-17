@@ -221,6 +221,16 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
   });
 
 
+  test('maps prism volume to the fourth SHS 1 Measurement indicator', () => {
+    const volume = getGhanaMissionAlignment('gh-core-ss1-prism-volume');
+    expect(volume?.curriculumYear).toBe('SHS 1');
+    expect(volume?.contentStandardIds).toEqual(['1.3.2.CS.3']);
+    expect(volume?.learningOutcomeIds).toEqual(['1.3.2.LO.3']);
+    expect(volume?.learningIndicatorIds).toEqual(['1.3.2.LI.4']);
+    expect(volume?.printedPages).toEqual([124]);
+    expect(volume?.note).toContain('triangular prisms');
+  });
+
   test('maps perimeter and area to the third SHS 1 Measurement standard', () => {
     const perimeterArea = getGhanaMissionAlignment('gh-core-ss1-perimeter-area');
     expect(perimeterArea?.curriculumYear).toBe('SHS 1');
