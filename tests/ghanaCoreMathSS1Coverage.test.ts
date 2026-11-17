@@ -76,6 +76,14 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
     expect(statistics?.learningIndicators).toBe(8);
   });
 
+
+  test('counts real-number properties only in the Real Number System sub-strand', () => {
+    const realNumbers = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Real Number System');
+    expect(realNumbers?.status).toBe('partial');
+    expect(realNumbers?.pilotMissionIds).toEqual(['gh-core-ss1-number-sets', 'gh-core-ss1-real-number-properties', 'gh-core-ss1-sets-surveys']);
+    expect(realNumbers?.learningIndicators).toBe(6);
+  });
+
   test('counts the probability mission only in the Probability/Chance sub-strand', () => {
     const probability = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Probability/Chance');
     expect(probability?.status).toBe('partial');
