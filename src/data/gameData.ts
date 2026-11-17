@@ -29031,3 +29031,23 @@ UNITS.push({ ...GHANA_CORE_MATH_SS2_UNIT, subject: 'ghcoremath2' });
 const ghanaCoreMathSS2ArcOffset = ARCS.length;
 GHANA_CORE_MATH_SS2_ARCS.forEach(arc => ARCS.push({ ...arc, unit: ghanaCoreMathSS2UnitOffset, subject: 'ghcoremath2' }));
 MISSIONS.push(...GHANA_CORE_MATH_SS2_MISSIONS.map(mission => ({ ...mission, arc: ghanaCoreMathSS2ArcOffset + mission.arc })));
+
+ 
+// Ghana NaCCA · SHS 2 Algebraic Reasoning · simultaneous equations (pp. 193–198).
+import {
+  GHANA_CORE_MATH_SS2_ALGEBRA_UNIT,
+  GHANA_CORE_MATH_SS2_ALGEBRA_ARCS,
+  GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS
+} from './ghanaCoreMathSS2Data';
+const ghanaCoreMathSS2AlgebraUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_CORE_MATH_SS2_ALGEBRA_UNIT, subject: 'ghcoremath2' });
+const ghanaCoreMathSS2AlgebraArcOffset = ARCS.length;
+GHANA_CORE_MATH_SS2_ALGEBRA_ARCS.forEach(arc => ARCS.push({
+  ...arc,
+  unit: ghanaCoreMathSS2AlgebraUnitOffset,
+  subject: 'ghcoremath2'
+}));
+MISSIONS.push(...GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS.map(mission => ({
+  ...mission,
+  arc: ghanaCoreMathSS2AlgebraArcOffset + mission.arc
+})));

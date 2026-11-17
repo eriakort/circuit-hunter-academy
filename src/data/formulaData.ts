@@ -88,7 +88,7 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
   geo11: GEO11_TOPICS,
   // Ghana Core Mathematics has its own formula/topic catalogues.
   ghcoremath: [],
-  ghcoremath2: []
+  ghcoremath2: [{ id: 'simultaneous-equations', subject: 'ghcoremath2', name: 'Simultaneous Linear Equations' }]
 };
 
 export const FORMULA_CARDS: FormulaCard[] = [
