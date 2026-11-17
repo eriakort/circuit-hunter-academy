@@ -321,3 +321,121 @@ export const GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT = {
     }
   ]
 } as const;
+
+
+// Strand 4 · Making Sense of and Using Data · Sub-strand 1
+// Statistical Reasoning and its Application in Real Life.
+// Source: NaCCA Mathematics Curriculum for Secondary Education (SHS 1–3),
+// September 2023, SHS 2 printed pp. 264–289.
+export const GHANA_CORE_MATH_SS2_STATISTICS_ALIGNMENT = {
+  strand: '4 · Making Sense of and Using Data',
+  subStrand: '1 · Statistical Reasoning and its Application in Real Life',
+  printedPages: [264, 289],
+  contentStandards: [
+    {
+      id: '2.4.1.CS.1',
+      printedPage: 273,
+      description: 'Demonstrate conceptual understanding of data handling in relation to designing and validating a variety of data collection methods.',
+      learningIndicatorIds: ['2.4.1.LI.1', '2.4.1.LI.2']
+    },
+    {
+      id: '2.4.1.CS.2',
+      printedPage: 276,
+      description: 'Demonstrate an understanding of data presentations and analysis for grouped and ungrouped data and describe the relationship between the measures of dispersion in data displays.',
+      learningIndicatorIds: ['2.4.1.LI.1', '2.4.1.LI.2', '2.4.1.LI.3']
+    },
+    {
+      id: '2.4.1.CS.3',
+      printedPage: 289,
+      description: 'Demonstrate the ability to carry out a mini-project involving the collection, analysis and interpretation of quantitative and qualitative data beyond the school environment.',
+      learningIndicatorIds: ['2.4.1.LI.1', '2.4.1.LI.2']
+    }
+  ],
+  learningOutcomes: [
+    {
+      id: '2.4.1.LO.1',
+      printedPage: 265,
+      description: 'Design a data collection instrument and justify its appropriateness for collecting everyday life data to address a contextual issue.'
+    },
+    {
+      id: '2.4.1.LO.2',
+      printedPage: 267,
+      description: 'Construct and interpret a variety of data presentation methods, including cumulative frequency curves (ogive), waffle diagrams, etc. and describe the relationship between the measures of dispersion in data displays.'
+    },
+    {
+      id: '2.4.1.LO.3',
+      printedPage: 269,
+      description: 'Carry out mini-projects involving data handling (data collection, analysis and interpretation) of quantitative and qualitative data beyond the school environment.'
+    }
+  ],
+  learningIndicators: [
+    {
+      id: '2.4.1.LI.1',
+      contentStandardId: '2.4.1.CS.1',
+      printedPage: 273,
+      description: 'Design a data collection instrument (questionnaire, interview guide, checklist, observation guide, etc.) using feasible digital technology where available and use it to collect real-life data.'
+    },
+    {
+      id: '2.4.1.LI.2',
+      contentStandardId: '2.4.1.CS.1',
+      printedPage: 274,
+      description: 'Evaluate a data set and/or its collection instrument by identifying potential problems related to bias, language, gender, ethics, cost, time, privacy and cultural sensitivity.'
+    },
+    {
+      id: '2.4.1.LI.1',
+      contentStandardId: '2.4.1.CS.2',
+      printedPage: 276,
+      description: 'Organise and present grouped and ungrouped data using ogives, waffle diagrams, box-and-whisker plots and other suitable displays, including generating 3D graphs and solving or posing problems.'
+    },
+    {
+      id: '2.4.1.LI.2',
+      contentStandardId: '2.4.1.CS.2',
+      printedPage: 282,
+      description: 'Analyse and interpret data using measures of dispersion and justify which measures best suit the data.'
+    },
+    {
+      id: '2.4.1.LI.3',
+      contentStandardId: '2.4.1.CS.2',
+      printedPage: 287,
+      description: 'Use mathematical arguments to support personal choices and incorporate others’ perspectives to evaluate and make inferences from data presented in everyday life.'
+    },
+    {
+      id: '2.4.1.LI.1',
+      contentStandardId: '2.4.1.CS.3',
+      printedPage: 289,
+      description: 'Develop and implement a project plan for collecting, analysing and interpreting data with useful conclusions and recommendations, including appropriate computer applications.'
+    },
+    {
+      id: '2.4.1.LI.2',
+      contentStandardId: '2.4.1.CS.3',
+      printedPage: 290,
+      description: 'Present a project report using presentations or infographics and publish or share its findings appropriately.'
+    }
+  ],
+  coverage: [
+    {
+      missionId: 'gh-core-ss2-survey-design-data-quality',
+      contentStandardId: '2.4.1.CS.1',
+      learningIndicators: ['2.4.1.LI.1', '2.4.1.LI.2'],
+      topics: ['primary and secondary data', 'questionnaires', 'interviews', 'observation', 'neutral wording', 'sampling', 'bias', 'ethics', 'privacy']
+    },
+    {
+      missionId: 'gh-core-ss2-data-displays-dispersion',
+      contentStandardId: '2.4.1.CS.2',
+      learningIndicators: ['2.4.1.LI.1', '2.4.1.LI.2'],
+      topics: ['frequency tables', 'grouped and ungrouped data', 'ogives', 'waffle diagrams', 'box-and-whisker plots', 'range', 'quartiles', 'interquartile range', 'variance', 'standard deviation']
+    },
+    {
+      missionId: 'gh-core-ss2-statistical-inference-community-project',
+      contentStandardId: '2.4.1.CS.2',
+      learningIndicators: ['2.4.1.LI.3'],
+      topics: ['data-supported choices', 'inference', 'sample limitations', 'association and causation', 'critical evaluation of everyday claims']
+    },
+    {
+      missionId: 'gh-core-ss2-statistical-inference-community-project',
+      contentStandardId: '2.4.1.CS.3',
+      learningIndicators: ['2.4.1.LI.1', '2.4.1.LI.2'],
+      topics: ['project planning', 'sample justification', 'data collection', 'analysis', 'conclusions', 'recommendations', 'reports', 'infographics']
+    }
+  ]
+} as const;
