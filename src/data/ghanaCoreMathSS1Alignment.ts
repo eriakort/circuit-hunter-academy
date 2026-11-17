@@ -1,3 +1,5 @@
+import { GHANA_SS1_INDICATOR_BLUEPRINT } from './ghanaCoreMathSS1IndicatorMasteryData';
+
 /**
  * Audited mapping between the Ghana Core Mathematics pilot missions and the
  * NaCCA Mathematics Curriculum for Secondary Education (September 2023).
@@ -439,6 +441,37 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [67, 83],
     alignment: 'direct',
     note: 'Integrated retrieval and transfer across relations and functions, mapping rules, exponential mappings, linear-function graphs, gradients, equations of straight lines and distance between points. NaCCA reuses the printed LI.1 and LI.2 labels under both content standards; this mapping lists the unique labels once and reinforces the existing four-indicator sub-strand without claiming additional curriculum coverage.'
+  }
+
+  {
+    missionId: 'gh-core-ss1-45-indicator-diagnostic',
+    curriculumYear: 'SHS 1',
+    strand: 'Integrated across the four SHS 1 strands',
+    subStrand: 'All eight SHS 1 sub-strands',
+    contentStandardIds: [
+      '1.1.1.CS.1', '1.1.1.CS.2',
+      '1.1.2.CS.1', '1.1.2.CS.2',
+      '1.2.1.CS.1', '1.2.1.CS.2',
+      '1.2.2.CS.1', '1.2.2.CS.2',
+      '1.3.1.CS.1',
+      '1.3.2.CS.1', '1.3.2.CS.2', '1.3.2.CS.3',
+      '1.4.1.CS.1', '1.4.1.CS.2', '1.4.1.CS.3',
+      '1.4.2.CS.1'
+    ],
+    learningOutcomeIds: [
+      '1.1.1.LO.1', '1.1.1.LO.2',
+      '1.1.2.LO.1', '1.1.2.LO.2',
+      '1.2.1.LO.1', '1.2.1.LO.2',
+      '1.2.2.LO.1', '1.2.2.LO.2',
+      '1.3.1.LO.1',
+      '1.3.2.LO.1', '1.3.2.LO.2', '1.3.2.LO.3',
+      '1.4.1.LO.1', '1.4.1.LO.2', '1.4.1.LO.3',
+      '1.4.2.LO.1'
+    ],
+    learningIndicatorIds: GHANA_SS1_INDICATOR_BLUEPRINT.map(item => item.learningIndicatorId),
+    printedPages: [24, 155],
+    alignment: 'direct',
+    note: 'This integrated diagnostic maps one question to each of the 45 SHS 1 indicator entries. The question-level blueprint pairs every printed LI label with its content-standard ID and unique concept ID, so repeated labels under different standards remain distinct. It preserves the printed descriptive-statistics reference 1.4.3.LI.2 under 1.4.1.CS.2. This assessment overlay records diagnostic evidence and does not change official curriculum totals.'
   }
  ];
 
