@@ -391,6 +391,19 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Integrated application across data classification and collection, organisation/presentation, descriptive statistics and a school-community investigation report. The unusual descriptive-statistics reference 1.4.3.LI.2 is preserved exactly as printed on page 138 within Statistical Reasoning; no additional Data sub-strand or unsupported content standard is asserted. The mission reinforces existing scope and does not claim extra curriculum coverage.'
   },
+  {
+    missionId: 'gh-core-ss1-real-number-mastery-challenge',
+    curriculumYear: 'SHS 1',
+    strand: '1 · Numbers for Everyday Life',
+    subStrand: '1 · Real Number System',
+    contentStandardIds: ['1.1.1.CS.1', '1.1.1.CS.2'],
+    learningOutcomeIds: ['1.1.1.LO.1', '1.1.1.LO.2'],
+    learningIndicatorIds: ['1.1.1.LI.1', '1.1.1.LI.2', '1.1.1.LI.3'],
+    printedPages: [26, 37],
+    alignment: 'direct',
+    note: 'Integrated retrieval and transfer practice across number-family classification and ordering, closure and operation properties, set notation, Venn diagrams, survey calculations and De Morgan’s laws. It reinforces the two existing Real Number System content standards and their outcomes; it does not claim additional curriculum coverage.'
+  },
+
  ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
