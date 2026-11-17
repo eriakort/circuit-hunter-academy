@@ -1334,3 +1334,19 @@ table.g5m-formulas td:first-child{font-family:inherit;text-align:left}
   .ghana-readiness-groups{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){.ghana-readiness-track i{transition:none}}
+
+
+/* Ghana SHS 1 — adaptive next-step study queue */
+.ghana-readiness-next{display:flex;flex-direction:column;gap:12px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.ghana-readiness-next-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.ghana-readiness-next-heading h3{margin:4px 0;font-size:18px}
+.ghana-readiness-next-heading p{margin:0;font-size:12px;max-width:65ch}
+.ghana-readiness-next-count{font:12px var(--mono);color:var(--data);white-space:nowrap}
+.ghana-readiness-next-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.ghana-readiness-next-list li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:9px;background:var(--panel2)}
+.ghana-readiness-next-number{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--data);font:12px var(--mono)}
+.ghana-readiness-next-copy{display:flex;flex-direction:column;gap:3px;min-width:0}
+.ghana-readiness-next-copy strong{font-size:13px}
+.ghana-readiness-next-copy small{font-size:11px;color:var(--muted)}
+.ghana-readiness-complete{margin:0;font-size:13px;line-height:1.5;color:var(--good)}
+@media(max-width:640px){.ghana-readiness-next-list li{grid-template-columns:26px minmax(0,1fr)}.ghana-readiness-next-list li button{grid-column:2;justify-self:start}}

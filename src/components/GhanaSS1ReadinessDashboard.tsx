@@ -3,7 +3,8 @@ import type { Language, LearningMissionProgress } from '../types';
 import { L } from '../helpers';
 import {
   getGhanaSS1IndicatorReadiness,
-  getGhanaSS1ReadinessSummary
+  getGhanaSS1ReadinessSummary,
+  getGhanaSS1RecommendedIndicators
 } from '../ghanaSS1Readiness';
 
 interface GhanaSS1ReadinessDashboardProps {
@@ -22,6 +23,7 @@ export const GhanaSS1ReadinessDashboard: React.FC<GhanaSS1ReadinessDashboardProp
   const isItalian = lang === 'it';
   const indicators = getGhanaSS1IndicatorReadiness(progress);
   const summary = getGhanaSS1ReadinessSummary(indicators);
+  const recommendations = getGhanaSS1RecommendedIndicators(indicators);
   const groups = indicators.reduce<Array<{
     strand: string;
     subStrand: string;
@@ -109,6 +111,45 @@ export const GhanaSS1ReadinessDashboard: React.FC<GhanaSS1ReadinessDashboardProp
             : 'An indicator is marked mastered when cumulative accuracy on its recorded responses reaches at least 80%. The full diagnostic score is shown separately.'}
         </p>
       </div>
+
+      <section className="ghana-readiness-next" aria-labelledby="ghana-readiness-next-title" data-testid="ghana-readiness-next">
+        <div className="ghana-readiness-next-heading">
+          <div>
+            <span className="eyebrow">{isItalian ? 'IL TUO PROSSIMO PASSO' : 'YOUR NEXT STEP'}</span>
+            <h3 id="ghana-readiness-next-title">{isItalian ? 'Percorso di studio consigliato' : 'Recommended study path'}</h3>
+            <p className="muted">{isItalian
+              ? 'Inizia dagli argomenti con risultati più bassi, poi affronta quelli non ancora valutati.'
+              : 'Start with the topics where your results are lowest, then work through topics you have not assessed yet.'}</p>
+          </div>
+          <span className="ghana-readiness-next-count">{recommendations.length} / 3</span>
+        </div>
+        {recommendations.length > 0 ? (
+          <ol className="ghana-readiness-next-list">
+            {recommendations.map((indicator, index) => (
+              <li key={indicator.id} data-recommended-indicator={indicator.id}>
+                <span className="ghana-readiness-next-number">{index + 1}</span>
+                <div className="ghana-readiness-next-copy">
+                  <strong>{L(indicator.title, lang)}</strong>
+                  <small>{indicator.subStrand} · {indicator.status === 'needs-revision'
+                    ? (isItalian ? 'Da ripassare · ' : 'Needs revision · ') + indicator.percent + '%'
+                    : (isItalian ? 'Non ancora valutato' : 'Not assessed yet')}</small>
+                </div>
+                <button type="button" className="btn ghost sm" onClick={() => onReviewConcept(indicator.id)}>
+                  {indicator.status === 'needs-revision'
+                    ? (isItalian ? 'Ripassa' : 'Review')
+                    : (isItalian ? 'Studia' : 'Study')}
+                </button>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p className="ghana-readiness-complete" data-testid="ghana-readiness-complete">
+            {isItalian
+              ? 'Ottimo lavoro! Tutti i 45 indicatori hanno raggiunto la soglia di padronanza dell’80%. Continua con le sfide di trasferimento per mantenere le competenze.'
+              : 'Excellent work! All 45 indicators have reached the 80% mastery threshold. Keep your skills sharp with the transfer challenges.'}
+          </p>
+        )}
+      </section>
 
       <div className="ghana-readiness-groups">
         {groups.map((group, groupIndex) => {

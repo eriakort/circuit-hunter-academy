@@ -54,3 +54,27 @@ export const getGhanaSS1ReadinessSummary = (
   needsRevision: indicators.filter(item => item.status === 'needs-revision').length,
   notAssessed: indicators.filter(item => item.status === 'not-assessed').length
 });
+
+
+/**
+ * Returns a short, deterministic study queue: weakest assessed indicators first,
+ * followed by indicators the learner has not attempted yet.
+ */
+export const getGhanaSS1RecommendedIndicators = (
+  indicators: readonly GhanaSS1IndicatorReadiness[],
+  limit = 3
+): GhanaSS1IndicatorReadiness[] => {
+  const safeLimit = Number.isFinite(limit) ? Math.max(0, Math.floor(limit)) : 3;
+  return [...indicators]
+    .filter(item => item.status !== 'mastered')
+    .sort((a, b) => {
+      if (a.status !== b.status) return a.status === 'needs-revision' ? -1 : 1;
+      if (a.status === 'needs-revision' && b.status === 'needs-revision') {
+        return (a.percent ?? 100) - (b.percent ?? 100)
+          || a.attempted - b.attempted
+          || a.id.localeCompare(b.id);
+      }
+      return indicators.indexOf(a) - indicators.indexOf(b);
+    })
+    .slice(0, safeLimit);
+};
