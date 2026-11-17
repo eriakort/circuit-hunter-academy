@@ -48,7 +48,7 @@ export const MissionScreen: React.FC = () => {
   const [masteryAnswers, setMasteryAnswers] = useState<number[]>([]);
   const [masteryFeedback, setMasteryFeedback] = useState<{ score: number; passed: boolean; attempt: number } | null>(null);
   const [masteryStarted, setMasteryStarted] = useState(false);
-  const [masteryVariantIndexes, setMasteryVariantIndexes] = useState<number[]>(() => createAssessmentQuestionVariantIndexes(masteryAssessment));
+  const [masteryVariantIndexes, setMasteryVariantIndexes] = useState<number[]>(() => createAssessmentQuestionVariantIndexes(currentMission.learning?.masteryAssessment));
   const gameContainerRef = useRef<HTMLDivElement>(null);
 
   // Scene gating check
