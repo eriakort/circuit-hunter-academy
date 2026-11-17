@@ -43,4 +43,39 @@ export const GHANA_SS1_MASTERY_MISSIONS: Mission[] = [
       question('The data values are 4, 5, 5, 6 and 30. Which average best represents a typical value when the extreme value 30 is not typical?', ['Median: 5', 'Mean: 10', 'Maximum: 30', 'Range: 26'], 'The median is 5 and is less affected by the unusually high value 30 than the mean.')
     ]
   }
+  {
+    id: 'gh-core-ss1-measurement-mastery-challenge',
+    arc: 22,
+    sec: 'Geometry around us',
+    pages: 'NaCCA SHS 1 · pp. 110–124 · Integrated measurement practice',
+    hue: 188,
+    horns: 2,
+    eyes: 2,
+    title: 'The Measurement Expedition',
+    topic: 'Combine vectors and bearings, trigonometry, perimeter and area, and prism volume to solve connected measurement challenges.',
+    demon: 'The Dimension Warden',
+    tech: 'Measurement Form · Final Technique: Measure, Model and Verify',
+    scenes: [
+      lesson('<p><b>Welcome to the Measurement Expedition.</b> Measurement problems often require more than one idea. First decide what is being measured: direction, length, area or volume. Then choose a diagram, formula and unit that match the question.</p>'),
+      lesson('<p><b>Vectors and bearings:</b> A vector has magnitude and direction. A three-figure bearing is measured clockwise from north: 000° is north, 090° east, 180° south and 270° west. Equal vectors have the same magnitude and direction, even when their arrows start in different places.</p>'),
+      lesson('<p><b>Trigonometry:</b> In a right-angled triangle, SOH–CAH–TOA links the sides to an acute angle. Use sine for opposite/hypotenuse, cosine for adjacent/hypotenuse and tangent for opposite/adjacent. Draw and label the triangle before choosing a ratio. Check that your calculator is in degree mode.</p>'),
+      lesson('<p><b>Perimeter and area:</b> Perimeter measures the outside boundary and uses linear units. Area measures the surface inside and uses square units. For a composite shape, split it into familiar pieces; for an irregular shape on a grid, combine full and partial squares. Do not count internal dividing lines as part of the perimeter.</p>'),
+      lesson('<p><b>Area units:</b> Convert before calculating. Since 1 m = 100 cm, 1 m² = 10,000 cm². Squaring the conversion factor matters: 2 m² is 20,000 cm², not 200 cm². Keep length, area and volume units separate.</p>'),
+      lesson('<p><b>Prism volume:</b> A prism has a constant cross-section. Its volume is cross-sectional area × perpendicular length. For a triangular prism, first calculate the triangle area (½ × base × perpendicular height), then multiply by the prism length. Remember that 1,000 cm³ = 1 litre.</p>'),
+      lesson('<p><b>Plan a real project:</b> Imagine mapping a school route, estimating the surface of a garden and calculating the capacity of a water container. A bearing describes direction, trigonometry can estimate an inaccessible height, area estimates the ground covering, and volume estimates the space inside a tank. State assumptions and units at every step.</p>'),
+      lesson('<p><b>Check your answer:</b> Estimate first, calculate carefully and ask whether the size is reasonable. A fence needs metres, paint coverage needs square metres, and tank capacity needs cubic units or litres. A correct number with the wrong unit is not a complete measurement answer.</p>'),
+      { who: 'd', vis: 'demon', text: 'I have mixed directions, angles, boundaries and space. Can you choose the right model, calculate accurately and defend every unit?' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('A learner walks 6 km on a bearing of 090°. In which direction is the learner travelling?', ['East', 'North', 'South', 'West'], 'A bearing is measured clockwise from north; 090° points east.'),
+      question('A right triangle has an opposite side of 6 cm and a hypotenuse of 10 cm. Which ratio gives sin θ?', ['6/10', '10/6', '8/10', '6/8'], 'Sine is opposite divided by hypotenuse, so sin θ = 6/10.'),
+      question('A rectangular garden is 15 m long and 8 m wide. What length of fencing is needed around it?', ['46 m', '120 m²', '23 m', '38 m'], 'Perimeter = 2(15 + 8) = 46 m.'),
+      question('A floor has an area of 3 m². What is this area in cm²?', ['30,000 cm²', '300 cm²', '3,000 cm²', '300,000 cm²'], '1 m² = 10,000 cm², so 3 m² = 30,000 cm².'),
+      question('A composite floor is made from a 6 m by 4 m rectangle and a 2 m by 3 m rectangle with no overlap. What is its total area?', ['30 m²', '24 m²', '18 m²', '36 m²'], 'Add the non-overlapping areas: (6 × 4) + (2 × 3) = 24 + 6 = 30 m².'),
+      question('A triangular prism has a triangular cross-section with base 8 cm and perpendicular height 5 cm. Its length is 12 cm. What is its volume?', ['240 cm³', '480 cm³', '120 cm³', '25 cm³'], 'Triangle area = ½ × 8 × 5 = 20 cm²; volume = 20 × 12 = 240 cm³.'),
+      question('A water tank has a volume of 5,000 cm³. How many litres can it hold?', ['5 litres', '50 litres', '0.5 litres', '500 litres'], '1,000 cm³ = 1 litre, so 5,000 cm³ = 5 litres.'),
+      question('Which set of units correctly matches boundary, flat surface and three-dimensional space?', ['m, m², m³', 'm², m, m³', 'm³, m², m', 'm, m³, m²'], 'Perimeter is a length (m), area is square units (m²), and volume is cubic units (m³).')
+    ]
+  },
 ];
