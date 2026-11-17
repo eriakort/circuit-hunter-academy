@@ -80,6 +80,6 @@ test('Community Data Lab provides a structured pathway for all eight Statistical
 
   await expect(page.getByRole('heading', { name: 'The Community Data Lab' })).toBeVisible();
   await expect(page.locator('.learning-pathway')).toHaveAttribute('data-objective-count', '8');
-  await expect(page.locator('.learning-pathway-objectives li')).toHaveCount(8);
+  await expect(page.locator('.learning-pathway-objectives > ol > li')).toHaveCount(8);
   await expect(page.locator('.learning-pathway-stages .learning-pathway-stage')).toHaveCount(2);
 });
