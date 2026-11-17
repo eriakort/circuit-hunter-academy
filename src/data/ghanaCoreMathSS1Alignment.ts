@@ -196,6 +196,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [149, 152],
     alignment: 'direct',
     note: 'Covers random experiments, trials, outcomes, sample spaces and events; listing outcomes for simple and compound experiments; determining probabilities of independent events and expressing results as fractions, decimals, percentages and ratios; and solving everyday problems. Conditional probability is introduced only as prerequisite context, not claimed as a separate learning indicator.'
+  },
+  {
+    missionId: 'gh-core-ss1-real-number-properties',
+    curriculumYear: 'SHS 1',
+    strand: '1 · Numbers for Everyday Life',
+    subStrand: '1 · Real Number System',
+    contentStandardIds: ['1.1.1.CS.1'],
+    learningOutcomeIds: ['1.1.1.LO.1'],
+    learningIndicatorIds: ['1.1.1.LI.1', '1.1.1.LI.3'],
+    printedPages: [31, 33],
+    alignment: 'direct',
+    note: 'Covers closure tests for addition, subtraction, multiplication and division across real-number subsets (including the non-zero divisor condition), plus commutative, associative, distributive, identity and inverse properties. The existing Number Map mission remains the focused introduction to rational/irrational classification.'
   }
 ];
 
