@@ -73,7 +73,7 @@ assert.equal(grammarCategories.length, ITALIAN_GRAMMAR_TOPICS.length * 4, 'Each 
 const grammarQuestions = bank.filter(question => question.subject === 'italian' && question.id.startsWith('italian-grammar-'));
 const expectedGrammarCount = ITALIAN_GRAMMAR_TOPICS.reduce((total, topic) => total + (['A1', 'A2', 'B1'] as const).reduce((levelTotal, level) => levelTotal + topic.levels[level].exercises.length, 0), 0);
 assert.equal(grammarQuestions.length, expectedGrammarCount, 'Every Grammar Training multiple-choice exercise should appear once in the test bank');
-assert.equal(grammarQuestions.length, 78, 'The Italian subject test bank should include all 78 current grammar questions');
+assert.equal(grammarQuestions.length, 90, 'The Italian subject test bank should include all 90 current grammar questions');
 for (const topic of ITALIAN_GRAMMAR_TOPICS) {
   const category = grammarCategories.find(item => item.grammarTopicId === topic.id);
   assert.ok(category, 'Missing Italian grammar test category: ' + topic.id);
