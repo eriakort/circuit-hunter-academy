@@ -112,6 +112,7 @@ export const GHANA_SS1_STATISTICS_MISSIONS: Mission[] = [
       lesson('<p><b>Grouped data:</b> If you record the heights of many learners, you can organise the measurements into class intervals such as 140–149 cm, 150–159 cm and 160–169 cm, then record each interval’s frequency. Use equal, non-overlapping intervals and make sure every observation is counted once. Do not confuse the interval with its frequency.</p>'),
       lesson('<p><b>Digital presentation:</b> Spreadsheet and graphing tools can create line graphs, pie charts, multiple bar graphs, infographics and, where appropriate, 3D graphs or charts. A 3D effect does not make data more accurate. Check labels, scales, units, titles and source notes; avoid visual effects that hide differences or exaggerate values.</p>'),
       lesson('<p><b>Investigation example:</b> A school records the number of learners visiting its library from Monday to Friday. Put the days on the horizontal axis and the daily totals on the vertical axis, then join the plotted points to make a line graph. If you want to compare visits by year group, use a multiple bar graph with a separate bar for each group on each day. State what the graph shows and avoid claiming that it explains why the pattern occurred.</p>'),
+      { type: 'dataviz' },
       { who: 'd', vis: 'demon', text: 'I will hide totals, distort scales and dress weak evidence in flashy charts. Can you make the data clear?' },
       { type: 'battle' }
     ],
