@@ -59,6 +59,15 @@ interface GameContextType {
   allCleared: () => boolean;
 }
 
+const getFirstMissionIndexForSubject = (subject: SubjectId): number => {
+  const index = MISSIONS.findIndex(mission => (ARCS[mission.arc]?.subject || 'cs') === subject);
+  return index < 0 ? 0 : index;
+};
+
+const isMissionIndexForSubject = (index: number, subject: SubjectId): boolean =>
+  Number.isInteger(index) && index >= 0 && !!MISSIONS[index]
+  && (ARCS[MISSIONS[index].arc]?.subject || 'cs') === subject;
+
 const GameContext = createContext<GameContextType | undefined>(undefined);
 
 export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -100,7 +109,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return initialNavigation?.view || 'map';
   });
   const [currentMissionIndex, setCurrentMissionIndex] = useState<number>(
-    () => initialNavigation?.currentMissionIndex ?? Math.max(0, MISSIONS.findIndex(m => (ARCS[m.arc]?.subject || 'cs') === state.subject))
+    () => initialNavigation && isMissionIndexForSubject(initialNavigation.currentMissionIndex, state.subject)\n      ? initialNavigation.currentMissionIndex\n      : getFirstMissionIndexForSubject(state.subject)
   );
   const [currentSceneIndex, setCurrentSceneIndex] = useState<number>(
     () => initialNavigation?.currentSceneIndex ?? 0
@@ -161,7 +170,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       setCurriculumProfile(nextProfile);
       setState(normalizedNextState);
-      setCurrentMissionIndex(nextNavigation?.currentMissionIndex ?? Math.max(0, MISSIONS.findIndex(m => (ARCS[m.arc]?.subject || 'cs') === nextState.subject)));
+      setCurrentMissionIndex(nextNavigation && isMissionIndexForSubject(nextNavigation.currentMissionIndex, normalizedNextState.subject)\n        ? nextNavigation.currentMissionIndex\n        : getFirstMissionIndexForSubject(normalizedNextState.subject));
       setCurrentSceneIndex(nextNavigation?.currentSceneIndex ?? 0);
       setBattleContext(nextNavigation?.battleContext ?? null);
       setView(normalizedNextState.grade ? (nextNavigation?.view || 'map') : 'grades');
@@ -393,7 +402,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const currentMission = MISSIONS[currentMissionIndex] || MISSIONS[0];
+  const safeCurrentMissionIndex = isMissionIndexForSubject(currentMissionIndex, state.subject)\n    ? currentMissionIndex\n    : getFirstMissionIndexForSubject(state.subject);\n  const currentMission = MISSIONS[safeCurrentMissionIndex] || MISSIONS[0];
 
   return (
     <GameContext.Provider
