@@ -313,4 +313,25 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(mastery?.note).toContain('SHS 2 ratios and rates are excluded');
   });
 
+  test('maps integrated Algebraic Thinking mastery to both SHS 1 standards without inflating coverage', () => {
+    const mastery = getGhanaMissionAlignment('gh-core-ss1-algebraic-thinking-mastery');
+    expect(mastery?.curriculumYear).toBe('SHS 1');
+    expect(mastery?.contentStandardIds).toEqual(['1.2.1.CS.1', '1.2.1.CS.2']);
+    expect(mastery?.learningOutcomeIds).toEqual(['1.2.1.LO.1', '1.2.1.LO.2']);
+    expect(mastery?.learningIndicatorIds).toEqual(['1.2.1.LI.1', '1.2.1.LI.2', '1.2.1.LI.3', '1.2.1.LI.4']);
+    expect(mastery?.printedPages).toEqual([52, 66]);
+    expect(mastery?.note).toContain('does not claim additional curriculum coverage');
+  });
+
+  test('maps integrated Patterns and Relationships mastery to both SHS 1 standards', () => {
+    const mastery = getGhanaMissionAlignment('gh-core-ss1-patterns-relationships-mastery');
+    expect(mastery?.curriculumYear).toBe('SHS 1');
+    expect(mastery?.contentStandardIds).toEqual(['1.2.2.CS.1', '1.2.2.CS.2']);
+    expect(mastery?.learningOutcomeIds).toEqual(['1.2.2.LO.1', '1.2.2.LO.2']);
+    expect(mastery?.learningIndicatorIds).toEqual(['1.2.2.LI.1', '1.2.2.LI.2']);
+    expect(mastery?.printedPages).toEqual([67, 83]);
+    expect(mastery?.note).toContain('exponential mappings');
+    expect(mastery?.note).toContain('does not claim additional curriculum coverage');
+  });
+
 });
