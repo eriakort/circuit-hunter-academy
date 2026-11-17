@@ -222,6 +222,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     note: 'Covers percentage increase/decrease using the original amount as the base, utility-bill changes, exchange-rate comparisons, school-fee and project-budget changes, shopping discounts, and budget overruns/savings.'
   },
   {
+    missionId: 'gh-core-ss1-linear-equations-inequalities',
+    curriculumYear: 'SHS 1',
+    strand: '2 · Algebraic Reasoning',
+    subStrand: '1 · Applications of Expressions, Equations and Inequalities',
+    contentStandardIds: ['1.2.1.CS.2'],
+    learningOutcomeIds: ['1.2.1.LO.2'],
+    learningIndicatorIds: ['1.2.1.LI.1', '1.2.1.LI.2'],
+    printedPages: [62, 66],
+    alignment: 'direct',
+    note: 'Covers rearranging formulae and change of subject, solving linear equations in one variable, solving linear inequalities including reversing the sign when dividing by a negative, representing solution sets on number lines, and applying equations and inequalities to everyday situations. The first content standard indicators on quadratic factorisation, perfect squares and algebraic fractions remain outside this mission.'
+  },
+  {
     missionId: 'gh-core-ss1-fraction-operations',
     curriculumYear: 'SHS 1',
     strand: '1 · Numbers for Everyday Life',
