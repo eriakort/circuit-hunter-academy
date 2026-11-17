@@ -261,5 +261,13 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(perimeterArea?.note).toContain('1.3.2.LI.4');
   });
 
+  test('maps the integrated mastery trial to existing SHS 1 indicators without claiming new coverage', () => {
+    const mastery = getGhanaMissionAlignment('gh-core-ss1-integrated-mastery-trial');
+    expect(mastery?.curriculumYear).toBe('SHS 1');
+    expect(mastery?.contentStandardIds).toEqual(['1.1.2.CS.2', '1.2.1.CS.2', '1.3.2.CS.3', '1.4.1.CS.2']);
+    expect(mastery?.alignment).toBe('direct');
+    expect(mastery?.note).toContain('not a claim of additional curriculum coverage');
+  });
+
 
 });
