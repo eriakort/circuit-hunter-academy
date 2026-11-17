@@ -75,8 +75,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 1,
     learningIndicators: 5,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-spatial-sense'],
-    note: 'The pilot introduces all five listed spatial-sense indicators through guided examples and practice. Further varied and higher-demand applications should be added before treating the sub-strand as fully mastered.'
+    pilotMissionIds: ['gh-core-ss1-spatial-sense', 'gh-core-ss1-spatial-sense-field-challenge'],
+    note: 'The introductory Geometry Trail teaches all five spatial-sense indicators; the Site Planner’s Geometry Challenge adds graduated, multi-step applications across angle relationships, parallel lines, triangle properties, Pythagoras and polygon angle sums. Both missions reinforce the same five indicators; the second is additional practice, not extra curriculum coverage.'
   },
   {
     strand: 'Geometry Around Us',

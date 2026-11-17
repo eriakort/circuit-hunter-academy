@@ -49,5 +49,37 @@ export const GHANA_SS1_SPATIAL_MISSIONS: Mission[] = [
         '10 cm', '12 cm', '14 cm', '48 cm'
       ], 'c² = 6² + 8² = 36 + 64 = 100, so c = 10 cm.')
     ]
-  }
+  },
+
+  {
+    id: 'gh-core-ss1-spatial-sense-field-challenge',
+    arc: 0,
+    sec: 'Geometry around us',
+    pages: 'NaCCA SHS 1 · pp. 84–100',
+    hue: 58,
+    horns: 2,
+    eyes: 2,
+    title: 'The Site Planner’s Geometry Challenge',
+    topic: 'Apply angle relationships, parallel-line rules, triangle properties, Pythagoras’ theorem and polygon angle sums in multi-step design and construction problems.',
+    demon: 'The Blueprint Breaker',
+    tech: 'Geometry Form · Field Challenge: Precision in Practice',
+    scenes: [
+      lesson('<p><b>Mission briefing — plan a safe school courtyard.</b> A good site plan depends on accurate geometry. Before calculating, sketch the shape, mark the known angles and lengths, and label what you need to find. Include units for lengths and degrees for angles. A diagram is a reasoning aid: do not assume it is drawn to scale.</p>'),
+      lesson('<p><b>Stage 1: roof-frame angles.</b> A straight roof beam creates adjacent angles of  x° and 124°. Angles on a straight line add to 180°, so x = 180° − 124° = 56°. When two lines cross, vertically opposite angles are equal. When a transversal crosses parallel beams, corresponding and alternate interior angles are equal, while co-interior angles add to 180°. Identify the relationship before choosing an operation.</p>'),
+      lesson('<p><b>Stage 2: triangular supports.</b> A triangular support has two interior angles of 48° and 67°. The third angle is 180° − 48° − 67° = 65°. The exterior angle at a vertex equals the sum of the two opposite interior angles, so the exterior angle beside the 65° angle is 48° + 67° = 115°. Check that an interior angle and its adjacent exterior angle add to 180°.</p>'),
+      lesson('<p><b>Stage 3: an accessible ramp.</b> A ramp rises 0.9 m vertically and extends 1.2 m horizontally. These are the perpendicular sides of a right triangle. The ramp length is the hypotenuse: c² = 0.9² + 1.2² = 0.81 + 1.44 = 2.25, so c = 1.5 m. Pythagoras applies only when the triangle has a right angle. Keep all lengths in the same unit before calculating.</p>'),
+      lesson('<p><b>Stage 4: a polygon courtyard.</b> The sum of the interior angles of an n-sided polygon is (n − 2) × 180°. A hexagon has (6 − 2) × 180° = 720°. If it is regular, each interior angle is 720° ÷ 6 = 120°. For an irregular polygon, the total is still 720°, but the individual angles need not be equal. Use the regular-polygon division only when the question says the polygon is regular.</p>'),
+      lesson('<p><b>Choose your challenge level.</b> <b>Foundation:</b> identify the angle rule and complete a one-step calculation. <b>Builder:</b> combine two facts, such as a triangle angle sum and a straight-line pair. <b>Architect:</b> solve a contextual problem, explain why a theorem applies, and check whether the result is reasonable. If a diagram has no right-angle marker or parallel-line arrows, do not assume those properties.</p>'),
+      { who: 'd', vis: 'demon', text: 'The blueprint is full of traps! I will make you use Pythagoras on a non-right triangle and divide polygon angles when the shape is not regular. Prove every step.' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('Two adjacent angles lie on a straight line. One is 124°. What is the other?', ['56°', '66°', '124°', '236°'], 'Angles on a straight line add to 180°, so 180° − 124° = 56°.'),
+      question('A transversal crosses two parallel lines. A corresponding angle is 73°. What is the matching corresponding angle?', ['73°', '107°', '90°', '180°'], 'Corresponding angles are equal when the lines are parallel.'),
+      question('A triangular roof support has angles 48° and 67°. Find its third interior angle.', ['65°', '115°', '75°', '55°'], 'The angles in a triangle add to 180°: 180° − 48° − 67° = 65°.'),
+      question('A right-angled ramp rises 0.9 m and extends 1.2 m horizontally. How long is the ramp?', ['1.5 m', '2.1 m', '1.2 m', '0.3 m'], 'Pythagoras gives c² = 0.9² + 1.2² = 2.25, so c = 1.5 m.'),
+      question('What is the sum of the interior angles of a hexagon?', ['720°', '540°', '600°', '900°'], 'Use (n − 2) × 180°: (6 − 2) × 180° = 720°.'),
+      question('A regular pentagon has an interior angle sum of 540°. What is each interior angle?', ['108°', '90°', '120°', '72°'], 'A regular pentagon has five equal interior angles, so 540° ÷ 5 = 108°.')
+    ]
+  },
 ];
