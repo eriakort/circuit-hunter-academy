@@ -49,7 +49,7 @@ describe('Ghana SHS 1 45-indicator diagnostic mastery expedition', () => {
       '1.2.2.CS.1': 2, '1.2.2.CS.2': 2,
       '1.3.1.CS.1': 5,
       '1.3.2.CS.1': 2, '1.3.2.CS.2': 3, '1.3.2.CS.3': 4,
-      '1.4.1.CS.1': 3, '1.4.1.CS.2': 2, '1.4.1.CS.3': 3,
+      '1.4.1.CS.1': 3, '1.4.1.CS.2': 3, '1.4.1.CS.3': 2,
       '1.4.2.CS.1': 3
     };
     const actual = GHANA_SS1_INDICATOR_BLUEPRINT.reduce<Record<string, number>>((counts, item) => {
