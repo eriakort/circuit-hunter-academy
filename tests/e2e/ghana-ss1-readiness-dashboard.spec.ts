@@ -51,3 +51,35 @@ test('Ghana SHS 1 readiness dashboard localizes its labels into Italian', async 
   await expect(page.getByTestId('ghana-readiness-not-assessed')).toHaveText('45');
   await expect(page.getByRole('button', { name: 'Avvia la verifica dei 45 indicatori' })).toBeVisible();
 });
+
+
+test('Community Data Lab provides a structured pathway for all eight Statistical Reasoning indicators', async ({ page }) => {
+  await startGhanaCoreMath(page);
+
+  const missionIds = await page.locator('.mcard').evaluateAll(cards =>
+    cards.map(card => card.getAttribute('data-mission-id')).filter((id): id is string => !!id)
+  );
+  const targetId = 'gh-core-ss1-statistical-investigation-mastery';
+  const targetPosition = missionIds.indexOf(targetId);
+  expect(targetPosition).toBeGreaterThan(0);
+  const priorMissionsCleared = Object.fromEntries(missionIds.slice(0, targetPosition).map(id => [id, true]));
+
+  await page.evaluate(({ cleared }) => {
+    const profile = JSON.parse(window.localStorage.getItem('circuit-hunter-academy-curriculum-profile-v1') || '{}');
+    const curriculumId = profile.activeCurriculumId || 'ghana-nacca';
+    const key = `circuit-hunter-academy-v2:${curriculumId}`;
+    const saved = JSON.parse(window.localStorage.getItem(key) || '{}');
+    saved.cleared = { ...(saved.cleared || {}), ...cleared };
+    window.localStorage.setItem(key, JSON.stringify(saved));
+  }, { cleared: priorMissionsCleared });
+  await page.reload();
+
+  const communityDataLab = page.locator(`.mcard[data-mission-id="${targetId}"]`);
+  await expect(communityDataLab).toBeEnabled();
+  await communityDataLab.click();
+
+  await expect(page.getByRole('heading', { name: 'The Community Data Lab' })).toBeVisible();
+  await expect(page.locator('.learning-pathway')).toHaveAttribute('data-objective-count', '8');
+  await expect(page.locator('.learning-pathway-objectives > ol > li')).toHaveCount(8);
+  await expect(page.locator('.learning-pathway-stages .learning-pathway-stage')).toHaveCount(2);
+});

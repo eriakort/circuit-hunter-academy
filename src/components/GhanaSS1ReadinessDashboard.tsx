@@ -9,19 +9,19 @@ import {
 
 interface GhanaSS1ReadinessDashboardProps {
   lang: Language;
-  progress?: LearningMissionProgress;
+  progressByMission: Record<string, LearningMissionProgress | undefined>;
   onStartDiagnostic: () => void;
   onReviewConcept: (conceptId: string) => void;
 }
 
 export const GhanaSS1ReadinessDashboard: React.FC<GhanaSS1ReadinessDashboardProps> = ({
   lang,
-  progress,
+  progressByMission,
   onStartDiagnostic,
   onReviewConcept
 }) => {
   const isItalian = lang === 'it';
-  const indicators = getGhanaSS1IndicatorReadiness(progress);
+  const indicators = getGhanaSS1IndicatorReadiness(progressByMission);
   const summary = getGhanaSS1ReadinessSummary(indicators);
   const recommendations = getGhanaSS1RecommendedIndicators(indicators);
   const groups = indicators.reduce<Array<{
@@ -42,9 +42,14 @@ export const GhanaSS1ReadinessDashboard: React.FC<GhanaSS1ReadinessDashboardProp
     return result;
   }, []);
 
-  const latestScore = typeof progress?.masteryScore === 'number'
-    ? progress.masteryScore + '%'
-    : '—';
+  const assessmentAttempts = Object.values(progressByMission)
+    .flatMap(progress => progress?.masteryAttemptHistory || [])
+    .sort((a, b) => b.attemptedAt - a.attemptedAt);
+  const diagnosticProgress = progressByMission['gh-core-ss1-45-indicator-diagnostic'];
+  const latestScoreValue = assessmentAttempts[0]?.score ?? diagnosticProgress?.masteryScore;
+  const latestScore = typeof latestScoreValue === 'number' ? latestScoreValue + '%' : '—';
+  const totalAttempts = Object.values(progressByMission)
+    .reduce((total, progress) => total + (progress?.masteryAttempts || 0), 0);
 
   const statusLabel = (status: string) => {
     if (status === 'mastered') return isItalian ? 'Padroneggiato' : 'Mastered';
@@ -88,11 +93,11 @@ export const GhanaSS1ReadinessDashboard: React.FC<GhanaSS1ReadinessDashboardProp
         </div>
         <div className="ghana-readiness-stat">
           <strong data-testid="ghana-readiness-latest-score">{latestScore}</strong>
-          <span>{isItalian ? 'Ultima verifica completa' : 'Latest diagnostic score'}</span>
+          <span>{isItalian ? 'Ultima prova' : 'Latest assessment score'}</span>
           <small>
             {isItalian
-              ? (progress?.masteryAttempts || 0) + ' tentativi registrati'
-              : (progress?.masteryAttempts || 0) + ' recorded attempts'}
+              ? totalAttempts + ' tentativi registrati'
+              : totalAttempts + ' recorded attempts'}
           </small>
         </div>
       </div>
@@ -107,8 +112,8 @@ export const GhanaSS1ReadinessDashboard: React.FC<GhanaSS1ReadinessDashboardProp
         </div>
         <p className="ghana-readiness-note">
           {isItalian
-            ? 'Un indicatore è considerato padroneggiato quando la precisione cumulativa nelle sue risposte raggiunge almeno l’80%. Il risultato della verifica completa è mostrato separatamente.'
-            : 'An indicator is marked mastered when cumulative accuracy on its recorded responses reaches at least 80%. The full diagnostic score is shown separately.'}
+            ? 'Un indicatore è considerato padroneggiato quando la precisione cumulativa nelle sue risposte raggiunge almeno l’80%. Il punteggio dell’ultima prova completa è mostrato separatamente.'
+            : 'An indicator is marked mastered when cumulative accuracy on its recorded responses reaches at least 80%. The latest full assessment score is shown separately.'}
         </p>
       </div>
 

@@ -1,4 +1,5 @@
 import type { ArcInfo, Mission } from '../types';
+import { createGhanaSS1IndicatorLearning, GHANA_SS1_STATISTICAL_INDICATOR_IDS } from './ghanaCoreMathSS1StructuredLearning';
 
 export const GHANA_SS1_STATISTICS_ARCS: ArcInfo[] = [
   {
@@ -181,6 +182,42 @@ export const GHANA_SS1_STATISTICS_MISSIONS: Mission[] = [
     title: 'The Community Data Lab',
     topic: 'Complete an end-to-end statistical investigation: refine a question, select and classify data, collect responsibly, organise and display results, interpret descriptive statistics, and communicate justified conclusions.',
     demon: 'The Evidence Illusionist',
+    learning: createGhanaSS1IndicatorLearning({
+      conceptIds: GHANA_SS1_STATISTICAL_INDICATOR_IDS,
+      assessmentTitle: [
+        'Community Data Lab · Eight-Indicator Mastery Trial',
+        'Laboratorio Dati della Comunità · Prova di maestria sugli otto indicatori'
+      ],
+      assessmentInstructions: [
+        'Answer one question for each of the eight SHS 1 Statistical Reasoning indicators. You need at least 80% to unlock the final battle. Each retry switches to the alternate question form for every indicator.',
+        'Rispondi a una domanda per ciascuno degli otto indicatori SHS 1 di Ragionamento statistico. Serve almeno l’80% per sbloccare la battaglia finale. A ogni nuovo tentativo viene proposta la forma alternativa per ciascun indicatore.'
+      ],
+      prerequisites: [
+        [
+          'Review data types, collection methods, frequency tables, graphs and averages in the lesson scenes.',
+          'Ripassa tipi di dati, metodi di raccolta, tabelle di frequenza, grafici e medie nelle scene della lezione.'
+        ]
+      ],
+      summary: [
+        [
+          'A trustworthy investigation moves from a clear question to fair sampling, ethical collection, accurate organisation and evidence-based conclusions.',
+          'Un’indagine affidabile parte da una domanda chiara e procede con un campionamento corretto, una raccolta etica, un’organizzazione accurata e conclusioni basate sui dati.'
+        ],
+        [
+          'Choose tables, graphs and descriptive measures that fit the question. Explain unusual values and the limits of the sample instead of hiding inconvenient evidence.',
+          'Scegli tabelle, grafici e misure descrittive adatti alla domanda. Spiega i valori insoliti e i limiti del campione invece di nascondere dati scomodi.'
+        ]
+      ],
+      techniqueUnlock: {
+        id: 'ghana-ss1-evidence-into-action',
+        name: ['Evidence into Action', 'Dai dati all’azione'],
+        description: [
+          'You can plan, analyse and communicate a school-community investigation while explaining its evidence and limitations.',
+          'Sai pianificare, analizzare e comunicare un’indagine scolastica o comunitaria, spiegandone prove e limiti.'
+        ],
+        xpReward: 20
+      }
+    }),
     tech: 'Data Form · Final Technique: Investigate, Interpret and Communicate',
     scenes: [
       lesson('<p><b>Welcome to the Community Data Lab.</b> Statistics is a process, not just a calculation. A trustworthy investigation begins with a clear question, gathers suitable evidence, organises it carefully, chooses an appropriate analysis and explains what the results can—and cannot—tell us.</p>'),

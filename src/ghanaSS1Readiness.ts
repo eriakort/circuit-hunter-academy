@@ -21,15 +21,23 @@ export interface GhanaSS1ReadinessSummary {
 }
 
 export const getGhanaSS1IndicatorReadiness = (
-  progress?: LearningMissionProgress
+  progressByMission: Record<string, LearningMissionProgress | undefined> = {}
 ): GhanaSS1IndicatorReadiness[] => GHANA_SS1_INDICATOR_BLUEPRINT.map(indicator => {
-  const performance = progress?.masteryConceptPerformance?.[indicator.id];
-  const attempted = Number.isFinite(performance?.attempted)
-    ? Math.max(0, Math.floor(performance!.attempted))
-    : 0;
-  const correct = Number.isFinite(performance?.correct)
-    ? Math.min(attempted, Math.max(0, Math.floor(performance!.correct)))
-    : 0;
+  const performanceTotals = Object.values(progressByMission).reduce((totals, progress) => {
+    const performance = progress?.masteryConceptPerformance?.[indicator.id];
+    const attempted = Number.isFinite(performance?.attempted)
+      ? Math.max(0, Math.floor(performance!.attempted))
+      : 0;
+    const correct = Number.isFinite(performance?.correct)
+      ? Math.min(attempted, Math.max(0, Math.floor(performance!.correct)))
+      : 0;
+    return {
+      correct: totals.correct + correct,
+      attempted: totals.attempted + attempted
+    };
+  }, { correct: 0, attempted: 0 });
+  const attempted = performanceTotals.attempted;
+  const correct = Math.min(attempted, performanceTotals.correct);
   const percent = attempted > 0 ? Math.round((correct / attempted) * 100) : null;
 
   return {

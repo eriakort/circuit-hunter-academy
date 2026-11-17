@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import { MISSIONS, ARCS, UNITS } from '../src/data/gameData';
+import { GRADE_SUBJECT_IDS } from '../src/data/gradeData';
+import { getCurriculumSubjects } from '../src/data/curriculumSubjects';
 import { createFreshProgressState, isValidCheckpointResult, isValidGrammarActivityId, restoreSavedNavigation, sanitizeCheckpointProgress, sanitizeGrammarProgress, sanitizeGameState, SAVE_SCHEMA } from '../src/persistence';
 import type { GameState } from '../src/types';
 
@@ -325,3 +327,20 @@ const legacyAlternateReview = sanitizeGameState({
   }
 }).learningProgress[ghanaAssessmentMission!.id].masteryAttemptReviews?.[0];
 assert.equal(legacyAlternateReview?.questionVariantIndexes, undefined, 'legacy assessment reviews remain valid and default to canonical questions');
+
+const ghanaSubjectState = sanitizeGameState({ grade: 'grade9', subject: 'ghcoremath' }, 'ghana-nacca');
+assert.ok(!GRADE_SUBJECT_IDS.grade9.includes('ghcoremath'), 'Ghana subjects stay outside the Italy Grade 9 catalogue');
+assert.deepEqual(getCurriculumSubjects('grade9', 'ghana-nacca').map(subject => subject.id), ['ghcoremath'], 'Ghana Core Mathematics is available in the Ghana SS1 pathway');
+assert.equal(ghanaSubjectState.subject, 'ghcoremath', 'Ghana Core Mathematics survives save sanitization under its own curriculum');
+assert.notEqual(sanitizeGameState({ grade: 'grade9', subject: 'ghcoremath' }, 'italy-national').subject, 'ghcoremath', 'the Italian save namespace rejects Ghana-only subjects');
+const ghanaMission = MISSIONS.find(mission => mission.id === 'gh-core-ss1-statistical-investigation-mastery');
+assert.ok(ghanaMission, 'the Community Data Lab mission is registered');
+const ghanaNavigation = restoreSavedNavigation({
+  view: 'scene',
+  currentMissionIndex: MISSIONS.indexOf(ghanaMission!),
+  currentSceneIndex: 0,
+  missionId: ghanaMission!.id,
+  grade: 'grade9',
+  subject: 'ghcoremath'
+}, ghanaSubjectState, 'ghana-nacca');
+assert.equal(ghanaNavigation?.missionId, ghanaMission!.id, 'Ghana Core Mathematics mission navigation survives reload restoration');
