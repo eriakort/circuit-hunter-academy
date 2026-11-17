@@ -280,7 +280,7 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [114, 117],
     alignment: 'direct',
     note: 'Covers the three primary trigonometric ratios in right triangles, special angles 30°, 45° and 60°, calculator evaluation of sine/cosine/tangent through 360° in standard position, and practical height/distance problems. The separate perimeter/area standard is not claimed as covered.'
-  },,
+  },
   {
     missionId: 'gh-core-ss1-perimeter-area',
     curriculumYear: 'SHS 1',
