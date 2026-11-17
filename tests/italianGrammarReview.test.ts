@@ -18,7 +18,7 @@ assert.equal(review.length, allQuestions.length, 'Mixed review should include ev
 assert.equal(new Set(review.map(item => item.id)).size, allQuestions.length, 'Mixed review should not duplicate questions');
 assert.equal(review[0].id, missed.id, 'Previously missed questions should be prioritised');
 assert.ok(review.findIndex(item => item.id === unseen.id) < review.findIndex(item => item.id === mastered.id), 'Unseen questions should come before mastered questions');
-assert.equal(review.at(-1)?.id, mastered.id, 'Mastered questions should be reserved for reinforcement at the end');
+assert.equal(review[review.length - 1]?.id, mastered.id, 'Mastered questions should be reserved for reinforcement at the end');
 assert.ok(review.some(item => item.topicId === 'articles') && review.some(item => item.topicId === 'reflexive'), 'Mixed review should include different topics');
 
 const a2Review = buildAdaptiveGrammarReview(ITALIAN_GRAMMAR_TOPICS, 'A2');
