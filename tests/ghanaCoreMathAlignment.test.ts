@@ -210,4 +210,15 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(realNumbers?.note).toContain('non-zero divisor condition');
   });
 
+
+  test('maps trigonometry to the second SHS 1 Measurement standard', () => {
+    const trigonometry = getGhanaMissionAlignment('gh-core-ss1-trigonometry');
+    expect(trigonometry?.curriculumYear).toBe('SHS 1');
+    expect(trigonometry?.contentStandardIds).toEqual(['1.3.2.CS.2']);
+    expect(trigonometry?.learningOutcomeIds).toEqual(['1.3.2.LO.2']);
+    expect(trigonometry?.learningIndicatorIds).toEqual(['1.3.2.LI.1', '1.3.2.LI.2', '1.3.2.LI.3']);
+    expect(trigonometry?.printedPages).toEqual([114, 117]);
+  });
+
+
 });
