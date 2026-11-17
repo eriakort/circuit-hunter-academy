@@ -85,8 +85,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 3,
     learningIndicators: 9,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-vectors-bearings', 'gh-core-ss1-trigonometry'],
-    note: 'The pilot covers vectors and bearings plus the trigonometry standard: sine, cosine and tangent, special angles, calculator values, and right-triangle applications. The perimeter/area standard remains not yet covered.'
+    pilotMissionIds: ['gh-core-ss1-vectors-bearings', 'gh-core-ss1-trigonometry', 'gh-core-ss1-perimeter-area'],
+    note: 'The pilot covers vectors and bearings, trigonometry, and perimeter/area of circles and quadrilaterals. The new mission addresses SI/imperial area referents, regular/composite/irregular shapes, perimeter estimation, unit conversions, and contextual problems. The volume-of-prisms indicator remains outside this mission.'
   },
   {
     strand: 'Making Sense of and Using Data',

@@ -281,6 +281,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Covers the three primary trigonometric ratios in right triangles, special angles 30°, 45° and 60°, calculator evaluation of sine/cosine/tangent through 360° in standard position, and practical height/distance problems. The separate perimeter/area standard is not claimed as covered.'
   },
+  {
+    missionId: 'gh-core-ss1-perimeter-area',
+    curriculumYear: 'SHS 1',
+    strand: '3 · Geometry Around Us',
+    subStrand: '2 · Measurement',
+    contentStandardIds: ['1.3.2.CS.3'],
+    learningOutcomeIds: ['1.3.2.LO.3'],
+    learningIndicatorIds: ['1.3.2.LI.1', '1.3.2.LI.2', '1.3.2.LI.3'],
+    printedPages: [118, 123],
+    alignment: 'direct',
+    note: 'Covers SI and imperial area referents and comparisons; perimeter and area estimation for circles, quadrilaterals, and regular, composite and irregular 2D shapes; area formulas for parallelograms, rhombi, kites and trapezoids; decomposition and grid estimation; and contextual perimeter/area problems with unit conversion. The separate volume-of-prisms indicator 1.3.2.LI.4 is not claimed as covered.'
+  },
 ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
