@@ -32,6 +32,8 @@ test('Ghana SHS 1 dashboard shows all 45 indicators and their initial states', a
   await firstGroup.locator('.ghana-readiness-review').first().click();
   await expect(page.locator('.concept-revision')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Targeted concept revision' })).toBeVisible();
+  await expect(page.locator('.concept-revision')).toHaveAttribute('data-question-count', '2');
+  await expect(page.getByTestId('concept-revision-question-progress')).toContainText('Question 1 / 2');
   await expect(page.locator('.learning-example')).toBeVisible();
   await expect(page.locator('.learning-misconception')).toBeVisible();
   await expect(page.locator('.concept-revision-prompts')).toBeVisible();
