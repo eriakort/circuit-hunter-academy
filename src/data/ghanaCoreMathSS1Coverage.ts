@@ -55,8 +55,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 3,
     learningIndicators: 6,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-algebraic-expressions', 'gh-core-ss1-linear-equations-inequalities', 'gh-core-ss1-quadratic-factorisation-algebraic-fractions'],
-    note: 'The pilot introduces expression formation and simplification, formula rearrangement, linear equations and inequalities in one variable, number-line solution sets and practical applications. The pilot now also covers quadratic factorisation, perfect-square identities, differences of two squares, and simple algebraic-fraction operations with zero/undefined conditions. Additional varied practice is still needed to establish mastery.'
+    pilotMissionIds: ['gh-core-ss1-algebraic-expressions', 'gh-core-ss1-linear-equations-inequalities', 'gh-core-ss1-quadratic-factorisation-algebraic-fractions', 'gh-core-ss1-algebraic-thinking-mastery'],
+    note: 'The pilot introduces expression formation and simplification, formula rearrangement, linear equations and inequalities in one variable, number-line solution sets and practical applications. It also covers quadratic factorisation, perfect-square identities, differences of two squares, and algebraic-fraction operations with zero/undefined conditions. The Algebraic Thinking Mastery Expedition adds integrated practice with quadratic models, all four expression operations, algebraic fractions, formula rearrangement and real-life inequalities; it reinforces the existing six indicators and does not add curriculum coverage.'
   },
   {
     strand: 'Algebraic Reasoning',
@@ -65,8 +65,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 2,
     learningIndicators: 4,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-patterns-functions', 'gh-core-ss1-straight-lines-distance'],
-    note: 'The pilot covers relations and functions, mapping rules, domain/range, linear-function graphs, coordinates, midpoint, gradient, equations of straight lines, distance between points, and parallel/perpendicular gradient relationships. Further varied practice can deepen mastery.'
+    pilotMissionIds: ['gh-core-ss1-patterns-functions', 'gh-core-ss1-straight-lines-distance', 'gh-core-ss1-patterns-relationships-mastery'],
+    note: 'The pilot covers relations and functions, mapping rules, domain/range, linear-function graphs, coordinates, midpoint, gradient, equations of straight lines, distance between points, and parallel/perpendicular gradient relationships. The Patterns and Relationships Mastery Expedition adds the missing exponential-mapping practice, contrasts linear, quadratic and exponential rules, and deepens graph interpretation; it reinforces the existing four indicators and does not add curriculum coverage.'
   },
   {
     strand: 'Geometry Around Us',
