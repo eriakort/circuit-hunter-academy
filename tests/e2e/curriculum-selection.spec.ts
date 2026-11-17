@@ -47,6 +47,10 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await expect(page.getByTestId('sankofa-experience')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Sankofa – The Knowledge Quest' })).toBeVisible();
   await expect(page.locator('.sankofa-region')).toHaveCount(5);
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'sankofa');
+  await expect(page.getByTestId('sankofa-experience')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Sankofa – The Knowledge Quest' })).toBeVisible();
   await expect(page.locator('.sankofa-progress-heading').getByRole('heading', { name: 'Curious Seeker' })).toBeVisible();
   await page.locator('.mcard').filter({ hasText: 'The Number Map' }).click();
   await expect(page.locator('.bubble .who')).toHaveText('The Elder Guide');
