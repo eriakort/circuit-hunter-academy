@@ -1,5 +1,6 @@
 import { BilingualText, SubjectId } from '../types';
 import { GRADE5_MATH_FORMULA_CARDS, GRADE5_MATH_TOPICS } from './grade5MathFormulaData';
+import { ITALIAN_QUINTA_FORMULA_CARDS, ITALIAN_QUINTA_TOPIC } from './italianQuintaFormulaData';
 import { CHEM_FORMULA_CARDS, CHEM_TOPICS, CHEM10_TOPICS, CHEM11_TOPICS } from './chemFormulaData';
 import { MATH10_TOPICS, MATH11_TOPICS, MATH_ADV_FORMULA_CARDS } from './mathAdvFormulaData';
 import {
@@ -71,7 +72,8 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
     { id: 'articoli-nomi', subject: 'italian', name: ['Articles, Gender & Plural Endings', 'Articoli, Genere e Desinenze del Plurale'] },
     { id: 'verbi-tempi', subject: 'italian', name: ['Verb Tenses & Auxiliaries (Essere vs Avere)', 'Tempi Verbali e Ausiliari (Essere vs Avere)'] },
     { id: 'pronomi', subject: 'italian', name: ['Direct, Indirect & Combined Pronouns', 'Pronomi Diretti, Indiretti e Combinati'] },
-    { id: 'congiuntivo-condizionale', subject: 'italian', name: ['Subjunctive & Conditional of Courtesy', 'Congiuntivo e Condizionale di Cortesia'] }
+    { id: 'congiuntivo-condizionale', subject: 'italian', name: ['Subjunctive & Conditional of Courtesy', 'Congiuntivo e Condizionale di Cortesia'] },
+    ITALIAN_QUINTA_TOPIC
   ],
   chem: CHEM_TOPICS,
   chem10: CHEM10_TOPICS,
@@ -1395,3 +1397,5 @@ FORMULA_CARDS.push(...HIST_GEO_FORMULA_CARDS);
 // Grade 10 & Grade 11 Mathematics (Matematica L2 & L3) formula cards.
 FORMULA_CARDS.push(...MATH_ADV_FORMULA_CARDS);
 
+// Italian grammar of classe quinta (Grade 5) cards.
+FORMULA_CARDS.push(...ITALIAN_QUINTA_FORMULA_CARDS);

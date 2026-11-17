@@ -21,7 +21,7 @@ export const GRADES: GradeInfo[] = [
     schoolLevel: ['Primary school', 'Scuola primaria'],
     ageRange: ['Usually ages 10–11', 'Generalmente 10–11 anni'],
     description: ['Science, Maths, Italian, History & Geography.', 'Scienze, Matematica, Italiano, Storia e Geografia.'],
-    status: 'preparing'
+    status: 'ready'
   },
   {
     id: 'grade9',

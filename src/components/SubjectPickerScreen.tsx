@@ -5,6 +5,9 @@ import { getCurriculum } from '../data/curricula';
 import { GradeId, SubjectId } from '../types';
 import { L } from '../helpers';
 
+/** Placeholder artwork for the Additional Mathematics pathway (not yet selectable). */
+const ADDITIONAL_MATHS_ART = '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="40" fill="none" stroke="#c9a13b" stroke-width="3" stroke-dasharray="6 6"/><text x="60" y="74" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#1f6b4f">∑+</text></svg>';
+
 export const SubjectPickerScreen: React.FC = () => {
   const { state, setSubject, goToView, curriculumProfile } = useGame();
   const { lang, grade } = state;
@@ -256,9 +259,9 @@ export const SubjectPickerScreen: React.FC = () => {
             ))}
             {isGhana && (
               <article className="subjcard" data-pathway="ghana-additional-mathematics" aria-label="Additional Mathematics in preparation">
-                <div className="subjart" aria-hidden="true">∑+</div>
+                <div className="subjart" aria-hidden="true" dangerouslySetInnerHTML={{ __html: ADDITIONAL_MATHS_ART }} />
                 <h2>Additional Mathematics</h2>
-                <p>A separate advanced Mathematics pathway. Its SS1 content is still being prepared and is not yet selectable.</p>
+                <p>A separate advanced Mathematics pathway. Its {activeGrade === 'grade9' ? 'SHS 1' : activeGrade === 'grade10' ? 'SHS 2' : 'SHS 3'} content is still being prepared and is not yet selectable.</p>
                 <span className="pg">In preparation</span>
               </article>
             )}

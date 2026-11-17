@@ -1,5 +1,6 @@
 import React from 'react';
 import { useGame } from '../context/GameContext';
+import { getCurriculumGradeLevel } from '../data/curricula';
 import { RANKS, SUBJECTS } from '../data/gameData';
 import { L, rankOf, nextRank, esc } from '../helpers';
 import { getSankofaRank, getSankofaRankProgress } from '../data/sankofaTheme';
@@ -7,6 +8,7 @@ import { getSankofaRank, getSankofaRankProgress } from '../data/sankofaTheme';
 export const HUD: React.FC = () => {
   const { state, view, battleContext, setLanguage, goToView, startBattle, curriculumProfile } = useGame();
   const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
+  const ghanaLevel = isGhana && state.grade ? getCurriculumGradeLevel('ghana-nacca', state.grade) : undefined;
   const { lang, name, xp, subject, grade, cleared } = state;
   const activeSubject = SUBJECTS.find(item => item.id === subject) || SUBJECTS[0];
 
@@ -51,7 +53,7 @@ export const HUD: React.FC = () => {
           <span className="subject-indicator-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: activeSubject.art }} />
           <span className="subject-indicator-copy">
             <small>
-              {L(
+              {ghanaLevel?.shortLabel ? `${ghanaLevel.shortLabel.toUpperCase()} · CURRENT SUBJECT` : L(
                 grade === 'grade5'
                   ? ['GRADE 5 · CURRENT SUBJECT', 'QUINTA PRIMARIA · MATERIA']
                   : grade === 'grade10'
@@ -74,7 +76,9 @@ export const HUD: React.FC = () => {
           aria-current={currentPage(view === 'grades')}
           onClick={() => goToView('grades')}
         >
-          {L(['Change grade', 'Cambia classe'], lang)}{grade ? ` · ${grade.replace('grade', '')}` : ''}
+          {grade
+            ? <>{L(['Change grade', 'Cambia classe'], lang)} · {ghanaLevel?.shortLabel ?? grade.replace('grade', '')}</>
+            : L(['Choose grade', 'Scegli la classe'], lang)}
         </button>
         {name && (
           <div className="who-hud">
