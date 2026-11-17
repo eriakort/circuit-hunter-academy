@@ -66,7 +66,15 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('counts the spatial sense mission only in its matching Geometry Around Us sub-strand', () => {
     const spatial = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Spatial Sense');
     expect(spatial?.status).toBe('partial');
-    expect(spatial?.pilotMissionIds).toEqual(['gh-core-ss1-spatial-sense']);
+    expect(spatial?.pilotMissionIds).toEqual(['gh-core-ss1-spatial-sense', 'gh-core-ss1-spatial-sense-field-challenge']);
+  });
+
+
+  test('includes a differentiated applied mission for all five Spatial Sense indicators', () => {
+    const mission = GHANA_CORE_MATH_SS1_MISSIONS.find(item => item.id === 'gh-core-ss1-spatial-sense-field-challenge');
+    expect(mission).toBeDefined();
+    expect(mission?.quiz).toHaveLength(6);
+    expect(mission?.scenes.length).toBeGreaterThanOrEqual(7);
   });
 
   test('counts vectors only in the matching Geometry Around Us Measurement sub-strand', () => {
