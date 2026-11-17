@@ -250,7 +250,7 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(mastery?.learningOutcomeIds).toEqual(['1.3.2.LO.1', '1.3.2.LO.2', '1.3.2.LO.3']);
     expect(mastery?.learningIndicatorIds).toEqual(['1.3.2.LI.1', '1.3.2.LI.2', '1.3.2.LI.3', '1.3.2.LI.4']);
     expect(mastery?.printedPages).toEqual([110, 124]);
-    expect(mastery?.note).toContain('without claiming additional curriculum coverage');
+    expect(mastery?.note).toContain('does not claim additional curriculum coverage');
   });
 
   test('maps prism volume to the fourth SHS 1 Measurement indicator', () => {
@@ -331,7 +331,7 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(mastery?.learningIndicatorIds).toEqual(['1.2.2.LI.1', '1.2.2.LI.2']);
     expect(mastery?.printedPages).toEqual([67, 83]);
     expect(mastery?.note).toContain('exponential mappings');
-    expect(mastery?.note).toContain('does not claim additional curriculum coverage');
+    expect(mastery?.note).toContain('without claiming additional curriculum coverage');
   });
 
 });
