@@ -29022,3 +29022,12 @@ UNITS.push({ ...GHANA_CORE_MATH_SS1_UNIT, subject: 'ghcoremath' });
 const ghanaCoreMathArcOffset = ARCS.length;
 GHANA_CORE_MATH_SS1_ARCS.forEach(arc => ARCS.push({ ...arc, unit: ghanaCoreMathUnitOffset, subject: 'ghcoremath' }));
 MISSIONS.push(...GHANA_CORE_MATH_SS1_MISSIONS.map(mission => ({ ...mission, arc: ghanaCoreMathArcOffset + mission.arc })));
+
+// Ghana NaCCA · SHS 2 Core Mathematics foundation. Separate subject and progress namespace.
+import { GHANA_CORE_MATH_SS2_SUBJECT, GHANA_CORE_MATH_SS2_UNIT, GHANA_CORE_MATH_SS2_ARCS, GHANA_CORE_MATH_SS2_MISSIONS } from './ghanaCoreMathSS2Data';
+if (!SUBJECTS.some(subject => subject.id === 'ghcoremath2')) SUBJECTS.push(GHANA_CORE_MATH_SS2_SUBJECT);
+const ghanaCoreMathSS2UnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_CORE_MATH_SS2_UNIT, subject: 'ghcoremath2' });
+const ghanaCoreMathSS2ArcOffset = ARCS.length;
+GHANA_CORE_MATH_SS2_ARCS.forEach(arc => ARCS.push({ ...arc, unit: ghanaCoreMathSS2UnitOffset, subject: 'ghcoremath2' }));
+MISSIONS.push(...GHANA_CORE_MATH_SS2_MISSIONS.map(mission => ({ ...mission, arc: ghanaCoreMathSS2ArcOffset + mission.arc })));
