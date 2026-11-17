@@ -59,6 +59,13 @@ describe('Ghana SHS 1 45-indicator diagnostic mastery expedition', () => {
     expect(actual).toEqual(expected);
     expect(Object.keys(actual)).toHaveLength(16);
     expect(GHANA_SS1_INDICATOR_BLUEPRINT.every(item => item.contentStandardId.startsWith('1.'))).toBe(true);
+    const descriptiveStatistics = GHANA_SS1_INDICATOR_BLUEPRINT.find(item => item.id === 'ss1-stats-cs2-descriptive');
+    expect(descriptiveStatistics?.contentStandardId).toBe('1.4.1.CS.2');
+    expect(descriptiveStatistics?.learningIndicatorId).toBe('1.4.3.LI.2');
+    const linearGraph = GHANA_SS1_INDICATOR_BLUEPRINT.find(item => item.id === 'ss1-patterns-cs1-li2');
+    expect(linearGraph?.title[0]).toContain('linear functions');
+    const areaReferent = GHANA_SS1_INDICATOR_BLUEPRINT.find(item => item.id === 'ss1-measure-cs3-li1');
+    expect(areaReferent?.title[0]).toContain('area referents');
   });
 
   test('stores indicator-level concepts for targeted revision and keeps the assessment usable', () => {
