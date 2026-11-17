@@ -56,6 +56,12 @@ Based on *Massimo Bergamini & Graziella Barozzi, Matematica multimediale.blu, Te
 | Chapter 5 | Linear equations and equations with brackets |
 | Chapter 6 | Linear inequalities |
 
+### Ghana NaCCA SHS 1 — Core Mathematics
+
+A separate Ghana country curriculum provides an SS1 Core Mathematics pilot with **35 missions** across the eight NaCCA sub-strands. The official SHS 1 scope contains **16 content standards, 17 learning outcomes and 45 learning indicators**.
+
+The 45-indicator diagnostic maps one assessment question to each indicator. The readiness dashboard tracks each indicator as **mastered**, **needs revision** or **not assessed**, using saved concept-level performance. Targeted revision now includes bilingual worked examples, common-misconception corrections and self-check prompts for all 45 indicators. The diagnostic and dashboard are assessment overlays; they do not increase the official curriculum totals.
+
 ---
 
 ## Features & Mini-Games
