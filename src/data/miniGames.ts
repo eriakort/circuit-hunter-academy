@@ -506,6 +506,249 @@ function gameSheet(sc,host,done){
   draw();
 }
 
+
+/* --- Ghana SHS 1 data display studio --- */
+function gameDataDisplay(sc, host, done) {
+  const rounds = [
+    {
+      id: 'frequency',
+      title: ['1 · Build a frequency table', '1 · Costruisci una tabella di frequenza'],
+      prompt: ['Twelve learners reported how they travel to school. Count each response, then check that the frequencies add up to the total.', 'Dodici studenti hanno indicato come raggiungono la scuola. Conta ogni risposta e verifica che le frequenze sommino al totale.']
+    },
+    {
+      id: 'line',
+      title: ['2 · Show change over time', '2 · Mostra il cambiamento nel tempo'],
+      prompt: ['Library visits were recorded from Monday to Friday. Choose the most suitable graph and identify the day with the highest number of visits.', 'Le visite in biblioteca sono state registrate da lunedì a venerdì. Scegli il grafico più adatto e individua il giorno con più visite.']
+    },
+    {
+      id: 'pie',
+      title: ['3 · Calculate a pie-chart sector', '3 · Calcola un settore del grafico a torta'],
+      prompt: ['Thirty learners chose a favourite sport. Ten chose football. Calculate the angle for the football sector.', 'Trenta studenti hanno scelto lo sport preferito. Dieci hanno scelto il calcio. Calcola l’angolo del settore del calcio.']
+    },
+    {
+      id: 'multiple',
+      title: ['4 · Compare two groups', '4 · Confronta due gruppi'],
+      prompt: ['A school compares boys’ and girls’ choices across three sports. Choose a display that makes the two groups easy to compare, then identify the girls’ most popular sport.', 'Una scuola confronta le preferenze di ragazzi e ragazze per tre sport. Scegli una rappresentazione che permetta di confrontare facilmente i due gruppi e individua lo sport preferito dalle ragazze.']
+    },
+    {
+      id: 'infographic',
+      title: ['5 · Publish an honest infographic', '5 · Crea un’infografica corretta'],
+      prompt: ['Choose the infographic design that communicates evidence clearly without exaggerating or hiding important information.', 'Scegli il progetto di infografica che comunica i dati con chiarezza senza esagerare o nascondere informazioni importanti.']
+    }
+  ];
+
+  let roundIndex = 0;
+  let wrongTotal = 0;
+  let wrongThisRound = 0;
+  let completed = false;
+
+  const feedback = (message, correct = false) => {
+    const el = $('#chart-feedback', host);
+    if (!el) return;
+    el.className = correct ? 'fb ok' : 'fb no';
+    el.textContent = message;
+  };
+
+  const markChoice = (selected) => {
+    $('.dataviz-choice', host).forEach(button => {
+      const active = button.dataset.chartChoice === selected;
+      button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      button.classList.toggle('cyan', active);
+    });
+  };
+
+  const wrong = (hint) => {
+    wrongThisRound += 1;
+    wrongTotal += 1;
+    feedback(wrongThisRound >= 2 ? L(hint) : L(['Not quite. Check the data and try again.', 'Non proprio. Controlla i dati e riprova.']));
+  };
+
+  const advance = () => {
+    const el = $('#chart-feedback', host);
+    if (!el) return;
+    el.className = 'fb ok';
+    el.textContent = L(['Correct! The display matches the evidence.', 'Corretto! La rappresentazione è adatta ai dati.']);
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.id = 'chart-next';
+    button.className = 'btn cyan sm';
+    button.style.marginLeft = '8px';
+    button.textContent = L(['Next challenge', 'Prossima sfida']);
+    button.addEventListener('click', () => {
+      roundIndex += 1;
+      wrongThisRound = 0;
+      draw();
+    });
+    el.appendChild(button);
+    button.focus({ preventScroll: true });
+  };
+
+  const finish = () => {
+    if (completed) return;
+    completed = true;
+    const xp = wrongTotal > 5 ? 10 : 20;
+    const el = $('#chart-feedback', host);
+    if (el) {
+      el.className = 'fb ok';
+      el.innerHTML = `<b>${L(['Studio complete!', 'Laboratorio completato!'])}</b> ${L(['You built and checked five clear data displays.', 'Hai costruito e verificato cinque rappresentazioni chiare dei dati.'])} ${xpNote(xp)}`;
+    }
+    award(xp);
+    done();
+  };
+
+  const draw = () => {
+    const round = rounds[roundIndex];
+    host.innerHTML = `
+      <section class="game dataviz-game" id="chart-builder" data-round="${round.id}" aria-label="${L(['Interactive data display activity', 'Attività interattiva di rappresentazione dei dati'])}">
+        <div class="gtitle">${L(['Data Display Studio', 'Laboratorio di rappresentazione dei dati'])} · ${roundIndex + 1}/${rounds.length}</div>
+        <h3>${L(round.title)}</h3>
+        <p>${L(round.prompt)}</p>
+        <div class="dataviz-preview" id="chart-preview"></div>
+        <div class="dataviz-controls" id="chart-controls"></div>
+        <div class="fb" id="chart-feedback" aria-live="polite"></div>
+      </section>`;
+
+    const preview = $('#chart-preview', host);
+    const controls = $('#chart-controls', host);
+
+    if (round.id === 'frequency') {
+      preview.innerHTML = `
+        <p class="muted">${L(['Raw responses', 'Risposte grezze'])}: Walk · Trotro · Walk · Bus · Trotro · Walk · Bus · Walk · Trotro · Walk · Bus · Trotro</p>
+        <table class="trace dataviz-table">
+          <tr><th>${L(['Transport', 'Trasporto'])}</th><th>${L(['Frequency', 'Frequenza'])}</th></tr>
+          <tr><td>Walk</td><td><input id="freq-walk" aria-label="Walk frequency" inputmode="numeric"></td></tr>
+          <tr><td>Trotro</td><td><input id="freq-trotro" aria-label="Trotro frequency" inputmode="numeric"></td></tr>
+          <tr><td>Bus</td><td><input id="freq-bus" aria-label="Bus frequency" inputmode="numeric"></td></tr>
+          <tr><th>${L(['Total', 'Totale'])}</th><th><input id="freq-total" aria-label="Total frequency" inputmode="numeric"></th></tr>
+        </table>`;
+      controls.innerHTML = `<button type="button" class="btn" id="chart-check">${L(['Check table', 'Verifica tabella'])}</button>`;
+      $('#chart-check', host).onclick = () => {
+        const values = ['walk', 'trotro', 'bus', 'total'].map(id => $('#freq-' + id, host).value.trim());
+        if (values.join(',') === '5,4,3,12') advance();
+        else wrong(['Count each category carefully: Walk = 5, Trotro = 4 and Bus = 3. The total must be 12.', 'Conta con attenzione ogni categoria: a piedi = 5, trotro = 4 e autobus = 3. Il totale deve essere 12.']);
+      };
+    } else if (round.id === 'line') {
+      preview.innerHTML = `
+        <table class="trace dataviz-table">
+          <tr><th>Day</th><th>${L(['Library visits', 'Visite in biblioteca'])}</th></tr>
+          <tr><td>Mon</td><td>12</td></tr><tr><td>Tue</td><td>15</td></tr><tr><td>Wed</td><td>9</td></tr><tr><td>Thu</td><td>18</td></tr><tr><td>Fri</td><td>21</td></tr>
+        </table>
+        <svg viewBox="0 0 320 150" role="img" aria-label="Line graph of library visits increasing to Friday" style="width:100%;max-width:420px;height:auto;margin:10px auto;display:block">
+          <path d="M30 12 V120 H300" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".6"/>
+          <path d="M42 82 L100 66 L158 94 L216 42 L274 26" fill="none" stroke="#6ad1ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <g fill="#ffd166"><circle cx="42" cy="82" r="4"/><circle cx="100" cy="66" r="4"/><circle cx="158" cy="94" r="4"/><circle cx="216" cy="42" r="4"/><circle cx="274" cy="26" r="4"/></g>
+          <g fill="currentColor" font-size="10" text-anchor="middle"><text x="42" y="138">Mon</text><text x="100" y="138">Tue</text><text x="158" y="138">Wed</text><text x="216" y="138">Thu</text><text x="274" y="138">Fri</text></g>
+        </svg>`;
+      controls.innerHTML = `
+        <p><b>${L(['Choose the graph type', 'Scegli il tipo di grafico'])}</b></p>
+        <div class="cats">
+          <button type="button" class="btn ghost sm dataviz-choice" data-chart-choice="line" aria-pressed="false">Line graph</button>
+          <button type="button" class="btn ghost sm dataviz-choice" data-chart-choice="pie" aria-pressed="false">Pie chart</button>
+          <button type="button" class="btn ghost sm dataviz-choice" data-chart-choice="bar" aria-pressed="false">Bar chart</button>
+        </div>
+        <label for="line-highest">${L(['Which day has the most visits?', 'Quale giorno registra più visite?'])}</label>
+        <select id="line-highest"><option value="">—</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option></select>
+        <button type="button" class="btn" id="chart-check">${L(['Check graph choice', 'Verifica il grafico'])}</button>`;
+      let selected = '';
+      $('.dataviz-choice', host).forEach(button => button.addEventListener('click', () => {
+        selected = button.dataset.chartChoice;
+        markChoice(selected);
+      }));
+      $('#chart-check', host).onclick = () => {
+        if (selected === 'line' && $('#line-highest', host).value === 'Friday') advance();
+        else wrong(['A line graph shows change across ordered days. Friday has the highest value, 21 visits.', 'Un grafico a linee mostra l’andamento nei giorni in ordine. Venerdì registra il valore più alto: 21 visite.']);
+      };
+    } else if (round.id === 'pie') {
+      preview.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap">
+          <div style="width:116px;height:116px;border-radius:50%;background:conic-gradient(#6ad1ff 0deg 120deg,#ffd166 120deg 216deg,#8a7bff 216deg 288deg,#ff8a65 288deg 360deg)"></div>
+          <div><p><b>Football</b>: 10 learners</p><p>Other sports: 20 learners</p><p class="muted">${L(['Total = 30 learners', 'Totale = 30 studenti'])}</p></div>
+        </div>`;
+      controls.innerHTML = `
+        <label for="pie-angle">${L(['Sector angle for football (degrees)', 'Angolo del settore del calcio (gradi)'])}</label>
+        <input id="pie-angle" inputmode="numeric" aria-label="Football sector angle">
+        <button type="button" class="btn" id="chart-check">${L(['Check angle', 'Verifica angolo'])}</button>`;
+      $('#chart-check', host).onclick = () => {
+        if ($('#pie-angle', host).value.trim() === '120') advance();
+        else wrong(['Use (part ÷ total) × 360°: (10 ÷ 30) × 360° = 120°.', 'Usa (parte ÷ totale) × 360°: (10 ÷ 30) × 360° = 120°.']);
+      };
+    } else if (round.id === 'multiple') {
+      preview.innerHTML = `
+        <table class="trace dataviz-table">
+          <tr><th>Sport</th><th>Boys</th><th>Girls</th></tr>
+          <tr><td>Football</td><td>12</td><td>8</td></tr>
+          <tr><td>Netball</td><td>5</td><td>10</td></tr>
+          <tr><td>Athletics</td><td>7</td><td>6</td></tr>
+        </table>
+        <div class="dataviz-bars" aria-label="Grouped bars compare boys and girls: football 12 and 8, netball 5 and 10, athletics 7 and 6">
+          <div><span>Football</span><i style="width:100%"></i><i style="width:66.7%"></i></div>
+          <div><span>Netball</span><i style="width:41.7%"></i><i style="width:83.3%"></i></div>
+          <div><span>Athletics</span><i style="width:58.3%"></i><i style="width:50%"></i></div>
+          <small>Boys · Girls</small>
+        </div>`;
+      controls.innerHTML = `
+        <p><b>${L(['Choose the graph type', 'Scegli il tipo di grafico'])}</b></p>
+        <div class="cats">
+          <button type="button" class="btn ghost sm dataviz-choice" data-chart-choice="multiple-bar" aria-pressed="false">Multiple bar graph</button>
+          <button type="button" class="btn ghost sm dataviz-choice" data-chart-choice="pie" aria-pressed="false">Pie chart</button>
+          <button type="button" class="btn ghost sm dataviz-choice" data-chart-choice="line" aria-pressed="false">Line graph</button>
+        </div>
+        <label for="girls-most">${L(['Which sport is most popular with girls?', 'Quale sport è più popolare tra le ragazze?'])}</label>
+        <select id="girls-most"><option value="">—</option><option>Football</option><option>Netball</option><option>Athletics</option></select>
+        <button type="button" class="btn" id="chart-check">${L(['Check comparison', 'Verifica confronto'])}</button>`;
+      let selected = '';
+      $('.dataviz-choice', host).forEach(button => button.addEventListener('click', () => {
+        selected = button.dataset.chartChoice;
+        markChoice(selected);
+      }));
+      $('#chart-check', host).onclick = () => {
+        if (selected === 'multiple-bar' && $('#girls-most', host).value === 'Netball') advance();
+        else wrong(['A multiple bar graph compares related groups side by side. Girls chose Netball most often: 10.', 'Un grafico a barre multiple confronta gruppi correlati affiancandoli. Le ragazze hanno scelto più spesso la pallavolo: 10.']);
+      };
+    } else {
+      preview.innerHTML = `
+        <div class="dataviz-infographic">
+          <strong>Library access · School survey</strong>
+          <div class="dataviz-infographic-number">30</div>
+          <span>${L(['learners surveyed', 'studenti intervistati'])}</span>
+          <p>10 / 30 ${L(['chose football', 'hanno scelto il calcio'])}</p>
+          <small>${L(['Source: anonymised class survey · Counts shown with the total', 'Fonte: sondaggio anonimo di classe · Conteggi mostrati con il totale'])}</small>
+        </div>`;
+      controls.innerHTML = `
+        <p><b>${L(['Choose the trustworthy infographic', 'Scegli l’infografica affidabile'])}</b></p>
+        <div class="dataviz-infographic-options">
+          <button type="button" class="btn ghost dataviz-choice" data-chart-choice="honest" aria-pressed="false">${L(['Clear title, source, total, labels and honest scale', 'Titolo chiaro, fonte, totale, etichette e scala corretta'])}</button>
+          <button type="button" class="btn ghost dataviz-choice" data-chart-choice="misleading" aria-pressed="false">${L(['No source, cropped scale and oversized 3D icons', 'Senza fonte, scala tagliata e icone 3D ingrandite'])}</button>
+          <button type="button" class="btn ghost dataviz-choice" data-chart-choice="incomplete" aria-pressed="false">${L(['Large icons but no numbers or sample size', 'Icone grandi ma senza numeri né dimensione del campione'])}</button>
+        </div>
+        <button type="button" class="btn" id="chart-check">${L(['Check infographic', 'Verifica infografica'])}</button>`;
+      let selected = '';
+      $('.dataviz-choice', host).forEach(button => button.addEventListener('click', () => {
+        selected = button.dataset.chartChoice;
+        markChoice(selected);
+      }));
+      $('#chart-check', host).onclick = () => {
+        if (selected === 'honest') {
+          const el = $('#chart-feedback', host);
+          if (el) {
+            el.className = 'fb ok';
+            el.innerHTML = `<b>${L(['Studio complete!', 'Laboratorio completato!'])}</b> ${L(['You built a frequency table, interpreted graphs and checked a responsible infographic.', 'Hai costruito una tabella di frequenza, interpretato grafici e verificato un’infografica responsabile.'])} ${xpNote(wrongTotal > 5 ? 10 : 20)}`;
+          }
+          if (!completed) {
+            completed = true;
+            award(wrongTotal > 5 ? 10 : 20);
+            done();
+          }
+        } else {
+          wrong(['A trustworthy infographic includes its source, sample size, labels and an honest scale. Avoid effects that distort comparisons.', 'Un’infografica affidabile indica fonte, dimensione del campione, etichette e una scala corretta. Evita effetti che alterano i confronti.']);
+        }
+      };
+    }
+  };
+
+  draw();
+}
+
 /* --- trace table --- */
 function gameTrace(sc,host,done){
   const kw=L([['WHILE','END WHILE','WRITE'],['MENTRE','FINE MENTRE','SCRIVI']]);
@@ -800,6 +1043,7 @@ export const MINI_GAMES: Record<string, (sc: any, host: HTMLElement, done: () =>
   pwd: gamePwd,
   format: gameFormat,
   sheet: gameSheet,
+  dataviz: gameDataDisplay,
   trace: gameTrace,
   predict: gamePredict,
   gates: gameGates,
