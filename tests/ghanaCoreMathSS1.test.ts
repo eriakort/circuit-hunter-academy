@@ -74,7 +74,7 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
     expect(text).toContain('The Straight-Line Navigator');
     expect(text).toContain('The Triangle Sightline');
     expect(text).toContain('The Boundary and Surface Forge');
-    expect(text).toContain('perimeter and area of circles');
+    expect(text).toContain('perimeter and area for circles');
     expect(text).toContain('trapezoid');
     expect(text).toContain('composite shapes');
     expect(text).toContain('square units');
