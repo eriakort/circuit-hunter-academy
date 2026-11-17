@@ -23,15 +23,23 @@ export const LearningPathway: React.FC<LearningPathwayProps> = ({
   const techniqueUnlock = pilot?.techniqueUnlock ?? learning.techniqueUnlock;
 
   const stages = [
-    { id: 'guided', label: ['Guided practice', 'Esercitazione guidata'], complete: !!progress?.guidedPracticeComplete },
-    { id: 'independent', label: ['Independent practice', 'Esercitazione autonoma'], complete: !!progress?.independentPracticeComplete },
-    { id: 'knowledge', label: ['Knowledge check', 'Verifica delle conoscenze'], complete: typeof progress?.knowledgeCheckScore === 'number' },
-    { id: 'mastery', label: ['Mastery trial', 'Prova di maestria'], complete: !!progress?.mastered },
+    ...(learning.guidedPractice?.length
+      ? [{ id: 'guided', label: ['Guided practice', 'Esercitazione guidata'], complete: !!progress?.guidedPracticeComplete }]
+      : []),
+    ...(learning.independentPractice?.length
+      ? [{ id: 'independent', label: ['Independent practice', 'Esercitazione autonoma'], complete: !!progress?.independentPracticeComplete }]
+      : []),
+    ...(learning.knowledgeCheck?.length
+      ? [{ id: 'knowledge', label: ['Knowledge check', 'Verifica delle conoscenze'], complete: typeof progress?.knowledgeCheckScore === 'number' }]
+      : []),
+    ...(learning.masteryAssessment
+      ? [{ id: 'mastery', label: ['Mastery trial', 'Prova di maestria'], complete: !!progress?.mastered }]
+      : []),
     { id: 'battle', label: ['Boss battle', 'Battaglia finale'], complete: missionCleared }
   ];
 
   return (
-    <section className="learning-pathway card" aria-label={lang === 'it' ? 'Percorso di apprendimento' : 'Learning pathway'}>
+    <section className="learning-pathway card" aria-label={lang === 'it' ? 'Percorso di apprendimento' : 'Learning pathway'} data-objective-count={learning.objectives.length}>
       <div className="learning-pathway-heading">
         <div>
           <span className="learning-kicker">{lang === 'it' ? 'BRIEFING DELLA MISSIONE · PERCORSO DI APPRENDIMENTO' : 'MISSION BRIEFING · LEARNING PATHWAY'}</span>
