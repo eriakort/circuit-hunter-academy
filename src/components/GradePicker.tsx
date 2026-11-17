@@ -37,7 +37,7 @@ export const GradePicker: React.FC = () => {
         <h1>{isGhana ? <>Sankofa <span>Knowledge Quest</span></> : <>Circuit Hunter <span>Academy</span></>}</h1>
         <p className="lede">
           {L(
-            isGhana ? ['Learn from the past. Understand the present. Build the future. Choose your Ghana SHS level to begin exploring.', ''] : ['First, choose your school grade. You will then see only the subjects and learning paths designed for that level.', 'Per prima cosa, scegli la tua classe. Vedrai poi soltanto le materie e i percorsi didattici pensati per quel livello.'],
+            isGhana ? ['Learn from the past. Understand the present. Build the future. Choose your Ghana SHS level to begin exploring.', 'Learn from the past. Understand the present. Build the future. Choose your Ghana SHS level to begin exploring.'] : ['First, choose your school grade. You will then see only the subjects and learning paths designed for that level.', 'Per prima cosa, scegli la tua classe. Vedrai poi soltanto le materie e i percorsi didattici pensati per quel livello.'],
             lang
           )}
         </p>
