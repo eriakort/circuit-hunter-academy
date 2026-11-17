@@ -170,8 +170,10 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const setGrade = (grade: GradeId) => {
     const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
-    if (isGhana && grade !== 'grade9') return;
-    const allowedSubjects = isGhana ? (grade === 'grade9' ? ['ghcoremath'] : []) : GRADE_SUBJECT_IDS[grade];
+    if (isGhana && !['grade9', 'grade10'].includes(grade)) return;
+    const allowedSubjects = isGhana
+      ? (grade === 'grade9' ? ['ghcoremath'] : grade === 'grade10' ? ['ghcoremath2'] : [])
+      : GRADE_SUBJECT_IDS[grade];
     const subject = allowedSubjects.includes(state.subject)
       ? state.subject
       : (allowedSubjects[0] || 'cs') as SubjectId;
@@ -193,7 +195,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const activeGrade = state.grade || 'grade9';
     const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
     const isAllowed = isGhana
-      ? activeGrade === 'grade9' && sub === 'ghcoremath'
+      ? (activeGrade === 'grade9' && sub === 'ghcoremath') || (activeGrade === 'grade10' && sub === 'ghcoremath2')
       : GRADE_SUBJECT_IDS[activeGrade]?.includes(sub);
     if (!isAllowed) return;
     const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === sub);

@@ -60,7 +60,7 @@ assert.equal(getCurriculumGrade('ghana-nacca', 'grade5'), undefined);
 assert.equal(getCurriculumPathway('ghana-nacca', 'ghana-core-mathematics')?.name, 'Core Mathematics');
 assert.equal(getCurriculumPathway('ghana-nacca', 'italy-standard'), undefined);
 assert.deepEqual(getCurriculumSubjects('grade9', 'ghana-nacca').map(subject => subject.id), ['ghcoremath'], 'Ghana SS1 exposes only its own Core Mathematics pilot');
-assert.deepEqual(getCurriculumSubjects('grade10', 'ghana-nacca'), [], 'Ghana SS2 remains unavailable until its own content is ready');
+assert.deepEqual(getCurriculumSubjects('grade10', 'ghana-nacca').map(subject => subject.id), ['ghcoremath2'], 'Ghana SS2 exposes its own Core Mathematics pathway');
 assert.deepEqual(getCurriculumSubjects('grade9', 'italy-national').map(subject => subject.id), GRADE_SUBJECT_IDS.grade9);
 assert.equal(getCurriculum('unknown' as never), undefined);
 assert.equal(getCountry('US' as never), undefined);

@@ -30,7 +30,7 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await expect(page.locator('.grade-card[data-grade="grade11"]')).toContainText('SHS 3 (SS3)');
   await expect(page.locator('.grade-card')).toHaveCount(3);
   await expect(page.locator('.grade-card[data-grade="grade9"]')).toBeEnabled();
-  await expect(page.locator('.grade-card[data-grade="grade10"]')).toBeDisabled();
+  await expect(page.locator('.grade-card[data-grade="grade10"]')).toBeEnabled();
   await expect(page.locator('.grade-card[data-grade="grade11"]')).toBeDisabled();
   await page.locator('.grade-card[data-grade="grade9"]').click();
   await expect(page.locator('[data-s="ghcoremath"]')).toBeVisible();
@@ -85,4 +85,29 @@ test('legacy Italian save is migrated and remains compatible with the original s
   const migrated = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:italy-national') || '{}'));
   expect(migrated.name).toBe('Legacy learner');
   expect(migrated.xp).toBe(240);
+});
+
+test('Ghana SHS 2 opens its own Core Mathematics pathway and mission', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => {
+    localStorage.clear();
+    localStorage.setItem('circuit-hunter-academy-v2:ghana-nacca', JSON.stringify({
+      grade: null, name: '', lang: 'en', xp: 0, subject: 'ghcoremath2', unit: 0,
+      cleared: {}, seen: {}, flawless: {}, learningProgress: {}, v: 5
+    }));
+    localStorage.setItem('circuit-hunter-academy-curriculum-profile-v1', JSON.stringify({
+      activeCurriculumId: 'ghana-nacca', enabledCurriculumIds: ['ghana-nacca']
+    }));
+  });
+  await page.reload();
+  await page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ }).click();
+  await page.locator('.grade-card[data-grade="grade10"]').click();
+  await expect(page.locator('[data-s="ghcoremath2"]')).toBeVisible();
+  await page.locator('[data-s="ghcoremath2"]').click();
+  await page.locator('#nm').fill('SS2 Hunter');
+  await page.getByRole('button', { name: /Join the academy/ }).click();
+  await expect(page.locator('h3').filter({ hasText: 'The Number Codebreaker' })).toBeVisible();
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:ghana-nacca') || '{}'));
+  expect(saved.grade).toBe('grade10');
+  expect(saved.subject).toBe('ghcoremath2');
 });
