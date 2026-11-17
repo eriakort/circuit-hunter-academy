@@ -13,7 +13,7 @@ export const GradePicker: React.FC = () => {
   return (
     <section className="hero card grade-picker">
       <div>
-        <div className="eyebrow">{L(['WELCOME TO YOUR ACADEMY', 'BENVENUTO NELLA TUA ACCADEMIA'], lang)}</div>
+        <div className="eyebrow">{isGhana ? 'WELCOME TO SANKOFA · THE KNOWLEDGE QUEST' : L(['WELCOME TO YOUR ACADEMY', 'BENVENUTO NELLA TUA ACCADEMIA'], lang)}</div>
         <div className="curriculum-country-picker" role="group" aria-label="Choose country curriculum" style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', margin: '14px 0' }}>
           {COUNTRIES.map(country => {
             const curriculum = country.curricula[0];
@@ -34,10 +34,10 @@ export const GradePicker: React.FC = () => {
         <p className="muted" style={{ marginTop: 0 }}>
           {activeCurriculum?.name}
         </p>
-        <h1>Circuit Hunter <span>Academy</span></h1>
+        <h1>{isGhana ? <>Sankofa <span>Knowledge Quest</span></> : <>Circuit Hunter <span>Academy</span></>}</h1>
         <p className="lede">
           {L(
-            ['First, choose your school grade. You will then see only the subjects and learning paths designed for that level.', 'Per prima cosa, scegli la tua classe. Vedrai poi soltanto le materie e i percorsi didattici pensati per quel livello.'],
+            isGhana ? ['Learn from the past. Understand the present. Build the future. Choose your Ghana SHS level to begin exploring.', ''] : ['First, choose your school grade. You will then see only the subjects and learning paths designed for that level.', 'Per prima cosa, scegli la tua classe. Vedrai poi soltanto le materie e i percorsi didattici pensati per quel livello.'],
             lang
           )}
         </p>
@@ -45,7 +45,7 @@ export const GradePicker: React.FC = () => {
 
       {isGhana && (
         <div className="grade-coming-soon card" role="status">
-          <h2>Ghana SHS curriculum selected</h2>
+          <h2>Your Sankofa journey begins here</h2>
           <p>SS1, SS2 and SS3 are mapped to the academy grade structure. The SS1 and the first SHS2 Core Mathematics module are available; SS3 and Additional Mathematics remain in preparation. Your Italian progress remains saved independently.</p>
         </div>
       )}
