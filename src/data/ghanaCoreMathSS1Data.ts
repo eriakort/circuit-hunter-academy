@@ -41,7 +41,7 @@ export const GHANA_CORE_MATH_SS1_ARCS: ArcInfo[] = [
   ...GHANA_SS1_STATISTICS_ARCS.map(arc => ({ ...arc, n: 11 })),
   ...GHANA_SS1_PROBABILITY_ARCS.map(arc => ({ ...arc, n: 12 })),
   ...GHANA_SS1_REAL_NUMBER_ARCS.map(arc => ({ ...arc, n: 13 })),
-  ...GHANA_SS1_PROPORTIONAL_ARCS.map(arc => ({ ...arc, n: 14 })),
+  ...GHANA_SS1_PROPORTIONAL_ARCS.map(arc => ({ ...arc })),
 ];
 
 const question = (prompt: string, answers: string[], explanation: string) => ({
