@@ -1,5 +1,5 @@
-import { GrammarActivityProgress, BilingualText } from '../types';
-import { GrammarExercise, GrammarLevel, GrammarTopic } from './italianGrammar';
+import type { GrammarActivityProgress, BilingualText } from '../types';
+import type { GrammarExercise, GrammarLevel, GrammarTopic } from './italianGrammar';
 
 export interface GrammarReviewQuestion extends GrammarExercise {
   topicId: string;
