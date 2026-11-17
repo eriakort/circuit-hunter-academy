@@ -77,7 +77,8 @@ for (const topic of ITALIAN_GRAMMAR_TOPICS) {
   const category = grammarCategories.find(item => item.grammarTopicId === topic.id);
   assert.ok(category, 'Missing Italian grammar test category: ' + topic.id);
   const pool = filterQuestionPool('italian', category!);
-  assert.equal(pool.length, 9, topic.id + ' should expose its A1, A2 and B1 questions');
+  const expectedTopicCount = (['A1', 'A2', 'B1'] as const).reduce((sum, level) => sum + topic.levels[level].exercises.length, 0);
+  assert.equal(pool.length, expectedTopicCount, topic.id + ' should expose every A1, A2 and B1 question');
   for (const level of ['A1', 'A2', 'B1'] as const) {
     const levelCategory = grammarCategories.find(item => item.grammarTopicId === topic.id && item.grammarLevel === level);
     assert.ok(levelCategory, 'Missing ' + level + ' test category for ' + topic.id);
