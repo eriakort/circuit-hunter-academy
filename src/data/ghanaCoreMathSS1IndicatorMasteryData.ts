@@ -3623,7 +3623,7 @@ export const GHANA_SS1_INDICATOR_MASTERY_MISSIONS: Mission[] = [
     horns: 2,
     eyes: 2,
     title: 'The 45-Indicator Mastery Expedition',
-    topic: 'A curriculum-mapped diagnostic with two bilingual question forms for each of the 45 SHS 1 learning indicators. Each attempt uses one question per indicator, with a different form on retries, followed by targeted revision.',
+    topic: 'A curriculum-mapped diagnostic with two English question forms for each of the 45 SHS 1 learning indicators. Each attempt uses one question per indicator, with a different form on retries, followed by targeted revision.',
     demon: 'The Coverage Warden',
     tech: 'Mastery Form · Final Technique: One Indicator at a Time',
     scenes: [
