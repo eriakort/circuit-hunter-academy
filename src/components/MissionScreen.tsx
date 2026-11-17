@@ -157,7 +157,7 @@ export const MissionScreen: React.FC = () => {
   let visualContent = '';
   if (!sc.type) {
     if (sc.vis === 'demon' && isGhana) {
-      visualContent = '<div class="sankofa-scene-prompt">A challenge to explore</div>';
+      visualContent = `<div class="sankofa-scene-prompt">${lang === 'it' ? 'Una sfida da esplorare' : 'A challenge to explore'}</div>`;
     } else if (sc.vis === 'demon') {
       visualContent = `<div style="display:flex;justify-content:center"><div style="width:min(220px,60%)">${demonSVG(
         currentMission.hue,
