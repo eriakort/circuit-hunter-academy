@@ -172,11 +172,21 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(presentation?.curriculumYear).toBe('SHS 1');
     expect(presentation?.contentStandardIds).toEqual(['1.4.1.CS.2']);
     expect(presentation?.learningOutcomeIds).toEqual(['1.4.1.LO.2']);
-    expect(presentation?.learningIndicatorIds).toEqual(['1.4.1.LI.2']);
-    expect(presentation?.printedPages).toEqual([135, 138]);
+    expect(presentation?.learningIndicatorIds).toEqual(['1.4.1.LI.1']);
+    expect(presentation?.printedPages).toEqual([135, 137]);
     expect(presentation?.note).toContain('3D graphs/charts');
   });
 
+
+  test('maps descriptive statistics and evidence-based inference to the SHS 1 Statistical Reasoning standard', () => {
+    const averages = getGhanaMissionAlignment('gh-core-ss1-statistical-averages-inference');
+    expect(averages?.curriculumYear).toBe('SHS 1');
+    expect(averages?.contentStandardIds).toEqual(['1.4.1.CS.2']);
+    expect(averages?.learningOutcomeIds).toEqual(['1.4.1.LO.2']);
+    expect(averages?.learningIndicatorIds).toEqual(['1.4.1.LI.2', '1.4.1.LI.3']);
+    expect(averages?.printedPages).toEqual([137, 143]);
+    expect(averages?.note).toContain('mean, median, mode');
+  });
 
   test('maps the school-community data project to the third NaCCA Statistical Reasoning standard', () => {
     const project = getGhanaMissionAlignment('gh-core-ss1-school-community-data-project');
