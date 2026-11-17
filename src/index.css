@@ -1446,3 +1446,6 @@ table.g5m-formulas td:first-child{font-family:inherit;text-align:left}
   border-radius:12px;background:radial-gradient(circle at 50% 20%,rgba(213,164,59,.18),transparent 55%),linear-gradient(135deg,#174b36,#293b60);
   color:#f2e8d5;font:700 18px var(--display);letter-spacing:.03em;
 }
+
+.theme-sankofa .sankofa-experience .hero{grid-template-columns:1fr}
+.theme-sankofa .sankofa-experience .hero>div:last-child{display:none}
