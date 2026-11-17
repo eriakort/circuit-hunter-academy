@@ -305,12 +305,12 @@ export const MapScreen: React.FC = () => {
               : L(
                   isGhana
                     ? [
-                        \`\${doneCount} of \${MY.length} missions completed. Explore each topic, practise new ideas and apply your knowledge to the next challenge.\`,
-                        \`\${doneCount} of \${MY.length} missions completed. Explore each topic, practise new ideas and apply your knowledge to the next challenge.\`
+                        `${doneCount} of ${MY.length} missions completed. Explore each topic, practise new ideas and apply your knowledge to the next challenge.`,
+                        `${doneCount} of ${MY.length} missions completed. Explore each topic, practise new ideas and apply your knowledge to the next challenge.`
                       ]
                     : [
-                        \`\${doneCount} of \${MY.length} missions cleared. The units are the tabs below; each arc is one chapter, and every arc's first mission is open, so you can start from the chapter you're studying in class.\`,
-                        \`\${doneCount} missioni superate su \${MY.length}. Le unità sono le schede qui sotto; ogni arco è un capitolo, e la prima missione di ogni arco è già aperta: puoi partire dal capitolo che state studiando in classe.\`
+                        `${doneCount} of ${MY.length} missions cleared. The units are the tabs below; each arc is one chapter, and every arc's first mission is open, so you can start from the chapter you're studying in class.`,
+                        `${doneCount} missioni superate su ${MY.length}. Le unità sono le schede qui sotto; ogni arco è un capitolo, e la prima missione di ogni arco è già aperta: puoi partire dal capitolo che state studiando in classe.`
                       ],
                   lang
                 )}
