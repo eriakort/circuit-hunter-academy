@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Language, LearningConcept, Mission } from '../types';
 import { L } from '../helpers';
+import { getConceptAssessmentQuestionPool } from '../learningAssessment';
 
 interface ConceptRevisionProps {
   mission: Mission;
@@ -26,9 +27,7 @@ export const ConceptRevision: React.FC<ConceptRevisionProps> = ({
   sessionLength
 }) => {
   const assessment = mission.learning?.masteryAssessment;
-  const questions = assessment?.questions.filter(
-    (_, index) => assessment.questionConceptIds?.[index] === concept.id
-  ) || [];
+  const questions = getConceptAssessmentQuestionPool(assessment, concept.id);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
@@ -56,7 +55,7 @@ export const ConceptRevision: React.FC<ConceptRevisionProps> = ({
   };
 
   return (
-    <section className="concept-revision card" aria-labelledby="concept-revision-title">
+    <section className="concept-revision card" aria-labelledby="concept-revision-title" data-question-count={questions.length}>
       <div className="concept-revision-header">
         <div>
           <div className="learning-kicker">{lang === 'it' ? 'PERCORSO PERSONALIZZATO' : 'PERSONALIZED LEARNING'}</div>
@@ -121,7 +120,7 @@ export const ConceptRevision: React.FC<ConceptRevisionProps> = ({
             </div>
           )}
           {questions.length > 0 && !completed && (
-            <div className="guided-progress">
+            <div className="guided-progress" data-testid="concept-revision-question-progress">
               {lang === 'it' ? 'Domanda' : 'Question'} {questionIndex + 1} / {questions.length}
             </div>
           )}
