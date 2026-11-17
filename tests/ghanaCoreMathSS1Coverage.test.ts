@@ -26,8 +26,8 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
 
   test('marks only the two pilot sub-strands as partial', () => {
     const summary = getGhanaCoreMathSS1CoverageSummary();
-    expect(summary.partial).toBe(7);
-    expect(summary.notStarted).toBe(1);
+    expect(summary.partial).toBe(8);
+    expect(summary.notStarted).toBe(0);
     expect(GHANA_CORE_MATH_SS1_COVERAGE.filter(item => item.status === 'partial').map(item => item.subStrand)).toEqual([
       'Real Number System',
       'Proportional Reasoning',
@@ -35,7 +35,8 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
       'Patterns and Relationships',
       'Spatial Sense',
       'Measurement',
-      'Statistical Reasoning and Its Application in Real Life'
+      'Statistical Reasoning and Its Application in Real Life',
+      'Probability/Chance'
     ]);
   });
 
@@ -73,6 +74,13 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
     expect(statistics?.status).toBe('partial');
     expect(statistics?.pilotMissionIds).toEqual(['gh-core-ss1-statistical-reasoning-data-types', 'gh-core-ss1-statistical-data-collection-methods', 'gh-core-ss1-statistical-data-organisation-presentation', 'gh-core-ss1-school-community-data-project']);
     expect(statistics?.learningIndicators).toBe(8);
+  });
+
+  test('counts the probability mission only in the Probability/Chance sub-strand', () => {
+    const probability = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Probability/Chance');
+    expect(probability?.status).toBe('partial');
+    expect(probability?.pilotMissionIds).toEqual(['gh-core-ss1-probability-chance']);
+    expect(probability?.learningIndicators).toBe(3);
   });
 
   test('does not count the SHS 2 ratio extension as SHS 1 coverage', () => {

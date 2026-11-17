@@ -104,9 +104,9 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     contentStandards: 1,
     learningOutcomes: 1,
     learningIndicators: 3,
-    status: 'not-started',
-    pilotMissionIds: [],
-    note: 'No SHS 1 pilot mission is currently mapped to this sub-strand.'
+    status: 'partial',
+    pilotMissionIds: ['gh-core-ss1-probability-chance'],
+    note: 'The pilot introduces sample spaces for simple and compound experiments, independent-event probability, multiple probability representations and everyday applications. Further varied practice and assessment can deepen coverage.'
   }
 ];
 

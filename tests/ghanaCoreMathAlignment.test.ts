@@ -141,4 +141,15 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(project?.note).toContain('approved report');
   });
 
+
+  test('maps probability and chance to the official SHS 1 NaCCA standard and all three indicators', () => {
+    const probability = getGhanaMissionAlignment('gh-core-ss1-probability-chance');
+    expect(probability?.curriculumYear).toBe('SHS 1');
+    expect(probability?.contentStandardIds).toEqual(['1.4.2.CS.1']);
+    expect(probability?.learningOutcomeIds).toEqual(['1.4.2.LO.1']);
+    expect(probability?.learningIndicatorIds).toEqual(['1.4.2.LI.1', '1.4.2.LI.2', '1.4.2.LI.3']);
+    expect(probability?.printedPages).toEqual([149, 152]);
+    expect(probability?.note).toContain('Conditional probability is introduced only as prerequisite context');
+  });
+
 });
