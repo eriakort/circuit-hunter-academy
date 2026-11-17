@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../context/GameContext';
 import { L } from '../helpers';
+import { ITALIAN_GRAMMAR_TOPICS } from '../data/italianGrammar';
 import {
   speakItalian,
   stopSpeaking,
@@ -39,6 +40,7 @@ export interface PracticePhrase {
   translationEn: string;
   phoneticHint?: string;
   notes?: [string, string];
+  grammarTopicId?: string;
 }
 
 export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
@@ -57,7 +59,8 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     targetIt: 'Piacere, mi chiamo Alessandro.',
     translationEn: 'Nice to meet you, my name is Alessandro.',
     phoneticHint: 'pya-CHE-reh, mee KYA-mo a-les-SAN-dro',
-    notes: ['Standard polite introduction', 'Presentazione standard']
+    notes: ['Standard polite introduction', 'Presentazione standard'],
+    grammarTopicId: 'reflexive'
   },
   {
     id: 'a1-3',
@@ -65,7 +68,8 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     targetIt: 'Vorrei un caffè macchiato e un cornetto alla crema, per favore.',
     translationEn: 'I would like a macchiato coffee and a cream croissant, please.',
     phoneticHint: 'vor-RAY oon kaf-FEH mak-KYA-to eh oon kor-NET-to AL-la KRE-ma',
-    notes: ['Essential Italian cafe order', 'Ordinazione classica al bar']
+    notes: ['Essential Italian cafe order; notice the articles un and un', 'Ordinazione classica al bar; osserva gli articoli un e un'],
+    grammarTopicId: 'articles'
   },
   {
     id: 'a1-4',
@@ -91,7 +95,8 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     targetIt: 'Ieri sera sono andato al cinema con i miei amici.',
     translationEn: 'Yesterday evening I went to the cinema with my friends.',
     phoneticHint: 'YE-ree SE-ra SO-no an-DA-to al CHEE-ne-ma...',
-    notes: ['Passato prossimo with essere (movement verb: andare)', 'Passato prossimo con ausiliare essere per verbo di movimento']
+    notes: ['Passato prossimo with essere (movement verb: andare)', 'Passato prossimo con ausiliare essere per verbo di movimento'],
+    grammarTopicId: 'passato-prossimo'
   },
   {
     id: 'a2-2',
@@ -107,7 +112,8 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     targetIt: 'Queste mele sono deliziose, ne prendo due chili.',
     translationEn: 'These apples are delicious, I will take two kilos of them.',
     phoneticHint: 'KWES-te ME-le SO-no de-lee-TSYO-ze, neh PREN-do...',
-    notes: ['Partitive pronoun "ne" for specified quantity', 'Partitivo "ne" per esprimere una quantità definita']
+    notes: ['Partitive pronoun "ne" for specified quantity', 'Partitivo "ne" per esprimere una quantità definita'],
+    grammarTopicId: 'partitive'
   },
   {
     id: 'a2-4',
@@ -141,7 +147,8 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     targetIt: 'Quel libro me l’ha consigliato il professore la settimana scorsa.',
     translationEn: 'The professor recommended that book to me last week.',
     phoneticHint: 'kwel LEE-bro meh l-ah kon-seel-YA-to...',
-    notes: ['Combined pronoun "me lo" -> me l\'ha consigliato', 'Pronome combinato mi + lo = me lo']
+    notes: ['Combined pronoun "me lo" -> me l\'ha consigliato', 'Pronome combinato mi + lo = me lo'],
+    grammarTopicId: 'pronouns'
   },
   {
     id: 'b1-4',
@@ -150,7 +157,127 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     translationEn: 'Could you please repeat more slowly, as a courtesy?',
     phoneticHint: 'po-TREB-be ree-PE-te-re pyoo len-ta-MEN-te...',
     notes: ['Polite conditional of "potere"', 'Condizionale di cortesia']
+  },
+
+  // Grammar-aligned practice phrases: one phrase per topic and CEFR level.
+  {
+    id: 'grammar-a1-pronouns',
+    level: 'A1',
+    targetIt: 'Maria? La vedo ogni giorno.',
+    translationEn: 'Maria? I see her every day.',
+    phoneticHint: 'ma-REE-a, la VE-do ON-yee JOR-no',
+    notes: ['La replaces a feminine singular direct object: Maria → la.', 'La sostituisce un complemento oggetto femminile singolare: Maria → la.'],
+    grammarTopicId: 'pronouns'
+  },
+  {
+    id: 'grammar-a1-passato',
+    level: 'A1',
+    targetIt: 'Ieri ho studiato italiano.',
+    translationEn: 'Yesterday I studied Italian.',
+    phoneticHint: 'YE-ree oh stoo-DYA-to ee-ta-LYA-no',
+    notes: ['Studiare uses avere + the past participle: ho studiato.', 'Studiare usa avere + il participio passato: ho studiato.'],
+    grammarTopicId: 'passato-prossimo'
+  },
+  {
+    id: 'grammar-a1-partitive',
+    level: 'A1',
+    targetIt: 'Vorrei del pane e dell’acqua.',
+    translationEn: 'I would like some bread and water.',
+    phoneticHint: 'vor-RAY del PA-ne eh del-LAK-kwa',
+    notes: ['Del and dell’ express an unspecified quantity: del pane, dell’acqua.', 'Del e dell’ esprimono una quantità non specificata: del pane, dell’acqua.'],
+    grammarTopicId: 'partitive'
+  },
+  {
+    id: 'grammar-a1-sentence',
+    level: 'A1',
+    targetIt: 'Ogni mattina studio italiano prima di colazione.',
+    translationEn: 'Every morning I study Italian before breakfast.',
+    phoneticHint: 'ON-yee mat-TEE-na STOO-dyo ee-ta-LYA-no PREE-ma dee ko-la-TSYO-ne',
+    notes: ['A time expression can begin the sentence, followed by the verb and its complement.', 'Un’espressione di tempo può aprire la frase, seguita dal verbo e dal complemento.'],
+    grammarTopicId: 'sentence-building'
+  },
+  {
+    id: 'grammar-a2-articles',
+    level: 'A2',
+    targetIt: 'Ho incontrato un’amica e gli amici di Marco.',
+    translationEn: 'I met a female friend and Marco’s friends.',
+    phoneticHint: 'oh een-kon-TRA-to oon-A-mee-ka eh lyee a-MEE-chee dee MAR-ko',
+    notes: ['Un’amica is feminine singular; gli amici is masculine plural before a vowel.', 'Un’amica è femminile singolare; gli amici è maschile plurale davanti a vocale.'],
+    grammarTopicId: 'articles'
+  },
+  {
+    id: 'grammar-a2-pronouns',
+    level: 'A2',
+    targetIt: 'Ho chiamato Giulia e le ho parlato.',
+    translationEn: 'I called Giulia and spoke to her.',
+    phoneticHint: 'oh kya-MA-to JOO-lya eh leh oh par-LA-to',
+    notes: ['Giulia is the direct object of chiamare; le means “to her” with parlare a.', 'Giulia è complemento diretto di chiamare; le significa “a lei” con parlare a.'],
+    grammarTopicId: 'pronouns'
+  },
+  {
+    id: 'grammar-a2-reflexive',
+    level: 'A2',
+    targetIt: 'Ieri Giulia si è svegliata presto e si è preparata.',
+    translationEn: 'Yesterday Giulia woke up early and got ready.',
+    phoneticHint: 'YE-ree JOO-lya see eh sve-LYA-ta PRES-to eh see eh pre-pa-RA-ta',
+    notes: ['Reflexive verbs use essere in the passato prossimo; the participle agrees with Giulia.', 'I verbi riflessivi usano essere nel passato prossimo; il participio concorda con Giulia.'],
+    grammarTopicId: 'reflexive'
+  },
+  {
+    id: 'grammar-a2-sentence',
+    level: 'A2',
+    targetIt: 'Ieri ho comprato un libro e l’ho letto in treno.',
+    translationEn: 'Yesterday I bought a book and read it on the train.',
+    phoneticHint: 'YE-ree oh kom-PRA-to oon LEE-bro eh loh LET-to een TRE-no',
+    notes: ['L’ replaces il libro and comes before ho; letto agrees with the preceding masculine singular pronoun.', 'L’ sostituisce il libro e precede ho; letto concorda con il pronome maschile singolare.'],
+    grammarTopicId: 'sentence-building'
+  },
+  {
+    id: 'grammar-b1-articles',
+    level: 'B1',
+    targetIt: 'Nel centro storico ci sono degli edifici antichi e delle piazze luminose.',
+    translationEn: 'In the historic centre there are some old buildings and bright squares.',
+    phoneticHint: 'nel CHEN-tro STO-ree-ko chee SO-no DEL-yee eh-DEE-fee-chi an-TEE-kee eh DEL-le PYAT-tse loo-mee-NO-ze',
+    notes: ['Notice the articulated preposition nel and the plural forms degli and delle.', 'Osserva la preposizione articolata nel e le forme plurali degli e delle.'],
+    grammarTopicId: 'articles'
+  },
+  {
+    id: 'grammar-b1-passato',
+    level: 'B1',
+    targetIt: 'Le ho viste quando sono arrivate.',
+    translationEn: 'I saw them when they arrived.',
+    phoneticHint: 'leh oh VEES-te KWAN-do SO-no ar-ree-VA-te',
+    notes: ['Le ho viste uses agreement with a preceding feminine plural pronoun; arrivare takes essere.', 'Le ho viste richiede l’accordo con il pronome femminile plurale; arrivare usa essere.'],
+    grammarTopicId: 'passato-prossimo'
+  },
+  {
+    id: 'grammar-b1-partitive',
+    level: 'B1',
+    targetIt: 'Per la zuppa uso delle carote, del sedano e un po’ d’olio.',
+    translationEn: 'For the soup I use some carrots, celery and a little oil.',
+    phoneticHint: 'per la TSOOP-pa OO-zo DEL-le ka-RO-te del SE-da-no eh oon poh DO-lyo',
+    notes: ['Combine partitive articles with un po’ di to express different quantities.', 'Combina gli articoli partitivi con un po’ di per esprimere quantità diverse.'],
+    grammarTopicId: 'partitive'
+  },
+  {
+    id: 'grammar-b1-reflexive',
+    level: 'B1',
+    targetIt: 'Dopo essersi svegliata, Giulia si è preparata ed è uscita.',
+    translationEn: 'After waking up, Giulia got ready and went out.',
+    phoneticHint: 'DO-po ES-ser-see sve-LYA-ta JOO-lya see eh pre-pa-RA-ta ed eh oo-SHEE-ta',
+    notes: ['Essersi is the reflexive infinitive after dopo; the following past participles agree with Giulia.', 'Essersi è l’infinito riflessivo dopo dopo; i participi seguenti concordano con Giulia.'],
+    grammarTopicId: 'reflexive'
+  },
+  {
+    id: 'grammar-b1-sentence',
+    level: 'B1',
+    targetIt: 'Quando Giulia è arrivata a casa, si è fatta una doccia e poi ha cenato.',
+    translationEn: 'When Giulia got home, she took a shower and then had dinner.',
+    phoneticHint: 'KWAN-do JOO-lya eh ar-ree-VA-ta a KA-za see eh FAT-ta OO-na DOT-cha eh poy ah che-NA-to',
+    notes: ['Connect clauses with quando and poi; keep auxiliary and participle agreement consistent.', 'Collega le proposizioni con quando e poi; mantieni coerenti ausiliare e accordo del participio.'],
+    grammarTopicId: 'sentence-building'
   }
+
 ];
 
 interface DialogueTurn {
@@ -372,6 +499,7 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
 
   const [activeTab, setActiveTab] = useState<'studio' | 'dialogue' | 'verbs'>('studio');
   const [selectedLevel, setSelectedLevel] = useState<'ALL' | 'A1' | 'A2' | 'B1'>('ALL');
+  const [selectedGrammarTopic, setSelectedGrammarTopic] = useState('ALL');
 
   // Studio State
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState<number>(0);
@@ -400,11 +528,13 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
   const [selectedVerbIdx, setSelectedVerbIdx] = useState<number>(0);
   const [selectedTense, setSelectedTense] = useState<'presente' | 'passatoProssimo' | 'imperfetto' | 'futuro' | 'condizionale' | 'congiuntivo'>('presente');
 
-  const filteredPhrases = selectedLevel === 'ALL'
-    ? ITALIAN_PRACTICE_PHRASES
-    : ITALIAN_PRACTICE_PHRASES.filter(p => p.level === selectedLevel);
+  const filteredPhrases = ITALIAN_PRACTICE_PHRASES.filter(phrase =>
+    (selectedLevel === 'ALL' || phrase.level === selectedLevel) &&
+    (selectedGrammarTopic === 'ALL' || phrase.grammarTopicId === selectedGrammarTopic)
+  );
 
-  const activePhrase = filteredPhrases[currentPhraseIndex] || ITALIAN_PRACTICE_PHRASES[0];
+  const activePhrase = filteredPhrases[currentPhraseIndex] || filteredPhrases[0] || ITALIAN_PRACTICE_PHRASES[0];
+  const activeGrammarTopic = ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === activePhrase.grammarTopicId);
 
   // Stop audio on unmount
   useEffect(() => {
@@ -656,6 +786,28 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
               </button>
             ))}
           </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
+            <label htmlFor="italian-grammar-topic-filter" style={{ fontSize: '0.85rem', color: 'var(--sub)' }}>
+              {L(['Grammar topic:', 'Argomento grammaticale:'], lang)}
+            </label>
+            <select
+              id="italian-grammar-topic-filter"
+              value={selectedGrammarTopic}
+              onChange={event => {
+                setSelectedGrammarTopic(event.target.value);
+                setCurrentPhraseIndex(0);
+                setPronunciationResult(null);
+                setSpeechTranscript('');
+                setManualInput('');
+              }}
+              style={{ minWidth: 220, padding: '0.45rem 0.65rem', borderRadius: 8, border: '1px solid var(--border)', background: 'var(--panel-bg, #182033)', color: 'var(--fg)' }}
+            >
+              <option value="ALL">{L(['All grammar topics', 'Tutti gli argomenti'], lang)}</option>
+              {ITALIAN_GRAMMAR_TOPICS.map(topic => (
+                <option key={topic.id} value={topic.id}>{L(topic.title, lang)}</option>
+              ))}
+            </select>
+          </div>
 
           {/* Main Card */}
           <div
@@ -696,6 +848,15 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
               {activePhrase.phoneticHint && (
                 <div style={{ fontSize: '0.8rem', color: 'var(--accent)', marginTop: '0.35rem', fontStyle: 'italic' }}>
                   🗣️ Pronunciation guide: {activePhrase.phoneticHint}
+                </div>
+              )}
+              {activePhrase.grammarTopicId && activePhrase.notes && (
+                <div style={{ marginTop: '0.65rem', padding: '0.65rem 0.8rem', borderRadius: 7, background: 'rgba(0,146,70,.08)', border: '1px solid rgba(0,146,70,.22)' }}>
+                  <strong style={{ fontSize: '0.78rem', color: '#4ade80' }}>
+                    {L(['Grammar focus', 'Focus grammaticale'], lang)}
+                    {activeGrammarTopic ? ' · ' + L(activeGrammarTopic.title, lang) : ''}
+                  </strong>
+                  <div style={{ fontSize: '0.85rem', marginTop: 4, lineHeight: 1.45 }}>{L(activePhrase.notes, lang)}</div>
                 </div>
               )}
             </div>
