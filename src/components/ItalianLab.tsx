@@ -157,7 +157,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     translationEn: 'Could you please repeat more slowly, as a courtesy?',
     phoneticHint: 'po-TREB-be ree-PE-te-re pyoo len-ta-MEN-te...',
     notes: ['Polite conditional of "potere"', 'Condizionale di cortesia']
-  }
+  },
 
   // Grammar-aligned practice phrases: one phrase per topic and CEFR level.
   {
