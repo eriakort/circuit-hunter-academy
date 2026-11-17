@@ -52,7 +52,7 @@ export const SubjectPickerScreen: React.FC = () => {
     <section className="hero card">
       <div>
         <div className="eyebrow">
-          {isGhana ? (activeGrade === 'grade9' ? 'GHANA SHS 1 · CHOOSE A LEARNING PATHWAY' : 'GHANA SHS 2 · CHOOSE A LEARNING PATHWAY') : L(eyebrowByGrade[activeGrade], lang)}
+          {isGhana ? (activeGrade === 'grade9' ? 'SANKOFA · SHS 1 LEARNING PATHWAYS' : 'SANKOFA · SHS 2 LEARNING PATHWAYS') : L(eyebrowByGrade[activeGrade], lang)}
         </div>
         <h1>
           Circuit Hunter <span>Academy</span>
