@@ -1,6 +1,6 @@
 import type { ArcInfo, Mission } from '../types';
 
-export const GHANA_SS1_ALGEBRA_ARCS: ArcInfo[] = [
+export const GHANA_SS1_ALGEBRA_ADVANCED_ARCS: ArcInfo[] = [
   {
     n: 16,
     unit: 0,
@@ -13,7 +13,7 @@ export const GHANA_SS1_ALGEBRA_ARCS: ArcInfo[] = [
 const lesson = (text: string) => ({ who: 's' as const, vis: 'infowords', text });
 const question = (q: string, a: string[], why: string) => ({ q, a, why });
 
-export const GHANA_SS1_ALGEBRA_MISSIONS: Mission[] = [
+export const GHANA_SS1_ALGEBRA_ADVANCED_MISSIONS: Mission[] = [
   {
     id: 'gh-core-ss1-quadratic-factorisation-algebraic-fractions',
     arc: 15,
