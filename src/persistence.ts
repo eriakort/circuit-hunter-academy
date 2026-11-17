@@ -1,6 +1,7 @@
 import type { GameState, GradeId, QuizQuestion, SubjectId, ViewMode } from './types';
 import { MISSIONS, UNITS, ARCS } from './data/gameData';
 import { GRADE_SUBJECT_IDS } from './data/gradeData';
+import { DEFAULT_CURRICULUM_ID, getCurriculum, type CurriculumId } from './data/curricula';
 import { ITALIAN_GRAMMAR_TOPICS } from './data/italianGrammar';
 import { ITALIAN_GRAMMAR_ACTIVITIES } from './data/italianGrammarActivities';
 
@@ -24,6 +25,14 @@ const isSubject = (value: unknown): value is SubjectId =>
   value === 'cs' || value === 'phys' || value === 'math' || value === 'science' || value === 'math5' || value === 'italian' || value === 'chem' || value === 'chem10' || value === 'chem11'
   || value === 'math10' || value === 'math11'
   || value === 'hist5' || value === 'geo5' || value === 'hist9' || value === 'geo9' || value === 'hist10' || value === 'geo10' || value === 'hist11' || value === 'geo11' || value === 'ghcoremath';
+
+const getAllowedSubjectIds = (grade: GradeId, curriculumId: CurriculumId): SubjectId[] => {
+  if (curriculumId === 'italy-national') return GRADE_SUBJECT_IDS[grade] as SubjectId[];
+  const pathwaySubjectIds = getCurriculum(curriculumId)?.pathways
+    .filter(pathway => pathway.status === 'available')
+    .flatMap(pathway => pathway.subjectIdsByGrade?.[grade] || []) || [];
+  return [...new Set(pathwaySubjectIds)];
+};
 
 const firstUnitForSubject = (subject: SubjectId): number =>
   UNITS.findIndex(unit => (unit.subject || 'cs') === subject);
@@ -217,7 +226,7 @@ export const sanitizeCheckpointProgress = (value: unknown): NonNullable<GameStat
   })) as NonNullable<GameState['checkpointProgress']>;
 };
 
-export const sanitizeGameState = (value: unknown): GameState => {
+export const sanitizeGameState = (value: unknown, curriculumId: CurriculumId = DEFAULT_CURRICULUM_ID): GameState => {
   const saved = isRecord(value) ? value : {};
   const hasSavedGrade = Object.prototype.hasOwnProperty.call(saved, 'grade');
   const grade: GradeId | null = isGrade(saved.grade)
@@ -225,10 +234,10 @@ export const sanitizeGameState = (value: unknown): GameState => {
     : (hasSavedGrade ? null : 'grade9');
 
   const requestedSubject = isSubject(saved.subject) ? saved.subject : null;
-  const allowedSubjects = grade ? GRADE_SUBJECT_IDS[grade] : GRADE_SUBJECT_IDS.grade9;
+  const allowedSubjects = getAllowedSubjectIds(grade || 'grade9', curriculumId);
   const subject = requestedSubject && allowedSubjects.includes(requestedSubject)
     ? requestedSubject
-    : (allowedSubjects[0] as SubjectId);
+    : (allowedSubjects[0] || (curriculumId === 'ghana-nacca' ? 'ghcoremath' : GRADE_SUBJECT_IDS.grade9[0])) as SubjectId;
 
   const requestedUnit = Number.isInteger(saved.unit) ? saved.unit as number : -1;
   const unitMatchesSubject = requestedUnit >= 0
@@ -311,7 +320,7 @@ const isViewAvailableForCurriculum = (view: ViewMode, grade: GradeId, subject: S
   return true;
 };
 
-export const restoreSavedNavigation = (value: unknown, state: GameState): SavedNavigation | null => {
+export const restoreSavedNavigation = (value: unknown, state: GameState, curriculumId: CurriculumId = DEFAULT_CURRICULUM_ID): SavedNavigation | null => {
   if (!isRecord(value) || !VALID_VIEWS.includes(value.view as ViewMode)) return null;
   if (!state.grade) {
     return {
@@ -333,10 +342,11 @@ export const restoreSavedNavigation = (value: unknown, state: GameState): SavedN
   if (!isViewAvailableForCurriculum(value.view as ViewMode, state.grade, state.subject)) return null;
 
   // Resolve against the selected grade and subject, never the global mission list.
+  const allowedSubjects = getAllowedSubjectIds(state.grade, curriculumId);
   const subjectMissionIndexes = MISSIONS
     .map((mission, index) => ({ mission, index }))
     .filter(({ mission }) => (ARCS[mission.arc]?.subject || 'cs') === state.subject)
-    .filter(() => GRADE_SUBJECT_IDS[state.grade as GradeId]?.includes(state.subject));
+    .filter(() => allowedSubjects.includes(state.subject));
 
   const missionId = typeof value.missionId === 'string' ? value.missionId : null;
   let resolved = missionId
