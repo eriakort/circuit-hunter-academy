@@ -182,6 +182,11 @@ test('Ghana SHS 3 opens its own Core Mathematics pathway and missions', async ({
   await expect(page.locator('h3').filter({ hasText: 'The Factorisation Forge' })).toBeVisible();
   await expect(page.locator('h3').filter({ hasText: 'The Parabola Cartographer' })).toBeVisible();
   await expect(page.locator('h3').filter({ hasText: 'The Symmetry Strategist' })).toBeVisible();
+  await page.locator('.units button').filter({ hasText: 'Spatial Sense' }).click();
+  await expect(page.locator('h3').filter({ hasText: 'The Circle Cartographer' })).toBeVisible();
+  await expect(page.locator('h3').filter({ hasText: 'The Circle Theorem Keeper' })).toBeVisible();
+  await expect(page.locator('h3').filter({ hasText: 'The Tangent Sentinel' })).toBeVisible();
+  await expect(page.locator('h3').filter({ hasText: 'The Compass & Locus Architect' })).toBeVisible();
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:ghana-nacca') || '{}'));
   expect(saved.grade).toBe('grade11');
   expect(saved.subject).toBe('ghcoremath3');
