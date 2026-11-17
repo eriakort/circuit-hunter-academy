@@ -1,4 +1,4 @@
-import type { ArcInfo, BilingualText, Mission } from '../types';
+import type { ArcInfo, BilingualText, LearningConcept, Mission } from '../types';
 
 interface IndicatorItem {
   id: string;
@@ -11,6 +11,9 @@ interface IndicatorItem {
   q: BilingualText;
   a: BilingualText[];
   why: BilingualText;
+  workedExample?: LearningConcept['workedExample'];
+  misconceptions?: LearningConcept['misconceptions'];
+  knowledgePrompts?: LearningConcept['knowledgePrompts'];
 }
 
 const INDICATORS = [
@@ -53,6 +56,44 @@ const INDICATORS = [
     "why": [
       "A set is closed under an operation only if every allowed operation on members of the set produces another member. 1 ÷ 2 is not an integer.",
       "Un insieme è chiuso rispetto a un'operazione solo se ogni operazione tra suoi elementi produce ancora un elemento dell'insieme. 1 ÷ 2 non è un intero."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Test whether the integers stay closed under division using 6 ÷ 3 and 1 ÷ 2.",
+        "Verifica se gli interi restano chiusi rispetto alla divisione usando 6 ÷ 3 e 1 ÷ 2."
+      ],
+      "steps": [
+        [
+          "Divide 6 by 3: the result is 2, which is an integer.",
+          "Dividi 6 per 3: il risultato è 2, che è un intero."
+        ],
+        [
+          "Divide 1 by 2: the result is 0.5, which is not an integer.",
+          "Dividi 1 per 2: il risultato è 0,5, che non è un intero."
+        ]
+      ],
+      "answer": [
+        "Because one division of integers gives a result outside the integers, the integers are not closed under division.",
+        "Poiché una divisione tra interi produce un risultato che non è intero, gli interi non sono chiusi rispetto alla divisione."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "If both numbers are integers, their quotient must also be an integer.",
+          "Se entrambi i numeri sono interi, anche il loro quoziente deve essere intero."
+        ],
+        "correction": [
+          "Division is different from addition and multiplication: 1 ÷ 2 = 0.5 is a counterexample.",
+          "La divisione è diversa da addizione e moltiplicazione: 1 ÷ 2 = 0,5 è un controesempio."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Give one division of two integers that produces a non-integer result.",
+        "Fai un esempio di divisione tra due interi che produce un risultato non intero."
+      ]
     ]
   },
   {
@@ -94,6 +135,44 @@ const INDICATORS = [
     "why": [
       "√7 cannot be expressed as a ratio of two integers. The other choices are rational.",
       "√7 non può essere espresso come rapporto tra due interi. Le altre risposte sono razionali."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Classify 0.125 and √7 as rational or irrational numbers.",
+        "Classifica 0,125 e √7 come numeri razionali o irrazionali."
+      ],
+      "steps": [
+        [
+          "Write 0.125 as a fraction: 0.125 = 125/1000 = 1/8.",
+          "Scrivi 0,125 come frazione: 0,125 = 125/1000 = 1/8."
+        ],
+        [
+          "√7 cannot be written as a ratio of two integers; its decimal expansion does not terminate or repeat.",
+          "√7 non può essere scritto come rapporto tra due interi; il suo sviluppo decimale non termina e non è periodico."
+        ]
+      ],
+      "answer": [
+        "0.125 is rational, while √7 is irrational.",
+        "0,125 è razionale, mentre √7 è irrazionale."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Every decimal number is irrational.",
+          "Ogni numero decimale è irrazionale."
+        ],
+        "correction": [
+          "Terminating decimals and recurring decimals are rational because they can be written as fractions.",
+          "I decimali limitati e quelli periodici sono razionali perché si possono scrivere come frazioni."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Explain why 0.333… is rational but √7 is irrational.",
+        "Spiega perché 0,333… è razionale mentre √7 è irrazionale."
+      ]
     ]
   },
   {
@@ -135,6 +214,44 @@ const INDICATORS = [
     "why": [
       "The factor 4 is multiplied by each term inside the brackets. The other options show commutativity, associativity and the additive identity.",
       "Il fattore 4 viene moltiplicato per ciascun termine dentro le parentesi. Le altre risposte mostrano commutatività, associatività ed elemento neutro additivo."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Expand 5(2x + 3) using the distributive property.",
+        "Sviluppa 5(2x + 3) usando la proprietà distributiva."
+      ],
+      "steps": [
+        [
+          "Multiply 5 by the first term: 5 × 2x = 10x.",
+          "Moltiplica 5 per il primo termine: 5 × 2x = 10x."
+        ],
+        [
+          "Multiply 5 by the second term: 5 × 3 = 15, then combine: 10x + 15.",
+          "Moltiplica 5 per il secondo termine: 5 × 3 = 15, poi unisci: 10x + 15."
+        ]
+      ],
+      "answer": [
+        "5(2x + 3) = 10x + 15; the factor multiplies every term inside the brackets.",
+        "5(2x + 3) = 10x + 15; il fattore moltiplica ogni termine dentro le parentesi."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "The outside factor multiplies only the first term in the brackets.",
+          "Il fattore esterno moltiplica solo il primo termine nelle parentesi."
+        ],
+        "correction": [
+          "The distributive property applies the factor to every term: 5(2x + 3) = 10x + 15.",
+          "La proprietà distributiva applica il fattore a ogni termine: 5(2x + 3) = 10x + 15."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Expand 3(a − 4) and explain where the negative sign goes.",
+        "Sviluppa 3(a − 4) e spiega dove va il segno negativo."
+      ]
     ]
   },
   {
@@ -176,6 +293,44 @@ const INDICATORS = [
     "why": [
       "The intersection contains the elements that appear in both sets: 4 and 6.",
       "L'intersezione contiene gli elementi presenti in entrambi gli insiemi: 4 e 6."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Let A = {1, 2, 4, 6} and B = {2, 3, 6}. Find A ∩ B.",
+        "Siano A = {1, 2, 4, 6} e B = {2, 3, 6}. Trova A ∩ B."
+      ],
+      "steps": [
+        [
+          "Check each element of A and keep only those that also appear in B.",
+          "Controlla ogni elemento di A e conserva solo quelli che compaiono anche in B."
+        ],
+        [
+          "The common elements are 2 and 6.",
+          "Gli elementi comuni sono 2 e 6."
+        ]
+      ],
+      "answer": [
+        "A ∩ B = {2, 6}; intersection means elements shared by both sets.",
+        "A ∩ B = {2, 6}; l'intersezione contiene gli elementi presenti in entrambi gli insiemi."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "The intersection contains every element found in either set.",
+          "L'intersezione contiene tutti gli elementi presenti in uno dei due insiemi."
+        ],
+        "correction": [
+          "That describes the union. The intersection keeps only elements common to both sets.",
+          "Questa è l'unione. L'intersezione conserva solo gli elementi comuni ai due insiemi."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Using A = {a, b, c} and B = {b, c, d}, find A ∩ B.",
+        "Con A = {a, b, c} e B = {b, c, d}, trova A ∩ B."
+      ]
     ]
   },
   {
@@ -217,6 +372,44 @@ const INDICATORS = [
     "why": [
       "Use n(F ∪ N) = 24 + 18 − 7 = 35.",
       "Usa n(F ∪ N) = 24 + 18 − 7 = 35."
+    ],
+    "workedExample": {
+      "scenario": [
+        "In a group, 30 learners like football, 22 like netball and 8 like both. Find how many like at least one sport.",
+        "In un gruppo, 30 studenti amano il calcio, 22 la pallavolo e 8 entrambi gli sport. Trova quanti ne amano almeno uno."
+      ],
+      "steps": [
+        [
+          "Add the two group sizes: 30 + 22 = 52.",
+          "Somma i due gruppi: 30 + 22 = 52."
+        ],
+        [
+          "Subtract the 8 learners counted twice: 52 − 8 = 44.",
+          "Sottrai gli 8 studenti contati due volte: 52 − 8 = 44."
+        ]
+      ],
+      "answer": [
+        "44 learners like at least one sport. The overlap is subtracted once because it was counted twice.",
+        "44 studenti amano almeno uno sport. L'intersezione si sottrae una volta perché era stata contata due volte."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Add the two set totals without subtracting the overlap.",
+          "Somma i totali dei due insiemi senza sottrarre l'intersezione."
+        ],
+        "correction": [
+          "Learners who like both sports appear in both totals, so subtract the overlap once: n(A ∪ B) = n(A) + n(B) − n(A ∩ B).",
+          "Chi ama entrambi gli sport compare in tutti e due i totali, quindi sottrai l'intersezione una volta: n(A ∪ B) = n(A) + n(B) − n(A ∩ B)."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Why must the number who like both sports be subtracted once?",
+        "Perché il numero di chi ama entrambi gli sport deve essere sottratto una volta?"
+      ]
     ]
   },
   {
@@ -258,6 +451,44 @@ const INDICATORS = [
     "why": [
       "The complement of a union is the intersection of the complements.",
       "Il complementare di un'unione è l'intersezione dei complementari."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Use De Morgan's law with U = {1, 2, 3, 4}, A = {1, 2} and B = {2, 3}.",
+        "Applica la legge di De Morgan con U = {1, 2, 3, 4}, A = {1, 2} e B = {2, 3}."
+      ],
+      "steps": [
+        [
+          "A ∪ B = {1, 2, 3}, so (A ∪ B)′ = {4}.",
+          "A ∪ B = {1, 2, 3}, quindi (A ∪ B)′ = {4}."
+        ],
+        [
+          "A′ = {3, 4} and B′ = {1, 4}; their intersection is {4}.",
+          "A′ = {3, 4} e B′ = {1, 4}; la loro intersezione è {4}."
+        ]
+      ],
+      "answer": [
+        "Both sides equal {4}, confirming (A ∪ B)′ = A′ ∩ B′.",
+        "Entrambi i membri sono {4}, quindi (A ∪ B)′ = A′ ∩ B′."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "The complement of a union is the union of the complements.",
+          "Il complementare di un'unione è l'unione dei complementari."
+        ],
+        "correction": [
+          "De Morgan changes union to intersection: (A ∪ B)′ = A′ ∩ B′.",
+          "De Morgan trasforma l'unione in intersezione: (A ∪ B)′ = A′ ∩ B′."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "State the De Morgan law for the complement of an intersection.",
+        "Enuncia la legge di De Morgan per il complementare di un'intersezione."
+      ]
     ]
   },
   {
@@ -299,6 +530,44 @@ const INDICATORS = [
     "why": [
       "7 ÷ 20 = 0.35, and 0.35 × 100 = 35%.",
       "7 ÷ 20 = 0,35 e 0,35 × 100 = 35%."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Convert 3/8 into a decimal and a percentage.",
+        "Trasforma 3/8 in numero decimale e percentuale."
+      ],
+      "steps": [
+        [
+          "Divide 3 by 8: 3 ÷ 8 = 0.375.",
+          "Dividi 3 per 8: 3 ÷ 8 = 0,375."
+        ],
+        [
+          "Multiply by 100 to get the percentage: 0.375 × 100 = 37.5%.",
+          "Moltiplica per 100 per ottenere la percentuale: 0,375 × 100 = 37,5%."
+        ]
+      ],
+      "answer": [
+        "3/8 = 0.375 = 37.5%.",
+        "3/8 = 0,375 = 37,5%."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "To convert a decimal to a percentage, divide by 100.",
+          "Per trasformare un decimale in percentuale, dividi per 100."
+        ],
+        "correction": [
+          "Multiply the decimal by 100 and add the percent sign.",
+          "Moltiplica il decimale per 100 e aggiungi il simbolo percentuale."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Convert 9/25 into a decimal and a percentage.",
+        "Trasforma 9/25 in numero decimale e percentuale."
+      ]
     ]
   },
   {
@@ -340,6 +609,44 @@ const INDICATORS = [
     "why": [
       "The additive inverse is −3/5; the reciprocal is 5/3 because (3/5)(5/3) = 1.",
       "L'inverso additivo è −3/5; il reciproco è 5/3 perché (3/5)(5/3) = 1."
+    ],
+    "workedExample": {
+      "scenario": [
+        "For 4/7, find the additive inverse and the multiplicative inverse.",
+        "Per 4/7, trova l'inverso additivo e l'inverso moltiplicativo."
+      ],
+      "steps": [
+        [
+          "The additive inverse is −4/7 because 4/7 + (−4/7) = 0.",
+          "L'inverso additivo è −4/7 perché 4/7 + (−4/7) = 0."
+        ],
+        [
+          "The multiplicative inverse is 7/4 because (4/7) × (7/4) = 1.",
+          "L'inverso moltiplicativo è 7/4 perché (4/7) × (7/4) = 1."
+        ]
+      ],
+      "answer": [
+        "The two inverses are −4/7 and 7/4, in that order.",
+        "I due inversi sono −4/7 e 7/4, in quest'ordine."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "The additive inverse is the reciprocal, or both inverses are found by changing the sign.",
+          "L'inverso additivo è il reciproco, oppure entrambi gli inversi si trovano cambiando il segno."
+        ],
+        "correction": [
+          "The additive inverse sums to zero; the multiplicative inverse multiplies to one.",
+          "L'inverso additivo dà somma zero; l'inverso moltiplicativo dà prodotto uno."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "How can you check that a number is the multiplicative inverse of 5/9?",
+        "Come puoi verificare che un numero sia l'inverso moltiplicativo di 5/9?"
+      ]
     ]
   },
   {
@@ -381,6 +688,44 @@ const INDICATORS = [
     "why": [
       "20 ÷ 80 = 0.25, which is 25%.",
       "20 ÷ 80 = 0,25, cioè 25%."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A class has 40 learners and 10 are absent. What percentage are absent?",
+        "Una classe ha 40 studenti e 10 sono assenti. Quale percentuale è assente?"
+      ],
+      "steps": [
+        [
+          "Divide the part by the whole: 10 ÷ 40 = 0.25.",
+          "Dividi la parte per il totale: 10 ÷ 40 = 0,25."
+        ],
+        [
+          "Multiply by 100: 0.25 × 100 = 25%.",
+          "Moltiplica per 100: 0,25 × 100 = 25%."
+        ]
+      ],
+      "answer": [
+        "25% of the class is absent.",
+        "È assente il 25% della classe."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Use the part as the denominator when finding a percentage.",
+          "Usa la parte come denominatore quando calcoli una percentuale."
+        ],
+        "correction": [
+          "Percentage = part ÷ whole × 100; the whole is the reference amount.",
+          "Percentuale = parte ÷ totale × 100; il totale è la quantità di riferimento."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "What percentage is 18 out of 60? Show the division first.",
+        "Quale percentuale rappresenta 18 su 60? Mostra prima la divisione."
+      ]
     ]
   },
   {
@@ -422,6 +767,44 @@ const INDICATORS = [
     "why": [
       "Profit = 100 − 80 = GH₵20. Profit percentage = 20 ÷ 80 × 100 = 25%.",
       "Profitto = 100 − 80 = GH₵20. Percentuale di profitto = 20 ÷ 80 × 100 = 25%."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A trader buys a basket for GH₵120 and sells it for GH₵150. Find the profit percentage on cost.",
+        "Un commerciante compra un cesto per 120 GH₵ e lo vende a 150 GH₵. Calcola la percentuale di profitto sul costo."
+      ],
+      "steps": [
+        [
+          "Profit = selling price − cost price = 150 − 120 = GH₵30.",
+          "Profitto = prezzo di vendita − costo = 150 − 120 = 30 GH₵."
+        ],
+        [
+          "Profit percentage = 30 ÷ 120 × 100 = 25%.",
+          "Percentuale di profitto = 30 ÷ 120 × 100 = 25%."
+        ]
+      ],
+      "answer": [
+        "The profit is GH₵30, which is 25% of the cost price.",
+        "Il profitto è di 30 GH₵, cioè il 25% del prezzo di costo."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Calculate profit percentage using the selling price as the denominator.",
+          "Calcola la percentuale di profitto usando il prezzo di vendita come denominatore."
+        ],
+        "correction": [
+          "Profit percentage on cost uses the original cost price as the denominator.",
+          "La percentuale di profitto sul costo usa il prezzo di acquisto come denominatore."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "A trader buys an item for GH₵60 and sells it for GH₵72. What is the profit percentage on cost?",
+        "Un commerciante compra un oggetto a 60 GH₵ e lo vende a 72 GH₵. Qual è la percentuale di profitto sul costo?"
+      ]
     ]
   },
   {
@@ -463,6 +846,44 @@ const INDICATORS = [
     "why": [
       "Expand first: 3(2x − 5) = 6x − 15. Then 4x + 6x − 15 = 10x − 15.",
       "Prima sviluppa: 3(2x − 5) = 6x − 15. Poi 4x + 6x − 15 = 10x − 15."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Simplify 5y + 2(3y − 4).",
+        "Semplifica 5y + 2(3y − 4)."
+      ],
+      "steps": [
+        [
+          "Expand the brackets: 2(3y − 4) = 6y − 8.",
+          "Sviluppa le parentesi: 2(3y − 4) = 6y − 8."
+        ],
+        [
+          "Collect like terms: 5y + 6y − 8 = 11y − 8.",
+          "Raggruppa i termini simili: 5y + 6y − 8 = 11y − 8."
+        ]
+      ],
+      "answer": [
+        "The simplified expression is 11y − 8.",
+        "L'espressione semplificata è 11y − 8."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Add the constant −8 to the coefficient of y.",
+          "Somma la costante −8 al coefficiente di y."
+        ],
+        "correction": [
+          "Only like terms combine: add the coefficients of y, but keep the constant separate.",
+          "Si sommano solo i termini simili: somma i coefficienti di y e lascia separata la costante."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Simplify 3a + 4(2a + 1) and identify the like terms.",
+        "Semplifica 3a + 4(2a + 1) e individua i termini simili."
+      ]
     ]
   },
   {
@@ -504,6 +925,44 @@ const INDICATORS = [
     "why": [
       "3 × 4 = 12 and 3 + 4 = 7, so the factors are (x + 3)(x + 4).",
       "3 × 4 = 12 e 3 + 4 = 7, quindi i fattori sono (x + 3)(x + 4)."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Factorise x² + 9x + 20.",
+        "Scomponi x² + 9x + 20."
+      ],
+      "steps": [
+        [
+          "Find two numbers whose product is 20 and whose sum is 9: 4 and 5.",
+          "Trova due numeri con prodotto 20 e somma 9: 4 e 5."
+        ],
+        [
+          "Write the factors: (x + 4)(x + 5).",
+          "Scrivi i fattori: (x + 4)(x + 5)."
+        ]
+      ],
+      "answer": [
+        "x² + 9x + 20 = (x + 4)(x + 5).",
+        "x² + 9x + 20 = (x + 4)(x + 5)."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Choose two numbers that multiply to the middle coefficient.",
+          "Scegli due numeri il cui prodotto è il coefficiente del termine centrale."
+        ],
+        "correction": [
+          "For x² + bx + c, the pair must multiply to c and add to b.",
+          "Per x² + bx + c, i due numeri devono avere prodotto c e somma b."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Which pair of numbers factorises x² + 8x + 15? Explain both checks.",
+        "Quale coppia di numeri scompone x² + 8x + 15? Spiega entrambe le verifiche."
+      ]
     ]
   },
   {
@@ -545,6 +1004,44 @@ const INDICATORS = [
     "why": [
       "9a² = (3a)² and 25 = 5², so apply the difference-of-squares identity.",
       "9a² = (3a)² e 25 = 5², quindi applica l'identità della differenza di quadrati."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Factorise 16m² − 81.",
+        "Scomponi 16m² − 81."
+      ],
+      "steps": [
+        [
+          "Recognise two squares: 16m² = (4m)² and 81 = 9².",
+          "Riconosci due quadrati: 16m² = (4m)² e 81 = 9²."
+        ],
+        [
+          "Use a² − b² = (a − b)(a + b): (4m − 9)(4m + 9).",
+          "Usa a² − b² = (a − b)(a + b): (4m − 9)(4m + 9)."
+        ]
+      ],
+      "answer": [
+        "16m² − 81 = (4m − 9)(4m + 9).",
+        "16m² − 81 = (4m − 9)(4m + 9)."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "A difference of squares is the square of a difference.",
+          "Una differenza di quadrati è il quadrato di una differenza."
+        ],
+        "correction": [
+          "The identity has two different factors: (a − b)(a + b), not (a − b)².",
+          "L'identità ha due fattori diversi: (a − b)(a + b), non (a − b)²."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Factorise 25p² − 4 and state the two square roots.",
+        "Scomponi 25p² − 4 e indica le due radici quadrate."
+      ]
     ]
   },
   {
@@ -586,6 +1083,44 @@ const INDICATORS = [
     "why": [
       "Factor x² − 9 = (x − 3)(x + 3), then cancel x − 3. The original denominator still requires x ≠ 3.",
       "Scomponi x² − 9 = (x − 3)(x + 3), poi semplifica x − 3. Il denominatore originale richiede comunque x ≠ 3."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Simplify (x² − 16)/(x − 4) and state the restriction.",
+        "Semplifica (x² − 16)/(x − 4) e indica la condizione."
+      ],
+      "steps": [
+        [
+          "Factorise the numerator: x² − 16 = (x − 4)(x + 4).",
+          "Scomponi il numeratore: x² − 16 = (x − 4)(x + 4)."
+        ],
+        [
+          "Cancel the common factor, but keep the original restriction x ≠ 4.",
+          "Semplifica il fattore comune, ma mantieni la condizione originale x ≠ 4."
+        ]
+      ],
+      "answer": [
+        "The expression simplifies to x + 4, with x ≠ 4.",
+        "L'espressione si semplifica in x + 4, con x ≠ 4."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "After cancelling x − 4, x = 4 becomes allowed.",
+          "Dopo aver semplificato x − 4, il valore x = 4 diventa ammesso."
+        ],
+        "correction": [
+          "The original denominator was zero at x = 4, so that value remains excluded.",
+          "Il denominatore originale era zero per x = 4, quindi quel valore resta escluso."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Simplify (x² − 25)/(x − 5). Which value must still be excluded?",
+        "Semplifica (x² − 25)/(x − 5). Quale valore deve restare escluso?"
+      ]
     ]
   },
   {
@@ -627,6 +1162,44 @@ const INDICATORS = [
     "why": [
       "Divide by m to get v² = E/m, then take the positive square root: v = √(E/m).",
       "Dividi per m: v² = E/m, poi prendi la radice quadrata positiva: v = √(E/m)."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Make r the subject of A = πr², assuming r is positive.",
+        "Isola r nella formula A = πr², supponendo che r sia positivo."
+      ],
+      "steps": [
+        [
+          "Divide both sides by π: A/π = r².",
+          "Dividi entrambi i membri per π: A/π = r²."
+        ],
+        [
+          "Take the positive square root: r = √(A/π).",
+          "Calcola la radice quadrata positiva: r = √(A/π)."
+        ]
+      ],
+      "answer": [
+        "r = √(A/π).",
+        "r = √(A/π)."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Move π to the other side by subtracting it.",
+          "Sposta π dall'altra parte sottraendolo."
+        ],
+        "correction": [
+          "Because π multiplies r², use the inverse operation and divide both sides by π.",
+          "Poiché π moltiplica r², usa l'operazione inversa e dividi entrambi i membri per π."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "If v = u + at, rearrange the formula to make t the subject.",
+        "Se v = u + at, riordina la formula per isolare t."
+      ]
     ]
   },
   {
@@ -668,6 +1241,44 @@ const INDICATORS = [
     "why": [
       "Add 5 to both sides: 3x ≤ 15. Divide by 3: x ≤ 5.",
       "Aggiungi 5 a entrambi i membri: 3x ≤ 15. Dividi per 3: x ≤ 5."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Solve 4x + 3 ≤ 19.",
+        "Risolvi 4x + 3 ≤ 19."
+      ],
+      "steps": [
+        [
+          "Subtract 3 from both sides: 4x ≤ 16.",
+          "Sottrai 3 da entrambi i membri: 4x ≤ 16."
+        ],
+        [
+          "Divide by positive 4; the inequality direction stays the same: x ≤ 4.",
+          "Dividi per 4 positivo; il verso della disequazione non cambia: x ≤ 4."
+        ]
+      ],
+      "answer": [
+        "The solution is x ≤ 4.",
+        "La soluzione è x ≤ 4."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Reverse the inequality sign whenever you divide.",
+          "Inverti il verso della disequazione ogni volta che dividi."
+        ],
+        "correction": [
+          "Reverse the sign only when multiplying or dividing by a negative number.",
+          "Inverti il verso solo quando moltiplichi o dividi per un numero negativo."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Solve −2x > 8. Why does the inequality sign change?",
+        "Risolvi −2x > 8. Perché cambia il verso della disequazione?"
+      ]
     ]
   },
   {
@@ -709,6 +1320,44 @@ const INDICATORS = [
     "why": [
       "Each input has exactly one output, and the outputs follow y = 3x + 1.",
       "Ogni ingresso ha un solo risultato e i risultati seguono la regola y = 3x + 1."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A mapping sends 0 to 2, 1 to 5 and 2 to 8. Find its rule and decide whether it is a function.",
+        "Una corrispondenza associa 0 a 2, 1 a 5 e 2 a 8. Trova la regola e stabilisci se è una funzione."
+      ],
+      "steps": [
+        [
+          "Each time x increases by 1, y increases by 3, suggesting y = 3x + 2.",
+          "Ogni volta che x aumenta di 1, y aumenta di 3: la regola può essere y = 3x + 2."
+        ],
+        [
+          "Each input has exactly one output, so the mapping is a function.",
+          "Ogni ingresso ha esattamente un risultato, quindi la corrispondenza è una funzione."
+        ]
+      ],
+      "answer": [
+        "The rule is y = 3x + 2 and the mapping is a function.",
+        "La regola è y = 3x + 2 e la corrispondenza è una funzione."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "A mapping is not a function when different inputs have different outputs.",
+          "Una corrispondenza non è una funzione quando ingressi diversi hanno risultati diversi."
+        ],
+        "correction": [
+          "Different outputs are allowed. A relation is a function when each input has exactly one output.",
+          "Risultati diversi sono ammessi. Una relazione è una funzione se ogni ingresso ha esattamente un risultato."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Can two different inputs share one output and still form a function? Explain.",
+        "Due ingressi diversi possono avere lo stesso risultato ed essere comunque una funzione? Spiega."
+      ]
     ]
   },
   {
@@ -750,6 +1399,44 @@ const INDICATORS = [
     "why": [
       "The y-intercept is c = 3, so the line crosses the y-axis when x = 0 at (0, 3).",
       "L'intercetta y è c = 3, quindi la retta incontra l'asse y quando x = 0, nel punto (0, 3)."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Find the y-intercept of y = −3x + 5.",
+        "Trova l'intercetta sull'asse y della retta y = −3x + 5."
+      ],
+      "steps": [
+        [
+          "On the y-axis, x = 0.",
+          "Sull'asse y, x = 0."
+        ],
+        [
+          "Substitute x = 0: y = −3(0) + 5 = 5, so the point is (0, 5).",
+          "Sostituisci x = 0: y = −3(0) + 5 = 5, quindi il punto è (0, 5)."
+        ]
+      ],
+      "answer": [
+        "The graph crosses the y-axis at (0, 5).",
+        "Il grafico interseca l'asse y nel punto (0, 5)."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "The y-intercept is where y = 0.",
+          "L'intercetta sull'asse y è il punto in cui y = 0."
+        ],
+        "correction": [
+          "On the y-axis x = 0. Setting y = 0 finds the x-intercept instead.",
+          "Sull'asse y vale x = 0. Porre y = 0 serve invece a trovare l'intercetta sull'asse x."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "For y = 4x − 7, state the y-intercept and the point where the line crosses the axis.",
+        "Per y = 4x − 7, indica l'intercetta sull'asse y e il punto in cui la retta lo attraversa."
+      ]
     ]
   },
   {
@@ -791,6 +1478,44 @@ const INDICATORS = [
     "why": [
       "Gradient = (7 − 3)/(3 − 1) = 4/2 = 2.",
       "Gradiente = (7 − 3)/(3 − 1) = 4/2 = 2."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Find the gradient of the line through (2, 5) and (6, 13).",
+        "Trova il coefficiente angolare della retta passante per (2, 5) e (6, 13)."
+      ],
+      "steps": [
+        [
+          "Subtract the y-coordinates: 13 − 5 = 8.",
+          "Sottrai le coordinate y: 13 − 5 = 8."
+        ],
+        [
+          "Subtract the x-coordinates in the same order: 6 − 2 = 4. Gradient = 8/4 = 2.",
+          "Sottrai le coordinate x nello stesso ordine: 6 − 2 = 4. Coefficiente angolare = 8/4 = 2."
+        ]
+      ],
+      "answer": [
+        "The gradient is 2.",
+        "Il coefficiente angolare è 2."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Subtract the x-coordinates in a different order from the y-coordinates.",
+          "Sottrai le coordinate x in un ordine diverso da quello delle coordinate y."
+        ],
+        "correction": [
+          "Keep the same point order in numerator and denominator: (y₂ − y₁)/(x₂ − x₁).",
+          "Mantieni lo stesso ordine dei punti al numeratore e al denominatore: (y₂ − y₁)/(x₂ − x₁)."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "What does a negative gradient tell you about a line as x increases?",
+        "Che cosa indica un coefficiente angolare negativo quando x aumenta?"
+      ]
     ]
   },
   {
@@ -832,6 +1557,44 @@ const INDICATORS = [
     "why": [
       "Average the x-coordinates and the y-coordinates: ((2 + 6)/2, (1 + 4)/2) = (4, 2.5).",
       "Calcola la media delle coordinate x e delle coordinate y: ((2 + 6)/2, (1 + 4)/2) = (4, 2,5)."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Find the midpoint and distance between P(1, 2) and Q(5, 5).",
+        "Trova il punto medio e la distanza tra P(1, 2) e Q(5, 5)."
+      ],
+      "steps": [
+        [
+          "Midpoint: ((1 + 5)/2, (2 + 5)/2) = (3, 3.5).",
+          "Punto medio: ((1 + 5)/2, (2 + 5)/2) = (3, 3,5)."
+        ],
+        [
+          "Distance: √((5 − 1)² + (5 − 2)²) = √(16 + 9) = 5.",
+          "Distanza: √((5 − 1)² + (5 − 2)²) = √(16 + 9) = 5."
+        ]
+      ],
+      "answer": [
+        "The midpoint is (3, 3.5) and the distance is 5 units.",
+        "Il punto medio è (3, 3,5) e la distanza è 5 unità."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "The midpoint is the distance between the two points.",
+          "Il punto medio è la distanza tra i due punti."
+        ],
+        "correction": [
+          "The midpoint is a coordinate halfway along the segment; distance is a length.",
+          "Il punto medio è una coordinata a metà del segmento; la distanza è una lunghezza."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Find the midpoint of (−2, 4) and (4, 8).",
+        "Trova il punto medio tra (−2, 4) e (4, 8)."
+      ]
     ]
   },
   {
@@ -873,6 +1636,44 @@ const INDICATORS = [
     "why": [
       "225° is greater than 180° and less than 360°, so it is a reflex angle.",
       "225° è maggiore di 180° e minore di 360°, quindi è un angolo concavo."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Classify an angle of 145° and an angle of 270°.",
+        "Classifica un angolo di 145° e uno di 270°."
+      ],
+      "steps": [
+        [
+          "145° is greater than 90° and less than 180°: it is obtuse.",
+          "145° è maggiore di 90° e minore di 180°: è ottuso."
+        ],
+        [
+          "270° is greater than 180° and less than 360°: it is reflex.",
+          "270° è maggiore di 180° e minore di 360°: è concavo."
+        ]
+      ],
+      "answer": [
+        "145° is obtuse; 270° is reflex.",
+        "145° è ottuso; 270° è concavo."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Every angle greater than 180° is a full turn.",
+          "Ogni angolo maggiore di 180° è un giro completo."
+        ],
+        "correction": [
+          "A reflex angle is between 180° and 360°; a full turn is exactly 360°.",
+          "Un angolo concavo è compreso tra 180° e 360°; un giro completo misura esattamente 360°."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "What type of angle is 315°, and which two values bound this type?",
+        "Che tipo di angolo è 315° e tra quali due valori è compreso?"
+      ]
     ]
   },
   {
@@ -914,6 +1715,44 @@ const INDICATORS = [
     "why": [
       "Alternate interior angles are equal when the lines are parallel.",
       "Gli angoli alterni interni sono uguali quando le rette sono parallele."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Two parallel lines are cut by a transversal. One alternate interior angle is 112°. Find its partner.",
+        "Due rette parallele sono tagliate da una trasversale. Un angolo alterno interno misura 112°. Trova l'altro."
+      ],
+      "steps": [
+        [
+          "Identify the two angles between the parallel lines and on opposite sides of the transversal.",
+          "Individua i due angoli compresi tra le parallele e su lati opposti della trasversale."
+        ],
+        [
+          "Alternate interior angles are equal, so the partner is 112°.",
+          "Gli angoli alterni interni sono congruenti, quindi l'altro misura 112°."
+        ]
+      ],
+      "answer": [
+        "The alternate interior angle is 112°.",
+        "L'angolo alterno interno misura 112°."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Alternate interior angles add to 180° in every diagram.",
+          "Gli angoli alterni interni sommano sempre 180° in ogni disegno."
+        ],
+        "correction": [
+          "When the lines are parallel, alternate interior angles are equal; co-interior angles sum to 180°.",
+          "Quando le rette sono parallele, gli angoli alterni interni sono uguali; quelli coniugati interni sommano 180°."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "If one co-interior angle is 73°, what is the other angle?",
+        "Se un angolo coniugato interno misura 73°, quanto misura l'altro?"
+      ]
     ]
   },
   {
@@ -955,6 +1794,44 @@ const INDICATORS = [
     "why": [
       "The exterior angle equals the sum of the two remote interior angles: 52° + 61° = 113°.",
       "L'angolo esterno è uguale alla somma dei due angoli interni non adiacenti: 52° + 61° = 113°."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A triangle has remote interior angles of 48° and 67°. Find the exterior angle at the third vertex.",
+        "Un triangolo ha due angoli interni non adiacenti di 48° e 67°. Trova l'angolo esterno al terzo vertice."
+      ],
+      "steps": [
+        [
+          "Add the two remote interior angles: 48° + 67° = 115°.",
+          "Somma i due angoli interni non adiacenti: 48° + 67° = 115°."
+        ],
+        [
+          "The exterior angle equals this sum.",
+          "L'angolo esterno è uguale a questa somma."
+        ]
+      ],
+      "answer": [
+        "The exterior angle is 115°.",
+        "L'angolo esterno misura 115°."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "The exterior angle equals 180° minus one remote interior angle.",
+          "L'angolo esterno è uguale a 180° meno uno degli angoli interni non adiacenti."
+        ],
+        "correction": [
+          "It equals the sum of both remote interior angles.",
+          "È uguale alla somma di entrambi gli angoli interni non adiacenti."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "If the remote interior angles are 35° and 82°, find the exterior angle.",
+        "Se gli angoli interni non adiacenti sono 35° e 82°, calcola l'angolo esterno."
+      ]
     ]
   },
   {
@@ -996,6 +1873,44 @@ const INDICATORS = [
     "why": [
       "c² = 9² + 12² = 81 + 144 = 225, so c = 15 cm.",
       "c² = 9² + 12² = 81 + 144 = 225, quindi c = 15 cm."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A right triangle has shorter sides of 5 cm and 12 cm. Find the hypotenuse.",
+        "Un triangolo rettangolo ha i cateti di 5 cm e 12 cm. Trova l'ipotenusa."
+      ],
+      "steps": [
+        [
+          "Use c² = a² + b²: c² = 5² + 12² = 25 + 144 = 169.",
+          "Usa c² = a² + b²: c² = 5² + 12² = 25 + 144 = 169."
+        ],
+        [
+          "Take the positive square root: c = 13 cm.",
+          "Calcola la radice quadrata positiva: c = 13 cm."
+        ]
+      ],
+      "answer": [
+        "The hypotenuse is 13 cm.",
+        "L'ipotenusa misura 13 cm."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "The hypotenuse is the sum of the two shorter sides.",
+          "L'ipotenusa è la somma dei due cateti."
+        ],
+        "correction": [
+          "Pythagoras adds the squares of the shorter sides, then takes the square root.",
+          "Il teorema di Pitagora somma i quadrati dei cateti e poi calcola la radice quadrata."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "A right triangle has legs 8 cm and 15 cm. Find its hypotenuse.",
+        "Un triangolo rettangolo ha cateti di 8 cm e 15 cm. Trova l'ipotenusa."
+      ]
     ]
   },
   {
@@ -1037,6 +1952,44 @@ const INDICATORS = [
     "why": [
       "An octagon has 8 sides: (8 − 2) × 180° = 1080°.",
       "Un ottagono ha 8 lati: (8 − 2) × 180° = 1080°."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Find the sum of the interior angles of a hexagon.",
+        "Trova la somma degli angoli interni di un esagono."
+      ],
+      "steps": [
+        [
+          "A hexagon has 6 sides, so n − 2 = 4 triangles can be formed from one vertex.",
+          "Un esagono ha 6 lati, quindi da un vertice si possono formare n − 2 = 4 triangoli."
+        ],
+        [
+          "Multiply by 180°: 4 × 180° = 720°.",
+          "Moltiplica per 180°: 4 × 180° = 720°."
+        ]
+      ],
+      "answer": [
+        "The interior-angle sum is 720°.",
+        "La somma degli angoli interni è 720°."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Multiply the number of sides by 180°.",
+          "Moltiplica il numero dei lati per 180°."
+        ],
+        "correction": [
+          "Use (n − 2) × 180° because an n-sided polygon can be divided into n − 2 triangles.",
+          "Usa (n − 2) × 180° perché un poligono di n lati si può dividere in n − 2 triangoli."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "What is the interior-angle sum of a decagon? Show the value of n.",
+        "Quanto misura la somma degli angoli interni di un decagono? Indica il valore di n."
+      ]
     ]
   },
   {
@@ -1078,6 +2031,44 @@ const INDICATORS = [
     "why": [
       "A vector must describe both how much and in which direction.",
       "Un vettore deve descrivere sia quanto sia grande sia in quale direzione agisce."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Compare a 5 km journey east with a 5 km journey west.",
+        "Confronta un percorso di 5 km verso est con uno di 5 km verso ovest."
+      ],
+      "steps": [
+        [
+          "Both journeys have magnitude 5 km.",
+          "Entrambi i percorsi hanno modulo 5 km."
+        ],
+        [
+          "Their directions differ, so the displacement vectors are different.",
+          "Le direzioni sono diverse, quindi i vettori spostamento sono diversi."
+        ]
+      ],
+      "answer": [
+        "A vector needs both magnitude and direction; a scalar needs magnitude only.",
+        "Un vettore richiede modulo e direzione; uno scalare richiede solo il modulo."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Two quantities are equal vectors if they have the same magnitude only.",
+          "Due grandezze sono vettori uguali se hanno soltanto lo stesso modulo."
+        ],
+        "correction": [
+          "Equal vectors must have both the same magnitude and the same direction.",
+          "Due vettori uguali devono avere sia lo stesso modulo sia la stessa direzione."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Give one example of a vector quantity and name its magnitude and direction.",
+        "Fai un esempio di grandezza vettoriale e indica modulo e direzione."
+      ]
     ]
   },
   {
@@ -1119,6 +2110,44 @@ const INDICATORS = [
     "why": [
       "A 320° bearing is 40° west of north, written N40°W. Equal vectors have the same magnitude and direction, even at different positions.",
       "Una direzione di 320° corrisponde a 40° a ovest del nord, cioè N40°O. I vettori uguali hanno lo stesso modulo e la stessa direzione, anche in posizioni diverse."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A ship travels on a bearing of 045°. Express the direction using a compass description.",
+        "Una nave viaggia con direzione 045°. Esprimi la direzione con una descrizione rispetto ai punti cardinali."
+      ],
+      "steps": [
+        [
+          "Bearings are measured clockwise from north; 045° is 45° east of north.",
+          "Gli azimut si misurano in senso orario dal nord; 045° è 45° a est del nord."
+        ],
+        [
+          "Write the direction as N45°E. A translated arrow with the same length and direction represents the same vector.",
+          "Scrivi la direzione N45°E. Una freccia traslata con stessa lunghezza e direzione rappresenta lo stesso vettore."
+        ]
+      ],
+      "answer": [
+        "The bearing is N45°E; equal vectors may be drawn in different positions.",
+        "La direzione è N45°E; vettori uguali possono essere disegnati in posizioni diverse."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "A vector changes when its starting point is moved.",
+          "Un vettore cambia quando si sposta il suo punto di partenza."
+        ],
+        "correction": [
+          "A free vector is unchanged by translation if its magnitude and direction remain the same.",
+          "Un vettore libero non cambia se viene traslato mantenendo modulo e direzione."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Convert a bearing of 135° into a compass direction.",
+        "Trasforma una direzione di 135° in una direzione rispetto ai punti cardinali."
+      ]
     ]
   },
   {
@@ -1160,6 +2189,44 @@ const INDICATORS = [
     "why": [
       "sin θ = opposite ÷ hypotenuse = 6 ÷ 10 = 0.6.",
       "sin θ = cateto opposto ÷ ipotenusa = 6 ÷ 10 = 0,6."
+    ],
+    "workedExample": {
+      "scenario": [
+        "In a right triangle, the opposite side is 8 cm and the hypotenuse is 10 cm. Find sin θ.",
+        "In un triangolo rettangolo, il cateto opposto misura 8 cm e l'ipotenusa 10 cm. Calcola sin θ."
+      ],
+      "steps": [
+        [
+          "Use sine = opposite ÷ hypotenuse.",
+          "Usa seno = cateto opposto ÷ ipotenusa."
+        ],
+        [
+          "Calculate 8 ÷ 10 = 0.8.",
+          "Calcola 8 ÷ 10 = 0,8."
+        ]
+      ],
+      "answer": [
+        "sin θ = 0.8.",
+        "sin θ = 0,8."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Sine is adjacent divided by hypotenuse.",
+          "Il seno è il cateto adiacente diviso l'ipotenusa."
+        ],
+        "correction": [
+          "Sine uses opposite over hypotenuse; cosine uses adjacent over hypotenuse.",
+          "Il seno usa cateto opposto fratto ipotenusa; il coseno usa cateto adiacente fratto ipotenusa."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "If the adjacent side is 12 cm and the hypotenuse is 13 cm, which ratio gives cos θ?",
+        "Se il cateto adiacente misura 12 cm e l'ipotenusa 13 cm, quale rapporto calcola cos θ?"
+      ]
     ]
   },
   {
@@ -1201,6 +2268,44 @@ const INDICATORS = [
     "why": [
       "The standard special-angle value is sin 30° = 1/2.",
       "Il valore notevole è sin 30° = 1/2."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Find the exact values of sin 30° and cos 60°.",
+        "Trova i valori esatti di sin 30° e cos 60°."
+      ],
+      "steps": [
+        [
+          "From the special-angle table, sin 30° = 1/2.",
+          "Dalla tabella degli angoli notevoli, sin 30° = 1/2."
+        ],
+        [
+          "The cosine of 60° is also 1/2.",
+          "Anche il coseno di 60° vale 1/2."
+        ]
+      ],
+      "answer": [
+        "Both values are 1/2.",
+        "Entrambi i valori sono 1/2."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "The sine of 30° is √3/2.",
+          "Il seno di 30° è √3/2."
+        ],
+        "correction": [
+          "sin 30° = 1/2; √3/2 is the value of sin 60° and cos 30°.",
+          "sin 30° = 1/2; √3/2 è il valore di sin 60° e cos 30°."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "State the exact values of cos 30° and sin 60°.",
+        "Indica i valori esatti di cos 30° e sin 60°."
+      ]
     ]
   },
   {
@@ -1242,6 +2347,44 @@ const INDICATORS = [
     "why": [
       "210° = 180° + 30°. Sine is negative in the third quadrant, so sin 210° = −sin 30° = −1/2.",
       "210° = 180° + 30°. Il seno è negativo nel terzo quadrante, quindi sin 210° = −sin 30° = −1/2."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Find sin 240° using its reference angle.",
+        "Calcola sin 240° usando l'angolo di riferimento."
+      ],
+      "steps": [
+        [
+          "240° = 180° + 60°, so the reference angle is 60° and the terminal side is in quadrant III.",
+          "240° = 180° + 60°, quindi l'angolo di riferimento è 60° e il lato finale è nel terzo quadrante."
+        ],
+        [
+          "Sine is negative in quadrant III: sin 240° = −sin 60° = −√3/2.",
+          "Il seno è negativo nel terzo quadrante: sin 240° = −sin 60° = −√3/2."
+        ]
+      ],
+      "answer": [
+        "sin 240° = −√3/2.",
+        "sin 240° = −√3/2."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "The trigonometric ratio is positive because the reference angle is acute.",
+          "Il rapporto trigonometrico è positivo perché l'angolo di riferimento è acuto."
+        ],
+        "correction": [
+          "The sign depends on the quadrant of the original angle, not only on the reference angle.",
+          "Il segno dipende dal quadrante dell'angolo originale, non solo dall'angolo di riferimento."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "In which quadrants is sine positive, and in which is it negative?",
+        "In quali quadranti il seno è positivo e in quali è negativo?"
+      ]
     ]
   },
   {
@@ -1283,6 +2426,44 @@ const INDICATORS = [
     "why": [
       "NaCCA gives a floor tile as a referent of about 1 ft² and an exterior house door as about 2 m².",
       "NaCCA indica una piastrella come riferimento di circa 1 ft² e una porta esterna come riferimento di circa 2 m²."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Estimate the area of a classroom floor that is about 8 m long and 6 m wide.",
+        "Stima l'area del pavimento di un'aula lunga circa 8 m e larga 6 m."
+      ],
+      "steps": [
+        [
+          "Use the rectangle area formula: 8 × 6 = 48.",
+          "Usa la formula dell'area del rettangolo: 8 × 6 = 48."
+        ],
+        [
+          "Compare the result with a familiar referent: an exterior door is about 2 m², so 48 m² is roughly 24 door areas.",
+          "Confronta il risultato con un riferimento noto: una porta esterna misura circa 2 m², quindi 48 m² equivalgono a circa 24 aree di porta."
+        ]
+      ],
+      "answer": [
+        "The estimated floor area is 48 m²; area is measured in square units.",
+        "L'area stimata del pavimento è 48 m²; l'area si misura in unità quadrate."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "A floor area is measured in metres, not square metres.",
+          "L'area di un pavimento si misura in metri, non in metri quadrati."
+        ],
+        "correction": [
+          "Metres measure length; square metres measure area. Use squared units for surfaces.",
+          "I metri misurano una lunghezza; i metri quadrati misurano un'area. Per le superfici usa unità al quadrato."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Name one familiar object that can help you estimate an area in square metres.",
+        "Indica un oggetto comune che può aiutarti a stimare un'area in metri quadrati."
+      ]
     ]
   },
   {
@@ -1324,6 +2505,44 @@ const INDICATORS = [
     "why": [
       "Six half-squares make 3 full squares. Estimated area = 14 + 3 = 17 cm².",
       "Sei mezzi quadrati formano 3 quadrati interi. Area stimata = 14 + 3 = 17 cm²."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A grid shape covers 10 full squares and 8 half-squares. Each square is 1 cm². Estimate its area.",
+        "Una figura su una griglia copre 10 quadrati interi e 8 mezzi quadrati. Ogni quadrato misura 1 cm². Stima l'area."
+      ],
+      "steps": [
+        [
+          "Pair the 8 half-squares to make 4 full squares.",
+          "Unisci gli 8 mezzi quadrati per formare 4 quadrati interi."
+        ],
+        [
+          "Add 10 + 4 = 14 square centimetres.",
+          "Somma 10 + 4 = 14 centimetri quadrati."
+        ]
+      ],
+      "answer": [
+        "The estimated area is 14 cm².",
+        "L'area stimata è 14 cm²."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Count every half-square as one full square.",
+          "Conta ogni mezzo quadrato come un quadrato intero."
+        ],
+        "correction": [
+          "Two half-squares make one full square, so multiply the number of half-squares by one half.",
+          "Due mezzi quadrati formano un quadrato intero, quindi moltiplica il numero dei mezzi quadrati per un mezzo."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "A shape covers 12 full squares and 4 half-squares. Estimate its area.",
+        "Una figura copre 12 quadrati interi e 4 mezzi quadrati. Stima la sua area."
+      ]
     ]
   },
   {
@@ -1365,6 +2584,44 @@ const INDICATORS = [
     "why": [
       "Add the two areas: 8 × 6 + 4 × 3 = 48 + 12 = 60 m².",
       "Somma le due aree: 8 × 6 + 4 × 3 = 48 + 12 = 60 m²."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A garden is made from two non-overlapping rectangles: 10 m × 4 m and 3 m × 2 m. Find the total area.",
+        "Un giardino è formato da due rettangoli che non si sovrappongono: 10 m × 4 m e 3 m × 2 m. Trova l'area totale."
+      ],
+      "steps": [
+        [
+          "First area: 10 × 4 = 40 m². Second area: 3 × 2 = 6 m².",
+          "Prima area: 10 × 4 = 40 m². Seconda area: 3 × 2 = 6 m²."
+        ],
+        [
+          "Add the non-overlapping parts: 40 + 6 = 46 m².",
+          "Somma le parti che non si sovrappongono: 40 + 6 = 46 m²."
+        ]
+      ],
+      "answer": [
+        "The total area is 46 m².",
+        "L'area totale è 46 m²."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Add the side lengths of the rectangles to find area.",
+          "Somma le lunghezze dei lati dei rettangoli per trovare l'area."
+        ],
+        "correction": [
+          "Calculate each rectangle's area by multiplying length by width, then add the areas.",
+          "Calcola l'area di ogni rettangolo moltiplicando lunghezza per larghezza, poi somma le aree."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "How would you find the area of a composite shape if two parts overlap?",
+        "Come troveresti l'area di una figura composta se due parti si sovrappongono?"
+      ]
     ]
   },
   {
@@ -1406,6 +2663,44 @@ const INDICATORS = [
     "why": [
       "Volume = cross-sectional area × length = 18 × 7 = 126 cm³.",
       "Volume = area della sezione × lunghezza = 18 × 7 = 126 cm³."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A prism has a cross-sectional area of 12 cm² and a perpendicular length of 9 cm. Find its volume.",
+        "Un prisma ha un'area di sezione di 12 cm² e una lunghezza perpendicolare di 9 cm. Calcola il volume."
+      ],
+      "steps": [
+        [
+          "Use volume = cross-sectional area × length.",
+          "Usa volume = area della sezione × lunghezza."
+        ],
+        [
+          "Multiply 12 × 9 = 108 and use cubic units.",
+          "Moltiplica 12 × 9 = 108 e usa unità cubiche."
+        ]
+      ],
+      "answer": [
+        "The volume is 108 cm³.",
+        "Il volume è 108 cm³."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Use square units because the cross-section is an area.",
+          "Usa unità quadrate perché la sezione è un'area."
+        ],
+        "correction": [
+          "Multiplying an area by a length gives volume, so the unit is cubic: cm² × cm = cm³.",
+          "Moltiplicando un'area per una lunghezza ottieni un volume, quindi l'unità è cubica: cm² × cm = cm³."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "A prism has cross-sectional area 20 cm² and length 5 cm. Find its volume.",
+        "Un prisma ha un'area di sezione di 20 cm² e una lunghezza di 5 cm. Calcola il volume."
+      ]
     ]
   },
   {
@@ -1447,6 +2742,44 @@ const INDICATORS = [
     "why": [
       "A number of siblings is a count, so it is quantitative and discrete.",
       "Il numero di fratelli è un conteggio, quindi è un dato quantitativo discreto."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Classify the number of books each learner borrowed: 0, 1, 2, 3, and 4.",
+        "Classifica il numero di libri presi in prestito da ogni studente: 0, 1, 2, 3 e 4."
+      ],
+      "steps": [
+        [
+          "The values are numbers, so the data are quantitative.",
+          "I valori sono numeri, quindi i dati sono quantitativi."
+        ],
+        [
+          "Books are counted in whole numbers, so the data are discrete.",
+          "I libri si contano con numeri interi, quindi i dati sono discreti."
+        ]
+      ],
+      "answer": [
+        "The number of books borrowed is discrete quantitative data.",
+        "Il numero di libri presi in prestito è un dato quantitativo discreto."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "A numerical variable is always continuous.",
+          "Una variabile numerica è sempre continua."
+        ],
+        "correction": [
+          "Counts are discrete; measurements such as height or time are usually continuous.",
+          "I conteggi sono discreti; misure come altezza o tempo sono di solito continue."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Is a learner's height discrete or continuous data? Explain why.",
+        "L'altezza di uno studente è un dato discreto o continuo? Spiega perché."
+      ]
     ]
   },
   {
@@ -1488,6 +2821,44 @@ const INDICATORS = [
     "why": [
       "Direct measurement creates numerical primary data collected consistently from the learners.",
       "La misurazione diretta produce dati numerici primari raccolti in modo uniforme dagli studenti."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A class wants to record the heights of 25 learners. Choose a suitable primary data method.",
+        "Una classe vuole registrare l'altezza di 25 studenti. Scegli un metodo adatto per raccogliere dati primari."
+      ],
+      "steps": [
+        [
+          "Measure every learner with the same calibrated height scale.",
+          "Misura ogni studente con lo stesso strumento per l'altezza, correttamente calibrato."
+        ],
+        [
+          "Record the value in centimetres and use the same procedure for everyone.",
+          "Registra il valore in centimetri e usa la stessa procedura per tutti."
+        ]
+      ],
+      "answer": [
+        "Direct, consistent measurement provides primary quantitative data.",
+        "Una misurazione diretta e coerente fornisce dati quantitativi primari."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Ask learners to guess their heights to save time.",
+          "Chiedi agli studenti di indovinare la propria altezza per risparmiare tempo."
+        ],
+        "correction": [
+          "A guess is less reliable. Use the same measuring instrument and method for all participants.",
+          "Una stima è meno affidabile. Usa lo stesso strumento e lo stesso metodo per tutti i partecipanti."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "What should remain the same when measuring every learner's height?",
+        "Che cosa deve rimanere uguale quando misuri l'altezza di ogni studente?"
+      ]
     ]
   },
   {
@@ -1529,6 +2900,44 @@ const INDICATORS = [
     "why": [
       "A focus group lets participants explain experiences and reasons in their own words.",
       "Un focus group permette ai partecipanti di spiegare esperienze e motivazioni con parole proprie."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A school wants to understand why learners join or avoid a reading club. Choose a method for detailed opinions.",
+        "Una scuola vuole capire perché gli studenti partecipano o non partecipano a un club di lettura. Scegli un metodo per raccogliere opinioni approfondite."
+      ],
+      "steps": [
+        [
+          "Invite a small, varied group of learners to discuss their experiences.",
+          "Invita un piccolo gruppo vario di studenti a discutere le proprie esperienze."
+        ],
+        [
+          "Use open questions and record themes without attributing comments to named learners.",
+          "Usa domande aperte e registra i temi senza associare i commenti ai nomi degli studenti."
+        ]
+      ],
+      "answer": [
+        "A focus group is suitable for exploring reasons and opinions in depth.",
+        "Un focus group è adatto a esplorare motivazioni e opinioni in profondità."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "A focus group is the best method for collecting an exact count from every learner.",
+          "Un focus group è il metodo migliore per raccogliere un conteggio esatto da ogni studente."
+        ],
+        "correction": [
+          "Focus groups explore views in depth; a structured survey or count is better for numerical totals.",
+          "I focus group esplorano le opinioni in profondità; un sondaggio strutturato o un conteggio è migliore per i totali numerici."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Write one open question that could help explain why learners enjoy a school club.",
+        "Scrivi una domanda aperta che aiuti a capire perché gli studenti apprezzano un club scolastico."
+      ]
     ]
   },
   {
@@ -1570,6 +2979,44 @@ const INDICATORS = [
     "why": [
       "The median is 5 and is less affected by the outlier than the mean.",
       "La mediana è 5 ed è meno influenzata dal valore anomalo rispetto alla media aritmetica."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Find the median of 3, 4, 5, 6 and 28 when 28 is an outlier.",
+        "Trova la mediana di 3, 4, 5, 6 e 28 quando 28 è un valore anomalo."
+      ],
+      "steps": [
+        [
+          "The values are already in order; the middle value is 5.",
+          "I valori sono già ordinati; quello centrale è 5."
+        ],
+        [
+          "The outlier 28 changes the mean strongly but does not move the middle value.",
+          "Il valore anomalo 28 modifica molto la media ma non sposta il valore centrale."
+        ]
+      ],
+      "answer": [
+        "The median is 5 and is a better measure of a typical value here than the mean.",
+        "La mediana è 5 ed è qui una misura del valore tipico migliore della media."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "The mean is always the best average, even when there is an extreme outlier.",
+          "La media aritmetica è sempre la misura migliore, anche quando c'è un valore anomalo estremo."
+        ],
+        "correction": [
+          "Compare mean, median and mode; the median is often more representative when an outlier is present.",
+          "Confronta media, mediana e moda; in presenza di un valore anomalo la mediana è spesso più rappresentativa."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "How would adding a very large outlier affect the mean and the median?",
+        "Come cambierebbe la media e la mediana aggiungendo un valore anomalo molto grande?"
+      ]
     ]
   },
   {
@@ -1611,6 +3058,44 @@ const INDICATORS = [
     "why": [
       "The value 2 appears three times in the data set.",
       "Il valore 2 compare tre volte nell'insieme dei dati."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Create the frequency of 3 in the data set 1, 3, 2, 3, 4, 3, 2.",
+        "Trova la frequenza del valore 3 nell'insieme 1, 3, 2, 3, 4, 3, 2."
+      ],
+      "steps": [
+        [
+          "Read each value once and make a tally whenever 3 appears.",
+          "Leggi ogni valore una volta e segna una tacca ogni volta che compare 3."
+        ],
+        [
+          "The value 3 appears three times.",
+          "Il valore 3 compare tre volte."
+        ]
+      ],
+      "answer": [
+        "The frequency of 3 is 3.",
+        "La frequenza di 3 è 3."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "The frequency of a value is the value itself.",
+          "La frequenza di un valore coincide con il valore stesso."
+        ],
+        "correction": [
+          "Frequency tells how many times the value occurs in the data set.",
+          "La frequenza indica quante volte il valore compare nell'insieme dei dati."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "What is the frequency of 2 in 2, 5, 2, 2, 7, 5?",
+        "Qual è la frequenza di 2 in 2, 5, 2, 2, 7, 5?"
+      ]
     ]
   },
   {
@@ -1652,6 +3137,44 @@ const INDICATORS = [
     "why": [
       "A sample drawn randomly across year groups is more representative than a convenience sample from one group.",
       "Un campione estratto casualmente da tutti gli anni è più rappresentativo di un campione di convenienza preso da un solo gruppo."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A school wants opinions from learners in all year groups. Plan a fair sample.",
+        "Una scuola vuole raccogliere opinioni da studenti di tutti gli anni. Pianifica un campione corretto."
+      ],
+      "steps": [
+        [
+          "List the year groups and decide how many learners to select from each.",
+          "Elenca gli anni scolastici e decidi quanti studenti scegliere da ciascuno."
+        ],
+        [
+          "Select learners randomly within every year group so each group is represented.",
+          "Seleziona gli studenti a caso all'interno di ogni anno, così ogni gruppo è rappresentato."
+        ]
+      ],
+      "answer": [
+        "Random selection from every year group gives a more representative sample than choosing one convenient class.",
+        "Una selezione casuale da ogni anno produce un campione più rappresentativo rispetto alla scelta di una sola classe comoda."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Survey only the learners who are easiest to reach.",
+          "Intervista solo gli studenti più facili da raggiungere."
+        ],
+        "correction": [
+          "A convenience sample can be biased. Include all relevant groups and select participants fairly.",
+          "Un campione di convenienza può essere distorto. Includi tutti i gruppi pertinenti e scegli i partecipanti in modo corretto."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Why might a sample from only one year group misrepresent the whole school?",
+        "Perché un campione composto da un solo anno potrebbe non rappresentare tutta la scuola?"
+      ]
     ]
   },
   {
@@ -1693,6 +3216,44 @@ const INDICATORS = [
     "why": [
       "A responsible report protects participants, explains the evidence and makes conclusions transparent.",
       "Un rapporto responsabile protegge i partecipanti, spiega le prove e rende trasparenti le conclusioni."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Prepare a short report from a survey of learners' travel-to-school methods.",
+        "Prepara un breve rapporto da un sondaggio sui mezzi usati dagli studenti per andare a scuola."
+      ],
+      "steps": [
+        [
+          "Show anonymised totals in a clearly labelled chart and describe how the sample was collected.",
+          "Mostra totali anonimi in un grafico con etichette chiare e descrivi come è stato raccolto il campione."
+        ],
+        [
+          "Make recommendations that follow from the results and state limits of the survey.",
+          "Formula raccomandazioni coerenti con i risultati e indica i limiti del sondaggio."
+        ]
+      ],
+      "answer": [
+        "A responsible report protects identities, explains the method and links conclusions to evidence.",
+        "Un rapporto responsabile protegge le identità, spiega il metodo e collega le conclusioni alle prove."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Publish learners' names and make claims that the survey did not measure.",
+          "Pubblica i nomi degli studenti e formula conclusioni che il sondaggio non ha misurato."
+        ],
+        "correction": [
+          "Protect privacy and separate observed results from unsupported assumptions.",
+          "Proteggi la privacy e distingui i risultati osservati dalle supposizioni non supportate."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "What information should accompany a chart so readers can interpret it responsibly?",
+        "Quali informazioni dovrebbero accompagnare un grafico perché i lettori possano interpretarlo correttamente?"
+      ]
     ]
   },
   {
@@ -1734,6 +3295,44 @@ const INDICATORS = [
     "why": [
       "One class may differ from other year groups, so the result should not be generalised without qualification.",
       "Una classe può essere diversa dagli altri anni, quindi il risultato non va generalizzato senza precisazioni."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A survey aims to describe the whole school but asks only learners in one class. Evaluate the conclusion.",
+        "Un sondaggio vuole descrivere tutta la scuola ma interroga solo gli studenti di una classe. Valuta la conclusione."
+      ],
+      "steps": [
+        [
+          "The class may have different ages, interests or experiences from other year groups.",
+          "La classe può avere età, interessi o esperienze diversi dagli altri anni."
+        ],
+        [
+          "The sample may be biased, so do not generalise the result to every learner without further evidence.",
+          "Il campione può essere distorto, quindi non generalizzare il risultato a tutti gli studenti senza altre prove."
+        ]
+      ],
+      "answer": [
+        "The sample may not represent the whole school; the inference must be qualified.",
+        "Il campione potrebbe non rappresentare tutta la scuola; l'inferenza deve essere formulata con cautela."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "A large number of responses automatically makes a sample representative.",
+          "Un grande numero di risposte rende automaticamente rappresentativo un campione."
+        ],
+        "correction": [
+          "How participants are selected matters as well as sample size; a biased sample can remain biased when large.",
+          "Conta anche come vengono scelti i partecipanti, non solo la dimensione: un campione distorto può restare tale anche se è grande."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "Suggest one way to improve the sample so it better represents the whole school.",
+        "Suggerisci un modo per migliorare il campione affinché rappresenti meglio tutta la scuola."
+      ]
     ]
   },
   {
@@ -1775,6 +3374,44 @@ const INDICATORS = [
     "why": [
       "The sample space is {HH, HT, TH, TT}, so there are four outcomes.",
       "Lo spazio campionario è {TT, TC, CT, CC}, quindi ci sono quattro risultati."
+    ],
+    "workedExample": {
+      "scenario": [
+        "List the sample space when a fair coin is tossed twice.",
+        "Elenca lo spazio campionario quando una moneta equa viene lanciata due volte."
+      ],
+      "steps": [
+        [
+          "Record the first toss, then the second: HH, HT, TH and TT.",
+          "Registra il primo lancio e poi il secondo: TT, TC, CT e CC."
+        ],
+        [
+          "There are four ordered outcomes because the two toss positions are distinct.",
+          "Ci sono quattro risultati ordinati perché le posizioni dei due lanci sono distinte."
+        ]
+      ],
+      "answer": [
+        "The sample space has four outcomes: HH, HT, TH and TT.",
+        "Lo spazio campionario contiene quattro risultati: TT, TC, CT e CC."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "HT and TH are the same outcome because they contain one head and one tail.",
+          "HT e TH sono lo stesso risultato perché contengono una testa e una croce."
+        ],
+        "correction": [
+          "The order records which toss produced each result, so HT and TH are distinct outcomes.",
+          "L'ordine indica il risultato di ciascun lancio, quindi HT e TH sono risultati distinti."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "How many ordered outcomes are possible when a coin is tossed three times?",
+        "Quanti risultati ordinati sono possibili lanciando una moneta tre volte?"
+      ]
     ]
   },
   {
@@ -1816,6 +3453,44 @@ const INDICATORS = [
     "why": [
       "The events are independent: 1/2 × 1/6 = 1/12.",
       "Gli eventi sono indipendenti: 1/2 × 1/6 = 1/12."
+    ],
+    "workedExample": {
+      "scenario": [
+        "Find the probability of rolling an even number on a fair six-sided die and getting heads on a fair coin.",
+        "Calcola la probabilità di ottenere un numero pari con un dado equo e testa con una moneta equa."
+      ],
+      "steps": [
+        [
+          "P(even) = 3/6 = 1/2 and P(heads) = 1/2.",
+          "P(numero pari) = 3/6 = 1/2 e P(testa) = 1/2."
+        ],
+        [
+          "The events are independent, so multiply: 1/2 × 1/2 = 1/4.",
+          "Gli eventi sono indipendenti, quindi moltiplica: 1/2 × 1/2 = 1/4."
+        ]
+      ],
+      "answer": [
+        "The probability is 1/4.",
+        "La probabilità è 1/4."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "Add the probabilities of two independent events to find that both occur.",
+          "Somma le probabilità di due eventi indipendenti per trovare la probabilità che accadano entrambi."
+        ],
+        "correction": [
+          "For both independent events to occur, multiply their probabilities.",
+          "Perché si verifichino entrambi gli eventi indipendenti, moltiplica le loro probabilità."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "If two independent events have probabilities 1/3 and 1/5, what is the probability both occur?",
+        "Se due eventi indipendenti hanno probabilità 1/3 e 1/5, qual è la probabilità che si verifichino entrambi?"
+      ]
     ]
   },
   {
@@ -1857,6 +3532,44 @@ const INDICATORS = [
     "why": [
       "With replacement, each red probability is 3/5. Multiply: 3/5 × 3/5 = 9/25.",
       "Con reinserimento, ogni probabilità di rosso è 3/5. Moltiplica: 3/5 × 3/5 = 9/25."
+    ],
+    "workedExample": {
+      "scenario": [
+        "A bag has 4 green and 1 yellow counter. A counter is drawn, replaced and drawn again. Find the probability of green twice.",
+        "Un sacchetto contiene 4 gettoni verdi e 1 giallo. Si estrae un gettone, lo si rimette e si estrae di nuovo. Calcola la probabilità di ottenere verde due volte."
+      ],
+      "steps": [
+        [
+          "The probability of green on each draw is 4/5 because the counter is replaced.",
+          "La probabilità di verde a ogni estrazione è 4/5 perché il gettone viene rimesso."
+        ],
+        [
+          "Multiply the independent probabilities: 4/5 × 4/5 = 16/25.",
+          "Moltiplica le probabilità indipendenti: 4/5 × 4/5 = 16/25."
+        ]
+      ],
+      "answer": [
+        "The probability of drawing green twice is 16/25.",
+        "La probabilità di estrarre verde due volte è 16/25."
+      ]
+    },
+    "misconceptions": [
+      {
+        "belief": [
+          "The second draw has a different probability even though the first counter is replaced.",
+          "La seconda estrazione ha una probabilità diversa anche se il primo gettone viene rimesso."
+        ],
+        "correction": [
+          "Replacement restores the original bag, so the probability stays 4/5 on both draws.",
+          "La reimmissione ripristina il contenuto iniziale del sacchetto, quindi la probabilità resta 4/5 in entrambe le estrazioni."
+        ]
+      }
+    ],
+    "knowledgePrompts": [
+      [
+        "How would the probability change if the first counter were not replaced?",
+        "Come cambierebbe la probabilità se il primo gettone non venisse rimesso?"
+      ]
     ]
   }
 ] as IndicatorItem[];
@@ -1972,7 +3685,10 @@ export const GHANA_SS1_INDICATOR_MASTERY_MISSIONS: Mission[] = [
       concepts: INDICATORS.map(item => ({
         id: item.id,
         title: item.title,
-        explanation: item.explanation
+        explanation: item.explanation,
+        workedExample: item.workedExample,
+        misconceptions: item.misconceptions,
+        knowledgePrompts: item.knowledgePrompts
       })),
       summary: [
         ['The 45 questions are linked one-to-one to the 45 SHS 1 indicator entries across eight sub-strands. Results are stored by indicator concept to support targeted revision.', 'Le 45 domande sono collegate una a una alle 45 voci degli indicatori SHS 1 distribuite in otto sotto-ambiti. I risultati sono registrati per concetto-indicatore per supportare il ripasso mirato.'],
