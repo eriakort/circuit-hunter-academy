@@ -203,3 +203,121 @@ export const GHANA_CORE_MATH_SS2_SPATIAL_ALIGNMENT = {
     }
   ]
 } as const;
+
+
+// Strand 3 · Geometry Around Us · Sub-strand 2 · Measurement
+// Source: NaCCA Mathematics Curriculum for Secondary Education (SHS 1–3),
+// September 2023. SHS 2 Measurement starts at p. 229; standards and
+// indicators for this increment appear on printed pp. 239–263.
+export const GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT = {
+  strand: '3 · Geometry Around Us',
+  subStrand: '2 · Measurement',
+  printedPages: [239, 263],
+  contentStandards: [
+    {
+      id: '2.3.2.CS.1',
+      printedPage: 239,
+      description: 'Demonstrate knowledge and understanding of measurement with respect to operations on bearings and vectors.',
+      learningIndicatorIds: ['2.3.2.LI.1', '2.3.2.LI.2', '2.3.2.LI.3']
+    },
+    {
+      id: '2.3.2.CS.2',
+      printedPage: 246,
+      description: 'Demonstrate an understanding of the inverse of trigonometric ratios and angles of elevation and depression, and apply the knowledge to calculate distances and heights.',
+      learningIndicatorIds: ['2.3.2.LI.1', '2.3.2.LI.2']
+    },
+    {
+      id: '2.3.2.CS.3',
+      printedPage: 252,
+      description: 'Demonstrate conceptual understanding of the measurement of surface area, volume and capacity of solid shapes.',
+      learningIndicatorIds: ['2.3.2.LI.1', '2.3.2.LI.2', '2.3.2.LI.3']
+    }
+  ],
+  learningOutcomes: [
+    {
+      id: '2.3.2.LO.1',
+      printedPage: 233,
+      description: 'Carry out addition, subtraction and scalar multiplication of vectors and investigate, with and without technology, properties such as commutative, associative and distributive properties of vector operations.'
+    },
+    {
+      id: '2.3.2.LO.2',
+      printedPage: 241,
+      description: 'Determine inverse trigonometric ratios, calculate angles of elevation and depression in everyday-life situations, and apply the knowledge to calculate distances and heights.'
+    },
+    {
+      id: '2.3.2.LO.3',
+      printedPage: 249,
+      description: 'Determine the volume and capacity of solid shapes and solve problems involving SI and imperial units in surface-area, volume and capacity measurements.'
+    }
+  ],
+  learningIndicators: [
+    {
+      id: '2.3.2.LI.1',
+      contentStandardId: '2.3.2.CS.1',
+      printedPage: 239,
+      description: 'Perform addition, subtraction and scalar multiplication on vectors represented as directed line segments in two-space and in Cartesian form in two and three-space.'
+    },
+    {
+      id: '2.3.2.LI.2',
+      contentStandardId: '2.3.2.CS.1',
+      printedPage: 242,
+      description: 'Determine properties (commutative, associative and distributive) of operations on vectors through investigation with or without technology.'
+    },
+    {
+      id: '2.3.2.LI.3',
+      contentStandardId: '2.3.2.CS.1',
+      printedPage: 244,
+      description: 'Solve problems involving addition, subtraction and scalar multiplication of vectors, including real-world applications.'
+    },
+    {
+      id: '2.3.2.LI.1',
+      contentStandardId: '2.3.2.CS.2',
+      printedPage: 246,
+      description: 'Determine inverse trigonometric ratios (graphs excluded) and discuss their applications.'
+    },
+    {
+      id: '2.3.2.LI.2',
+      contentStandardId: '2.3.2.CS.2',
+      printedPage: 248,
+      description: 'Solve problems involving angles of elevation and depression and identify everyday-life applications.'
+    },
+    {
+      id: '2.3.2.LI.1',
+      contentStandardId: '2.3.2.CS.3',
+      printedPage: 252,
+      description: 'Solve problems involving SI and imperial units in surface-area measurements and verify solutions.'
+    },
+    {
+      id: '2.3.2.LI.2',
+      contentStandardId: '2.3.2.CS.3',
+      printedPage: 258,
+      description: 'Solve problems involving SI and imperial units in volume and capacity measurements.'
+    },
+    {
+      id: '2.3.2.LI.3',
+      contentStandardId: '2.3.2.CS.3',
+      printedPage: 263,
+      description: 'Solve problems involving the volume and capacity of three-dimensional objects.'
+    }
+  ],
+  coverage: [
+    {
+      missionId: 'gh-core-ss2-vector-operations-navigation',
+      contentStandardId: '2.3.2.CS.1',
+      learningIndicators: ['2.3.2.LI.1', '2.3.2.LI.2', '2.3.2.LI.3'],
+      topics: ['vector representation', 'two- and three-dimensional components', 'addition', 'subtraction', 'scalar multiplication', 'vector properties', 'resultant displacement']
+    },
+    {
+      missionId: 'gh-core-ss2-inverse-trig-elevation-depression',
+      contentStandardId: '2.3.2.CS.2',
+      learningIndicators: ['2.3.2.LI.1', '2.3.2.LI.2'],
+      topics: ['inverse sine', 'inverse cosine', 'inverse tangent', 'angles of elevation', 'angles of depression', 'heights and distances']
+    },
+    {
+      missionId: 'gh-core-ss2-solid-measurement-surface-volume-capacity',
+      contentStandardId: '2.3.2.CS.3',
+      learningIndicators: ['2.3.2.LI.1', '2.3.2.LI.2', '2.3.2.LI.3'],
+      topics: ['surface area', 'SI and imperial units', 'volume', 'capacity', 'nets of solids', 'prisms', 'cones', 'pyramids', 'spheres', 'unit conversions']
+    }
+  ]
+} as const;
