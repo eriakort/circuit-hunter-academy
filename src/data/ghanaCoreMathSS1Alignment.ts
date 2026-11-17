@@ -269,6 +269,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Covers factorisation of quadratic trinomials, recognition and use of perfect-square identities including the difference of two squares, and operations on simple algebraic fractions with monomial and binomial denominators. It also teaches the conditions under which a fraction is zero or undefined. Linear equations and inequalities are mapped separately.'
   },
+  {
+    missionId: 'gh-core-ss1-trigonometry',
+    curriculumYear: 'SHS 1',
+    strand: '3 · Geometry Around Us',
+    subStrand: '2 · Measurement',
+    contentStandardIds: ['1.3.2.CS.2'],
+    learningOutcomeIds: ['1.3.2.LO.2'],
+    learningIndicatorIds: ['1.3.2.LI.1', '1.3.2.LI.2', '1.3.2.LI.3'],
+    printedPages: [114, 117],
+    alignment: 'direct',
+    note: 'Covers the three primary trigonometric ratios in right triangles, special angles 30°, 45° and 60°, calculator evaluation of sine/cosine/tangent through 360° in standard position, and practical height/distance problems. The separate perimeter/area standard is not claimed as covered.'
+  },
 ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
