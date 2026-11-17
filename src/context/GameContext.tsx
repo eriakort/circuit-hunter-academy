@@ -132,15 +132,24 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [state, activeSaveKey, curriculumProfile.activeCurriculumId]);
 
   useEffect(() => {
+    if (!isMissionIndexForSubject(currentMissionIndex, state.subject)) {
+      setCurrentMissionIndex(getFirstMissionIndexForSubject(state.subject));
+      setCurrentSceneIndex(0);
+      setBattleContext(null);
+      setView('map');
+    }
+  }, [currentMissionIndex, state.subject]);
+
+  useEffect(() => {
     try {
       const serialized = JSON.stringify({
         view,
-        currentMissionIndex,
+        currentMissionIndex: isMissionIndexForSubject(currentMissionIndex, state.subject) ? currentMissionIndex : getFirstMissionIndexForSubject(state.subject),
         currentSceneIndex,
         battleContext,
         grade: state.grade,
         subject: state.subject,
-        missionId: MISSIONS[currentMissionIndex]?.id || null
+        missionId: MISSIONS[isMissionIndexForSubject(currentMissionIndex, state.subject) ? currentMissionIndex : getFirstMissionIndexForSubject(state.subject)]?.id || null
       } satisfies SavedNavigation);
       localStorage.setItem(activeNavigationKey, serialized);
       if (curriculumProfile.activeCurriculumId === DEFAULT_CURRICULUM_ID) localStorage.setItem(NAVIGATION_KEY, serialized);
@@ -418,7 +427,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
         curriculumProfile,
         setCurriculum,
         view,
-        currentMissionIndex,
+        currentMissionIndex: safeCurrentMissionIndex,
         currentSceneIndex,
         currentMission,
         battleContext,
