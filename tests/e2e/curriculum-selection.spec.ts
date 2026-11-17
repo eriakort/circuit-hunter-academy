@@ -22,6 +22,8 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await page.reload();
 
   await expect(page.getByRole('button', { name: /Italy/ })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'italian');
+  await expect(page.getByTestId('sankofa-experience')).toHaveCount(0);
   await page.getByRole('button', { name: /Ghana/ }).click();
   await expect(page.getByRole('heading', { name: 'Ghana SHS curriculum selected' })).toBeVisible();
   await expect(page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ })).toHaveAttribute('aria-pressed', 'true');
@@ -34,12 +36,18 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await expect(page.locator('.grade-card[data-grade="grade11"]')).toBeDisabled();
   await page.locator('.grade-card[data-grade="grade9"]').click();
   await expect(page.locator('[data-s="ghcoremath"]')).toBeVisible();
+  await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'sankofa');
+  await expect(page.locator('.theme-sankofa')).toHaveAttribute('data-curriculum', 'ghana-nacca');
   await expect(page.getByText('Additional Mathematics', { exact: true })).toBeVisible();
   await page.locator('[data-s="ghcoremath"]').click();
   await page.locator('#nm').fill('Ghana Hunter');
   await page.getByRole('button', { name: /Join the academy/ }).click();
   await expect(page.locator('h3').filter({ hasText: 'The Number Map' })).toBeVisible();
   await expect(page.locator('h3').filter({ hasText: 'The Market Percentage Challenge' })).toBeVisible();
+  await expect(page.getByTestId('sankofa-experience')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Sankofa – The Knowledge Quest' })).toBeVisible();
+  await expect(page.locator('.sankofa-region')).toHaveCount(5);
+  await expect(page.getByText('Curious Seeker')).toBeVisible();
   const ghanaSaveAfterSelection = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:ghana-nacca') || '{}'));
   expect(ghanaSaveAfterSelection.grade).toBe('grade9');
   expect(ghanaSaveAfterSelection.subject).toBe('ghcoremath');
