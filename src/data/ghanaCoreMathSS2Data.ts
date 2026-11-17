@@ -8,8 +8,8 @@ import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
 export const GHANA_CORE_MATH_SS2_SUBJECT: SubjectInfo = {
   id: 'ghcoremath2',
   name: 'Core Mathematics · SHS 2',
-  blurb: 'Ghana NaCCA SHS 2 Core Mathematics: number systems, proportional reasoning, algebra, progressions, financial models and geometry.',
-  meta: 'Ghana NaCCA · SHS 2 · eight learning missions',
+  blurb: 'Ghana NaCCA SHS 2 Core Mathematics: number systems, proportional reasoning, algebra, progressions, financial models, geometry and measurement.',
+  meta: 'Ghana NaCCA · SHS 2 · eleven learning missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="38" fill="none" stroke="#7bdff2" stroke-width="4"/><path d="M37 76 L54 42 L67 66 L83 42" fill="none" stroke="#ffd166" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
@@ -405,6 +405,136 @@ export const GHANA_CORE_MATH_SS2_SPATIAL_MISSIONS: Mission[] = [
       question('Why must you follow the stated order in successive transformations?', ['A different order can produce a different final image', 'The order changes the number of vertices', 'The first transformation is always cancelled', 'Every order gives the same result'], 'Transformations are applied to the current image, so changing the order can change the final position.'),
       question('A 4 cm side is enlarged by scale factor 2. What is the corresponding image side?', ['8 cm', '6 cm', '4 cm', '2 cm'], 'Multiply the original length by the scale factor: 4 × 2 = 8 cm.'),
       question('A shape is enlarged by scale factor 3. By what factor does its area change?', ['9', '3', '6', '12'], 'Area scales by the square of the length factor: 3² = 9.')
+    ]
+  }
+];
+
+
+// ---------------------------------------------------------------------------
+// Strand 3 · Geometry Around Us · Sub-strand 2
+// Measurement: vector operations, trigonometry and solid measurement
+// (NaCCA SHS 2 · printed pages 239–263; section begins on p. 229)
+// ---------------------------------------------------------------------------
+export const GHANA_CORE_MATH_SS2_MEASUREMENT_UNIT: UnitInfo = {
+  title: 'Geometry Around Us · Measurement',
+  ch: 'SS2 · NaCCA pp. 239–263',
+  subject: 'ghcoremath2'
+};
+
+export const GHANA_CORE_MATH_SS2_MEASUREMENT_ARCS: ArcInfo[] = [
+  {
+    n: 3,
+    unit: 0,
+    subject: 'ghcoremath2',
+    title: 'Measurement · Vectors, Trigonometry and Solid Shapes',
+    pages: 'NaCCA SHS 2 · pp. 239–263'
+  }
+];
+
+export const GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS: Mission[] = [
+  {
+    id: 'gh-core-ss2-vector-operations-navigation',
+    arc: 0,
+    sec: '2.3.2',
+    pages: 'NaCCA SHS 2 · pp. 239–244',
+    hue: 165,
+    horns: 2,
+    eyes: 3,
+    title: 'The Vector Pathfinder',
+    topic: 'Add, subtract and scale vectors in two and three dimensions, investigate their properties, and solve movement problems.',
+    demon: 'The Displacement Trickster',
+    tech: 'Geometry Form · SHS 2 Technique: Resultant Route',
+    scenes: [
+      lesson('<p>A <b>vector</b> has both magnitude (size) and direction. We can draw it as an arrow or write it in component form. For example, (3, 2) means 3 units east and 2 units north. In three dimensions, (3, 2, −1) adds a third component, such as 1 unit downward.</p>'),
+      lesson('<p>To <b>add vectors</b> in component form, add matching components: (2, 3) + (4, −1) = (6, 2). To subtract, subtract matching components: (2, 3) − (4, −1) = (−2, 4). The same rule works in three dimensions by operating on all three components.</p>'),
+      lesson('<p><b>Scalar multiplication</b> multiplies every component by the same number. If a = (2, −3), then 3a = (6, −9), while −a = (−2, 3), which reverses its direction. A zero scalar produces the zero vector.</p>'),
+      lesson('<p>Vector addition is commutative and associative: a + b = b + a and (a + b) + c = a + (b + c). Subtraction is not commutative: a − b is generally different from b − a. Scalar multiplication distributes over vector addition: k(a + b) = ka + kb. These properties help us check calculations.</p>'),
+      lesson('<p>In a journey, the <b>resultant vector</b> gives the overall displacement from the starting point to the finishing point. If a learner walks 6 km east and then 8 km north, the displacement has components (6, 8) and magnitude √(6² + 8²) = 10 km. The route travelled is 14 km, but the displacement is 10 km.</p>'),
+      { type: 'sort', title: 'Choose the correct vector operation', cats: [['Addition', 'Add components'], ['Subtraction', 'Subtract components'], ['Scalar', 'Scale every component'], ['Property', 'Check a rule']], items: [
+        { n: '(2, 1) + (3, 4) = (5, 5)', c: 0, i: 'add' },
+        { n: '(5, 2) − (1, 6) = (4, −4)', c: 1, i: 'subtract' },
+        { n: '4 × (2, −1) = (8, −4)', c: 2, i: 'scale' },
+        { n: 'a + b = b + a', c: 3, i: 'commute' }
+      ] },
+      { who: 'd', vis: 'demon', text: 'The Displacement Trickster has mixed up every route. Combine the vectors, check the rules, and find the true destination!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('Find (3, −2) + (4, 5).', ['(7, 3)', '(1, 7)', '(7, −7)', '(12, −10)'], 'Add matching components: (3 + 4, −2 + 5) = (7, 3).'),
+      question('Find (6, 1) − (2, 4).', ['(4, −3)', '(8, 5)', '(4, 3)', '(−4, 3)'], 'Subtract matching components: (6 − 2, 1 − 4) = (4, −3).'),
+      question('If a = (2, −3), what is −2a?', ['(−4, 6)', '(4, −6)', '(0, −1)', '(−2, 3)'], 'Multiply each component by −2: (−4, 6).'),
+      question('Which statement is always true for vector addition?', ['a + b = b + a', 'a − b = b − a', 'a + 0 = 0', '2(a + b) = 2a + b'], 'Vector addition is commutative: changing the order does not change the sum.'),
+      question('A person walks 6 km east and 8 km north. What is the magnitude of the displacement?', ['10 km', '14 km', '2 km', '48 km'], 'Use Pythagoras: √(6² + 8²) = √100 = 10 km.')
+    ]
+  },
+  {
+    id: 'gh-core-ss2-inverse-trig-elevation-depression',
+    arc: 0,
+    sec: '2.3.2',
+    pages: 'NaCCA SHS 2 · pp. 246–250',
+    hue: 215,
+    horns: 1,
+    eyes: 4,
+    title: 'The Horizon Surveyor',
+    topic: 'Use inverse trigonometric ratios to find angles and solve everyday height and distance problems involving elevation and depression.',
+    demon: 'The Angle Illusionist',
+    tech: 'Geometry Form · SHS 2 Technique: Horizon Measure',
+    scenes: [
+      lesson('<p>In a right-angled triangle, sine, cosine and tangent connect an angle to side lengths. The <b>inverse trigonometric functions</b> work backwards: sin⁻¹, cos⁻¹ and tan⁻¹ help us find an angle when we know a suitable ratio. They are not the same as taking the reciprocal of sine, cosine or tangent.</p>'),
+      lesson('<p>For an angle θ in a right-angled triangle: sin θ = opposite/hypotenuse, cos θ = adjacent/hypotenuse, and tan θ = opposite/adjacent. If opposite = 6 and adjacent = 8, then tan θ = 6/8, so θ = tan⁻¹(0.75) ≈ 36.9°. Set your calculator to degrees when the question uses degrees.</p>'),
+      lesson('<p>An <b>angle of elevation</b> is measured upwards from a horizontal line to an object above the observer. An <b>angle of depression</b> is measured downwards from a horizontal line to an object below the observer. The two horizontal lines are parallel, so the angle of depression equals the matching angle of elevation at the other point.</p>'),
+      lesson('<p>To find a height or distance, sketch and label the right triangle first. Choose sine, cosine or tangent based on the sides you know. For example, if a point is 20 m from the foot of a tower and the angle of elevation to its top is 30°, then height = 20 × tan 30° ≈ 11.55 m, assuming level ground and ignoring eye height.</p>'),
+      lesson('<p>Check whether the answer is reasonable and include units. In a real survey, measurements may be affected by uneven ground, instrument height and rounding. State any assumptions rather than treating an estimate as an exact measurement.</p>'),
+      { type: 'sort', title: 'Match the situation to the method', cats: [['Inverse ratio', 'Find an angle'], ['Elevation', 'Look upwards'], ['Depression', 'Look downwards'], ['Tangent', 'Opposite ÷ adjacent']], items: [
+        { n: 'Known opposite and hypotenuse', c: 0, i: 'inverse-sine' },
+        { n: 'Angle from the ground to the top of a tree', c: 1, i: 'up' },
+        { n: 'Angle from a lighthouse down to a boat', c: 2, i: 'down' },
+        { n: 'Height and horizontal distance in a right triangle', c: 3, i: 'tan' }
+      ] },
+      { who: 'd', vis: 'demon', text: 'The Angle Illusionist has hidden the heights and distances. Choose the right ratio and reveal the measurements!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('Which inverse ratio finds an angle when opposite and hypotenuse are known?', ['sin⁻¹', 'cos⁻¹', 'tan⁻¹', 'sin'], 'Sine is opposite divided by hypotenuse, so use sin⁻¹ to find the angle.'),
+      question('If tan θ = 1, what is θ in the acute-angle range?', ['45°', '30°', '60°', '90°'], 'tan 45° = 1.'),
+      question('From where is an angle of elevation measured?', ['From the horizontal upwards', 'From the vertical downwards', 'From the ground downwards', 'From the hypotenuse'], 'An angle of elevation is measured upwards from the observer’s horizontal line.'),
+      question('A person stands 10 m from a vertical pole. The angle of elevation to its top is 45°. What is the pole’s height above eye level?', ['10 m', '5 m', '20 m', '14.1 m'], 'tan 45° = height/10 = 1, so the height is 10 m.'),
+      question('A boat is viewed from a lighthouse. The angle measured down from the lighthouse’s horizontal line is called:', ['Angle of depression', 'Angle of elevation', 'Right angle', 'Reflex angle'], 'Looking down from the horizontal to the boat gives an angle of depression.')
+    ]
+  },
+  {
+    id: 'gh-core-ss2-solid-measurement-surface-volume-capacity',
+    arc: 0,
+    sec: '2.3.2',
+    pages: 'NaCCA SHS 2 · pp. 252–263',
+    hue: 45,
+    horns: 2,
+    eyes: 2,
+    title: 'The Solid Shape Engineer',
+    topic: 'Calculate surface area, volume and capacity of 3D shapes, work with SI and imperial units, and solve practical measurement problems.',
+    demon: 'The Dimension Devourer',
+    tech: 'Geometry Form · SHS 2 Technique: Solid Blueprint',
+    scenes: [
+      lesson('<p>A solid shape has three dimensions. <b>Surface area</b> is the total area covering its outside faces; it is measured in square units such as cm² or m². <b>Volume</b> is the space occupied by the solid; it is measured in cubic units such as cm³ or m³. Do not mix square and cubic units.</p>'),
+      lesson('<p>For a rectangular prism, volume = length × width × height, and surface area = 2(lw + lh + wh). For a cube with edge a, volume = a³ and surface area = 6a². For a cylinder, volume = πr²h and total surface area = 2πr(r + h).</p>'),
+      lesson('<p>Other useful formulas include: cone volume = ⅓πr²h and total surface area = πr(r + l), where l is slant height; sphere volume = ⁴⁄₃πr³ and surface area = 4πr²; prism volume = base area × length; pyramid volume = ⅓ × base area × perpendicular height. Check whether the question asks for curved or total surface area.</p>'),
+      lesson('<p><b>Capacity</b> is how much a container can hold. Volume describes the space occupied by the contents or object; capacity describes the maximum amount a container can contain. For water, 1 litre = 1,000 cm³ and 1 m³ = 1,000 litres. A hollow container has capacity; a solid block has volume but not container capacity.</p>'),
+      lesson('<p>When converting SI and imperial measurements, convert all dimensions to the same unit before using a formula. Useful exact relationships include 1 inch = 2.54 cm, 1 foot = 12 inches and 1 yard = 3 feet. For cubic units, the conversion factor is cubed: do not convert cm³ to m³ using the ordinary length factor alone.</p>'),
+      { type: 'sort', title: 'Sort the measurement idea', cats: [['Surface area', 'Square units'], ['Volume', 'Cubic units'], ['Capacity', 'Container amount'], ['Conversion', 'Change units']], items: [
+        { n: 'Area of all the outside faces of a box', c: 0, i: 'outside' },
+        { n: 'Space occupied by a solid block', c: 1, i: 'space' },
+        { n: 'Maximum liquid a bottle can hold', c: 2, i: 'liquid' },
+        { n: 'Change 12 inches into 1 foot', c: 3, i: 'units' }
+      ] },
+      { who: 'd', vis: 'demon', text: 'The Dimension Devourer has mixed up every formula and unit. Build the right solid, choose the correct measurement, and restore order!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('What is the volume of a cuboid measuring 4 cm × 3 cm × 5 cm?', ['60 cm³', '47 cm²', '12 cm³', '60 cm²'], 'Volume = length × width × height = 4 × 3 × 5 = 60 cm³.'),
+      question('What is the total surface area of a cube with edge 3 cm?', ['54 cm²', '27 cm³', '36 cm²', '9 cm²'], 'Surface area = 6a² = 6 × 3² = 54 cm².'),
+      question('A container holds 2 litres. How many cubic centimetres is this?', ['2,000 cm³', '200 cm³', '20,000 cm³', '2 cm³'], '1 litre = 1,000 cm³, so 2 litres = 2,000 cm³.'),
+      question('What is the volume of a cylinder with radius 2 cm and height 5 cm?', ['20π cm³', '10π cm²', '40π cm³', '25π cm³'], 'Volume = πr²h = π × 2² × 5 = 20π cm³.'),
+      question('Which statement about unit conversion is correct?', ['1 foot = 12 inches', '1 inch = 12 feet', '1 yard = 12 feet', '1 metre = 100 centimetres cubed'], 'One foot is exactly 12 inches. Keep length, area and volume conversions distinct.')
     ]
   }
 ];

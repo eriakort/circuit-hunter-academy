@@ -29111,3 +29111,23 @@ MISSIONS.push(...GHANA_CORE_MATH_SS2_SPATIAL_MISSIONS.map(mission => ({
   ...mission,
   arc: ghanaCoreMathSS2SpatialArcOffset + mission.arc
 })));
+
+
+// Ghana NaCCA · SHS 2 Geometry Around Us · Measurement.
+import {
+  GHANA_CORE_MATH_SS2_MEASUREMENT_UNIT,
+  GHANA_CORE_MATH_SS2_MEASUREMENT_ARCS,
+  GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS
+} from './ghanaCoreMathSS2Data';
+const ghanaCoreMathSS2MeasurementUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_CORE_MATH_SS2_MEASUREMENT_UNIT, subject: 'ghcoremath2' });
+const ghanaCoreMathSS2MeasurementArcOffset = ARCS.length;
+GHANA_CORE_MATH_SS2_MEASUREMENT_ARCS.forEach(arc => ARCS.push({
+  ...arc,
+  unit: ghanaCoreMathSS2MeasurementUnitOffset,
+  subject: 'ghcoremath2'
+}));
+MISSIONS.push(...GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS.map(mission => ({
+  ...mission,
+  arc: ghanaCoreMathSS2MeasurementArcOffset + mission.arc
+})));
