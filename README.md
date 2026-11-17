@@ -60,7 +60,7 @@ Based on *Massimo Bergamini & Graziella Barozzi, Matematica multimediale.blu, Te
 
 A separate Ghana country curriculum provides an SS1 Core Mathematics pilot with **35 missions** across the eight NaCCA sub-strands. The official SHS 1 scope contains **16 content standards, 17 learning outcomes and 45 learning indicators**.
 
-The 45-indicator diagnostic maps one question to each indicator in a **90-question bilingual bank** (two forms per indicator). Each diagnostic attempt still contains 45 questions—one per indicator—but retries select alternate forms. Saved attempt reviews retain the exact question form shown. Targeted revision also presents both question forms alongside bilingual worked examples, common-misconception corrections and self-check prompts. The diagnostic and dashboard are assessment overlays; they do not increase the official curriculum totals.
+The 45-indicator diagnostic maps one question to each indicator in a **90-question bilingual bank** (two forms per indicator). Each diagnostic attempt still contains 45 questions—one per indicator—and every retry switches to the alternate form for each indicator. Saved attempt reviews retain the exact question form shown. Targeted revision also presents both question forms alongside bilingual worked examples, common-misconception corrections and self-check prompts. The diagnostic and dashboard are assessment overlays; they do not increase the official curriculum totals.
 
 ---
 
