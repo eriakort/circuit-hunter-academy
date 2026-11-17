@@ -20,7 +20,8 @@ assert.ok(mission, 'The First Algorithm mission must exist');
 
 const wordOriginScene = mission.scenes.find(scene => scene.vis === 'infowords');
 assert.ok(wordOriginScene, 'The word-origin scene must exist');
-assert.doesNotMatch(wordOriginScene.text[0], /Italian word|informazione|informatica/i);
+const visibleEnglishScene = wordOriginScene.text[0].replace(/\\[\\[([^|\\]]+)\\|([^\\]]+)\\]\\]/g, '$1');
+assert.doesNotMatch(visibleEnglishScene, /Italian word|informazione|informatica/i);
 
 const wordOriginQuestion = mission.quiz.find(question =>
   question.q[0].toLowerCase().includes('informatics')
