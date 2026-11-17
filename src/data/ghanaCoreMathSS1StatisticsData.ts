@@ -169,5 +169,43 @@ export const GHANA_SS1_STATISTICS_MISSIONS: Mission[] = [
       ], 'Recommendations should follow logically from evidence and acknowledge the limits of the investigation.')
     ]
   }
+,
+  {
+    id: 'gh-core-ss1-statistical-investigation-mastery',
+    arc: 0,
+    sec: 'Making sense of and using data',
+    pages: 'NaCCA SHS 1 · pp. 126–147 · Integrated statistical investigation',
+    hue: 18,
+    horns: 2,
+    eyes: 2,
+    title: 'The Community Data Lab',
+    topic: 'Complete an end-to-end statistical investigation: refine a question, select and classify data, collect responsibly, organise and display results, interpret descriptive statistics, and communicate justified conclusions.',
+    demon: 'The Evidence Illusionist',
+    tech: 'Data Form · Final Technique: Investigate, Interpret and Communicate',
+    scenes: [
+      lesson('<p><b>Welcome to the Community Data Lab.</b> Statistics is a process, not just a calculation. A trustworthy investigation begins with a clear question, gathers suitable evidence, organises it carefully, chooses an appropriate analysis and explains what the results can—and cannot—tell us.</p>'),
+      lesson('<p><b>Step 1 — refine the question.</b> “Is transport good?” is too broad. “How long does it take a sample of SHS 1 learners to travel to school on a typical morning?” is more precise. Decide who or what you are studying, what you will measure, where and when you will collect data, and how the answer will be used.</p>'),
+      lesson('<p><b>Step 2 — choose and classify data.</b> A short questionnaire or time diary can collect quantitative travel-time measurements. Interviews can add qualitative explanations about delays. First-hand responses are primary data; an existing approved transport report is secondary data. Travel time is quantitative, continuous and numerical. A transport category such as walking or trotro is qualitative, nominal and categorical. State whether values are grouped or ungrouped.</p>'),
+      lesson('<p><b>Step 3 — plan a fair and ethical collection.</b> Define the population, choose a sample that includes relevant groups, and explain how participants are selected. A random or stratified sample is usually more defensible than asking only friends. Use neutral questions, consistent units and a clear collection period. Follow school permission and safeguarding rules, minimise personal information, protect responses and never fabricate missing values.</p>'),
+      lesson('<p><b>Step 4 — organise the evidence.</b> Check the entries, note missing values and create a frequency table. For example, the travel times 10, 11, 12, 12, 14, 15, 15, 16, 18 and 42 minutes can be grouped into intervals. Make intervals clear and non-overlapping, count each observation once, and check that the frequencies add to the number of valid observations.</p>'),
+      lesson('<p><b>Step 5 — choose a display that answers the question.</b> A frequency table or bar chart compares categories or intervals. A line graph shows change over time. A pie chart shows how a whole is divided into categories, while a multiple bar graph compares related groups. An infographic can communicate key findings. Always include a title, labels, units, source and honest scale; a decorative 3D effect must not distort the values.</p>'),
+      lesson('<p><b>Step 6 — describe the centre.</b> For the ten travel times 10, 11, 12, 12, 14, 15, 15, 16, 18 and 42 minutes, the mean is 165 ÷ 10 = 16.5 minutes. The ordered middle pair is 14 and 15, so the median is 14.5 minutes. The modes are 12 and 15 because both occur twice. A data set can have more than one mode.</p>'),
+      lesson('<p><b>Step 7 — examine spread and unusual values.</b> The range is maximum minus minimum: 42 − 10 = 32 minutes. The 42-minute journey is much larger than the other values and may be an outlier. It pulls the mean upward, while the median is less affected. Do not delete an unusual value just because it changes the answer: check whether it is an error, keep valid observations, and explain how it affects interpretation.</p>'),
+      lesson('<p><b>Step 8 — infer carefully.</b> The sample suggests that many of these learners travel in about 12–18 minutes, but a small or biased sample cannot establish the travel time of every learner. Describe patterns, compare groups only when the method supports it, consider other explanations and state limitations such as sample size, non-response or the collection period. Association does not automatically prove cause.</p>'),
+      lesson('<p><b>Step 9 — communicate and recommend.</b> Present the question, population and sample, methods, frequency table or graph, descriptive statistics, interpretation, limitations, conclusion and recommendations. Every recommendation must follow from evidence. Share only an approved, anonymised summary; protect raw responses and participants’ identities. A good report lets another reader understand how the conclusion was reached.</p>'),
+      { who: 'd', vis: 'demon', text: 'I can make one unusual journey represent an entire school, hide the sample and turn a graph into a false promise. Can you defend every conclusion with evidence?' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('A team wants to estimate the typical morning travel time of SHS 1 learners. Which question is the most precise?', ['How long does a sample of SHS 1 learners take to travel to school on a typical morning?', 'Is transport good?', 'Which transport is the best?', 'Why is every journey difficult?'], 'The first question defines the group, the measurement and the time context, making it answerable with data.'),
+      question('A learner records the travel time in minutes reported by classmates. What type of data is travel time?', ['Quantitative and continuous', 'Qualitative and nominal', 'Qualitative and ordinal', 'Secondary and categorical'], 'Travel time is a numerical measurement that can take values within a range, including decimal values.'),
+      question('A team asks only its close friends and claims the results represent every learner in the school. What is the main weakness?', ['The sample may be biased and unrepresentative', 'The data automatically become secondary', 'The results cannot be organised in a table', 'The mean cannot be calculated'], 'A convenience sample of close friends may exclude other groups. The conclusion must reflect the sample limitations.'),
+      question('For the values 10, 11, 12, 12, 14, 15, 15, 16, 18 and 42 minutes, what is the mean?', ['16.5 minutes', '14.5 minutes', '15 minutes', '32 minutes'], 'The total is 165 minutes. Divide by 10 observations: the mean is 16.5 minutes.'),
+      question('What is the median of 10, 11, 12, 12, 14, 15, 15, 16, 18 and 42?', ['14.5', '15', '16.5', '12'], 'There are ten ordered values, so take the average of the fifth and sixth: (14 + 15) ÷ 2 = 14.5.'),
+      question('Which statement about the value 42 in this data set is most reasonable?', ['It is an unusually high value that raises the mean; investigate it before deciding how to report it.', 'It must be deleted because it is inconvenient.', 'It proves every learner travels for 42 minutes.', 'It changes the median to 42.'], 'The value is much higher than the others and raises the mean. Check whether it is valid and explain its influence rather than deleting it automatically.'),
+      question('A school wants to show how library visits change from Monday to Friday. Which display is most suitable?', ['A line graph', 'A pie chart with no time order', 'A Venn diagram', 'An unlabeled 3D picture'], 'A line graph is suitable for showing change over an ordered time period.'),
+      question('Which conclusion is responsible when a small sample reports that many learners travel in 12–18 minutes?', ['In this sample, many reported journeys were 12–18 minutes; a broader, fairer sample is needed before generalising to the whole school.', 'Every learner in the school travels in 12–18 minutes.', 'The sample proves the transport system causes delays.', 'The result should be published with participants’ names.'], 'The conclusion describes what the sample shows, avoids unsupported generalisation and recognises the need for a more representative sample.')
+    ]
+  }
 
 ];
