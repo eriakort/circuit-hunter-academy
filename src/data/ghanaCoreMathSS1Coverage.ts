@@ -26,7 +26,7 @@ export type GhanaSS1SubStrandCoverage = {
   note: string;
 };
 
-/** Official SHS 1 scope totals are 17 content standards, 17 outcomes and 44 indicators across nine sub-strands. */
+/** Official SHS 1 scope totals are 17 content standards, 16 outcomes and 44 indicators across nine sub-strands. */
 export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
   {
     strand: 'Numbers for Everyday Life',
