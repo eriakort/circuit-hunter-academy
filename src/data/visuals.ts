@@ -3,6 +3,7 @@ import { Language } from "../types";
 import { L as origL, PILL as origPILL, H as origH, rich as origRich, cards as origCards, ICON, C, esc, demonSVG, hl } from "../helpers";
 import { JN, BOARD, ROBOT_LEVELS } from "./gameData";
 import { getGrade5MathVisual } from "./grade5MathVisuals";
+import { getGhanaMathVisual } from "./ghanaMathVisuals";
 import { getItalianQuintaVisual } from "./italianQuintaVisuals";
 import { getChemVisual } from "./chemVisuals";
 import { getHistGeoVisual } from "./histGeoVisuals";
@@ -1142,6 +1143,8 @@ export function getVisualHtml(key: string, lang: Language): string {
   if (histGeoVisual !== null) return histGeoVisual;
   const mathAdvVisual = getMathAdvVisual(key, lang);
   if (mathAdvVisual !== null) return mathAdvVisual;
+  const ghanaMath = getGhanaMathVisual(key);
+  if (ghanaMath !== null) return ghanaMath;
   const italianQuinta = getItalianQuintaVisual(key, lang);
   if (italianQuinta !== null) return italianQuinta;
   return "";

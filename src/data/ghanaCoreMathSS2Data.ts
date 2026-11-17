@@ -30,7 +30,7 @@ export const GHANA_CORE_MATH_SS2_ARCS: ArcInfo[] = [
 ];
 
 const question = (q: string, a: string[], why: string) => ({ q, a, why });
-const lesson = (text: string) => ({ who: 's' as const, vis: 'infowords', text });
+const lesson = (text: string) => ({ who: 's' as const, vis: 'ghmath', text });
 
 export const GHANA_CORE_MATH_SS2_MISSIONS: Mission[] = [
   {

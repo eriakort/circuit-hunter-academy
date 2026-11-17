@@ -3,7 +3,7 @@ import type { ArcInfo, Mission } from '../types';
 export const GHANA_SS1_STATISTICS_REASONING_ARCS: ArcInfo[] = [
   { n: 11, unit: 0, subject: 'ghcoremath', title: 'Statistical Reasoning: From Evidence to Action', pages: 'NaCCA SHS 1 · pp. 137–143' }
 ];
-const lesson = (text: string) => ({ who: 's' as const, vis: 'infowords', text });
+const lesson = (text: string) => ({ who: 's' as const, vis: 'ghmath', text });
 const question = (q: string, a: string[], why: string) => ({ q, a, why });
 export const GHANA_SS1_STATISTICS_REASONING_MISSIONS: Mission[] = [
   {

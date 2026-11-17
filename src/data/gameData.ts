@@ -29268,3 +29268,18 @@ ITALIAN_QUINTA_UNITS.forEach((unit, index) => {
   MISSIONS.push(...unit.missions.map(mission => ({ ...mission, arc: arcOffset })));
 });
 CODEX.push(...ITALIAN_QUINTA_CODEX);
+
+// --- Ghana Core Mathematics lesson visuals --------------------------------------------
+// Ghana lesson scenes use the generic 'ghmath' visual key in their data files. Give each
+// one the visual of its NaCCA strand (Number, Algebra, Geometry, Data or Integrated).
+import { getGhanaMathStrand } from './ghanaMathVisuals';
+MISSIONS.forEach((mission, index) => {
+  const arc = ARCS[mission.arc];
+  if (!arc?.subject?.startsWith('ghcoremath')) return;
+  const unit = UNITS[arc.unit as number];
+  const strand = getGhanaMathStrand(String(unit?.title ?? ''), String(arc.title ?? ''));
+  MISSIONS[index] = {
+    ...mission,
+    scenes: mission.scenes.map(scene => (scene.vis === 'ghmath' ? { ...scene, vis: `ghmath-${strand}` } : scene))
+  };
+});

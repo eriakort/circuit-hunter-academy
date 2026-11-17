@@ -15,7 +15,7 @@ export const GHANA_CORE_MATH_SS3_SPATIAL_ARCS: ArcInfo[] = [{
 }];
 
 const q = (prompt: string, answers: string[], why: string) => ({ q: prompt, a: answers, why });
-const lesson = (text: string) => ({ who: 's' as const, vis: 'infowords', text });
+const lesson = (text: string) => ({ who: 's' as const, vis: 'ghmath', text });
 
 export const GHANA_CORE_MATH_SS3_SPATIAL_MISSIONS: Mission[] = [
   {

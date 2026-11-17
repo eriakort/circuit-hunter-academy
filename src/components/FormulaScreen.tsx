@@ -164,12 +164,27 @@ const SUBJECT_LIST: SubjectMeta[] = [
   { id: 'geo11', name: ['Geography · Grade 11 (L3)', 'Geografia · 3°/4° Sup. (L3)'], icon: '🗺️', badgeColor: 'var(--good)' }
 ];
 
+/**
+ * Ghana learners only see mathematics reference cards, relabelled by what they
+ * cover, so no Italian-curriculum subject (Computer Science, Physics, Italian …)
+ * appears in the Ghana Formula Book.
+ */
+const GHANA_SUBJECT_LIST: SubjectMeta[] = [
+  { id: 'math', name: ['Number, Algebra & Sets', 'Number, Algebra & Sets'], icon: '∑', badgeColor: 'var(--gold)' },
+  { id: 'math10', name: ['Surds, Lines, Quadratics & Probability', 'Surds, Lines, Quadratics & Probability'], icon: '√', badgeColor: 'var(--gold)' },
+  { id: 'math11', name: ['Functions, Logarithms & Trigonometry', 'Functions, Logarithms & Trigonometry'], icon: '📈', badgeColor: 'var(--ember)' }
+];
+const GHANA_FORMULA_SUBJECTS = new Set(GHANA_SUBJECT_LIST.map(item => item.id));
+
 export const FormulaScreen: React.FC = () => {
-  const { state, goToView } = useGame();
+  const { state, goToView, curriculumProfile } = useGame();
   const { lang, subject: gameSubject } = state;
+  const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
+  const visibleSubjects = isGhana ? GHANA_SUBJECT_LIST : SUBJECT_LIST;
 
   // Active Subject Selection (defaults to current game subject if valid, else 'math')
   const [activeSubject, setActiveSubject] = useState<SubjectId | 'all'>(() => {
+    if (isGhana) return 'math';
     if (gameSubject && ['math', 'math10', 'math11', 'phys', 'cs', 'science', 'math5', 'italian', 'chem', 'chem10', 'chem11', 'hist5', 'geo5', 'hist9', 'geo9', 'hist10', 'geo10', 'hist11', 'geo11'].includes(gameSubject)) {
       return gameSubject;
     }
@@ -264,6 +279,9 @@ export const FormulaScreen: React.FC = () => {
       if (activeSubject !== 'all' && card.subject !== activeSubject) {
         return false;
       }
+      if (isGhana && !GHANA_FORMULA_SUBJECTS.has(card.subject)) {
+        return false;
+      }
       // 2. Topic filter
       if (activeTopic !== 'all' && card.topicId !== activeTopic) {
         return false;
@@ -295,7 +313,7 @@ export const FormulaScreen: React.FC = () => {
         rulesText.includes(q)
       );
     });
-  }, [activeSubject, activeTopic, searchQuery]);
+  }, [activeSubject, activeTopic, searchQuery, isGhana]);
 
   // Calculations for Workbench
   // 1. Binomial (Ax + B)^2 = A^2 x^2 + 2AB x + B^2
@@ -403,7 +421,7 @@ export const FormulaScreen: React.FC = () => {
   }, [ohmVolts, ohmCurrent]);
 
   // Active Subject details
-  const activeSubjectInfo = SUBJECT_LIST.find(s => s.id === activeSubject) || SUBJECT_LIST[0];
+  const activeSubjectInfo = visibleSubjects.find(s => s.id === activeSubject) || visibleSubjects[0];
   const activeTopicInfo = currentTopics.find(t => t.id === activeTopic);
 
   // Visual SVGs for cards
@@ -612,7 +630,7 @@ export const FormulaScreen: React.FC = () => {
             >
               {showWorkbench
                 ? L(['📖 View Formula Cards', '📖 Mostra Schede Formule'], lang)
-                : L(['⚡ Interactive Math & Science Lab', '⚡ Palestra Interattiva di Calcolo'], lang)}
+                : isGhana ? '⚡ Interactive Maths Lab' : L(['⚡ Interactive Math & Science Lab', '⚡ Palestra Interattiva di Calcolo'], lang)}
             </button>
             <button type="button" className="btn ghost" onClick={() => goToView('map')}>
               {L(['Back to Missions', 'Torna alle Missioni'], lang)}
@@ -621,7 +639,7 @@ export const FormulaScreen: React.FC = () => {
         </div>
 
         <p className="muted" style={{ margin: '8px 0 0', maxWidth: '72ch' }}>
-          {L(
+          {isGhana ? 'Core Mathematics reference cards: rules, worked examples and common traps for number, algebra, geometry and data. Pick a group, then dive into a specific topic.' : L(
             [
               'Browse formulas categorized by subject (Mathematics, Physics, Chemistry, Computer Science, Grade 5 Science). Filter by all formulas in a subject or dive into specific topics with worked examples and exam trap warnings.',
               'Esplora le formule suddivise per materia (Matematica, Fisica, Chimica, Informatica, Scienze 5ª). Visualizza tutte le formule della materia o scegli uno specifico argomento con esempi svolti e tranelli d\'esame.'
@@ -637,7 +655,7 @@ export const FormulaScreen: React.FC = () => {
           {L(['STEP 1: SELECT SUBJECT', 'PASSO 1: SCEGLI LA MATERIA'], lang)}
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px' }}>
-          {SUBJECT_LIST.map(subj => {
+          {visibleSubjects.map(subj => {
             const isSelected = activeSubject === subj.id;
             const count = subjectCounts[subj.id] || 0;
             return (
@@ -807,6 +825,7 @@ export const FormulaScreen: React.FC = () => {
               >
                 kx &lt; b
               </button>
+              {!isGhana && <>
               <button
                 type="button"
                 className={`btn sm ${activeTool === 'lever' ? 'cyan' : 'ghost'}`}
@@ -849,6 +868,7 @@ export const FormulaScreen: React.FC = () => {
               >
                 🗣️ {L(['Doppie & C/G', 'Doppie e C/G'], lang)}
               </button>
+              </>}
             </div>
           </div>
 
@@ -1702,7 +1722,7 @@ export const FormulaScreen: React.FC = () => {
           </div>
         ) : (
           filteredCards.map(card => {
-            const cardSubjectInfo = SUBJECT_LIST.find(s => s.id === card.subject) || SUBJECT_LIST[1];
+            const cardSubjectInfo = visibleSubjects.find(s => s.id === card.subject) || SUBJECT_LIST.find(s => s.id === card.subject) || SUBJECT_LIST[1];
             const cardTopic = SUBJECT_TOPICS[card.subject]?.find(t => t.id === card.topicId);
 
             return (

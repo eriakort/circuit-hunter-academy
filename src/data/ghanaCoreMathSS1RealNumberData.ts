@@ -10,7 +10,7 @@ export const GHANA_SS1_REAL_NUMBER_ARCS: ArcInfo[] = [
   }
 ];
 
-const lesson = (text: string) => ({ who: 's' as const, vis: 'infowords', text });
+const lesson = (text: string) => ({ who: 's' as const, vis: 'ghmath', text });
 const question = (q: string, a: string[], why: string) => ({ q, a, why });
 
 export const GHANA_SS1_REAL_NUMBER_MISSIONS: Mission[] = [

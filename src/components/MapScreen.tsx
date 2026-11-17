@@ -43,7 +43,7 @@ export const MapScreen: React.FC = () => {
 
   const curSub = subject || 'cs';
   const currentSubjectData = SUBJECTS.find(s => s.id === curSub) || SUBJECTS[0];
-  const titleSvgHtml = curSub === 'math' || curSub === 'math5' || curSub === 'math10' || curSub === 'math11' || curSub === 'science' || curSub === 'italian' || curSub === 'chem' || curSub === 'chem10' || curSub === 'chem11' || curSub.startsWith('hist') || curSub.startsWith('geo') ? currentSubjectData.art : curSub === 'phys' ? getVisualHtml('titlePhys', lang) : getVisualHtml('title', lang);
+  const titleSvgHtml = curSub === 'math' || curSub === 'math5' || curSub === 'math10' || curSub === 'math11' || curSub === 'science' || curSub === 'italian' || curSub === 'chem' || curSub === 'chem10' || curSub === 'chem11' || curSub.startsWith('hist') || curSub.startsWith('geo') || curSub.startsWith('ghcoremath') ? currentSubjectData.art : curSub === 'phys' ? getVisualHtml('titlePhys', lang) : getVisualHtml('title', lang);
 
   // If player hasn't entered a name yet
   if (!name) {
@@ -684,7 +684,7 @@ export const MapScreen: React.FC = () => {
                       }}
                     />
                     <span className="sec">
-                      § {m.sec} · pp. {m.pages}
+                      § {m.sec} · {isGhana ? m.pages : `pp. ${m.pages}`}
                     </span>
                     <h3>{L(m.title, lang)}</h3>
                     <span className="topic">{L(m.topic, lang)}</span>

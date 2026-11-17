@@ -5,11 +5,16 @@ import { L, PILL, U } from '../helpers';
 import { speakItalian } from '../speech/speechEngine';
 
 export const CodexScreen: React.FC = () => {
-  const { state } = useGame();
+  const { state, curriculumProfile } = useGame();
+  const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
   const { lang, subject, seen } = state;
   const [searchQuery, setSearchQuery] = useState('');
 
   const curSub = subject || 'cs';
+  const hasSubjectTerms = CODEX.some(e => {
+    const mi = typeof e[0] === 'number' ? e[0] : MISSIONS.findIndex(m => m.id === e[0]);
+    return mi >= 0 && (ARCS[MISSIONS[mi]?.arc]?.subject || 'cs') === curSub;
+  });
   const q = searchQuery.trim().toLowerCase();
   const anyMatch =
     !q ||
@@ -28,7 +33,7 @@ export const CodexScreen: React.FC = () => {
       <div className="mhead">
         <div>
           <div className="eyebrow">
-            {L(
+            {isGhana ? 'Core Mathematics glossary' : L(
               [
                 "Hunter's Codex · English + Italiano",
                 'Glossario della cacciatrice · Italiano + English'
@@ -41,7 +46,7 @@ export const CodexScreen: React.FC = () => {
       </div>
 
       <p className="muted" style={{ maxWidth: '62ch' }}>
-        {L(
+        {isGhana ? 'Key mathematics terms appear here when you open the mission that teaches them.' : L(
           [
             'Every key term, with its Italian name. Terms unlock when you open the mission that teaches them.',
             'Tutti i termini chiave, con il nome in inglese. Si sbloccano quando apri la missione che li spiega.'
@@ -53,7 +58,7 @@ export const CodexScreen: React.FC = () => {
       <input
         className="codex-search"
         id="cxq"
-        placeholder={L(
+        placeholder={isGhana ? 'Search a term' : L(
           ['Search a term (English or Italian)', 'Cerca un termine (italiano o inglese)'],
           lang
         )}
@@ -63,6 +68,9 @@ export const CodexScreen: React.FC = () => {
       />
 
       <div id="cxl" style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+        {isGhana && !hasSubjectTerms && (
+          <p className="muted" data-testid="codex-empty">The Core Mathematics glossary is still being prepared. Use the Formulas page for rules and worked examples.</p>
+        )}
         {!anyMatch && (
           <p className="muted">{L(['No unlocked terms match your search.', 'Nessun termine sbloccato corrisponde alla ricerca.'], lang)}</p>
         )}

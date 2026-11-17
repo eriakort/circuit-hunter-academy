@@ -83,7 +83,9 @@ export function getCategories(subject: SubjectId): CategoryOption[] {
   const categories: CategoryOption[] = [];
 
   // 1. All Questions Option (Subject-wide comprehensive)
-  const subjectName = SUBJECTS.find(item => item.id === subject)?.name || ['Subject', 'Materia'];
+  // Ghana subjects have English-only names stored as plain strings, not [en, it] pairs.
+  const rawName = SUBJECTS.find(item => item.id === subject)?.name || ['Subject', 'Materia'];
+  const subjectName = Array.isArray(rawName) ? rawName : [rawName, rawName];
   categories.push({
     type: 'all',
     id: `all-${subject}`,

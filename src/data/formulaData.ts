@@ -249,16 +249,16 @@ export const FORMULA_CARDS: FormulaCard[] = [
     subject: 'math',
     topicId: 'powers',
     category: 'powers',
-    title: ['M.C.D. & m.c.m. Recipe', 'Regola del M.C.D. e del m.c.m.'],
-    formula: 'M.C.D. = common factors with min exponent  ·  m.c.m. = all factors with max exponent',
+    title: ['HCF & LCM Recipe (M.C.D. & m.c.m.)', 'Regola del M.C.D. e del m.c.m.'],
+    formula: 'HCF (M.C.D.) = common factors with min exponent  ·  LCM (m.c.m.) = all factors with max exponent',
     rules: [
       {
-        name: ['M.C.D. (GCD)', 'M.C.D.'],
+        name: ['HCF / GCD (M.C.D.)', 'M.C.D.'],
         math: 'Factors: ONLY common · Exp: MINIMUM',
         desc: ['Product of only common prime factors with lowest exponent.', 'Fattori primi SOLO comuni, presi con il MINIMO esponente.']
       },
       {
-        name: ['m.c.m. (LCM)', 'm.c.m.'],
+        name: ['LCM (m.c.m.)', 'm.c.m.'],
         math: 'Factors: ALL (common & not) · Exp: MAXIMUM',
         desc: ['Product of all prime factors with highest exponent.', 'TUTTI i fattori primi (comuni e non comuni), con il MASSIMO esponente.']
       },
@@ -655,12 +655,12 @@ export const FORMULA_CARDS: FormulaCard[] = [
       {
         name: ['Conjunction (AND)', 'Congiunzione (AND / ∧)'],
         math: 'P ∧ Q is TRUE only if BOTH are True.',
-        desc: ['Vera solo se entrambe le proposizioni sono vere.', 'Vera solo quando entrambe le proposizioni sono contemporaneamente vere.']
+        desc: ['True only when both statements are true.', 'Vera solo quando entrambe le proposizioni sono contemporaneamente vere.']
       },
       {
         name: ['Disjunction (OR)', 'Disgiunzione inclusiva (OR / ∨)'],
         math: 'P ∨ Q is TRUE if AT LEAST ONE is True.',
-        desc: ['Vera quando almeno una delle due proposizioni è vera.', 'Vera se almeno una delle due proposizioni è vera.']
+        desc: ['True when at least one of the two statements is true.', 'Vera se almeno una delle due proposizioni è vera.']
       },
       {
         name: ['Material Implication', 'Implicazione materiale (⇒)'],
