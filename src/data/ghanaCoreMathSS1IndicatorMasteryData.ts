@@ -13,7 +13,7 @@ interface IndicatorItem {
   why: BilingualText;
 }
 
-const INDICATORS: IndicatorItem[] = [
+const INDICATORS = [
   {
     "id": "ss1-real-cs1-li1",
     "strand": "Numbers for Everyday Life",
@@ -1859,7 +1859,7 @@ const INDICATORS: IndicatorItem[] = [
       "Con reinserimento, ogni probabilità di rosso è 3/5. Moltiplica: 3/5 × 3/5 = 9/25."
     ]
   }
-];
+] as IndicatorItem[];
 
 export const GHANA_SS1_INDICATOR_BLUEPRINT = INDICATORS.map((item, questionIndex) => ({
   id: item.id,
