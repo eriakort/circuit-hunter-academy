@@ -62,12 +62,12 @@ export const SUBJECTS: SubjectInfo[] = [
       "Lingua Italiana"
     ],
     "blurb": [
-      "Master Italian through speaking and active conversation: CEFR A1, A2, and B1 levels.",
-      "Padroneggia l'italiano attraverso il parlato e la conversazione attiva: livelli QCER A1, A2 e B1."
+      "Master Italian through speaking and conversation (CEFR A1, A2, B1) and through grammar: spelling, vocabulary, parts of speech, verbs and sentence analysis.",
+      "Padroneggia l'italiano con il parlato e la conversazione (QCER A1, A2, B1) e con la grammatica: ortografia, lessico, parti del discorso, verbi e analisi logica."
     ],
     "meta": [
-      "A1 · A2 · B1 · Speaking & Grammar",
-      "A1 · A2 · B1 · Parlato e Grammatica"
+      "A1 · A2 · B1 · Speaking & Grammar + 8 Grade 5 grammar units",
+      "A1 · A2 · B1 · Parlato e Grammatica + 8 unità di grammatica di quinta"
     ],
     "art": "<svg viewBox=\"0 0 120 120\" width=\"100%\" aria-hidden=\"true\"><defs><linearGradient id=\"itg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#009246\"/><stop offset=\"50%\" stop-color=\"#ffffff\"/><stop offset=\"100%\" stop-color=\"#ce2b37\"/></linearGradient><linearGradient id=\"micg\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"#ffd166\"/><stop offset=\"100%\" stop-color=\"#ff6a3d\"/></linearGradient></defs><rect x=\"22\" y=\"26\" width=\"76\" height=\"68\" rx=\"14\" fill=\"#111936\" stroke=\"url(#itg)\" stroke-width=\"3\"/><path d=\"M38 34 h14 v52 h-14 z\" fill=\"#009246\" opacity=\".8\"/><path d=\"M52 34 h16 v52 h-16 z\" fill=\"#f4f4f4\" opacity=\".85\"/><path d=\"M68 34 h14 v52 h-14 z\" fill=\"#ce2b37\" opacity=\".8\"/><rect x=\"54\" y=\"46\" width=\"12\" height=\"20\" rx=\"6\" fill=\"url(#micg)\"/><path d=\"M49 56 a11 11 0 0 0 22 0\" fill=\"none\" stroke=\"#ffd166\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><line x1=\"60\" y1=\"67\" x2=\"60\" y2=\"75\" stroke=\"#ffd166\" stroke-width=\"2.5\"/><line x1=\"52\" y1=\"75\" x2=\"68\" y2=\"75\" stroke=\"#ffd166\" stroke-width=\"2.5\" stroke-linecap=\"round\"/></svg>"
   }
@@ -29252,3 +29252,19 @@ MISSIONS.push(...GHANA_CORE_MATH_SS3_TRIG_MISSIONS.map(mission => ({
   ...mission,
   arc: ghanaCoreMathSS3TrigArcOffset + mission.arc
 })));
+
+// ============================================================================
+// Italian Studies · Grammar units of classe quinta (Grade 5), shared by every
+// Italian grade after the CEFR units. Appended last so existing indexes stay stable.
+// ============================================================================
+import { ITALIAN_QUINTA_CODEX, ITALIAN_QUINTA_UNITS } from './italianQuintaData';
+
+const italianArcCountBeforeQuinta = ARCS.filter(arc => arc.subject === 'italian').length;
+ITALIAN_QUINTA_UNITS.forEach((unit, index) => {
+  const unitOffset = UNITS.length;
+  UNITS.push({ title: unit.title, ch: unit.ch, subject: 'italian' });
+  const arcOffset = ARCS.length;
+  ARCS.push({ n: italianArcCountBeforeQuinta + 1 + index, unit: unitOffset, subject: 'italian', title: unit.title, pages: unit.pages });
+  MISSIONS.push(...unit.missions.map(mission => ({ ...mission, arc: arcOffset })));
+});
+CODEX.push(...ITALIAN_QUINTA_CODEX);
