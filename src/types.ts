@@ -117,6 +117,8 @@ export interface LearningMasteryAssessment {
   questions: QuizQuestion[];
   /** Concept ID aligned to each question, used to generate targeted revision. */
   questionConceptIds?: string[];
+  /** Alternate question pools aligned to each canonical question/concept. */
+  questionVariants?: QuizQuestion[][];
   /** Percentage from 0 to 100 required to unlock the mission battle. */
   passingScore: number;
 }
@@ -165,7 +167,7 @@ export interface LearningMissionProgress {
   /** Timestamped mastery scores used for a lightweight progress trend. */
   masteryAttemptHistory?: Array<{ score: number; attemptedAt: number; attempt: number }>;
   /** Per-question selected answer indexes for the most recent assessment attempts. */
-  masteryAttemptReviews?: Array<{ score: number; attemptedAt: number; attempt: number; answers: number[] }>;
+  masteryAttemptReviews?: Array<{ score: number; attemptedAt: number; attempt: number; answers: number[]; questionVariantIndexes?: number[] }>;
   /** Next spaced-review date and retention history, keyed by concept ID. */
   conceptReviewSchedule?: Record<string, ConceptReviewSchedule>;
   /** Cumulative results from optional targeted concept-revision sessions. */
