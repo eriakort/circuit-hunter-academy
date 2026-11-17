@@ -416,7 +416,30 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Integrated retrieval and transfer across the two SHS 1 Proportional Reasoning standards and both learning outcomes. NaCCA reuses the printed indicator labels 1.1.2.LI.1 and 1.1.2.LI.2 under each content standard; this mapping lists the unique printed labels once while covering both contexts. The mission reinforces the existing four-indicator scope and does not claim additional curriculum coverage. SHS 2 ratios and rates are excluded.'
   },
-
+  {
+    missionId: 'gh-core-ss1-algebraic-thinking-mastery',
+    curriculumYear: 'SHS 1',
+    strand: '2 · Algebraic Reasoning',
+    subStrand: '1 · Applications of Expressions, Equations and Inequalities',
+    contentStandardIds: ['1.2.1.CS.1', '1.2.1.CS.2'],
+    learningOutcomeIds: ['1.2.1.LO.1', '1.2.1.LO.2'],
+    learningIndicatorIds: ['1.2.1.LI.1', '1.2.1.LI.2', '1.2.1.LI.3', '1.2.1.LI.4'],
+    printedPages: [52, 66],
+    alignment: 'direct',
+    note: 'Integrated retrieval and transfer practice across the SHS 1 expression, equation and inequality outcomes. The curriculum reuses the printed LI.1 and LI.2 labels under both content standards; this mapping lists the unique labels once. It reinforces the existing six-indicator sub-strand and does not claim additional curriculum coverage.'
+  },
+  {
+    missionId: 'gh-core-ss1-patterns-relationships-mastery',
+    curriculumYear: 'SHS 1',
+    strand: '2 · Algebraic Reasoning',
+    subStrand: '2 · Patterns and Relationships',
+    contentStandardIds: ['1.2.2.CS.1', '1.2.2.CS.2'],
+    learningOutcomeIds: ['1.2.2.LO.1', '1.2.2.LO.2'],
+    learningIndicatorIds: ['1.2.2.LI.1', '1.2.2.LI.2'],
+    printedPages: [67, 83],
+    alignment: 'direct',
+    note: 'Integrated retrieval and transfer across relations and functions, mapping rules, exponential mappings, linear-function graphs, gradients, equations of straight lines and distance between points. NaCCA reuses the printed LI.1 and LI.2 labels under both content standards; this mapping lists the unique labels once and reinforces the existing four-indicator sub-strand without claiming additional curriculum coverage.'
+  }
  ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>
