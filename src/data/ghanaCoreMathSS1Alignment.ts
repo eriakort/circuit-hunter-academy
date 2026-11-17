@@ -379,6 +379,18 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     alignment: 'direct',
     note: 'Integrated retrieval and transfer practice across the three existing Measurement standards: vectors and bearings, trigonometry, perimeter and area, and prism volume. The challenge reinforces indicators already taught in the focused missions; it does not claim additional curriculum coverage.'
   },
+  {
+    missionId: 'gh-core-ss1-statistical-investigation-mastery',
+    curriculumYear: 'SHS 1',
+    strand: '4 · Making Sense of and Using Data',
+    subStrand: '1 · Statistical Reasoning and Its Application in Real Life',
+    contentStandardIds: ['1.4.1.CS.1', '1.4.1.CS.2', '1.4.1.CS.3'],
+    learningOutcomeIds: ['1.4.1.LO.1', '1.4.1.LO.2', '1.4.1.LO.3'],
+    learningIndicatorIds: ['1.4.1.LI.1', '1.4.1.LI.2', '1.4.1.LI.3', '1.4.3.LI.2'],
+    printedPages: [126, 147],
+    alignment: 'direct',
+    note: 'Integrated application across data classification and collection, organisation/presentation, descriptive statistics and a school-community investigation report. The unusual descriptive-statistics reference 1.4.3.LI.2 is preserved exactly as printed on page 138 within Statistical Reasoning; no additional Data sub-strand or unsupported content standard is asserted. The mission reinforces existing scope and does not claim extra curriculum coverage.'
+  },
  ];
 
 export const getGhanaMissionAlignment = (missionId: string) =>

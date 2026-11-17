@@ -95,8 +95,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 3,
     learningIndicators: 8,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-statistical-reasoning-data-types', 'gh-core-ss1-statistical-data-collection-methods', 'gh-core-ss1-statistical-data-organisation-presentation', 'gh-core-ss1-statistical-averages-inference', 'gh-core-ss1-school-community-data-project'],
-    note: 'This is the single SHS 1 Statistical Reasoning sub-strand in NaCCA’s scope-and-sequence table. The pilot covers data classification and collection methods; frequency tables and visual presentation; descriptive statistics and justified choice of average (the PDF labels this curriculum reference 1.4.3.LI.2 within the Statistical Reasoning section); and the school-community project. Further varied practice and assessment are still needed before claiming full mastery.'
+    pilotMissionIds: ['gh-core-ss1-statistical-reasoning-data-types', 'gh-core-ss1-statistical-data-collection-methods', 'gh-core-ss1-statistical-data-organisation-presentation', 'gh-core-ss1-statistical-averages-inference', 'gh-core-ss1-school-community-data-project', 'gh-core-ss1-statistical-investigation-mastery'],
+    note: 'This is the single SHS 1 Statistical Reasoning sub-strand in NaCCA’s scope-and-sequence table. The pilot covers data classification and collection methods; frequency tables and visual presentation; descriptive statistics and justified choice of average (the PDF labels this curriculum reference 1.4.3.LI.2 within the Statistical Reasoning section); and the school-community project. The Community Data Lab adds an integrated investigation from question design and ethical sampling through frequency tables, graph choice, mean/median/mode, outlier interpretation and evidence-based reporting. It reinforces the existing eight-indicator strand and does not add curriculum coverage.'
   },
   {
     strand: 'Making Sense of and Using Data',

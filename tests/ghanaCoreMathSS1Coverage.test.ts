@@ -91,10 +91,18 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
     expect(mission?.scenes.length).toBeGreaterThanOrEqual(9);
   });
 
+  test('includes the integrated Community Data Lab in Statistical Reasoning practice', () => {
+    const statistics = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Statistical Reasoning and Its Application in Real Life');
+    expect(statistics?.pilotMissionIds).toContain('gh-core-ss1-statistical-investigation-mastery');
+    const mission = GHANA_CORE_MATH_SS1_MISSIONS.find(item => item.id === 'gh-core-ss1-statistical-investigation-mastery');
+    expect(mission?.quiz).toHaveLength(8);
+    expect(mission?.scenes.length).toBeGreaterThanOrEqual(11);
+  });
+
   test('counts the first Statistical Reasoning mission only in its matching data sub-strand', () => {
     const statistics = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Statistical Reasoning and Its Application in Real Life');
     expect(statistics?.status).toBe('partial');
-    expect(statistics?.pilotMissionIds).toEqual(['gh-core-ss1-statistical-reasoning-data-types', 'gh-core-ss1-statistical-data-collection-methods', 'gh-core-ss1-statistical-data-organisation-presentation', 'gh-core-ss1-statistical-averages-inference', 'gh-core-ss1-school-community-data-project']);
+    expect(statistics?.pilotMissionIds).toEqual(['gh-core-ss1-statistical-reasoning-data-types', 'gh-core-ss1-statistical-data-collection-methods', 'gh-core-ss1-statistical-data-organisation-presentation', 'gh-core-ss1-statistical-averages-inference', 'gh-core-ss1-school-community-data-project', 'gh-core-ss1-statistical-investigation-mastery']);
     expect(statistics?.learningIndicators).toBe(8);
   });
 
