@@ -6,7 +6,8 @@ import {
   GHANA_CORE_MATH_SS2_SIMULTANEOUS_EQUATIONS_ALIGNMENT,
   GHANA_CORE_MATH_SS2_PATTERNS_ALIGNMENT,
   GHANA_CORE_MATH_SS2_PROPORTIONAL_ALIGNMENT,
-  GHANA_CORE_MATH_SS2_SPATIAL_ALIGNMENT
+  GHANA_CORE_MATH_SS2_SPATIAL_ALIGNMENT,
+  GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT
 } from '../src/data/ghanaCoreMathSS2Alignment';
 import {
   GHANA_CORE_MATH_SS2_SUBJECT,
@@ -24,7 +25,10 @@ import {
   GHANA_CORE_MATH_SS2_PROPORTIONAL_MISSIONS,
   GHANA_CORE_MATH_SS2_SPATIAL_UNIT,
   GHANA_CORE_MATH_SS2_SPATIAL_ARCS,
-  GHANA_CORE_MATH_SS2_SPATIAL_MISSIONS
+  GHANA_CORE_MATH_SS2_SPATIAL_MISSIONS,
+  GHANA_CORE_MATH_SS2_MEASUREMENT_UNIT,
+  GHANA_CORE_MATH_SS2_MEASUREMENT_ARCS,
+  GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS
 } from '../src/data/ghanaCoreMathSS2Data';
 
 assert.equal(GHANA_NACCA_SS2_MATHEMATICS_SOURCE.publicationDate, 'September 2023');
@@ -97,3 +101,29 @@ assert.deepEqual(GHANA_CORE_MATH_SS2_SPATIAL_MISSIONS.map(m => m.id), [
 ]);
 assert.ok(GHANA_CORE_MATH_SS2_SPATIAL_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
 console.log('Ghana SHS 2 spatial sense coverage ok');
+
+
+assert.equal(GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT.strand, '3 · Geometry Around Us');
+assert.equal(GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT.subStrand, '2 · Measurement');
+assert.deepEqual(GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT.printedPages, [239, 263]);
+assert.deepEqual(
+  GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT.contentStandards.map(item => item.id),
+  ['2.3.2.CS.1', '2.3.2.CS.2', '2.3.2.CS.3']
+);
+assert.equal(GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT.learningOutcomes.length, 3);
+assert.equal(GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT.learningIndicators.length, 8);
+assert.deepEqual(
+  GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT.learningIndicators.map(item => item.printedPage),
+  [239, 242, 244, 246, 248, 252, 258, 263]
+);
+assert.equal(GHANA_CORE_MATH_SS2_MEASUREMENT_ALIGNMENT.coverage.length, 3);
+assert.equal(GHANA_CORE_MATH_SS2_MEASUREMENT_UNIT.subject, 'ghcoremath2');
+assert.equal(GHANA_CORE_MATH_SS2_MEASUREMENT_ARCS[0].pages, 'NaCCA SHS 2 · pp. 239–263');
+assert.deepEqual(GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS.map(m => m.id), [
+  'gh-core-ss2-vector-operations-navigation',
+  'gh-core-ss2-inverse-trig-elevation-depression',
+  'gh-core-ss2-solid-measurement-surface-volume-capacity'
+]);
+assert.ok(GHANA_CORE_MATH_SS2_MEASUREMENT_MISSIONS.every(m => m.quiz.length === 5 && m.scenes.some(scene => scene.type === 'sort')));
+assert.equal(GHANA_CORE_MATH_SS2_SUBJECT.meta, 'Ghana NaCCA · SHS 2 · eleven learning missions');
+console.log('Ghana SHS 2 measurement coverage ok');
