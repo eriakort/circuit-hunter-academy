@@ -134,7 +134,7 @@ test('Ghana SHS 2 opens its own Core Mathematics pathway and mission', async ({ 
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('circuit-hunter-academy-v2:ghana-nacca', JSON.stringify({
-      grade: null, name: '', lang: 'en', xp: 0, subject: 'ghcoremath2', unit: 0,
+      grade: null, name: '', lang: 'it', xp: 0, subject: 'ghcoremath2', unit: 0,
       cleared: {}, seen: {}, flawless: {}, learningProgress: {}, v: 5
     }));
     localStorage.setItem('circuit-hunter-academy-curriculum-profile-v1', JSON.stringify({
@@ -147,12 +147,15 @@ test('Ghana SHS 2 opens its own Core Mathematics pathway and mission', async ({ 
   await expect(page.locator('[data-s="ghcoremath2"]')).toBeVisible();
   await page.locator('[data-s="ghcoremath2"]').click();
   await expect(page.locator('html')).toHaveAttribute('data-curriculum-theme', 'sankofa');
+  await expect(page.locator('#lIT')).toHaveCount(0);
+  await expect(page.locator('#lEN')).toHaveAttribute('aria-pressed', 'true');
   await page.locator('#nm').fill('SS2 Explorer');
   await page.getByRole('button', { name: /Begin your journey/ }).click();
   await expect(page.locator('h3').filter({ hasText: 'The Number Codebreaker' })).toBeVisible();
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('circuit-hunter-academy-v2:ghana-nacca') || '{}'));
   expect(saved.grade).toBe('grade10');
   expect(saved.subject).toBe('ghcoremath2');
+  expect(saved.lang).toBe('en');
 });
 
 
