@@ -1279,3 +1279,58 @@ table.g5m-formulas td:first-child{font-family:inherit;text-align:left}
 @media(max-width:640px){.cl-grid,.cl-readout-row,.cl-mode-tabs.cols-3,.cl-mode-tabs.cols-4{grid-template-columns:1fr}.cl-pt-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.chem-lab{padding:13px}.cl-visual,.cl-controls{padding:11px}}
 
 
+
+
+/* Ghana NaCCA SHS 1 — indicator-level readiness dashboard */
+.ghana-readiness-dashboard{display:flex;flex-direction:column;gap:16px;margin:18px 0}
+.ghana-readiness-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.ghana-readiness-heading h2{font-size:clamp(22px,4vw,30px);margin:4px 0}
+.ghana-readiness-heading p{max-width:68ch}
+.ghana-readiness-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ghana-readiness-stat{display:flex;flex-direction:column;gap:3px;min-width:0;padding:12px;background:var(--panel2);border:1px solid var(--line);border-radius:10px}
+.ghana-readiness-stat strong{font:400 clamp(21px,3.5vw,29px) var(--display);color:var(--data);font-variant-numeric:tabular-nums}
+.ghana-readiness-stat span{font-size:12px;color:var(--muted)}
+.ghana-readiness-stat small{font-size:11px;color:var(--muted)}
+.ghana-readiness-progress{display:flex;flex-direction:column;gap:7px;padding:13px 14px;border:1px solid rgba(69,216,255,.28);border-radius:11px;background:rgba(69,216,255,.055)}
+.ghana-readiness-progress-copy{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:13px}
+.ghana-readiness-progress-copy strong{color:var(--text)}
+.ghana-readiness-progress-copy span{font-family:var(--mono);color:var(--data)}
+.ghana-readiness-track{height:10px;overflow:hidden;border-radius:99px;background:var(--panel2)}
+.ghana-readiness-track i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--data),var(--good));transition:width .25s ease}
+.ghana-readiness-note,.ghana-readiness-footnote{font-size:12px;color:var(--muted);line-height:1.5}
+.ghana-readiness-groups{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.ghana-readiness-group{min-width:0;border:1px solid var(--line);border-radius:11px;background:var(--panel);overflow:hidden}
+.ghana-readiness-group[open]{border-color:rgba(69,216,255,.4)}
+.ghana-readiness-group summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;padding:12px;cursor:pointer;list-style:none}
+.ghana-readiness-group summary::-webkit-details-marker{display:none}
+.ghana-readiness-group summary::after{content:"＋";grid-column:2;grid-row:1;color:var(--data);font:700 16px var(--mono);justify-self:end}
+.ghana-readiness-group[open] summary::after{content:"−"}
+.ghana-readiness-group-title{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ghana-readiness-group-title strong{font-size:14px;line-height:1.3}
+.ghana-readiness-group-title small{font-size:11px;color:var(--muted)}
+.ghana-readiness-group-counts{display:flex;flex-wrap:wrap;gap:5px 9px;grid-column:1/-1;font:10px var(--mono);color:var(--muted)}
+.ghana-readiness-group-counts .mastered{color:var(--good)}
+.ghana-readiness-group-counts .needs-revision{color:var(--gold)}
+.ghana-readiness-group-counts .not-assessed{color:var(--muted)}
+.ghana-readiness-group-total{position:absolute;right:38px;top:12px;font:700 11px var(--mono);color:var(--data)}
+.ghana-readiness-group summary{position:relative;padding-right:92px}
+.ghana-readiness-indicators{display:flex;flex-direction:column;gap:7px;margin:0;padding:0 9px 9px;list-style:none}
+.ghana-readiness-indicator{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:9px;background:var(--panel2)}
+.ghana-readiness-indicator-copy{display:flex;flex-direction:column;gap:3px;min-width:0}
+.ghana-readiness-indicator-code{font:10px var(--mono);color:var(--data);overflow-wrap:anywhere}
+.ghana-readiness-indicator-copy strong{font-size:12px;line-height:1.4;overflow-wrap:anywhere}
+.ghana-readiness-indicator-copy small{font-size:10px;color:var(--muted)}
+.ghana-readiness-status{align-self:start;padding:3px 7px;border-radius:99px;font:10px var(--mono);white-space:nowrap;border:1px solid var(--line);color:var(--muted)}
+.ghana-readiness-status.mastered{color:var(--good);border-color:rgba(75,227,154,.35);background:rgba(75,227,154,.08)}
+.ghana-readiness-status.needs-revision{color:var(--gold);border-color:rgba(255,209,102,.35);background:rgba(255,209,102,.08)}
+.ghana-readiness-status.not-assessed{color:var(--muted)}
+.ghana-readiness-review{grid-column:1/-1;justify-self:start;margin-top:1px}
+.ghana-readiness-indicator.mastered{border-left:3px solid var(--good)}
+.ghana-readiness-indicator.needs-revision{border-left:3px solid var(--gold)}
+.ghana-readiness-indicator.not-assessed{border-left:3px solid var(--line)}
+@media(max-width:760px){
+  .ghana-readiness-heading{flex-direction:column}
+  .ghana-readiness-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ghana-readiness-groups{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){.ghana-readiness-track i{transition:none}}

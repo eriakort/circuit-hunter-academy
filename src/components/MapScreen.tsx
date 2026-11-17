@@ -12,6 +12,7 @@ import { SpacedReview } from './SpacedReview';
 import { scheduleNextConceptReview } from '../spacedRepetition';
 import { calculateLearningStreak } from '../learningStreak';
 import { LearningStreak } from './LearningStreak';
+import { GhanaSS1ReadinessDashboard } from './GhanaSS1ReadinessDashboard';
 
 export const MapScreen: React.FC = () => {
   const {
@@ -102,6 +103,13 @@ export const MapScreen: React.FC = () => {
   }
 
   const MY = myMissions();
+  const indicatorDiagnosticMission = curSub === 'ghcoremath'
+    ? MY.find(mission => mission.id === 'gh-core-ss1-45-indicator-diagnostic')
+    : undefined;
+  const indicatorDiagnosticMissionIndex = indicatorDiagnosticMission
+    ? MISSIONS.indexOf(indicatorDiagnosticMission)
+    : -1;
+
   const doneCount = MY.filter(m => cleared[m.id]).length;
   const isMastered = allCleared();
   const learningRecords = MY.map(m => ({ mission: m, progress: state.learningProgress?.[m.id] }))
@@ -314,6 +322,20 @@ export const MapScreen: React.FC = () => {
 
         <div dangerouslySetInnerHTML={{ __html: titleSvgHtml }} />
       </section>
+
+      {indicatorDiagnosticMission && (
+        <GhanaSS1ReadinessDashboard
+          lang={lang}
+          progress={state.learningProgress?.[indicatorDiagnosticMission.id]}
+          onStartDiagnostic={() => {
+            if (indicatorDiagnosticMissionIndex >= 0) openMission(indicatorDiagnosticMissionIndex);
+          }}
+          onReviewConcept={conceptId => {
+            const concept = indicatorDiagnosticMission.learning?.concepts.find(item => item.id === conceptId);
+            if (concept) startSingleRevision({ mission: indicatorDiagnosticMission, concept });
+          }}
+        />
+      )}
 
       <section className="learning-dashboard card" aria-label={lang === 'it' ? 'Cruscotto dei progressi' : 'Learning progress dashboard'}>
         <div className="learning-dashboard-heading">
