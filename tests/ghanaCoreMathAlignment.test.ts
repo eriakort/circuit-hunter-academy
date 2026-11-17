@@ -56,6 +56,16 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
     expect(equations?.note).toContain('quadratic factorisation');
   });
 
+  test('maps quadratic factorisation, perfect squares and algebraic fractions to SHS 1 indicators', () => {
+    const factorisation = getGhanaMissionAlignment('gh-core-ss1-quadratic-factorisation-algebraic-fractions');
+    expect(factorisation?.curriculumYear).toBe('SHS 1');
+    expect(factorisation?.contentStandardIds).toEqual(['1.2.1.CS.1']);
+    expect(factorisation?.learningOutcomeIds).toEqual(['1.2.1.LO.1']);
+    expect(factorisation?.learningIndicatorIds).toEqual(['1.2.1.LI.2', '1.2.1.LI.3', '1.2.1.LI.4']);
+    expect(factorisation?.printedPages).toEqual([57, 61]);
+    expect(factorisation?.note).toContain('zero or undefined');
+  });
+
   test('maps fraction operations and inverses to the SHS 1 proportional-reasoning standard', () => {
     const fractions = getGhanaMissionAlignment('gh-core-ss1-fraction-operations');
     expect(fractions?.curriculumYear).toBe('SHS 1');
