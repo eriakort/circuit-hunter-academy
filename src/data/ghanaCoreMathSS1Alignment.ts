@@ -244,7 +244,7 @@ export const GHANA_CORE_MATH_SS1_ALIGNMENT: GhanaMissionAlignment[] = [
     printedPages: [44, 46],
     alignment: 'direct',
     note: 'Covers fraction-decimal connections, conversion to percentages, rational-number operations and word problems, positive rational numbers raised to whole-number powers, rounding to decimal places and significant figures, and additive and multiplicative inverses of fractions.'
-  }
+  },
   {
     missionId: 'gh-core-ss1-quadratic-factorisation-algebraic-fractions',
     curriculumYear: 'SHS 1',
