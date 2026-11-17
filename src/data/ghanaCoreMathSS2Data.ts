@@ -8,8 +8,8 @@ import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
 export const GHANA_CORE_MATH_SS2_SUBJECT: SubjectInfo = {
   id: 'ghcoremath2',
   name: 'Core Mathematics · SHS 2',
-  blurb: 'Ghana NaCCA SHS 2 Core Mathematics: number systems, proportional reasoning, algebra, progressions, financial models, geometry, measurement and statistical reasoning.',
-  meta: 'Ghana NaCCA · SHS 2 · fourteen learning missions',
+  blurb: 'Ghana NaCCA SHS 2 Core Mathematics: number systems, proportional reasoning, algebra, progressions, financial models, geometry, measurement, statistical reasoning and probability.',
+  meta: 'Ghana NaCCA · SHS 2 · sixteen learning missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="38" fill="none" stroke="#7bdff2" stroke-width="4"/><path d="M37 76 L54 42 L67 66 L83 42" fill="none" stroke="#ffd166" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
