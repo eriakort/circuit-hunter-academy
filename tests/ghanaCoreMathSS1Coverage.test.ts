@@ -53,14 +53,25 @@ describe('Ghana SHS 1 Core Mathematics coverage audit', () => {
   test('counts the expression mission only in its matching SHS 1 algebra sub-strand', () => {
     const algebra = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Applications of Expressions, Equations and Inequalities');
     expect(algebra?.status).toBe('partial');
-    expect(algebra?.pilotMissionIds).toEqual(['gh-core-ss1-algebraic-expressions', 'gh-core-ss1-linear-equations-inequalities', 'gh-core-ss1-quadratic-factorisation-algebraic-fractions']);
+    expect(algebra?.pilotMissionIds).toEqual(['gh-core-ss1-algebraic-expressions', 'gh-core-ss1-linear-equations-inequalities', 'gh-core-ss1-quadratic-factorisation-algebraic-fractions', 'gh-core-ss1-algebraic-thinking-mastery']);
   });
 
   test('counts both Patterns and Relationships missions in their matching sub-strand', () => {
     const patterns = GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Patterns and Relationships');
     expect(patterns?.status).toBe('partial');
-    expect(patterns?.pilotMissionIds).toEqual(['gh-core-ss1-patterns-functions', 'gh-core-ss1-straight-lines-distance']);
+    expect(patterns?.pilotMissionIds).toEqual(['gh-core-ss1-patterns-functions', 'gh-core-ss1-straight-lines-distance', 'gh-core-ss1-patterns-relationships-mastery']);
     expect(patterns?.learningIndicators).toBe(4);
+  });
+
+  test('includes integrated algebra and patterns mastery practice without inflating NaCCA indicator totals', () => {
+    const algebraMission = GHANA_CORE_MATH_SS1_MISSIONS.find(item => item.id === 'gh-core-ss1-algebraic-thinking-mastery');
+    const patternsMission = GHANA_CORE_MATH_SS1_MISSIONS.find(item => item.id === 'gh-core-ss1-patterns-relationships-mastery');
+    expect(algebraMission?.quiz).toHaveLength(10);
+    expect(algebraMission?.scenes.length).toBeGreaterThanOrEqual(15);
+    expect(patternsMission?.quiz).toHaveLength(10);
+    expect(patternsMission?.scenes.length).toBeGreaterThanOrEqual(13);
+    expect(GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Applications of Expressions, Equations and Inequalities')?.learningIndicators).toBe(6);
+    expect(GHANA_CORE_MATH_SS1_COVERAGE.find(item => item.subStrand === 'Patterns and Relationships')?.learningIndicators).toBe(4);
   });
 
   test('counts the spatial sense mission only in its matching Geometry Around Us sub-strand', () => {
