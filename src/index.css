@@ -1439,3 +1439,10 @@ table.g5m-formulas td:first-child{font-family:inherit;text-align:left}
 
 .theme-sankofa .mcard .dm{display:none}
 .theme-sankofa .mcard h3{padding-right:0}
+
+.theme-sankofa .bubble.challenge .who{color:var(--ember)}
+.sankofa-scene-prompt{
+  display:grid;place-items:center;min-height:150px;padding:24px;text-align:center;border:1px solid rgba(213,164,59,.6);
+  border-radius:12px;background:radial-gradient(circle at 50% 20%,rgba(213,164,59,.18),transparent 55%),linear-gradient(135deg,#174b36,#293b60);
+  color:#f2e8d5;font:700 18px var(--display);letter-spacing:.03em;
+}
