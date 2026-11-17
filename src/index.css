@@ -1687,3 +1687,28 @@ table.g5m-formulas td:first-child{font-family:inherit;text-align:left}
   .theme-sankofa .sankofa-world-banner { min-height: 0; }
   .theme-sankofa .sankofa-emblem { width: 78px; height: 78px; flex-basis: 78px; }
 }
+
+
+/* Sankofa accessibility: keep text colors readable on parchment surfaces (WCAG AA). */
+:root[data-curriculum-theme="sankofa"],
+.theme-sankofa {
+  --muted: #586458;
+  --ember: #a54832;
+  --gold: #805a12;
+}
+.theme-sankofa .hero h1 span { color: #805a12; }
+.theme-sankofa .mcard .topic,
+.theme-sankofa .mcard .num,
+.theme-sankofa .lede,
+.theme-sankofa .muted,
+.theme-sankofa .badge.lock,
+.theme-sankofa .subject-indicator-copy small,
+.theme-sankofa .sankofa-progress-heading p,
+.theme-sankofa .sankofa-progress-foot,
+.theme-sankofa .sankofa-region-copy p,
+.theme-sankofa .sankofa-cultural-note {
+  color: #586458;
+}
+.theme-sankofa .badge.go { color: #843522; }
+.theme-sankofa .rank { color: #76520f; }
+.theme-sankofa :focus-visible { outline-color: #805a12; }
