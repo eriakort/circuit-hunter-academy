@@ -193,14 +193,20 @@ export const GHANA_SS1_STATISTICS_MISSIONS: Mission[] = [
         'Rispondi a una domanda per ciascuno degli otto indicatori SHS 1 di Ragionamento statistico. Serve almeno l’80% per sbloccare la battaglia finale. A ogni nuovo tentativo viene proposta la forma alternativa per ciascun indicatore.'
       ],
       prerequisites: [
-        'Review data types, collection methods, frequency tables, graphs and averages in the lesson scenes.',
-        'Ripassa tipi di dati, metodi di raccolta, tabelle di frequenza, grafici e medie nelle scene della lezione.'
+        [
+          'Review data types, collection methods, frequency tables, graphs and averages in the lesson scenes.',
+          'Ripassa tipi di dati, metodi di raccolta, tabelle di frequenza, grafici e medie nelle scene della lezione.'
+        ]
       ],
       summary: [
-        'A trustworthy investigation moves from a clear question to fair sampling, ethical collection, accurate organisation and evidence-based conclusions.',
-        'Un’indagine affidabile parte da una domanda chiara e procede con un campionamento corretto, una raccolta etica, un’organizzazione accurata e conclusioni basate sui dati.',
-        'Choose tables, graphs and descriptive measures that fit the question. Explain unusual values and the limits of the sample instead of hiding inconvenient evidence.',
-        'Scegli tabelle, grafici e misure descrittive adatti alla domanda. Spiega i valori insoliti e i limiti del campione invece di nascondere dati scomodi.'
+        [
+          'A trustworthy investigation moves from a clear question to fair sampling, ethical collection, accurate organisation and evidence-based conclusions.',
+          'Un’indagine affidabile parte da una domanda chiara e procede con un campionamento corretto, una raccolta etica, un’organizzazione accurata e conclusioni basate sui dati.'
+        ],
+        [
+          'Choose tables, graphs and descriptive measures that fit the question. Explain unusual values and the limits of the sample instead of hiding inconvenient evidence.',
+          'Scegli tabelle, grafici e misure descrittive adatti alla domanda. Spiega i valori insoliti e i limiti del campione invece di nascondere dati scomodi.'
+        ]
       ],
       techniqueUnlock: {
         id: 'ghana-ss1-evidence-into-action',
