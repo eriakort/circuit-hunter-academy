@@ -85,8 +85,8 @@ export const GHANA_CORE_MATH_SS1_COVERAGE: GhanaSS1SubStrandCoverage[] = [
     learningOutcomes: 3,
     learningIndicators: 9,
     status: 'partial',
-    pilotMissionIds: ['gh-core-ss1-vectors-bearings', 'gh-core-ss1-trigonometry', 'gh-core-ss1-perimeter-area', 'gh-core-ss1-prism-volume'],
-    note: 'The pilot covers vectors and bearings, trigonometry, and perimeter/area of circles and quadrilaterals. The new mission addresses SI/imperial area referents, regular/composite/irregular shapes, perimeter estimation, unit conversions, and contextual problems. The volume-of-prisms indicator is now addressed in the separate Prism Vault mission; additional varied practice and assessment are still needed before claiming full mastery.'
+    pilotMissionIds: ['gh-core-ss1-vectors-bearings', 'gh-core-ss1-trigonometry', 'gh-core-ss1-perimeter-area', 'gh-core-ss1-prism-volume', 'gh-core-ss1-measurement-mastery-challenge'],
+    note: 'The pilot covers vectors and bearings, trigonometry, and perimeter/area of circles and quadrilaterals. The new mission addresses SI/imperial area referents, regular/composite/irregular shapes, perimeter estimation, unit conversions, and contextual problems. The volume-of-prisms indicator is addressed in the Prism Vault mission. The Measurement Expedition adds integrated, graduated practice across the existing vector, trigonometry, area/perimeter and prism-volume indicators; it reinforces the same curriculum scope and does not add indicators.'
   },
   {
     strand: 'Making Sense of and Using Data',

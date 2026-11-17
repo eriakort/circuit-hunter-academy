@@ -233,6 +233,16 @@ describe('Ghana Core Mathematics NaCCA traceability', () => {
   });
 
 
+  test('maps integrated measurement mastery to existing SHS 1 standards and indicators', () => {
+    const mastery = getGhanaMissionAlignment('gh-core-ss1-measurement-mastery-challenge');
+    expect(mastery?.curriculumYear).toBe('SHS 1');
+    expect(mastery?.contentStandardIds).toEqual(['1.3.2.CS.1', '1.3.2.CS.2', '1.3.2.CS.3']);
+    expect(mastery?.learningOutcomeIds).toEqual(['1.3.2.LO.1', '1.3.2.LO.2', '1.3.2.LO.3']);
+    expect(mastery?.learningIndicatorIds).toEqual(['1.3.2.LI.1', '1.3.2.LI.2', '1.3.2.LI.3', '1.3.2.LI.4']);
+    expect(mastery?.printedPages).toEqual([110, 124]);
+    expect(mastery?.note).toContain('does not claim additional curriculum coverage');
+  });
+
   test('maps prism volume to the fourth SHS 1 Measurement indicator', () => {
     const volume = getGhanaMissionAlignment('gh-core-ss1-prism-volume');
     expect(volume?.curriculumYear).toBe('SHS 1');

@@ -10,7 +10,7 @@ import {
 describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
   test('uses a dedicated subject and curriculum-specific unit and arcs', () => {
     expect(GHANA_CORE_MATH_SUBJECT.id).toBe('ghcoremath');
-    expect(GHANA_CORE_MATH_SUBJECT.meta).toContain('28 missions');
+    expect(GHANA_CORE_MATH_SUBJECT.meta).toContain('29 missions');
     expect(GHANA_CORE_MATH_SS1_UNIT.subject).toBe('ghcoremath');
     expect(GHANA_CORE_MATH_SS1_ARCS).toHaveLength(23);
     expect(GHANA_CORE_MATH_SS1_ARCS.every(arc => arc.subject === 'ghcoremath')).toBe(true);
@@ -18,7 +18,7 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
 
   test('contains unique pilot missions with valid local arc references', () => {
     const ids = GHANA_CORE_MATH_SS1_MISSIONS.map(mission => mission.id);
-    expect(ids).toHaveLength(28);
+    expect(ids).toHaveLength(29);
     expect(new Set(ids).size).toBe(ids.length);
     expect(ids.every(id => id.startsWith('gh-core-ss1-'))).toBe(true);
     expect(GHANA_CORE_MATH_SS1_MISSIONS.every(mission => mission.arc >= 0 && mission.arc < GHANA_CORE_MATH_SS1_ARCS.length)).toBe(true);
@@ -85,6 +85,9 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
     expect(text).toContain('The Triangle Sightline');
     expect(text).toContain('The Boundary and Surface Forge');
     expect(text).toContain('The Prism Vault');
+    expect(text).toContain('The Measurement Expedition');
+    expect(text).toContain('cross-sectional area × perpendicular length');
+    expect(text).toContain('30,000 cm²');
     expect(text).toContain('triangular prism');
     expect(text).toContain('cubic units');
     expect(text).toContain('perimeter and area for circles');
