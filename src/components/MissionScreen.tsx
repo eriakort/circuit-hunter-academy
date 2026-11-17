@@ -297,7 +297,7 @@ export const MissionScreen: React.FC = () => {
 
           {guideText && (
             <section className="mission-guide" aria-label={isGhana ? "The Elder Guide lesson guidance" : "Sensei Kaito lesson guidance"}>
-              <div className="avatar" aria-hidden="true" dangerouslySetInnerHTML={{ __html: SENSEI }} />
+              <div className="avatar" aria-hidden="true" dangerouslySetInnerHTML={{ __html: isGhana ? SANKOFA_GUIDE_AVATAR : SENSEI }} />
               <div className="bubble">
                 <div className="who">{isGhana ? "The Elder Guide" : "Sensei Kaito"}</div>
                 <div dangerouslySetInnerHTML={{ __html: L(guideText, lang) }} />
