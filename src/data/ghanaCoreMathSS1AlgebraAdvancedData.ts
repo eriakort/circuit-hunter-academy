@@ -25,7 +25,7 @@ export const GHANA_SS1_ALGEBRA_MISSIONS: Mission[] = [
     title: 'The Factorisation Forge',
     topic: 'Expand and factorise quadratic trinomials, recognise perfect-square expressions and differences of two squares, and perform operations on simple algebraic fractions while respecting excluded values.',
     demon: 'The Bracket Breaker',
-    tech: 'Algebra Form · Seventeenth Technique: Reveal the Hidden Factors',
+    tech: 'Algebra Form · Nineteenth Technique: Reveal the Hidden Factors',
     scenes: [
       lesson('<p><b>Expansion and factorisation are reverse processes.</b> Expand (x + 3)(x + 4) by multiplying each term: x² + 4x + 3x + 12 = x² + 7x + 12. Factorisation reverses this: x² + 7x + 12 = (x + 3)(x + 4).</p>'),
       lesson('<p><b>Factorise a monic quadratic.</b> For x² + bx + c, find two numbers whose sum is b and whose product is c. For x² + 7x + 12, the numbers are 3 and 4, so the factors are (x + 3)(x + 4). For x² − x − 12, use −4 and 3: (x − 4)(x + 3).</p>'),
