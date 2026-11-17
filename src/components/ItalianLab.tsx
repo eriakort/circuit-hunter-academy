@@ -59,7 +59,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     targetIt: 'Piacere, mi chiamo Alessandro.',
     translationEn: 'Nice to meet you, my name is Alessandro.',
     phoneticHint: 'pya-CHE-reh, mee KYA-mo a-les-SAN-dro',
-    notes: ['Standard polite introduction', 'Presentazione standard'],
+    notes: ['The reflexive verb chiamarsi uses mi with io: mi chiamo.', 'Il verbo riflessivo chiamarsi usa mi con io: mi chiamo.'],
     grammarTopicId: 'reflexive'
   },
   {
