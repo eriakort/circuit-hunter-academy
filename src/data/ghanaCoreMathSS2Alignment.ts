@@ -62,3 +62,36 @@ export const GHANA_CORE_MATH_SS2_REAL_NUMBER_ALIGNMENT = {
     { id: '2.1.1.LI.2', printedPage: 173, description: 'Model and solve real-life problems involving modular arithmetic.' }
   ]
 } as const;
+
+
+// Strand 2 · Algebraic Reasoning · Sub-strand 1
+// Source: official NaCCA SHS 1–3 Mathematics Curriculum, printed pp. 193–198.
+export const GHANA_CORE_MATH_SS2_SIMULTANEOUS_EQUATIONS_ALIGNMENT = {
+  strand: '2 · Algebraic Reasoning',
+  subStrand: '1 · Applications of Expressions, Equations and Inequalities',
+  printedPages: [193, 198],
+  contentStandards: [
+    {
+      id: '2.2.1.CS.1',
+      printedPage: 193,
+      description: 'Demonstrate knowledge and understanding of simultaneous equations involving two variables and apply them to solve everyday-life problems.'
+    }
+  ],
+  learningOutcomes: [
+    {
+      id: '2.2.1.LO.1',
+      printedPage: 187,
+      description: 'Solve linear equations in two variables using elimination, substitution and graphical methods.'
+    },
+    {
+      id: '2.2.1.LO.2',
+      printedPage: 189,
+      description: 'Analyse, model and solve process problems on simultaneous linear equations involving real-life problems.'
+    }
+  ],
+  learningIndicators: [
+    { id: '2.2.1.LI.1', printedPage: 193, description: 'Solve simultaneous linear equations involving two variables using the graphical method.' },
+    { id: '2.2.1.LI.2', printedPage: 196, description: 'Analyse two linear equations in two variables and solve them using elimination and substitution methods.' },
+    { id: '2.2.1.LI.3', printedPage: 198, description: 'Analyse, model and solve word problems of simultaneous linear equations involving numbers, age and other contexts.' }
+  ]
+} as const;
