@@ -2,13 +2,17 @@ import assert from 'node:assert/strict';
 import {
   GHANA_NACCA_SS2_MATHEMATICS_SOURCE,
   GHANA_CORE_MATH_SS2_SCOPE,
-  GHANA_CORE_MATH_SS2_REAL_NUMBER_ALIGNMENT
+  GHANA_CORE_MATH_SS2_REAL_NUMBER_ALIGNMENT,
+  GHANA_CORE_MATH_SS2_SIMULTANEOUS_EQUATIONS_ALIGNMENT
 } from '../src/data/ghanaCoreMathSS2Alignment';
 import {
   GHANA_CORE_MATH_SS2_SUBJECT,
   GHANA_CORE_MATH_SS2_UNIT,
   GHANA_CORE_MATH_SS2_ARCS,
-  GHANA_CORE_MATH_SS2_MISSIONS
+  GHANA_CORE_MATH_SS2_MISSIONS,
+  GHANA_CORE_MATH_SS2_ALGEBRA_UNIT,
+  GHANA_CORE_MATH_SS2_ALGEBRA_ARCS,
+  GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS
 } from '../src/data/ghanaCoreMathSS2Data';
 
 assert.equal(GHANA_NACCA_SS2_MATHEMATICS_SOURCE.publicationDate, 'September 2023');
@@ -27,5 +31,15 @@ assert.equal(GHANA_CORE_MATH_SS2_MISSIONS.length, 1);
 assert.equal(GHANA_CORE_MATH_SS2_MISSIONS[0].id, 'gh-core-ss2-surds-indices-modulo');
 assert.equal(GHANA_CORE_MATH_SS2_MISSIONS[0].pages, 'NaCCA SHS 2 · pp. 166–173');
 assert.equal(GHANA_CORE_MATH_SS2_MISSIONS[0].quiz.length, 5);
+assert.equal(GHANA_CORE_MATH_SS2_SIMULTANEOUS_EQUATIONS_ALIGNMENT.contentStandards.length, 1);
+assert.equal(GHANA_CORE_MATH_SS2_SIMULTANEOUS_EQUATIONS_ALIGNMENT.learningOutcomes.length, 2);
+assert.equal(GHANA_CORE_MATH_SS2_SIMULTANEOUS_EQUATIONS_ALIGNMENT.learningIndicators.length, 3);
+assert.deepEqual(GHANA_CORE_MATH_SS2_SIMULTANEOUS_EQUATIONS_ALIGNMENT.learningIndicators.map(item => item.printedPage), [193, 196, 198]);
+assert.equal(GHANA_CORE_MATH_SS2_ALGEBRA_UNIT.subject, 'ghcoremath2');
+assert.equal(GHANA_CORE_MATH_SS2_ALGEBRA_ARCS[0].pages, 'NaCCA SHS 2 · pp. 193–198');
+assert.equal(GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS.length, 1);
+assert.equal(GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS[0].id, 'gh-core-ss2-simultaneous-equations');
+assert.equal(GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS[0].quiz.length, 5);
+assert.ok(GHANA_CORE_MATH_SS2_ALGEBRA_MISSIONS[0].scenes.some(scene => scene.type === 'sort'));
 assert.ok(GHANA_CORE_MATH_SS2_MISSIONS[0].scenes.some(scene => scene.type === 'sort'));
 console.log('ghanaCoreMathSS2.test.ts ok');
