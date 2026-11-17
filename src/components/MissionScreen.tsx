@@ -33,6 +33,7 @@ export const MissionScreen: React.FC = () => {
 
   const { lang, name } = state;
   const sc = currentMission.scenes[currentSceneIndex];
+  const masteryAssessment = currentMission.learning?.masteryAssessment;
   const [canProceed, setCanProceed] = useState(false);
   const [guidedIndex, setGuidedIndex] = useState(0);
   const [guidedHintVisible, setGuidedHintVisible] = useState(false);
@@ -48,7 +49,7 @@ export const MissionScreen: React.FC = () => {
   const [masteryAnswers, setMasteryAnswers] = useState<number[]>([]);
   const [masteryFeedback, setMasteryFeedback] = useState<{ score: number; passed: boolean; attempt: number } | null>(null);
   const [masteryStarted, setMasteryStarted] = useState(false);
-  const [masteryVariantIndexes, setMasteryVariantIndexes] = useState<number[]>(() => createAssessmentQuestionVariantIndexes(currentMission.learning?.masteryAssessment));
+  const [masteryVariantIndexes, setMasteryVariantIndexes] = useState<number[]>(() => createAssessmentQuestionVariantIndexes(masteryAssessment));
   const gameContainerRef = useRef<HTMLDivElement>(null);
 
   // Scene gating check
@@ -179,7 +180,6 @@ export const MissionScreen: React.FC = () => {
   const knowledgeQuestions = currentMission.learning?.knowledgeCheck || [];
   const knowledgeComplete = knowledgeQuestions.length === 0 || typeof savedLearning?.knowledgeCheckScore === 'number';
   const knowledgeQuestion = knowledgeQuestions[knowledgeIndex];
-  const masteryAssessment = currentMission.learning?.masteryAssessment;
   const techniqueUnlock = HARDWARE_LEARNING_PILOT[currentMission.id]?.techniqueUnlock ?? currentMission.learning?.techniqueUnlock;
   const masteryQuestions = resolveAssessmentQuestions(masteryAssessment, masteryVariantIndexes);
   const masteryReviewConceptIds = masteryFeedback && !masteryFeedback.passed
