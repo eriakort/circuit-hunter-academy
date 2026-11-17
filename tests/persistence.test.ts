@@ -344,3 +344,54 @@ const ghanaNavigation = restoreSavedNavigation({
   subject: 'ghcoremath'
 }, ghanaSubjectState, 'ghana-nacca');
 assert.equal(ghanaNavigation?.missionId, ghanaMission!.id, 'Ghana Core Mathematics mission navigation survives reload restoration');
+
+
+const csMissionForSubjectIsolation = MISSIONS.find(mission => (ARCS[mission.arc]?.subject || 'cs') === 'cs');
+assert.ok(csMissionForSubjectIsolation, 'a Computer Science mission is available for cross-subject navigation regression tests');
+
+const ghanaPathways = [
+  { grade: 'grade9' as const, subject: 'ghcoremath' as const, curriculum: 'ghana-nacca' as const },
+  { grade: 'grade10' as const, subject: 'ghcoremath2' as const, curriculum: 'ghana-nacca' as const },
+  { grade: 'grade11' as const, subject: 'ghcoremath3' as const, curriculum: 'ghana-nacca' as const }
+];
+
+for (const pathway of ghanaPathways) {
+  const pathwayState = sanitizeGameState({
+    grade: pathway.grade,
+    subject: pathway.subject
+  }, pathway.curriculum);
+  assert.equal(pathwayState.subject, pathway.subject, `${pathway.subject} survives save sanitization`);
+
+  const pathwayMission = MISSIONS.find(mission => (ARCS[mission.arc]?.subject || 'cs') === pathway.subject);
+  assert.ok(pathwayMission, `${pathway.subject} has registered missions`);
+  const staleComputerScienceNavigation = restoreSavedNavigation({
+    view: 'scene',
+    currentMissionIndex: MISSIONS.indexOf(csMissionForSubjectIsolation!),
+    currentSceneIndex: 0,
+    missionId: csMissionForSubjectIsolation!.id,
+    grade: pathway.grade,
+    subject: pathway.subject
+  }, pathwayState, pathway.curriculum);
+
+  assert.equal(staleComputerScienceNavigation?.view, 'map', `${pathway.subject} must not reopen a saved Computer Science scene`);
+  assert.equal(staleComputerScienceNavigation?.missionId, pathwayMission!.id, `${pathway.subject} falls back to its own first mission`);
+  assert.equal(
+    (ARCS[MISSIONS[staleComputerScienceNavigation!.currentMissionIndex].arc]?.subject || 'cs'),
+    pathway.subject,
+    `${pathway.subject} restored mission index belongs to the selected subject`
+  );
+
+  const staleMapNavigation = restoreSavedNavigation({
+    view: 'map',
+    currentMissionIndex: MISSIONS.indexOf(csMissionForSubjectIsolation!),
+    currentSceneIndex: 0,
+    missionId: csMissionForSubjectIsolation!.id,
+    grade: pathway.grade,
+    subject: pathway.subject
+  }, pathwayState, pathway.curriculum);
+  assert.equal(
+    ARCS[MISSIONS[staleMapNavigation!.currentMissionIndex].arc]?.subject,
+    pathway.subject,
+    `${pathway.subject} map navigation cannot retain a Computer Science mission index`
+  );
+}
