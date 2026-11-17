@@ -65,7 +65,9 @@ test('Community Data Lab provides a structured pathway for all eight Statistical
   const priorMissionsCleared = Object.fromEntries(missionIds.slice(0, targetPosition).map(id => [id, true]));
 
   await page.evaluate(({ cleared }) => {
-    const key = 'circuit-hunter-academy-v2';
+    const profile = JSON.parse(window.localStorage.getItem('circuit-hunter-academy-curriculum-profile-v1') || '{}');
+    const curriculumId = profile.activeCurriculumId || 'ghana-nacca';
+    const key = `circuit-hunter-academy-v2:${curriculumId}`;
     const saved = JSON.parse(window.localStorage.getItem(key) || '{}');
     saved.cleared = { ...(saved.cleared || {}), ...cleared };
     window.localStorage.setItem(key, JSON.stringify(saved));
