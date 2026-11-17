@@ -71,6 +71,11 @@ describe('Ghana NaCCA SHS 1 Core Mathematics pilot', () => {
     expect(text).toContain('The Household Budget Guardian');
     expect(text).toContain('The Equation Balance Trial');
     expect(text).toContain('The Factorisation Forge');
+    expect(text).toContain('The Straight-Line Navigator');
+    expect(text).toContain('midpoint');
+    expect(text).toContain('gradient');
+    expect(text).toContain('y-intercept');
+    expect(text).toContain('perpendicular');
     expect(text).toContain('difference of two squares');
     expect(text).toContain('algebraic fraction');
     expect(text).toContain('undefined');
