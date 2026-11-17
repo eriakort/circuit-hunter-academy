@@ -15,40 +15,6 @@ export const GHANA_SS1_PROPORTIONAL_ARCS: ArcInfo[] = [
     title: 'Percentage Change and Household Finance',
     pages: 'NaCCA SHS 1 · pp. 48–49'
   }
-  ,
-  {
-    id: 'gh-core-ss1-percentage-change-finance',
-    arc: 1,
-    sec: 'Proportional reasoning',
-    pages: 'NaCCA SHS 1 · pp. 48–49',
-    hue: 42,
-    horns: 2,
-    eyes: 2,
-    title: 'The Household Budget Guardian',
-    topic: 'Analyse percentage increase and decrease in everyday situations and use percentages to make informed household and project-budget decisions.',
-    demon: 'The Budget Mirage',
-    tech: 'Proportion Form · Seventeenth Technique: Change and Balance',
-    scenes: [
-      lesson('<p><b>Percentage change compares a change with the original amount.</b> Percentage change = (amount of change ÷ original amount) × 100%. Always identify the starting value first. An increase is positive; a decrease is negative or can be described separately as a percentage decrease.</p>'),
-      lesson('<p><b>Worked example — transport fuel:</b> A litre of fuel rises from GH₵9.50 to GH₵13.20. The increase is GH₵13.20 − GH₵9.50 = GH₵3.70. Percentage increase = (3.70 ÷ 9.50) × 100 ≈ 38.95%. Use the original price, GH₵9.50, as the denominator.</p>'),
-      lesson('<p><b>Worked example — a later decrease:</b> The price then falls from GH₵13.20 to GH₵12.50. The decrease is GH₵0.70. Percentage decrease = (0.70 ÷ 13.20) × 100 ≈ 5.30%. Notice that the base is now GH₵13.20, the price immediately before the decrease—not the first price.</p>'),
-      lesson('<p><b>Household utility bills:</b> A family’s electricity bill rises from GH₵240 to GH₵276. The increase is GH₵36, so the percentage increase is (36 ÷ 240) × 100 = 15%. If a bill decreases from GH₵276 to GH₵248.40, the decrease is GH₵27.60 and the percentage decrease is (27.60 ÷ 276) × 100 = 10%.</p>'),
-      lesson('<p><b>Exchange rates:</b> If GH₵1 buys US$0.08 and later buys US$0.075, the amount of dollars received for each cedi has decreased. Percentage decrease = (0.08 − 0.075) ÷ 0.08 × 100 = 6.25%. Keep the units and the direction of comparison clear. Exchange rates can change, so use the rate supplied in the question.</p>'),
-      lesson('<p><b>Project and school budgets:</b> A class plans to spend GH₵1,200 on a science project. If materials cost 12% more than expected, the increase is 0.12 × 1,200 = GH₵144, giving a revised budget of GH₵1,344. A school fee of GH₵850 reduced by 4% becomes GH₵850 − GH₵34 = GH₵816.</p>'),
-      lesson('<p><b>Shopping decisions:</b> A pair of shoes marked GH₵320 is discounted by 15%. The discount is 0.15 × 320 = GH₵48, so the sale price is GH₵272. If a later price rises from GH₵272 to GH₵300, calculate that percentage increase using GH₵272 as the original amount.</p>'),
-      lesson('<p><b>Build a balanced budget:</b> List income first, then essential costs such as food, transport, utilities and school expenses. Add the costs, subtract them from the available amount, and compare the difference with the planned budget. Convert the difference to a percentage when asked how large the overrun or saving is relative to the original budget. Do not count the same expense twice.</p>'),
-      lesson('<p><b>Common mistake:</b> Do not divide by the new amount when finding percentage change. The denominator is the original value for that particular change. Also, a 20% increase followed by a 20% decrease does not return to the starting value because the second percentage is calculated from a different base.</p>'),
-      { who: 'd', vis: 'demon', text: 'I will swap your starting values, hide your budget overrun and trick you into using the wrong denominator. Protect every cedi with careful reasoning!' },
-      { type: 'battle' }
-    ],
-    quiz: [
-      question('A utility bill rises from GH₵240 to GH₵276. What is the percentage increase?', ['15%', '12%', '36%', '10%'], 'The increase is GH₵36. Divide by the original GH₵240: 36 ÷ 240 × 100 = 15%.'),
-      question('A price falls from GH₵13.20 to GH₵12.50. What is the percentage decrease to 2 decimal places?', ['5.30%', '5.60%', '0.70%', '4.90%'], 'The decrease is GH₵0.70. Use the original GH₵13.20: 0.70 ÷ 13.20 × 100 ≈ 5.30%.'),
-      question('A class budget of GH₵1,200 increases by 12%. What is the new budget?', ['GH₵1,344', 'GH₵1,212', 'GH₵1,320', 'GH₵1,056'], '12% of 1,200 is 144; add it to the original budget: GH₵1,344.'),
-      question('A GH₵320 item is discounted by 15%. What is the sale price?', ['GH₵272', 'GH₵305', 'GH₵48', 'GH₵288'], '15% of 320 is 48; 320 − 48 = GH₵272.')
-    ]
-  }
-
 ];
 
 const lesson = (text: string) => ({ who: 's' as const, vis: 'infowords', text });
@@ -86,4 +52,36 @@ export const GHANA_SS1_PROPORTIONAL_MISSIONS: Mission[] = [
       question('Round 0.004786 to two significant figures.', ['0.0048', '0.0047', '0.0050', '0.00479'], 'The first two significant digits are 4 and 7; the next digit is 8, so round 7 up to 8.')
     ]
   }
+  ,
+  {
+    id: 'gh-core-ss1-percentage-change-finance',
+    arc: 1,
+    sec: 'Proportional reasoning',
+    pages: 'NaCCA SHS 1 · pp. 48–49',
+    hue: 42, horns: 2, eyes: 2,
+    title: 'The Household Budget Guardian',
+    topic: 'Analyse percentage increase and decrease in everyday situations and use percentages to make informed household and project-budget decisions.',
+    demon: 'The Budget Mirage',
+    tech: 'Proportion Form · Seventeenth Technique: Change and Balance',
+    scenes: [
+      lesson('<p><b>Percentage change compares a change with the original amount.</b> Percentage change = (amount of change ÷ original amount) × 100%. Always identify the starting value first.</p>'),
+      lesson('<p><b>Fuel price increase:</b> A litre rises from GH₵9.50 to GH₵13.20. The increase is GH₵3.70. Percentage increase = (3.70 ÷ 9.50) × 100 ≈ 38.95%. Use the original price as the denominator.</p>'),
+      lesson('<p><b>Later decrease:</b> The price falls from GH₵13.20 to GH₵12.50. Percentage decrease = (0.70 ÷ 13.20) × 100 ≈ 5.30%. The base is now GH₵13.20, the value immediately before the decrease.</p>'),
+      lesson('<p><b>Utility bills:</b> A family’s electricity bill rises from GH₵240 to GH₵276. The increase is GH₵36, so (36 ÷ 240) × 100 = 15%. If it falls from GH₵276 to GH₵248.40, the decrease is 10% of GH₵276.</p>'),
+      lesson('<p><b>Exchange rates:</b> If GH₵1 buys US$0.08 and later buys US$0.075, the dollar amount per cedi decreases by (0.005 ÷ 0.08) × 100 = 6.25%. Keep units and direction clear; use the rate supplied in the question.</p>'),
+      lesson('<p><b>Project and school budgets:</b> A class plans GH₵1,200 for a science project. Materials cost 12% more, an increase of GH₵144, so the revised budget is GH₵1,344. A school fee of GH₵850 reduced by 4% becomes GH₵816.</p>'),
+      lesson('<p><b>Shopping:</b> Shoes marked GH₵320 are discounted by 15%. The discount is GH₵48, so the sale price is GH₵272. A later increase from GH₵272 to GH₵300 must use GH₵272 as its original amount.</p>'),
+      lesson('<p><b>Build a balanced budget:</b> List income, then essential costs such as food, transport, utilities and school expenses. Add the costs and subtract them from the available amount. Compare the result with the planned budget and express any overrun or saving as a percentage of the original budget.</p>'),
+      lesson('<p><b>Common mistake:</b> Do not divide by the new amount when finding percentage change. A 20% increase followed by a 20% decrease does not return to the starting value because the second percentage uses a different base.</p>'),
+      { who: 'd', vis: 'demon', text: 'I will swap your starting values and hide your budget overrun. Protect every cedi with careful reasoning!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      question('A utility bill rises from GH₵240 to GH₵276. What is the percentage increase?', ['15%', '12%', '36%', '10%'], '36 ÷ 240 × 100 = 15%.'),
+      question('A price falls from GH₵13.20 to GH₵12.50. What is the percentage decrease to 2 decimal places?', ['5.30%', '5.60%', '0.70%', '4.90%'], '0.70 ÷ 13.20 × 100 ≈ 5.30%.'),
+      question('A class budget of GH₵1,200 increases by 12%. What is the new budget?', ['GH₵1,344', 'GH₵1,212', 'GH₵1,320', 'GH₵1,056'], '12% of 1,200 is 144; the new budget is GH₵1,344.'),
+      question('A GH₵320 item is discounted by 15%. What is the sale price?', ['GH₵272', 'GH₵305', 'GH₵48', 'GH₵288'], '15% of 320 is 48; 320 − 48 = GH₵272.')
+    ]
+  }
+
 ];
