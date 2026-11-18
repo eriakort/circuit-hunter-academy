@@ -47,13 +47,26 @@ export const GRADES: GradeInfo[] = [
     description: ['Math L3, Chemistry L3, Italian, Modern History (Renaissance–1870) & Geopolitics.', 'Matematica L3, Chimica L3, Italiano, Storia Moderna e Geopolitica dell’Italia.'],
     status: 'ready'
   }
+  ...([
+    ['ghjhs1', 'JHS 1', 'Junior High School · Year 1', 'Usually ages 12–13'],
+    ['ghjhs2', 'JHS 2', 'Junior High School · Year 2', 'Usually ages 13–14'],
+    ['ghjhs3', 'JHS 3', 'Junior High School · Year 3', 'Usually ages 14–15'],
+    ['ghshs1', 'SHS 1', 'Senior High School · Year 1', 'Usually ages 15–16'],
+    ['ghshs2', 'SHS 2', 'Senior High School · Year 2', 'Usually ages 16–17'],
+    ['ghshs3', 'SHS 3', 'Senior High School · Year 3', 'Usually ages 17–18']
+  ] as const).map(([id, label, level, ages]) => ({
+    id, name: [label, label], schoolLevel: [level, level], ageRange: [ages, ages],
+    description: ['Ghana NaCCA curriculum pathway · content being staged.', 'Percorso curricolare NaCCA Ghana · contenuti in fase di attivazione.'],
+    status: 'preparing' as const
+  }))
 ];
 
 export const GRADE_SUBJECT_IDS: Record<GradeId, SubjectId[]> = {
   grade5: ['science', 'math5', 'italian', 'hist5', 'geo5'],
   grade9: ['cs', 'phys', 'math', 'italian', 'chem', 'hist9', 'geo9'],
   grade10: ['chem10', 'italian', 'hist10', 'geo10', 'math10'],
-  grade11: ['chem11', 'italian', 'hist11', 'geo11', 'math11']
+  grade11: ['chem11', 'italian', 'hist11', 'geo11', 'math11'],
+  ghjhs1: [], ghjhs2: [], ghjhs3: [], ghshs1: [], ghshs2: [], ghshs3: []
 };
 
 export const getSubjectsForGrade = (grade: GradeId, subjects: SubjectInfo[]): SubjectInfo[] => {
