@@ -15,11 +15,14 @@ for (const level of ['A1', 'A2'] as const) {
 
   for (const type of ['correct', 'order', 'translate', 'write'] as const) {
     const activities = getGrammarActivities('passato-prossimo', level, type);
-    assert.equal(activities.length, 1, level + ' should have one ' + type + ' activity');
-    assert.ok(activities[0].prompt.every(value => value.trim().length > 0), type + ' prompt must be bilingual');
-    assert.ok(activities[0].hint.every(value => value.trim().length > 0), type + ' hint must be bilingual');
-    assert.ok(activities[0].explanation.every(value => value.trim().length > 0), type + ' feedback must be bilingual');
-    assert.ok(activities[0].modelAnswer.trim().length > 0, type + ' needs a model answer');
+    const expectedCount = type === 'correct' ? 1 : 2;
+    assert.equal(activities.length, expectedCount, level + ' should have ' + expectedCount + ' ' + type + ' activities');
+    for (const activity of activities) {
+      assert.ok(activity.prompt.every(value => value.trim().length > 0), type + ' prompt must be bilingual');
+      assert.ok(activity.hint.every(value => value.trim().length > 0), type + ' hint must be bilingual');
+      assert.ok(activity.explanation.every(value => value.trim().length > 0), type + ' feedback must be bilingual');
+      assert.ok(activity.modelAnswer.trim().length > 0, type + ' needs a model answer');
+    }
   }
 }
 
