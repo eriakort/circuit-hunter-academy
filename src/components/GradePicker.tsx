@@ -38,7 +38,7 @@ export const GradePicker: React.FC = () => {
         <h1>{isGhana ? <>Sankofa <span>Knowledge Quest</span></> : <>Circuit Hunter <span>Academy</span></>}</h1>
         <p className="lede">
           {L(
-            isGhana ? ['Learn from the past. Understand the present. Build the future. Choose your Ghana JHS or SHS level to begin exploring.', 'Learn from the past. Understand the present. Build the future. Choose your Ghana SHS level to begin exploring.'] : ['First, choose your school grade. You will then see only the subjects and learning paths designed for that level.', 'Per prima cosa, scegli la tua classe. Vedrai poi soltanto le materie e i percorsi didattici pensati per quel livello.'],
+            isGhana ? ['Learn from the past. Understand the present. Build the future. Choose your Ghana JHS or SHS level to begin exploring.', 'Learn from the past. Understand the present. Build the future. Choose your Ghana JHS or SHS level to begin exploring.'] : ['First, choose your school grade. You will then see only the subjects and learning paths designed for that level.', 'Per prima cosa, scegli la tua classe. Vedrai poi soltanto le materie e i percorsi didattici pensati per quel livello.'],
             lang
           )}
         </p>
@@ -47,7 +47,7 @@ export const GradePicker: React.FC = () => {
       {isGhana && (
         <div className="grade-coming-soon card" role="status">
           <h2>Your Sankofa journey begins here</h2>
-          <p>SS1, SS2 and SS3 are mapped to the academy grade structure. The SS1 pilot, SHS2 Core Mathematics pathway and SHS3 foundation are available; Additional Mathematics remains in preparation. Your Italian progress remains saved independently.</p>
+          <p>Choose JHS 1–3 or SHS 1–3. Existing SHS Core Mathematics pathways remain available; JHS Mathematics, JHS Science and SHS General Science will be added in the next curriculum increments. Your Italian progress remains saved independently.</p>
         </div>
       )}
 
@@ -61,10 +61,10 @@ export const GradePicker: React.FC = () => {
               ? ['Science, Maths, Italian, History & Geography · Ready', 'Scienze, Matematica, Italiano, Storia e Geografia · Pronte']
               : ready
                 ? grade.id === 'ghshs1'
-                  ? ['CS, Physics, Math, Italian, Chem L1, History & Geo · Ready', 'Informatica, Fisica, Matematica, Italiano, Chimica L1, Storia e Geo · Pronte']
+                  ? ['Core Mathematics · SHS 1 pilot available', 'Matematica di base · percorso SHS 1 disponibile']
                   : grade.id === 'ghshs2'
-                    ? ['Maths L2, Chemistry L2, Italian, History & World Geo · Ready', 'Matematica L2, Chimica L2, Italiano, Storia e Geografia · Pronte']
-                    : ['Maths L3, Chemistry L3, Italian, Modern History & Geopolitics · Ready', 'Matematica L3, Chimica L3, Italiano, Storia Moderna e Geopolitica · Pronte']
+                    ? ['Core Mathematics · SHS 2 pathway available', 'Matematica di base · percorso SHS 2 disponibile']
+                    : ['Core Mathematics · SHS 3 pathway available', 'Matematica di base · percorso SHS 3 disponibile']
                 : ['Curriculum setup next', 'Programma in preparazione'];
 
           return (
@@ -81,7 +81,7 @@ export const GradePicker: React.FC = () => {
               <strong>{ghanaLevel?.label ?? L(grade.name, lang)}</strong>
               <span className="grade-card-detail">{ghanaLevel?.ageRange ?? L(grade.ageRange, lang)}</span>
               <span className="grade-card-status">
-                {isGhana ? (grade.id === 'grade9' ? 'Core Mathematics · SS1 pilot available' : grade.id === 'grade10' ? 'Core Mathematics · SS2 foundation available' : 'Core Mathematics · SS3 foundation available') : L(statusCopy, lang)}
+                {isGhana ? (grade.id.startsWith('ghjhs') ? 'JHS Mathematics & Science · coming in upcoming increments' : grade.id === 'ghshs1' ? 'Core Mathematics · SHS 1 pilot available' : grade.id === 'ghshs2' ? 'Core Mathematics · SHS 2 pathway available' : 'Core Mathematics · SHS 3 pathway available') : L(statusCopy, lang)}
               </span>
             </button>
           );
