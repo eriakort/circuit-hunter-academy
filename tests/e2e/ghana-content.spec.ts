@@ -70,9 +70,8 @@ test('Ghana JHS 1 Mathematics pathways are selectable and open Number and Algebr
   await expect(page.locator('.mcard')).toHaveCount(3);
   await expect(page.locator('.mcard').first()).toContainText('The Pattern Hunter’s Trial');
   await expect(page.locator('.mcard').last()).toContainText('The Balance Gate');
-  await page.locator('.mcard').first().click();
-  await expect(page.locator('main')).toContainText('The Pattern Hunter’s Trial');
-  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+  // Unit tabs are available on the mission list, not inside an open mission.
+  // Verify Geometry before opening its first mission.
   await page.locator('.units button').filter({ hasText: 'Geometry, Shape and Measurement' }).click();
   await expect(page.locator('.mcard')).toHaveCount(4);
   await expect(page.locator('.mcard').first()).toContainText('The Lines and Angles Expedition');
@@ -80,4 +79,5 @@ test('Ghana JHS 1 Mathematics pathways are selectable and open Number and Algebr
   await page.locator('.mcard').first().click();
   await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'geometry');
   await expect(page.locator('main')).toContainText('The Lines and Angles Expedition');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
