@@ -66,7 +66,7 @@ export const GRADE_SUBJECT_IDS: Record<GradeId, SubjectId[]> = {
   grade9: ['cs', 'phys', 'math', 'italian', 'chem', 'hist9', 'geo9'],
   grade10: ['chem10', 'italian', 'hist10', 'geo10', 'math10'],
   grade11: ['chem11', 'italian', 'hist11', 'geo11', 'math11'],
-  ghjhs1: [], ghjhs2: [], ghjhs3: [], ghshs1: [], ghshs2: [], ghshs3: []
+  ghjhs1: ['ghjhs1math'], ghjhs2: [], ghjhs3: [], ghshs1: [], ghshs2: [], ghshs3: []
 };
 
 export const getSubjectsForGrade = (grade: GradeId, subjects: SubjectInfo[]): SubjectInfo[] => {
