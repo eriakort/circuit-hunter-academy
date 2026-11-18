@@ -29,7 +29,7 @@ for (const question of bank) {
   assert.ok(!questionIds.has(question.id), `Duplicate question ID: ${question.id}`);
   questionIds.add(question.id);
 
-  const isGhanaEnglishQuestion = question.subject === 'ghcoremath' || question.subject === 'ghcoremath2' || question.subject === 'ghcoremath3' || question.subject === 'ghjhs1math' || question.subject === 'ghjhs2math';
+  const isGhanaEnglishQuestion = question.subject === 'ghcoremath' || question.subject === 'ghcoremath2' || question.subject === 'ghcoremath3' || question.subject === 'ghjhs1math' || question.subject === 'ghjhs2math' || question.subject === 'ghjhs3math';
   assert.ok(isGhanaEnglishQuestion ? typeof question.q === 'string' && question.q.trim().length > 0 : isCompleteBilingualPair(question.q), `Question prompt must follow its curriculum language policy: ${question.id}`);
   assert.ok(isGhanaEnglishQuestion ? typeof question.why === 'string' && question.why.trim().length > 0 : isCompleteBilingualPair(question.why), `Question explanation must follow its curriculum language policy: ${question.id}`);
   assert.ok(Array.isArray(question.a) && question.a.length >= 2, `Question needs at least two answer options: ${question.id}`);
