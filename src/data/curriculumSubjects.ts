@@ -10,6 +10,7 @@ import { GHANA_CORE_MATH_SS2_SUBJECT } from './ghanaCoreMathSS2Data';
 import { GHANA_CORE_MATH_SS3_SUBJECT } from './ghanaCoreMathSS3Data';
 import { GHANA_JHS1_MATH_SUBJECT } from './ghanaJhs1MathData';
 import { GHANA_JHS2_MATH_SUBJECT } from './ghanaJhs2MathData';
+import { GHANA_JHS3_MATH_SUBJECT } from './ghanaJhs3MathData';
 
 export const ITALIAN_SUBJECT: SubjectInfo = {
   id: 'italian',
