@@ -17,6 +17,7 @@ export const ItalianGrammarScreen: React.FC = () => {
   const [activityInput, setActivityInput] = useState('');
   const [orderedWordIndexes, setOrderedWordIndexes] = useState<number[]>([]);
   const [activitySubmitted, setActivitySubmitted] = useState(false);
+  const [activityIndex, setActivityIndex] = useState(0);
   const [activitySelfReviewed, setActivitySelfReviewed] = useState(false);
   const [mixedReview, setMixedReview] = useState(false);
   const [mixedQuestions, setMixedQuestions] = useState<GrammarReviewQuestion[]>([]);
@@ -29,7 +30,9 @@ export const ItalianGrammarScreen: React.FC = () => {
   const question = activeQuestions[questionIndex] || lesson.exercises[0];
   const questionTopicTitle = mixedReview ? mixedQuestions[questionIndex]?.topicTitle : topic.title;
   const availableActivityTypes = (['correct', 'order', 'translate', 'write'] as GrammarActivityType[]).filter(type => getGrammarActivities(topicId, level, type).length > 0);
-  const activity = getGrammarActivities(topicId, level, activityType)[0] || getGrammarActivities('sentence-building', level, activityType)[0];
+  const activityPool = getGrammarActivities(topicId, level, activityType);
+  const activeActivityPool = activityPool.length > 0 ? activityPool : getGrammarActivities('sentence-building', level, activityType);
+  const activity = activeActivityPool[activityIndex % activeActivityPool.length];
   const activityResponse = activityType === 'order' && activity.words
     ? orderedWordIndexes.map(index => activity.words![index]).join(' ')
     : activityInput;
@@ -74,10 +77,14 @@ export const ItalianGrammarScreen: React.FC = () => {
     if (firstAvailable) setActivityType(firstAvailable);
     setQuestionIndex(0);
     setSelectedAnswer(null);
-    setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false); setActivitySelfReviewed(false);
+    setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false); setActivitySelfReviewed(false); setActivityIndex(0);
   };
   const chooseActivityType = (nextType: GrammarActivityType) => {
-    setActivityType(nextType); setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false); setActivitySelfReviewed(false);
+    setActivityType(nextType); setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false); setActivitySelfReviewed(false); setActivityIndex(0);
+  };
+  const nextActivity = () => {
+    setActivityIndex(index => (index + 1) % activeActivityPool.length);
+    setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false); setActivitySelfReviewed(false);
   };
   const nextQuestion = () => {
     setQuestionIndex(index => (index + 1) % activeQuestions.length);
@@ -203,8 +210,12 @@ export const ItalianGrammarScreen: React.FC = () => {
               <button key={type} type="button" className={activityType === type ? 'btn cyan sm' : 'btn ghost sm'} onClick={() => chooseActivityType(type)}>{L(label, lang)}</button>
             ))}
           </div>
-          <h3 style={{ marginBottom: 6 }}>{L(activity.title, lang)}</h3>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
+            <h3 style={{ margin: 0 }}>{L(activity.title, lang)}</h3>
+            <span className="eyebrow">{L(['PRACTICE', 'ESERCIZIO'], lang)} {activityIndex + 1}/{activeActivityPool.length}</span>
+          </div>
           <p style={{ lineHeight: 1.55 }}>{L(activity.prompt, lang)}</p>
+          {activeActivityPool.length > 1 && <button type="button" className="btn ghost sm" onClick={nextActivity}>{L(['Next practice', 'Prossimo esercizio'], lang)} →</button>}
           {activity.source && <div style={{ padding: 12, borderRadius: 9, background: 'rgba(255,255,255,.06)', fontSize: 17, fontWeight: 650, marginBottom: 12 }}>{activity.source}</div>}
           {activityType === 'order' && activity.words && (
             <div style={{ display: 'grid', gap: 10 }}>
