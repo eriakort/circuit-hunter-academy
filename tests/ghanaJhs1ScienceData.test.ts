@@ -5,7 +5,7 @@ import { getCurriculumSubjects } from '../src/data/curriculumSubjects';
 const science = getCurriculumSubjects('ghjhs1', 'ghana-nacca').find(subject => subject.id === 'ghjhs1science');
 assert.ok(science, 'JHS 1 Science is selectable in the Ghana curriculum');
 const missions = MISSIONS.filter(mission => mission.id.startsWith('gh-jhs1-science-'));
-assert.equal(missions.length, 11);
+assert.equal(missions.length, 16);
 assert.deepEqual(missions.map(mission => mission.title), [
   'The Materials Explorer',
   'The Everyday Materials Engineer',
@@ -17,7 +17,12 @@ assert.deepEqual(missions.map(mission => mission.title), [
   'The Digestion Defender',
   'The Inner Planet Navigator',
   'The Ecosystem Balance Keeper',
-  'The Farming Systems Strategist'
+  'The Farming Systems Strategist',
+  'The Energy Form Explorer',
+  'The Electricity Generation Guardian',
+  'The Energy Transformation Alchemist',
+  'The Force and Motion Pathfinder',
+  'The Farm Tool Engineer'
 ]);
 for (const mission of missions) {
   const arc = ARCS[mission.arc];
@@ -32,4 +37,4 @@ for (const mission of missions) {
     question.a.every(answer => typeof answer === 'string')
   ));
 }
-console.log('ghanaJhs1ScienceData.test.ts ok! JHS 1 Science Diversity of Matter, Cycles and Systems strands verified.');
+console.log('ghanaJhs1ScienceData.test.ts ok! JHS 1 Science Diversity of Matter, Cycles, Systems, and Forces and Energy strands verified.');
