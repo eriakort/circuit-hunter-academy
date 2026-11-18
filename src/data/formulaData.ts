@@ -113,6 +113,8 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
   ghjhs2science: [],
   ghjhs2math: [],
   ghjhs3math: [],
+  // Ghana JHS 3 Science uses curriculum missions rather than formula cards.
+  ghjhs3science: [],
 };
 
 export const FORMULA_CARDS: FormulaCard[] = [
