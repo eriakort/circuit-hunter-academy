@@ -16,10 +16,10 @@ for (const level of ['A1', 'A2'] as const) {
 
 const a1 = getGrammarActivities('pronouns', 'A1', 'write');
 const a2 = getGrammarActivities('pronouns', 'A2', 'write');
-assert.equal(a1.length, 1, 'A1 needs original sentence writing');
-assert.equal(a2.length, 1, 'A2 needs original sentence writing');
-assert.ok(a1[0].prompt.every(value => value.trim().length > 0));
-assert.ok(a2[0].prompt.every(value => value.trim().length > 0));
+assert.equal(a1.length, 2, 'A1 needs two progressive sentence-writing prompts');
+assert.equal(a2.length, 2, 'A2 needs two progressive sentence-writing prompts');
+assert.ok(a1.every(activity => activity.prompt.every(value => value.trim().length > 0)));
+assert.ok(a2.every(activity => activity.prompt.every(value => value.trim().length > 0)));
 assert.ok(getGrammarActivities('pronouns', 'A1', 'order').length > 0);
 assert.ok(getGrammarActivities('pronouns', 'A2', 'translate').length > 0);
 assert.ok(getGrammarActivities('pronouns', 'A1', 'correct').length > 0);
