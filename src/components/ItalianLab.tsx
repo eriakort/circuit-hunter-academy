@@ -359,6 +359,34 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     notes: ['Dipendere takes da (da + il = dal); pensare takes a.', 'Dipendere richiede da (da + il = dal); pensare richiede a.'],
     grammarTopicId: 'prepositions'
   }
+  ,
+  {
+    id: 'grammar-a1-adjective-agreement',
+    level: 'A1',
+    targetIt: 'La ragazza è simpatica e i ragazzi sono gentili.',
+    translationEn: 'The girl is friendly and the boys are kind.',
+    phoneticHint: 'la ra-GAT-tsa eh seem-PA-tee-ka eh ee ra-GAT-tsee SO-no jen-TEE-lee',
+    notes: ['Simpatica agrees with the feminine singular ragazza; gentili is plural.', 'Simpatica concorda con ragazza, femminile singolare; gentili è plurale.'],
+    grammarTopicId: 'adjective-agreement'
+  },
+  {
+    id: 'grammar-a2-adjective-agreement',
+    level: 'A2',
+    targetIt: 'Le mie amiche sono molto gentili e interessanti.',
+    translationEn: 'My female friends are very kind and interesting.',
+    phoneticHint: 'leh MEE-eh a-MEE-keh SO-no MOL-to jen-TEE-lee eh een-teh-res-SAN-tee',
+    notes: ['Amiche is feminine plural; adjectives ending in -e become -i in the plural.', 'Amiche è femminile plurale; gli aggettivi in -e diventano -i al plurale.'],
+    grammarTopicId: 'adjective-agreement'
+  },
+  {
+    id: 'grammar-b1-adjective-agreement',
+    level: 'B1',
+    targetIt: 'Abbiamo visitato due vecchie città molto affascinanti.',
+    translationEn: 'We visited two old, very fascinating cities.',
+    phoneticHint: 'ab-BYA-mo vee-zee-TA-to DOO-eh VEK-kye cheet-TA MOL-to af-fa-shee-NAN-tee',
+    notes: ['Vecchie and affascinanti agree with città in the feminine plural.', 'Vecchie e affascinanti concordano con città al femminile plurale.'],
+    grammarTopicId: 'adjective-agreement'
+  }
 ];
 
 interface DialogueTurn {
@@ -570,37 +598,6 @@ export const VERBS_CONJUGATION_DATA = [
       congiuntivo: ['vada', 'vada', 'vada', 'andiamo', 'andiate', 'vadano']
     }
   },,
-
-
-  ,
-  {
-    id: 'grammar-a1-adjective-agreement',
-    level: 'A1',
-    targetIt: 'La ragazza è simpatica e i ragazzi sono gentili.',
-    translationEn: 'The girl is friendly and the boys are kind.',
-    phoneticHint: 'la ra-GAT-tsa eh seem-PA-tee-ka eh ee ra-GAT-tsee SO-no jen-TEE-lee',
-    notes: ['Simpatica agrees with the feminine singular ragazza; gentili is plural.', 'Simpatica concorda con ragazza, femminile singolare; gentili è plurale.'],
-    grammarTopicId: 'adjective-agreement'
-  },
-  {
-    id: 'grammar-a2-adjective-agreement',
-    level: 'A2',
-    targetIt: 'Le mie amiche sono molto gentili e interessanti.',
-    translationEn: 'My female friends are very kind and interesting.',
-    phoneticHint: 'leh MEE-eh a-MEE-keh SO-no MOL-to jen-TEE-lee eh een-teh-res-SAN-tee',
-    notes: ['Amiche is feminine plural; adjectives ending in -e become -i in the plural.', 'Amiche è femminile plurale; gli aggettivi in -e diventano -i al plurale.'],
-    grammarTopicId: 'adjective-agreement'
-  },
-  {
-    id: 'grammar-b1-adjective-agreement',
-    level: 'B1',
-    targetIt: 'Abbiamo visitato due vecchie città molto affascinanti.',
-    translationEn: 'We visited two old, very fascinating cities.',
-    phoneticHint: 'ab-BYA-mo vee-zee-TA-to DOO-eh VEK-kye cheet-TA MOL-to af-fa-shee-NAN-tee',
-    notes: ['Vecchie and affascinanti agree with città in the feminine plural.', 'Vecchie e affascinanti concordano con città al femminile plurale.'],
-    grammarTopicId: 'adjective-agreement'
-  },
-
 ];
 
 const PRONOUNS = ['io', 'tu', 'lui / lei', 'noi', 'voi', 'loro'];
