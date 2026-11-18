@@ -54,7 +54,7 @@ assert.deepEqual(
 );
 assert.deepEqual(
   ghanaCurriculum!.pathways.map(pathway => pathway.id),
-  ['ghana-core-mathematics', 'ghana-additional-mathematics']
+  ['ghana-core-mathematics', 'ghana-jhs-mathematics', 'ghana-jhs-science', 'ghana-shs-general-science', 'ghana-additional-mathematics']
 );
 assert.equal(ghanaCurriculum!.pathways.find(pathway => pathway.id === 'ghana-core-mathematics')?.status, 'available');
 assert.equal(ghanaCurriculum!.pathways.find(pathway => pathway.id === 'ghana-additional-mathematics')?.status, 'planned');
