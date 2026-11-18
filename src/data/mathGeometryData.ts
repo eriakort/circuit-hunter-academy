@@ -136,7 +136,7 @@ const buildMission = (topic: GeometryTopic, index: number): Mission => {
   return {
     id: topic.id, arc: 0, sec: `G.${index + 1}`, pages: 'Geometry enrichment',
     hue: 185 + index * 13, horns: 2, eyes: 2, title: topic.title, topic: topic.topic,
-    demon: topic.demon, tech: topic.tech, boss: index === topics.length - 1,
+    demon: topic.demon, tech: topic.technique, boss: index === topics.length - 1,
     scenes: [
       { who: 's', text: [`<p><b>${topic.title[0]}</b></p><p>${topic.topic[0]}</p>`, `<p><b>${topic.title[1]}</b></p><p>${topic.topic[1]}</p>`] },
       { who: 's', text: [`<p>${first.title[0]}</p><p>${first.explanation[0]}</p>`, `<p>${first.title[1]}</p><p>${first.explanation[1]}</p>`] },
@@ -157,7 +157,7 @@ const buildMission = (topic: GeometryTopic, index: number): Mission => {
       knowledgeCheck,
       summary: topic.summary,
       masteryAssessment: { title: a('Geometry mastery check', 'Verifica di padronanza'), instructions: a('Score at least 75% to demonstrate mastery.', 'Raggiungi almeno il 75% per dimostrare la padronanza.'), questions: topic.questions, passingScore: 75 },
-      techniqueUnlock: { id: `${topic.id}-technique`, name: topic.tech, description: a('Use a clear diagram, choose the right rule and show each step before your final strike.', 'Usa un diagramma chiaro, scegli la regola corretta e mostra ogni passaggio prima del colpo finale.'), xpReward: 25 }
+      techniqueUnlock: { id: `${topic.id}-technique`, name: topic.technique, description: a('Use a clear diagram, choose the right rule and show each step before your final strike.', 'Usa un diagramma chiaro, scegli la regola corretta e mostra ogni passaggio prima del colpo finale.'), xpReward: 25 }
     }
   };
 };
