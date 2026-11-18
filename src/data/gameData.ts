@@ -29405,3 +29405,11 @@ UNITS.push({ ...GHANA_JHS2_MATH_UNIT, subject: 'ghjhs2math' });
 const ghanaJhs2MathArcOffset = ARCS.length;
 ARCS.push(...GHANA_JHS2_MATH_ARCS.map(arc => ({ ...arc, unit: ghanaJhs2MathUnitOffset, subject: 'ghjhs2math' as const })));
 MISSIONS.push(...GHANA_JHS2_MATH_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs2MathArcOffset + mission.arc })));
+
+// Ghana NaCCA · JHS 2 Mathematics · Algebra strand.
+import { GHANA_JHS2_ALGEBRA_UNIT, GHANA_JHS2_ALGEBRA_ARCS, GHANA_JHS2_ALGEBRA_MISSIONS } from './ghanaJhs2MathAlgebraData';
+const ghanaJhs2AlgebraUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_JHS2_ALGEBRA_UNIT, subject: 'ghjhs2math' });
+const ghanaJhs2AlgebraArcOffset = ARCS.length;
+ARCS.push(...GHANA_JHS2_ALGEBRA_ARCS.map(arc => ({ ...arc, unit: ghanaJhs2AlgebraUnitOffset, subject: 'ghjhs2math' as const })));
+MISSIONS.push(...GHANA_JHS2_ALGEBRA_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs2AlgebraArcOffset + mission.arc })));
