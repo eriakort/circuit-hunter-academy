@@ -32,7 +32,7 @@ export const SubjectPickerScreen: React.FC = () => {
   const activeCurriculum = getCurriculum(curriculumProfile.activeCurriculumId);
   const isGhana = activeCurriculum?.countryCode === 'GH';
   const activeGrade: GradeId =
-    grade === 'grade5' || grade === 'grade9' || grade === 'grade10' || grade === 'grade11'
+    grade === 'grade5' || grade === 'grade9' || grade === 'grade10' || grade === 'grade11' || grade === 'ghjhs1' || grade === 'ghjhs2' || grade === 'ghjhs3' || grade === 'ghshs1' || grade === 'ghshs2' || grade === 'ghshs3'
       ? grade
       : 'grade9';
 
@@ -73,13 +73,13 @@ export const SubjectPickerScreen: React.FC = () => {
     <section className="hero card">
       <div>
         <div className="eyebrow">
-          {isGhana ? (activeGrade === 'grade9' ? 'SANKOFA · SHS 1 LEARNING PATHWAYS' : activeGrade === 'grade10' ? 'SANKOFA · SHS 2 LEARNING PATHWAYS' : 'SANKOFA · SHS 3 LEARNING PATHWAYS') : L(eyebrowByGrade[activeGrade], lang)}
+          {isGhana ? (activeGrade.startsWith('ghjhs') ? `SANKOFA · ${activeGrade.toUpperCase()} LEARNING PATHWAYS` : activeGrade === 'ghshs1' ? 'SANKOFA · SHS 1 LEARNING PATHWAYS' : activeGrade === 'ghshs2' ? 'SANKOFA · SHS 2 LEARNING PATHWAYS' : 'SANKOFA · SHS 3 LEARNING PATHWAYS') : L(eyebrowByGrade[activeGrade], lang)}
         </div>
         <h1>
           {isGhana ? <>Choose your <span>learning path</span></> : <>Circuit Hunter <span>Academy</span></>}
         </h1>
         <p className="lede">
-          {isGhana ? (activeGrade === 'grade9' ? 'Explore the Ghana NaCCA SHS 1 Core Mathematics pilot. Broader SS1 coverage is still being developed.' : activeGrade === 'grade10' ? 'Explore the Ghana NaCCA SHS 2 Core Mathematics pathway. More SHS2 strands and indicators will be added in later increments.' : 'Begin the Ghana NaCCA SHS 3 Core Mathematics foundation with logical reasoning and variation.') : L(ledeByGrade[activeGrade], lang)}
+          {isGhana ? (activeGrade.startsWith('ghjhs') ? 'The NaCCA JHS Mathematics and Science pathways will be added grade by grade in the next increments.' : activeGrade === 'ghshs1' ? 'Explore the Ghana NaCCA SHS 1 Core Mathematics pilot. General Science is being prepared.' : activeGrade === 'ghshs2' ? 'Explore the Ghana NaCCA SHS 2 Core Mathematics pathway. General Science is being prepared.' : 'Explore the Ghana NaCCA SHS 3 Core Mathematics foundation. General Science is being prepared.') : L(ledeByGrade[activeGrade], lang)}
         </p>
 
         {/* Quick launch is derived from the same registry as the subject cards. */}
@@ -125,7 +125,7 @@ export const SubjectPickerScreen: React.FC = () => {
               <article className="subjcard" data-pathway="ghana-additional-mathematics" aria-label="Additional Mathematics in preparation">
                 <div className="subjart" aria-hidden="true" dangerouslySetInnerHTML={{ __html: ADDITIONAL_MATHS_ART }} />
                 <h2>Additional Mathematics</h2>
-                <p>A separate advanced Mathematics pathway. Its {activeGrade === 'grade9' ? 'SHS 1' : activeGrade === 'grade10' ? 'SHS 2' : 'SHS 3'} content is still being prepared and is not yet selectable.</p>
+                <p>A separate advanced Mathematics pathway. Its {activeGrade === 'ghshs1' ? 'SHS 1' : activeGrade === 'ghshs2' ? 'SHS 2' : 'SHS 3'} content is still being prepared and is not yet selectable.</p>
                 <span className="pg">In preparation</span>
               </article>
             )}
