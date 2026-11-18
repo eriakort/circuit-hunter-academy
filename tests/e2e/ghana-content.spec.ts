@@ -234,3 +234,15 @@ test('Ghana JHS 1 Science Systems strand opens all four sub-strand missions', as
   await expect(page.locator('main')).toContainText('Food supplies energy and materials');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 1 Science Forces and Energy strand opens all five sub-strand missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs1', 'ghjhs1science');
+  await page.locator('.units button').filter({ hasText: 'Forces and Energy' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(5);
+  await expect(page.locator('.mcard').first()).toContainText('The Energy Form Explorer');
+  await expect(page.locator('.mcard').last()).toContainText('The Farm Tool Engineer');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('Energy is the ability to cause change');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
