@@ -7,10 +7,10 @@ test('Ghana level cards, header and Additional Mathematics card use SHS labels',
   await expect(page.locator('#hGrade')).toHaveText('Choose grade');
 
   await page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ }).click();
-  const shs2 = page.locator('.grade-card[data-grade="grade10"]');
+  const shs2 = page.locator('.grade-card[data-grade="ghshs2"]');
   await expect(shs2.locator('.grade-card-art')).toHaveText('2');
   await expect(shs2).toContainText('Senior High School · Year 2');
-  await expect(shs2).toContainText('Usually about ages 16–17');
+  await expect(shs2).toContainText('Usually ages 16–17');
   await expect(page.locator('.grade-options')).not.toContainText('Secondary transition');
   await expect(page.locator('.grade-options')).not.toContainText('13–15');
 

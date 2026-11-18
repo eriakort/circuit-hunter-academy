@@ -32,7 +32,7 @@ export const SubjectPickerScreen: React.FC = () => {
   const activeCurriculum = getCurriculum(curriculumProfile.activeCurriculumId);
   const isGhana = activeCurriculum?.countryCode === 'GH';
   const activeGrade: GradeId =
-    grade === 'grade5' || grade === 'grade9' || grade === 'grade10' || grade === 'grade11'
+    grade === 'grade5' || grade === 'grade9' || grade === 'grade10' || grade === 'grade11' || grade === 'ghjhs1' || grade === 'ghjhs2' || grade === 'ghjhs3' || grade === 'ghshs1' || grade === 'ghshs2' || grade === 'ghshs3'
       ? grade
       : 'grade9';
 
@@ -47,7 +47,13 @@ export const SubjectPickerScreen: React.FC = () => {
     grade5: ['GRADE 5 · SUBJECTS', 'QUINTA PRIMARIA · MATERIE'],
     grade9: ['GRADE 9 · CHOOSE YOUR SUBJECT', 'CLASSE 1ª SUPERIORE / 3ª MEDIA · SCEGLI LA MATERIA'],
     grade10: ['GRADE 10 · CHOOSE YOUR SUBJECT', 'CLASSE 2ª SUPERIORE · SCEGLI LA MATERIA'],
-    grade11: ['GRADE 11 · CHOOSE YOUR SUBJECT', 'CLASSE 3ª / 4ª SUPERIORE · SCEGLI LA MATERIA']
+    grade11: ['GRADE 11 · CHOOSE YOUR SUBJECT', 'CLASSE 3ª / 4ª SUPERIORE · SCEGLI LA MATERIA'],
+    ghjhs1: ['JHS 1 · CHOOSE YOUR SUBJECT', 'JHS 1 · SCEGLI LA MATERIA'],
+    ghjhs2: ['JHS 2 · CHOOSE YOUR SUBJECT', 'JHS 2 · SCEGLI LA MATERIA'],
+    ghjhs3: ['JHS 3 · CHOOSE YOUR SUBJECT', 'JHS 3 · SCEGLI LA MATERIA'],
+    ghshs1: ['SHS 1 · CHOOSE YOUR SUBJECT', 'SHS 1 · SCEGLI LA MATERIA'],
+    ghshs2: ['SHS 2 · CHOOSE YOUR SUBJECT', 'SHS 2 · SCEGLI LA MATERIA'],
+    ghshs3: ['SHS 3 · CHOOSE YOUR SUBJECT', 'SHS 3 · SCEGLI LA MATERIA']
   };
 
   const ledeByGrade: Record<GradeId, [string, string]> = {
@@ -66,20 +72,26 @@ export const SubjectPickerScreen: React.FC = () => {
     grade11: [
       'Grade 11 (3°/4° Superiore): Mathematics L3, Chemistry L3, Italian Studies, Modern History (Renaissance to 1870) & Geopolitics & Italian Territory.',
       '3°/4° Superiore: Matematica L3, Chimica L3, Lingua Italiana, Storia Moderna (Rinascimento–1870) e Geopolitica e Territorio Italiano.'
-    ]
+    ],
+    ghjhs1: ['NaCCA JHS 1 Mathematics and Science pathways are being prepared.', 'Percorsi NaCCA JHS 1 di Matematica e Scienze in preparazione.'],
+    ghjhs2: ['NaCCA JHS 2 Mathematics and Science pathways are being prepared.', 'Percorsi NaCCA JHS 2 di Matematica e Scienze in preparazione.'],
+    ghjhs3: ['NaCCA JHS 3 Mathematics and Science pathways are being prepared.', 'Percorsi NaCCA JHS 3 di Matematica e Scienze in preparazione.'],
+    ghshs1: ['NaCCA SHS 1 Core Mathematics pilot; General Science is being prepared.', 'Percorso NaCCA SHS 1 di Matematica di base; Scienze generali in preparazione.'],
+    ghshs2: ['NaCCA SHS 2 Core Mathematics; General Science is being prepared.', 'Percorso NaCCA SHS 2 di Matematica di base; Scienze generali in preparazione.'],
+    ghshs3: ['NaCCA SHS 3 Core Mathematics; General Science is being prepared.', 'Percorso NaCCA SHS 3 di Matematica di base; Scienze generali in preparazione.']
   };
 
   return (
     <section className="hero card">
       <div>
         <div className="eyebrow">
-          {isGhana ? (activeGrade === 'grade9' ? 'SANKOFA · SHS 1 LEARNING PATHWAYS' : activeGrade === 'grade10' ? 'SANKOFA · SHS 2 LEARNING PATHWAYS' : 'SANKOFA · SHS 3 LEARNING PATHWAYS') : L(eyebrowByGrade[activeGrade], lang)}
+          {isGhana ? (activeGrade.startsWith('ghjhs') ? `SANKOFA · ${activeGrade.toUpperCase()} LEARNING PATHWAYS` : activeGrade === 'ghshs1' ? 'SANKOFA · SHS 1 LEARNING PATHWAYS' : activeGrade === 'ghshs2' ? 'SANKOFA · SHS 2 LEARNING PATHWAYS' : 'SANKOFA · SHS 3 LEARNING PATHWAYS') : L(eyebrowByGrade[activeGrade], lang)}
         </div>
         <h1>
           {isGhana ? <>Choose your <span>learning path</span></> : <>Circuit Hunter <span>Academy</span></>}
         </h1>
         <p className="lede">
-          {isGhana ? (activeGrade === 'grade9' ? 'Explore the Ghana NaCCA SHS 1 Core Mathematics pilot. Broader SS1 coverage is still being developed.' : activeGrade === 'grade10' ? 'Explore the Ghana NaCCA SHS 2 Core Mathematics pathway. More SHS2 strands and indicators will be added in later increments.' : 'Begin the Ghana NaCCA SHS 3 Core Mathematics foundation with logical reasoning and variation.') : L(ledeByGrade[activeGrade], lang)}
+          {isGhana ? (activeGrade.startsWith('ghjhs') ? 'The NaCCA JHS Mathematics and Science pathways will be added grade by grade in the next increments.' : activeGrade === 'ghshs1' ? 'Explore the Ghana NaCCA SHS 1 Core Mathematics pilot. General Science is being prepared.' : activeGrade === 'ghshs2' ? 'Explore the Ghana NaCCA SHS 2 Core Mathematics pathway. General Science is being prepared.' : 'Explore the Ghana NaCCA SHS 3 Core Mathematics foundation. General Science is being prepared.') : L(ledeByGrade[activeGrade], lang)}
         </p>
 
         {/* Quick launch is derived from the same registry as the subject cards. */}
@@ -125,7 +137,7 @@ export const SubjectPickerScreen: React.FC = () => {
               <article className="subjcard" data-pathway="ghana-additional-mathematics" aria-label="Additional Mathematics in preparation">
                 <div className="subjart" aria-hidden="true" dangerouslySetInnerHTML={{ __html: ADDITIONAL_MATHS_ART }} />
                 <h2>Additional Mathematics</h2>
-                <p>A separate advanced Mathematics pathway. Its {activeGrade === 'grade9' ? 'SHS 1' : activeGrade === 'grade10' ? 'SHS 2' : 'SHS 3'} content is still being prepared and is not yet selectable.</p>
+                <p>A separate advanced Mathematics pathway. Its {activeGrade === 'ghshs1' ? 'SHS 1' : activeGrade === 'ghshs2' ? 'SHS 2' : 'SHS 3'} content is still being prepared and is not yet selectable.</p>
                 <span className="pg">In preparation</span>
               </article>
             )}

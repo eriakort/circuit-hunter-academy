@@ -279,7 +279,7 @@ assert.ok(ghanaAssessmentMission?.learning?.masteryAssessment, 'the Ghana SHS 1 
 const ghanaQuestionCount = ghanaAssessmentMission!.learning!.masteryAssessment!.questions.length;
 const selectedAlternateForms = Array.from({ length: ghanaQuestionCount }, () => 1);
 const savedAlternateReview = sanitizeGameState({
-  grade: 'grade9',
+  grade: 'ghshs1',
   subject: 'ghcoremath',
   learningProgress: {
     [ghanaAssessmentMission!.id]: {
@@ -296,7 +296,7 @@ const savedAlternateReview = sanitizeGameState({
 assert.deepEqual(savedAlternateReview?.questionVariantIndexes, selectedAlternateForms, 'saved reviews preserve the exact alternate question form for each indicator');
 
 const invalidAlternateReview = sanitizeGameState({
-  grade: 'grade9',
+  grade: 'ghshs1',
   subject: 'ghcoremath',
   learningProgress: {
     [ghanaAssessmentMission!.id]: {
@@ -328,11 +328,11 @@ const legacyAlternateReview = sanitizeGameState({
 }).learningProgress[ghanaAssessmentMission!.id].masteryAttemptReviews?.[0];
 assert.equal(legacyAlternateReview?.questionVariantIndexes, undefined, 'legacy assessment reviews remain valid and default to canonical questions');
 
-const ghanaSubjectState = sanitizeGameState({ grade: 'grade9', subject: 'ghcoremath' }, 'ghana-nacca');
-assert.ok(!GRADE_SUBJECT_IDS.grade9.includes('ghcoremath'), 'Ghana subjects stay outside the Italy Grade 9 catalogue');
-assert.deepEqual(getCurriculumSubjects('grade9', 'ghana-nacca').map(subject => subject.id), ['ghcoremath'], 'Ghana Core Mathematics is available in the Ghana SS1 pathway');
+const ghanaSubjectState = sanitizeGameState({ grade: 'ghshs1', subject: 'ghcoremath' }, 'ghana-nacca');
+assert.ok(!GRADE_SUBJECT_IDS.ghshs1.includes('ghcoremath'), 'Ghana subjects stay outside the Italy Grade 9 catalogue');
+assert.deepEqual(getCurriculumSubjects('ghshs1', 'ghana-nacca').map(subject => subject.id), ['ghcoremath'], 'Ghana Core Mathematics is available in the Ghana SS1 pathway');
 assert.equal(ghanaSubjectState.subject, 'ghcoremath', 'Ghana Core Mathematics survives save sanitization under its own curriculum');
-assert.notEqual(sanitizeGameState({ grade: 'grade9', subject: 'ghcoremath' }, 'italy-national').subject, 'ghcoremath', 'the Italian save namespace rejects Ghana-only subjects');
+assert.notEqual(sanitizeGameState({ grade: 'ghshs1', subject: 'ghcoremath' }, 'italy-national').subject, 'ghcoremath', 'the Italian save namespace rejects Ghana-only subjects');
 const ghanaMission = MISSIONS.find(mission => mission.id === 'gh-core-ss1-statistical-investigation-mastery');
 assert.ok(ghanaMission, 'the Community Data Lab mission is registered');
 const ghanaNavigation = restoreSavedNavigation({
@@ -340,7 +340,7 @@ const ghanaNavigation = restoreSavedNavigation({
   currentMissionIndex: MISSIONS.indexOf(ghanaMission!),
   currentSceneIndex: 0,
   missionId: ghanaMission!.id,
-  grade: 'grade9',
+  grade: 'ghshs1',
   subject: 'ghcoremath'
 }, ghanaSubjectState, 'ghana-nacca');
 assert.equal(ghanaNavigation?.missionId, ghanaMission!.id, 'Ghana Core Mathematics mission navigation survives reload restoration');
@@ -350,9 +350,9 @@ const csMissionForSubjectIsolation = MISSIONS.find(mission => (ARCS[mission.arc]
 assert.ok(csMissionForSubjectIsolation, 'a Computer Science mission is available for cross-subject navigation regression tests');
 
 const ghanaPathways = [
-  { grade: 'grade9' as const, subject: 'ghcoremath' as const, curriculum: 'ghana-nacca' as const },
-  { grade: 'grade10' as const, subject: 'ghcoremath2' as const, curriculum: 'ghana-nacca' as const },
-  { grade: 'grade11' as const, subject: 'ghcoremath3' as const, curriculum: 'ghana-nacca' as const }
+  { grade: 'ghshs1' as const, subject: 'ghcoremath' as const, curriculum: 'ghana-nacca' as const },
+  { grade: 'ghshs2' as const, subject: 'ghcoremath2' as const, curriculum: 'ghana-nacca' as const },
+  { grade: 'ghshs3' as const, subject: 'ghcoremath3' as const, curriculum: 'ghana-nacca' as const }
 ];
 
 for (const pathway of ghanaPathways) {

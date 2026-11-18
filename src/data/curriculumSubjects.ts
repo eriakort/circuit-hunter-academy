@@ -80,9 +80,9 @@ export const GRADE_CURRICULUM_MAP = GRADE_SUBJECT_IDS;
 export function getCurriculumSubjects(grade?: GradeId | null, curriculumId: 'italy-national' | 'ghana-nacca' = 'italy-national'): SubjectInfo[] {
   // Ghana has its own NaCCA pathways; never fall back to Italian subject content.
   if (curriculumId === 'ghana-nacca') {
-    if (grade === 'grade9') return [GHANA_CORE_MATH_SUBJECT];
-    if (grade === 'grade10') return [GHANA_CORE_MATH_SS2_SUBJECT];
-    if (grade === 'grade11') return [GHANA_CORE_MATH_SS3_SUBJECT];
+    if (grade === 'ghshs1') return [GHANA_CORE_MATH_SUBJECT];
+    if (grade === 'ghshs2') return [GHANA_CORE_MATH_SS2_SUBJECT];
+    if (grade === 'ghshs3') return [GHANA_CORE_MATH_SS3_SUBJECT];
     return [];
   }
   if (curriculumId !== 'italy-national') return [];

@@ -36,7 +36,7 @@ assert.deepEqual(GHANA_CORE_MATH_SS3_MISSIONS.map(mission => mission.id), [
 ]);
 assert.ok(GHANA_CORE_MATH_SS3_MISSIONS.every(mission => mission.quiz.length === 5 && mission.scenes.some(scene => scene.type === 'sort')));
 assert.ok(GHANA_CORE_MATH_SS3_MISSIONS.every(mission => mission.sec === '3.1.2'));
-assert.ok(getCurriculumSubjects('grade11', 'ghana-nacca').some(subject => subject.id === 'ghcoremath3'));
+assert.ok(getCurriculumSubjects('ghshs3', 'ghana-nacca').some(subject => subject.id === 'ghcoremath3'));
 
 import { GHANA_CORE_MATH_SS3_QUADRATICS_ALIGNMENT } from '../src/data/ghanaCoreMathSS3QuadraticsAlignment';
 import { GHANA_CORE_MATH_SS3_QUADRATICS_MISSIONS } from '../src/data/ghanaCoreMathSS3QuadraticsData';

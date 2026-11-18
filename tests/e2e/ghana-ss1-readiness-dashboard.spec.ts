@@ -6,7 +6,7 @@ async function startGhanaCoreMath(page: Page) {
   await page.reload();
 
   await page.getByRole('button', { name: /Ghana/ }).click();
-  await page.locator('.grade-card[data-grade="grade9"]').click();
+  await page.locator('.grade-card[data-grade="ghshs1"]').click();
   await expect(page.locator('.subjcard[data-s="ghcoremath"]')).toBeVisible();
   await page.locator('.subjcard[data-s="ghcoremath"]').click();
   await expect(page.locator('#nm')).toBeVisible();
