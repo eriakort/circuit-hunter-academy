@@ -1,4 +1,4 @@
-import { GradeId, SubjectInfo } from '../types';
+import { GradeId, SubjectId, SubjectInfo } from '../types';
 
 export interface GradeInfo {
   id: GradeId;
@@ -49,7 +49,7 @@ export const GRADES: GradeInfo[] = [
   }
 ];
 
-export const GRADE_SUBJECT_IDS: Record<GradeId, string[]> = {
+export const GRADE_SUBJECT_IDS: Record<GradeId, SubjectId[]> = {
   grade5: ['science', 'math5', 'italian', 'hist5', 'geo5'],
   grade9: ['cs', 'phys', 'math', 'italian', 'chem', 'hist9', 'geo9'],
   grade10: ['chem10', 'italian', 'hist10', 'geo10', 'math10'],
