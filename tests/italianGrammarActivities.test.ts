@@ -18,7 +18,7 @@ for (const id of extraWritingIds) {
 const levels = ['A1', 'A2', 'B1'] as const;
 const types = ['correct', 'order', 'translate', 'write'] as const;
 const ids = new Set<string>();
-assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 143);
+assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 144);
 const presentA1Translation = getGrammarActivities('present-tense', 'A1', 'translate')[0];
 assert.deepEqual(presentA1Translation.acceptedAnswers, ['Noi viviamo a Roma.', 'Viviamo a Roma.']);
 const presentA2Translation = getGrammarActivities('present-tense', 'A2', 'translate')[0];
