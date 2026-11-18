@@ -29376,3 +29376,23 @@ MISSIONS.push(...GHANA_JHS1_GEOMETRY_MISSIONS.map(mission => ({
   ...mission,
   arc: ghanaJhs1GeometryArcOffset + mission.arc
 })));
+
+
+// Ghana NaCCA · JHS 1 Mathematics · Handling Data strand.
+import {
+  GHANA_JHS1_DATA_UNIT,
+  GHANA_JHS1_DATA_ARCS,
+  GHANA_JHS1_DATA_MISSIONS
+} from './ghanaJhs1MathDataHandling';
+const ghanaJhs1DataUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_JHS1_DATA_UNIT, subject: 'ghjhs1math' });
+const ghanaJhs1DataArcOffset = ARCS.length;
+ARCS.push(...GHANA_JHS1_DATA_ARCS.map(arc => ({
+  ...arc,
+  unit: ghanaJhs1DataUnitOffset,
+  subject: 'ghjhs1math' as const
+})));
+MISSIONS.push(...GHANA_JHS1_DATA_MISSIONS.map(mission => ({
+  ...mission,
+  arc: ghanaJhs1DataArcOffset + mission.arc
+})));
