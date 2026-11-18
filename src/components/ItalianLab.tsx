@@ -489,6 +489,34 @@ export const VERBS_CONJUGATION_DATA = [
       congiuntivo: ['vada', 'vada', 'vada', 'andiamo', 'andiate', 'vadano']
     }
   }
+
+  {
+    id: 'grammar-a1-present-tense',
+    level: 'A1',
+    targetIt: 'Ogni mattina preparo la colazione e poi vado a scuola.',
+    translationEn: 'Every morning I make breakfast and then go to school.',
+    phoneticHint: 'ON-yee mat-TEE-na pre-PA-ro la ko-la-TSYO-ne eh poy VA-do a SKWO-la',
+    notes: ['Preparo is the io form of preparare; vado is the irregular io form of andare.', 'Preparo è la forma di preparare con io; vado è la forma irregolare di andare con io.'],
+    grammarTopicId: 'present-tense'
+  },
+  {
+    id: 'grammar-a2-present-tense',
+    level: 'A2',
+    targetIt: 'Oggi non posso uscire, ma domani vengo volentieri.',
+    translationEn: 'Today I cannot go out, but tomorrow I will gladly come.',
+    phoneticHint: 'OD-jee non POS-so oo-SHEE-reh, mah do-MA-nee VEN-go vo-len-TYE-ree',
+    notes: ['Non comes before posso; the modal verb is followed by the infinitive uscire. Vengo is the io form of venire.', 'Non precede posso; il verbo modale è seguito dall’infinito uscire. Vengo è la forma di venire con io.'],
+    grammarTopicId: 'present-tense'
+  },
+  {
+    id: 'grammar-b1-present-tense',
+    level: 'B1',
+    targetIt: 'Di solito prendo il treno, ma oggi preferisco lavorare da casa.',
+    translationEn: 'I usually take the train, but today I prefer to work from home.',
+    phoneticHint: 'dee SO-lee-to PREN-do eel TRE-no, mah OD-jee pre-fe-REE-sko la-vo-RA-reh da KA-sa',
+    notes: ['The present tense contrasts a usual routine with today’s choice; preferire uses the -isc- form preferisco.', 'Il presente contrappone un’abitudine a una scelta di oggi; preferire usa la forma in -isc- preferisco.'],
+    grammarTopicId: 'present-tense'
+  },
 ];
 
 const PRONOUNS = ['io', 'tu', 'lui / lei', 'noi', 'voi', 'loro'];
