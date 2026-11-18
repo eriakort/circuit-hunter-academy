@@ -53,8 +53,8 @@ export const MathGeometryLab: React.FC<Props> = ({ missionId, lang }) => {
     const mean = values.reduce((sum,v)=>sum+v,0)/values.length;
     const median = values[2];
     const mode = values.filter(v=>values.filter(x=>x===v).length===Math.max(...values.map(x=>values.filter(y=>y===x).length)))[0];
-    graphic = <svg viewBox="0 0 300 150" role="img" aria-label={label('Data values chart','Grafico dei dati')}>{values.map((v,i)=><g key={i}><rect x={38+i*50} y={120-v*8} width="28" height={v*8} rx="3" fill="#4f9b82"/><text x={52+i*50} y="140" textAnchor="middle" fill="currentColor">{v}</text></g>)}</svg>;
-    result = `Mean ${mean.toFixed(1)} · Median ${median} · Mode ${mode}`;
+    graphic = <svg viewBox="0 0 300 150" role="img" aria-label={label('Data values chart','Grafico dei dati')}>{values.map((v,i)=><g key={i}><rect x={38+i*50} y={120-v*3} width="28" height={v*3} rx="3" fill="#4f9b82"/><text x={52+i*50} y="140" textAnchor="middle" fill="currentColor">{v}</text></g>)}</svg>;
+    result = `${label("Mean","Media")} ${mean.toFixed(1)} · ${label("Median","Mediana")} ${median} · ${label("Mode","Moda")} ${mode}`;
   }
   return <section className="math-lab" aria-label={label('Interactive geometry and statistics model','Modello interattivo di geometria e statistica')}>
     <header className="ml-heading"><span className="ml-kicker">GEOMETRY LAB · LABORATORIO DI GEOMETRIA</span><h3>{heading}</h3><p>{label('Change a value and observe how the diagram and calculation respond.','Modifica un valore e osserva come cambiano il diagramma e il calcolo.')}</p></header>
