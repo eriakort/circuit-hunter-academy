@@ -118,8 +118,7 @@ export const ITALIAN_GRAMMAR_TOPICS: GrammarTopic[] = [
         exercise('prep-b1-3', ['Choose the correct sentence.', 'Scegli la frase corretta.'], ['Parliamo del problema domani.', 'Parliamo al problema domani.', 'Parliamo dal problema domani.'], 0, ['Parlare di means to talk about; di + il becomes del.', 'Parlare di significa parlare di qualcosa; di + il diventa del.'])
       ] }
     }
-  },,
-
+  },
   {
     id:'adjective-agreement', title:['Adjective agreement · Accordo degli aggettivi','Accordo degli aggettivi'], subtitle:['Match adjectives to noun gender and number.','Fai concordare gli aggettivi con genere e numero del nome.'],
     levels:{
