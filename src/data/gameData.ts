@@ -29322,3 +29322,18 @@ MISSIONS.push(...GRADE5_ECOLOGY_MISSIONS.map(mission => ({
   ...mission,
   arc: mission.arc + grade5EcologyArcOffset
 })));
+
+
+// Ghana NaCCA · JHS 1 Mathematics pilot (Number strand).
+import {
+  GHANA_JHS1_MATH_SUBJECT,
+  GHANA_JHS1_MATH_UNIT,
+  GHANA_JHS1_MATH_ARCS,
+  GHANA_JHS1_MATH_MISSIONS
+} from './ghanaJhs1MathData';
+if (!SUBJECTS.some(subject => subject.id === 'ghjhs1math')) SUBJECTS.push(GHANA_JHS1_MATH_SUBJECT);
+const ghanaJhs1MathUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_JHS1_MATH_UNIT, subject: 'ghjhs1math' });
+const ghanaJhs1MathArcOffset = ARCS.length;
+GHANA_JHS1_MATH_ARCS.forEach(arc => ARCS.push({ ...arc, unit: ghanaJhs1MathUnitOffset, subject: 'ghjhs1math' }));
+MISSIONS.push(...GHANA_JHS1_MATH_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs1MathArcOffset + mission.arc })));
