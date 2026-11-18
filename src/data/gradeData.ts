@@ -56,7 +56,7 @@ export const GRADES: GradeInfo[] = [
     ['ghshs3', 'SHS 3', 'Senior High School · Year 3', 'Usually ages 17–18']
   ] as const).map(([id, label, level, ages]) => ({
     id, name: [label, label] as [string, string], schoolLevel: [level, level] as [string, string], ageRange: [ages, ages] as [string, string],
-    description: ['Ghana NaCCA curriculum pathway · content being staged.', 'Percorso curricolare NaCCA Ghana · contenuti in fase di attivazione.'],
+    description: ['Ghana NaCCA curriculum pathway · content being staged.', 'Percorso curricolare NaCCA Ghana · contenuti in fase di attivazione.'] as [string, string],
     status: 'preparing' as const
   }))
 ];
