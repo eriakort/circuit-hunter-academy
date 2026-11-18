@@ -46,7 +46,7 @@ export const GRADES: GradeInfo[] = [
     ageRange: ['Usually ages 16–18', 'Generalmente 16–18 anni'],
     description: ['Math L3, Chemistry L3, Italian, Modern History (Renaissance–1870) & Geopolitics.', 'Matematica L3, Chimica L3, Italiano, Storia Moderna e Geopolitica dell’Italia.'],
     status: 'ready'
-  }
+  },
   ...([
     ['ghjhs1', 'JHS 1', 'Junior High School · Year 1', 'Usually ages 12–13'],
     ['ghjhs2', 'JHS 2', 'Junior High School · Year 2', 'Usually ages 13–14'],
