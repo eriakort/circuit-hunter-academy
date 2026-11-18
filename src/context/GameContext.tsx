@@ -197,7 +197,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
     if (isGhana && !['ghjhs1', 'ghjhs2', 'ghjhs3', 'ghshs1', 'ghshs2', 'ghshs3'].includes(grade)) return;
     const allowedSubjects = isGhana
-      ? (grade === 'ghjhs1' ? ['ghjhs1math'] : grade === 'ghjhs2' ? ['ghjhs2math'] : grade === 'ghshs1' ? ['ghcoremath'] : grade === 'ghshs2' ? ['ghcoremath2'] : grade === 'ghshs3' ? ['ghcoremath3'] : [])
+      ? (grade === 'ghjhs1' ? ['ghjhs1math'] : grade === 'ghjhs2' ? ['ghjhs2math'] : grade === 'ghjhs3' ? ['ghjhs3math'] : grade === 'ghshs1' ? ['ghcoremath'] : grade === 'ghshs2' ? ['ghcoremath2'] : grade === 'ghshs3' ? ['ghcoremath3'] : [])
       : GRADE_SUBJECT_IDS[grade];
     const subject = allowedSubjects.includes(state.subject)
       ? state.subject
