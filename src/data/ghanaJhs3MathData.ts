@@ -5,7 +5,7 @@ export const GHANA_JHS3_MATH_SUBJECT: SubjectInfo = {
   id: 'ghjhs3math',
   name: 'Mathematics · JHS 3',
   blurb: 'Ghana NaCCA JHS 3 Mathematics · Number, Algebra, and Geometry and Measurement strands. Build numerical reasoning, algebraic fluency, geometric construction and practical measurement skills.',
-  meta: 'Ghana NaCCA · JHS 3 · Number and Algebra strands · 18 missions',
+  meta: 'Ghana NaCCA · JHS 3 · Number, Algebra and Geometry and Measurement strands · 27 missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><path d="M18 88 L45 32 L72 88 Z M48 88 L76 18 L104 88 Z" fill="none" stroke="#ffd166" stroke-width="4"/><path d="M30 72 H91" stroke="#7bdff2" stroke-width="4" stroke-linecap="round"/></svg>'
 };
 
