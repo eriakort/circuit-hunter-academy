@@ -340,7 +340,7 @@ const ghanaNavigation = restoreSavedNavigation({
   currentMissionIndex: MISSIONS.indexOf(ghanaMission!),
   currentSceneIndex: 0,
   missionId: ghanaMission!.id,
-  grade: 'grade9',
+  grade: 'ghshs1',
   subject: 'ghcoremath'
 }, ghanaSubjectState, 'ghana-nacca');
 assert.equal(ghanaNavigation?.missionId, ghanaMission!.id, 'Ghana Core Mathematics mission navigation survives reload restoration');
