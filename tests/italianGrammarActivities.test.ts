@@ -11,14 +11,18 @@ assert.equal(articlesA1Write.prompt[0], 'Write one sentence using a masculine no
 assert.equal(articlesA1Write.prompt[1], 'Scrivi una frase usando un nome maschile e un nome femminile.');
 assert.equal(articlesA1Write.modelAnswer, 'Ho un libro e una penna.');
 assert.equal(articlesA1Write.modelAnswer.split(/[.!?]+/).filter(Boolean).length, 1, 'A1 article model should contain the one sentence requested');
-const extraWritingIds = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive'].flatMap(topic => ['A1', 'A2'].map(level => topic + '-' + level.toLowerCase() + '-write-2'));
+const extraWritingIds = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'present-tense'].flatMap(topic => ['A1', 'A2'].map(level => topic + '-' + level.toLowerCase() + '-write-2'));
 for (const id of extraWritingIds) {
   assert.ok(ITALIAN_GRAMMAR_ACTIVITIES.some(activity => activity.id === id), 'Missing expanded writing activity: ' + id);
 }
 const levels = ['A1', 'A2', 'B1'] as const;
 const types = ['correct', 'order', 'translate', 'write'] as const;
 const ids = new Set<string>();
-assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 107);
+assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 115);
+const presentA1Translation = getGrammarActivities('present-tense', 'A1', 'translate')[0];
+assert.deepEqual(presentA1Translation.acceptedAnswers, ['Noi viviamo a Roma.', 'Viviamo a Roma.']);
+const presentA2Translation = getGrammarActivities('present-tense', 'A2', 'translate')[0];
+assert.ok(presentA2Translation.acceptedAnswers?.includes('Adesso stanno facendo i compiti.'));
 const passatoProssimoA2Correction = getGrammarActivities('passato-prossimo', 'A2', 'correct')[0];
 assert.ok(passatoProssimoA2Correction.source?.includes('Io ho andato a scuola ieri'), 'A2 correction should cover the common ho/sono auxiliary error');
 assert.deepEqual(passatoProssimoA2Correction.acceptedAnswers, ['Io sono andato a scuola ieri.', 'Io sono andata a scuola ieri.']);
@@ -65,9 +69,9 @@ const partitiveA2Write = getGrammarActivities('partitive', 'A2', 'write')[0];
 assert.equal(partitiveA2Write.modelAnswer, 'Per preparare la pasta, aggiungi dell’acqua, del sale e delle verdure.');
 for (const level of levels) {
   for (const type of types) {
-    const topics = ['sentence-building', 'articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive'];
+    const topics = ['sentence-building', 'articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'present-tense'];
     const items = topics.flatMap(topic => getGrammarActivities(topic, level, type));
-    const expectedCount = level === 'B1' ? 6 : type === 'write' ? 11 : type === 'correct' ? (level === 'A2' ? 7 : 6) : 12;
+    const expectedCount = level === 'B1' ? 6 : type === 'write' ? 12 : type === 'correct' ? (level === 'A2' ? 8 : 7) : 13;
     assert.equal(items.length, expectedCount, level + ' should have ' + expectedCount + ' ' + type + ' activities across all topics');
     for (const item of items) {
       assert.ok(!ids.has(item.id), 'Duplicate activity id: ' + item.id);
