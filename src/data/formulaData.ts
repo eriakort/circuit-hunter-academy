@@ -107,7 +107,7 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
     { id: 'trigonometric-graphs', subject: 'ghcoremath3', name: 'Sine, Cosine and Tangent Graphs' },
     { id: 'trigonometric-transformations', subject: 'ghcoremath3', name: 'Trigonometric Graph Transformations' },
     { id: 'trigonometric-equations', subject: 'ghcoremath3', name: 'Solving and Decoding Trigonometric Equations' }
-  ]
+  ],
   ghjhs1math: [],
 };
 
