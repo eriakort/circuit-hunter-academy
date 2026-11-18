@@ -13,7 +13,6 @@ import { GHANA_JHS2_MATH_SUBJECT } from './ghanaJhs2MathData';
 import { GHANA_JHS3_MATH_SUBJECT } from './ghanaJhs3MathData';
 import { GHANA_JHS1_SCIENCE_SUBJECT } from './ghanaJhs1ScienceData';
 import { GHANA_JHS2_SCIENCE_SUBJECT } from './ghanaJhs2ScienceData';
-import { GHANA_JHS2_SCIENCE_SUBJECT } from './ghanaJhs2ScienceData';
 
 export const ITALIAN_SUBJECT: SubjectInfo = {
   id: 'italian',
