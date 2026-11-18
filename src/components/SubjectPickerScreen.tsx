@@ -1,10 +1,27 @@
 import React from 'react';
-import { Flag } from './Flag';
 import { useGame } from '../context/GameContext';
 import { getCurriculumSubjects } from '../data/curriculumSubjects';
 import { getCurriculum } from '../data/curricula';
 import { GradeId, SubjectId } from '../types';
 import { L } from '../helpers';
+
+const QUICK_LAUNCH_LABELS: Partial<Record<SubjectId, [string, string]>> = {
+  italian: ['Italian (A1–B1)', 'Italiano (A1–B1)'], science: ['Science', 'Scienze'],
+  math5: ['Math 5', 'Mat. 5ª'], hist5: ['History', 'Storia'], geo5: ['Geography', 'Geografia'],
+  cs: ['Computer Science', 'Informatica'], phys: ['Physics', 'Fisica'], math: ['Math', 'Matematica'],
+  chem: ['Chemistry (L1)', 'Chimica (L1)'], hist9: ['History (L1)', 'Storia (L1)'], geo9: ['Geography (L1)', 'Geografia (L1)'],
+  math10: ['Math (L2)', 'Mat. (L2)'], chem10: ['Chemistry (L2)', 'Chimica (L2)'],
+  hist10: ['History (L2)', 'Storia (L2)'], geo10: ['Geography (L2)', 'Geografia (L2)'],
+  math11: ['Math (L3)', 'Mat. (L3)'], chem11: ['Chemistry (L3)', 'Chimica (L3)'],
+  hist11: ['History (L3)', 'Storia (L3)'], geo11: ['Geography (L3)', 'Geografia (L3)']
+};
+
+const QUICK_LAUNCH_ICONS: Partial<Record<SubjectId, string>> = {
+  italian: '🇮🇹', science: '🔬', math5: '📐', hist5: '🏛️', geo5: '🧭',
+  cs: '💻', phys: '⚛️', math: '∑', chem: '🧪', hist9: '🏛️', geo9: '🌍',
+  math10: '∑', chem10: '⚗️', hist10: '🏰', geo10: '🌐',
+  math11: '📈', chem11: '🧬', hist11: '📜', geo11: '🗺️'
+};
 
 /** Placeholder artwork for the Additional Mathematics pathway (not yet selectable). */
 const ADDITIONAL_MATHS_ART = '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="40" fill="none" stroke="#c9a13b" stroke-width="3" stroke-dasharray="6 6"/><text x="60" y="74" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#1f6b4f">∑+</text></svg>';
@@ -65,180 +82,26 @@ export const SubjectPickerScreen: React.FC = () => {
           {isGhana ? (activeGrade === 'grade9' ? 'Explore the Ghana NaCCA SHS 1 Core Mathematics pilot. Broader SS1 coverage is still being developed.' : activeGrade === 'grade10' ? 'Explore the Ghana NaCCA SHS 2 Core Mathematics pathway. More SHS2 strands and indicators will be added in later increments.' : 'Begin the Ghana NaCCA SHS 3 Core Mathematics foundation with logical reasoning and variation.') : L(ledeByGrade[activeGrade], lang)}
         </p>
 
-        {/* Quick Launch Pills are only available for the Italian catalogue. */}
-        {!isGhana && <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '16px' }} role="navigation" aria-label={L(['Quick subject launch', 'Avvio rapido materie'], lang)}>
-          <span style={{ fontSize: '12px', color: 'var(--muted)', alignSelf: 'center', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            {L(['Direct Launch:', 'Avvio Rapido:'], lang)}
-          </span>
-          <button
-            type="button"
-            className="btn ghost sm"
-            style={{ padding: '4px 10px', fontSize: '13px', borderColor: 'var(--ember)' }}
-            onClick={() => handleSelect('italian')}
-          >
-            <Flag country="IT" /> {L(['Italian (A1–B1)', 'Italiano (A1–B1)'], lang)}
-          </button>
-          {activeGrade === 'grade5' && (
-            <>
+        {/* Quick launch is derived from the same registry as the subject cards. */}
+        {!isGhana && (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '16px' }} role="navigation" aria-label={L(['Quick subject launch', 'Avvio rapido materie'], lang)}>
+            <span style={{ fontSize: '12px', color: 'var(--muted)', alignSelf: 'center', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              {L(['Direct Launch:', 'Avvio Rapido:'], lang)}
+            </span>
+            {gradeSubjects.map(subject => (
               <button
+                key={subject.id}
                 type="button"
+                data-quick-subject={subject.id}
                 className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('science')}
+                style={{ padding: '4px 10px', fontSize: '13px', ...(subject.id === 'italian' ? { borderColor: 'var(--ember)' } : {}) }}
+                onClick={() => handleSelect(subject.id)}
               >
-                🔬 {L(['Science', 'Scienze'], lang)}
+                {QUICK_LAUNCH_ICONS[subject.id] || '📘'} {L(QUICK_LAUNCH_LABELS[subject.id] || subject.name, lang)}
               </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('math5')}
-              >
-                📐 {L(['Math 5', 'Mat. 5ª'], lang)}
-              </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('hist5')}
-              >
-                🏛️ {L(['History', 'Storia'], lang)}
-              </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('geo5')}
-              >
-                🧭 {L(['Geography', 'Geografia'], lang)}
-              </button>
-            </>
-          )}
-          {activeGrade === 'grade9' && (
-            <>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('cs')}
-              >
-                💻 CS
-              </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('phys')}
-              >
-                ⚛️ Physics
-              </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('math')}
-              >
-                ∑ Math
-              </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('chem')}
-              >
-                🧪 {L(['Chemistry (L1)', 'Chimica (L1)'], lang)}
-              </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('hist9')}
-              >
-                🏛️ {L(['History (L1)', 'Storia (L1)'], lang)}
-              </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('geo9')}
-              >
-                🌍 {L(['Geography (L1)', 'Geografia (L1)'], lang)}
-              </button>
-            </>
-          )}
-          {activeGrade === 'grade10' && (
-            <>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('math10')}
-              >
-                ∑ {L(['Math (L2)', 'Mat. (L2)'], lang)}
-              </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('chem10')}
-              >
-                ⚗️ {L(['Chemistry (L2)', 'Chimica (L2)'], lang)}
-              </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('hist10')}
-              >
-                🏰 {L(['History (L2)', 'Storia (L2)'], lang)}
-              </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('geo10')}
-              >
-                🌐 {L(['Geography (L2)', 'Geografia (L2)'], lang)}
-              </button>
-            </>
-          )}
-          {activeGrade === 'grade11' && (
-            <>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('math11')}
-              >
-                📈 {L(['Math (L3)', 'Mat. (L3)'], lang)}
-              </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('chem11')}
-              >
-                🧬 {L(['Chemistry (L3)', 'Chimica (L3)'], lang)}
-              </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('hist11')}
-              >
-                📜 {L(['History (L3)', 'Storia (L3)'], lang)}
-              </button>
-              <button
-                type="button"
-                className="btn ghost sm"
-                style={{ padding: '4px 10px', fontSize: '13px' }}
-                onClick={() => handleSelect('geo11')}
-              >
-                🗺️ {L(['Geography (L3)', 'Geografia (L3)'], lang)}
-              </button>
-            </>
-          )}
-        </div>}
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="subjects">

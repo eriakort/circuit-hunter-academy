@@ -39,7 +39,7 @@ test('new learner chooses a grade before seeing its subjects and the choice surv
   await expect(page.locator('.subjcard[data-s="hist9"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="geo9"]')).toBeVisible();
   await expect(quickLaunch.getByRole('button')).toHaveCount(7);
-  await expect(quickLaunch.getByRole('button', { name: /CS/ })).toBeVisible();
+  await expect(quickLaunch.getByRole('button', { name: /Computer Science/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Physics/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Math/ })).toBeVisible();
   await expect(quickLaunch.getByRole('button', { name: /Chemistry \(L1\)/ })).toBeVisible();
