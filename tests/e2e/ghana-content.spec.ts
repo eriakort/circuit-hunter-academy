@@ -63,9 +63,14 @@ test('Ghana JHS 1 Mathematics pathways are selectable and open Number and Algebr
     await page.locator('#nm').fill('Ama');
     await page.locator('#regf button').first().click();
   }
-  await expect(page.locator('.mcard')).toHaveCount(6);
-  await page.locator('.mcard').first().click();
-  await expect(page.locator('main')).toContainText('The Market Number Mission');
-  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+  // Number and Algebra are separate curriculum units, so verify each unit tab.
+  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard').first()).toContainText('The Market Number Mission');
+  await page.locator('.units button').filter({ hasText: 'Algebraic Thinking and Relationships' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard').first()).toContainText('The Pattern Hunter’s Trial');
   await expect(page.locator('.mcard').last()).toContainText('The Balance Gate');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('The Pattern Hunter’s Trial');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
