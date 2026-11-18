@@ -29345,7 +29345,8 @@ import {
   GHANA_JHS1_ALGEBRA_ARCS,
   GHANA_JHS1_ALGEBRA_MISSIONS
 } from './ghanaJhs1MathAlgebraData';
-const ghanaJhs1AlgebraUnitOffset = UNITS.findIndex(unit => unit.subject === 'ghjhs1math');
+const ghanaJhs1AlgebraUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_JHS1_ALGEBRA_UNIT, subject: 'ghjhs1math' });
 const ghanaJhs1AlgebraArcOffset = ARCS.length;
 ARCS.push(...GHANA_JHS1_ALGEBRA_ARCS.map(arc => ({
   ...arc,
