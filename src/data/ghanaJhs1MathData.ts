@@ -8,8 +8,8 @@ import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
 export const GHANA_JHS1_MATH_SUBJECT: SubjectInfo = {
   id: 'ghjhs1math',
   name: 'Mathematics · JHS 1',
-  blurb: 'Ghana NaCCA JHS 1 Mathematics: number sense, operations, factors, multiples, fractions and percentages.',
-  meta: 'Ghana NaCCA · JHS 1 · Number strand pilot · 3 missions',
+  blurb: 'Ghana NaCCA JHS 1 Mathematics: Number and Algebra strands, including number sense, patterns, expressions and simple equations.',
+  meta: 'Ghana NaCCA · JHS 1 · Number + Algebra · 6 missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="38" fill="none" stroke="#ffd166" stroke-width="4"/><path d="M34 60 H86 M60 34 V86" stroke="#7bdff2" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="60" r="9" fill="#ffd166"/></svg>'
 };
 

@@ -47,7 +47,7 @@ export const GradePicker: React.FC = () => {
       {isGhana && (
         <div className="grade-coming-soon card" role="status">
           <h2>Your Sankofa journey begins here</h2>
-          <p>Choose JHS 1–3 or SHS 1–3. The JHS 1 Mathematics Number-strand pilot is now available; further JHS Mathematics units, JHS Science and SHS General Science will arrive in later curriculum increments. Existing SHS Core Mathematics pathways remain available. Your Italian progress remains saved independently.</p>
+          <p>Choose JHS 1–3 or SHS 1–3. The JHS 1 Mathematics Number and Algebra strands are now available; further JHS Mathematics units, JHS Science and SHS General Science will arrive in later curriculum increments. Existing SHS Core Mathematics pathways remain available. Your Italian progress remains saved independently.</p>
         </div>
       )}
 
@@ -81,7 +81,7 @@ export const GradePicker: React.FC = () => {
               <strong>{ghanaLevel?.label ?? L(grade.name, lang)}</strong>
               <span className="grade-card-detail">{ghanaLevel?.ageRange ?? L(grade.ageRange, lang)}</span>
               <span className="grade-card-status">
-                {isGhana ? (grade.id === 'ghjhs1' ? 'Mathematics · JHS 1 Number-strand pilot available; more units and Science upcoming' : grade.id.startsWith('ghjhs') ? 'JHS Mathematics & Science · coming in upcoming increments' : grade.id === 'ghshs1' ? 'Core Mathematics · SHS 1 pilot available' : grade.id === 'ghshs2' ? 'Core Mathematics · SHS 2 pathway available' : 'Core Mathematics · SHS 3 pathway available') : L(statusCopy, lang)}
+                {isGhana ? (grade.id === 'ghjhs1' ? 'Mathematics · JHS 1 Number and Algebra strands available; more units and Science upcoming' : grade.id.startsWith('ghjhs') ? 'JHS Mathematics & Science · coming in upcoming increments' : grade.id === 'ghshs1' ? 'Core Mathematics · SHS 1 pilot available' : grade.id === 'ghshs2' ? 'Core Mathematics · SHS 2 pathway available' : 'Core Mathematics · SHS 3 pathway available') : L(statusCopy, lang)}
               </span>
             </button>
           );
