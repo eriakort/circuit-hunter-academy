@@ -28,7 +28,8 @@ assert.deepEqual(missions.map(mission => mission.title), [
 ]);
 for (const mission of missions) {
   assert.equal(mission.quiz.length, 5, `Expected five quiz questions in ${mission.id}`);
-  assert.equal(mission.scenes.length, 6);
+  // Each mission has five teaching scenes, one challenge scene, and one battle scene.
+  assert.equal(mission.scenes.length, 7);
   assert.ok(mission.quiz.every(question =>
     typeof question.q === 'string' &&
     typeof question.why === 'string' &&
