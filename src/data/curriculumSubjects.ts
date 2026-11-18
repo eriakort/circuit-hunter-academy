@@ -11,6 +11,7 @@ import { GHANA_CORE_MATH_SS3_SUBJECT } from './ghanaCoreMathSS3Data';
 import { GHANA_JHS1_MATH_SUBJECT } from './ghanaJhs1MathData';
 import { GHANA_JHS2_MATH_SUBJECT } from './ghanaJhs2MathData';
 import { GHANA_JHS3_MATH_SUBJECT } from './ghanaJhs3MathData';
+import { GHANA_JHS1_SCIENCE_SUBJECT } from './ghanaJhs1ScienceData';
 
 export const ITALIAN_SUBJECT: SubjectInfo = {
   id: 'italian',
@@ -86,7 +87,7 @@ export function getCurriculumSubjects(grade?: GradeId | null, curriculumId: 'ita
     if (grade === 'ghshs1') return [GHANA_CORE_MATH_SUBJECT];
     if (grade === 'ghshs2') return [GHANA_CORE_MATH_SS2_SUBJECT];
     if (grade === 'ghshs3') return [GHANA_CORE_MATH_SS3_SUBJECT];
-    if (grade === 'ghjhs1') return [GHANA_JHS1_MATH_SUBJECT];
+    if (grade === 'ghjhs1') return [GHANA_JHS1_MATH_SUBJECT, GHANA_JHS1_SCIENCE_SUBJECT];
     if (grade === 'ghjhs2') return [GHANA_JHS2_MATH_SUBJECT];
     if (grade === 'ghjhs3') return [GHANA_JHS3_MATH_SUBJECT];
     return [];
