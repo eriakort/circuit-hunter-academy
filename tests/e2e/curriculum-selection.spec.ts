@@ -30,7 +30,7 @@ test('learner can switch countries while curriculum progress stays isolated', as
   await expect(page.locator('.grade-card[data-grade="ghshs1"]')).toContainText('SHS 1');
   await expect(page.locator('.grade-card[data-grade="ghshs2"]')).toContainText('SHS 2');
   await expect(page.locator('.grade-card[data-grade="ghshs3"]')).toContainText('SHS 3');
-  await expect(page.locator('.grade-card')).toHaveCount(3);
+  await expect(page.locator('.grade-card[data-grade^="gh"]')).toHaveCount(6);
   await expect(page.locator('.grade-card[data-grade="ghshs1"]')).toBeEnabled();
   await expect(page.locator('.grade-card[data-grade="ghshs2"]')).toBeEnabled();
   await expect(page.locator('.grade-card[data-grade="ghshs3"]')).toBeEnabled();
