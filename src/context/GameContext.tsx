@@ -221,7 +221,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const activeGrade = state.grade || 'grade9';
     const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
     const isAllowed = isGhana
-      ? (activeGrade === 'ghjhs1' && sub === 'ghjhs1math') || (activeGrade === 'ghjhs2' && sub === 'ghjhs2math') || (activeGrade === 'ghshs1' && sub === 'ghcoremath') || (activeGrade === 'ghshs2' && sub === 'ghcoremath2') || (activeGrade === 'ghshs3' && sub === 'ghcoremath3')
+      ? (activeGrade === 'ghjhs1' && sub === 'ghjhs1math') || (activeGrade === 'ghjhs2' && sub === 'ghjhs2math') || (activeGrade === 'ghjhs3' && sub === 'ghjhs3math') || (activeGrade === 'ghshs1' && sub === 'ghcoremath') || (activeGrade === 'ghshs2' && sub === 'ghcoremath2') || (activeGrade === 'ghshs3' && sub === 'ghcoremath3')
       : GRADE_SUBJECT_IDS[activeGrade]?.includes(sub);
     if (!isAllowed) return;
     const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === sub);
