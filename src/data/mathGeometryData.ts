@@ -138,7 +138,7 @@ const buildMission = (topic: GeometryTopic, index: number): Mission => {
     hue: 185 + index * 13, horns: 2, eyes: 2, title: topic.title, topic: topic.topic,
     demon: topic.demon, tech: topic.tech, boss: index === topics.length - 1,
     scenes: [
-      { who: 's', vis: 'math-geometry', text: [`<p><b>${topic.title[0]}</b></p><p>${topic.topic[0]}</p>`, `<p><b>${topic.title[1]}</b></p><p>${topic.topic[1]}</p>`] },
+      { who: 's', text: [`<p><b>${topic.title[0]}</b></p><p>${topic.topic[0]}</p>`, `<p><b>${topic.title[1]}</b></p><p>${topic.topic[1]}</p>`] },
       { who: 's', text: [`<p>${first.title[0]}</p><p>${first.explanation[0]}</p>`, `<p>${first.title[1]}</p><p>${first.explanation[1]}</p>`] },
       { who: 'y', text: [`<p>${second.title[0]}</p><p>${second.explanation[0]}</p>`, `<p>${second.title[1]}</p><p>${second.explanation[1]}</p>`] },
       { who: 'd', text: [`<p>Use the worked example, then explain why each step is valid.</p>`, `<p>Segui l’esempio svolto e spiega perché ogni passaggio è corretto.</p>`] }
