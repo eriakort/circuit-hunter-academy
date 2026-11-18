@@ -304,6 +304,34 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     notes: ['The present tense contrasts a usual routine with today’s choice; preferire uses the -isc- form preferisco.', 'Il presente contrappone un’abitudine a una scelta di oggi; preferire usa la forma in -isc- preferisco.'],
     grammarTopicId: 'present-tense'
   }
+  ,
+  {
+    id: 'grammar-a1-imperfetto',
+    level: 'A1',
+    targetIt: 'Quando ero piccolo, avevo un cane.',
+    translationEn: 'When I was little, I had a dog.',
+    phoneticHint: 'KWAN-do EH-ro PIK-ko-lo, a-VE-vo oon KA-ne',
+    notes: ['Ero and avevo are common imperfect forms for past descriptions and possession.', 'Ero e avevo sono forme comuni dell’imperfetto per descrizioni e possesso nel passato.'],
+    grammarTopicId: 'imperfetto'
+  },
+  {
+    id: 'grammar-a2-imperfetto',
+    level: 'A2',
+    targetIt: 'Ogni estate andavo al mare con la mia famiglia.',
+    translationEn: 'Every summer I used to go to the seaside with my family.',
+    phoneticHint: 'ON-yee eh-STA-te an-DA-vo al MA-re kon la MEE-a fa-MEE-lya',
+    notes: ['Ogni estate signals a repeated past habit; andavo is the imperfetto of andare.', 'Ogni estate indica un’abitudine passata; andavo è l’imperfetto di andare.'],
+    grammarTopicId: 'imperfetto'
+  },
+  {
+    id: 'grammar-b1-imperfetto',
+    level: 'B1',
+    targetIt: 'Mentre camminavo, ho incontrato una vecchia amica.',
+    translationEn: 'While I was walking, I met an old friend.',
+    phoneticHint: 'MEN-tre kam-mee-NA-vo, oh een-kon-TRA-to OO-na VEK-kya a-MEE-ka',
+    notes: ['Camminavo describes the background action; ho incontrato is the completed event.', 'Camminavo descrive l’azione di sfondo; ho incontrato è l’evento concluso.'],
+    grammarTopicId: 'imperfetto'
+  }
 ];
 
 interface DialogueTurn {
