@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 
-const enterGhana = async (page: Page, grade: 'grade9' | 'grade10' | 'grade11', subject: string) => {
+const enterGhana = async (page: Page, grade: 'ghshs1' | 'ghshs2' | 'ghshs3', subject: string) => {
   await page.goto('/');
   await page.evaluate(() => localStorage.clear());
   await page.reload();
@@ -14,7 +14,7 @@ const enterGhana = async (page: Page, grade: 'grade9' | 'grade10' | 'grade11', s
 };
 
 test('Ghana maths lessons show maths visuals, not computer science, and offer English only', async ({ page }) => {
-  await enterGhana(page, 'grade9', 'ghcoremath');
+  await enterGhana(page, 'ghshs1', 'ghcoremath');
   await expect(page.locator('#lIT')).toHaveCount(0);
   await page.locator('.mcard').first().click();
   await expect(page.locator('.ghmath-visual')).toContainText('Numbers for Everyday Life');
@@ -23,14 +23,14 @@ test('Ghana maths lessons show maths visuals, not computer science, and offer En
 });
 
 test('Ghana SHS 2 lessons use the strand visual too', async ({ page }) => {
-  await enterGhana(page, 'grade10', 'ghcoremath2');
+  await enterGhana(page, 'ghshs2', 'ghcoremath2');
   await page.locator('.mcard').first().click();
   await expect(page.locator('.ghmath-visual')).toBeVisible();
   await expect(page.locator('main')).not.toContainText(/INFORMATIC/i);
 });
 
 test('Ghana Formula Book, Codex and Test only show English maths content', async ({ page }) => {
-  await enterGhana(page, 'grade9', 'ghcoremath');
+  await enterGhana(page, 'ghshs1', 'ghcoremath');
 
   await page.locator('#hFormula').click();
   const main = page.locator('main');
