@@ -47,7 +47,7 @@ export const GradePicker: React.FC = () => {
       {isGhana && (
         <div className="grade-coming-soon card" role="status">
           <h2>Your Sankofa journey begins here</h2>
-          <p>Choose JHS 1–3 or SHS 1–3. The JHS 1 Mathematics Number, Algebra, Geometry and Measurement, and Handling Data strands are now available; further JHS Mathematics units, JHS Science and SHS General Science will arrive in later curriculum increments. Existing SHS Core Mathematics pathways remain available. Your Italian progress remains saved independently.</p>
+          <p>Choose JHS 1–3 or SHS 1–3. JHS 1 Mathematics has all four strands, and JHS 2 Mathematics has all four strands. JHS 3 Mathematics Number is now available; further JHS 3 strands, JHS Science and SHS General Science will arrive in later increments. Existing SHS Core Mathematics pathways remain available. Your Italian progress remains saved independently.</p>
         </div>
       )}
 
@@ -55,7 +55,7 @@ export const GradePicker: React.FC = () => {
         {GRADES.filter(grade => !isGhana || ['ghjhs1', 'ghjhs2', 'ghjhs3', 'ghshs1', 'ghshs2', 'ghshs3'].includes(grade.id)).map(grade => {
           const selected = state.grade === grade.id;
           const ghanaLevel = isGhana ? getCurriculumGradeLevel('ghana-nacca', grade.id) : undefined;
-          const ready = isGhana ? ['ghjhs1', 'ghjhs2', 'ghshs1', 'ghshs2', 'ghshs3'].includes(grade.id) : grade.status === 'ready';
+          const ready = isGhana ? ['ghjhs1', 'ghjhs2', 'ghjhs3', 'ghshs1', 'ghshs2', 'ghshs3'].includes(grade.id) : grade.status === 'ready';
           const statusCopy: [string, string] =
             grade.id === 'grade5'
               ? ['Science, Maths, Italian, History & Geography · Ready', 'Scienze, Matematica, Italiano, Storia e Geografia · Pronte']
@@ -81,7 +81,7 @@ export const GradePicker: React.FC = () => {
               <strong>{ghanaLevel?.label ?? L(grade.name, lang)}</strong>
               <span className="grade-card-detail">{ghanaLevel?.ageRange ?? L(grade.ageRange, lang)}</span>
               <span className="grade-card-status">
-                {isGhana ? (grade.id === 'ghjhs1' ? 'All four Mathematics strands available · JHS 1' : grade.id === 'ghjhs2' ? 'Mathematics · JHS 2 all four strands available' : grade.id.startsWith('ghjhs') ? 'JHS Mathematics & Science · coming in upcoming increments' : grade.id === 'ghshs1' ? 'Core Mathematics · SHS 1 pilot available' : grade.id === 'ghshs2' ? 'Core Mathematics · SHS 2 pathway available' : 'Core Mathematics · SHS 3 pathway available') : L(statusCopy, lang)}
+                {isGhana ? (grade.id === 'ghjhs1' ? 'All four Mathematics strands available · JHS 1' : grade.id === 'ghjhs2' ? 'Mathematics · JHS 2 all four strands available' : grade.id === 'ghjhs3' ? 'Mathematics · JHS 3 Number strand available' : grade.id.startsWith('ghjhs') ? 'JHS Mathematics & Science · coming in upcoming increments' : grade.id === 'ghshs1' ? 'Core Mathematics · SHS 1 pilot available' : grade.id === 'ghshs2' ? 'Core Mathematics · SHS 2 pathway available' : 'Core Mathematics · SHS 3 pathway available') : L(statusCopy, lang)}
               </span>
             </button>
           );

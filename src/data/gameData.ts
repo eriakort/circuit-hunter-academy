@@ -29430,3 +29430,11 @@ UNITS.push({ ...GHANA_JHS2_DATA_UNIT, subject: 'ghjhs2math' });
 const ghanaJhs2DataArcOffset = ARCS.length;
 ARCS.push(...GHANA_JHS2_DATA_ARCS.map(arc => ({ ...arc, unit: ghanaJhs2DataUnitOffset, subject: 'ghjhs2math' as const })));
 MISSIONS.push(...GHANA_JHS2_DATA_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs2DataArcOffset + mission.arc })));
+
+// Ghana NaCCA · JHS 3 Mathematics · Number strand.
+import { GHANA_JHS3_MATH_UNIT, GHANA_JHS3_MATH_ARCS, GHANA_JHS3_MATH_MISSIONS } from './ghanaJhs3MathData';
+const ghanaJhs3MathUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_JHS3_MATH_UNIT, subject: 'ghjhs3math' });
+const ghanaJhs3MathArcOffset = ARCS.length;
+ARCS.push(...GHANA_JHS3_MATH_ARCS.map(arc => ({ ...arc, unit: ghanaJhs3MathUnitOffset, subject: 'ghjhs3math' as const })));
+MISSIONS.push(...GHANA_JHS3_MATH_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs3MathArcOffset + mission.arc })));

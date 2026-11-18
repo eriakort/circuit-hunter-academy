@@ -75,7 +75,7 @@ export const SubjectPickerScreen: React.FC = () => {
     ],
     ghjhs1: ['Explore all four NaCCA JHS 1 Mathematics strands: Number, Algebra, Geometry and Measurement, and Handling Data. JHS Science will follow.', 'Explore all four NaCCA JHS 1 Mathematics strands, including Handling Data. JHS Science will follow.'],
     ghjhs2: ['Explore all four NaCCA JHS 2 Mathematics strands: Number, Algebra, Geometry and Measurement, and Handling Data. JHS Science will follow.', 'Percorsi NaCCA JHS 2 di Matematica e Scienze in preparazione.'],
-    ghjhs3: ['NaCCA JHS 3 Mathematics and Science pathways are being prepared.', 'Percorsi NaCCA JHS 3 di Matematica e Scienze in preparazione.'],
+    ghjhs3: ['Explore the NaCCA JHS 3 Mathematics Number strand: indices, standard form, rational numbers, ratio, proportion and financial mathematics.', 'Esplora il percorso NaCCA di Matematica JHS 3 · Numeri: potenze, notazione scientifica, rapporti, proporzioni e matematica finanziaria.'],
     ghshs1: ['NaCCA SHS 1 Core Mathematics pilot; General Science is being prepared.', 'Percorso NaCCA SHS 1 di Matematica di base; Scienze generali in preparazione.'],
     ghshs2: ['NaCCA SHS 2 Core Mathematics; General Science is being prepared.', 'Percorso NaCCA SHS 2 di Matematica di base; Scienze generali in preparazione.'],
     ghshs3: ['NaCCA SHS 3 Core Mathematics; General Science is being prepared.', 'Percorso NaCCA SHS 3 di Matematica di base; Scienze generali in preparazione.']

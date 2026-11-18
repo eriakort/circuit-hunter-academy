@@ -11,7 +11,7 @@ const requiredMissionFields = ['title', 'topic', 'demon', 'tech'] as const;
 for (const mission of MISSIONS) {
   assert.ok(mission.id.trim(), 'Every mission must have an ID');
 
-  const isGhanaEnglishMission = ['ghcoremath', 'ghcoremath2', 'ghcoremath3', 'ghjhs1math', 'ghjhs2math'].includes(ARCS[mission.arc]?.subject || '');
+  const isGhanaEnglishMission = ['ghcoremath', 'ghcoremath2', 'ghcoremath3', 'ghjhs1math', 'ghjhs2math', 'ghjhs3math'].includes(ARCS[mission.arc]?.subject || '');
   for (const field of requiredMissionFields) {
     const value = mission[field];
     assert.ok(

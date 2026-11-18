@@ -110,6 +110,7 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
   ],
   ghjhs1math: [],
   ghjhs2math: [],
+  ghjhs3math: [],
 };
 
 export const FORMULA_CARDS: FormulaCard[] = [
