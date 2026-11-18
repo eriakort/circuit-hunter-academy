@@ -121,5 +121,43 @@ export const ScienceLab: React.FC<Props> = ({ missionId, lang }) => {
     );
   }
 
+  if (missionId === 'g5s-ecosystems') {
+    const habitatHealth = Math.round((sunlight + water) / 2);
+    const plantHeight = 24 + habitatHealth * 0.42;
+    const animalCount = Math.max(1, Math.round(habitatHealth / 18));
+
+    return (
+      <section className="chem-lab" aria-label={pick(lang, 'Ecosystem Balance Lab', 'Laboratorio dell’Equilibrio dell’Ecosistema')}>
+        <header className="cl-heading">
+          <span className="cl-kicker">{pick(lang, 'INTERACTIVE SCIENCE LAB', 'LABORATORIO INTERATTIVO DI SCIENZE')}</span>
+          <h3>{pick(lang, 'Build a Healthy Meadow', 'Costruisci un prato in salute')}</h3>
+          <p>{pick(lang, 'Change sunlight and water availability to explore how non-living conditions can affect plants and the animals that depend on them.', 'Modifica la luce e la disponibilità di acqua per scoprire come le condizioni non viventi influenzano le piante e gli animali che dipendono da esse.')}</p>
+        </header>
+        <div className="cl-grid">
+          <div className="cl-visual">
+            <svg viewBox="0 0 360 205" role="img" aria-label={pick(lang, 'Meadow ecosystem with plants and animals', 'Ecosistema del prato con piante e animali')}>
+              <circle cx="54" cy="40" r={12 + sunlight * 0.08} fill="#ffd166" opacity={0.45 + sunlight * 0.005} />
+              <path d="M0 156 Q85 132 180 154 T360 150 V205 H0Z" fill="rgba(56,239,125,.20)" />
+              {Array.from({ length: 9 }, (_, i) => <path key={i} d={`M${34 + i * 36} 158 q-7 -${plantHeight * 0.55} -12 -${plantHeight}`} stroke="#38ef7d" strokeWidth="3" strokeLinecap="round" />)}
+              {Array.from({ length: animalCount }, (_, i) => <g key={i} transform={`translate(${92 + i * 32} 135)`}><ellipse cx="0" cy="0" rx="10" ry="6" fill="#ffd166"/><circle cx="9" cy="-5" r="4" fill="#ffd166"/><path d="M-5 5v7 M5 5v7" stroke="#ffd166" strokeWidth="2"/></g>)}
+              <path d="M264 150 q20 -22 40 0" fill="none" stroke="#45d8ff" strokeWidth="3" strokeDasharray="4 4" />
+              <text x="180" y="24" textAnchor="middle" fill="#ffffff" fontSize="12" fontWeight="800">{pick(lang, 'SUNLIGHT + WATER → PLANT GROWTH', 'LUCE + ACQUA → CRESCITA DELLE PIANTE')}</text>
+              <text x="180" y="190" textAnchor="middle" fill="#ffffff" fontSize="11">{pick(lang, 'Plants provide food and shelter', 'Le piante offrono cibo e riparo')}</text>
+            </svg>
+          </div>
+          <div className="cl-controls">
+            <Slider label={pick(lang, 'Sunlight', 'Luce solare')} value={sunlight} min={10} max={100} step={5} unit="%" lang={lang} onChange={setSunlight} />
+            <Slider label={pick(lang, 'Water availability', 'Disponibilità di acqua')} value={water} min={10} max={100} step={5} unit="%" lang={lang} onChange={setWater} />
+            <div className="cl-readout-row">
+              <Readout label={pick(lang, 'Habitat conditions', 'Condizioni dell’habitat')} value={`${habitatHealth}%`} />
+              <Readout label={pick(lang, 'Illustrative meadow animals', 'Animali illustrativi nel prato')} value={String(animalCount)} />
+            </div>
+            <Analogy lang={lang} en="An ecosystem is a connected team: plants use sunlight and water, while animals depend on plants and other organisms for food and shelter." it="Un ecosistema è una squadra collegata: le piante usano luce e acqua, mentre gli animali dipendono dalle piante e dagli altri organismi per cibo e riparo." />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return null;
 };
