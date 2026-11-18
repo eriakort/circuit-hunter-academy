@@ -87,11 +87,9 @@ export function getCurriculumSubjects(grade?: GradeId | null, curriculumId: 'ita
   }
   if (curriculumId !== 'italy-national') return [];
   const targetGrade: GradeId = (grade && grade in GRADE_CURRICULUM_MAP) ? grade : 'grade9';
-  const allowed = new Set(GRADE_SUBJECT_IDS[targetGrade]);
-  const list = SUBJECTS.filter(s => allowed.has(s.id));
-  // Guarantee Italian is never excluded
-  if (!list.some(s => s.id === 'italian')) {
-    list.push(ITALIAN_SUBJECT);
-  }
-  return list;
+  const subjectsById = new Map(SUBJECTS.map(subject => [subject.id, subject]));
+  return GRADE_SUBJECT_IDS[targetGrade].flatMap(subjectId => {
+    const subject = subjectsById.get(subjectId);
+    return subject ? [subject] : [];
+  });
 }
