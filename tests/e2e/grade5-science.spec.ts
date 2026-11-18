@@ -16,7 +16,7 @@ test('Grade 5 learners can enter the dedicated bilingual Science curriculum', as
   await page.locator('#nm').fill('Science Hunter');
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
-  await expect(page.locator('.units button')).toHaveCount(5);
+  await expect(page.locator('.units button')).toHaveCount(6);
   await expect(page.getByRole('heading', { name: 'Science Foundations' })).toBeVisible();
   await expect(page.locator('.mcard')).toHaveCount(2);
   await expect(page.getByRole('heading', { name: 'The Secret Life of Plants' })).toBeVisible();
@@ -76,7 +76,7 @@ test('Grade 5 Science includes the complete bilingual Universe unit', async ({ p
   await page.locator('#nm').fill('Cosmos Hunter');
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
-  await expect(page.locator('.units button')).toHaveCount(5);
+  await expect(page.locator('.units button')).toHaveCount(6);
   await page.locator('.units button').nth(1).click();
 
   await expect(page.getByRole('heading', { name: 'The Universe' })).toBeVisible();
@@ -105,7 +105,7 @@ test('Grade 5 Science includes the complete bilingual Energy and Forces unit', a
   await page.locator('#nm').fill('Energy Hunter');
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
-  await expect(page.locator('.units button')).toHaveCount(5);
+  await expect(page.locator('.units button')).toHaveCount(6);
   await page.locator('.units button').nth(2).click();
 
   await expect(page.getByRole('heading', { name: 'Energy and Forces' })).toBeVisible();
@@ -136,7 +136,7 @@ test('Grade 5 Science includes the complete bilingual Human Body unit', async ({
   await page.locator('#nm').fill('Body Explorer');
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
-  await expect(page.locator('.units button')).toHaveCount(5);
+  await expect(page.locator('.units button')).toHaveCount(6);
   await page.locator('.units button').nth(3).click();
 
   await expect(page.getByRole('heading', { name: 'The Human Body', exact: true })).toBeVisible();
@@ -175,7 +175,7 @@ test('Grade 5 Science includes bilingual self-assessment and workbook practice',
   await page.locator('#nm').fill('Science Reviewer');
   await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
 
-  await expect(page.locator('.units button')).toHaveCount(5);
+  await expect(page.locator('.units button')).toHaveCount(6);
   await page.locator('.units button').nth(4).click();
 
   await expect(page.getByRole('heading', { name: 'Self-Assessment & Workbook', exact: true })).toBeVisible();
@@ -215,4 +215,38 @@ test('Grade 5 Science knowledge tests show the correct subject in English and It
   await expect(page.locator('.mhead .eyebrow')).toContainText('Prove del Sapere');
   await expect(page.locator('.mhead .eyebrow')).toContainText('Scienze e Tecnologia');
   await expect(page.locator('#catSelect option').first()).toContainText('Tutti gli argomenti di Scienze e Tecnologia');
+});
+
+
+test('Grade 5 Science includes the bilingual Living Things and Ecosystems unit', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="science"]').click();
+  await page.locator('#regf').waitFor();
+  await page.locator('#nm').fill('Ecosystem Explorer');
+  await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
+
+  await expect(page.locator('.units button')).toHaveCount(6);
+  await page.locator('.units button').nth(5).click();
+
+  await expect(page.getByRole('heading', { name: 'Living Things and Ecosystems', exact: true })).toBeVisible();
+  await expect(page.locator('.mcard')).toHaveCount(6);
+  await expect(page.getByRole('heading', { name: 'Ecosystems: Living Together' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Habitats and Adaptations' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Food Chains: Who Eats Whom?' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Biodiversity: Many Forms of Life' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Protecting Our Environment' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Be a Scientist: Investigate a Habitat' })).toBeVisible();
+
+  await page.locator('#lIT').click();
+  await expect(page.getByRole('heading', { name: 'Esseri viventi ed ecosistemi', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Ecosistemi: vivere insieme' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Habitat e adattamenti' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Catene alimentari: chi mangia chi?' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Biodiversità: tante forme di vita' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Proteggere il nostro ambiente' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Diventa scienziata: esplora un habitat' })).toBeVisible();
 });
