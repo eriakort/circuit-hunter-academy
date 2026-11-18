@@ -2,6 +2,7 @@ import { SubjectInfo, UnitInfo, ArcInfo, Mission, Rank, CodexEntry } from "../ty
 import { PHYSICS_FOUNDATION_MISSIONS } from "./physicsFoundationsData";
 import { GHANA_JHS1_SCIENCE_UNIT, GHANA_JHS1_SCIENCE_ARCS, GHANA_JHS1_SCIENCE_MISSIONS } from './ghanaJhs1ScienceData';
 import { GHANA_JHS1_SCIENCE_CYCLES_UNIT, GHANA_JHS1_SCIENCE_CYCLES_ARCS, GHANA_JHS1_SCIENCE_CYCLES_MISSIONS } from './ghanaJhs1ScienceCyclesData';
+import { GHANA_JHS1_SCIENCE_SYSTEMS_UNIT, GHANA_JHS1_SCIENCE_SYSTEMS_ARCS, GHANA_JHS1_SCIENCE_SYSTEMS_MISSIONS } from './ghanaJhs1ScienceSystemsData';
 import { MATH_CODEX } from "./mathCodex";
 import { ITALIAN_CODEX } from "./italianCodex";
 import { ITALIAN_MISSIONS } from "./italianData";
@@ -29479,3 +29480,10 @@ UNITS.push({ ...GHANA_JHS1_SCIENCE_CYCLES_UNIT, subject: 'ghjhs1science' });
 const ghanaJhs1ScienceCyclesArcOffset = ARCS.length;
 ARCS.push(...GHANA_JHS1_SCIENCE_CYCLES_ARCS.map(arc => ({ ...arc, unit: ghanaJhs1ScienceCyclesUnitOffset, subject: 'ghjhs1science' as const })));
 MISSIONS.push(...GHANA_JHS1_SCIENCE_CYCLES_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs1ScienceCyclesArcOffset + mission.arc })));
+
+// Ghana NaCCA · JHS 1 Science · Systems strand.
+const ghanaJhs1ScienceSystemsUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_JHS1_SCIENCE_SYSTEMS_UNIT, subject: 'ghjhs1science' });
+const ghanaJhs1ScienceSystemsArcOffset = ARCS.length;
+ARCS.push(...GHANA_JHS1_SCIENCE_SYSTEMS_ARCS.map(arc => ({ ...arc, unit: ghanaJhs1ScienceSystemsUnitOffset, subject: 'ghjhs1science' as const })));
+MISSIONS.push(...GHANA_JHS1_SCIENCE_SYSTEMS_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs1ScienceSystemsArcOffset + mission.arc })));
