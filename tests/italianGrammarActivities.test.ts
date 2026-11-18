@@ -26,7 +26,7 @@ assert.ok(presentA2Translation.acceptedAnswers?.includes('Adesso stanno facendo 
 const imperfettoA1Translation = getGrammarActivities('imperfetto', 'A1', 'translate')[0];
 assert.deepEqual(imperfettoA1Translation.acceptedAnswers, ['C’era un grande giardino.']);
 const imperfettoA2Translation = getGrammarActivities('imperfetto', 'A2', 'translate')[0];
-assert.ok(imperfettoA2Translation.acceptedAnswers?.includes('Mentre studiavo, Luca è arrivato.'));
+assert.ok(imperfettoA2Translation.acceptedAnswers?.includes('Mentre studiavo, Sara è arrivata.'));
 const passatoProssimoA2Correction = getGrammarActivities('passato-prossimo', 'A2', 'correct')[0];
 assert.ok(passatoProssimoA2Correction.source?.includes('Io ho andato a scuola ieri'), 'A2 correction should cover the common ho/sono auxiliary error');
 assert.deepEqual(passatoProssimoA2Correction.acceptedAnswers, ['Io sono andato a scuola ieri.', 'Io sono andata a scuola ieri.']);
