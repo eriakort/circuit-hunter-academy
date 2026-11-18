@@ -51,20 +51,20 @@ test('Ghana Formula Book, Codex and Test only show English maths content', async
 });
 
 
-test('Ghana JHS 1 Mathematics pilot is selectable and opens its Number missions', async ({ page }) => {
+test('Ghana JHS 1 Mathematics pathways are selectable and open Number and Algebra missions', async ({ page }) => {
   await page.goto('/');
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ }).click();
-  await expect(page.locator('.grade-card[data-grade="ghjhs1"]')).toContainText('Number-strand pilot available');
+  await expect(page.locator('.grade-card[data-grade="ghjhs1"]')).toContainText('Number and Algebra strands available');
   await page.locator('.grade-card[data-grade="ghjhs1"]').click();
   await page.locator('.subjcard[data-s="ghjhs1math"]').click();
   if (await page.locator('#nm').count()) {
     await page.locator('#nm').fill('Ama');
     await page.locator('#regf button').first().click();
   }
-  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard')).toHaveCount(6);
   await page.locator('.mcard').first().click();
   await expect(page.locator('main')).toContainText('The Market Number Mission');
-  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);\n  await expect(page.locator('.mcard').last()).toContainText('The Balance Gate');
 });
