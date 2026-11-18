@@ -55,7 +55,7 @@ export const GradePicker: React.FC = () => {
         {GRADES.filter(grade => !isGhana || ['ghjhs1', 'ghjhs2', 'ghjhs3', 'ghshs1', 'ghshs2', 'ghshs3'].includes(grade.id)).map(grade => {
           const selected = state.grade === grade.id;
           const ghanaLevel = isGhana ? getCurriculumGradeLevel('ghana-nacca', grade.id) : undefined;
-          const ready = isGhana ? ['ghjhs1', 'ghjhs2', 'ghshs1', 'ghshs2', 'ghshs3'].includes(grade.id) : grade.status === 'ready';
+          const ready = isGhana ? ['ghjhs1', 'ghjhs2', 'ghjhs3', 'ghshs1', 'ghshs2', 'ghshs3'].includes(grade.id) : grade.status === 'ready';
           const statusCopy: [string, string] =
             grade.id === 'grade5'
               ? ['Science, Maths, Italian, History & Geography · Ready', 'Scienze, Matematica, Italiano, Storia e Geografia · Pronte']
