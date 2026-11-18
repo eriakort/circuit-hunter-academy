@@ -16,8 +16,8 @@ assert.ok(scienceSubject, 'Grade 5 Science & Technology must be registered');
 assert.ok(isBilingualPair(scienceSubject.name), 'Science subject name must be bilingual');
 assert.ok(isBilingualPair(scienceSubject.blurb), 'Science subject description must be bilingual');
 assert.ok(isBilingualPair(scienceSubject.meta), 'Science subject metadata must be bilingual');
-assert.ok(scienceSubject.meta[0].includes('Self-Assessment & Workbook'), 'English subject metadata must list the fifth review/workbook unit');
-assert.ok(scienceSubject.meta[1].includes('Autovalutazione e quaderno operativo'), 'Italian subject metadata must list the fifth review/workbook unit');
+assert.ok(scienceSubject.meta[0].includes('Ecosystems'), 'English subject metadata must list the ecosystem learning strand');
+assert.ok(scienceSubject.meta[1].includes('Ecosistemi'), 'Italian subject metadata must list the ecosystem learning strand');
 
 // Grade 5 is a primary-school curriculum: it must not inherit Grade 9 Physics.
 assert.deepEqual(GRADE_CURRICULUM_MAP.grade5, ['science', 'math5', 'italian', 'hist5', 'geo5']);
@@ -37,12 +37,12 @@ const scienceArcIndexSet = new Set(scienceArcIndexes);
 const scienceArcs = scienceArcIndexes.map(index => ARCS[index]);
 const scienceMissions = MISSIONS.filter(mission => scienceArcIndexSet.has(mission.arc));
 
-assert.equal(scienceUnits.length, 5, 'Grade 5 Science must retain its five learning units');
-assert.equal(scienceArcs.length, 5, 'Each Grade 5 Science unit must have a curriculum arc');
+assert.equal(scienceUnits.length, 6, 'Grade 5 Science must include its six learning units');
+assert.equal(scienceArcs.length, 6, 'Each Grade 5 Science unit must have a curriculum arc');
 assert.equal(
   scienceMissions.length,
-  51,
-  'Grade 5 Science must retain all 51 foundation, unit, and review missions'
+  57,
+  'Grade 5 Science must include all 57 foundation, unit, review, and ecosystem missions'
 );
 
 for (const [index, unit] of scienceUnits.entries()) {
@@ -89,7 +89,7 @@ for (const id of requiredUniverseMissionIds) {
   assert.ok(missionIds.includes(id), `Grade 5 Science is missing required Universe mission: ${id}`);
 }
 
-for (const id of ['g5s-plants', 'g5s-animals']) {
+for (const id of ['g5s-plants', 'g5s-animals', 'g5s-ecosystems']) {
   for (const lang of ['en', 'it'] as const) {
     const visHtml = getVisualHtml(id, lang);
     assert.ok(visHtml.includes('<svg') && !/\bundefined\b/.test(visHtml) && !/\bNaN\b/.test(visHtml), `Visual ${id} (${lang}) must render cleanly`);
@@ -99,7 +99,7 @@ for (const id of ['g5s-plants', 'g5s-animals']) {
 }
 
 console.log(
-  'grade5ScienceCurriculum.test.ts ok! Validated 5 units, 5 arcs, and',
+  'grade5ScienceCurriculum.test.ts ok! Validated 6 units, 6 arcs, and',
   scienceMissions.length,
   'Grade 5 Science missions.'
 );
