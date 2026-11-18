@@ -17,6 +17,7 @@ export const ItalianGrammarScreen: React.FC = () => {
   const [activityInput, setActivityInput] = useState('');
   const [orderedWordIndexes, setOrderedWordIndexes] = useState<number[]>([]);
   const [activitySubmitted, setActivitySubmitted] = useState(false);
+  const [activitySelfReviewed, setActivitySelfReviewed] = useState(false);
   const [mixedReview, setMixedReview] = useState(false);
   const [mixedQuestions, setMixedQuestions] = useState<GrammarReviewQuestion[]>([]);
   const topic = useMemo(
@@ -53,6 +54,7 @@ export const ItalianGrammarScreen: React.FC = () => {
     setActivityInput('');
     setOrderedWordIndexes([]);
     setActivitySubmitted(false);
+    setActivitySelfReviewed(false);
   };
   const chooseTopic = (id: string) => {
     setMixedReview(false);
@@ -72,10 +74,10 @@ export const ItalianGrammarScreen: React.FC = () => {
     if (firstAvailable) setActivityType(firstAvailable);
     setQuestionIndex(0);
     setSelectedAnswer(null);
-    setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false);
+    setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false); setActivitySelfReviewed(false);
   };
   const chooseActivityType = (nextType: GrammarActivityType) => {
-    setActivityType(nextType); setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false);
+    setActivityType(nextType); setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false); setActivitySelfReviewed(false);
   };
   const nextQuestion = () => {
     setQuestionIndex(index => (index + 1) % activeQuestions.length);
@@ -222,13 +224,17 @@ export const ItalianGrammarScreen: React.FC = () => {
             <strong>{L(['Hint', 'Suggerimento'], lang)}</strong><p style={{ margin: '5px 0 0', lineHeight: 1.5 }}>{L(activity.hint, lang)}</p>
           </div>
           {!activitySubmitted ? (
-            <button type="button" className="btn sm" style={{ marginTop: 12 }} disabled={activityType === 'order' ? orderedWordIndexes.length !== activity.words?.length : !activityInput.trim()} onClick={() => { setActivitySubmitted(true); recordGrammarResult(activity.id, activityType !== 'write' && activityCorrect); }}>{L(['Check my answer', 'Controlla la risposta'], lang)}</button>
+            <button type="button" className="btn sm" style={{ marginTop: 12 }} disabled={activityType === 'order' ? orderedWordIndexes.length !== activity.words?.length : !activityInput.trim()} onClick={() => { setActivitySubmitted(true); if (activityType !== 'write') recordGrammarResult(activity.id, activityCorrect); }}>{L(['Check my answer', 'Controlla la risposta'], lang)}</button>
           ) : (
             <div role="status" aria-live="polite" style={{ marginTop: 14, padding: 14, borderRadius: 10, border: activityType === 'write' ? '1px solid rgba(148,163,184,.4)' : activityCorrect ? '1px solid rgba(74,222,128,.4)' : '1px solid rgba(248,113,113,.45)', background: activityType === 'write' ? 'rgba(148,163,184,.07)' : activityCorrect ? 'rgba(34,197,94,.07)' : 'rgba(248,113,113,.08)' }}>
               <strong>{activityType === 'write' ? L(['Self-review: compare your sentence with the model.', 'Autovalutazione: confronta la tua frase con il modello.'], lang) : activityCorrect ? L(['Correct! Ben fatto!', 'Corretto! Ben fatto!'], lang) : L(['Not quite — compare with the model answer.', 'Non proprio — confronta con la risposta modello.'], lang)}</strong>
               <p style={{ margin: '6px 0', lineHeight: 1.5 }}>{L(activity.explanation, lang)}</p>
               <div style={{ padding: 10, borderRadius: 8, background: 'rgba(255,255,255,.05)' }}><span className="eyebrow">{L(['MODEL ANSWER', 'RISPOSTA MODELLO'], lang)}</span><div style={{ fontWeight: 700, marginTop: 4 }}>{activity.modelAnswer}</div></div>
-              <button type="button" className="btn ghost sm" style={{ marginTop: 12 }} onClick={() => { setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false); }}>{L(['Try again', 'Riprova'], lang)}</button>
+              {activityType === 'write' && !activitySelfReviewed && (
+                <button type="button" className="btn sm" style={{ marginTop: 12 }} onClick={() => { recordGrammarResult(activity.id, true); setActivitySelfReviewed(true); }}>{L(['I checked my sentence — mark as practised', 'Ho controllato la frase — segna come esercitata'], lang)}</button>
+              )}
+              {activityType === 'write' && activitySelfReviewed && <p style={{ margin: '10px 0 0', color: '#4ade80', fontWeight: 700 }}>{L(['Writing practice completed and added to your progress.', 'Esercizio di scrittura completato e aggiunto ai tuoi progressi.'], lang)}</p>}
+              <button type="button" className="btn ghost sm" style={{ marginTop: 12 }} onClick={() => { setActivityInput(''); setOrderedWordIndexes([]); setActivitySubmitted(false); setActivitySelfReviewed(false); }}>{L(['Try again', 'Riprova'], lang)}</button>
             </div>
           )}
         </section>
