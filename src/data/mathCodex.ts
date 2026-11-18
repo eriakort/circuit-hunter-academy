@@ -795,4 +795,18 @@ export const MATH_CODEX: CodexEntry[] = [
     'Sine Law: a/sin α = b/sin β = c/sin γ = 2R. Carnot: a² = b² + c² − 2bc cos α. Area: ½ b c sin α.',
     'Teorema dei Seni: a/sin α = b/sin β = c/sin γ = 2R. Carnot: a² = b² + c² − 2bc cos α. Area: ½ b c sin α.'
   ]
+
+  // Grade 9 Geometry & Statistics · G1–G6
+  ['m7m1', 'Complementary and supplementary angles', 'Angoli complementari e supplementari', 'Complementary angles add to 90°. Supplementary angles add to 180°. Vertically opposite angles are equal.', 'Gli angoli complementari sommano 90°. Gli angoli supplementari sommano 180°. Gli angoli opposti al vertice sono congruenti.'],
+  ['m7m2', 'Triangle angle sum and area', 'Somma degli angoli e area del triangolo', 'The interior angles of a triangle add to 180°. Area = base × perpendicular height ÷ 2.', 'Gli angoli interni di un triangolo sommano 180°. Area = base × altezza relativa ÷ 2.'],
+  ['m7m3', 'Pythagorean theorem', 'Teorema di Pitagora', 'In a right-angled triangle, a² + b² = c², where c is the hypotenuse opposite the right angle.', 'In un triangolo rettangolo, a² + b² = c², dove c è l’ipotenusa opposta all’angolo retto.'],
+  ['m7m3', 'Hypotenuse', 'Ipotenusa', 'The longest side of a right-angled triangle, opposite its 90° angle.', 'Il lato più lungo di un triangolo rettangolo, opposto all’angolo di 90°.'],
+  ['m7m4', 'Quadrilateral', 'Quadrilatero', 'A polygon with four sides. A square is both a rectangle and a rhombus.', 'Un poligono con quattro lati. Il quadrato è sia un rettangolo sia un rombo.'],
+  ['m7m4', 'Perimeter and area', 'Perimetro e area', 'Perimeter is the total boundary length. Area measures the surface inside a shape.', 'Il perimetro è la lunghezza totale del contorno. L’area misura la superficie interna di una figura.'],
+  ['m7m5', 'Radius and diameter', 'Raggio e diametro', 'The radius runs from the centre to the circumference. The diameter passes through the centre: d = 2r.', 'Il raggio va dal centro alla circonferenza. Il diametro passa per il centro: d = 2r.'],
+  ['m7m5', 'Circumference', 'Circonferenza', 'The distance around a circle: C = 2πr = πd.', 'La lunghezza del contorno di un cerchio: C = 2πr = πd.'],
+  ['m7m5', 'Area of a circle', 'Area del cerchio', 'The area enclosed by a circle: A = πr².', 'La superficie racchiusa da un cerchio: A = πr².'],
+  ['m7m6', 'Arithmetic mean', 'Media aritmetica', 'Add all data values and divide by the number of values.', 'Somma tutti i valori e dividi per il numero dei dati.'],
+  ['m7m6', 'Median', 'Mediana', 'The middle value after sorting the data. With an even number of values, average the two middle values.', 'Il valore centrale dopo aver ordinato i dati. Con un numero pari di valori, fai la media dei due valori centrali.'],
+  ['m7m6', 'Mode and range', 'Moda e campo di variazione', 'The mode is the most frequent value. The range is maximum minus minimum.', 'La moda è il valore più frequente. Il campo di variazione è massimo meno minimo.']
 ];
