@@ -281,3 +281,15 @@ test('Ghana JHS 2 Science Cycles strand opens all four sub-strand missions', asy
   await expect(page.locator('main')).toContainText('The carbon cycle describes how carbon moves repeatedly');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+ 
+test('Ghana JHS 2 Science Systems strand opens all four sub-strand missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs2', 'ghjhs2science');
+  await page.locator('.units button').filter({ hasText: 'Systems' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(4);
+  await expect(page.locator('.mcard').first()).toContainText('The Dental Health Guardian');
+  await expect(page.locator('.mcard').last()).toContainText('The Sustainable Farming Systems Planner');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('A human tooth has three main visible regions');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
