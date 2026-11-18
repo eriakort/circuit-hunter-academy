@@ -11,10 +11,15 @@ assert.equal(articlesA1Write.prompt[0], 'Write one sentence using a masculine no
 assert.equal(articlesA1Write.prompt[1], 'Scrivi una frase usando un nome maschile e un nome femminile.');
 assert.equal(articlesA1Write.modelAnswer, 'Ho un libro e una penna.');
 assert.equal(articlesA1Write.modelAnswer.split(/[.!?]+/).filter(Boolean).length, 1, 'A1 article model should contain the one sentence requested');
+const extraWritingIds = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive'].flatMap(topic => ['A1', 'A2'].map(level => topic + '-' + level.toLowerCase() + '-write-2'));
+for (const id of extraWritingIds) {
+  assert.ok(ITALIAN_GRAMMAR_ACTIVITIES.some(activity => activity.id === id), 'Missing expanded writing activity: ' + id);
+}
+assert.ok(ITALIAN_GRAMMAR_ACTIVITIES.some(activity => activity.id === 'sentence-building-a1-write-2') === false, 'Sentence-building topic uses its own existing progressive writing sequence');
 const levels = ['A1', 'A2', 'B1'] as const;
 const types = ['correct', 'order', 'translate', 'write'] as const;
 const ids = new Set<string>();
-assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 72);
+assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 84);
 const passatoProssimoA2Correction = getGrammarActivities('passato-prossimo', 'A2', 'correct')[0];
 assert.ok(passatoProssimoA2Correction.source?.includes('Io ho andato a scuola ieri'), 'A2 correction should cover the common ho/sono auxiliary error');
 assert.deepEqual(passatoProssimoA2Correction.acceptedAnswers, ['Io sono andato a scuola ieri.', 'Io sono andata a scuola ieri.']);
@@ -63,7 +68,8 @@ for (const level of levels) {
   for (const type of types) {
     const topics = ['sentence-building', 'articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive'];
     const items = topics.flatMap(topic => getGrammarActivities(topic, level, type));
-    assert.equal(items.length, 6, level + ' should have one ' + type + ' activity per topic');
+    const expectedCount = type === 'write' && level !== 'B1' ? 12 : 6;
+    assert.equal(items.length, expectedCount, level + ' should have ' + expectedCount + ' ' + type + ' activities across all topics');
     for (const item of items) {
       assert.ok(!ids.has(item.id), 'Duplicate activity id: ' + item.id);
       ids.add(item.id);
