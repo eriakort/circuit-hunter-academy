@@ -60,11 +60,11 @@ export const GradePicker: React.FC = () => {
             grade.id === 'grade5'
               ? ['Science, Maths, Italian, History & Geography · Ready', 'Scienze, Matematica, Italiano, Storia e Geografia · Pronte']
               : ready
-                ? grade.id === 'ghshs1'
-                  ? ['Core Mathematics · SHS 1 pilot available', 'Matematica di base · percorso SHS 1 disponibile']
-                  : grade.id === 'ghshs2'
-                    ? ['Core Mathematics · SHS 2 pathway available', 'Matematica di base · percorso SHS 2 disponibile']
-                    : ['Core Mathematics · SHS 3 pathway available', 'Matematica di base · percorso SHS 3 disponibile']
+                ? grade.id === 'grade9'
+                  ? ['CS, Physics, Math, Italian, Chem L1, History & Geo · Ready', 'Informatica, Fisica, Matematica, Italiano, Chimica L1, Storia e Geo · Pronte']
+                  : grade.id === 'grade10'
+                    ? ['Maths L2, Chemistry L2, Italian, History & World Geo · Ready', 'Matematica L2, Chimica L2, Italiano, Storia e Geografia · Pronte']
+                    : ['Maths L3, Chemistry L3, Italian, Modern History & Geopolitics · Ready', 'Matematica L3, Chimica L3, Italiano, Storia Moderna e Geopolitica · Pronte']
                 : ['Curriculum setup next', 'Programma in preparazione'];
 
           return (
