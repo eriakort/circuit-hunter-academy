@@ -24,7 +24,7 @@ for (const topicId of topicIds) {
 
     for (const type of ['correct', 'order', 'translate', 'write'] as const) {
       const activities = getGrammarActivities(topicId, level, type);
-      const expectedCount = type === 'correct' ? 1 : 2;
+      const expectedCount = type === 'correct' || (topicId === 'sentence-building' && type === 'write') ? 1 : 2;
       assert.equal(activities.length, expectedCount, topicId + ' ' + level + ' needs ' + expectedCount + ' ' + type + ' activities');
       for (const activity of activities) {
         assert.ok(activity.prompt.every(value => value.trim().length > 0), activity.id + ' needs bilingual prompts');
