@@ -172,3 +172,16 @@ test('Ghana JHS 3 Mathematics Algebra strand opens its missions and algebra visu
   await expect(page.locator('main')).toContainText('The Expression Forge');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 3 Mathematics Geometry and Measurement opens its missions and geometry visual', async ({ page }) => {
+  await enterGhana(page, 'ghjhs3', 'ghjhs3math');
+  await page.locator('.units button').filter({ hasText: 'Geometry, Construction and Measurement' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard').first()).toContainText('The Navigator’s Construction Quest');
+  await expect(page.locator('.mcard').last()).toContainText('The Mensuration Master Builder');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'geometry');
+  await expect(page.locator('main')).toContainText('The Navigator’s Construction Quest');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
