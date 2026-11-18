@@ -66,7 +66,13 @@ export const SubjectPickerScreen: React.FC = () => {
     grade11: [
       'Grade 11 (3°/4° Superiore): Mathematics L3, Chemistry L3, Italian Studies, Modern History (Renaissance to 1870) & Geopolitics & Italian Territory.',
       '3°/4° Superiore: Matematica L3, Chimica L3, Lingua Italiana, Storia Moderna (Rinascimento–1870) e Geopolitica e Territorio Italiano.'
-    ]
+    ],
+    ghjhs1: ['NaCCA JHS 1 Mathematics and Science pathways are being prepared.', 'Percorsi NaCCA JHS 1 di Matematica e Scienze in preparazione.'],
+    ghjhs2: ['NaCCA JHS 2 Mathematics and Science pathways are being prepared.', 'Percorsi NaCCA JHS 2 di Matematica e Scienze in preparazione.'],
+    ghjhs3: ['NaCCA JHS 3 Mathematics and Science pathways are being prepared.', 'Percorsi NaCCA JHS 3 di Matematica e Scienze in preparazione.'],
+    ghshs1: ['NaCCA SHS 1 Core Mathematics pilot; General Science is being prepared.', 'Percorso NaCCA SHS 1 di Matematica di base; Scienze generali in preparazione.'],
+    ghshs2: ['NaCCA SHS 2 Core Mathematics; General Science is being prepared.', 'Percorso NaCCA SHS 2 di Matematica di base; Scienze generali in preparazione.'],
+    ghshs3: ['NaCCA SHS 3 Core Mathematics; General Science is being prepared.', 'Percorso NaCCA SHS 3 di Matematica di base; Scienze generali in preparazione.']
   };
 
   return (
