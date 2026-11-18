@@ -21,9 +21,12 @@ for (const topicId of ['articles', 'partitive'] as const) {
 
     for (const type of ['correct', 'order', 'translate', 'write'] as const) {
       const activities = getGrammarActivities(topicId, level, type);
-      assert.equal(activities.length, 1, topicId + ' ' + level + ' needs one ' + type + ' activity');
-      assert.ok(activities[0].prompt.every(value => value.trim().length > 0), activities[0].id + ' needs bilingual prompts');
-      assert.ok(activities[0].explanation.every(value => value.trim().length > 0), activities[0].id + ' needs bilingual feedback');
+      const expectedCount = type === 'correct' ? 1 : 2;
+      assert.equal(activities.length, expectedCount, topicId + ' ' + level + ' needs ' + expectedCount + ' ' + type + ' activities');
+      for (const activity of activities) {
+        assert.ok(activity.prompt.every(value => value.trim().length > 0), activity.id + ' needs bilingual prompts');
+        assert.ok(activity.explanation.every(value => value.trim().length > 0), activity.id + ' needs bilingual feedback');
+      }
     }
   }
 }
