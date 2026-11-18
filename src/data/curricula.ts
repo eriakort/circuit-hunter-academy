@@ -10,7 +10,10 @@ export type CurriculumId = 'italy-national' | 'ghana-nacca';
 export type CurriculumPathwayId =
   | 'italy-standard'
   | 'ghana-core-mathematics'
-  | 'ghana-additional-mathematics';
+  | 'ghana-additional-mathematics'
+  | 'ghana-jhs-mathematics'
+  | 'ghana-jhs-science'
+  | 'ghana-shs-general-science';
 
 export interface CurriculumGradeLevel {
   /** Stable internal grade ID used by existing content and saves. */
@@ -67,7 +70,7 @@ const italianSubjects: Partial<Record<GradeId, readonly SubjectId[]>> = {
 
 /**
  * The country registry is the source of truth for country/curriculum labels.
- * Ghana reuses Grade 9–11 internally for compatibility, but presents SS1–SS3.
+ * Ghana uses dedicated grade IDs to keep JHS/SHS progress separate from Italian grades.
  * Core Mathematics is available as an initial SS1 pilot; wider coverage and Additional Mathematics remain in preparation.
  */
 export const COUNTRIES: readonly CountryDefinition[] = [
@@ -111,15 +114,18 @@ export const COUNTRIES: readonly CountryDefinition[] = [
       {
         id: 'ghana-nacca',
         countryCode: 'GH',
-        name: 'Ghana NaCCA Senior High School Curriculum',
+        name: 'Ghana NaCCA Curriculum',
         authority: 'National Council for Curriculum and Assessment (NaCCA)',
         primaryLanguage: 'en',
         supportedLanguages: ['en'],
         gradeLevels: [
           // Ghana SHS is a three-year stage that usually starts around age 15, after JHS 3.
-          { gradeId: 'grade9', label: 'SHS 1 (SS1)', order: 1, shortLabel: 'SHS 1', badge: '1', kicker: 'Senior High School · Year 1', ageRange: 'Usually about ages 15–16' },
-          { gradeId: 'grade10', label: 'SHS 2 (SS2)', order: 2, shortLabel: 'SHS 2', badge: '2', kicker: 'Senior High School · Year 2', ageRange: 'Usually about ages 16–17' },
-          { gradeId: 'grade11', label: 'SHS 3 (SS3)', order: 3, shortLabel: 'SHS 3', badge: '3', kicker: 'Senior High School · Year 3', ageRange: 'Usually about ages 17–18' }
+          { gradeId: 'ghjhs1', label: 'JHS 1', order: 1, shortLabel: 'JHS 1', badge: '1', kicker: 'Junior High School · Year 1', ageRange: 'Usually ages 12–13' },
+          { gradeId: 'ghjhs2', label: 'JHS 2', order: 2, shortLabel: 'JHS 2', badge: '2', kicker: 'Junior High School · Year 2', ageRange: 'Usually ages 13–14' },
+          { gradeId: 'ghjhs3', label: 'JHS 3', order: 3, shortLabel: 'JHS 3', badge: '3', kicker: 'Junior High School · Year 3', ageRange: 'Usually ages 14–15' },
+          { gradeId: 'ghshs1', label: 'SHS 1', order: 4, shortLabel: 'SHS 1', badge: '1', kicker: 'Senior High School · Year 1', ageRange: 'Usually ages 15–16' },
+          { gradeId: 'ghshs2', label: 'SHS 2', order: 5, shortLabel: 'SHS 2', badge: '2', kicker: 'Senior High School · Year 2', ageRange: 'Usually ages 16–17' },
+          { gradeId: 'ghshs3', label: 'SHS 3', order: 6, shortLabel: 'SHS 3', badge: '3', kicker: 'Senior High School · Year 3', ageRange: 'Usually ages 17–18' }
         ],
         pathways: [
           {
@@ -127,8 +133,11 @@ export const COUNTRIES: readonly CountryDefinition[] = [
             name: 'Core Mathematics',
             description: 'The common NaCCA Mathematics pathway for Senior High School learners.',
             status: 'available',
-            subjectIdsByGrade: { grade9: ['ghcoremath'], grade10: ['ghcoremath2'], grade11: ['ghcoremath3'] }
+            subjectIdsByGrade: { ghshs1: ['ghcoremath'], ghshs2: ['ghcoremath2'], ghshs3: ['ghcoremath3'] }
           },
+          { id: 'ghana-jhs-mathematics', name: 'JHS Mathematics', description: 'NaCCA Common Core Programme Mathematics for JHS 1–3.', status: 'planned' },
+          { id: 'ghana-jhs-science', name: 'JHS Science', description: 'NaCCA Common Core Programme Science for JHS 1–3.', status: 'planned' },
+          { id: 'ghana-shs-general-science', name: 'SHS General Science', description: 'NaCCA General Science for SHS 1–3.', status: 'planned' },
           {
             id: 'ghana-additional-mathematics',
             name: 'Additional Mathematics',
