@@ -66,5 +66,6 @@ test('Ghana JHS 1 Mathematics pathways are selectable and open Number and Algebr
   await expect(page.locator('.mcard')).toHaveCount(6);
   await page.locator('.mcard').first().click();
   await expect(page.locator('main')).toContainText('The Market Number Mission');
-  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);\n  await expect(page.locator('.mcard').last()).toContainText('The Balance Gate');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+  await expect(page.locator('.mcard').last()).toContainText('The Balance Gate');
 });
