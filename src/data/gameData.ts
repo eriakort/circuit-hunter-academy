@@ -29299,3 +29299,26 @@ MISSIONS.push(...MATH_GEOMETRY_MISSIONS.map(mission => ({
   ...mission,
   arc: italianMathGeometryArcIndex
 })));
+
+
+// Grade 5 Science · Living Things and Ecosystems (supplementary learning strand).
+import { GRADE5_ECOLOGY_MISSIONS } from './grade5ScienceEcologyData';
+
+const grade5EcologyUnitOffset = UNITS.length;
+UNITS.push({
+  title: ['Living Things and Ecosystems', 'Esseri viventi ed ecosistemi'],
+  ch: 'Supplementary',
+  subject: 'science'
+});
+const grade5EcologyArcOffset = ARCS.length;
+ARCS.push({
+  n: 6,
+  unit: grade5EcologyUnitOffset,
+  subject: 'science',
+  title: ['Living Things and Ecosystems', 'Esseri viventi ed ecosistemi'],
+  pages: 'Supplementary'
+});
+MISSIONS.push(...GRADE5_ECOLOGY_MISSIONS.map(mission => ({
+  ...mission,
+  arc: mission.arc + grade5EcologyArcOffset
+})));
