@@ -1,5 +1,6 @@
 import { SubjectInfo, UnitInfo, ArcInfo, Mission, Rank, CodexEntry } from "../types";
 import { PHYSICS_FOUNDATION_MISSIONS } from "./physicsFoundationsData";
+import { GHANA_JHS1_SCIENCE_UNIT, GHANA_JHS1_SCIENCE_ARCS, GHANA_JHS1_SCIENCE_MISSIONS } from './ghanaJhs1ScienceData';
 import { MATH_CODEX } from "./mathCodex";
 import { ITALIAN_CODEX } from "./italianCodex";
 import { ITALIAN_MISSIONS } from "./italianData";
@@ -29462,3 +29463,11 @@ UNITS.push({ ...GHANA_JHS3_DATA_UNIT, subject: 'ghjhs3math' });
 const ghanaJhs3DataArcOffset = ARCS.length;
 ARCS.push(...GHANA_JHS3_DATA_ARCS.map(arc => ({ ...arc, unit: ghanaJhs3DataUnitOffset, subject: 'ghjhs3math' as const })));
 MISSIONS.push(...GHANA_JHS3_DATA_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs3DataArcOffset + mission.arc })));
+
+
+// Ghana NaCCA · JHS 1 Science · Diversity of Matter pilot.
+const ghanaJhs1ScienceUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_JHS1_SCIENCE_UNIT, subject: 'ghjhs1science' });
+const ghanaJhs1ScienceArcOffset = ARCS.length;
+ARCS.push(...GHANA_JHS1_SCIENCE_ARCS.map(arc => ({ ...arc, unit: ghanaJhs1ScienceUnitOffset, subject: 'ghjhs1science' as const })));
+MISSIONS.push(...GHANA_JHS1_SCIENCE_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs1ScienceArcOffset + mission.arc })));

@@ -47,7 +47,7 @@ export const GradePicker: React.FC = () => {
       {isGhana && (
         <div className="grade-coming-soon card" role="status">
           <h2>Your Sankofa journey begins here</h2>
-          <p>Choose JHS 1–3 or SHS 1–3. JHS 1 Mathematics has all four strands, and JHS 2 Mathematics has all four strands. JHS 3 Mathematics now includes all four strands: Number, Algebra, Geometry and Measurement, and Handling Data. JHS Science and SHS General Science will arrive in later increments. Existing SHS Core Mathematics pathways remain available. Your Italian progress remains saved independently.</p>
+          <p>Choose JHS 1–3 or SHS 1–3. JHS 1 Mathematics has all four strands, and JHS 2 Mathematics has all four strands. JHS 3 Mathematics now includes all four strands: Number, Algebra, Geometry and Measurement, and Handling Data. JHS 1 Science now has a Diversity of Matter pilot; the remaining JHS Science strands and SHS General Science will arrive in later increments. Existing SHS Core Mathematics pathways remain available. Your Italian progress remains saved independently.</p>
         </div>
       )}
 
@@ -81,7 +81,7 @@ export const GradePicker: React.FC = () => {
               <strong>{ghanaLevel?.label ?? L(grade.name, lang)}</strong>
               <span className="grade-card-detail">{ghanaLevel?.ageRange ?? L(grade.ageRange, lang)}</span>
               <span className="grade-card-status">
-                {isGhana ? (grade.id === 'ghjhs1' ? 'All four Mathematics strands available · JHS 1' : grade.id === 'ghjhs2' ? 'Mathematics · JHS 2 all four strands available' : grade.id === 'ghjhs3' ? 'Mathematics · JHS 3 all four strands available' : grade.id.startsWith('ghjhs') ? 'JHS Mathematics & Science · coming in upcoming increments' : grade.id === 'ghshs1' ? 'Core Mathematics · SHS 1 pilot available' : grade.id === 'ghshs2' ? 'Core Mathematics · SHS 2 pathway available' : 'Core Mathematics · SHS 3 pathway available') : L(statusCopy, lang)}
+                {isGhana ? (grade.id === 'ghjhs1' ? 'Mathematics · all four strands + Science pilot · JHS 1' : grade.id === 'ghjhs2' ? 'Mathematics · JHS 2 all four strands available' : grade.id === 'ghjhs3' ? 'Mathematics · JHS 3 all four strands available' : grade.id.startsWith('ghjhs') ? 'JHS Mathematics & Science · coming in upcoming increments' : grade.id === 'ghshs1' ? 'Core Mathematics · SHS 1 pilot available' : grade.id === 'ghshs2' ? 'Core Mathematics · SHS 2 pathway available' : 'Core Mathematics · SHS 3 pathway available') : L(statusCopy, lang)}
               </span>
             </button>
           );

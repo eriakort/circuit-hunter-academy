@@ -56,7 +56,7 @@ test('Ghana JHS 1 Mathematics pathways are selectable and open Number, Algebra a
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ }).click();
-  await expect(page.locator('.grade-card[data-grade="ghjhs1"]')).toContainText('All four Mathematics strands available');
+  await expect(page.locator('.grade-card[data-grade="ghjhs1"]')).toContainText('Mathematics · all four strands + Science pilot · JHS 1');
   await page.locator('.grade-card[data-grade="ghjhs1"]').click();
   await page.locator('.subjcard[data-s="ghjhs1math"]').click();
   if (await page.locator('#nm').count()) {
@@ -196,5 +196,17 @@ test('Ghana JHS 3 Mathematics Handling Data strand opens its missions and data v
   await page.locator('.mcard').first().click();
   await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'data');
   await expect(page.locator('main')).toContainText('The Data Collection Strategist');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
+
+test('Ghana JHS 1 Science Diversity of Matter pilot opens its missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs1', 'ghjhs1science');
+  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard').first()).toContainText('The Materials Explorer');
+  await expect(page.locator('.mcard').last()).toContainText('The Living Cell Investigator');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('Everything around us is made of matter');
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await expect(page.locator('main')).toContainText('solid, liquid and gas');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });

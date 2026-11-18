@@ -109,6 +109,7 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
     { id: 'trigonometric-equations', subject: 'ghcoremath3', name: 'Solving and Decoding Trigonometric Equations' }
   ],
   ghjhs1math: [],
+  ghjhs1science: [],
   ghjhs2math: [],
   ghjhs3math: [],
 };
