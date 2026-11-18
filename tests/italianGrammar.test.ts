@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { ITALIAN_GRAMMAR_TOPICS } from '../src/data/italianGrammar';
 
-const expectedTopics = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'sentence-building', 'present-tense', 'imperfetto', 'prepositions'];
+const expectedTopics = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'sentence-building', 'present-tense', 'imperfetto', 'prepositions', 'adjective-agreement'];
 assert.deepEqual(ITALIAN_GRAMMAR_TOPICS.map(topic => topic.id), expectedTopics);
 
 const levels = ['A1', 'A2', 'B1'] as const;
@@ -26,7 +26,7 @@ for (const topic of ITALIAN_GRAMMAR_TOPICS) {
   }
 }
 
-assert.equal(totalExercises, 135, `Expected 135 starter exercises, got ${totalExercises}`);
+assert.equal(totalExercises, 144, `Expected 144 starter exercises, got ${totalExercises}`);
 assert.equal(ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'pronouns')?.levels.A1.exercises.length, 6);
 assert.equal(ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'pronouns')?.levels.A2.exercises.length, 6);
 assert.equal(ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'passato-prossimo')?.levels.A1.exercises.length, 6);
@@ -59,4 +59,4 @@ assert.equal(imperfetto.levels.A1.exercises.length, 6);
 assert.equal(imperfetto.levels.A2.exercises.length, 6);
 assert.equal(imperfetto.levels.B1.exercises.length, 3);
 assert.ok(imperfetto.levels.A2.explanation[1].includes('abitudini'));
-console.log('italianGrammar.test.ts ok! Nine topics, three CEFR levels and 135 bilingual exercises verified.');
+console.log('italianGrammar.test.ts ok! Ten topics, three CEFR levels and 144 bilingual exercises verified.');
