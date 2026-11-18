@@ -17,7 +17,7 @@ test('country buttons show drawn flags instead of flag emoji', async ({ page }) 
   expect(await picker.innerText()).not.toMatch(FLAG_EMOJI);
 
   await ghana.click();
-  await page.locator('.grade-card[data-grade="grade9"]').click();
+  await page.locator('.grade-card[data-grade="ghshs1"]').click();
   await page.locator('.subjcard[data-s="ghcoremath"]').click();
   await page.locator('#nm').fill('Kofi');
   await page.locator('#regf button').first().click();
