@@ -331,6 +331,34 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     notes: ['Camminavo describes the background action; ho incontrato is the completed event.', 'Camminavo descrive l’azione di sfondo; ho incontrato è l’evento concluso.'],
     grammarTopicId: 'imperfetto'
   }
+  ,
+  {
+    id: 'grammar-a1-prepositions',
+    level: 'A1',
+    targetIt: 'Abito a Roma e vado da Luca con mia sorella.',
+    translationEn: 'I live in Rome and I am going to Luca’s place with my sister.',
+    phoneticHint: 'A-bee-to a RO-ma eh VA-do da LOO-ka kon MEE-a so-REL-la',
+    notes: ['Use a with a city, da with a person’s place and con for company.', 'Usa a con una città, da con il luogo di una persona e con per indicare compagnia.'],
+    grammarTopicId: 'prepositions'
+  },
+  {
+    id: 'grammar-a2-prepositions',
+    level: 'A2',
+    targetIt: 'La lezione comincia alle nove e finisce nel pomeriggio.',
+    translationEn: 'The lesson starts at nine and finishes in the afternoon.',
+    phoneticHint: 'la let-TSYO-ne ko-MEEN-cha AL-le NO-ve eh fee-NEE-she nel po-me-REEJ-jo',
+    notes: ['Use alle with clock times; nel is in + il and introduces a time period.', 'Usa alle con gli orari; nel è in + il e introduce un periodo di tempo.'],
+    grammarTopicId: 'prepositions'
+  },
+  {
+    id: 'grammar-b1-prepositions',
+    level: 'B1',
+    targetIt: 'Dipende dal tempo, ma penso spesso a quel viaggio.',
+    translationEn: 'It depends on the weather, but I often think about that trip.',
+    phoneticHint: 'dee-PEN-de dal TEM-po, ma PEN-so SPES-so a kwel vyad-jo',
+    notes: ['Dipendere takes da (da + il = dal); pensare takes a.', 'Dipendere richiede da (da + il = dal); pensare richiede a.'],
+    grammarTopicId: 'prepositions'
+  }
 ];
 
 interface DialogueTurn {
@@ -541,7 +569,9 @@ export const VERBS_CONJUGATION_DATA = [
       condizionale: ['andrei', 'andresti', 'andrebbe', 'andremmo', 'andreste', 'andrebbero'],
       congiuntivo: ['vada', 'vada', 'vada', 'andiamo', 'andiate', 'vadano']
     }
-  },
+  },,
+
+
 ];
 
 const PRONOUNS = ['io', 'tu', 'lui / lei', 'noi', 'voi', 'loro'];
