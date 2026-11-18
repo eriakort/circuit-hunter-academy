@@ -118,7 +118,26 @@ export const ITALIAN_GRAMMAR_TOPICS: GrammarTopic[] = [
         exercise('prep-b1-3', ['Choose the correct sentence.', 'Scegli la frase corretta.'], ['Parliamo del problema domani.', 'Parliamo al problema domani.', 'Parliamo dal problema domani.'], 0, ['Parlare di means to talk about; di + il becomes del.', 'Parlare di significa parlare di qualcosa; di + il diventa del.'])
       ] }
     }
+  },,
+
+  {
+    id:'adjective-agreement', title:['Adjective agreement · Accordo degli aggettivi','Accordo degli aggettivi'], subtitle:['Match adjectives to noun gender and number.','Fai concordare gli aggettivi con genere e numero del nome.'],
+    levels:{
+      A1:{label:['Foundations','Fondamenti'],focus:['Masculine/feminine and singular/plural endings.','Desinenze maschili/femminili e singolari/plurali.'],explanation:['Most adjectives change to match the noun: ragazzo alto, ragazza alta, ragazzi alti, ragazze alte. Adjectives ending in -e keep the same singular form for both genders: gentile; the plural is gentili.','La maggior parte degli aggettivi cambia per concordare con il nome: ragazzo alto, ragazza alta, ragazzi alti, ragazze alte. Gli aggettivi in -e mantengono la stessa forma singolare per entrambi i generi: gentile; il plurale è gentili.'],example:['Un ragazzo simpatico · una ragazza simpatica · due ragazze simpatiche.','Un ragazzo simpatico · una ragazza simpatica · due ragazze simpatiche.'],exercises:[
+        exercise('adj-a1-1',['Choose: una casa ___.','Scegli: una casa ___.'],['grande','grandi','grando'],0,['Casa is feminine singular; grande is the correct singular form.','Casa è femminile singolare; grande è la forma singolare corretta.']),
+        exercise('adj-a1-2',['Complete: un ragazzo ___.','Completa: un ragazzo ___.'],['alta','alto','alti'],1,['Ragazzo is masculine singular: alto.','Ragazzo è maschile singolare: alto.']),
+        exercise('adj-a1-3',['Complete: due libri ___.','Completa: due libri ___.'],['nuovo','nuove','nuovi'],2,['Libri is masculine plural: nuovi.','Libri è maschile plurale: nuovi.'])]},
+      A2:{label:['Application','Applicazione'],focus:['-e adjectives and mixed groups.','Aggettivi in -e e gruppi misti.'],explanation:['Adjectives ending in -e change to -i in the plural: un film interessante, due film interessanti. A mixed group normally takes the masculine plural: Marco e Anna sono contenti.','Gli aggettivi in -e cambiano in -i al plurale: un film interessante, due film interessanti. Un gruppo misto normalmente richiede il maschile plurale: Marco e Anna sono contenti.'],example:['Una lezione interessante · due lezioni interessanti · Paolo e Sara sono contenti.','Una lezione interessante · due lezioni interessanti · Paolo e Sara sono contenti.'],exercises:[
+        exercise('adj-a2-1',['Choose the plural: due esercizi ___.','Scegli il plurale: due esercizi ___.'],['difficile','difficili','difficila'],1,['Difficile becomes difficili in the plural.','Difficile diventa difficili al plurale.']),
+        exercise('adj-a2-2',['Complete: Anna e Giulia sono ___.','Completa: Anna e Giulia sono ___.'],['felice','felici','felicei'],1,['The plural of felice is felici.','Il plurale di felice è felici.']),
+        exercise('adj-a2-3',['Paolo e Marta sono ___.','Paolo e Marta sono ___.'],['stanche','stanchi','stanco'],1,['A mixed group normally takes the masculine plural: stanchi.','Un gruppo misto normalmente richiede il maschile plurale: stanchi.'])]},
+      B1:{label:['Mastery','Padronanza'],focus:['Agreement in longer phrases and adjective position.','Accordo nei gruppi più lunghi e posizione dell’aggettivo.'],explanation:['Keep agreement consistent across the noun phrase. Position can change meaning: un vecchio amico usually means a long-standing friend; un amico vecchio describes an elderly friend.','Mantieni l’accordo in tutto il gruppo nominale. La posizione può cambiare il significato: un vecchio amico indica un amico di lunga data; un amico vecchio descrive un amico anziano.'],example:['Abbiamo incontrato due vecchie amiche molto gentili.','Abbiamo incontrato due vecchie amiche molto gentili.'],exercises:[
+        exercise('adj-b1-1',['Choose the correct phrase.','Scegli il gruppo corretto.'],['Le nuove studentesse sono preparate.','Le nuovi studentesse sono preparati.','La nuove studentesse sono preparata.'],0,['All forms agree in feminine plural.','Tutte le forme concordano al femminile plurale.']),
+        exercise('adj-b1-2',['“Un vecchio amico” usually means…','“Un vecchio amico” significa di solito…'],['An elderly friend','A long-standing friend','A young friend'],1,['Before the noun, vecchio often means long-standing.','Prima del nome, vecchio spesso significa che l’amicizia dura da tempo.']),
+        exercise('adj-b1-3',['Complete: due città ___.','Completa: due città ___.'],['antico','antiche','antichi'],1,['Città is feminine; its plural adjective is antiche.','Città è femminile; il plurale dell’aggettivo è antiche.'])]}
+    }
   },
+
 ];
 
 export const getGrammarTopic = (id: string): GrammarTopic | undefined =>
