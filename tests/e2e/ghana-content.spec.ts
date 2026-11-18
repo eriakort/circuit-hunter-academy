@@ -114,6 +114,7 @@ test('Ghana JHS 2 Mathematics Number pathway is selectable and opens its mission
 
 test('Ghana JHS 2 Mathematics Algebra strand opens its missions and algebra visual', async ({ page }) => {
   await enterGhana(page, 'ghjhs2', 'ghjhs2math');
+  await page.locator('.units button').filter({ hasText: 'Algebraic Patterns and Equations' }).click();
   await expect(page.locator('.mcard')).toHaveCount(3);
   await expect(page.locator('.mcard').first()).toContainText('The Sequence Pathfinder');
   await expect(page.locator('.mcard').last()).toContainText('The Balance and Boundary Trial');
