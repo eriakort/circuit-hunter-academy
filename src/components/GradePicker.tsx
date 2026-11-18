@@ -47,7 +47,7 @@ export const GradePicker: React.FC = () => {
       {isGhana && (
         <div className="grade-coming-soon card" role="status">
           <h2>Your Sankofa journey begins here</h2>
-          <p>Choose JHS 1–3 or SHS 1–3. JHS 1 Mathematics has all four strands, and JHS 2 Mathematics has all four strands. JHS 3 Mathematics now includes all four strands: Number, Algebra, Geometry and Measurement, and Handling Data. JHS 1 Science now includes Diversity of Matter, Cycles and Systems; the remaining JHS Science strands and SHS General Science will arrive in later increments. Existing SHS Core Mathematics pathways remain available. Your Italian progress remains saved independently.</p>
+          <p>Choose JHS 1–3 or SHS 1–3. JHS 1 Mathematics has all four strands, and JHS 2 Mathematics has all four strands. JHS 3 Mathematics now includes all four strands: Number, Algebra, Geometry and Measurement, and Handling Data. JHS 1 Science now includes Diversity of Matter, Cycles, Systems, and Forces and Energy; Humans and the Environment and the remaining JHS Science grades will arrive in later increments. Existing SHS Core Mathematics pathways remain available. Your Italian progress remains saved independently.</p>
         </div>
       )}
 
