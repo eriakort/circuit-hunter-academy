@@ -6,7 +6,7 @@ import { getCategories } from '../src/data/questionBank';
 import { FORMULA_CARDS } from '../src/data/formulaData';
 
 // Ghana Core Mathematics must only show maths content, in English.
-const GHANA_SUBJECTS = ['ghcoremath', 'ghcoremath2', 'ghcoremath3'];
+const GHANA_SUBJECTS = ['ghcoremath', 'ghcoremath2', 'ghcoremath3', 'ghjhs1math', 'ghjhs2math'];
 const COMPUTER_SCIENCE = /informatic|computer science|algorithm|binary|\bbytes?\b|\bcpu\b|python|coding|circuit hunter/i;
 const ITALIAN = /\b(della|delle|degli|sono|questo|questa|numeri|perché|anche|risposta|quindi|uguale)\b/i;
 const allowedVisuals = new Set(['demon', ...GHANA_MATH_VISUAL_KEYS]);

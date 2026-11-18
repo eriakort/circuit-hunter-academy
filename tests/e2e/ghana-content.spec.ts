@@ -99,3 +99,14 @@ test('Ghana JHS 1 Handling Data missions are available and show the data visual'
   await expect(page.locator('main')).toContainText('The Community Survey Quest');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 2 Mathematics Number pathway is selectable and opens its missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs2', 'ghjhs2math');
+  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard').first()).toContainText('The Integer Expedition');
+  await expect(page.locator('.mcard').last()).toContainText('The Ratio and Recipe Challenge');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'number');
+  await expect(page.locator('main')).toContainText('The Integer Expedition');
+});

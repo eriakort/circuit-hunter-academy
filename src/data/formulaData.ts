@@ -109,6 +109,7 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
     { id: 'trigonometric-equations', subject: 'ghcoremath3', name: 'Solving and Decoding Trigonometric Equations' }
   ],
   ghjhs1math: [],
+  ghjhs2math: [],
 };
 
 export const FORMULA_CARDS: FormulaCard[] = [
