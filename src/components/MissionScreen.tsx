@@ -317,6 +317,9 @@ export const MissionScreen: React.FC = () => {
       {/^m\d/.test(currentMission.id) && currentSceneIndex === 1 && (
         <MathLab missionId={currentMission.id} lang={lang} />
       )}
+      {/^m7m/.test(currentMission.id) && currentSceneIndex === 1 && (
+        <MathGeometryLab missionId={currentMission.id} lang={lang} />
+      )}
       {(currentMission.id.startsWith('math_l2_') || currentMission.id.startsWith('math_l3_')) && currentSceneIndex === 1 && (
         <MathAdvancedLab missionId={currentMission.id} lang={lang} />
       )}
