@@ -1,4 +1,5 @@
 import { SubjectInfo, GradeId } from '../types';
+import { GRADE_SUBJECT_IDS } from './gradeData';
 import { GRADE5_SCIENCE_SUBJECT } from './grade5ScienceData';
 import { GRADE5_MATH_SUBJECT } from './grade5MathData';
 import { CHEM_SUBJECT, CHEM10_SUBJECT, CHEM11_SUBJECT } from './chemCommon';
@@ -73,12 +74,8 @@ export const SUBJECTS: SubjectInfo[] = [
   ...HIST_GEO_SUBJECTS
 ];
 
-export const GRADE_CURRICULUM_MAP: Record<GradeId, string[]> = {
-  grade5: ['science', 'math5', 'italian', 'hist5', 'geo5'],
-  grade9: ['cs', 'phys', 'math', 'italian', 'chem', 'hist9', 'geo9'],
-  grade10: ['chem10', 'italian', 'hist10', 'geo10', 'math10'],
-  grade11: ['chem11', 'italian', 'hist11', 'geo11', 'math11']
-};
+/** Compatibility alias; gradeData is the single source of truth. */
+export const GRADE_CURRICULUM_MAP = GRADE_SUBJECT_IDS;
 
 export function getCurriculumSubjects(grade?: GradeId | null, curriculumId: 'italy-national' | 'ghana-nacca' = 'italy-national'): SubjectInfo[] {
   // Ghana has its own NaCCA pathways; never fall back to Italian subject content.
@@ -90,11 +87,9 @@ export function getCurriculumSubjects(grade?: GradeId | null, curriculumId: 'ita
   }
   if (curriculumId !== 'italy-national') return [];
   const targetGrade: GradeId = (grade && grade in GRADE_CURRICULUM_MAP) ? grade : 'grade9';
-  const allowed = new Set(GRADE_CURRICULUM_MAP[targetGrade]);
-  const list = SUBJECTS.filter(s => allowed.has(s.id));
-  // Guarantee Italian is never excluded
-  if (!list.some(s => s.id === 'italian')) {
-    list.push(ITALIAN_SUBJECT);
-  }
-  return list;
+  const subjectsById = new Map(SUBJECTS.map(subject => [subject.id, subject]));
+  return GRADE_SUBJECT_IDS[targetGrade].flatMap(subjectId => {
+    const subject = subjectsById.get(subjectId);
+    return subject ? [subject] : [];
+  });
 }
