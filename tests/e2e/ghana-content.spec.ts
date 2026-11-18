@@ -185,3 +185,16 @@ test('Ghana JHS 3 Mathematics Geometry and Measurement opens its missions and ge
   await expect(page.locator('main')).toContainText('The Navigator’s Construction Quest');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 3 Mathematics Handling Data strand opens its missions and data visual', async ({ page }) => {
+  await enterGhana(page, 'ghjhs3', 'ghjhs3math');
+  await page.locator('.units button').filter({ hasText: 'Data, Statistics and Chance' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard').first()).toContainText('The Data Collection Strategist');
+  await expect(page.locator('.mcard').last()).toContainText('The Chance and Evidence Detective');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'data');
+  await expect(page.locator('main')).toContainText('The Data Collection Strategist');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
