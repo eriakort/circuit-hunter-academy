@@ -1,0 +1,127 @@
+import type { ArcInfo, Mission, UnitInfo } from '../types';
+
+/** Ghana NaCCA Common Core Programme · JHS 2 Science · Forces and Energy (Basic 8). */
+export const GHANA_JHS2_SCIENCE_FORCES_ENERGY_UNIT: UnitInfo = {
+  title: 'Forces and Energy',
+  ch: 'JHS 2 · NaCCA Science · Strand 4',
+  subject: 'ghjhs2science'
+};
+
+export const GHANA_JHS2_SCIENCE_FORCES_ENERGY_ARCS: ArcInfo[] = [
+  { n: 1, unit: 0, subject: 'ghjhs2science', title: 'Energy Forms, Sources and Heat', pages: 'NaCCA CCP · JHS 2 Science · B8.4.1.1–B8.4.1.3' },
+  { n: 2, unit: 0, subject: 'ghjhs2science', title: 'Electricity Transmission and Electronics', pages: 'NaCCA CCP · JHS 2 Science · B8.4.2.1–B8.4.2.2' },
+  { n: 3, unit: 0, subject: 'ghjhs2science', title: 'Energy Conversion and Conservation', pages: 'NaCCA CCP · JHS 2 Science · B8.4.3.1' },
+  { n: 4, unit: 0, subject: 'ghjhs2science', title: 'Magnetism, Force, Motion and Machines', pages: 'NaCCA CCP · JHS 2 Science · B8.4.4.1–B8.4.4.2' },
+  { n: 5, unit: 0, subject: 'ghjhs2science', title: 'Agricultural Tools in Practice', pages: 'NaCCA CCP · JHS 2 Science · B8.4.5.1' }
+];
+
+const q = (prompt: string, answers: string[], explanation: string) => ({ q: prompt, a: answers, why: explanation });
+const lesson = (text: string) => ({ who: 's' as const, text });
+
+export const GHANA_JHS2_SCIENCE_FORCES_ENERGY_MISSIONS: Mission[] = [
+  {
+    id: 'gh-jhs2-science-energy-sources-heat', arc: 0, sec: 'Forces and Energy', pages: 'NaCCA CCP · JHS 2 Science · B8.4.1.1.1–B8.4.1.3.1',
+    hue: 42, horns: 2, eyes: 2, title: 'The Energy Conversion Pathfinder',
+    topic: 'Describe energy conversions, classify renewable and non-renewable sources, explain sustainable management, and distinguish heat from temperature.',
+    demon: 'The Energy Drain Wraith', tech: 'Energy Form · First Technique: Trace the Transformation',
+    scenes: [
+      lesson('<p><b>Energy conversion</b> happens when energy changes from one form to another. A torch changes chemical energy stored in its battery into electrical energy, then light and some heat. A moving bicycle has kinetic energy; when its brakes are used, friction transfers some of that energy into heat.</p>'),
+      lesson('<p>Energy can come from different sources. <b>Renewable sources</b> are naturally replenished, such as sunlight, wind, flowing water and sustainably produced biogas. <b>Non-renewable sources</b>, such as coal, crude oil and natural gas, take millions of years to form and can run out when used faster than they are replaced. Hydroelectricity uses moving water; solar panels convert sunlight into electrical energy.</p>'),
+      lesson('<p>Renewable does not mean impact-free. Solar panels need materials and land; dams can change river habitats; wind turbines need suitable locations and maintenance. Sustainable management means planning, maintaining equipment, reducing waste, protecting ecosystems and using each source responsibly so it remains useful over time.</p>'),
+      lesson('<p><b>Temperature</b> tells us how hot or cold something is and is measured with a thermometer, usually in degrees Celsius (°C). <b>Heat</b> is energy transferred because of a temperature difference. Heat moves from a warmer object to a cooler one. A large bucket of warm water can contain more thermal energy than a small cup at the same temperature because the amount of matter is different.</p>'),
+      { who: 'd', vis: 'demon', text: 'I have scrambled every energy pathway! Trace the changes in a torch and a hydroelectric dam, classify energy sources, and separate heat from temperature.' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('What happens during an energy conversion?', ['Energy changes from one form to another', 'Energy is created from nothing', 'All energy disappears', 'Matter always changes into a new element'], 'Energy conversion is a change from one form of energy to another form.'),
+      q('Which group contains only renewable energy sources?', ['Sunlight, wind and flowing water', 'Coal, crude oil and natural gas', 'Petrol, coal and sunlight', 'Natural gas, diesel and kerosene'], 'Sunlight, wind and flowing water are naturally replenished energy sources.'),
+      q('Why is coal classed as non-renewable?', ['It forms very slowly over geological time', 'It is made every day by sunlight', 'It can never be burned', 'It is a type of moving water'], 'Coal takes millions of years to form, so it cannot be replaced quickly on a human timescale.'),
+      q('Which statement best describes sustainable energy management?', ['Maintain systems, reduce waste and consider environmental effects', 'Use every source as quickly as possible', 'Ignore effects on rivers and habitats', 'Replace all equipment only after it breaks'], 'Sustainable management balances reliable energy use with careful maintenance and environmental protection.'),
+      q('What is the difference between heat and temperature?', ['Heat is energy transferred; temperature indicates how hot or cold something is', 'Heat and temperature mean exactly the same thing', 'Temperature is measured in kilograms', 'Heat always moves from cold objects to hot objects'], 'Temperature describes hotness or coldness, while heat is energy transferred due to a temperature difference.')
+    ]
+  },
+  {
+    id: 'gh-jhs2-science-electricity-electronics', arc: 1, sec: 'Forces and Energy', pages: 'NaCCA CCP · JHS 2 Science · B8.4.2.1.1–B8.4.2.2.1',
+    hue: 198, horns: 2, eyes: 2, title: 'The Electricity Network Engineer',
+    topic: 'Explain the journey of electricity from generation to consumers and describe how a capacitor charges and discharges in a simple DC circuit with LEDs, diodes and resistors.',
+    demon: 'The Grid Saboteur', tech: 'Circuit Form · First Technique: Restore the Power Route',
+    scenes: [
+      lesson('<p>Electricity is often generated at a power station, for example by a turbine connected to a generator. In Ghana, electricity can come from hydroelectric, thermal and renewable sources. A generator converts mechanical energy into electrical energy.</p>'),
+      lesson('<p>Electricity travels through a network. A <b>step-up transformer</b> raises voltage for efficient long-distance transmission. High-voltage transmission lines carry electrical energy across the country. Substations use transformers to lower the voltage, and distribution lines deliver electricity to homes, schools and businesses. Protective devices help isolate faults.</p>'),
+      lesson('<p>Electronic circuits use components with different jobs. A <b>resistor</b> limits current. A <b>diode</b> allows current to pass mainly in one direction. An <b>LED</b> is a diode that emits light when current flows in the correct direction. Components must be connected with the correct polarity and suitable ratings.</p>'),
+      lesson('<p>A <b>capacitor</b> stores electrical energy in an electric field. In a simple direct-current (DC) circuit, it charges as current flows onto its plates; when the supply is removed and a safe discharge path is provided, it releases stored energy. A resistor can control the charging and discharging rate. Never experiment with mains electricity or large capacitors: use only a teacher-approved, low-voltage classroom kit.</p>'),
+      { who: 'd', vis: 'demon', text: 'The power route is broken and the circuit components are confused! Rebuild the path from generator to home, then explain how a capacitor and LED behave in a safe low-voltage circuit.' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('Why is voltage increased before electricity travels over long distances?', ['To reduce current for a given power and reduce transmission losses', 'To make electricity travel without wires', 'To turn electrical energy into sound', 'To remove the need for substations'], 'For a given transmitted power, higher voltage allows lower current and helps reduce resistive losses.'),
+      q('Which sequence best describes electricity delivery?', ['Generation → step-up transformer → transmission → substation → distribution → consumer', 'Consumer → generator → river → battery', 'Transmission → generation → consumer → turbine', 'Substation → sunlight → generator → consumer'], 'Electricity is generated, transmitted at high voltage, stepped down at substations and distributed to consumers.'),
+      q('What is the main job of a resistor in a circuit?', ['Limit or control current', 'Store energy in a magnetic field only', 'Produce fuel', 'Allow current in one direction only'], 'A resistor opposes current and can help protect components such as LEDs.'),
+      q('What does a diode do?', ['Allows current mainly in one direction', 'Always stores charge like a capacitor', 'Changes water into electricity', 'Measures temperature'], 'A diode is designed to conduct mainly in one direction.'),
+      q('What happens when a capacitor discharges through a suitable circuit?', ['It releases stored electrical energy', 'It creates unlimited new energy', 'It becomes a transformer', 'It permanently blocks all current'], 'A charged capacitor can release its stored energy through a connected discharge path.')
+    ]
+  },
+  {
+    id: 'gh-jhs2-science-energy-conservation-impact', arc: 2, sec: 'Forces and Energy', pages: 'NaCCA CCP · JHS 2 Science · B8.4.3.1.1',
+    hue: 104, horns: 2, eyes: 2, title: 'The Energy Steward',
+    topic: 'Explain why energy conversion and energy conservation matter in daily life, and evaluate their effects on people and the environment.',
+    demon: 'The Wasteful Ember', tech: 'Conservation Form · First Technique: Use Energy Wisely',
+    scenes: [
+      lesson('<p>Energy conversion makes useful activities possible. A gas cooker changes chemical energy in fuel into heat for cooking. An electric fan changes electrical energy into movement and sound. A solar lamp converts sunlight into electrical energy and stores some of it in a battery for later use.</p>'),
+      lesson('<p>Energy is conserved: it is not created or destroyed, but transferred or changed from one form to another. In real devices, some energy spreads into the surroundings, often as unwanted heat or sound. A machine may therefore be less efficient at delivering the useful output we want, even though the total energy is conserved.</p>'),
+      lesson('<p>Conserving energy means avoiding unnecessary use and reducing waste. Switch off lights and appliances when they are not needed, use efficient lamps, maintain equipment, cook efficiently and avoid leaving devices on standby. At school, daylight and ventilation can reduce the need for electric lighting and fans when conditions allow.</p>'),
+      lesson('<p>Energy choices affect the environment. Burning fossil fuels releases carbon dioxide and air pollutants. Dams can alter river habitats, while solar and wind systems also require materials, land and careful planning. Compare options using reliability, cost, access, pollution, land and effects on communities rather than assuming one source has no disadvantages.</p>'),
+      { who: 'd', vis: 'demon', text: 'I am wasting the academy’s power! Identify useful and wasted energy, then design a realistic plan that saves energy without ignoring people or the environment.' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('Which energy change occurs in an electric fan?', ['Electrical energy to movement, with some sound and heat', 'Sound energy to coal', 'Chemical energy to sunlight only', 'Heat energy to stored food'], 'The motor converts electrical energy mainly into movement, with some energy transferred as sound and heat.'),
+      q('What does the conservation of energy principle say?', ['Energy is transferred or converted, not created or destroyed', 'Energy disappears whenever a machine stops', 'Only renewable sources contain energy', 'Energy can be made from nothing'], 'The total amount of energy is conserved, although it can be transferred or changed in form.'),
+      q('Which action is a practical way to conserve electricity at school?', ['Switch off lights when a room is empty', 'Leave every appliance on overnight', 'Use damaged cables', 'Keep doors open while cooling a room with air conditioning'], 'Switching off unneeded equipment reduces avoidable energy use.'),
+      q('Why can burning fossil fuels harm the environment?', ['It releases carbon dioxide and air pollutants', 'It creates unlimited clean water', 'It removes all greenhouse gases', 'It stops all weather changes'], 'Fossil-fuel combustion releases carbon dioxide and can release pollutants that affect health and climate.'),
+      q('Why should energy sources be compared using several criteria?', ['Each source has benefits, limits, costs and environmental effects', 'Every source has exactly the same impact', 'Only the colour of equipment matters', 'Renewable sources never need maintenance'], 'A balanced decision considers reliability, affordability, access and environmental and community effects.')
+    ]
+  },
+  {
+    id: 'gh-jhs2-science-magnetism-force-machines', arc: 3, sec: 'Forces and Energy', pages: 'NaCCA CCP · JHS 2 Science · B8.4.4.1.1–B8.4.4.2.1',
+    hue: 264, horns: 2, eyes: 2, title: 'The Magnetism and Motion Defender',
+    topic: 'Make simple magnets, identify domestic and industrial uses of magnetic force, connect force to Newton’s Second Law, and recognise complex machines.',
+    demon: 'The Motion Distorter', tech: 'Magnetic Form · First Technique: Control the Force',
+    scenes: [
+      lesson('<p>A magnet attracts magnetic materials such as iron and many types of steel. It has a north pole and a south pole. Like poles repel and unlike poles attract. A simple temporary magnet can be made by stroking an iron nail in one direction several times with one pole of a bar magnet. An electromagnet uses electric current in a coil, often wrapped around an iron core.</p>'),
+      lesson('<p>Magnetic force is useful in everyday life and industry. A compass needle aligns with Earth’s magnetic field. Electromagnets can operate bells and alarms, lift scrap iron in recycling yards, and help loudspeakers produce sound. Switching off the current can weaken or remove the magnetism of many electromagnets.</p>'),
+      lesson('<p><b>Newton’s Second Law</b> links the resultant force on an object to its mass and acceleration: for a constant mass, a larger net force produces a larger acceleration. In symbols, F = m × a. If the same force acts on a heavier object, its acceleration is smaller. Force is measured in newtons (N), mass in kilograms (kg), and acceleration in metres per second squared (m/s²).</p>'),
+      lesson('<p>Magnetic force can change motion without direct contact. For example, a magnet can pull a small steel trolley; changing the magnetic pull changes the resultant force and therefore its acceleration. A <b>complex machine</b> combines two or more simple machines to make work easier. A wheelbarrow combines a lever and wheel-and-axle; a bicycle combines wheels, gears, levers and other parts.</p>'),
+      { who: 'd', vis: 'demon', text: 'I have reversed every magnetic pole and scrambled the machines! Make a simple magnet, identify useful applications, and predict how mass and force affect acceleration.' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('Which pair of magnetic poles attracts?', ['North and south', 'North and north', 'South and south', 'Two non-magnetic ends'], 'Unlike magnetic poles attract; like poles repel.'),
+      q('How can an electromagnet be made stronger in a simple classroom model?', ['Increase the coil turns or current within safe equipment limits', 'Remove the coil completely', 'Use a plastic core only', 'Disconnect the battery'], 'More coil turns or greater current can strengthen an electromagnet, within safe design limits.'),
+      q('What does Newton’s Second Law state for a constant mass?', ['Resultant force equals mass multiplied by acceleration', 'Force equals mass divided by temperature', 'Acceleration is always zero', 'Mass equals distance multiplied by time'], 'Newton’s Second Law is commonly written F = m × a.'),
+      q('If the same net force acts on a heavier trolley, what happens to its acceleration?', ['It is smaller', 'It is always larger', 'It becomes infinite', 'It does not depend on mass'], 'For the same net force, a larger mass has a smaller acceleration.'),
+      q('Which is an example of a complex machine?', ['A wheelbarrow combining a lever and wheel-and-axle', 'A single fixed pulley only', 'A plain wooden block', 'A single inclined plane'], 'A wheelbarrow combines more than one simple machine to make moving loads easier.')
+    ]
+  },
+  {
+    id: 'gh-jhs2-science-agricultural-tools', arc: 4, sec: 'Forces and Energy', pages: 'NaCCA CCP · JHS 2 Science · B8.4.5.1.1–B8.4.5.1.2',
+    hue: 78, horns: 2, eyes: 2, title: 'The Farm Tool Engineer',
+    topic: 'Identify common agricultural tools, match each tool to its farm task, and demonstrate safe and appropriate use in a school garden or farm.',
+    demon: 'The Tool Tangle', tech: 'Farmcraft Form · First Technique: Match Tool to Task',
+    scenes: [
+      lesson('<p>Agricultural tools help farmers prepare land, plant seeds, remove weeds, care for crops and harvest produce. Common hand tools include a <b>hoe</b>, cutlass, rake, shovel, watering can, hand fork and wheelbarrow. Different tools are designed for different jobs, so choosing the correct one saves effort and helps protect crops and soil.</p>'),
+      lesson('<p>A hoe can loosen soil, make planting ridges and remove weeds. A cutlass can clear vegetation and cut small stems. A rake gathers leaves and levels soil. A shovel moves soil or compost, while a watering can delivers water gently to plants. A wheelbarrow transports tools, soil or harvested crops.</p>'),
+      lesson('<p>Some tools act as simple machines. A wheelbarrow uses a wheel-and-axle and a lever to help move a load. A shovel can act as a lever when lifting soil. Understanding the tool’s design helps a farmer use force effectively and reduce unnecessary strain.</p>'),
+      lesson('<p>Use tools safely: inspect handles and blades, wear suitable footwear and gloves, carry sharp tools with the blade pointed down and away from people, keep a safe distance from others, and clean and store tools after use. For a school-garden activity, work under teacher supervision and use tools that match the learner’s age and task.</p>'),
+      { who: 'd', vis: 'demon', text: 'I have swapped every farm tool and hidden the safety rules! Choose the right tool for each task, explain how it helps, and show how to work safely.' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('Which tool is commonly used to loosen soil and remove weeds?', ['Hoe', 'Watering can', 'Rake only', 'Wheelbarrow'], 'A hoe is commonly used for loosening soil, making ridges and removing weeds.'),
+      q('Which tool is designed to carry soil, compost or harvested crops?', ['Wheelbarrow', 'Cutlass', 'Hand fork', 'Watering can'], 'A wheelbarrow helps transport loads around a farm or garden.'),
+      q('Why should a farmer select a tool that matches the task?', ['It improves efficiency and can reduce damage and effort', 'Every tool performs every task equally well', 'It removes the need for safety rules', 'It makes soil and water unnecessary'], 'The correct tool makes work more effective and helps avoid unnecessary effort or damage.'),
+      q('Which action is a safe way to carry a cutlass?', ['Keep the blade pointed down and away from people', 'Swing it while walking', 'Pass it with the blade facing a person', 'Leave it hidden in grass'], 'Sharp tools should be carried carefully with the cutting edge directed away from people.'),
+      q('What should happen to tools after a school-garden activity?', ['Clean, inspect and store them safely', 'Leave them scattered in the field', 'Hide damaged tools from the teacher', 'Leave sharp blades exposed'], 'Cleaning and safe storage help prevent injuries and keep tools in good condition.')
+    ]
+  }
+];
