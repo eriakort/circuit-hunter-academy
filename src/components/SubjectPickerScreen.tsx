@@ -73,7 +73,7 @@ export const SubjectPickerScreen: React.FC = () => {
       'Grade 11 (3°/4° Superiore): Mathematics L3, Chemistry L3, Italian Studies, Modern History (Renaissance to 1870) & Geopolitics & Italian Territory.',
       '3°/4° Superiore: Matematica L3, Chimica L3, Lingua Italiana, Storia Moderna (Rinascimento–1870) e Geopolitica e Territorio Italiano.'
     ],
-    ghjhs1: ['Explore all four NaCCA JHS 1 Mathematics strands: Number, Algebra, Geometry and Measurement, and Handling Data. JHS Science will follow.', 'Explore all four NaCCA JHS 1 Mathematics strands, including Handling Data. JHS Science will follow.'],
+    ghjhs1: ['Explore all four NaCCA JHS 1 Mathematics strands and the Science Diversity of Matter pilot.', 'Explore all four NaCCA JHS 1 Mathematics strands and the Science Diversity of Matter pilot.'],
     ghjhs2: ['Explore all four NaCCA JHS 2 Mathematics strands: Number, Algebra, Geometry and Measurement, and Handling Data. JHS Science will follow.', 'Percorsi NaCCA JHS 2 di Matematica e Scienze in preparazione.'],
     ghjhs3: ['Explore all four NaCCA JHS 3 Mathematics strands: Number, Algebra, Geometry and Measurement, and Handling Data.', 'Esplora tutti e quattro i percorsi NaCCA di Matematica JHS 3: Numeri, Algebra, Geometria e Misure, e Gestione dei dati.'],
     ghshs1: ['NaCCA SHS 1 Core Mathematics pilot; General Science is being prepared.', 'Percorso NaCCA SHS 1 di Matematica di base; Scienze generali in preparazione.'],
