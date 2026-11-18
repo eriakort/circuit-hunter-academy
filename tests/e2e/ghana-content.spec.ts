@@ -56,7 +56,7 @@ test('Ghana JHS 1 Mathematics pathways are selectable and open Number and Algebr
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ }).click();
-  await expect(page.locator('.grade-card[data-grade="ghjhs1"]')).toContainText('Number and Algebra strands available');
+  await expect(page.locator('.grade-card[data-grade="ghjhs1"]')).toContainText('Number, Algebra, Geometry and Measurement strands available');
   await page.locator('.grade-card[data-grade="ghjhs1"]').click();
   await page.locator('.subjcard[data-s="ghjhs1math"]').click();
   if (await page.locator('#nm').count()) {
