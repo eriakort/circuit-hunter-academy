@@ -15,7 +15,7 @@ for (const [gradeId, stage, n, age] of [
   assert.ok(level, `Ghana defines ${gradeId}`);
   assert.equal(level.shortLabel, `${stage === 'Junior' ? 'JHS' : 'SHS'} ${n}`);
   assert.equal(level.badge, String(n));
-  assert.equal(level.kicker, `${stage} High School · Year ${n}` === level.kicker ? level.kicker : level.kicker);
+  assert.equal(level.kicker, `${stage === 'Junior' ? 'Junior' : 'Senior'} High School · Year ${n}`);
   assert.ok(level.ageRange?.includes(age));
 }
 assert.equal(getCurriculumGradeLevel('ghana-nacca', 'grade5'), undefined, 'Ghana has no Italian Grade 5 level');
