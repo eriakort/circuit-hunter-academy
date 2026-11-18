@@ -18,7 +18,7 @@ for (const [id, count] of missionIdCounts) {
 const subjectIds = new Set([
   ...SUBJECTS.map(subject => subject.id),
   // Ghana curricula are registered through the grade-specific curriculum registry.
-  'ghcoremath', 'ghcoremath2', 'ghcoremath3', 'ghjhs1math', 'ghjhs2math',
+  'ghcoremath', 'ghcoremath2', 'ghcoremath3', 'ghjhs1math', 'ghjhs2math', 'ghjhs3math',
 ]);
 const bank = getCompleteQuestionBank();
 assert.ok(bank.length > 300, `Expected a substantial question bank, got ${bank.length}`);
