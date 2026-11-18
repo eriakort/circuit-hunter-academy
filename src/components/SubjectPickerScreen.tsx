@@ -74,7 +74,7 @@ export const SubjectPickerScreen: React.FC = () => {
       '3°/4° Superiore: Matematica L3, Chimica L3, Lingua Italiana, Storia Moderna (Rinascimento–1870) e Geopolitica e Territorio Italiano.'
     ],
     ghjhs1: ['Explore all four NaCCA JHS 1 Mathematics strands and all five JHS 1 Science strands, including Humans and the Environment.', 'Explore all four NaCCA JHS 1 Mathematics strands and the complete five-strand JHS 1 Science pathway.'],
-    ghjhs2: ['Explore all four NaCCA JHS 2 Mathematics strands and four JHS 2 Science strands: Diversity of Matter, Cycles, Systems, and Forces and Energy.', 'Matematica JHS 2 e Scienze NaCCA: diversità della materia, cicli, sistemi, forze ed energia.'],
+    ghjhs2: ['Explore all four NaCCA JHS 2 Mathematics strands and all five JHS 2 Science strands, including Humans and the Environment.', 'Matematica JHS 2 e tutte e cinque le aree di Scienze NaCCA JHS 2, compresi gli esseri umani e l'ambiente.'],
     ghjhs3: ['Explore all four NaCCA JHS 3 Mathematics strands: Number, Algebra, Geometry and Measurement, and Handling Data.', 'Esplora tutti e quattro i percorsi NaCCA di Matematica JHS 3: Numeri, Algebra, Geometria e Misure, e Gestione dei dati.'],
     ghshs1: ['NaCCA SHS 1 Core Mathematics pilot; General Science is being prepared.', 'Percorso NaCCA SHS 1 di Matematica di base; Scienze generali in preparazione.'],
     ghshs2: ['NaCCA SHS 2 Core Mathematics; General Science is being prepared.', 'Percorso NaCCA SHS 2 di Matematica di base; Scienze generali in preparazione.'],
