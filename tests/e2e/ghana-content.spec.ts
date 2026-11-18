@@ -305,3 +305,15 @@ test('Ghana JHS 2 Science Forces and Energy strand opens all five sub-strand mis
   await expect(page.locator('main')).toContainText('Energy conversion happens when energy changes from one form to another');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 2 Science Humans and the Environment strand opens all six sub-strand missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs2', 'ghjhs2science');
+  await page.locator('.units button').filter({ hasText: 'Humans and the Environment' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(6);
+  await expect(page.locator('.mcard').first()).toContainText('The Waste-Wise Community Guardian');
+  await expect(page.locator('.mcard').last()).toContainText('The Rock and Soil Origins Explorer');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('Waste is material that people no longer need or want');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
