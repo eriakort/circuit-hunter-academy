@@ -74,7 +74,7 @@ export const SubjectPickerScreen: React.FC = () => {
       '3°/4° Superiore: Matematica L3, Chimica L3, Lingua Italiana, Storia Moderna (Rinascimento–1870) e Geopolitica e Territorio Italiano.'
     ],
     ghjhs1: ['Explore all four NaCCA JHS 1 Mathematics strands: Number, Algebra, Geometry and Measurement, and Handling Data. JHS Science will follow.', 'Explore all four NaCCA JHS 1 Mathematics strands, including Handling Data. JHS Science will follow.'],
-    ghjhs2: ['NaCCA JHS 2 Mathematics and Science pathways are being prepared.', 'Percorsi NaCCA JHS 2 di Matematica e Scienze in preparazione.'],
+    ghjhs2: ['Explore the NaCCA JHS 2 Mathematics Number and Algebra strands. Science and further Mathematics units will follow.', 'Percorsi NaCCA JHS 2 di Matematica e Scienze in preparazione.'],
     ghjhs3: ['NaCCA JHS 3 Mathematics and Science pathways are being prepared.', 'Percorsi NaCCA JHS 3 di Matematica e Scienze in preparazione.'],
     ghshs1: ['NaCCA SHS 1 Core Mathematics pilot; General Science is being prepared.', 'Percorso NaCCA SHS 1 di Matematica di base; Scienze generali in preparazione.'],
     ghshs2: ['NaCCA SHS 2 Core Mathematics; General Science is being prepared.', 'Percorso NaCCA SHS 2 di Matematica di base; Scienze generali in preparazione.'],
@@ -91,7 +91,7 @@ export const SubjectPickerScreen: React.FC = () => {
           {isGhana ? <>Choose your <span>learning path</span></> : <>Circuit Hunter <span>Academy</span></>}
         </h1>
         <p className="lede">
-          {isGhana ? (activeGrade === 'ghjhs1' ? 'Explore all four NaCCA JHS 1 Mathematics strands, including Handling Data. JHS Science will follow.' : activeGrade === 'ghjhs2' ? 'Explore the NaCCA JHS 2 Mathematics Number strand. Further JHS 2 units and Science will follow.' : activeGrade.startsWith('ghjhs') ? 'The NaCCA JHS Mathematics and Science pathways will be added grade by grade in the next increments.' : activeGrade === 'ghshs1' ? 'Explore the Ghana NaCCA SHS 1 Core Mathematics pilot. General Science is being prepared.' : activeGrade === 'ghshs2' ? 'Explore the Ghana NaCCA SHS 2 Core Mathematics pathway. General Science is being prepared.' : 'Explore the Ghana NaCCA SHS 3 Core Mathematics foundation. General Science is being prepared.') : L(ledeByGrade[activeGrade], lang)}
+          {isGhana ? (activeGrade === 'ghjhs1' ? 'Explore all four NaCCA JHS 1 Mathematics strands, including Handling Data. JHS Science will follow.' : activeGrade === 'ghjhs2' ? 'Explore the NaCCA JHS 2 Mathematics Number and Algebra strands. Further Mathematics units and Science will follow.' : activeGrade.startsWith('ghjhs') ? 'The NaCCA JHS Mathematics and Science pathways will be added grade by grade in the next increments.' : activeGrade === 'ghshs1' ? 'Explore the Ghana NaCCA SHS 1 Core Mathematics pilot. General Science is being prepared.' : activeGrade === 'ghshs2' ? 'Explore the Ghana NaCCA SHS 2 Core Mathematics pathway. General Science is being prepared.' : 'Explore the Ghana NaCCA SHS 3 Core Mathematics foundation. General Science is being prepared.') : L(ledeByGrade[activeGrade], lang)}
         </p>
 
         {/* Quick launch is derived from the same registry as the subject cards. */}

@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 
-const enterGhana = async (page: Page, grade: 'ghshs1' | 'ghshs2' | 'ghshs3', subject: string) => {
+const enterGhana = async (page: Page, grade: 'ghjhs1' | 'ghjhs2' | 'ghjhs3' | 'ghshs1' | 'ghshs2' | 'ghshs3', subject: string) => {
   await page.goto('/');
   await page.evaluate(() => localStorage.clear());
   await page.reload();
@@ -109,4 +109,17 @@ test('Ghana JHS 2 Mathematics Number pathway is selectable and opens its mission
   await page.locator('.mcard').first().click();
   await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'number');
   await expect(page.locator('main')).toContainText('The Integer Expedition');
+});
+
+
+test('Ghana JHS 2 Mathematics Algebra strand opens its missions and algebra visual', async ({ page }) => {
+  await enterGhana(page, 'ghjhs2', 'ghjhs2math');
+  await page.locator('.units button').filter({ hasText: 'Algebraic Patterns and Equations' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard').first()).toContainText('The Sequence Pathfinder');
+  await expect(page.locator('.mcard').last()).toContainText('The Balance and Boundary Trial');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'algebra');
+  await expect(page.locator('main')).toContainText('The Sequence Pathfinder');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
