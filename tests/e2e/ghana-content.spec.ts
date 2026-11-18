@@ -51,27 +51,24 @@ test('Ghana Formula Book, Codex and Test only show English maths content', async
 });
 
 
-test('Ghana JHS 1 Mathematics pathways are selectable and open Number and Algebra missions', async ({ page }) => {
+test('Ghana JHS 1 Mathematics pathways are selectable and open Number, Algebra and Geometry missions', async ({ page }) => {
   await page.goto('/');
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ }).click();
-  await expect(page.locator('.grade-card[data-grade="ghjhs1"]')).toContainText('Number, Algebra, Geometry and Measurement strands available');
+  await expect(page.locator('.grade-card[data-grade="ghjhs1"]')).toContainText('All four Mathematics strands available');
   await page.locator('.grade-card[data-grade="ghjhs1"]').click();
   await page.locator('.subjcard[data-s="ghjhs1math"]').click();
   if (await page.locator('#nm').count()) {
     await page.locator('#nm').fill('Ama');
     await page.locator('#regf button').first().click();
   }
-  // Number and Algebra are separate curriculum units, so verify each unit tab.
   await expect(page.locator('.mcard')).toHaveCount(3);
   await expect(page.locator('.mcard').first()).toContainText('The Market Number Mission');
   await page.locator('.units button').filter({ hasText: 'Algebraic Thinking and Relationships' }).click();
   await expect(page.locator('.mcard')).toHaveCount(3);
   await expect(page.locator('.mcard').first()).toContainText('The Pattern Hunter’s Trial');
   await expect(page.locator('.mcard').last()).toContainText('The Balance Gate');
-  // Unit tabs are available on the mission list, not inside an open mission.
-  // Verify Geometry before opening its first mission.
   await page.locator('.units button').filter({ hasText: 'Geometry, Shape and Measurement' }).click();
   await expect(page.locator('.mcard')).toHaveCount(4);
   await expect(page.locator('.mcard').first()).toContainText('The Lines and Angles Expedition');
@@ -79,5 +76,26 @@ test('Ghana JHS 1 Mathematics pathways are selectable and open Number and Algebr
   await page.locator('.mcard').first().click();
   await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'geometry');
   await expect(page.locator('main')).toContainText('The Lines and Angles Expedition');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
+
+test('Ghana JHS 1 Handling Data missions are available and show the data visual', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ }).click();
+  await page.locator('.grade-card[data-grade="ghjhs1"]').click();
+  await page.locator('.subjcard[data-s="ghjhs1math"]').click();
+  if (await page.locator('#nm').count()) {
+    await page.locator('#nm').fill('Ama');
+    await page.locator('#regf button').first().click();
+  }
+  await page.locator('.units button').filter({ hasText: 'Collecting and Making Sense of Data' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard').first()).toContainText('The Community Survey Quest');
+  await expect(page.locator('.mcard').last()).toContainText('The Data Detective’s Challenge');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'data');
+  await expect(page.locator('main')).toContainText('The Community Survey Quest');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
