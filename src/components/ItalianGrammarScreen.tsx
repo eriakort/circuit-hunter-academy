@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { Flag } from './Flag';
 import { useGame } from '../context/GameContext';
 import { L } from '../helpers';
 import { GrammarLevel, ITALIAN_GRAMMAR_TOPICS } from '../data/italianGrammar';
@@ -84,7 +85,7 @@ export const ItalianGrammarScreen: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <section className="card" style={{ border: '1px solid rgba(0, 146, 70, 0.35)', background: 'linear-gradient(135deg, rgba(17,25,54,.96), rgba(0,146,70,.10) 58%, rgba(206,43,55,.08)' }}>
-        <div className="eyebrow" style={{ color: '#4ade80' }}>🇮🇹 {L(['ITALIAN GRAMMAR TRAINING · CEFR A1–B1', 'ALLENAMENTO GRAMMATICA ITALIANA · QCER A1–B1'], lang)}</div>
+        <div className="eyebrow" style={{ color: '#4ade80' }}><Flag country="IT" /> {L(['ITALIAN GRAMMAR TRAINING · CEFR A1–B1', 'ALLENAMENTO GRAMMATICA ITALIANA · QCER A1–B1'], lang)}</div>
         <h1 style={{ margin: '5px 0 8px', fontSize: '26px' }}>{L(['Build strong Italian foundations', 'Costruisci solide basi di italiano'], lang)}</h1>
         <p className="muted" style={{ margin: 0, lineHeight: 1.6 }}>
           {L(['Learn a rule, study an example, then practise it. Every topic has three progressive levels with explanations in English and Italian.', 'Impara una regola, osserva un esempio e poi mettiti alla prova. Ogni argomento ha tre livelli progressivi con spiegazioni in inglese e italiano.'], lang)}

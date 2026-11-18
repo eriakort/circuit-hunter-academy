@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { Flag } from './Flag';
 import { useGame } from '../context/GameContext';
 import { FORMULA_CARDS, SUBJECT_TOPICS, FormulaCard } from '../data/formulaData';
 import { SubjectId } from '../types';
@@ -175,6 +176,9 @@ const GHANA_SUBJECT_LIST: SubjectMeta[] = [
   { id: 'math11', name: ['Functions, Logarithms & Trigonometry', 'Functions, Logarithms & Trigonometry'], icon: '📈', badgeColor: 'var(--ember)' }
 ];
 const GHANA_FORMULA_SUBJECTS = new Set(GHANA_SUBJECT_LIST.map(item => item.id));
+
+/** Draws flag emoji as SVG flags, which Windows cannot show. */
+const renderIcon = (icon: string) => (icon === '🇮🇹' ? <Flag country="IT" /> : icon);
 
 export const FormulaScreen: React.FC = () => {
   const { state, goToView, curriculumProfile } = useGame();
@@ -679,7 +683,7 @@ export const FormulaScreen: React.FC = () => {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ fontSize: '18px' }}>{subj.icon}</span>
+                  <span style={{ fontSize: '18px' }}>{renderIcon(subj.icon)}</span>
                   <span style={{ fontWeight: isSelected ? 'bold' : 'normal', fontSize: '14px', color: isSelected ? 'var(--text)' : 'inherit' }}>
                     {L(subj.name, lang)}
                   </span>
@@ -859,7 +863,7 @@ export const FormulaScreen: React.FC = () => {
                 className={`btn sm ${activeTool === 'italian-auxiliary' ? 'cyan' : 'ghost'}`}
                 onClick={() => setActiveTool('italian-auxiliary')}
               >
-                🇮🇹 {L(['Essere vs Avere', 'Essere vs Avere'], lang)}
+                <Flag country="IT" /> {L(['Essere vs Avere', 'Essere vs Avere'], lang)}
               </button>
               <button
                 type="button"
@@ -1740,14 +1744,14 @@ export const FormulaScreen: React.FC = () => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '6px' }}>
                   <div>
                     <div className="eyebrow" style={{ fontSize: '11px', color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span>{cardSubjectInfo.icon} {L(cardSubjectInfo.name, lang)}</span>
+                      <span>{renderIcon(cardSubjectInfo.icon)} {L(cardSubjectInfo.name, lang)}</span>
                       <span>›</span>
                       <span style={{ color: 'var(--data)' }}>{cardTopic ? L(cardTopic.name, lang) : card.topicId}</span>
                     </div>
                     <h3 style={{ fontSize: '19px', marginTop: '4px' }}>{L(card.title, lang)}</h3>
                   </div>
                   <span className="badge ok" style={{ fontSize: '11px' }}>
-                    {cardSubjectInfo.icon} {L(cardSubjectInfo.name, lang)}
+                    {renderIcon(cardSubjectInfo.icon)} {L(cardSubjectInfo.name, lang)}
                   </span>
                 </div>
 

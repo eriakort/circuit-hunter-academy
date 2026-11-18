@@ -1,4 +1,5 @@
 import React from 'react';
+import { Flag } from './Flag';
 import { useGame } from '../context/GameContext';
 import { ItalianLab } from './ItalianLab';
 import { L } from '../helpers';
@@ -20,7 +21,7 @@ export const ItalianLabScreen: React.FC = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
           <div>
             <div className="eyebrow" style={{ color: '#00c853' }}>
-              🇮🇹 {L(['CEFR A1 · A2 · B1 SPEAKING & CONVERSATION STUDIO', 'STUDIO VOCALE E CONVERSAZIONE QCER A1 · A2 · B1'], lang)}
+              <Flag country="IT" /> {L(['CEFR A1 · A2 · B1 SPEAKING & CONVERSATION STUDIO', 'STUDIO VOCALE E CONVERSAZIONE QCER A1 · A2 · B1'], lang)}
             </div>
             <h1 style={{ margin: '4px 0', fontSize: '26px' }}>
               {L(['Italian Speaking Lab', 'Laboratorio Parlato di Italiano'], lang)}
