@@ -246,3 +246,14 @@ test('Ghana JHS 1 Science Forces and Energy strand opens all five sub-strand mis
   await expect(page.locator('main')).toContainText('Energy is the ability to cause change');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+test('Ghana JHS 1 Science Humans and the Environment strand opens all five sub-strand missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs1', 'ghjhs1science');
+  await page.locator('.units button').filter({ hasText: 'Humans and the Environment' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(5);
+  await expect(page.locator('.mcard').first()).toContainText('The Waste-Wise Community Guardian');
+  await expect(page.locator('.mcard').last()).toContainText('The Habitat and Adaptation Ranger');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('Waste is material that people no longer need or want');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
