@@ -293,3 +293,15 @@ test('Ghana JHS 2 Science Systems strand opens all four sub-strand missions', as
   await expect(page.locator('main')).toContainText('A human tooth has three main visible regions');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 2 Science Forces and Energy strand opens all five sub-strand missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs2', 'ghjhs2science');
+  await page.locator('.units button').filter({ hasText: 'Forces and Energy' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(5);
+  await expect(page.locator('.mcard').first()).toContainText('The Energy Conversion Pathfinder');
+  await expect(page.locator('.mcard').last()).toContainText('The Farm Tool Engineer');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('Energy conversion happens when energy changes from one form to another');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
