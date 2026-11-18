@@ -1,4 +1,5 @@
 import React from 'react';
+import { Flag } from './Flag';
 import { useGame } from '../context/GameContext';
 import { RANKS } from '../data/gameData';
 import { L, demonSVG, esc, rankOf, U } from '../helpers';
@@ -63,7 +64,7 @@ export const CertificateScreen: React.FC = () => {
             textAlign: 'center'
           }}>
             <div style={{ fontSize: '13px', color: '#4ade80', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              🇮🇹 {L(['CEFR Italian Speaking Certification', 'Certificazione Orale QCER di Lingua Italiana'], lang)}
+              <Flag country="IT" /> {L(['CEFR Italian Speaking Certification', 'Certificazione Orale QCER di Lingua Italiana'], lang)}
             </div>
             {state.checkpointProgress?.['it_checkpoint_a1_b1']?.completed ? (
               <p style={{ margin: '6px 0 0', fontSize: '14px', color: 'var(--text)' }}>

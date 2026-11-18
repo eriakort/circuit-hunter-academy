@@ -1,4 +1,5 @@
 import React from 'react';
+import { Flag } from './Flag';
 import { useGame } from '../context/GameContext';
 import { getCurriculumSubjects } from '../data/curriculumSubjects';
 import { getCurriculum } from '../data/curricula';
@@ -75,7 +76,7 @@ export const SubjectPickerScreen: React.FC = () => {
             style={{ padding: '4px 10px', fontSize: '13px', borderColor: 'var(--ember)' }}
             onClick={() => handleSelect('italian')}
           >
-            🇮🇹 {L(['Italian (A1–B1)', 'Italiano (A1–B1)'], lang)}
+            <Flag country="IT" /> {L(['Italian (A1–B1)', 'Italiano (A1–B1)'], lang)}
           </button>
           {activeGrade === 'grade5' && (
             <>

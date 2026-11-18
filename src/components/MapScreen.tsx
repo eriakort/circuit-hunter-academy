@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Flag } from './Flag';
 import { useGame } from '../context/GameContext';
 import { SUBJECTS, UNITS, ARCS, MISSIONS } from '../data/gameData';
 import { getVisualHtml } from '../data/visuals';
@@ -580,7 +581,7 @@ export const MapScreen: React.FC = () => {
         }}>
           <div>
             <div className="eyebrow" style={{ color: '#ffd166', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span>🇮🇹</span>
+              <Flag country="IT" />
               <span>{L(['CEFR LANGUAGE ACADEMY · A1 · A2 · B1', 'ACCADEMIA DI LINGUA QCER · A1 · A2 · B1'], lang)}</span>
             </div>
             <h3 style={{ margin: '4px 0 2px', fontSize: 20 }}>

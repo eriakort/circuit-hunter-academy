@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Flag } from '../Flag';
 import type { Language } from '../../types';
 import { Analogy, Readout, Slider, fmt, pick } from '../chemLabs/chemLabShared';
 
@@ -33,7 +34,7 @@ export const GlobalizationChainLab: React.FC<Props> = ({ lang }) => {
           <button type="button" className={`cl-btn ${stage === 'design' ? 'primary' : ''}`} onClick={() => setStage('design')}>1. USA</button>
           <button type="button" className={`cl-btn ${stage === 'chips' ? 'primary' : ''}`} onClick={() => setStage('chips')}>2. Taiwan/Korea</button>
           <button type="button" className={`cl-btn ${stage === 'assemble' ? 'primary' : ''}`} onClick={() => setStage('assemble')}>3. {pick(lang, 'Ship', 'Nave')}</button>
-          <button type="button" className={`cl-btn ${stage === 'glocal' ? 'primary' : ''}`} onClick={() => setStage('glocal')}>4. Glocal 🇮🇹</button>
+          <button type="button" className={`cl-btn ${stage === 'glocal' ? 'primary' : ''}`} onClick={() => setStage('glocal')}>4. Glocal <Flag country="IT" /></button>
         </div>
         <Readout label={pick(lang, 'Enablers', 'Motori Logistici')} value={pick(lang, 'Standard shipping container + submarine fiber-optic cables', 'Container intermodale + cavi sottomarini in fibra ottica')} />
         <Analogy

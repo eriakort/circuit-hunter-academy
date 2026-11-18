@@ -1,4 +1,5 @@
 import React from 'react';
+import { Flag } from './Flag';
 import { useGame } from '../context/GameContext';
 import { getCurriculum } from '../data/curricula';
 import { getSankofaRank, getNextSankofaRank, getSankofaRankProgress, SANKOFA_REGIONS, SANKOFA_THEME } from '../data/sankofaTheme';
@@ -19,7 +20,7 @@ export const SankofaDashboard: React.FC = () => {
     <div className="sankofa-experience" data-testid="sankofa-experience">
       <section className="sankofa-world-banner" aria-labelledby="sankofa-title">
         <div className="sankofa-banner-copy">
-          <div className="sankofa-kicker">🇬🇭 GHANA · NaCCA LEARNING JOURNEY</div>
+          <div className="sankofa-kicker"><Flag country="GH" /> GHANA · NaCCA LEARNING JOURNEY</div>
           <h1 id="sankofa-title">{SANKOFA_THEME.name}</h1>
           <p>{SANKOFA_THEME.tagline}</p>
           <div className="sankofa-identity">

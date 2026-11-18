@@ -1,4 +1,5 @@
 import React from 'react';
+import { Flag } from './Flag';
 import { useGame } from '../context/GameContext';
 import { GRADES } from '../data/gradeData';
 import { L } from '../helpers';
@@ -26,7 +27,7 @@ export const GradePicker: React.FC = () => {
                 aria-pressed={selected}
                 onClick={() => setCurriculum(curriculum.id)}
               >
-                {country.flag} {country.name}
+                <Flag country={country.code} /> {country.name}
               </button>
             );
           })}
