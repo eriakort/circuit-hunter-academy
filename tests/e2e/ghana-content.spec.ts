@@ -269,3 +269,15 @@ test('Ghana JHS 2 Science Diversity of Matter strand opens all three missions', 
   await expect(page.locator('main')).toContainText('A mixture forms when two or more substances are combined');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 2 Science Cycles strand opens all four sub-strand missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs2', 'ghjhs2science');
+  await page.locator('.units button').filter({ hasText: 'Cycles' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(4);
+  await expect(page.locator('.mcard').first()).toContainText('The Carbon Cycle Guardian');
+  await expect(page.locator('.mcard').last()).toContainText('The Animal Feed and Water Keeper');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('The carbon cycle describes how carbon moves repeatedly');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
