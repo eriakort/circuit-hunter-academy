@@ -148,3 +148,14 @@ test('Ghana JHS 2 Mathematics Handling Data strand opens its missions and data v
   await expect(page.locator('main')).toContainText('The Fair Survey Strategist');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+test('Ghana JHS 3 Mathematics Number strand opens its missions and number visual', async ({ page }) => {
+  await enterGhana(page, 'ghjhs3', 'ghjhs3math');
+  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard').first()).toContainText('The Power of Indices Trial');
+  await expect(page.locator('.mcard').last()).toContainText('The Proportion and Money Quest');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'number');
+  await expect(page.locator('main')).toContainText('The Power of Indices Trial');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
