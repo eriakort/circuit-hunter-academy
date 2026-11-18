@@ -18,11 +18,15 @@ for (const id of extraWritingIds) {
 const levels = ['A1', 'A2', 'B1'] as const;
 const types = ['correct', 'order', 'translate', 'write'] as const;
 const ids = new Set<string>();
-assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 115);
+assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 123);
 const presentA1Translation = getGrammarActivities('present-tense', 'A1', 'translate')[0];
 assert.deepEqual(presentA1Translation.acceptedAnswers, ['Noi viviamo a Roma.', 'Viviamo a Roma.']);
 const presentA2Translation = getGrammarActivities('present-tense', 'A2', 'translate')[0];
 assert.ok(presentA2Translation.acceptedAnswers?.includes('Adesso stanno facendo i compiti.'));
+const imperfettoA1Translation = getGrammarActivities('imperfetto', 'A1', 'translate')[0];
+assert.deepEqual(imperfettoA1Translation.acceptedAnswers, ['C’era un grande giardino.']);
+const imperfettoA2Translation = getGrammarActivities('imperfetto', 'A2', 'translate')[0];
+assert.ok(imperfettoA2Translation.acceptedAnswers?.includes('Mentre studiavo, Luca è arrivato.'));
 const passatoProssimoA2Correction = getGrammarActivities('passato-prossimo', 'A2', 'correct')[0];
 assert.ok(passatoProssimoA2Correction.source?.includes('Io ho andato a scuola ieri'), 'A2 correction should cover the common ho/sono auxiliary error');
 assert.deepEqual(passatoProssimoA2Correction.acceptedAnswers, ['Io sono andato a scuola ieri.', 'Io sono andata a scuola ieri.']);
@@ -69,9 +73,9 @@ const partitiveA2Write = getGrammarActivities('partitive', 'A2', 'write')[0];
 assert.equal(partitiveA2Write.modelAnswer, 'Per preparare la pasta, aggiungi dell’acqua, del sale e delle verdure.');
 for (const level of levels) {
   for (const type of types) {
-    const topics = ['sentence-building', 'articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'present-tense'];
+    const topics = ['sentence-building', 'articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'present-tense', 'imperfetto'];
     const items = topics.flatMap(topic => getGrammarActivities(topic, level, type));
-    const expectedCount = level === 'B1' ? 6 : type === 'write' ? 12 : type === 'correct' ? (level === 'A2' ? 8 : 7) : 13;
+    const expectedCount = level === 'B1' ? 6 : type === 'write' ? 13 : type === 'correct' ? (level === 'A2' ? 9 : 8) : 14;
     assert.equal(items.length, expectedCount, level + ' should have ' + expectedCount + ' ' + type + ' activities across all topics');
     for (const item of items) {
       assert.ok(!ids.has(item.id), 'Duplicate activity id: ' + item.id);
