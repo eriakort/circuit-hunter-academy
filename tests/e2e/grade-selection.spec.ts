@@ -6,9 +6,9 @@ test('new learner chooses a grade before seeing its subjects and the choice surv
   await page.reload();
 
   await expect(page.getByRole('heading', { name: 'Circuit Hunter Academy' })).toBeVisible();
-  await expect(page.locator('.grade-card')).toHaveCount(4);
+  await expect(page.locator('.grade-card[data-grade^="grade"]')).toHaveCount(4);
 
-  await page.locator('.grade-card').first().click();
+  await page.locator('.grade-card[data-grade="grade5"]').click();
   await expect(page.locator('.subjcard[data-s="science"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="italian"]')).toBeVisible();
   await expect(page.locator('.subjcard[data-s="math5"]')).toBeVisible();
@@ -123,7 +123,7 @@ test('changing grades keeps the selected subject within that grade curriculum', 
 
   // Switching to Grade 9 must not leave the Grade 5 Science subject selected.
   await page.locator('#hGrade').click();
-  await page.locator('.grade-card').nth(1).click();
+  await page.locator('.grade-card[data-grade="grade9"]').click();
   await expect(page.locator('.subjcard[data-s="science"]')).toHaveCount(0);
   await expect(page.locator('.subjcard[data-s="cs"]')).toBeVisible();
   await page.locator('.subjcard[data-s="math"]').click();
