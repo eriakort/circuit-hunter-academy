@@ -61,6 +61,14 @@ assert.equal(getCurriculumPathway('ghana-nacca', 'ghana-core-mathematics')?.name
 assert.equal(getCurriculumPathway('ghana-nacca', 'italy-standard'), undefined);
 assert.deepEqual(getCurriculumSubjects('grade9', 'ghana-nacca').map(subject => subject.id), ['ghcoremath'], 'Ghana SS1 exposes only its own Core Mathematics pilot');
 assert.deepEqual(getCurriculumSubjects('grade10', 'ghana-nacca').map(subject => subject.id), ['ghcoremath2'], 'Ghana SS2 exposes its own Core Mathematics pathway');
+for (const grade of italianCurriculum!.gradeLevels) {
+  const registeredIds = getCurriculumSubjects(grade.gradeId, 'italy-national').map(subject => subject.id);
+  assert.deepEqual(
+    registeredIds,
+    GRADE_SUBJECT_IDS[grade.gradeId],
+    `The picker and selection guard must share one subject registry for ${grade.gradeId}`
+  );
+}
 assert.deepEqual(getCurriculumSubjects('grade9', 'italy-national').map(subject => subject.id), GRADE_SUBJECT_IDS.grade9);
 assert.equal(getCurriculum('unknown' as never), undefined);
 assert.equal(getCountry('US' as never), undefined);
