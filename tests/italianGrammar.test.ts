@@ -46,5 +46,5 @@ assert.equal(presentTense.levels.A1.exercises.length, 6);
 assert.equal(presentTense.levels.A2.exercises.length, 6);
 assert.equal(presentTense.levels.B1.exercises.length, 3);
 assert.ok(presentTense.levels.A1.explanation[1].includes('desinenza'));
-assert.ok(presentTense.levels.A2.explanation[1].includes('verbi modali'));
+assert.ok(presentTense.levels.A2.explanation[1].includes('Potere'));
 console.log('italianGrammar.test.ts ok! Seven topics, three CEFR levels and 105 bilingual exercises verified.');
