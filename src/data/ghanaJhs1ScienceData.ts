@@ -1,11 +1,11 @@
 import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
 
-/** Ghana NaCCA Common Core Programme · JHS 1 Science · Diversity of Matter, Cycles, Systems, and Forces and Energy strands. */
+/** Ghana NaCCA Common Core Programme · JHS 1 Science · Diversity of Matter, Cycles, Systems, Forces and Energy, and Humans and the Environment strands. */
 export const GHANA_JHS1_SCIENCE_SUBJECT: SubjectInfo = {
   id: 'ghjhs1science',
   name: 'Science · JHS 1',
-  blurb: 'Ghana NaCCA JHS 1 Science: explore matter, living cells, Earth processes, life cycles, body and planetary systems, energy, electricity, forces and farming.',
-  meta: 'Ghana NaCCA · JHS 1 · Four Science strands · 16 missions',
+  blurb: 'Ghana NaCCA JHS 1 Science: explore matter, living cells, Earth processes, life cycles, body and planetary systems, energy, forces, health, waste management, climate and habitats.',
+  meta: 'Ghana NaCCA · JHS 1 · Five Science strands · 21 missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><path d="M48 20h24M54 20v34L30 94q-5 9 6 9h48q11 0 6-9L66 54V20" fill="none" stroke="#7bdff2" stroke-width="4" stroke-linejoin="round"/><path d="M41 80h38" stroke="#ffd166" stroke-width="5" stroke-linecap="round"/><circle cx="52" cy="70" r="4" fill="#7bdff2"/><circle cx="68" cy="62" r="3" fill="#ffd166"/></svg>'
 };
 
