@@ -50,8 +50,8 @@ export const SUBJECTS: SubjectInfo[] = [
       "Numeri, insiemi, algebra, geometria e statistica — trasforma ogni argomento in una tecnica."
     ],
     "meta": [
-      "6 chapters · 28 missions",
-      "6 capitoli · 28 missioni"
+      "7 chapters · 34 missions",
+      "7 capitoli · 34 missioni"
     ],
     "art": "<svg viewBox=\"0 0 120 120\" width=\"100%\" aria-hidden=\"true\"><defs><linearGradient id=\"mg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#ffd166\"/><stop offset=\"1\" stop-color=\"#ff6a3d\"/></linearGradient></defs><text x=\"60\" y=\"72\" text-anchor=\"middle\" font-family=\"Dela Gothic One, Arial Black, sans-serif\" font-size=\"42\" fill=\"url(#mg)\">∑</text></svg>"
   },
@@ -124,7 +124,7 @@ export const UNITS: UnitInfo[] = [
       "Geometry & Statistics",
       "Geometria e statistica"
     ],
-    "ch": "11 + G1–G4",
+    "ch": "11 + G1–G6",
     "subject": "math"
   }
 ];
@@ -29283,3 +29283,19 @@ MISSIONS.forEach((mission, index) => {
     scenes: mission.scenes.map(scene => (scene.vis === 'ghmath' ? { ...scene, vis: `ghmath-${strand}` } : scene))
   };
 });
+
+
+// Italian Grade 9 · Geometry and Statistics enrichment.
+import { MATH_GEOMETRY_MISSIONS } from './mathGeometryData';
+const italianMathGeometryArcIndex = ARCS.length;
+ARCS.push({
+  n: ARCS.length + 1,
+  unit: 6,
+  subject: 'math',
+  title: ['Geometry & Statistics', 'Geometria e statistica'],
+  pages: 'G1–G6'
+});
+MISSIONS.push(...MATH_GEOMETRY_MISSIONS.map(mission => ({
+  ...mission,
+  arc: italianMathGeometryArcIndex
+})));
