@@ -210,3 +210,15 @@ test('Ghana JHS 1 Science Diversity of Matter pilot opens its missions', async (
   await expect(page.locator('main')).toContainText('solid, liquid and gas');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 1 Science Cycles strand opens all four sub-strand missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs1', 'ghjhs1science');
+  await page.locator('.units button').filter({ hasText: 'Cycles' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(4);
+  await expect(page.locator('.mcard').first()).toContainText('The Earth Systems Explorer');
+  await expect(page.locator('.mcard').last()).toContainText('The Animal Welfare Keeper');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('The Sun heats water');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
