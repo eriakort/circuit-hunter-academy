@@ -29413,3 +29413,12 @@ UNITS.push({ ...GHANA_JHS2_ALGEBRA_UNIT, subject: 'ghjhs2math' });
 const ghanaJhs2AlgebraArcOffset = ARCS.length;
 ARCS.push(...GHANA_JHS2_ALGEBRA_ARCS.map(arc => ({ ...arc, unit: ghanaJhs2AlgebraUnitOffset, subject: 'ghjhs2math' as const })));
 MISSIONS.push(...GHANA_JHS2_ALGEBRA_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs2AlgebraArcOffset + mission.arc })));
+
+
+// Ghana NaCCA · JHS 2 Mathematics · Geometry and Measurement strand.
+import { GHANA_JHS2_GEOMETRY_UNIT, GHANA_JHS2_GEOMETRY_ARCS, GHANA_JHS2_GEOMETRY_MISSIONS } from './ghanaJhs2MathGeometryData';
+const ghanaJhs2GeometryUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_JHS2_GEOMETRY_UNIT, subject: 'ghjhs2math' });
+const ghanaJhs2GeometryArcOffset = ARCS.length;
+ARCS.push(...GHANA_JHS2_GEOMETRY_ARCS.map(arc => ({ ...arc, unit: ghanaJhs2GeometryUnitOffset, subject: 'ghjhs2math' as const })));
+MISSIONS.push(...GHANA_JHS2_GEOMETRY_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs2GeometryArcOffset + mission.arc })));

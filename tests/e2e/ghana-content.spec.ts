@@ -123,3 +123,16 @@ test('Ghana JHS 2 Mathematics Algebra strand opens its missions and algebra visu
   await expect(page.locator('main')).toContainText('The Sequence Pathfinder');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 2 Mathematics Geometry and Measurement strand opens its missions and geometry visual', async ({ page }) => {
+  await enterGhana(page, 'ghjhs2', 'ghjhs2math');
+  await page.locator('.units button').filter({ hasText: 'Geometry, Shape and Measurement' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(4);
+  await expect(page.locator('.mcard').first()).toContainText('The Parallel Lines Pathfinder');
+  await expect(page.locator('.mcard').last()).toContainText('The Solid-Shape Builder');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'geometry');
+  await expect(page.locator('main')).toContainText('The Parallel Lines Pathfinder');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
