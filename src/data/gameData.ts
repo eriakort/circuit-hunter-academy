@@ -7,6 +7,7 @@ import { GHANA_JHS1_SCIENCE_FORCES_ENERGY_UNIT, GHANA_JHS1_SCIENCE_FORCES_ENERGY
 import { GHANA_JHS1_SCIENCE_HUMANS_ENVIRONMENT_UNIT, GHANA_JHS1_SCIENCE_HUMANS_ENVIRONMENT_ARCS, GHANA_JHS1_SCIENCE_HUMANS_ENVIRONMENT_MISSIONS } from './ghanaJhs1ScienceHumansEnvironmentData';
 import { GHANA_JHS2_SCIENCE_UNIT, GHANA_JHS2_SCIENCE_ARCS, GHANA_JHS2_SCIENCE_MISSIONS } from './ghanaJhs2ScienceData';
 import { GHANA_JHS2_SCIENCE_CYCLES_UNIT, GHANA_JHS2_SCIENCE_CYCLES_ARCS, GHANA_JHS2_SCIENCE_CYCLES_MISSIONS } from './ghanaJhs2ScienceCyclesData';
+import { GHANA_JHS2_SCIENCE_SYSTEMS_UNIT, GHANA_JHS2_SCIENCE_SYSTEMS_ARCS, GHANA_JHS2_SCIENCE_SYSTEMS_MISSIONS } from './ghanaJhs2ScienceSystemsData';
 import { MATH_CODEX } from "./mathCodex";
 import { ITALIAN_CODEX } from "./italianCodex";
 import { ITALIAN_MISSIONS } from "./italianData";
@@ -29520,3 +29521,10 @@ UNITS.push({ ...GHANA_JHS2_SCIENCE_CYCLES_UNIT, subject: 'ghjhs2science' });
 const ghanaJhs2ScienceCyclesArcOffset = ARCS.length;
 ARCS.push(...GHANA_JHS2_SCIENCE_CYCLES_ARCS.map(arc => ({ ...arc, unit: ghanaJhs2ScienceCyclesUnitOffset, subject: 'ghjhs2science' as const })));
 MISSIONS.push(...GHANA_JHS2_SCIENCE_CYCLES_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs2ScienceCyclesArcOffset + mission.arc })));
+
+// Ghana NaCCA · JHS 2 Science · Systems strand.
+const ghanaJhs2ScienceSystemsUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_JHS2_SCIENCE_SYSTEMS_UNIT, subject: 'ghjhs2science' });
+const ghanaJhs2ScienceSystemsArcOffset = ARCS.length;
+ARCS.push(...GHANA_JHS2_SCIENCE_SYSTEMS_ARCS.map(arc => ({ ...arc, unit: ghanaJhs2ScienceSystemsUnitOffset, subject: 'ghjhs2science' as const })));
+MISSIONS.push(...GHANA_JHS2_SCIENCE_SYSTEMS_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs2ScienceSystemsArcOffset + mission.arc })));
