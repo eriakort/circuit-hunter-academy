@@ -65,6 +65,8 @@ assert.equal(getCurriculumPathway('ghana-nacca', 'italy-standard'), undefined);
 assert.deepEqual(getCurriculumSubjects('ghshs1', 'ghana-nacca').map(subject => subject.id), ['ghcoremath'], 'Ghana SS1 exposes only its own Core Mathematics pilot');
 assert.deepEqual(getCurriculumSubjects('ghshs2', 'ghana-nacca').map(subject => subject.id), ['ghcoremath2'], 'Ghana SS2 exposes its own Core Mathematics pathway');
 assert.deepEqual(getCurriculumSubjects('ghjhs1', 'ghana-nacca').map(subject => subject.id), ['ghjhs1math', 'ghjhs1science'], 'Ghana JHS 1 exposes its own Mathematics and Science pathways');
+assert.deepEqual(getCurriculumSubjects('ghjhs2', 'ghana-nacca').map(subject => subject.id), ['ghjhs2math', 'ghjhs2science'], 'Ghana JHS 2 exposes its own Mathematics and Science pathways');
+assert.equal(getCurriculumPathway('ghana-nacca', 'ghana-jhs-science')?.status, 'available');
 for (const grade of italianCurriculum!.gradeLevels) {
   const registeredIds = getCurriculumSubjects(grade.gradeId, 'italy-national').map(subject => subject.id);
   assert.deepEqual(
