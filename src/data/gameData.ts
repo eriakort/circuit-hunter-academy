@@ -29337,3 +29337,22 @@ UNITS.push({ ...GHANA_JHS1_MATH_UNIT, subject: 'ghjhs1math' });
 const ghanaJhs1MathArcOffset = ARCS.length;
 GHANA_JHS1_MATH_ARCS.forEach(arc => ARCS.push({ ...arc, unit: ghanaJhs1MathUnitOffset, subject: 'ghjhs1math' }));
 MISSIONS.push(...GHANA_JHS1_MATH_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs1MathArcOffset + mission.arc })));
+
+
+// Ghana NaCCA · JHS 1 Mathematics · Algebra strand increment.
+import {
+  GHANA_JHS1_ALGEBRA_UNIT,
+  GHANA_JHS1_ALGEBRA_ARCS,
+  GHANA_JHS1_ALGEBRA_MISSIONS
+} from './ghanaJhs1MathAlgebraData';
+const ghanaJhs1AlgebraUnitOffset = UNITS.findIndex(unit => unit.subject === 'ghjhs1math');
+const ghanaJhs1AlgebraArcOffset = ARCS.length;
+ARCS.push(...GHANA_JHS1_ALGEBRA_ARCS.map(arc => ({
+  ...arc,
+  unit: ghanaJhs1AlgebraUnitOffset < 0 ? 0 : ghanaJhs1AlgebraUnitOffset,
+  subject: 'ghjhs1math'
+})));
+MISSIONS.push(...GHANA_JHS1_ALGEBRA_MISSIONS.map(mission => ({
+  ...mission,
+  arc: ghanaJhs1AlgebraArcOffset + mission.arc
+})));
