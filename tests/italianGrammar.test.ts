@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { ITALIAN_GRAMMAR_TOPICS } from '../src/data/italianGrammar';
 
-const expectedTopics = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'sentence-building', 'present-tense'];
+const expectedTopics = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'sentence-building', 'present-tense', 'imperfetto'];
 assert.deepEqual(ITALIAN_GRAMMAR_TOPICS.map(topic => topic.id), expectedTopics);
 
 const levels = ['A1', 'A2', 'B1'] as const;
@@ -26,7 +26,7 @@ for (const topic of ITALIAN_GRAMMAR_TOPICS) {
   }
 }
 
-assert.equal(totalExercises, 105, `Expected 105 starter exercises, got ${totalExercises}`);
+assert.equal(totalExercises, 120, `Expected 120 starter exercises, got ${totalExercises}`);
 assert.equal(ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'pronouns')?.levels.A1.exercises.length, 6);
 assert.equal(ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'pronouns')?.levels.A2.exercises.length, 6);
 assert.equal(ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'passato-prossimo')?.levels.A1.exercises.length, 6);
@@ -47,4 +47,10 @@ assert.equal(presentTense.levels.A2.exercises.length, 6);
 assert.equal(presentTense.levels.B1.exercises.length, 3);
 assert.ok(presentTense.levels.A1.explanation[1].includes('desinenza'));
 assert.ok(presentTense.levels.A2.explanation[1].includes('Potere'));
-console.log('italianGrammar.test.ts ok! Seven topics, three CEFR levels and 105 bilingual exercises verified.');
+const imperfetto = ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'imperfetto');
+assert.ok(imperfetto, 'Imperfetto topic must be registered');
+assert.equal(imperfetto.levels.A1.exercises.length, 6);
+assert.equal(imperfetto.levels.A2.exercises.length, 6);
+assert.equal(imperfetto.levels.B1.exercises.length, 3);
+assert.ok(imperfetto.levels.A2.explanation[1].includes('abitudini'));
+console.log('italianGrammar.test.ts ok! Eight topics, three CEFR levels and 120 bilingual exercises verified.');
