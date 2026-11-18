@@ -47,7 +47,7 @@ export const GHANA_JHS1_MATH_MISSIONS: Mission[] = [
       q('Calculate 245 + 178.', ['423', '413', '433', '323'], '245 + 178 = 423.'),
       q('A school has 8 classes with 32 learners each. How many learners are there?', ['256', '248', '240', '264'], '8 × 32 = 256 learners.'),
       q('Evaluate 8 + 3 × 4.', ['20', '44', '32', '23'], 'Multiply first: 3 × 4 = 12, then add 8.'),
-      q('Which number is greatest?', ['5,082', '5,028', '5,208', '5, ar'], 'Compare from the thousands place, then hundreds: 5,208 is greatest.')
+      q('Which number is greatest?', ['5,082', '5,028', '5,208', '4,999'], 'Compare from the thousands place, then hundreds: 5,208 is greatest.')
     ]
   },
   {
