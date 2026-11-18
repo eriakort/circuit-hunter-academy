@@ -257,3 +257,15 @@ test('Ghana JHS 1 Science Humans and the Environment strand opens all five sub-s
   await expect(page.locator('main')).toContainText('Waste is material that people no longer need or want');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 2 Science Diversity of Matter strand opens all three missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs2', 'ghjhs2science');
+  await page.locator('.units button').filter({ hasText: 'Diversity of Matter' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard').first()).toContainText('The Mixture Separation Engineer');
+  await expect(page.locator('.mcard').last()).toContainText('The Cell Type Investigator');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('A mixture forms when two or more substances are combined');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
