@@ -488,8 +488,7 @@ export const VERBS_CONJUGATION_DATA = [
       condizionale: ['andrei', 'andresti', 'andrebbe', 'andremmo', 'andreste', 'andrebbero'],
       congiuntivo: ['vada', 'vada', 'vada', 'andiamo', 'andiate', 'vadano']
     }
-  }
-
+  },
   {
     id: 'grammar-a1-present-tense',
     level: 'A1',
