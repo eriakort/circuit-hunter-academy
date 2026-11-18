@@ -303,8 +303,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     phoneticHint: 'dee SO-lee-to PREN-do eel TRE-no, mah OD-jee pre-fe-REE-sko la-vo-RA-reh da KA-sa',
     notes: ['The present tense contrasts a usual routine with today’s choice; preferire uses the -isc- form preferisco.', 'Il presente contrappone un’abitudine a una scelta di oggi; preferire usa la forma in -isc- preferisco.'],
     grammarTopicId: 'present-tense'
-  }
-  ,
+  },
   {
     id: 'grammar-a1-imperfetto',
     level: 'A1',
