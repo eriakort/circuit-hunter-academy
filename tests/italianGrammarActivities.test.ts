@@ -18,7 +18,7 @@ for (const id of extraWritingIds) {
 const levels = ['A1', 'A2', 'B1'] as const;
 const types = ['correct', 'order', 'translate', 'write'] as const;
 const ids = new Set<string>();
-assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 131);
+assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 143);
 const presentA1Translation = getGrammarActivities('present-tense', 'A1', 'translate')[0];
 assert.deepEqual(presentA1Translation.acceptedAnswers, ['Noi viviamo a Roma.', 'Viviamo a Roma.']);
 const presentA2Translation = getGrammarActivities('present-tense', 'A2', 'translate')[0];
@@ -77,9 +77,9 @@ const partitiveA2Write = getGrammarActivities('partitive', 'A2', 'write')[0];
 assert.equal(partitiveA2Write.modelAnswer, 'Per preparare la pasta, aggiungi dell’acqua, del sale e delle verdure.');
 for (const level of levels) {
   for (const type of types) {
-    const topics = ['sentence-building', 'articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'present-tense', 'imperfetto', 'prepositions'];
+    const topics = ['sentence-building', 'articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'present-tense', 'imperfetto', 'prepositions', 'adjective-agreement'];
     const items = topics.flatMap(topic => getGrammarActivities(topic, level, type));
-    const expectedCount = level === 'B1' ? 6 : type === 'write' ? 14 : type === 'correct' ? (level === 'A2' ? 10 : 9) : 15;
+    const expectedCount = level === 'B1' ? 7 : type === 'write' ? 15 : type === 'correct' ? (level === 'A2' ? 11 : 10) : 16;
     assert.equal(items.length, expectedCount, level + ' should have ' + expectedCount + ' ' + type + ' activities across all topics');
     for (const item of items) {
       assert.ok(!ids.has(item.id), 'Duplicate activity id: ' + item.id);
