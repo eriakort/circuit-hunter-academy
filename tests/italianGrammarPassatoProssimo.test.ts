@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { ITALIAN_GRAMMAR_TOPICS } from '../src/data/italianGrammar';
-import { getGrammarActivities } from '../src/data/italianGrammarActivities';
+import { getGrammarActivities, matchesGrammarAnswer } from '../src/data/italianGrammarActivities';
 
 const topic = ITALIAN_GRAMMAR_TOPICS.find(item => item.id === 'passato-prossimo');
 assert.ok(topic, 'Passato prossimo topic must exist');
@@ -15,7 +15,7 @@ for (const level of ['A1', 'A2'] as const) {
 
   for (const type of ['correct', 'order', 'translate', 'write'] as const) {
     const activities = getGrammarActivities('passato-prossimo', level, type);
-    const expectedCount = type === 'correct' ? 1 : 2;
+    const expectedCount = type === 'correct' ? (level === 'A2' ? 3 : 1) : 2;
     assert.equal(activities.length, expectedCount, level + ' should have ' + expectedCount + ' ' + type + ' activities');
     for (const activity of activities) {
       assert.ok(activity.prompt.every(value => value.trim().length > 0), type + ' prompt must be bilingual');
@@ -25,6 +25,14 @@ for (const level of ['A1', 'A2'] as const) {
     }
   }
 }
+
+const a2Corrections = getGrammarActivities('passato-prossimo', 'A2', 'correct');
+assert.ok(a2Corrections.some(item => item.id === 'passato-prossimo-a2-correct-auxiliary-andare'));
+assert.ok(a2Corrections.some(item => item.id === 'passato-prossimo-a2-correct-arrivare'));
+assert.ok(matchesGrammarAnswer('Io sono andato a scuola ieri.', a2Corrections.find(item => item.id === 'passato-prossimo-a2-correct-auxiliary-andare')!.acceptedAnswers || []));
+assert.ok(matchesGrammarAnswer('Io sono andata a scuola ieri.', a2Corrections.find(item => item.id === 'passato-prossimo-a2-correct-auxiliary-andare')!.acceptedAnswers || []));
+assert.ok(!matchesGrammarAnswer('Io ho andato a scuola ieri.', a2Corrections.find(item => item.id === 'passato-prossimo-a2-correct-auxiliary-andare')!.acceptedAnswers || []));
+assert.ok(matchesGrammarAnswer('Maria è arrivata tardi.', a2Corrections.find(item => item.id === 'passato-prossimo-a2-correct-arrivare')!.acceptedAnswers || []));
 
 const a1Write = getGrammarActivities('passato-prossimo', 'A1', 'write')[0];
 const a2Write = getGrammarActivities('passato-prossimo', 'A2', 'write')[0];
