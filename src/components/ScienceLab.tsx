@@ -8,8 +8,6 @@ export const ScienceLab: React.FC<Props> = ({ missionId, lang }) => {
   const [sunlight, setSunlight] = useState(70);
   const [water, setWater] = useState(65);
   const [animalIdx, setAnimalIdx] = useState(0);
-  const [sunlight, setSunlight] = useState(70);
-  const [water, setWater] = useState(65);
 
   if (missionId === 'g5s-plants') {
     const growth = Math.round((sunlight + water) / 2);
