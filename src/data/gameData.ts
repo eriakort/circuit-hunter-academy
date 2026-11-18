@@ -29351,7 +29351,7 @@ const ghanaJhs1AlgebraArcOffset = ARCS.length;
 ARCS.push(...GHANA_JHS1_ALGEBRA_ARCS.map(arc => ({
   ...arc,
   unit: ghanaJhs1AlgebraUnitOffset < 0 ? 0 : ghanaJhs1AlgebraUnitOffset,
-  subject: 'ghjhs1math'
+  subject: 'ghjhs1math' as const
 })));
 MISSIONS.push(...GHANA_JHS1_ALGEBRA_MISSIONS.map(mission => ({
   ...mission,
