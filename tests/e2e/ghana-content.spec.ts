@@ -159,3 +159,16 @@ test('Ghana JHS 3 Mathematics Number strand opens its missions and number visual
   await expect(page.locator('main')).toContainText('The Power of Indices Trial');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 3 Mathematics Algebra strand opens its missions and algebra visual', async ({ page }) => {
+  await enterGhana(page, 'ghjhs3', 'ghjhs3math');
+  await page.locator('.units button').filter({ hasText: 'Algebraic Reasoning and Relationships' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard').first()).toContainText('The Expression Forge');
+  await expect(page.locator('.mcard').last()).toContainText('The Linear Systems Arena');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'algebra');
+  await expect(page.locator('main')).toContainText('The Expression Forge');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
