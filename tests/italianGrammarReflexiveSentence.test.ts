@@ -24,15 +24,17 @@ for (const topicId of topicIds) {
 
     for (const type of ['correct', 'order', 'translate', 'write'] as const) {
       const activities = getGrammarActivities(topicId, level, type);
-      assert.equal(activities.length, 1, topicId + ' ' + level + ' needs one ' + type + ' activity');
-      const activity = activities[0];
-      assert.ok(activity.prompt.every(value => value.trim().length > 0), activity.id + ' needs bilingual prompts');
-      assert.ok(activity.hint.every(value => value.trim().length > 0), activity.id + ' needs bilingual hints');
-      assert.ok(activity.explanation.every(value => value.trim().length > 0), activity.id + ' needs bilingual feedback');
-      assert.ok(activity.modelAnswer.trim().length > 0, activity.id + ' needs a model answer');
-      if (type === 'order') assert.ok(activity.words && activity.words.length >= 3, activity.id + ' needs word tiles');
-      if (type === 'translate') assert.ok(activity.source?.trim(), activity.id + ' needs a source sentence');
-      if (type === 'correct' || type === 'translate') assert.ok(activity.acceptedAnswers?.length, activity.id + ' needs accepted answers');
+      const expectedCount = type === 'correct' ? 1 : 2;
+      assert.equal(activities.length, expectedCount, topicId + ' ' + level + ' needs ' + expectedCount + ' ' + type + ' activities');
+      for (const activity of activities) {
+        assert.ok(activity.prompt.every(value => value.trim().length > 0), activity.id + ' needs bilingual prompts');
+        assert.ok(activity.hint.every(value => value.trim().length > 0), activity.id + ' needs bilingual hints');
+        assert.ok(activity.explanation.every(value => value.trim().length > 0), activity.id + ' needs bilingual feedback');
+        assert.ok(activity.modelAnswer.trim().length > 0, activity.id + ' needs a model answer');
+        if (type === 'order') assert.ok(activity.words && activity.words.length >= 3, activity.id + ' needs word tiles');
+        if (type === 'translate') assert.ok(activity.source?.trim(), activity.id + ' needs a source sentence');
+        if (type === 'correct' || type === 'translate') assert.ok(activity.acceptedAnswers?.length, activity.id + ' needs accepted answers');
+      }
     }
   }
 }
