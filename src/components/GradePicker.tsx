@@ -81,7 +81,7 @@ export const GradePicker: React.FC = () => {
               <strong>{ghanaLevel?.label ?? L(grade.name, lang)}</strong>
               <span className="grade-card-detail">{ghanaLevel?.ageRange ?? L(grade.ageRange, lang)}</span>
               <span className="grade-card-status">
-                {isGhana ? (grade.id === 'ghjhs1' ? 'Mathematics · JHS 1 Number, Algebra, Geometry and Measurement, and Handling Data strands available; more units and Science upcoming' : grade.id.startsWith('ghjhs') ? 'JHS Mathematics & Science · coming in upcoming increments' : grade.id === 'ghshs1' ? 'Core Mathematics · SHS 1 pilot available' : grade.id === 'ghshs2' ? 'Core Mathematics · SHS 2 pathway available' : 'Core Mathematics · SHS 3 pathway available') : L(statusCopy, lang)}
+                {isGhana ? (grade.id === 'ghjhs1' ? 'Mathematics · JHS 1 all four strands available; JHS 2–3 and Science upcoming' : grade.id.startsWith('ghjhs') ? 'JHS Mathematics & Science · coming in upcoming increments' : grade.id === 'ghshs1' ? 'Core Mathematics · SHS 1 pilot available' : grade.id === 'ghshs2' ? 'Core Mathematics · SHS 2 pathway available' : 'Core Mathematics · SHS 3 pathway available') : L(statusCopy, lang)}
               </span>
             </button>
           );
