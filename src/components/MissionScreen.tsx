@@ -7,6 +7,7 @@ import { L, CODE, fill, demonSVG, SENSEI, YOU, esc, U, GUIDE } from '../helpers'
 import { LearningPathway } from './LearningPathway';
 import { PhysicsLab } from './PhysicsLab';
 import { MathLab } from './MathLab';
+import { MathGeometryLab } from './MathGeometryLab';
 import { MathAdvancedLab } from './MathAdvancedLab';
 import { ComputerScienceLab } from './ComputerScienceLab';
 import { ChemistryLab } from './ChemistryLab';
