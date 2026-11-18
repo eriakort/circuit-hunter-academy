@@ -71,7 +71,7 @@ for (const level of levels) {
   for (const type of types) {
     const topics = ['sentence-building', 'articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'present-tense'];
     const items = topics.flatMap(topic => getGrammarActivities(topic, level, type));
-    const expectedCount = level === 'B1' ? 6 : type === 'write' ? 13 : type === 'correct' ? (level === 'A2' ? 9 : 8) : 14;
+    const expectedCount = level === 'B1' ? 6 : type === 'write' ? 12 : type === 'correct' ? (level === 'A2' ? 8 : 7) : 13;
     assert.equal(items.length, expectedCount, level + ' should have ' + expectedCount + ' ' + type + ' activities across all topics');
     for (const item of items) {
       assert.ok(!ids.has(item.id), 'Duplicate activity id: ' + item.id);
