@@ -794,7 +794,7 @@ export const MATH_CODEX: CodexEntry[] = [
     'Teorema dei Seni e Teorema di Carnot',
     'Sine Law: a/sin α = b/sin β = c/sin γ = 2R. Carnot: a² = b² + c² − 2bc cos α. Area: ½ b c sin α.',
     'Teorema dei Seni: a/sin α = b/sin β = c/sin γ = 2R. Carnot: a² = b² + c² − 2bc cos α. Area: ½ b c sin α.'
-  ]
+  ],
 
   // Grade 9 Geometry & Statistics · G1–G6
   ['m7m1', 'Complementary and supplementary angles', 'Angoli complementari e supplementari', 'Complementary angles add to 90°. Supplementary angles add to 180°. Vertically opposite angles are equal.', 'Gli angoli complementari sommano 90°. Gli angoli supplementari sommano 180°. Gli angoli opposti al vertice sono congruenti.'],
