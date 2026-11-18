@@ -30,4 +30,7 @@ test('Italian free-writing practice can be self-reviewed and counted as practise
   await feedback.getByRole('button', { name: 'I checked my sentence — mark as practised' }).click();
   await expect(feedback).toContainText('Writing practice completed and added to your progress.');
   await expect(feedback.getByRole('button', { name: /I checked my sentence/ })).toHaveCount(0);
+  await page.getByRole('button', { name: 'Next practice' }).click();
+  await expect(page.getByText('PRACTICE 2/2')).toBeVisible();
+  await expect(page.getByText('Write two short sentences naming objects in a classroom. Use at least one masculine and one feminine noun with the correct article.')).toBeVisible();
 });
