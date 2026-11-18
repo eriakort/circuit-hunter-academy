@@ -11,7 +11,7 @@ const scienceArcIndexes = new Set(
 );
 const scienceMissions = MISSIONS.filter(mission => scienceArcIndexes.has(mission.arc));
 
-assert.equal(scienceMissions.length, 51, 'Grade 5 Science must contain all 51 missions');
+assert.equal(scienceMissions.length, 57, 'Grade 5 Science must contain all 57 missions');
 
 for (const mission of scienceMissions) {
   const teachingScenes = mission.scenes.filter(scene => scene.text !== undefined);
