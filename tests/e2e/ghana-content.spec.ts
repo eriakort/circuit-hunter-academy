@@ -56,7 +56,7 @@ test('Ghana JHS 1 Mathematics pathways are selectable and open Number and Algebr
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ }).click();
-  await expect(page.locator('.grade-card[data-grade="ghjhs1"]')).toContainText('Number, Algebra, Geometry and Measurement strands available');
+  await expect(page.locator('.grade-card[data-grade="ghjhs1"]')).toContainText('All four Mathematics strands available');
   await page.locator('.grade-card[data-grade="ghjhs1"]').click();
   await page.locator('.subjcard[data-s="ghjhs1math"]').click();
   if (await page.locator('#nm').count()) {
@@ -76,6 +76,17 @@ test('Ghana JHS 1 Mathematics pathways are selectable and open Number and Algebr
   await expect(page.locator('.mcard')).toHaveCount(4);
   await expect(page.locator('.mcard').first()).toContainText('The Lines and Angles Expedition');
   await expect(page.locator('.mcard').last()).toContainText('The Everyday Measurement Quest');
+  await page.locator('.units button').filter({ hasText: 'Collecting and Making Sense of Data' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard').first()).toContainText('The Community Survey Quest');
+  await expect(page.locator('.mcard').last()).toContainText('The Data Detective’s Challenge');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'data');
+  await expect(page.locator('main')).toContainText('The Community Survey Quest');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+  /* Geometry coverage remains in the separate unit navigation check below. */
+  await page.locator('#hHome').click();
+  await page.locator('.units button').filter({ hasText: 'Geometry, Shape and Measurement' }).click();
   await page.locator('.mcard').first().click();
   await expect(page.locator('.ghmath-visual')).toHaveAttribute('data-strand', 'geometry');
   await expect(page.locator('main')).toContainText('The Lines and Angles Expedition');
