@@ -19,7 +19,9 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null && !Array.isArray(value);
 
 const isGrade = (value: unknown): value is GradeId =>
-  value === 'grade5' || value === 'grade9' || value === 'grade10' || value === 'grade11';
+  value === 'grade5' || value === 'grade9' || value === 'grade10' || value === 'grade11'
+  || value === 'ghjhs1' || value === 'ghjhs2' || value === 'ghjhs3'
+  || value === 'ghshs1' || value === 'ghshs2' || value === 'ghshs3';
 
 const isSubject = (value: unknown): value is SubjectId =>
   value === 'cs' || value === 'phys' || value === 'math' || value === 'science' || value === 'math5' || value === 'italian' || value === 'chem' || value === 'chem10' || value === 'chem11'
