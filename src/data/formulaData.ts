@@ -110,6 +110,7 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
   ],
   ghjhs1math: [],
   ghjhs1science: [],
+  ghjhs2science: [],
   ghjhs2math: [],
   ghjhs3math: [],
 };
