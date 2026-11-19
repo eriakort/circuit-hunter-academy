@@ -611,3 +611,19 @@ test('Basic 7 climate visual distinguishes natural and enhanced greenhouse effec
   await page.getByRole('button', { name: 'Hydropower', exact: true }).click();
   await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('river habitats');
 });
+
+
+test('Basic 7 habitat visual explores adaptations and organism relationships', async ({ page }) => {
+  await openBasic7HumansEnvironmentVisual(page, 'The Habitat and Adaptation Ranger', [
+    'gh-jhs1-science-waste-management',
+    'gh-jhs1-science-human-health',
+    'gh-jhs1-science-science-industry',
+    'gh-jhs1-science-climate-green-economy'
+  ]);
+  await page.getByRole('button', { name: 'Guinea savanna', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').first()).toContainText('deep roots');
+  await page.getByRole('button', { name: 'Mutualism', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('both organisms benefit');
+  await page.getByRole('button', { name: 'Parasitism', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('host is harmed');
+});
