@@ -1195,7 +1195,9 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs1-science-earth-cycles#scene-1",
       "gh-jhs1-science-earth-cycles#scene-3"
     ],
-    "assessmentQuestionRefs": []
+    "assessmentQuestionRefs": [
+      "gh-jhs1-science-earth-cycles#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B7.2.2.1.1",
