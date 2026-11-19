@@ -106,7 +106,7 @@ Four Basic 7 Systems missions now include dedicated interactive teaching visuals
 - **Ecosystem:** learners explore Ghanaian savanna and freshwater-pond food chains and inspect each organism's role in energy transfer.
 - **Farming Systems:** learners compare crop rotation, mixed cropping, mixed farming, land rotation and organic farming, including possible benefits and local constraints.
 
-The visuals use local React/SVG artwork, accessible controls and bilingual English/Italian explanations. They appear in the second teaching scene and do not alter mission gates, assessment questions or mastery logic. The audit now records twelve dedicated Basic 7 visuals and 57 generic-only JHS Science missions.
+The visuals use local React/SVG artwork, accessible controls and English-only explanations. They appear in the second teaching scene and do not alter mission gates, assessment questions or mastery logic. The audit now records twelve dedicated Basic 7 visuals and 57 generic-only JHS Science missions.
 
 
 ### Basic 7 Forces and Energy instructional-visual increment (2026-11-19)
