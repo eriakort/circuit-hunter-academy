@@ -199,6 +199,44 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     assessmentQuestionRefs: ['gh-jhs1-science-understanding-environment#quiz-2','gh-jhs1-science-understanding-environment#quiz-3','gh-jhs1-science-understanding-environment#quiz-4']
   },
 
+  // Basic 8 · Strand 1 — Diversity of Matter (NaCCA CCP, pp. 52–56).
+  {
+    indicatorCode: 'B8.1.1.1.1', grade: 8, strand: 1, missionIds: ['gh-jhs2-science-mixture-separation'],
+    status: 'needs-review', officialIndicatorText: 'Identify types of mixtures by name and characteristics.', sourcePdfPage: 53,
+    teachingSceneEvidence: 'Candidate: gh-jhs2-science-mixture-separation introduces homogeneous and heterogeneous mixtures, solutions, suspensions and colloids; verify that all required mixture types and physical characteristics are taught.',
+    assessmentEvidence: 'Candidate: mixture-separation quiz items assess mixture classification and properties; exact question-to-indicator alignment requires review.'
+  },
+  {
+    indicatorCode: 'B8.1.1.1.2', grade: 8, strand: 1, missionIds: ['gh-jhs2-science-mixture-separation'],
+    status: 'needs-review', officialIndicatorText: 'Design and perform processes for separating kinds of mixtures.', sourcePdfPage: 53,
+    teachingSceneEvidence: 'Candidate: gh-jhs2-science-mixture-separation teaches selection of separation methods including filtering, sieving and distilling; verify learner-designed practical procedures and reporting.',
+    assessmentEvidence: 'Candidate: mixture-separation assessment includes method selection; a practical performance and written findings report need direct verification.'
+  },
+  {
+    indicatorCode: 'B8.1.1.2.1', grade: 8, strand: 1, missionIds: ['gh-jhs2-science-atomic-structure'],
+    status: 'needs-review', officialIndicatorText: 'Describe atoms as composed of sub-atomic particles.', sourcePdfPage: 54,
+    teachingSceneEvidence: 'Candidate: gh-jhs2-science-atomic-structure covers atomic structure and sub-atomic particles; verify particle locations, charges and atom models against all exemplars.',
+    assessmentEvidence: 'Candidate: atomic-structure quiz items assess particles and atomic structure; proton, neutron and electron count tasks need direct alignment review.'
+  },
+  {
+    indicatorCode: 'B8.1.1.2.2', grade: 8, strand: 1, missionIds: ['gh-jhs2-science-atomic-structure'],
+    status: 'needs-review', officialIndicatorText: 'Explain the arrangement of elements in terms of the number of protons in the nuclei of atoms of each element.', sourcePdfPage: 55,
+    teachingSceneEvidence: 'Candidate: gh-jhs2-science-atomic-structure links atomic number and the periodic table; verify electron arrangement, ion formation and molecules as specified in the exemplars.',
+    assessmentEvidence: 'Candidate: atomic-structure assessment has relevant periodic-table and atomic-number items; electron configuration, ions and molecules require direct question-level review.'
+  },
+  {
+    indicatorCode: 'B8.1.2.1.1', grade: 8, strand: 1, missionIds: ['gh-jhs2-science-cell-types'],
+    status: 'needs-review', officialIndicatorText: 'Examine and describe the structure of prokaryotic and eukaryotic cells.', sourcePdfPage: 56,
+    teachingSceneEvidence: 'Candidate: gh-jhs2-science-cell-types compares prokaryotic and eukaryotic cells; verify labelled diagrams, similarities and differences against the exemplars.',
+    assessmentEvidence: 'Candidate: cell-types quiz items assess cell structures and types; exact coverage of prokaryotic and eukaryotic comparisons requires review.'
+  },
+  {
+    indicatorCode: 'B8.1.2.1.2', grade: 8, strand: 1, missionIds: ['gh-jhs2-science-cell-types'],
+    status: 'needs-review', officialIndicatorText: 'Classify organisms (plants or animals) as prokaryotic or eukaryotic based on the type of cells they are made of.', sourcePdfPage: 56,
+    teachingSceneEvidence: 'Candidate: gh-jhs2-science-cell-types introduces prokaryotic and eukaryotic organisms; verify classification examples and the exemplar discussion of impacts on human health and safety measures.',
+    assessmentEvidence: 'Candidate: cell-types assessments cover cell classification; organism examples and health-and-safety outcomes require direct review.'
+  },
+
   {
     "indicatorCode": "B8.2.1.1.1",
     "grade": 8,
