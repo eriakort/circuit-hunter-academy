@@ -78,6 +78,6 @@ export const GhanaJhs2CyclesVisual: React.FC<Props> = ({ missionId }) => {
   if (missionId === 'gh-jhs2-science-carbon-cycle') return <CarbonCycle />;
   if (missionId === 'gh-jhs2-science-anopheles-life-cycle') return <MosquitoCycle />;
   if (missionId === 'gh-jhs2-science-seed-beds') return <SeedBeds />;
-  if (missionId === 'gh-jhs2-science-animal-production') return <AnimalCare />;
+  if (missionId === 'gh-jhs2-science-animal-feed-water') return <AnimalCare />;
   return null;
 };
