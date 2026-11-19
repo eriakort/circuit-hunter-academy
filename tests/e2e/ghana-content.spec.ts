@@ -380,8 +380,30 @@ test('Ghana JHS 3 Science Humans and the Environment strand opens all five curri
 });
 
 
-const openBasic7ScienceVisual = async (page: Page, missionTitle: string) => {
+const openBasic7ScienceVisual = async (
+  page: Page,
+  missionTitle: string,
+  completedPrerequisites: string[] = []
+) => {
   await enterGhana(page, 'ghjhs1', 'ghjhs1science');
+
+  // Keep the real mission gates intact while seeding the prerequisite state
+  // needed to exercise later lessons independently.
+  if (completedPrerequisites.length > 0) {
+    await page.evaluate((missionIds) => {
+      const saveKey = 'circuit-hunter-academy-v2:ghana-nacca';
+      const rawSave = localStorage.getItem(saveKey);
+      if (!rawSave) throw new Error('Ghana curriculum save was not created');
+      const save = JSON.parse(rawSave);
+      save.cleared = {
+        ...(save.cleared || {}),
+        ...Object.fromEntries(missionIds.map((id) => [id, true]))
+      };
+      localStorage.setItem(saveKey, JSON.stringify(save));
+    }, completedPrerequisites);
+    await page.reload();
+  }
+
   await page.locator('.mcard').filter({ hasText: missionTitle }).click();
   await page.getByRole('button', { name: 'Continue' }).click();
   await expect(page.getByTestId('ghana-science-visual')).toBeVisible();
@@ -398,7 +420,7 @@ test('Basic 7 states of matter visual responds to temperature and phase controls
 });
 
 test('Basic 7 important liquids visual changes explanation for each liquid', async ({ page }) => {
-  await openBasic7ScienceVisual(page, 'The Life-Giving Liquids Guardian');
+  await openBasic7ScienceVisual(page, 'The Life-Giving Liquids Guardian', ['gh-jhs1-science-materials-states']);
   await page.getByRole('button', { name: 'Blood', exact: true }).click();
   await expect(page.locator('.gh-jhs1-science-readout')).toContainText('oxygen and nutrients');
   await page.getByRole('button', { name: 'Plant sap', exact: true }).click();
@@ -408,7 +430,7 @@ test('Basic 7 important liquids visual changes explanation for each liquid', asy
 });
 
 test('Basic 7 everyday materials visual compares properties and local uses', async ({ page }) => {
-  await openBasic7ScienceVisual(page, 'The Everyday Materials Engineer');
+  await openBasic7ScienceVisual(page, 'The Everyday Materials Engineer', ['gh-jhs1-science-materials-states', 'gh-jhs1-science-importance-liquids']);
   await page.getByRole('button', { name: 'Wood', exact: true }).click();
   await expect(page.locator('.gh-jhs1-science-readout')).toContainText('desks, stools and furniture');
   await page.getByRole('button', { name: 'Glass', exact: true }).click();
