@@ -512,3 +512,18 @@ test('Ghana JHS 1 Science Systems strand opens its dedicated interactive teachin
   await expect(page.getByTestId('ghana-science-visual')).toContainText('Mouth');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+test('Ghana JHS 1 Science Forces and Energy strand opens its dedicated interactive teaching visual', async ({ page }) => {
+  await enterGhana(page, 'ghjhs1', 'ghjhs1science');
+  await page.locator('.units button').filter({ hasText: 'Forces and Energy' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(5);
+  await expect(page.locator('.mcard').first()).toContainText('The Energy Form Explorer');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('Energy is the ability');
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await expect(page.getByTestId('ghana-science-visual')).toContainText('The Energy Form Explorer');
+  await expect(page.getByTestId('ghana-science-visual')).toContainText('Kinetic');
+  await page.getByRole('button', { name: 'Gravitational potential', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout')).toContainText('Akosombo Dam');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});

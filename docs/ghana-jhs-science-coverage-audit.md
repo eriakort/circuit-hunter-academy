@@ -107,3 +107,15 @@ Four Basic 7 Systems missions now include dedicated interactive teaching visuals
 - **Farming Systems:** learners compare crop rotation, mixed cropping, mixed farming, land rotation and organic farming, including possible benefits and local constraints.
 
 The visuals use local React/SVG artwork, accessible controls and bilingual English/Italian explanations. They appear in the second teaching scene and do not alter mission gates, assessment questions or mastery logic. The audit now records twelve dedicated Basic 7 visuals and 57 generic-only JHS Science missions.
+
+
+### Basic 7 Forces and Energy instructional-visual increment (2026-11-19)
+
+Four Basic 7 Forces and Energy missions now include dedicated interactive teaching visuals:
+
+- **Energy Forms:** learners select kinetic, gravitational potential, chemical, thermal, light, sound and electrical energy examples, including a rolling football, food, sunlight and water stored behind a Ghanaian dam.
+- **Electricity Generation:** learners trace hydroelectric, thermal and solar photovoltaic generation, with Ghana examples such as Akosombo and Kpong and a comparison of environmental trade-offs.
+- **Energy Conversion:** learners trace energy transfers in a torch, electric fan, charcoal stove and falling ball, reinforcing conservation rather than the misconception that energy disappears.
+- **Force and Motion:** learners inspect forces in a football kick, a book resting on a desk, a slowing bicycle and a wheelbarrow, distinguishing balanced and unbalanced forces.
+
+The visuals use local React/SVG artwork, accessible interactive controls and bilingual English/Italian explanations. They appear in the second teaching scene and do not alter mission gates, assessment questions or mastery logic. The audit now records sixteen dedicated Basic 7 visuals and 53 generic-only JHS Science missions. The fifth Forces and Energy mission, Agricultural Tools, remains in the next visual batch.
