@@ -623,7 +623,7 @@ test('Basic 7 habitat visual explores adaptations and organism relationships', a
   await page.getByRole('button', { name: 'Guinea savanna', exact: true }).click();
   await expect(page.locator('.gh-jhs1-science-readout').first()).toContainText('deep roots');
   await page.getByRole('button', { name: 'Mutualism', exact: true }).click();
-  await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('both organisms benefit');
+  await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('Both organisms benefit.');
   await page.getByRole('button', { name: 'Parasitism', exact: true }).click();
   await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('host is harmed');
 });
