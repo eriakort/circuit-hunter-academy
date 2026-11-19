@@ -61,7 +61,7 @@ export const GHANA_JHS3_SCIENCE_CYCLES_MISSIONS: Mission[] = [
     ]
   },
   {
-    id: 'gh-jhs3-science-crop-maturity', arc: 2, sec: 'Cycles', pages: 'NaCCA CCP · JHS 3 Science · B9.2.3.1.1–B9.2.3.2.2',
+    id: 'gh-jhs3-science-crop-maturity', arc: 2, sec: 'Cycles', pages: 'NaCCA CCP · JHS 3 Science · B9.2.3.1.1–B9.2.3.2.2, B9.2.3.2.1',
     hue: 42, horns: 2, eyes: 2, title: 'The Crop Maturity Investigator',
     topic: 'Compare crop maturity in different soils and seed beds, record growth evidence, identify uses at different maturity stages, and explain how maturity knowledge guides harvest decisions.',
     demon: 'The Untimely Harvester', tech: 'Farm Form · Third Technique: Harvest at the Right Stage',
@@ -103,15 +103,15 @@ export const GHANA_JHS3_SCIENCE_CYCLES_MISSIONS: Mission[] = [
     ]
   },
   {
-    id: 'gh-jhs3-science-animal-feed-selection', arc: 3, sec: 'Cycles', pages: 'NaCCA CCP · JHS 3 Science · B9.2.4.2.1',
+    id: 'gh-jhs3-science-animal-feed-selection', arc: 3, sec: 'Cycles', pages: 'NaCCA CCP · JHS 3 Science · B9.2.4.2.1, B9.2.4.2.2, B9.2.4.2.3',
     hue: 158, horns: 2, eyes: 2, title: 'The Livestock Nutrition Strategist',
-    topic: 'Select appropriate feed for different domestic and commercial animals, distinguish roughage and concentrates, and justify choices using animal needs and available ingredients.',
+    topic: 'Select appropriate feed for domestic and commercial animals at different growth and production stages, distinguish roughage and concentrates, and demonstrate safe feeding practices.',
     demon: 'The Empty Feeding Trough', tech: 'Animal Form · Fourth Technique: Match the Ration to the Animal',
     scenes: [
       lesson('<p><b>Roughage</b> is bulky feed rich in fibre, such as fresh grass, hay and silage. It is especially important for ruminants such as cattle, sheep and goats because fibre supports normal rumen function. <b>Concentrates</b> provide more energy or protein in a smaller amount, such as grains, bran and oilseed meals.</p>'),
       lesson('<p>Cattle, sheep and goats can digest fibrous forage with the help of microbes in their rumen. Poultry and pigs have different digestive systems and need carefully balanced mixtures of energy, protein, minerals and vitamins. Fish feed must also suit the species, size and feeding behaviour of the fish.</p>'),
-      lesson('<p>Young, growing, pregnant, lactating or working animals may need different rations. For example, a dairy cow producing milk has different nutrient demands from a dry cow, while chicks need a different feed from mature laying hens. Fresh, clean water must always be available.</p>'),
-      lesson('<p>When selecting feed, check the ingredients, nutrient information, freshness, suitability and cost. Use locally available feeds only when they are safe and nutritionally appropriate. Avoid sudden changes, spoiled materials and unverified additives. A good choice supports animal welfare, healthy production and efficient use of farm resources.</p>'),
+      lesson('<p>Young, growing, pregnant, lactating or working animals may need different rations. For example, a dairy cow producing milk has different nutrient demands from a dry cow, while chicks need a different feed from mature laying hens. Feed must therefore match the animal’s species, age, growth stage and production purpose. Fresh, clean water must always be available.</p>'),
+      lesson('<p>When selecting feed, check the ingredients, nutrient information, freshness, suitability and cost. Use locally available feeds only when they are safe and nutritionally appropriate. Avoid sudden changes, spoiled materials and unverified additives. A good choice supports animal welfare, healthy production and efficient use of farm resources.</p><p><b>Practical feeding activity:</b> With a teacher or trained farm supervisor, identify the animal and its growth or production stage; inspect the recommended ration; measure the feed using a clean container; place it in a clean trough; provide fresh water; observe the animal eating; and record the feed offered, amount eaten and any unusual response. Wash hands and equipment afterwards. Never feed an animal an unfamiliar ingredient without checking that it is safe.</p>'),
       { who: 'd', vis: 'demon', text: 'I have given every animal the same ration! Match each feed to the animal’s digestive system, age and production needs.' },
       { type: 'battle' }
     ],
@@ -120,7 +120,7 @@ export const GHANA_JHS3_SCIENCE_CYCLES_MISSIONS: Mission[] = [
       q('Why is roughage important for cattle, sheep and goats?', ['Fibre supports normal rumen function', 'It replaces the need for water', 'It prevents all diseases', 'It contains no nutrients'], 'Ruminants rely on fibre and rumen microbes for normal digestion.'),
       q('Which animals generally need a carefully balanced concentrate-based ration rather than a forage-only diet?', ['Poultry', 'Adult cattle only', 'All grazing sheep only', 'Wild grasshoppers'], 'Poultry need balanced diets with suitable energy, protein, minerals and vitamins.'),
       q('Which factor should influence the feed chosen for a laying hen?', ['Its production stage and nutrient requirements', 'The colour of its feathers only', 'The distance to the nearest river', 'The feed bag’s picture only'], 'Laying hens have particular nutrient needs that differ from chicks and other poultry.'),
-      q('What is a good practice when changing an animal’s ration?', ['Make changes carefully and use reliable feeding guidance', 'Change the feed suddenly every day', 'Use spoiled ingredients to save money', 'Remove clean water during feeding'], 'Careful changes and sound advice help protect animal health and digestion.')
+      q('During a supervised feeding activity, what should a learner do after identifying the animal and its growth stage?', ['Measure a suitable ration, use a clean trough, provide water and record observations', 'Give every animal the same feed without checking', 'Use spoiled feed if the animal is hungry', 'Withhold water so the animal eats more'], 'A safe practical feeding activity matches the ration to the animal, uses clean equipment and water, and records what happens.')
     ]
   }
 ];

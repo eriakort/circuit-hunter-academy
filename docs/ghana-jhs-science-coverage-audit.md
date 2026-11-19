@@ -43,3 +43,9 @@ Run the test with `bun test tests/ghanaJhsScienceCoverageAudit.test.ts`.
 ## Recommended next audit increment
 
 Create a versioned NaCCA indicator crosswalk for Basic 7–9 Science, sourced from the official curriculum document. For each indicator, record the strand, learning expectation, linked arc and mission, teaching-scene evidence, and assessment-question evidence. Mark indicators as **covered**, **partially covered**, or **not yet covered**. This will distinguish topic presence from genuine curriculum mastery and expose precise content gaps before SHS Science expansion.
+
+## Basic 9 Cycles practical-coverage increment (2026-11-19)
+
+The JHS3 crop-maturity and animal-feed-selection lessons have been enriched against the outstanding Basic 9 Cycles indicators. Crop maturity now explicitly links the indicator about uses at different maturity stages to the crop lesson. Animal feed selection now links the growth-stage differentiation outcome and includes a supervised, safe feeding procedure with hygiene, water provision and observation records. A scenario question checks the practical sequence. These are candidate coverage improvements; the mappings remain `needs-review` until an educator confirms delivery and assessment quality in context.
+
+Regression tests assert the indicator references, lesson evidence and practical assessment prompt.
