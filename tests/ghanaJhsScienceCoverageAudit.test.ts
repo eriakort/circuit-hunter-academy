@@ -3,7 +3,7 @@ import { ARCS, MISSIONS, UNITS } from '../src/data/gameData';
 import { getCurriculumSubjects } from '../src/data/curriculumSubjects';
 
 const GRADES = [
-  { grade: 'JHS 1', curriculumId: 'ghjhs1', subjectId: 'ghjhs1science', missionCount: 21 },
+  { grade: 'JHS 1', curriculumId: 'ghjhs1', subjectId: 'ghjhs1science', missionCount: 22 },
   { grade: 'JHS 2', curriculumId: 'ghjhs2', subjectId: 'ghjhs2science', missionCount: 22 },
   { grade: 'JHS 3', curriculumId: 'ghjhs3', subjectId: 'ghjhs3science', missionCount: 25 }
 ] as const;
