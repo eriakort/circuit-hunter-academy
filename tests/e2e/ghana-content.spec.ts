@@ -449,6 +449,7 @@ test('Basic 7 living cell visual explores plant and animal cell structures', asy
 
 const openBasic7CyclesVisual = async (page: Page, missionTitle: string, completedPrerequisites: string[] = []) => {
   await enterGhana(page, 'ghjhs1', 'ghjhs1science');
+  await page.locator('.units button').filter({ hasText: 'Cycles' }).click();
   if (completedPrerequisites.length > 0) {
     await page.evaluate((missionIds) => {
       const saveKey = 'circuit-hunter-academy-v2:ghana-nacca';
