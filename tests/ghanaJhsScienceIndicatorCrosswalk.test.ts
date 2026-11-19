@@ -27,7 +27,7 @@ for (const expected of expectedByGrade) {
 
 for (const item of GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE) {
   assert.match(item.indicatorCode, /^B[789]\.\d\.\d\.\d\.\d$/);
-  assert.ok(item.missionIds.length > 0, `${item.indicatorCode} has at least one candidate mission`);
+  assert.ok(item.missionIds.length > 0 || item.teachingSceneEvidence.includes('No matching'), `${item.indicatorCode} either has candidate content or an explicit content gap`);
   assert.equal(item.status, 'needs-review');
   assert.ok(item.teachingSceneEvidence.length > 0);
   assert.ok(item.assessmentEvidence.length > 0);
