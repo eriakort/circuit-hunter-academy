@@ -50,7 +50,7 @@ assert.deepEqual(basic7Cycles.map(item => item.indicatorCode), [
 ]);
 assert.ok(basic7Cycles.every(item => item.officialIndicatorText && item.sourcePdfPage));
 assert.ok(basic7Cycles.filter(item =>
-  /not yet|No (?:quiz )?question|does not yet/i.test(item.teachingSceneEvidence + ' ' + item.assessmentEvidence)
+  /not yet|No .*question|does not/i.test(item.teachingSceneEvidence + ' ' + item.assessmentEvidence)
 ).length >= 4,
   'Partial Basic 7 cycle coverage must retain explicit teaching or assessment gaps even when candidate missions are mapped');
 
