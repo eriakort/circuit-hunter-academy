@@ -7,14 +7,14 @@ import {
 } from '../src/data/ghanaJhsScienceIndicatorCrosswalk';
 
 const expectedByGrade = [
-  { grade: 7, official: 53, entries: 37, unreferenced: 16 },
+  { grade: 7, official: 53, entries: 38, unreferenced: 15 },
   { grade: 8, official: 45, entries: 33, unreferenced: 12 },
   { grade: 9, official: 53, entries: 47, unreferenced: 6 }
 ];
 
 assert.equal(GHANA_JHS_SCIENCE_OFFICIAL_INDICATOR_COUNTS.length, 15);
-assert.equal(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.length, 117);
-assert.equal(new Set(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.map(item => item.indicatorCode)).size, 117);
+assert.equal(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.length, 118);
+assert.equal(new Set(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.map(item => item.indicatorCode)).size, 118);
 
 for (const expected of expectedByGrade) {
   const actual = GHANA_JHS_SCIENCE_COVERAGE_SUMMARY.find(item => item.grade === expected.grade);
