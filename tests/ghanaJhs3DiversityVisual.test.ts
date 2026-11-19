@@ -30,4 +30,16 @@ for (const term of ['Lemon juice', 'Vinegar', 'Pure water', 'Baking soda solutio
 assert.ok(!/\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|sale|sali)\b/i.test(phHtml), 'contains no Italian interface text');
 assert.equal(GhanaJhs3DiversityVisual({ missionId: 'unknown-mission' }), null, 'unknown missions do not render a visual');
 
-console.log('Basic 9 chemistry visuals render English-only, accessible content for binary compounds and acids, bases and salts.');
+
+const bondingHtml = renderToStaticMarkup(React.createElement(GhanaJhs3DiversityVisual, {
+  missionId: 'gh-jhs3-science-chemical-bonding'
+}));
+assert.ok(bondingHtml.includes('The Chemical Bonding Architect'), 'renders the chemical bonding visual');
+assert.ok(bondingHtml.includes('aria-live="polite"'), 'announces the selected bonding model');
+assert.ok(bondingHtml.includes('aria-pressed='), 'exposes bonding choices accessibly');
+for (const term of ['Ionic bonding', 'Covalent bonding', 'Metallic bonding', 'Sodium chloride', 'Water (H₂O)', 'Copper (Cu)', 'Transferred', 'Shared in pairs', 'Delocalised and mobile', 'electrostatic attraction']) {
+  assert.ok(bondingHtml.toLowerCase().includes(term.toLowerCase()), 'includes ' + term);
+}
+assert.ok(!/\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|sale|sali|legame|legami)\b/i.test(bondingHtml), 'contains no Italian interface text');
+
+console.log('Basic 9 chemistry visuals render English-only, accessible content for binary compounds, acids/bases/salts and chemical bonding.');
