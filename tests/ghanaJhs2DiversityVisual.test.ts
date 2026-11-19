@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { GhanaJhs2DiversityVisual } from '../src/components/GhanaJhs2DiversityVisual';
 
 const missions=[
- {id:'gh-jhs2-science-mixture-separation',title:'The Mixture Separation Engineer',terms:['Salt water','Filtration','Colloid']},
+ {id:'gh-jhs2-science-mixture-separation',title:'The Mixture Separation Engineer',terms:['Salt water','Filtration','Homogeneous solution']},
  {id:'gh-jhs2-science-atomic-structure',title:'The Atomic Structure Navigator',terms:['Atomic number','Neutrons','Sodium']},
  {id:'gh-jhs2-science-cell-types',title:'The Cell Type Investigator',terms:['Prokaryotic cell','Plant eukaryotic cell','membrane-bound nucleus']}
 ];
