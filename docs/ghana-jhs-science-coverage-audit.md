@@ -119,3 +119,10 @@ Four Basic 7 Forces and Energy missions now include dedicated interactive teachi
 - **Force and Motion:** learners inspect forces in a football kick, a book resting on a desk, a slowing bicycle and a wheelbarrow, distinguishing balanced and unbalanced forces.
 
 The visuals use local React/SVG artwork, accessible interactive controls and bilingual English/Italian explanations. They appear in the second teaching scene and do not alter mission gates, assessment questions or mastery logic. The audit now records sixteen dedicated Basic 7 visuals and 53 generic-only JHS Science missions. The fifth Forces and Energy mission, Agricultural Tools, remains in the next visual batch.
+
+
+### Basic 7 Agricultural Tools instructional-visual increment (2026-11-19)
+
+The fifth Basic 7 Forces and Energy mission, **The Farm Tool Engineer**, now has a dedicated interactive teaching visual. Learners match common farm tasks to hoes, cutlasses, rakes, wheelbarrows, watering cans and spades; inspect wedge, lever, wheel-and-axle and gravity principles; and complete a four-point safe-handling checklist. Examples include preparing soil, weeding, watering seedlings and moving harvested produce. The visual is bilingual English/Italian, uses local React/SVG artwork and accessible controls, and appears in the second teaching scene without changing mission gates, quizzes or mastery logic.
+
+Basic 7 now has 17 dedicated instructional visuals; 52 of the 69 audited JHS Science missions remain generic-only (Basic 7: 17/5; Basic 8: 0/22; Basic 9: 0/25).

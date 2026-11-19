@@ -527,3 +527,36 @@ test('Ghana JHS 1 Science Forces and Energy strand opens its dedicated interacti
   await expect(page.locator('.gh-jhs1-science-readout')).toContainText('Akosombo Dam');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+test('Basic 7 Agricultural Tools visual matches tools to farm tasks and checks safe handling', async ({ page }) => {
+  await enterGhana(page, 'ghjhs1', 'ghjhs1science');
+  await page.locator('.units button').filter({ hasText: 'Forces and Energy' }).click();
+  await page.evaluate(() => {
+    const saveKey = 'circuit-hunter-academy-v2:ghana-nacca';
+    const rawSave = localStorage.getItem(saveKey);
+    if (!rawSave) throw new Error('Ghana curriculum save was not created');
+    const save = JSON.parse(rawSave);
+    save.cleared = {
+      ...(save.cleared || {}),
+      ...Object.fromEntries([
+        'gh-jhs1-science-energy-forms',
+        'gh-jhs1-science-electricity-generation',
+        'gh-jhs1-science-energy-conversion',
+        'gh-jhs1-science-force-motion'
+      ].map((id) => [id, true]))
+    };
+    localStorage.setItem(saveKey, JSON.stringify(save));
+  });
+  await page.reload();
+  await page.locator('.units button').filter({ hasText: 'Forces and Energy' }).click();
+  await page.locator('.mcard').filter({ hasText: 'The Farm Tool Engineer' }).click();
+  await expect(page.locator('main')).toContainText('Agricultural tools help farmers prepare land');
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await expect(page.getByTestId('ghana-science-visual')).toContainText('The Farm Tool Engineer');
+  await page.getByRole('button', { name: 'Move a harvest load', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').first()).toContainText('Wheelbarrow');
+  await expect(page.locator('.gh-jhs1-science-readout').first()).toContainText('second-class lever');
+  await page.getByRole('checkbox', { name: /Check tools and handles/ }).check();
+  await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('1/4');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
