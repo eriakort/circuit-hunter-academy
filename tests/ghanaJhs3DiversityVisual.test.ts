@@ -40,6 +40,6 @@ assert.ok(bondingHtml.includes('aria-pressed='), 'exposes bonding choices access
 for (const term of ['Ionic bonding', 'Covalent bonding', 'Metallic bonding', 'Sodium chloride', 'Water (H₂O)', 'Copper (Cu)', 'Transferred', 'Shared in pairs', 'Delocalised and mobile', 'electrostatic attraction']) {
   assert.ok(bondingHtml.toLowerCase().includes(term.toLowerCase()), 'includes ' + term);
 }
-assert.ok(!/\\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|sale|sali|legame|legami)\\b/i.test(bondingHtml), 'contains no Italian interface text');
+assert.ok(!/\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|sale|sali|legame|legami)\b/i.test(bondingHtml), 'contains no Italian interface text');
 
 console.log('Basic 9 chemistry visuals render English-only, accessible content for binary compounds, acids/bases/salts and chemical bonding.');
