@@ -50,7 +50,13 @@ const DEDICATED_GHANA_SCIENCE_VISUAL_MISSIONS = new Set([
   'gh-jhs2-science-electricity-electronics',
   'gh-jhs2-science-energy-conservation-impact',
   'gh-jhs2-science-magnetism-force-machines',
-  'gh-jhs2-science-agricultural-tools'
+  'gh-jhs2-science-agricultural-tools',
+  'gh-jhs2-science-waste-management',
+  'gh-jhs2-science-human-health',
+  'gh-jhs2-science-science-industry',
+  'gh-jhs2-science-climate-green-economy',
+  'gh-jhs2-science-soils-plants',
+  'gh-jhs2-science-rocks-soil-formation'
 ]);
 
 const SCIENCE_GRADE_BY_SUBJECT: Record<string, GhanaScienceVisualAuditRow['grade']> = {
