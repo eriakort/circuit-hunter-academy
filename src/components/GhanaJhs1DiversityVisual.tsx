@@ -101,7 +101,6 @@ const LivingCells: React.FC<{ lang: Language }> = ({ lang }) => {
     vacuole:{name:copy(lang,'Large vacuole','Grande vacuolo'),job:copy(lang,'Stores cell sap and helps keep many plant cells firm.','Immagazzina la linfa cellulare e aiuta a mantenere rigide molte cellule vegetali.')}
   };
   const allowed=cell==='plant'?Object.keys(parts):['nucleus','membrane','cytoplasm'];
-  if(!allowed.includes(part)) setPart('nucleus');
   const activePart=allowed.includes(part)?part:'nucleus';
   return <GhanaScienceVisual title={copy(lang,'The Living Cell Investigator','L’investigatore delle cellule viventi')} description={copy(lang,'Switch between a typical plant cell and an animal cell, then select a structure to discover its job.','Passa da una tipica cellula vegetale a una animale e seleziona una struttura per scoprirne la funzione.')} lang={lang} caption={copy(lang,'Plant cells have a cell wall, chloroplasts and usually a large central vacuole. Animal cells do not have these structures.','Le cellule vegetali hanno parete cellulare, cloroplasti e in genere un grande vacuolo centrale. Le cellule animali non possiedono queste strutture.')}>
     <svg viewBox="0 0 260 155" role="img" aria-label={copy(lang,cell==='plant'?'Simplified plant cell diagram':'Simplified animal cell diagram',cell==='plant'?'Schema semplificato di cellula vegetale':'Schema semplificato di cellula animale')}>
