@@ -317,3 +317,13 @@ test('Ghana JHS 2 Science Humans and the Environment strand opens all six sub-st
   await expect(page.locator('main')).toContainText('Waste is material that people no longer need or want');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+test('Ghana JHS 3 Science Diversity of Matter pilot is selectable and opens its missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs3', 'ghjhs3science');
+  await expect(page.locator('.mcard')).toHaveCount(5);
+  await expect(page.locator('.mcard').first()).toContainText('The Binary Compound Chemist');
+  await expect(page.locator('.mcard').last()).toContainText('The Human Cell Function Ranger');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('A binary compound');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
