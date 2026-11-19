@@ -5,7 +5,7 @@ export const GHANA_JHS1_SCIENCE_SUBJECT: SubjectInfo = {
   id: 'ghjhs1science',
   name: 'Science · JHS 1',
   blurb: 'Ghana NaCCA JHS 1 Science: explore matter, living cells, Earth processes, life cycles, body and planetary systems, energy, forces, health, waste management, climate and habitats.',
-  meta: 'Ghana NaCCA · JHS 1 · Five Science strands · 21 missions',
+  meta: 'Ghana NaCCA · JHS 1 · Five Science strands · 22 missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><path d="M48 20h24M54 20v34L30 94q-5 9 6 9h48q11 0 6-9L66 54V20" fill="none" stroke="#7bdff2" stroke-width="4" stroke-linejoin="round"/><path d="M41 80h38" stroke="#ffd166" stroke-width="5" stroke-linecap="round"/><circle cx="52" cy="70" r="4" fill="#7bdff2"/><circle cx="68" cy="62" r="3" fill="#ffd166"/></svg>'
 };
 
@@ -45,6 +45,31 @@ export const GHANA_JHS1_SCIENCE_MISSIONS: Mission[] = [
       q('What happens to a liquid when it is poured into a different container?', ['It takes the shape of the container', 'It keeps the same shape', 'It fills all available space like a gas', 'It loses all its volume'], 'A liquid has a fixed volume but takes the shape of its container.'),
       q('Which state spreads out to fill the available space?', ['Gas', 'Solid', 'Liquid', 'Ice'], 'Gas particles move freely and spread through the available space.'),
       q('Why is rubber often used to make elastic bands?', ['It is flexible and can stretch', 'It is transparent', 'It is a good conductor of electricity', 'It is always rigid'], 'Rubber is useful for elastic bands because it can stretch and return towards its original shape.')
+    ]
+  },
+
+  {
+    id: 'gh-jhs1-science-importance-liquids',
+    arc: 0, sec: 'Diversity of Matter', pages: 'NaCCA CCP · JHS 1 Science · B7.1.1',
+    hue: 202, horns: 2, eyes: 2,
+    title: 'The Life-Giving Liquids Guardian',
+    topic: 'Explain how important liquids such as water, blood, plant sap, cooking oils and fuels support human life and everyday activities.',
+    demon: 'The Liquid Life Drainer', tech: 'Matter Form · Third Technique: Discover the Value of Liquids',
+    scenes: [
+      lesson('<p>Liquids are part of everyday life. <b>Water</b> is essential: people drink it, use it to prepare food and keep clean, and farmers use it to water crops. Safe drinking water helps the body work properly. We should protect water sources from pollution and avoid wasting clean water.</p>'),
+      lesson('<p>Our bodies also depend on other liquids. <b>Blood</b> carries oxygen and nutrients around the body and helps remove waste products. Saliva moistens food and begins digestion in the mouth. These body fluids have different jobs that help keep us healthy.</p>'),
+      lesson('<p>Plants use liquids too. Water containing dissolved mineral nutrients moves from the roots through the plant. <b>Plant sap</b> transports water, minerals and sugars to where they are needed. Without enough water, plants may wilt, grow poorly or die.</p>'),
+      lesson('<p>Many useful liquids support work and daily activities. Cooking oils help prepare food; liquid soap and detergents help remove dirt; liquid medicines are useful when prescribed or recommended by a health professional. Some liquid fuels power engines, but they are flammable and must be handled only by trained adults, away from flames.</p>'),
+      lesson('<p>Liquids must be used safely. Never drink an unknown liquid or a chemical product. Keep fuels, cleaning products and medicines in their labelled containers, away from children and food. Choose clean water, prevent pollution and use liquids responsibly.</p>'),
+      { who: 'd', vis: 'demon', text: 'I have hidden the value of every liquid. Explain how water, blood, plant sap and useful household liquids support life, then choose safe ways to use them!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('Why is clean water important to human life?', ['It supports body functions, drinking, food preparation and hygiene', 'It replaces the need for all food', 'It makes people immune to every disease', 'It is useful only for washing cars'], 'Clean water is needed for hydration, food preparation and hygiene, and it supports normal body functions.'),
+      q('What is one important function of blood?', ['It transports oxygen and nutrients around the body', 'It makes sunlight for the body', 'It turns bones into muscles', 'It carries soil into the lungs'], 'Blood transports oxygen and nutrients to cells and carries some waste products away.'),
+      q('What does plant sap help a plant do?', ['Transport water, minerals and sugars', 'Make the roots disappear', 'Stop all growth', 'Turn leaves into soil'], 'Plant sap helps move water, dissolved minerals and sugars through the plant.'),
+      q('Which liquid is commonly used to help prepare food?', ['Cooking oil', 'Petrol', 'Floor cleaner', 'Paint thinner'], 'Cooking oil is a useful food ingredient; fuels and cleaning chemicals must never be used as food.'),
+      q('What should you do if you find an unknown liquid in an unlabelled bottle?', ['Do not taste or touch it; tell a responsible adult', 'Drink a little to identify it', 'Mix it with water and smell it', 'Pour it into a food container'], 'Unknown liquids may be poisonous or corrosive. Do not handle them; alert a responsible adult.')
     ]
   },
   {
