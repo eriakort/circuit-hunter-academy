@@ -445,3 +445,56 @@ test('Basic 7 living cell visual explores plant and animal cell structures', asy
   await expect(page.getByRole('button', { name: 'Cell wall', exact: true })).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Cell membrane', exact: true })).toBeVisible();
 });
+
+
+const openBasic7CyclesVisual = async (page: Page, missionTitle: string, completedPrerequisites: string[] = []) => {
+  await enterGhana(page, 'ghjhs1', 'ghjhs1science');
+  await page.locator('.units button').filter({ hasText: 'Cycles' }).click();
+  if (completedPrerequisites.length > 0) {
+    await page.evaluate((missionIds) => {
+      const saveKey = 'circuit-hunter-academy-v2:ghana-nacca';
+      const rawSave = localStorage.getItem(saveKey);
+      if (!rawSave) throw new Error('Ghana curriculum save was not created');
+      const save = JSON.parse(rawSave);
+      save.cleared = { ...(save.cleared || {}), ...Object.fromEntries(missionIds.map((id) => [id, true])) };
+      localStorage.setItem(saveKey, JSON.stringify(save));
+    }, completedPrerequisites);
+    await page.reload();
+  }
+  await page.locator('.mcard').filter({ hasText: missionTitle }).click();
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await expect(page.getByTestId('ghana-science-visual')).toBeVisible();
+};
+
+test('Basic 7 Earth systems visual explores water cycle and land processes', async ({ page }) => {
+  await openBasic7CyclesVisual(page, 'The Earth Systems Explorer');
+  await page.getByRole('button', { name: 'Condensation', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').first()).toContainText('clouds');
+  await page.getByRole('button', { name: 'Erosion', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('movement of soil');
+});
+
+test('Basic 7 life cycles visual compares housefly and maize development', async ({ page }) => {
+  await openBasic7CyclesVisual(page, 'The Life Cycle Guardian', ['gh-jhs1-science-earth-cycles']);
+  await page.getByRole('button', { name: 'Housefly', exact: true }).click();
+  await page.getByRole('button', { name: /Larva/ }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').first()).toContainText('maggot');
+  await page.getByRole('button', { name: 'Maize plant', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').first()).toContainText('seed');
+});
+
+test('Basic 7 crop production visual explores Ghanaian crops and farming stages', async ({ page }) => {
+  await openBasic7CyclesVisual(page, 'The Crop Care Strategist', ['gh-jhs1-science-earth-cycles', 'gh-jhs1-science-life-cycles']);
+  await page.getByRole('button', { name: 'Cassava', exact: true }).click();
+  await page.getByRole('button', { name: 'Harvest and store', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout')).toContainText('Cassava');
+  await expect(page.locator('.gh-jhs1-science-readout')).toContainText('clean, dry');
+});
+
+test('Basic 7 animal production visual compares animal groups and welfare needs', async ({ page }) => {
+  await openBasic7CyclesVisual(page, 'The Animal Welfare Keeper', ['gh-jhs1-science-earth-cycles', 'gh-jhs1-science-life-cycles', 'gh-jhs1-science-crop-production']);
+  await page.getByRole('button', { name: 'Goat', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').first()).toContainText('Ruminant');
+  await page.getByRole('button', { name: 'Welfare', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('clean water');
+});
