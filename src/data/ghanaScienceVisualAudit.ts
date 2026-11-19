@@ -41,7 +41,11 @@ const DEDICATED_GHANA_SCIENCE_VISUAL_MISSIONS = new Set([
   'gh-jhs2-science-carbon-cycle',
   'gh-jhs2-science-anopheles-life-cycle',
   'gh-jhs2-science-seed-beds',
-  'gh-jhs2-science-animal-feed-water'
+  'gh-jhs2-science-animal-feed-water',
+  'gh-jhs2-science-teeth-dental-health',
+  'gh-jhs2-science-outer-planets',
+  'gh-jhs2-science-ecosystem-feeding',
+  'gh-jhs2-science-farming-systems'
 ]);
 
 const SCIENCE_GRADE_BY_SUBJECT: Record<string, GhanaScienceVisualAuditRow['grade']> = {
