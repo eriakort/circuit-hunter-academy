@@ -354,3 +354,15 @@ test('Ghana JHS 3 Science Systems strand opens all five curriculum missions', as
   await expect(page.locator('main')).toContainText('The circulatory system');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 3 Science Forces and Energy strand opens all five curriculum missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs3', 'ghjhs3science');
+  await page.locator('.units button').filter({ hasText: 'Forces and Energy' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(5);
+  await expect(page.locator('.mcard').first()).toContainText('The Energy Conservation Guardian');
+  await expect(page.locator('.mcard').last()).toContainText('The Agricultural Tool Designer');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('Energy is the ability');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
