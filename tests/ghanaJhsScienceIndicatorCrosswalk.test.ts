@@ -7,13 +7,13 @@ import {
 } from '../src/data/ghanaJhsScienceIndicatorCrosswalk';
 
 const expectedByGrade = [
-  { grade: 7, official: 52, entries: 6, unreferenced: 46 },
+  { grade: 7, official: 52, entries: 16, unreferenced: 36 },
   { grade: 8, official: 45, entries: 33, unreferenced: 12 },
   { grade: 9, official: 53, entries: 47, unreferenced: 6 }
 ];
 
 assert.equal(GHANA_JHS_SCIENCE_OFFICIAL_INDICATOR_COUNTS.length, 15);
-assert.equal(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.length, 86);
+assert.equal(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.length, 96);
 assert.equal(new Set(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.map(item => item.indicatorCode)).size, 86);
 
 for (const expected of expectedByGrade) {
@@ -42,3 +42,12 @@ assert.deepEqual(basic7Matter.map(item => item.indicatorCode), [
 ]);
 assert.ok(basic7Matter.every(item => item.officialIndicatorText && item.sourcePdfPage));
 assert.ok(basic7Matter.some(item => item.missionIds.length === 0), 'Missing Basic 7 content must remain visible');
+
+const basic7Cycles = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 7 && item.strand === 2);
+assert.deepEqual(basic7Cycles.map(item => item.indicatorCode), [
+  'B7.2.1.1.1','B7.2.1.1.2','B7.2.2.1.1','B7.2.2.1.2','B7.2.3.1.1',
+  'B7.2.3.1.2','B7.2.4.1.1','B7.2.4.1.2','B7.2.4.2.1','B7.2.4.2.2'
+]);
+assert.ok(basic7Cycles.every(item => item.officialIndicatorText && item.sourcePdfPage));
+assert.ok(basic7Cycles.filter(item => item.missionIds.length === 0).length >= 4,
+  'Indicators without a close instructional match must remain explicit content gaps');
