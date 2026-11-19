@@ -52,3 +52,13 @@ assert.match(cropMission.quiz[2].q, /organic plant nutrient sources/i);
 assert.match(cropMission.quiz[3].q, /correctly compares organic materials/i);
 assert.match(cropMission.quiz[4].q, /safest way to apply an inorganic fertiliser/i);
 console.log('Basic 7 community plant nutrient identification, classification and safe application verified.');
+
+const earthMission = missions.find(mission => mission.id === 'gh-jhs1-science-earth-cycles');
+assert.ok(earthMission, 'Earth-systems mission should be registered');
+assert.match(earthMission.scenes[1].text, /transpiration/i);
+assert.match(earthMission.scenes[1].text, /precipitation/i);
+assert.match(earthMission.scenes[3].text, /underground water stores/i);
+assert.match(earthMission.scenes[3].text, /nutrients/i);
+assert.match(earthMission.quiz[2].q, /transpiration/i);
+assert.match(earthMission.quiz[4].q, /water cycle important/i);
+console.log('Basic 7 water-cycle sequence, transpiration and environmental importance verified.');
