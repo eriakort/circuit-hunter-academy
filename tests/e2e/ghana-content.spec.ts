@@ -342,3 +342,15 @@ test('Ghana JHS 3 Science Cycles strand opens all five curriculum missions', asy
   await expect(page.locator('main')).toContainText('Nitrogen fixation');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 3 Science Systems strand opens all five curriculum missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs3', 'ghjhs3science');
+  await page.locator('.units button').filter({ hasText: 'Systems' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(5);
+  await expect(page.locator('.mcard').first()).toContainText('The Circulation and Respiration Guardian');
+  await expect(page.locator('.mcard').last()).toContainText('The Composting Field Engineer');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('The circulatory system');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
