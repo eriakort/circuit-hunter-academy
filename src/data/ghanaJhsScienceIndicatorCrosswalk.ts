@@ -1245,12 +1245,14 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "officialIndicatorText": "Observe and list all plant nutrient sources available in a community and categorise them into organic and inorganic nutrient sources.",
     "sourcePdfPage": 48,
-    "teachingSceneEvidence": "Candidate: gh-jhs1-science-crop-production scene[2] mentions manure and fertiliser; community nutrient-source identification and organic/inorganic classification are not yet explicitly taught.",
-    "assessmentEvidence": "No question explicitly asks learners to identify community plant nutrient sources and classify them as organic or inorganic.",
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-crop-production scene[2] guides learners to observe and list nutrient sources found in their community and distinguish organic examples (compost, well-rotted manure, decomposed leaves) from inorganic mineral fertilisers.",
+    "assessmentEvidence": "Candidate: gh-jhs1-science-crop-production quiz[2] checks recognition of organic nutrient sources; use the community source inventory and classification table as practical evidence.",
     "teachingSceneRefs": [
       "gh-jhs1-science-crop-production#scene-2"
     ],
-    "assessmentQuestionRefs": []
+    "assessmentQuestionRefs": [
+      "gh-jhs1-science-crop-production#quiz-2"
+    ]
   },
   {
     "indicatorCode": "B7.2.3.1.2",
@@ -1262,12 +1264,15 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "officialIndicatorText": "Describe the physical characteristics of different plant nutrients (organic and inorganic) and how each is applied to plants in the field.",
     "sourcePdfPage": 48,
-    "teachingSceneEvidence": "Candidate: gh-jhs1-science-crop-production scene[2] mentions manure and fertiliser, but does not compare their physical characteristics or demonstrate field application.",
-    "assessmentEvidence": "No assessment question checks nutrient characteristics and appropriate field application.",
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-crop-production scene[3] compares the physical appearance of organic materials and labelled mineral fertilisers and describes safe, appropriate field placement and a soil-tray demonstration.",
+    "assessmentEvidence": "Candidate: gh-jhs1-science-crop-production quiz[3] checks physical characteristics and distinguishes organic materials from inorganic fertilisers; quiz[4] checks safe label-led application and dosage.",
     "teachingSceneRefs": [
-      "gh-jhs1-science-crop-production#scene-2"
+      "gh-jhs1-science-crop-production#scene-3"
     ],
-    "assessmentQuestionRefs": []
+    "assessmentQuestionRefs": [
+      "gh-jhs1-science-crop-production#quiz-3",
+      "gh-jhs1-science-crop-production#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B7.2.4.1.1",
