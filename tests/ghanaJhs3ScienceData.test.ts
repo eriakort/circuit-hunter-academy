@@ -64,4 +64,17 @@ for (const indicator of ['B9.5.1.1.1', 'B9.5.1.2.1', 'B9.5.2.1.1', 'B9.5.2.2.1',
   assert.ok(humansMissions.some(mission => mission.pages.includes(indicator)), `Humans and the Environment strand covers ${indicator}`);
 }
 
-console.log('ghanaJhs3ScienceData.test.ts ok! Twenty-five Basic 9 Science missions verified across five strands.');
+
+const energyLight = forcesMissions.find(mission => mission.id === 'gh-jhs3-science-energy-light');
+const newton = forcesMissions.find(mission => mission.id === 'gh-jhs3-science-force-motion-pressure');
+const toolMaking = forcesMissions.find(mission => mission.id === 'gh-jhs3-science-agricultural-tools');
+for (const indicator of ['B9.4.1.2.2', 'B9.4.1.2.3', 'B9.4.4.1.2', 'B9.4.5.1.3']) {
+  assert.ok(forcesMissions.some(mission => mission.pages.includes(indicator)), `Forces and Energy practical indicator ${indicator} is explicitly linked`);
+}
+assert.ok(energyLight?.scenes.some(scene => /pinhole camera/i.test(scene.text ?? '') && /inverted/i.test(scene.text ?? '') && /aperture/i.test(scene.text ?? '')), 'Light lesson explains how a pinhole camera forms an inverted image');
+assert.ok(energyLight?.scenes.some(scene => /shadow/i.test(scene.text ?? '') && /umbra/i.test(scene.text ?? '') && /penumbra/i.test(scene.text ?? '') && /torch/i.test(scene.text ?? '')), 'Light lesson includes a safe shadow investigation');
+assert.ok(newton?.scenes.some(scene => /balloon/i.test(scene.text ?? '') && /action–reaction/i.test(scene.text ?? '') && /different objects/i.test(scene.text ?? '')), 'Newton lesson demonstrates action–reaction forces on different objects');
+assert.ok(toolMaking?.scenes.some(scene => /Making a simple agricultural tool/i.test(scene.text ?? '') && /handle joint/i.test(scene.text ?? '')), 'Agricultural tools lesson provides a supervised build sequence');
+assert.ok(toolMaking?.scenes.some(scene => /prototype/i.test(scene.text ?? '') && /soil bed/i.test(scene.text ?? '') && /improvement/i.test(scene.text ?? '')), 'Agricultural tools lesson includes prototype testing and evaluation');
+
+console.log('ghanaJhs3ScienceData.test.ts ok! Basic 9 Science curriculum and practical indicators verified across five strands.');
