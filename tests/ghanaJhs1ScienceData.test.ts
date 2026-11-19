@@ -8,8 +8,8 @@ const missions = MISSIONS.filter(mission => mission.id.startsWith('gh-jhs1-scien
 assert.equal(missions.length, 22);
 assert.deepEqual(missions.map(mission => mission.title), [
   'The Materials Explorer',
-  'The Everyday Materials Engineer',
   'The Life-Giving Liquids Guardian',
+  'The Everyday Materials Engineer',
   'The Living Cell Investigator',
   'The Earth Systems Explorer',
   'The Life Cycle Guardian',
