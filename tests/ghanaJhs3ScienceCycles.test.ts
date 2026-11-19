@@ -5,7 +5,7 @@ import { getCurriculumSubjects } from '../src/data/curriculumSubjects';
 const science = getCurriculumSubjects('ghjhs3', 'ghana-nacca').find(subject => subject.id === 'ghjhs3science');
 assert.ok(science, 'JHS 3 Science remains selectable in the Ghana curriculum');
 assert.match(String(science?.blurb), /nitrogen cycle/i);
-assert.match(String(science?.meta), /15 missions/i);
+assert.match(String(science?.meta), /20 missions/i);
 
 const unitIndex = UNITS.findIndex(unit => unit.title === 'Cycles' && unit.subject === 'ghjhs3science');
 assert.ok(unitIndex >= 0, 'JHS 3 Science Cycles unit should be registered');
