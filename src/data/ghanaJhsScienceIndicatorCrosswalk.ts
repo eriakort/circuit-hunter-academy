@@ -1131,7 +1131,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "officialIndicatorText": "Examine and list domestic animals in the community.",
     "sourcePdfPage": 49,
-    "teachingSceneEvidence": "No mission explicitly asks learners to examine and list domestic animals in their community; the existing animal-production lesson is a general animal-care introduction.",
+    "teachingSceneEvidence": "No matching mission explicitly asks learners to examine and list domestic animals in their community; the existing animal-production lesson is a general animal-care introduction.",
     "assessmentEvidence": "No community-based domestic-animal identification question was found.",
     "teachingSceneRefs": [],
     "assessmentQuestionRefs": []
@@ -1170,7 +1170,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "officialIndicatorText": "Observe and compare the uses of the different types of animals.",
     "sourcePdfPage": 52,
-    "teachingSceneEvidence": "No observation-and-comparison activity covering uses of different animal types was found.",
+    "teachingSceneEvidence": "No matching observation-and-comparison activity covering uses of different animal types was found.",
     "assessmentEvidence": "No comparative assessment question on animal uses was found.",
     "teachingSceneRefs": [],
     "assessmentQuestionRefs": []
