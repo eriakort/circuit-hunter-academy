@@ -29,7 +29,7 @@ export const GHANA_JHS_SCIENCE_OFFICIAL_INDICATOR_COUNTS = [
   {
     "grade": 7,
     "strand": 3,
-    "officialIndicatorCount": 8
+    "officialIndicatorCount": 9
   },
   {
     "grade": 7,
@@ -1174,7 +1174,78 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "assessmentEvidence": "No comparative assessment question on animal uses was found.",
     "teachingSceneRefs": [],
     "assessmentQuestionRefs": []
-  }
+  },
+
+  // Basic 7 · Strand 3 — Systems (NaCCA CCP, pp. 53–62).
+  {
+    indicatorCode: 'B7.3.1.1.1', grade: 7, strand: 3, missionIds: ['gh-jhs1-science-human-body-system'],
+    status: 'needs-review', officialIndicatorText: 'Explain the concept of food and the need for humans to eat.', sourcePdfPage: 53,
+    teachingSceneEvidence: 'Candidate: human-body-system scene 0 explains food, nutrients and why the body needs them; verify all official exemplars.',
+    assessmentEvidence: 'Candidate: human-body-system quiz 0 asks why humans need food; verify nutrient concepts and exemplar depth.',
+    teachingSceneRefs: ['gh-jhs1-science-human-body-system#scene-0'], assessmentQuestionRefs: ['gh-jhs1-science-human-body-system#quiz-0']
+  },
+  {
+    indicatorCode: 'B7.3.1.1.2', grade: 7, strand: 3, missionIds: ['gh-jhs1-science-human-body-system'],
+    status: 'needs-review', officialIndicatorText: 'Examine what happens to food at the stages of digestion in humans.', sourcePdfPage: 54,
+    teachingSceneEvidence: 'Candidate: human-body-system scenes 1–3 describe digestion through the alimentary canal; verify each stage and local food examples.',
+    assessmentEvidence: 'Candidate: quiz questions 1–3 cover the mouth, oesophagus and small intestine; full stage coverage needs review.',
+    teachingSceneRefs: ['gh-jhs1-science-human-body-system#scene-1','gh-jhs1-science-human-body-system#scene-2','gh-jhs1-science-human-body-system#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-human-body-system#quiz-1','gh-jhs1-science-human-body-system#quiz-2','gh-jhs1-science-human-body-system#quiz-3']
+  },
+  {
+    indicatorCode: 'B7.3.1.1.3', grade: 7, strand: 3, missionIds: ['gh-jhs1-science-human-body-system'],
+    status: 'needs-review', officialIndicatorText: 'Identify the end product of digestion of starchy, protein and oily foods and explain how absorption of the digested food occurs in humans.', sourcePdfPage: 55,
+    teachingSceneEvidence: 'Candidate: human-body-system scene 2 explains nutrient absorption; end products for starch, protein and fats need explicit verification and likely enrichment.',
+    assessmentEvidence: 'No current question explicitly tests all three digestion end products and absorption together.',
+    teachingSceneRefs: ['gh-jhs1-science-human-body-system#scene-2'], assessmentQuestionRefs: []
+  },
+  {
+    indicatorCode: 'B7.3.2.1.1', grade: 7, strand: 3, missionIds: ['gh-jhs1-science-solar-system'],
+    status: 'needs-review', officialIndicatorText: 'Identify the inner planets of the solar system and describe their properties.', sourcePdfPage: 56,
+    teachingSceneEvidence: 'Candidate: solar-system scenes 0–3 introduce the inner planets and their properties; verify the galaxy and orbit exemplars.',
+    assessmentEvidence: 'Candidate: solar-system quizzes 0–2 assess inner-planet order and selected properties.',
+    teachingSceneRefs: ['gh-jhs1-science-solar-system#scene-0','gh-jhs1-science-solar-system#scene-1','gh-jhs1-science-solar-system#scene-2'],
+    assessmentQuestionRefs: ['gh-jhs1-science-solar-system#quiz-0','gh-jhs1-science-solar-system#quiz-1','gh-jhs1-science-solar-system#quiz-2']
+  },
+  {
+    indicatorCode: 'B7.3.2.1.2', grade: 7, strand: 3, missionIds: ['gh-jhs1-science-solar-system'],
+    status: 'needs-review', officialIndicatorText: 'Discuss the properties and the relative motions of the planets Mercury and Venus.', sourcePdfPage: 57,
+    teachingSceneEvidence: 'Candidate: solar-system scenes 1–3 discuss Mercury and Venus and planetary movement; relative motion comparison needs review.',
+    assessmentEvidence: 'Candidate: solar-system quiz 2 assesses Venus; no question directly compares the relative motions of Mercury and Venus.',
+    teachingSceneRefs: ['gh-jhs1-science-solar-system#scene-1','gh-jhs1-science-solar-system#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-solar-system#quiz-2']
+  },
+  {
+    indicatorCode: 'B7.3.3.1.1', grade: 7, strand: 3, missionIds: ['gh-jhs1-science-ecosystem'],
+    status: 'needs-review', officialIndicatorText: 'Analyse the components of ecosystems and identify the interactions within.', sourcePdfPage: 58,
+    teachingSceneEvidence: 'Candidate: ecosystem scenes 0–3 identify living/non-living components, ecosystem types and food-chain interactions; verify all official exemplars.',
+    assessmentEvidence: 'Candidate: ecosystem quizzes 0–4 assess components, producers, food chains and ecosystem change.',
+    teachingSceneRefs: ['gh-jhs1-science-ecosystem#scene-0','gh-jhs1-science-ecosystem#scene-1','gh-jhs1-science-ecosystem#scene-2','gh-jhs1-science-ecosystem#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-ecosystem#quiz-0','gh-jhs1-science-ecosystem#quiz-1','gh-jhs1-science-ecosystem#quiz-2','gh-jhs1-science-ecosystem#quiz-3','gh-jhs1-science-ecosystem#quiz-4']
+  },
+  {
+    indicatorCode: 'B7.3.4.1.1', grade: 7, strand: 3, missionIds: ['gh-jhs1-science-farming-systems'],
+    status: 'needs-review', officialIndicatorText: 'Examine and discuss the differences among the various farming systems.', sourcePdfPage: 60,
+    teachingSceneEvidence: 'Candidate: farming-systems scenes 0–3 define and compare land rotation, crop rotation, mixed cropping, mixed farming and organic farming.',
+    assessmentEvidence: 'Candidate: farming-systems quizzes 0–2 distinguish crop rotation, mixed cropping and mixed farming; full comparison needs review.',
+    teachingSceneRefs: ['gh-jhs1-science-farming-systems#scene-0','gh-jhs1-science-farming-systems#scene-1','gh-jhs1-science-farming-systems#scene-2','gh-jhs1-science-farming-systems#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-farming-systems#quiz-0','gh-jhs1-science-farming-systems#quiz-1','gh-jhs1-science-farming-systems#quiz-2']
+  },
+  {
+    indicatorCode: 'B7.3.4.1.2', grade: 7, strand: 3, missionIds: ['gh-jhs1-science-farming-systems'],
+    status: 'needs-review', officialIndicatorText: 'Categorise different farming systems.', sourcePdfPage: 61,
+    teachingSceneEvidence: 'Candidate: farming-systems scenes 1–3 describe the five named systems; a structured classification activity is not yet confirmed.',
+    assessmentEvidence: 'Candidate: farming-systems quizzes 0–2 classify selected practices; verify all five farming-system categories.',
+    teachingSceneRefs: ['gh-jhs1-science-farming-systems#scene-1','gh-jhs1-science-farming-systems#scene-2','gh-jhs1-science-farming-systems#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-farming-systems#quiz-0','gh-jhs1-science-farming-systems#quiz-1','gh-jhs1-science-farming-systems#quiz-2']
+  },
+  {
+    indicatorCode: 'B7.3.4.1.3', grade: 7, strand: 3, missionIds: ['gh-jhs1-science-farming-systems'],
+    status: 'needs-review', officialIndicatorText: 'Discuss the usefulness of different farming systems.', sourcePdfPage: 62,
+    teachingSceneEvidence: 'Candidate: farming-systems scene 3 notes that systems suit different conditions; merits, limits and reasons for use need deeper treatment.',
+    assessmentEvidence: 'No current question explicitly compares the usefulness, merits and demerits of all farming systems.',
+    teachingSceneRefs: ['gh-jhs1-science-farming-systems#scene-3'], assessmentQuestionRefs: []
+  },
 ];
 
 /** Roll-up that exposes how many official indicators still lack explicit indicator-level references. */
