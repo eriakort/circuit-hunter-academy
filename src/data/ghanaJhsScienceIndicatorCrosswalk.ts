@@ -1201,27 +1201,39 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "indicatorCode": "B7.2.2.1.1",
     "grade": 7,
     "strand": 2,
-    "missionIds": [],
+    "missionIds": [
+      "gh-jhs1-science-life-cycles"
+    ],
     "status": "needs-review",
     "officialIndicatorText": "Describe the life cycle of the housefly.",
     "sourcePdfPage": 46,
-    "teachingSceneEvidence": "No matching housefly life-cycle mission was found. The existing life-cycles mission covers plants, butterflies and chickens, not the housefly indicator.",
-    "assessmentEvidence": "No housefly-specific assessment question was found in the current Basic 7 Science mission set.",
-    "teachingSceneRefs": [],
-    "assessmentQuestionRefs": []
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-life-cycles scene[2] teaches the four stages—egg, larva (maggot), pupa and adult—and explains that adults lay eggs on suitable decaying organic material; verify the full local examples and learner observation activity.",
+    "assessmentEvidence": "Candidate: gh-jhs1-science-life-cycles quiz[2] assesses the four-stage sequence; a practical observation or labelled life-cycle diagram can strengthen evidence.",
+    "teachingSceneRefs": [
+      "gh-jhs1-science-life-cycles#scene-2"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs1-science-life-cycles#quiz-2"
+    ]
   },
   {
     "indicatorCode": "B7.2.2.1.2",
     "grade": 7,
     "strand": 2,
-    "missionIds": [],
+    "missionIds": [
+      "gh-jhs1-science-life-cycles"
+    ],
     "status": "needs-review",
     "officialIndicatorText": "Discuss the activities of the housefly as a menace to humans and show how to reduce the effects of those activities.",
     "sourcePdfPage": 47,
-    "teachingSceneEvidence": "No matching housefly feeding, disease transmission, nuisance or prevention lesson was found in the current Basic 7 Science mission set.",
-    "assessmentEvidence": "No housefly impact or prevention assessment question was found.",
-    "teachingSceneRefs": [],
-    "assessmentQuestionRefs": []
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-life-cycles scene[3] explains how flies can transfer germs from faeces, rubbish and decaying waste to food and surfaces, and teaches food covering, handwashing, covered bins, clean toilets and drains, and fly screens; verify the local disease examples and practical demonstration.",
+    "assessmentEvidence": "Candidate: gh-jhs1-science-life-cycles quiz[4] checks prevention through food covering and safe waste disposal; a scenario-based question on contamination routes can further assess understanding.",
+    "teachingSceneRefs": [
+      "gh-jhs1-science-life-cycles#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs1-science-life-cycles#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B7.2.3.1.1",

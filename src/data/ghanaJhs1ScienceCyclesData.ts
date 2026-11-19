@@ -8,7 +8,7 @@ export const GHANA_JHS1_SCIENCE_CYCLES_UNIT: UnitInfo = {
 
 export const GHANA_JHS1_SCIENCE_CYCLES_ARCS: ArcInfo[] = [
   { n: 1, unit: 0, subject: 'ghjhs1science', title: 'Earth Science', pages: 'NaCCA CCP · JHS 1 Science · B7.2.1' },
-  { n: 2, unit: 0, subject: 'ghjhs1science', title: 'Life Cycle of Organisms', pages: 'NaCCA CCP · JHS 1 Science · B7.2.2' },
+  { n: 2, unit: 0, subject: 'ghjhs1science', title: 'Life Cycle of Organisms', pages: 'NaCCA CCP · JHS 1 Science · B7.2.2 · B7.2.2.1.1 · B7.2.2.1.2' },
   { n: 3, unit: 0, subject: 'ghjhs1science', title: 'Crop Production', pages: 'NaCCA CCP · JHS 1 Science · B7.2.3' },
   { n: 4, unit: 0, subject: 'ghjhs1science', title: 'Animal Production', pages: 'NaCCA CCP · JHS 1 Science · B7.2.4' }
 ];
@@ -41,22 +41,22 @@ export const GHANA_JHS1_SCIENCE_CYCLES_MISSIONS: Mission[] = [
   {
     id: 'gh-jhs1-science-life-cycles', arc: 1, sec: 'Cycles', pages: 'NaCCA CCP · JHS 1 Science · B7.2.2',
     hue: 142, horns: 2, eyes: 2, title: 'The Life Cycle Guardian',
-    topic: 'Compare life cycles of plants and animals and identify growth, reproduction and change across stages.',
+    topic: 'Compare plant and animal life cycles, describe the housefly life cycle and explain how to reduce health risks from houseflies.',
     demon: 'The Stage Skipper', tech: 'Life Form · Fourth Technique: Grow and Reproduce',
     scenes: [
       lesson('<p>A life cycle is the sequence of stages a living thing passes through during its life. Organisms grow, develop and eventually reproduce. Their offspring begin another generation.</p>'),
       lesson('<p>A flowering plant may begin as a seed. The seed germinates when it has suitable water, air and warmth. A seedling grows into a mature plant, which can flower and produce fruits and seeds.</p>'),
-      lesson('<p>Animals have different life cycles. A butterfly changes from egg to caterpillar (larva), then pupa, and finally adult. A chicken develops from egg to chick and then to adult. Not all animals pass through the same stages.</p>'),
-      lesson('<p>Living things need suitable conditions to grow. Plants need light, water, air, nutrients and space. Animals need food, water, air, shelter and appropriate care. Observing stages helps us understand and protect living things.</p>'),
+      lesson('<p>Animals have different life cycles. A butterfly changes from egg to caterpillar (larva), then pupa, and finally adult. A housefly also has four stages: egg, larva (maggot), pupa and adult fly. The adult lays eggs, often on moist decaying organic material, and the cycle begins again. A chicken develops from egg to chick and then to adult. Not all animals pass through the same stages.</p>'),
+      lesson('<p>Living things need suitable conditions to grow. Plants need light, water, air, nutrients and space. Animals need food, water, air, shelter and appropriate care. Houseflies can carry germs from faeces, rubbish and decaying waste to uncovered food and surfaces, helping spread diseases such as diarrhoeal infections. Reduce the risk by covering food, washing hands with soap, keeping toilets and drains clean, disposing of waste in covered bins and using fly screens where possible. Never handle pesticides carelessly.</p>'),
       { who: 'd', vis: 'demon', text: 'I have mixed up seeds, seedlings and adults. Put the stages in order and defend the life cycle!' },
       { type: 'battle' }
     ],
     quiz: [
       q('What is a life cycle?', ['The stages an organism passes through during its life', 'The daily weather forecast', 'A list of non-living materials', 'The movement of rocks only'], 'A life cycle describes the stages of growth and reproduction.'),
       q('What is the first stage in the life cycle of a flowering plant?', ['Seed', 'Flower', 'Fruit', 'Mature tree'], 'A new flowering plant commonly begins as a seed.'),
-      q('Which sequence describes a butterfly life cycle?', ['Egg, larva, pupa, adult', 'Seed, root, flower, fruit', 'Chick, egg, pupa, adult', 'Adult, pupa, seed, egg'], 'Butterflies undergo complete metamorphosis through four stages.'),
+      q('Which sequence correctly describes the life cycle shared by a housefly and a butterfly?', ['Egg, larva, pupa, adult', 'Egg, adult, larva, pupa', 'Larva, egg, adult, pupa', 'Pupa, adult, egg, larva'], 'Both undergo complete metamorphosis: egg, larva (maggot in a housefly), pupa and adult.'),
       q('What is germination?', ['A seed beginning to grow into a seedling', 'A flower producing rain', 'An adult animal laying an egg', 'A rock breaking apart'], 'Germination is the start of growth from a seed.'),
-      q('Which set of conditions supports healthy plant growth?', ['Water, light, air, nutrients and space', 'Darkness and no water', 'Plastic, smoke and oil', 'Only stones and sand'], 'Plants need suitable light, water, air, nutrients and room to grow.')
+      q('Which action best reduces the risk of houseflies contaminating food?', ['Keep food covered and dispose of waste in covered bins', 'Leave food uncovered beside rubbish', 'Allow drains and toilets to become dirty', 'Handle insecticide without instructions'], 'Covering food, safe waste disposal, handwashing and clean surroundings help reduce contact between flies, germs and food.')
     ]
   },
   {
