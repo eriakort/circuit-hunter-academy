@@ -560,3 +560,54 @@ test('Basic 7 Agricultural Tools visual matches tools to farm tasks and checks s
   await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('1/4');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+const openBasic7HumansEnvironmentVisual = async (page: Page, missionTitle: string, completedPrerequisites: string[] = []) => {
+  await enterGhana(page, 'ghjhs1', 'ghjhs1science');
+  await page.locator('.units button').filter({ hasText: 'Humans and the Environment' }).click();
+  if (completedPrerequisites.length > 0) {
+    await page.evaluate((missionIds) => {
+      const saveKey = 'circuit-hunter-academy-v2:ghana-nacca';
+      const rawSave = localStorage.getItem(saveKey);
+      if (!rawSave) throw new Error('Ghana curriculum save was not created');
+      const save = JSON.parse(rawSave);
+      save.cleared = { ...(save.cleared || {}), ...Object.fromEntries(missionIds.map((id) => [id, true])) };
+      localStorage.setItem(saveKey, JSON.stringify(save));
+    }, completedPrerequisites);
+    await page.reload();
+    await page.locator('.units button').filter({ hasText: 'Humans and the Environment' }).click();
+  }
+  await page.locator('.mcard').filter({ hasText: missionTitle }).click();
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await expect(page.getByTestId('ghana-science-visual')).toBeVisible();
+};
+
+test('Basic 7 waste management visual sorts waste and teaches the 3Rs', async ({ page }) => {
+  await openBasic7HumansEnvironmentVisual(page, 'The Waste-Wise Community Guardian');
+  await page.getByRole('button', { name: 'Used battery', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').first()).toContainText('hazardous-waste collection');
+  await page.getByRole('button', { name: 'Recycle', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('new products');
+});
+
+test('Basic 7 human health visual links nutrients and disease-specific prevention', async ({ page }) => {
+  await openBasic7HumansEnvironmentVisual(page, 'The Healthy Body Protector', ['gh-jhs1-science-waste-management']);
+  await page.getByRole('button', { name: 'Vitamin C', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').first()).toContainText('Scurvy');
+  await page.getByRole('button', { name: 'Infected body fluids', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('Ebola');
+});
+
+test('Basic 7 science careers visual connects evidence-based work to community impact', async ({ page }) => {
+  await openBasic7HumansEnvironmentVisual(page, 'The Science Career Pathfinder', ['gh-jhs1-science-waste-management', 'gh-jhs1-science-human-health']);
+  await page.getByRole('button', { name: 'Environmental scientist', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout')).toContainText('pollution, habitats and natural resources');
+});
+
+test('Basic 7 climate visual distinguishes natural and enhanced greenhouse effects', async ({ page }) => {
+  await openBasic7HumansEnvironmentVisual(page, 'The Green Future Strategist', ['gh-jhs1-science-waste-management', 'gh-jhs1-science-human-health', 'gh-jhs1-science-science-industry']);
+  await page.getByRole('button', { name: 'Enhanced greenhouse effect', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').first()).toContainText('climate change');
+  await page.getByRole('button', { name: 'Hydropower', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('river habitats');
+});
