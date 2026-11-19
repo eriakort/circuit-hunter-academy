@@ -10,6 +10,7 @@ export const GradePicker: React.FC = () => {
   const { lang } = state;
   const activeCurriculum = getCurriculum(curriculumProfile.activeCurriculumId);
   const isGhana = activeCurriculum?.countryCode === 'GH';
+  const availableGradeIds = new Set(activeCurriculum?.gradeLevels.map(level => level.gradeId) ?? []);
 
   return (
     <section className="hero card grade-picker">
@@ -52,7 +53,7 @@ export const GradePicker: React.FC = () => {
       )}
 
       <div className="grade-options" role="group" aria-label={L(['Choose your grade', 'Scegli la tua classe'], lang)}>
-        {GRADES.filter(grade => !isGhana || ['ghjhs1', 'ghjhs2', 'ghjhs3', 'ghshs1', 'ghshs2', 'ghshs3'].includes(grade.id)).map(grade => {
+        {GRADES.filter(grade => availableGradeIds.has(grade.id)).map(grade => {
           const selected = state.grade === grade.id;
           const ghanaLevel = isGhana ? getCurriculumGradeLevel('ghana-nacca', grade.id) : undefined;
           const ready = isGhana ? ['ghjhs1', 'ghjhs2', 'ghjhs3', 'ghshs1', 'ghshs2', 'ghshs3'].includes(grade.id) : grade.status === 'ready';
