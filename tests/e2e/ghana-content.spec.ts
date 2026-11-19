@@ -498,3 +498,17 @@ test('Basic 7 animal production visual compares animal groups and welfare needs'
   await page.getByRole('button', { name: 'Welfare', exact: true }).click();
   await expect(page.locator('.gh-jhs1-science-readout').last()).toContainText('clean water');
 });
+
+
+test('Ghana JHS 1 Science Systems strand opens its dedicated interactive teaching visual', async ({ page }) => {
+  await enterGhana(page, 'ghjhs1', 'ghjhs1science');
+  await page.locator('.units button').filter({ hasText: 'Systems' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(4);
+  await expect(page.locator('.mcard').first()).toContainText('The Digestion Defender');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('Food supplies energy and materials');
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await expect(page.getByTestId('ghana-science-visual')).toContainText('The Digestion Defender');
+  await expect(page.getByTestId('ghana-science-visual')).toContainText('Mouth');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});

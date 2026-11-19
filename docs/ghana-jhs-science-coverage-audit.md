@@ -95,3 +95,15 @@ Four Basic 7 Cycles missions now include dedicated interactive teaching visuals:
 - **Animal Production:** learners compare ruminants, monogastrics and poultry through feeding, welfare and community uses.
 
 Each visual is locally rendered, keyboard-operable and bilingual (English/Italian). The additions do not alter mission gates, assessment questions or mastery logic. The visual audit now records eight dedicated Basic 7 visuals and 61 generic-only JHS Science missions.
+
+
+### Basic 7 Systems instructional-visual increment (2026-11-19)
+
+Four Basic 7 Systems missions now include dedicated interactive teaching visuals:
+
+- **Human Body System:** learners follow food through the mouth, oesophagus, stomach and intestines, with the role of each organ explained.
+- **Solar System:** learners select Mercury, Venus, Earth or Mars and compare the four inner planets in order from the Sun.
+- **Ecosystem:** learners explore Ghanaian savanna and freshwater-pond food chains and inspect each organism's role in energy transfer.
+- **Farming Systems:** learners compare crop rotation, mixed cropping, mixed farming, land rotation and organic farming, including possible benefits and local constraints.
+
+The visuals use local React/SVG artwork, accessible controls and bilingual English/Italian explanations. They appear in the second teaching scene and do not alter mission gates, assessment questions or mastery logic. The audit now records twelve dedicated Basic 7 visuals and 57 generic-only JHS Science missions.
