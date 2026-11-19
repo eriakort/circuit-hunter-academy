@@ -30,7 +30,7 @@ assert.match(houseflyMission.quiz[4].why, /safe waste disposal/i);
 console.log('Basic 7 housefly life-cycle and prevention evidence verified.');
 const animalMission = missions.find(mission => mission.id === 'gh-jhs1-science-animal-production');
 assert.ok(animalMission, 'Animal-production mission should be registered');
-assert.match(animalMission.scenes[0].text, /observe.*community/i);
+assert.match(animalMission.scenes[0].text, /community.*observe/i);
 assert.match(animalMission.scenes[1].text, /ruminants/i);
 assert.match(animalMission.scenes[1].text, /monogastrics/i);
 assert.match(animalMission.scenes[1].text, /poultry/i);
