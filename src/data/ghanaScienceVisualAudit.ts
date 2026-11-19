@@ -45,7 +45,12 @@ const DEDICATED_GHANA_SCIENCE_VISUAL_MISSIONS = new Set([
   'gh-jhs2-science-teeth-dental-health',
   'gh-jhs2-science-outer-planets',
   'gh-jhs2-science-ecosystem-feeding',
-  'gh-jhs2-science-farming-systems'
+  'gh-jhs2-science-farming-systems',
+  'gh-jhs2-science-energy-sources-heat',
+  'gh-jhs2-science-electricity-electronics',
+  'gh-jhs2-science-energy-conservation-impact',
+  'gh-jhs2-science-magnetism-force-machines',
+  'gh-jhs2-science-agricultural-tools'
 ]);
 
 const SCIENCE_GRADE_BY_SUBJECT: Record<string, GhanaScienceVisualAuditRow['grade']> = {
