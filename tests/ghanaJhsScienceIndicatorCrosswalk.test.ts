@@ -9,12 +9,12 @@ import {
 const expectedByGrade = [
   { grade: 7, official: 53, entries: 53, unreferenced: 0 },
   { grade: 8, official: 45, entries: 45, unreferenced: 0 },
-  { grade: 9, official: 53, entries: 47, unreferenced: 6 }
+  { grade: 9, official: 54, entries: 54, unreferenced: 0 }
 ];
 
 assert.equal(GHANA_JHS_SCIENCE_OFFICIAL_INDICATOR_COUNTS.length, 15);
-assert.equal(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.length, 145);
-assert.equal(new Set(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.map(item => item.indicatorCode)).size, 145);
+assert.equal(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.length, 152);
+assert.equal(new Set(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.map(item => item.indicatorCode)).size, 152);
 
 for (const expected of expectedByGrade) {
   const actual = GHANA_JHS_SCIENCE_COVERAGE_SUMMARY.find(item => item.grade === expected.grade);
@@ -126,3 +126,23 @@ assert.deepEqual(basic8Remaining.map(item => item.indicatorCode), [
 assert.ok(basic8Remaining.every(item => item.officialIndicatorText && item.sourcePdfPage));
 assert.ok(basic8Remaining.every(item => item.status === 'needs-review'));
 assert.ok(basic8Remaining.every(item => item.missionIds.length === 1));
+
+
+const basic9FinalGaps = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item =>
+  item.grade === 9 && (
+    item.indicatorCode === 'B9.2.3.2.1' ||
+    item.indicatorCode === 'B9.2.4.2.2' ||
+    item.indicatorCode === 'B9.2.4.2.3' ||
+    item.indicatorCode === 'B9.4.1.2.2' ||
+    item.indicatorCode === 'B9.4.1.2.3' ||
+    item.indicatorCode === 'B9.4.4.1.2' ||
+    item.indicatorCode === 'B9.4.5.1.3'
+  )
+);
+assert.deepEqual(basic9FinalGaps.map(item => item.indicatorCode), [
+  'B9.2.3.2.1','B9.2.4.2.2','B9.2.4.2.3',
+  'B9.4.1.2.2','B9.4.1.2.3','B9.4.4.1.2','B9.4.5.1.3'
+]);
+assert.ok(basic9FinalGaps.every(item => item.officialIndicatorText && item.sourcePdfPage));
+assert.ok(basic9FinalGaps.every(item => item.status === 'needs-review'));
+assert.ok(basic9FinalGaps.every(item => item.missionIds.length === 1));
