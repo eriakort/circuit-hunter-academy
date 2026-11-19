@@ -88,7 +88,7 @@ const PHExplorer: React.FC = () => {
         <h4>Choose a sample to investigate</h4>
         <div className="gh-jhs1-science-choices">
           {SAMPLES.map(item => (
-            <Choice key={item.id} active={selected === item.id} onClick={() => setSelected(item.id)}>{item.name}</Choice>
+            <Choice key={item.id} active={selected === item.id} onClick={() => setSelected(item.id)}>{item.name} · {item.example} — {item.electronAction}</Choice>
           ))}
         </div>
         <div className="gh-jhs1-science-readout" aria-live="polite">
