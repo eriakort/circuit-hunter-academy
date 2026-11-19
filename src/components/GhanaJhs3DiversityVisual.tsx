@@ -128,8 +128,76 @@ const PHExplorer: React.FC = () => {
   );
 };
 
+
+const BOND_TYPES = [
+  {
+    id: 'ionic', name: 'Ionic bonding', example: 'Sodium chloride (NaCl)',
+    summary: 'Electrons are transferred from a metal atom to a non-metal atom. The resulting positive and negative ions attract.',
+    detail: 'Sodium transfers one outer electron to chlorine. This forms Na⁺ and Cl⁻ ions, which attract and arrange in a giant ionic lattice.',
+    model: 'Na  →  e⁻  →  Cl\nNa⁺       Cl⁻',
+    electronAction: 'Transferred',
+    structure: 'A repeating lattice of positive and negative ions'
+  },
+  {
+    id: 'covalent', name: 'Covalent bonding', example: 'Water (H₂O)',
+    summary: 'Non-metal atoms share pairs of electrons. The shared electrons attract the nuclei of the bonded atoms.',
+    detail: 'In a water molecule, oxygen shares an electron pair with each of two hydrogen atoms. The simplified model shows two O–H covalent bonds.',
+    model: 'H — O — H',
+    electronAction: 'Shared in pairs',
+    structure: 'Small molecules in water; other covalent substances can form giant networks'
+  },
+  {
+    id: 'metallic', name: 'Metallic bonding', example: 'Copper (Cu)',
+    summary: 'Positive metal ions are attracted to delocalised electrons that can move throughout the metallic structure.',
+    detail: 'The mobile delocalised electrons help metals conduct electricity and heat. Layers of metal ions can also shift while metallic attraction remains.',
+    model: 'Cu⁺   Cu⁺   Cu⁺\n e⁻  e⁻  e⁻\nCu⁺   Cu⁺   Cu⁺',
+    electronAction: 'Delocalised and mobile',
+    structure: 'Positive metal ions surrounded by delocalised electrons'
+  }
+];
+
+const BondingExplorer: React.FC = () => {
+  const [selected, setSelected] = useState('ionic');
+  const bond = BOND_TYPES.find(item => item.id === selected) ?? BOND_TYPES[0];
+  return (
+    <GhanaScienceVisual
+      title="The Chemical Bonding Architect"
+      description="Compare how atoms and ions are held together in ionic, covalent and metallic bonding."
+      lang="en"
+      caption="These diagrams are simplified models. They show the key idea for each bond type, not exact particle sizes, distances or three-dimensional structures."
+    >
+      <div className="gh-jhs1-science-interaction">
+        <h4>Choose a bonding model</h4>
+        <div className="gh-jhs1-science-choices">
+          {BOND_TYPES.map(item => (
+            <Choice key={item.id} active={selected === item.id} onClick={() => setSelected(item.id)}>{item.name}</Choice>
+          ))}
+        </div>
+        <div className="gh-jhs1-science-readout" aria-live="polite">
+          <strong>{bond.name} · {bond.example}</strong>
+          <p>{bond.summary}</p>
+          <p><b>What happens to the electrons?</b> {bond.electronAction}.</p>
+          <pre role="img" aria-label={bond.name + ' simplified particle model'} style={{ whiteSpace: 'pre-wrap', textAlign: 'center', fontSize: '1.05rem', fontWeight: 700, padding: '0.8rem', borderRadius: '0.6rem', background: 'rgba(123, 223, 242, 0.12)' }}>{bond.model}</pre>
+          <p>{bond.detail}</p>
+          <p><b>Structure:</b> {bond.structure}.</p>
+        </div>
+      </div>
+      <div className="gh-jhs1-science-interaction">
+        <h4>Compare the three types</h4>
+        <div className="gh-jhs1-science-readout" aria-live="polite">
+          <p><b>Ionic:</b> electron transfer creates oppositely charged ions; electrostatic attraction holds the lattice together.</p>
+          <p><b>Covalent:</b> non-metal atoms share pairs of electrons.</p>
+          <p><b>Metallic:</b> positive metal ions are attracted to mobile, delocalised electrons.</p>
+          <p>Remember: ionic bonding is not the same as covalent sharing, and metallic bonding is not simply electron transfer.</p>
+        </div>
+      </div>
+    </GhanaScienceVisual>
+  );
+};
+
 export const GhanaJhs3DiversityVisual: React.FC<Props> = ({ missionId }) => {
   if (missionId === 'gh-jhs3-science-binary-compounds') return <CompoundExplorer />;
   if (missionId === 'gh-jhs3-science-acids-bases-salts') return <PHExplorer />;
+  if (missionId === 'gh-jhs3-science-chemical-bonding') return <BondingExplorer />;
   return null;
 };
