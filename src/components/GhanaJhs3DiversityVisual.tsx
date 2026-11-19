@@ -59,6 +59,7 @@ const CompoundExplorer: React.FC = () => {
           <p>Element symbols begin with a capital letter. A second letter, if present, is lowercase: Na means sodium and Cl means chlorine.</p>
           <p>A small number after a symbol tells how many atoms of that element are represented. If there is no small number, the count is one.</p>
           <p>For ionic compounds, the formula shows the simplest whole-number ratio of ions in the lattice.</p>
+          <p>Many binary compounds, such as sodium chloride and magnesium oxide, form a repeating ionic lattice: a regular arrangement of positive and negative ions.</p>
         </div>
       </div>
     </GhanaScienceVisual>
