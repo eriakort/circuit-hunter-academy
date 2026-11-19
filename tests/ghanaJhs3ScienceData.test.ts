@@ -8,7 +8,8 @@ assert.match(String(science?.blurb), /Systems/i);
 const expected = [
   ['Diversity of Matter', ['Binary Compounds, Acids, Bases and Salts', 'Chemical Bonding', 'Specialised Cells in Plants and Humans'], ['The Binary Compound Chemist', 'The pH Scale Guardian', 'The Chemical Bonding Architect', 'The Plant Cell Specialist', 'The Human Cell Function Ranger']],
   ['Cycles', ['Earth Science · The Nitrogen Cycle', 'Life Cycle of Organisms · Grasshopper', 'Crop Production · Crop Maturity', 'Animal Production · Feed Preparation and Selection'], ['The Nitrogen Cycle Guardian', 'The Grasshopper Life-Cycle Ranger', 'The Crop Maturity Investigator', 'The Animal Feed Formulator', 'The Livestock Nutrition Strategist']],
-  ['Systems', ['The Human Body · Circulation and Respiration', 'The Solar System · Asteroids and Comets', 'Ecosystems · Interdependence and Balance', 'Farming Systems · Manure Preparation'], ['The Circulation and Respiration Guardian', 'The Asteroid and Comet Pathfinder', 'The Ecosystem Balance Keeper', 'The Manure Materials Investigator', 'The Composting Field Engineer']]
+  ['Systems', ['The Human Body · Circulation and Respiration', 'The Solar System · Asteroids and Comets', 'Ecosystems · Interdependence and Balance', 'Farming Systems · Manure Preparation'], ['The Circulation and Respiration Guardian', 'The Asteroid and Comet Pathfinder', 'The Ecosystem Balance Keeper', 'The Manure Materials Investigator', 'The Composting Field Engineer']],
+  ['Forces and Energy', ['Energy, Light and Conservation', 'Electricity and Electronic Components', 'Energy Conversion and Conservation', 'Pressure, Forces and Motion', 'Designing Agricultural Tools'], ['The Energy Conservation Guardian', 'The Circuit Systems Engineer', 'The Energy Transformation Alchemist', 'The Force and Motion Strategist', 'The Agricultural Tool Designer']]
 ] as const;
 for (const [unitTitle, expectedArcs, expectedMissions] of expected) {
   const unitIndex = UNITS.findIndex(unit => unit.title === unitTitle && unit.subject === 'ghjhs3science');
@@ -30,4 +31,9 @@ const systemsMissions = MISSIONS.filter(mission => mission.id.startsWith('gh-jhs
 for (const indicator of ['B9.3.1.1.1', 'B9.3.1.1.2', 'B9.3.2.1.1', 'B9.3.3.1.1', 'B9.3.4.1.1', 'B9.3.4.1.2', 'B9.3.4.1.3']) {
   assert.ok(systemsMissions.some(mission => mission.pages.includes(indicator)), `Systems strand covers ${indicator}`);
 }
-console.log('ghanaJhs3ScienceData.test.ts ok! Fifteen Basic 9 Science missions verified across three strands.');
+const forcesIndex = UNITS.findIndex(unit => unit.title === 'Forces and Energy' && unit.subject === 'ghjhs3science');
+const forcesMissions = MISSIONS.filter(mission => mission.id.startsWith('gh-jhs3-science-') && ARCS[mission.arc]?.unit === forcesIndex);
+for (const indicator of ['B9.4.1.1.1', 'B9.4.1.1.2', 'B9.4.1.2.1', 'B9.4.2.1.1', 'B9.4.2.2.1', 'B9.4.3.1.1', 'B9.4.4.1.1', 'B9.4.4.2.1', 'B9.4.5.1.1']) {
+  assert.ok(forcesMissions.some(mission => mission.pages.includes(indicator)), `Forces and Energy strand covers ${indicator}`);
+}
+console.log('ghanaJhs3ScienceData.test.ts ok! Twenty Basic 9 Science missions verified across four strands.');
