@@ -1279,10 +1279,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "officialIndicatorText": "Examine and list domestic animals in the community.",
     "sourcePdfPage": 49,
-    "teachingSceneEvidence": "No matching mission explicitly asks learners to examine and list domestic animals in their community; the existing animal-production lesson is a general animal-care introduction.",
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-animal-production scene[0] guides learners to observe and list domestic animals present in their own community, with examples marked as location-dependent.",
     "assessmentEvidence": "Candidate: gh-jhs1-science-animal-production quiz[0] checks the value of local observation; use the class observation table as additional practical evidence.",
     "teachingSceneRefs": [
-      "gh-jhs1-science-animal-production#scene-2"
+      "gh-jhs1-science-animal-production#scene-0"
     ],
     "assessmentQuestionRefs": [
       "gh-jhs1-science-animal-production#quiz-0"
