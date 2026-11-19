@@ -1,6 +1,14 @@
 import assert from 'node:assert/strict';
-import { getCurriculumGradeLevel } from '../src/data/curricula';
+import { getCurriculum, getCurriculumGradeLevel } from '../src/data/curricula';
 import { GRADES } from '../src/data/gradeData';
+
+// The grade picker must show only levels registered by the active country curriculum.
+const italianGradeIds = getCurriculum('italy-national')?.gradeLevels.map(level => level.gradeId) ?? [];
+const ghanaGradeIds = getCurriculum('ghana-nacca')?.gradeLevels.map(level => level.gradeId) ?? [];
+assert.deepEqual(italianGradeIds, ['grade5', 'grade9', 'grade10', 'grade11']);
+assert.ok(italianGradeIds.every(id => !id.startsWith('gh')));
+assert.deepEqual(ghanaGradeIds, ['ghjhs1', 'ghjhs2', 'ghjhs3', 'ghshs1', 'ghshs2', 'ghshs3']);
+assert.ok(ghanaGradeIds.every(id => id.startsWith('gh')));
 
 // Ghana has dedicated JHS 1–3 and SHS 1–3 IDs with stage-specific labels and ages.
 for (const [gradeId, stage, n, age] of [
