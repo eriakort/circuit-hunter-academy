@@ -8,6 +8,10 @@ export interface GhanaScienceIndicatorEvidence {
   status: GhanaScienceIndicatorStatus;
   teachingSceneEvidence: string;
   assessmentEvidence: string;
+  officialIndicatorText?: string;
+  sourcePdfPage?: number;
+  teachingSceneRefs?: string[];
+  assessmentQuestionRefs?: string[];
 }
 
 /** Official NaCCA indicator totals by Basic grade and strand (Science CCP, 2020). */
@@ -95,6 +99,48 @@ export const GHANA_JHS_SCIENCE_OFFICIAL_INDICATOR_COUNTS = [
  * Every entry stays needs-review until a human verifies the linked scenes and quiz items.
  */
 export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence[] = [
+  {
+    indicatorCode: 'B7.1.1.1.1', grade: 7, strand: 1, missionIds: ['gh-jhs1-science-materials-states'],
+    status: 'needs-review', officialIndicatorText: 'Classify materials into liquids, solids and gases.', sourcePdfPage: 39,
+    teachingSceneEvidence: 'Candidate: gh-jhs1-science-materials-states scenes[1] explains the three states; verify full classification and exemplar coverage.',
+    assessmentEvidence: 'Candidate: gh-jhs1-science-materials-states quiz[1..3] assesses state properties; verify coverage against the full indicator.',
+    teachingSceneRefs: ['gh-jhs1-science-materials-states#scene-1'], assessmentQuestionRefs: ['gh-jhs1-science-materials-states#quiz-1','gh-jhs1-science-materials-states#quiz-2','gh-jhs1-science-materials-states#quiz-3']
+  },
+  {
+    indicatorCode: 'B7.1.1.1.2', grade: 7, strand: 1, missionIds: ['gh-jhs1-science-materials-uses'],
+    status: 'needs-review', officialIndicatorText: 'Discuss the importance of liquids in human life.', sourcePdfPage: 40,
+    teachingSceneEvidence: 'Candidate: gh-jhs1-science-materials-uses discusses material uses and water resistance; direct teaching of the importance of liquids is not yet confirmed.',
+    assessmentEvidence: 'No quiz question is yet explicitly mapped to this indicator.',
+    teachingSceneRefs: ['gh-jhs1-science-materials-uses#scene-0'], assessmentQuestionRefs: []
+  },
+  {
+    indicatorCode: 'B7.1.1.1.3', grade: 7, strand: 1, missionIds: ['gh-jhs1-science-materials-uses'],
+    status: 'needs-review', officialIndicatorText: 'Discuss the importance of specific solids to life.', sourcePdfPage: 40,
+    teachingSceneEvidence: 'Candidate: gh-jhs1-science-materials-uses compares wood, metals and plastics in everyday products; verify links to survival and other life forms.',
+    assessmentEvidence: 'Candidate material-selection questions exist, but none is yet explicitly mapped to this indicator.',
+    teachingSceneRefs: ['gh-jhs1-science-materials-uses#scene-1','gh-jhs1-science-materials-uses#scene-2'], assessmentQuestionRefs: []
+  },
+  {
+    indicatorCode: 'B7.1.1.2.1', grade: 7, strand: 1, missionIds: [],
+    status: 'needs-review', officialIndicatorText: 'Demonstrate knowledge of the orderly arrangement of metals, non-metals and noble gases in the periodic table.', sourcePdfPage: 41,
+    teachingSceneEvidence: 'No matching Basic 7 periodic-table mission was found in the current JHS1 Science mission set.',
+    assessmentEvidence: 'No matching Basic 7 periodic-table assessment question was found in the current JHS1 Science mission set.',
+    teachingSceneRefs: [], assessmentQuestionRefs: []
+  },
+  {
+    indicatorCode: 'B7.1.2.1.1', grade: 7, strand: 1, missionIds: ['gh-jhs1-science-living-cells'],
+    status: 'needs-review', officialIndicatorText: 'Describe the structure and function of living cells of an animal.', sourcePdfPage: 42,
+    teachingSceneEvidence: 'Candidate: gh-jhs1-science-living-cells scenes[1..3] compare plant and animal cells; verify animal-cell organelle detail.',
+    assessmentEvidence: 'Candidate: gh-jhs1-science-living-cells quiz[1..3] assesses basic cell structures; verify animal-cell-specific coverage.',
+    teachingSceneRefs: ['gh-jhs1-science-living-cells#scene-1','gh-jhs1-science-living-cells#scene-3'], assessmentQuestionRefs: ['gh-jhs1-science-living-cells#quiz-1','gh-jhs1-science-living-cells#quiz-2','gh-jhs1-science-living-cells#quiz-3']
+  },
+  {
+    indicatorCode: 'B7.1.2.1.2', grade: 7, strand: 1, missionIds: ['gh-jhs1-science-living-cells'],
+    status: 'needs-review', officialIndicatorText: 'State the functions of each organelle in a plant cell.', sourcePdfPage: 43,
+    teachingSceneEvidence: 'Candidate: gh-jhs1-science-living-cells scenes[1..2] explain plant-cell organelles; verify each organelle function is taught.',
+    assessmentEvidence: 'Candidate: gh-jhs1-science-living-cells quiz[1..3] checks cell structures but does not yet verify every plant-cell organelle function.',
+    teachingSceneRefs: ['gh-jhs1-science-living-cells#scene-1','gh-jhs1-science-living-cells#scene-2'], assessmentQuestionRefs: ['gh-jhs1-science-living-cells#quiz-1','gh-jhs1-science-living-cells#quiz-2','gh-jhs1-science-living-cells#quiz-3']
+  },
   {
     "indicatorCode": "B8.2.1.1.1",
     "grade": 8,
@@ -987,8 +1033,8 @@ export const GHANA_JHS_SCIENCE_COVERAGE_SUMMARY = ([7,8,9] as const).map(grade =
   return {
     grade,
     officialIndicatorCount,
-    explicitIndicatorReferences: linkedCodes.length,
-    notExplicitlyReferenced: officialIndicatorCount - linkedCodes.length,
+    crosswalkEntries: linkedCodes.length,
+    notYetInCrosswalk: officialIndicatorCount - linkedCodes.length,
     verifiedCovered: linkedCodes.filter(item => item.status === 'covered').length
   };
 });
