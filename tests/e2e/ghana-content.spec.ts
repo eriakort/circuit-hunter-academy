@@ -378,3 +378,70 @@ test('Ghana JHS 3 Science Humans and the Environment strand opens all five curri
   await expect(page.locator('main')).toContainText('Waste is material that people discard');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+const openBasic7ScienceVisual = async (
+  page: Page,
+  missionTitle: string,
+  completedPrerequisites: string[] = []
+) => {
+  await enterGhana(page, 'ghjhs1', 'ghjhs1science');
+
+  // Keep the real mission gates intact while seeding the prerequisite state
+  // needed to exercise later lessons independently.
+  if (completedPrerequisites.length > 0) {
+    await page.evaluate((missionIds) => {
+      const saveKey = 'circuit-hunter-academy-v2:ghana-nacca';
+      const rawSave = localStorage.getItem(saveKey);
+      if (!rawSave) throw new Error('Ghana curriculum save was not created');
+      const save = JSON.parse(rawSave);
+      save.cleared = {
+        ...(save.cleared || {}),
+        ...Object.fromEntries(missionIds.map((id) => [id, true]))
+      };
+      localStorage.setItem(saveKey, JSON.stringify(save));
+    }, completedPrerequisites);
+    await page.reload();
+  }
+
+  await page.locator('.mcard').filter({ hasText: missionTitle }).click();
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await expect(page.getByTestId('ghana-science-visual')).toBeVisible();
+};
+
+test('Basic 7 states of matter visual responds to temperature and phase controls', async ({ page }) => {
+  await openBasic7ScienceVisual(page, 'The Materials Explorer');
+  const slider = page.getByLabel('Temperature model');
+  await slider.fill('110');
+  await expect(page.locator('.gh-jhs1-science-readout')).toContainText('Gas');
+  await page.getByRole('button', { name: 'Solid', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout')).toContainText('Solid');
+  await expect(page.locator('.ghana-science-visual__art svg')).toHaveAttribute('aria-label', /Particle model/);
+});
+
+test('Basic 7 important liquids visual changes explanation for each liquid', async ({ page }) => {
+  await openBasic7ScienceVisual(page, 'The Life-Giving Liquids Guardian', ['gh-jhs1-science-materials-states']);
+  await page.getByRole('button', { name: 'Blood', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout')).toContainText('oxygen and nutrients');
+  await page.getByRole('button', { name: 'Plant sap', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout')).toContainText('roots');
+  await page.getByRole('button', { name: 'Household liquids', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout')).toContainText('Never taste an unknown liquid');
+});
+
+test('Basic 7 everyday materials visual compares properties and local uses', async ({ page }) => {
+  await openBasic7ScienceVisual(page, 'The Everyday Materials Engineer', ['gh-jhs1-science-materials-states', 'gh-jhs1-science-importance-liquids']);
+  await page.getByRole('button', { name: 'Wood', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout')).toContainText('desks, stools and furniture');
+  await page.getByRole('button', { name: 'Glass', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout')).toContainText('lets light pass through');
+});
+
+test('Basic 7 living cell visual explores plant and animal cell structures', async ({ page }) => {
+  await openBasic7ScienceVisual(page, 'The Living Cell Investigator');
+  await page.getByRole('button', { name: 'Chloroplast', exact: true }).click();
+  await expect(page.locator('.gh-jhs1-science-readout')).toContainText('photosynthesis');
+  await page.getByRole('button', { name: 'Animal cell', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Cell wall', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Cell membrane', exact: true })).toBeVisible();
+});

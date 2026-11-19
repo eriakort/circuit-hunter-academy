@@ -1773,3 +1773,18 @@ table.itv-ref td:first-child{font-weight:700}
   .ghana-science-visual__art .gh-science-motion{animation:none!important;transition:none!important}
   .ghana-science-visual__control{transition:none!important}
 }
+
+/* Basic 7 Ghana Science interactive teaching controls. */
+.gh-jhs1-science-interaction{display:grid;gap:10px;width:100%;padding:8px 2px}
+.gh-jhs1-science-interaction label{font-size:13px;color:var(--text)}
+.gh-jhs1-science-interaction input[type="range"]{width:100%;accent-color:var(--data);cursor:pointer}
+.gh-jhs1-science-choices{display:flex;flex-wrap:wrap;gap:7px}
+.gh-jhs1-science-choice{min-height:36px;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--text);font:600 12px var(--body);cursor:pointer}
+.gh-jhs1-science-choice.is-active{background:var(--data);border-color:var(--data);color:var(--ink)}
+.gh-jhs1-science-choice:focus-visible,.gh-jhs1-science-interaction input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.gh-jhs1-science-readout{padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-size:13px;line-height:1.55;color:var(--text)}
+.gh-jhs1-science-readout p{margin:5px 0 0;color:var(--muted)}
+.ghana-science-visual__art .gh-science-motion{animation:gh-science-drift 2.8s ease-in-out infinite alternate;animation-play-state:paused}
+@keyframes gh-science-drift{from{transform:translateY(0)}to{transform:translateY(-5px)}}
+@media(max-width:600px){.gh-jhs1-science-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.gh-jhs1-science-choice{width:100%}}
+@media(prefers-reduced-motion:reduce){.ghana-science-visual__art .gh-science-motion{animation:none!important}}
