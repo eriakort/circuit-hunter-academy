@@ -1245,7 +1245,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     teachingSceneEvidence: 'Candidate: farming-systems scene 3 notes that systems suit different conditions; merits, limits and reasons for use need deeper treatment.',
     assessmentEvidence: 'No current question explicitly compares the usefulness, merits and demerits of all farming systems.',
     teachingSceneRefs: ['gh-jhs1-science-farming-systems#scene-3'], assessmentQuestionRefs: []
-  },,
+  },
 
   // Basic 7 · Strand 4 — Forces and Energy, first inventory slice (NaCCA CCP, pp. 26–34).
   {
