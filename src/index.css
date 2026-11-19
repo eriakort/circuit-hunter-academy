@@ -1740,3 +1740,36 @@ table.g5m-formulas td:first-child{font-family:inherit;text-align:left}
 table.itv-ref td:first-child{font-weight:700}
 @media (max-width:720px){.itv-grid,.itv-row{grid-template-columns:1fr}}
 @media (max-width:420px){.itv-pair{grid-template-columns:1fr}.itv-pair>div+div{border-left:0;border-top:1px dashed var(--line)}.itv-heads{display:none}}
+
+
+/* Ghana JHS Science — reusable, low-bandwidth interactive visual frame. */
+.ghana-science-visual{
+  display:flex;flex-direction:column;gap:12px;padding:clamp(14px,2.5vw,20px);
+  border:1px solid var(--line);border-top:4px solid var(--data);border-radius:16px;
+  background:var(--panel);color:var(--text);min-width:0;
+}
+.ghana-science-visual__heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.ghana-science-visual__heading>div:first-child{min-width:0}
+.ghana-science-visual__kicker{display:block;margin-bottom:5px;color:var(--data);font:700 10px/1.4 var(--mono);letter-spacing:.14em}
+.ghana-science-visual__heading h3{font-size:clamp(17px,2.5vw,22px);margin:0 0 5px}
+.ghana-science-visual__heading p,.ghana-science-visual__caption,.ghana-science-visual__hint{font-size:13px;line-height:1.55;color:var(--muted)}
+.ghana-science-visual__controls{display:flex;flex-wrap:wrap;gap:7px;flex-shrink:0}
+.ghana-science-visual__control{min-height:38px;padding:7px 13px;border:1px solid var(--data);border-radius:999px;background:var(--data);color:var(--ink);font:700 12px var(--body);cursor:pointer}
+.ghana-science-visual__control--secondary{background:transparent;color:var(--text);border-color:var(--line)}
+.ghana-science-visual__control:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.ghana-science-visual__art{display:grid;place-items:center;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:12px;padding:clamp(8px,2vw,16px);background:var(--panel2)}
+.ghana-science-visual__art svg{display:block;width:100%;height:auto;max-height:420px}
+.ghana-science-visual__art[data-playing="true"] .gh-science-motion{animation-play-state:running}
+.ghana-science-visual__art[data-playing="false"] .gh-science-motion{animation-play-state:paused}
+.ghana-science-visual__caption{margin:0}
+.ghana-science-visual__hint{margin:0;font-size:11px}
+@media(max-width:600px){
+  .ghana-science-visual__heading{flex-direction:column}
+  .ghana-science-visual__controls{width:100%}
+  .ghana-science-visual__control{flex:1}
+  .ghana-science-visual__art{padding:6px}
+}
+@media(prefers-reduced-motion:reduce){
+  .ghana-science-visual__art .gh-science-motion{animation:none!important;transition:none!important}
+  .ghana-science-visual__control{transition:none!important}
+}
