@@ -19,7 +19,7 @@ const lesson = (text: string) => ({ who: 's' as const, text });
 
 export const GHANA_JHS3_SCIENCE_FORCES_ENERGY_MISSIONS: Mission[] = [
   {
-    id: 'gh-jhs3-science-energy-light', arc: 0, sec: 'Forces and Energy', pages: 'NaCCA CCP · JHS 3 Science · B9.4.1.1.1–B9.4.1.3.1',
+    id: 'gh-jhs3-science-energy-light', arc: 0, sec: 'Forces and Energy', pages: 'NaCCA CCP · JHS 3 Science · B9.4.1.1.1, B9.4.1.1.2, B9.4.1.2.1–B9.4.1.2.4, B9.4.1.3.1',
     hue: 48, horns: 2, eyes: 2, title: 'The Energy Conservation Guardian',
     topic: 'Explain ways to conserve energy, calculate electrical energy use, understand image formation and shadows, and describe refraction.',
     demon: 'The Energy Waster', tech: 'Energy Form · First Technique: Save and Transform',
