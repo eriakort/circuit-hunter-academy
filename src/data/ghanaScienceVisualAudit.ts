@@ -59,7 +59,8 @@ const DEDICATED_GHANA_SCIENCE_VISUAL_MISSIONS = new Set([
   'gh-jhs2-science-rocks-soil-formation',
   'gh-jhs3-science-binary-compounds',
   'gh-jhs3-science-acids-bases-salts',
-  'gh-jhs3-science-chemical-bonding'
+  'gh-jhs3-science-chemical-bonding',
+  'gh-jhs3-science-specialised-plant-cells'
 ]);
 
 const SCIENCE_GRADE_BY_SUBJECT: Record<string, GhanaScienceVisualAuditRow['grade']> = {
