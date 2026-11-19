@@ -199,9 +199,9 @@ test('Ghana JHS 3 Mathematics Handling Data strand opens its missions and data v
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
 
-test('Ghana JHS 1 Science Diversity of Matter pilot opens its missions', async ({ page }) => {
+test('Ghana JHS 1 Science mission list opens its lessons', async ({ page }) => {
   await enterGhana(page, 'ghjhs1', 'ghjhs1science');
-  await expect(page.locator('.mcard')).toHaveCount(3);
+  await expect(page.locator('.mcard')).toHaveCount(4);
   await expect(page.locator('.mcard').first()).toContainText('The Materials Explorer');
   await expect(page.locator('.mcard').last()).toContainText('The Living Cell Investigator');
   await page.locator('.mcard').first().click();
