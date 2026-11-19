@@ -141,6 +141,64 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     assessmentEvidence: 'Candidate: gh-jhs1-science-living-cells quiz[1..3] checks cell structures but does not yet verify every plant-cell organelle function.',
     teachingSceneRefs: ['gh-jhs1-science-living-cells#scene-1','gh-jhs1-science-living-cells#scene-2'], assessmentQuestionRefs: ['gh-jhs1-science-living-cells#quiz-1','gh-jhs1-science-living-cells#quiz-2','gh-jhs1-science-living-cells#quiz-3']
   },
+  // Basic 7 · Strand 5 — Humans and the Environment (NaCCA CCP, pp. 44–50).
+  {
+    indicatorCode: 'B7.5.1.1.1', grade: 7, strand: 5, missionIds: ['gh-jhs1-science-waste-management'],
+    status: 'needs-review', officialIndicatorText: 'Apply information from research on good management practices of waste to make the environment clean.', sourcePdfPage: 84,
+    teachingSceneEvidence: 'Candidate: waste-management scenes 0–3 cover waste types, the 3Rs, sorting, composting and planning a safe clean-community project; learner-led research and project reporting need explicit evidence.',
+    assessmentEvidence: 'Candidate: waste-management quizzes 0–4 assess waste reduction, recycling, hazardous waste, compost and safe project planning; research findings and a project outcome report are not directly assessed.',
+    teachingSceneRefs: ['gh-jhs1-science-waste-management#scene-0','gh-jhs1-science-waste-management#scene-1','gh-jhs1-science-waste-management#scene-2','gh-jhs1-science-waste-management#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-waste-management#quiz-0','gh-jhs1-science-waste-management#quiz-1','gh-jhs1-science-waste-management#quiz-2','gh-jhs1-science-waste-management#quiz-3','gh-jhs1-science-waste-management#quiz-4']
+  },
+  {
+    indicatorCode: 'B7.5.2.1.1', grade: 7, strand: 5, missionIds: ['gh-jhs1-science-human-health'],
+    status: 'needs-review', officialIndicatorText: 'Explain the relationship between food nutrients and common deficiency diseases and how they affect humans.', sourcePdfPage: 85,
+    teachingSceneEvidence: 'Candidate: human-health scenes 0–1 explain nutrient roles and connect vitamin A, C and D, protein and iron deficiencies to health effects; the full range of nutrient examples and disease prevention needs review.',
+    assessmentEvidence: 'Candidate: human-health quizzes 0–2 assess protein, scurvy and night blindness; other deficiency diseases and their symptoms, effects and prevention need direct assessment.',
+    teachingSceneRefs: ['gh-jhs1-science-human-health#scene-0','gh-jhs1-science-human-health#scene-1'],
+    assessmentQuestionRefs: ['gh-jhs1-science-human-health#quiz-0','gh-jhs1-science-human-health#quiz-1','gh-jhs1-science-human-health#quiz-2']
+  },
+  {
+    indicatorCode: 'B7.5.2.2.1', grade: 7, strand: 5, missionIds: ['gh-jhs1-science-human-health'],
+    status: 'needs-review', officialIndicatorText: 'Explain the nature of viral diseases with special emphasis on coronavirus disease (COVID-19), Ebola and H1N1, their causes, symptoms, effects on humans and prevention.', sourcePdfPage: 86,
+    teachingSceneEvidence: 'Candidate: human-health scenes 2–3 introduce viral disease, selected examples, transmission and prevention; disease-specific causes, symptoms and effects need fuller treatment.',
+    assessmentEvidence: 'Candidate: human-health quizzes 3–4 check viral cause and general respiratory-infection prevention; Ebola, H1N1, transmission routes, symptoms and community management are not directly assessed.',
+    teachingSceneRefs: ['gh-jhs1-science-human-health#scene-2','gh-jhs1-science-human-health#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-human-health#quiz-3','gh-jhs1-science-human-health#quiz-4']
+  },
+  {
+    indicatorCode: 'B7.5.3.1.1', grade: 7, strand: 5, missionIds: ['gh-jhs1-science-science-industry'],
+    status: 'needs-review', officialIndicatorText: 'Discover and explain how careers in science can improve human conditions and relate these careers to the work of great national and international scientists and science educators.', sourcePdfPage: 87,
+    teachingSceneEvidence: 'Candidate: science-industry scenes 0–3 connect science careers to community needs and introduce Ghanaian and international scientists and science educators; learner research and portfolio work need verification.',
+    assessmentEvidence: 'Candidate: science-industry quizzes 0–4 assess career roles, evidence, a Ghanaian scientist and responsible research; a portfolio and presentation linking national and international role models is not directly assessed.',
+    teachingSceneRefs: ['gh-jhs1-science-science-industry#scene-0','gh-jhs1-science-science-industry#scene-1','gh-jhs1-science-science-industry#scene-2','gh-jhs1-science-science-industry#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-science-industry#quiz-0','gh-jhs1-science-science-industry#quiz-1','gh-jhs1-science-science-industry#quiz-2','gh-jhs1-science-science-industry#quiz-3','gh-jhs1-science-science-industry#quiz-4']
+  },
+  {
+    indicatorCode: 'B7.5.4.1.1', grade: 7, strand: 5, missionIds: ['gh-jhs1-science-climate-green-economy'],
+    status: 'needs-review', officialIndicatorText: 'Search for information on ways sustainable energy choices and scientific ideas are used to protect the environment.', sourcePdfPage: 88,
+    teachingSceneEvidence: 'Candidate: climate and green-economy scenes 0–3 explain the greenhouse effect, human-driven climate change, sustainable energy choices and community projects; a research-led local energy investigation needs explicit evidence.',
+    assessmentEvidence: 'Candidate: climate and green-economy quizzes 0–4 assess greenhouse science, fossil fuels, sustainable energy and environmental projects; research quality and a designed local energy project are not directly assessed.',
+    teachingSceneRefs: ['gh-jhs1-science-climate-green-economy#scene-0','gh-jhs1-science-climate-green-economy#scene-1','gh-jhs1-science-climate-green-economy#scene-2','gh-jhs1-science-climate-green-economy#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-climate-green-economy#quiz-0','gh-jhs1-science-climate-green-economy#quiz-1','gh-jhs1-science-climate-green-economy#quiz-2','gh-jhs1-science-climate-green-economy#quiz-3','gh-jhs1-science-climate-green-economy#quiz-4']
+  },
+  {
+    indicatorCode: 'B7.5.5.1.1', grade: 7, strand: 5, missionIds: ['gh-jhs1-science-understanding-environment'],
+    status: 'needs-review', officialIndicatorText: 'List and describe the different types of plants and animals that live in different landforms such as plateau, plain, mountain and valley, with emphasis on landforms in Ghana.', sourcePdfPage: 89,
+    teachingSceneEvidence: 'Candidate: environment scenes 0–1 introduce Ghanaian landforms and plant/animal adaptations; examples across specific Ghanaian landforms and a complete species comparison need review.',
+    assessmentEvidence: 'Candidate: environment quizzes 0–1 assess landforms and plant adaptations; identification and description of plants and animals across Ghanaian landforms need broader assessment.',
+    teachingSceneRefs: ['gh-jhs1-science-understanding-environment#scene-0','gh-jhs1-science-understanding-environment#scene-1'],
+    assessmentQuestionRefs: ['gh-jhs1-science-understanding-environment#quiz-0','gh-jhs1-science-understanding-environment#quiz-1']
+  },
+  {
+    indicatorCode: 'B7.5.5.1.2', grade: 7, strand: 5, missionIds: ['gh-jhs1-science-understanding-environment'],
+    status: 'needs-review', officialIndicatorText: 'Explain the nature of associations that exist among plants and animals in different landforms and their mechanisms for survival.', sourcePdfPage: 90,
+    teachingSceneEvidence: 'Candidate: environment scenes 1–3 explain adaptations, mutualism, parasitism, commensalism and habitat observation; examples tied to particular landforms and survival mechanisms need review.',
+    assessmentEvidence: 'Candidate: environment quizzes 2–4 assess mutualism, parasitism and responsible habitat study; associations across different landforms and their survival mechanisms need fuller assessment.',
+    teachingSceneRefs: ['gh-jhs1-science-understanding-environment#scene-1','gh-jhs1-science-understanding-environment#scene-2','gh-jhs1-science-understanding-environment#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-understanding-environment#quiz-2','gh-jhs1-science-understanding-environment#quiz-3','gh-jhs1-science-understanding-environment#quiz-4']
+  },
+
   {
     "indicatorCode": "B8.2.1.1.1",
     "grade": 8,
