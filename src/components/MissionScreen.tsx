@@ -270,7 +270,7 @@ export const MissionScreen: React.FC = () => {
           {isGhana && ['gh-jhs1-science-energy-forms', 'gh-jhs1-science-electricity-generation', 'gh-jhs1-science-energy-conversion', 'gh-jhs1-science-force-motion', 'gh-jhs1-science-agricultural-tools'].includes(currentMission.id) && currentSceneIndex === 1 && (
             <GhanaJhs1ForcesEnergyVisual missionId={currentMission.id} lang={lang} />
           )}
-          {isGhana && ['gh-jhs1-science-waste-management', 'gh-jhs1-science-human-health', 'gh-jhs1-science-science-industry', 'gh-jhs1-science-climate-green-economy'].includes(currentMission.id) && currentSceneIndex === 1 && (
+          {isGhana && ['gh-jhs1-science-waste-management', 'gh-jhs1-science-human-health', 'gh-jhs1-science-science-industry', 'gh-jhs1-science-climate-green-economy', 'gh-jhs1-science-understanding-environment'].includes(currentMission.id) && currentSceneIndex === 1 && (
             <GhanaJhs1HumansEnvironmentVisual missionId={currentMission.id} lang={lang} />
           )}
 

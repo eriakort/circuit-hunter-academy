@@ -83,10 +83,33 @@ const Climate:React.FC<{lang:Language}>=({lang})=>{
  </GhanaScienceVisual>;
 };
 
+
+const Habitat:React.FC<{lang:Language}>=({lang})=>{
+ const [place,setPlace]=useState('forest');
+ const [relation,setRelation]=useState('mutualism');
+ const habitats:Record<string,{name:string,conditions:string,adaptation:string,example:string}> = {
+ forest:{name:tx(lang,'Moist forest','Foresta umida'),conditions:tx(lang,'Often shaded, with high rainfall and many layers of vegetation.','Spesso ombreggiata, con piogge abbondanti e diversi strati di vegetazione.'),adaptation:tx(lang,'Broad leaves can capture light; some trees have buttress roots for support in shallow soils.','Le foglie ampie possono catturare la luce; alcuni alberi hanno radici a contrafforte per sostenersi in suoli poco profondi.'),example:tx(lang,'Tree, climber, insect and bird communities.','Comunità di alberi, piante rampicanti, insetti e uccelli.')},
+ savanna:{name:tx(lang,'Guinea savanna','Savana della Guinea'),conditions:tx(lang,'Open grassland with scattered trees and a distinct wet and dry season.','Prateria aperta con alberi sparsi e una stagione umida e una secca ben distinte.'),adaptation:tx(lang,'Some grasses regrow from the base; some trees have deep roots and small leaves that reduce water loss.','Alcune erbe ricrescono dalla base; alcuni alberi hanno radici profonde e foglie piccole che riducono la perdita d’acqua.'),example:tx(lang,'Grasses, drought-tolerant trees, grazing animals and insects.','Erbe, alberi resistenti alla siccità, animali al pascolo e insetti.')},
+ wetland:{name:tx(lang,'River and wetland','Fiume e zona umida'),conditions:tx(lang,'Waterlogged soils or flowing water provide habitats for aquatic and waterside organisms.','Suoli saturi d’acqua o acque correnti offrono habitat a organismi acquatici e delle rive.'),adaptation:tx(lang,'Some plants have flexible stems or air spaces; fish have gills for extracting oxygen from water.','Alcune piante hanno fusti flessibili o spazi aeriferi; i pesci hanno branchie per estrarre ossigeno dall’acqua.'),example:tx(lang,'Reeds, water plants, fish, frogs and water birds.','Canneti, piante acquatiche, pesci, rane e uccelli acquatici.')},
+ coast:{name:tx(lang,'Coastal and mangrove area','Area costiera e di mangrovie'),conditions:tx(lang,'Tidal water, salty conditions and shifting sediments shape coastal habitats.','Maree, salinità e sedimenti mobili caratterizzano gli habitat costieri.'),adaptation:tx(lang,'Mangroves tolerate salty conditions; specialised roots help anchor them in soft mud.','Le mangrovie tollerano la salinità; radici specializzate le ancorano nel fango morbido.'),example:tx(lang,'Mangroves, crabs, molluscs and coastal birds.','Mangrovie, granchi, molluschi e uccelli costieri.')}
+ };
+ const relations:Record<string,{name:string,meaning:string,example:string}> = {
+ mutualism:{name:tx(lang,'Mutualism','Mutualismo'),meaning:tx(lang,'Both organisms benefit.','Entrambi gli organismi traggono beneficio.'),example:tx(lang,'A pollinating insect gets nectar while helping a flower transfer pollen.','Un insetto impollinatore riceve nettare e aiuta il fiore a trasferire il polline.')},
+ parasitism:{name:tx(lang,'Parasitism','Parassitismo'),meaning:tx(lang,'One organism benefits while the host is harmed.','Un organismo trae beneficio mentre l’ospite subisce un danno.'),example:tx(lang,'A tick feeds on the blood of a host animal.','Una zecca si nutre del sangue di un animale ospite.')},
+ commensalism:{name:tx(lang,'Commensalism','Commensalismo'),meaning:tx(lang,'One organism benefits while the other is not significantly helped or harmed.','Un organismo trae beneficio mentre l’altro non riceve un beneficio né un danno significativo.'),example:tx(lang,'An epiphyte uses a tree for support without taking food from it.','Un’epifita usa un albero come sostegno senza sottrargli nutrimento.')}
+ };
+ const h=habitats[place],r=relations[relation];
+ return <GhanaScienceVisual title={tx(lang,'The Habitat and Adaptation Ranger','Il ranger degli habitat e degli adattamenti')} description={tx(lang,'Explore Ghanaian habitats, survival adaptations and relationships among organisms.','Esplora gli habitat del Ghana, gli adattamenti per la sopravvivenza e le relazioni tra organismi.')} lang={lang} caption={tx(lang,'Observe living things carefully, record evidence and protect organisms and their habitats.','Osserva attentamente gli esseri viventi, registra le prove e proteggi organismi e habitat.')} >
+ <svg viewBox="0 0 300 96" role="img" aria-label={tx(lang,'Illustration of four Ghanaian habitats','Illustrazione di quattro habitat del Ghana')}><path d="M4 70Q40 38 76 70T148 70T220 70T296 70V92H4Z" fill="#d5b56b"/><path d="M4 73Q42 58 78 73T150 73T222 73T296 73" fill="none" stroke="#438caa" strokeWidth="5"/><g fill="#548d57" stroke="#326b65" strokeWidth="2"><path d="M34 68V27m-17 20q17-28 34 0m-31-8q14-22 28 0"/><path d="M105 68V39m-13 12q13-20 26 0"/><path d="M181 68V24m-16 25q16-27 32 0"/><path d="M251 68V32m-15 17q15-23 30 0"/></g><g fill="#e9b949"><circle cx="34" cy="22" r="7"/><circle cx="105" cy="34" r="6"/><circle cx="181" cy="18" r="7"/><circle cx="251" cy="26" r="6"/></g></svg>
+ <div className="gh-jhs1-science-interaction"><h4>{tx(lang,'Choose a Ghanaian habitat','Scegli un habitat del Ghana')}</h4><div className="gh-jhs1-science-choices">{Object.entries(habitats).map(([k,v])=><Choice key={k} active={place===k} onClick={()=>setPlace(k)}>{v.name}</Choice>)}</div><div className="gh-jhs1-science-readout" aria-live="polite"><strong>{h.name}</strong><p><b>{tx(lang,'Conditions','Condizioni')}:</b> {h.conditions}</p><p><b>{tx(lang,'Possible adaptations','Possibili adattamenti')}:</b> {h.adaptation}</p><p><b>{tx(lang,'Living things','Organismi')}:</b> {h.example}</p></div><h4>{tx(lang,'Explore an organism relationship','Esplora una relazione tra organismi')}</h4><div className="gh-jhs1-science-choices">{Object.entries(relations).map(([k,v])=><Choice key={k} active={relation===k} onClick={()=>setRelation(k)}>{v.name}</Choice>)}</div><div className="gh-jhs1-science-readout" aria-live="polite"><strong>{r.name}</strong><p>{r.meaning}</p><p>{r.example}</p></div></div>
+ </GhanaScienceVisual>;
+};
+
 export const GhanaJhs1HumansEnvironmentVisual:React.FC<Props>=({missionId,lang})=>{
  if(missionId==='gh-jhs1-science-waste-management') return <Waste lang={lang}/>;
  if(missionId==='gh-jhs1-science-human-health') return <Health lang={lang}/>;
  if(missionId==='gh-jhs1-science-science-industry') return <Careers lang={lang}/>;
  if(missionId==='gh-jhs1-science-climate-green-economy') return <Climate lang={lang}/>;
+ if(missionId==='gh-jhs1-science-understanding-environment') return <Habitat lang={lang}/>;
  return null;
 };
