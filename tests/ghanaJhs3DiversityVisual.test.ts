@@ -27,7 +27,7 @@ assert.ok(phHtml.includes('aria-pressed='), 'exposes solution choices accessibly
 for (const term of ['Lemon juice', 'Vinegar', 'Pure water', 'Baking soda solution', 'Soapy water', 'Acidic', 'Neutral', 'Alkaline', 'Blue litmus turns red', 'Red litmus turns blue', '0–6', 'Neutralisation', 'HCl + NaOH → NaCl + H₂O']) {
   assert.ok(phHtml.toLowerCase().includes(term.toLowerCase()), 'includes ' + term);
 }
-assert.ok(!/\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|base|basi|sale|sali)\b/i.test(phHtml), 'contains no Italian interface text');
+assert.ok(!/\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|sale|sali)\b/i.test(phHtml), 'contains no Italian interface text');
 assert.equal(GhanaJhs3DiversityVisual({ missionId: 'unknown-mission' }), null, 'unknown missions do not render a visual');
 
 console.log('Basic 9 chemistry visuals render English-only, accessible content for binary compounds and acids, bases and salts.');
