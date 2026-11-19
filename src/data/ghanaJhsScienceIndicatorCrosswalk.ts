@@ -600,6 +600,44 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
     "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
   },
+  // Basic 8 · uncovered indicators in Strands 3–5 (NaCCA CCP).
+  {
+    indicatorCode: 'B8.3.1.1.2', grade: 8, strand: 3, missionIds: ['gh-jhs2-science-teeth-dental-health'],
+    status: 'needs-review', officialIndicatorText: 'Discuss the functions of the different types of teeth such as incisors, canines, premolars, and molars.', sourcePdfPage: 105,
+    teachingSceneEvidence: 'Candidate: teeth and dental-health mission covers mammalian tooth structure and oral health; verify that the functions of incisors, canines, premolars and molars are explicitly taught and illustrated.',
+    assessmentEvidence: 'Candidate: dental-health questions may cover tooth structure and care; classification and function of all four tooth types needs direct question-level verification.'
+  },
+  {
+    indicatorCode: 'B8.4.1.1.2', grade: 8, strand: 4, missionIds: ['gh-jhs2-science-energy-sources-heat'],
+    status: 'needs-review', officialIndicatorText: 'Discuss the importance of conversion of energy.', sourcePdfPage: 110,
+    teachingSceneEvidence: 'Candidate: energy-sources mission introduces energy conversion; verify explicit explanation of hydropower generation from a dammed river and harnessing natural energy forms.',
+    assessmentEvidence: 'Candidate: energy assessment needs explicit items on the importance of energy conversion, hydropower processes and natural energy harnessing.'
+  },
+  {
+    indicatorCode: 'B8.4.1.2.1', grade: 8, strand: 4, missionIds: ['gh-jhs2-science-energy-sources-heat'],
+    status: 'needs-review', officialIndicatorText: 'Describe renewable and non-renewable forms of energy.', sourcePdfPage: 110,
+    teachingSceneEvidence: 'Candidate: energy-sources mission covers energy sources; verify classification and examples including wind, coal, hydro, crude oil, natural gas, solar and biogas.',
+    assessmentEvidence: 'Candidate: energy assessment should directly classify renewable and non-renewable sources and explain production from a renewable source.'
+  },
+  {
+    indicatorCode: 'B8.4.1.2.2', grade: 8, strand: 4, missionIds: ['gh-jhs2-science-energy-sources-heat'],
+    status: 'needs-review', officialIndicatorText: 'Demonstrate how to manage sources of renewable energy sustainably.', sourcePdfPage: 110,
+    teachingSceneEvidence: 'Candidate: energy-sources mission introduces sustainable energy; verify learner research on management stages and comparison of challenges for different renewable sources.',
+    assessmentEvidence: 'Candidate: no verified assessment yet demonstrates sustainable management planning or comparison of renewable-energy management challenges.'
+  },
+  {
+    indicatorCode: 'B8.4.4.1.2', grade: 8, strand: 4, missionIds: ['gh-jhs2-science-magnetism-force-machines'],
+    status: 'needs-review', officialIndicatorText: 'Explain the relationship between magnetic force and Newton’s Second Law of motion; and show the law’s application to life.', sourcePdfPage: 115,
+    teachingSceneEvidence: 'Candidate: magnetism mission introduces magnetic force and applications; verify explicit Newton’s Second Law explanation and an experiment connecting force and motion.',
+    assessmentEvidence: 'Candidate: magnetism assessment requires direct items on the relationship between magnetic force and Newton’s Second Law, including everyday applications.'
+  },
+  {
+    indicatorCode: 'B8.5.2.1.2', grade: 8, strand: 5, missionIds: ['gh-jhs2-science-human-health'],
+    status: 'needs-review', officialIndicatorText: 'Analyse the risk factors of communicable diseases.', sourcePdfPage: 119,
+    teachingSceneEvidence: 'Candidate: human-health mission introduces communicable diseases; verify learner research on risk factors and awareness-raising activities specified by the curriculum.',
+    assessmentEvidence: 'Candidate: human-health assessment needs direct scenario-based analysis of communicable-disease risk factors and prevention choices.'
+  },
+
   {
     "indicatorCode": "B9.1.1.1.1",
     "grade": 9,
