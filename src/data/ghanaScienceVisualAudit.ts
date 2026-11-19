@@ -12,6 +12,13 @@ export interface GhanaScienceVisualAuditRow {
   interactiveScenes: number;
 }
 
+const DEDICATED_GHANA_SCIENCE_VISUAL_MISSIONS = new Set([
+  'gh-jhs1-science-materials-states',
+  'gh-jhs1-science-importance-liquids',
+  'gh-jhs1-science-materials-uses',
+  'gh-jhs1-science-living-cells'
+]);
+
 const SCIENCE_GRADE_BY_SUBJECT: Record<string, GhanaScienceVisualAuditRow['grade']> = {
   ghjhs1science: 'Basic 7',
   ghjhs2science: 'Basic 8',
@@ -29,11 +36,12 @@ export const getGhanaScienceVisualAudit = (): GhanaScienceVisualAuditRow[] =>
     const grade = subjectId ? SCIENCE_GRADE_BY_SUBJECT[subjectId] : undefined;
     if (!grade) return [];
 
+    const hasDedicatedInteractiveVisual = DEDICATED_GHANA_SCIENCE_VISUAL_MISSIONS.has(mission.id);
     const instructionalVisualScenes = mission.scenes.filter(
       scene => typeof scene.vis === 'string' && scene.vis.trim() !== '' && scene.vis !== 'demon'
-    ).length;
+    ).length + (hasDedicatedInteractiveVisual ? 1 : 0);
     const genericVisualScenes = mission.scenes.filter(scene => scene.vis === 'demon').length;
-    const interactiveScenes = mission.scenes.filter(scene => Boolean(scene.type || scene.init)).length;
+    const interactiveScenes = mission.scenes.filter(scene => Boolean(scene.type || scene.init)).length + (hasDedicatedInteractiveVisual ? 1 : 0);
 
     return [{
       grade,
