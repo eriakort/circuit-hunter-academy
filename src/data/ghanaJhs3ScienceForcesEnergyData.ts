@@ -19,7 +19,7 @@ const lesson = (text: string) => ({ who: 's' as const, text });
 
 export const GHANA_JHS3_SCIENCE_FORCES_ENERGY_MISSIONS: Mission[] = [
   {
-    id: 'gh-jhs3-science-energy-light', arc: 0, sec: 'Forces and Energy', pages: 'NaCCA CCP · JHS 3 Science · B9.4.1.1.1, B9.4.1.1.2, B9.4.1.2.1–B9.4.1.2.4, B9.4.1.3.1',
+    id: 'gh-jhs3-science-energy-light', arc: 0, sec: 'Forces and Energy', pages: 'NaCCA CCP · JHS 3 Science · B9.4.1.1.1, B9.4.1.1.2, B9.4.1.2.1, B9.4.1.2.2, B9.4.1.2.3, B9.4.1.2.4, B9.4.1.3.1',
     hue: 48, horns: 2, eyes: 2, title: 'The Energy Conservation Guardian',
     topic: 'Explain ways to conserve energy, calculate electrical energy use, understand image formation and shadows, and describe refraction.',
     demon: 'The Energy Waster', tech: 'Energy Form · First Technique: Save and Transform',
@@ -27,7 +27,9 @@ export const GHANA_JHS3_SCIENCE_FORCES_ENERGY_MISSIONS: Mission[] = [
       lesson('<p><b>Energy</b> is the ability to cause change or do work. It appears in forms such as electrical, chemical, light, sound, thermal and kinetic energy. Energy can be transferred or changed from one form to another. It is not created from nothing or destroyed; the total amount is conserved in a closed system.</p>'),
       lesson('<p>We conserve energy by reducing waste: switch off lights and appliances when they are not needed, use efficient lamps and appliances, avoid leaving devices on standby, and iron clothes in batches. These actions can reduce electricity bills and the demand placed on power stations and the environment.</p>'),
       lesson('<p>Electrical power is the rate of transferring electrical energy. For a simple circuit, <b>P = IV</b>, where power P is in watts, current I in amperes and voltage V in volts. Electrical energy in kilowatt-hours is <b>energy (kWh) = power (kW) × time (hours)</b>. A 1 kW appliance used for 3 hours consumes 3 kWh.</p>'),
-      lesson('<p>Light travels in straight lines through a uniform transparent medium. An opaque object blocks light and forms a shadow: the dark central region is the <b>umbra</b>; a partly shaded region is the <b>penumbra</b>. A pinhole camera forms an inverted image because light travels in straight lines. When light passes between materials such as air and water, its speed changes and its direction may bend; this is <b>refraction</b>. Refraction helps explain why a straw looks bent in water and how lenses form images.</p>'),
+      lesson('<p>Light travels in straight lines through a uniform transparent medium. A <b>pinhole camera</b> is a closed box with a tiny aperture opposite a translucent screen. Light from each point on the object travels through the hole in straight lines: rays from the top reach the lower part of the screen and rays from the bottom reach the upper part, so the image is inverted. A smaller pinhole usually gives a sharper but dimmer image; a larger hole makes a brighter but blurrier image. Never look directly at the Sun through a pinhole camera.</p>'),
+      lesson('<p>A <b>shadow</b> forms when an opaque object blocks light from a source. The fully dark central region is the <b>umbra</b>; the partly shaded region is the <b>penumbra</b>, which appears when the source has a noticeable size. Try a safe investigation with a torch, card and screen: move the object closer to the light and then closer to the screen, and observe how the shadow size and sharpness change. Keep the light source at a safe distance and do not use the Sun or lasers.</p>'),
+      lesson('<p>When light passes between materials such as air and water, its speed changes and its direction may bend; this is <b>refraction</b>. Refraction helps explain why a straw looks bent in water and how lenses form images. Keep the ideas distinct: a pinhole camera image is formed by straight-line travel through a small aperture, a shadow is formed by blocked light, and refraction is bending as light changes medium.</p>'),
       { who: 'd', vis: 'demon', text: 'I have left appliances running and scrambled the light rays. Calculate the energy used, then trace the rays to explain the shadow and the bent straw!' },
       { type: 'battle' }
     ],
@@ -82,7 +84,7 @@ export const GHANA_JHS3_SCIENCE_FORCES_ENERGY_MISSIONS: Mission[] = [
     ]
   },
   {
-    id: 'gh-jhs3-science-force-motion-pressure', arc: 3, sec: 'Forces and Energy', pages: 'NaCCA CCP · JHS 3 Science · B9.4.4.1.1–B9.4.4.2.1',
+    id: 'gh-jhs3-science-force-motion-pressure', arc: 3, sec: 'Forces and Energy', pages: 'NaCCA CCP · JHS 3 Science · B9.4.4.1.1, B9.4.4.1.2, B9.4.4.2.1',
     hue: 260, horns: 2, eyes: 2, title: 'The Force and Motion Strategist',
     topic: 'Explain pressure, relate force to area, apply Newton’s laws and calculate force using F = ma in everyday situations.',
     demon: 'The Motion Distorter', tech: 'Motion Form · Fourth Technique: Balance the Forces',
@@ -90,7 +92,8 @@ export const GHANA_JHS3_SCIENCE_FORCES_ENERGY_MISSIONS: Mission[] = [
       lesson('<p>A <b>force</b> is a push or pull. Forces can change an object’s speed, direction or shape. If the forces on an object are balanced, its motion does not change; if they are unbalanced, the object accelerates. Friction and air resistance oppose motion in many everyday situations.</p>'),
       lesson('<p><b>Pressure</b> is force acting per unit area: <b>pressure = force ÷ area</b>. For the same force, a smaller contact area creates greater pressure. This explains why a sharp blade cuts more easily than a blunt one and why wide tyres can reduce pressure on soft ground. Pressure in a fluid acts in all directions.</p>'),
       lesson('<p>Newton’s First Law describes inertia: an object remains at rest or moves at constant velocity in a straight line unless acted on by a resultant external force. Newton’s Second Law links resultant force, mass and acceleration: <b>F = ma</b>, with force in newtons, mass in kilograms and acceleration in metres per second squared.</p>'),
-      lesson('<p>Newton’s Third Law says that when one object exerts a force on another, the second exerts an equal-sized force in the opposite direction on the first. These action–reaction forces act on different objects. A person pushes the ground backwards while walking; the ground pushes the person forwards. A rocket pushes gas backwards and the gas pushes the rocket forwards.</p>'),
+      lesson('<p>Newton’s Third Law says that when object A exerts a force on object B, object B simultaneously exerts an equal-sized force in the opposite direction on object A. The forces act on <b>different objects</b>, so they do not cancel each other on one object. A person pushes the ground backwards while walking; the ground pushes the person forwards. A swimmer pushes water backwards and the water pushes the swimmer forwards. A rocket pushes exhaust gas backwards and the gas pushes the rocket forwards.</p>'),
+      lesson('<p><b>Try a safe demonstration:</b> place an inflated balloon (do not tie its neck) on a straw threaded through a taut horizontal string. Point the balloon opening backwards and release it. The escaping air is pushed backwards; the air pushes the balloon forwards along the string. Record the direction of the balloon and escaping air, then identify the two objects in the action–reaction pair. The forces are equal and opposite, but they act on different objects.</p>'),
       { who: 'd', vis: 'demon', text: 'I have mixed up action and reaction and hidden the resultant force. Work out the pressure and acceleration, then identify the force pairs!' },
       { type: 'battle' }
     ],
@@ -103,14 +106,15 @@ export const GHANA_JHS3_SCIENCE_FORCES_ENERGY_MISSIONS: Mission[] = [
     ]
   },
   {
-    id: 'gh-jhs3-science-agricultural-tools', arc: 4, sec: 'Forces and Energy', pages: 'NaCCA CCP · JHS 3 Science · B9.4.5.1.1–B9.4.5.1.2',
+    id: 'gh-jhs3-science-agricultural-tools', arc: 4, sec: 'Forces and Energy', pages: 'NaCCA CCP · JHS 3 Science · B9.4.5.1.1, B9.4.5.1.2, B9.4.5.1.3',
     hue: 112, horns: 2, eyes: 2, title: 'The Agricultural Tool Designer',
     topic: 'Identify materials, components, processes and safety precautions involved in designing and making simple agricultural tools.',
     demon: 'The Tool Tangle', tech: 'Maker Form · Fifth Technique: Build for the Field',
     scenes: [
       lesson('<p>Agricultural tools help farmers prepare soil, plant seeds, remove weeds, water crops and harvest produce. Examples include hoes, rakes, watering cans, hand trowels and simple seed planters. A good tool should be fit for its task, strong enough, comfortable to hold, repairable and affordable.</p>'),
       lesson('<p>Tools can be assembled from suitable materials. Handles may use well-finished wood or durable recycled material; working parts may use suitable metal; joints may use bolts, rivets, screws or strong bindings. Select materials for strength, durability, availability, cost and safe handling. Avoid sharp, rusty or contaminated scrap.</p>'),
-      lesson('<p>A design process begins by identifying the farm task and the user’s needs. Sketch the tool, label its parts, choose materials, measure and mark, cut and shape safely, join the parts, then test and improve the design. A hoe, for example, needs a secure connection between its blade and handle so the blade cannot detach during use.</p>'),
+      lesson('<p><b>Making a simple agricultural tool:</b> begin by identifying a real farm task, such as loosening soil or removing weeds. Sketch and label a small hand hoe or trowel; choose a suitable metal blade and a smooth, strong handle; measure and mark the parts; have a trained adult cut or shape the metal; smooth unsafe edges; make a secure handle joint using an appropriate fixing; and inspect the finished tool. Do not ask learners to heat, cut or drill metal without proper training, equipment and supervision.</p>'),
+      lesson('<p>Test the prototype safely on a small soil bed. Check that the handle is comfortable, the blade stays firmly attached, the tool does the intended job and no sharp burrs or splinters are exposed. Record what worked, what failed and one improvement. A simple design should be strong, repairable, affordable and suitable for the user; label the final drawing with materials, dimensions and joining method.</p>'),
       lesson('<p>Workshop safety matters: work under adult or teacher supervision, wear suitable eye and hand protection, clamp materials before cutting, use tools correctly, keep the work area clear and store sharp tools safely. Inspect finished tools for loose joints, sharp burrs and splinters. Never use damaged tools in the field.</p>'),
       { who: 'd', vis: 'demon', text: 'I have swapped the handles and blades and loosened the joints. Choose suitable materials, plan the assembly and make the tool safe for farm work!' },
       { type: 'battle' }
