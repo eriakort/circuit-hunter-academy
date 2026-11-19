@@ -195,9 +195,55 @@ const BondingExplorer: React.FC = () => {
   );
 };
 
+
+const PLANT_CELLS = [
+  { id: 'epidermal', name: 'Epidermal cells', structure: 'Closely packed cells form the plant surface. A waxy cuticle often covers the epidermis.', function: 'Protect the plant and help reduce water loss. Root hair cells absorb water and mineral ions.', clue: 'Protective covering', model: '▥ ▥ ▥ ▥ ▥' },
+  { id: 'guard', name: 'Guard cells', structure: 'A pair of curved cells surrounds a pore called a stoma. Their water content changes their shape.', function: 'Open and close the stoma to regulate gas exchange and water vapour loss.', clue: 'Stomatal control', model: '(  •  )' },
+  { id: 'xylem', name: 'Xylem vessels', structure: 'Hollow, tube-like vessels are joined end to end. Thickened walls help support the plant.', function: 'Transport water and dissolved mineral ions from roots through the plant.', clue: 'Water transport', model: '║  ↑  ║' },
+  { id: 'cambium', name: 'Cambium cells', structure: 'A thin layer of dividing cells in many dicotyledonous stems and roots.', function: 'Produce new vascular tissues and help stems and roots grow thicker.', clue: 'Growth in thickness', model: '│ · · │' }
+];
+
+const PlantCellExplorer: React.FC = () => {
+  const [selected, setSelected] = useState('epidermal');
+  const cell = PLANT_CELLS.find(item => item.id === selected) ?? PLANT_CELLS[0];
+  return (
+    <GhanaScienceVisual
+      title="The Plant Cell Specialist"
+      description="Explore how specialised plant cells are adapted to protect, regulate, transport and support growth."
+      lang="en"
+      caption="These are simplified teaching models. Real plant cells have more structures and vary in shape and arrangement."
+    >
+      <div className="gh-jhs1-science-interaction">
+        <h4>Choose a specialised plant cell</h4>
+        <div className="gh-jhs1-science-choices">
+          {PLANT_CELLS.map(item => (
+            <Choice key={item.id} active={selected === item.id} onClick={() => setSelected(item.id)}>{item.name} · {item.clue}</Choice>
+          ))}
+        </div>
+        <div className="gh-jhs1-science-readout" aria-live="polite">
+          <strong>{cell.name}</strong>
+          <pre role="img" aria-label={cell.name + ' simplified structure model'} style={{ whiteSpace: 'pre-wrap', textAlign: 'center', fontSize: '1.2rem', fontWeight: 700, padding: '0.8rem', borderRadius: '0.6rem', background: 'rgba(123, 223, 242, 0.12)' }}>{cell.model}</pre>
+          <p><b>Structure:</b> {cell.structure}</p>
+          <p><b>Function:</b> {cell.function}</p>
+        </div>
+      </div>
+      <div className="gh-jhs1-science-interaction">
+        <h4>Follow the plant's transport and control</h4>
+        <div className="gh-jhs1-science-readout" aria-live="polite">
+          <p><b>Roots → xylem → leaves:</b> water and dissolved mineral ions move upwards through xylem vessels.</p>
+          <p><b>Leaf surface:</b> epidermal cells protect the leaf, while guard cells adjust the opening of stomata.</p>
+          <p><b>Stem and root growth:</b> cambium divides to make new vascular tissues and contributes to growth in thickness.</p>
+          <p><b>Differentiation</b> is the process by which cells develop specialised structures and functions.</p>
+        </div>
+      </div>
+    </GhanaScienceVisual>
+  );
+};
+
 export const GhanaJhs3DiversityVisual: React.FC<Props> = ({ missionId }) => {
   if (missionId === 'gh-jhs3-science-binary-compounds') return <CompoundExplorer />;
   if (missionId === 'gh-jhs3-science-acids-bases-salts') return <PHExplorer />;
   if (missionId === 'gh-jhs3-science-chemical-bonding') return <BondingExplorer />;
+  if (missionId === 'gh-jhs3-science-specialised-plant-cells') return <PlantCellExplorer />;
   return null;
 };
