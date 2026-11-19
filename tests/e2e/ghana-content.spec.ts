@@ -338,6 +338,7 @@ test('Ghana JHS 3 Science Cycles strand opens all five curriculum missions', asy
   await expect(page.locator('.mcard').last()).toContainText('The Livestock Nutrition Strategist');
   await page.locator('.mcard').first().click();
   await expect(page.locator('main')).toContainText('The Nitrogen Cycle Guardian');
-  await expect(page.locator('main')).toContainText('nitrogen fixation');
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await expect(page.locator('main')).toContainText('Nitrogen fixation');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
