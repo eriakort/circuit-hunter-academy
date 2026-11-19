@@ -4,8 +4,8 @@ import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
 export const GHANA_JHS3_SCIENCE_SUBJECT: SubjectInfo = {
   id: 'ghjhs3science',
   name: 'Science · JHS 3',
-  blurb: 'Ghana NaCCA JHS 3 Science · Diversity of Matter, Cycles, Systems and Forces and Energy. Explore compounds, specialised cells, the nitrogen cycle, circulation and respiration, asteroids and comets, ecosystems, and sustainable manure preparation, energy conservation, electric circuits, motion, pressure and agricultural tools.',
-  meta: 'Ghana NaCCA · JHS 3 · 4 strands · 20 missions',
+  blurb: 'Ghana NaCCA JHS 3 Science · Diversity of Matter, Cycles, Systems, Forces and Energy, and Humans and the Environment. Explore compounds, specialised cells, the nitrogen cycle, circulation and respiration, asteroids and comets, ecosystems, and sustainable manure preparation, energy conservation, electric circuits, motion, pressure and agricultural tools, waste management, human health, industry, climate action and plant resources.',
+  meta: 'Ghana NaCCA · JHS 3 · 5 strands · 25 missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="9" fill="#ffd166"/><ellipse cx="60" cy="60" rx="43" ry="17" fill="none" stroke="#7bdff2" stroke-width="3"/><ellipse cx="60" cy="60" rx="43" ry="17" fill="none" stroke="#ff8fab" stroke-width="3" transform="rotate(60 60 60)"/><ellipse cx="60" cy="60" rx="43" ry="17" fill="none" stroke="#a7f3d0" stroke-width="3" transform="rotate(120 60 60)"/></svg>'
 };
 

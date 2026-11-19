@@ -36,4 +36,32 @@ const forcesMissions = MISSIONS.filter(mission => mission.id.startsWith('gh-jhs3
 for (const indicator of ['B9.4.1.1.1', 'B9.4.1.1.2', 'B9.4.1.2.1', 'B9.4.2.1.1', 'B9.4.2.2.1', 'B9.4.3.1.1', 'B9.4.4.1.1', 'B9.4.4.2.1', 'B9.4.5.1.1']) {
   assert.ok(forcesMissions.some(mission => mission.pages.includes(indicator)), `Forces and Energy strand covers ${indicator}`);
 }
-console.log('ghanaJhs3ScienceData.test.ts ok! Twenty Basic 9 Science missions verified across four strands.');
+
+const humansIndex = UNITS.findIndex(unit => unit.title === 'Humans and the Environment' && unit.subject === 'ghjhs3science');
+assert.ok(humansIndex >= 0, 'JHS 3 Science Humans and the Environment unit should be registered');
+const humansArcs = ARCS.filter(arc => arc.unit === humansIndex && arc.subject === 'ghjhs3science');
+assert.deepEqual(humansArcs.map(arc => arc.title), [
+  'Waste Management and Sustainability',
+  'Human Health and Disease Prevention',
+  'Science, Technology and Industry',
+  'Climate Change and the Green Economy',
+  'Plant Resources and Their Uses'
+]);
+const humansMissions = MISSIONS.filter(mission => mission.id.startsWith('gh-jhs3-science-') && ARCS[mission.arc]?.unit === humansIndex);
+assert.deepEqual(humansMissions.map(mission => mission.title), [
+  'The Waste-Wise Community Guardian',
+  'The Human Health Defender',
+  'The Science and Industry Investigator',
+  'The Climate Action Analyst',
+  'The Plant Resources Ranger'
+]);
+for (const mission of humansMissions) {
+  assert.equal(mission.quiz.length, 5, `Expected five quiz questions in ${mission.id}`);
+  assert.equal(mission.scenes.length, 6, `Expected four teaching scenes, a challenge and battle in ${mission.id}`);
+  assert.ok(mission.quiz.every(question => typeof question.q === 'string' && typeof question.why === 'string' && question.a.length === 4));
+}
+for (const indicator of ['B9.5.1.1.1', 'B9.5.1.2.1', 'B9.5.2.1.1', 'B9.5.2.2.1', 'B9.5.2.2.2', 'B9.5.3.1.1', 'B9.5.3.2.1', 'B9.5.3.2.2', 'B9.5.4.1.1', 'B9.5.4.2.1', 'B9.5.5.1.1', 'B9.5.5.1.2']) {
+  assert.ok(humansMissions.some(mission => mission.pages.includes(indicator)), `Humans and the Environment strand covers ${indicator}`);
+}
+
+console.log('ghanaJhs3ScienceData.test.ts ok! Twenty-five Basic 9 Science missions verified across five strands.');
