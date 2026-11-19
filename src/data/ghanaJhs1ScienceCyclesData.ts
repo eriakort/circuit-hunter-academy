@@ -24,18 +24,18 @@ export const GHANA_JHS1_SCIENCE_CYCLES_MISSIONS: Mission[] = [
     demon: 'The Cycle Breaker', tech: 'Earth Form · First Technique: Follow the Water',
     scenes: [
       lesson('<p>Earth has connected systems. The Sun heats water in oceans, lakes and rivers. Some water evaporates into water vapour, rises, cools and condenses into tiny droplets that form clouds.</p>'),
-      lesson('<p>When droplets become heavy, water falls as precipitation such as rain. Water may flow over land into streams and rivers, soak into the soil, or collect in lakes and oceans. This repeating movement is the water cycle.</p>'),
+      lesson('<p>When droplets become heavy, water falls as precipitation such as rain. Water may flow over land into streams and rivers, soak into the soil, or collect in lakes and oceans. Plants also release water vapour from their leaves through transpiration. Water evaporates from surfaces, condenses into clouds, falls as precipitation, flows or soaks into the ground, and returns to rivers, lakes and oceans; transpiration adds more vapour to the air. These connected steps repeat, so the water cycle is a continuous pattern in nature.</p>'),
       lesson('<p>Weathering breaks rocks into smaller pieces. It can happen through heating and cooling, water, plant roots and other natural processes. Erosion is the movement of weathered material by water, wind or ice.</p>'),
-      lesson('<p>Soil, rocks and water support life and farming. Plant cover helps protect soil from being washed away. Keeping drains clear and protecting vegetation can reduce erosion and flooding in communities.</p>'),
+      lesson('<p>The water cycle is important because it moves and renews freshwater, helps refill rivers, lakes and underground water stores (water tables), and supports weather patterns and rainfall. Water moving through soil can carry dissolved nutrients that plants need. Evaporation and transpiration move water into the atmosphere, while precipitation returns it to land and water bodies. The cycle supports plants, animals, farming and people, although water must still be protected from pollution. Plant cover also helps protect soil from erosion, and keeping drains clear can reduce local flooding.</p>'),
       { who: 'd', vis: 'demon', text: 'I have stopped the rain and moved the soil! Trace the water cycle and distinguish weathering from erosion.' },
       { type: 'battle' }
     ],
     quiz: [
       q('What provides most of the energy that drives the water cycle?', ['The Sun', 'The Moon', 'The soil', 'The wind alone'], 'Solar energy heats surface water and drives evaporation.'),
       q('What is evaporation?', ['Liquid water changing into water vapour', 'Water vapour changing into liquid droplets', 'Rain falling from clouds', 'Water soaking into rock'], 'Evaporation changes liquid water into water vapour.'),
-      q('What happens during condensation?', ['Water vapour cools and forms tiny liquid droplets', 'Rocks turn into soil', 'Rainwater becomes sunlight', 'Soil moves downhill'], 'Cooling water vapour condenses into droplets that can form clouds.'),
+      q('Which process releases water vapour from plant leaves into the atmosphere?', ['Transpiration', 'Erosion', 'Condensation', 'Freezing'], 'During transpiration, plants release water vapour mainly through tiny openings in their leaves.'),
       q('What is erosion?', ['The movement of weathered material', 'The breaking of rocks in place only', 'The formation of clouds', 'The growth of plant roots'], 'Erosion transports soil or rock fragments by water, wind or ice.'),
-      q('Which action can help reduce soil erosion?', ['Keep vegetation cover on the soil', 'Remove all plants from slopes', 'Leave bare soil exposed', 'Block every drainage channel'], 'Plant cover protects soil and slows the movement of water across it.')
+      q('Why is the water cycle important to people and the environment?', ['It helps renew freshwater, refill water stores and support weather and plant growth', 'It permanently removes all water from Earth', 'It stops nutrients moving through soil', 'It prevents all clouds from forming'], 'The water cycle renews and redistributes water, supports weather patterns and helps move water and nutrients through ecosystems.')
     ]
   },
   {
