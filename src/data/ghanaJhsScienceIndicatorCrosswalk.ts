@@ -1369,6 +1369,47 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     assessmentEvidence: 'No matching magnet behaviour or application question is present in the force-motion quiz.',
     teachingSceneRefs: [], assessmentQuestionRefs: []
   },
+
+  // Basic 7 · Strand 4 — Simple Machines (NaCCA CCP, pp. 38–40).
+  {
+    indicatorCode: 'B7.4.4.2.1', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-force-motion'],
+    status: 'needs-review', officialIndicatorText: 'Identify simple machines.', sourcePdfPage: 78,
+    teachingSceneEvidence: 'Candidate: force-motion scene 3 introduces levers, a fulcrum, a seesaw and a wheelbarrow; other simple-machine types need explicit teaching.',
+    assessmentEvidence: 'Candidate: force-motion quiz 3 checks the fulcrum and quiz 4 identifies a wheelbarrow as a second-class lever; a broader simple-machine identification assessment is still needed.',
+    teachingSceneRefs: ['gh-jhs1-science-force-motion#scene-3'], assessmentQuestionRefs: ['gh-jhs1-science-force-motion#quiz-3','gh-jhs1-science-force-motion#quiz-4']
+  },
+  {
+    indicatorCode: 'B7.4.4.2.2', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-force-motion'],
+    status: 'needs-review', officialIndicatorText: 'Describe the types and functions of levers.', sourcePdfPage: 79,
+    teachingSceneEvidence: 'Candidate: force-motion scene 3 describes the fulcrum, first-class seesaw and second-class wheelbarrow; third-class levers and a full comparison of all classes need enrichment.',
+    assessmentEvidence: 'Candidate: force-motion quiz 3 checks the fulcrum and quiz 4 checks a second-class lever; the three lever classes are not all assessed.',
+    teachingSceneRefs: ['gh-jhs1-science-force-motion#scene-3'], assessmentQuestionRefs: ['gh-jhs1-science-force-motion#quiz-3','gh-jhs1-science-force-motion#quiz-4']
+  },
+  {
+    indicatorCode: 'B7.4.4.2.3', grade: 7, strand: 4, missionIds: [],
+    status: 'needs-review', officialIndicatorText: 'Know work input, and output and efficiency as they apply to machines.', sourcePdfPage: 80,
+    teachingSceneEvidence: 'No current Basic 7 lesson explicitly defines work input, work output, machine efficiency as a percentage, or ways to improve efficiency by reducing friction.',
+    assessmentEvidence: 'No current Basic 7 quiz question directly assesses work input, work output or machine efficiency.',
+    teachingSceneRefs: [], assessmentQuestionRefs: []
+  },
+  // Basic 7 · Strand 4 — Agricultural Tools (NaCCA CCP, pp. 41–42).
+  {
+    indicatorCode: 'B7.4.5.1.1', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-agricultural-tools'],
+    status: 'needs-review', officialIndicatorText: 'Explain the basic rules in handling and maintaining simple agricultural tools.', sourcePdfPage: 81,
+    teachingSceneEvidence: 'Candidate: agricultural-tools scenes 0, 2 and 3 identify common farm tools, their tasks, safe carrying and storage; routine cleaning, inspection, sharpening and maintenance procedures need more detail.',
+    assessmentEvidence: 'Candidate: agricultural-tools quizzes 0, 3 and 4 assess tool selection and safety; routine maintenance rules are not directly assessed.',
+    teachingSceneRefs: ['gh-jhs1-science-agricultural-tools#scene-0','gh-jhs1-science-agricultural-tools#scene-2','gh-jhs1-science-agricultural-tools#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-agricultural-tools#quiz-0','gh-jhs1-science-agricultural-tools#quiz-3','gh-jhs1-science-agricultural-tools#quiz-4']
+  },
+  {
+    indicatorCode: 'B7.4.5.1.2', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-agricultural-tools'],
+    status: 'needs-review', officialIndicatorText: 'Apply the handling and maintenance of basic and simple agricultural tools in their community.', sourcePdfPage: 82,
+    teachingSceneEvidence: 'Candidate: agricultural-tools scenes 0–3 discuss choosing, using and safely storing common tools; community observation, reporting and supervised practical maintenance activities need explicit project work.',
+    assessmentEvidence: 'Candidate: agricultural-tools quizzes 0–4 check tool choice and safe practice; no community-based practical demonstration or report is assessed.',
+    teachingSceneRefs: ['gh-jhs1-science-agricultural-tools#scene-0','gh-jhs1-science-agricultural-tools#scene-1','gh-jhs1-science-agricultural-tools#scene-2','gh-jhs1-science-agricultural-tools#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-agricultural-tools#quiz-0','gh-jhs1-science-agricultural-tools#quiz-1','gh-jhs1-science-agricultural-tools#quiz-2','gh-jhs1-science-agricultural-tools#quiz-3','gh-jhs1-science-agricultural-tools#quiz-4']
+  },
+
 ];
 
 /** Roll-up that exposes how many official indicators still lack explicit indicator-level references. */
