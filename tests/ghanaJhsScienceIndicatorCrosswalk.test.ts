@@ -13,8 +13,8 @@ const expectedByGrade = [
 ];
 
 assert.equal(GHANA_JHS_SCIENCE_OFFICIAL_INDICATOR_COUNTS.length, 15);
-assert.equal(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.length, 118);
-assert.equal(new Set(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.map(item => item.indicatorCode)).size, 118);
+assert.equal(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.length, 117);
+assert.equal(new Set(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.map(item => item.indicatorCode)).size, 117);
 
 for (const expected of expectedByGrade) {
   const actual = GHANA_JHS_SCIENCE_COVERAGE_SUMMARY.find(item => item.grade === expected.grade);
