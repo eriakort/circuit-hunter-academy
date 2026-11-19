@@ -1337,7 +1337,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     teachingSceneEvidence: 'Candidate: energy-conversion scene 3 covers efficient use and storage in batteries and pumped water; conservation for the benefit of people and other life forms needs review.',
     assessmentEvidence: 'Candidate: energy-conversion quiz 4 assesses energy-saving behaviour; energy storage for future use is not directly assessed.',
     teachingSceneRefs: ['gh-jhs1-science-energy-conversion#scene-3'], assessmentQuestionRefs: ['gh-jhs1-science-energy-conversion#quiz-4']
-  },,
+  },
 
   // Basic 7 · Strand 4 — Force and Motion (NaCCA CCP, pp. 35–38).
   {
