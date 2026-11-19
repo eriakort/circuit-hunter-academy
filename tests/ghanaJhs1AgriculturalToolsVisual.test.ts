@@ -11,7 +11,6 @@ for (const text of [
   'The Farm Tool Engineer',
   'Loosen soil',
   'Wheelbarrow',
-  'second-class lever',
   'Farm safety check',
   'ghana-science-visual',
   'aria-live="polite"'
