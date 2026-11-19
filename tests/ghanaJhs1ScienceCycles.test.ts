@@ -18,3 +18,13 @@ for (const mission of missions) {
   assert.equal(typeof mission.scenes[0].text, 'string');
 }
 console.log('ghanaJhs1ScienceCycles.test.ts ok!');
+const houseflyMission = missions.find(mission => mission.id === 'gh-jhs1-science-life-cycles');
+assert.ok(houseflyMission, 'Life-cycle mission should teach housefly outcomes');
+assert.match(houseflyMission.scenes[2].text, /egg, larva \(maggot\), pupa and adult fly/i);
+assert.match(houseflyMission.scenes[3].text, /covering food/i);
+assert.match(houseflyMission.scenes[3].text, /wash(?:ing)? hands with soap/i);
+assert.match(houseflyMission.quiz[2].q, /housefly and a butterfly/i);
+assert.match(houseflyMission.quiz[2].why, /complete metamorphosis/i);
+assert.match(houseflyMission.quiz[4].q, /houseflies contaminating food/i);
+assert.match(houseflyMission.quiz[4].why, /safe waste disposal/i);
+console.log('Basic 7 housefly life-cycle and prevention evidence verified.');
