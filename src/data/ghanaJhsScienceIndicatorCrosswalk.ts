@@ -1267,14 +1267,14 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   {
     indicatorCode: 'B7.4.1.2.1', grade: 7, strand: 4, missionIds: [],
     status: 'needs-review', officialIndicatorText: 'Explain and demonstrate how heat is transferred in various media.', sourcePdfPage: 64,
-    teachingSceneEvidence: 'No dedicated Basic 7 heat-transfer lesson was found. The energy-forms mission mentions heat but does not teach conduction or transfer through gas, plastic, metal and liquid.',
+    teachingSceneEvidence: 'No matching Basic 7 heat-transfer lesson was found. The energy-forms mission mentions heat but does not teach conduction or transfer through gas, plastic, metal and liquid.',
     assessmentEvidence: 'No matching assessment question was found for heat transfer through different media.',
     teachingSceneRefs: [], assessmentQuestionRefs: []
   },
   {
     indicatorCode: 'B7.4.1.3.1', grade: 7, strand: 4, missionIds: [],
     status: 'needs-review', officialIndicatorText: 'Demonstrate how light travels in a straight line.', sourcePdfPage: 65,
-    teachingSceneEvidence: 'No dedicated Basic 7 light investigation was found for straight-line travel, reflection, refraction and dispersion.',
+    teachingSceneEvidence: 'No matching Basic 7 light investigation was found for straight-line travel, reflection, refraction and dispersion.',
     assessmentEvidence: 'No matching assessment question was found for the light-path practical exemplars.',
     teachingSceneRefs: [], assessmentQuestionRefs: []
   },
