@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { GhanaJhs2HumansEnvironmentVisual } from '../src/components/GhanaJhs2HumansEnvironmentVisual';
 
 const missions = [
-  { id: 'gh-jhs2-science-waste-management', title: 'The Waste-Wise Community Guardian', terms: ['Waste hierarchy', 'Compost', 'Reduce', 'Special collection'] },
+  { id: 'gh-jhs2-science-waste-management', title: 'The Waste-Wise Community Guardian', terms: ['Waste hierarchy', 'Compost', 'Reduce', 'Food scraps'] },
   { id: 'gh-jhs2-science-human-health', title: 'The Community Health Defender', terms: ['transmission route', 'Respiratory particles', 'Prevention', 'diagnosis'] },
   { id: 'gh-jhs2-science-science-industry', title: 'The Science and Innovation Builder', terms: ['community challenge', 'Farming', 'Possible innovation', 'Life-cycle thinking'] },
   { id: 'gh-jhs2-science-climate-green-economy', title: 'The Climate Action Strategist', terms: ['climate response', 'Mitigation', 'Green economy', 'Weather'] },
