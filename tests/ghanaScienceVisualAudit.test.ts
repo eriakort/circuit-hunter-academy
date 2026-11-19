@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import { getGhanaScienceVisualAudit, summarizeGhanaScienceVisualAudit } from '../src/data/ghanaScienceVisualAudit';
+
+const rows = getGhanaScienceVisualAudit();
+const summary = summarizeGhanaScienceVisualAudit(rows);
+
+assert.equal(summary.totalMissions, 69, 'Basic 7–9 Science visual audit includes all registered missions');
+assert.deepEqual(
+  summary.byGrade.map(row => [row.grade, row.missions]),
+  [['Basic 7', 22], ['Basic 8', 22], ['Basic 9', 25]],
+  'Visual audit grade totals match the live curriculum registry'
+);
+assert.equal(
+  summary.instructionalVisualMissions + summary.genericOnlyMissions + summary.missingVisualMissions,
+  summary.totalMissions,
+  'Every mission receives exactly one visual coverage status'
+);
+assert.ok(rows.every(row => row.missionId && row.title), 'Every audit row identifies its mission');
+assert.ok(rows.every(row => row.instructionalVisualScenes >= 0 && row.genericVisualScenes >= 0));
+assert.ok(rows.every(row => row.interactiveScenes >= 0));
+
+// The current baseline deliberately distinguishes the repeated demon/challenge
+// illustration from instructional science visuals. Battle scenes are not
+// counted as simulations merely because they are interactive.
+assert.equal(summary.instructionalVisualMissions, 0, 'No JHS mission currently has a dedicated instructional visual reference');
+assert.equal(summary.genericOnlyMissions, 69, 'All current JHS missions use generic challenge art rather than a dedicated science visual');
+assert.equal(summary.missingVisualMissions, 0, 'Every current JHS mission has at least generic challenge art');
+
+console.log(
+  `Ghana Science visual audit: ${summary.totalMissions} missions; ${summary.instructionalVisualMissions} instructional visuals; ${summary.genericOnlyMissions} generic-only; ${summary.missingVisualMissions} missing.`
+);
