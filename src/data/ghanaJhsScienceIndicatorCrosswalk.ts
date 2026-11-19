@@ -1245,6 +1245,98 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     teachingSceneEvidence: 'Candidate: farming-systems scene 3 notes that systems suit different conditions; merits, limits and reasons for use need deeper treatment.',
     assessmentEvidence: 'No current question explicitly compares the usefulness, merits and demerits of all farming systems.',
     teachingSceneRefs: ['gh-jhs1-science-farming-systems#scene-3'], assessmentQuestionRefs: []
+  },,
+
+  // Basic 7 · Strand 4 — Forces and Energy, first inventory slice (NaCCA CCP, pp. 26–34).
+  {
+    indicatorCode: 'B7.4.1.1.1', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-energy-forms'],
+    status: 'needs-review', officialIndicatorText: 'Identify the various forms of energy and show how they are related.', sourcePdfPage: 62,
+    teachingSceneEvidence: 'Candidate: energy-forms scenes 1–3 explain potential, kinetic and other forms and their relationships; verify the mechanical-energy relationship and required diagram.',
+    assessmentEvidence: 'Candidate: energy-forms quizzes 0–4 test kinetic, potential, chemical, solar and energy conversion; verify all nine named forms.',
+    teachingSceneRefs: ['gh-jhs1-science-energy-forms#scene-1','gh-jhs1-science-energy-forms#scene-2','gh-jhs1-science-energy-forms#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-energy-forms#quiz-0','gh-jhs1-science-energy-forms#quiz-1','gh-jhs1-science-energy-forms#quiz-2','gh-jhs1-science-energy-forms#quiz-3','gh-jhs1-science-energy-forms#quiz-4']
+  },
+  {
+    indicatorCode: 'B7.4.1.1.2', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-energy-forms'],
+    status: 'needs-review', officialIndicatorText: 'Explain daily applications of forms of energy.', sourcePdfPage: 63,
+    teachingSceneEvidence: 'Candidate: energy-forms scenes 0–3 use sunlight, food, appliances and moving objects; required PE/KE factors and formula-based exemplars need verification.',
+    assessmentEvidence: 'Candidate: energy-forms quizzes 0–4 assess daily examples; no direct PE = mgh or KE = ½mv² calculation question is mapped.',
+    teachingSceneRefs: ['gh-jhs1-science-energy-forms#scene-0','gh-jhs1-science-energy-forms#scene-1','gh-jhs1-science-energy-forms#scene-2','gh-jhs1-science-energy-forms#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-energy-forms#quiz-0','gh-jhs1-science-energy-forms#quiz-1','gh-jhs1-science-energy-forms#quiz-2','gh-jhs1-science-energy-forms#quiz-3','gh-jhs1-science-energy-forms#quiz-4']
+  },
+  {
+    indicatorCode: 'B7.4.1.2.1', grade: 7, strand: 4, missionIds: [],
+    status: 'needs-review', officialIndicatorText: 'Explain and demonstrate how heat is transferred in various media.', sourcePdfPage: 64,
+    teachingSceneEvidence: 'No dedicated Basic 7 heat-transfer lesson was found. The energy-forms mission mentions heat but does not teach conduction or transfer through gas, plastic, metal and liquid.',
+    assessmentEvidence: 'No matching assessment question was found for heat transfer through different media.',
+    teachingSceneRefs: [], assessmentQuestionRefs: []
+  },
+  {
+    indicatorCode: 'B7.4.1.3.1', grade: 7, strand: 4, missionIds: [],
+    status: 'needs-review', officialIndicatorText: 'Demonstrate how light travels in a straight line.', sourcePdfPage: 65,
+    teachingSceneEvidence: 'No dedicated Basic 7 light investigation was found for straight-line travel, reflection, refraction and dispersion.',
+    assessmentEvidence: 'No matching assessment question was found for the light-path practical exemplars.',
+    teachingSceneRefs: [], assessmentQuestionRefs: []
+  },
+  {
+    indicatorCode: 'B7.4.2.1.1', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-electricity-generation'],
+    status: 'needs-review', officialIndicatorText: 'Describe the various forms of electricity generation.', sourcePdfPage: 66,
+    teachingSceneEvidence: 'Candidate: electricity-generation scenes 0–2 describe hydroelectric, thermal and solar generation; the official exemplar specifically includes thermal and nuclear generation, so nuclear content is a gap.',
+    assessmentEvidence: 'Candidate: electricity-generation quizzes 0–3 assess hydroelectric, solar, environmental impact and source selection; nuclear generation is not assessed.',
+    teachingSceneRefs: ['gh-jhs1-science-electricity-generation#scene-0','gh-jhs1-science-electricity-generation#scene-1','gh-jhs1-science-electricity-generation#scene-2'],
+    assessmentQuestionRefs: ['gh-jhs1-science-electricity-generation#quiz-0','gh-jhs1-science-electricity-generation#quiz-1','gh-jhs1-science-electricity-generation#quiz-2','gh-jhs1-science-electricity-generation#quiz-3']
+  },
+  {
+    indicatorCode: 'B7.4.2.1.2', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-electricity-generation'],
+    status: 'needs-review', officialIndicatorText: 'Explain the impact of electricity generation on the environment.', sourcePdfPage: 66,
+    teachingSceneEvidence: 'Candidate: electricity-generation scenes 1–3 discuss dam impacts, fuel emissions, solar generation and trade-offs; nuclear-specific impacts and mitigation require enrichment.',
+    assessmentEvidence: 'Candidate: electricity-generation quiz 2 tests air pollution and greenhouse gases; nuclear impacts and mitigation are not directly assessed.',
+    teachingSceneRefs: ['gh-jhs1-science-electricity-generation#scene-1','gh-jhs1-science-electricity-generation#scene-2','gh-jhs1-science-electricity-generation#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-electricity-generation#quiz-2']
+  },
+  {
+    indicatorCode: 'B7.4.2.2.1', grade: 7, strand: 4, missionIds: [],
+    status: 'needs-review', officialIndicatorText: 'Demonstrate how to assemble basic electronic components in an electronic circuit.', sourcePdfPage: 67,
+    teachingSceneEvidence: 'No matching Basic 7 hands-on electronics assembly mission was found for LEDs, P-N junction diodes, resistors, capacitors and a simple circuit.',
+    assessmentEvidence: 'No matching practical circuit-assembly assessment was found.',
+    teachingSceneRefs: [], assessmentQuestionRefs: []
+  },
+  {
+    indicatorCode: 'B7.4.2.2.2', grade: 7, strand: 4, missionIds: [],
+    status: 'needs-review', officialIndicatorText: 'Discuss the function of each electronic component and their interdependence with each other.', sourcePdfPage: 67,
+    teachingSceneEvidence: 'No matching lesson was found for component functions, polarity, open/closed switches and component interdependence.',
+    assessmentEvidence: 'No matching component-function assessment was found.',
+    teachingSceneRefs: [], assessmentQuestionRefs: []
+  },
+  {
+    indicatorCode: 'B7.4.2.2.3', grade: 7, strand: 4, missionIds: [],
+    status: 'needs-review', officialIndicatorText: 'Discuss the function of each electronic component such as resistor, diode, and inductor, and their interdependence for the functioning of an electronic gadget.', sourcePdfPage: 68,
+    teachingSceneEvidence: 'No matching lesson was found for resistor, diode and inductor roles or their effect on LED brightness.',
+    assessmentEvidence: 'No matching assessment question was found for component interdependence or LED brightness.',
+    teachingSceneRefs: [], assessmentQuestionRefs: []
+  },
+  {
+    indicatorCode: 'B7.4.3.1.1', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-energy-conversion'],
+    status: 'needs-review', officialIndicatorText: 'Explain the principle underlying conservation and conversion of energy.', sourcePdfPage: 69,
+    teachingSceneEvidence: 'Candidate: energy-conversion scenes 0–3 explain conversion, transfers and conservation in a torch, fan and stove; verify the closed-system dry-cell exemplar.',
+    assessmentEvidence: 'Candidate: energy-conversion quizzes 0–4 assess device transformations and conservation; verify the closed-system example.',
+    teachingSceneRefs: ['gh-jhs1-science-energy-conversion#scene-0','gh-jhs1-science-energy-conversion#scene-1','gh-jhs1-science-energy-conversion#scene-2','gh-jhs1-science-energy-conversion#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs1-science-energy-conversion#quiz-0','gh-jhs1-science-energy-conversion#quiz-1','gh-jhs1-science-energy-conversion#quiz-2','gh-jhs1-science-energy-conversion#quiz-3','gh-jhs1-science-energy-conversion#quiz-4']
+  },
+  {
+    indicatorCode: 'B7.4.3.1.2', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-energy-conversion'],
+    status: 'needs-review', officialIndicatorText: 'Demonstrate the conversion of energy into useable forms.', sourcePdfPage: 69,
+    teachingSceneEvidence: 'Candidate: energy-conversion scenes 0–1 trace energy changes in a torch, fan and stove; practical diagram or demonstration coverage needs verification.',
+    assessmentEvidence: 'Candidate: energy-conversion quizzes 0–1 test conversions in everyday devices.',
+    teachingSceneRefs: ['gh-jhs1-science-energy-conversion#scene-0','gh-jhs1-science-energy-conversion#scene-1'],
+    assessmentQuestionRefs: ['gh-jhs1-science-energy-conversion#quiz-0','gh-jhs1-science-energy-conversion#quiz-1']
+  },
+  {
+    indicatorCode: 'B7.4.3.1.3', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-energy-conversion'],
+    status: 'needs-review', officialIndicatorText: 'Know how energy could be conserved for future use in life.', sourcePdfPage: 70,
+    teachingSceneEvidence: 'Candidate: energy-conversion scene 3 covers efficient use and storage in batteries and pumped water; conservation for the benefit of people and other life forms needs review.',
+    assessmentEvidence: 'Candidate: energy-conversion quiz 4 assesses energy-saving behaviour; energy storage for future use is not directly assessed.',
+    teachingSceneRefs: ['gh-jhs1-science-energy-conversion#scene-3'], assessmentQuestionRefs: ['gh-jhs1-science-energy-conversion#quiz-4']
   },
 ];
 
