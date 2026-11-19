@@ -4,8 +4,8 @@ import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
 export const GHANA_JHS3_SCIENCE_SUBJECT: SubjectInfo = {
   id: 'ghjhs3science',
   name: 'Science · JHS 3',
-  blurb: 'Ghana NaCCA JHS 3 Science · Diversity of Matter pilot. Explore binary compounds, acids, bases, salts, chemical bonding and specialised plant and human cells.',
-  meta: 'Ghana NaCCA · JHS 3 · Science Strand 1 pilot · 5 missions',
+  blurb: 'Ghana NaCCA JHS 3 Science · Diversity of Matter and Cycles. Explore compounds, chemical bonding, specialised cells, the nitrogen cycle, grasshopper development, crop maturity and animal nutrition.',
+  meta: 'Ghana NaCCA · JHS 3 · 2 strands · 10 missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><circle cx="60" cy="60" r="9" fill="#ffd166"/><ellipse cx="60" cy="60" rx="43" ry="17" fill="none" stroke="#7bdff2" stroke-width="3"/><ellipse cx="60" cy="60" rx="43" ry="17" fill="none" stroke="#ff8fab" stroke-width="3" transform="rotate(60 60 60)"/><ellipse cx="60" cy="60" rx="43" ry="17" fill="none" stroke="#a7f3d0" stroke-width="3" transform="rotate(120 60 60)"/></svg>'
 };
 
