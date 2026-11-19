@@ -63,13 +63,13 @@ Baseline findings from the 15 Ghana JHS Science lesson data modules:
 
 | Visual category | Missions |
 |---|---:|
-| Dedicated instructional visual reference | 4 |
-| Generic challenge illustration only | 65 |
+| Dedicated instructional visual reference | 8 |
+| Generic challenge illustration only | 61 |
 | No visual reference at all | 0 |
 
-All 69 current missions retain the shared `vis: 'demon'` challenge illustration. Four Basic 7 Diversity of Matter missions now also have dedicated interactive teaching visuals; the remaining 65 missions still have generic challenge artwork only. Each mission also has an interactive battle scene, but that is an assessment/game interaction rather than an instructional science visual. This distinction is important: the presence of an image or an interactive quiz does not mean that the scientific process itself has been visualised.
+All 69 current missions retain the shared `vis: 'demon'` challenge illustration. Eight Basic 7 missions across Diversity of Matter and Cycles now also have dedicated interactive teaching visuals; the remaining 61 missions still have generic challenge artwork only. Each mission also has an interactive battle scene, but that is an assessment/game interaction rather than an instructional science visual. This distinction is important: the presence of an image or an interactive quiz does not mean that the scientific process itself has been visualised.
 
-The reusable `GhanaScienceVisual` frame provides local React/SVG content with explicit play/pause and replay controls, keyboard-operable buttons, a static paused default, responsive layout and reduced-motion support. The Basic 7 pilot adds a particle-state temperature model, a selectable liquid-role explorer, a materials-and-properties comparator, and a plant/animal cell explorer. Interactions update the model or explanatory text; these are locally rendered and do not require an external service.
+The reusable `GhanaScienceVisual` frame provides local React/SVG content with explicit play/pause and replay controls, keyboard-operable buttons, a static paused default, responsive layout and reduced-motion support. The Basic 7 Diversity of Matter pilot adds a particle-state temperature model, a selectable liquid-role explorer, a materials-and-properties comparator, and a plant/animal cell explorer. The follow-on Cycles pilot adds an interactive water-cycle and land-process explorer, a comparative housefly/maize/chicken life-cycle explorer, a Ghanaian crop-production journey, and a domestic-animal classification and welfare explorer. Interactions update the model or explanatory text; these are locally rendered and do not require an external service.
 
 Run the checks with:
 
@@ -83,3 +83,15 @@ Visual status meanings:
 - **missing:** no visual reference is attached.
 
 The audit is a prioritisation aid, not an indicator-coverage or teaching-quality certification. It records the four pilot mission IDs explicitly and should be updated alongside each future visual implementation.
+
+
+### Basic 7 Cycles instructional-visual increment (2026-11-19)
+
+Four Basic 7 Cycles missions now include dedicated interactive teaching visuals:
+
+- **Earth Systems:** learners select water-cycle stages and compare weathering with erosion, using Ghana examples such as rainfall, streams, Lake Volta, farms and vegetation cover.
+- **Life Cycles:** learners compare housefly, maize and chicken development stage by stage, with a practical food-hygiene reminder for reducing fly contamination.
+- **Crop Production:** learners explore land preparation, planting, crop care, harvesting and storage, with maize, cassava and cocoa examples.
+- **Animal Production:** learners compare ruminants, monogastrics and poultry through feeding, welfare and community uses.
+
+Each visual is locally rendered, keyboard-operable and bilingual (English/Italian). The additions do not alter mission gates, assessment questions or mastery logic. The visual audit now records eight dedicated Basic 7 visuals and 61 generic-only JHS Science missions.
