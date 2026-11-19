@@ -266,7 +266,7 @@ export const MissionScreen: React.FC = () => {
           {isGhana && ['gh-jhs1-science-human-body-system', 'gh-jhs1-science-solar-system', 'gh-jhs1-science-ecosystem', 'gh-jhs1-science-farming-systems'].includes(currentMission.id) && currentSceneIndex === 1 && (
             <GhanaJhs1SystemsVisual missionId={currentMission.id} lang={lang} />
           )}
-          {isGhana && ['gh-jhs1-science-energy-forms', 'gh-jhs1-science-electricity-generation', 'gh-jhs1-science-energy-conversion', 'gh-jhs1-science-force-motion'].includes(currentMission.id) && currentSceneIndex === 1 && (
+          {isGhana && ['gh-jhs1-science-energy-forms', 'gh-jhs1-science-electricity-generation', 'gh-jhs1-science-energy-conversion', 'gh-jhs1-science-force-motion', 'gh-jhs1-science-agricultural-tools'].includes(currentMission.id) && currentSceneIndex === 1 && (
             <GhanaJhs1ForcesEnergyVisual missionId={currentMission.id} lang={lang} />
           )}
 
