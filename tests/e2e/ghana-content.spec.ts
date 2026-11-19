@@ -320,10 +320,25 @@ test('Ghana JHS 2 Science Humans and the Environment strand opens all six sub-st
 
 test('Ghana JHS 3 Science Diversity of Matter pilot is selectable and opens its missions', async ({ page }) => {
   await enterGhana(page, 'ghjhs3', 'ghjhs3science');
+  await page.locator('.units button').filter({ hasText: 'Diversity of Matter' }).click();
   await expect(page.locator('.mcard')).toHaveCount(5);
   await expect(page.locator('.mcard').first()).toContainText('The Binary Compound Chemist');
   await expect(page.locator('.mcard').last()).toContainText('The Human Cell Function Ranger');
   await page.locator('.mcard').first().click();
   await expect(page.locator('main')).toContainText('A binary compound');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
+
+
+test('Ghana JHS 3 Science Cycles strand opens all five curriculum missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs3', 'ghjhs3science');
+  await page.locator('.units button').filter({ hasText: 'Cycles' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(5);
+  await expect(page.locator('.mcard').first()).toContainText('The Nitrogen Cycle Guardian');
+  await expect(page.locator('.mcard').last()).toContainText('The Livestock Nutrition Strategist');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('The Nitrogen Cycle Guardian');
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await expect(page.locator('main')).toContainText('Nitrogen fixation');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
