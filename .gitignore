@@ -5,3 +5,6 @@ __pycache__/
 dist/
 playwright-report/
 test-results/
+
+# App icons are real assets, unlike screenshots
+!public/*.png
