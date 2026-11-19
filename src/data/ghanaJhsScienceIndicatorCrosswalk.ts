@@ -1338,6 +1338,37 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     assessmentEvidence: 'Candidate: energy-conversion quiz 4 assesses energy-saving behaviour; energy storage for future use is not directly assessed.',
     teachingSceneRefs: ['gh-jhs1-science-energy-conversion#scene-3'], assessmentQuestionRefs: ['gh-jhs1-science-energy-conversion#quiz-4']
   },
+
+  // Basic 7 · Strand 4 — Force and Motion (NaCCA CCP, pp. 35–38).
+  {
+    indicatorCode: 'B7.4.4.1.1', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-force-motion'],
+    status: 'needs-review', officialIndicatorText: 'Understand that unbalanced forces acting on an object cause it to move.', sourcePdfPage: 71,
+    teachingSceneEvidence: 'Candidate: force-motion scenes 0–2 introduce pushes, pulls, balanced and unbalanced forces, friction and gravity; the inertia explanation and demonstration need explicit strengthening.',
+    assessmentEvidence: 'Candidate: force-motion quizzes 0–2 test force definition, balanced forces and friction; no direct inertia demonstration question is mapped.',
+    teachingSceneRefs: ['gh-jhs1-science-force-motion#scene-0','gh-jhs1-science-force-motion#scene-1','gh-jhs1-science-force-motion#scene-2'],
+    assessmentQuestionRefs: ['gh-jhs1-science-force-motion#quiz-0','gh-jhs1-science-force-motion#quiz-1','gh-jhs1-science-force-motion#quiz-2']
+  },
+  {
+    indicatorCode: 'B7.4.4.1.2', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-force-motion'],
+    status: 'needs-review', officialIndicatorText: 'State and explain Newton’s First Law of motion.', sourcePdfPage: 72,
+    teachingSceneEvidence: 'Candidate: force-motion scene 1 describes balanced forces and unchanged motion; Newton’s First Law should be named and explained explicitly.',
+    assessmentEvidence: 'Candidate: force-motion quiz 1 tests balanced forces but does not directly name or state Newton’s First Law.',
+    teachingSceneRefs: ['gh-jhs1-science-force-motion#scene-1'], assessmentQuestionRefs: ['gh-jhs1-science-force-motion#quiz-1']
+  },
+  {
+    indicatorCode: 'B7.4.4.1.3', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-force-motion'],
+    status: 'needs-review', officialIndicatorText: 'Examine the application of Newton’s First Law of motion in life.', sourcePdfPage: 73,
+    teachingSceneEvidence: 'Candidate: force-motion scenes 0–2 include everyday movement and friction examples; explicit inertia applications such as passenger motion during braking need enrichment.',
+    assessmentEvidence: 'No current quiz question directly assesses a real-life application of Newton’s First Law.',
+    teachingSceneRefs: ['gh-jhs1-science-force-motion#scene-0','gh-jhs1-science-force-motion#scene-1','gh-jhs1-science-force-motion#scene-2'], assessmentQuestionRefs: []
+  },
+  {
+    indicatorCode: 'B7.4.4.1.4', grade: 7, strand: 4, missionIds: ['gh-jhs1-science-force-motion'],
+    status: 'needs-review', officialIndicatorText: 'Demonstrate the behaviour of magnet and its use to life.', sourcePdfPage: 74,
+    teachingSceneEvidence: 'No matching magnetism lesson is present in the force-motion mission; the current scene set focuses on pushes, pulls, friction, gravity and levers.',
+    assessmentEvidence: 'No matching magnet behaviour or application question is present in the force-motion quiz.',
+    teachingSceneRefs: [], assessmentQuestionRefs: []
+  },
 ];
 
 /** Roll-up that exposes how many official indicators still lack explicit indicator-level references. */
