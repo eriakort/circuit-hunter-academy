@@ -21,6 +21,7 @@ import { GhanaJhs2DiversityVisual } from './GhanaJhs2DiversityVisual';
 import { GhanaJhs2SystemsVisual } from './GhanaJhs2SystemsVisual';
 import { GhanaJhs2CyclesVisual } from './GhanaJhs2CyclesVisual';
 import { GhanaJhs2ForcesEnergyVisual } from './GhanaJhs2ForcesEnergyVisual';
+import { GhanaJhs2HumansEnvironmentVisual } from './GhanaJhs2HumansEnvironmentVisual';
 import { ItalianLab } from './ItalianLab';
 import { HistoryLab } from './HistoryLab';
 import { GeographyLab } from './GeographyLab';
@@ -290,6 +291,9 @@ export const MissionScreen: React.FC = () => {
           )}
           {isGhana && ['gh-jhs2-science-energy-sources-heat', 'gh-jhs2-science-electricity-electronics', 'gh-jhs2-science-energy-conservation-impact', 'gh-jhs2-science-magnetism-force-machines', 'gh-jhs2-science-agricultural-tools'].includes(currentMission.id) && currentSceneIndex === 1 && (
             <GhanaJhs2ForcesEnergyVisual missionId={currentMission.id} />
+          )}
+          {isGhana && ['gh-jhs2-science-waste-management', 'gh-jhs2-science-human-health', 'gh-jhs2-science-science-industry', 'gh-jhs2-science-climate-green-economy', 'gh-jhs2-science-soils-plants', 'gh-jhs2-science-rocks-soil-formation'].includes(currentMission.id) && currentSceneIndex === 1 && (
+            <GhanaJhs2HumansEnvironmentVisual missionId={currentMission.id} />
           )}
 
           <div className="dialog">
