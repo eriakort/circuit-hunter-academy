@@ -107,6 +107,14 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     teachingSceneRefs: ['gh-jhs1-science-materials-states#scene-1'], assessmentQuestionRefs: ['gh-jhs1-science-materials-states#quiz-1','gh-jhs1-science-materials-states#quiz-2','gh-jhs1-science-materials-states#quiz-3']
   },
   {
+    indicatorCode: 'B7.1.1.1.2', grade: 7, strand: 1, missionIds: ['gh-jhs1-science-importance-liquids'],
+    status: 'needs-review', officialIndicatorText: 'Discuss the importance of liquids in human life.', sourcePdfPage: 40,
+    teachingSceneEvidence: 'Candidate: gh-jhs1-science-importance-liquids scenes 0–4 explain the importance of water, blood, plant sap and useful liquids in food preparation, hygiene and daily life; verify all official exemplars.',
+    assessmentEvidence: 'Candidate: quiz 0–4 assess clean water, blood transport, plant sap, cooking oil and safe handling of unknown liquids; question alignment and full exemplar coverage require human review.',
+    teachingSceneRefs: ['gh-jhs1-science-importance-liquids#scene-0','gh-jhs1-science-importance-liquids#scene-1','gh-jhs1-science-importance-liquids#scene-2','gh-jhs1-science-importance-liquids#scene-3','gh-jhs1-science-importance-liquids#scene-4'],
+    assessmentQuestionRefs: ['gh-jhs1-science-importance-liquids#quiz-0','gh-jhs1-science-importance-liquids#quiz-1','gh-jhs1-science-importance-liquids#quiz-2','gh-jhs1-science-importance-liquids#quiz-3','gh-jhs1-science-importance-liquids#quiz-4']
+  },
+  {
     indicatorCode: 'B7.1.1.1.2', grade: 7, strand: 1, missionIds: ['gh-jhs1-science-materials-uses'],
     status: 'needs-review', officialIndicatorText: 'Discuss the importance of liquids in human life.', sourcePdfPage: 40,
     teachingSceneEvidence: 'Candidate: gh-jhs1-science-materials-uses discusses material uses and water resistance; direct teaching of the importance of liquids is not yet confirmed.',
