@@ -43,6 +43,14 @@ assert.deepEqual(basic7Matter.map(item => item.indicatorCode), [
 assert.ok(basic7Matter.every(item => item.officialIndicatorText && item.sourcePdfPage));
 assert.ok(basic7Matter.some(item => item.missionIds.length === 0), 'Missing Basic 7 content must remain visible');
 
+const basic7Liquids = basic7Matter.find(item => item.indicatorCode === 'B7.1.1.1.2');
+assert.ok(basic7Liquids);
+assert.deepEqual(basic7Liquids.missionIds, ['gh-jhs1-science-importance-liquids']);
+assert.equal(basic7Liquids.teachingSceneRefs.length, 5);
+assert.equal(basic7Liquids.assessmentQuestionRefs.length, 5);
+assert.match(basic7Liquids.teachingSceneEvidence, /water, blood, plant sap/i);
+
+
 const basic7Cycles = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 7 && item.strand === 2);
 assert.deepEqual(basic7Cycles.map(item => item.indicatorCode), [
   'B7.2.1.1.1','B7.2.1.1.2','B7.2.2.1.1','B7.2.2.1.2','B7.2.3.1.1',
