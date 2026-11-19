@@ -76,7 +76,7 @@ assert.ok(basic7ForcesEnergy.filter(item => item.missionIds.length === 0).length
 const basic7ForceMotion = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 7 && item.strand === 4 && item.indicatorCode.startsWith('B7.4.4.'));
 assert.deepEqual(basic7ForceMotion.map(item => item.indicatorCode), [
   'B7.4.4.1.1','B7.4.4.1.2','B7.4.4.1.3','B7.4.4.1.4',
-  'B7.4.4.2.1','B7.4.4.2.2'
+  'B7.4.4.2.1','B7.4.4.2.2','B7.4.4.2.3'
 ]);
 assert.ok(basic7ForceMotion.every(item => item.officialIndicatorText && item.sourcePdfPage));
 
