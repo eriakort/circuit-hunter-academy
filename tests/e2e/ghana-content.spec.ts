@@ -366,3 +366,15 @@ test('Ghana JHS 3 Science Forces and Energy strand opens all five curriculum mis
   await expect(page.locator('main')).toContainText('Energy is the ability');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 3 Science Humans and the Environment strand opens all five curriculum missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs3', 'ghjhs3science');
+  await page.locator('.units button').filter({ hasText: 'Humans and the Environment' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(5);
+  await expect(page.locator('.mcard').first()).toContainText('The Waste-Wise Community Guardian');
+  await expect(page.locator('.mcard').last()).toContainText('The Plant Resources Ranger');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('Waste is material that people discard');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+});
