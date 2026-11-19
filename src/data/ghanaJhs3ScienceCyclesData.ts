@@ -103,7 +103,7 @@ export const GHANA_JHS3_SCIENCE_CYCLES_MISSIONS: Mission[] = [
     ]
   },
   {
-    id: 'gh-jhs3-science-animal-feed-selection', arc: 3, sec: 'Cycles', pages: 'NaCCA CCP · JHS 3 Science · B9.2.4.2.1–B9.2.4.2.3',
+    id: 'gh-jhs3-science-animal-feed-selection', arc: 3, sec: 'Cycles', pages: 'NaCCA CCP · JHS 3 Science · B9.2.4.2.1, B9.2.4.2.2, B9.2.4.2.3',
     hue: 158, horns: 2, eyes: 2, title: 'The Livestock Nutrition Strategist',
     topic: 'Select appropriate feed for domestic and commercial animals at different growth and production stages, distinguish roughage and concentrates, and demonstrate safe feeding practices.',
     demon: 'The Empty Feeding Trough', tech: 'Animal Form · Fourth Technique: Match the Ration to the Animal',
