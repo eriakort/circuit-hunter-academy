@@ -93,10 +93,48 @@ const Forces: React.FC<{lang:Language}> = ({lang}) => {
   </GhanaScienceVisual>;
 };
 
+
+const AgriculturalTools: React.FC<{lang:Language}> = ({lang}) => {
+  const [tool,setTool]=useState('hoe');
+  const [task,setTask]=useState('soil');
+  const [safety,setSafety]=useState<string[]>([]);
+  const tools:Record<string,{name:string,task:string,machine:string,detail:string,safe:string}> = {
+    hoe:{name:tx(lang,'Hoe','Zappa'),task:tx(lang,'Loosening soil and weeding','Allentare il terreno e diserbare'),machine:tx(lang,'Wedge','Cuneo'),detail:tx(lang,'The broad blade acts like a wedge. Its sharp edge concentrates force to cut into soil and weeds.','La lama larga funziona come un cuneo. Il bordo concentra la forza per penetrare nel terreno e tagliare le erbacce.'),safe:tx(lang,'Keep the blade pointed away from your body and other workers.','Tieni la lama rivolta lontano dal corpo e dagli altri lavoratori.')},
+    cutlass:{name:tx(lang,'Cutlass','Machete'),task:tx(lang,'Clearing vegetation','Liberare la vegetazione'),machine:tx(lang,'Wedge','Cuneo'),detail:tx(lang,'The blade is a wedge that helps cut vegetation. It is a sharp tool and requires careful handling and enough clear space.','La lama è un cuneo che aiuta a tagliare la vegetazione. È uno strumento affilato e richiede attenzione e spazio libero.'),safe:tx(lang,'Carry it with the blade pointed down and away; never swing near another person.','Trasportalo con la lama rivolta verso il basso e lontano dagli altri; non usarlo mai vicino a un’altra persona.')},
+    rake:{name:tx(lang,'Rake','Rastrello'),task:tx(lang,'Gathering leaves and plant material','Raccogliere foglie e materiale vegetale'),machine:tx(lang,'Lever-like handle','Manico simile a una leva'),detail:tx(lang,'The long handle helps apply force while the teeth gather loose leaves, weeds and plant material.','Il lungo manico aiuta ad applicare la forza mentre i denti raccolgono foglie, erbacce e materiale vegetale.'),safe:tx(lang,'Point the teeth down when carrying it and keep the working area clear.','Tieni i denti rivolti verso il basso durante il trasporto e mantieni libera l’area di lavoro.')},
+    wheelbarrow:{name:tx(lang,'Wheelbarrow','Carriola'),task:tx(lang,'Moving harvested produce or soil','Trasportare prodotti raccolti o terreno'),machine:tx(lang,'Wheel and axle + second-class lever','Ruota e asse + leva di secondo genere'),detail:tx(lang,'The wheel and axle help the load roll. The wheel is the fulcrum, the load sits between the wheel and the effort applied at the handles.','La ruota e l’asse permettono al carico di rotolare. La ruota è il fulcro e il carico si trova tra la ruota e la forza applicata ai manici.'),safe:tx(lang,'Do not overload it; keep both hands on the handles and use a clear path.','Non sovraccaricarla; tieni entrambe le mani sui manici e usa un percorso libero.')},
+    watering:{name:tx(lang,'Watering can','Annaffiatoio'),task:tx(lang,'Watering seedlings','Annaffiare le piantine'),machine:tx(lang,'Gravity and a spout','Gravità e beccuccio'),detail:tx(lang,'Water flows from the raised container through the spout under gravity. A gentle flow helps water seedlings without washing soil away.','L’acqua scorre dal contenitore sollevato attraverso il beccuccio per effetto della gravità. Un flusso delicato aiuta ad annaffiare le piantine senza asportare il terreno.'),safe:tx(lang,'Lift a manageable amount of water and avoid slippery spills.','Solleva una quantità d’acqua gestibile ed evita di bagnare il pavimento rendendolo scivoloso.')},
+    spade:{name:tx(lang,'Spade','Vanga'),task:tx(lang,'Digging and turning soil','Scavare e rivoltare il terreno'),machine:tx(lang,'Wedge and lever action','Azione di cuneo e leva'),detail:tx(lang,'The blade cuts into soil like a wedge. Pressing the handle can use leverage to lift and turn the soil.','La lama penetra nel terreno come un cuneo. Premere il manico permette di sfruttare la leva per sollevare e rivoltare il terreno.'),safe:tx(lang,'Use a stable stance and keep feet and hands clear of the blade.','Mantieni una posizione stabile e tieni piedi e mani lontani dalla lama.')}
+  };
+  const current=tools[tool];
+  const tasks:Record<string,string>={soil:tx(lang,'Loosen soil','Allentare il terreno'),weed:tx(lang,'Clear vegetation','Liberare la vegetazione'),leaves:tx(lang,'Gather leaves','Raccogliere foglie'),carry:tx(lang,'Move a harvest load','Trasportare il raccolto'),water:tx(lang,'Water seedlings','Annaffiare le piantine'),dig:tx(lang,'Dig and turn soil','Scavare e rivoltare il terreno')};
+  const recommended:Record<string,string>={soil:'hoe',weed:'cutlass',leaves:'rake',carry:'wheelbarrow',water:'watering',dig:'spade'};
+  const checks=[['blade',tx(lang,'Carry sharp blades pointed down and away','Trasporta le lame affilate rivolte verso il basso e lontano')],['space',tx(lang,'Keep a safe distance from other workers','Mantieni una distanza di sicurezza dagli altri lavoratori')],['condition',tx(lang,'Check tools and handles before use','Controlla strumenti e manici prima dell’uso')],['storage',tx(lang,'Clean and store tools securely after use','Pulisci e riponi gli strumenti in sicurezza dopo l’uso')]];
+  const toggle=(key:string)=>setSafety(old=>old.includes(key)?old.filter(x=>x!==key):[...old,key]);
+  return <GhanaScienceVisual title={tx(lang,'The Farm Tool Engineer','L’ingegnere degli attrezzi agricoli')} description={tx(lang,'Match farm tools to real tasks, discover the simple machines they use and practise safe handling.','Abbina gli attrezzi agricoli ai compiti reali, scopri le macchine semplici che utilizzano e impara a maneggiarli in sicurezza.')} lang={lang} caption={tx(lang,'Examples reflect common farm work in Ghana: preparing soil, weeding, gathering plant material, watering and moving harvested crops.','Gli esempi riflettono attività agricole comuni in Ghana: preparare il terreno, diserbare, raccogliere materiale vegetale, annaffiare e trasportare i raccolti.')}>
+    <svg viewBox="0 0 320 132" role="img" aria-label={tx(lang,'Illustration of a hoe, cutlass, rake, wheelbarrow and watering can','Illustrazione di zappa, machete, rastrello, carriola e annaffiatoio')}>
+      <g stroke="#326b65" strokeWidth="5" strokeLinecap="round" fill="none"><path d="M36 18L67 104M28 43l22 8"/><path d="M105 17l-12 83m-10-70 20-4"/><path d="M160 16l-4 82m-27-60h54m-45 0-11 18m29-18 11 18"/><path d="M212 85h66l-10-42h-40l-16 42m8-1-7 17m66-17 8 17m-53-58V17h28v27"/><path d="M293 41v50h17V41z"/></g>
+      <circle cx="229" cy="104" r="10" fill="#e9b949" stroke="#326b65" strokeWidth="2"/><circle cx="276" cy="104" r="10" fill="#e9b949" stroke="#326b65" strokeWidth="2"/>
+      <text x="48" y="126" fontSize="9" textAnchor="middle" fill="currentColor">{tx(lang,'Hoe','Zappa')}</text><text x="96" y="126" fontSize="9" textAnchor="middle" fill="currentColor">{tx(lang,'Cutlass','Machete')}</text><text x="157" y="126" fontSize="9" textAnchor="middle" fill="currentColor">{tx(lang,'Rake','Rastrello')}</text><text x="248" y="126" fontSize="9" textAnchor="middle" fill="currentColor">{tx(lang,'Wheelbarrow','Carriola')}</text>
+    </svg>
+    <div className="gh-jhs1-science-interaction">
+      <div className="gh-jhs1-science-choices">{Object.entries(tasks).map(([key,label])=><Choice key={key} active={task===key} onClick={()=>{setTask(key);setTool(recommended[key]);}}>{label}</Choice>)}</div>
+      <div className="gh-jhs1-science-readout" aria-live="polite"><strong>{tx(lang,'Recommended tool','Attrezzo consigliato')}: {current.name}</strong><p>{tx(lang,'Task','Compito')}: {current.task}</p><p>{tx(lang,'Simple machine principle','Principio della macchina semplice')}: {current.machine}</p><p>{current.detail}</p></div>
+      <h4>{tx(lang,'Explore another tool','Esplora un altro attrezzo')}</h4>
+      <div className="gh-jhs1-science-choices">{Object.entries(tools).map(([key,item])=><Choice key={key} active={tool===key} onClick={()=>setTool(key)}>{item.name}</Choice>)}</div>
+      <div className="gh-jhs1-science-readout" aria-live="polite"><strong>{current.name}</strong><p>{current.detail}</p><p><b>{tx(lang,'Safe handling','Uso sicuro')}:</b> {current.safe}</p></div>
+      <h4>{tx(lang,'Farm safety check','Controllo di sicurezza in fattoria')}</h4>
+      <div className="gh-jhs1-science-choices">{checks.map(([key,label])=><label key={key} className="gh-jhs1-science-choice"><input type="checkbox" checked={safety.includes(key)} onChange={()=>toggle(key)}/>{label}</label>)}</div>
+      <p className="gh-jhs1-science-readout" aria-live="polite">{tx(lang,'Safety habits checked','Abitudini di sicurezza verificate')}: {safety.length}/4</p>
+    </div>
+  </GhanaScienceVisual>;
+};
+
 export const GhanaJhs1ForcesEnergyVisual: React.FC<Props> = ({missionId,lang}) => {
   if (missionId === 'gh-jhs1-science-energy-forms') return <EnergyForms lang={lang}/>;
   if (missionId === 'gh-jhs1-science-electricity-generation') return <Electricity lang={lang}/>;
   if (missionId === 'gh-jhs1-science-energy-conversion') return <Conversion lang={lang}/>;
   if (missionId === 'gh-jhs1-science-force-motion') return <Forces lang={lang}/>;
+  if (missionId === 'gh-jhs1-science-agricultural-tools') return <AgriculturalTools lang={lang}/>;
   return null;
 };
