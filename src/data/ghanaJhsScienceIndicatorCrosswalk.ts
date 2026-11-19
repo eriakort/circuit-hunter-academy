@@ -97,7 +97,7 @@ export const GHANA_JHS_SCIENCE_OFFICIAL_INDICATOR_COUNTS = [
 export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence[] = [
   {
     "indicatorCode": "B8.2.1.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 2,
     "missionIds": [
       "gh-jhs2-science-carbon-cycle"
@@ -108,7 +108,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.2.1.1.2",
-    "grade": 2,
+    "grade": 8,
     "strand": 2,
     "missionIds": [
       "gh-jhs2-science-carbon-cycle"
@@ -119,7 +119,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.2.2.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 2,
     "missionIds": [
       "gh-jhs2-science-anopheles-life-cycle"
@@ -130,7 +130,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.2.2.1.2",
-    "grade": 2,
+    "grade": 8,
     "strand": 2,
     "missionIds": [
       "gh-jhs2-science-anopheles-life-cycle"
@@ -141,7 +141,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.2.3.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 2,
     "missionIds": [
       "gh-jhs2-science-seed-beds"
@@ -152,7 +152,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.2.3.2.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 2,
     "missionIds": [
       "gh-jhs2-science-seed-beds"
@@ -163,7 +163,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.2.4.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 2,
     "missionIds": [
       "gh-jhs2-science-animal-feed-water"
@@ -174,7 +174,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.2.4.2.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 2,
     "missionIds": [
       "gh-jhs2-science-animal-feed-water"
@@ -185,7 +185,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.3.1.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 3,
     "missionIds": [
       "gh-jhs2-science-teeth-dental-health"
@@ -196,7 +196,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.3.1.1.3",
-    "grade": 2,
+    "grade": 8,
     "strand": 3,
     "missionIds": [
       "gh-jhs2-science-teeth-dental-health"
@@ -207,7 +207,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.3.2.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 3,
     "missionIds": [
       "gh-jhs2-science-outer-planets"
@@ -218,7 +218,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.3.3.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 3,
     "missionIds": [
       "gh-jhs2-science-ecosystem-feeding"
@@ -229,7 +229,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.3.4.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 3,
     "missionIds": [
       "gh-jhs2-science-farming-systems"
@@ -240,7 +240,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.3.4.1.2",
-    "grade": 2,
+    "grade": 8,
     "strand": 3,
     "missionIds": [
       "gh-jhs2-science-farming-systems"
@@ -251,7 +251,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.4.1.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 4,
     "missionIds": [
       "gh-jhs2-science-energy-sources-heat"
@@ -262,7 +262,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.4.1.3.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 4,
     "missionIds": [
       "gh-jhs2-science-energy-sources-heat"
@@ -273,7 +273,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.4.2.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 4,
     "missionIds": [
       "gh-jhs2-science-electricity-electronics"
@@ -284,7 +284,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.4.2.2.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 4,
     "missionIds": [
       "gh-jhs2-science-electricity-electronics"
@@ -295,7 +295,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.4.3.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 4,
     "missionIds": [
       "gh-jhs2-science-energy-conservation-impact"
@@ -306,7 +306,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.4.4.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 4,
     "missionIds": [
       "gh-jhs2-science-magnetism-force-machines"
@@ -317,7 +317,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.4.4.2.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 4,
     "missionIds": [
       "gh-jhs2-science-magnetism-force-machines"
@@ -328,7 +328,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.4.5.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 4,
     "missionIds": [
       "gh-jhs2-science-agricultural-tools"
@@ -339,7 +339,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.4.5.1.2",
-    "grade": 2,
+    "grade": 8,
     "strand": 4,
     "missionIds": [
       "gh-jhs2-science-agricultural-tools"
@@ -350,7 +350,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.5.1.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 5,
     "missionIds": [
       "gh-jhs2-science-waste-management"
@@ -361,7 +361,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.5.1.1.2",
-    "grade": 2,
+    "grade": 8,
     "strand": 5,
     "missionIds": [
       "gh-jhs2-science-waste-management"
@@ -372,7 +372,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.5.2.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 5,
     "missionIds": [
       "gh-jhs2-science-human-health"
@@ -383,7 +383,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.5.2.2.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 5,
     "missionIds": [
       "gh-jhs2-science-human-health"
@@ -394,7 +394,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.5.3.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 5,
     "missionIds": [
       "gh-jhs2-science-science-industry"
@@ -405,7 +405,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.5.4.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 5,
     "missionIds": [
       "gh-jhs2-science-climate-green-economy"
@@ -416,7 +416,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.5.4.1.2",
-    "grade": 2,
+    "grade": 8,
     "strand": 5,
     "missionIds": [
       "gh-jhs2-science-climate-green-economy"
@@ -427,7 +427,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.5.5.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 5,
     "missionIds": [
       "gh-jhs2-science-soils-plants"
@@ -438,7 +438,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.5.5.1.2",
-    "grade": 2,
+    "grade": 8,
     "strand": 5,
     "missionIds": [
       "gh-jhs2-science-soils-plants"
@@ -449,7 +449,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B8.5.6.1.1",
-    "grade": 2,
+    "grade": 8,
     "strand": 5,
     "missionIds": [
       "gh-jhs2-science-rocks-soil-formation"
@@ -460,7 +460,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.1.1.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 1,
     "missionIds": [
       "gh-jhs3-science-binary-compounds"
@@ -471,7 +471,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.1.1.1.2",
-    "grade": 3,
+    "grade": 9,
     "strand": 1,
     "missionIds": [
       "gh-jhs3-science-binary-compounds"
@@ -482,7 +482,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.1.1.1.3",
-    "grade": 3,
+    "grade": 9,
     "strand": 1,
     "missionIds": [
       "gh-jhs3-science-acids-bases-salts"
@@ -493,7 +493,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.1.1.2.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 1,
     "missionIds": [
       "gh-jhs3-science-chemical-bonding"
@@ -504,7 +504,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.1.2.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 1,
     "missionIds": [
       "gh-jhs3-science-specialised-plant-cells",
@@ -516,7 +516,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.1.2.1.2",
-    "grade": 3,
+    "grade": 9,
     "strand": 1,
     "missionIds": [
       "gh-jhs3-science-specialised-plant-cells"
@@ -527,7 +527,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.1.2.1.3",
-    "grade": 3,
+    "grade": 9,
     "strand": 1,
     "missionIds": [
       "gh-jhs3-science-specialised-human-cells"
@@ -538,7 +538,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.2.1.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 2,
     "missionIds": [
       "gh-jhs3-science-nitrogen-cycle"
@@ -549,7 +549,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.2.1.1.2",
-    "grade": 3,
+    "grade": 9,
     "strand": 2,
     "missionIds": [
       "gh-jhs3-science-nitrogen-cycle"
@@ -560,7 +560,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.2.2.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 2,
     "missionIds": [
       "gh-jhs3-science-grasshopper-life-cycle"
@@ -571,7 +571,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.2.2.1.2",
-    "grade": 3,
+    "grade": 9,
     "strand": 2,
     "missionIds": [
       "gh-jhs3-science-grasshopper-life-cycle"
@@ -582,7 +582,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.2.3.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 2,
     "missionIds": [
       "gh-jhs3-science-crop-maturity"
@@ -593,7 +593,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.2.3.2.2",
-    "grade": 3,
+    "grade": 9,
     "strand": 2,
     "missionIds": [
       "gh-jhs3-science-crop-maturity"
@@ -604,7 +604,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.2.4.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 2,
     "missionIds": [
       "gh-jhs3-science-animal-feed-preparation"
@@ -615,7 +615,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.2.4.2.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 2,
     "missionIds": [
       "gh-jhs3-science-animal-feed-selection"
@@ -626,7 +626,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.3.1.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 3,
     "missionIds": [
       "gh-jhs3-science-circulation-respiration"
@@ -637,7 +637,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.3.1.1.2",
-    "grade": 3,
+    "grade": 9,
     "strand": 3,
     "missionIds": [
       "gh-jhs3-science-circulation-respiration"
@@ -648,7 +648,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.3.2.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 3,
     "missionIds": [
       "gh-jhs3-science-asteroids-comets"
@@ -659,7 +659,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.3.3.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 3,
     "missionIds": [
       "gh-jhs3-science-ecosystem-balance"
@@ -670,7 +670,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.3.4.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 3,
     "missionIds": [
       "gh-jhs3-science-manure-materials"
@@ -681,7 +681,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.3.4.1.2",
-    "grade": 3,
+    "grade": 9,
     "strand": 3,
     "missionIds": [
       "gh-jhs3-science-manure-composting"
@@ -692,7 +692,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.3.4.1.3",
-    "grade": 3,
+    "grade": 9,
     "strand": 3,
     "missionIds": [
       "gh-jhs3-science-manure-composting"
@@ -703,7 +703,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.4.1.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 4,
     "missionIds": [
       "gh-jhs3-science-energy-light"
@@ -714,7 +714,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.4.1.1.2",
-    "grade": 3,
+    "grade": 9,
     "strand": 4,
     "missionIds": [
       "gh-jhs3-science-energy-light"
@@ -725,7 +725,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.4.1.2.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 4,
     "missionIds": [
       "gh-jhs3-science-energy-light"
@@ -736,7 +736,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.4.1.2.4",
-    "grade": 3,
+    "grade": 9,
     "strand": 4,
     "missionIds": [
       "gh-jhs3-science-energy-light"
@@ -747,7 +747,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.4.1.3.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 4,
     "missionIds": [
       "gh-jhs3-science-energy-light"
@@ -758,7 +758,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.4.2.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 4,
     "missionIds": [
       "gh-jhs3-science-electricity-electronics"
@@ -769,7 +769,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.4.2.2.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 4,
     "missionIds": [
       "gh-jhs3-science-electricity-electronics"
@@ -780,7 +780,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.4.3.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 4,
     "missionIds": [
       "gh-jhs3-science-energy-conversion"
@@ -791,7 +791,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.4.3.1.2",
-    "grade": 3,
+    "grade": 9,
     "strand": 4,
     "missionIds": [
       "gh-jhs3-science-energy-conversion"
@@ -802,7 +802,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.4.4.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 4,
     "missionIds": [
       "gh-jhs3-science-force-motion-pressure"
@@ -813,7 +813,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.4.4.2.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 4,
     "missionIds": [
       "gh-jhs3-science-force-motion-pressure"
@@ -824,7 +824,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.4.5.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 4,
     "missionIds": [
       "gh-jhs3-science-agricultural-tools"
@@ -835,7 +835,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.4.5.1.2",
-    "grade": 3,
+    "grade": 9,
     "strand": 4,
     "missionIds": [
       "gh-jhs3-science-agricultural-tools"
@@ -846,7 +846,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.5.1.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 5,
     "missionIds": [
       "gh-jhs3-science-waste-management"
@@ -857,7 +857,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.5.1.2.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 5,
     "missionIds": [
       "gh-jhs3-science-waste-management"
@@ -868,7 +868,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.5.2.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 5,
     "missionIds": [
       "gh-jhs3-science-human-health"
@@ -879,7 +879,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.5.2.2.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 5,
     "missionIds": [
       "gh-jhs3-science-human-health"
@@ -890,7 +890,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.5.2.2.2",
-    "grade": 3,
+    "grade": 9,
     "strand": 5,
     "missionIds": [
       "gh-jhs3-science-human-health"
@@ -901,7 +901,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.5.3.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 5,
     "missionIds": [
       "gh-jhs3-science-industry"
@@ -912,7 +912,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.5.3.2.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 5,
     "missionIds": [
       "gh-jhs3-science-industry"
@@ -923,7 +923,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.5.3.2.2",
-    "grade": 3,
+    "grade": 9,
     "strand": 5,
     "missionIds": [
       "gh-jhs3-science-industry"
@@ -934,7 +934,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.5.4.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 5,
     "missionIds": [
       "gh-jhs3-science-climate-green-economy"
@@ -945,7 +945,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.5.4.2.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 5,
     "missionIds": [
       "gh-jhs3-science-climate-green-economy"
@@ -956,7 +956,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.5.5.1.1",
-    "grade": 3,
+    "grade": 9,
     "strand": 5,
     "missionIds": [
       "gh-jhs3-science-plant-resources"
@@ -967,7 +967,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     "indicatorCode": "B9.5.5.1.2",
-    "grade": 3,
+    "grade": 9,
     "strand": 5,
     "missionIds": [
       "gh-jhs3-science-plant-resources"
