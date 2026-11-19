@@ -81,6 +81,7 @@ const FarmToolEngineer: React.FC = () => {
   const current = tasks[task];
   return <GhanaScienceVisual title="The Farm Tool Engineer" description="Match a farm task to a suitable tool and review safe working practice." lang="en" caption="Choose tools that match the learner, task and conditions. School-garden activities require teacher supervision.">
     <div className="gh-jhs1-science-interaction"><h4>Choose the farm task</h4><div className="gh-jhs1-science-choices">{Object.keys(tasks).map(key => <Choice key={key} active={task === key} onClick={() => setTask(key)}>{key === 'soil' ? 'Prepare soil' : key === 'carry' ? 'Move a load' : key === 'water' ? 'Water seedlings' : key === 'clear' ? 'Clear vegetation' : 'Gather leaves'}</Choice>)}</div><div className="gh-jhs1-science-readout" aria-live="polite"><strong>Suitable tool: {current.tool}</strong><p>{current.purpose}</p><p><strong>Safety:</strong> {current.safety}</p></div></div>
+    <div className="gh-jhs1-science-readout"><strong>Common farm tools</strong><p>Tools include a hoe, wheelbarrow, watering can, cutlass and rake. Each tool is designed for a different task.</p></div>
     <div className="gh-jhs1-science-readout"><strong>Simple machines on the farm</strong><p>A wheelbarrow combines a wheel-and-axle with a lever to help move a load. A shovel can act as a lever when lifting soil.</p></div>
   </GhanaScienceVisual>;
 };
