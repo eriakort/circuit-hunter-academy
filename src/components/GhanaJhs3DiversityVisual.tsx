@@ -41,7 +41,7 @@ const CompoundExplorer: React.FC = () => {
         <h4>Choose a compound to investigate</h4>
         <div className="gh-jhs1-science-choices">
           {Object.entries(COMPOUNDS).map(([key, item]) => (
-            <Choice key={key} active={selected === key} onClick={() => setSelected(key)}>{item.name}</Choice>
+            <Choice key={key} active={selected === key} onClick={() => setSelected(key)}>{item.name} · {item.formula}</Choice>
           ))}
         </div>
         <div className="gh-jhs1-science-readout" aria-live="polite">
