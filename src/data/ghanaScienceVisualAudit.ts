@@ -37,7 +37,11 @@ const DEDICATED_GHANA_SCIENCE_VISUAL_MISSIONS = new Set([
   'gh-jhs1-science-understanding-environment',
   'gh-jhs2-science-mixture-separation',
   'gh-jhs2-science-atomic-structure',
-  'gh-jhs2-science-cell-types'
+  'gh-jhs2-science-cell-types',
+  'gh-jhs2-science-carbon-cycle',
+  'gh-jhs2-science-anopheles-life-cycle',
+  'gh-jhs2-science-seed-beds',
+  'gh-jhs2-science-animal-feed-water'
 ]);
 
 const SCIENCE_GRADE_BY_SUBJECT: Record<string, GhanaScienceVisualAuditRow['grade']> = {
