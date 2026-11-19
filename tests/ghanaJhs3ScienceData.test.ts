@@ -13,7 +13,7 @@ assert.deepEqual(arcs.map(arc => arc.title), [
   'Chemical Bonding',
   'Specialised Cells in Plants and Humans'
 ]);
-const missions = MISSIONS.filter(mission => mission.id.startsWith('gh-jhs3-science-'));
+const missions = MISSIONS.filter(mission => mission.id.startsWith('gh-jhs3-science-') && ARCS[mission.arc]?.unit === unitIndex);
 assert.equal(missions.length, 5);
 assert.deepEqual(missions.map(mission => mission.title), [
   'The Binary Compound Chemist',
