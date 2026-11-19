@@ -48,3 +48,12 @@ assert.ok(missions.some(mission => /B9\.2\.3\.2\.2/.test(mission.pages)), 'Crop 
 assert.ok(missions.some(mission => /B9\.2\.4\.1\.1/.test(mission.pages)), 'Animal feed preparation indicator is covered');
 assert.ok(missions.some(mission => /B9\.2\.4\.2\.1/.test(mission.pages)), 'Animal feed selection indicator is covered');
 console.log('ghanaJhs3ScienceCycles.test.ts ok! Five Basic 9 Cycles missions verified.');
+
+assert.ok(missions.some(mission => /B9\\.2\\.3\\.2\\.1/.test(mission.pages)), 'Crop maturity-stage uses indicator is explicitly linked');
+assert.ok(missions.some(mission => /B9\\.2\\.4\\.2\\.2/.test(mission.pages)), 'Animal feed by growth-stage indicator is explicitly linked');
+assert.ok(missions.some(mission => /B9\\.2\\.4\\.2\\.3/.test(mission.pages)), 'Practical animal-feeding indicator is explicitly linked');
+const cropMission = missions.find(mission => mission.id === 'gh-jhs3-science-crop-maturity');
+assert.ok(cropMission?.scenes.some(scene => /different maturity stages can have different uses/i.test(scene.text ?? '')), 'Crop lesson teaches uses at different maturity stages');
+const feedMission = missions.find(mission => mission.id === 'gh-jhs3-science-animal-feed-selection');
+assert.ok(feedMission?.scenes.some(scene => /Practical feeding activity/i.test(scene.text ?? '') && /record the feed offered/i.test(scene.text ?? '')), 'Animal-feeding lesson contains a supervised practical procedure');
+assert.ok(feedMission?.quiz.some(question => /supervised feeding activity/i.test(question.q)), 'Animal-feeding practical is assessed');
