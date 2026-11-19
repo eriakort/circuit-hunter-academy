@@ -5,7 +5,7 @@ type Props = { missionId: string };
 const Choice = ({ active, children, onClick }: { active: boolean; children: React.ReactNode; onClick: () => void }) => (
   <button type="button" className={`gh-jhs1-science-choice${active ? ' is-active' : ''}`} aria-pressed={active} onClick={onClick}>{children}</button>
 );
-const Panel = ({ title, children }: { title: string; children: React.ReactNode }) => <div className="gh-jhs1-science-readout"><strong>{title}</strong>{children}</div>;
+const Panel = ({ title, children }: { title: string; children: React.ReactNode }) => <div className="gh-jhs1-science-readout" aria-live="polite"><strong>{title}</strong>{children}</div>;
 
 const WasteWise: React.FC = () => {
   const [item, setItem] = useState('food');
