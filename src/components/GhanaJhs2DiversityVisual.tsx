@@ -16,7 +16,7 @@ const Mixtures:React.FC=()=>=>{
  const s=samples[sample];
  return <GhanaScienceVisual title={'The Mixture Separation Engineer'} description={'Identify mixture types and choose a separation method based on physical properties.'} lang="en" caption={'Never assume a classroom filter makes unsafe water drinkable. Follow trusted water-treatment guidance.'}>
  <svg viewBox="0 0 300 90" role="img" aria-label={'Mixture separation apparatus'}><path d="M30 15h55l-20 35v20H50V50z" fill="#7bdff2" stroke="#326b65" strokeWidth="2"/><path d="M145 15h55v45h-55z" fill="#e9b949" stroke="#326b65" strokeWidth="2"/><path d="M222 20h48v48h-48z" fill="#d6a6d6" stroke="#326b65" strokeWidth="2"/><path d="M38 38h39M153 35h39M230 42h32" stroke="#326b65" strokeWidth="3"/></svg>
- <div className="gh-jhs1-science-interaction"><h4>{'Investigate a mixture'}</h4><div className="gh-jhs1-science-choices">{Object.entries(samples).map(([k,v])=><Choice key={k} active={sample===k} onClick={()=>setSample(k)}>{v.name}</Choice>)}</div><div className="gh-jhs1-science-readout" aria-live="polite"><strong>{s.name} · {s.kind}</strong><p>{s.detail}</p></div><h4>{'Choose a separation technique'}</h4><div className="gh-jhs1-science-choices">{Object.entries(methods).map(([k,v])=><Choice key={k} active={method===k} onClick={()=>setMethod(k)}>{tx(lang,k==='filter'?'Filtration':k==='evaporate'?'Evaporation':k==='sieve'?'Sieving':'Magnetic separation',k==='filter'?'Filtrazione':k==='evaporate'?'Evaporazione':k==='sieve'?'Setacciatura':'Separazione magnetica')}</Choice>)}</div><div className="gh-jhs1-science-readout" aria-live="polite">{methods[method]}</div></div>
+ <div className="gh-jhs1-science-interaction"><h4>{'Investigate a mixture'}</h4><div className="gh-jhs1-science-choices">{Object.entries(samples).map(([k,v])=><Choice key={k} active={sample===k} onClick={()=>setSample(k)}>{v.name}</Choice>)}</div><div className="gh-jhs1-science-readout" aria-live="polite"><strong>{s.name} · {s.kind}</strong><p>{s.detail}</p></div><h4>{'Choose a separation technique'}</h4><div className="gh-jhs1-science-choices">{Object.entries(methods).map(([k,v])=><Choice key={k} active={method===k} onClick={()=>setMethod(k)}>{k==='filter'?'Filtration':k==='evaporate'?'Evaporation':k==='sieve'?'Sieving':'Magnetic separation'}</Choice>)}</div><div className="gh-jhs1-science-readout" aria-live="polite">{methods[method]}</div></div>
  </GhanaScienceVisual>;
 };
 
@@ -41,8 +41,8 @@ const Cells:React.FC=()=>=>{
 };
 
 export const GhanaJhs2DiversityVisual:React.FC<Props>=({missionId})=>{
- if(missionId==='gh-jhs2-science-mixture-separation') return <Mixtures lang="en"/>;
- if(missionId==='gh-jhs2-science-atomic-structure') return <Atoms lang="en"/>;
- if(missionId==='gh-jhs2-science-cell-types') return <Cells lang="en"/>;
+ if(missionId==='gh-jhs2-science-mixture-separation') return <Mixtures />;
+ if(missionId==='gh-jhs2-science-atomic-structure') return <Atoms />;
+ if(missionId==='gh-jhs2-science-cell-types') return <Cells />;
  return null;
 };
