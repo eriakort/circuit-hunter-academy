@@ -14,6 +14,7 @@ import { ChemistryLab } from './ChemistryLab';
 import { ScienceLab } from './ScienceLab';
 import { GhanaJhs1DiversityVisual } from './GhanaJhs1DiversityVisual';
 import { GhanaJhs1CyclesVisual } from './GhanaJhs1CyclesVisual';
+import { GhanaJhs1SystemsVisual } from './GhanaJhs1SystemsVisual';
 import { ItalianLab } from './ItalianLab';
 import { HistoryLab } from './HistoryLab';
 import { GeographyLab } from './GeographyLab';
@@ -260,6 +261,9 @@ export const MissionScreen: React.FC = () => {
           )}
           {isGhana && ['gh-jhs1-science-earth-cycles', 'gh-jhs1-science-life-cycles', 'gh-jhs1-science-crop-production', 'gh-jhs1-science-animal-production'].includes(currentMission.id) && currentSceneIndex === 1 && (
             <GhanaJhs1CyclesVisual missionId={currentMission.id} lang={lang} />
+          )}
+          {isGhana && ['gh-jhs1-science-human-body-system', 'gh-jhs1-science-solar-system', 'gh-jhs1-science-ecosystem', 'gh-jhs1-science-farming-systems'].includes(currentMission.id) && currentSceneIndex === 1 && (
+            <GhanaJhs1SystemsVisual missionId={currentMission.id} lang={lang} />
           )}
 
           <div className="dialog">
