@@ -327,3 +327,19 @@ test('Ghana JHS 3 Science Diversity of Matter pilot is selectable and opens its 
   await expect(page.locator('main')).toContainText('A binary compound');
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
+
+
+test('Ghana JHS 3 Science Cycles strand opens all five curriculum missions', async ({ page }) => {
+  await enterGhana(page, 'ghjhs3', 'ghjhs3science');
+  await expect(page.locator('.mcard')).toHaveCount(5);
+  await expect(page.locator('.mcard').first()).toContainText('The Nitrogen Cycle Guardian');
+  await expect(page.locator('.mcard').last()).toContainText('The Livestock Nutrition Strategist');
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('main')).toContainText('The Nitrogen Cycle Guardian');
+  await expect(page.locator('main')).toContainText('nitrogen fixation');
+  await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
+  await page.goBack();
+  await page.locator('.units button').filter({ hasText: 'Cycles' }).click();
+  await expect(page.locator('.mcard')).toHaveCount(5);
+  await expect(page.locator('.mcard').nth(2)).toContainText('The Crop Maturity Investigator');
+});
