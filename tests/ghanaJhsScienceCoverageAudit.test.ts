@@ -3,9 +3,9 @@ import { ARCS, MISSIONS, UNITS } from '../src/data/gameData';
 import { getCurriculumSubjects } from '../src/data/curriculumSubjects';
 
 const GRADES = [
-  { grade: 'JHS 1', subjectId: 'ghjhs1science', missionCount: 21 },
-  { grade: 'JHS 2', subjectId: 'ghjhs2science', missionCount: 22 },
-  { grade: 'JHS 3', subjectId: 'ghjhs3science', missionCount: 25 }
+  { grade: 'JHS 1', curriculumId: 'ghjhs1', subjectId: 'ghjhs1science', missionCount: 21 },
+  { grade: 'JHS 2', curriculumId: 'ghjhs2', subjectId: 'ghjhs2science', missionCount: 22 },
+  { grade: 'JHS 3', curriculumId: 'ghjhs3', subjectId: 'ghjhs3science', missionCount: 25 }
 ] as const;
 
 const expectedStrands = [
@@ -18,9 +18,8 @@ const expectedStrands = [
 
 const scienceMissionIds = new Set<string>();
 
-for (const { grade, subjectId, missionCount } of GRADES) {
-  const curriculumGrade = grade.toLowerCase().replace(' ', '');
-  const subject = getCurriculumSubjects(curriculumGrade, 'ghana-nacca')
+for (const { grade, curriculumId, subjectId, missionCount } of GRADES) {
+  const subject = getCurriculumSubjects(curriculumId, 'ghana-nacca')
     .find(candidate => candidate.id === subjectId);
 
   assert.ok(subject, `${grade} Science is selectable in the Ghana NaCCA curriculum`);
