@@ -7,14 +7,14 @@ import {
 } from '../src/data/ghanaJhsScienceIndicatorCrosswalk';
 
 const expectedByGrade = [
-  { grade: 7, official: 53, entries: 46, unreferenced: 7 },
+  { grade: 7, official: 53, entries: 53, unreferenced: 0 },
   { grade: 8, official: 45, entries: 33, unreferenced: 12 },
   { grade: 9, official: 53, entries: 47, unreferenced: 6 }
 ];
 
 assert.equal(GHANA_JHS_SCIENCE_OFFICIAL_INDICATOR_COUNTS.length, 15);
-assert.equal(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.length, 126);
-assert.equal(new Set(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.map(item => item.indicatorCode)).size, 126);
+assert.equal(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.length, 133);
+assert.equal(new Set(GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.map(item => item.indicatorCode)).size, 133);
 
 for (const expected of expectedByGrade) {
   const actual = GHANA_JHS_SCIENCE_COVERAGE_SUMMARY.find(item => item.grade === expected.grade);
@@ -90,3 +90,14 @@ assert.ok(basic7MachinesAndTools.every(item => item.officialIndicatorText && ite
 assert.ok(basic7MachinesAndTools.every(item => item.status === 'needs-review'));
 assert.ok(basic7MachinesAndTools.some(item => item.missionIds.length === 0),
   'Machine efficiency remains an explicit Basic 7 content gap');
+
+const basic7HumansEnvironment = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 7 && item.strand === 5);
+assert.deepEqual(basic7HumansEnvironment.map(item => item.indicatorCode), [
+  'B7.5.1.1.1','B7.5.2.1.1','B7.5.2.2.1','B7.5.3.1.1',
+  'B7.5.4.1.1','B7.5.5.1.1','B7.5.5.1.2'
+]);
+assert.ok(basic7HumansEnvironment.every(item => item.officialIndicatorText && item.sourcePdfPage));
+assert.ok(basic7HumansEnvironment.every(item => item.status === 'needs-review'));
+assert.ok(basic7HumansEnvironment.every(item => item.missionIds.length === 1));
+assert.ok(basic7HumansEnvironment.every(item => item.teachingSceneRefs.length > 0 && item.assessmentQuestionRefs.length > 0));
+assert.equal(basic7HumansEnvironment.length, 7, 'Basic 7 Strand 5 has seven official indicator records');
