@@ -1388,7 +1388,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   {
     indicatorCode: 'B7.4.4.2.3', grade: 7, strand: 4, missionIds: [],
     status: 'needs-review', officialIndicatorText: 'Know work input, and output and efficiency as they apply to machines.', sourcePdfPage: 80,
-    teachingSceneEvidence: 'No current Basic 7 lesson explicitly defines work input, work output, machine efficiency as a percentage, or ways to improve efficiency by reducing friction.',
+    teachingSceneEvidence: 'No matching Basic 7 lesson currently defines work input, work output, machine efficiency as a percentage, or ways to improve efficiency by reducing friction.',
     assessmentEvidence: 'No current Basic 7 quiz question directly assesses work input, work output or machine efficiency.',
     teachingSceneRefs: [], assessmentQuestionRefs: []
   },
