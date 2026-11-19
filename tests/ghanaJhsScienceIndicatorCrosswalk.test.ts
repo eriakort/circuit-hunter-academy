@@ -52,6 +52,7 @@ assert.ok(basic7Cycles.every(item => item.officialIndicatorText && item.sourcePd
 const basic7WaterCycle = basic7Cycles.filter(item => item.indicatorCode === 'B7.2.1.1.1' || item.indicatorCode === 'B7.2.1.1.2');
 assert.equal(basic7WaterCycle.length, 2);
 assert.ok(basic7WaterCycle.every(item => item.teachingSceneRefs.length > 0 && item.assessmentQuestionRefs.length > 0));
+assert.deepEqual(basic7WaterCycle[1].assessmentQuestionRefs, ['gh-jhs1-science-earth-cycles#quiz-4']);
 assert.match(basic7WaterCycle[0].teachingSceneEvidence, /transpiration/i);
 assert.match(basic7WaterCycle[1].teachingSceneEvidence, /freshwater renewal.*underground water stores.*weather patterns/i);
 assert.match(basic7WaterCycle[1].assessmentEvidence, /quiz\[4\].*freshwater renewal/i);
