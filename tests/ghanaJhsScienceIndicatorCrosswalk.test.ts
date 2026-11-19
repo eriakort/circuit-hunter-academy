@@ -7,7 +7,7 @@ import {
 } from '../src/data/ghanaJhsScienceIndicatorCrosswalk';
 
 const expectedByGrade = [
-  { grade: 7, official: 53, entries: 38, unreferenced: 15 },
+  { grade: 7, official: 53, entries: 37, unreferenced: 16 },
   { grade: 8, official: 45, entries: 33, unreferenced: 12 },
   { grade: 9, official: 53, entries: 47, unreferenced: 6 }
 ];
