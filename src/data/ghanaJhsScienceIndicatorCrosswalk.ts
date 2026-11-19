@@ -115,13 +115,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     assessmentQuestionRefs: ['gh-jhs1-science-importance-liquids#quiz-0','gh-jhs1-science-importance-liquids#quiz-1','gh-jhs1-science-importance-liquids#quiz-2','gh-jhs1-science-importance-liquids#quiz-3','gh-jhs1-science-importance-liquids#quiz-4']
   },
   {
-    indicatorCode: 'B7.1.1.1.2', grade: 7, strand: 1, missionIds: ['gh-jhs1-science-materials-uses'],
-    status: 'needs-review', officialIndicatorText: 'Discuss the importance of liquids in human life.', sourcePdfPage: 40,
-    teachingSceneEvidence: 'Candidate: gh-jhs1-science-materials-uses discusses material uses and water resistance; direct teaching of the importance of liquids is not yet confirmed.',
-    assessmentEvidence: 'No quiz question is yet explicitly mapped to this indicator.',
-    teachingSceneRefs: ['gh-jhs1-science-materials-uses#scene-0'], assessmentQuestionRefs: []
-  },
-  {
     indicatorCode: 'B7.1.1.1.3', grade: 7, strand: 1, missionIds: ['gh-jhs1-science-materials-uses'],
     status: 'needs-review', officialIndicatorText: 'Discuss the importance of specific solids to life.', sourcePdfPage: 40,
     teachingSceneEvidence: 'Candidate: gh-jhs1-science-materials-uses compares wood, metals and plastics in everyday products; verify links to survival and other life forms.',
