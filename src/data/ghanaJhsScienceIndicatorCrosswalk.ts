@@ -1273,53 +1273,77 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "indicatorCode": "B7.2.4.1.1",
     "grade": 7,
     "strand": 2,
-    "missionIds": [],
+    "missionIds": [
+      "gh-jhs1-science-animal-production"
+    ],
     "status": "needs-review",
     "officialIndicatorText": "Examine and list domestic animals in the community.",
     "sourcePdfPage": 49,
     "teachingSceneEvidence": "No matching mission explicitly asks learners to examine and list domestic animals in their community; the existing animal-production lesson is a general animal-care introduction.",
-    "assessmentEvidence": "No community-based domestic-animal identification question was found.",
-    "teachingSceneRefs": [],
-    "assessmentQuestionRefs": []
+    "assessmentEvidence": "Candidate: gh-jhs1-science-animal-production quiz[0] checks the value of local observation; use the class observation table as additional practical evidence.",
+    "teachingSceneRefs": [
+      "gh-jhs1-science-animal-production#scene-2"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs1-science-animal-production#quiz-0"
+    ]
   },
   {
     "indicatorCode": "B7.2.4.1.2",
     "grade": 7,
     "strand": 2,
-    "missionIds": [],
+    "missionIds": [
+      "gh-jhs1-science-animal-production"
+    ],
     "status": "needs-review",
     "officialIndicatorText": "Classify domestic animals into ruminants, monogastrics and poultry.",
     "sourcePdfPage": 50,
-    "teachingSceneEvidence": "No matching lesson teaching the required ruminant, monogastric and poultry classification was found.",
-    "assessmentEvidence": "No quiz question assesses the three required domestic-animal groups.",
-    "teachingSceneRefs": [],
-    "assessmentQuestionRefs": []
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-animal-production scene[1] explains ruminants (cattle, goats, sheep), monogastrics (pigs) and poultry (chickens, ducks, turkeys), including distinguishing features.",
+    "assessmentEvidence": "Candidate: gh-jhs1-science-animal-production quiz[1] assesses correct classification of cattle, pigs and chickens.",
+    "teachingSceneRefs": [
+      "gh-jhs1-science-animal-production#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs1-science-animal-production#quiz-1"
+    ]
   },
   {
     "indicatorCode": "B7.2.4.2.1",
     "grade": 7,
     "strand": 2,
-    "missionIds": [],
+    "missionIds": [
+      "gh-jhs1-science-animal-production"
+    ],
     "status": "needs-review",
     "officialIndicatorText": "Discuss and write the domestic and commercial uses of different types of animals.",
     "sourcePdfPage": 51,
-    "teachingSceneEvidence": "No matching lesson compares domestic and commercial uses of animal types; the existing animal-production mission focuses on welfare and housing.",
-    "assessmentEvidence": "No question explicitly assesses domestic and commercial uses of different animal types.",
-    "teachingSceneRefs": [],
-    "assessmentQuestionRefs": []
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-animal-production scene[2] compares household and commercial uses of chickens, cattle, goats, sheep, pigs, dogs and cats.",
+    "assessmentEvidence": "Candidate: gh-jhs1-science-animal-production quiz[2..3] checks animal products and commercial uses.",
+    "teachingSceneRefs": [
+      "gh-jhs1-science-animal-production#scene-4"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs1-science-animal-production#quiz-2"
+    ]
   },
   {
     "indicatorCode": "B7.2.4.2.2",
     "grade": 7,
     "strand": 2,
-    "missionIds": [],
+    "missionIds": [
+      "gh-jhs1-science-animal-production"
+    ],
     "status": "needs-review",
     "officialIndicatorText": "Observe and compare the uses of the different types of animals.",
     "sourcePdfPage": 52,
-    "teachingSceneEvidence": "No matching observation-and-comparison activity covering uses of different animal types was found.",
-    "assessmentEvidence": "No comparative assessment question on animal uses was found.",
-    "teachingSceneRefs": [],
-    "assessmentQuestionRefs": []
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-animal-production scene[3] includes a class table of locally observed animals, groups and at least two uses, followed by peer comparison.",
+    "assessmentEvidence": "Candidate: gh-jhs1-science-animal-production quiz[2] checks comparative knowledge of different animal uses; retain the class comparison table as practical evidence.",
+    "teachingSceneRefs": [
+      "gh-jhs1-science-animal-production#scene-5"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs1-science-animal-production#quiz-2"
+    ]
   },
 
   // Basic 7 · Strand 3 — Systems (NaCCA CCP, pp. 53–62).
