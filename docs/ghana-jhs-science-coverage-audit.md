@@ -126,3 +126,15 @@ The visuals use local React/SVG artwork, accessible interactive controls and bil
 The fifth Basic 7 Forces and Energy mission, **The Farm Tool Engineer**, now has a dedicated interactive teaching visual. Learners match common farm tasks to hoes, cutlasses, rakes, wheelbarrows, watering cans and spades; inspect wedge, lever, wheel-and-axle and gravity principles; and complete a four-point safe-handling checklist. Examples include preparing soil, weeding, watering seedlings and moving harvested produce. The visual is bilingual English/Italian, uses local React/SVG artwork and accessible controls, and appears in the second teaching scene without changing mission gates, quizzes or mastery logic.
 
 Basic 7 now has 17 dedicated instructional visuals; 52 of the 69 audited JHS Science missions remain generic-only (Basic 7: 17/5; Basic 8: 0/22; Basic 9: 0/25).
+
+
+### Basic 7 Humans and the Environment instructional-visual increment (2026-11-19)
+
+Four Basic 7 Humans and the Environment missions now include dedicated interactive teaching visuals:
+
+- **Waste Management:** learners sort food scraps, paper, plastics, batteries and wastewater, then explore reduce, reuse, recycle and composting with safe disposal guidance.
+- **Human Health:** learners connect vitamin A, vitamin C, vitamin D, protein and iron deficiencies to examples, then compare respiratory-particle and body-fluid transmission while learning that prevention depends on the disease.
+- **Science and Industry:** learners explore agricultural science, medical laboratory science, engineering, environmental science and physics through the questions, evidence-based methods and community impact of each career.
+- **Climate Change and Green Economy:** learners distinguish the natural greenhouse effect from its human-driven enhancement, explore forest carbon storage and compare solar power, hydropower and energy efficiency with their trade-offs.
+
+The visuals use local React/SVG artwork, accessible interactive controls and bilingual English/Italian explanations. They appear in the second teaching scene and do not change mission gates, assessment questions or mastery logic. Basic 7 now has 21 dedicated instructional visuals; 48 of the 69 audited JHS Science missions remain generic-only (Basic 7: 21/1; Basic 8: 0/22; Basic 9: 0/25). The final Basic 7 Humans and the Environment mission, Understanding the Environment, remains for the next visual increment.
