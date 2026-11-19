@@ -254,7 +254,7 @@ export const MissionScreen: React.FC = () => {
               dangerouslySetInnerHTML={{ __html: visualContent }}
             />
           )}
-          {isGhana && ['gh-jhs1-science-materials-states', 'gh-jhs1-science-importance-liquids', 'gh-jhs1-science-materials-uses', 'gh-jhs1-science-living-cells'].includes(currentMission.id) && (
+          {isGhana && ['gh-jhs1-science-materials-states', 'gh-jhs1-science-importance-liquids', 'gh-jhs1-science-materials-uses', 'gh-jhs1-science-living-cells'].includes(currentMission.id) && currentSceneIndex === 1 && (
             <GhanaJhs1DiversityVisual missionId={currentMission.id} lang={lang} />
           )}
 
