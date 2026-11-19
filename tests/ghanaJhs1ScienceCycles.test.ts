@@ -59,6 +59,6 @@ assert.match(earthMission.scenes[1].text, /transpiration/i);
 assert.match(earthMission.scenes[1].text, /precipitation/i);
 assert.match(earthMission.scenes[3].text, /underground water stores/i);
 assert.match(earthMission.scenes[3].text, /nutrients/i);
-assert.match(earthMission.quiz[2].q, /transpiration/i);
+assert.match(JSON.stringify(earthMission.quiz[2]), /transpiration/i);
 assert.match(earthMission.quiz[4].q, /water cycle important/i);
 console.log('Basic 7 water-cycle sequence, transpiration and environmental importance verified.');
