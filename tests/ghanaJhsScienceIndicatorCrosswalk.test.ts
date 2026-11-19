@@ -64,7 +64,8 @@ const basic7ForcesEnergy = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => i
 assert.deepEqual(basic7ForcesEnergy.map(item => item.indicatorCode), [
   'B7.4.1.1.1','B7.4.1.1.2','B7.4.1.2.1','B7.4.1.3.1',
   'B7.4.2.1.1','B7.4.2.1.2','B7.4.2.2.1','B7.4.2.2.2','B7.4.2.2.3',
-  'B7.4.3.1.1','B7.4.3.1.2','B7.4.3.1.3'
+  'B7.4.3.1.1','B7.4.3.1.2','B7.4.3.1.3',
+  'B7.4.4.1.1','B7.4.4.1.2','B7.4.4.1.3','B7.4.4.1.4'
 ]);
 assert.ok(basic7ForcesEnergy.every(item => item.officialIndicatorText && item.sourcePdfPage));
 assert.ok(basic7ForcesEnergy.every(item => item.status === 'needs-review'));
