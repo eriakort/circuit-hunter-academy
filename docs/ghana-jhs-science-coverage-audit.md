@@ -63,13 +63,13 @@ Baseline findings from the 15 Ghana JHS Science lesson data modules:
 
 | Visual category | Missions |
 |---|---:|
-| Dedicated instructional visual reference | 0 |
-| Generic challenge illustration only | 69 |
+| Dedicated instructional visual reference | 4 |
+| Generic challenge illustration only | 65 |
 | No visual reference at all | 0 |
 
-All 69 current missions use the shared `vis: 'demon'` challenge illustration. Each mission also has an interactive battle scene, but that is an assessment/game interaction rather than an instructional science visual. This distinction is important: the presence of an image or an interactive quiz does not mean that the scientific process itself has been visualised.
+All 69 current missions retain the shared `vis: 'demon'` challenge illustration. Four Basic 7 Diversity of Matter missions now also have dedicated interactive teaching visuals; the remaining 65 missions still have generic challenge artwork only. Each mission also has an interactive battle scene, but that is an assessment/game interaction rather than an instructional science visual. This distinction is important: the presence of an image or an interactive quiz does not mean that the scientific process itself has been visualised.
 
-The new reusable `GhanaScienceVisual` frame provides local React/SVG content with explicit play/pause and replay controls, keyboard-operable buttons, a static paused default, responsive layout and reduced-motion support. It is a foundation for the next increment; it does not yet claim that any mission has been visually enriched.
+The reusable `GhanaScienceVisual` frame provides local React/SVG content with explicit play/pause and replay controls, keyboard-operable buttons, a static paused default, responsive layout and reduced-motion support. The Basic 7 pilot adds a particle-state temperature model, a selectable liquid-role explorer, a materials-and-properties comparator, and a plant/animal cell explorer. Interactions update the model or explanatory text; these are locally rendered and do not require an external service.
 
 Run the checks with:
 
@@ -82,4 +82,4 @@ Visual status meanings:
 - **generic-only:** the mission has challenge/decorative artwork but no dedicated instructional visual.
 - **missing:** no visual reference is attached.
 
-The audit is a baseline and prioritisation aid, not an indicator-coverage or teaching-quality certification.
+The audit is a prioritisation aid, not an indicator-coverage or teaching-quality certification. It records the four pilot mission IDs explicitly and should be updated alongside each future visual implementation.
