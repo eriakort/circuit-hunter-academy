@@ -106,7 +106,7 @@ Four Basic 7 Systems missions now include dedicated interactive teaching visuals
 - **Ecosystem:** learners explore Ghanaian savanna and freshwater-pond food chains and inspect each organism's role in energy transfer.
 - **Farming Systems:** learners compare crop rotation, mixed cropping, mixed farming, land rotation and organic farming, including possible benefits and local constraints.
 
-The visuals use local React/SVG artwork, accessible controls and bilingual English/Italian explanations. They appear in the second teaching scene and do not alter mission gates, assessment questions or mastery logic. The audit now records twelve dedicated Basic 7 visuals and 57 generic-only JHS Science missions.
+The visuals use local React/SVG artwork, accessible controls and English-only explanations. They appear in the second teaching scene and do not alter mission gates, assessment questions or mastery logic. The audit now records twelve dedicated Basic 7 visuals and 57 generic-only JHS Science missions.
 
 
 ### Basic 7 Forces and Energy instructional-visual increment (2026-11-19)
@@ -143,3 +143,14 @@ The visuals use local React/SVG artwork, accessible interactive controls and bil
 ### Basic 7 Understanding the Environment visual (2026-11-19)
 
 The final Basic 7 Humans and the Environment mission, **Understanding the Environment**, now has an interactive habitat and adaptation visual. Learners compare moist forest, Guinea savanna, river and wetland, and coastal/mangrove habitats; explore how roots, leaves, stems and gills support survival; and distinguish mutualism, parasitism and commensalism through examples. The content encourages careful observation and protection of living things. This completes dedicated instructional visuals for all five Basic 7 Humans and the Environment missions and brings Basic 7 coverage to 22 of 22 missions.
+
+
+### Basic 8 Diversity of Matter instructional-visual increment (2026-11-19)
+
+Three Basic 8 Diversity of Matter missions now include dedicated interactive teaching visuals:
+
+- **Mixtures and Separation Techniques:** learners compare homogeneous solutions, suspensions, colloids and heterogeneous mixtures, then inspect filtration, evaporation, sieving and magnetic separation. Water-safety guidance distinguishes classroom separation from treatment that makes water safe to drink.
+- **Atoms and the Periodic Table:** learners explore protons, neutrons and electrons, calculate particle counts from atomic and mass numbers, and compare a neutral atom with an ion.
+- **Prokaryotic and Eukaryotic Cells:** learners compare bacteria with plant and animal cells, identify the membrane-bound nucleus, and examine structures shared by both cell types.
+
+The visuals use local React/SVG artwork, keyboard-operable controls and bilingual English/Italian explanations. They appear in the second teaching scene and do not change mission gates, quizzes or mastery logic. The visual audit now records 25 dedicated instructional visuals and 44 generic-only JHS Science missions (Basic 7: 22/0; Basic 8: 3/19; Basic 9: 0/25). The Basic 8 pilot currently covers all three missions registered in its Diversity of Matter strand.
