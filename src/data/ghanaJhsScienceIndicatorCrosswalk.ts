@@ -1167,8 +1167,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "officialIndicatorText": "Explain how the water cycle occurs as a repeated pattern in nature.",
     "sourcePdfPage": 44,
-    "teachingSceneEvidence": "Candidate: gh-jhs1-science-earth-cycles scenes[0..1] explain evaporation, condensation and precipitation; verify explicit treatment of transpiration and the complete repeated pattern.",
-    "assessmentEvidence": "Candidate: quiz[0..2] checks the Sun, evaporation and condensation; no question yet checks the complete cycle or transpiration.",
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-earth-cycles scenes[0..1] explain evaporation, condensation, precipitation, transpiration and the repeated return of water to rivers, lakes and oceans.",
+    "assessmentEvidence": "Candidate: gh-jhs1-science-earth-cycles quiz[0..2] checks solar energy, evaporation and transpiration; scene[1] also teaches condensation, precipitation, surface flow and infiltration.",
     "teachingSceneRefs": [
       "gh-jhs1-science-earth-cycles#scene-0",
       "gh-jhs1-science-earth-cycles#scene-1"
@@ -1189,8 +1189,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "officialIndicatorText": "Describe the importance of the water cycle in nature.",
     "sourcePdfPage": 45,
-    "teachingSceneEvidence": "Candidate: gh-jhs1-science-earth-cycles discusses water movement, soil and farming; it does not yet explicitly teach all listed roles of the water cycle.",
-    "assessmentEvidence": "No quiz question explicitly assesses the water cycle's importance for nutrients, water tables, weather patterns and clean water.",
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-earth-cycles scene[3] explains freshwater renewal, rivers and underground water stores, weather patterns, rainfall, nutrient movement through soil and ecosystem support.",
+    "assessmentEvidence": "Candidate: gh-jhs1-science-earth-cycles quiz[4] assesses freshwater renewal, water stores, weather and plant growth; the teaching scene also addresses nutrient movement and water protection.",
     "teachingSceneRefs": [
       "gh-jhs1-science-earth-cycles#scene-1",
       "gh-jhs1-science-earth-cycles#scene-3"
