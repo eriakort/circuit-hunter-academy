@@ -51,8 +51,8 @@ assert.deepEqual(basic7Cycles.map(item => item.indicatorCode), [
 assert.ok(basic7Cycles.every(item => item.officialIndicatorText && item.sourcePdfPage));
 assert.ok(basic7Cycles.filter(item =>
   /not yet|No .*question|does not/i.test(item.teachingSceneEvidence + ' ' + item.assessmentEvidence)
-).length >= 4,
-  'Partial Basic 7 cycle coverage must retain explicit teaching or assessment gaps even when candidate missions are mapped');
+).length >= 2,
+  'Remaining Basic 7 cycle gaps, including water-cycle importance and transpiration, must remain explicit');
 
 const basic7Systems = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 7 && item.strand === 3);
 assert.deepEqual(basic7Systems.map(item => item.indicatorCode), [
