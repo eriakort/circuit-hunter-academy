@@ -4,7 +4,7 @@ import { GhanaScienceVisual } from './GhanaScienceVisual';
 type Props={missionId:string};
 const Choice=({active,children,onClick}:{active:boolean;children:React.ReactNode;onClick:()=>void})=><button type="button" className={`gh-jhs1-science-choice${active?' is-active':''}`} aria-pressed={active} onClick={onClick}>{children}</button>;
 
-const Mixtures:React.FC=()=>=>{
+const Mixtures:React.FC=()=>{
  const [sample,setSample]=useState('salt'),[method,setMethod]=useState('filter');
  const samples:Record<string,{name:string,kind:string,detail:string}>={
  salt:{name:'Salt water',kind:'Homogeneous solution',detail:'Salt is the solute and water is the solvent. Evaporation can recover the dissolved salt.'},
@@ -20,7 +20,7 @@ const Mixtures:React.FC=()=>=>{
  </GhanaScienceVisual>;
 };
 
-const Atoms:React.FC=()=>=>{
+const Atoms:React.FC=()=>{
  const [element,setElement]=useState('sodium');
  const atoms:Record<string,{name:string,symbol:string,z:number,a:number,charge:string}>={hydrogen:{name:'Hydrogen',symbol:'H',z:1,a:1,charge:'neutral'},carbon:{name:'Carbon',symbol:'C',z:6,a:12,charge:'neutral'},oxygen:{name:'Oxygen',symbol:'O',z:8,a:16,charge:'neutral'},sodium:{name:'Sodium',symbol:'Na',z:11,a:23,charge:'neutral'},chloride:{name:'Chloride ion',symbol:'Cl⁻',z:17,a:35,charge:'−1 (gained one electron)'}};
  const a=atoms[element],electrons=a.z+(element==='chloride'?1:0);
@@ -30,7 +30,7 @@ const Atoms:React.FC=()=>=>{
  </GhanaScienceVisual>;
 };
 
-const Cells:React.FC=()=>=>{
+const Cells:React.FC=()=>{
  const [kind,setKind]=useState('bacteria');
  const cells:Record<string,{name:string,nucleus:string,examples:string,shared:string}>={bacteria:{name:'Prokaryotic cell',nucleus:'No membrane-bound nucleus; DNA is in a nucleoid region.',examples:'Bacteria',shared:'Cell membrane, cytoplasm, ribosomes and genetic material.'},plant:{name:'Plant eukaryotic cell',nucleus:'Has a membrane-bound nucleus and membrane-bound organelles.',examples:'Plants; photosynthetic tissues often contain chloroplasts, and plant cells typically have a cellulose wall and large vacuole.',shared:'Cell membrane, cytoplasm, ribosomes and genetic material.'},animal:{name:'Animal eukaryotic cell',nucleus:'Has a membrane-bound nucleus and membrane-bound organelles.',examples:'Animals, including humans.',shared:'Cell membrane, cytoplasm, ribosomes and genetic material.'}};
  const c=cells[kind];
