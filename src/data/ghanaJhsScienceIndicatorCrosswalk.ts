@@ -1022,6 +1022,159 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
     "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
   }
+,
+  {
+    "indicatorCode": "B7.2.1.1.1",
+    "grade": 7,
+    "strand": 2,
+    "missionIds": [
+      "gh-jhs1-science-earth-cycles"
+    ],
+    "status": "needs-review",
+    "officialIndicatorText": "Explain how the water cycle occurs as a repeated pattern in nature.",
+    "sourcePdfPage": 44,
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-earth-cycles scenes[0..1] explain evaporation, condensation and precipitation; verify explicit treatment of transpiration and the complete repeated pattern.",
+    "assessmentEvidence": "Candidate: quiz[0..2] checks the Sun, evaporation and condensation; no question yet checks the complete cycle or transpiration.",
+    "teachingSceneRefs": [
+      "gh-jhs1-science-earth-cycles#scene-0",
+      "gh-jhs1-science-earth-cycles#scene-1"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs1-science-earth-cycles#quiz-0",
+      "gh-jhs1-science-earth-cycles#quiz-1",
+      "gh-jhs1-science-earth-cycles#quiz-2"
+    ]
+  },
+  {
+    "indicatorCode": "B7.2.1.1.2",
+    "grade": 7,
+    "strand": 2,
+    "missionIds": [
+      "gh-jhs1-science-earth-cycles"
+    ],
+    "status": "needs-review",
+    "officialIndicatorText": "Describe the importance of the water cycle in nature.",
+    "sourcePdfPage": 45,
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-earth-cycles discusses water movement, soil and farming; it does not yet explicitly teach all listed roles of the water cycle.",
+    "assessmentEvidence": "No quiz question explicitly assesses the water cycle's importance for nutrients, water tables, weather patterns and clean water.",
+    "teachingSceneRefs": [
+      "gh-jhs1-science-earth-cycles#scene-1",
+      "gh-jhs1-science-earth-cycles#scene-3"
+    ],
+    "assessmentQuestionRefs": []
+  },
+  {
+    "indicatorCode": "B7.2.2.1.1",
+    "grade": 7,
+    "strand": 2,
+    "missionIds": [],
+    "status": "needs-review",
+    "officialIndicatorText": "Describe the life cycle of the housefly.",
+    "sourcePdfPage": 46,
+    "teachingSceneEvidence": "No matching housefly life-cycle mission was found. The existing life-cycles mission covers plants, butterflies and chickens, not the housefly indicator.",
+    "assessmentEvidence": "No housefly-specific assessment question was found in the current Basic 7 Science mission set.",
+    "teachingSceneRefs": [],
+    "assessmentQuestionRefs": []
+  },
+  {
+    "indicatorCode": "B7.2.2.1.2",
+    "grade": 7,
+    "strand": 2,
+    "missionIds": [],
+    "status": "needs-review",
+    "officialIndicatorText": "Discuss the activities of the housefly as a menace to humans and show how to reduce the effects of those activities.",
+    "sourcePdfPage": 47,
+    "teachingSceneEvidence": "No matching housefly feeding, disease transmission, nuisance or prevention lesson was found in the current Basic 7 Science mission set.",
+    "assessmentEvidence": "No housefly impact or prevention assessment question was found.",
+    "teachingSceneRefs": [],
+    "assessmentQuestionRefs": []
+  },
+  {
+    "indicatorCode": "B7.2.3.1.1",
+    "grade": 7,
+    "strand": 2,
+    "missionIds": [
+      "gh-jhs1-science-crop-production"
+    ],
+    "status": "needs-review",
+    "officialIndicatorText": "Observe and list all plant nutrient sources available in a community and categorise them into organic and inorganic nutrient sources.",
+    "sourcePdfPage": 48,
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-crop-production scene[2] mentions manure and fertiliser; community nutrient-source identification and organic/inorganic classification are not yet explicitly taught.",
+    "assessmentEvidence": "No question explicitly asks learners to identify community plant nutrient sources and classify them as organic or inorganic.",
+    "teachingSceneRefs": [
+      "gh-jhs1-science-crop-production#scene-2"
+    ],
+    "assessmentQuestionRefs": []
+  },
+  {
+    "indicatorCode": "B7.2.3.1.2",
+    "grade": 7,
+    "strand": 2,
+    "missionIds": [
+      "gh-jhs1-science-crop-production"
+    ],
+    "status": "needs-review",
+    "officialIndicatorText": "Describe the physical characteristics of different plant nutrients (organic and inorganic) and how each is applied to plants in the field.",
+    "sourcePdfPage": 48,
+    "teachingSceneEvidence": "Candidate: gh-jhs1-science-crop-production scene[2] mentions manure and fertiliser, but does not compare their physical characteristics or demonstrate field application.",
+    "assessmentEvidence": "No assessment question checks nutrient characteristics and appropriate field application.",
+    "teachingSceneRefs": [
+      "gh-jhs1-science-crop-production#scene-2"
+    ],
+    "assessmentQuestionRefs": []
+  },
+  {
+    "indicatorCode": "B7.2.4.1.1",
+    "grade": 7,
+    "strand": 2,
+    "missionIds": [],
+    "status": "needs-review",
+    "officialIndicatorText": "Examine and list domestic animals in the community.",
+    "sourcePdfPage": 49,
+    "teachingSceneEvidence": "No matching mission explicitly asks learners to examine and list domestic animals in their community; the existing animal-production lesson is a general animal-care introduction.",
+    "assessmentEvidence": "No community-based domestic-animal identification question was found.",
+    "teachingSceneRefs": [],
+    "assessmentQuestionRefs": []
+  },
+  {
+    "indicatorCode": "B7.2.4.1.2",
+    "grade": 7,
+    "strand": 2,
+    "missionIds": [],
+    "status": "needs-review",
+    "officialIndicatorText": "Classify domestic animals into ruminants, monogastrics and poultry.",
+    "sourcePdfPage": 50,
+    "teachingSceneEvidence": "No matching lesson teaching the required ruminant, monogastric and poultry classification was found.",
+    "assessmentEvidence": "No quiz question assesses the three required domestic-animal groups.",
+    "teachingSceneRefs": [],
+    "assessmentQuestionRefs": []
+  },
+  {
+    "indicatorCode": "B7.2.4.2.1",
+    "grade": 7,
+    "strand": 2,
+    "missionIds": [],
+    "status": "needs-review",
+    "officialIndicatorText": "Discuss and write the domestic and commercial uses of different types of animals.",
+    "sourcePdfPage": 51,
+    "teachingSceneEvidence": "No matching lesson compares domestic and commercial uses of animal types; the existing animal-production mission focuses on welfare and housing.",
+    "assessmentEvidence": "No question explicitly assesses domestic and commercial uses of different animal types.",
+    "teachingSceneRefs": [],
+    "assessmentQuestionRefs": []
+  },
+  {
+    "indicatorCode": "B7.2.4.2.2",
+    "grade": 7,
+    "strand": 2,
+    "missionIds": [],
+    "status": "needs-review",
+    "officialIndicatorText": "Observe and compare the uses of the different types of animals.",
+    "sourcePdfPage": 52,
+    "teachingSceneEvidence": "No matching observation-and-comparison activity covering uses of different animal types was found.",
+    "assessmentEvidence": "No comparative assessment question on animal uses was found.",
+    "teachingSceneRefs": [],
+    "assessmentQuestionRefs": []
+  }
 ];
 
 /** Roll-up that exposes how many official indicators still lack explicit indicator-level references. */
