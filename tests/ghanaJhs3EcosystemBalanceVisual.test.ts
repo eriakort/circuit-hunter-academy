@@ -17,5 +17,5 @@ for (const term of [
 ]) {
   assert.ok(html.toLowerCase().includes(term.toLowerCase()), 'includes ' + term);
 }
-assert.ok(!/\\b(energia|elettrica|calore|forza|pressione|acqua|ossigeno|idrogeno|acido|acidi|sale|sali|legame|cellule|foglia|radice|sangue|muscolo|nervo|larva|farfalla|mangime|alimento|nutrizione|attrezzo|zappa|rastrello|sicurezza|cuore|polmoni|arterie|vene|ecosistema|catena alimentare|erba|cavalletta|lucertola|falco)\\b/i.test(html), 'contains no Italian interface text');
+assert.ok(!/\b(energia|elettrica|calore|forza|pressione|acqua|ossigeno|idrogeno|acido|acidi|sale|sali|legame|cellule|foglia|radice|sangue|muscolo|nervo|larva|farfalla|mangime|alimento|nutrizione|attrezzo|zappa|rastrello|sicurezza|cuore|polmoni|arterie|vene|ecosistema|catena alimentare|erba|cavalletta|lucertola|falco)\b/i.test(html), 'contains no Italian interface text');
 console.log('Basic 9 ecosystem balance visual renders an accessible English-only food web and disturbance explorer.');
