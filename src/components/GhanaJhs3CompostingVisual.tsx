@@ -35,7 +35,7 @@ export const GhanaJhs3CompostingVisual: React.FC = () => {
           ))}
         </div>
         <div className="gh-jhs1-science-readout">
-          <p><b>Remember:</b> balance moist green materials with dry brown materials. Keep the heap moist, not waterlogged, and turn it to provide oxygen. Allow finished compost to cure until it is dark, crumbly and earthy-smelling.</p>
+          <p><b>Remember:</b> balance moist green materials with dry brown materials. Keep the heap moist as a wrung-out sponge, not waterlogged, and turn it to provide oxygen. Allow finished compost to cure until it is dark, crumbly and earthy-smelling.</p>
         </div>
         <div className="gh-jhs1-science-readout" aria-live="polite">
           <strong>{STAGES[stage].title}</strong>
