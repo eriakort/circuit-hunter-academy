@@ -23,6 +23,7 @@ import { GhanaJhs2CyclesVisual } from './GhanaJhs2CyclesVisual';
 import { GhanaJhs2ForcesEnergyVisual } from './GhanaJhs2ForcesEnergyVisual';
 import { GhanaJhs2HumansEnvironmentVisual } from './GhanaJhs2HumansEnvironmentVisual';
 import { GhanaJhs3DiversityVisual } from './GhanaJhs3DiversityVisual';
+import { GhanaJhs3CyclesVisual } from './GhanaJhs3CyclesVisual';
 import { ItalianLab } from './ItalianLab';
 import { HistoryLab } from './HistoryLab';
 import { GeographyLab } from './GeographyLab';
