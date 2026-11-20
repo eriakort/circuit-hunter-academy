@@ -279,6 +279,7 @@ const HumanCellExplorer: React.FC = () => {
           <p><b>Nerve cells</b> coordinate activities by transmitting signals; <b>red blood cells</b> transport oxygen; <b>muscle cells</b> produce force and movement.</p>
           <p><b>Sperm cells</b> are reproductive cells. Their head, mitochondria-rich midpiece and tail each contribute to their role in fertilisation.</p>
           <p><b>Differentiation</b> is the process by which cells develop specialised structures and functions.</p>
+          <p><b>Specialised structures:</b> a nerve cell has a long axon to carry impulses; a red blood cell contains haemoglobin to carry oxygen; a muscle cell contains contractile protein fibres; and a sperm cell has a mitochondria-rich midpiece and a tail (flagellum) for movement.</p>
         </div>
       </div>
     </GhanaScienceVisual>
