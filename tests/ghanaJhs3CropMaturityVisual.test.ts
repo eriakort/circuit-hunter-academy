@@ -10,5 +10,5 @@ assert.ok(html.includes('aria-pressed='));
 for (const term of ['Maize', 'Beans', 'Leafy vegetables', 'Young / green', 'Mature grain', 'Dry seed', 'green maize', 'fresh green pods', 'Bed A', 'Bed B', 'plant height', 'flowering', 'seed filling', 'soil', 'sunlight', 'repeated observations']) {
   assert.ok(html.toLowerCase().includes(term.toLowerCase()), 'includes ' + term);
 }
-assert.ok(!/\\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|sale|sali|legame|legami|cellule|foglia|radice|sangue|muscolo|nervo|uovo|larva|farfalla)\\b/i.test(html), 'contains no Italian interface text');
+assert.ok(!/\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|sale|sali|legame|legami|cellule|foglia|radice|sangue|muscolo|nervo|uovo|larva|farfalla)\b/i.test(html), 'contains no Italian interface text');
 console.log('Basic 9 crop maturity visual renders an accessible English-only crop and harvest-stage explorer.');
