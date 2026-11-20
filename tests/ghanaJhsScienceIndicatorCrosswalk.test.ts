@@ -168,7 +168,7 @@ const expectedBasic9Evidence: Record<string, { scenes: string[]; questions: stri
   },
   'B9.2.4.2.2': {
     scenes: ['gh-jhs3-science-animal-feed-selection#scene-2', 'gh-jhs3-science-animal-feed-selection#scene-3'],
-    questions: ['gh-jhs3-science-animal-feed-selection#quiz-3']
+    questions: ['gh-jhs3-science-animal-feed-selection#quiz-3', 'gh-jhs3-science-animal-feed-selection#quiz-4']
   },
   'B9.2.4.2.3': {
     scenes: ['gh-jhs3-science-animal-feed-selection#scene-3'],
