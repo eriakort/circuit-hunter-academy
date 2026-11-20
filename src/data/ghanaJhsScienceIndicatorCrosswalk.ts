@@ -843,8 +843,12 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-circulation-respiration"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Explain the concept of the circulatory system, state the function of each part of the system and the health challenges associated with it.",
+    "sourcePdfPage": 139,
+    "teachingSceneEvidence": "Circulation scenes 0–2 explain the heart, blood, blood vessels, blood components and the route of blood through the lungs and body. The curriculum's heart labelling, circulatory diseases and blood-pressure prevention/management exemplars need additional explicit lesson and assessment evidence.",
+    "assessmentEvidence": "Quizzes 0–2 check the main system components, oxygen transport by red blood cells and capillary exchange. They do not directly assess heart labelling, circulatory disease causes/prevention or blood-pressure management.",
+    "teachingSceneRefs": ["gh-jhs3-science-circulation-respiration#scene-0","gh-jhs3-science-circulation-respiration#scene-1","gh-jhs3-science-circulation-respiration#scene-2"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-circulation-respiration#quiz-0","gh-jhs3-science-circulation-respiration#quiz-1","gh-jhs3-science-circulation-respiration#quiz-2"]
   },
   {
     "indicatorCode": "B9.3.1.1.2",
@@ -854,8 +858,12 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-circulation-respiration"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Explain the concept of respiration and show how the respiratory and circulatory systems complement each other.",
+    "sourcePdfPage": 139,
+    "teachingSceneEvidence": "Circulation and respiration scene 3 distinguishes cellular respiration from breathing and traces oxygen from the lungs into blood and carbon dioxide back to the lungs.",
+    "assessmentEvidence": "Quizzes 3–4 assess oxygen uptake at the alveoli and the chemical process of cellular respiration; the link between blood transport and cellular respiration is taught in the scene but is not fully tested by a single integrated question.",
+    "teachingSceneRefs": ["gh-jhs3-science-circulation-respiration#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-circulation-respiration#quiz-3","gh-jhs3-science-circulation-respiration#quiz-4"]
   },
   {
     "indicatorCode": "B9.3.2.1.1",
@@ -865,8 +873,12 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-asteroids-comets"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Understand the movement of non-planetary bodies in the solar system.",
+    "sourcePdfPage": 140,
+    "teachingSceneEvidence": "Asteroids and comets scenes 2–3 compare their orbital paths, explain gravity and describe how observations are used to track and predict their movement. Scenes 0–1 provide the composition context.",
+    "assessmentEvidence": "Quiz 8 checks that gravity keeps asteroids and comets in orbit around the Sun. A direct comparison of their different orbital movements is not yet assessed.",
+    "teachingSceneRefs": ["gh-jhs3-science-asteroids-comets#scene-2","gh-jhs3-science-asteroids-comets#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-asteroids-comets#quiz-8"]
   },
   {
     "indicatorCode": "B9.3.3.1.1",
@@ -876,8 +888,12 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-ecosystem-balance"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Conduct research into the composition of an ecosystem and discuss how the components depend on each other for survival.",
+    "sourcePdfPage": 141,
+    "teachingSceneEvidence": "Ecosystem scenes 0–3 cover biotic and abiotic components, habitat versus ecosystem, producers, consumers and decomposers, food chains and webs, and how natural or human disturbances affect ecosystem balance. Learner-led research across different ecosystems still needs a documented project.",
+    "assessmentEvidence": "Quizzes 0–4 assess ecosystem versus habitat, producers, energy-flow arrows, decomposers and the effect of galamsey. A learner research report and justified predictions for the full range of listed disturbances are not directly assessed.",
+    "teachingSceneRefs": ["gh-jhs3-science-ecosystem-balance#scene-0","gh-jhs3-science-ecosystem-balance#scene-1","gh-jhs3-science-ecosystem-balance#scene-2","gh-jhs3-science-ecosystem-balance#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-ecosystem-balance#quiz-0","gh-jhs3-science-ecosystem-balance#quiz-1","gh-jhs3-science-ecosystem-balance#quiz-2","gh-jhs3-science-ecosystem-balance#quiz-3","gh-jhs3-science-ecosystem-balance#quiz-4"]
   },
   {
     "indicatorCode": "B9.3.4.1.1",
@@ -887,8 +903,12 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-manure-materials"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "List and explain the different plant and animal waste used in preparing different types of manure.",
+    "sourcePdfPage": 142,
+    "teachingSceneEvidence": "Manure-materials scenes 0–3 explain suitable animal wastes and plant residues, their nutrient and soil-structure contributions, material selection and safe handling. Some hazardous wastes are explicitly excluded from ordinary school compost.",
+    "assessmentEvidence": "Quizzes 0–4 assess examples of animal and plant waste, removal of contaminants, the role of dry plant matter and safe treatment of hazardous waste. Comparing manure choices for different soil and climate conditions needs further assessment.",
+    "teachingSceneRefs": ["gh-jhs3-science-manure-materials#scene-0","gh-jhs3-science-manure-materials#scene-1","gh-jhs3-science-manure-materials#scene-2","gh-jhs3-science-manure-materials#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-manure-materials#quiz-0","gh-jhs3-science-manure-materials#quiz-1","gh-jhs3-science-manure-materials#quiz-2","gh-jhs3-science-manure-materials#quiz-3","gh-jhs3-science-manure-materials#quiz-4"]
   },
   {
     "indicatorCode": "B9.3.4.1.2",
@@ -898,8 +918,12 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-manure-composting"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Demonstrate the preparation of different types of manure.",
+    "sourcePdfPage": 143,
+    "teachingSceneEvidence": "Manure-composting scenes 0–3 explain sorting suitable wastes, layering green and brown materials, maintaining moisture and aeration, turning the heap and curing compost to maturity.",
+    "assessmentEvidence": "Quizzes 0–4 assess preparation choices, safe handling, layering, moisture, aeration and maturity. These questions support procedural understanding but do not replace a teacher-observed practical demonstration.",
+    "teachingSceneRefs": ["gh-jhs3-science-manure-composting#scene-0","gh-jhs3-science-manure-composting#scene-1","gh-jhs3-science-manure-composting#scene-2","gh-jhs3-science-manure-composting#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-manure-composting#quiz-0","gh-jhs3-science-manure-composting#quiz-1","gh-jhs3-science-manure-composting#quiz-2","gh-jhs3-science-manure-composting#quiz-3","gh-jhs3-science-manure-composting#quiz-4"]
   },
   {
     "indicatorCode": "B9.3.4.1.3",
@@ -909,8 +933,12 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-manure-composting"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Prepare different types of manure.",
+    "sourcePdfPage": 143,
+    "teachingSceneEvidence": "Manure-composting scenes 0–3 describe practical treatment steps: select and sort suitable waste, build a layered heap, manage moisture and air, turn the heap and allow the compost to mature. Actual learner preparation must be observed in a field or school garden.",
+    "assessmentEvidence": "Quizzes 0–4 assess safe material selection and the steps and conditions needed for composting. They do not certify that a learner has prepared manure; a teacher-observed practical product and process are required.",
+    "teachingSceneRefs": ["gh-jhs3-science-manure-composting#scene-0","gh-jhs3-science-manure-composting#scene-1","gh-jhs3-science-manure-composting#scene-2","gh-jhs3-science-manure-composting#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-manure-composting#quiz-0","gh-jhs3-science-manure-composting#quiz-1","gh-jhs3-science-manure-composting#quiz-2","gh-jhs3-science-manure-composting#quiz-3","gh-jhs3-science-manure-composting#quiz-4"]
   },
   {
     "indicatorCode": "B9.4.1.1.1",
