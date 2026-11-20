@@ -167,7 +167,7 @@ const expectedBasic9Evidence: Record<string, { scenes: string[]; questions: stri
     questions: ['gh-jhs3-science-crop-maturity#quiz-1', 'gh-jhs3-science-crop-maturity#quiz-2', 'gh-jhs3-science-crop-maturity#quiz-3']
   },
   'B9.2.4.2.2': {
-    scenes: ['gh-jhs3-science-animal-feed-selection#scene-2'],
+    scenes: ['gh-jhs3-science-animal-feed-selection#scene-2', 'gh-jhs3-science-animal-feed-selection#scene-3'],
     questions: ['gh-jhs3-science-animal-feed-selection#quiz-3']
   },
   'B9.2.4.2.3': {
