@@ -79,6 +79,7 @@ export const GhanaJhs3PlantResourcesVisual: React.FC = () => {
             </g>
           </svg>
           <p><b>Roots:</b> anchorage and absorption. <b>Stems:</b> support and transport. <b>Leaves:</b> photosynthesis. <b>Flowers:</b> reproduction. <b>Fruits:</b> seed protection and dispersal.</p>
+          <p><b>Examples:</b> cassava and yam roots, sugarcane and bamboo stems, leafy vegetables and animal fodder, flowers that support pollinators, and mango fruits. Timber from suitable trees can be used for furniture.</p>
         </div>
       </div>
 
