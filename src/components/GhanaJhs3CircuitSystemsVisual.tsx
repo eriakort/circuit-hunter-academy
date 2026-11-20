@@ -114,6 +114,7 @@ export const GhanaJhs3CircuitSystemsVisual: React.FC = () => {
           <p><b>Parallel:</b> separate branches; each branch has the supply voltage across it.</p>
           <p><b>Resistor:</b> limits current. <b>Diode:</b> conducts mainly in one direction.</p>
           <p><b>Light-emitting diode (LED):</b> emits light when correctly connected. <b>Capacitor:</b> stores and releases electric charge.</p>
+          <p><b>Forward direction:</b> a diode can conduct when correctly connected. <b>Reverse direction:</b> it normally blocks current in this basic circuit model.</p>
         </div>
       </div>
     </GhanaScienceVisual>
