@@ -739,8 +739,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-nitrogen-cycle"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Nitrogen-cycle scenes 0–2 explain atmospheric nitrogen, fixation, nitrification and plant uptake; the remaining cycle stages are addressed in later scenes.",
+    "assessmentEvidence": "Quiz 0–2 check why plants need fixed nitrogen, nitrogen fixation and nitrification; later-cycle processes are not all directly assessed by these items.",
+    teachingSceneRefs: ['gh-jhs3-science-nitrogen-cycle#scene-0', 'gh-jhs3-science-nitrogen-cycle#scene-1', 'gh-jhs3-science-nitrogen-cycle#scene-2'],
+    assessmentQuestionRefs: ['gh-jhs3-science-nitrogen-cycle#quiz-0', 'gh-jhs3-science-nitrogen-cycle#quiz-1', 'gh-jhs3-science-nitrogen-cycle#quiz-2']
   },
   {
     "indicatorCode": "B9.2.1.1.2",
@@ -750,8 +752,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-nitrogen-cycle"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Nitrogen-cycle scenes 2–3 explain assimilation, ammonification, denitrification and soil-fertility implications.",
+    "assessmentEvidence": "Quiz 3 checks ammonification and quiz 4 checks the role of leguminous crops; denitrification and wider cycle impacts need additional direct assessment.",
+    teachingSceneRefs: ['gh-jhs3-science-nitrogen-cycle#scene-2', 'gh-jhs3-science-nitrogen-cycle#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs3-science-nitrogen-cycle#quiz-3', 'gh-jhs3-science-nitrogen-cycle#quiz-4']
   },
   {
     "indicatorCode": "B9.2.2.1.1",
@@ -761,8 +765,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-grasshopper-life-cycle"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Grasshopper scenes 0–1 teach egg, nymph and adult stages, incomplete metamorphosis and moulting.",
+    "assessmentEvidence": "Quizzes 0–2 assess the life-cycle sequence, absence of a pupal stage and nymph development.",
+    teachingSceneRefs: ['gh-jhs3-science-grasshopper-life-cycle#scene-0', 'gh-jhs3-science-grasshopper-life-cycle#scene-1'],
+    assessmentQuestionRefs: ['gh-jhs3-science-grasshopper-life-cycle#quiz-0', 'gh-jhs3-science-grasshopper-life-cycle#quiz-1', 'gh-jhs3-science-grasshopper-life-cycle#quiz-2']
   },
   {
     "indicatorCode": "B9.2.2.1.2",
@@ -772,8 +778,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-grasshopper-life-cycle"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Grasshopper scenes 2–3 explain ecological roles, crop damage, monitoring and integrated pest management.",
+    "assessmentEvidence": "Quiz 3 checks the grasshopper's food-web role and quiz 4 assesses a safe response to unusually high populations.",
+    teachingSceneRefs: ['gh-jhs3-science-grasshopper-life-cycle#scene-2', 'gh-jhs3-science-grasshopper-life-cycle#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs3-science-grasshopper-life-cycle#quiz-3', 'gh-jhs3-science-grasshopper-life-cycle#quiz-4']
   },
   {
     "indicatorCode": "B9.2.3.1.1",
@@ -783,8 +791,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-crop-maturity"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Crop-maturity scenes 0–1 explain factors affecting maturity and repeated observation and recording of crop growth.",
+    "assessmentEvidence": "Quizzes 0–1 assess maturity factors and fair repeated observations across seed beds.",
+    teachingSceneRefs: ['gh-jhs3-science-crop-maturity#scene-0', 'gh-jhs3-science-crop-maturity#scene-1'],
+    assessmentQuestionRefs: ['gh-jhs3-science-crop-maturity#quiz-0', 'gh-jhs3-science-crop-maturity#quiz-1']
   },
   {
     "indicatorCode": "B9.2.3.2.2",
@@ -794,8 +804,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-crop-maturity"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Crop-maturity scenes 2–3 explain how maturity stages guide harvest timing, crop choice, market supply and loss reduction.",
+    "assessmentEvidence": "Quizzes 2–4 assess harvesting for intended use, allowing grain to dry and using maturity knowledge to plan harvests.",
+    teachingSceneRefs: ['gh-jhs3-science-crop-maturity#scene-2', 'gh-jhs3-science-crop-maturity#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs3-science-crop-maturity#quiz-2', 'gh-jhs3-science-crop-maturity#quiz-3', 'gh-jhs3-science-crop-maturity#quiz-4']
   },
   {
     "indicatorCode": "B9.2.4.1.1",
@@ -805,8 +817,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-animal-feed-preparation"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Feed-preparation scenes 0–3 cover animal nutrient needs, ingredient groups, measuring, preparation, mixing, safe storage and expert guidance.",
+    "assessmentEvidence": "Feed-preparation quizzes 0–4 assess species-specific needs, protein ingredients, preparation sequence, rejection of mouldy feed and reliable formulation guidance.",
+    teachingSceneRefs: ['gh-jhs3-science-animal-feed-preparation#scene-0', 'gh-jhs3-science-animal-feed-preparation#scene-1', 'gh-jhs3-science-animal-feed-preparation#scene-2', 'gh-jhs3-science-animal-feed-preparation#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs3-science-animal-feed-preparation#quiz-0', 'gh-jhs3-science-animal-feed-preparation#quiz-1', 'gh-jhs3-science-animal-feed-preparation#quiz-2', 'gh-jhs3-science-animal-feed-preparation#quiz-3', 'gh-jhs3-science-animal-feed-preparation#quiz-4']
   },
   {
     "indicatorCode": "B9.2.4.2.1",
@@ -816,8 +830,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-animal-feed-selection"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Feed-selection scenes 0–1 distinguish roughage and concentrates and compare digestive needs across ruminants, poultry, pigs and fish.",
+    "assessmentEvidence": "Quizzes 0–2 assess roughage, its role in ruminants and the need for balanced concentrate-based poultry diets.",
+    teachingSceneRefs: ['gh-jhs3-science-animal-feed-selection#scene-0', 'gh-jhs3-science-animal-feed-selection#scene-1'],
+    assessmentQuestionRefs: ['gh-jhs3-science-animal-feed-selection#quiz-0', 'gh-jhs3-science-animal-feed-selection#quiz-1', 'gh-jhs3-science-animal-feed-selection#quiz-2']
   },
   {
     "indicatorCode": "B9.3.1.1.1",
@@ -1612,10 +1628,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "officialIndicatorText": "Observe and record the uses of different crops at different maturity stages.",
     "sourcePdfPage": 97,
-    "teachingSceneEvidence": "Candidate: gh-jhs3-science-crop-maturity is the closest lesson for crop maturity; explicit observation records and uses of each crop stage need confirmation.",
-    "assessmentEvidence": "Candidate assessment alignment is not yet verified for recording and categorising crop uses at different maturity stages.",
-    "teachingSceneRefs": ["gh-jhs3-science-crop-maturity#scene-1", "gh-jhs3-science-crop-maturity#scene-2"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-crop-maturity#quiz-2", "gh-jhs3-science-crop-maturity#quiz-3"]
+    "teachingSceneEvidence": "Crop-maturity scenes 1–2 connect recorded maturity stages with harvesting crops for different intended uses.",
+    "assessmentEvidence": "Quizzes 1–3 assess observation records and the difference between green maize and mature dry grain.",
+    teachingSceneRefs: ['gh-jhs3-science-crop-maturity#scene-1', 'gh-jhs3-science-crop-maturity#scene-2'],
+    assessmentQuestionRefs: ['gh-jhs3-science-crop-maturity#quiz-1', 'gh-jhs3-science-crop-maturity#quiz-2', 'gh-jhs3-science-crop-maturity#quiz-3']
   },
   {
     "indicatorCode": "B9.2.4.2.2",
@@ -1625,10 +1641,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "officialIndicatorText": "Differentiate between different types of feed for different stages of domestic and commercial animals.",
     "sourcePdfPage": 100,
-    "teachingSceneEvidence": "Candidate: gh-jhs3-science-animal-feed-selection introduces feed selection; comparison across young, growing and mature animals and ruminants, monogastrics and poultry needs verification.",
-    "assessmentEvidence": "No question-level evidence has yet been verified for matching feed types to animal growth stages.",
-    "teachingSceneRefs": ["gh-jhs3-science-animal-feed-selection#scene-2"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-animal-feed-selection#quiz-3"]
+    "teachingSceneEvidence": "Feed-selection scenes 2–3 explain how feed choices vary with age, growth and production stage, and how to select safe suitable rations.",
+    "assessmentEvidence": "Quiz 3 assesses feed choice for a laying hen; quiz 4 assesses supervised practical feeding, water, hygiene and recording.",
+    teachingSceneRefs: ['gh-jhs3-science-animal-feed-selection#scene-2', 'gh-jhs3-science-animal-feed-selection#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs3-science-animal-feed-selection#quiz-3', 'gh-jhs3-science-animal-feed-selection#quiz-4']
   },
   {
     "indicatorCode": "B9.2.4.2.3",
@@ -1638,10 +1654,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "officialIndicatorText": "Perform the feeding of domestic and commercial animals.",
     "sourcePdfPage": 100,
-    "teachingSceneEvidence": "Candidate: gh-jhs3-science-animal-feed-selection provides a related conceptual link, but a supervised practical feeding activity at a school or community farm is not established.",
-    "assessmentEvidence": "No practical demonstration or observation rubric for feeding animals at different growth and production stages is currently mapped.",
-    "teachingSceneRefs": ["gh-jhs3-science-animal-feed-selection#scene-3"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-animal-feed-selection#quiz-4"]
+    "teachingSceneEvidence": "Feed-selection scene 3 includes a supervised practical feeding activity: identify the animal and stage, inspect and measure a suitable ration, provide water and record observations.",
+    "assessmentEvidence": "Quiz 4 assesses safe practical feeding steps and observation recording; actual learner performance still requires a teacher-observed practical.",
+    teachingSceneRefs: ['gh-jhs3-science-animal-feed-selection#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs3-science-animal-feed-selection#quiz-4']
   },
   // Basic 9 · Strand 4 — Forces and Energy (NaCCA CCP, pp. 107–112).
   {
