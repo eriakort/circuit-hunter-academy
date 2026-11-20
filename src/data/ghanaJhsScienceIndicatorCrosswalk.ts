@@ -649,6 +649,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
     "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneRefs": ["gh-jhs3-science-binary-compounds#scene-0","gh-jhs3-science-binary-compounds#scene-1"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-binary-compounds#quiz-0","gh-jhs3-science-binary-compounds#quiz-1"]
   },
   {
     "indicatorCode": "B9.1.1.1.2",
@@ -660,6 +662,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
     "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneRefs": ["gh-jhs3-science-binary-compounds#scene-1","gh-jhs3-science-binary-compounds#scene-2","gh-jhs3-science-binary-compounds#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-binary-compounds#quiz-2","gh-jhs3-science-binary-compounds#quiz-3","gh-jhs3-science-binary-compounds#quiz-4"]
   },
   {
     "indicatorCode": "B9.1.1.1.3",
@@ -671,6 +675,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
     "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneRefs": ["gh-jhs3-science-acids-bases-salts#scene-0","gh-jhs3-science-acids-bases-salts#scene-1","gh-jhs3-science-acids-bases-salts#scene-2","gh-jhs3-science-acids-bases-salts#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-acids-bases-salts#quiz-0","gh-jhs3-science-acids-bases-salts#quiz-1","gh-jhs3-science-acids-bases-salts#quiz-2","gh-jhs3-science-acids-bases-salts#quiz-3","gh-jhs3-science-acids-bases-salts#quiz-4"]
   },
   {
     "indicatorCode": "B9.1.1.2.1",
@@ -682,6 +688,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
     "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneRefs": ["gh-jhs3-science-chemical-bonding#scene-0","gh-jhs3-science-chemical-bonding#scene-1","gh-jhs3-science-chemical-bonding#scene-2","gh-jhs3-science-chemical-bonding#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-chemical-bonding#quiz-0","gh-jhs3-science-chemical-bonding#quiz-1","gh-jhs3-science-chemical-bonding#quiz-2","gh-jhs3-science-chemical-bonding#quiz-3","gh-jhs3-science-chemical-bonding#quiz-4"]
   },
   {
     "indicatorCode": "B9.1.2.1.1",
@@ -694,6 +702,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
     "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneRefs": ["gh-jhs3-science-specialised-plant-cells#scene-0","gh-jhs3-science-specialised-human-cells#scene-0"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-specialised-plant-cells#quiz-0","gh-jhs3-science-specialised-human-cells#quiz-4"]
   },
   {
     "indicatorCode": "B9.1.2.1.2",
@@ -705,6 +715,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
     "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneRefs": ["gh-jhs3-science-specialised-plant-cells#scene-1","gh-jhs3-science-specialised-plant-cells#scene-2","gh-jhs3-science-specialised-plant-cells#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-specialised-plant-cells#quiz-1","gh-jhs3-science-specialised-plant-cells#quiz-2","gh-jhs3-science-specialised-plant-cells#quiz-3","gh-jhs3-science-specialised-plant-cells#quiz-4"]
   },
   {
     "indicatorCode": "B9.1.2.1.3",
@@ -716,6 +728,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
     "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneRefs": ["gh-jhs3-science-specialised-human-cells#scene-1","gh-jhs3-science-specialised-human-cells#scene-2","gh-jhs3-science-specialised-human-cells#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-specialised-human-cells#quiz-0","gh-jhs3-science-specialised-human-cells#quiz-1","gh-jhs3-science-specialised-human-cells#quiz-2","gh-jhs3-science-specialised-human-cells#quiz-3"]
   },
   {
     "indicatorCode": "B9.2.1.1.1",
