@@ -240,10 +240,56 @@ const PlantCellExplorer: React.FC = () => {
   );
 };
 
+
+const HUMAN_CELLS = [
+  { id: 'nerve', name: 'Nerve cell (neurone)', clue: 'Transmit signals', structure: 'A long axon carries electrical impulses over a distance. Branched ends connect with other cells.', function: 'Transmit electrical signals so the brain, spinal cord and nerves can coordinate body activities.', model: '  branches\n   \\ | /\n [cell body]══════════ axon →' },
+  { id: 'red-blood', name: 'Red blood cell', clue: 'Carry oxygen', structure: 'A flexible, biconcave disc contains haemoglobin. A mature human red blood cell has no nucleus.', function: 'Carry oxygen from the lungs to body tissues using haemoglobin.', model: '   ______\n /        \\\n|  ____    |\n \\________/' },
+  { id: 'muscle', name: 'Muscle cell', clue: 'Produce movement', structure: 'Elongated cells contain contractile protein fibres that slide past one another.', function: 'Shorten to generate force, helping move body parts and maintain posture.', model: '||||||||||||||||\n⇐ contract ⇒\n||||||||||||||||' },
+  { id: 'sperm', name: 'Sperm cell', clue: 'Deliver genetic material', structure: 'The head contains genetic material; the midpiece has many mitochondria; a tail (flagellum) helps the cell swim.', function: 'Deliver male genetic material to an egg during fertilisation.', model: '  (head)─[midpiece]~~~~ tail' }
+];
+
+const HumanCellExplorer: React.FC = () => {
+  const [selected, setSelected] = useState('nerve');
+  const cell = HUMAN_CELLS.find(item => item.id === selected) ?? HUMAN_CELLS[0];
+  return (
+    <GhanaScienceVisual
+      title="The Human Cell Function Ranger"
+      description="Compare specialised human cells and discover how their structures help them perform different jobs."
+      lang="en"
+      caption="Simplified teaching models: real cells have detailed three-dimensional structures. Cell diagrams are not drawn to scale."
+    >
+      <div className="gh-jhs1-science-interaction">
+        <h4>Choose a specialised human cell</h4>
+        <div className="gh-jhs1-science-choices">
+          {HUMAN_CELLS.map(item => (
+            <Choice key={item.id} active={selected === item.id} onClick={() => setSelected(item.id)}>{item.name} · {item.clue}</Choice>
+          ))}
+        </div>
+        <div className="gh-jhs1-science-readout" aria-live="polite">
+          <strong>{cell.name}</strong>
+          <pre role="img" aria-label={cell.name + ' simplified structure model'} style={{ whiteSpace: 'pre-wrap', textAlign: 'center', fontSize: '1rem', fontWeight: 700, padding: '0.8rem', borderRadius: '0.6rem', background: 'rgba(123, 223, 242, 0.12)' }}>{cell.model}</pre>
+          <p><b>Structure:</b> {cell.structure}</p>
+          <p><b>Function:</b> {cell.function}</p>
+        </div>
+      </div>
+      <div className="gh-jhs1-science-interaction">
+        <h4>From cells to body systems</h4>
+        <div className="gh-jhs1-science-readout" aria-live="polite">
+          <p><b>Cells → tissues → organs → organ systems:</b> specialised cells with related functions work together at increasingly larger levels of organisation.</p>
+          <p><b>Nerve cells</b> coordinate activities by transmitting signals; <b>red blood cells</b> transport oxygen; <b>muscle cells</b> produce force and movement.</p>
+          <p><b>Sperm cells</b> are reproductive cells. Their head, mitochondria-rich midpiece and tail each contribute to their role in fertilisation.</p>
+          <p><b>Differentiation</b> is the process by which cells develop specialised structures and functions.</p>
+        </div>
+      </div>
+    </GhanaScienceVisual>
+  );
+};
+
 export const GhanaJhs3DiversityVisual: React.FC<Props> = ({ missionId }) => {
   if (missionId === 'gh-jhs3-science-binary-compounds') return <CompoundExplorer />;
   if (missionId === 'gh-jhs3-science-acids-bases-salts') return <PHExplorer />;
   if (missionId === 'gh-jhs3-science-chemical-bonding') return <BondingExplorer />;
   if (missionId === 'gh-jhs3-science-specialised-plant-cells') return <PlantCellExplorer />;
+  if (missionId === 'gh-jhs3-science-specialised-human-cells') return <HumanCellExplorer />;
   return null;
 };
