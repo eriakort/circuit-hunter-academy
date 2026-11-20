@@ -22,10 +22,10 @@ assert.ok(rows.every(row => row.interactiveScenes >= 0));
 // The current baseline deliberately distinguishes the repeated demon/challenge
 // illustration from instructional science visuals. Battle scenes are not
 // counted as simulations merely because they are interactive.
-assert.equal(summary.instructionalVisualMissions, 67, 'The Basic 7 and Basic 8 visual pilots plus the first five Basic 9 Diversity of Matter missions plus the nitrogen-cycle, grasshopper life-cycle, crop-maturity, animal-feed-preparation and animal-feed-selection and energy-light, electricity-electronics and energy-conversion and force-motion, circulation-respiration and asteroids-comets and ecosystem-balance manure-materials manure-composting, waste-management and human-health and science-industry missions have dedicated instructional visuals');
-assert.equal(summary.genericOnlyMissions, 2, 'The remaining JHS missions use generic challenge art rather than a dedicated science visual');
+assert.equal(summary.instructionalVisualMissions, 68, 'The Basic 7 and Basic 8 visual pilots plus the first five Basic 9 Diversity of Matter missions plus the nitrogen-cycle, grasshopper life-cycle, crop-maturity, animal-feed-preparation and animal-feed-selection and energy-light, electricity-electronics and energy-conversion and force-motion, circulation-respiration and asteroids-comets and ecosystem-balance manure-materials manure-composting, waste-management, human-health, science-industry and climate-action missions have dedicated instructional visuals');
+assert.equal(summary.genericOnlyMissions, 1, 'The remaining JHS mission uses generic challenge art rather than a dedicated science visual');
 assert.equal(summary.missingVisualMissions, 0, 'Every current JHS mission has at least generic challenge art');
-assert.deepEqual(summary.byGrade.map(row => [row.grade, row.instructionalVisualMissions, row.genericOnlyMissions]), [['Basic 7', 22, 0], ['Basic 8', 22, 0], ['Basic 9', 23, 2]]);
+assert.deepEqual(summary.byGrade.map(row => [row.grade, row.instructionalVisualMissions, row.genericOnlyMissions]), [['Basic 7', 22, 0], ['Basic 8', 22, 0], ['Basic 9', 24, 1]]);
 
 console.log(
   `Ghana Science visual audit: ${summary.totalMissions} missions; ${summary.instructionalVisualMissions} instructional visuals; ${summary.genericOnlyMissions} generic-only; ${summary.missingVisualMissions} missing.`
