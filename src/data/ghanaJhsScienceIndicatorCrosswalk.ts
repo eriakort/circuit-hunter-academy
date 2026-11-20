@@ -1003,7 +1003,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "status": "needs-review",
     "officialIndicatorText": "Demonstrate the formation of an eclipse.",
     "sourcePdfPage": 108,
-    "teachingSceneEvidence": "No current Basic 9 Forces and Energy lesson explicitly models solar or lunar eclipse formation; the light scene covers cameras, shadows and refraction but not Sun-Earth-Moon alignment.",
+    "teachingSceneEvidence": "No matching Basic 9 lesson explicitly models solar or lunar eclipse formation; the light scene covers cameras, shadows and refraction but not Sun-Earth-Moon alignment.",
     "assessmentEvidence": "No eclipse-model or eclipse-formation question is present.",
     "teachingSceneRefs": [],
     "assessmentQuestionRefs": []
