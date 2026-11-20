@@ -38,6 +38,7 @@ import { GhanaJhs3AsteroidsCometsVisual } from './GhanaJhs3AsteroidsCometsVisual
 import { GhanaJhs3EcosystemBalanceVisual } from './GhanaJhs3EcosystemBalanceVisual';
 import { GhanaJhs3ManureMaterialsVisual } from './GhanaJhs3ManureMaterialsVisual';
 import { GhanaJhs3CompostingVisual } from './GhanaJhs3CompostingVisual';
+import { GhanaJhs3WasteManagementVisual } from './GhanaJhs3WasteManagementVisual';
 import { ItalianLab } from './ItalianLab';
 import { HistoryLab } from './HistoryLab';
 import { GeographyLab } from './GeographyLab';
@@ -326,6 +327,7 @@ export const MissionScreen: React.FC = () => {
           {isGhana && currentMission.id === 'gh-jhs3-science-ecosystem-balance' && currentSceneIndex === 1 && <GhanaJhs3EcosystemBalanceVisual />}
           {isGhana && currentMission.id === 'gh-jhs3-science-manure-materials' && currentSceneIndex === 1 && <GhanaJhs3ManureMaterialsVisual />}
           {isGhana && currentMission.id === 'gh-jhs3-science-manure-composting' && currentSceneIndex === 1 && <GhanaJhs3CompostingVisual />}
+          {isGhana && currentMission.id === 'gh-jhs3-science-waste-management' && currentSceneIndex === 1 && <GhanaJhs3WasteManagementVisual />}
           {isGhana && ['gh-jhs3-science-binary-compounds', 'gh-jhs3-science-acids-bases-salts', 'gh-jhs3-science-chemical-bonding', 'gh-jhs3-science-specialised-plant-cells', 'gh-jhs3-science-specialised-human-cells'].includes(currentMission.id) && currentSceneIndex === 1 && (
             <GhanaJhs3DiversityVisual missionId={currentMission.id} />
           )}
