@@ -117,9 +117,9 @@ export const GhanaJhs3ForceMotionVisual: React.FC = () => {
       <div className="gh-jhs1-science-interaction">
         <h4>4. Newton's three laws and action–reaction pairs</h4>
         <div className="gh-jhs1-science-choices">
-          <Choice active={law === 'first'} onClick={() => setLaw('first')}>First Law</Choice>
-          <Choice active={law === 'second'} onClick={() => setLaw('second')}>Second Law</Choice>
-          <Choice active={law === 'third'} onClick={() => setLaw('third')}>Third Law</Choice>
+          <Choice active={law === 'first'} onClick={() => setLaw('first')}>Newton's First Law</Choice>
+          <Choice active={law === 'second'} onClick={() => setLaw('second')}>Newton's Second Law</Choice>
+          <Choice active={law === 'third'} onClick={() => setLaw('third')}>Newton's Third Law</Choice>
         </div>
         <div className="gh-jhs1-science-readout" aria-live="polite">
           {law === 'first' && <><strong>Inertia</strong><p>An object stays at rest or moves at constant velocity in a straight line unless a resultant external force acts on it.</p></>}
