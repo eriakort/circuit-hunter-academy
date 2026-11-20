@@ -15,7 +15,7 @@ const StageChoice = ({ active, children, onClick }: { active: boolean; children:
 );
 
 export const GhanaJhs3GrasshopperLifeCycleVisual: React.FC = () => {
-  const [selected, setSelected] = useState('egg');
+  const [selected, setSelected] = useState('nymph');
   const stage = STAGES.find(item => item.id === selected) ?? STAGES[0];
 
   return (
