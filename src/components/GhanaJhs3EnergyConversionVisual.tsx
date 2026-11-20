@@ -75,7 +75,7 @@ export const GhanaJhs3EnergyConversionVisual: React.FC = () => {
       <div className="gh-jhs1-science-interaction">
         <h4>4. Check the key ideas</h4>
         <div className="gh-jhs1-science-readout">
-          <p><b>Battery:</b> chemical → electrical energy.</p>
+          <p><b>Battery:</b> chemical energy → electrical energy.</p>
           <p><b>Lamp:</b> electrical → light + thermal energy.</p>
           <p><b>Fan:</b> electrical → kinetic + sound + thermal energy.</p>
           <p><b>Solar panel:</b> light → electrical energy.</p>
