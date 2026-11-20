@@ -45,6 +45,7 @@ export const GhanaJhs3ForceMotionVisual: React.FC = () => {
           <p><b>Pressure: {examplePressure.toLocaleString('en-US')} Pa</b></p>
           <p>{selected.note}</p>
           <p>For the same force, a smaller contact area produces greater pressure. Fluid pressure acts in all directions.</p>
+          <p><b>Compare the examples:</b> sharp knife edge = 200,000 Pa; flat shoe sole = 20,000 Pa; wide tyre = 10,000 Pa. These examples use different forces and areas to show how pressure depends on both.</p>
         </div>
         <h4>Try your own pressure calculation</h4>
         <div className="gh-jhs1-science-choices">
