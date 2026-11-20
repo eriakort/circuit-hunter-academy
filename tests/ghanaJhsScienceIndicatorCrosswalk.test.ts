@@ -253,3 +253,61 @@ assert.ok(basic9Cycles.every(item => item.teachingSceneRefs?.length && item.asse
 assert.deepEqual(basic9Cycles.find(item => item.indicatorCode === 'B9.2.4.2.3')?.assessmentQuestionRefs,
   ['gh-jhs3-science-animal-feed-selection#quiz-4']);
 assert.match(basic9Cycles.find(item => item.indicatorCode === 'B9.2.3.2.1')?.teachingSceneEvidence ?? '', /harvesting crops for different intended uses/i);
+
+
+// Basic 9 · Strand 3 — Systems (NaCCA CCP, pp. 139–143).
+const basic9Systems = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 9 && item.strand === 3);
+assert.deepEqual(basic9Systems.map(item => item.indicatorCode), [
+  'B9.3.1.1.1','B9.3.1.1.2','B9.3.2.1.1','B9.3.3.1.1',
+  'B9.3.4.1.1','B9.3.4.1.2','B9.3.4.1.3'
+]);
+assert.ok(basic9Systems.every(item => item.status === 'needs-review'));
+assert.ok(basic9Systems.every(item => item.officialIndicatorText && item.sourcePdfPage));
+assert.ok(basic9Systems.every(item => item.teachingSceneRefs?.length && item.assessmentQuestionRefs?.length));
+const basic9SystemsEvidence = new Map(basic9Systems.map(item => [item.indicatorCode, item]));
+const expectedBasic9SystemsEvidence: Record<string, { page: number; scenes: string[]; questions: string[] }> = {
+  'B9.3.1.1.1': {
+    page: 139,
+    scenes: ['gh-jhs3-science-circulation-respiration#scene-0','gh-jhs3-science-circulation-respiration#scene-1','gh-jhs3-science-circulation-respiration#scene-2'],
+    questions: ['gh-jhs3-science-circulation-respiration#quiz-0','gh-jhs3-science-circulation-respiration#quiz-1','gh-jhs3-science-circulation-respiration#quiz-2']
+  },
+  'B9.3.1.1.2': {
+    page: 139,
+    scenes: ['gh-jhs3-science-circulation-respiration#scene-3'],
+    questions: ['gh-jhs3-science-circulation-respiration#quiz-3','gh-jhs3-science-circulation-respiration#quiz-4']
+  },
+  'B9.3.2.1.1': {
+    page: 140,
+    scenes: ['gh-jhs3-science-asteroids-comets#scene-2','gh-jhs3-science-asteroids-comets#scene-3'],
+    questions: ['gh-jhs3-science-asteroids-comets#quiz-8']
+  },
+  'B9.3.3.1.1': {
+    page: 141,
+    scenes: ['gh-jhs3-science-ecosystem-balance#scene-0','gh-jhs3-science-ecosystem-balance#scene-1','gh-jhs3-science-ecosystem-balance#scene-2','gh-jhs3-science-ecosystem-balance#scene-3'],
+    questions: ['gh-jhs3-science-ecosystem-balance#quiz-0','gh-jhs3-science-ecosystem-balance#quiz-1','gh-jhs3-science-ecosystem-balance#quiz-2','gh-jhs3-science-ecosystem-balance#quiz-3','gh-jhs3-science-ecosystem-balance#quiz-4']
+  },
+  'B9.3.4.1.1': {
+    page: 142,
+    scenes: ['gh-jhs3-science-manure-materials#scene-0','gh-jhs3-science-manure-materials#scene-1','gh-jhs3-science-manure-materials#scene-2','gh-jhs3-science-manure-materials#scene-3'],
+    questions: ['gh-jhs3-science-manure-materials#quiz-0','gh-jhs3-science-manure-materials#quiz-1','gh-jhs3-science-manure-materials#quiz-2','gh-jhs3-science-manure-materials#quiz-3','gh-jhs3-science-manure-materials#quiz-4']
+  },
+  'B9.3.4.1.2': {
+    page: 143,
+    scenes: ['gh-jhs3-science-manure-composting#scene-0','gh-jhs3-science-manure-composting#scene-1','gh-jhs3-science-manure-composting#scene-2','gh-jhs3-science-manure-composting#scene-3'],
+    questions: ['gh-jhs3-science-manure-composting#quiz-0','gh-jhs3-science-manure-composting#quiz-1','gh-jhs3-science-manure-composting#quiz-2','gh-jhs3-science-manure-composting#quiz-3','gh-jhs3-science-manure-composting#quiz-4']
+  },
+  'B9.3.4.1.3': {
+    page: 143,
+    scenes: ['gh-jhs3-science-manure-composting#scene-0','gh-jhs3-science-manure-composting#scene-1','gh-jhs3-science-manure-composting#scene-2','gh-jhs3-science-manure-composting#scene-3'],
+    questions: ['gh-jhs3-science-manure-composting#quiz-0','gh-jhs3-science-manure-composting#quiz-1','gh-jhs3-science-manure-composting#quiz-2','gh-jhs3-science-manure-composting#quiz-3','gh-jhs3-science-manure-composting#quiz-4']
+  }
+};
+for (const [code, expected] of Object.entries(expectedBasic9SystemsEvidence)) {
+  const item = basic9SystemsEvidence.get(code);
+  assert.ok(item, `${code} has a Basic 9 Systems evidence record`);
+  assert.equal(item.sourcePdfPage, expected.page, `${code} cites its curriculum page`);
+  assert.deepEqual(item.teachingSceneRefs, expected.scenes, `${code} links to focused teaching scenes`);
+  assert.deepEqual(item.assessmentQuestionRefs, expected.questions, `${code} links to focused assessment questions`);
+}
+assert.match(basic9Systems.find(item => item.indicatorCode === 'B9.3.1.1.1')?.assessmentEvidence ?? '', /blood-pressure management/i);
+assert.match(basic9Systems.find(item => item.indicatorCode === 'B9.3.4.1.3')?.assessmentEvidence ?? '', /teacher-observed practical/i);
