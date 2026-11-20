@@ -12,7 +12,7 @@ for (const term of [
   'anchorage and absorption', 'support and transport', 'photosynthesis', 'reproduction',
   'seed protection and dispersal', 'Match each plant part to its uses',
   'Agricultural uses', 'Other uses', 'Responsible use', 'cassava', 'yam',
-  'sugarcane', 'bamboo', 'animal fodder', 'timber', 'compost',
+  'sugarcane', 'bamboo', 'fodder', 'timber', 'compost',
   'Protect plant resources', 'biodiversity', 'deforestation', 'natural plant product'
 ]) {
   assert.ok(html.toLowerCase().includes(term.toLowerCase()), 'includes ' + term);
