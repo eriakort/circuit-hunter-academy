@@ -1,5 +1,5 @@
 import type { GameState, GradeId, QuizQuestion, SubjectId, ViewMode } from './types';
-import { MISSIONS, UNITS, ARCS } from './data/gameData';
+import { MISSIONS, UNITS, ARCS, SUBJECTS } from './data/gameData';
 import { GRADE_SUBJECT_IDS } from './data/gradeData';
 import { DEFAULT_CURRICULUM_ID, getCurriculum, type CurriculumId } from './data/curricula';
 import { ITALIAN_GRAMMAR_TOPICS } from './data/italianGrammar';
@@ -23,10 +23,10 @@ const isGrade = (value: unknown): value is GradeId =>
   || value === 'ghjhs1' || value === 'ghjhs2' || value === 'ghjhs3'
   || value === 'ghshs1' || value === 'ghshs2' || value === 'ghshs3';
 
+// Any registered subject, including every Ghana JHS/SHS pathway. A hard-coded list here
+// used to miss the JHS subjects, so a reload switched JHS Mathematics learners to Science.
 const isSubject = (value: unknown): value is SubjectId =>
-  value === 'cs' || value === 'phys' || value === 'math' || value === 'science' || value === 'math5' || value === 'italian' || value === 'chem' || value === 'chem10' || value === 'chem11'
-  || value === 'math10' || value === 'math11'
-  || value === 'hist5' || value === 'geo5' || value === 'hist9' || value === 'geo9' || value === 'hist10' || value === 'geo10' || value === 'hist11' || value === 'geo11' || value === 'ghcoremath' || value === 'ghcoremath2' || value === 'ghcoremath3';
+  typeof value === 'string' && SUBJECTS.some(subject => subject.id === value);
 
 const getAllowedSubjectIds = (grade: GradeId, curriculumId: CurriculumId): SubjectId[] => {
   if (curriculumId === 'italy-national') return GRADE_SUBJECT_IDS[grade] as SubjectId[];
