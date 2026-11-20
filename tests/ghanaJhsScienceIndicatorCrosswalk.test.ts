@@ -255,6 +255,49 @@ assert.deepEqual(basic9Cycles.find(item => item.indicatorCode === 'B9.2.4.2.3')?
 assert.match(basic9Cycles.find(item => item.indicatorCode === 'B9.2.3.2.1')?.teachingSceneEvidence ?? '', /harvesting crops for different intended uses/i);
 
 
+
+
+// Basic 9 · Strand 4 — Forces and Energy (NaCCA CCP, pp. 107–113).
+const basic9ForcesEnergy = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 9 && item.strand === 4);
+assert.deepEqual(basic9ForcesEnergy.map(item => item.indicatorCode), [
+  'B9.4.1.1.1','B9.4.1.1.2','B9.4.1.2.1','B9.4.1.2.2','B9.4.1.2.3','B9.4.1.2.4','B9.4.1.3.1',
+  'B9.4.2.1.1','B9.4.2.2.1','B9.4.3.1.1','B9.4.3.1.2',
+  'B9.4.4.1.1','B9.4.4.1.2','B9.4.4.2.1','B9.4.5.1.1','B9.4.5.1.2','B9.4.5.1.3'
+]);
+assert.ok(basic9ForcesEnergy.every(item => item.status === 'needs-review'));
+assert.ok(basic9ForcesEnergy.every(item => item.officialIndicatorText && item.sourcePdfPage));
+const basic9ForcesByCode = new Map(basic9ForcesEnergy.map(item => [item.indicatorCode, item]));
+const expectedBasic9ForcesEvidence: Record<string, { page: number; scenes: string[]; questions: string[] }> = {
+  'B9.4.1.1.1': { page: 107, scenes: ['gh-jhs3-science-energy-light#scene-1'], questions: ['gh-jhs3-science-energy-light#quiz-0'] },
+  'B9.4.1.1.2': { page: 107, scenes: ['gh-jhs3-science-energy-light#scene-1'], questions: [] },
+  'B9.4.1.2.1': { page: 107, scenes: ['gh-jhs3-science-energy-light#scene-2'], questions: ['gh-jhs3-science-energy-light#quiz-1'] },
+  'B9.4.1.2.2': { page: 108, scenes: ['gh-jhs3-science-energy-light#scene-3'], questions: ['gh-jhs3-science-energy-light#quiz-3'] },
+  'B9.4.1.2.3': { page: 108, scenes: ['gh-jhs3-science-energy-light#scene-3'], questions: ['gh-jhs3-science-energy-light#quiz-2'] },
+  'B9.4.1.2.4': { page: 108, scenes: [], questions: [] },
+  'B9.4.1.3.1': { page: 108, scenes: ['gh-jhs3-science-energy-light#scene-3'], questions: ['gh-jhs3-science-energy-light#quiz-4'] },
+  'B9.4.2.1.1': { page: 109, scenes: [0,1,2,3].map(n => `gh-jhs3-science-electricity-electronics#scene-${n}`), questions: [0,1,2].map(n => `gh-jhs3-science-electricity-electronics#quiz-${n}`) },
+  'B9.4.2.2.1': { page: 109, scenes: ['gh-jhs3-science-electricity-electronics#scene-2'], questions: ['gh-jhs3-science-electricity-electronics#quiz-3','gh-jhs3-science-electricity-electronics#quiz-4'] },
+  'B9.4.3.1.1': { page: 110, scenes: [0,1,2,3].map(n => `gh-jhs3-science-energy-conversion#scene-${n}`), questions: [0,1,2,3,4].map(n => `gh-jhs3-science-energy-conversion#quiz-${n}`) },
+  'B9.4.3.1.2': { page: 110, scenes: ['gh-jhs3-science-energy-conversion#scene-2','gh-jhs3-science-energy-conversion#scene-3'], questions: ['gh-jhs3-science-energy-conversion#quiz-2','gh-jhs3-science-energy-conversion#quiz-3','gh-jhs3-science-energy-conversion#quiz-4'] },
+  'B9.4.4.1.1': { page: 111, scenes: ['gh-jhs3-science-force-motion-pressure#scene-0','gh-jhs3-science-force-motion-pressure#scene-1'], questions: ['gh-jhs3-science-force-motion-pressure#quiz-0','gh-jhs3-science-force-motion-pressure#quiz-1'] },
+  'B9.4.4.1.2': { page: 112, scenes: ['gh-jhs3-science-force-motion-pressure#scene-3'], questions: ['gh-jhs3-science-force-motion-pressure#quiz-4'] },
+  'B9.4.4.2.1': { page: 112, scenes: ['gh-jhs3-science-force-motion-pressure#scene-0','gh-jhs3-science-force-motion-pressure#scene-2','gh-jhs3-science-force-motion-pressure#scene-3'], questions: ['gh-jhs3-science-force-motion-pressure#quiz-2','gh-jhs3-science-force-motion-pressure#quiz-3','gh-jhs3-science-force-motion-pressure#quiz-4'] },
+  'B9.4.5.1.1': { page: 113, scenes: ['gh-jhs3-science-agricultural-tools#scene-0','gh-jhs3-science-agricultural-tools#scene-1'], questions: ['gh-jhs3-science-agricultural-tools#quiz-0','gh-jhs3-science-agricultural-tools#quiz-1'] },
+  'B9.4.5.1.2': { page: 113, scenes: ['gh-jhs3-science-agricultural-tools#scene-2','gh-jhs3-science-agricultural-tools#scene-3'], questions: ['gh-jhs3-science-agricultural-tools#quiz-2','gh-jhs3-science-agricultural-tools#quiz-3','gh-jhs3-science-agricultural-tools#quiz-4'] },
+  'B9.4.5.1.3': { page: 113, scenes: ['gh-jhs3-science-agricultural-tools#scene-2'], questions: [] }
+};
+for (const [code, expected] of Object.entries(expectedBasic9ForcesEvidence)) {
+  const item = basic9ForcesByCode.get(code);
+  assert.ok(item, `${code} has a Basic 9 Forces and Energy evidence record`);
+  assert.equal(item.sourcePdfPage, expected.page, `${code} cites its curriculum page`);
+  assert.deepEqual(item.teachingSceneRefs, expected.scenes, `${code} links only to relevant teaching scenes`);
+  assert.deepEqual(item.assessmentQuestionRefs, expected.questions, `${code} links only to relevant quiz questions`);
+}
+assert.equal(basic9ForcesByCode.get('B9.4.1.2.4')?.missionIds.length, 0, 'Eclipse formation remains an explicit lesson and assessment gap');
+assert.match(basic9ForcesByCode.get('B9.4.2.2.1')?.teachingSceneEvidence ?? '', /Reverse bias is not explicitly explained/);
+assert.match(basic9ForcesByCode.get('B9.4.4.2.1')?.teachingSceneEvidence ?? '', /Momentum.*not explicitly taught/);
+assert.match(basic9ForcesByCode.get('B9.4.5.1.3')?.assessmentEvidence ?? '', /teacher-observed learner-built tool/);
+
 // Basic 9 · Strand 3 — Systems (NaCCA CCP, pp. 139–143).
 const basic9Systems = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 9 && item.strand === 3);
 assert.deepEqual(basic9Systems.map(item => item.indicatorCode), [
