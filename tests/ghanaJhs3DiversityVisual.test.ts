@@ -42,4 +42,17 @@ for (const term of ['Ionic bonding', 'Covalent bonding', 'Metallic bonding', 'So
 }
 assert.ok(!/\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|sale|sali|legame|legami)\b/i.test(bondingHtml), 'contains no Italian interface text');
 
-console.log('Basic 9 chemistry visuals render English-only, accessible content for binary compounds, acids/bases/salts and chemical bonding.');
+
+const plantHtml = renderToStaticMarkup(React.createElement(GhanaJhs3DiversityVisual, {
+  missionId: 'gh-jhs3-science-specialised-plant-cells'
+}));
+assert.ok(plantHtml.includes('The Plant Cell Specialist'), 'renders the specialised plant cells visual');
+assert.ok(plantHtml.includes('aria-live="polite"'), 'announces selected plant cell details');
+assert.ok(plantHtml.includes('aria-pressed='), 'exposes plant cell choices accessibly');
+for (const term of ['Epidermal cells', 'Guard cells', 'Xylem vessels', 'Cambium cells', 'stomata', 'water and dissolved mineral ions', 'Differentiation', 'growth in thickness']) {
+  assert.ok(plantHtml.toLowerCase().includes(term.toLowerCase()), 'includes ' + term);
+}
+assert.ok(!/\\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|sale|sali|legame|legami|cellule|foglia|radice)\\b/i.test(plantHtml), 'contains no Italian interface text');
+
+console.log('Basic 9 science visuals render English-only, accessible content for chemistry and specialised plant cells.');
+
