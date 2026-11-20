@@ -62,6 +62,7 @@ export const GhanaJhs3WasteManagementVisual: React.FC = () => {
         <div className="gh-jhs1-science-readout">
           <p><b>Remember the order:</b> prevent waste first, then reduce, reuse, recycle or compost suitable materials, and safely manage what remains.</p>
           <p>Never burn mixed waste or dump rubbish into drains, streams or open spaces. Keep batteries, chemicals, electronic waste and medical waste out of ordinary bins.</p>
+          <p>Keep hazardous waste separate and use approved specialist collection. Never handle unknown, leaking or sharp waste without trained adult supervision.</p>
         </div>
       </div>
       <div className="gh-jhs1-science-interaction">
