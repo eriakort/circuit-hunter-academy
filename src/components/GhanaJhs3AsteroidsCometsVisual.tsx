@@ -45,7 +45,7 @@ export const GhanaJhs3AsteroidsCometsVisual: React.FC = () => {
       </div>
       <div className="gh-jhs1-science-interaction">
         <h4>2. Compare the paths around the Sun</h4>
-        <p>Asteroids are mainly rock and metal; comets contain ice, dust and rocky material.</p>
+        <p>Asteroids are mainly rock and metal; comets contain ice, dust and rocky material. Many comets follow highly elongated orbits.</p>
         <svg viewBox="0 0 340 220" role="img" aria-label="Diagram comparing a nearly circular asteroid path and an elongated comet path around the Sun">
           <ellipse cx="155" cy="108" rx="83" ry="67" fill="none" stroke="#6aa6d8" strokeWidth="3" strokeDasharray="5 5"/>
           <ellipse cx="125" cy="108" rx="137" ry="133" fill="none" stroke="#d5a43b" strokeWidth="3" transform="rotate(-19 155 108)"/>
