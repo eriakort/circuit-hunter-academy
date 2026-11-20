@@ -25,7 +25,7 @@ assert.ok(rows.every(row => row.interactiveScenes >= 0));
 assert.equal(summary.instructionalVisualMissions, 60, 'The Basic 7 and Basic 8 visual pilots plus the first five Basic 9 Diversity of Matter missions plus the nitrogen-cycle, grasshopper life-cycle, crop-maturity, animal-feed-preparation and animal-feed-selection and energy-light, electricity-electronics and energy-conversion and force-motion, circulation-respiration missions have dedicated instructional visuals');
 assert.equal(summary.genericOnlyMissions, 9, 'The remaining JHS missions use generic challenge art rather than a dedicated science visual');
 assert.equal(summary.missingVisualMissions, 0, 'Every current JHS mission has at least generic challenge art');
-assert.deepEqual(summary.byGrade.map(row => [row.grade, row.instructionalVisualMissions, row.genericOnlyMissions]), [['Basic 7', 22, 0], ['Basic 8', 22, 0], ['Basic 9', 16, 9']]);
+assert.deepEqual(summary.byGrade.map(row => [row.grade, row.instructionalVisualMissions, row.genericOnlyMissions]), [['Basic 7', 22, 0], ['Basic 8', 22, 0], ['Basic 9', 16, 9]]);
 
 console.log(
   `Ghana Science visual audit: ${summary.totalMissions} missions; ${summary.instructionalVisualMissions} instructional visuals; ${summary.genericOnlyMissions} generic-only; ${summary.missingVisualMissions} missing.`
