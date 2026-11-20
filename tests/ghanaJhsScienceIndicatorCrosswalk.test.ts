@@ -164,7 +164,7 @@ const basic9EvidenceByCode = new Map(basic9FinalGaps.map(item => [item.indicator
 const expectedBasic9Evidence: Record<string, { scenes: string[]; questions: string[] }> = {
   'B9.2.3.2.1': {
     scenes: ['gh-jhs3-science-crop-maturity#scene-1', 'gh-jhs3-science-crop-maturity#scene-2'],
-    questions: ['gh-jhs3-science-crop-maturity#quiz-2', 'gh-jhs3-science-crop-maturity#quiz-3']
+    questions: ['gh-jhs3-science-crop-maturity#quiz-1', 'gh-jhs3-science-crop-maturity#quiz-2', 'gh-jhs3-science-crop-maturity#quiz-3']
   },
   'B9.2.4.2.2': {
     scenes: ['gh-jhs3-science-animal-feed-selection#scene-2'],
