@@ -843,8 +843,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-circulation-respiration"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Explain the concept of the circulatory system, state the function of each part of the system and the health challenges associated with it.",
     "sourcePdfPage": 139,
     "teachingSceneEvidence": "Circulation scenes 0–2 explain the heart, blood, blood vessels, blood components and the route of blood through the lungs and body. The curriculum's heart labelling, circulatory diseases and blood-pressure prevention/management exemplars need additional explicit lesson and assessment evidence.",
@@ -860,8 +858,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-circulation-respiration"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Explain the concept of respiration and show how the respiratory and circulatory systems complement each other.",
     "sourcePdfPage": 139,
     "teachingSceneEvidence": "Circulation and respiration scene 3 distinguishes cellular respiration from breathing and traces oxygen from the lungs into blood and carbon dioxide back to the lungs.",
@@ -877,8 +873,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-asteroids-comets"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Understand the movement of non-planetary bodies in the solar system.",
     "sourcePdfPage": 140,
     "teachingSceneEvidence": "Asteroids and comets scenes 2–3 compare their orbital paths, explain gravity and describe how observations are used to track and predict their movement. Scenes 0–1 provide the composition context.",
@@ -894,8 +888,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-ecosystem-balance"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Conduct research into the composition of an ecosystem and discuss how the components depend on each other for survival.",
     "sourcePdfPage": 141,
     "teachingSceneEvidence": "Ecosystem scenes 0–3 cover biotic and abiotic components, habitat versus ecosystem, producers, consumers and decomposers, food chains and webs, and how natural or human disturbances affect ecosystem balance. Learner-led research across different ecosystems still needs a documented project.",
@@ -911,8 +903,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-manure-materials"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "List and explain the different plant and animal waste used in preparing different types of manure.",
     "sourcePdfPage": 142,
     "teachingSceneEvidence": "Manure-materials scenes 0–3 explain suitable animal wastes and plant residues, their nutrient and soil-structure contributions, material selection and safe handling. Some hazardous wastes are explicitly excluded from ordinary school compost.",
@@ -928,8 +918,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-manure-composting"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Demonstrate the preparation of different types of manure.",
     "sourcePdfPage": 143,
     "teachingSceneEvidence": "Manure-composting scenes 0–3 explain sorting suitable wastes, layering green and brown materials, maintaining moisture and aeration, turning the heap and curing compost to maturity.",
@@ -945,8 +933,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-manure-composting"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Prepare different types of manure.",
     "sourcePdfPage": 143,
     "teachingSceneEvidence": "Manure-composting scenes 0–3 describe practical treatment steps: select and sort suitable waste, build a layered heap, manage moisture and air, turn the heap and allow the compost to mature. Actual learner preparation must be observed in a field or school garden.",
