@@ -43,7 +43,7 @@ export const GhanaJhs3HumanHealthVisual: React.FC = () => {
           <p><b>Prevention and response:</b> {guide.response}</p>
         </div>
         <div className="gh-jhs1-science-readout">
-          <p><b>Key difference:</b> communicable diseases can be transmitted by particular routes; non-communicable diseases (NCDs) are not passed directly from person to person.</p>
+          <p><b>Key difference:</b> communicable diseases can be transmitted by particular routes; non-communicable diseases do not spread directly from person to person.</p>
           <p>Not every infection spreads in the same way, and not every NCD has the same risk factors. Always match prevention to the condition and reliable health guidance.</p>
         </div>
       </div>
