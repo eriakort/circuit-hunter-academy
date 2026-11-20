@@ -56,7 +56,7 @@ test('Ghana JHS 1 Mathematics pathways are selectable and open Number, Algebra a
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ }).click();
-  await expect(page.locator('.grade-card[data-grade="ghjhs1"]')).toContainText('Mathematics · all four strands + Science pilot · JHS 1');
+  await expect(page.locator('.grade-card[data-grade="ghjhs1"]')).toContainText('Mathematics · 4 strands + Science · 5 strands · JHS 1');
   await page.locator('.grade-card[data-grade="ghjhs1"]').click();
   await page.locator('.subjcard[data-s="ghjhs1math"]').click();
   if (await page.locator('#nm').count()) {
@@ -318,7 +318,7 @@ test('Ghana JHS 2 Science Humans and the Environment strand opens all six sub-st
   await expect(page.locator('main')).not.toContainText(/Italian Studies|Informatica/i);
 });
 
-test('Ghana JHS 3 Science Diversity of Matter pilot is selectable and opens its missions', async ({ page }) => {
+test('Ghana JHS 3 Science Diversity of Matter strand is selectable and opens its missions', async ({ page }) => {
   await enterGhana(page, 'ghjhs3', 'ghjhs3science');
   await page.locator('.units button').filter({ hasText: 'Diversity of Matter' }).click();
   await expect(page.locator('.mcard')).toHaveCount(5);

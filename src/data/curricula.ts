@@ -135,8 +135,8 @@ export const COUNTRIES: readonly CountryDefinition[] = [
             status: 'available',
             subjectIdsByGrade: { ghshs1: ['ghcoremath'], ghshs2: ['ghcoremath2'], ghshs3: ['ghcoremath3'] }
           },
-          { id: 'ghana-jhs-mathematics', name: 'JHS Mathematics', description: 'NaCCA Common Core Programme Mathematics for JHS 1–3.', status: 'planned' },
-          { id: 'ghana-jhs-science', name: 'JHS Science', description: 'NaCCA Common Core Programme Science for JHS 1–3; JHS 1 complete and JHS 2 Diversity of Matter and Cycles available.', status: 'available', subjectIdsByGrade: { ghjhs1: ['ghjhs1science'], ghjhs2: ['ghjhs2science'] } },
+          { id: 'ghana-jhs-mathematics', name: 'JHS Mathematics', description: 'NaCCA Common Core Programme Mathematics for JHS 1–3: all four strands in each year.', status: 'available', subjectIdsByGrade: { ghjhs1: ['ghjhs1math'], ghjhs2: ['ghjhs2math'], ghjhs3: ['ghjhs3math'] } },
+          { id: 'ghana-jhs-science', name: 'JHS Science', description: 'NaCCA Common Core Programme Science for JHS 1–3: all five strands in each year.', status: 'available', subjectIdsByGrade: { ghjhs1: ['ghjhs1science'], ghjhs2: ['ghjhs2science'], ghjhs3: ['ghjhs3science'] } },
           { id: 'ghana-shs-general-science', name: 'SHS General Science', description: 'NaCCA General Science for SHS 1–3.', status: 'planned' },
           {
             id: 'ghana-additional-mathematics',

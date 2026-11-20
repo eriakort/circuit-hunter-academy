@@ -29579,3 +29579,16 @@ UNITS.push({ ...GHANA_JHS3_SCIENCE_HUMANS_ENVIRONMENT_UNIT, subject: 'ghjhs3scie
 const ghanaJhs3ScienceHumansEnvironmentArcOffset = ARCS.length;
 ARCS.push(...GHANA_JHS3_SCIENCE_HUMANS_ENVIRONMENT_ARCS.map(arc => ({ ...arc, unit: ghanaJhs3ScienceHumansEnvironmentUnitOffset, subject: 'ghjhs3science' as const })));
 MISSIONS.push(...GHANA_JHS3_SCIENCE_HUMANS_ENVIRONMENT_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs3ScienceHumansEnvironmentArcOffset + mission.arc })));
+
+// --- Ghana JHS subject registration -------------------------------------------------
+// Every subject a learner can pick must be in SUBJECTS. Screens look the current
+// subject up here (HUD, Missions, Test), and a missing entry made them fall back to
+// SUBJECTS[0], Computer Science.
+import { GHANA_JHS2_MATH_SUBJECT } from './ghanaJhs2MathData';
+import { GHANA_JHS3_MATH_SUBJECT } from './ghanaJhs3MathData';
+import { GHANA_JHS1_SCIENCE_SUBJECT } from './ghanaJhs1ScienceData';
+import { GHANA_JHS2_SCIENCE_SUBJECT } from './ghanaJhs2ScienceData';
+import { GHANA_JHS3_SCIENCE_SUBJECT } from './ghanaJhs3ScienceData';
+[GHANA_JHS2_MATH_SUBJECT, GHANA_JHS3_MATH_SUBJECT, GHANA_JHS1_SCIENCE_SUBJECT, GHANA_JHS2_SCIENCE_SUBJECT, GHANA_JHS3_SCIENCE_SUBJECT].forEach(subject => {
+  if (!SUBJECTS.some(item => item.id === subject.id)) SUBJECTS.push(subject);
+});
