@@ -22,10 +22,10 @@ assert.ok(rows.every(row => row.interactiveScenes >= 0));
 // The current baseline deliberately distinguishes the repeated demon/challenge
 // illustration from instructional science visuals. Battle scenes are not
 // counted as simulations merely because they are interactive.
-assert.equal(summary.instructionalVisualMissions, 48, 'The Basic 7 and Basic 8 visual pilots plus the first four Basic 9 Diversity of Matter missions have dedicated instructional visuals');
-assert.equal(summary.genericOnlyMissions, 21, 'The remaining JHS missions use generic challenge art rather than a dedicated science visual');
+assert.equal(summary.instructionalVisualMissions, 49, 'The Basic 7 and Basic 8 visual pilots plus the first five Basic 9 Diversity of Matter missions have dedicated instructional visuals');
+assert.equal(summary.genericOnlyMissions, 20, 'The remaining JHS missions use generic challenge art rather than a dedicated science visual');
 assert.equal(summary.missingVisualMissions, 0, 'Every current JHS mission has at least generic challenge art');
-assert.deepEqual(summary.byGrade.map(row => [row.grade, row.instructionalVisualMissions, row.genericOnlyMissions]), [['Basic 7', 22, 0], ['Basic 8', 22, 0], ['Basic 9', 4, 21]]);
+assert.deepEqual(summary.byGrade.map(row => [row.grade, row.instructionalVisualMissions, row.genericOnlyMissions]), [['Basic 7', 22, 0], ['Basic 8', 22, 0], ['Basic 9', 5, 20]]);
 
 console.log(
   `Ghana Science visual audit: ${summary.totalMissions} missions; ${summary.instructionalVisualMissions} instructional visuals; ${summary.genericOnlyMissions} generic-only; ${summary.missingVisualMissions} missing.`
