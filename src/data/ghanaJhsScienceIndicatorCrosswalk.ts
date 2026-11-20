@@ -1680,7 +1680,7 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "teachingSceneEvidence": "Candidate: gh-jhs3-science-agricultural-tools is the closest mission; an actual learner-built tool using locally available materials is not yet evidenced.",
     "assessmentEvidence": "No practical product assessment is mapped for manufacturing a simple agricultural tool.",
     "teachingSceneRefs": ["gh-jhs3-science-agricultural-tools#scene-2"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-agricultural-tools#quiz-2"]
+    "assessmentQuestionRefs": []
   },
 ]; 
 
