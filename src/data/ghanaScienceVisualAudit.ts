@@ -62,7 +62,8 @@ const DEDICATED_GHANA_SCIENCE_VISUAL_MISSIONS = new Set([
   'gh-jhs3-science-chemical-bonding',
   'gh-jhs3-science-specialised-plant-cells',
   'gh-jhs3-science-specialised-human-cells',
-  'gh-jhs3-science-nitrogen-cycle'
+  'gh-jhs3-science-nitrogen-cycle',
+  'gh-jhs3-science-grasshopper-life-cycle'
 ]);
 
 const SCIENCE_GRADE_BY_SUBJECT: Record<string, GhanaScienceVisualAuditRow['grade']> = {
