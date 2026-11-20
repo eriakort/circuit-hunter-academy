@@ -47,7 +47,7 @@ export const GhanaJhs3AsteroidsCometsVisual: React.FC = () => {
         <h4>2. Compare the paths around the Sun</h4>
         <svg viewBox="0 0 340 220" role="img" aria-label="Diagram comparing a nearly circular asteroid path and an elongated comet path around the Sun">
           <ellipse cx="155" cy="108" rx="83" ry="67" fill="none" stroke="#6aa6d8" strokeWidth="3" strokeDasharray="5 5"/>
-          <ellipse cx="155" cy="108" rx="137" ry="82" fill="none" stroke="#d5a43b" strokeWidth="3" transform="rotate(-19 155 108)"/>
+          <ellipse cx="125" cy="108" rx="137" ry="133" fill="none" stroke="#d5a43b" strokeWidth="3" transform="rotate(-19 155 108)"/>
           <circle cx="155" cy="108" r="17" fill="#f2b84b" stroke="#9b6a16" strokeWidth="2"/>
           <g fill="#172033" fontSize="10" fontWeight="bold"><text x="155" y="112" textAnchor="middle">Sun</text></g>
           <circle cx="237" cy="108" r="7" fill="#6aa6d8" stroke="#173d61" strokeWidth="2"/>
