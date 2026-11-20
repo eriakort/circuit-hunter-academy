@@ -74,7 +74,8 @@ const DEDICATED_GHANA_SCIENCE_VISUAL_MISSIONS = new Set([
   'gh-jhs3-science-agricultural-tools',
   'gh-jhs3-science-circulation-respiration',
   'gh-jhs3-science-asteroids-comets',
-  'gh-jhs3-science-ecosystem-balance'
+  'gh-jhs3-science-ecosystem-balance',
+  'gh-jhs3-science-manure-materials'
 ]);
 
 const SCIENCE_GRADE_BY_SUBJECT: Record<string, GhanaScienceVisualAuditRow['grade']> = {
