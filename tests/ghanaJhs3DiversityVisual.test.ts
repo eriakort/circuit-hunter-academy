@@ -54,5 +54,18 @@ for (const term of ['Epidermal cells', 'Guard cells', 'Xylem vessels', 'Cambium 
 }
 assert.ok(!/\\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|sale|sali|legame|legami|cellule|foglia|radice)\\b/i.test(plantHtml), 'contains no Italian interface text');
 
-console.log('Basic 9 science visuals render English-only, accessible content for chemistry and specialised plant cells.');
+
+const humanHtml = renderToStaticMarkup(React.createElement(GhanaJhs3DiversityVisual, {
+  missionId: 'gh-jhs3-science-specialised-human-cells'
+}));
+assert.ok(humanHtml.includes('The Human Cell Function Ranger'), 'renders the specialised human cells visual');
+assert.ok(humanHtml.includes('aria-live="polite"'), 'announces selected human cell details');
+assert.ok(humanHtml.includes('aria-pressed='), 'exposes human cell choices accessibly');
+for (const term of ['Nerve cell (neurone)', 'Red blood cell', 'Muscle cell', 'Sperm cell', 'haemoglobin', 'axon', 'mitochondria', 'tail (flagellum)', 'Differentiation', 'Cells → tissues → organs']) {
+  assert.ok(humanHtml.toLowerCase().includes(term.toLowerCase()), 'includes ' + term);
+}
+assert.ok(!/\\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|sale|sali|legame|legami|cellule|foglia|radice|sangue|muscolo|nervo)\\b/i.test(humanHtml), 'contains no Italian interface text');
+
+console.log('Basic 9 science visuals render English-only, accessible chemistry and specialised cell models.');
+
 
