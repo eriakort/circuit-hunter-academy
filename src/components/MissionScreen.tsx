@@ -29,6 +29,7 @@ import { GhanaJhs3CropMaturityVisual } from './GhanaJhs3CropMaturityVisual';
 import { GhanaJhs3AnimalFeedPreparationVisual } from './GhanaJhs3AnimalFeedPreparationVisual';
 import { GhanaJhs3AnimalFeedSelectionVisual } from './GhanaJhs3AnimalFeedSelectionVisual';
 import { GhanaJhs3EnergyLightVisual } from './GhanaJhs3EnergyLightVisual';
+import { GhanaJhs3CircuitSystemsVisual } from './GhanaJhs3CircuitSystemsVisual';
 import { ItalianLab } from './ItalianLab';
 import { HistoryLab } from './HistoryLab';
 import { GeographyLab } from './GeographyLab';
@@ -308,6 +309,7 @@ export const MissionScreen: React.FC = () => {
           {isGhana && currentMission.id === 'gh-jhs3-science-animal-feed-preparation' && currentSceneIndex === 1 && <GhanaJhs3AnimalFeedPreparationVisual />}
           {isGhana && currentMission.id === 'gh-jhs3-science-animal-feed-selection' && currentSceneIndex === 1 && <GhanaJhs3AnimalFeedSelectionVisual />}
           {isGhana && currentMission.id === 'gh-jhs3-science-energy-light' && currentSceneIndex === 1 && <GhanaJhs3EnergyLightVisual />}
+          {isGhana && currentMission.id === 'gh-jhs3-science-electricity-electronics' && currentSceneIndex === 1 && <GhanaJhs3CircuitSystemsVisual />}
           {isGhana && ['gh-jhs3-science-binary-compounds', 'gh-jhs3-science-acids-bases-salts', 'gh-jhs3-science-chemical-bonding', 'gh-jhs3-science-specialised-plant-cells', 'gh-jhs3-science-specialised-human-cells'].includes(currentMission.id) && currentSceneIndex === 1 && (
             <GhanaJhs3DiversityVisual missionId={currentMission.id} />
           )}
