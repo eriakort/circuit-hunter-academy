@@ -198,3 +198,46 @@ for (const [code, expected] of Object.entries(expectedBasic9Evidence)) {
   assert.deepEqual(item.assessmentQuestionRefs, expected.questions, `${code} assessment evidence is indexed without overstating practical assessment`);
 }
 
+const basic9MatterEvidence = new Map(
+  GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE
+    .filter(item => item.grade === 9 && item.strand === 1)
+    .map(item => [item.indicatorCode, item])
+);
+const expectedBasic9MatterEvidence: Record<string, { scenes: string[]; questions: string[] }> = {
+  'B9.1.1.1.1': {
+    scenes: ['gh-jhs3-science-binary-compounds#scene-0', 'gh-jhs3-science-binary-compounds#scene-1'],
+    questions: ['gh-jhs3-science-binary-compounds#quiz-0', 'gh-jhs3-science-binary-compounds#quiz-1']
+  },
+  'B9.1.1.1.2': {
+    scenes: ['gh-jhs3-science-binary-compounds#scene-1', 'gh-jhs3-science-binary-compounds#scene-2', 'gh-jhs3-science-binary-compounds#scene-3'],
+    questions: ['gh-jhs3-science-binary-compounds#quiz-2', 'gh-jhs3-science-binary-compounds#quiz-3', 'gh-jhs3-science-binary-compounds#quiz-4']
+  },
+  'B9.1.1.1.3': {
+    scenes: ['gh-jhs3-science-acids-bases-salts#scene-0', 'gh-jhs3-science-acids-bases-salts#scene-1', 'gh-jhs3-science-acids-bases-salts#scene-2', 'gh-jhs3-science-acids-bases-salts#scene-3'],
+    questions: ['gh-jhs3-science-acids-bases-salts#quiz-0', 'gh-jhs3-science-acids-bases-salts#quiz-1', 'gh-jhs3-science-acids-bases-salts#quiz-2', 'gh-jhs3-science-acids-bases-salts#quiz-3', 'gh-jhs3-science-acids-bases-salts#quiz-4']
+  },
+  'B9.1.1.2.1': {
+    scenes: ['gh-jhs3-science-chemical-bonding#scene-0', 'gh-jhs3-science-chemical-bonding#scene-1', 'gh-jhs3-science-chemical-bonding#scene-2', 'gh-jhs3-science-chemical-bonding#scene-3'],
+    questions: ['gh-jhs3-science-chemical-bonding#quiz-0', 'gh-jhs3-science-chemical-bonding#quiz-1', 'gh-jhs3-science-chemical-bonding#quiz-2', 'gh-jhs3-science-chemical-bonding#quiz-3', 'gh-jhs3-science-chemical-bonding#quiz-4']
+  },
+  'B9.1.2.1.1': {
+    scenes: ['gh-jhs3-science-specialised-plant-cells#scene-0', 'gh-jhs3-science-specialised-human-cells#scene-0'],
+    questions: ['gh-jhs3-science-specialised-plant-cells#quiz-0', 'gh-jhs3-science-specialised-human-cells#quiz-4']
+  },
+  'B9.1.2.1.2': {
+    scenes: ['gh-jhs3-science-specialised-plant-cells#scene-1', 'gh-jhs3-science-specialised-plant-cells#scene-2', 'gh-jhs3-science-specialised-plant-cells#scene-3'],
+    questions: ['gh-jhs3-science-specialised-plant-cells#quiz-1', 'gh-jhs3-science-specialised-plant-cells#quiz-2', 'gh-jhs3-science-specialised-plant-cells#quiz-3', 'gh-jhs3-science-specialised-plant-cells#quiz-4']
+  },
+  'B9.1.2.1.3': {
+    scenes: ['gh-jhs3-science-specialised-human-cells#scene-1', 'gh-jhs3-science-specialised-human-cells#scene-2', 'gh-jhs3-science-specialised-human-cells#scene-3'],
+    questions: ['gh-jhs3-science-specialised-human-cells#quiz-0', 'gh-jhs3-science-specialised-human-cells#quiz-1', 'gh-jhs3-science-specialised-human-cells#quiz-2', 'gh-jhs3-science-specialised-human-cells#quiz-3']
+  }
+};
+assert.equal(basic9MatterEvidence.size, 7, 'Basic 9 Diversity of Matter has seven indicator records');
+for (const [code, expected] of Object.entries(expectedBasic9MatterEvidence)) {
+  const item = basic9MatterEvidence.get(code);
+  assert.ok(item, `${code} has a matter-strand evidence record`);
+  assert.deepEqual(item.teachingSceneRefs, expected.scenes, `${code} links to focused teaching scenes`);
+  assert.deepEqual(item.assessmentQuestionRefs, expected.questions, `${code} links to focused assessment questions`);
+}
+
