@@ -1599,7 +1599,9 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "officialIndicatorText": "Observe and record the uses of different crops at different maturity stages.",
     "sourcePdfPage": 97,
     "teachingSceneEvidence": "Candidate: gh-jhs3-science-crop-maturity is the closest lesson for crop maturity; explicit observation records and uses of each crop stage need confirmation.",
-    "assessmentEvidence": "Candidate assessment alignment is not yet verified for recording and categorising crop uses at different maturity stages."
+    "assessmentEvidence": "Candidate assessment alignment is not yet verified for recording and categorising crop uses at different maturity stages.",
+    "teachingSceneRefs": ["gh-jhs3-science-crop-maturity#scene-1", "gh-jhs3-science-crop-maturity#scene-2"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-crop-maturity#quiz-2", "gh-jhs3-science-crop-maturity#quiz-3"]
   },
   {
     "indicatorCode": "B9.2.4.2.2",
@@ -1610,7 +1612,9 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "officialIndicatorText": "Differentiate between different types of feed for different stages of domestic and commercial animals.",
     "sourcePdfPage": 100,
     "teachingSceneEvidence": "Candidate: gh-jhs3-science-animal-feed-selection introduces feed selection; comparison across young, growing and mature animals and ruminants, monogastrics and poultry needs verification.",
-    "assessmentEvidence": "No question-level evidence has yet been verified for matching feed types to animal growth stages."
+    "assessmentEvidence": "No question-level evidence has yet been verified for matching feed types to animal growth stages.",
+    "teachingSceneRefs": ["gh-jhs3-science-animal-feed-selection#scene-2"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-animal-feed-selection#quiz-3"]
   },
   {
     "indicatorCode": "B9.2.4.2.3",
@@ -1621,7 +1625,9 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "officialIndicatorText": "Perform the feeding of domestic and commercial animals.",
     "sourcePdfPage": 100,
     "teachingSceneEvidence": "Candidate: gh-jhs3-science-animal-feed-selection provides a related conceptual link, but a supervised practical feeding activity at a school or community farm is not established.",
-    "assessmentEvidence": "No practical demonstration or observation rubric for feeding animals at different growth and production stages is currently mapped."
+    "assessmentEvidence": "No practical demonstration or observation rubric for feeding animals at different growth and production stages is currently mapped.",
+    "teachingSceneRefs": ["gh-jhs3-science-animal-feed-selection#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-animal-feed-selection#quiz-4"]
   },
   // Basic 9 · Strand 4 — Forces and Energy (NaCCA CCP, pp. 107–112).
   {
@@ -1633,7 +1639,9 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "officialIndicatorText": "Describe how images are formed in cameras.",
     "sourcePdfPage": 108,
     "teachingSceneEvidence": "Candidate: gh-jhs3-science-energy-light is the closest light lesson; a camera model and image-formation explanation need explicit teaching.",
-    "assessmentEvidence": "No camera-model or image-formation question is explicitly mapped."
+    "assessmentEvidence": "No camera-model or image-formation question is explicitly mapped.",
+    "teachingSceneRefs": ["gh-jhs3-science-energy-light#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-energy-light#quiz-3"]
   },
   {
     "indicatorCode": "B9.4.1.2.3",
@@ -1644,7 +1652,9 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "officialIndicatorText": "Describe the formation of shadows.",
     "sourcePdfPage": 108,
     "teachingSceneEvidence": "Candidate: gh-jhs3-science-energy-light is the closest light lesson; umbra, penumbra and shadow formation need explicit evidence.",
-    "assessmentEvidence": "No assessment question is explicitly mapped to umbra, penumbra or shadow formation."
+    "assessmentEvidence": "No assessment question is explicitly mapped to umbra, penumbra or shadow formation.",
+    "teachingSceneRefs": ["gh-jhs3-science-energy-light#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-energy-light#quiz-2"]
   },
   {
     "indicatorCode": "B9.4.4.1.2",
@@ -1655,7 +1665,9 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "officialIndicatorText": "Demonstrate the application of Newton’s Third Law of motion in life.",
     "sourcePdfPage": 112,
     "teachingSceneEvidence": "Candidate: gh-jhs3-science-force-motion-pressure is the closest force lesson; action–reaction predictions and a practical demonstration need explicit confirmation.",
-    "assessmentEvidence": "No assessment question is explicitly mapped to an action–reaction prediction or practical demonstration."
+    "assessmentEvidence": "No assessment question is explicitly mapped to an action–reaction prediction or practical demonstration.",
+    "teachingSceneRefs": ["gh-jhs3-science-force-motion-pressure#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-force-motion-pressure#quiz-4"]
   },
   {
     "indicatorCode": "B9.4.5.1.3",
@@ -1666,7 +1678,9 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "officialIndicatorText": "Manufacture simple agricultural tools.",
     "sourcePdfPage": 112,
     "teachingSceneEvidence": "Candidate: gh-jhs3-science-agricultural-tools is the closest mission; an actual learner-built tool using locally available materials is not yet evidenced.",
-    "assessmentEvidence": "No practical product assessment is mapped for manufacturing a simple agricultural tool."
+    "assessmentEvidence": "No practical product assessment is mapped for manufacturing a simple agricultural tool.",
+    "teachingSceneRefs": ["gh-jhs3-science-agricultural-tools#scene-2"],
+    "assessmentQuestionRefs": []
   },
 ]; 
 

@@ -159,3 +159,42 @@ assert.deepEqual(basic9FinalGaps.map(item => item.indicatorCode), [
 assert.ok(basic9FinalGaps.every(item => item.officialIndicatorText && item.sourcePdfPage));
 assert.ok(basic9FinalGaps.every(item => item.status === 'needs-review'));
 assert.ok(basic9FinalGaps.every(item => item.missionIds.length === 1));
+
+const basic9EvidenceByCode = new Map(basic9FinalGaps.map(item => [item.indicatorCode, item]));
+const expectedBasic9Evidence: Record<string, { scenes: string[]; questions: string[] }> = {
+  'B9.2.3.2.1': {
+    scenes: ['gh-jhs3-science-crop-maturity#scene-1', 'gh-jhs3-science-crop-maturity#scene-2'],
+    questions: ['gh-jhs3-science-crop-maturity#quiz-2', 'gh-jhs3-science-crop-maturity#quiz-3']
+  },
+  'B9.2.4.2.2': {
+    scenes: ['gh-jhs3-science-animal-feed-selection#scene-2'],
+    questions: ['gh-jhs3-science-animal-feed-selection#quiz-3']
+  },
+  'B9.2.4.2.3': {
+    scenes: ['gh-jhs3-science-animal-feed-selection#scene-3'],
+    questions: ['gh-jhs3-science-animal-feed-selection#quiz-4']
+  },
+  'B9.4.1.2.2': {
+    scenes: ['gh-jhs3-science-energy-light#scene-3'],
+    questions: ['gh-jhs3-science-energy-light#quiz-3']
+  },
+  'B9.4.1.2.3': {
+    scenes: ['gh-jhs3-science-energy-light#scene-3'],
+    questions: ['gh-jhs3-science-energy-light#quiz-2']
+  },
+  'B9.4.4.1.2': {
+    scenes: ['gh-jhs3-science-force-motion-pressure#scene-3'],
+    questions: ['gh-jhs3-science-force-motion-pressure#quiz-4']
+  },
+  'B9.4.5.1.3': {
+    scenes: ['gh-jhs3-science-agricultural-tools#scene-2'],
+    questions: []
+  }
+};
+for (const [code, expected] of Object.entries(expectedBasic9Evidence)) {
+  const item = basic9EvidenceByCode.get(code);
+  assert.ok(item, `${code} has a Basic 9 evidence record`);
+  assert.deepEqual(item.teachingSceneRefs, expected.scenes, `${code} teaching-scene evidence is indexed`);
+  assert.deepEqual(item.assessmentQuestionRefs, expected.questions, `${code} assessment evidence is indexed without overstating practical assessment`);
+}
+
