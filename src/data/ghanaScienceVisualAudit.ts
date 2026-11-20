@@ -71,7 +71,8 @@ const DEDICATED_GHANA_SCIENCE_VISUAL_MISSIONS = new Set([
   'gh-jhs3-science-electricity-electronics',
   'gh-jhs3-science-energy-conversion',
   'gh-jhs3-science-force-motion-pressure',
-  'gh-jhs3-science-agricultural-tools'
+  'gh-jhs3-science-agricultural-tools',
+  'gh-jhs3-science-circulation-respiration'
 ]);
 
 const SCIENCE_GRADE_BY_SUBJECT: Record<string, GhanaScienceVisualAuditRow['grade']> = {
