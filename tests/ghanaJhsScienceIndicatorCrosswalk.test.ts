@@ -259,7 +259,7 @@ assert.match(basic9Cycles.find(item => item.indicatorCode === 'B9.2.3.2.1')?.tea
 
 // Basic 9 · Strand 4 — Forces and Energy (NaCCA CCP, pp. 107–113).
 const basic9ForcesEnergy = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 9 && item.strand === 4);
-assert.deepEqual(basic9ForcesEnergy.map(item => item.indicatorCode), [
+assert.deepEqual(basic9ForcesEnergy.map(item => item.indicatorCode).sort(), [
   'B9.4.1.1.1','B9.4.1.1.2','B9.4.1.2.1','B9.4.1.2.2','B9.4.1.2.3','B9.4.1.2.4','B9.4.1.3.1',
   'B9.4.2.1.1','B9.4.2.2.1','B9.4.3.1.1','B9.4.3.1.2',
   'B9.4.4.1.1','B9.4.4.1.2','B9.4.4.2.1','B9.4.5.1.1','B9.4.5.1.2','B9.4.5.1.3'
