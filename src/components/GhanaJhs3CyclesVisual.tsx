@@ -56,7 +56,7 @@ const NitrogenCycleExplorer: React.FC = () => {
       <div className="gh-jhs1-science-interaction">
         <h4>Protect nitrogen in Ghanaian soils</h4>
         <div className="gh-jhs1-science-readout">
-          <p><b>Legume rotation:</b> beans and groundnuts can host nitrogen-fixing bacteria in root nodules, adding usable nitrogen to the soil.</p>
+          <p><b>Legume rotation:</b> beans and groundnuts can host nitrogen-fixing bacteria in root nodules, adding usable nitrogen to the soil and supporting soil fertility.</p>
           <p><b>Protect soil life:</b> avoid unnecessary bush burning and protect organic matter and soil organisms.</p>
           <p><b>Reduce nutrient loss:</b> maintain ground cover and use fertilisers responsibly to reduce nitrate leaching and runoff.</p>
           <p><b>Remember:</b> plants absorb nitrogen mainly as nitrate or ammonium compounds, not directly as nitrogen gas from the air.</p>
