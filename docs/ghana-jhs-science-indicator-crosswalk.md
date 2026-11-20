@@ -35,3 +35,18 @@ This tranche adds the final six Basic 8 indicators missing from the crosswalk: o
 This increment adds seven previously missing unique indicator codes: three in Cycles (crop maturity-stage uses and practical animal feeding) and four in Forces and Energy (camera images, shadows, Newton's Third Law application and manufacture of simple agricultural tools). Candidate mission links are recorded but remain `needs-review`; no scene or question alignment is claimed as verified.
 
 **Count reconciliation:** the official PDF exposes 17 unique Basic 9 Strand 4 indicators rather than the previously recorded 16. The source repeats code `B9.4.4.2.1` for two different content-standard descriptions; it is counted once in the unique-code inventory and flagged for curriculum-owner review. With 17 unique Strand 4 codes, Basic 9 has 54 unique indicators across all strands. The inventory now has 152 records in total. Source references: NaCCA PDF pp. 97–100 and 107–112.
+
+
+### Basic 9 Humans and the Environment — Strand 5 evidence tranche (2026-11-21)
+
+This tranche reviews all 12 unique Basic 9 Strand 5 indicator codes against the five existing JHS3 missions. It adds exact candidate teaching-scene and quiz-question references, official indicator wording and printed NaCCA curriculum page references:
+
+- Waste Management: pp. 114
+- Human Health: pp. 115–116
+- Science and Industry: pp. 118–119
+- Climate Change and Green Economy: p. 120
+- Plant Resources and Their Uses: pp. 122–123
+
+All records remain `needs-review`. The mappings deliberately retain gaps where a multiple-choice quiz cannot demonstrate a curriculum performance: conducting a school waste audit, investigating an industrial process, assessing real climate-action datasets across countries, and creating agricultural and non-agricultural materials from plant parts. The current NCD lesson also does not explicitly teach disease-specific symptoms/effects or named cancers; the health/disease lesson does not explicitly teach the WHO definition.
+
+**Curriculum source-code ambiguity:** the official PDF uses `B9.5.2.2.1` on printed p. 116 for the health–disease relationship, then repeats the same code on p. 117 for a distinct fungal-disease outcome. The crosswalk preserves the first occurrence as the unique `B9.5.2.2.1` record and flags the duplicate in its evidence note; it does not invent a new indicator code. The separately listed `B9.5.2.2.2` remains mapped to the common-diseases outcome on p. 116. This means Strand 5 has 12 unique codes but 13 printed indicator statements if the duplicated p. 117 statement is counted separately; curriculum-owner clarification is needed before changing the official inventory count.
