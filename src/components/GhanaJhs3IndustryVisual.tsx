@@ -61,7 +61,7 @@ export const GhanaJhs3IndustryVisual: React.FC = () => {
         </div>
         <div className="gh-jhs1-science-readout">
           <p><b>Key idea:</b> industries use scientific knowledge, materials, energy and skilled work to turn inputs into useful goods or services.</p>
-          <p>Food processing, textiles, pottery, soap making, cement production, mining and wood processing are examples of industrial activities found in Ghana.</p>
+          <p>Food processing, textiles, pottery, soap making, cement production, mining and wood processing are examples of industrial activities found in Ghana. Soap making uses saponification, a reaction between fats or oils and an alkali that produces soap and glycerol.</p>
         </div>
       </div>
       <div className="gh-jhs1-science-interaction">
