@@ -241,3 +241,15 @@ for (const [code, expected] of Object.entries(expectedBasic9MatterEvidence)) {
   assert.deepEqual(item.assessmentQuestionRefs, expected.questions, `${code} links to focused assessment questions`);
 }
 
+
+
+const basic9Cycles = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 9 && item.strand === 2);
+assert.deepEqual(basic9Cycles.map(item => item.indicatorCode), [
+  'B9.2.1.1.1','B9.2.1.1.2','B9.2.2.1.1','B9.2.2.1.2','B9.2.3.1.1',
+  'B9.2.3.2.2','B9.2.4.1.1','B9.2.4.2.1','B9.2.3.2.1','B9.2.4.2.2','B9.2.4.2.3'
+]);
+assert.ok(basic9Cycles.every(item => item.status === 'needs-review'));
+assert.ok(basic9Cycles.every(item => item.teachingSceneRefs?.length && item.assessmentQuestionRefs?.length));
+assert.deepEqual(basic9Cycles.find(item => item.indicatorCode === 'B9.2.4.2.3')?.assessmentQuestionRefs,
+  ['gh-jhs3-science-animal-feed-selection#quiz-4']);
+assert.match(basic9Cycles.find(item => item.indicatorCode === 'B9.2.3.2.1')?.teachingSceneEvidence ?? '', /harvesting crops for different intended uses/i);
