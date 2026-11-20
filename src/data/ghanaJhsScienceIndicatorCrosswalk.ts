@@ -948,8 +948,16 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-energy-light"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "List the ways to conserve energy.",
+    "sourcePdfPage": 107,
+    "teachingSceneEvidence": "Scene 1 explains switching off unused appliances, using efficient appliances and ironing in batches; the quiz checks only switching off.",
+    "assessmentEvidence": "Quiz 0 checks switching off unused appliances. Efficient-appliance choices and ironing in bulk are not directly assessed.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-energy-light#scene-1"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-energy-light#quiz-0"
+    ]
   },
   {
     "indicatorCode": "B9.4.1.1.2",
@@ -959,8 +967,14 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-energy-light"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Explain the importance of energy conservation in daily life.",
+    "sourcePdfPage": 107,
+    "teachingSceneEvidence": "Scene 1 explains that reducing electricity use can lower bills and reduce demand on power stations and the environment.",
+    "assessmentEvidence": "No quiz question directly assesses the wider importance of conservation or the curriculum's research-and-discussion exemplar.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-energy-light#scene-1"
+    ],
+    "assessmentQuestionRefs": []
   },
   {
     "indicatorCode": "B9.4.1.2.1",
@@ -970,19 +984,29 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-energy-light"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Explain how to calculate energy consumed over a period of time.",
+    "sourcePdfPage": 107,
+    "teachingSceneEvidence": "Scene 2 defines electrical power with P = IV and calculates energy use in kWh from power and time.",
+    "assessmentEvidence": "Quiz 1 calculates kWh from appliance power and time; measured current and voltage are not used in an assessment calculation.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-energy-light#scene-2"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-energy-light#quiz-1"
+    ]
   },
   {
     "indicatorCode": "B9.4.1.2.4",
     "grade": 9,
     "strand": 4,
-    "missionIds": [
-      "gh-jhs3-science-energy-light"
-    ],
+    "missionIds": [],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Demonstrate the formation of an eclipse.",
+    "sourcePdfPage": 108,
+    "teachingSceneEvidence": "No matching Basic 9 lesson explicitly models solar or lunar eclipse formation; the light scene covers cameras, shadows and refraction but not Sun-Earth-Moon alignment.",
+    "assessmentEvidence": "No eclipse-model or eclipse-formation question is present.",
+    "teachingSceneRefs": [],
+    "assessmentQuestionRefs": []
   },
   {
     "indicatorCode": "B9.4.1.3.1",
@@ -992,8 +1016,16 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-energy-light"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Demonstrate that light changes path when it travels from one medium to a different medium.",
+    "sourcePdfPage": 108,
+    "teachingSceneEvidence": "Scene 3 explains refraction as a change in light direction when it enters another medium and gives the bent-straw-in-water example.",
+    "assessmentEvidence": "Quiz 4 defines refraction and checks why light bends when entering a different medium; a practical observation remains to be performed.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-energy-light#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-energy-light#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B9.4.2.1.1",
@@ -1003,8 +1035,21 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-electricity-electronics"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Demonstrate transformation of electrical energy to other forms of energy in both series and parallel circuits and perform simple calculations involving the flow of current in circuits.",
+    "sourcePdfPage": 109,
+    "teachingSceneEvidence": "Scenes 0–1 introduce complete circuits and compare series and parallel paths; scene 3 traces electrical energy into light, movement, sound and heat. Scene 2 teaches V = IR and current calculation.",
+    "assessmentEvidence": "Quizzes 0–1 assess series/parallel behaviour and quiz 2 calculates current from voltage and resistance. Physical construction and meter measurements are not verified.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-electricity-electronics#scene-0",
+      "gh-jhs3-science-electricity-electronics#scene-1",
+      "gh-jhs3-science-electricity-electronics#scene-2",
+      "gh-jhs3-science-electricity-electronics#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-electricity-electronics#quiz-0",
+      "gh-jhs3-science-electricity-electronics#quiz-1",
+      "gh-jhs3-science-electricity-electronics#quiz-2"
+    ]
   },
   {
     "indicatorCode": "B9.4.2.2.1",
@@ -1014,8 +1059,17 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-electricity-electronics"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Describe forward bias and reverse bias and explain the relationship among LEDs, diodes, resistors and capacitors in an electronic circuit.",
+    "sourcePdfPage": 109,
+    "teachingSceneEvidence": "Scene 2 explains diode direction, LED forward bias, resistor current limitation and capacitor charge storage. Reverse bias is not explicitly explained; comparative circuit observations require practical work.",
+    "assessmentEvidence": "Quiz 3 checks one-way diode behaviour and quiz 4 checks capacitor charge storage; neither directly tests forward versus reverse bias or all four component relationships.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-electricity-electronics#scene-2"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-electricity-electronics#quiz-3",
+      "gh-jhs3-science-electricity-electronics#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B9.4.3.1.1",
@@ -1025,8 +1079,23 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-energy-conversion"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Describe how energy can be converted from one form to another and show how conservation of energy occurs.",
+    "sourcePdfPage": 110,
+    "teachingSceneEvidence": "Scenes 0–1 distinguish energy conversion from conservation; scenes 2–3 trace transfers in fans, solar panels, hydroelectric systems and useful versus dissipated outputs.",
+    "assessmentEvidence": "Quizzes 0–1 assess conversion and conservation, quiz 2 checks a solar-panel example, and quizzes 3–4 assess efficiency and thermal transfers.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-energy-conversion#scene-0",
+      "gh-jhs3-science-energy-conversion#scene-1",
+      "gh-jhs3-science-energy-conversion#scene-2",
+      "gh-jhs3-science-energy-conversion#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-energy-conversion#quiz-0",
+      "gh-jhs3-science-energy-conversion#quiz-1",
+      "gh-jhs3-science-energy-conversion#quiz-2",
+      "gh-jhs3-science-energy-conversion#quiz-3",
+      "gh-jhs3-science-energy-conversion#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B9.4.3.1.2",
@@ -1036,8 +1105,19 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-energy-conversion"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Describe how conversion and conservation of energy are applied in life.",
+    "sourcePdfPage": 110,
+    "teachingSceneEvidence": "Scenes 2–3 apply conversion and conservation to fans, solar panels, hydroelectric generation, device efficiency and reducing unwanted transfers.",
+    "assessmentEvidence": "Quizzes 2–4 assess real-life transfers, efficiency and why machines become warm. The learner-produced report on local conservation opportunities is not assessed.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-energy-conversion#scene-2",
+      "gh-jhs3-science-energy-conversion#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-energy-conversion#quiz-2",
+      "gh-jhs3-science-energy-conversion#quiz-3",
+      "gh-jhs3-science-energy-conversion#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B9.4.4.1.1",
@@ -1047,8 +1127,18 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-force-motion-pressure"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Explain the concept of pressure and show how pressure relates to force; perform activities that work on the principle of pressure in the daily lives of humans.",
+    "sourcePdfPage": 111,
+    "teachingSceneEvidence": "Scenes 0–1 introduce force and pressure as force per unit area, with everyday examples such as sharp blades and wide tyres. The curriculum's straw, tyre, balloon and water-jet demonstrations are not explicit.",
+    "assessmentEvidence": "Quizzes 0–1 assess pressure calculation and contact area. Practical demonstrations and the full range of everyday applications need teacher observation.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-force-motion-pressure#scene-0",
+      "gh-jhs3-science-force-motion-pressure#scene-1"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-force-motion-pressure#quiz-0",
+      "gh-jhs3-science-force-motion-pressure#quiz-1"
+    ]
   },
   {
     "indicatorCode": "B9.4.4.2.1",
@@ -1058,8 +1148,20 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-force-motion-pressure"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Explain Newton’s Laws of Motion and their applications to daily life.",
+    "sourcePdfPage": 112,
+    "teachingSceneEvidence": "Scenes 0, 2 and 3 cover resultant forces and Newton's First, Second and Third Laws; F = ma is taught. Momentum, required by the curriculum exemplar, is not explicitly taught.",
+    "assessmentEvidence": "Quizzes 2–4 assess F = ma, inertia/First Law and a Third Law application. Momentum and broader applications of all three laws need direct assessment.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-force-motion-pressure#scene-0",
+      "gh-jhs3-science-force-motion-pressure#scene-2",
+      "gh-jhs3-science-force-motion-pressure#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-force-motion-pressure#quiz-2",
+      "gh-jhs3-science-force-motion-pressure#quiz-3",
+      "gh-jhs3-science-force-motion-pressure#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B9.4.5.1.1",
@@ -1069,8 +1171,18 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-agricultural-tools"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Identify materials used in making simple agricultural tools.",
+    "sourcePdfPage": 113,
+    "teachingSceneEvidence": "Scenes 0–1 identify common farm tools and describe material choices for handles, working parts and joints, including strength, durability, availability and safe handling.",
+    "assessmentEvidence": "Quizzes 0–1 identify a hoe and check suitable handle-material properties; connected materials across a range of tools are not assessed.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-agricultural-tools#scene-0",
+      "gh-jhs3-science-agricultural-tools#scene-1"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-agricultural-tools#quiz-0",
+      "gh-jhs3-science-agricultural-tools#quiz-1"
+    ]
   },
   {
     "indicatorCode": "B9.4.5.1.2",
@@ -1080,8 +1192,19 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-agricultural-tools"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Discuss and write activities involved in making simple agricultural tools.",
+    "sourcePdfPage": 113,
+    "teachingSceneEvidence": "Scenes 2–3 describe the making sequence, material selection, measuring, shaping, joining, inspection, prototype testing and workshop precautions.",
+    "assessmentEvidence": "Quizzes 2–4 assess prototype testing, safe cutting and damaged-tool handling. A written process description covering constraints and precautions is not directly assessed.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-agricultural-tools#scene-2",
+      "gh-jhs3-science-agricultural-tools#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-agricultural-tools#quiz-2",
+      "gh-jhs3-science-agricultural-tools#quiz-3",
+      "gh-jhs3-science-agricultural-tools#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B9.5.1.1.1",
@@ -1692,52 +1815,74 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "indicatorCode": "B9.4.1.2.2",
     "grade": 9,
     "strand": 4,
-    "missionIds": ["gh-jhs3-science-energy-light"],
+    "missionIds": [
+      "gh-jhs3-science-energy-light"
+    ],
     "status": "needs-review",
     "officialIndicatorText": "Describe how images are formed in cameras.",
     "sourcePdfPage": 108,
-    "teachingSceneEvidence": "Candidate: gh-jhs3-science-energy-light is the closest light lesson; a camera model and image-formation explanation need explicit teaching.",
-    "assessmentEvidence": "No camera-model or image-formation question is explicitly mapped.",
-    "teachingSceneRefs": ["gh-jhs3-science-energy-light#scene-3"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-energy-light#quiz-3"]
+    "teachingSceneEvidence": "Scene 3 explains pinhole-camera image formation using straight-line rays crossing at the aperture and describes image orientation and sharpness.",
+    "assessmentEvidence": "Quiz 3 asks why a pinhole-camera image is inverted. Building and explaining a physical camera model remains practical work.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-energy-light#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-energy-light#quiz-3"
+    ]
   },
   {
     "indicatorCode": "B9.4.1.2.3",
     "grade": 9,
     "strand": 4,
-    "missionIds": ["gh-jhs3-science-energy-light"],
+    "missionIds": [
+      "gh-jhs3-science-energy-light"
+    ],
     "status": "needs-review",
     "officialIndicatorText": "Describe the formation of shadows.",
     "sourcePdfPage": 108,
-    "teachingSceneEvidence": "Candidate: gh-jhs3-science-energy-light is the closest light lesson; umbra, penumbra and shadow formation need explicit evidence.",
-    "assessmentEvidence": "No assessment question is explicitly mapped to umbra, penumbra or shadow formation.",
-    "teachingSceneRefs": ["gh-jhs3-science-energy-light#scene-3"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-energy-light#quiz-2"]
+    "teachingSceneEvidence": "Scene 3 explains opaque-object shadows, the umbra and penumbra, and a torch-card-screen investigation.",
+    "assessmentEvidence": "Quiz 2 checks the umbra; penumbra formation is not separately assessed.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-energy-light#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-energy-light#quiz-2"
+    ]
   },
   {
     "indicatorCode": "B9.4.4.1.2",
     "grade": 9,
     "strand": 4,
-    "missionIds": ["gh-jhs3-science-force-motion-pressure"],
+    "missionIds": [
+      "gh-jhs3-science-force-motion-pressure"
+    ],
     "status": "needs-review",
     "officialIndicatorText": "Demonstrate the application of Newton’s Third Law of motion in life.",
     "sourcePdfPage": 112,
-    "teachingSceneEvidence": "Candidate: gh-jhs3-science-force-motion-pressure is the closest force lesson; action–reaction predictions and a practical demonstration need explicit confirmation.",
-    "assessmentEvidence": "No assessment question is explicitly mapped to an action–reaction prediction or practical demonstration.",
-    "teachingSceneRefs": ["gh-jhs3-science-force-motion-pressure#scene-3"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-force-motion-pressure#quiz-4"]
+    "teachingSceneEvidence": "Scene 3 states Newton's Third Law, distinguishes forces acting on different objects, gives walking, swimming and rocket examples, and describes a balloon-and-string demonstration.",
+    "assessmentEvidence": "Quiz 4 checks a swimmer action-reaction pair. Learners must still perform and explain the practical prediction activity.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-force-motion-pressure#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-force-motion-pressure#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B9.4.5.1.3",
     "grade": 9,
     "strand": 4,
-    "missionIds": ["gh-jhs3-science-agricultural-tools"],
+    "missionIds": [
+      "gh-jhs3-science-agricultural-tools"
+    ],
     "status": "needs-review",
     "officialIndicatorText": "Manufacture simple agricultural tools.",
-    "sourcePdfPage": 112,
-    "teachingSceneEvidence": "Candidate: gh-jhs3-science-agricultural-tools is the closest mission; an actual learner-built tool using locally available materials is not yet evidenced.",
-    "assessmentEvidence": "No practical product assessment is mapped for manufacturing a simple agricultural tool.",
-    "teachingSceneRefs": ["gh-jhs3-science-agricultural-tools#scene-2"],
+    "sourcePdfPage": 113,
+    "teachingSceneEvidence": "Scene 2 gives a supervised design-and-making process for a hand hoe or trowel, but the platform does not evidence a learner-manufactured tool using locally available materials.",
+    "assessmentEvidence": "No practical product assessment is mapped. A teacher-observed learner-built tool, with safe process and finished-product evidence, is required.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-agricultural-tools#scene-2"
+    ],
     "assessmentQuestionRefs": []
   },
 ]; 
