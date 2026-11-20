@@ -10,5 +10,5 @@ assert.ok(html.includes('aria-pressed='));
 for (const term of ['Egg', 'Nymph', 'moulting', 'Adult', 'egg pod', 'wing buds', 'exoskeleton', 'incomplete metamorphosis', 'no pupal stage', 'Butterfly']) {
   assert.ok(html.toLowerCase().includes(term.toLowerCase()), 'includes ' + term);
 }
-assert.ok(!/\\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|sale|sali|legame|legami|cellule|foglia|radice|sangue|muscolo|nervo|uovo|larva|farfalla)\\b/i.test(html), 'contains no Italian interface text');
+assert.ok(!/\b(energia|elettrica|calore|forza|magnete|attrazione|repulsione|composto|acqua|ossigeno|idrogeno|acido|acidi|sale|sali|legame|legami|cellule|foglia|radice|sangue|muscolo|nervo|uovo|larva|farfalla)\b/i.test(html), 'contains no Italian interface text');
 console.log('Basic 9 grasshopper life-cycle visual renders an accessible English-only stage explorer.');
