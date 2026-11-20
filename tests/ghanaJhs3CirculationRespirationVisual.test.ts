@@ -11,7 +11,7 @@ for (const term of [
   'Body tissues', 'Lungs and alveoli', 'Heart chambers',
   'oxygen-rich', 'oxygen-poor', 'Arteries carry blood away',
   'Plasma', 'Red blood cells', 'White blood cells', 'Platelets',
-  'haemoglobin', 'pathogens', 'clot', 'capillaries',
+  'haemoglobin', 'capillaries',
   'Breathing (ventilation)', 'Gas exchange', 'Cellular respiration',
   'glucose', 'carbon dioxide', 'Valves', 'four parts of blood'
 ]) {
