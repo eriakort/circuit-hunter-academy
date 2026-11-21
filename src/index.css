@@ -1788,3 +1788,82 @@ table.itv-ref td:first-child{font-weight:700}
 @keyframes gh-science-drift{from{transform:translateY(0)}to{transform:translateY(-5px)}}
 @media(max-width:600px){.gh-jhs1-science-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.gh-jhs1-science-choice{width:100%}}
 @media(prefers-reduced-motion:reduce){.ghana-science-visual__art .gh-science-motion{animation:none!important}}
+
+/* ---------- Science in motion (sample redesign of Ghana Science visuals) ---------- */
+.motion-scene__art{padding:0;background:#f3efe2}
+.motion-scene__art svg{max-height:none}
+.motion-scene[data-playing="false"] .motion-scene__art *{animation-play-state:paused!important}
+.motion-scene__steps{display:flex;flex-wrap:wrap;gap:7px;margin:0;padding:0;list-style:none;counter-reset:none}
+.motion-scene__step{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:6px 13px 6px 6px;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--text);font:600 13px var(--body);cursor:pointer}
+.motion-scene__step.is-active{background:var(--data);border-color:var(--data);color:var(--ink)}
+.motion-scene__step:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.motion-scene__num{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--panel2);color:var(--text);font:700 12px var(--mono)}
+.motion-scene__step.is-active .motion-scene__num{background:rgba(255,255,255,.85);color:#1f6b4f}
+.motion-scene__timer{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--gold);transform-origin:left;animation:motion-timer linear forwards}
+@keyframes motion-timer{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.motion-scene__caption strong{font-size:15px}
+.motion-scene__caption p{font-size:14px;color:var(--text)}
+@media(max-width:600px){.motion-scene__steps{display:grid;grid-template-columns:1fr 1fr}.motion-scene__step{width:100%}}
+
+/* Shared SVG bits */
+.wc-label{font:600 15px var(--body);fill:#2b2f2a}
+.wc-label--light{fill:#fff}
+.wc-badge circle{fill:#fff;stroke:#5c5a50;stroke-width:2;transition:all .3s}
+.wc-badge text{font:700 14px var(--mono);fill:#2b2f2a}
+.wc-badge.is-active circle{fill:#1f6b4f;stroke:#1f6b4f}
+.wc-badge.is-active text{fill:#fff}
+
+/* Water cycle */
+.wc .wc-evap,.wc .wc-cond,.wc .wc-rain,.wc .wc-collect{opacity:.18;transition:opacity .4s}
+.motion-scene__art[data-step="evaporation"] .wc-evap,
+.motion-scene__art[data-step="condensation"] .wc-cond,
+.motion-scene__art[data-step="precipitation"] .wc-rain,
+.motion-scene__art[data-step="collection"] .wc-collect{opacity:1}
+.wc-arrow{fill:none;stroke:#2f86b6;stroke-width:4;stroke-dasharray:10 8;stroke-linecap:round}
+.wc-vapour{fill:none;stroke:#7fb6d2;stroke-width:4;stroke-linecap:round;opacity:0;transform-box:fill-box}
+.motion-scene__art[data-step="evaporation"] .wc-vapour{animation:wc-rise 2.5s ease-in infinite}
+.motion-scene__art[data-step="evaporation"] .wc-arrow{animation:wc-dash 1.2s linear infinite}
+@keyframes wc-rise{0%{opacity:0;transform:translateY(0)}25%{opacity:.95}100%{opacity:0;transform:translateY(-110px)}}
+@keyframes wc-dash{to{stroke-dashoffset:-36}}
+.motion-scene__art[data-step="evaporation"] .wc-sun{animation:wc-pulse 1.6s ease-in-out infinite alternate;transform-origin:78px 70px}
+@keyframes wc-pulse{to{transform:scale(1.1)}}
+.wc-cloud path{fill:#eef5f8;stroke:#7d9fb0;stroke-width:3;transition:fill .6s}
+.motion-scene__art[data-step="condensation"] .wc-cloud{animation:wc-grow 2.4s ease-in-out infinite alternate;transform-origin:420px 92px}
+.motion-scene__art[data-step="precipitation"] .wc-cloud path{fill:#a9bfcc}
+@keyframes wc-grow{from{transform:scale(.88)}to{transform:scale(1.06)}}
+.wc-gather{opacity:0}
+.motion-scene__art[data-step="condensation"] .wc-gather{animation:wc-gather 1.8s ease-in infinite}
+@keyframes wc-gather{0%{opacity:0;transform:translate(var(--dx),var(--dy))}30%{opacity:1}100%{opacity:0;transform:translate(0,0)}}
+.wc-drop{stroke:#2f86b6;stroke-width:4;stroke-linecap:round;opacity:0}
+.motion-scene__art[data-step="precipitation"] .wc-drop{animation:wc-fall 1s linear infinite}
+@keyframes wc-fall{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}90%{opacity:1}100%{opacity:0;transform:translate(-8px,62px)}}
+.wc-runoff{fill:none;stroke:#2f86b6;stroke-width:6;stroke-linecap:round;stroke-dasharray:14 10}
+.motion-scene__art[data-step="collection"] .wc-runoff{animation:wc-dash 0.9s linear infinite}
+.wc-soak{opacity:0}
+.motion-scene__art[data-step="collection"] .wc-soak{animation:wc-soak 1.8s ease-in infinite}
+@keyframes wc-soak{0%{opacity:0;transform:translateY(0)}20%{opacity:1}100%{opacity:0;transform:translateY(85px)}}
+
+/* Particle model */
+.pm-label{font:600 14px var(--body);fill:#2b2f2a}
+.pm-state{font:800 22px var(--mono);fill:#1f6b4f;letter-spacing:.06em}
+.pm-temp{font:800 18px var(--mono);fill:#d9534f}
+.pm-flame{transform-box:fill-box;transform-origin:bottom;transition:opacity .5s,transform .5s}
+.motion-scene[data-playing="true"] .pm-flame path{animation:pm-flicker .35s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom}
+@keyframes pm-flicker{to{transform:scaleY(.8)}}
+
+/* Nitrogen cycle */
+.nc-node{font:700 16px var(--body);fill:#1d5f86}
+.nc-small{font:600 13px var(--body);fill:#2b2f2a}
+.nc-small--light{fill:#fff}
+.nc-box rect{fill:#fff8e6;stroke:#5c5a50;stroke-width:2}
+.nc-box text{font:700 14px var(--body);fill:#2b2f2a}
+.nc-box .nc-formula{font:600 13px var(--mono);fill:#6a5a3a}
+.nc-atom{fill:#7b5ea7;stroke:#fff;stroke-width:2}
+.nc-atom-text{font:800 12px var(--mono);fill:#fff}
+.nc-route{fill:none;stroke:#fff;stroke-opacity:.55;stroke-width:3;stroke-dasharray:6 6;transition:all .3s}
+.nc-route.is-active{stroke:#7b5ea7;stroke-opacity:1;stroke-width:5;stroke-dasharray:none}
+
+@media(prefers-reduced-motion:reduce){
+  .motion-scene__art *{animation:none!important;transition:none!important}
+  .motion-scene__art .wc-vapour,.motion-scene__art .wc-drop,.motion-scene__art .wc-soak,.motion-scene__art .wc-gather{opacity:.9}
+}
