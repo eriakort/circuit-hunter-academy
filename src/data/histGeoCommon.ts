@@ -52,7 +52,7 @@ export const HIST5_SUBJECT: SubjectInfo = {
     '5ª Primaria: Ancient Greece, Etruscans & Italic peoples, Roman Kingdom, Republic, Empire & heritage.',
     '5ª Primaria: Civiltà Greca, Popoli Italici ed Etruschi, Roma dalla Monarchia all’Impero e la sua eredità.'
   ],
-  meta: ['Primary Year 5 · 1 unit · 4 missions', 'Quinta Primaria · 1 unità · 4 missioni'],
+  meta: ['Primary Year 5 · 1 unit · 11 missions', 'Quinta Primaria · 1 unità · 11 missioni'],
   art: histArt('hg5', '#ffd166', '#ff6a3d', '5ª STORIA')
 };
 

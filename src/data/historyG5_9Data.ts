@@ -1,25 +1,32 @@
 import type { ArcInfo, Mission, UnitInfo } from '../types';
 import { makeHistGeoMission, q } from './histGeoCommon';
+import { HIST5_EXPANSION_MISSIONS } from './historyG5ExpansionData';
 
 // ============================================================================
 // GRADE 5 (5ª Primaria) — Ancient Greece, Italic Peoples & Ancient Rome
 // ============================================================================
 export const HIST5_UNIT: UnitInfo = {
   title: ['Mediterranean Worlds & Rome', 'Mondi del Mediterraneo e Roma'],
-  ch: 'H5.1–H5.4',
+  ch: 'H5.1–H5.11',
   subject: 'hist5'
 };
 
 export const HIST5_ARCS: ArcInfo[] = [
-  { n: 1, title: ['From Greece to the Roman Empire', 'Dalla Grecia all’Impero Romano'], pages: '1–48' }
+  { n: 1, title: ['Rivers, Seas & Mycenae', 'Fiumi, mari e Micene'], pages: '4–21' },
+  { n: 2, title: ['The Greeks', 'I Greci'], pages: '22–49' },
+  { n: 3, title: ['The Macedonians', 'I Macedoni'], pages: '50–61' },
+  { n: 4, title: ['Italic Peoples & Etruscans', 'Popoli italici ed Etruschi'], pages: '62–91' },
+  { n: 5, title: ['The Romans', 'I Romani'], pages: '92–115' },
+  { n: 6, title: ['The Roman Empire', 'L’Impero romano'], pages: '116–137' }
 ];
 
 export const HIST5_MISSIONS: Mission[] = [
+  ...HIST5_EXPANSION_MISSIONS.filter(m => m.id === 'hist_g5_m5'),
   makeHistGeoMission({
     id: 'hist_g5_m1',
-    arc: 0,
+    arc: 1,
     sec: 'H5.1',
-    pages: '1–12',
+    pages: '22–41',
     hue: 34,
     title: ['Greek Polis: Athens vs. Sparta', 'La Polis Greca: Atene contro Sparta'],
     topic: ['City-states, democracy, myths & Olympic games', 'Città-stato, democrazia, miti e Olimpiadi'],
@@ -88,11 +95,12 @@ export const HIST5_MISSIONS: Mission[] = [
       ], ['Southern Italy and Sicily became Magna Graecia ("Greater Greece").', 'Il Sud Italia e la Sicilia divennero la Magna Grecia.'])
     ]
   }),
+  ...HIST5_EXPANSION_MISSIONS.filter(m => m.id === 'hist_g5_m6' || m.id === 'hist_g5_m7'),
   makeHistGeoMission({
     id: 'hist_g5_m2',
-    arc: 0,
+    arc: 3,
     sec: 'H5.2',
-    pages: '13–22',
+    pages: '62–91',
     hue: 25,
     title: ['Italic Peoples & The Etruscans', 'Popoli Italici ed Etruschi'],
     topic: ['Ancient Italy before Rome: Etruscan cities, arches & tombs', 'L’Italia antica prima di Roma: città, archi e necropoli'],
@@ -161,11 +169,12 @@ export const HIST5_MISSIONS: Mission[] = [
       ], ['Etruscan women enjoyed notable social independence and status.', 'Le donne etrusche godevano di grande prestigio sociale.'])
     ]
   }),
+  ...HIST5_EXPANSION_MISSIONS.filter(m => m.id === 'hist_g5_m8'),
   makeHistGeoMission({
     id: 'hist_g5_m3',
-    arc: 0,
+    arc: 4,
     sec: 'H5.3',
-    pages: '23–34',
+    pages: '92–99',
     hue: 8,
     title: ['Rome: From 7 Hills to Republic', 'Roma: dai 7 Colli alla Repubblica'],
     topic: ['Founding myth, Patricians & Plebeians, Senate & Punic Wars', 'Mito della fondazione, Patrizi e Plebei, Senato e Guerre Puniche'],
@@ -234,11 +243,12 @@ export const HIST5_MISSIONS: Mission[] = [
       ], ['Carthaginian general Hannibal surprised Rome by crossing the Alps in 218 BCE.', 'Annibale sorprese Roma valicando le Alpi nel 218 a.C.'])
     ]
   }),
+  ...HIST5_EXPANSION_MISSIONS.filter(m => m.id === 'hist_g5_m9' || m.id === 'hist_g5_m10'),
   makeHistGeoMission({
     id: 'hist_g5_m4',
-    arc: 0,
+    arc: 5,
     sec: 'H5.4',
-    pages: '35–48',
+    pages: '116–127',
     hue: 350,
     title: ['Roman Empire, Daily Life & Heritage', 'Impero Romano, Vita Quotidiana ed Eredità'],
     topic: ['Pax Romana, aqueducts, roads, Christianity & lasting legacy', 'Pax Romana, acquedotti, strade, Cristianesimo ed eredità oggi'],
@@ -306,8 +316,8 @@ export const HIST5_MISSIONS: Mission[] = [
         ['Money is still weighed in bronze bars', 'Si paga ancora con barre di bronzo']
       ], ['Turin, Florence, Bologna, and Naples still preserve Roman cardo/decumanus plans.', 'Torino, Firenze, Bologna e Napoli conservano l’impianto romano a scacchiera.'])
     ],
-    boss: true
-  })
+  }),
+  ...HIST5_EXPANSION_MISSIONS.filter(m => m.id === 'hist_g5_m11')
 ];
 
 // ============================================================================

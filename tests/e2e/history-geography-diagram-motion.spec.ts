@@ -1,9 +1,9 @@
 import { expect, test, type Page } from '@playwright/test';
 import { ARCS, MISSIONS } from '../../src/data/gameData';
 
-// Two diagrams from each History and Geography subject (every one of the 144 is covered by tests/histGeoMotion.test.ts).
+// Two diagrams from each History and Geography subject (every one of the 165 is covered by tests/histGeoMotion.test.ts).
 const KEYS = [
-  'hg5_roman_roads', 'hg5_seven_hills', 'gg5_italian_volcanoes', 'gg5_lat_long_grid',
+  'hg5_roman_roads', 'hg5_seven_hills', 'hg5_mycenae', 'hg5_punic_wars', 'hg5_fall_western_empire', 'gg5_italian_volcanoes', 'gg5_lat_long_grid',
   'hg9_phoenician_routes', 'hg9_cursus_honorum', 'gg9_earthquake_epicenter', 'gg9_ocean_currents',
   'hg10_feudal_pyramid', 'hg10_islam_timeline', 'gg10_asia_monsoons', 'gg10_circular_economy',
   'hg11_renaissance_perspective', 'hg11_watt_steam_engine', 'gg11_tent_corridors', 'gg11_intermodal_hubs'

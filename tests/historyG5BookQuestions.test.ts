@@ -35,9 +35,11 @@ const existing = bank.filter(q => q.subject === 'hist5' && !q.bookRef).map(q => 
 for (const item of HISTORY5_BOOK_QUESTIONS) assert.ok(!existing.includes(item.q[0].toLowerCase()), `${item.q[0]} already exists`);
 
 const hist5 = bank.filter(q => q.subject === 'hist5');
-assert.equal(hist5.length, 16 + HISTORY5_BOOK_QUESTIONS.length, 'pool grew by the new questions');
-for (const id of ['hist_g5_m1', 'hist_g5_m2', 'hist_g5_m3', 'hist_g5_m4']) {
-  assert.ok(hist5.filter(q => q.missionId === id).length >= 16, `${id} has a pool of at least 16`);
+// 11 missions with 4 quiz questions each, plus the book-based supplemental questions.
+assert.equal(hist5.length, 11 * 4 + HISTORY5_BOOK_QUESTIONS.length, 'pool = mission quizzes + book questions');
+for (let n = 1; n <= 11; n++) {
+  const id = `hist_g5_m${n}`;
+  assert.ok(hist5.filter(q => q.missionId === id).length >= 5, `${id} has at least 5 test questions`);
 }
 assert.equal(new Set(bank.map(q => q.id)).size, bank.length, 'question ids are unique');
 

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { HIST_GEO_VISUAL_KEYS, getHistGeoVisual } from '../src/data/histGeoVisuals';
 import { HIST_GEO_HAND_MOTION_KEYS } from '../src/data/histGeoMotion';
 
-assert.equal(HIST_GEO_VISUAL_KEYS.length, 144, 'all History and Geography diagrams are registered');
+assert.equal(HIST_GEO_VISUAL_KEYS.length, 165, 'all History and Geography diagrams are registered');
 
 for (const key of HIST_GEO_VISUAL_KEYS) {
   for (const lang of ['en', 'it'] as const) {
@@ -18,4 +18,4 @@ for (const key of HIST_GEO_HAND_MOTION_KEYS) {
   assert.ok(HIST_GEO_VISUAL_KEYS.includes(key), `${key} has hand-made motion but is not a diagram`);
 }
 
-console.log('histGeoMotion.test.ts ok! All 144 History and Geography diagrams are animated and keep their labels.');
+console.log('histGeoMotion.test.ts ok! All 165 History and Geography diagrams are animated and keep their labels.');

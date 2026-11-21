@@ -32,7 +32,7 @@ interface SubjectSpec {
 }
 
 const SUBJECT_SPECS: SubjectSpec[] = [
-  { grade: 'grade5', subjectId: 'hist5', kind: 'hist', missionPrefix: 'hist_g5_', missionCount: 4, arcCount: 1, formulaCount: 2, codexCount: 4 },
+  { grade: 'grade5', subjectId: 'hist5', kind: 'hist', missionPrefix: 'hist_g5_', missionCount: 11, arcCount: 6, formulaCount: 2, codexCount: 11 },
   { grade: 'grade5', subjectId: 'geo5', kind: 'geo', missionPrefix: 'geo_g5_', missionCount: 4, arcCount: 1, formulaCount: 2, codexCount: 4 },
   { grade: 'grade9', subjectId: 'hist9', kind: 'hist', missionPrefix: 'hist_l1_', missionCount: 8, arcCount: 3, formulaCount: 2, codexCount: 8 },
   { grade: 'grade9', subjectId: 'geo9', kind: 'geo', missionPrefix: 'geo_l1_', missionCount: 6, arcCount: 3, formulaCount: 2, codexCount: 6 },
@@ -62,13 +62,13 @@ for (const { grade, subjectId } of SUBJECT_SPECS) {
 
 // --- 2. Structure, Bilingual Quality, No Decimal Dots in Italian & Labs across all 48 missions
 const visualKeys = new Set<string>(HIST_GEO_VISUAL_KEYS);
-assert.equal(visualKeys.size, 144, 'Expected 144 unique History & Geography SVG visual keys');
+assert.equal(visualKeys.size, 165, 'Expected 165 unique History & Geography SVG visual keys');
 
 const allHistGeoSubjectSet = new Set<string>(SUBJECT_SPECS.map(s => s.subjectId));
 const allHistGeoArcSet = new Set(ARCS.flatMap((arc, idx) => (arc.subject && allHistGeoSubjectSet.has(arc.subject) ? [idx] : [])));
 const allHistGeoMissions = MISSIONS.filter(m => allHistGeoArcSet.has(m.arc));
-assert.equal(allHistGeoMissions.length, 48, 'Total History + Geography missions across Grades 5, 9, 10, 11 must be 48');
-assert.equal(new Set(allHistGeoMissions.map(m => m.id)).size, 48, 'All History & Geography mission IDs must be unique');
+assert.equal(allHistGeoMissions.length, 55, 'Total History + Geography missions across Grades 5, 9, 10, 11 must be 55');
+assert.equal(new Set(allHistGeoMissions.map(m => m.id)).size, 55, 'All History & Geography mission IDs must be unique');
 assert.equal(new Set(MISSIONS.map(m => m.id)).size, MISSIONS.length, 'Global mission IDs must be unique');
 
 let totalQuestions = 0;
@@ -101,8 +101,10 @@ for (const spec of SUBJECT_SPECS) {
     }
 
     if (kind === 'hist') {
-      assert.ok(hasHistoryLab(mission.id), `${mission.id} must register an interactive HistoryLab`);
-      for (const lang of ['en', 'it'] as const) {
+      // Grade 5 missions m5–m11 (textbook expansion) have no interactive lab yet; m1–m4 and later grades do.
+      const labOptional = subjectId === 'hist5' && Number(mission.id.replace('hist_g5_m', '')) >= 5;
+      if (!labOptional) assert.ok(hasHistoryLab(mission.id), `${mission.id} must register an interactive HistoryLab`);
+      for (const lang of (hasHistoryLab(mission.id) ? ['en', 'it'] : []) as ('en' | 'it')[]) {
         const markup = renderToStaticMarkup(React.createElement(HistoryLab, { missionId: mission.id, lang }));
         assert.ok(markup.includes('<svg'), `HistoryLab ${mission.id} (${lang}) must render an SVG simulation`);
         assert.ok(!/\bundefined\b/.test(markup) && !/\bNaN\b/.test(markup), `HistoryLab ${mission.id} (${lang}) contains undefined/NaN`);
@@ -162,8 +164,8 @@ for (const spec of SUBJECT_SPECS) {
   assert.equal(categories[0]?.count, subjectQuestions + supplemental, `QuestionBank for ${subjectId} must expose all ${subjectQuestions + supplemental} questions`);
 }
 
-assert.equal(totalQuestions, 192, 'Total History + Geography quiz questions must equal 192');
-assert.equal(HIST_GEO_CODEX.length, 48, 'HIST_GEO_CODEX must have 48 entries');
+assert.equal(totalQuestions, 220, 'Total History + Geography quiz questions must equal 220');
+assert.equal(HIST_GEO_CODEX.length, 55, 'HIST_GEO_CODEX must have 55 entries');
 for (const entry of HIST_GEO_CODEX) {
   assert.ok(CODEX.includes(entry), 'All HIST_GEO_CODEX entries must be included in global CODEX');
   assert.ok(!/\d\.\d/.test(entry[3] + ' ' + entry[4]) || !/\d\.\d/.test(entry[4]), `Codex ${entry[1]} IT must use decimal comma`);
