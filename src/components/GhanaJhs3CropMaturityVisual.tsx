@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { GhanaScienceVisual } from './GhanaScienceVisual';
 
 type Crop = 'maize' | 'beans' | 'leafy';
-const CROP_DETAILS: Record<Crop, { name: string; stages: { title: string; signs: string; use: string }[] }> = {
+export const CROP_DETAILS: Record<Crop, { name: string; stages: { title: string; signs: string; use: string }[] }> = {
   maize: {
     name: 'Maize',
     stages: [

@@ -36,7 +36,15 @@ const cases: [string, string, string][] = [
   ['gh-jhs3-science-acids-bases-salts', 'The pH Scale Guardian', 'Baking soda solution'],
   ['gh-jhs3-science-chemical-bonding', 'The Chemical Bonding Architect', 'Metallic bonding'],
   ['gh-jhs3-science-specialised-plant-cells', 'The Plant Cell Specialist', 'Guard cells'],
-  ['gh-jhs3-science-specialised-human-cells', 'The Human Cell Function Ranger', 'Red blood cell']
+  ['gh-jhs3-science-specialised-human-cells', 'The Human Cell Function Ranger', 'Red blood cell'],
+  ['gh-jhs3-science-crop-maturity', 'The Crop Maturity Investigator', 'Maize'],
+  ['gh-jhs3-science-animal-feed-preparation', 'The Animal Feed Formulator', 'Select'],
+  ['gh-jhs3-science-animal-feed-selection', 'The Livestock Nutrition Strategist', 'Make a safe decision'],
+  ['gh-jhs3-science-agricultural-tools', 'The Agricultural Tool Designer', 'Hand hoe'],
+  ['gh-jhs3-science-manure-materials', 'The Manure Materials Sorting Lab', 'Specialist treatment only'],
+  ['gh-jhs3-science-plant-resources', 'The Plant Resources Explorer', 'Roots'],
+  ['gh-jhs3-science-industry', 'The Ghana Industry Innovation Studio', 'Soap production'],
+  ['gh-jhs3-science-human-health', 'The Community Health Detective Lab', 'Chain of infection']
 ];
 for (const [id, title, control] of cases) {
   const Scene = MOTION_SCENES[id];

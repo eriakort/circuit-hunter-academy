@@ -29,6 +29,8 @@ import { EnergyChainScene } from './EnergyChainScene';
 import { PressureForceScene } from './PressureForceScene';
 import { CompoundScene, PhScene, BondingScene } from './ChemistryScenes';
 import { PlantCellScene, HumanCellScene } from './SpecialisedCellScenes';
+import { PlantResourcesScene, IndustryScene, HealthScene } from './ResourceIndustryHealthScenes';
+import { CropMaturityScene, FeedPreparationScene, FeedSelectionScene, AgriToolsScene, ManureMaterialsScene } from './FarmScenes';
 
 /**
  * Ghana Science missions whose scene-1 visual is a "Science in motion" scene.
@@ -67,5 +69,13 @@ export const MOTION_SCENES: Record<string, React.FC> = {
   'gh-jhs3-science-acids-bases-salts': PhScene,
   'gh-jhs3-science-chemical-bonding': BondingScene,
   'gh-jhs3-science-specialised-plant-cells': PlantCellScene,
-  'gh-jhs3-science-specialised-human-cells': HumanCellScene
+  'gh-jhs3-science-specialised-human-cells': HumanCellScene,
+  'gh-jhs3-science-crop-maturity': CropMaturityScene,
+  'gh-jhs3-science-animal-feed-preparation': FeedPreparationScene,
+  'gh-jhs3-science-animal-feed-selection': FeedSelectionScene,
+  'gh-jhs3-science-agricultural-tools': AgriToolsScene,
+  'gh-jhs3-science-manure-materials': ManureMaterialsScene,
+  'gh-jhs3-science-plant-resources': PlantResourcesScene,
+  'gh-jhs3-science-industry': IndustryScene,
+  'gh-jhs3-science-human-health': HealthScene
 };

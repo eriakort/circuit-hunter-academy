@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { GhanaScienceVisual } from './GhanaScienceVisual';
 
 type ToolTask = 'hoe' | 'trowel' | 'rake';
-const TASKS: Record<ToolTask, { title: string; purpose: string; blade: string; handle: string; joint: string; check: string }> = {
+export const TASKS: Record<ToolTask, { title: string; purpose: string; blade: string; handle: string; joint: string; check: string }> = {
   hoe: { title: 'Hand hoe', purpose: 'Loosen soil and remove weeds', blade: 'Strong, suitable metal blade', handle: 'Smooth, durable wooden handle', joint: 'Secure, tight handle joint', check: 'The blade stays firmly attached while loosening a small patch of soil.' },
   trowel: { title: 'Hand trowel', purpose: 'Make small planting holes and move soil', blade: 'Small, strong metal scoop', handle: 'Comfortable, smooth handle', joint: 'Firm joint with no sharp edges', check: 'The scoop moves soil without bending or loosening from the handle.' },
   rake: { title: 'Hand rake', purpose: 'Gather leaves and level loose soil', blade: 'Strong head with safely finished teeth', handle: 'Long, durable handle', joint: 'Secure head-to-handle connection', check: 'The head remains fixed and the teeth have no dangerous burrs.' }

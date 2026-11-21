@@ -3,7 +3,7 @@ import { GhanaScienceVisual } from './GhanaScienceVisual';
 
 type PlantPart = 'roots' | 'stems' | 'leaves' | 'flowers' | 'fruits';
 
-const PLANT_PARTS: Record<PlantPart, { label: string; role: string; agricultural: string[]; other: string[]; care: string }> = {
+export const PLANT_PARTS: Record<PlantPart, { label: string; role: string; agricultural: string[]; other: string[]; care: string }> = {
   roots: {
     label: 'Roots',
     role: 'Roots anchor many plants and absorb water and mineral nutrients. Some roots also store food.',

@@ -3,7 +3,7 @@ import { GhanaScienceVisual } from './GhanaScienceVisual';
 
 type ConditionType = 'communicable' | 'nonCommunicable';
 
-const CONDITION_GUIDES: Record<ConditionType, { label: string; examples: string; spread: string; response: string }> = {
+export const CONDITION_GUIDES: Record<ConditionType, { label: string; examples: string; spread: string; response: string }> = {
   communicable: {
     label: 'Communicable conditions',
     examples: 'Some respiratory infections, malaria and ringworm',

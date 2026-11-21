@@ -3,14 +3,14 @@ import { GhanaScienceVisual } from './GhanaScienceVisual';
 
 type Animal = 'cattle' | 'sheep' | 'poultry' | 'pigs' | 'fish';
 type Stage = 'young' | 'growing' | 'adult' | 'production';
-const ANIMALS: Record<Animal, { name: string; system: string; forage: string; concentrate: string; checks: string }> = {
+export const ANIMALS: Record<Animal, { name: string; system: string; forage: string; concentrate: string; checks: string }> = {
   cattle: { name: 'Cattle', system: 'Ruminant: the rumen helps digest fibrous plant material.', forage: 'Clean pasture grass, hay or suitable silage.', concentrate: 'A suitable grain, bran or protein meal when the animal needs extra nutrients.', checks: 'Distinguish a growing animal, a dry cow and a milk-producing cow. Their nutrient needs differ.' },
   sheep: { name: 'Sheep and goats', system: 'Ruminants: fibre-rich forage supports normal rumen function.', forage: 'Clean grass, browse, hay or suitable silage.', concentrate: 'A suitable energy or protein supplement when forage alone does not meet needs.', checks: 'Consider age, body condition, pregnancy, milk production and the quality of available forage.' },
   poultry: { name: 'Poultry', system: 'Non-ruminant birds need a balanced ration rather than a forage-only diet.', forage: 'Small amounts of suitable greens may supplement a complete ration; they do not replace it.', concentrate: 'A complete poultry ration with suitable energy, protein, minerals and vitamins.', checks: 'Choose a ration for chicks, growers or laying hens. Calcium and other nutrient needs change with stage.' },
   pigs: { name: 'Pigs', system: 'Non-ruminants need a balanced ration with digestible energy, protein, minerals and vitamins.', forage: 'Suitable safe plant material may supplement a balanced ration but should not replace it.', concentrate: 'A pig-specific balanced ration using suitable grains and protein sources.', checks: 'Select a ration for piglets, growers or breeding animals. Never copy a poultry or cattle formula.' },
   fish: { name: 'Farmed fish', system: 'Feed must match the fish species, size and feeding behaviour.', forage: 'Natural food in a pond may contribute, depending on the production system and species.', concentrate: 'A suitable complete pellet or formulated fish feed with appropriate protein and energy.', checks: 'Check species, fish size, pellet size, water stability and feeding guidance for the farm system.' }
 };
-const STAGES: Record<Stage, { label: string; note: string }> = {
+export const STAGES: Record<Stage, { label: string; note: string }> = {
   young: { label: 'Young animal', note: 'Young animals are developing quickly. Select a starter or young-animal ration designed for that species.' },
   growing: { label: 'Growing animal', note: 'Growing animals need nutrients for body development. Match the ration to growth rate and body condition.' },
   adult: { label: 'Adult maintenance', note: 'An adult not producing milk, eggs or offspring may have different needs from a working or breeding animal.' },

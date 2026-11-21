@@ -3,7 +3,7 @@ import { GhanaScienceVisual } from './GhanaScienceVisual';
 
 type Industry = 'food' | 'textiles' | 'pottery' | 'soap';
 
-const INDUSTRIES: Record<Industry, { label: string; inputs: string; science: string; checks: string }> = {
+export const INDUSTRIES: Record<Industry, { label: string; inputs: string; science: string; checks: string }> = {
   food: {
     label: 'Food processing',
     inputs: 'Crops, clean water, suitable containers and energy',

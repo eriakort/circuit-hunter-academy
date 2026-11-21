@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { GhanaScienceVisual } from './GhanaScienceVisual';
 
-type Material = { name: string; group: 'plant' | 'animal' | 'reject' | 'special'; reason: string };
-const MATERIALS: Material[] = [
+export type Material = { name: string; group: 'plant' | 'animal' | 'reject' | 'special'; reason: string };
+export const MATERIALS: Material[] = [
   { name: 'Dry leaves', group: 'plant', reason: 'Plant matter breaks down and adds organic material to soil.' },
   { name: 'Crop residues', group: 'plant', reason: 'Suitable clean stalks and leaves can be composted.' },
   { name: 'Grass cuttings', group: 'plant', reason: 'Fresh green plant matter can contribute moisture and nutrients.' },
@@ -16,7 +16,7 @@ const MATERIALS: Material[] = [
   { name: 'Human excreta', group: 'special', reason: 'It can carry pathogens and must never be handled as ordinary school compost.' },
   { name: 'Animal carcasses', group: 'special', reason: 'They can carry pathogens and require trained, regulated treatment.' }
 ];
-const GROUPS = [
+export const GROUPS = [
   { id: 'plant', label: 'Suitable plant materials' },
   { id: 'animal', label: 'Animal manure materials' },
   { id: 'reject', label: 'Remove from compost' },

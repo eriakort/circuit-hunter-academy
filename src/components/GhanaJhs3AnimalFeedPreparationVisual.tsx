@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { GhanaScienceVisual } from './GhanaScienceVisual';
 
 type Animal = 'poultry' | 'ruminants' | 'pigs' | 'fish';
-const ANIMALS: Record<Animal, { name: string; needs: string; ingredients: string[]; note: string }> = {
+export const ANIMALS: Record<Animal, { name: string; needs: string; ingredients: string[]; note: string }> = {
   poultry: {
     name: 'Poultry (chickens)',
     needs: 'A balanced mixture of energy, protein, minerals and vitamins. Chicks, growers and laying hens have different needs.',
@@ -29,7 +29,7 @@ const ANIMALS: Record<Animal, { name: string; needs: string; ingredients: string
   }
 };
 
-const PREPARATION_STEPS = [
+export const PREPARATION_STEPS = [
   { title: '1. Select', detail: 'Identify the animal species, age, health and production purpose. Use a reliable feed formula for that animal.' },
   { title: '2. Inspect', detail: 'Check every ingredient. Reject mouldy, damp, spoiled or contaminated materials.' },
   { title: '3. Measure', detail: 'Weigh or measure each ingredient accurately. Do not guess proportions or copy an unrelated ration.' },
