@@ -4,7 +4,7 @@ import { ChoiceRow } from './ChoiceRow';
 import { MoreDetails } from './MoreDetails';
 import { useSmilPause } from './useSmilPause';
 
-type Device = { id: string; title: string; input: string; useful: string; other: string; steps: string[] };
+export type Device = { id: string; title: string; input: string; useful: string; other: string; steps: string[] };
 export const CHAIN_DEVICES: Device[] = [
   { id: 'battery', title: 'Battery', input: 'Chemical energy', useful: 'Electrical energy', other: 'Some energy is transferred as thermal energy because of internal resistance.', steps: ['Chemical', 'Electrical'] },
   { id: 'lamp', title: 'Electric lamp', input: 'Electrical energy', useful: 'Light energy', other: 'Thermal energy also spreads into the surroundings.', steps: ['Electrical', 'Light + thermal'] },
@@ -23,11 +23,11 @@ const wrap = (text: string, max = 13): string[] => {
   return lines;
 };
 
-const COLOURS: Record<string, string> = { Chemical: '#58a05a', Electrical: '#d1a62a', Light: '#f2b93b', Kinetic: '#4a90c0', Mechanical: '#7a8794', Gravitational: '#8a6a3a' };
+const COLOURS: Record<string, string> = { Thermal: '#e0763a', Friction: '#9a8a78', Chemical: '#58a05a', Electrical: '#d1a62a', Light: '#f2b93b', Kinetic: '#4a90c0', Mechanical: '#7a8794', Gravitational: '#8a6a3a' };
 const colourFor = (label: string) => COLOURS[label.split(' ')[0]] ?? '#d1a62a';
 const Y = 190;
 
-const ChainArt: React.FC<{ device: Device; stepIndex: number; playing: boolean; reducedMotion: boolean }> = ({ device, stepIndex, playing, reducedMotion }) => {
+export const ChainArt: React.FC<{ device: Device; stepIndex: number; playing: boolean; reducedMotion: boolean }> = ({ device, stepIndex, playing, reducedMotion }) => {
   const svg = useRef<SVGSVGElement>(null);
   useSmilPause(svg, playing, reducedMotion, device.id, stepIndex);
   const anim = !reducedMotion;

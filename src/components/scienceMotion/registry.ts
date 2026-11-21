@@ -29,6 +29,7 @@ import { EnergyChainScene } from './EnergyChainScene';
 import { PressureForceScene } from './PressureForceScene';
 import { CompoundScene, PhScene, BondingScene } from './ChemistryScenes';
 import { PlantCellScene, HumanCellScene } from './SpecialisedCellScenes';
+import { EnergySourcesScene, ConservationScene, ElectricityNetworkScene, MagnetismMotionScene, EnergyFormsScene } from './EnergyPathScenes';
 import { PlantResourcesScene, IndustryScene, HealthScene } from './ResourceIndustryHealthScenes';
 import { CropMaturityScene, FeedPreparationScene, FeedSelectionScene, AgriToolsScene, ManureMaterialsScene } from './FarmScenes';
 
@@ -77,5 +78,10 @@ export const MOTION_SCENES: Record<string, React.FC> = {
   'gh-jhs3-science-manure-materials': ManureMaterialsScene,
   'gh-jhs3-science-plant-resources': PlantResourcesScene,
   'gh-jhs3-science-industry': IndustryScene,
-  'gh-jhs3-science-human-health': HealthScene
+  'gh-jhs3-science-human-health': HealthScene,
+  'gh-jhs2-science-energy-sources-heat': EnergySourcesScene,
+  'gh-jhs2-science-electricity-electronics': ElectricityNetworkScene,
+  'gh-jhs2-science-energy-conservation-impact': ConservationScene,
+  'gh-jhs2-science-magnetism-force-machines': MagnetismMotionScene,
+  'gh-jhs1-science-energy-forms': EnergyFormsScene
 };
