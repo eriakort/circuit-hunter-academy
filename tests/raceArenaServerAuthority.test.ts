@@ -4,11 +4,11 @@ import { readFileSync } from "node:fs";
 const screen = readFileSync(new URL("../src/components/RaceScreen.tsx", import.meta.url), "utf8");
 const api = readFileSync(new URL("../supabase/functions/race-api/index.ts", import.meta.url), "utf8");
 const timeoutMigration = readFileSync(
-  new URL("../supabase/migrations/20261115030000_race_arena_timeout_and_state.sql", import.meta.url),
+  new URL("../supabase/migrations/20261115093605_race_arena_timeout_and_state.sql", import.meta.url),
   "utf8"
 );
 const atomicJoinMigration = readFileSync(
-  new URL("../supabase/migrations/20261115040000_race_arena_atomic_join.sql", import.meta.url),
+  new URL("../supabase/migrations/20261115093606_race_arena_atomic_join.sql", import.meta.url),
   "utf8"
 );
 
