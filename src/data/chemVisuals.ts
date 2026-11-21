@@ -50,27 +50,27 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <rect x="14" y="18" width="180" height="170" rx="14" fill="rgba(106,209,255,.08)" stroke="#45d8ff" stroke-width="2"/>
         <text x="104" y="42" text-anchor="middle" fill="#45d8ff" font-size="14" font-weight="800">${pick(lang, 'SOLID', 'SOLIDO')}</text>
         <g fill="#45d8ff">
-          <circle cx="72" cy="82" r="10"/><circle cx="104" cy="82" r="10"/><circle cx="136" cy="82" r="10"/>
-          <circle cx="72" cy="114" r="10"/><circle cx="104" cy="114" r="10"/><circle cx="136" cy="114" r="10"/>
-          <circle cx="72" cy="146" r="10"/><circle cx="104" cy="146" r="10"/><circle cx="136" cy="146" r="10"/>
+          <circle cx="72" cy="82" r="10" class="chem-anim-vibrate" style="animation-delay:-0.0s"/><circle cx="104" cy="82" r="10" class="chem-anim-vibrate" style="animation-delay:-0.37s"/><circle cx="136" cy="82" r="10" class="chem-anim-vibrate" style="animation-delay:-0.74s"/>
+          <circle cx="72" cy="114" r="10" class="chem-anim-vibrate" style="animation-delay:-1.11s"/><circle cx="104" cy="114" r="10" class="chem-anim-vibrate" style="animation-delay:-1.48s"/><circle cx="136" cy="114" r="10" class="chem-anim-vibrate" style="animation-delay:-1.85s"/>
+          <circle cx="72" cy="146" r="10" class="chem-anim-vibrate" style="animation-delay:-0.02s"/><circle cx="104" cy="146" r="10" class="chem-anim-vibrate" style="animation-delay:-0.39s"/><circle cx="136" cy="146" r="10" class="chem-anim-vibrate" style="animation-delay:-0.76s"/>
         </g>
         <text x="104" y="176" text-anchor="middle" class="sm">${pick(lang, 'Fixed shape & volume', 'Forma e volume propri')}</text>
 
         <rect x="230" y="18" width="180" height="170" rx="14" fill="rgba(56,239,125,.08)" stroke="#38ef7d" stroke-width="2"/>
         <text x="320" y="42" text-anchor="middle" fill="#38ef7d" font-size="14" font-weight="800">${pick(lang, 'LIQUID', 'LIQUIDO')}</text>
         <g fill="#38ef7d">
-          <circle cx="272" cy="108" r="10"/><circle cx="305" cy="114" r="10"/><circle cx="338" cy="105" r="10"/><circle cx="368" cy="118" r="10"/>
-          <circle cx="284" cy="138" r="10"/><circle cx="320" cy="144" r="10"/><circle cx="354" cy="142" r="10"/>
-          <circle cx="298" cy="84" r="10"/><circle cx="342" cy="82" r="10"/>
+          <circle cx="272" cy="108" r="10" class="chem-anim-float" style="animation-delay:-0.0s"/><circle cx="305" cy="114" r="10" class="chem-anim-float" style="animation-delay:-0.37s"/><circle cx="338" cy="105" r="10" class="chem-anim-float" style="animation-delay:-0.74s"/><circle cx="368" cy="118" r="10" class="chem-anim-float" style="animation-delay:-1.11s"/>
+          <circle cx="284" cy="138" r="10" class="chem-anim-float" style="animation-delay:-1.48s"/><circle cx="320" cy="144" r="10" class="chem-anim-float" style="animation-delay:-1.85s"/><circle cx="354" cy="142" r="10" class="chem-anim-float" style="animation-delay:-0.02s"/>
+          <circle cx="298" cy="84" r="10" class="chem-anim-float" style="animation-delay:-0.39s"/><circle cx="342" cy="82" r="10" class="chem-anim-float" style="animation-delay:-0.76s"/>
         </g>
         <text x="320" y="176" text-anchor="middle" class="sm">${pick(lang, 'Fixed volume, flows', 'Volume proprio, scorre')}</text>
 
         <rect x="446" y="18" width="180" height="170" rx="14" fill="rgba(255,209,102,.08)" stroke="#ffd166" stroke-width="2"/>
         <text x="536" y="42" text-anchor="middle" fill="#ffd166" font-size="14" font-weight="800">${pick(lang, 'GAS', 'AERIFORME')}</text>
         <g fill="#ffd166">
-          <circle cx="478" cy="72" r="8"/><circle cx="576" cy="68" r="8"/>
-          <circle cx="520" cy="104" r="8"/><circle cx="592" cy="130" r="8"/>
-          <circle cx="486" cy="142" r="8"/><circle cx="548" cy="148" r="8"/>
+          <circle cx="478" cy="72" r="8" class="chem-anim-bounce" style="animation-delay:-0.0s"/><circle cx="576" cy="68" r="8" class="chem-anim-bounce" style="animation-delay:-0.37s"/>
+          <circle cx="520" cy="104" r="8" class="chem-anim-bounce" style="animation-delay:-0.74s"/><circle cx="592" cy="130" r="8" class="chem-anim-bounce" style="animation-delay:-1.11s"/>
+          <circle cx="486" cy="142" r="8" class="chem-anim-bounce" style="animation-delay:-1.48s"/><circle cx="548" cy="148" r="8" class="chem-anim-bounce" style="animation-delay:-1.85s"/>
         </g>
         <path d="M488 76 l14 10 M570 76 l-14 12 M526 108 l16 -8" stroke="#ffd166" stroke-width="2" stroke-dasharray="3 2"/>
         <text x="536" y="176" text-anchor="middle" class="sm">${pick(lang, 'Fills entire container', 'Occupa tutto il recipiente')}</text>
@@ -102,19 +102,22 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="85" y="46" text-anchor="middle" fill="#45d8ff" font-size="13" font-weight="800">${pick(lang, 'Filtration', 'Filtrazione')}</text>
         <polygon points="55,66 115,66 85,108" fill="none" stroke="#ffd166" stroke-width="2"/>
         <line x1="85" y1="108" x2="85" y2="128" stroke="#45d8ff" stroke-width="2"/>
+        <circle cx="72" cy="72" r="3" fill="#ffd166"/><circle cx="85" cy="78" r="3" fill="#ffd166"/><circle cx="96" cy="72" r="3" fill="#ffd166"/>
+        <circle cx="85" cy="110" r="3" fill="#45d8ff"><animate attributeName="cy" values="110;134" dur="1.3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.2;.8;1" dur="1.3s" repeatCount="indefinite"/></circle><circle cx="85" cy="110" r="3" fill="#45d8ff"><animate attributeName="cy" values="110;134" dur="1.3s" begin="-.65s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.2;.8;1" dur="1.3s" begin="-.65s" repeatCount="indefinite"/></circle>
         <text x="85" y="152" text-anchor="middle" class="sm">${pick(lang, 'Particle size', 'Dimensione particelle')}</text>
         <text x="85" y="170" text-anchor="middle" class="sm">${pick(lang, 'Solid + Liquid', 'Solido + Liquido')}</text>
 
         <rect x="170" y="20" width="142" height="162" rx="12" fill="rgba(56,239,125,.07)" stroke="#38ef7d" stroke-width="2"/>
         <text x="241" y="46" text-anchor="middle" fill="#38ef7d" font-size="13" font-weight="800">${pick(lang, 'Distillation', 'Distillazione')}</text>
         <circle cx="222" cy="96" r="18" fill="none" stroke="#38ef7d" stroke-width="2"/>
-        <path d="M236 82 L268 94 L268 122" fill="none" stroke="#ffd166" stroke-width="2"/>
+        <circle cx="216" cy="102" r="2.5" fill="#38ef7d" class="chem-anim-bubble"/><circle cx="228" cy="104" r="2.5" fill="#38ef7d" class="chem-anim-bubble" style="animation-delay:-.7s"/>
+        <path d="M236 82 L268 94 L268 122" fill="none" stroke="#ffd166" stroke-width="2" class="chem-anim-dash"/>
         <text x="241" y="152" text-anchor="middle" class="sm">${pick(lang, 'Boiling point', 'Punto di ebollizione')}</text>
         <text x="241" y="170" text-anchor="middle" class="sm">${pick(lang, 'Solutions', 'Soluzioni')}</text>
 
         <rect x="326" y="20" width="142" height="162" rx="12" fill="rgba(255,209,102,.07)" stroke="#ffd166" stroke-width="2"/>
         <text x="397" y="46" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="800">${pick(lang, 'Centrifugation', 'Centrifugazione')}</text>
-        <circle cx="397" cy="96" r="22" fill="none" stroke="#ffd166" stroke-width="2" stroke-dasharray="6 4"/>
+        <circle cx="397" cy="96" r="22" fill="none" stroke="#ffd166" stroke-width="2" stroke-dasharray="6 4" class="chem-anim-orbit-fast" style="transform-box:fill-box;transform-origin:center"/>
         <text x="397" y="101" text-anchor="middle" fill="#ffd166" font-size="12" font-weight="800">RPM</text>
         <text x="397" y="152" text-anchor="middle" class="sm">${pick(lang, 'Density diff.', 'Differenza densità')}</text>
         <text x="397" y="170" text-anchor="middle" class="sm">${pick(lang, 'Suspensions', 'Sospensioni')}</text>
@@ -122,7 +125,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <rect x="482" y="20" width="144" height="162" rx="12" fill="rgba(255,93,143,.07)" stroke="#ff5d8f" stroke-width="2"/>
         <text x="554" y="46" text-anchor="middle" fill="#ff5d8f" font-size="13" font-weight="800">${pick(lang, 'Chromatography', 'Cromatografia')}</text>
         <rect x="536" y="64" width="36" height="60" rx="4" fill="none" stroke="#ff5d8f" stroke-width="2"/>
-        <circle cx="554" cy="78" r="4" fill="#45d8ff"/><circle cx="554" cy="96" r="4" fill="#ffd166"/><circle cx="554" cy="112" r="4" fill="#38ef7d"/>
+        <circle cx="554" cy="78" r="4" fill="#45d8ff"><animate attributeName="cy" values="120;78;78" keyTimes="0;.75;1" dur="4s" repeatCount="indefinite"/></circle><circle cx="554" cy="96" r="4" fill="#ffd166"><animate attributeName="cy" values="120;96;96" keyTimes="0;.75;1" dur="4s" repeatCount="indefinite"/></circle><circle cx="554" cy="112" r="4" fill="#38ef7d"><animate attributeName="cy" values="120;112;112" keyTimes="0;.75;1" dur="4s" repeatCount="indefinite"/></circle>
         <text x="554" y="152" text-anchor="middle" class="sm">${pick(lang, 'Affinity / speed', 'Affinità tra fasi')}</text>
         <text x="554" y="170" text-anchor="middle" class="sm">${pick(lang, 'Pigments & inks', 'Pigmenti e inchiostri')}</text>
       </svg>`;
@@ -200,7 +203,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <g transform="translate(174,24)">
           <rect width="136" height="156" rx="12" fill="rgba(255,209,102,.06)" stroke="#ffd166" stroke-width="1.5"/>
           <circle cx="68" cy="70" r="24" fill="rgba(255,209,102,.28)" stroke="#ffd166" stroke-width="2"/>
-          <circle cx="58" cy="64" r="4" fill="#45d8ff"/><circle cx="77" cy="74" r="4" fill="#45d8ff"/><circle cx="66" cy="82" r="4" fill="#45d8ff"/>
+          <circle cx="58" cy="64" r="4" fill="#45d8ff" class="chem-anim-vibrate"/><circle cx="77" cy="74" r="4" fill="#45d8ff" class="chem-anim-vibrate" style="animation-delay:-.1s"/><circle cx="66" cy="82" r="4" fill="#45d8ff" class="chem-anim-vibrate" style="animation-delay:-.2s"/>
           <text x="68" y="122" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="800">Thomson (1897)</text>
           <text x="68" y="142" text-anchor="middle" class="sm">${pick(lang, 'Plum pudding (e⁻)', 'Panettone (e⁻)')}</text>
         </g>
@@ -209,6 +212,8 @@ export function getChemVisual(key: string, lang: Language): string | null {
           <circle cx="68" cy="70" r="7" fill="#ff6a3d"/>
           <ellipse cx="68" cy="70" rx="34" ry="13" fill="none" stroke="#45d8ff" stroke-width="1.5" transform="rotate(28 68 70)"/>
           <ellipse cx="68" cy="70" rx="34" ry="13" fill="none" stroke="#45d8ff" stroke-width="1.5" transform="rotate(-28 68 70)"/>
+          <g transform="rotate(28 68 70)"><circle r="3.5" fill="#ffd166"><animateMotion dur="2.4s" repeatCount="indefinite" path="M102 70 A34 13 0 1 1 34 70 A34 13 0 1 1 102 70"/></circle></g>
+          <g transform="rotate(-28 68 70)"><circle r="3.5" fill="#ffd166"><animateMotion dur="3.1s" repeatCount="indefinite" path="M102 70 A34 13 0 1 0 34 70 A34 13 0 1 0 102 70"/></circle></g>
           <text x="68" y="122" text-anchor="middle" fill="#ff6a3d" font-size="13" font-weight="800">Rutherford (1911)</text>
           <text x="68" y="142" text-anchor="middle" class="sm">${pick(lang, 'Dense + nucleus', 'Nucleo denso + vuoto')}</text>
         </g>
@@ -217,7 +222,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
           <circle cx="69" cy="70" r="6" fill="#ffd166"/>
           <circle cx="69" cy="70" r="20" fill="none" stroke="#38ef7d" stroke-width="1.5"/>
           <circle cx="69" cy="70" r="34" fill="none" stroke="#45d8ff" stroke-width="1.5"/>
-          <circle cx="89" cy="70" r="3.5" fill="#45d8ff"/><circle cx="35" cy="70" r="3.5" fill="#45d8ff"/>
+          <circle cx="89" cy="70" r="3.5" fill="#45d8ff"><animateTransform attributeName="transform" type="rotate" from="0 69 70" to="360 69 70" dur="2.6s" repeatCount="indefinite"/></circle><circle cx="35" cy="70" r="3.5" fill="#45d8ff"><animateTransform attributeName="transform" type="rotate" from="0 69 70" to="360 69 70" dur="4.2s" repeatCount="indefinite"/></circle>
           <text x="69" y="122" text-anchor="middle" fill="#38ef7d" font-size="13" font-weight="800">Bohr (1913)</text>
           <text x="69" y="142" text-anchor="middle" class="sm">${pick(lang, 'Quantized levels', 'Orbitali / livelli n')}</text>
         </g>
@@ -229,25 +234,25 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="320" y="46" text-anchor="middle" fill="#ffd166" font-size="15" font-weight="800">${pick(lang, 'Subshells & Electron Capacity (Aufbau · Pauli · Hund)', 'Sottolivelli e Capacità Elettronica (Aufbau · Pauli · Hund)')}</text>
         <g transform="translate(42,64)">
           <rect width="120" height="96" rx="10" fill="rgba(56,239,125,.12)" stroke="#38ef7d"/>
-          <text x="60" y="34" text-anchor="middle" fill="#38ef7d" font-size="20" font-weight="800">s</text>
+          <text x="60" y="34" text-anchor="middle" fill="#38ef7d" font-size="20" font-weight="800" class="chem-anim-pulse" style="animation-delay:0.0s">s</text>
           <text x="60" y="60" text-anchor="middle" fill="#ffffff" font-size="13">${pick(lang, '1 orbital', '1 orbitale')}</text>
           <text x="60" y="80" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="700">max 2 e⁻</text>
         </g>
         <g transform="translate(184,64)">
           <rect width="120" height="96" rx="10" fill="rgba(69,216,255,.12)" stroke="#45d8ff"/>
-          <text x="60" y="34" text-anchor="middle" fill="#45d8ff" font-size="20" font-weight="800">p</text>
+          <text x="60" y="34" text-anchor="middle" fill="#45d8ff" font-size="20" font-weight="800" class="chem-anim-pulse" style="animation-delay:0.45s">p</text>
           <text x="60" y="60" text-anchor="middle" fill="#ffffff" font-size="13">${pick(lang, '3 orbitals', '3 orbitali')}</text>
           <text x="60" y="80" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="700">max 6 e⁻</text>
         </g>
         <g transform="translate(326,64)">
           <rect width="120" height="96" rx="10" fill="rgba(255,209,102,.12)" stroke="#ffd166"/>
-          <text x="60" y="34" text-anchor="middle" fill="#ffd166" font-size="20" font-weight="800">d</text>
+          <text x="60" y="34" text-anchor="middle" fill="#ffd166" font-size="20" font-weight="800" class="chem-anim-pulse" style="animation-delay:0.9s">d</text>
           <text x="60" y="60" text-anchor="middle" fill="#ffffff" font-size="13">${pick(lang, '5 orbitals', '5 orbitali')}</text>
           <text x="60" y="80" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="700">max 10 e⁻</text>
         </g>
         <g transform="translate(468,64)">
           <rect width="120" height="96" rx="10" fill="rgba(255,93,143,.12)" stroke="#ff5d8f"/>
-          <text x="60" y="34" text-anchor="middle" fill="#ff5d8f" font-size="20" font-weight="800">f</text>
+          <text x="60" y="34" text-anchor="middle" fill="#ff5d8f" font-size="20" font-weight="800" class="chem-anim-pulse" style="animation-delay:1.35s">f</text>
           <text x="60" y="60" text-anchor="middle" fill="#ffffff" font-size="13">${pick(lang, '7 orbitals', '7 orbitali')}</text>
           <text x="60" y="80" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="700">max 14 e⁻</text>
         </g>
@@ -281,6 +286,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <circle cx="146" cy="94" r="22" fill="rgba(56,239,125,.22)" stroke="#38ef7d" stroke-width="2"/>
         <text x="146" y="99" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="800">Cl⁻</text>
         <path d="M96 82 Q111 66 124 80" fill="none" stroke="#ffd166" stroke-width="2"/>
+        <circle r="4" fill="#ffd166"><animateMotion dur="1.8s" repeatCount="indefinite" path="M96 82 Q111 66 124 80"/></circle>
         <text x="111" y="142" text-anchor="middle" class="sm">${pick(lang, 'Electron transfer → lattice', 'Trasferimento e⁻ → reticolo')}</text>
         <text x="111" y="166" text-anchor="middle" class="sm">${pick(lang, 'Brittle, conducts molten/aq', 'Fragile, conduce fuso/in H₂O')}</text>
 
@@ -288,7 +294,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="320" y="42" text-anchor="middle" fill="#45d8ff" font-size="14" font-weight="800">${pick(lang, 'COVALENT (Δχ ≤ 1.7)', 'COVALENTE (Δχ ≤ 1,7)')}</text>
         <circle cx="294" cy="94" r="20" fill="rgba(69,216,255,.2)" stroke="#45d8ff" stroke-width="2"/>
         <circle cx="346" cy="94" r="20" fill="rgba(69,216,255,.2)" stroke="#45d8ff" stroke-width="2"/>
-        <circle cx="320" cy="90" r="3.5" fill="#ffd166"/><circle cx="320" cy="100" r="3.5" fill="#ffd166"/>
+        <circle cx="320" cy="90" r="3.5" fill="#ffd166"><animateTransform attributeName="transform" type="rotate" from="0 320 95" to="360 320 95" dur="1.6s" repeatCount="indefinite"/></circle><circle cx="320" cy="100" r="3.5" fill="#ffd166"><animateTransform attributeName="transform" type="rotate" from="0 320 95" to="360 320 95" dur="1.6s" repeatCount="indefinite"/></circle>
         <text x="320" y="142" text-anchor="middle" class="sm">${pick(lang, 'Nonpolar < 0.4 | Polar 0.4–1.7', 'Puro < 0,4 | Polare 0,4–1,7')}</text>
         <text x="320" y="166" text-anchor="middle" class="sm">${pick(lang, 'Shared electron pairs', 'Coppie di elettroni condivise')}</text>
 
@@ -299,7 +305,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
           <circle cx="484" cy="112" r="11"/><circle cx="529" cy="112" r="11"/><circle cx="574" cy="112" r="11"/>
         </g>
         <g fill="#45d8ff">
-          <circle cx="506" cy="96" r="3"/><circle cx="552" cy="96" r="3"/><circle cx="464" cy="96" r="3"/><circle cx="594" cy="96" r="3"/>
+          <circle cx="506" cy="96" r="3"><animate attributeName="cx" values="506;528;506" dur="3s" repeatCount="indefinite"/></circle><circle cx="552" cy="96" r="3"><animate attributeName="cx" values="552;574;552" dur="3.6s" repeatCount="indefinite"/></circle><circle cx="464" cy="96" r="3"><animate attributeName="cx" values="464;486;464" dur="2.8s" repeatCount="indefinite"/></circle><circle cx="594" cy="96" r="3"><animate attributeName="cx" values="594;572;594" dur="3.3s" repeatCount="indefinite"/></circle>
         </g>
         <text x="529" y="142" text-anchor="middle" class="sm">${pick(lang, 'Cations + sea of e⁻', 'Cationi + mare di e⁻')}</text>
         <text x="529" y="166" text-anchor="middle" class="sm">${pick(lang, 'Malleable & conductive', 'Malleabile e conduttore')}</text>
@@ -472,6 +478,8 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <line x1="68" y1="36" x2="68" y2="166" stroke="#99a8cc" stroke-width="2"/>
         <path d="M88 118 C165 118, 220 34, 295 34 C370 34, 415 148, 540 148" fill="none" stroke="#ff6a3d" stroke-width="3"/>
         <path d="M88 118 C175 118, 225 78, 295 78 C365 78, 415 148, 540 148" fill="none" stroke="#38ef7d" stroke-width="3" stroke-dasharray="6 4"/>
+        <circle r="5" fill="#ff6a3d"><animateMotion dur="4s" repeatCount="indefinite" path="M88 118 C165 118, 220 34, 295 34 C370 34, 415 148, 540 148"/></circle>
+        <circle r="5" fill="#38ef7d"><animateMotion dur="2.4s" repeatCount="indefinite" path="M88 118 C175 118, 225 78, 295 78 C365 78, 415 148, 540 148"/></circle>
         <text x="115" y="108" fill="#45d8ff" font-size="12" font-weight="700">${pick(lang, 'Reactants', 'Reagenti')}</text>
         <text x="510" y="138" fill="#ffd166" font-size="12" font-weight="700">${pick(lang, 'Products', 'Prodotti')}</text>
         <text x="295" y="28" text-anchor="middle" fill="#ff6a3d" font-size="12" font-weight="800">${pick(lang, 'Uncatalyzed Eₐ', 'Eₐ senza catalizzatore')}</text>
@@ -546,6 +554,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <path d="M294 66 H346" stroke="#ffd166" stroke-width="3"/>
         <polygon points="348,66 338,60 338,72" fill="#ffd166"/>
         <text x="320" y="56" text-anchor="middle" fill="#ffd166" font-size="12" font-weight="800">2 e⁻</text>
+        <circle r="4" fill="#ffd166"><animateMotion dur="1.5s" begin="0s" repeatCount="indefinite" path="M280 66 H360"/></circle><circle r="4" fill="#ffd166"><animateMotion dur="1.5s" begin="0.75s" repeatCount="indefinite" path="M280 66 H360"/></circle>
       </svg>`;
 
     case 'chemOrganic':
@@ -611,25 +620,26 @@ export function getChemVisual(key: string, lang: Language): string | null {
       return `<svg viewBox="0 0 640 205" class="dia" width="100%" aria-hidden="true">
         <rect x="20" y="34" width="136" height="136" rx="12" fill="rgba(255,106,61,.1)" stroke="#ff6a3d" stroke-width="2"/>
         <text x="88" y="64" text-anchor="middle" fill="#ff6a3d" font-size="13" font-weight="800">${pick(lang, 'STEP 1: Boil', 'PASSO 1: Bolli')}</text>
-        <text x="88" y="96" text-anchor="middle" fill="#ffffff" font-size="22">🔥 ♨️</text>
+        <text x="88" y="96" text-anchor="middle" fill="#ffffff" font-size="22" class="chem-anim-flame">🔥 ♨️</text>
         <text x="88" y="132" text-anchor="middle" class="sm">${pick(lang, 'Lower-boiling liquid', 'Evapora prima il liquido')}</text>
         <text x="88" y="150" text-anchor="middle" class="sm">${pick(lang, 'turns to vapor first', 'che bolle a T minore')}</text>
 
         <rect x="180" y="34" width="136" height="136" rx="12" fill="rgba(255,209,102,.1)" stroke="#ffd166" stroke-width="2"/>
         <text x="248" y="64" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="800">${pick(lang, 'STEP 2: Rise', 'PASSO 2: Sale')}</text>
-        <text x="248" y="96" text-anchor="middle" fill="#ffffff" font-size="22">💨 →</text>
+        <text x="248" y="96" text-anchor="middle" fill="#ffffff" font-size="22" class="chem-anim-float">💨 →</text>
         <text x="248" y="132" text-anchor="middle" class="sm">${pick(lang, 'Salt or heavy dyes', 'Sale o coloranti pesanti')}</text>
         <text x="248" y="150" text-anchor="middle" class="sm">${pick(lang, 'stay behind in flask', 'restano nel pallone')}</text>
 
         <rect x="340" y="34" width="136" height="136" rx="12" fill="rgba(69,216,255,.1)" stroke="#45d8ff" stroke-width="2"/>
         <text x="408" y="64" text-anchor="middle" fill="#45d8ff" font-size="13" font-weight="800">${pick(lang, 'STEP 3: Cool', 'PASSO 3: Raffredda')}</text>
-        <text x="408" y="96" text-anchor="middle" fill="#ffffff" font-size="22">❄️ 💧</text>
+        <text x="408" y="96" text-anchor="middle" fill="#ffffff" font-size="22" class="chem-anim-float" style="animation-delay:-1s">❄️ 💧</text>
         <text x="408" y="132" text-anchor="middle" class="sm">${pick(lang, 'Cold water tube', 'Il tubo freddo condensa')}</text>
         <text x="408" y="150" text-anchor="middle" class="sm">${pick(lang, 'condenses steam back', 'il vapore in gocce')}</text>
 
         <rect x="500" y="34" width="120" height="136" rx="12" fill="rgba(56,239,125,.1)" stroke="#38ef7d" stroke-width="2"/>
+        <circle r="3" fill="#ffd166"><animateMotion dur="1.4s" begin="0s" repeatCount="indefinite" path="M156 102 H180"/></circle><circle r="3" fill="#ffd166"><animateMotion dur="1.4s" begin="0.4s" repeatCount="indefinite" path="M316 102 H340"/></circle><circle r="3" fill="#ffd166"><animateMotion dur="1.4s" begin="0.8s" repeatCount="indefinite" path="M476 102 H500"/></circle>
         <text x="560" y="64" text-anchor="middle" fill="#38ef7d" font-size="13" font-weight="800">${pick(lang, 'PURE!', 'PURO!')}</text>
-        <text x="560" y="96" text-anchor="middle" fill="#ffffff" font-size="22">🧪</text>
+        <text x="560" y="96" text-anchor="middle" fill="#ffffff" font-size="22" class="chem-anim-pulse">🧪</text>
         <text x="560" y="132" text-anchor="middle" class="sm">${pick(lang, 'Pure distillate', 'Distillato puro')}</text>
         <text x="560" y="150" text-anchor="middle" class="sm">${pick(lang, 'collected clean', 'raccolto pulito')}</text>
       </svg>`;
@@ -701,18 +711,21 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <rect x="18" y="20" width="190" height="164" rx="12" fill="rgba(56,239,125,.08)" stroke="#38ef7d"/>
         <text x="113" y="46" text-anchor="middle" fill="#38ef7d" font-size="13" font-weight="800">${pick(lang, 'TIE: Δχ < 0.4', 'PAREGGIO: Δχ < 0,4')}</text>
         <text x="113" y="84" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="800">Cl — : — Cl</text>
+                <line x1="60" y1="102" x2="166" y2="102" stroke="rgba(255,255,255,.18)" stroke-width="2"/><circle cy="102" r="4.5" fill="#ffd166"><animate attributeName="cx" values="113;106;120;113" dur="1.6s" repeatCount="indefinite"/></circle>
         <text x="113" y="124" text-anchor="middle" class="sm">${pick(lang, 'Equal pull on electrons', 'Stessa forza sugli e⁻')}</text>
         <text x="113" y="148" text-anchor="middle" fill="#ffd166" font-size="12" font-weight="700">${pick(lang, 'Nonpolar covalent', 'Covalente apolare')}</text>
 
         <rect x="225" y="20" width="190" height="164" rx="12" fill="rgba(69,216,255,.08)" stroke="#45d8ff"/>
         <text x="320" y="46" text-anchor="middle" fill="#45d8ff" font-size="13" font-weight="800">${pick(lang, 'LOPSIDED: 0.4–1.7', 'SBILANCIATO: 0,4–1,7')}</text>
         <text x="320" y="84" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="800">H(δ⁺) —— :Cl(δ⁻)</text>
+                <line x1="268" y1="102" x2="372" y2="102" stroke="rgba(255,255,255,.18)" stroke-width="2"/><circle cy="102" r="4.5" fill="#ffd166"><animate attributeName="cx" values="330;346;338;350;330" dur="2.4s" repeatCount="indefinite"/></circle>
         <text x="320" y="124" text-anchor="middle" class="sm">${pick(lang, 'One atom hogs electrons', 'Un atomo tira di più')}</text>
         <text x="320" y="148" text-anchor="middle" fill="#ffd166" font-size="12" font-weight="700">${pick(lang, 'Polar covalent', 'Covalente polare')}</text>
 
         <rect x="432" y="20" width="190" height="164" rx="12" fill="rgba(255,106,61,.08)" stroke="#ff6a3d"/>
         <text x="527" y="46" text-anchor="middle" fill="#ff6a3d" font-size="13" font-weight="800">${pick(lang, 'STOLEN: Δχ > 1.7', 'STRAPPATO: Δχ > 1,7')}</text>
         <text x="527" y="84" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="800">[Na]⁺  [:Cl:]⁻</text>
+                <line x1="475" y1="102" x2="580" y2="102" stroke="rgba(255,255,255,.18)" stroke-width="2"/><circle cy="102" r="4.5" fill="#ffd166"><animate attributeName="cx" values="490;490;565;565;490" dur="3s" repeatCount="indefinite"/></circle>
         <text x="527" y="124" text-anchor="middle" class="sm">${pick(lang, 'Electron jumps completely', 'Trasferimento netto di e⁻')}</text>
         <text x="527" y="148" text-anchor="middle" fill="#ffd166" font-size="12" font-weight="700">${pick(lang, 'Ionic bond', 'Legame ionico')}</text>
       </svg>`;
@@ -767,6 +780,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="149" y="132" text-anchor="middle" class="sm">${pick(lang, 'Packed tight in 0.25 L', 'Molto concentrata in 0,25 L')}</text>
 
         <text x="320" y="98" text-anchor="middle" fill="#45d8ff" font-size="20" font-weight="800">+ H₂O →</text>
+        <path d="M290 112 H350" stroke="#45d8ff" stroke-width="2" class="chem-anim-dash" fill="none"/><circle r="3" fill="#45d8ff"><animateMotion dur="1.2s" begin="0s" repeatCount="indefinite" path="M290 112 H350"/></circle><circle r="3" fill="#45d8ff"><animateMotion dur="1.2s" begin="0.6s" repeatCount="indefinite" path="M290 112 H350"/></circle>
 
         <rect x="376" y="24" width="230" height="156" rx="14" fill="rgba(69,216,255,.1)" stroke="#45d8ff" stroke-width="2"/>
         <text x="491" y="54" text-anchor="middle" fill="#45d8ff" font-size="14" font-weight="800">${pick(lang, 'DILUTED (M₂ = 0.5 M)', 'DILUITA (M₂ = 0,5 M)')}</text>
@@ -784,6 +798,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="132" y="126" text-anchor="middle" class="sm">${pick(lang, 'Throws H⁺ → Cl⁻', 'Dona H⁺ → Cl⁻')}</text>
 
         <text x="275" y="110" text-anchor="middle" fill="#ffd166" font-size="18" font-weight="800">— H⁺ →</text>
+        <circle r="8" fill="#ffd166" stroke="#fff" stroke-width="1.5"><animateMotion dur="2.4s" repeatCount="indefinite" path="M200 96 Q275 50 350 96" keyPoints="0;1;1" keyTimes="0;.6;1" calcMode="linear"/></circle>
 
         <rect x="336" y="76" width="248" height="62" rx="10" fill="rgba(69,216,255,.16)" stroke="#45d8ff"/>
         <text x="460" y="104" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">H₂O (${pick(lang, 'Base', 'Base')}) → H₃O⁺</text>
@@ -801,6 +816,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="149" y="144" text-anchor="middle" fill="#ffd166" font-size="12" font-weight="700">OXIDATION (O.N. ↑)</text>
 
         <text x="320" y="106" text-anchor="middle" fill="#ffd166" font-size="15" font-weight="800">e⁻ ──→</text>
+        <path d="M258 112 H382" stroke="#ffd166" stroke-width="2" class="chem-anim-dash" fill="none"/><circle r="4" fill="#ffd166"><animateMotion dur="1.6s" begin="0s" repeatCount="indefinite" path="M258 112 H382"/></circle><circle r="4" fill="#ffd166"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" path="M258 112 H382"/></circle>
         <text x="320" y="132" text-anchor="middle" class="sm">${pick(lang, 'Wire + Salt Bridge', 'Filo + Ponte Salino')}</text>
 
         <rect x="386" y="70" width="210" height="92" rx="10" fill="rgba(56,239,125,.12)" stroke="#38ef7d"/>
