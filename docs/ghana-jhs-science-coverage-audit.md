@@ -29,7 +29,7 @@ The audit reads the live application registries rather than maintaining a second
 - Every registered arc has a mission and carries a NaCCA indicator reference.
 - Registered mission totals match subject metadata: 22, 22 and 25.
 - Science mission IDs are unique across JHS 1–3.
-- Every mission has teaching/challenge scenes and five assessment questions.
+- Every mission has teaching/challenge scenes and at least five assessment questions.
 - Every question has a prompt, feedback and non-empty answer choices.
 
 Run the test with `bun test tests/ghanaJhsScienceCoverageAudit.test.ts`.
