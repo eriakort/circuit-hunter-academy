@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { MotionScene, type MotionStep } from './MotionScene';
 
-const STEPS: MotionStep[] = [
+export const NITROGEN_STEPS: MotionStep[] = [
   { id: 'fixation', label: 'Nitrogen fixation', caption: 'Bacteria in the root nodules of legumes such as beans and groundnuts (and some bacteria living freely in the soil) turn nitrogen gas from the air into ammonium.' },
   { id: 'nitrification', label: 'Nitrification', caption: 'Nitrifying bacteria in the soil change ammonium into nitrites and then into nitrates.' },
   { id: 'assimilation', label: 'Assimilation', caption: 'Plant roots take in nitrates and use the nitrogen to build proteins. Animals get nitrogen by eating plants or other animals.' },
@@ -27,8 +27,8 @@ export const NitrogenCycleScene: React.FC = () => (
   <MotionScene
     title="The Nitrogen Cycle Guardian"
     description="Follow a nitrogen atom (N) as it moves between the air, the soil and living things."
-    steps={STEPS}
-    footer="Protect soil fertility: rotate crops with beans or groundnuts, avoid bush burning and use fertiliser carefully. The diagram is a simplified model; real soils contain many organisms."
+    steps={NITROGEN_STEPS}
+    footer="Protect soil fertility: rotate crops with beans or groundnuts, avoid bush burning, use fertiliser carefully and reduce soil erosion and nitrate leaching. The diagram is a simplified model; real soils contain many organisms."
   >
     {({ step, playing, reducedMotion }) => <NitrogenArt stepId={step.id} playing={playing} reducedMotion={reducedMotion} />}
   </MotionScene>
@@ -44,7 +44,7 @@ const NitrogenArt: React.FC<{ stepId: string; playing: boolean; reducedMotion: b
   }, [playing, reducedMotion, stepId]);
 
   return (
-    <svg ref={svg} className="nc" viewBox="0 0 640 360" role="img" aria-label={`Nitrogen cycle, ${STEPS.find(s => s.id === stepId)?.label}: ${STEPS.find(s => s.id === stepId)?.caption}`}>
+    <svg ref={svg} className="nc" viewBox="0 0 640 360" role="img" aria-label={`Nitrogen cycle, ${NITROGEN_STEPS.find(s => s.id === stepId)?.label}: ${NITROGEN_STEPS.find(s => s.id === stepId)?.caption}`}>
       <defs>
         <linearGradient id="nc-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#cfe8f3" /><stop offset="1" stopColor="#eef3e6" /></linearGradient>
         <linearGradient id="nc-soil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#a57a4f" /><stop offset="1" stopColor="#7c5734" /></linearGradient>
@@ -113,7 +113,7 @@ const NitrogenArt: React.FC<{ stepId: string; playing: boolean; reducedMotion: b
         </g>
       )}
 
-      {STEPS.map((item, index) => {
+      {NITROGEN_STEPS.map((item, index) => {
         const [x, y] = BADGES[item.id];
         return (
           <g key={item.id} className={`wc-badge${item.id === stepId ? ' is-active' : ''}`}>

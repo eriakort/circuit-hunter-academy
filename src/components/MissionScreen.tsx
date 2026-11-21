@@ -23,11 +23,9 @@ import { GhanaJhs2CyclesVisual } from './GhanaJhs2CyclesVisual';
 import { GhanaJhs2ForcesEnergyVisual } from './GhanaJhs2ForcesEnergyVisual';
 import { GhanaJhs2HumansEnvironmentVisual } from './GhanaJhs2HumansEnvironmentVisual';
 import { GhanaJhs3DiversityVisual } from './GhanaJhs3DiversityVisual';
-import { GhanaJhs3NitrogenCycleVisual } from './GhanaJhs3NitrogenCycleVisual';
 import { ParticleScene } from './scienceMotion/ParticleScene';
 import { WaterCycleScene } from './scienceMotion/WaterCycleScene';
 import { NitrogenCycleScene } from './scienceMotion/NitrogenCycleScene';
-import { useNewMotion } from './scienceMotion/useNewMotion';
 import { GhanaJhs3GrasshopperLifeCycleVisual } from './GhanaJhs3GrasshopperLifeCycleVisual';
 import { GhanaJhs3CropMaturityVisual } from './GhanaJhs3CropMaturityVisual';
 import { GhanaJhs3AnimalFeedPreparationVisual } from './GhanaJhs3AnimalFeedPreparationVisual';
@@ -60,7 +58,6 @@ const SANKOFA_EXPLORER_AVATAR = '<svg viewBox="0 0 80 80" role="img" aria-label=
 const SANKOFA_CHALLENGE_AVATAR = '<svg viewBox="0 0 80 80" role="img" aria-label="Learning challenge"><circle cx="40" cy="40" r="36" fill="#b9573f" stroke="#d5a43b" stroke-width="3"/><path d="M27 24h26v9H42v7h11v9H42v7H31V39h11v-6H27z" fill="#f2e8d5"/></svg>';
 
 export const MissionScreen: React.FC = () => {
-  const newMotion = useNewMotion();
   const {
     state,
     curriculumProfile,
@@ -290,12 +287,12 @@ export const MissionScreen: React.FC = () => {
             />
           )}
           {isGhana && ['gh-jhs1-science-materials-states', 'gh-jhs1-science-importance-liquids', 'gh-jhs1-science-materials-uses', 'gh-jhs1-science-living-cells'].includes(currentMission.id) && currentSceneIndex === 1 && (
-            currentMission.id === 'gh-jhs1-science-materials-states' && newMotion
+            currentMission.id === 'gh-jhs1-science-materials-states'
               ? <ParticleScene />
               : <GhanaJhs1DiversityVisual missionId={currentMission.id} lang={lang} />
           )}
           {isGhana && ['gh-jhs1-science-earth-cycles', 'gh-jhs1-science-life-cycles', 'gh-jhs1-science-crop-production', 'gh-jhs1-science-animal-production'].includes(currentMission.id) && currentSceneIndex === 1 && (
-            currentMission.id === 'gh-jhs1-science-earth-cycles' && newMotion
+            currentMission.id === 'gh-jhs1-science-earth-cycles'
               ? <WaterCycleScene />
               : <GhanaJhs1CyclesVisual missionId={currentMission.id} lang={lang} />
           )}
@@ -325,7 +322,7 @@ export const MissionScreen: React.FC = () => {
           {isGhana && ['gh-jhs2-science-waste-management', 'gh-jhs2-science-human-health', 'gh-jhs2-science-science-industry', 'gh-jhs2-science-climate-green-economy', 'gh-jhs2-science-soils-plants', 'gh-jhs2-science-rocks-soil-formation'].includes(currentMission.id) && currentSceneIndex === 1 && (
             <GhanaJhs2HumansEnvironmentVisual missionId={currentMission.id} />
           )}
-          {isGhana && currentMission.id === 'gh-jhs3-science-nitrogen-cycle' && currentSceneIndex === 1 && (newMotion ? <NitrogenCycleScene /> : <GhanaJhs3NitrogenCycleVisual />)}
+          {isGhana && currentMission.id === 'gh-jhs3-science-nitrogen-cycle' && currentSceneIndex === 1 && <NitrogenCycleScene />}
           {isGhana && currentMission.id === 'gh-jhs3-science-grasshopper-life-cycle' && currentSceneIndex === 1 && <GhanaJhs3GrasshopperLifeCycleVisual />}
           {isGhana && currentMission.id === 'gh-jhs3-science-crop-maturity' && currentSceneIndex === 1 && <GhanaJhs3CropMaturityVisual />}
           {isGhana && currentMission.id === 'gh-jhs3-science-animal-feed-preparation' && currentSceneIndex === 1 && <GhanaJhs3AnimalFeedPreparationVisual />}
