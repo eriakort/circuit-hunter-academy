@@ -205,37 +205,49 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     indicatorCode: 'B8.1.1.1.1', grade: 8, strand: 1, missionIds: ['gh-jhs2-science-mixture-separation'],
     status: 'needs-review', officialIndicatorText: 'Identify types of mixtures by name and characteristics.', sourcePdfPage: 53,
     teachingSceneEvidence: 'Candidate: gh-jhs2-science-mixture-separation introduces homogeneous and heterogeneous mixtures, solutions, suspensions and colloids; verify that all required mixture types and physical characteristics are taught.',
-    assessmentEvidence: 'Candidate: mixture-separation quiz items assess mixture classification and properties; exact question-to-indicator alignment requires review.'
+    assessmentEvidence: 'Candidate: quiz 0 tests a homogeneous salt solution, quiz 1 identifies a solute, and quiz 4 tests suspension properties. The lesson names homogeneous/heterogeneous mixtures, solutions, suspensions and colloids; full physical-characteristic coverage still needs human review.',
+    teachingSceneRefs: ['gh-jhs2-science-mixture-separation#scene-0','gh-jhs2-science-mixture-separation#scene-1'],
+    assessmentQuestionRefs: ['gh-jhs2-science-mixture-separation#quiz-0','gh-jhs2-science-mixture-separation#quiz-1','gh-jhs2-science-mixture-separation#quiz-4']
   },
   {
     indicatorCode: 'B8.1.1.1.2', grade: 8, strand: 1, missionIds: ['gh-jhs2-science-mixture-separation'],
     status: 'needs-review', officialIndicatorText: 'Design and perform processes for separating kinds of mixtures.', sourcePdfPage: 53,
     teachingSceneEvidence: 'Candidate: gh-jhs2-science-mixture-separation teaches selection of separation methods including filtering, sieving and distilling; verify learner-designed practical procedures and reporting.',
-    assessmentEvidence: 'Candidate: mixture-separation assessment includes method selection; a practical performance and written findings report need direct verification.'
+    assessmentEvidence: 'Candidate: quiz 2 assesses filtration and quiz 3 assesses magnetic separation. The lesson also teaches sieving, decanting, evaporation and distillation; the current quiz does not assess learner-designed practical separation or a written findings report.',
+    teachingSceneRefs: ['gh-jhs2-science-mixture-separation#scene-2','gh-jhs2-science-mixture-separation#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs2-science-mixture-separation#quiz-2','gh-jhs2-science-mixture-separation#quiz-3']
   },
   {
     indicatorCode: 'B8.1.1.2.1', grade: 8, strand: 1, missionIds: ['gh-jhs2-science-atomic-structure'],
     status: 'needs-review', officialIndicatorText: 'Describe atoms as composed of sub-atomic particles.', sourcePdfPage: 54,
     teachingSceneEvidence: 'Candidate: gh-jhs2-science-atomic-structure covers atomic structure and sub-atomic particles; verify particle locations, charges and atom models against all exemplars.',
-    assessmentEvidence: 'Candidate: atomic-structure quiz items assess particles and atomic structure; proton, neutron and electron count tasks need direct alignment review.'
+    assessmentEvidence: 'Candidate: quiz 0 identifies protons and neutrons in the nucleus; quiz 2 calculates neutron count from atomic and mass numbers. The quiz does not directly test electron location or charge.',
+    teachingSceneRefs: ['gh-jhs2-science-atomic-structure#scene-0','gh-jhs2-science-atomic-structure#scene-2'],
+    assessmentQuestionRefs: ['gh-jhs2-science-atomic-structure#quiz-0','gh-jhs2-science-atomic-structure#quiz-2']
   },
   {
     indicatorCode: 'B8.1.1.2.2', grade: 8, strand: 1, missionIds: ['gh-jhs2-science-atomic-structure'],
     status: 'needs-review', officialIndicatorText: 'Explain the arrangement of elements in terms of the number of protons in the nuclei of atoms of each element.', sourcePdfPage: 55,
     teachingSceneEvidence: 'Candidate: gh-jhs2-science-atomic-structure links atomic number and the periodic table; verify electron arrangement, ion formation and molecules as specified in the exemplars.',
-    assessmentEvidence: 'Candidate: atomic-structure assessment has relevant periodic-table and atomic-number items; electron configuration, ions and molecules require direct question-level review.'
+    assessmentEvidence: 'Candidate: quiz 1 tests the meaning of atomic number and quiz 4 tests periodic-table ordering by atomic number. Electron arrangement, ion formation and molecules are introduced in the lesson but are not fully assessed by these questions.',
+    teachingSceneRefs: ['gh-jhs2-science-atomic-structure#scene-1','gh-jhs2-science-atomic-structure#scene-3'],
+    assessmentQuestionRefs: ['gh-jhs2-science-atomic-structure#quiz-1','gh-jhs2-science-atomic-structure#quiz-4']
   },
   {
     indicatorCode: 'B8.1.2.1.1', grade: 8, strand: 1, missionIds: ['gh-jhs2-science-cell-types'],
     status: 'needs-review', officialIndicatorText: 'Examine and describe the structure of prokaryotic and eukaryotic cells.', sourcePdfPage: 56,
     teachingSceneEvidence: 'Candidate: gh-jhs2-science-cell-types compares prokaryotic and eukaryotic cells; verify labelled diagrams, similarities and differences against the exemplars.',
-    assessmentEvidence: 'Candidate: cell-types quiz items assess cell structures and types; exact coverage of prokaryotic and eukaryotic comparisons requires review.'
+    assessmentEvidence: 'Candidate: quiz 0 tests the membrane-bound nucleus distinction and quiz 2 tests structures shared by both cell types. The questions do not assess every structural difference or labelled cell diagrams.',
+    teachingSceneRefs: ['gh-jhs2-science-cell-types#scene-1','gh-jhs2-science-cell-types#scene-2'],
+    assessmentQuestionRefs: ['gh-jhs2-science-cell-types#quiz-0','gh-jhs2-science-cell-types#quiz-2']
   },
   {
     indicatorCode: 'B8.1.2.1.2', grade: 8, strand: 1, missionIds: ['gh-jhs2-science-cell-types'],
     status: 'needs-review', officialIndicatorText: 'Classify organisms (plants or animals) as prokaryotic or eukaryotic based on the type of cells they are made of.', sourcePdfPage: 56,
     teachingSceneEvidence: 'Candidate: gh-jhs2-science-cell-types introduces prokaryotic and eukaryotic organisms; verify classification examples and the exemplar discussion of impacts on human health and safety measures.',
-    assessmentEvidence: 'Candidate: cell-types assessments cover cell classification; organism examples and health-and-safety outcomes require direct review.'
+    assessmentEvidence: 'Candidate: quiz 1 asks learners to identify a bacterium as prokaryotic, contrasting it with plant, animal and fungal examples. Broader organism classification and the curriculum health-and-safety outcomes need additional assessment.',
+    teachingSceneRefs: ['gh-jhs2-science-cell-types#scene-1','gh-jhs2-science-cell-types#scene-2'],
+    assessmentQuestionRefs: ['gh-jhs2-science-cell-types#quiz-1']
   },
 
   {
