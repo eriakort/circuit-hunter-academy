@@ -3,7 +3,7 @@ import { MotionScene, type MotionStep } from './MotionScene';
 import { MoreDetails } from './MoreDetails';
 import { Stage, Cap, Ground, Drops, Plant, Sun } from './FieldScenes';
 
-const Person: React.FC<{ x: number; y: number; colour?: string; flip?: boolean; mask?: boolean }> = ({ x, y, colour = '#4a90c0', flip, mask }) => (
+export const Person: React.FC<{ x: number; y: number; colour?: string; flip?: boolean; mask?: boolean }> = ({ x, y, colour = '#4a90c0', flip, mask }) => (
   <g transform={`translate(${x} ${y}) scale(${flip ? -1 : 1} 1)`}>
     <circle cy="-92" r="16" fill="#8a5a3a" stroke="#4a2f1a" strokeWidth="2" />
     {mask && <rect x="-3" y="-92" width="22" height="12" rx="4" fill="#cfe6f2" stroke="#2468a8" strokeWidth="2" />}
@@ -11,13 +11,13 @@ const Person: React.FC<{ x: number; y: number; colour?: string; flip?: boolean; 
     <path d="M-8 -22 V0 M8 -22 V0" stroke="#2b2f2a" strokeWidth="6" strokeLinecap="round" />
   </g>
 );
-const Bin: React.FC<{ x: number; y: number; colour: string; label: string }> = ({ x, y, colour, label }) => (
+export const Bin: React.FC<{ x: number; y: number; colour: string; label: string }> = ({ x, y, colour, label }) => (
   <g transform={`translate(${x} ${y})`}>
     <path d="M-34 -70 H34 L28 0 H-28 Z" fill={colour} stroke="#2b2f2a" strokeWidth="3" /><rect x="-40" y="-82" width="80" height="12" rx="4" fill={colour} stroke="#2b2f2a" strokeWidth="3" />
     <text y="22" textAnchor="middle" className="sm-note sm-note--dark">{label}</text>
   </g>
 );
-const J2Scene: React.FC<{ title: string; description: string; steps: MotionStep[]; footer: React.ReactNode; art: (id: string, playing: boolean, reducedMotion: boolean) => React.ReactNode; stepMs?: number }> = ({ title, description, steps, footer, art, stepMs = 5500 }) => (
+export const J2Scene: React.FC<{ title: string; description: string; steps: MotionStep[]; footer: React.ReactNode; art: (id: string, playing: boolean, reducedMotion: boolean) => React.ReactNode; stepMs?: number }> = ({ title, description, steps, footer, art, stepMs = 5500 }) => (
   <MotionScene title={title} description={description} steps={steps} stepMs={stepMs} footer={footer}>
     {({ step, playing, reducedMotion }) => art(step.id, playing, reducedMotion)}
   </MotionScene>

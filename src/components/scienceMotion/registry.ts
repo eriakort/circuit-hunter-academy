@@ -32,6 +32,7 @@ import { PlantCellScene, HumanCellScene } from './SpecialisedCellScenes';
 import { EnergySourcesScene, ConservationScene, ElectricityNetworkScene, MagnetismMotionScene, EnergyFormsScene } from './EnergyPathScenes';
 import { CropProductionScene, AnimalProductionScene, FarmingSystemsJ1Scene, FarmingSystemsJ2Scene, SeedBedsScene, AnimalCareScene, DentalScene, FarmToolsJ1Scene, FarmToolsJ2Scene } from './FieldScenes';
 import { WasteWiseScene, HealthDefenderScene, InnovationScene, ClimateStrategistScene, SoilInvestigatorScene, RockExplorerScene } from './EnvironmentScenesJ2';
+import { WasteJ1Scene, HealthJ1Scene, CareersJ1Scene, ClimateJ1Scene, HabitatJ1Scene } from './EnvironmentScenesJ1';
 import { PlantResourcesScene, IndustryScene, HealthScene } from './ResourceIndustryHealthScenes';
 import { CropMaturityScene, FeedPreparationScene, FeedSelectionScene, AgriToolsScene, ManureMaterialsScene } from './FarmScenes';
 
@@ -100,5 +101,10 @@ export const MOTION_SCENES: Record<string, React.FC> = {
   'gh-jhs2-science-science-industry': InnovationScene,
   'gh-jhs2-science-climate-green-economy': ClimateStrategistScene,
   'gh-jhs2-science-soils-plants': SoilInvestigatorScene,
-  'gh-jhs2-science-rocks-soil-formation': RockExplorerScene
+  'gh-jhs2-science-rocks-soil-formation': RockExplorerScene,
+  'gh-jhs1-science-waste-management': WasteJ1Scene,
+  'gh-jhs1-science-human-health': HealthJ1Scene,
+  'gh-jhs1-science-science-industry': CareersJ1Scene,
+  'gh-jhs1-science-climate-green-economy': ClimateJ1Scene,
+  'gh-jhs1-science-understanding-environment': HabitatJ1Scene
 };
