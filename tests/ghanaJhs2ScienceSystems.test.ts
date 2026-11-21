@@ -61,7 +61,7 @@ assert.match(lessonText(planets), /gas giants/);
 assert.match(lessonText(planets), /ice giant/);
 assert.match(lessonText(planets), /model task/);
 assert.match(questionText(planets), /unusual feature/);
-assert.match(questionText(planets), /Neptune/);
+assert.match(questionText(planets), /neptune/);
 
 const ecosystem = 'gh-jhs2-science-ecosystem-feeding';
 for (const concept of ['producer', 'primary consumer', 'secondary consumer', 'food chain', 'food web']) {
