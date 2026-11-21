@@ -1919,3 +1919,14 @@ table.itv-ref td:first-child{font-weight:700}
 .motion-scene__more-body{padding:4px 0 6px}
 .motion-scene__more-body p{margin:6px 0}
 .sm-bubble.is-hit{fill:#fde3df;stroke:#c0463c;stroke-width:4}
+
+/* Keep the top bar pinned while the page scrolls underneath it.
+   On narrow phones the bar wraps onto several lines, so it scrolls normally there. */
+.hud {
+  position: sticky;
+  top: 8px;
+  z-index: 50;
+}
+@media (max-width: 640px) {
+  .hud { position: static; }
+}
