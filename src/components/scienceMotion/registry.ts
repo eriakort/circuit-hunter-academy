@@ -27,6 +27,8 @@ import { ClimateScene } from './ClimateScene';
 import { CircuitScene } from './CircuitScene';
 import { EnergyChainScene } from './EnergyChainScene';
 import { PressureForceScene } from './PressureForceScene';
+import { CompoundScene, PhScene, BondingScene } from './ChemistryScenes';
+import { PlantCellScene, HumanCellScene } from './SpecialisedCellScenes';
 
 /**
  * Ghana Science missions whose scene-1 visual is a "Science in motion" scene.
@@ -60,5 +62,10 @@ export const MOTION_SCENES: Record<string, React.FC> = {
   'gh-jhs3-science-climate-green-economy': ClimateScene,
   'gh-jhs3-science-electricity-electronics': CircuitScene,
   'gh-jhs3-science-energy-conversion': EnergyChainScene,
-  'gh-jhs3-science-force-motion-pressure': PressureForceScene
+  'gh-jhs3-science-force-motion-pressure': PressureForceScene,
+  'gh-jhs3-science-binary-compounds': CompoundScene,
+  'gh-jhs3-science-acids-bases-salts': PhScene,
+  'gh-jhs3-science-chemical-bonding': BondingScene,
+  'gh-jhs3-science-specialised-plant-cells': PlantCellScene,
+  'gh-jhs3-science-specialised-human-cells': HumanCellScene
 };
