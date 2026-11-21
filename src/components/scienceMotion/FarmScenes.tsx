@@ -3,11 +3,7 @@ import { MotionScene, type MotionStep } from './MotionScene';
 import { ChoiceRow } from './ChoiceRow';
 import { MoreDetails } from './MoreDetails';
 import { useSmilPause } from './useSmilPause';
-import { CROP_DETAILS } from '../GhanaJhs3CropMaturityVisual';
-import { ANIMALS as FEED_ANIMALS, PREPARATION_STEPS } from '../GhanaJhs3AnimalFeedPreparationVisual';
-import { ANIMALS as NUTRITION_ANIMALS, STAGES as NUTRITION_STAGES } from '../GhanaJhs3AnimalFeedSelectionVisual';
-import { TASKS } from '../GhanaJhs3AgriculturalToolsVisual';
-import { MATERIALS, GROUPS, type Material } from '../GhanaJhs3ManureMaterialsVisual';
+import { CROP_DETAILS, FEED_ANIMALS, PREPARATION_STEPS, NUTRITION_ANIMALS, NUTRITION_STAGES, TASKS, MATERIALS, GROUPS, type Material } from '../../data/ghanaJhs3ScienceLessons';
 
 const Cap: React.FC<{ x: number; y: number; text: string; anchor?: 'start' | 'middle' | 'end'; dark?: boolean }> = ({ x, y, text, anchor = 'middle' }) => (
   <text x={x} y={y} textAnchor={anchor} className="sm-note sm-note--dark">{text}</text>

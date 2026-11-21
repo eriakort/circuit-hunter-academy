@@ -2,9 +2,7 @@ import React, { useRef } from 'react';
 import { MotionScene, type MotionStep } from './MotionScene';
 import { MoreDetails } from './MoreDetails';
 import { useSmilPause } from './useSmilPause';
-import { PLANT_PARTS } from '../GhanaJhs3PlantResourcesVisual';
-import { INDUSTRIES } from '../GhanaJhs3IndustryVisual';
-import { CONDITION_GUIDES } from '../GhanaJhs3HumanHealthVisual';
+import { PLANT_PARTS, INDUSTRIES, CONDITION_GUIDES } from '../../data/ghanaJhs3ScienceLessons';
 
 const Cap: React.FC<{ x: number; y: number; text: string; anchor?: 'start' | 'middle' | 'end' }> = ({ x, y, text, anchor = 'middle' }) => (
   <text x={x} y={y} textAnchor={anchor} className="sm-note sm-note--dark">{text}</text>
