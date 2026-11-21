@@ -1,6 +1,7 @@
 import type { Language } from '../types';
 import { HIST_VISUAL_BUILDERS_5_9 } from './histVisualsG5_9';
 import { HIST_VISUAL_BUILDERS_10_11 } from './histVisualsG10_11';
+import { animateHistGeo } from './histGeoMotion';
 import { GEO_VISUAL_BUILDERS_5_9 } from './geoVisualsG5_9';
 import { GEO_VISUAL_BUILDERS_10_11 } from './geoVisualsG10_11';
 
@@ -15,5 +16,5 @@ export const HIST_GEO_VISUAL_KEYS = Object.keys(ALL_HIST_GEO_VISUALS);
 
 export function getHistGeoVisual(key: string, lang: Language): string | null {
   const fn = ALL_HIST_GEO_VISUALS[key];
-  return fn ? fn(lang) : null;
+  return fn ? animateHistGeo(key, fn(lang)) : null;
 }
