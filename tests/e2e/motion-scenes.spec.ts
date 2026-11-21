@@ -34,10 +34,12 @@ for (const id of SCENE_IDS) {
     expect(await snapshot(page), 'picture is frozen while paused').toBe(frozenA);
 
     await page.getByRole('button', { name: 'Play', exact: true }).click();
-    await page.waitForTimeout(500);
     const movingA = await snapshot(page);
-    await page.waitForTimeout(700);
-    expect(await snapshot(page), 'picture moves again after Play').not.toBe(movingA);
+    await expect.poll(() => snapshot(page), {
+      message: 'picture moves again after Play',
+      timeout: 5000,
+      intervals: [250, 500, 750]
+    }).not.toBe(movingA);
   });
 }
 
