@@ -202,7 +202,10 @@ export const VIS: Record<string, () => string> = {
    <g id="bus" class="part"><path d="M360 104 H452" stroke="${C.line}" stroke-width="4" fill="none" id="bus1"/><path d="M452 200 H360" stroke="${C.line}" stroke-width="4" fill="none" id="bus2"/>
      <text x="406" y="96" text-anchor="middle" class="sm">bus</text><text x="406" y="220" text-anchor="middle" class="sm">bus</text></g>
    <g id="ram"><rect x="452" y="30" width="190" height="240" rx="10" fill="#262a5e" stroke="#454a8e" stroke-width="2"/><text x="547" y="56" text-anchor="middle" class="lbl">RAM</text>
-     ${rows.map((r,i)=>`<g id="row${i+1}" class="part"><rect class="box" x="466" y="${70+i*46}" width="162" height="38" rx="6"/><text x="476" y="${94+i*46}" class="sm">${r[0]}</text><text x="520" y="${94+i*46}" style="font-size:13px">${r[1]}</text></g>`).join('')}</g>
+     ${rows.map((r,i)=>`<g id="row${i+1}" class="part"><rect class="box" x="466" y="${70+i*46}" width="162" height="38" rx="6"/><text x="476" y="${94+i*46}" class="sm">${r[0]}</text><text x="520" y="${94+i*46}" style="font-size:13px">${r[1]}</text><rect x="466" y="${70+i*46}" width="162" height="38" rx="6" style="fill:none;stroke:${C.ember};stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;.25" dur="8s" begin="${i*2}s" repeatCount="indefinite"/></rect></g>`).join('')}</g>
+   <g aria-hidden="true"><circle r="6" fill="${C.ember}" stroke="#fff" stroke-width="1.5"><animateMotion dur="2s" begin="0s" repeatCount="indefinite" path="M360 104 H452"/></circle>
+   <circle r="6" fill="${C.data}" stroke="#fff" stroke-width="1.5"><animateMotion dur="2s" begin="1s" repeatCount="indefinite" path="M452 200 H360"/></circle>
+   <text x="406" y="124" text-anchor="middle" class="sm" style="fill:${C.ember}">${L(['fetch','preleva'])}</text><text x="406" y="240" text-anchor="middle" class="sm" style="fill:${C.data}">${L(['instruction','istruzione'])}</text></g>
   </svg>`;
 },
   "cores": function cores(){
@@ -381,7 +384,7 @@ export const VIS: Record<string, () => string> = {
    <p class="muted" style="margin-top:8px;font-size:14px">${L(['Each slice lasts a few milliseconds, so it looks like everything runs at once.','Ogni fetta dura pochi millisecondi: sembra che tutto giri contemporaneamente.'])}</p>`;
 },
   "tree": function tree(){
-  return `<div class="twocol"><div class="panel tree">
+  return `<div class="twocol"><div class="panel tree anim">
     <div>${ICON('hdd','ico" style="width:16px;height:16px;vertical-align:-3px')} C:\\</div>
     <div>&nbsp;└ ${ICON('folder','ico" style="width:16px;height:16px;vertical-align:-3px')} ${L(['Users','Utenti'])}</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;└ ${ICON('folder','ico" style="width:16px;height:16px;vertical-align:-3px')} Hana</div>
@@ -454,10 +457,10 @@ export const VIS: Record<string, () => string> = {
 },
   "url": function url(){
   const parts=[['https://',C.sak],['www.school-example.it',C.gold],['/students/timetable.html',C.data]];
-  return `<div class="url">${parts.map(([t,c])=>`<span style="--c:${c}">${t}</span>`).join('')}</div>
-   <div class="legend"><div style="--c:${C.sak}"><i></i><span><b>${L(['Protocol','Protocollo'])}</b> · ${L(['HTTPS = encrypted, safer (padlock)','HTTPS = cifrato, più sicuro (lucchetto)'])}</span></div>
-   <div style="--c:${C.gold}"><i></i><span><b>${L(['Domain','Dominio'])}</b> · ${L(['the site\'s name; .it = Italy','il nome del sito; .it = Italia'])}</span></div>
-   <div style="--c:${C.data}"><i></i><span><b>${L(['Path','Percorso'])}</b> · ${L(['which page on the site','quale pagina del sito'])}</span></div></div>`;
+  return `<div class="url anim">${parts.map(([t,c],i)=>`<span style="--c:${c};--i:${i}">${t}</span>`).join('')}</div>
+   <div class="legend anim"><div style="--c:${C.sak};--i:0"><i></i><span><b>${L(['Protocol','Protocollo'])}</b> · ${L(['HTTPS = encrypted, safer (padlock)','HTTPS = cifrato, più sicuro (lucchetto)'])}</span></div>
+   <div style="--c:${C.gold};--i:1"><i></i><span><b>${L(['Domain','Dominio'])}</b> · ${L(['the site\'s name; .it = Italy','il nome del sito; .it = Italia'])}</span></div>
+   <div style="--c:${C.data};--i:2"><i></i><span><b>${L(['Path','Percorso'])}</b> · ${L(['which page on the site','quale pagina del sito'])}</span></div></div>`;
 },
   "webnet": function webnet(){
   return `<div class="twocol">
@@ -472,12 +475,12 @@ export const VIS: Record<string, () => string> = {
 ]);},
   "email": function email(){
   return `<div class="panel" style="max-width:560px;margin:0 auto;font-size:15px">
-   <div class="row" style="gap:6px"><b style="width:70px">${L(['From','Da'])}</b><span>hana<span style="color:var(--gold)">@</span>school-example.it</span></div>
-   <div class="row" style="gap:6px"><b style="width:70px">${L(['To','A'])}</b><span>teacher@school-example.it</span></div>
-   <div class="row" style="gap:6px"><b style="width:70px">Cc</b><span class="muted">${L(['copy: everyone sees it','copia: tutti la vedono'])}</span></div>
-   <div class="row" style="gap:6px"><b style="width:70px">${L(['Bcc','Ccn'])}</b><span class="muted">${L(['hidden copy: others don\'t see these addresses','copia nascosta: gli altri non vedono questi indirizzi'])}</span></div>
-   <div class="row" style="gap:6px"><b style="width:70px">${L(['Subject','Oggetto'])}</b><span>${L(['Science homework – Hana, 3B','Compiti di scienze – Hana, 3B'])}</span></div>
-   <div class="row" style="gap:6px;margin-top:6px">${ICON('file','ico" style="width:18px;height:18px')}<span>${L(['attachment: report.pdf','allegato: relazione.pdf'])}</span></div></div>
+   <div class="row mailrow" style="gap:6px;--i:0"><b style="width:70px">${L(['From','Da'])}</b><span>hana<span style="color:var(--gold)">@</span>school-example.it</span></div>
+   <div class="row mailrow" style="gap:6px;--i:1"><b style="width:70px">${L(['To','A'])}</b><span>teacher@school-example.it</span></div>
+   <div class="row mailrow" style="gap:6px;--i:2"><b style="width:70px">Cc</b><span class="muted">${L(['copy: everyone sees it','copia: tutti la vedono'])}</span></div>
+   <div class="row mailrow" style="gap:6px;--i:3"><b style="width:70px">${L(['Bcc','Ccn'])}</b><span class="muted">${L(['hidden copy: others don\'t see these addresses','copia nascosta: gli altri non vedono questi indirizzi'])}</span></div>
+   <div class="row mailrow" style="gap:6px;--i:4"><b style="width:70px">${L(['Subject','Oggetto'])}</b><span>${L(['Science homework – Hana, 3B','Compiti di scienze – Hana, 3B'])}</span></div>
+   <div class="row mailrow" style="gap:6px;margin-top:6px;--i:5">${ICON('file','ico" style="width:18px;height:18px')}<span>${L(['attachment: report.pdf','allegato: relazione.pdf'])}</span></div></div>
    <p class="muted" style="text-align:center;margin-top:8px;font-size:14px">${L(['address = username @ domain','indirizzo = nome utente @ dominio'])}</p>`;
 },
   "phishing": function phishing(){ return cards([
@@ -706,7 +709,9 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
    <path d="M480 45 L550 80 L480 115 Z" fill="#262a5e" stroke="${C.sak}" stroke-width="3"/><circle cx="558" cy="80" r="8" fill="#262a5e" stroke="${C.sak}" stroke-width="3"/><text x="505" y="86" text-anchor="middle" style="font-size:12px">NOT</text>
    <text x="95" y="160" text-anchor="middle" class="sm">${L(['1 only if BOTH are 1','1 solo se ENTRAMBI sono 1'])}</text>
    <text x="310" y="160" text-anchor="middle" class="sm">${L(['1 if AT LEAST ONE is 1','1 se ALMENO UNO è 1'])}</text>
-   <text x="520" y="160" text-anchor="middle" class="sm">${L(['flips 0 ↔ 1','inverte 0 ↔ 1'])}</text></svg>`;
+   <text x="520" y="160" text-anchor="middle" class="sm">${L(['flips 0 ↔ 1','inverte 0 ↔ 1'])}</text>
+   <g aria-hidden="true" style="font-family:ui-monospace,monospace;font-size:14px">${[[0,0],[0,1],[1,0],[1,1]].map(([a,b],k)=>`<g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;.25" dur="6s" begin="${k*1.5}s" repeatCount="indefinite"/>
+     <text x="95" y="188" text-anchor="middle" style="fill:${C.data}">${a} AND ${b} = ${a&b}</text><text x="310" y="188" text-anchor="middle" style="fill:${C.gold}">${a} OR ${b} = ${a|b}</text><text x="520" y="188" text-anchor="middle" style="fill:${C.sak}">NOT ${b} = ${1-b}</text></g>`).join('')}</g></svg>`;
 },
   "rangevis": function rangevis(){
   return `<div class="idx">${[0,1,2,3,4].map(i=>`<div><b>${i}</b></div>`).join('')}</div>
@@ -720,11 +725,11 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
 ]);},
   "strindex": function strindex(){
   const w='PYTHON';
-  return `<div class="idx">${w.split('').map((c,i)=>`<div><small>${i}</small><b>${c}</b><small class="neg">${i-w.length}</small></div>`).join('')}</div>
+  return `<div class="idx scan">${w.split('').map((c,i)=>`<div style="--i:${i}"><small>${i}</small><b>${c}</b><small class="neg">${i-w.length}</small></div>`).join('')}</div>
    <pre class="code" style="margin-top:10px">${hl('s = "PYTHON"\nprint(s[0])     # P\nprint(s[-1])    # N\nprint(s[1:4])   # YTH\nprint(len(s))   # 6')}</pre>`;
 },
   "listvis": function listvis(){
-  return `<div class="twocol"><div><div class="eyebrow" style="margin-bottom:6px">${L(['list','lista'])}</div><div class="idx">${['"Hana"','"Luca"','"Sara"'].map((c,i)=>`<div><small>${i}</small><b style="width:auto;padding:0 8px;font-size:14px">${c}</b></div>`).join('')}</div>
+  return `<div class="twocol"><div><div class="eyebrow" style="margin-bottom:6px">${L(['list','lista'])}</div><div class="idx scan">${['"Hana"','"Luca"','"Sara"'].map((c,i)=>`<div style="--i:${i}"><small>${i}</small><b style="width:auto;padding:0 8px;font-size:14px">${c}</b></div>`).join('')}<div class="appended" aria-hidden="true"><small>3</small><b style="width:auto;padding:0 8px;font-size:14px">"Ren"</b></div></div>
    <pre class="code" style="margin-top:8px">${hl('team = ["Hana", "Luca", "Sara"]\nteam.append("Ren")\nprint(len(team))   # 4')}</pre></div>
    <div><div class="eyebrow" style="margin-bottom:6px">${L(['matrix (list of lists)','matrice (lista di liste)'])}</div>
    <pre class="code">${hl('m = [[1, 2, 3],\n     [4, 5, 6]]\nprint(m[1][0])   # 4')}</pre></div></div>`;

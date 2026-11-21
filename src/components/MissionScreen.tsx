@@ -89,6 +89,12 @@ export const MissionScreen: React.FC = () => {
   const isGated = isGatedType && inMissionFirstTime();
 
   useEffect(() => {
+    // CSS animations are switched off by the stylesheet's reduced-motion rule; SMIL (animateMotion) needs pausing here.
+    if (typeof window === 'undefined' || !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll<SVGSVGElement>('.visual svg').forEach((svg) => svg.pauseAnimations?.());
+  }, [currentMission.id, currentSceneIndex]);
+
+  useEffect(() => {
     // If not gated, user can proceed immediately
     if (!isGated) {
       setCanProceed(true);
