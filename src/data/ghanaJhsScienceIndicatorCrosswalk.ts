@@ -357,7 +357,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   {
     "indicatorCode": "B8.3.1.1.1",
     "grade": 8,
-    "strand": 3,
+    26623"strand": 3,
+    "officialIndicatorText": "Identify parts of a mammalian tooth.",
     "missionIds": [
       "gh-jhs2-science-teeth-dental-health"
     ],
@@ -368,7 +369,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   {
     "indicatorCode": "B8.3.1.1.3",
     "grade": 8,
-    "strand": 3,
+    27343"strand": 3,
+    "officialIndicatorText": "Explain the causes and prevention of tooth and gum decay.",
     "missionIds": [
       "gh-jhs2-science-teeth-dental-health"
     ],
@@ -379,7 +381,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   {
     "indicatorCode": "B8.3.2.1.1",
     "grade": 8,
-    "strand": 3,
+    28132"strand": 3,
+    "officialIndicatorText": "Identify the outer planets of the solar system and describe their properties.",
     "missionIds": [
       "gh-jhs2-science-outer-planets"
     ],
@@ -390,7 +393,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   {
     "indicatorCode": "B8.3.3.1.1",
     "grade": 8,
-    "strand": 3,
+    29042"strand": 3,
+    "officialIndicatorText": "Explore the feeding relationships within an ecosystem.",
     "missionIds": [
       "gh-jhs2-science-ecosystem-feeding"
     ],
@@ -401,7 +405,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   {
     "indicatorCode": "B8.3.4.1.1",
     "grade": 8,
-    "strand": 3,
+    29910"strand": 3,
+    "officialIndicatorText": "Identify and describe the types of crops, animals and land combinations for the different farming systems.",
     "missionIds": [
       "gh-jhs2-science-farming-systems"
     ],
@@ -412,7 +417,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   {
     "indicatorCode": "B8.3.4.1.2",
     "grade": 8,
-    "strand": 3,
+    30813"strand": 3,
+    "officialIndicatorText": "Discuss the usefulness of the different crops and animals involved in the different farming systems.",
     "missionIds": [
       "gh-jhs2-science-farming-systems"
     ],
