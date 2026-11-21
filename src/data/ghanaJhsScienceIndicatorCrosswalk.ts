@@ -258,8 +258,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-carbon-cycle"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Carbon moves between the atmosphere, plants, animals, soil and fuels. The lesson traces photosynthesis, feeding, respiration, decomposition and burning.",
+    "assessmentEvidence": "Quiz 0 tests photosynthesis, quiz 1 feeding and quiz 3 decomposition; quiz 2 separately tests respiration.",
+    "teachingSceneRefs": ["gh-jhs2-science-carbon-cycle#scene-0","gh-jhs2-science-carbon-cycle#scene-1","gh-jhs2-science-carbon-cycle#scene-2"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-carbon-cycle#quiz-0","gh-jhs2-science-carbon-cycle#quiz-1","gh-jhs2-science-carbon-cycle#quiz-2","gh-jhs2-science-carbon-cycle#quiz-3"]
   },
   {
     "indicatorCode": "B8.2.1.1.2",
@@ -269,8 +271,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-carbon-cycle"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "The lesson explains how the carbon cycle supports environmental balance and how additional carbon dioxide from burning fossil fuels contributes to global warming.",
+    "assessmentEvidence": "Quiz 4 assesses the importance of recycling carbon; no direct question tests climate-change mitigation.",
+    "teachingSceneRefs": ["gh-jhs2-science-carbon-cycle#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-carbon-cycle#quiz-4"]
   },
   {
     "indicatorCode": "B8.2.2.1.1",
@@ -280,8 +284,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-anopheles-life-cycle"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "The lesson describes the egg, larva, pupa and adult stages and distinguishes the feeding larva from the non-feeding pupa.",
+    "assessmentEvidence": "Quiz 0 tests the life-cycle sequence and quiz 1 tests the aquatic larva.",
+    "teachingSceneRefs": ["gh-jhs2-science-anopheles-life-cycle#scene-0"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-anopheles-life-cycle#quiz-0","gh-jhs2-science-anopheles-life-cycle#quiz-1"]
   },
   {
     "indicatorCode": "B8.2.2.1.2",
@@ -291,8 +297,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-anopheles-life-cycle"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "The lesson explains the infected female Anopheles mosquito as a malaria vector and gives safe bite-prevention and breeding-site control measures. It also clarifies that malaria is not spread by touching an ill person.",
+    "assessmentEvidence": "Quiz 2 assesses the transmitting mosquito, quiz 3 the meaning of vector and quiz 4 prevention.",
+    "teachingSceneRefs": ["gh-jhs2-science-anopheles-life-cycle#scene-1","gh-jhs2-science-anopheles-life-cycle#scene-2","gh-jhs2-science-anopheles-life-cycle#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-anopheles-life-cycle#quiz-2","gh-jhs2-science-anopheles-life-cycle#quiz-3","gh-jhs2-science-anopheles-life-cycle#quiz-4"]
   },
   {
     "indicatorCode": "B8.2.3.1.1",
@@ -302,8 +310,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-seed-beds"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "The lesson compares flat, raised, sunken, ridge and mound seed beds and explains suitability in wet and dry conditions.",
+    "assessmentEvidence": "Quiz 0 tests the definition of a seed bed, quiz 1 raised beds and quiz 2 sunken beds.",
+    "teachingSceneRefs": ["gh-jhs2-science-seed-beds#scene-0","gh-jhs2-science-seed-beds#scene-1","gh-jhs2-science-seed-beds#scene-2"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-seed-beds#quiz-0","gh-jhs2-science-seed-beds#quiz-1","gh-jhs2-science-seed-beds#quiz-2"]
   },
   {
     "indicatorCode": "B8.2.3.2.1",
@@ -313,8 +323,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-seed-beds"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "The lesson describes a fair comparison of crop growth in different seed beds using plant height, size, flowers and fruits recorded over time.",
+    "assessmentEvidence": "Quiz 3 tests suitable growth measurements and quiz 4 tests fair-comparison conditions; actual growing and recording remains a practical learner task.",
+    "teachingSceneRefs": ["gh-jhs2-science-seed-beds#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-seed-beds#quiz-3","gh-jhs2-science-seed-beds#quiz-4"]
   },
   {
     "indicatorCode": "B8.2.4.1.1",
@@ -324,8 +336,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-animal-feed-water"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "The lesson distinguishes roughages and concentrates, gives feed examples and explains the functions of carbohydrates, fats, proteins, minerals and vitamins.",
+    "assessmentEvidence": "Quiz 0 tests roughage, quiz 1 an energy-rich concentrate and quiz 2 protein.",
+    "teachingSceneRefs": ["gh-jhs2-science-animal-feed-water#scene-0","gh-jhs2-science-animal-feed-water#scene-1","gh-jhs2-science-animal-feed-water#scene-2"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-animal-feed-water#quiz-0","gh-jhs2-science-animal-feed-water#quiz-1","gh-jhs2-science-animal-feed-water#quiz-2"]
   },
   {
     "indicatorCode": "B8.2.4.2.1",
@@ -335,8 +349,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-animal-feed-water"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "The lesson explains why clean water is essential for digestion, nutrient transport and body functions, and notes effects of inadequate water or unsuitable feed.",
+    "assessmentEvidence": "Quiz 3 directly tests the importance of adequate clean water; quiz 4 assesses factors that guide feed choice.",
+    "teachingSceneRefs": ["gh-jhs2-science-animal-feed-water#scene-3"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-animal-feed-water#quiz-3","gh-jhs2-science-animal-feed-water#quiz-4"]
   },
   {
     "indicatorCode": "B8.3.1.1.1",
