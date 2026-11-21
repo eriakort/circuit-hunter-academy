@@ -2,11 +2,11 @@ import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 
 const schema = readFileSync(
-  new URL("../supabase/migrations/20261115000000_race_arena_server_authority.sql", import.meta.url),
+  new URL("../supabase/migrations/20261115093556_race_arena_server_authority.sql", import.meta.url),
   "utf8"
 );
 const atomic = readFileSync(
-  new URL("../supabase/migrations/20261115010000_race_arena_atomic_operations.sql", import.meta.url),
+  new URL("../supabase/migrations/20261115093602_race_arena_atomic_operations.sql", import.meta.url),
   "utf8"
 );
 
