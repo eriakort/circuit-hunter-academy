@@ -29592,3 +29592,6 @@ import { GHANA_JHS3_SCIENCE_SUBJECT } from './ghanaJhs3ScienceData';
 [GHANA_JHS2_MATH_SUBJECT, GHANA_JHS3_MATH_SUBJECT, GHANA_JHS1_SCIENCE_SUBJECT, GHANA_JHS2_SCIENCE_SUBJECT, GHANA_JHS3_SCIENCE_SUBJECT].forEach(subject => {
   if (!SUBJECTS.some(item => item.id === subject.id)) SUBJECTS.push(subject);
 });
+
+import { addSubjectGameScenes } from './subjectGameScenes';
+addSubjectGameScenes(MISSIONS);

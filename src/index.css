@@ -2034,3 +2034,26 @@ table.itv-ref td:first-child{font-weight:700}
 @keyframes gapblink{0%,100%{background:rgba(255,209,102,.14)}50%{background:rgba(255,209,102,.32)}}
 .break-result{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
 .break-star{font-size:56px;color:var(--gold);animation:float 2s ease-in-out infinite}
+
+/* ============ subject mini-games: coordinate hunt, timeline, equation balancer ============ */
+.ch-map .ch-pt{fill:rgba(69,216,255,.08);stroke:var(--data);stroke-width:1;cursor:pointer;transition:fill .15s}
+.ch-map .ch-pt:hover,.ch-map .ch-pt:focus-visible{fill:rgba(69,216,255,.35);outline:none}
+.tl-wrap{width:100%;max-width:520px;padding:0 10px}
+.tl-bar{position:relative;height:58px;border-bottom:3px solid var(--line);margin-bottom:6px}
+.tl-tick{position:absolute;bottom:-26px;transform:translateX(-50%);font-size:10px;color:var(--muted);white-space:nowrap}
+.tl-tick::before{content:"";position:absolute;left:50%;top:-14px;height:10px;border-left:1px solid var(--line)}
+.tl-guess,.tl-truth{position:absolute;bottom:-3px;width:4px;height:44px;transform:translateX(-50%);border-radius:2px}
+.tl-guess{background:var(--data);transition:left .08s}
+.tl-truth{background:var(--gold);height:56px;box-shadow:0 0 10px var(--gold)}
+.tl-wrap input[type=range]{width:100%;margin-top:34px}
+.bal-eq{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:center;gap:6px 10px}
+.bal-term{display:flex;flex-direction:column;align-items:center;gap:2px}
+.bal-term .btn{padding:2px 12px;line-height:1.2}
+.bal-c{font:800 26px var(--display);color:var(--gold);min-width:1.2em}
+.bal-f{font:700 20px var(--mono);padding-top:2px}
+.bal-plus,.bal-arrow{font:700 22px var(--mono);color:var(--muted);padding-bottom:30px}
+.bal-tab{border-collapse:collapse;font-size:14px;min-width:60%}
+.bal-tab th,.bal-tab td{padding:3px 12px;border-bottom:1px solid var(--line)}
+.bal-tab .okrow td:last-child{color:#38ef7d}
+.bal-tab tr:not(.okrow) td:last-child{color:var(--ember)}
+@media (prefers-reduced-motion:reduce){.tl-guess{transition:none}}

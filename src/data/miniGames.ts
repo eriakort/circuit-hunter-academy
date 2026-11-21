@@ -2,6 +2,7 @@
 import { Language, Mission, Scene } from "../types";
 import { L as origL, PILL as origPILL, rich as origRich, cards as origCards, ICON, C, esc, escH, demonSVG, U, hl } from "../helpers";
 import { VIS } from "./visuals";
+import { makeSubjectGames } from "./subjectGames";
 import { JN, BOARD, ROBOT_LEVELS, BUILD, FN, SF } from "./gameData";
 
 let LANG: Language = "en";
@@ -1051,6 +1052,7 @@ export const MINI_GAMES: Record<string, (sc: any, host: HTMLElement, done: () =>
   vectors: gameVectors,
   torque: gameTorque,
   fluids: gameFluids,
+  ...makeSubjectGames({ L, $, $$, shuffle, xpNote, award, lang: () => LANG }),
 };
 
 /**
