@@ -1,3 +1,4 @@
+import { HISTORY5_BOOK_QUESTIONS } from '../src/data/historyG5BookQuestions';
 import assert from 'node:assert/strict';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -156,7 +157,9 @@ for (const spec of SUBJECT_SPECS) {
   assert.equal(subjectCodex.length, codexCount, `${subjectId} must have ${codexCount} Codex entries`);
 
   const categories = getCategories(subjectId);
-  assert.equal(categories[0]?.count, subjectQuestions, `QuestionBank for ${subjectId} must expose all ${subjectQuestions} questions`);
+  // Grade 5 History also has supplemental questions based on the approved textbook's topics.
+  const supplemental = subjectId === 'hist5' ? HISTORY5_BOOK_QUESTIONS.length : 0;
+  assert.equal(categories[0]?.count, subjectQuestions + supplemental, `QuestionBank for ${subjectId} must expose all ${subjectQuestions + supplemental} questions`);
 }
 
 assert.equal(totalQuestions, 192, 'Total History + Geography quiz questions must equal 192');

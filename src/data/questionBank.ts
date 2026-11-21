@@ -4,6 +4,7 @@ import { EXTRA_PHYSICS_QUESTIONS } from './physicsQuestions';
 import { EXTRA_MATH_QUESTIONS } from './mathQuestions';
 import { ITALIAN_GRAMMAR_TOPICS } from './italianGrammar';
 import { shuffle } from '../helpers';
+import { HISTORY5_BOOK_QUESTIONS } from './historyG5BookQuestions';
 
 // Compile all questions from missions into an indexed bank
 let cachedBank: TaggedQuestion[] | null = null;
@@ -37,6 +38,26 @@ export function getCompleteQuestionBank(): TaggedQuestion[] {
   // Include supplemental physics and Bergamini-Barozzi math questions.
   bank.push(...EXTRA_PHYSICS_QUESTIONS);
   bank.push(...EXTRA_MATH_QUESTIONS);
+
+  // Supplemental Grade 5 History questions organised by the approved textbook's topics.
+  HISTORY5_BOOK_QUESTIONS.forEach((item, index) => {
+    const mission = MISSIONS.find(m => m.id === item.missionId);
+    if (!mission) return;
+    const arc = ARCS[mission.arc];
+    bank.push({
+      q: item.q,
+      a: item.a,
+      why: item.why,
+      id: `${item.missionId}-book${index}`,
+      subject: (arc?.subject || 'hist5') as SubjectId,
+      unitIndex: arc?.unit ?? 0,
+      arcIndex: mission.arc,
+      missionId: mission.id,
+      chapterTitle: arc?.title || mission.title,
+      missionTitle: mission.title,
+      bookRef: item.bookRef
+    });
+  });
 
   // Reuse the exact grammar MCQs shown in Grammar Training; keep one source of truth.
   ITALIAN_GRAMMAR_TOPICS.forEach(topic => {
