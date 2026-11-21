@@ -1976,3 +1976,22 @@ table.itv-ref td:first-child{font-weight:700}
 .vm-sweep{position:relative}
 .vm-sweep::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:12px;background:linear-gradient(100deg,transparent 40%,rgba(255,255,255,.08) 50%,transparent 60%);background-size:250% 100%;animation:vmsweep 5s ease-in-out infinite}
 @keyframes vmsweep{0%{background-position:120% 0}100%{background-position:-120% 0}}
+
+/* Mini-game motion: scenes ease in, idle items drift, feedback pops or shakes */
+.game>*{animation:rise .4s ease-out both}
+.game>*:nth-child(2){animation-delay:.06s}.game>*:nth-child(3){animation-delay:.12s}.game>*:nth-child(4){animation-delay:.18s}.game>*:nth-child(5){animation-delay:.24s}
+.game .item .ico{animation:float 3s ease-in-out infinite}
+.game .btn:not(:disabled),.game .pbtn,.game .slot:not(.filled){transition:transform .15s,box-shadow .15s,border-color .15s}
+.game .btn:not(:disabled):hover,.game .pbtn:hover{transform:translateY(-2px)}
+.game .slot:not(.filled){animation:slotidle 2.4s ease-in-out infinite}
+@keyframes slotidle{0%,100%{box-shadow:0 0 0 0 rgba(74,159,149,0)}50%{box-shadow:0 0 0 4px rgba(74,159,149,.28)}}
+.game .slot.filled{animation:pop .45s ease-out both}
+.game .pbtn.sel{animation:selpulse 1.2s ease-in-out infinite}
+@keyframes selpulse{0%,100%{box-shadow:0 0 0 2px var(--data)}50%{box-shadow:0 0 0 5px rgba(69,216,255,.35)}}
+.game .btn.right,.game .cat.right{animation:rightpop .5s ease-out}
+@keyframes rightpop{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
+.game .ord li{animation:rise .3s ease-out both}
+.fb.ok.fb-pop{animation:fbok .5s ease-out}
+.fb.no.fb-pop{animation:shake .35s}
+@keyframes fbok{0%{transform:scale(.9);opacity:.2}50%{transform:scale(1.04);opacity:1}100%{transform:none}}
+.game .shake.shake{animation:shake .35s!important}

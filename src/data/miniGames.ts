@@ -1053,6 +1053,35 @@ export const MINI_GAMES: Record<string, (sc: any, host: HTMLElement, done: () =>
   fluids: gameFluids,
 };
 
+/**
+ * Feedback motion for every mini-game: whenever a `.fb` message is (re)written as correct or
+ * wrong, restart a short pop (correct) or shake (wrong). Done with an observer so the individual
+ * games stay untouched. The animations themselves are CSS, so reduced motion switches them off.
+ */
+function watchFeedback(host: HTMLElement) {
+  if (!host || (host as any).__fbWatch || typeof MutationObserver === "undefined") return;
+  (host as any).__fbWatch = true;
+  const opts = { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ["class"] };
+  const obs = new MutationObserver(records => {
+    obs.disconnect();
+    const seen = new Set<Element>();
+    for (const r of records) {
+      const node = r.target as Node;
+      const el = node.nodeType === 1 ? (node as Element) : node.parentElement;
+      const fb = el && el.closest ? el.closest(".fb") : null;
+      if (fb && (fb.classList.contains("ok") || fb.classList.contains("no"))) seen.add(fb);
+    }
+    seen.forEach(fb => {
+      fb.classList.remove("fb-pop");
+      void (fb as HTMLElement).offsetWidth;
+      fb.classList.add("fb-pop");
+    });
+    obs.takeRecords();
+    obs.observe(host, opts);
+  });
+  obs.observe(host, opts);
+}
+
 export function runMiniGame(
   type: string,
   sc: Scene,
@@ -1069,6 +1098,7 @@ export function runMiniGame(
   CURRENT_MISSION = mission;
   IN_FIRST_TIME = isFirstTime;
   ON_AWARD = awardFn;
+  watchFeedback(host);
   if (type === "powercut") {
     initPowercut(done);
   } else if (type === "board") {
