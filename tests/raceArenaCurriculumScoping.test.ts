@@ -2,12 +2,12 @@ import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 
 const migration = readFileSync(
-  new URL("../supabase/migrations/20261115020000_race_arena_curriculum_scoping.sql", import.meta.url),
+  new URL("../supabase/migrations/20261115093604_race_arena_curriculum_scoping.sql", import.meta.url),
   "utf8"
 );
 
 const latestMigration = readFileSync(
-  new URL("../supabase/migrations/20261116010000_race_arena_math_g10_11.sql", import.meta.url),
+  new URL("../supabase/migrations/20261116190132_race_arena_math_g10_11.sql", import.meta.url),
   "utf8"
 );
 const raceApiSource = readFileSync(
