@@ -104,9 +104,34 @@ const RENDERERS: Record<string, (lang: Language) => string> = {
     `<figure class="g5m-fig"><figcaption>${t(['The minimal core sentence and its expansions', 'La frase minima nucleare e le espansioni'], lang)}</figcaption><div class="itv-core"><span class="exp">Ieri</span><span class="nuc">Luca</span><span class="nuc verb">regala</span><span class="nuc">un libro</span><span class="nuc">a Sara</span><span class="exp">in biblioteca</span></div><p class="g5m-note">${t(['Orange = core (verb + necessary elements) · grey = expansions you can remove', 'Arancione = nucleo (verbo + elementi necessari) · grigio = espansioni che si possono togliere'], lang)}</p></figure>`
 };
 
+/**
+ * Gentle motion for the grammar tables: tense blocks and table rows are lit one after
+ * another, the timeline gets a dot that travels from past to future, and the expansions of
+ * the core sentence appear in turn. Everything is CSS or SMIL, so reduced motion stops it.
+ */
+export function animateItalianQuinta(key: string, html: string): string {
+  if (key.startsWith('itg5-table-') && key !== 'itg5-table-irregolari') {
+    const total = (html.match(/<div class="itv-tense">/g) || []).length || 1;
+    let i = 0;
+    return html.replace(/<div class="itv-tense">/g, () => `<div class="itv-tense itv-lit" style="animation-delay:${((i++ * 9) / total).toFixed(2)}s">`);
+  }
+  if (key === 'itg5-indicative-timeline') {
+    const overlay = '<g aria-hidden="true"><circle cx="435" cy="110" r="7" fill="none" stroke="#ffd166" stroke-width="2"><animate attributeName="r" values="7;17;7" dur="2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur="2.4s" repeatCount="indefinite"/></circle><circle r="5" cx="0" cy="0" fill="#fff" style="fill:#fff"><animateMotion path="M75 110 H579" dur="8s" repeatCount="indefinite"/></circle></g>';
+    return html.replace(/<\/svg>\s*$/, `${overlay}</svg>`);
+  }
+  if (key === 'itg5-core-sentence') {
+    let i = 0;
+    return html.replace(/<span class="exp"/g, () => `<span class="exp itv-grow" style="animation-delay:${(i++ * 0.7).toFixed(1)}s"`);
+  }
+  if (/^itg5-(irregolari|articles|special-adjectives|personal-pronouns|prepositions)|^itg5-table-irregolari$/.test(key)) {
+    return html.replace('class="g5m-table itv-ref"', 'class="g5m-table itv-ref g5m-rows"');
+  }
+  return html;
+}
+
 export function getItalianQuintaVisual(key: string, lang: Language): string | null {
   const render = RENDERERS[key];
-  return render ? render(lang) : null;
+  return render ? animateItalianQuinta(key, render(lang)) : null;
 }
 
 export const ITALIAN_QUINTA_VISUAL_KEYS = Object.keys(RENDERERS);

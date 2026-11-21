@@ -8,6 +8,7 @@ import { getItalianQuintaVisual } from "./italianQuintaVisuals";
 import { getChemVisual } from "./chemVisuals";
 import { getHistGeoVisual } from "./histGeoVisuals";
 import { getMathAdvVisual } from "./mathAdvVisuals";
+import { animateVisual } from "./visualsMotion";
 
 let currentLang: Language = "en";
 const L: any = (x: any) => origL(x, currentLang);
@@ -1214,7 +1215,7 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
 
 export function getVisualHtml(key: string, lang: Language): string {
   currentLang = lang;
-  if (VIS[key]) return VIS[key]();
+  if (VIS[key]) return animateVisual(VIS[key]());
   const grade5Math = getGrade5MathVisual(key, lang);
   if (grade5Math !== null) return grade5Math;
   const chemVisual = getChemVisual(key, lang);
