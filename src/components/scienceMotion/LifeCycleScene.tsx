@@ -3,7 +3,7 @@ import { MotionScene, type MotionStep } from './MotionScene';
 import { ChoiceRow } from './ChoiceRow';
 import { useSmilPause } from './useSmilPause';
 
-type Organism = { id: 'fly' | 'plant' | 'chicken'; name: string; steps: MotionStep[]; hint: string };
+export type Organism = { id: 'fly' | 'plant' | 'chicken' | 'mosquito'; name: string; steps: MotionStep[]; hint: string };
 
 export const ORGANISMS: Organism[] = [
   {
@@ -36,7 +36,7 @@ export const ORGANISMS: Organism[] = [
   }
 ];
 
-const Icon: React.FC<{ organism: Organism['id']; stage: string }> = ({ organism, stage }) => {
+export const Icon: React.FC<{ organism: Organism['id']; stage: string }> = ({ organism, stage }) => {
   const key = `${organism}:${stage}`;
   switch (key) {
     case 'fly:egg': return <ellipse rx="10" ry="15" fill="#f8f4e8" stroke="#b9ae92" strokeWidth="2" />;
@@ -52,11 +52,15 @@ const Icon: React.FC<{ organism: Organism['id']; stage: string }> = ({ organism,
     case 'chicken:hatch': return <g><path d="M-14 4 L-8 -4 L-3 4 L3 -4 L8 4 L14 -4 V8 Q14 22 0 22 Q-14 22 -14 8 Z" fill="#ecd7b5" stroke="#b79a6a" strokeWidth="2" /><circle cx="0" cy="-8" r="9" fill="#f6d34a" /><circle cx="3" cy="-10" r="1.8" fill="#222" /><path d="M8 -7 l6 2 l-6 2" fill="#e08a3c" /></g>;
     case 'chicken:young': return <g><ellipse cx="0" cy="8" rx="16" ry="12" fill="#e8c35a" /><circle cx="12" cy="-8" r="8" fill="#e8c35a" /><circle cx="14" cy="-10" r="1.8" fill="#222" /><path d="M19 -8 l7 2 l-7 2" fill="#e08a3c" /><path d="M-4 20 v8 M6 20 v8" stroke="#e08a3c" strokeWidth="2.5" /></g>;
     case 'chicken:adult': return <g><ellipse cx="-2" cy="6" rx="22" ry="15" fill="#a8582e" /><path d="M-22 -2 q-10 -16 2 -22 q-2 10 6 12" fill="#7a3a1a" /><circle cx="16" cy="-10" r="9" fill="#a8582e" /><path d="M12 -19 q4 -8 8 0 q4 -6 6 2" fill="#c0392b" /><circle cx="19" cy="-12" r="1.8" fill="#222" /><path d="M24 -9 l8 2 l-8 3" fill="#e08a3c" /><path d="M-6 20 v10 M8 20 v10" stroke="#e08a3c" strokeWidth="3" /></g>;
+    case 'mosquito:egg': return <g><path d="M-34 22 h68" stroke="#3f9fc3" strokeWidth="4" /><g fill="#4a4a42">{[-24, -8, 8, 24].map(x => <ellipse key={x} cx={x} cy="12" rx="4" ry="9" />)}</g></g>;
+    case 'mosquito:larva': return <g><path d="M-34 -20 h68" stroke="#3f9fc3" strokeWidth="4" /><path d="M-18 -18 q4 20 20 26 q22 4 26 -6" stroke="#7a6a4a" strokeWidth="8" fill="none" strokeLinecap="round" /><path d="M-18 -18 v-6" stroke="#7a6a4a" strokeWidth="3" /></g>;
+    case 'mosquito:pupa': return <g><path d="M-34 -22 h68" stroke="#3f9fc3" strokeWidth="4" /><path d="M-6 -8 q-16 8 -8 22 q10 12 22 2 q4 -8 -4 -14 q-8 -4 -10 -10 Z" fill="#8a6a4a" stroke="#5a3f27" strokeWidth="2" /></g>;
+    case 'mosquito:adult': return <g><ellipse cx="-4" cy="2" rx="18" ry="5" fill="#4a4a42" /><circle cx="16" cy="0" r="5" fill="#4a4a42" /><path d="M20 2 l16 8" stroke="#4a4a42" strokeWidth="2" /><ellipse cx="-6" cy="-8" rx="14" ry="5" fill="#9ecbe8" opacity=".75"><animate attributeName="ry" values="6;1;6" dur=".18s" repeatCount="indefinite" /></ellipse><path d="M-14 6 l-10 16 M-4 7 l-2 18 M6 6 l8 16" stroke="#4a4a42" strokeWidth="1.8" fill="none" /></g>;
     default: return null;
   }
 };
 
-const LifeCycleArt: React.FC<{ organism: Organism; stepIndex: number; playing: boolean; reducedMotion: boolean }> = ({ organism, stepIndex, playing, reducedMotion }) => {
+export const LifeCycleArt: React.FC<{ organism: Organism; stepIndex: number; playing: boolean; reducedMotion: boolean }> = ({ organism, stepIndex, playing, reducedMotion }) => {
   const svg = useRef<SVGSVGElement>(null);
   useSmilPause(svg, playing, reducedMotion, organism.id);
   const n = organism.steps.length;
@@ -106,3 +110,24 @@ export const LifeCycleScene: React.FC = () => {
     </MotionScene>
   );
 };
+
+const MOSQUITO: Organism = {
+  id: 'mosquito', name: 'Anopheles mosquito', hint: 'Use insecticide-treated nets as directed and remove standing water safely. Never breed or handle mosquitoes as a home experiment.',
+  steps: [
+    { id: 'egg', label: 'Egg', caption: 'A female Anopheles mosquito lays eggs on water. The eggs hatch into larvae.' },
+    { id: 'larva', label: 'Larva', caption: 'The larva lives in water, feeds and grows. It must come to the surface to breathe.' },
+    { id: 'pupa', label: 'Pupa', caption: 'The pupa remains in water while the adult mosquito develops. It does not feed.' },
+    { id: 'adult', label: 'Adult', caption: 'An adult mosquito emerges. An infected female Anopheles can transmit malaria parasites when she bites.' }
+  ]
+};
+
+export const MosquitoLifeCycleScene: React.FC = () => (
+  <MotionScene
+    title="The Mosquito Life-Cycle Defender"
+    description="Follow the four stages of the Anopheles mosquito life cycle in order."
+    steps={MOSQUITO.steps}
+    footer={MOSQUITO.hint}
+  >
+    {({ stepIndex, playing, reducedMotion }) => <LifeCycleArt organism={MOSQUITO} stepIndex={stepIndex} playing={playing} reducedMotion={reducedMotion} />}
+  </MotionScene>
+);

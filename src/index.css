@@ -1904,3 +1904,12 @@ table.itv-ref td:first-child{font-weight:700}
 .sm-stage rect{fill:#fff8e6;stroke:#5c5a50;stroke-width:2;transition:all .3s}
 .sm-stage.is-active rect{fill:#fff3c8;stroke:#c8921c;stroke-width:4}
 .sm-stage text{font:700 13px var(--body);fill:#2b2f2a}
+.sm-note--dark{fill:#2b2f2a}
+.sm-atom-title{font:800 16px var(--body);fill:#fff}
+.sm-atom-row{font:700 15px var(--body);fill:#fff}
+.sm-atom-note{font:600 12px var(--body);fill:#c9d6e6}
+.sm-croute{fill:none;stroke:#fff;stroke-opacity:.6;stroke-width:3;stroke-dasharray:6 6}
+.sm-croute.is-active{stroke:#2b2f2a;stroke-opacity:1;stroke-width:5;stroke-dasharray:none}
+.sm-carbon{fill:#3a3a3a;stroke:#fff;stroke-width:2}
+.sm-carbon-text{font:800 12px var(--mono);fill:#fff}
+.sm-name--light{fill:#fff}

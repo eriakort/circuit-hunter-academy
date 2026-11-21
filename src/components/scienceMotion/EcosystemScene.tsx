@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { MotionScene, type MotionStep } from './MotionScene';
 import { useSmilPause } from './useSmilPause';
 
-type Habitat = { id: 'savanna' | 'pond'; name: string; kinds: Kind[]; steps: MotionStep[] };
+type Habitat = { id: 'savanna' | 'pond'; name: string; kinds: Kind[]; steps: MotionStep[]; roles?: string[] };
 type Kind = 'grass' | 'grasshopper' | 'frog' | 'snake' | 'algae' | 'insect' | 'smallfish' | 'bigfish';
 
 export const HABITATS: Habitat[] = [
@@ -78,7 +78,7 @@ const EcosystemArt: React.FC<{ habitat: Habitat; stepIndex: number; playing: boo
           <circle cx={X[i]} cy={Y} r="46" className={`sm-bubble${stepIndex === i ? ' is-active' : ''}`} />
           <Icon kind={kind} x={X[i]} />
           <text x={X[i]} y={Y + 74} textAnchor="middle" className={`sm-organism${stepIndex === i ? ' is-active' : ''}`}>{habitat.steps[i].label}</text>
-          <text x={X[i]} y={Y + 92} textAnchor="middle" className="sm-note">{i === 0 ? 'Producer' : i === 3 ? 'Top consumer' : 'Consumer'}</text>
+          <text x={X[i]} y={Y + 92} textAnchor="middle" className="sm-note">{habitat.roles?.[i] ?? (i === 0 ? 'Producer' : i === 3 ? 'Top consumer' : 'Consumer')}</text>
         </g>
       ))}
 
@@ -98,27 +98,48 @@ const EcosystemArt: React.FC<{ habitat: Habitat; stepIndex: number; playing: boo
   );
 };
 
-export const EcosystemScene: React.FC = () => {
-  const [habitatId, setHabitatId] = useState<Habitat['id']>('savanna');
-  const habitat = HABITATS.find(h => h.id === habitatId) ?? HABITATS[0];
-  return <EcosystemInner key={habitat.id} habitat={habitat} onHabitat={setHabitatId} />;
+type SceneOptions = { title: string; description: string; footer: string; habitats: Habitat[] };
+
+const FOOD_WEB_HABITAT: Habitat = {
+  ...HABITATS[0],
+  roles: ['Producer', 'Primary consumer', 'Secondary consumer', 'Tertiary consumer'],
+  steps: [
+    { id: 'grass', label: 'Grass', caption: 'Producer: Grass uses sunlight to make food by photosynthesis. It forms the base of this food chain.' },
+    { id: 'grasshopper', label: 'Grasshopper', caption: 'Primary consumer: The grasshopper eats grass and obtains energy stored in plant material.' },
+    { id: 'frog', label: 'Frog', caption: 'Secondary consumer: The frog eats grasshoppers and transfers energy to the next feeding level.' },
+    { id: 'snake', label: 'Snake', caption: 'Tertiary consumer: The snake may eat frogs. Changes in one population can affect other organisms in the food web.' }
+  ]
 };
 
-const EcosystemInner: React.FC<{ habitat: Habitat; onHabitat: (id: Habitat['id']) => void }> = ({ habitat, onHabitat }) => (
+const EcosystemBase: React.FC<SceneOptions> = options => {
+  const [habitatId, setHabitatId] = useState<Habitat['id']>(options.habitats[0].id);
+  const habitat = options.habitats.find(h => h.id === habitatId) ?? options.habitats[0];
+  return <EcosystemInner key={habitat.id} habitat={habitat} habitats={options.habitats} onHabitat={setHabitatId} title={options.title} description={options.description} footer={options.footer} />;
+};
+
+export const EcosystemScene: React.FC = () => (
+  <EcosystemBase title="The Ecosystem Balance Keeper" description="Explore a food chain and see how energy moves between organisms." footer="Water, soil, air, sunlight and temperature are non-living factors that also shape each ecosystem." habitats={HABITATS} />
+);
+
+export const FoodWebScene: React.FC = () => (
+  <EcosystemBase title="The Ecosystem Food-Web Strategist" description="Follow energy through a Ghanaian savanna food chain and identify each organism's role." footer="Arrows in a food chain point from the organism being eaten to the organism that eats it." habitats={[FOOD_WEB_HABITAT]} />
+);
+
+const EcosystemInner: React.FC<{ habitat: Habitat; habitats: Habitat[]; onHabitat: (id: Habitat['id']) => void; title: string; description: string; footer: string }> = ({ habitat, habitats, onHabitat, title, description, footer }) => (
   <MotionScene
-    title="The Ecosystem Balance Keeper"
-    description="Explore a food chain and see how energy moves between organisms."
+    title={title}
+    description={description}
     steps={habitat.steps}
-    extraControls={
+    extraControls={habitats.length > 1 ? (
       <div className="gh-jhs1-science-interaction">
         <div className="gh-jhs1-science-choices" role="group" aria-label="Habitat">
-          {HABITATS.map(item => (
+          {habitats.map(item => (
             <button key={item.id} type="button" className={`gh-jhs1-science-choice${habitat.id === item.id ? ' is-active' : ''}`} aria-pressed={habitat.id === item.id} onClick={() => onHabitat(item.id)}>{item.id === 'savanna' ? 'Savanna' : 'Pond'}</button>
           ))}
         </div>
       </div>
-    }
-    footer="Water, soil, air, sunlight and temperature are non-living factors that also shape each ecosystem."
+    ) : undefined}
+    footer={footer}
   >
     {({ stepIndex, playing, reducedMotion }) => <EcosystemArt habitat={habitat} stepIndex={stepIndex} playing={playing} reducedMotion={reducedMotion} />}
   </MotionScene>

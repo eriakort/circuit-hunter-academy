@@ -13,6 +13,13 @@ const cases: [string, string, string][] = [
   ['gh-jhs1-science-force-motion', 'The Force and Motion Pathfinder', 'Kicking a football'],
   ['gh-jhs1-science-electricity-generation', 'The Electricity Generation Guardian', 'Hydroelectricity'],
   ['gh-jhs1-science-energy-conversion', 'The Energy Transformation Alchemist', 'Electric fan'],
+  ['gh-jhs2-science-outer-planets', 'The Outer Planet Navigator', 'Neptune'],
+  ['gh-jhs2-science-ecosystem-feeding', 'The Ecosystem Food-Web Strategist', 'Grasshopper'],
+  ['gh-jhs2-science-anopheles-life-cycle', 'The Mosquito Life-Cycle Defender', 'Pupa'],
+  ['gh-jhs2-science-atomic-structure', 'The Atomic Structure Navigator', 'Chloride ion (Cl⁻)'],
+  ['gh-jhs2-science-cell-types', 'The Cell Type Investigator', 'Prokaryotic cell'],
+  ['gh-jhs2-science-carbon-cycle', 'The Carbon Cycle Guardian', 'Photosynthesis'],
+  ['gh-jhs2-science-mixture-separation', 'The Mixture Separation Engineer', 'Magnetic separation'],
   ['gh-jhs3-science-nitrogen-cycle', 'The Nitrogen Cycle Guardian', 'Nitrification']
 ];
 for (const [id, title, control] of cases) {
