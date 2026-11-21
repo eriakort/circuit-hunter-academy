@@ -1,10 +1,16 @@
 import { expect, test, type Page } from '@playwright/test';
 import { ARCS, MISSIONS } from '../../src/data/gameData';
 
-// Chemistry diagrams that used to be static pictures.
+// Every chemistry diagram (all 36) used to be a static picture.
 const KEYS = [
-  'chemStates', 'chemSeparation', 'chemAtomModels', 'chemBonds', 'chemKinetics', 'chemOrbitals',
-  'chemElectroCell', 'chemRedox', 'chemBronstedPass', 'chemDilutionPour', 'chemDistillFlow', 'chemPolarityTug'
+  'chemStates', 'chemMixtures', 'chemSeparation', 'chemLaws', 'chemMole',
+  'chemGas', 'chemAtomModels', 'chemOrbitals', 'chemPeriodic', 'chemBonds',
+  'chemVSEPR', 'chemNomenclature', 'chemBalancing', 'chemStoich', 'chemSolutions',
+  'chemThermo', 'chemKinetics', 'chemEquilibrium', 'chemAcidsPH', 'chemRedox',
+  'chemOrganic', 'chemPhysVsChem', 'chemMixVsPure', 'chemDistillFlow', 'chemDaltonBlocks',
+  'chemAvogadroScale', 'chemKelvinScale', 'chemAufbauRules', 'chemPolarityTug', 'chemCrissCross',
+  'chemSaltFamily', 'chemSandwichStoich', 'chemDilutionPour', 'chemBronstedPass', 'chemElectroCell',
+  'chemPolymers'
 ];
 
 function locate(key: string) {

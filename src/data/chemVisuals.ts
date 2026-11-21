@@ -94,6 +94,9 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="485" y="130" text-anchor="middle" class="sm">${pick(lang, '• Homogeneous (1 phase: salt water)', '• Omogenei (1 fase: acqua e sale)')}</text>
         <text x="485" y="152" text-anchor="middle" class="sm">${pick(lang, '• Heterogeneous (2+ phases: sand+water)', '• Eterogenei (2+ fasi: acqua e sabbia)')}</text>
         <text x="485" y="178" text-anchor="middle" fill="#ffd166" font-size="12" font-weight="700">${pick(lang, 'Physical separation possible', 'Separabili con metodi fisici')}</text>
+      
+        <rect x="30" y="82" width="250" height="114" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.5000" dur="4.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="360" y="82" width="250" height="114" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.5000" dur="4.0s" begin="2.0s" repeatCount="indefinite"/></rect>
+        <circle r="4" fill="#99a8cc"><animateMotion dur="1.6s" begin="0s" repeatCount="indefinite" path="M250 52 L155 82"/></circle><circle r="4" fill="#99a8cc"><animateMotion dur="1.6s" begin="0.4s" repeatCount="indefinite" path="M390 52 L485 82"/></circle>
       </svg>`;
 
     case 'chemSeparation':
@@ -152,6 +155,8 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="527" y="106" text-anchor="middle" fill="#38ef7d" font-size="14" font-weight="800">${pick(lang, 'Small whole-number ratios', 'Rapporti tra interi piccoli')}</text>
         <text x="527" y="142" text-anchor="middle" class="sm">CO (12 g C : 16 g O)</text>
         <text x="527" y="168" text-anchor="middle" class="sm">CO₂ (12 g C : 32 g O → 1:2)</text>
+      
+        <rect x="16" y="18" width="194" height="174" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="223" y="18" width="194" height="174" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="2.0s" repeatCount="indefinite"/></rect><rect x="430" y="18" width="194" height="174" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="4.0s" repeatCount="indefinite"/></rect>
       </svg>`;
 
     case 'chemMole':
@@ -174,12 +179,15 @@ export function getChemVisual(key: string, lang: Language): string | null {
 
         <line x1="186" y1="100" x2="230" y2="100" stroke="#ffd166" stroke-width="2.5"/>
         <line x1="410" y1="100" x2="454" y2="100" stroke="#ffd166" stroke-width="2.5"/>
+      
+        <rect x="20" y="44" width="165" height="114" rx="14" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="232" y="28" width="176" height="146" rx="16" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="2.0s" repeatCount="indefinite"/></rect><rect x="455" y="44" width="165" height="114" rx="14" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="4.0s" repeatCount="indefinite"/></rect>
+        <circle r="4" fill="#ffd166"><animateMotion dur="1.2s" begin="0s" repeatCount="indefinite" path="M186 100 H230"/></circle><circle r="4" fill="#ffd166"><animateMotion dur="1.2s" begin="0.6s" repeatCount="indefinite" path="M230 100 H186"/></circle><circle r="4" fill="#ffd166"><animateMotion dur="1.2s" begin="0.3s" repeatCount="indefinite" path="M410 100 H454"/></circle><circle r="4" fill="#ffd166"><animateMotion dur="1.2s" begin="0.9s" repeatCount="indefinite" path="M454 100 H410"/></circle>
       </svg>`;
 
     case 'chemGas':
       return `<svg viewBox="0 0 640 205" class="dia" width="100%" aria-hidden="true">
         <rect x="24" y="20" width="592" height="165" rx="14" fill="rgba(69,216,255,.07)" stroke="#45d8ff" stroke-width="2"/>
-        <text x="320" y="54" text-anchor="middle" fill="#ffd166" font-size="22" font-weight="800">P · V = n · R · T</text>
+        <text x="320" y="54" text-anchor="middle" fill="#ffd166" font-size="22" font-weight="800" class="chem-anim-pulse">P · V = n · R · T</text>
         <text x="320" y="82" text-anchor="middle" class="sm">${pick(lang, 'R = 0.0821 L·atm/(mol·K)  |  T(K) = t(°C) + 273.15', 'R = 0,0821 L·atm/(mol·K)  |  T(K) = t(°C) + 273,15')}</text>
         <rect x="48" y="102" width="165" height="62" rx="10" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.15)"/>
         <text x="130" y="126" text-anchor="middle" fill="#45d8ff" font-size="13" font-weight="700">Boyle (T cost.)</text>
@@ -190,6 +198,8 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <rect x="428" y="102" width="165" height="62" rx="10" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.15)"/>
         <text x="510" y="126" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="700">${pick(lang, 'Molar Vol. (STP)', 'Volume Molare (STP)')}</text>
         <text x="510" y="148" text-anchor="middle" class="sm">${pick(lang, '1 mol = 22.4 L', '1 mol = 22,4 L')}</text>
+      
+        <rect x="48" y="102" width="165" height="62" rx="10" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="238" y="102" width="165" height="62" rx="10" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="2.0s" repeatCount="indefinite"/></rect><rect x="428" y="102" width="165" height="62" rx="10" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="4.0s" repeatCount="indefinite"/></rect>
       </svg>`;
 
     case 'chemAtomModels':
@@ -275,6 +285,9 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <line x1="585" y1="45" x2="585" y2="165" stroke="#ffd166" stroke-width="2.5"/>
         <polygon points="585,165 580,155 590,155" fill="#ffd166"/>
         <text x="585" y="185" text-anchor="middle" fill="#ffd166" font-size="11" font-weight="700">${pick(lang, 'Radius ↑', 'Raggio ↑')}</text>
+      
+        <rect x="24" y="34" width="84" height="132" rx="8" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="8.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="116" y="78" width="212" height="88" rx="8" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="8.0s" begin="2.0s" repeatCount="indefinite"/></rect><rect x="336" y="34" width="160" height="132" rx="8" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="8.0s" begin="4.0s" repeatCount="indefinite"/></rect><rect x="504" y="34" width="46" height="132" rx="8" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="8.0s" begin="6.0s" repeatCount="indefinite"/></rect>
+        <circle r="5" fill="#38ef7d"><animateMotion dur="2.4s" begin="0s" repeatCount="indefinite" path="M120 20 H490"/></circle><circle r="5" fill="#ffd166"><animateMotion dur="2s" begin="0s" repeatCount="indefinite" path="M585 45 V165"/></circle>
       </svg>`;
 
     case 'chemBonds':
@@ -316,7 +329,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <rect x="14" y="18" width="144" height="174" rx="12" fill="rgba(56,239,125,.08)" stroke="#38ef7d" stroke-width="2"/>
         <text x="86" y="42" text-anchor="middle" fill="#38ef7d" font-size="13" font-weight="800">${pick(lang, 'Linear · 180°', 'Lineare · 180°')}</text>
         <line x1="40" y1="95" x2="132" y2="95" stroke="#45d8ff" stroke-width="3"/>
-        <circle cx="40" cy="95" r="9" fill="#ff6a3d"/><circle cx="86" cy="95" r="11" fill="#ffffff"/><circle cx="132" cy="95" r="9" fill="#ff6a3d"/>
+        <circle cx="40" cy="95" r="9" fill="#ff6a3d" class="chem-anim-pulse" style="animation-delay:0.0s"/><circle cx="86" cy="95" r="11" fill="#ffffff" class="chem-anim-pulse" style="animation-delay:1.5s"/><circle cx="132" cy="95" r="9" fill="#ff6a3d" class="chem-anim-pulse" style="animation-delay:1.2s"/>
         <text x="86" y="144" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="700">CO₂, BeCl₂</text>
         <text x="86" y="168" text-anchor="middle" class="sm">${pick(lang, '2 bond pairs', '2 coppie di legame')}</text>
 
@@ -325,7 +338,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <line x1="242" y1="98" x2="242" y2="62" stroke="#45d8ff" stroke-width="2.5"/>
         <line x1="242" y1="98" x2="210" y2="118" stroke="#45d8ff" stroke-width="2.5"/>
         <line x1="242" y1="98" x2="274" y2="118" stroke="#45d8ff" stroke-width="2.5"/>
-        <circle cx="242" cy="98" r="10" fill="#ffd166"/><circle cx="242" cy="62" r="8" fill="#38ef7d"/><circle cx="210" cy="118" r="8" fill="#38ef7d"/><circle cx="274" cy="118" r="8" fill="#38ef7d"/>
+        <circle cx="242" cy="98" r="10" fill="#ffd166" class="chem-anim-pulse" style="animation-delay:0.9s"/><circle cx="242" cy="62" r="8" fill="#38ef7d" class="chem-anim-pulse" style="animation-delay:0.6s"/><circle cx="210" cy="118" r="8" fill="#38ef7d" class="chem-anim-pulse" style="animation-delay:0.3s"/><circle cx="274" cy="118" r="8" fill="#38ef7d" class="chem-anim-pulse" style="animation-delay:0.0s"/>
         <text x="242" y="148" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="700">BF₃, SO₃</text>
         <text x="242" y="168" text-anchor="middle" class="sm">${pick(lang, '3 bond pairs', '3 coppie di legame')}</text>
 
@@ -335,7 +348,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <line x1="398" y1="96" x2="366" y2="116" stroke="#ffd166" stroke-width="2.5"/>
         <line x1="398" y1="96" x2="430" y2="116" stroke="#ffd166" stroke-width="2.5"/>
         <line x1="398" y1="96" x2="414" y2="124" stroke="#ffd166" stroke-width="2"/>
-        <circle cx="398" cy="96" r="10" fill="#99a8cc"/><circle cx="398" cy="62" r="7" fill="#ffffff"/><circle cx="366" cy="116" r="7" fill="#ffffff"/><circle cx="430" cy="116" r="7" fill="#ffffff"/><circle cx="414" cy="124" r="6" fill="#ffffff"/>
+        <circle cx="398" cy="96" r="10" fill="#99a8cc" class="chem-anim-pulse" style="animation-delay:1.5s"/><circle cx="398" cy="62" r="7" fill="#ffffff" class="chem-anim-pulse" style="animation-delay:1.2s"/><circle cx="366" cy="116" r="7" fill="#ffffff" class="chem-anim-pulse" style="animation-delay:0.9s"/><circle cx="430" cy="116" r="7" fill="#ffffff" class="chem-anim-pulse" style="animation-delay:0.6s"/><circle cx="414" cy="124" r="6" fill="#ffffff"/>
         <text x="398" y="150" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="700">CH₄, CCl₄</text>
         <text x="398" y="168" text-anchor="middle" class="sm">${pick(lang, '4 bond pairs', '4 coppie di legame')}</text>
 
@@ -345,7 +358,7 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <ellipse cx="566" cy="72" rx="9" ry="5" fill="rgba(255,209,102,.35)" stroke="#ffd166"/>
         <line x1="554" y1="94" x2="526" y2="120" stroke="#45d8ff" stroke-width="2.5"/>
         <line x1="554" y1="94" x2="582" y2="120" stroke="#45d8ff" stroke-width="2.5"/>
-        <circle cx="554" cy="94" r="10" fill="#ff6a3d"/><circle cx="526" cy="120" r="7" fill="#ffffff"/><circle cx="582" cy="120" r="7" fill="#ffffff"/>
+        <circle cx="554" cy="94" r="10" fill="#ff6a3d" class="chem-anim-pulse" style="animation-delay:0.3s"/><circle cx="526" cy="120" r="7" fill="#ffffff" class="chem-anim-pulse" style="animation-delay:0.0s"/><circle cx="582" cy="120" r="7" fill="#ffffff" class="chem-anim-pulse" style="animation-delay:1.5s"/>
         <text x="554" y="150" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="700">H₂O (2+2)</text>
         <text x="554" y="168" text-anchor="middle" class="sm">${pick(lang, 'Lone pairs compress angle', 'Coppie solitarie comprimono')}</text>
       </svg>`;
@@ -372,6 +385,8 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="529" y="124" text-anchor="middle" fill="#ffd166" font-size="14" font-weight="800">-oso → -ito  |  -ico → -ato</text>
         <text x="529" y="148" text-anchor="middle" class="sm">HNO₂ → NaNO₂ (${pick(lang, 'nitrite', 'nitrito')})</text>
         <text x="529" y="168" text-anchor="middle" class="sm">HNO₃ → NaNO₃ (${pick(lang, 'nitrate', 'nitrato')})</text>
+      
+        <rect x="14" y="74" width="194" height="118" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="223" y="74" width="194" height="118" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="2.0s" repeatCount="indefinite"/></rect><rect x="432" y="74" width="194" height="118" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="4.0s" repeatCount="indefinite"/></rect>
       </svg>`;
 
     case 'chemBalancing':
@@ -399,6 +414,8 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="551" y="130" text-anchor="middle" fill="#ff5d8f" font-size="13" font-weight="800">${pick(lang, 'Double Displ.', 'Doppio Scambio')}</text>
         <text x="551" y="154" text-anchor="middle" fill="#ffffff" font-size="13">AB + CD → AD + CB</text>
         <text x="551" y="174" text-anchor="middle" class="sm">HCl + NaOH → NaCl+H₂O</text>
+      
+        <rect x="18" y="104" width="142" height="84" rx="10" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="7.2s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="172" y="104" width="142" height="84" rx="10" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="7.2s" begin="1.8s" repeatCount="indefinite"/></rect><rect x="326" y="104" width="142" height="84" rx="10" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="7.2s" begin="3.6s" repeatCount="indefinite"/></rect><rect x="480" y="104" width="142" height="84" rx="10" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="7.2s" begin="5.4s" repeatCount="indefinite"/></rect>
       </svg>`;
 
     case 'chemStoich':
@@ -425,6 +442,9 @@ export function getChemVisual(key: string, lang: Language): string | null {
 
         <rect x="48" y="138" width="544" height="48" rx="10" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.15)"/>
         <text x="320" y="167" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="700">${pick(lang, 'Limiting Reagent = smallest n/coeff  |  % Yield = (actual / theoretical) × 100', 'Reagente Limitante = n/coeff minore  |  Resa % = (effettiva / teorica) × 100')}</text>
+      
+        <rect x="18" y="34" width="128" height="86" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="6.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="174" y="34" width="128" height="86" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="6.0s" begin="1.5s" repeatCount="indefinite"/></rect><rect x="338" y="34" width="128" height="86" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="6.0s" begin="3.0s" repeatCount="indefinite"/></rect><rect x="494" y="34" width="128" height="86" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="6.0s" begin="4.5s" repeatCount="indefinite"/></rect>
+        <circle r="4" fill="#ffd166"><animateMotion dur="1.5s" begin="0s" repeatCount="indefinite" path="M146 77 H174"/></circle><circle r="4" fill="#ffd166"><animateMotion dur="1.5s" begin="0.4s" repeatCount="indefinite" path="M302 77 H338"/></circle><circle r="4" fill="#ffd166"><animateMotion dur="1.5s" begin="0.8s" repeatCount="indefinite" path="M466 77 H494"/></circle>
       </svg>`;
 
     case 'chemSolutions':
@@ -446,6 +466,8 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="527" y="88" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="800">(m_solute / m_solution) × 100</text>
         <text x="527" y="128" text-anchor="middle" class="sm">${pick(lang, 'm_solution = m_solute + m_solvent', 'm_soluz = m_soluto + m_solvente')}</text>
         <text x="527" y="152" text-anchor="middle" class="sm">${pick(lang, '% m/V = g solute / 100 mL', '% m/V = g soluto / 100 mL')}</text>
+      
+        <rect x="20" y="20" width="186" height="165" rx="14" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="227" y="20" width="186" height="165" rx="14" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="2.0s" repeatCount="indefinite"/></rect><rect x="434" y="20" width="186" height="165" rx="14" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="4.0s" repeatCount="indefinite"/></rect>
       </svg>`;
 
     case 'chemThermo':
@@ -469,6 +491,8 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <path d="M434 138 C462 138, 488 74, 516 74" fill="none" stroke="#ffd166" stroke-width="2.5"/>
         <line x1="476" y1="138" x2="476" y2="74" stroke="#45d8ff" stroke-width="2" stroke-dasharray="4 3"/>
         <text x="476" y="176" text-anchor="middle" class="sm">${pick(lang, 'Heat absorbed · ΔG < 0 spontaneous', 'Assorbe calore · ΔG < 0 spontanea')}</text>
+      
+        <circle r="5" fill="#ffd166"><animateMotion dur="3.2s" begin="0s" repeatCount="indefinite" path="M48 74 H122 C150 74 176 138 204 138 H278"/></circle><circle r="5" fill="#ffd166"><animateMotion dur="3.2s" begin="0s" repeatCount="indefinite" path="M360 138 H434 C462 138 488 74 516 74 H590"/></circle>
       </svg>`;
 
     case 'chemKinetics':
@@ -507,6 +531,9 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="526" y="116" text-anchor="middle" fill="#ff6a3d" font-size="13" font-weight="800">${pick(lang, 'Temperature (changes K!)', 'Temperatura (varia K!)')}</text>
         <text x="526" y="142" text-anchor="middle" class="sm">${pick(lang, 'T ↑ favors endothermic', 'T ↑ favorisce endotermica')}</text>
         <text x="526" y="164" text-anchor="middle" class="sm">${pick(lang, 'Catalyst causes NO shift', 'Catalizzatore: NESSUN shift')}</text>
+      
+        <rect x="18" y="92" width="192" height="100" rx="10" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="224" y="92" width="192" height="100" rx="10" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="2.0s" repeatCount="indefinite"/></rect><rect x="430" y="92" width="192" height="100" rx="10" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="4.0s" repeatCount="indefinite"/></rect>
+        <circle r="3.5" fill="#38ef7d"><animateMotion dur="1.8s" begin="0s" repeatCount="indefinite" path="M230 80 H410"/></circle><circle r="3.5" fill="#ff6a3d"><animateMotion dur="1.8s" begin="0.9s" repeatCount="indefinite" path="M410 86 H230"/></circle>
       </svg>`;
 
     case 'chemAcidsPH':
@@ -535,6 +562,9 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="516" y="106" text-anchor="middle" fill="#45d8ff" font-size="14" font-weight="800">${pick(lang, 'BASIC (pH > 7)', 'BASICO (pH > 7)')}</text>
         <text x="516" y="132" text-anchor="middle" class="sm">[OH⁻] &gt; [H₃O⁺]</text>
         <text x="516" y="156" text-anchor="middle" class="sm">${pick(lang, 'Brønsted proton acceptor', 'Accettore di protoni H⁺')}</text>
+      
+        <rect x="32" y="80" width="184" height="104" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="228" y="80" width="184" height="104" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="2.0s" repeatCount="indefinite"/></rect><rect x="424" y="80" width="184" height="104" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="4.0s" repeatCount="indefinite"/></rect>
+        <circle cy="70" r="5" fill="#ffffff" stroke="#ffd166" stroke-width="2"><animate attributeName="cx" values="48;320;592;320;48" dur="9s" repeatCount="indefinite"/></circle>
       </svg>`;
 
     case 'chemRedox':
@@ -578,19 +608,21 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="320" y="138" text-anchor="middle" fill="#ff5d8f" font-size="13" font-weight="800">${pick(lang, 'KEY FUNCTIONAL GROUPS', 'GRUPPI FUNZIONALI PRINCIPALI')}</text>
         <text x="320" y="164" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">–OH (${pick(lang, 'Alcohol', 'Alcol')})  ·  –CHO (${pick(lang, 'Aldehyde', 'Aldeide')})  ·  C=O (${pick(lang, 'Ketone', 'Chetone')})  ·  –COOH (${pick(lang, 'Carb. Acid', 'Acido Carb.')})  ·  –NH₂ (${pick(lang, 'Amine', 'Ammina')})</text>
         <text x="320" y="184" text-anchor="middle" class="sm">${pick(lang, 'Benzene C₆H₆: aromatic delocalized ring', 'Benzene C₆H₆: anello aromatico delocalizzato')}</text>
+      
+        <rect x="16" y="16" width="194" height="84" rx="10" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="7.2s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="223" y="16" width="194" height="84" rx="10" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="7.2s" begin="1.8s" repeatCount="indefinite"/></rect><rect x="430" y="16" width="194" height="84" rx="10" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="7.2s" begin="3.6s" repeatCount="indefinite"/></rect><rect x="16" y="114" width="608" height="80" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.2500" dur="7.2s" begin="5.4s" repeatCount="indefinite"/></rect>
       </svg>`;
 
     case 'chemPhysVsChem':
       return `<svg viewBox="0 0 640 205" class="dia" width="100%" aria-hidden="true">
         <rect x="18" y="18" width="292" height="168" rx="14" fill="rgba(69,216,255,.08)" stroke="#45d8ff" stroke-width="2"/>
         <text x="164" y="44" text-anchor="middle" fill="#45d8ff" font-size="14" font-weight="800">${pick(lang, 'PHYSICAL CHANGE (Same Outfit)', 'TRASFORMAZIONE FISICA (Stessa Formula)')}</text>
-        <text x="164" y="82" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">🧊 H₂O  →  💧 H₂O  →  ☁️ H₂O</text>
+        <text x="164" y="82" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800" class="chem-anim-float">🧊 H₂O  →  💧 H₂O  →  ☁️ H₂O</text>
         <text x="164" y="118" text-anchor="middle" class="sm">${pick(lang, 'Molecules stay intact — only spacing & speed change', 'Le molecole restano intatte: cambia solo quanto si muovono')}</text>
         <text x="164" y="152" text-anchor="middle" fill="#38ef7d" font-size="12" font-weight="700">${pick(lang, 'Easy to reverse (freeze back to ice!)', 'Reversibile (ricongeli e torna ghiaccio!)')}</text>
 
         <rect x="330" y="18" width="292" height="168" rx="14" fill="rgba(255,106,61,.08)" stroke="#ff6a3d" stroke-width="2"/>
         <text x="476" y="44" text-anchor="middle" fill="#ff6a3d" font-size="14" font-weight="800">${pick(lang, 'CHEMICAL CHANGE (New Molecules!)', 'REAZIONE CHIMICA (Sostanze Nuove!)')}</text>
-        <text x="476" y="82" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">🪵 + O₂  🔥→  🌫️ CO₂ + H₂O</text>
+        <text x="476" y="82" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800" class="chem-anim-pulse">🪵 + O₂  🔥→  🌫️ CO₂ + H₂O</text>
         <text x="476" y="118" text-anchor="middle" class="sm">${pick(lang, 'Old bonds break & atoms build brand-new molecules', 'I vecchi legami si spezzano e nascono molecole diverse')}</text>
         <text x="476" y="152" text-anchor="middle" fill="#ffd166" font-size="12" font-weight="700">${pick(lang, 'Signs: gas bubbles, new color, heat, or precipitate', 'Indizi: bollicine, cambio colore, calore o solido nuovo')}</text>
       </svg>`;
@@ -614,6 +646,8 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="527" y="106" text-anchor="middle" fill="#ff6a3d" font-size="13" font-weight="800">${pick(lang, 'See layers / specks?', 'Vedi strati o granelli?')}</text>
         <text x="527" y="132" text-anchor="middle" class="sm">${pick(lang, 'YES → Heterogeneous', 'SÌ → Eterogeneo')}</text>
         <text x="527" y="156" text-anchor="middle" class="sm">${pick(lang, 'Oil+water, sand+water', 'Olio+acqua, sabbia+acqua')}</text>
+      
+        <rect x="20" y="80" width="186" height="106" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="227" y="80" width="186" height="106" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="2.0s" repeatCount="indefinite"/></rect><rect x="434" y="80" width="186" height="106" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="4.0s" repeatCount="indefinite"/></rect>
       </svg>`;
 
     case 'chemDistillFlow':
@@ -650,12 +684,12 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="320" y="47" text-anchor="middle" fill="#38ef7d" font-size="14" font-weight="800">${pick(lang, 'WHY LAWS WORK: Atoms snap together like whole Lego bricks!', 'PERCHÉ VALGONO LE LEGGI: Gli atomi sono mattoncini indivisibili!')}</text>
         <rect x="36" y="84" width="268" height="100" rx="12" fill="rgba(69,216,255,.08)" stroke="#45d8ff"/>
         <text x="170" y="110" text-anchor="middle" fill="#45d8ff" font-size="14" font-weight="800">CO (${pick(lang, '1 Carbon + 1 Oxygen', '1 Carbonio + 1 Ossigeno')})</text>
-        <circle cx="145" cy="146" r="16" fill="#99a8cc"/><circle cx="185" cy="146" r="14" fill="#ff5d8f"/>
+        <circle cx="145" cy="146" r="16" fill="#99a8cc" class="chem-anim-float" style="animation-delay:0.0s"/><circle cx="185" cy="146" r="14" fill="#ff5d8f" class="chem-anim-float" style="animation-delay:1.9s"/>
         <text x="170" y="176" text-anchor="middle" class="sm">12 g C : 16 g O</text>
 
         <rect x="336" y="84" width="268" height="100" rx="12" fill="rgba(255,209,102,.08)" stroke="#ffd166"/>
         <text x="470" y="110" text-anchor="middle" fill="#ffd166" font-size="14" font-weight="800">CO₂ (${pick(lang, '1 Carbon + 2 Oxygen', '1 Carbonio + 2 Ossigeni')})</text>
-        <circle cx="432" cy="146" r="14" fill="#ff5d8f"/><circle cx="470" cy="146" r="16" fill="#99a8cc"/><circle cx="508" cy="146" r="14" fill="#ff5d8f"/>
+        <circle cx="432" cy="146" r="14" fill="#ff5d8f" class="chem-anim-float" style="animation-delay:1.4s"/><circle cx="470" cy="146" r="16" fill="#99a8cc" class="chem-anim-float" style="animation-delay:0.9s"/><circle cx="508" cy="146" r="14" fill="#ff5d8f" class="chem-anim-float" style="animation-delay:0.4s"/>
         <text x="470" y="176" text-anchor="middle" class="sm">12 g C : 32 g O  →  16 : 32 = 1 : 2</text>
       </svg>`;
 
@@ -672,6 +706,8 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="477" y="88" text-anchor="middle" fill="#ffd166" font-size="20" font-weight="800">${pick(lang, '= 6.022 × 10²³ items', '= 6,022 × 10²³ unità')}</text>
         <text x="477" y="122" text-anchor="middle" class="sm">${pick(lang, '1 mol H₂O = 18 g (light molecule)', '1 mol H₂O = 18 g (molecola leggera)')}</text>
         <text x="477" y="146" text-anchor="middle" class="sm">${pick(lang, '1 mol CO₂ = 44 g (heavier molecule)', '1 mol CO₂ = 44 g (molecola più pesante)')}</text>
+      
+        <rect x="20" y="24" width="286" height="156" rx="14" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.5000" dur="5.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="334" y="24" width="286" height="156" rx="14" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.5000" dur="5.0s" begin="2.5s" repeatCount="indefinite"/></rect>
       </svg>`;
 
     case 'chemKelvinScale':
@@ -683,6 +719,8 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <circle cx="320" cy="98" r="8" fill="#38ef7d"/><text x="320" y="82" text-anchor="middle" fill="#38ef7d" font-size="12" font-weight="800">${pick(lang, '273.15 K', '273,15 K')}</text><text x="320" y="126" text-anchor="middle" class="sm">0 °C (${pick(lang, 'Ice', 'Ghiaccio')})</text>
         <circle cx="520" cy="98" r="8" fill="#ff6a3d"/><text x="520" y="82" text-anchor="middle" fill="#ff6a3d" font-size="12" font-weight="800">${pick(lang, '373.15 K', '373,15 K')}</text><text x="520" y="126" text-anchor="middle" class="sm">100 °C (${pick(lang, 'Boil', 'Bolle')})</text>
         <text x="320" y="168" text-anchor="middle" fill="#ffd166" font-size="13" font-weight="800">T(K) = t(°C) + ${pick(lang, '273.15', '273,15')}</text>
+      
+        <circle cy="98" r="6" fill="#ffd166" stroke="#fff" stroke-width="1.5"><animate attributeName="cx" values="110;320;520;320;110" dur="7s" repeatCount="indefinite"/></circle>
       </svg>`;
 
     case 'chemAufbauRules':
@@ -704,6 +742,8 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="527" y="84" text-anchor="middle" fill="#38ef7d" font-size="18" font-weight="800">[↑] [↑] [↑]</text>
         <text x="527" y="122" text-anchor="middle" class="sm">${pick(lang, 'Take empty p-seats alone', 'Prima 1 elettrone per stanza')}</text>
         <text x="527" y="144" text-anchor="middle" class="sm">${pick(lang, 'before sharing any box!', 'poi ci si accoppia!')}</text>
+      
+        <rect x="20" y="20" width="186" height="164" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="227" y="20" width="186" height="164" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="2.0s" repeatCount="indefinite"/></rect><rect x="434" y="20" width="186" height="164" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="4.0s" repeatCount="indefinite"/></rect>
       </svg>`;
 
     case 'chemPolarityTug':
@@ -736,8 +776,8 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="320" y="48" text-anchor="middle" fill="#ffd166" font-size="15" font-weight="800">${pick(lang, 'EASY CRISS-CROSS TRICK: Swap charges down so total = 0!', 'TRUCCO DELL’INCROCIO: Scambia le cariche in basso e ottieni 0!')}</text>
         <text x="235" y="92" text-anchor="middle" fill="#ff6a3d" font-size="24" font-weight="800">Fe³⁺</text>
         <text x="405" y="92" text-anchor="middle" fill="#45d8ff" font-size="24" font-weight="800">O²⁻</text>
-        <path d="M250 100 L388 134" stroke="#ffd166" stroke-width="2.5"/>
-        <path d="M388 100 L250 134" stroke="#38ef7d" stroke-width="2.5"/>
+        <path d="M250 100 L388 134" stroke="#ffd166" stroke-width="2.5"/><circle r="4" fill="#ffd166"><animateMotion dur="2s" begin="0s" repeatCount="indefinite" path="M250 100 L388 134"/></circle>
+        <path d="M388 100 L250 134" stroke="#38ef7d" stroke-width="2.5"/><circle r="4" fill="#38ef7d"><animateMotion dur="2s" begin="1s" repeatCount="indefinite" path="M388 100 L250 134"/></circle>
         <text x="320" y="158" text-anchor="middle" fill="#ffffff" font-size="26" font-weight="800">Fe₂O₃</text>
         <text x="515" y="152" text-anchor="middle" class="sm">2×(+3) + 3×(−2) = 0 ✓</text>
       </svg>`;
@@ -761,15 +801,17 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <text x="533" y="88" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">${pick(lang, 'Acid + Base → Salt', 'Acido + Base → Sale')}</text>
         <text x="533" y="118" text-anchor="middle" fill="#ffd166" font-size="15" font-weight="800">-oso→-ito | -ico→-ato</text>
         <text x="533" y="148" text-anchor="middle" class="sm">H₂SO₄ → Na₂SO₄</text>
+      
+        <rect x="20" y="26" width="174" height="150" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="233" y="26" width="174" height="150" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="2.0s" repeatCount="indefinite"/></rect><rect x="446" y="26" width="174" height="150" rx="12" style="fill:none;stroke:#ff6a3d;stroke-width:3" opacity="0" pointer-events="none"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.3333" dur="6.0s" begin="4.0s" repeatCount="indefinite"/></rect>
       </svg>`;
 
     case 'chemSandwichStoich':
       return `<svg viewBox="0 0 640 205" class="dia" width="100%" aria-hidden="true">
         <rect x="20" y="22" width="600" height="160" rx="14" fill="rgba(255,209,102,.08)" stroke="#ffd166" stroke-width="2"/>
         <text x="320" y="50" text-anchor="middle" fill="#ffd166" font-size="15" font-weight="800">${pick(lang, 'LIMITING REAGENT ANALOGY: Making Cheese Sandwiches!', 'ANALOGIA DEL PANINO: Cos’è il Reagente Limitante?')}</text>
-        <text x="320" y="92" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="800">🍞🍞 (6)  +  🧀 (2)   →   🥪 (2)  +  ${pick(lang, '🍞🍞 leftover!', '🍞🍞 avanzate!')}</text>
+        <text x="320" y="92" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="800" class="chem-anim-float">🍞🍞 (6)  +  🧀 (2)   →   🥪 (2)  +  ${pick(lang, '🍞🍞 leftover!', '🍞🍞 avanzate!')}</text>
         <text x="320" y="130" text-anchor="middle" class="sm">${pick(lang, 'Recipe: 2 Bread + 1 Cheese → 1 Sandwich. Even with 6 slices of bread, only 2 cheeses = max 2 sandwiches!', 'Ricetta: 2 Fette + 1 Formaggio = 1 Panino. Hai 6 fette ma solo 2 formaggi → fai solo 2 panini!')}</text>
-        <text x="320" y="160" text-anchor="middle" fill="#38ef7d" font-size="13" font-weight="800">${pick(lang, 'Cheese runs out first = LIMITING REAGENT! Bread = EXCESS.', 'Il formaggio finisce per primo = LIMITANTE! Il pane = IN ECCESSO.')}</text>
+        <text x="320" y="160" text-anchor="middle" fill="#38ef7d" font-size="13" font-weight="800" class="chem-anim-pulse">${pick(lang, 'Cheese runs out first = LIMITING REAGENT! Bread = EXCESS.', 'Il formaggio finisce per primo = LIMITANTE! Il pane = IN ECCESSO.')}</text>
       </svg>`;
 
     case 'chemDilutionPour':
@@ -830,13 +872,13 @@ export function getChemVisual(key: string, lang: Language): string | null {
         <rect x="18" y="20" width="292" height="164" rx="12" fill="rgba(255,93,143,.08)" stroke="#ff5d8f" stroke-width="2"/>
         <text x="164" y="46" text-anchor="middle" fill="#ff5d8f" font-size="14" font-weight="800">${pick(lang, 'ESTERS (Fruity Scents!)', 'ESTERI (Aromi di Frutta!)')}</text>
         <text x="164" y="84" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">${pick(lang, 'Acid + Alcohol', 'Acido + Alcol')}</text>
-        <text x="164" y="114" text-anchor="middle" fill="#ffd166" font-size="16" font-weight="800">→ Ester + H₂O 🍌🍍</text>
+        <text x="164" y="114" text-anchor="middle" fill="#ffd166" font-size="16" font-weight="800" class="chem-anim-float">→ Ester + H₂O 🍌🍍</text>
         <text x="164" y="152" text-anchor="middle" class="sm">${pick(lang, 'Condensation drops 1 water molecule', 'Condensazione: elimina 1 H₂O')}</text>
 
         <rect x="330" y="20" width="292" height="164" rx="12" fill="rgba(56,239,125,.08)" stroke="#38ef7d" stroke-width="2"/>
         <text x="476" y="46" text-anchor="middle" fill="#38ef7d" font-size="14" font-weight="800">${pick(lang, 'POLYMERS (Giant Chains!)', 'POLIMERI (Lunghe Catene!)')}</text>
         <text x="476" y="84" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">n (CH₂=CH₂) → [–CH₂–CH₂–]ₙ</text>
-        <text x="476" y="116" text-anchor="middle" fill="#ffd166" font-size="14" font-weight="800">🔗 — 🔗 — 🔗 — 🔗</text>
+        <text x="476" y="116" text-anchor="middle" fill="#ffd166" font-size="14" font-weight="800" class="chem-anim-pulse">🔗 — 🔗 — 🔗 — 🔗</text>
         <text x="476" y="152" text-anchor="middle" class="sm">${pick(lang, 'Double bonds open to link Lego chains', 'I doppi legami si aprono in catena')}</text>
       </svg>`;
 
