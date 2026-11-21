@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { advanceScene } from './breakHelper';
 
 async function startGhanaCoreMath(page: Page) {
   await page.goto('/');
@@ -113,7 +114,7 @@ test('Data Display Studio teaches frequency tables, line graphs, pie charts, mul
   await expect(page.getByRole('heading', { name: 'The Data Display Studio' })).toBeVisible();
 
   for (let scene = 0; scene < 6; scene += 1) {
-    await page.locator('#next').click();
+    await advanceScene(page);
   }
   await expect(page.locator('#chart-builder')).toHaveAttribute('data-round', 'frequency');
 

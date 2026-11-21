@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { advanceScene } from './breakHelper';
 
 const enterGrade5Maths = async (page: Page) => {
   await page.goto('/');
@@ -50,7 +51,7 @@ test('a Grade 5 Mathematics mission reaches its battle with translated answers',
   await enterGrade5Maths(page);
   await page.locator('.mcard').first().click();
   for (let scene = 0; scene < 4; scene += 1) {
-    await page.locator('#next').click();
+    await advanceScene(page);
   }
 
   await expect(page.locator('#arena')).toBeVisible();

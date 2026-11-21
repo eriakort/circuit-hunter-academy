@@ -20,6 +20,8 @@ import { speakItalian } from '../speech/speechEngine';
 import { scheduleNextConceptReview } from '../spacedRepetition';
 import { createAssessmentQuestionVariantIndexes, resolveAssessmentQuestions } from '../learningAssessment';
 import { HARDWARE_LEARNING_PILOT } from '../data/learningPilot';
+import { BreakGame } from './BreakGame';
+import { BREAK_XP, buildBreakGame, shouldOfferBreak } from '../data/breakGames';
 
 const SANKOFA_GUIDE_AVATAR = '<svg viewBox="0 0 80 80" role="img" aria-label="The Elder Guide"><circle cx="40" cy="40" r="37" fill="#174b36" stroke="#d5a43b" stroke-width="3"/><path d="M19 67c2-14 10-21 21-21s19 7 21 21" fill="#d5a43b"/><circle cx="40" cy="31" r="13" fill="#f2e8d5"/><path d="M26 29c2-15 26-19 29 1-8-5-19-6-29-1" fill="#282a27"/></svg>';
 const SANKOFA_EXPLORER_AVATAR = '<svg viewBox="0 0 80 80" role="img" aria-label="Knowledge Seeker"><circle cx="40" cy="40" r="37" fill="#293b60" stroke="#d5a43b" stroke-width="3"/><path d="M17 68c3-16 12-23 23-23s20 7 23 23" fill="#b9573f"/><circle cx="40" cy="31" r="13" fill="#d5a43b"/></svg>';
@@ -61,6 +63,9 @@ export const MissionScreen: React.FC = () => {
   const [masteryStarted, setMasteryStarted] = useState(false);
   const [masteryVariantIndexes, setMasteryVariantIndexes] = useState<number[]>(() => createAssessmentQuestionVariantIndexes(masteryAssessment));
   const gameContainerRef = useRef<HTMLDivElement>(null);
+  // Study break: offered after every few study scenes, once per scene per visit.
+  const [breakState, setBreakState] = useState<{ at: number; game: ReturnType<typeof buildBreakGame> } | null>(null);
+  const breaksSeen = useRef<Set<string>>(new Set());
 
   // Scene gating check
   const isGatedType = [
@@ -143,6 +148,35 @@ export const MissionScreen: React.FC = () => {
   }, [currentSceneIndex, lang, currentMission, isGatedType, sc]);
 
   if (!sc) return null;
+
+  const handleNext = () => {
+    const key = `${currentMission.id}:${currentSceneIndex}`;
+    if (inMissionFirstTime() && !breaksSeen.current.has(key) && shouldOfferBreak(currentMission, currentSceneIndex)) {
+      const game = buildBreakGame(currentMission, currentSceneIndex, lang);
+      if (game) {
+        breaksSeen.current.add(key);
+        setBreakState({ at: currentSceneIndex, game });
+        return;
+      }
+    }
+    nextScene();
+  };
+
+  const breakGame = breakState && breakState.at === currentSceneIndex ? breakState.game : null;
+  if (breakGame) {
+    return (
+      <BreakGame
+        game={breakGame}
+        lang={lang}
+        earnsXp={inMissionFirstTime()}
+        onFinish={completed => {
+          if (completed) award(BREAK_XP);
+          setBreakState(null);
+          nextScene();
+        }}
+      />
+    );
+  }
 
   // Speaker avatar and styling
   const speaker = () => {
@@ -780,7 +814,7 @@ export const MissionScreen: React.FC = () => {
           className="btn"
           id="next"
           disabled={!canProceed || !guidedComplete || !independentComplete || !knowledgeComplete || !masteryPassed}
-          onClick={nextScene}
+          onClick={handleNext}
         >
           {nxt && nxt.type === 'battle' ? L(U.fight, lang) : L(U.cont, lang)}
         </button>

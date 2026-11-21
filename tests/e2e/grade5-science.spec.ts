@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { advanceScene } from './breakHelper';
 
 test('Grade 5 learners can enter the dedicated bilingual Science curriculum', async ({ page }) => {
   await page.goto('/');
@@ -49,7 +50,7 @@ test('Grade 5 battle answers update immediately when the language changes', asyn
 
   await page.locator('.mcard').first().click();
   for (let scene = 0; scene < 4; scene += 1) {
-    await page.locator('#next').click();
+    await advanceScene(page);
   }
 
   await expect(page.locator('#arena')).toBeVisible();
