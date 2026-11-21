@@ -1900,3 +1900,7 @@ table.itv-ref td:first-child{font-weight:700}
 .sm-organism{font:700 14px var(--body);fill:#2b2f2a}
 .sm-organism.is-active{fill:#8a5a00}
 .sm-energy{fill:#f2b93b;stroke:#fff;stroke-width:2}
+.sm-force{font:700 13px var(--body);paint-order:stroke;stroke:#fff;stroke-width:3px}
+.sm-stage rect{fill:#fff8e6;stroke:#5c5a50;stroke-width:2;transition:all .3s}
+.sm-stage.is-active rect{fill:#fff3c8;stroke:#c8921c;stroke-width:4}
+.sm-stage text{font:700 13px var(--body);fill:#2b2f2a}
