@@ -68,7 +68,7 @@ for (const concept of ['producer', 'primary consumer', 'secondary consumer', 'fo
   assert.match(lessonText(ecosystem), new RegExp(concept, 'i'));
 }
 assert.match(lessonText(ecosystem), /energy flows/);
-assert.match(lessonText(ecosystem), /Draw a food web/);
+assert.match(lessonText(ecosystem), /draw a food web/);
 assert.match(questionText(ecosystem), /secondary consumer/);
 assert.match(questionText(ecosystem), /loss of sunlight/);
 
@@ -76,7 +76,7 @@ const farming = 'gh-jhs2-science-farming-systems';
 for (const concept of ['mixed cropping', 'mixed farming', 'crop rotation', 'manure', 'animal welfare']) {
   assert.match(lessonText(farming), new RegExp(concept, 'i'));
 }
-assert.match(lessonText(farming), /Plan a local farm/);
+assert.match(lessonText(farming), /plan a local farm/);
 assert.match(questionText(farming), /mixed cropping/);
 assert.match(questionText(farming), /support each other/);
 
