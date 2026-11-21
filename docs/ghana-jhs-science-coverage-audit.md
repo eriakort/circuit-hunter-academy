@@ -154,3 +154,19 @@ Three Basic 8 Diversity of Matter missions now include dedicated interactive tea
 - **Prokaryotic and Eukaryotic Cells:** learners compare bacteria with plant and animal cells, identify the membrane-bound nucleus, and examine structures shared by both cell types.
 
 The visuals use local React/SVG artwork, keyboard-operable controls and bilingual English/Italian explanations. They appear in the second teaching scene and do not change mission gates, quizzes or mastery logic. The visual audit now records 25 dedicated instructional visuals and 44 generic-only JHS Science missions (Basic 7: 22/0; Basic 8: 3/19; Basic 9: 0/25). The Basic 8 pilot currently covers all three missions registered in its Diversity of Matter strand.
+
+
+## Basic 8 Systems learning-evidence increment (2026-11-22)
+
+The four existing Basic 8 Systems missions have been strengthened against the seven NaCCA indicators in Strand 3 (official curriculum printed pp. 64–68):
+
+- **Human Body System — Teeth and Dental Health:** the lesson now includes a model-based task to label the crown, neck and root, sketch the four tooth types, and demonstrate gentle cleaning. Assessment now directly checks incisors, canines, premolars, molars, plaque and preventive cleaning.
+- **Solar System — Outer Planets:** learners compare the gas giants and ice giants, distinguish Uranus's extreme axial tilt and Neptune's fast winds, and construct a labelled outer-planet model while identifying when it is not to scale.
+- **Ecosystem — Feeding Relationships:** learners distinguish energy flow from matter cycling, construct a Ghanaian grassland or pond food web, and predict the effects of reduced sunlight or a population change.
+- **Farming Systems:** learners plan a locally appropriate crop–animal–land combination and explain component contributions, including suitable crop residues and properly composted manure, while considering resource and animal-welfare trade-offs.
+
+Each mission now has eight assessment questions (32 across the strand). The crosswalk records the official indicator wording and specific candidate lesson and question evidence for all seven Basic 8 Strand 3 indicators. **All seven remain `needs-review`**: automated checks verify that evidence is present and linked, but do not certify classroom delivery or learner performance.
+
+The four missions retain their existing dedicated instructional visuals in the Science Motion registry. This increment changes lesson and assessment evidence, not mission gates, progress logic or visual registration.
+
+Source: [NaCCA Science Common Core Programme Curriculum for JHS1 (B7)–JHS3 (B9), September 2020](https://nacca.gov.gh/wp-content/uploads/2023/06/SCIENCE.pdf), Basic 8 Strand 3.
