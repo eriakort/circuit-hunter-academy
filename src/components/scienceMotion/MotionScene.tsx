@@ -29,15 +29,74 @@ type Props = {
   children: (context: MotionContext) => React.ReactNode;
 };
 
+const REDUCED_QUERY = '(prefers-reduced-motion: reduce)';
 const prefersReducedMotion = () =>
-  typeof window !== 'undefined' && typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  typeof window !== 'undefined' && typeof window.matchMedia === 'function' && window.matchMedia(REDUCED_QUERY).matches;
+
+/** Follows the system "reduce motion" setting, including changes made while the page is open. */
+const useReducedMotion = () => {
+  const [reduced, setReduced] = useState(prefersReducedMotion);
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return;
+    const query = window.matchMedia(REDUCED_QUERY);
+    const update = () => setReduced(query.matches);
+    update();
+    if (typeof query.addEventListener === 'function') {
+      query.addEventListener('change', update);
+      return () => query.removeEventListener('change', update);
+    }
+    return undefined;
+  }, []);
+  return reduced;
+};
+
+/** True while the element is on screen and the browser tab is visible; animations pause otherwise. */
+const useOnScreen = (ref: React.RefObject<Element | null>) => {
+  const [inView, setInView] = useState(true);
+  const [tabVisible, setTabVisible] = useState(() => typeof document === 'undefined' || document.visibilityState !== 'hidden');
+  useEffect(() => {
+    const element = ref.current;
+    if (!element || typeof IntersectionObserver === 'undefined') return;
+    const observer = new IntersectionObserver(entries => {
+      const latest = entries[entries.length - 1];
+      if (latest) setInView(latest.isIntersecting);
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [ref]);
+  useEffect(() => {
+    const update = () => setTabVisible(document.visibilityState !== 'hidden');
+    document.addEventListener('visibilitychange', update);
+    return () => document.removeEventListener('visibilitychange', update);
+  }, []);
+  return inView && tabVisible;
+};
 
 export const MotionScene: React.FC<Props> = ({ title, description, steps, stepMs = 5000, stepId, onStepChange, extraControls, footer, children }) => {
-  const reducedMotion = useRef(prefersReducedMotion()).current;
+  const reducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const onScreen = useOnScreen(sectionRef);
   const [internalIndex, setInternalIndex] = useState(0);
   const [playing, setPlaying] = useState(!reducedMotion);
   const [touring, setTouring] = useState(!reducedMotion);
   const [tourStart, setTourStart] = useState(() => Date.now());
+  // What actually moves: the learner pressed Play, and the scene can be seen.
+  const running = playing && onScreen && !reducedMotion;
+
+  // If the learner switches on "reduce motion" while a scene is open, stop it.
+  useEffect(() => {
+    if (reducedMotion) {
+      setPlaying(false);
+      setTouring(false);
+    }
+  }, [reducedMotion]);
+
+  // Keep the step timer bar and the tour timer in step after any pause or resume.
+  const wasRunning = useRef(running);
+  useEffect(() => {
+    if (running && !wasRunning.current) setTourStart(Date.now());
+    wasRunning.current = running;
+  }, [running]);
 
   const controlledIndex = stepId ? steps.findIndex(step => step.id === stepId) : -1;
   const stepIndex = controlledIndex >= 0 ? controlledIndex : internalIndex;
@@ -50,14 +109,14 @@ export const MotionScene: React.FC<Props> = ({ title, description, steps, stepMs
 
   // Guided tour: advance one step at a time, looping.
   useEffect(() => {
-    if (!touring || !playing) return;
+    if (!touring || !running) return;
     const timer = window.setTimeout(() => {
       goTo((stepIndex + 1) % steps.length);
       setTourStart(Date.now());
     }, stepMs);
     return () => window.clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [touring, playing, stepIndex, tourStart, stepMs, steps.length]);
+  }, [touring, running, stepIndex, tourStart, stepMs, steps.length]);
 
   const chooseStep = (index: number) => {
     setTouring(false);
@@ -73,7 +132,7 @@ export const MotionScene: React.FC<Props> = ({ title, description, steps, stepMs
   };
 
   return (
-    <section className="ghana-science-visual motion-scene" aria-label={title} data-testid="ghana-science-visual" data-playing={playing ? 'true' : 'false'}>
+    <section ref={sectionRef} className="ghana-science-visual motion-scene" aria-label={title} data-testid="ghana-science-visual" data-playing={running ? 'true' : 'false'}>
       <header className="ghana-science-visual__heading">
         <div>
           <span className="ghana-science-visual__kicker">SCIENCE IN MOTION</span>
@@ -91,7 +150,7 @@ export const MotionScene: React.FC<Props> = ({ title, description, steps, stepMs
       </header>
 
       <div className="ghana-science-visual__art motion-scene__art" data-step={step.id}>
-        {children({ playing, step, stepIndex, reducedMotion })}
+        {children({ playing: running, step, stepIndex, reducedMotion })}
       </div>
 
       <ol className="motion-scene__steps" aria-label="Steps">
@@ -105,7 +164,7 @@ export const MotionScene: React.FC<Props> = ({ title, description, steps, stepMs
             >
               <span className="motion-scene__num" aria-hidden="true">{index + 1}</span>
               {item.label}
-              {index === stepIndex && touring && playing && (
+              {index === stepIndex && touring && running && (
                 <span key={`${stepIndex}-${tourStart}`} className="motion-scene__timer" style={{ animationDuration: `${stepMs}ms` }} aria-hidden="true" />
               )}
             </button>
