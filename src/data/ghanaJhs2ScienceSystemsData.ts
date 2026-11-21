@@ -38,7 +38,7 @@ export const GHANA_JHS2_SCIENCE_SYSTEMS_MISSIONS: Mission[] = [
       q('How can plaque contribute to tooth decay?', ['Bacteria in plaque produce acids that damage enamel', 'Plaque turns enamel into bone', 'Plaque makes teeth grow longer', 'Plaque removes all bacteria from the mouth'], 'Acids produced by bacteria in plaque can weaken and damage tooth enamel.'),
       q('Which daily habit helps prevent tooth decay?', ['Brush twice daily with fluoride toothpaste', 'Eat sugary snacks frequently', 'Avoid cleaning between teeth', 'Ignore tooth pain'], 'Regular brushing with fluoride toothpaste helps remove plaque and protect enamel.'),
       q('Which teeth are mainly used to tear food?', ['Canines', 'Incisors', 'Premolars', 'Molars'], 'The pointed canines help grip and tear food.'),
-      q('Which teeth help crush and grind food between incisors/canines and molars?', ['Premolars', 'Incisors', 'Canines', 'Wisdom teeth only'], 'Premolars have surfaces suited to crushing and grinding food.'),
+      q('Which teeth called premolars help crush and grind food between incisors/canines and molars?', ['Premolars', 'Incisors', 'Canines', 'Molars'], 'Premolars have surfaces suited to crushing and grinding food.'),
       q('Which action is part of careful daily tooth cleaning?', ['Gently clean all tooth surfaces and between teeth', 'Scrub gums hard until they bleed', 'Brush only the front teeth', 'Share a toothbrush with a friend'], 'Clean all surfaces gently and clean between teeth; hard scrubbing can injure gums.')
     ]
   },
