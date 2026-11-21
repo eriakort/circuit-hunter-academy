@@ -1867,3 +1867,36 @@ table.itv-ref td:first-child{font-weight:700}
   .motion-scene__art *{animation:none!important;transition:none!important}
   .motion-scene__art .wc-vapour,.motion-scene__art .wc-drop,.motion-scene__art .wc-soak,.motion-scene__art .wc-gather{opacity:.9}
 }
+
+/* Science in motion: shared scene styles (.sm-*) */
+.sm{display:block;width:100%;height:auto}
+.sm-note{font:600 12px var(--body);fill:#5c5a50}
+.sm-name{font:700 14px var(--body);fill:#2b2f2a}
+.sm-name--sm{font-size:12.5px}
+.sm-name--red{fill:#a8322f}
+.sm-title{font:700 13px var(--body);fill:#2b2f2a}
+.sm-route{stroke:#7b5ea7;stroke-opacity:.45;stroke-width:3;stroke-dasharray:6 6}
+.sm-organ{fill:none;stroke:#d99a8f;stroke-width:14;stroke-linecap:round;stroke-linejoin:round;transition:all .3s}
+.sm-organ--fill{fill:#e8b4a8;stroke:#c97d6e;stroke-width:3}
+.sm-organ--tube{stroke-width:12}
+.sm-organ--small{stroke:#e6a79a;stroke-width:13}
+.sm-organ--large{stroke:#c9806f;stroke-width:16}
+.sm-organ.is-active{stroke:#e9b949}
+.sm-organ--fill.is-active{fill:#f5d27a;stroke:#c8921c}
+.sm-mouthline{fill:none;stroke:#8a3b3b;stroke-width:3;stroke-linecap:round}
+.sm-vessel{fill:none;stroke:#c9423f;stroke-width:6;stroke-linecap:round}
+.sm-food{fill:#8a5a2b;stroke:#fff;stroke-width:2}
+.sm-nutrient{fill:#e9b949;stroke:#fff;stroke-width:1.5}
+.sm-drop{fill:#2f86b6}
+.sm-sun{font:800 12px var(--body);fill:#6a3d00}
+.sm-orbit{stroke:#fff;stroke-opacity:.22;stroke-dasharray:3 5;transition:all .3s}
+.sm-orbit.is-active{stroke:#e9b949;stroke-opacity:.9;stroke-dasharray:none;stroke-width:2}
+.sm-planet-label{font:600 12px var(--body);fill:#c9d6e6;paint-order:stroke;stroke:#10213a;stroke-width:3px}
+.sm-planet-label.is-active{fill:#ffd978;font-weight:800}
+.sm-link{fill:none;stroke:#5c5a50;stroke-width:3;opacity:.6;transition:all .3s}
+.sm-link.is-active{stroke:#c8921c;stroke-width:5;opacity:1}
+.sm-bubble{fill:#fffaf0;stroke:#5c5a50;stroke-width:2;opacity:.9;transition:all .3s}
+.sm-bubble.is-active{fill:#fff3c8;stroke:#c8921c;stroke-width:4}
+.sm-organism{font:700 14px var(--body);fill:#2b2f2a}
+.sm-organism.is-active{fill:#8a5a00}
+.sm-energy{fill:#f2b93b;stroke:#fff;stroke-width:2}

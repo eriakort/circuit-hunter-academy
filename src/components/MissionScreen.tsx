@@ -23,9 +23,7 @@ import { GhanaJhs2CyclesVisual } from './GhanaJhs2CyclesVisual';
 import { GhanaJhs2ForcesEnergyVisual } from './GhanaJhs2ForcesEnergyVisual';
 import { GhanaJhs2HumansEnvironmentVisual } from './GhanaJhs2HumansEnvironmentVisual';
 import { GhanaJhs3DiversityVisual } from './GhanaJhs3DiversityVisual';
-import { ParticleScene } from './scienceMotion/ParticleScene';
-import { WaterCycleScene } from './scienceMotion/WaterCycleScene';
-import { NitrogenCycleScene } from './scienceMotion/NitrogenCycleScene';
+import { MOTION_SCENES } from './scienceMotion/registry';
 import { GhanaJhs3GrasshopperLifeCycleVisual } from './GhanaJhs3GrasshopperLifeCycleVisual';
 import { GhanaJhs3CropMaturityVisual } from './GhanaJhs3CropMaturityVisual';
 import { GhanaJhs3AnimalFeedPreparationVisual } from './GhanaJhs3AnimalFeedPreparationVisual';
@@ -73,6 +71,7 @@ export const MissionScreen: React.FC = () => {
 
   const { lang, name } = state;
   const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
+  const ActiveMotionScene = MOTION_SCENES[currentMission.id];
   const sc = currentMission.scenes[currentSceneIndex];
   const masteryAssessment = currentMission.learning?.masteryAssessment;
   const [canProceed, setCanProceed] = useState(false);
@@ -286,43 +285,39 @@ export const MissionScreen: React.FC = () => {
               dangerouslySetInnerHTML={{ __html: visualContent }}
             />
           )}
-          {isGhana && ['gh-jhs1-science-materials-states', 'gh-jhs1-science-importance-liquids', 'gh-jhs1-science-materials-uses', 'gh-jhs1-science-living-cells'].includes(currentMission.id) && currentSceneIndex === 1 && (
-            currentMission.id === 'gh-jhs1-science-materials-states'
-              ? <ParticleScene />
-              : <GhanaJhs1DiversityVisual missionId={currentMission.id} lang={lang} />
+          {isGhana && ['gh-jhs1-science-materials-states', 'gh-jhs1-science-importance-liquids', 'gh-jhs1-science-materials-uses', 'gh-jhs1-science-living-cells'].includes(currentMission.id) && !ActiveMotionScene && currentSceneIndex === 1 && (
+            <GhanaJhs1DiversityVisual missionId={currentMission.id} lang={lang} />
           )}
-          {isGhana && ['gh-jhs1-science-earth-cycles', 'gh-jhs1-science-life-cycles', 'gh-jhs1-science-crop-production', 'gh-jhs1-science-animal-production'].includes(currentMission.id) && currentSceneIndex === 1 && (
-            currentMission.id === 'gh-jhs1-science-earth-cycles'
-              ? <WaterCycleScene />
-              : <GhanaJhs1CyclesVisual missionId={currentMission.id} lang={lang} />
+          {isGhana && ['gh-jhs1-science-earth-cycles', 'gh-jhs1-science-life-cycles', 'gh-jhs1-science-crop-production', 'gh-jhs1-science-animal-production'].includes(currentMission.id) && !ActiveMotionScene && currentSceneIndex === 1 && (
+            <GhanaJhs1CyclesVisual missionId={currentMission.id} lang={lang} />
           )}
-          {isGhana && ['gh-jhs1-science-human-body-system', 'gh-jhs1-science-solar-system', 'gh-jhs1-science-ecosystem', 'gh-jhs1-science-farming-systems'].includes(currentMission.id) && currentSceneIndex === 1 && (
+          {isGhana && ['gh-jhs1-science-human-body-system', 'gh-jhs1-science-solar-system', 'gh-jhs1-science-ecosystem', 'gh-jhs1-science-farming-systems'].includes(currentMission.id) && !ActiveMotionScene && currentSceneIndex === 1 && (
             <GhanaJhs1SystemsVisual missionId={currentMission.id} lang={lang} />
           )}
-          {isGhana && ['gh-jhs1-science-energy-forms', 'gh-jhs1-science-electricity-generation', 'gh-jhs1-science-energy-conversion', 'gh-jhs1-science-force-motion', 'gh-jhs1-science-agricultural-tools'].includes(currentMission.id) && currentSceneIndex === 1 && (
+          {isGhana && ['gh-jhs1-science-energy-forms', 'gh-jhs1-science-electricity-generation', 'gh-jhs1-science-energy-conversion', 'gh-jhs1-science-force-motion', 'gh-jhs1-science-agricultural-tools'].includes(currentMission.id) && !ActiveMotionScene && currentSceneIndex === 1 && (
             <GhanaJhs1ForcesEnergyVisual missionId={currentMission.id} lang={lang} />
           )}
-          {isGhana && ['gh-jhs1-science-waste-management', 'gh-jhs1-science-human-health', 'gh-jhs1-science-science-industry', 'gh-jhs1-science-climate-green-economy', 'gh-jhs1-science-understanding-environment'].includes(currentMission.id) && currentSceneIndex === 1 && (
+          {isGhana && ['gh-jhs1-science-waste-management', 'gh-jhs1-science-human-health', 'gh-jhs1-science-science-industry', 'gh-jhs1-science-climate-green-economy', 'gh-jhs1-science-understanding-environment'].includes(currentMission.id) && !ActiveMotionScene && currentSceneIndex === 1 && (
             <GhanaJhs1HumansEnvironmentVisual missionId={currentMission.id} lang={lang} />
           )}
-          {isGhana && ['gh-jhs2-science-mixture-separation', 'gh-jhs2-science-atomic-structure', 'gh-jhs2-science-cell-types'].includes(currentMission.id) && currentSceneIndex === 1 && (
+          {isGhana && ['gh-jhs2-science-mixture-separation', 'gh-jhs2-science-atomic-structure', 'gh-jhs2-science-cell-types'].includes(currentMission.id) && !ActiveMotionScene && currentSceneIndex === 1 && (
             <GhanaJhs2DiversityVisual missionId={currentMission.id} />
           )}
 
-          {isGhana && ['gh-jhs2-science-carbon-cycle', 'gh-jhs2-science-anopheles-life-cycle', 'gh-jhs2-science-seed-beds', 'gh-jhs2-science-animal-feed-water'].includes(currentMission.id) && currentSceneIndex === 1 && (
+          {isGhana && ['gh-jhs2-science-carbon-cycle', 'gh-jhs2-science-anopheles-life-cycle', 'gh-jhs2-science-seed-beds', 'gh-jhs2-science-animal-feed-water'].includes(currentMission.id) && !ActiveMotionScene && currentSceneIndex === 1 && (
             <GhanaJhs2CyclesVisual missionId={currentMission.id} />
           )}
 
-          {isGhana && ['gh-jhs2-science-teeth-dental-health', 'gh-jhs2-science-outer-planets', 'gh-jhs2-science-ecosystem-feeding', 'gh-jhs2-science-farming-systems'].includes(currentMission.id) && currentSceneIndex === 1 && (
+          {isGhana && ['gh-jhs2-science-teeth-dental-health', 'gh-jhs2-science-outer-planets', 'gh-jhs2-science-ecosystem-feeding', 'gh-jhs2-science-farming-systems'].includes(currentMission.id) && !ActiveMotionScene && currentSceneIndex === 1 && (
             <GhanaJhs2SystemsVisual missionId={currentMission.id} />
           )}
-          {isGhana && ['gh-jhs2-science-energy-sources-heat', 'gh-jhs2-science-electricity-electronics', 'gh-jhs2-science-energy-conservation-impact', 'gh-jhs2-science-magnetism-force-machines', 'gh-jhs2-science-agricultural-tools'].includes(currentMission.id) && currentSceneIndex === 1 && (
+          {isGhana && ['gh-jhs2-science-energy-sources-heat', 'gh-jhs2-science-electricity-electronics', 'gh-jhs2-science-energy-conservation-impact', 'gh-jhs2-science-magnetism-force-machines', 'gh-jhs2-science-agricultural-tools'].includes(currentMission.id) && !ActiveMotionScene && currentSceneIndex === 1 && (
             <GhanaJhs2ForcesEnergyVisual missionId={currentMission.id} />
           )}
-          {isGhana && ['gh-jhs2-science-waste-management', 'gh-jhs2-science-human-health', 'gh-jhs2-science-science-industry', 'gh-jhs2-science-climate-green-economy', 'gh-jhs2-science-soils-plants', 'gh-jhs2-science-rocks-soil-formation'].includes(currentMission.id) && currentSceneIndex === 1 && (
+          {isGhana && ['gh-jhs2-science-waste-management', 'gh-jhs2-science-human-health', 'gh-jhs2-science-science-industry', 'gh-jhs2-science-climate-green-economy', 'gh-jhs2-science-soils-plants', 'gh-jhs2-science-rocks-soil-formation'].includes(currentMission.id) && !ActiveMotionScene && currentSceneIndex === 1 && (
             <GhanaJhs2HumansEnvironmentVisual missionId={currentMission.id} />
           )}
-          {isGhana && currentMission.id === 'gh-jhs3-science-nitrogen-cycle' && currentSceneIndex === 1 && <NitrogenCycleScene />}
+          {isGhana && ActiveMotionScene && currentSceneIndex === 1 && <ActiveMotionScene />}
           {isGhana && currentMission.id === 'gh-jhs3-science-grasshopper-life-cycle' && currentSceneIndex === 1 && <GhanaJhs3GrasshopperLifeCycleVisual />}
           {isGhana && currentMission.id === 'gh-jhs3-science-crop-maturity' && currentSceneIndex === 1 && <GhanaJhs3CropMaturityVisual />}
           {isGhana && currentMission.id === 'gh-jhs3-science-animal-feed-preparation' && currentSceneIndex === 1 && <GhanaJhs3AnimalFeedPreparationVisual />}
@@ -342,7 +337,7 @@ export const MissionScreen: React.FC = () => {
           {isGhana && currentMission.id === 'gh-jhs3-science-industry' && currentSceneIndex === 1 && <GhanaJhs3IndustryVisual />}
           {isGhana && currentMission.id === 'gh-jhs3-science-climate-green-economy' && currentSceneIndex === 1 && <GhanaJhs3ClimateActionVisual />}
           {isGhana && currentMission.id === 'gh-jhs3-science-plant-resources' && currentSceneIndex === 1 && <GhanaJhs3PlantResourcesVisual />}
-          {isGhana && ['gh-jhs3-science-binary-compounds', 'gh-jhs3-science-acids-bases-salts', 'gh-jhs3-science-chemical-bonding', 'gh-jhs3-science-specialised-plant-cells', 'gh-jhs3-science-specialised-human-cells'].includes(currentMission.id) && currentSceneIndex === 1 && (
+          {isGhana && ['gh-jhs3-science-binary-compounds', 'gh-jhs3-science-acids-bases-salts', 'gh-jhs3-science-chemical-bonding', 'gh-jhs3-science-specialised-plant-cells', 'gh-jhs3-science-specialised-human-cells'].includes(currentMission.id) && !ActiveMotionScene && currentSceneIndex === 1 && (
             <GhanaJhs3DiversityVisual missionId={currentMission.id} />
           )}
 
