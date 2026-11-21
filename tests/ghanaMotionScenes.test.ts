@@ -58,7 +58,13 @@ const cases: [string, string, string][] = [
   ['gh-jhs2-science-seed-beds', 'The Seed-Bed Design Strategist', 'Ridge or mound'],
   ['gh-jhs2-science-animal-feed-water', 'The Animal Production Care Planner', 'Clean water'],
   ['gh-jhs2-science-teeth-dental-health', 'The Dental Health Guardian', 'Enamel'],
-  ['gh-jhs2-science-agricultural-tools', 'The Farm Tool Engineer', 'Watering can']
+  ['gh-jhs2-science-agricultural-tools', 'The Farm Tool Engineer', 'Watering can'],
+  ['gh-jhs2-science-waste-management', 'The Waste-Wise Community Guardian', 'Used battery'],
+  ['gh-jhs2-science-human-health', 'The Community Health Defender', 'Respiratory particles'],
+  ['gh-jhs2-science-science-industry', 'The Science and Innovation Builder', 'Safe water'],
+  ['gh-jhs2-science-climate-green-economy', 'The Climate Action Strategist', 'Adaptation'],
+  ['gh-jhs2-science-soils-plants', 'The Soil and Plant Investigator', 'Loam soil'],
+  ['gh-jhs2-science-rocks-soil-formation', 'The Rock and Soil Origins Explorer', 'Metamorphic']
 ];
 for (const [id, title, control] of cases) {
   const Scene = MOTION_SCENES[id];

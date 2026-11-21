@@ -5,7 +5,7 @@ import { MoreDetails } from './MoreDetails';
 import { useSmilPause } from './useSmilPause';
 
 /** One 640x300 SVG stage that pauses with the scene and re-syncs when `depKey` changes. */
-const Stage: React.FC<{ label: string; depKey: string; playing: boolean; reducedMotion: boolean; bg?: string; children: React.ReactNode }> = ({ label, depKey, playing, reducedMotion, bg = '#eef3e6', children }) => {
+export const Stage: React.FC<{ label: string; depKey: string; playing: boolean; reducedMotion: boolean; bg?: string; children: React.ReactNode }> = ({ label, depKey, playing, reducedMotion, bg = '#eef3e6', children }) => {
   const ref = useRef<SVGSVGElement>(null);
   useSmilPause(ref, playing, reducedMotion, depKey);
   return (
@@ -15,13 +15,13 @@ const Stage: React.FC<{ label: string; depKey: string; playing: boolean; reduced
     </svg>
   );
 };
-const Cap: React.FC<{ x: number; y: number; text: string; anchor?: 'start' | 'middle' | 'end' }> = ({ x, y, text, anchor = 'middle' }) => (
+export const Cap: React.FC<{ x: number; y: number; text: string; anchor?: 'start' | 'middle' | 'end' }> = ({ x, y, text, anchor = 'middle' }) => (
   <text x={x} y={y} textAnchor={anchor} className="sm-note sm-note--dark">{text}</text>
 );
-const Ground: React.FC<{ y?: number; colour?: string }> = ({ y = 240, colour = '#a77b50' }) => (
+export const Ground: React.FC<{ y?: number; colour?: string }> = ({ y = 240, colour = '#a77b50' }) => (
   <g><rect y={y} width="640" height={300 - y} fill={colour} /><rect y={y} width="640" height="5" fill="#7a5a36" /></g>
 );
-const Drops: React.FC<{ x0: number; x1: number; y0: number; y1: number; n: number; colour?: string; dur?: number }> = ({ x0, x1, y0, y1, n, colour = '#3e91c8', dur = 1.2 }) => (
+export const Drops: React.FC<{ x0: number; x1: number; y0: number; y1: number; n: number; colour?: string; dur?: number }> = ({ x0, x1, y0, y1, n, colour = '#3e91c8', dur = 1.2 }) => (
   <g>
     {Array.from({ length: n }, (_, i) => {
       const x = x0 + ((x1 - x0) * (i + 0.5)) / n;
@@ -34,7 +34,7 @@ const Drops: React.FC<{ x0: number; x1: number; y0: number; y1: number; n: numbe
     })}
   </g>
 );
-const Plant: React.FC<{ x: number; y: number; h: number; colour?: string; grow?: boolean; top?: React.ReactNode }> = ({ x, y, h, colour = '#4b8b48', grow, top }) => (
+export const Plant: React.FC<{ x: number; y: number; h: number; colour?: string; grow?: boolean; top?: React.ReactNode }> = ({ x, y, h, colour = '#4b8b48', grow, top }) => (
   <g transform={`translate(${x} ${y})`}>
     <g>
       <path d={`M0 0 V${-h}`} stroke={colour} strokeWidth="5" strokeLinecap="round" />
@@ -44,14 +44,14 @@ const Plant: React.FC<{ x: number; y: number; h: number; colour?: string; grow?:
     </g>
   </g>
 );
-const Sun: React.FC<{ x?: number; y?: number }> = ({ x = 560, y = 56 }) => (
+export const Sun: React.FC<{ x?: number; y?: number }> = ({ x = 560, y = 56 }) => (
   <g transform={`translate(${x} ${y})`}><circle r="26" fill="#f2b93b" stroke="#fff" strokeWidth="3" /><g>{[0, 45, 90, 135, 180, 225, 270, 315].map(a => <path key={a} d="M0 -34 V-46" stroke="#f2b93b" strokeWidth="4" strokeLinecap="round" transform={`rotate(${a})`} />)}<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite" /></g></g>
 );
 const Hoe: React.FC = () => (
   <g><path d="M0 0 L60 -150" stroke="#8a6a3a" strokeWidth="8" strokeLinecap="round" /><path d="M-26 -8 L26 -8 L16 22 L-16 22 Z" fill="#8a96a0" stroke="#4b5560" strokeWidth="3" transform="rotate(-20)" /></g>
 );
 
-const SoftSteps = (items: [string, string, string][]): MotionStep[] => items.map(([id, label, caption]) => ({ id, label, caption }));
+export const SoftSteps = (items: [string, string, string][]): MotionStep[] => items.map(([id, label, caption]) => ({ id, label, caption }));
 
 /* ---------- JHS 1 crop production ---------- */
 const CROP_PHASES = SoftSteps([
