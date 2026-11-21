@@ -123,6 +123,40 @@ assert.ok(basic8Matter.every(item => item.officialIndicatorText && item.sourcePd
 assert.ok(basic8Matter.every(item => item.status === 'needs-review'));
 assert.ok(basic8Matter.every(item => item.missionIds.length === 1));
 
+const expectedBasic8MatterEvidence: Record<string, { scenes: string[]; questions: string[] }> = {
+  'B8.1.1.1.1': {
+    scenes: ['gh-jhs2-science-mixture-separation#scene-0', 'gh-jhs2-science-mixture-separation#scene-1'],
+    questions: ['gh-jhs2-science-mixture-separation#quiz-0', 'gh-jhs2-science-mixture-separation#quiz-1', 'gh-jhs2-science-mixture-separation#quiz-4']
+  },
+  'B8.1.1.1.2': {
+    scenes: ['gh-jhs2-science-mixture-separation#scene-2', 'gh-jhs2-science-mixture-separation#scene-3'],
+    questions: ['gh-jhs2-science-mixture-separation#quiz-2', 'gh-jhs2-science-mixture-separation#quiz-3']
+  },
+  'B8.1.1.2.1': {
+    scenes: ['gh-jhs2-science-atomic-structure#scene-0', 'gh-jhs2-science-atomic-structure#scene-2'],
+    questions: ['gh-jhs2-science-atomic-structure#quiz-0', 'gh-jhs2-science-atomic-structure#quiz-2']
+  },
+  'B8.1.1.2.2': {
+    scenes: ['gh-jhs2-science-atomic-structure#scene-1', 'gh-jhs2-science-atomic-structure#scene-3'],
+    questions: ['gh-jhs2-science-atomic-structure#quiz-1', 'gh-jhs2-science-atomic-structure#quiz-4']
+  },
+  'B8.1.2.1.1': {
+    scenes: ['gh-jhs2-science-cell-types#scene-1', 'gh-jhs2-science-cell-types#scene-2'],
+    questions: ['gh-jhs2-science-cell-types#quiz-0', 'gh-jhs2-science-cell-types#quiz-2']
+  },
+  'B8.1.2.1.2': {
+    scenes: ['gh-jhs2-science-cell-types#scene-1', 'gh-jhs2-science-cell-types#scene-2'],
+    questions: ['gh-jhs2-science-cell-types#quiz-1']
+  }
+};
+for (const [code, expected] of Object.entries(expectedBasic8MatterEvidence)) {
+  const item = basic8Matter.find(candidate => candidate.indicatorCode === code);
+  assert.ok(item, `${code} has a Basic 8 evidence record`);
+  assert.deepEqual(item.teachingSceneRefs, expected.scenes, `${code} teaching-scene evidence is indexed`);
+  assert.deepEqual(item.assessmentQuestionRefs, expected.questions, `${code} assessment evidence is indexed`);
+}
+
+
 const basic8Remaining = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item =>
   item.grade === 8 && (
     item.indicatorCode === 'B8.3.1.1.2' ||
