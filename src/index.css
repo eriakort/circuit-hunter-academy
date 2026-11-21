@@ -1913,3 +1913,9 @@ table.itv-ref td:first-child{font-weight:700}
 .sm-carbon{fill:#3a3a3a;stroke:#fff;stroke-width:2}
 .sm-carbon-text{font:800 12px var(--mono);fill:#fff}
 .sm-name--light{fill:#fff}
+.sm-heartlab{font:700 11px var(--body);fill:#2b2f2a;stroke:none}
+.motion-scene__more{margin-top:8px;border:1px solid rgba(0,0,0,.15);border-radius:10px;padding:6px 12px;background:rgba(255,255,255,.4)}
+.motion-scene__more summary{cursor:pointer;font-weight:700;padding:4px 0}
+.motion-scene__more-body{padding:4px 0 6px}
+.motion-scene__more-body p{margin:6px 0}
+.sm-bubble.is-hit{fill:#fde3df;stroke:#c0463c;stroke-width:4}

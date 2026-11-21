@@ -23,7 +23,7 @@ const Streaming: React.FC<{ path: string; count?: number; dur?: number; fill?: s
   <>
     <path id={`cs-${path.length}`} d={path} fill="none" stroke="none" />
     {Array.from({ length: count }, (_, i) => (
-      <circle key={i} r={r} fill={fill} opacity=".9"><animateMotion dur={`${dur}s`} begin={`${-(i * dur) / count}s`} repeatCount="indefinite"><mpath href={`#cs-${path.length}`} /></animateMotion></circle>
+      <circle key={i} r={r} fill={fill} opacity=".9"><animateMotion dur={`${dur}s`} begin={`${-(i * dur) / count}s`} repeatCount="indefinite" path={path} /></circle>
     ))}
   </>
 );

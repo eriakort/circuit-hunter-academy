@@ -3,7 +3,7 @@ import { MotionScene, type MotionStep } from './MotionScene';
 import { useSmilPause } from './useSmilPause';
 
 type Habitat = { id: 'savanna' | 'pond'; name: string; kinds: Kind[]; steps: MotionStep[]; roles?: string[] };
-type Kind = 'grass' | 'grasshopper' | 'frog' | 'snake' | 'algae' | 'insect' | 'smallfish' | 'bigfish';
+export type Kind = 'grass' | 'grasshopper' | 'frog' | 'snake' | 'algae' | 'insect' | 'smallfish' | 'bigfish' | 'lizard' | 'hawk';
 
 export const HABITATS: Habitat[] = [
   {
@@ -29,8 +29,8 @@ export const HABITATS: Habitat[] = [
 const X = [100, 250, 400, 550];
 const Y = 250;
 
-const Icon: React.FC<{ kind: Kind; x: number }> = ({ kind, x }) => {
-  const g = (children: React.ReactNode) => <g transform={`translate(${x} ${Y})`}>{children}</g>;
+export const Icon: React.FC<{ kind: Kind; x: number; y?: number }> = ({ kind, x, y = Y }) => {
+  const g = (children: React.ReactNode) => <g transform={`translate(${x} ${y})`}>{children}</g>;
   switch (kind) {
     case 'grass': return g(<g stroke="#3f8a4a" strokeWidth="5" strokeLinecap="round" fill="none"><path d="M-16 18 Q-20 -6 -26 -22" /><path d="M-6 18 Q-6 -10 -4 -30" /><path d="M6 18 Q8 -8 16 -26" /><path d="M16 18 Q22 0 30 -12" /></g>);
     case 'grasshopper': return g(<><ellipse cx="0" cy="0" rx="26" ry="9" fill="#7fb04a" /><circle cx="24" cy="-4" r="8" fill="#7fb04a" /><circle cx="27" cy="-6" r="2" fill="#173b39" /><path d="M-16 4 L-26 -16 L-6 16 M-16 4 L-30 20" stroke="#4f7a2e" strokeWidth="3" fill="none" /><path d="M28 -10 q8 -14 18 -14" stroke="#4f7a2e" strokeWidth="2" fill="none" /></>);
@@ -39,6 +39,8 @@ const Icon: React.FC<{ kind: Kind; x: number }> = ({ kind, x }) => {
     case 'algae': return g(<g fill="#4c9a4a"><circle cx="-16" cy="6" r="12" /><circle cx="6" cy="-4" r="14" /><circle cx="22" cy="10" r="10" /><circle cx="-2" cy="14" r="9" fill="#6bb35f" /></g>);
     case 'insect': return g(<><ellipse cx="0" cy="0" rx="20" ry="9" fill="#7a5a3a" /><circle cx="20" cy="-2" r="6" fill="#7a5a3a" /><path d="M-8 6 l-6 14 M2 6 l0 15 M12 5 l6 14 M-8 -6 l-6 -14 M4 -8 l4 -14" stroke="#5a3f27" strokeWidth="2" fill="none" /></>);
     case 'smallfish': return g(<><ellipse cx="0" cy="0" rx="24" ry="12" fill="#e08a3c" /><path d="M-22 0 L-38 -12 L-38 12 Z" fill="#e08a3c" /><circle cx="14" cy="-3" r="2.5" fill="#173b39" /></>);
+    case 'lizard': return g(<><path d="M-30 6 Q-10 -4 10 4 Q24 8 34 -2" stroke="#8a9a3a" strokeWidth="10" fill="none" strokeLinecap="round" /><ellipse cx="34" cy="-4" rx="9" ry="6" fill="#8a9a3a" /><circle cx="37" cy="-6" r="1.8" fill="#173b39" /><path d="M-8 6 l-8 12 M14 8 l8 12 M0 2 l-4 -12 M18 4 l6 -10" stroke="#6b7a2a" strokeWidth="3" fill="none" strokeLinecap="round" /></>);
+    case 'hawk': return g(<><path d="M-34 -4 Q-18 -24 0 -8 Q18 -24 34 -4 Q16 -10 0 6 Q-16 -10 -34 -4Z" fill="#7a4a2a" /><ellipse cx="0" cy="2" rx="9" ry="13" fill="#9a6a3a" /><circle cx="0" cy="-12" r="6" fill="#9a6a3a" /><path d="M0 -12 l5 3 l-5 1" fill="#e9b949" /><circle cx="-2" cy="-14" r="1.4" fill="#173b39" /></>);
     case 'bigfish': return g(<><ellipse cx="0" cy="0" rx="34" ry="18" fill="#5b7fa8" /><path d="M-32 0 L-52 -16 L-52 16 Z" fill="#5b7fa8" /><path d="M-6 -16 q8 -12 18 -2" fill="#47688c" /><circle cx="20" cy="-4" r="3" fill="#173b39" /></>);
   }
 };
@@ -88,7 +90,7 @@ const EcosystemArt: React.FC<{ habitat: Habitat; stepIndex: number; playing: boo
         <g key={`${habitat.id}-${stepIndex}`}>
           {[0, 1, 2].map(i => (
             <circle key={i} r="7" className="sm-energy">
-              <animateMotion dur="2.4s" begin={`${-i * 0.8}s`} repeatCount="indefinite"><mpath href="#eco-route" /></animateMotion>
+              <animateMotion dur="2.4s" begin={`${-i * 0.8}s`} repeatCount="indefinite" path={route} />
             </circle>
           ))}
         </g>

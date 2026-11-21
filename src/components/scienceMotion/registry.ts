@@ -16,6 +16,11 @@ import { AtomScene } from './AtomScene';
 import { CellScene } from './CellScene';
 import { CarbonCycleScene } from './CarbonCycleScene';
 import { MixtureScene } from './MixtureScene';
+import { CirculationScene } from './CirculationScene';
+import { CometScene } from './CometScene';
+import { GrasshopperLifeCycleScene } from './LifeCycleScene';
+import { DisturbanceScene } from './DisturbanceScene';
+import { LightScene } from './LightScene';
 
 /**
  * Ghana Science missions whose scene-1 visual is a "Science in motion" scene.
@@ -38,5 +43,10 @@ export const MOTION_SCENES: Record<string, React.FC> = {
   'gh-jhs2-science-cell-types': CellScene,
   'gh-jhs2-science-carbon-cycle': CarbonCycleScene,
   'gh-jhs2-science-mixture-separation': MixtureScene,
+  'gh-jhs3-science-circulation-respiration': CirculationScene,
+  'gh-jhs3-science-asteroids-comets': CometScene,
+  'gh-jhs3-science-grasshopper-life-cycle': GrasshopperLifeCycleScene,
+  'gh-jhs3-science-ecosystem-balance': DisturbanceScene,
+  'gh-jhs3-science-energy-light': LightScene,
   'gh-jhs3-science-nitrogen-cycle': NitrogenCycleScene
 };

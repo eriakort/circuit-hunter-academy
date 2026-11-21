@@ -107,7 +107,7 @@ const NitrogenArt: React.FC<{ stepId: string; playing: boolean; reducedMotion: b
           {[0, 1, 2].map(i => (
             <g key={i} className="nc-token">
               <circle r="10" className="nc-atom" /><text y="5" textAnchor="middle" className="nc-atom-text">N</text>
-              <animateMotion dur="3s" begin={`${-i}s`} repeatCount="indefinite" rotate="0"><mpath href={`#nc-route-${stepId}`} /></animateMotion>
+              <animateMotion dur="3s" begin={`${-i}s`} repeatCount="indefinite" rotate="0" path={ROUTES[stepId]} />
             </g>
           ))}
         </g>

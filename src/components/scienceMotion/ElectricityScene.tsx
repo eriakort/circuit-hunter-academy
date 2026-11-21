@@ -84,7 +84,7 @@ const ElectricityArt: React.FC<{ source: Source; stepIndex: number; playing: boo
       <path id="el-route" d={route} fill="none" stroke="none" />
       {anim && stepIndex > 0 && (
         <g key={`${source.id}-${stepIndex}`}>
-          {[0, 1, 2].map(i => <circle key={i} r="7" className="sm-energy"><animateMotion dur="2s" begin={`${-i * 0.66}s`} repeatCount="indefinite"><mpath href="#el-route" /></animateMotion></circle>)}
+          {[0, 1, 2].map(i => <circle key={i} r="7" className="sm-energy"><animateMotion dur="2s" begin={`${-i * 0.66}s`} repeatCount="indefinite" path={route} /></circle>)}
         </g>
       )}
       <text x="320" y="26" textAnchor="middle" className="sm-title">{source.name}: from energy source to electricity</text>

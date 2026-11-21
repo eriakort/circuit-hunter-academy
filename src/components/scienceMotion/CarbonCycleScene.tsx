@@ -72,7 +72,7 @@ const CarbonArt: React.FC<{ stepId: string; playing: boolean; reducedMotion: boo
           {[0, 1, 2].map(i => (
             <g key={i}>
               <circle r="10" className="sm-carbon" /><text y="4" textAnchor="middle" className="sm-carbon-text">C</text>
-              <animateMotion dur="3s" begin={`${-i}s`} repeatCount="indefinite" rotate="0"><mpath href={`#cc-route-${stepId}`} /></animateMotion>
+              <animateMotion dur="3s" begin={`${-i}s`} repeatCount="indefinite" rotate="0" path={ROUTES[stepId]} />
             </g>
           ))}
         </g>

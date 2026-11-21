@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { MotionScene, type MotionStep } from './MotionScene';
+import { MoreDetails } from './MoreDetails';
 import { ChoiceRow } from './ChoiceRow';
 import { useSmilPause } from './useSmilPause';
 
-export type Organism = { id: 'fly' | 'plant' | 'chicken' | 'mosquito'; name: string; steps: MotionStep[]; hint: string };
+export type Organism = { id: 'fly' | 'plant' | 'chicken' | 'mosquito' | 'grasshopper'; name: string; steps: MotionStep[]; hint: string };
 
 export const ORGANISMS: Organism[] = [
   {
@@ -56,6 +57,10 @@ export const Icon: React.FC<{ organism: Organism['id']; stage: string }> = ({ or
     case 'mosquito:larva': return <g><path d="M-34 -20 h68" stroke="#3f9fc3" strokeWidth="4" /><path d="M-18 -18 q4 20 20 26 q22 4 26 -6" stroke="#7a6a4a" strokeWidth="8" fill="none" strokeLinecap="round" /><path d="M-18 -18 v-6" stroke="#7a6a4a" strokeWidth="3" /></g>;
     case 'mosquito:pupa': return <g><path d="M-34 -22 h68" stroke="#3f9fc3" strokeWidth="4" /><path d="M-6 -8 q-16 8 -8 22 q10 12 22 2 q4 -8 -4 -14 q-8 -4 -10 -10 Z" fill="#8a6a4a" stroke="#5a3f27" strokeWidth="2" /></g>;
     case 'mosquito:adult': return <g><ellipse cx="-4" cy="2" rx="18" ry="5" fill="#4a4a42" /><circle cx="16" cy="0" r="5" fill="#4a4a42" /><path d="M20 2 l16 8" stroke="#4a4a42" strokeWidth="2" /><ellipse cx="-6" cy="-8" rx="14" ry="5" fill="#9ecbe8" opacity=".75"><animate attributeName="ry" values="6;1;6" dur=".18s" repeatCount="indefinite" /></ellipse><path d="M-14 6 l-10 16 M-4 7 l-2 18 M6 6 l8 16" stroke="#4a4a42" strokeWidth="1.8" fill="none" /></g>;
+    case 'grasshopper:egg': return <g><path d="M-26 8 q0 14 26 14 t26 -14 q-26 -10 -52 0 Z" fill="#8a6a3a" /><g fill="#f8f4e8" stroke="#b9ae92" strokeWidth="1.5">{[-14, -4, 6, 16].map(x => <ellipse key={x} cx={x} cy="2" rx="4" ry="9" transform={`rotate(${x} ${x} 2)`} />)}</g></g>;
+    case 'grasshopper:nymph': return <g><ellipse cx="-2" cy="2" rx="18" ry="7" fill="#8fbf4a" /><circle cx="16" cy="-2" r="6" fill="#8fbf4a" /><circle cx="19" cy="-4" r="1.8" fill="#173b39" /><path d="M-4 -3 l-4 -6 M2 -3 l-2 -7" stroke="#6a9a2e" strokeWidth="2.5" fill="none" strokeLinecap="round" /><path d="M-10 6 l-12 -14 l8 22 M4 8 l2 12 M12 6 l6 10" stroke="#5f8a28" strokeWidth="2.2" fill="none" strokeLinecap="round" /></g>;
+    case 'grasshopper:moulting': return <g><ellipse cx="-8" cy="-2" rx="22" ry="9" fill="none" stroke="#9a9a8a" strokeWidth="2" strokeDasharray="3 3" /><ellipse cx="2" cy="6" rx="18" ry="7" fill="#8fbf4a" /><circle cx="20" cy="2" r="6" fill="#8fbf4a" /><circle cx="23" cy="0" r="1.8" fill="#173b39" /><path d="M-6 0 l-4 -6 M0 0 l-2 -7" stroke="#6a9a2e" strokeWidth="2.5" fill="none" strokeLinecap="round" /><path d="M-4 18 l4 6" stroke="#9a9a8a" strokeWidth="2" /></g>;
+    case 'grasshopper:adult': return <g><ellipse cx="-2" cy="4" rx="24" ry="8" fill="#7aa83a" /><circle cx="22" cy="0" r="7" fill="#7aa83a" /><circle cx="25" cy="-2" r="2" fill="#173b39" /><path d="M-24 -4 Q-4 -14 20 2 Q0 6 -24 -4Z" fill="#c9b27a" stroke="#8a7a4a" strokeWidth="1.5" /><path d="M-8 10 l-14 -22 l10 30 M6 12 l4 14 M16 10 l8 12" stroke="#4f7a22" strokeWidth="3" fill="none" strokeLinecap="round" /><path d="M26 -6 q10 -12 22 -10" stroke="#4f7a22" strokeWidth="2" fill="none" /></g>;
     default: return null;
   }
 };
@@ -75,7 +80,7 @@ export const LifeCycleArt: React.FC<{ organism: Organism; stepIndex: number; pla
       <text x={cx} y={cy + 24} textAnchor="middle" className="sm-note">and round again</text>
       {!reducedMotion && (
         <circle r="8" className="sm-energy">
-          <animateMotion dur={`${n * 3}s`} repeatCount="indefinite" rotate="0"><mpath href="#lc-track" /></animateMotion>
+          <animateMotion dur={`${n * 3}s`} begin="0s" repeatCount="indefinite" rotate="0" path={track} />
         </circle>
       )}
       {organism.steps.map((step, i) => {
@@ -129,5 +134,36 @@ export const MosquitoLifeCycleScene: React.FC = () => (
     footer={MOSQUITO.hint}
   >
     {({ stepIndex, playing, reducedMotion }) => <LifeCycleArt organism={MOSQUITO} stepIndex={stepIndex} playing={playing} reducedMotion={reducedMotion} />}
+  </MotionScene>
+);
+
+const GRASSHOPPER: Organism = {
+  id: 'grasshopper', name: 'Grasshopper', hint: '',
+  steps: [
+    { id: 'egg', label: 'Egg', caption: 'Beginning of the life cycle. A female grasshopper lays eggs, often in a protective pod in the soil. The eggs contain developing young grasshoppers.' },
+    { id: 'nymph', label: 'Nymph', caption: 'After hatching. A nymph is a young grasshopper. It resembles a small adult but has no fully developed wings and cannot reproduce. It feeds and grows, gradually developing wing buds.' },
+    { id: 'moulting', label: 'Growth by moulting', caption: 'Repeated during the nymph stage. The nymph sheds its hard outer covering (exoskeleton) several times as its body grows. Each stage between moults is called an instar.' },
+    { id: 'adult', label: 'Adult', caption: 'Final stage. The adult has fully developed wings and reproductive organs. Adults can mate and females can lay eggs, starting the cycle again.' }
+  ]
+};
+
+export const GrasshopperLifeCycleScene: React.FC = () => (
+  <MotionScene
+    title="The Grasshopper Life-Cycle Ranger"
+    description="Explore the three main life stages of a grasshopper and see how a nymph grows into an adult."
+    steps={GRASSHOPPER.steps}
+    footer={
+      <>
+        <p>Grasshoppers undergo incomplete metamorphosis. The diagram is a simplified model; the number and timing of moults vary with species and conditions.</p>
+        <MoreDetails summary="Compare incomplete and complete metamorphosis">
+          <p><b>Important:</b> there is no pupal stage in a grasshopper’s life cycle.</p>
+          <p><b>Grasshopper:</b> egg → nymph → adult. The nymph looks like a smaller, wingless adult and grows through moulting.</p>
+          <p><b>Butterfly:</b> egg → larva (caterpillar) → pupa (chrysalis) → adult. The larva looks very different from the adult.</p>
+          <p><b>Remember:</b> a grasshopper does not form a chrysalis or pass through a pupal stage.</p>
+        </MoreDetails>
+      </>
+    }
+  >
+    {({ stepIndex, playing, reducedMotion }) => <LifeCycleArt organism={GRASSHOPPER} stepIndex={stepIndex} playing={playing} reducedMotion={reducedMotion} />}
   </MotionScene>
 );

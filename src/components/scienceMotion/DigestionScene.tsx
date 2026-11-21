@@ -82,7 +82,7 @@ const DigestionArt: React.FC<{ stepId: string; playing: boolean; reducedMotion: 
           {[0, 1, 2].map(i => (
             <circle key={i} r={stepId === 'mouth' ? 5 : 8} className="sm-food">
               {stepId === 'mouth' && <animate attributeName="r" values="9;3;9" dur="1.2s" begin={`${-i * 0.4}s`} repeatCount="indefinite" />}
-              <animateMotion dur={`${speed}s`} begin={`${-(i * speed) / 3}s`} repeatCount="indefinite" rotate="0"><mpath href={`#dg-${ORGAN[stepId]}`} /></animateMotion>
+              <animateMotion dur={`${speed}s`} begin={`${-(i * speed) / 3}s`} repeatCount="indefinite" rotate="0" path={ROUTES[stepId]} />
             </circle>
           ))}
         </g>

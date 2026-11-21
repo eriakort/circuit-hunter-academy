@@ -80,7 +80,7 @@ const ConversionArt: React.FC<{ device: Device; stepIndex: number; playing: bool
       <path id="cv-route" d={route} fill="none" stroke="none" />
       {anim && stepIndex > 0 && (
         <g key={`${device.id}-${stepIndex}`}>
-          {[0, 1, 2].map(i => <circle key={i} r="7" className="sm-energy"><animateMotion dur="1.8s" begin={`${-i * 0.6}s`} repeatCount="indefinite"><mpath href="#cv-route" /></animateMotion></circle>)}
+          {[0, 1, 2].map(i => <circle key={i} r="7" className="sm-energy"><animateMotion dur="1.8s" begin={`${-i * 0.6}s`} repeatCount="indefinite" path={route} /></circle>)}
         </g>
       )}
       <text x="320" y="26" textAnchor="middle" className="sm-title">{device.name}: energy changes form, it does not vanish</text>
