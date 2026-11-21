@@ -30,6 +30,7 @@ import { PressureForceScene } from './PressureForceScene';
 import { CompoundScene, PhScene, BondingScene } from './ChemistryScenes';
 import { PlantCellScene, HumanCellScene } from './SpecialisedCellScenes';
 import { EnergySourcesScene, ConservationScene, ElectricityNetworkScene, MagnetismMotionScene, EnergyFormsScene } from './EnergyPathScenes';
+import { CropProductionScene, AnimalProductionScene, FarmingSystemsJ1Scene, FarmingSystemsJ2Scene, SeedBedsScene, AnimalCareScene, DentalScene, FarmToolsJ1Scene, FarmToolsJ2Scene } from './FieldScenes';
 import { PlantResourcesScene, IndustryScene, HealthScene } from './ResourceIndustryHealthScenes';
 import { CropMaturityScene, FeedPreparationScene, FeedSelectionScene, AgriToolsScene, ManureMaterialsScene } from './FarmScenes';
 
@@ -83,5 +84,14 @@ export const MOTION_SCENES: Record<string, React.FC> = {
   'gh-jhs2-science-electricity-electronics': ElectricityNetworkScene,
   'gh-jhs2-science-energy-conservation-impact': ConservationScene,
   'gh-jhs2-science-magnetism-force-machines': MagnetismMotionScene,
-  'gh-jhs1-science-energy-forms': EnergyFormsScene
+  'gh-jhs1-science-energy-forms': EnergyFormsScene,
+  'gh-jhs1-science-crop-production': CropProductionScene,
+  'gh-jhs1-science-animal-production': AnimalProductionScene,
+  'gh-jhs1-science-farming-systems': FarmingSystemsJ1Scene,
+  'gh-jhs1-science-agricultural-tools': FarmToolsJ1Scene,
+  'gh-jhs2-science-farming-systems': FarmingSystemsJ2Scene,
+  'gh-jhs2-science-seed-beds': SeedBedsScene,
+  'gh-jhs2-science-animal-feed-water': AnimalCareScene,
+  'gh-jhs2-science-teeth-dental-health': DentalScene,
+  'gh-jhs2-science-agricultural-tools': FarmToolsJ2Scene
 };
