@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { ARCS, MISSIONS, UNITS } from '../src/data/gameData';
 import { getCurriculumSubjects } from '../src/data/curriculumSubjects';
+import { GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE } from '../src/data/ghanaJhsScienceIndicatorCrosswalk';
 
 const science = getCurriculumSubjects('ghjhs2', 'ghana-nacca').find(subject => subject.id === 'ghjhs2science');
 assert.ok(science, 'JHS 2 Science remains selectable in the Ghana curriculum');
@@ -79,4 +80,21 @@ assert.match(lessonText(farming), /Plan a local farm/);
 assert.match(questionText(farming), /mixed cropping/);
 assert.match(questionText(farming), /support each other/);
 
-console.log('ghanaJhs2ScienceSystems.test.ts ok! Basic 8 Systems has four evidence-rich missions and 32 assessment questions.');
+
+const systemsCodes = [
+  'B8.3.1.1.1', 'B8.3.1.1.2', 'B8.3.1.1.3',
+  'B8.3.2.1.1', 'B8.3.3.1.1', 'B8.3.4.1.1', 'B8.3.4.1.2'
+];
+const systemsEvidence = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE
+  .filter(item => item.grade === 8 && item.strand === 3);
+assert.deepEqual(systemsEvidence.map(item => item.indicatorCode).sort(), systemsCodes.slice().sort());
+for (const item of systemsEvidence) {
+  assert.equal(item.status, 'needs-review', `${item.indicatorCode} must remain unverified pending educator review`);
+  assert.ok(item.officialIndicatorText, `${item.indicatorCode} retains official NaCCA wording`);
+  assert.ok(item.teachingSceneEvidence.length > 40, `${item.indicatorCode} has specific lesson evidence`);
+  assert.ok(item.assessmentEvidence.length > 40, `${item.indicatorCode} has specific assessment evidence`);
+  assert.doesNotMatch(item.teachingSceneEvidence, /exact scene-to-indicator alignment has not yet been reviewed/i);
+  assert.doesNotMatch(item.assessmentEvidence, /exact question-to-indicator alignment has not yet been reviewed/i);
+}
+
+console.log('ghanaJhs2ScienceSystems.test.ts ok! Basic 8 Systems has four evidence-rich missions, 32 assessment questions and seven mapped indicators.');
