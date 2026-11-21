@@ -49,7 +49,7 @@ const EcosystemArt: React.FC<{ habitat: Habitat; stepIndex: number; playing: boo
   const pond = habitat.id === 'pond';
   const route = stepIndex === 0 ? `M96 96 Q${X[0] - 4} 170 ${X[0]} 208` : `M${X[stepIndex - 1] + 40} ${Y} H${X[stepIndex] - 40}`;
   return (
-    <svg ref={svg} className="sm" viewBox="0 0 640 360" role="img" aria-label={`Food chain in a ${habitat.name}: ${habitat.steps.map(s => s.label).join(', ')}. ${habitat.steps[stepIndex].label} is selected.`}>
+    <svg ref={svg} className="sm-art" viewBox="0 0 640 360" role="img" aria-label={`Food chain in a ${habitat.name}: ${habitat.steps.map(s => s.label).join(', ')}. ${habitat.steps[stepIndex].label} is selected.`}>
       <defs>
         <linearGradient id={`eco-bg-${habitat.id}`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor={pond ? '#cfe8f3' : '#d6ecf5'} /><stop offset="1" stopColor={pond ? '#8cc7dc' : '#efe3b5'} />

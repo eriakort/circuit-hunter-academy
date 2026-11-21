@@ -78,7 +78,7 @@ const CellArt: React.FC<{ stepId: string; playing: boolean; reducedMotion: boole
   useSmilPause(svg, playing, reducedMotion, stepId);
   const label = CELL_STEPS.find(s => s.id === stepId)?.label;
   return (
-    <svg ref={svg} className="sm" viewBox="0 20 640 290" role="img" aria-label={`Simplified drawing of a ${label}. Particles in the cytoplasm drift slowly around the cell.`}>
+    <svg ref={svg} className="sm-art" viewBox="0 20 640 290" role="img" aria-label={`Simplified drawing of a ${label}. Particles in the cytoplasm drift slowly around the cell.`}>
       <rect y="20" width="640" height="290" fill="#eef2f6" />
       <g key={stepId}>
         {stepId === 'prokaryote' && <Prokaryote />}

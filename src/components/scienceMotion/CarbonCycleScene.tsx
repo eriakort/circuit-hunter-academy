@@ -24,7 +24,7 @@ const CarbonArt: React.FC<{ stepId: string; playing: boolean; reducedMotion: boo
   useSmilPause(svg, playing, reducedMotion, stepId);
   const label = CARBON_STEPS.find(s => s.id === stepId)?.label;
   return (
-    <svg ref={svg} className="sm" viewBox="0 0 640 360" role="img" aria-label={`Carbon cycle, ${label}: ${CARBON_STEPS.find(s => s.id === stepId)?.caption}`}>
+    <svg ref={svg} className="sm-art" viewBox="0 0 640 360" role="img" aria-label={`Carbon cycle, ${label}: ${CARBON_STEPS.find(s => s.id === stepId)?.caption}`}>
       <defs>
         <linearGradient id="cc-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#cfe8f3" /><stop offset="1" stopColor="#eef3e6" /></linearGradient>
         <marker id="cc-head" viewBox="0 0 10 10" refX="7" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#ffffff" fillOpacity=".75" /></marker>

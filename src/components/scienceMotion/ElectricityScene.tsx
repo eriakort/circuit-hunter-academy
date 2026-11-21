@@ -68,7 +68,7 @@ const ElectricityArt: React.FC<{ source: Source; stepIndex: number; playing: boo
   const anim = !reducedMotion;
   const route = stepIndex === 0 ? '' : `M${XS[stepIndex - 1] + 60} ${Y} H${XS[stepIndex] - 60}`;
   return (
-    <svg ref={svg} className="sm" viewBox="0 0 640 300" role="img" aria-label={`${source.name}: ${source.steps.map(s => s.label).join(' to ')}. ${source.steps[stepIndex].label} is selected.`}>
+    <svg ref={svg} className="sm-art" viewBox="0 0 640 300" role="img" aria-label={`${source.name}: ${source.steps.map(s => s.label).join(' to ')}. ${source.steps[stepIndex].label} is selected.`}>
       <rect width="640" height="300" fill="#e9f1f6" />
       {XS.slice(0, -1).map((x, i) => <path key={i} d={`M${x + 62} ${Y} H${XS[i + 1] - 68}`} className={`sm-link${stepIndex === i + 1 ? ' is-active' : ''}`} markerEnd="url(#el-head)" />)}
       <defs><marker id="el-head" viewBox="0 0 10 10" refX="7" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#5c5a50" /></marker></defs>

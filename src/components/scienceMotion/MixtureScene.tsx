@@ -88,7 +88,7 @@ const MixtureArt: React.FC<{ stepId: string; playing: boolean; reducedMotion: bo
   useSmilPause(svg, playing, reducedMotion, stepId);
   const label = MIXTURE_STEPS.find(s => s.id === stepId)?.label;
   return (
-    <svg ref={svg} className="sm" viewBox="0 0 640 330" role="img" aria-label={`Separation technique: ${label}`}>
+    <svg ref={svg} className="sm-art" viewBox="0 0 640 330" role="img" aria-label={`Separation technique: ${label}`}>
       <rect width="640" height="330" fill="#f3efe6" />
       <g key={stepId}>
         {stepId === 'filter' && <Filtration />}

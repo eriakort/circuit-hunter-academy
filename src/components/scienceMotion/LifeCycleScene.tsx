@@ -68,7 +68,7 @@ export const LifeCycleArt: React.FC<{ organism: Organism; stepIndex: number; pla
   const pos = organism.steps.map((_, i) => { const a = -Math.PI / 2 + (i * 2 * Math.PI) / n; return [cx + rx * Math.cos(a), cy + ry * Math.sin(a)] as const; });
   const track = `M${cx} ${cy - ry} A${rx} ${ry} 0 1 1 ${cx} ${cy + ry} A${rx} ${ry} 0 1 1 ${cx} ${cy - ry}`;
   return (
-    <svg ref={svg} className="sm" viewBox="0 0 640 340" role="img" aria-label={`Life cycle of a ${organism.name}: ${organism.steps.map(s => s.label).join(', then ')}. ${organism.steps[stepIndex].label} is selected.`}>
+    <svg ref={svg} className="sm-art" viewBox="0 0 640 340" role="img" aria-label={`Life cycle of a ${organism.name}: ${organism.steps.map(s => s.label).join(', then ')}. ${organism.steps[stepIndex].label} is selected.`}>
       <rect width="640" height="340" fill="#eef5e6" />
       <path id="lc-track" d={track} fill="none" stroke="#5c5a50" strokeWidth="3" strokeDasharray="7 7" opacity=".45" />
       <text x={cx} y={cy + 6} textAnchor="middle" className="sm-title">{organism.name} life cycle</text>

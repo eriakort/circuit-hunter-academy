@@ -114,7 +114,7 @@ const ForceArt: React.FC<{ stepId: string; playing: boolean; reducedMotion: bool
   const anim = !reducedMotion;
   const label = FORCE_STEPS.find(s => s.id === stepId)?.label;
   return (
-    <svg ref={svg} className="sm" viewBox="0 70 640 240" role="img" aria-label={`Forces: ${label}`}>
+    <svg ref={svg} className="sm-art" viewBox="0 70 640 240" role="img" aria-label={`Forces: ${label}`}>
       <rect y="70" width="640" height="240" fill="#e6f1f7" />
       <rect y={GROUND} width="640" height="60" fill="#c9b27a" />
       <path d={`M0 ${GROUND}H640`} stroke="#7a5534" strokeWidth="3" />

@@ -29,7 +29,7 @@ const AtomArt: React.FC<{ atom: Atom; stepId: string; playing: boolean; reducedM
   const electronCount = atom.electrons.reduce((sum, n) => sum + n, 0);
   const dim = (type: string) => (stepId === type ? 1 : 0.28);
   return (
-    <svg ref={svg} className="sm" viewBox="0 0 640 340" role="img" aria-label={`Model of ${atom.name} (${atom.symbol}): ${atom.z} protons, ${neutrons} neutrons and ${electronCount} electrons. ${stepId} highlighted.`}>
+    <svg ref={svg} className="sm-art" viewBox="0 0 640 340" role="img" aria-label={`Model of ${atom.name} (${atom.symbol}): ${atom.z} protons, ${neutrons} neutrons and ${electronCount} electrons. ${stepId} highlighted.`}>
       <rect width="640" height="340" fill="#14243d" />
       {SHELLS.slice(0, atom.electrons.length).map((shell, i) => <circle key={i} cx={CX} cy={CY} r={shell.r} fill="none" stroke="#ffffff" strokeOpacity=".22" strokeDasharray="3 5" />)}
       {/* Nucleus */}

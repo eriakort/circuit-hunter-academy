@@ -66,7 +66,7 @@ const ConversionArt: React.FC<{ device: Device; stepIndex: number; playing: bool
   const anim = !reducedMotion;
   const route = stepIndex === 0 ? '' : `M${XS[stepIndex - 1] + 62} ${Y} H${XS[stepIndex] - 62}`;
   return (
-    <svg ref={svg} className="sm" viewBox="0 0 640 300" role="img" aria-label={`${device.name}: ${device.steps.map(s => s.label).join(' to ')}. ${device.steps[stepIndex].label} is selected.`}>
+    <svg ref={svg} className="sm-art" viewBox="0 0 640 300" role="img" aria-label={`${device.name}: ${device.steps.map(s => s.label).join(' to ')}. ${device.steps[stepIndex].label} is selected.`}>
       <rect width="640" height="300" fill="#f3efe6" />
       <defs><marker id="cv-head" viewBox="0 0 10 10" refX="7" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#5c5a50" /></marker></defs>
       {XS.slice(0, -1).map((x, i) => <path key={i} d={`M${x + 66} ${Y} H${XS[i + 1] - 70}`} className={`sm-link${stepIndex === i + 1 ? ' is-active' : ''}`} markerEnd="url(#cv-head)" />)}

@@ -38,7 +38,7 @@ const DigestionArt: React.FC<{ stepId: string; playing: boolean; reducedMotion: 
   const label = DIGESTION_STEPS.find(s => s.id === stepId)?.label;
   const speed = stepId === 'small' ? 7 : stepId === 'large' ? 6 : stepId === 'stomach' ? 3 : 2.4;
   return (
-    <svg ref={svg} className="sm" viewBox="0 0 640 400" role="img" aria-label={`Digestive system, ${label}`}>
+    <svg ref={svg} className="sm-art" viewBox="0 0 640 400" role="img" aria-label={`Digestive system, ${label}`}>
       <rect width="640" height="400" fill="#f6efe3" />
       {/* Body side label */}
       <text x="40" y="60" className="sm-note">Food goes in here</text>

@@ -64,7 +64,7 @@ const SolarArt: React.FC<{ planets: Planet[]; steps: MotionStep[]; stepId: strin
   const svg = useRef<SVGSVGElement>(null);
   useSmilPause(svg, playing, reducedMotion, stepId);
   return (
-    <svg ref={svg} className="sm sm--space" viewBox="0 0 640 380" role="img" aria-label={`Sun and four inner planets orbiting. ${steps.find(s => s.id === stepId)?.label} is selected.`}>
+    <svg ref={svg} className="sm-art sm-art--space" viewBox="0 0 640 380" role="img" aria-label={`Sun and four inner planets orbiting. ${steps.find(s => s.id === stepId)?.label} is selected.`}>
       <rect width="640" height="380" fill="#10213a" />
       {Array.from({ length: 26 }, (_, i) => <circle key={i} cx={(i * 97) % 640} cy={(i * 59 + 13) % 380} r={i % 3 === 0 ? 1.6 : 1} fill="#fff" opacity=".6" />)}
 

@@ -1869,7 +1869,7 @@ table.itv-ref td:first-child{font-weight:700}
 }
 
 /* Science in motion: shared scene styles (.sm-*) */
-.sm{display:block;width:100%;height:auto}
+.sm-art{display:block;width:100%;height:auto}
 .sm-note{font:600 12px var(--body);fill:#5c5a50}
 .sm-name{font:700 14px var(--body);fill:#2b2f2a}
 .sm-name--sm{font-size:12.5px}
