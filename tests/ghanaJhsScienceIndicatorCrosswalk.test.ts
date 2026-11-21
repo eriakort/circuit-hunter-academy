@@ -427,3 +427,29 @@ for (const [code, expected] of Object.entries(expectedBasic9SystemsEvidence)) {
 }
 assert.match(basic9Systems.find(item => item.indicatorCode === 'B9.3.1.1.1')?.assessmentEvidence ?? '', /blood-pressure management/i);
 assert.match(basic9Systems.find(item => item.indicatorCode === 'B9.3.4.1.3')?.assessmentEvidence ?? '', /teacher-observed practical/i);
+
+
+const basic8Cycles = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 8 && item.strand === 2);
+assert.deepEqual(basic8Cycles.map(item => item.indicatorCode), [
+  'B8.2.1.1.1','B8.2.1.1.2','B8.2.2.1.1','B8.2.2.1.2',
+  'B8.2.3.1.1','B8.2.3.2.1','B8.2.4.1.1','B8.2.4.2.1'
+]);
+assert.ok(basic8Cycles.every(item => item.status === 'needs-review'));
+const expectedBasic8CyclesEvidence: Record<string, { scenes: string[]; questions: string[] }> = {
+  'B8.2.1.1.1': { scenes: ['gh-jhs2-science-carbon-cycle#scene-0','gh-jhs2-science-carbon-cycle#scene-1','gh-jhs2-science-carbon-cycle#scene-2'], questions: ['gh-jhs2-science-carbon-cycle#quiz-0','gh-jhs2-science-carbon-cycle#quiz-1','gh-jhs2-science-carbon-cycle#quiz-2','gh-jhs2-science-carbon-cycle#quiz-3'] },
+  'B8.2.1.1.2': { scenes: ['gh-jhs2-science-carbon-cycle#scene-3'], questions: ['gh-jhs2-science-carbon-cycle#quiz-4'] },
+  'B8.2.2.1.1': { scenes: ['gh-jhs2-science-anopheles-life-cycle#scene-0'], questions: ['gh-jhs2-science-anopheles-life-cycle#quiz-0','gh-jhs2-science-anopheles-life-cycle#quiz-1'] },
+  'B8.2.2.1.2': { scenes: ['gh-jhs2-science-anopheles-life-cycle#scene-1','gh-jhs2-science-anopheles-life-cycle#scene-2','gh-jhs2-science-anopheles-life-cycle#scene-3'], questions: ['gh-jhs2-science-anopheles-life-cycle#quiz-2','gh-jhs2-science-anopheles-life-cycle#quiz-3','gh-jhs2-science-anopheles-life-cycle#quiz-4'] },
+  'B8.2.3.1.1': { scenes: ['gh-jhs2-science-seed-beds#scene-0','gh-jhs2-science-seed-beds#scene-1','gh-jhs2-science-seed-beds#scene-2'], questions: ['gh-jhs2-science-seed-beds#quiz-0','gh-jhs2-science-seed-beds#quiz-1','gh-jhs2-science-seed-beds#quiz-2'] },
+  'B8.2.3.2.1': { scenes: ['gh-jhs2-science-seed-beds#scene-3'], questions: ['gh-jhs2-science-seed-beds#quiz-3','gh-jhs2-science-seed-beds#quiz-4'] },
+  'B8.2.4.1.1': { scenes: ['gh-jhs2-science-animal-feed-water#scene-0','gh-jhs2-science-animal-feed-water#scene-1','gh-jhs2-science-animal-feed-water#scene-2'], questions: ['gh-jhs2-science-animal-feed-water#quiz-0','gh-jhs2-science-animal-feed-water#quiz-1','gh-jhs2-science-animal-feed-water#quiz-2'] },
+  'B8.2.4.2.1': { scenes: ['gh-jhs2-science-animal-feed-water#scene-3'], questions: ['gh-jhs2-science-animal-feed-water#quiz-3','gh-jhs2-science-animal-feed-water#quiz-4'] }
+};
+for (const [code, expected] of Object.entries(expectedBasic8CyclesEvidence)) {
+  const item = basic8Cycles.find(candidate => candidate.indicatorCode === code);
+  assert.ok(item, `${code} has a Basic 8 Cycles evidence record`);
+  assert.deepEqual(item.teachingSceneRefs, expected.scenes, `${code} maps to exact teaching scenes`);
+  assert.deepEqual(item.assessmentQuestionRefs, expected.questions, `${code} maps to exact assessment questions`);
+}
+assert.match(basic8Cycles.find(item => item.indicatorCode === 'B8.2.3.2.1')?.assessmentEvidence ?? '', /practical learner task/i);
+
