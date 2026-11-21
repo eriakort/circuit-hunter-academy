@@ -6,6 +6,8 @@
  * motif. Strands follow the names used in the NaCCA SHS Mathematics units.
  */
 
+import { animateGhanaMath } from './mathMotion';
+
 export type GhanaMathStrand = 'number' | 'algebra' | 'geometry' | 'data' | 'mastery';
 
 export const GHANA_MATH_STRANDS: Record<GhanaMathStrand, { title: string; caption: string }> = {
@@ -42,6 +44,11 @@ const MOTIFS: Record<GhanaMathStrand, string> = {
   mastery: ['number', 'algebra', 'geometry', 'data'].map((strand, i) => `<circle cx="${50 + i * 60}" cy="40" r="22" fill="none" stroke="${[GREEN, RED, GOLD, INK][i]}" stroke-width="3"/><text x="${50 + i * 60}" y="46" text-anchor="middle" font-size="18" fill="${[GREEN, RED, GOLD, INK][i]}">${['ℝ', 'x', '△', '▮'][i]}</text>`).join('')
 };
 
+/** Decorative motion over the motif; the SVG animation is paused under reduced motion. */
+function animateMotif(strand: GhanaMathStrand, motif: string): string {
+  return animateGhanaMath(strand, `<svg>${motif}</svg>`).replace(/^<svg>/, '').replace(/<\/svg>$/, '');
+}
+
 export const GHANA_MATH_VISUAL_KEYS = ['ghmath', 'ghmath-number', 'ghmath-algebra', 'ghmath-geometry', 'ghmath-data', 'ghmath-mastery'];
 
 export function getGhanaMathVisual(key: string): string | null {
@@ -49,7 +56,7 @@ export function getGhanaMathVisual(key: string): string | null {
   const strand = (key === 'ghmath' ? 'mastery' : key.slice('ghmath-'.length)) as GhanaMathStrand;
   const info = GHANA_MATH_STRANDS[strand];
   return `<figure class="ghmath-visual" data-strand="${strand}" style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px">
-    <svg viewBox="0 0 280 84" role="img" aria-label="${info.title}" style="width:min(420px,100%);height:auto">${MOTIFS[strand]}</svg>
+    <svg viewBox="0 0 280 84" role="img" aria-label="${info.title}" style="width:min(420px,100%);height:auto">${animateMotif(strand, MOTIFS[strand])}</svg>
     <figcaption style="text-align:center">
       <div style="font-family:var(--display, Georgia, serif);font-size:22px;color:${GREEN}">${info.title}</div>
       <div class="muted" style="font-size:14px">${info.caption}</div>

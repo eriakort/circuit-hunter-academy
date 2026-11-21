@@ -1,4 +1,5 @@
 import type { Language } from '../types';
+import { animateGrade5 } from './mathMotion';
 
 /**
  * Visual aids for Grade 5 Mathematics lessons (tables of measures, number line,
@@ -186,7 +187,7 @@ const RENDERERS: Record<string, (lang: Language) => string> = {
 
 export function getGrade5MathVisual(key: string, lang: Language): string | null {
   const render = RENDERERS[key];
-  return render ? render(lang) : null;
+  return render ? animateGrade5(key, render(lang)) : null;
 }
 
 export const GRADE5_MATH_VISUAL_KEYS = Object.keys(RENDERERS);

@@ -1,4 +1,5 @@
 import type { Language } from '../types';
+import { animateMathAdv } from './mathMotion';
 
 export const MATH_ADV_VISUAL_KEYS = [
   'math10Systems',
@@ -26,6 +27,11 @@ export type MathAdvVisualKey = typeof MATH_ADV_VISUAL_KEYS[number];
 const pick = (lang: Language, en: string, it: string) => (lang === 'it' ? it : en);
 
 export function getMathAdvVisual(key: string, lang: Language): string | null {
+  const html = getMathAdvStaticVisual(key, lang);
+  return html ? animateMathAdv(key, html) : null;
+}
+
+function getMathAdvStaticVisual(key: string, lang: Language): string | null {
   switch (key) {
     case 'math10Systems':
       return `<svg viewBox="0 0 640 220" class="dia" width="100%" aria-hidden="true">
