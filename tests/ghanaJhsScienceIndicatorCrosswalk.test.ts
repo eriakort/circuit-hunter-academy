@@ -298,6 +298,45 @@ assert.match(basic9ForcesByCode.get('B9.4.2.2.1')?.teachingSceneEvidence ?? '', 
 assert.match(basic9ForcesByCode.get('B9.4.4.2.1')?.teachingSceneEvidence ?? '', /Momentum.*not explicitly taught/);
 assert.match(basic9ForcesByCode.get('B9.4.5.1.3')?.assessmentEvidence ?? '', /teacher-observed learner-built tool/);
 
+
+// Basic 9 · Strand 5 — Humans and the Environment (NaCCA CCP, pp. 114–123).
+const basic9HumansEnvironment = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 9 && item.strand === 5);
+assert.deepEqual(basic9HumansEnvironment.map(item => item.indicatorCode).sort(), [
+  'B9.5.1.1.1','B9.5.1.2.1','B9.5.2.1.1','B9.5.2.2.1','B9.5.2.2.2',
+  'B9.5.3.1.1','B9.5.3.2.1','B9.5.3.2.2','B9.5.4.1.1','B9.5.4.2.1',
+  'B9.5.5.1.1','B9.5.5.1.2'
+]);
+assert.ok(basic9HumansEnvironment.every(item => item.status === 'needs-review'));
+assert.ok(basic9HumansEnvironment.every(item => item.officialIndicatorText && item.sourcePdfPage));
+const basic9HumansByCode = new Map(basic9HumansEnvironment.map(item => [item.indicatorCode, item]));
+const expectedBasic9HumansEvidence: Record<string, { page: number; scenes: string[]; questions: string[] }> = {
+  'B9.5.1.1.1': { page: 114, scenes: [1,2,3].map(n => `gh-jhs3-science-waste-management#scene-${n}`), questions: [0,1,2,3,4].map(n => `gh-jhs3-science-waste-management#quiz-${n}`) },
+  'B9.5.1.2.1': { page: 114, scenes: [0,1,2,3].map(n => `gh-jhs3-science-waste-management#scene-${n}`), questions: [0,2,3,4].map(n => `gh-jhs3-science-waste-management#quiz-${n}`) },
+  'B9.5.2.1.1': { page: 115, scenes: ['gh-jhs3-science-human-health#scene-1','gh-jhs3-science-human-health#scene-2'], questions: ['gh-jhs3-science-human-health#quiz-0','gh-jhs3-science-human-health#quiz-1'] },
+  'B9.5.2.2.1': { page: 116, scenes: ['gh-jhs3-science-human-health#scene-0'], questions: ['gh-jhs3-science-human-health#quiz-2'] },
+  'B9.5.2.2.2': { page: 116, scenes: ['gh-jhs3-science-human-health#scene-3'], questions: ['gh-jhs3-science-human-health#quiz-3','gh-jhs3-science-human-health#quiz-4'] },
+  'B9.5.3.1.1': { page: 118, scenes: ['gh-jhs3-science-industry#scene-1','gh-jhs3-science-industry#scene-2'], questions: ['gh-jhs3-science-industry#quiz-1','gh-jhs3-science-industry#quiz-4'] },
+  'B9.5.3.2.1': { page: 118, scenes: ['gh-jhs3-science-industry#scene-0','gh-jhs3-science-industry#scene-2','gh-jhs3-science-industry#scene-3'], questions: ['gh-jhs3-science-industry#quiz-0','gh-jhs3-science-industry#quiz-2','gh-jhs3-science-industry#quiz-3'] },
+  'B9.5.3.2.2': { page: 119, scenes: ['gh-jhs3-science-industry#scene-2','gh-jhs3-science-industry#scene-3'], questions: ['gh-jhs3-science-industry#quiz-2','gh-jhs3-science-industry#quiz-3'] },
+  'B9.5.4.1.1': { page: 120, scenes: ['gh-jhs3-science-climate-green-economy#scene-1','gh-jhs3-science-climate-green-economy#scene-2','gh-jhs3-science-climate-green-economy#scene-3'], questions: ['gh-jhs3-science-climate-green-economy#quiz-1','gh-jhs3-science-climate-green-economy#quiz-2'] },
+  'B9.5.4.2.1': { page: 120, scenes: ['gh-jhs3-science-climate-green-economy#scene-3'], questions: ['gh-jhs3-science-climate-green-economy#quiz-4'] },
+  'B9.5.5.1.1': { page: 122, scenes: [0,1,2,3].map(n => `gh-jhs3-science-plant-resources#scene-${n}`), questions: ['gh-jhs3-science-plant-resources#quiz-1','gh-jhs3-science-plant-resources#quiz-2'] },
+  'B9.5.5.1.2': { page: 123, scenes: ['gh-jhs3-science-plant-resources#scene-3'], questions: [] }
+};
+for (const [code, expected] of Object.entries(expectedBasic9HumansEvidence)) {
+  const item = basic9HumansByCode.get(code);
+  assert.ok(item, `${code} has a Basic 9 Humans and the Environment evidence record`);
+  assert.equal(item.sourcePdfPage, expected.page, `${code} cites its curriculum page`);
+  assert.deepEqual(item.teachingSceneRefs ?? [], expected.scenes, `${code} links only to relevant teaching scenes`);
+  assert.deepEqual(item.assessmentQuestionRefs ?? [], expected.questions, `${code} links only to relevant quiz questions`);
+}
+assert.match(basic9HumansByCode.get('B9.5.1.1.1')?.teachingSceneEvidence ?? '', /actual school audit/i);
+assert.match(basic9HumansByCode.get('B9.5.2.1.1')?.teachingSceneEvidence ?? '', /cancers/i);
+assert.match(basic9HumansByCode.get('B9.5.2.2.1')?.teachingSceneEvidence ?? '', /WHO definition/i);
+assert.match(basic9HumansByCode.get('B9.5.2.2.2')?.teachingSceneEvidence ?? '', /repeats code B9\.5\.2\.2\.1 on p\. 117/i);
+assert.match(basic9HumansByCode.get('B9.5.4.2.1')?.teachingSceneEvidence ?? '', /No actual climate-action dataset/i);
+assert.match(basic9HumansByCode.get('B9.5.5.1.2')?.assessmentEvidence ?? '', /teacher-observed practical task/i);
+
 // Basic 9 · Strand 3 — Systems (NaCCA CCP, pp. 139–143).
 const basic9Systems = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 9 && item.strand === 3);
 assert.deepEqual(basic9Systems.map(item => item.indicatorCode), [

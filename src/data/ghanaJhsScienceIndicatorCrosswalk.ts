@@ -1214,8 +1214,22 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-waste-management"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Investigate the scientific methods used in waste management.",
+    "sourcePdfPage": 114,
+    "teachingSceneEvidence": "Scenes 1–3 explain recycling and composting, separate hazardous waste, describe a school waste audit and compare management options. The curriculum exemplar requires learners to conduct an actual school audit and assess each method; the platform does not capture that field investigation.",
+    "assessmentEvidence": "Quizzes 0–4 check composting, audit evidence, hazardous batteries, waste prevention and evaluation criteria. They do not assess a completed school audit or the scientific principles of every method.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-waste-management#scene-1",
+      "gh-jhs3-science-waste-management#scene-2",
+      "gh-jhs3-science-waste-management#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-waste-management#quiz-0",
+      "gh-jhs3-science-waste-management#quiz-1",
+      "gh-jhs3-science-waste-management#quiz-2",
+      "gh-jhs3-science-waste-management#quiz-3",
+      "gh-jhs3-science-waste-management#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B9.5.1.2.1",
@@ -1225,8 +1239,22 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-waste-management"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Describe innovative ways of waste management for sustainable development.",
+    "sourcePdfPage": 114,
+    "teachingSceneEvidence": "Scenes 0–3 explain environmental impacts, source separation, recycling, composting, safe hazardous-waste routes and criteria for comparing sustainable community options. The mission does not document a full local Ghana-community waste survey or critique of named local practices.",
+    "assessmentEvidence": "Quizzes 0, 2, 3 and 4 assess composting, hazardous waste, waste prevention and comparison criteria. They do not require learners to describe local waste types or critique actual Ghanaian community practices.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-waste-management#scene-0",
+      "gh-jhs3-science-waste-management#scene-1",
+      "gh-jhs3-science-waste-management#scene-2",
+      "gh-jhs3-science-waste-management#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-waste-management#quiz-0",
+      "gh-jhs3-science-waste-management#quiz-2",
+      "gh-jhs3-science-waste-management#quiz-3",
+      "gh-jhs3-science-waste-management#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B9.5.2.1.1",
@@ -1236,8 +1264,18 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-human-health"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Explain the symptoms, effects and prevention of some non-communicable diseases and analyse the risk factors associated with them.",
+    "sourcePdfPage": 115,
+    "teachingSceneEvidence": "Scenes 1–2 explain NCD risk factors and prevention, including diet, inactivity, tobacco, harmful drugs and workplace exposure. Specific NCD symptoms, effects, named cancers and links between particular cancers and lifestyle are not taught explicitly.",
+    "assessmentEvidence": "Quizzes 0–1 assess the meaning of non-communicable disease and selected risk-reduction behaviours. They do not assess disease-specific symptoms, effects, cancer types or the full prevention exemplars.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-human-health#scene-1",
+      "gh-jhs3-science-human-health#scene-2"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-human-health#quiz-0",
+      "gh-jhs3-science-human-health#quiz-1"
+    ]
   },
   {
     "indicatorCode": "B9.5.2.2.1",
@@ -1247,8 +1285,16 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-human-health"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Explain the concepts of health and disease and show their relationship.",
+    "sourcePdfPage": 116,
+    "teachingSceneEvidence": "Scene 0 defines health as physical, mental and social well-being, defines disease as disruption of normal body function and explains how disease affects health. The WHO definition is not quoted or explicitly attributed.",
+    "assessmentEvidence": "Quiz 2 checks the relationship between health, disease and interacting influences. It does not require learners to reproduce or apply the WHO definition.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-human-health#scene-0"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-human-health#quiz-2"
+    ]
   },
   {
     "indicatorCode": "B9.5.2.2.2",
@@ -1258,8 +1304,17 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-human-health"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Explain the concept of common diseases in an environment.",
+    "sourcePdfPage": 116,
+    "teachingSceneEvidence": "Scene 3 introduces fungal diseases including ringworm, candidiasis and nail infections, with transmission and prevention. It does not guide a community survey or establish which diseases are common in a particular locality. NaCCA separately repeats code B9.5.2.2.1 on p. 117 for a fungal-disease outcome, creating a source-code ambiguity around this material.",
+    "assessmentEvidence": "Quiz 3 assesses ringworm prevention and quiz 4 directs learners with persistent symptoms to qualified healthcare. No question assesses a community disease survey or its findings.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-human-health#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-human-health#quiz-3",
+      "gh-jhs3-science-human-health#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B9.5.3.1.1",
@@ -1269,8 +1324,18 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-industry"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Investigate the scientific concepts, principles and processes involved in industries in their environment.",
+    "sourcePdfPage": 118,
+    "teachingSceneEvidence": "Scenes 1–2 connect familiar industries and everyday products to processes such as heating, cooling, drying, fermentation, separation, chemical reactions and mineral processing. The mission describes examples but does not provide a learner-led investigation of a selected local production process.",
+    "assessmentEvidence": "Quiz 1 checks drying as a food-preservation process and quiz 4 checks the purpose of production quality checks. Neither assesses a learner investigation that identifies products, traces production stages and explains the underlying science.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-industry#scene-1",
+      "gh-jhs3-science-industry#scene-2"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-industry#quiz-1",
+      "gh-jhs3-science-industry#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B9.5.3.2.1",
@@ -1280,8 +1345,20 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-industry"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Explain the concept of industry and distinguish between modern and indigenous industries.",
+    "sourcePdfPage": 118,
+    "teachingSceneEvidence": "Scenes 0, 2 and 3 define industry, give Ghanaian indigenous-industry examples and compare locally developed methods with modern machinery, measurement and automation.",
+    "assessmentEvidence": "Quizzes 0, 2 and 3 assess the definition of industry, a traditional weaving example and criteria for comparing indigenous and modern production.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-industry#scene-0",
+      "gh-jhs3-science-industry#scene-2",
+      "gh-jhs3-science-industry#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-industry#quiz-0",
+      "gh-jhs3-science-industry#quiz-2",
+      "gh-jhs3-science-industry#quiz-3"
+    ]
   },
   {
     "indicatorCode": "B9.5.3.2.2",
@@ -1291,8 +1368,18 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-industry"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Examine indigenous industries in their communities and show the scientific processes in the stages of production.",
+    "sourcePdfPage": 119,
+    "teachingSceneEvidence": "Scene 2 names indigenous industries such as pottery, weaving, shea butter processing and food fermentation; scene 3 discusses the science, resources and effects of production. Specific stage-by-stage scientific analysis of a community industry and indigenous practices at home or school are not modelled.",
+    "assessmentEvidence": "Quiz 2 identifies traditional weaving as an indigenous industry and quiz 3 compares production methods. No question traces scientific processes through the stages of a named indigenous product.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-industry#scene-2",
+      "gh-jhs3-science-industry#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-industry#quiz-2",
+      "gh-jhs3-science-industry#quiz-3"
+    ]
   },
   {
     "indicatorCode": "B9.5.4.1.1",
@@ -1302,8 +1389,19 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-climate-green-economy"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Examine various natural and human factors that influence climate change and green economy in their localities.",
+    "sourcePdfPage": 120,
+    "teachingSceneEvidence": "Scenes 1–3 distinguish natural influences such as volcanic eruptions and solar/orbital variation from human greenhouse-gas sources, then introduce local mitigation actions and green-economy ideas. Local factor comparison is explained but not investigated with locality-specific evidence.",
+    "assessmentEvidence": "Quiz 1 checks fossil-fuel combustion as a human influence and quiz 2 checks volcanic eruptions as a natural influence. No question asks learners to compare local factors or explain a local green-economy response.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-climate-green-economy#scene-1",
+      "gh-jhs3-science-climate-green-economy#scene-2",
+      "gh-jhs3-science-climate-green-economy#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-climate-green-economy#quiz-1",
+      "gh-jhs3-science-climate-green-economy#quiz-2"
+    ]
   },
   {
     "indicatorCode": "B9.5.4.2.1",
@@ -1313,8 +1411,16 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-climate-green-economy"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Assess data on climate change and green economy actions/ activities globally including Ghana and other countries.",
+    "sourcePdfPage": 120,
+    "teachingSceneEvidence": "Scene 3 recommends comparing Ghanaian and international initiatives using emissions, cost, benefits, reliability, fairness and measured outcomes. No actual climate-action dataset, country comparison or worked data analysis is supplied.",
+    "assessmentEvidence": "Quiz 4 checks general evidence-based assessment criteria but contains no data table or Ghana-versus-other-country comparison. The curriculum research, comparison and justified best-practice recommendation remain learner project work.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-climate-green-economy#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-climate-green-economy#quiz-4"
+    ]
   },
   {
     "indicatorCode": "B9.5.5.1.1",
@@ -1324,8 +1430,20 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-plant-resources"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Show and list the uses of different plant parts for agricultural and non-agricultural purposes.",
+    "sourcePdfPage": 122,
+    "teachingSceneEvidence": "Scenes 0–3 describe agricultural and non-agricultural uses of roots, stems, leaves, flowers and fruits, including feed, soil improvement, timber, fibres, wrapping and crafts. The mission also cautions against assuming plant remedies are automatically safe.",
+    "assessmentEvidence": "Quiz 1 checks agricultural uses of plant materials and quiz 2 checks timber as a non-agricultural use. These questions sample rather than exhaust the uses of all five plant parts.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-plant-resources#scene-0",
+      "gh-jhs3-science-plant-resources#scene-1",
+      "gh-jhs3-science-plant-resources#scene-2",
+      "gh-jhs3-science-plant-resources#scene-3"
+    ],
+    "assessmentQuestionRefs": [
+      "gh-jhs3-science-plant-resources#quiz-1",
+      "gh-jhs3-science-plant-resources#quiz-2"
+    ]
   },
   {
     "indicatorCode": "B9.5.5.1.2",
@@ -1335,8 +1453,14 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-plant-resources"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "officialIndicatorText": "Demonstrate the use of different plant parts for agricultural and non-agricultural purposes.",
+    "sourcePdfPage": 123,
+    "teachingSceneEvidence": "Scene 3 proposes creating a simple useful item from safely collected plant material, but it does not show a completed learner-made agricultural material and non-agricultural product.",
+    "assessmentEvidence": "No quiz question assesses the creation of materials from plant parts. A teacher-observed practical task with learner-produced agricultural and non-agricultural artefacts is required.",
+    "teachingSceneRefs": [
+      "gh-jhs3-science-plant-resources#scene-3"
+    ],
+    "assessmentQuestionRefs": []
   }
 ,
   {
