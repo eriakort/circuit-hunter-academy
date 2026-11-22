@@ -59,3 +59,32 @@ test('JHS 1 Computing device-care visual explains screen-height choices', async 
   await page.getByLabel('Screen height').press('End');
   await expect(page.locator('.ghana-computing-lab__result')).toContainText('Too high');
 });
+
+test('JHS 1 Computing programming visual traces each repeat instruction', async ({ page }) => {
+  await openComputingVisual(page, 'gh-jhs1-computing-programming');
+  await page.getByRole('button', { name: 'Run next instruction' }).click();
+  await expect(page.locator('.ghana-computing-lab__result')).toContainText('Repeat step 1 of 3');
+  await page.getByRole('button', { name: 'Run next instruction' }).click();
+  await page.getByRole('button', { name: 'Run next instruction' }).click();
+  await page.getByRole('button', { name: 'Run next instruction' }).click();
+  await expect(page.locator('.ghana-computing-lab__result')).toContainText('Program complete: 3 plants');
+});
+
+test('JHS 1 Computing data visual updates its bar chart from a new response', async ({ page }) => {
+  await openComputingVisual(page, 'gh-jhs1-computing-data');
+  await page.getByRole('button', { name: 'Add one mangoes vote' }).click();
+  await expect(page.locator('.ghana-computing-lab__result')).toContainText('Total responses: 17');
+  await expect(page.locator('.ghana-computing-lab__chart')).toContainText('5');
+});
+
+test('JHS 1 Computing research visual identifies an unchecked source', async ({ page }) => {
+  await openComputingVisual(page, 'gh-jhs1-computing-search');
+  await page.getByRole('button', { name: 'Community post' }).click();
+  await expect(page.locator('.ghana-computing-lab__result')).toContainText('missing author, date and evidence');
+});
+
+test('JHS 1 Computing collaboration visual explains public-link risk', async ({ page }) => {
+  await openComputingVisual(page, 'gh-jhs1-computing-collaboration');
+  await page.getByRole('button', { name: 'Public link' }).click();
+  await expect(page.locator('.ghana-computing-lab__result')).toContainText('outside your group');
+});
