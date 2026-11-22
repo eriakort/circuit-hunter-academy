@@ -170,3 +170,20 @@ Each mission now has eight assessment questions (32 across the strand). The cros
 The four missions retain their existing dedicated instructional visuals in the Science Motion registry. This increment changes lesson and assessment evidence, not mission gates, progress logic or visual registration.
 
 Source: [NaCCA Science Common Core Programme Curriculum for JHS1 (B7)–JHS3 (B9), September 2020](https://nacca.gov.gh/wp-content/uploads/2023/06/SCIENCE.pdf), Basic 8 Strand 3.
+
+
+## Basic 8 Forces and Energy learning-evidence increment (2026-11-22)
+
+The five existing Basic 8 Forces and Energy missions have been expanded with curriculum-directed learning tasks and assessments, without changing mission gates or progression:
+
+- **Energy Forms, Sources and Heat:** learners trace the dam-to-home hydroelectric pathway, compare solar, wind, hydro and biogas, research sustainable management challenges, and distinguish heat from temperature.
+- **Electricity Transmission and Electronics:** learners draw the generation-to-consumer transmission flow chart and investigate a capacitor's charging/discharging action in a teacher-approved low-voltage DC circuit with a resistor and LED. Mains electricity and large/unknown capacitors are explicitly excluded.
+- **Energy Conversion and Conservation:** learners conduct a school energy-use audit and create an evidence-based poster that distinguishes the scientific conservation principle from everyday efforts to reduce unnecessary energy use.
+- **Magnetism, Force, Motion and Machines:** learners make and test a simple magnet, investigate magnetic force and trolley acceleration in relation to Newton's Second Law, and identify simple machines within complex machines.
+- **Agricultural Tools:** learners create a labelled local tool album and practise selecting, using, cleaning and storing suitable tools during teacher-supervised school-garden activities.
+
+Each mission now has eight assessment questions (40 across the strand). The crosswalk records all 13 Basic 8 Strand 4 indicator statements with official wording, source-page references, candidate teaching-scene references and assessment-question references. All 13 remain `needs-review`: automated tests check the evidence links and content, but do not certify classroom delivery or learner performance. Practical tasks such as circuit construction, magnet-making, trolley investigation and agricultural-tool use still require teacher observation.
+
+All five missions retain their existing dedicated instructional visuals in the Science Motion registry. This increment adds teaching and assessment evidence; it does not alter mastery gates, progress logic or visual registration.
+
+Source: NaCCA, *Science Common Core Programme Curriculum for JHS1 (B7)–JHS3 (B9)*, September 2020, Basic 8 Strand 4, printed pp. 69–76 (PDF pages 110–117).
