@@ -29623,5 +29623,14 @@ const ghanaComputingArcOffset = ARCS.length;
 GHANA_COMPUTING_SS1_ARCS.forEach(arc => ARCS.push({ ...arc, unit: ghanaComputingUnitOffset + (arc.unit ?? 0), subject: 'ghcomputing' }));
 MISSIONS.push(...GHANA_COMPUTING_SS1_MISSIONS.map(mission => ({ ...mission, arc: ghanaComputingArcOffset + mission.arc })));
 
+// Ghana NaCCA · SHS 2 Computing. Separate subject and progress namespace.
+import { GHANA_COMPUTING_SS2_SUBJECT, GHANA_COMPUTING_SS2_UNITS, GHANA_COMPUTING_SS2_ARCS, GHANA_COMPUTING_SS2_MISSIONS } from './ghanaComputingSS2Data';
+if (!SUBJECTS.some(subject => subject.id === 'ghcomputing2')) SUBJECTS.push(GHANA_COMPUTING_SS2_SUBJECT);
+const ghanaComputing2UnitOffset = UNITS.length;
+GHANA_COMPUTING_SS2_UNITS.forEach(unit => UNITS.push({ ...unit, subject: 'ghcomputing2' }));
+const ghanaComputing2ArcOffset = ARCS.length;
+GHANA_COMPUTING_SS2_ARCS.forEach(arc => ARCS.push({ ...arc, unit: ghanaComputing2UnitOffset + (arc.unit ?? 0), subject: 'ghcomputing2' }));
+MISSIONS.push(...GHANA_COMPUTING_SS2_MISSIONS.map(mission => ({ ...mission, arc: ghanaComputing2ArcOffset + mission.arc })));
+
 import { addSubjectGameScenes } from './subjectGameScenes';
 addSubjectGameScenes(MISSIONS);

@@ -177,32 +177,38 @@ export const GHANA_COMPUTING_SS1_MISSIONS: Mission[] = [
     horns: 2,
     eyes: 2,
     title: 'The Hardware Hunter',
-    topic: 'Explain the features of the hardware components of a computer: input, processing, output, storage and communication hardware.',
+    topic: 'Explain the features of the hardware components of a computer, and how data moves between them.',
     demon: 'The Loose Wire',
-    tech: 'Hardware Form · First Technique: Sort by Job',
+    tech: 'Hardware Form · First Technique: Know the Job',
     scenes: [
-      lesson('ghc-hardware', '<p><b>Hardware</b> means the physical parts of a computer that you can touch. We can group hardware by the job it does: <b>input</b> devices send data in, <b>processing</b> hardware works on the data, <b>output</b> devices show or give out results, <b>storage</b> keeps data, and <b>communication</b> hardware connects computers to each other.</p>'),
-      lesson('ghc-hardware', '<p>Examples: a keyboard, mouse, microphone, scanner and webcam are input devices. The CPU (and a graphics processor, GPU) does the processing. A monitor, printer and speakers are output devices. An SSD, a hard disk and a USB flash drive are storage. A router, a modem and a Wi-Fi card are communication hardware.</p>'),
-      lesson('ghc-hardware', '<p>Data usually flows from input, to processing, to output, with storage keeping it for later and communication hardware sending it to other computers. Knowing the job of each part helps you choose the right device and find faults.</p>'),
-      { type: 'sort', title: 'Which kind of hardware?', cats: [both('Input'), both('Processing'), both('Output'), both('Storage'), both('Communication')], items: [
-        item('Keyboard', 0, 'keyboard', 'You use a keyboard to send data into the computer.'),
-        item('Webcam', 0, 'webcam', 'A webcam sends video into the computer.'),
-        item('CPU', 1, 'chip', 'The CPU processes data.'),
-        item('Monitor', 2, 'monitor', 'A monitor shows results.'),
-        item('Speakers', 2, 'speaker', 'Speakers give out sound.'),
-        item('USB flash drive', 3, 'usb', 'A flash drive stores data.'),
-        item('SSD', 3, 'ssd', 'An SSD stores data.'),
-        item('Router', 4, 'router', 'A router connects networks, so it is communication hardware.')
+      lesson('ghc-hardware', '<p><b>Hardware</b> means the physical parts of a computer that you can touch. The curriculum groups the hardware components into five kinds: <b>input</b> hardware, <b>processing</b> hardware, <b>output</b> hardware, <b>storage</b> hardware and <b>communication</b> hardware. Each kind has its own feature, which is the job it does for the computer.</p>'),
+      lesson('ghc-hardware', '<p><b>Input hardware</b> turns what a person does (typing, speaking, pointing, scanning) into data the computer can use. <b>Processing hardware</b>, mainly the CPU, carries out instructions and works with the memory. <b>Output hardware</b> turns results into something a person can see, hear or hold. <b>Storage hardware</b> keeps data and programs for later. <b>Communication hardware</b> sends and receives data between computers.</p>'),
+      lesson('ghc-hardware', '<p>The components work together, and data moves between them. Data enters through input hardware, travels along the buses to the processor and memory, and the results go out through output hardware. Data that must be kept is written to storage, and communication hardware can send it to another computer. Understanding these relationships helps you choose parts sensibly: a computer for video editing needs a fast processor, plenty of memory and fast storage.</p>'),
+      { type: 'sort', title: 'Which feature belongs to which hardware?', cats: [both('Input'), both('Processing'), both('Output'), both('Storage'), both('Communication')], items: [
+        item('Turns what you type into data the computer can use', 0, 'keyboard', 'Changing a person\'s actions into data is the feature of input hardware.'),
+        item('Carries out instructions and makes decisions', 1, 'chip', 'Carrying out instructions is the feature of processing hardware.'),
+        item('Shows the result so that you can see it', 2, 'monitor', 'Presenting results to a person is the feature of output hardware.'),
+        item('Keeps your files when the power is off', 3, 'ssd', 'Keeping data for later is the feature of storage hardware.'),
+        item('Sends data to other computers and receives it', 4, 'router', 'Exchanging data with other computers is the feature of communication hardware.'),
+        item('Turns your voice or a picture into data', 0, 'webcam', 'Taking in sound and pictures is an input feature.'),
+        item('Gives out sound that you can hear', 2, 'speaker', 'Producing sound is an output feature.')
       ] },
-      demon('I have unplugged every part! Can you put each one in its group?'),
+      { type: 'order', title: 'Follow the data: write and share a letter', steps: [
+        both('You type the letter on the keyboard (input)'),
+        both('The CPU and memory process the letters (processing)'),
+        both('The monitor shows the letter (output)'),
+        both('You save the file to the SSD (storage)'),
+        both('You send it by email through the router (communication)')
+      ], hint: both('Data goes in, is processed, comes out, is kept, and is then shared.') },
+      demon('I have unplugged every part! Can you tell me what each one does?'),
       battle
     ],
     quiz: [
-      question('Which of these is an input device?', ['A microphone', 'A printer', 'Speakers', 'A monitor'], 'A microphone sends sound into the computer.'),
-      question('Which hardware does the processing?', ['The CPU', 'The monitor', 'The USB cable', 'The speakers'], 'The central processing unit processes data.'),
-      question('A router mainly belongs to which group?', ['Communication hardware', 'Input devices', 'Output devices', 'Storage'], 'Routers connect computers and networks.'),
-      question('A USB flash drive is an example of:', ['storage hardware', 'an input device', 'processing hardware', 'software'], 'It keeps files so you can carry them.'),
-      question('Which device is an output device?', ['Speakers', 'Mouse', 'Scanner', 'Keyboard'], 'Speakers produce sound as output.')
+      question('Which hardware turns a person\'s actions into data the computer can use?', ['Input hardware', 'Output hardware', 'Storage hardware', 'Communication hardware'], 'Keyboards, mice and microphones are input hardware.'),
+      question('Which hardware mainly does the processing?', ['The CPU', 'The monitor', 'The USB cable', 'The speakers'], 'The central processing unit carries out instructions.'),
+      question('In which order does data usually move when you type and save a letter?', ['Input, processing, output, storage', 'Storage, output, input, processing', 'Output, input, storage, processing', 'Processing, storage, input, output'], 'Data goes in, is processed, is shown, and is then saved.'),
+      question('What is the feature of storage hardware?', ['It keeps data and programs for later', 'It shows pictures on the screen', 'It types letters', 'It connects the computer to other computers'], 'Storage keeps data even when the computer is off.'),
+      question('A router mainly belongs to which kind of hardware?', ['Communication hardware', 'Input hardware', 'Output hardware', 'Storage hardware'], 'Routers send and receive data between networks.')
     ]
   },
   {
@@ -214,23 +220,33 @@ export const GHANA_COMPUTING_SS1_MISSIONS: Mission[] = [
     horns: 3,
     eyes: 2,
     title: 'The Machine Builder',
-    topic: 'Describe the categories of computer hardware: internal components and external devices (peripherals).',
+    topic: 'Describe the categories of computer hardware: input, processing, output, storage and communication devices.',
     demon: 'The Faulty Motherboard',
-    tech: 'Hardware Form · Technique: Inside and Outside',
+    tech: 'Hardware Form · Technique: Sort the Devices',
     scenes: [
-      lesson('ghc-hardware', '<p>Another way to group hardware is by where it sits. <b>Internal hardware</b> is inside the system unit: the <b>motherboard</b>, the CPU, RAM, internal storage, the <b>power supply unit</b> and cooling fans. <b>External hardware</b>, called <b>peripherals</b>, plugs in from outside: the monitor, keyboard, mouse, printer and external drives.</p>'),
-      lesson('ghc-hardware', '<p>The motherboard is the main circuit board. The CPU, RAM and other parts connect to it, and it carries the signals between them. The power supply unit changes mains electricity into the lower power that components can use. RAM holds the programs and data in use now, and it loses its contents when the power goes off.</p>'),
-      lesson('ghc-hardware', '<p>Knowing where each part belongs helps when you build, upgrade or repair a computer. Always switch off and unplug before opening the system unit, and handle parts carefully because static electricity can damage them.</p>'),
+      lesson('ghc-hardware', '<p>The curriculum asks you to describe the <b>categories of computer hardware</b>. A category is a family of devices that do the same kind of job. There are five: <b>input devices</b>, <b>processing devices</b>, <b>output devices</b>, <b>storage devices</b> and <b>communication devices</b>.</p>'),
+      lesson('ghc-hardware', '<p>Examples. Input devices: keyboard, mouse, microphone, scanner, digital camera, touchscreen. Processing devices: the CPU and the graphics processor (GPU). Output devices: monitor, printer, speakers, projector. Storage devices: hard disk, SSD, USB flash drive, memory card. Communication devices: network interface card, modem, router and Wi-Fi adapter.</p>'),
+      lesson('ghc-hardware', '<p>Some devices do two jobs. A touchscreen is an input device because you touch it, and an output device because it shows the picture. A useful extra way to describe hardware is by where it sits. <b>Internal hardware</b> is inside the system unit: the motherboard, CPU, RAM, internal storage and the power supply unit. <b>External hardware</b> (peripherals) plugs in from outside, such as a monitor, keyboard, mouse or printer.</p>'),
+      { type: 'sort', title: 'Which category of device is it?', cats: [both('Input'), both('Processing'), both('Output'), both('Storage'), both('Communication')], items: [
+        item('Mouse', 0, 'mouse', 'A mouse sends your pointing and clicking to the computer.'),
+        item('Digital camera', 0, 'camera', 'A camera sends pictures into the computer.'),
+        item('GPU', 1, 'chip', 'A graphics processor does processing.'),
+        item('Printer', 2, 'printer', 'A printer puts results on paper.'),
+        item('Hard disk', 3, 'hdd', 'A hard disk stores data.'),
+        item('Memory card', 3, 'ssd', 'A memory card stores data.'),
+        item('Modem', 4, 'router', 'A modem connects a computer to a network.'),
+        item('Wi-Fi adapter', 4, 'wifi', 'A Wi-Fi adapter lets a computer join a wireless network.')
+      ] },
       { type: 'build' },
       demon('My faulty board will never boot! Can you build it properly?'),
       battle
     ],
     quiz: [
-      question('Which of these is internal hardware?', ['The motherboard', 'The printer', 'The monitor', 'A mouse'], 'The motherboard sits inside the system unit.'),
-      question('Which of these is a peripheral (external) device?', ['A printer', 'The CPU', 'RAM', 'The power supply unit'], 'A printer connects from outside the system unit.'),
-      question('Where is the CPU fitted?', ['On the motherboard', 'Inside the monitor', 'On the mouse', 'Inside the printer'], 'The CPU is installed in a socket on the motherboard.'),
-      question('What does the power supply unit do?', ['It changes mains electricity into power the components can use', 'It stores files permanently', 'It shows pictures on screen', 'It connects to the Internet'], 'The power supply unit supplies suitable electrical power to the parts.'),
-      question('Which part holds the programs and data currently in use, and is emptied when the power goes off?', ['RAM', 'A hard disk', 'A USB flash drive', 'A printer'], 'RAM is temporary working memory.')
+      question('How many categories of computer hardware does the curriculum list?', ['Five: input, processing, output, storage and communication', 'Two: hardware and software', 'Three: keyboard, mouse and monitor', 'One: the CPU'], 'The categories are input, processing, output, storage and communication devices.'),
+      question('Which of these is an input device?', ['A scanner', 'A printer', 'Speakers', 'A projector'], 'A scanner sends a picture of a page into the computer.'),
+      question('Which of these is an output device?', ['A projector', 'A microphone', 'A mouse', 'A modem'], 'A projector shows the computer\'s output on a wall or screen.'),
+      question('A touchscreen is special because it is:', ['both an input and an output device', 'only a storage device', 'only a communication device', 'software'], 'You touch it to give input, and it shows output.'),
+      question('Which part holds the CPU and RAM and carries signals between them?', ['The motherboard', 'The printer', 'The monitor', 'A USB flash drive'], 'The motherboard is the main circuit board inside the system unit.')
     ]
   },
   {
@@ -286,7 +302,7 @@ export const GHANA_COMPUTING_SS1_MISSIONS: Mission[] = [
     tech: 'Network Form · First Technique: Connect and Share',
     scenes: [
       lesson('ghc-network', '<p>A <b>computer network</b> is two or more computers or devices connected so they can share data and resources, such as files, printers and an Internet connection. People use networks every day to send messages, share files, browse the web and play online.</p>'),
-      lesson('ghc-network', '<p>A network needs devices (called nodes), a <b>medium</b> to carry the signals (cables or wireless), network hardware such as a network card, a switch and a router, and agreed rules called <b>protocols</b> so that every device understands the others.</p>'),
+      lesson('ghc-network', '<p>A network needs devices (called nodes), a <b>medium</b> to carry the signals (cables or wireless), network hardware such as a network interface card (NIC), a modem, a switch and a router, and agreed rules called <b>protocols</b> so that every device understands the others.</p>'),
       lesson('ghc-network', '<p>Data does not travel as one big block. It is split into small <b>packets</b>. Each packet carries the address of where it came from and where it is going. Packets travel through switches and routers, arrive at the destination and are put back together into the original message.</p>'),
       { type: 'order', title: 'Send a message across a network', steps: [
         both('The message is broken into packets'),
@@ -303,6 +319,7 @@ export const GHANA_COMPUTING_SS1_MISSIONS: Mission[] = [
       question('What do we call the rules that devices follow to communicate?', ['Protocols', 'Pixels', 'Passwords', 'Peripherals'], 'Protocols are agreed rules for communication.'),
       question('Data sent across a network is split into small units called:', ['packets', 'folders', 'icons', 'screens'], 'Each packet carries part of the message plus address information.'),
       question('Which device connects different networks and directs packets?', ['A router', 'A monitor', 'A keyboard', 'A speaker'], 'Routers pass packets between networks.'),
+      question('Which network hardware is found inside a computer and lets it connect to a network?', ['A network interface card (NIC)', 'A monitor', 'A printer', 'A keyboard'], 'The NIC is the computer\'s connection to the network.'),
       question('Which is a benefit of a network?', ['Sharing a printer or an Internet connection', 'Needing more cables for every task', 'Losing all files', 'Using no electricity'], 'Sharing resources is one of the main benefits.')
     ]
   },
@@ -464,7 +481,6 @@ export const GHANA_COMPUTING_SS1_MISSIONS: Mission[] = [
       lesson('ghc-flowchart', '<p>A <b>flowchart</b> shows an algorithm with symbols joined by arrows. An <b>oval</b> marks the start or end, a <b>parallelogram</b> shows input or output, a <b>rectangle</b> shows a process or step, and a <b>diamond</b> shows a decision with yes and no paths. The flowchart here adds two numbers.</p>'),
       lesson('ghc-flowchart', '<p><b>Pseudocode</b> writes the same steps in plain, structured language, with no strict rules about spelling or punctuation. To add two numbers: INPUT a, INPUT b, sum ← a + b, OUTPUT sum. For the area of a rectangle: INPUT length, INPUT width, area ← length × width, OUTPUT area. Planning uses <b>variables</b> to hold values, and each value has a <b>data type</b>, such as whole numbers, decimal numbers, text and true or false values.</p>'),
       lesson('ghc-flowchart', '<p>A plan can then be written as a program. In <b>Python</b>: <code>a = 5</code>, <code>b = 3</code>, <code>print(a + b)</code> shows 8. Python is a programming language; HTML, which you meet in the web strand, is a markup language that describes the content of web pages.</p>'),
-      { type: 'trace' },
       { type: 'predict', rounds: [
         { code: both('a = 5\nb = 3\nprint(a + b)'), out: both('8'), why: both('a + b is 5 + 3, which is 8.') },
         { code: both('length = 6\nwidth = 4\nprint(length * width)'), out: both('24'), why: both('The * sign multiplies: 6 × 4 = 24.') },

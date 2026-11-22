@@ -179,6 +179,121 @@ export const GHANA_COMPUTING_BUILDERS: Record<string, Builder> = {
        ${hot(44, 40, 332, 40, 0)}${hot(60, 96, 120, 26, 1)}${hot(60, 134, 170, 52, 2)}${hot(256, 104, 112, 100, 3)}${hot(60, 198, 100, 22, 4)}
        ${T(520, 78, 'Menu', { size: 22, weight: 800, fill: C.data })}${T(520, 118, 'Heading', { size: 22, weight: 800, fill: C.ember })}${T(520, 158, 'Text', { size: 22, weight: 800, fill: C.muted })}${T(520, 198, 'Image', { size: 22, weight: 800, fill: C.good })}${T(520, 238, 'Link', { size: 22, weight: 800, fill: C.data })}`,
       'A wireframe plans where each part of the page goes', 342);
+  },
+
+  /* ---- SHS 2 ---- */
+
+  /* AND, OR and NOT gates with their truth tables */
+  'ghc-gates': () => {
+    const cols = [
+      { x: 18, name: 'AND', col: C.data, rows: [[0, 0, 0], [0, 1, 0], [1, 0, 0], [1, 1, 1]], head: 'A  B  Q' },
+      { x: 224, name: 'OR', col: C.gold, rows: [[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 1]], head: 'A  B  Q' },
+      { x: 430, name: 'NOT', col: C.ember, rows: [[0, 1], [1, 0]], head: 'A  Q' }
+    ];
+    const shape = (name: string, x: number, col: string) => {
+      const y = 62;
+      if (name === 'AND') return `<path d="M${x + 36} ${y} h36 a30 30 0 0 1 0 60 h-36 z" fill="${col}" fill-opacity="0.18" stroke="${col}" stroke-width="4"/><path d="M${x + 6} ${y + 16} h30 M${x + 6} ${y + 44} h30 M${x + 102} ${y + 30} h24" stroke="${col}" stroke-width="4" fill="none"/>`;
+      if (name === 'OR') return `<path d="M${x + 36} ${y} q40 0 66 30 q-26 30 -66 30 q18 -30 0 -60 z" fill="${col}" fill-opacity="0.18" stroke="${col}" stroke-width="4"/><path d="M${x + 6} ${y + 16} h34 M${x + 6} ${y + 44} h34 M${x + 102} ${y + 30} h24" stroke="${col}" stroke-width="4" fill="none"/>`;
+      return `<path d="M${x + 36} ${y} l50 30 l-50 30 z" fill="${col}" fill-opacity="0.18" stroke="${col}" stroke-width="4"/><circle cx="${x + 92}" cy="${y + 30}" r="7" fill="${C.panel}" stroke="${col}" stroke-width="4"/><path d="M${x + 6} ${y + 30} h30 M${x + 99} ${y + 30} h27" stroke="${col}" stroke-width="4" fill="none"/>`;
+    };
+    const body = cols.map(c => {
+      const two = c.rows[0].length === 3;
+      const heads = two ? ['A', 'B', 'Q'] : ['A', 'Q'];
+      const xs = two ? [c.x + 28, c.x + 78, c.x + 128] : [c.x + 48, c.x + 108];
+      const hd = heads.map((h, i) => T(xs[i], 178, h, { size: 22, weight: 800, fill: c.col })).join('');
+      const rows = c.rows.map((r, ri) => `<rect x="${c.x + 6}" y="${190 + ri * 32}" width="150" height="30" rx="6" fill="${r[r.length - 1] ? c.col : C.panel}" fill-opacity="${r[r.length - 1] ? 0.22 : 0.5}"/>` + r.map((v, i) => T(xs[i], 213 + ri * 32, String(v), { size: 22, weight: 700 })).join('')).join('');
+      return `${T(c.x + 81, 44, c.name, { size: 28, weight: 800, fill: c.col })}${shape(c.name, c.x, c.col)}${hd}${rows}`;
+    }).join('');
+    return frame('Logic gates and truth tables', `${body}${hlRing(24, 188, 150, 30, 0, 4, 8, 8)}${hlRing(24, 220, 150, 30, 1, 4, 8, 8)}${hlRing(24, 252, 150, 30, 2, 4, 8, 8)}${hlRing(24, 284, 150, 30, 3, 4, 8, 8)}`, 'AND needs both inputs. OR needs one. NOT flips.', 372);
+  },
+
+  /* Adding two binary numbers with carries: 0101 + 0011 = 1000 */
+  'ghc-binadd': () => {
+    const a = [0, 1, 0, 1], b = [0, 0, 1, 1], sum = [1, 0, 0, 0], carry = [1, 1, 1, 0];
+    const xs = [250, 320, 390, 460];
+    const row = (vals: number[], y: number, col: string, size = 34) => vals.map((v, i) => T(xs[i], y, String(v), { size, weight: 800, fill: col })).join('');
+    return frame('Adding in binary',
+      `${T(104, 78, 'carry', { size: 22, fill: C.muted })}${row(carry, 78, C.gold, 28)}
+       ${row(a, 132, C.data)}${T(190, 188, '+', { size: 34, weight: 800, fill: C.muted })}${row(b, 188, C.data)}
+       <line x1="210" y1="206" x2="500" y2="206" stroke="${C.text}" stroke-width="4"/>
+       ${row(sum, 252, C.good)}${T(104, 132, '5', { size: 24, fill: C.muted })}${T(104, 188, '3', { size: 24, fill: C.muted })}${T(104, 252, '8', { size: 24, fill: C.good, weight: 800 })}
+       ${[3, 2, 1, 0].map((col, i) => hlRing(xs[col] - 28, 56, 56, 216, i, 4, 8, 12)).join('')}
+       ${T(560, 252, '1+1=10', { size: 22, fill: C.gold, weight: 800 })}`,
+      'Start at the right. 1 + 1 = 10, so write 0 and carry 1', 316);
+  },
+
+  /* A barcode and a QR code with scanning lines */
+  'ghc-barcode': () => {
+    const widths = [4, 2, 6, 2, 2, 4, 2, 6, 4, 2, 2, 6, 2, 4, 2, 4, 6, 2].map(w => w * 3);
+    let x = 36;
+    const bars = widths.map((w, i) => { const r = i % 2 === 0 ? `<rect x="${x}" y="70" width="${w}" height="120" fill="${C.text}"/>` : ''; x += w; return r; }).join('');
+    const grid = ['111010111', '100010101', '101110111', '000000100', '110101011', '010101000', '111010101', '101011010', '111000111'];
+    const qr = grid.map((r, ry) => r.split('').map((v, rx) => (v === '1' ? `<rect x="${390 + rx * 20}" y="${64 + ry * 20}" width="19" height="19" fill="${C.text}"/>` : '')).join('')).join('');
+    return frame('Barcode and QR code',
+      `${T(130, 46, 'Barcode', { size: 28, weight: 800, fill: C.data })}${bars}
+       <rect x="24" y="64" width="212" height="132" rx="8" fill="none" stroke="${C.line}" stroke-width="3"/>
+       <rect x="24" y="64" width="4" height="132" fill="${C.ember}" opacity="0.9"><animate attributeName="x" values="24;232;24" dur="4s" repeatCount="indefinite"/></rect>
+       ${T(130, 226, 'lines, read side to side', { size: 20, fill: C.muted })}
+       ${T(480, 46, 'QR code', { size: 28, weight: 800, fill: C.good })}${qr}
+       <rect x="384" y="58" width="192" height="4" fill="${C.ember}" opacity="0.9"><animate attributeName="y" values="58;240;58" dur="4s" repeatCount="indefinite"/></rect>
+       ${T(480, 276, 'squares, read in two directions', { size: 20, fill: C.muted })}
+       ${T(130, 262, 'stores a number', { size: 20, fill: C.text })}`,
+      'A scanner reads the pattern and finds the data', 322);
+  },
+
+  /* Star, bus, ring and mesh topologies */
+  'ghc-topologies': () => {
+    const cy = 112;
+    const node = (x: number, y: number, col: string) => `<circle cx="${x}" cy="${y}" r="11" fill="${col}" fill-opacity="0.3" stroke="${col}" stroke-width="3"/>`;
+    const cx = (i: number) => 80 + i * 160;
+    const star = (() => { const x = cx(0); const pts: Array<[number, number]> = [[-46, -42], [46, -42], [-46, 42], [46, 42]];
+      return `${pts.map(([dx, dy]) => `<line x1="${x}" y1="${cy}" x2="${x + dx}" y2="${cy + dy}" stroke="${C.data}" stroke-width="4"/>${node(x + dx, cy + dy, C.data)}`).join('')}<rect x="${x - 13}" y="${cy - 13}" width="26" height="26" rx="5" fill="${C.gold}" stroke="${C.text}" stroke-width="2"/>${flow(`M${x} ${cy} L${x + 46} ${cy - 42}`, 2.4, C.sakura, 0, 6)}${flow(`M${x} ${cy} L${x - 46} ${cy + 42}`, 2.4, C.sakura, 1.2, 6)}`; })();
+    const bus = (() => { const x = cx(1);
+      return `<line x1="${x - 64}" y1="${cy}" x2="${x + 64}" y2="${cy}" stroke="${C.gold}" stroke-width="6"/>${[-40, 40].map(dx => `<line x1="${x + dx}" y1="${cy}" x2="${x + dx}" y2="${cy - 40}" stroke="${C.gold}" stroke-width="4"/>${node(x + dx, cy - 40, C.gold)}<line x1="${x + dx}" y1="${cy}" x2="${x + dx}" y2="${cy + 40}" stroke="${C.gold}" stroke-width="4"/>${node(x + dx, cy + 40, C.gold)}`).join('')}${flow(`M${x - 64} ${cy} H${x + 64}`, 3, C.sakura, 0, 6)}`; })();
+    const ring = (() => { const x = cx(2); const r = 48;
+      return `<circle cx="${x}" cy="${cy}" r="${r}" fill="none" stroke="${C.ember}" stroke-width="5"/>${[[0, -r], [r, 0], [0, r], [-r, 0]].map(([dx, dy]) => node(x + dx, cy + dy, C.ember)).join('')}${flow(`M${x} ${cy - r} A${r} ${r} 0 1 1 ${x} ${cy + r} A${r} ${r} 0 1 1 ${x} ${cy - r}`, 4, C.sakura, 0, 6)}`; })();
+    const mesh = (() => { const x = cx(3); const d = 44; const p: Array<[number, number]> = [[-d, -d], [d, -d], [d, d], [-d, d]];
+      let l = ''; for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) l += `<line x1="${x + p[i][0]}" y1="${cy + p[i][1]}" x2="${x + p[j][0]}" y2="${cy + p[j][1]}" stroke="${C.good}" stroke-width="3"/>`;
+      return `${l}${p.map(([dx, dy]) => node(x + dx, cy + dy, C.good)).join('')}${flow(`M${x - d} ${cy - d} L${x + d} ${cy + d}`, 2.6, C.sakura, 0, 6)}`; })();
+    const lab = [['Star', 'one hub', C.data], ['Bus', 'one cable', C.gold], ['Ring', 'a closed loop', C.ember], ['Mesh', 'all linked', C.good]] as const;
+    return frame('Network topologies',
+      `${star}${bus}${ring}${mesh}${lab.map(([n, d, col], i) => `${T(cx(i), 214, n, { size: 26, weight: 800, fill: col })}${T(cx(i), 244, d, { size: 20, fill: C.muted })}`).join('')}`,
+      'A topology is the shape in which devices are joined', 300);
+  },
+
+  /* Two linked database tables */
+  'ghc-database': () => {
+    const cell = (x: number, y: number, w: number, t: string, head = false, col = C.text) => `<rect x="${x}" y="${y}" width="${w}" height="34" fill="${head ? C.data : C.panel}" fill-opacity="${head ? 0.25 : 0.6}" stroke="${C.line}" stroke-width="2"/>${T(x + w / 2, y + 24, t, { size: 22, weight: head ? 800 : 600, fill: head ? C.data : col })}`;
+    const st = [['1', 'Ama', 'A'], ['2', 'Kofi', 'B'], ['3', 'Esi', 'A']];
+    const cl = [['A', 'Science'], ['B', 'Arts']];
+    const t1 = `${T(150, 44, 'Students', { size: 26, weight: 800, fill: C.data })}${['ID', 'Name', 'Class'].map((h, i) => cell(20 + i * 96, 60, 96, h, true)).join('')}${st.map((r, ri) => r.map((v, i) => cell(20 + i * 96, 94 + ri * 34, 96, v)).join('')).join('')}`;
+    const t2 = `${T(500, 44, 'Classes', { size: 26, weight: 800, fill: C.good })}${['Class', 'Subject'].map((h, i) => cell(396 + i * 112, 60, 112, h, true)).join('')}${cl.map((r, ri) => r.map((v, i) => cell(396 + i * 112, 94 + ri * 34, 112, v)).join('')).join('')}`;
+    const tags = `${T(68, 234, 'primary key', { size: 20, fill: C.gold, weight: 800 })}<path d="M68 200 V214" stroke="${C.gold}" stroke-width="3"/>${T(260, 234, 'foreign key', { size: 20, fill: C.ember, weight: 800 })}<path d="M260 200 V214" stroke="${C.ember}" stroke-width="3"/>${T(452, 234, 'primary key', { size: 20, fill: C.gold, weight: 800 })}<path d="M452 166 V214" stroke="${C.gold}" stroke-width="3"/>`;
+    const link = `<path d="M308 111 H396" stroke="${C.ember}" stroke-width="5" stroke-dasharray="10 8" fill="none"/>${flow('M308 111 H396', 2.4, C.sakura, 0, 7)}`;
+    return frame('Tables linked by a key', `${t1}${t2}${link}${tags}${hlRing(212, 94, 96, 102, 0, 1, 4, 6)}`, 'The foreign key links each student to a class', 318);
+  },
+
+  /* Machine learning: examples, train, model, predict */
+  'ghc-learning': () => {
+    const steps: Array<[string, string, string, string]> = [['Examples', 'with answers', 'labelled data', C.data], ['Train', 'find the', 'patterns', C.gold], ['Model', 'rules it', 'has learned', C.ember], ['Predict', 'answer new', 'cases', C.good]];
+    const body = steps.map(([n, a, b, col], i) => `${card(18 + i * 154, 66, 136, 120, col, 0.14)}${T(86 + i * 154, 108, n, { size: 26, fill: col, weight: 800 })}${T(86 + i * 154, 142, a, { size: 20, fill: C.text })}${T(86 + i * 154, 168, b, { size: 20, fill: C.muted })}`).join('');
+    return frame('How a computer learns',
+      `${body}<path d="M154 126 H172 M308 126 H326 M462 126 H480" stroke="${C.text}" stroke-width="4" fill="none"/>
+       <path d="M548 196 V246 H240 V196" fill="none" stroke="${C.muted}" stroke-width="4" stroke-dasharray="8 8"/><polygon points="240,188 230,206 250,206" fill="${C.muted}"/>${T(394, 236, 'wrong answers? train again', { size: 22, fill: C.muted })}
+       ${flow('M30 52 H610', 6, C.sakura, 0)}`,
+      'It improves by checking its answers against examples', 296);
+  },
+
+  /* Shopping on a web page */
+  'ghc-ecommerce': () => {
+    const steps: Array<[string, string, string]> = [['Browse', 'products', C.data], ['Cart', 'add items', C.gold], ['Checkout', 'address', C.ember], ['Pay', 'secure', C.good], ['Done', 'receipt', C.sakura]];
+    const body = steps.map(([n, d, col], i) => `${card(14 + i * 124, 70, 112, 104, col, 0.14)}${T(70 + i * 124, 112, n, { size: 22, fill: col, weight: 800 })}${T(70 + i * 124, 144, d, { size: 20, fill: C.muted })}`).join('');
+    return frame('A web shop, step by step',
+      `${body}<path d="M126 122 H138 M250 122 H262 M374 122 H386 M498 122 H510" stroke="${C.text}" stroke-width="4" fill="none"/>
+       ${flow('M20 192 H620', 6, C.sakura, 0)}
+       <rect x="396" y="214" width="228" height="48" rx="12" fill="${C.good}" fill-opacity="0.16" stroke="${C.good}" stroke-width="3"/>${T(510, 245, 'https  secure page', { size: 22, fill: C.good, weight: 800 })}
+       <path d="M44 232 h20 v16 h-20 z M48 232 v-6 a6 6 0 0 1 12 0 v6" fill="none" stroke="${C.muted}" stroke-width="3"/>${T(84, 248, 'login and card details are protected', { size: 20, fill: C.muted, anchor: 'start' })}`,
+      'Good e-commerce pages are easy and safe to use', 322);
   }
 };
 

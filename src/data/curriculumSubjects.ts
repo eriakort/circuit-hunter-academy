@@ -7,6 +7,7 @@ import { MATH10_SUBJECT, MATH11_SUBJECT } from './mathAdvCommon';
 import { HIST_GEO_SUBJECTS } from './histGeoCommon';
 import { GHANA_CORE_MATH_SUBJECT } from './ghanaCoreMathSS1Data';
 import { GHANA_COMPUTING_SS1_SUBJECT } from './ghanaComputingSS1Data';
+import { GHANA_COMPUTING_SS2_SUBJECT } from './ghanaComputingSS2Data';
 import { GHANA_CORE_MATH_SS2_SUBJECT } from './ghanaCoreMathSS2Data';
 import { GHANA_CORE_MATH_SS3_SUBJECT } from './ghanaCoreMathSS3Data';
 import { GHANA_JHS1_MATH_SUBJECT } from './ghanaJhs1MathData';
@@ -89,7 +90,7 @@ export function getCurriculumSubjects(grade?: GradeId | null, curriculumId: 'ita
   // Ghana has its own NaCCA pathways; never fall back to Italian subject content.
   if (curriculumId === 'ghana-nacca') {
     if (grade === 'ghshs1') return [GHANA_CORE_MATH_SUBJECT, GHANA_COMPUTING_SS1_SUBJECT];
-    if (grade === 'ghshs2') return [GHANA_CORE_MATH_SS2_SUBJECT];
+    if (grade === 'ghshs2') return [GHANA_CORE_MATH_SS2_SUBJECT, GHANA_COMPUTING_SS2_SUBJECT];
     if (grade === 'ghshs3') return [GHANA_CORE_MATH_SS3_SUBJECT];
     if (grade === 'ghjhs1') return [GHANA_JHS1_MATH_SUBJECT, GHANA_JHS1_SCIENCE_SUBJECT, GHANA_JHS1_COMPUTING_SUBJECT];
     if (grade === 'ghjhs2') return [GHANA_JHS2_MATH_SUBJECT, GHANA_JHS2_SCIENCE_SUBJECT];
