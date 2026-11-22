@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { CHEM_VISUAL_KEYS } from '../src/data/chemVisuals';
 import { getVisualHtml } from '../src/data/visuals';
 import { PHYS_VISUAL_BUILDERS } from '../src/data/physVisualsG9';
 import { CHEM10_BUILDERS } from '../src/data/chemVisualsG10';
@@ -39,4 +40,7 @@ for (const [name, builders] of groups) {
     assert.ok(!/\b(the|and|with)\b/i.test(html.it.replace(/<[^>]+>/g, ' ')), `${key} (it) contains English words`);
   }
 }
+// Every Chemistry key has exactly one redrawn builder (no leftover old drawings, no orphan builders).
+const chemBuilt = [...Object.keys(CHEM9_BUILDERS), ...Object.keys(CHEM10_BUILDERS), ...Object.keys(CHEM11_BUILDERS)].sort();
+assert.deepEqual(chemBuilt, [...CHEM_VISUAL_KEYS].sort(), 'chemistry builders match CHEM_VISUAL_KEYS one to one');
 console.log(`sciViz.test.ts ok! ${total} redrawn Physics/Chemistry diagrams: large text, motion, both languages.`);
