@@ -11,8 +11,8 @@ import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
 export const GHANA_JHS1_COMPUTING_SUBJECT: SubjectInfo = {
   id: 'ghjhs1computing',
   name: 'Computing · JHS 1',
-  blurb: 'A provisional JHS 1 Computing introduction: computer systems, digital information, algorithms and safe, responsible technology use.',
-  meta: 'Ghana JHS 1 · Provisional Computing pilot · 8 missions',
+  blurb: 'A provisional JHS 1 Computing introduction: computer systems, digital information, algorithms, programming, data and safe, responsible technology use.',
+  meta: 'Ghana JHS 1 · Provisional Computing pilot · 12 missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><rect x="25" y="28" width="70" height="48" rx="8" fill="none" stroke="#6ad1ff" stroke-width="4"/><rect x="32" y="35" width="56" height="34" rx="3" fill="#111936" stroke="#ffd166" stroke-width="2"/><path d="M48 84h24M60 76v8" fill="none" stroke="#8a7bff" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="52" r="8" fill="#6ad1ff"/><path d="M60 44v16M52 52h16" stroke="#111936" stroke-width="2"/></svg>'
 };
 
@@ -30,7 +30,11 @@ export const GHANA_JHS1_COMPUTING_ARCS: ArcInfo[] = [
   { n: 5, unit: 0, subject: 'ghjhs1computing', title: 'Representing Information', pages: 'Provisional JHS 1 slice · source verification pending' },
   { n: 6, unit: 0, subject: 'ghjhs1computing', title: 'Networks and Communication', pages: 'Provisional JHS 1 slice · source verification pending' },
   { n: 7, unit: 0, subject: 'ghjhs1computing', title: 'Choosing Digital Applications', pages: 'Provisional JHS 1 slice · source verification pending' },
-  { n: 8, unit: 0, subject: 'ghjhs1computing', title: 'Healthy and Responsible Device Use', pages: 'Provisional JHS 1 slice · source verification pending' }
+  { n: 8, unit: 0, subject: 'ghjhs1computing', title: 'Healthy and Responsible Device Use', pages: 'Provisional JHS 1 slice · source verification pending' },
+  { n: 9, unit: 0, subject: 'ghjhs1computing', title: 'Programming with Blocks', pages: 'Provisional JHS 1 slice · source verification pending' },
+  { n: 10, unit: 0, subject: 'ghjhs1computing', title: 'Collecting and Displaying Data', pages: 'Provisional JHS 1 slice · source verification pending' },
+  { n: 11, unit: 0, subject: 'ghjhs1computing', title: 'Searching and Checking Information', pages: 'Provisional JHS 1 slice · source verification pending' },
+  { n: 12, unit: 0, subject: 'ghjhs1computing', title: 'Working Together with Digital Tools', pages: 'Provisional JHS 1 slice · source verification pending' }
 ];
 
 const q = (prompt: string, answers: string[], explanation: string) => ({ q: prompt, a: answers, why: explanation });
@@ -227,6 +231,102 @@ export const GHANA_JHS1_COMPUTING_MISSIONS: Mission[] = [
       q('What is a healthy screen habit?', ['Take regular short breaks when appropriate', 'Stare without moving for hours', 'Use a device through pain', 'Lean as close as possible'], 'Short breaks and a comfortable setup can reduce strain.'),
       q('How should a shared device be treated?', ['Carefully and respectfully', 'As personal property to alter freely', 'With food beside the keyboard', 'By changing other learners’ files'], 'Shared devices should be handled carefully and used respectfully.'),
       q('What should you do if a screen setup causes discomfort?', ['Adjust it with help and tell an adult if discomfort continues', 'Ignore pain', 'Move closer until it feels better', 'Change the electrical wiring'], 'A comfortable setup matters; seek adult help rather than ignoring pain or attempting repairs.')
+    ]
+  },
+  {
+    id: 'gh-jhs1-computing-programming',
+    arc: 8, sec: 'Programming with Blocks', pages: 'Provisional JHS 1 slice · source verification pending',
+    hue: 276, horns: 2, eyes: 2,
+    title: 'The Block-Code Builder',
+    topic: 'Arrange instructions in order and use a repeat instruction to describe a simple program.',
+    demon: 'The Mixed-Up Blocks',
+    tech: 'Program Form · Ninth Technique: Arrange, Repeat and Test',
+    scenes: [
+      lesson('<p>A computer program is a set of instructions written in a form a computer can follow. A visual block language lets a learner connect instruction blocks without needing to type every command.</p>'),
+      lesson('<p>Programs follow an order. A simple classroom garden program might begin, repeat “water one plant” for each of three plants, then finish. Changing the order can change what the program does.</p>'),
+      lesson('<p>A repeat instruction is a way to avoid writing the same action many times. The number of repeats matters: repeat too few times and some plants are missed; repeat too many times and the program may continue after the task is complete.</p>'),
+      lesson('<p>Test a program by tracing each instruction and checking the result. If it does not do what you expect, find the block causing the problem, change it and test again. This is debugging.</p>'),
+      { who: 'd', vis: 'demon', text: 'I scrambled the program blocks. Put the start, repeat and finish steps in order, then test how many plants are watered!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('What is a computer program?', ['Instructions written for a computer to follow', 'A type of monitor', 'A folder name', 'An internet connection'], 'A program is a set of instructions a computer can follow.'),
+      q('Why use a repeat instruction?', ['To carry out the same action several times', 'To delete every instruction', 'To change a monitor into a keyboard', 'To make a file name longer'], 'A repeat instruction runs the same action multiple times.'),
+      q('What might happen if a program repeats an action too few times?', ['Some items in the task may be missed', 'The computer becomes a printer', 'Every instruction is erased', 'The program automatically improves'], 'Too few repeats may mean the program does not complete the whole task.'),
+      q('What is a sensible way to debug a program?', ['Trace its steps, find a faulty instruction, change it and test again', 'Change many blocks without checking', 'Delete the program immediately', 'Ignore the result'], 'Testing a change helps identify whether the faulty instruction was corrected.'),
+      q('In a simple program, why does instruction order matter?', ['The result depends on which step happens first', 'All orders produce the same result', 'A program cannot have steps', 'Order changes the computer screen size'], 'Instructions are carried out in sequence, so changing their order can change the outcome.')
+    ]
+  },
+  {
+    id: 'gh-jhs1-computing-data',
+    arc: 9, sec: 'Collecting and Displaying Data', pages: 'Provisional JHS 1 slice · source verification pending',
+    hue: 34, horns: 2, eyes: 2,
+    title: 'The Class Data Cartographer',
+    topic: 'Organise a small set of data in a table, compare values and choose a clear way to display the results.',
+    demon: 'The Chart Scrambler',
+    tech: 'Data Form · Tenth Technique: Count, Compare and Show',
+    scenes: [
+      lesson('<p>Data are recorded facts or observations. A class might count how many learners choose different fruits for a snack. A clear question and consistent counting help make the results useful.</p>'),
+      lesson('<p>A table places related values in rows and columns. Give each column a heading, such as “Fruit” and “Votes”, so a reader knows what each number means.</p>'),
+      lesson('<p>A bar chart can compare categories. Each bar represents a category, and longer bars represent larger values. Label the categories and use a scale that makes the differences easy to see.</p>'),
+      lesson('<p>Describe what the data show without guessing beyond the evidence. A survey of one class tells you about the learners who answered; it may not represent every learner in the school.</p>'),
+      { who: 'd', vis: 'demon', text: 'I changed the chart labels and mixed the counts. Organise the data and explain what the largest value tells us!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('What is data?', ['Recorded facts or observations', 'A computer screen only', 'A password', 'A type of network cable'], 'Data are facts or observations that have been collected or recorded.'),
+      q('Why should a table have clear column headings?', ['They explain what the values in each column mean', 'They make the numbers disappear', 'They replace the data', 'They make every value equal'], 'Headings help readers interpret each column correctly.'),
+      q('In a bar chart, what does a longer bar usually show?', ['A larger value', 'A smaller font', 'A different password', 'An empty category'], 'Bar length represents the size of the value for its category.'),
+      q('What can a survey of one class safely tell you?', ['What the learners who answered reported', 'What every learner in the country thinks', 'What will happen next year', 'Which answer is always correct'], 'A survey describes its respondents; a small group may not represent a larger population.'),
+      q('What should you check when making a chart?', ['Labels and scale match the data', 'Every bar has the same value', 'The chart has no headings', 'The largest result is hidden'], 'Accurate labels and a suitable scale help communicate data honestly.')
+    ]
+  },
+  {
+    id: 'gh-jhs1-computing-search',
+    arc: 10, sec: 'Searching and Checking Information', pages: 'Provisional JHS 1 slice · source verification pending',
+    hue: 202, horns: 2, eyes: 2,
+    title: 'The Information Trail Checker',
+    topic: 'Use focused search terms and check who created a source, when it was published and whether its claims have evidence.',
+    demon: 'The Rumour Repeater',
+    tech: 'Research Form · Eleventh Technique: Search, Compare and Verify',
+    scenes: [
+      lesson('<p>A search engine helps find pages that match words or phrases. A focused search, such as “how to save water at school”, can be more useful than a very broad word like “water”.</p>'),
+      lesson('<p>Before relying on a page, check who created it and why. Look for an author or organisation, a publication date and evidence that supports the claims.</p>'),
+      lesson('<p>Compare important information with another trustworthy source. A result appearing near the top of a search list does not automatically make it accurate or suitable for your assignment.</p>'),
+      lesson('<p>Use information responsibly: write ideas in your own words, record where they came from and ask permission before using someone else’s work. Do not enter private details into an unfamiliar website.</p>'),
+      { who: 'd', vis: 'demon', text: 'A surprising claim is spreading online. Check the author, date and evidence before deciding whether to use it!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('Which is a more focused search phrase?', ['how to save water at school', 'water', 'everything', 'help'], 'A focused phrase gives the search engine clearer clues about the information needed.'),
+      q('What is useful to check about an online source?', ['Who created it, when it was published and what evidence it gives', 'Only its colours', 'How many pictures it has', 'Whether it is the first result'], 'Author, date and supporting evidence help readers assess a source.'),
+      q('Does the first search result have to be correct?', ['No, check its source and compare important claims', 'Yes, the first result is always correct', 'Yes, if it has a picture', 'No, but every later result is correct'], 'Search order does not guarantee accuracy or suitability.'),
+      q('What should you do with ideas from a source?', ['Use your own words and record where the ideas came from', 'Copy them without credit', 'Remove the author’s name', 'Claim the ideas are your own'], 'Paraphrase and credit sources to show where information originated.'),
+      q('What should you avoid entering into an unfamiliar website?', ['Private personal information', 'A public topic for research', 'A general search phrase', 'A school subject name'], 'Do not share private details with websites you do not know or trust.')
+    ]
+  },
+  {
+    id: 'gh-jhs1-computing-collaboration',
+    arc: 11, sec: 'Working Together with Digital Tools', pages: 'Provisional JHS 1 slice · source verification pending',
+    hue: 158, horns: 2, eyes: 2,
+    title: 'The Teamwork Permission Keeper',
+    topic: 'Plan a shared class task, select an appropriate access permission and communicate respectfully with collaborators.',
+    demon: 'The Open-Link Oversharer',
+    tech: 'Collaboration Form · Twelfth Technique: Share Carefully and Contribute',
+    scenes: [
+      lesson('<p>Digital tools can help a group write, organise ideas or prepare a presentation together. Agree on the task, share responsibilities and communicate respectfully.</p>'),
+      lesson('<p>Shared files can have different permissions. A viewer can read a file, a commenter can add feedback, and an editor can change its contents. Give each person only the access they need for the task.</p>'),
+      lesson('<p>A public link may allow people beyond your group to open a file. Use the sharing option your teacher approves, and do not include private information in a document shared with others.</p>'),
+      lesson('<p>Good teamwork includes listening, crediting each person’s contribution and checking edits before submitting. If someone makes a mistake, discuss how to fix the work respectfully.</p>'),
+      { who: 'd', vis: 'demon', text: 'The group file is open to everyone, but only one classmate needs to read it. Choose a safer permission and plan the teamwork!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('Which permission lets someone read a file without changing it?', ['Viewer', 'Editor', 'Owner of every device', 'Public poster'], 'A viewer can read a shared file but cannot edit its contents.'),
+      q('What is a good sharing rule?', ['Give each collaborator only the access they need', 'Make every file public', 'Give everyone editing access automatically', 'Share private details in every document'], 'Using the minimum suitable permission helps protect shared work.'),
+      q('What should a group agree on before using a shared document?', ['The task and each person’s responsibilities', 'That nobody may contribute', 'That one person gets all the credit', 'That the link must be public'], 'Clear roles help the group work together and contribute fairly.'),
+      q('Why should a group credit each person’s contribution?', ['It recognises who helped create the work', 'It hides the source of the work', 'It makes sharing public', 'It changes the file format'], 'Crediting contributions is respectful and helps show how the work was made.'),
+      q('When should you use a public sharing link for school work?', ['Only when the teacher approves and it is needed', 'For every private file', 'Whenever a stranger asks', 'Instead of checking permissions'], 'Public links can expose work widely; follow the teacher’s instructions and share only as needed.')
     ]
   }
 ];

@@ -33,6 +33,11 @@ export const GhanaComputingLab: React.FC<Props> = ({ missionId }) => {
   const [messageSent, setMessageSent] = useState(false);
   const [application, setApplication] = useState<'report' | 'survey' | 'slides'>('report');
   const [screenHeight, setScreenHeight] = useState(50);
+  const [programStep, setProgramStep] = useState(0);
+  const [repeatCount, setRepeatCount] = useState(3);
+  const [fruitVotes, setFruitVotes] = useState([4, 7, 5]);
+  const [researchSource, setResearchSource] = useState<'guide' | 'post'>('guide');
+  const [sharePermission, setSharePermission] = useState<'viewer' | 'editor' | 'public'>('viewer');
 
   if (missionId === 'gh-jhs1-computing-computer-systems') {
     return (
@@ -187,6 +192,109 @@ export const GhanaComputingLab: React.FC<Props> = ({ missionId }) => {
           <input type="range" min="0" max="100" value={screenHeight} onChange={event => setScreenHeight(Number(event.target.value))} />
         </label>
         <p className="ghana-computing-lab__result" role="status">{heightLabel}</p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-programming') {
+    const steps = ['Start program', `Repeat ${repeatCount} times: water one plant`, 'Finish program'];
+    const message = programStep === 0
+      ? 'Ready to start. The repeat block will water one plant on each turn.'
+      : programStep <= repeatCount
+        ? `Repeat step ${programStep} of ${repeatCount}: water one plant.`
+        : `Program complete: ${repeatCount} plants were watered.`;
+    const activeBlock = programStep === 0 ? 0 : programStep <= repeatCount ? 1 : 2;
+    return (
+      <LabPanel title="Run a simple block program">
+        <label className="ghana-computing-lab__slider">Number of plants
+          <input type="range" min="1" max="5" value={repeatCount} onChange={event => { setRepeatCount(Number(event.target.value)); setProgramStep(0); }} />
+        </label>
+        <div className="ghana-computing-lab__program" aria-label="Program blocks">
+          {steps.map((step, index) => (
+            <div className={`ghana-computing-lab__program-block${activeBlock === index ? ' is-active' : ''}`} key={step}>
+              <small>{index === 1 ? 'REPEAT BLOCK' : 'INSTRUCTION'}</small><strong>{step}</strong>
+            </div>
+          ))}
+        </div>
+        <button type="button" className="ghana-computing-lab__action" onClick={() => setProgramStep(programStep >= repeatCount + 1 ? 0 : programStep + 1)}>
+          {programStep >= repeatCount + 1 ? 'Run again' : 'Run next instruction'}
+        </button>
+        <p className="ghana-computing-lab__result" role="status">{message}</p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-data') {
+    const fruits = ['Mangoes', 'Bananas', 'Oranges'];
+    const totalVotes = fruitVotes.reduce((sum, votes) => sum + votes, 0);
+    const largestVote = Math.max(...fruitVotes);
+    return (
+      <LabPanel title="Explore a class fruit survey">
+        <div className="ghana-computing-lab__chart" role="group" aria-label="Fruit survey results">
+          {fruits.map((fruit, index) => (
+            <div className="ghana-computing-lab__bar-row" key={fruit}>
+              <span>{fruit}</span>
+              <div className="ghana-computing-lab__bar-track"><i style={{ width: `${fruitVotes[index] * 10}%` }} /></div>
+              <strong>{fruitVotes[index]}</strong>
+            </div>
+          ))}
+        </div>
+        <div className="ghana-computing-lab__choices" role="group" aria-label="Add a survey response">
+          {fruits.map((fruit, index) => (
+            <button type="button" className="ghana-computing-lab__choice" key={fruit} disabled={fruitVotes[index] >= 10} onClick={() => setFruitVotes(current => current.map((votes, i) => i === index ? Math.min(votes + 1, 10) : votes))}>
+              Add one {fruit.toLowerCase()} vote
+            </button>
+          ))}
+        </div>
+        <p className="ghana-computing-lab__result" role="status">
+          Total responses: {totalVotes}. {fruits[fruitVotes.indexOf(largestVote)]} has the most votes in this class survey.
+        </p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-search') {
+    const sourceInfo = researchSource === 'guide'
+      ? { title: 'School water-use guide', author: 'Named education office', date: 'Recent date shown', evidence: 'Links to supporting information' }
+      : { title: '“Water facts!” community post', author: 'No author listed', date: 'No date shown', evidence: 'No evidence provided' };
+    const sourceIsStronger = researchSource === 'guide';
+    return (
+      <LabPanel title="Check a source before using it">
+        <div className="ghana-computing-lab__choices" role="group" aria-label="Choose a source to inspect">
+          <Choice label="School water-use guide" active={sourceIsStronger} onClick={() => setResearchSource('guide')} />
+          <Choice label="Community post" active={!sourceIsStronger} onClick={() => setResearchSource('post')} />
+        </div>
+        <div className="ghana-computing-lab__source-card" aria-live="polite">
+          <strong>{sourceInfo.title}</strong>
+          <span>Author: {sourceInfo.author}</span>
+          <span>Publication: {sourceInfo.date}</span>
+          <span>Evidence: {sourceInfo.evidence}</span>
+        </div>
+        <p className={`ghana-computing-lab__result${sourceIsStronger ? ' is-safe' : ' is-warning'}`} role="status">
+          {sourceIsStronger ? 'Stronger source: check that its evidence supports the claim and compare important facts.' : 'Pause: missing author, date and evidence mean you should verify this claim elsewhere.'}
+        </p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-collaboration') {
+    const permissionFeedback = sharePermission === 'viewer'
+      ? 'Viewer access fits a classmate who only needs to read the work.'
+      : sharePermission === 'editor'
+        ? 'Editor access allows changes. Use it only when the classmate needs to edit.'
+        : 'A public link may reach people outside your group. Use it only with teacher approval.';
+    return (
+      <LabPanel title="Choose access for a classmate">
+        <div className="ghana-computing-lab__choices" role="group" aria-label="Choose file access">
+          <Choice label="Viewer" active={sharePermission === 'viewer'} onClick={() => setSharePermission('viewer')} />
+          <Choice label="Editor" active={sharePermission === 'editor'} onClick={() => setSharePermission('editor')} />
+          <Choice label="Public link" active={sharePermission === 'public'} onClick={() => setSharePermission('public')} />
+        </div>
+        <div className={`ghana-computing-lab__share-card permission-${sharePermission}`} aria-live="polite">
+          <span className="ghana-computing-lab__file-icon" aria-hidden="true">▤</span>
+          <div><small>Class project document</small><strong>{sharePermission === 'public' ? 'Anyone with the link' : `Classmate · ${sharePermission}`}</strong></div>
+        </div>
+        <p className={`ghana-computing-lab__result${sharePermission === 'public' ? ' is-warning' : ' is-safe'}`} role="status">{permissionFeedback}</p>
       </LabPanel>
     );
   }
