@@ -31,8 +31,8 @@ for (const mission of missions) {
   const arc = ARCS[mission.arc];
   assert.equal(arc.subject, 'ghjhs3science');
   assert.equal(UNITS[arc.unit as number]?.subject, 'ghjhs3science');
-  assert.equal(mission.quiz.length, 5, `Expected five quiz questions in ${mission.id}`);
-  assert.equal(mission.scenes.length, 6, `Expected four teaching scenes, a challenge and battle in ${mission.id}`);
+  assert.equal(mission.quiz.length, 8, `Expected eight quiz questions in ${mission.id}`);
+  assert.equal(mission.scenes.length, 7, `Expected five teaching scenes, a challenge and battle in ${mission.id}`);
   assert.ok(mission.quiz.every(question =>
     typeof question.q === 'string' &&
     typeof question.why === 'string' &&
