@@ -16,12 +16,18 @@ Because an authoritative JHS Computing document could not be verified, this firs
 
 ## Registered first slice
 
-The pilot contains four focused missions:
+The pilot contains eight focused missions:
 
 1. Computer systems: input, processing, output and storage.
 2. Digital information and files: file names, folders and responsible reuse.
 3. Algorithms and instructions: sequence, conditions, testing and debugging.
 4. Safe and responsible computing: privacy, passwords, suspicious links and cyberbullying.
+5. Binary data: bits, place values and interpreting a bit pattern.
+6. Networks: connections, routes and message packets.
+7. Applications: choosing a tool for reports, surveys and presentations.
+8. Device care: safe handling, comfortable screen use and breaks.
+
+Each mission now has a Ghana-specific interactive visual on its second teaching scene. Learners can trace computer-system stages, sort sample files, test an algorithm condition, respond to a suspicious message, toggle binary bits, send a network message, match an application to a task, or adjust an illustrative screen position. The diagrams are locally rendered; motion respects the site's reduced-motion setting.
 
 These topics are broad foundational computing themes, not a claim that they are a complete or exact restatement of the official JHS 1 Computing curriculum.
 
@@ -32,3 +38,4 @@ Run:
 - `bun test tests/ghanaJhs1ComputingData.test.ts`
 - `bun test tests/curriculumRegistry.test.ts`
 - `bun test tests/subjectRegistration.test.ts`
+- `bun run test:e2e -- tests/e2e/ghana-jhs1-computing.spec.ts`

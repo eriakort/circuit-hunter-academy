@@ -12,7 +12,7 @@ export const GHANA_JHS1_COMPUTING_SUBJECT: SubjectInfo = {
   id: 'ghjhs1computing',
   name: 'Computing · JHS 1',
   blurb: 'A provisional JHS 1 Computing introduction: computer systems, digital information, algorithms and safe, responsible technology use.',
-  meta: 'Ghana JHS 1 · Provisional Computing pilot · 4 missions',
+  meta: 'Ghana JHS 1 · Provisional Computing pilot · 8 missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><rect x="25" y="28" width="70" height="48" rx="8" fill="none" stroke="#6ad1ff" stroke-width="4"/><rect x="32" y="35" width="56" height="34" rx="3" fill="#111936" stroke="#ffd166" stroke-width="2"/><path d="M48 84h24M60 76v8" fill="none" stroke="#8a7bff" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="52" r="8" fill="#6ad1ff"/><path d="M60 44v16M52 52h16" stroke="#111936" stroke-width="2"/></svg>'
 };
 
@@ -26,7 +26,11 @@ export const GHANA_JHS1_COMPUTING_ARCS: ArcInfo[] = [
   { n: 1, unit: 0, subject: 'ghjhs1computing', title: 'Computer Systems', pages: 'Provisional JHS 1 slice · source verification pending' },
   { n: 2, unit: 0, subject: 'ghjhs1computing', title: 'Digital Information and Files', pages: 'Provisional JHS 1 slice · source verification pending' },
   { n: 3, unit: 0, subject: 'ghjhs1computing', title: 'Algorithms and Instructions', pages: 'Provisional JHS 1 slice · source verification pending' },
-  { n: 4, unit: 0, subject: 'ghjhs1computing', title: 'Safe and Responsible Computing', pages: 'Provisional JHS 1 slice · source verification pending' }
+  { n: 4, unit: 0, subject: 'ghjhs1computing', title: 'Safe and Responsible Computing', pages: 'Provisional JHS 1 slice · source verification pending' },
+  { n: 5, unit: 0, subject: 'ghjhs1computing', title: 'Representing Information', pages: 'Provisional JHS 1 slice · source verification pending' },
+  { n: 6, unit: 0, subject: 'ghjhs1computing', title: 'Networks and Communication', pages: 'Provisional JHS 1 slice · source verification pending' },
+  { n: 7, unit: 0, subject: 'ghjhs1computing', title: 'Choosing Digital Applications', pages: 'Provisional JHS 1 slice · source verification pending' },
+  { n: 8, unit: 0, subject: 'ghjhs1computing', title: 'Healthy and Responsible Device Use', pages: 'Provisional JHS 1 slice · source verification pending' }
 ];
 
 const q = (prompt: string, answers: string[], explanation: string) => ({ q: prompt, a: answers, why: explanation });
@@ -127,6 +131,102 @@ export const GHANA_JHS1_COMPUTING_MISSIONS: Mission[] = [
       q('Which password is harder to guess?', ['A long, unique password with several types of characters', 'Your first name', '123456', 'your-school'], 'A long, unique password is more difficult to guess or reuse in attacks.'),
       q('What is a safe response to cyberbullying?', ['Do not engage, report and tell a trusted adult', 'Retaliate with more insults', 'Share the bully’s private details', 'Forward threats to every contact'], 'Reporting, preserving evidence when instructed and seeking support are safer than retaliation.'),
       q('Before opening a suspicious link, what should you do?', ['Pause and check with a trusted adult or official source', 'Share it with everyone', 'Type your password to verify it', 'Disable security software'], 'Unexpected links can lead to scams or malicious pages. Verify safely before opening or sharing.')
+    ]
+  },
+  {
+    id: 'gh-jhs1-computing-binary-data',
+    arc: 4, sec: 'Representing Information', pages: 'Provisional JHS 1 slice · source verification pending',
+    hue: 214, horns: 2, eyes: 2,
+    title: 'The Binary Message Decoder',
+    topic: 'Explore how computers represent information using bits and how place value gives a binary pattern a number.',
+    demon: 'The Bit Flipper',
+    tech: 'Data Form · Fifth Technique: Read the Bit Pattern',
+    scenes: [
+      lesson('<p>Computers store and process information using physical states that can be represented as two choices, such as off and on. A <b>bit</b> is one binary digit: 0 or 1. Groups of bits can represent numbers and other kinds of data.</p>'),
+      lesson('<p>Each position in a binary number has a place value. In an 8-bit pattern, the values from left to right are 128, 64, 32, 16, 8, 4, 2 and 1. Add the values whose bits are 1 to find the number.</p>'),
+      lesson('<p>For example, 00001101 represents 8 + 4 + 1 = 13. A zero means that place value is not added. The same row of bits could also be used as part of a code for text, sound or a picture.</p>'),
+      lesson('<p>Digital representation is useful because devices can store, copy and process patterns consistently. It is important to know that a bit pattern only has meaning when we know how it is being interpreted.</p>'),
+      { who: 'd', vis: 'demon', text: 'I flipped several bits in the message. Use each place value to decode the number and explain what the pattern means!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('Which two values can a binary digit (bit) have?', ['0 and 1', '1 and 2', 'A and B only', '0 to 9'], 'A bit is a binary digit and can be either 0 or 1.'),
+      q('What is the place value of the rightmost bit?', ['1', '2', '8', '128'], 'The rightmost place in a binary number has value 1.'),
+      q('What number does 00000101 represent?', ['5', '4', '6', '10'], 'The 1 bits have values 4 and 1, so the number is 5.'),
+      q('What does a 0 bit contribute to the value of a binary number?', ['Nothing from that place value', 'The next place value', 'Ten times the number', 'A letter automatically'], 'A zero means that place value is not added to the total.'),
+      q('Why does a bit pattern need an agreed interpretation?', ['The same pattern can represent different kinds of information', 'Bits cannot be stored', 'Every pattern is a word', 'A computer cannot process numbers'], 'The meaning of data depends on the code or format used to interpret the bit pattern.')
+    ]
+  },
+  {
+    id: 'gh-jhs1-computing-networks',
+    arc: 5, sec: 'Networks and Communication', pages: 'Provisional JHS 1 slice · source verification pending',
+    hue: 190, horns: 2, eyes: 2,
+    title: 'The Message Packet Courier',
+    topic: 'Describe how connected devices exchange information and practise tracing a simple message route.',
+    demon: 'The Route Tangler',
+    tech: 'Network Form · Sixth Technique: Send and Reassemble',
+    scenes: [
+      lesson('<p>A computer network connects devices so they can exchange information or share resources. A school may connect computers to share a printer or access learning materials.</p>'),
+      lesson('<p>When a device sends information over a network, the information may be divided into smaller pieces called packets. Each packet carries information that helps it reach the destination and be put back in the right order.</p>'),
+      lesson('<p>Devices use different connection methods. Wi-Fi sends data using radio signals over a short range. Ethernet uses a cable. A mobile network connects devices through nearby cellular equipment. Each method has strengths and limitations.</p>'),
+      lesson('<p>Only connect to networks you are allowed to use. Avoid entering passwords on an unfamiliar device, and ask a teacher or trusted adult if a connection request or pop-up seems unexpected.</p>'),
+      { who: 'd', vis: 'demon', text: 'The class message has been split into packets. Choose a route and make sure they reach the right destination!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('What is a computer network?', ['Connected devices that can exchange information or share resources', 'A single unconnected keyboard', 'A folder of printed pages', 'A type of battery'], 'A network connects devices so they can communicate and share resources.'),
+      q('Why might a message be divided into packets?', ['Smaller pieces can be sent and reassembled at the destination', 'Packets make all messages secret automatically', 'A packet replaces every computer', 'The message is deleted'], 'Networks can send smaller packets that are reassembled into the original information.'),
+      q('Which connection commonly uses a cable?', ['Ethernet', 'Wi-Fi', 'Bluetooth only', 'Mobile signal'], 'Ethernet is a wired network connection.'),
+      q('What is Wi-Fi commonly used for?', ['Connecting devices over a short-range wireless network', 'Printing without a printer', 'Replacing all passwords', 'Storing every file permanently'], 'Wi-Fi uses radio signals to connect devices over a local wireless network.'),
+      q('What should you do if an unfamiliar network asks for personal details?', ['Stop and ask a teacher or trusted adult', 'Enter your password to continue', 'Share the request with everyone', 'Turn off every device in the school'], 'An unexpected request may be unsafe. Check with a responsible adult before sharing information.')
+    ]
+  },
+  {
+    id: 'gh-jhs1-computing-applications',
+    arc: 6, sec: 'Choosing Digital Applications', pages: 'Provisional JHS 1 slice · source verification pending',
+    hue: 38, horns: 2, eyes: 2,
+    title: 'The Right Tool for the Task',
+    topic: 'Match common digital applications to tasks and choose an appropriate way to save or share school work.',
+    demon: 'The App Mix-Up',
+    tech: 'Application Form · Seventh Technique: Match Tool to Purpose',
+    scenes: [
+      lesson('<p>An application is software designed to help people complete tasks. A word processor helps create text documents, a spreadsheet organises numbers and tables, and a presentation app arranges ideas into slides.</p>'),
+      lesson('<p>Choose an application by asking what the task requires. A class survey might be recorded in a table and shown in a chart. A short report needs headings and paragraphs. A presentation should use brief points and helpful visuals.</p>'),
+      lesson('<p>Applications can save work in different file formats. Choose a format that suits the next step: an editable document for continued work or a fixed-layout format when readers mainly need to view the final page.</p>'),
+      lesson('<p>Before sharing a school file, check that it contains no private information and choose only the permission the recipient needs. If you are unsure, ask your teacher before uploading or sharing.</p>'),
+      { who: 'd', vis: 'demon', text: 'I matched every task to the wrong app. Pick the tool that fits the work and prepare it for the right audience!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('Which application is best suited to writing a short report?', ['Word processor', 'Calculator only', 'Music player', 'File manager only'], 'A word processor is designed for writing and formatting text documents.'),
+      q('Which application is useful for organising survey results in rows and columns?', ['Spreadsheet', 'Camera', 'Audio player', 'Drawing game'], 'A spreadsheet organises data in cells, rows and columns and can create charts.'),
+      q('What is a good presentation slide usually like?', ['Brief points with a clear, relevant visual', 'A full essay in tiny text', 'A page of unrelated pictures', 'A slide with no message'], 'Short, clear points and relevant visuals help an audience follow a presentation.'),
+      q('What should you check before sharing a document?', ['That it has no private information and sharing access is appropriate', 'That every person can edit it', 'That the file name is random', 'That the document is copied from someone else'], 'Check privacy and share only with the appropriate people and permissions.'),
+      q('Why choose a file format carefully?', ['Different formats support different ways to edit or view work', 'Formats decide who is a good learner', 'Every format has identical features', 'A format changes the computer hardware'], 'Some formats are easier to edit, while others preserve a fixed layout for viewing.')
+    ]
+  },
+  {
+    id: 'gh-jhs1-computing-device-care',
+    arc: 7, sec: 'Healthy and Responsible Device Use', pages: 'Provisional JHS 1 slice · source verification pending',
+    hue: 146, horns: 2, eyes: 2,
+    title: 'The Healthy Device Steward',
+    topic: 'Practise safe device care, comfortable screen habits and responsible use of shared classroom equipment.',
+    demon: 'The Device Wear-and-Tear',
+    tech: 'Care Form · Eighth Technique: Use, Rest and Protect',
+    scenes: [
+      lesson('<p>Computers and tablets are shared tools. Use clean, dry hands, carry a device carefully and keep food and liquids away. Do not pull cables or force connectors into a port.</p>'),
+      lesson('<p>Arrange a workstation so the screen is easy to see without leaning forward. Sit in a comfortable position, keep the keyboard and mouse within reach and ask for help adjusting equipment that does not fit.</p>'),
+      lesson('<p>Long periods of screen use can make eyes or bodies feel tired. Take regular short breaks when your teacher allows, look away from the screen and stretch gently. Stop and tell an adult if something hurts.</p>'),
+      lesson('<p>Respect shared devices and the people using them. Sign out of your account when asked, leave files organised and report faults instead of trying unsafe repairs.</p>'),
+      { who: 'd', vis: 'demon', text: 'The workstation is uncomfortable and a cable is loose. Choose safer habits to protect the learner and the equipment!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('What should you keep away from a computer?', ['Food and liquids', 'A clean desk', 'A teacher’s instructions', 'A properly supported device'], 'Liquids and food can damage devices and create safety risks.'),
+      q('What should you do if a cable or device is damaged?', ['Stop using it and tell a responsible adult', 'Pull the cable harder', 'Open the device while it is plugged in', 'Hide the damage'], 'A responsible adult or technician should assess damaged electrical equipment.'),
+      q('What is a healthy screen habit?', ['Take regular short breaks when appropriate', 'Stare without moving for hours', 'Use a device through pain', 'Lean as close as possible'], 'Short breaks and a comfortable setup can reduce strain.'),
+      q('How should a shared device be treated?', ['Carefully and respectfully', 'As personal property to alter freely', 'With food beside the keyboard', 'By changing other learners’ files'], 'Shared devices should be handled carefully and used respectfully.'),
+      q('What should you do if a screen setup causes discomfort?', ['Adjust it with help and tell an adult if discomfort continues', 'Ignore pain', 'Move closer until it feels better', 'Change the electrical wiring'], 'A comfortable setup matters; seek adult help rather than ignoring pain or attempting repairs.')
     ]
   }
 ];
