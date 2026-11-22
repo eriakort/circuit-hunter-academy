@@ -430,100 +430,136 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "indicatorCode": "B8.4.1.1.1",
     "grade": 8,
     "strand": 4,
+    "officialIndicatorText": "Describe energy conversion.",
+    sourcePdfPage: 110,
     "missionIds": [
       "gh-jhs2-science-energy-sources-heat"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    teachingSceneEvidence: "The energy lesson scene 0 defines conversion with torch and bicycle examples. Scene 4 traces the dam-to-home pathway from stored water through a turbine and generator.",
+    assessmentEvidence: "Quiz 0 checks the meaning of energy conversion; quiz 5 orders the hydroelectric generation process. The written dam-process explanation remains a classroom discussion task.",
+    teachingSceneRefs: ["gh-jhs2-science-energy-sources-heat#scene-0","gh-jhs2-science-energy-sources-heat#scene-4"],
+    assessmentQuestionRefs: ["gh-jhs2-science-energy-sources-heat#quiz-0","gh-jhs2-science-energy-sources-heat#quiz-5"],
   },
   {
     "indicatorCode": "B8.4.1.3.1",
     "grade": 8,
     "strand": 4,
+    "officialIndicatorText": "Discuss the differences and the relationship between heat and temperature in the environment.",
+    sourcePdfPage: 112,
     "missionIds": [
       "gh-jhs2-science-energy-sources-heat"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    teachingSceneEvidence: "Scene 3 distinguishes temperature from heat transfer and uses water examples; scene 5 asks learners to make a comparison table using sunlight warming soil, cooking water and a warmed metal spoon.",
+    assessmentEvidence: "Quiz 4 directly distinguishes heat from temperature. The environmental comparison table and any thermometer observations require classroom review.",
+    teachingSceneRefs: ["gh-jhs2-science-energy-sources-heat#scene-3","gh-jhs2-science-energy-sources-heat#scene-5"],
+    assessmentQuestionRefs: ["gh-jhs2-science-energy-sources-heat#quiz-4"],
   },
   {
     "indicatorCode": "B8.4.2.1.1",
     "grade": 8,
     "strand": 4,
+    "officialIndicatorText": "Explain how electricity transmission occurs.",
+    sourcePdfPage: 113,
     "missionIds": [
       "gh-jhs2-science-electricity-electronics"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    teachingSceneEvidence: "Scenes 0–1 describe generation, step-up transformers, high-voltage transmission, substations, step-down transformers and distribution. Scene 4 asks learners to draw and explain the full generation-to-consumer flow chart.",
+    assessmentEvidence: "Quizzes 0, 1 and 5 assess transmission losses, the delivery sequence and the correct order of transmission stages. The learner-drawn flow chart remains a practical explanation task.",
+    teachingSceneRefs: ["gh-jhs2-science-electricity-electronics#scene-0","gh-jhs2-science-electricity-electronics#scene-1","gh-jhs2-science-electricity-electronics#scene-4"],
+    assessmentQuestionRefs: ["gh-jhs2-science-electricity-electronics#quiz-0","gh-jhs2-science-electricity-electronics#quiz-1","gh-jhs2-science-electricity-electronics#quiz-5"],
   },
   {
     "indicatorCode": "B8.4.2.2.1",
     "grade": 8,
     "strand": 4,
+    "officialIndicatorText": "Demonstrate the charging and discharging action of a capacitor in a DC electronic circuit.",
+    sourcePdfPage: 113,
     "missionIds": [
       "gh-jhs2-science-electricity-electronics"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    teachingSceneEvidence: "Scenes 2–3 explain resistor, diode, LED and capacitor functions. Scene 5 gives a teacher-supervised low-voltage DC circuit task to observe capacitor charging and discharging through a suitable resistor and LED.",
+    assessmentEvidence: "Quizzes 2–4 assess resistor, diode and capacitor discharge roles; quizzes 6–7 assess current limiting and falling capacitor voltage during discharge. Actual circuit performance requires teacher observation.",
+    teachingSceneRefs: ["gh-jhs2-science-electricity-electronics#scene-2","gh-jhs2-science-electricity-electronics#scene-3","gh-jhs2-science-electricity-electronics#scene-5"],
+    assessmentQuestionRefs: ["gh-jhs2-science-electricity-electronics#quiz-2","gh-jhs2-science-electricity-electronics#quiz-3","gh-jhs2-science-electricity-electronics#quiz-4","gh-jhs2-science-electricity-electronics#quiz-6","gh-jhs2-science-electricity-electronics#quiz-7"],
   },
   {
     "indicatorCode": "B8.4.3.1.1",
     "grade": 8,
     "strand": 4,
+    "officialIndicatorText": "Explain the importance of conversion of energy and energy conservation in daily life.",
+    sourcePdfPage: 114,
     "missionIds": [
       "gh-jhs2-science-energy-conservation-impact"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    teachingSceneEvidence: "Scenes 0–1 explain useful energy conversions and conservation; scenes 2–3 connect efficient use to school/home life and environmental trade-offs. Scenes 4–5 ask learners to conduct a school energy audit and create an evidence-based poster.",
+    assessmentEvidence: "Quizzes 0–7 assess everyday conversions, the conservation principle, practical saving actions and environmental impacts. The school audit and poster are performance tasks that need teacher review.",
+    teachingSceneRefs: ["gh-jhs2-science-energy-conservation-impact#scene-0","gh-jhs2-science-energy-conservation-impact#scene-1","gh-jhs2-science-energy-conservation-impact#scene-2","gh-jhs2-science-energy-conservation-impact#scene-3","gh-jhs2-science-energy-conservation-impact#scene-4","gh-jhs2-science-energy-conservation-impact#scene-5"],
+    assessmentQuestionRefs: ["gh-jhs2-science-energy-conservation-impact#quiz-0","gh-jhs2-science-energy-conservation-impact#quiz-1","gh-jhs2-science-energy-conservation-impact#quiz-2","gh-jhs2-science-energy-conservation-impact#quiz-3","gh-jhs2-science-energy-conservation-impact#quiz-4","gh-jhs2-science-energy-conservation-impact#quiz-5","gh-jhs2-science-energy-conservation-impact#quiz-6","gh-jhs2-science-energy-conservation-impact#quiz-7"],
   },
   {
     "indicatorCode": "B8.4.4.1.1",
     "grade": 8,
     "strand": 4,
+    "officialIndicatorText": "Demonstrate simple ways of making magnets and show how magnetic force can be applied in domestic and industrial activities.",
+    sourcePdfPage: 115,
     "missionIds": [
       "gh-jhs2-science-magnetism-force-machines"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    teachingSceneEvidence: "Scenes 0–1 explain stroking an iron nail, electromagnets and uses in compasses, alarms, loudspeakers and scrap-metal lifting. Scene 4 gives a supervised magnet-making and observation task.",
+    assessmentEvidence: "Quizzes 0–1 assess pole interactions and ways to strengthen an electromagnet; quiz 5 checks the stroking method. The learner-made magnet and application demonstration require teacher observation.",
+    teachingSceneRefs: ["gh-jhs2-science-magnetism-force-machines#scene-0","gh-jhs2-science-magnetism-force-machines#scene-1","gh-jhs2-science-magnetism-force-machines#scene-4"],
+    assessmentQuestionRefs: ["gh-jhs2-science-magnetism-force-machines#quiz-0","gh-jhs2-science-magnetism-force-machines#quiz-1","gh-jhs2-science-magnetism-force-machines#quiz-5"],
   },
   {
     "indicatorCode": "B8.4.4.2.1",
     "grade": 8,
     "strand": 4,
+    "officialIndicatorText": "Identify complex machines and describe their functions in life.",
+    sourcePdfPage: 116,
     "missionIds": [
       "gh-jhs2-science-magnetism-force-machines"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    teachingSceneEvidence: "Scenes 3 and 5 distinguish complex from simple machines, identify levers and wheel-and-axle components in a wheelbarrow and bicycle, and ask learners to explain how combinations make tasks easier.",
+    assessmentEvidence: "Quiz 4 identifies a wheelbarrow as a complex machine; quiz 7 asks learners to identify the combined simple machines in a bicycle. Learner explanations of quality-of-life benefits remain a classroom task.",
+    teachingSceneRefs: ["gh-jhs2-science-magnetism-force-machines#scene-3","gh-jhs2-science-magnetism-force-machines#scene-5"],
+    assessmentQuestionRefs: ["gh-jhs2-science-magnetism-force-machines#quiz-4","gh-jhs2-science-magnetism-force-machines#quiz-7"],
   },
   {
     "indicatorCode": "B8.4.5.1.1",
     "grade": 8,
     "strand": 4,
+    "officialIndicatorText": "Show and discuss the use of basic and simple agricultural tools for basic on-farm activities.",
+    sourcePdfPage: 117,
     "missionIds": [
       "gh-jhs2-science-agricultural-tools"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    teachingSceneEvidence: "Scenes 0–1 describe common tools and match hoes, cutlasses, rakes, shovels, watering cans, hand forks and wheelbarrows to farm tasks. Scene 4 asks learners to create a labelled tool album.",
+    assessmentEvidence: "Quizzes 0–2 assess tool selection and purpose. The labelled album and discussion of locally used tools require teacher review.",
+    teachingSceneRefs: ["gh-jhs2-science-agricultural-tools#scene-0","gh-jhs2-science-agricultural-tools#scene-1","gh-jhs2-science-agricultural-tools#scene-4"],
+    assessmentQuestionRefs: ["gh-jhs2-science-agricultural-tools#quiz-0","gh-jhs2-science-agricultural-tools#quiz-1","gh-jhs2-science-agricultural-tools#quiz-2"],
   },
   {
     "indicatorCode": "B8.4.5.1.2",
     "grade": 8,
     "strand": 4,
+    "officialIndicatorText": "Engage in the use of basic and simple agricultural tools for basic farm activities.",
+    sourcePdfPage: 117,
     "missionIds": [
       "gh-jhs2-science-agricultural-tools"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    teachingSceneEvidence: "Scenes 1 and 3 explain tool use and safety; scene 5 provides a supervised school-garden practice task involving a suitable hoe, rake, watering can or wheelbarrow and safe storage afterwards.",
+    assessmentEvidence: "Quizzes 3–4 and 7 assess safe handling, tool care and task-based selection. The actual learner practical must be observed by a teacher; the quiz cannot demonstrate physical competence.",
+    teachingSceneRefs: ["gh-jhs2-science-agricultural-tools#scene-1","gh-jhs2-science-agricultural-tools#scene-3","gh-jhs2-science-agricultural-tools#scene-5"],
+    assessmentQuestionRefs: ["gh-jhs2-science-agricultural-tools#quiz-3","gh-jhs2-science-agricultural-tools#quiz-4","gh-jhs2-science-agricultural-tools#quiz-7"],
   },
   {
     "indicatorCode": "B8.5.1.1.1",
@@ -645,26 +681,34 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   {
     indicatorCode: 'B8.4.1.1.2', grade: 8, strand: 4, missionIds: ['gh-jhs2-science-energy-sources-heat'],
     status: 'needs-review', officialIndicatorText: 'Discuss the importance of conversion of energy.', sourcePdfPage: 110,
-    teachingSceneEvidence: 'Candidate: energy-sources mission introduces energy conversion; verify explicit explanation of hydropower generation from a dammed river and harnessing natural energy forms.',
-    assessmentEvidence: 'Candidate: energy assessment needs explicit items on the importance of energy conversion, hydropower processes and natural energy harnessing.'
+    teachingSceneEvidence: "Scene 4 explains how a dammed river drives a turbine and generator and how natural energy sources are harnessed to provide useful electricity. Scene 0 connects conversions to a torch and bicycle brakes.",
+    assessmentEvidence: "Quiz 5 assesses the dam-to-electricity sequence and quiz 6 checks a renewable source. A learner explanation of why these conversions are useful should still be observed in class.",
+    teachingSceneRefs: ["gh-jhs2-science-energy-sources-heat#scene-0","gh-jhs2-science-energy-sources-heat#scene-4"],
+    assessmentQuestionRefs: ["gh-jhs2-science-energy-sources-heat#quiz-5","gh-jhs2-science-energy-sources-heat#quiz-6"],
   },
   {
     indicatorCode: 'B8.4.1.2.1', grade: 8, strand: 4, missionIds: ['gh-jhs2-science-energy-sources-heat'],
-    status: 'needs-review', officialIndicatorText: 'Describe renewable and non-renewable forms of energy.', sourcePdfPage: 110,
-    teachingSceneEvidence: 'Candidate: energy-sources mission covers energy sources; verify classification and examples including wind, coal, hydro, crude oil, natural gas, solar and biogas.',
-    assessmentEvidence: 'Candidate: energy assessment should directly classify renewable and non-renewable sources and explain production from a renewable source.'
+    status: 'needs-review', officialIndicatorText: 'Describe renewable and non-renewable forms of energy.', sourcePdfPage: 111,
+    teachingSceneEvidence: "Scenes 1 and 4 classify solar, wind, hydro and biogas alongside coal, crude oil and natural gas, and explain how solar and other renewable sources are harnessed.",
+    assessmentEvidence: "Quizzes 1 and 2 assess renewable-source classification and why coal is non-renewable; quiz 6 checks biogas as a renewable source.",
+    teachingSceneRefs: ["gh-jhs2-science-energy-sources-heat#scene-1","gh-jhs2-science-energy-sources-heat#scene-4"],
+    assessmentQuestionRefs: ["gh-jhs2-science-energy-sources-heat#quiz-1","gh-jhs2-science-energy-sources-heat#quiz-2","gh-jhs2-science-energy-sources-heat#quiz-6"],
   },
   {
     indicatorCode: 'B8.4.1.2.2', grade: 8, strand: 4, missionIds: ['gh-jhs2-science-energy-sources-heat'],
-    status: 'needs-review', officialIndicatorText: 'Demonstrate how to manage sources of renewable energy sustainably.', sourcePdfPage: 110,
-    teachingSceneEvidence: 'Candidate: energy-sources mission introduces sustainable energy; verify learner research on management stages and comparison of challenges for different renewable sources.',
-    assessmentEvidence: 'Candidate: no verified assessment yet demonstrates sustainable management planning or comparison of renewable-energy management challenges.'
+    status: 'needs-review', officialIndicatorText: 'Demonstrate how to manage sources of renewable energy sustainably.', sourcePdfPage: 112,
+    teachingSceneEvidence: "Scenes 2 and 5 explain responsible siting, maintenance, ecosystem protection and safe battery handling. Scene 5 asks learners to compare management stages and challenges for solar, wind, hydro and biogas.",
+    assessmentEvidence: "Quiz 3 assesses sustainable energy management and quiz 7 applies it to a small solar system. Comparing real local management challenges remains a learner research/table task.",
+    teachingSceneRefs: ["gh-jhs2-science-energy-sources-heat#scene-2","gh-jhs2-science-energy-sources-heat#scene-5"],
+    assessmentQuestionRefs: ["gh-jhs2-science-energy-sources-heat#quiz-3","gh-jhs2-science-energy-sources-heat#quiz-7"],
   },
   {
     indicatorCode: 'B8.4.4.1.2', grade: 8, strand: 4, missionIds: ['gh-jhs2-science-magnetism-force-machines'],
     status: 'needs-review', officialIndicatorText: 'Explain the relationship between magnetic force and Newton’s Second Law of motion; and show the law’s application to life.', sourcePdfPage: 115,
-    teachingSceneEvidence: 'Candidate: magnetism mission introduces magnetic force and applications; verify explicit Newton’s Second Law explanation and an experiment connecting force and motion.',
-    assessmentEvidence: 'Candidate: magnetism assessment requires direct items on the relationship between magnetic force and Newton’s Second Law, including everyday applications.'
+    teachingSceneEvidence: "Scenes 2–3 explain F = m × a and connect magnetic pulling force to trolley acceleration. Scene 5 asks learners to compare motion while changing force and then mass using a safe classroom trolley.",
+    assessmentEvidence: "Quizzes 2–3 assess the law and the effect of mass; quiz 6 checks how acceleration changes when resultant force increases. A learner-run investigation and everyday application explanation still require observation.",
+    teachingSceneRefs: ["gh-jhs2-science-magnetism-force-machines#scene-2","gh-jhs2-science-magnetism-force-machines#scene-3","gh-jhs2-science-magnetism-force-machines#scene-5"],
+    assessmentQuestionRefs: ["gh-jhs2-science-magnetism-force-machines#quiz-2","gh-jhs2-science-magnetism-force-machines#quiz-3","gh-jhs2-science-magnetism-force-machines#quiz-6"],
   },
   {
     indicatorCode: 'B8.5.2.1.2', grade: 8, strand: 5, missionIds: ['gh-jhs2-science-human-health'],
