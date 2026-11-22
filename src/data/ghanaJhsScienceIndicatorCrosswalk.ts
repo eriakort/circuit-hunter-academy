@@ -570,7 +570,13 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     ],
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
+    "officialIndicatorText": "Explain sustainable waste management practices.",
+    "sourcePdfPage": 77,
+    "teachingSceneEvidence": "Waste hierarchy teaching plus the applied community survey and evaluation task; learners must verify local collection options and report evidence.",
+    "assessmentEvidence": "Questions assess prevention, sorting and community-survey evidence; teacher review is still needed for the actual survey and report.",
+    "teachingSceneRefs": ["gh-jhs2-science-waste-management#scene-1","gh-jhs2-science-waste-management#scene-3","gh-jhs2-science-waste-management#scene-5"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-waste-management#quiz-1","gh-jhs2-science-waste-management#quiz-5","gh-jhs2-science-waste-management#quiz-6"]
   },
   {
     "indicatorCode": "B8.5.1.1.2",
@@ -581,7 +587,13 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     ],
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
+    "officialIndicatorText": "Apply knowledge of waste management practices to manage waste in a community.",
+    "sourcePdfPage": 77,
+    "teachingSceneEvidence": "Applied activity asks learners to plan and carry out a supervised community action, then compare outcomes with a baseline record.",
+    "assessmentEvidence": "Questions assess safe planning and evaluation; they cannot certify that learners completed a community activity.",
+    "teachingSceneRefs": ["gh-jhs2-science-waste-management#scene-3","gh-jhs2-science-waste-management#scene-5"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-waste-management#quiz-5","gh-jhs2-science-waste-management#quiz-6","gh-jhs2-science-waste-management#quiz-7"]
   },
   {
     "indicatorCode": "B8.5.2.1.1",
@@ -592,7 +604,13 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     ],
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
+    "officialIndicatorText": "Explain the symptoms, effects and prevention of common communicable diseases.",
+    "sourcePdfPage": 78,
+    "teachingSceneEvidence": "Lessons compare transmission routes, symptoms, effects and prevention; applied task creates a sourced comparison chart without identifying patients.",
+    "assessmentEvidence": "Questions assess disease transmission, prevention and privacy-aware use of health information; clinical understanding needs educator review.",
+    "teachingSceneRefs": ["gh-jhs2-science-human-health#scene-0","gh-jhs2-science-human-health#scene-1","gh-jhs2-science-human-health#scene-4","gh-jhs2-science-human-health#scene-5"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-human-health#quiz-0","gh-jhs2-science-human-health#quiz-2","gh-jhs2-science-human-health#quiz-7"]
   },
   {
     "indicatorCode": "B8.5.2.2.1",
@@ -603,7 +621,13 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     ],
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
+    "officialIndicatorText": "Explain the nature of bacterial diseases with special emphasis on food poisoning, gonorrhoea and meningitis, their causes, symptoms, effects on humans and prevention.",
+    "sourcePdfPage": 80,
+    "teachingSceneEvidence": "Lessons distinguish bacterial disease examples, causes, symptoms, effects, transmission and prevention; the applied comparison requires a respectful, sourced presentation.",
+    "assessmentEvidence": "Questions assess bacterial-disease distinctions and professional-care decisions; poster/presentation quality requires teacher observation.",
+    "teachingSceneRefs": ["gh-jhs2-science-human-health#scene-3","gh-jhs2-science-human-health#scene-4","gh-jhs2-science-human-health#scene-5"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-human-health#quiz-3","gh-jhs2-science-human-health#quiz-6","gh-jhs2-science-human-health#quiz-7"]
   },
   {
     "indicatorCode": "B8.5.3.1.1",
@@ -614,7 +638,13 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     ],
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
+    "officialIndicatorText": "Examine the relationship among science, technology, innovation and society.",
+    "sourcePdfPage": 81,
+    "teachingSceneEvidence": "Lessons connect scientific knowledge to technologies and innovation in Ghanaian farming and health; learners build a sourced portfolio and evaluate access and environmental impacts.",
+    "assessmentEvidence": "Questions assess interrelationships, source quality and life-cycle impacts; the portfolio and presentation need educator review.",
+    "teachingSceneRefs": ["gh-jhs2-science-science-industry#scene-0","gh-jhs2-science-science-industry#scene-1","gh-jhs2-science-science-industry#scene-3","gh-jhs2-science-science-industry#scene-4","gh-jhs2-science-science-industry#scene-5"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-science-industry#quiz-0","gh-jhs2-science-science-industry#quiz-5","gh-jhs2-science-science-industry#quiz-6","gh-jhs2-science-science-industry#quiz-7"]
   },
   {
     "indicatorCode": "B8.5.4.1.1",
@@ -625,7 +655,13 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     ],
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
+    "officialIndicatorText": "Explain the concept of climate change and its effect on the environment.",
+    "sourcePdfPage": 82,
+    "teachingSceneEvidence": "Lessons distinguish climate from weather, explain human-driven warming and examine effects; applied task compares long-term evidence across tropical regions.",
+    "assessmentEvidence": "Questions assess climate concepts, causes and effects; interpreting real datasets and presenting findings requires teacher review.",
+    "teachingSceneRefs": ["gh-jhs2-science-climate-green-economy#scene-0","gh-jhs2-science-climate-green-economy#scene-1","gh-jhs2-science-climate-green-economy#scene-2","gh-jhs2-science-climate-green-economy#scene-5"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-climate-green-economy#quiz-0","gh-jhs2-science-climate-green-economy#quiz-1","gh-jhs2-science-climate-green-economy#quiz-5","gh-jhs2-science-climate-green-economy#quiz-6"]
   },
   {
     "indicatorCode": "B8.5.4.1.2",
@@ -636,7 +672,13 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     ],
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
+    "officialIndicatorText": "Describe climate change and green economy actions.",
+    "sourcePdfPage": 83,
+    "teachingSceneEvidence": "Lessons distinguish adaptation and mitigation and describe green-economy choices; applied task proposes measurable community actions.",
+    "assessmentEvidence": "Questions assess adaptation, mitigation and green-economy choices; actual community planning remains a practical outcome.",
+    "teachingSceneRefs": ["gh-jhs2-science-climate-green-economy#scene-3","gh-jhs2-science-climate-green-economy#scene-4","gh-jhs2-science-climate-green-economy#scene-5"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-climate-green-economy#quiz-3","gh-jhs2-science-climate-green-economy#quiz-4","gh-jhs2-science-climate-green-economy#quiz-6","gh-jhs2-science-climate-green-economy#quiz-7"]
   },
   {
     "indicatorCode": "B8.5.5.1.1",
@@ -647,7 +689,13 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     ],
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
+    "officialIndicatorText": "Discuss physical properties of soils.",
+    "sourcePdfPage": 84,
+    "teachingSceneEvidence": "Lessons compare sandy, clayey and loamy soils; applied investigation compares labelled samples using controlled volumes and safe handling.",
+    "assessmentEvidence": "Questions assess texture, drainage and fair-test variables; practical observations must be checked by the teacher.",
+    "teachingSceneRefs": ["gh-jhs2-science-soils-plants#scene-0","gh-jhs2-science-soils-plants#scene-1","gh-jhs2-science-soils-plants#scene-3","gh-jhs2-science-soils-plants#scene-5"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-soils-plants#quiz-0","gh-jhs2-science-soils-plants#quiz-1","gh-jhs2-science-soils-plants#quiz-5","gh-jhs2-science-soils-plants#quiz-6"]
   },
   {
     "indicatorCode": "B8.5.5.1.2",
@@ -658,7 +706,13 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     ],
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
+    "officialIndicatorText": "Analyse the physical properties of soils and soil water content and demonstrate their importance in crop production.",
+    "sourcePdfPage": 85,
+    "teachingSceneEvidence": "Lessons link soil properties, water retention, root support and osmosis to crop growth; applied task records comparative drainage and plant suitability.",
+    "assessmentEvidence": "Questions assess water retention, crop suitability and osmosis; plant-growth observations and investigations require teacher verification.",
+    "teachingSceneRefs": ["gh-jhs2-science-soils-plants#scene-1","gh-jhs2-science-soils-plants#scene-2","gh-jhs2-science-soils-plants#scene-3","gh-jhs2-science-soils-plants#scene-4","gh-jhs2-science-soils-plants#scene-5"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-soils-plants#quiz-2","gh-jhs2-science-soils-plants#quiz-3","gh-jhs2-science-soils-plants#quiz-4","gh-jhs2-science-soils-plants#quiz-7"]
   },
   {
     "indicatorCode": "B8.5.6.1.1",
@@ -669,7 +723,13 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     ],
     "status": "needs-review",
     "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
+    "officialIndicatorText": "Observe and describe different types of rocks as origins of soils.",
+    "sourcePdfPage": 85,
+    "teachingSceneEvidence": "Lessons describe igneous, sedimentary and metamorphic rocks and physical, chemical and biological weathering; learners create a labelled guide from safe samples or photographs.",
+    "assessmentEvidence": "Questions assess rock formation, visible features and weathering; sample identification and guide quality require educator review.",
+    "teachingSceneRefs": ["gh-jhs2-science-rocks-soil-formation#scene-0","gh-jhs2-science-rocks-soil-formation#scene-1","gh-jhs2-science-rocks-soil-formation#scene-2","gh-jhs2-science-rocks-soil-formation#scene-3","gh-jhs2-science-rocks-soil-formation#scene-4","gh-jhs2-science-rocks-soil-formation#scene-5"],
+    "assessmentQuestionRefs": ["gh-jhs2-science-rocks-soil-formation#quiz-0","gh-jhs2-science-rocks-soil-formation#quiz-1","gh-jhs2-science-rocks-soil-formation#quiz-2","gh-jhs2-science-rocks-soil-formation#quiz-3","gh-jhs2-science-rocks-soil-formation#quiz-7"]
   },
   // Basic 8 · uncovered indicators in Strands 3–5 (NaCCA CCP).
   {
@@ -712,9 +772,11 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   },
   {
     indicatorCode: 'B8.5.2.1.2', grade: 8, strand: 5, missionIds: ['gh-jhs2-science-human-health'],
-    status: 'needs-review', officialIndicatorText: 'Analyse the risk factors of communicable diseases.', sourcePdfPage: 119,
-    teachingSceneEvidence: 'Candidate: human-health mission introduces communicable diseases; verify learner research on risk factors and awareness-raising activities specified by the curriculum.',
-    assessmentEvidence: 'Candidate: human-health assessment needs direct scenario-based analysis of communicable-disease risk factors and prevention choices.'
+    status: 'needs-review', officialIndicatorText: 'Analyse the risk factors of communicable diseases.', sourcePdfPage: 79,
+    teachingSceneRefs: ["gh-jhs2-science-human-health#scene-2","gh-jhs2-science-human-health#scene-5"],
+    assessmentQuestionRefs: ["gh-jhs2-science-human-health#quiz-2","gh-jhs2-science-human-health#quiz-7"],
+    teachingSceneEvidence: "Lesson analyses disease-specific risk factors and the applied task requires evidence-based, non-stigmatising awareness material.",
+    assessmentEvidence: "Scenario questions assess transmission-risk reasoning; they do not demonstrate a learner-led awareness campaign."
   },
 
   {
