@@ -1077,6 +1077,21 @@ body{overflow-x:hidden}
 .ghana-computing-lab__share-card small{color:var(--muted);font-size:11px}
 .ghana-computing-lab__share-card strong{overflow-wrap:anywhere;color:var(--text);font-size:13px}
 .ghana-computing-lab__share-card.permission-public{border-color:rgba(255,132,112,.55)}
+.ghana-computing-lab__document,.ghana-computing-lab__trouble-card{padding:12px;border:1px solid var(--line);border-radius:9px;background:rgba(10,12,34,.42);color:var(--text)}
+.ghana-computing-lab__document h4{margin:0 0 8px;color:var(--gold);font-size:16px}
+.ghana-computing-lab__document p{margin:7px 0;color:var(--muted);font-size:13px;line-height:1.5}
+.ghana-computing-lab__document.has-heading{border-left:4px solid var(--gold)}
+.ghana-computing-lab__sheet-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:9px}
+.ghana-computing-lab__sheet{width:100%;border-collapse:collapse;background:rgba(10,12,34,.42);color:var(--text);font-size:12px;text-align:left}
+.ghana-computing-lab__sheet caption{padding:8px;color:var(--muted);text-align:left}
+.ghana-computing-lab__sheet th,.ghana-computing-lab__sheet td{padding:7px;border:1px solid var(--line);white-space:nowrap}
+.ghana-computing-lab__sheet thead th{color:var(--data)}
+.ghana-computing-lab__sheet tfoot th,.ghana-computing-lab__sheet tfoot td{color:var(--gold)}
+.ghana-computing-lab__garden{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px;border:1px solid var(--line);border-radius:9px;background:linear-gradient(180deg,rgba(106,209,255,.1),rgba(83,177,116,.15));font-size:28px}
+.ghana-computing-lab__garden small{color:var(--muted);font-size:11px}
+.ghana-computing-lab__trouble-card{display:flex;flex-direction:column;gap:6px}
+.ghana-computing-lab__trouble-card strong{color:var(--gold);font-size:13px}
+.ghana-computing-lab__trouble-card span{color:var(--muted);font-size:12px;line-height:1.45}
 @keyframes ghana-packet-travel{from{left:0}to{left:calc(100% - 12px)}}
 @media(max-width:600px){.ghana-computing-lab{padding:12px}.ghana-computing-lab__node{min-width:63px;padding:8px 6px;font-size:11px}.ghana-computing-lab__bits{gap:3px}.ghana-computing-lab__bit small{font-size:8px}.ghana-computing-lab__readout{grid-template-columns:1fr 1fr}.ghana-computing-lab__network{gap:6px}.ghana-computing-lab__device{padding:8px 6px;font-size:10px}}
 @media(prefers-reduced-motion:reduce){.ghana-computing-lab__node,.ghana-computing-lab__bit,.ghana-computing-lab__monitor,.ghana-computing-lab__bar-track i{transition:none}.ghana-computing-lab__network.is-sent .ghana-computing-lab__route i{animation:none;left:calc(100% - 12px)}}

@@ -38,6 +38,11 @@ export const GhanaComputingLab: React.FC<Props> = ({ missionId }) => {
   const [fruitVotes, setFruitVotes] = useState([4, 7, 5]);
   const [researchSource, setResearchSource] = useState<'guide' | 'post'>('guide');
   const [sharePermission, setSharePermission] = useState<'viewer' | 'editor' | 'public'>('viewer');
+  const [documentStyle, setDocumentStyle] = useState<'heading' | 'plain'>('heading');
+  const [supplyCounts, setSupplyCounts] = useState([2, 3, 1]);
+  const [imageDescription, setImageDescription] = useState<'specific' | 'generic'>('specific');
+  const [troubleshootingIssue, setTroubleshootingIssue] = useState<'sound' | 'internet' | 'screen'>('sound');
+  const [checkCompleted, setCheckCompleted] = useState(false);
 
   if (missionId === 'gh-jhs1-computing-computer-systems') {
     return (
@@ -295,6 +300,108 @@ export const GhanaComputingLab: React.FC<Props> = ({ missionId }) => {
           <div><small>Class project document</small><strong>{sharePermission === 'public' ? 'Anyone with the link' : `Classmate · ${sharePermission}`}</strong></div>
         </div>
         <p className={`ghana-computing-lab__result${sharePermission === 'public' ? ' is-warning' : ' is-safe'}`} role="status">{permissionFeedback}</p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-documents') {
+    const hasHeading = documentStyle === 'heading';
+    return (
+      <LabPanel title="Design a clear class report">
+        <div className="ghana-computing-lab__choices" role="group" aria-label="Choose a document style">
+          <Choice label="Add a heading" active={hasHeading} onClick={() => setDocumentStyle('heading')} />
+          <Choice label="Keep plain text" active={!hasHeading} onClick={() => setDocumentStyle('plain')} />
+        </div>
+        <article className={`ghana-computing-lab__document${hasHeading ? ' has-heading' : ''}`} aria-live="polite">
+          {hasHeading && <h4>Our School Garden</h4>}
+          <p>Learners planted seedlings and recorded how they grew.</p>
+          <p>Clear headings help readers find the main ideas.</p>
+        </article>
+        <p className="ghana-computing-lab__result" role="status">
+          {hasHeading ? 'The heading tells readers what the report is about.' : 'Without a heading, readers have less help finding the report topic.'}
+        </p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-spreadsheets') {
+    const supplies = [
+      { name: 'Exercise books', singular: 'exercise book', unitCost: 2 },
+      { name: 'Pencils', singular: 'pencil', unitCost: 3 },
+      { name: 'Rulers', singular: 'ruler', unitCost: 5 }
+    ];
+    const total = supplies.reduce((sum, supply, index) => sum + supply.unitCost * supplyCounts[index], 0);
+    return (
+      <LabPanel title="Calculate a class supply total">
+        <div className="ghana-computing-lab__sheet-wrap">
+          <table className="ghana-computing-lab__sheet">
+            <caption>Practice values in Ghana cedis</caption>
+            <thead><tr><th>Item</th><th>Count</th><th>Cost each</th><th>Amount</th></tr></thead>
+            <tbody>{supplies.map((supply, index) => (
+              <tr key={supply.name}>
+                <th scope="row">{supply.name}</th>
+                <td>{supplyCounts[index]}</td>
+                <td>GH₵{supply.unitCost}</td>
+                <td>GH₵{supply.unitCost * supplyCounts[index]}</td>
+              </tr>
+            ))}</tbody>
+            <tfoot><tr><th scope="row" colSpan={3}>Formula: =SUM(D2:D4)</th><td>GH₵{total}</td></tr></tfoot>
+          </table>
+        </div>
+        <div className="ghana-computing-lab__choices" role="group" aria-label="Add a supply to the spreadsheet">
+          {supplies.map((supply, index) => (
+            <button type="button" className="ghana-computing-lab__choice" key={supply.name} disabled={supplyCounts[index] >= 5} onClick={() => setSupplyCounts(current => current.map((count, i) => i === index ? Math.min(count + 1, 5) : count))}>
+              Add one {supply.singular}
+            </button>
+          ))}
+        </div>
+        <p className="ghana-computing-lab__result" role="status">The formula adds the amount cells. Change a count and check that the total updates.</p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-accessibility') {
+    const specificDescription = imageDescription === 'specific';
+    return (
+      <LabPanel title="Add a useful image description">
+        <div className="ghana-computing-lab__garden" role="img" aria-label="Illustration of learners watering seedlings in a school garden">
+          <span aria-hidden="true">🌱　🌿　🌱</span>
+          <small aria-hidden="true">School garden</small>
+        </div>
+        <div className="ghana-computing-lab__choices" role="group" aria-label="Choose alternative text">
+          <Choice label="Learners watering rows of seedlings" active={specificDescription} onClick={() => setImageDescription('specific')} />
+          <Choice label="Picture" active={!specificDescription} onClick={() => setImageDescription('generic')} />
+        </div>
+        <p className={`ghana-computing-lab__result${specificDescription ? ' is-safe' : ' is-warning'}`} role="status">
+          {specificDescription ? 'Useful description: it explains the important action in the image.' : 'Try again: “Picture” does not tell a reader what the image shows.'}
+        </p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-troubleshooting') {
+    const checks = {
+      sound: { label: 'No sound in a learning app', check: 'Check the app volume and mute setting on screen.' },
+      internet: { label: 'A learning page will not load', check: 'Check whether the device shows a network connection, then ask the teacher if the network is available.' },
+      screen: { label: 'The screen is blank', check: 'Look for a power indicator and tell the teacher if it stays blank.' }
+    }[troubleshootingIssue];
+    return (
+      <LabPanel title="Choose a safe first check">
+        <label className="ghana-computing-lab__select">What is happening?
+          <select value={troubleshootingIssue} onChange={event => { setTroubleshootingIssue(event.target.value as typeof troubleshootingIssue); setCheckCompleted(false); }}>
+            <option value="sound">No sound in a learning app</option>
+            <option value="internet">A learning page will not load</option>
+            <option value="screen">The screen is blank</option>
+          </select>
+        </label>
+        <div className="ghana-computing-lab__trouble-card" aria-live="polite">
+          <strong>{checks.label}</strong>
+          <span>{checks.check}</span>
+        </div>
+        <button type="button" className="ghana-computing-lab__action" onClick={() => setCheckCompleted(true)}>Try this safe check</button>
+        <p className="ghana-computing-lab__result" role="status">
+          {checkCompleted ? 'If it still does not work, stop and tell a teacher or responsible adult. Do not open the device or touch wires.' : 'Start with one simple check. Never open equipment or touch exposed wires.'}
+        </p>
       </LabPanel>
     );
   }

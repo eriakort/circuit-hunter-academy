@@ -11,8 +11,8 @@ import type { ArcInfo, Mission, SubjectInfo, UnitInfo } from '../types';
 export const GHANA_JHS1_COMPUTING_SUBJECT: SubjectInfo = {
   id: 'ghjhs1computing',
   name: 'Computing · JHS 1',
-  blurb: 'A provisional JHS 1 Computing introduction: computer systems, digital information, algorithms, programming, data and safe, responsible technology use.',
-  meta: 'Ghana JHS 1 · Provisional Computing pilot · 12 missions',
+  blurb: 'A provisional JHS 1 Computing introduction to computer systems, programming, data, digital content, accessibility and safe technology use.',
+  meta: 'Ghana JHS 1 · Provisional Computing pilot · 16 missions',
   art: '<svg viewBox="0 0 120 120" width="100%" aria-hidden="true"><rect x="25" y="28" width="70" height="48" rx="8" fill="none" stroke="#6ad1ff" stroke-width="4"/><rect x="32" y="35" width="56" height="34" rx="3" fill="#111936" stroke="#ffd166" stroke-width="2"/><path d="M48 84h24M60 76v8" fill="none" stroke="#8a7bff" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="52" r="8" fill="#6ad1ff"/><path d="M60 44v16M52 52h16" stroke="#111936" stroke-width="2"/></svg>'
 };
 
@@ -34,7 +34,11 @@ export const GHANA_JHS1_COMPUTING_ARCS: ArcInfo[] = [
   { n: 9, unit: 0, subject: 'ghjhs1computing', title: 'Programming with Blocks', pages: 'Provisional JHS 1 slice · source verification pending' },
   { n: 10, unit: 0, subject: 'ghjhs1computing', title: 'Collecting and Displaying Data', pages: 'Provisional JHS 1 slice · source verification pending' },
   { n: 11, unit: 0, subject: 'ghjhs1computing', title: 'Searching and Checking Information', pages: 'Provisional JHS 1 slice · source verification pending' },
-  { n: 12, unit: 0, subject: 'ghjhs1computing', title: 'Working Together with Digital Tools', pages: 'Provisional JHS 1 slice · source verification pending' }
+  { n: 12, unit: 0, subject: 'ghjhs1computing', title: 'Working Together with Digital Tools', pages: 'Provisional JHS 1 slice · source verification pending' },
+  { n: 13, unit: 0, subject: 'ghjhs1computing', title: 'Creating Clear Digital Documents', pages: 'Provisional JHS 1 slice · source verification pending' },
+  { n: 14, unit: 0, subject: 'ghjhs1computing', title: 'Using Spreadsheet Formulas', pages: 'Provisional JHS 1 slice · source verification pending' },
+  { n: 15, unit: 0, subject: 'ghjhs1computing', title: 'Making Digital Content Accessible', pages: 'Provisional JHS 1 slice · source verification pending' },
+  { n: 16, unit: 0, subject: 'ghjhs1computing', title: 'Troubleshooting with Safe Checks', pages: 'Provisional JHS 1 slice · source verification pending' }
 ];
 
 const q = (prompt: string, answers: string[], explanation: string) => ({ q: prompt, a: answers, why: explanation });
@@ -327,6 +331,102 @@ export const GHANA_JHS1_COMPUTING_MISSIONS: Mission[] = [
       q('What should a group agree on before using a shared document?', ['The task and each person’s responsibilities', 'That nobody may contribute', 'That one person gets all the credit', 'That the link must be public'], 'Clear roles help the group work together and contribute fairly.'),
       q('Why should a group credit each person’s contribution?', ['It recognises who helped create the work', 'It hides the source of the work', 'It makes sharing public', 'It changes the file format'], 'Crediting contributions is respectful and helps show how the work was made.'),
       q('When should you use a public sharing link for school work?', ['Only when the teacher approves and it is needed', 'For every private file', 'Whenever a stranger asks', 'Instead of checking permissions'], 'Public links can expose work widely; follow the teacher’s instructions and share only as needed.')
+    ]
+  },
+  {
+    id: 'gh-jhs1-computing-documents',
+    arc: 12, sec: 'Creating Clear Digital Documents', pages: 'Provisional JHS 1 slice · source verification pending',
+    hue: 212, horns: 2, eyes: 2,
+    title: 'The Document Design Guide',
+    topic: 'Organise a short document with a clear title, headings, readable paragraphs and consistent formatting.',
+    demon: 'The Format Mixer',
+    tech: 'Document Form · Thirteenth Technique: Structure and Review',
+    scenes: [
+      lesson('<p>A word processor can help create letters, reports and notes. Start by deciding who will read the document and what they need to learn from it.</p>'),
+      lesson('<p>A clear title tells the reader what the document is about. Headings separate sections, and short paragraphs make ideas easier to follow.</p>'),
+      lesson('<p>Use formatting consistently. A heading should look different from body text, but using too many fonts, colours or effects can distract from the message.</p>'),
+      lesson('<p>Before sharing or printing, read the document again. Check spelling, names, headings and whether the layout is easy to read.</p>'),
+      { who: 'd', vis: 'demon', text: 'I made every line look the same. Add a useful heading and make the class report easier to read!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('What should a document title help a reader understand?', ['The main topic of the document', 'The computer password', 'The printer model', 'The file size only'], 'A useful title tells the reader what the document is about.'),
+      q('Why use headings in a report?', ['To organise sections and help readers find information', 'To replace every paragraph', 'To hide the topic', 'To make all text the same'], 'Headings divide a document into meaningful sections.'),
+      q('What makes formatting easier to follow?', ['Using a few styles consistently', 'Changing font and colour on every line', 'Removing all spaces', 'Writing everything in capitals'], 'Consistent formatting supports readability without distracting from the content.'),
+      q('What is a sensible final step before sharing a document?', ['Review its spelling, names and layout', 'Delete the title', 'Add unrelated effects', 'Share it before checking'], 'Review helps catch errors and make sure the document is clear.'),
+      q('How can short paragraphs help?', ['They make separate ideas easier to read', 'They automatically prove every fact', 'They change the file type', 'They replace headings in every document'], 'Breaking long text into paragraphs makes ideas easier to follow.')
+    ]
+  },
+  {
+    id: 'gh-jhs1-computing-spreadsheets',
+    arc: 13, sec: 'Using Spreadsheet Formulas', pages: 'Provisional JHS 1 slice · source verification pending',
+    hue: 128, horns: 2, eyes: 2,
+    title: 'The Spreadsheet Sum Keeper',
+    topic: 'Read spreadsheet rows and columns, enter values and use a formula to calculate a total.',
+    demon: 'The Cell Calculator',
+    tech: 'Spreadsheet Form · Fourteenth Technique: Enter, Calculate and Check',
+    scenes: [
+      lesson('<p>A spreadsheet organises information in a grid. Each box is called a cell; rows run across and columns run down. A cell reference uses its column letter and row number, such as A1.</p>'),
+      lesson('<p>A spreadsheet can store labels and numbers. For example, a class list might put item names in column A and quantities in column B.</p>'),
+      lesson('<p>A formula tells the spreadsheet how to calculate a result. Many spreadsheet formulas begin with an equals sign. A sum formula can add a range of cells, such as <b>=SUM(B2:B4)</b>.</p>'),
+      lesson('<p>Check that the formula includes the intended cells and that the result makes sense. If a number changes, a formula can update the total automatically.</p>'),
+      { who: 'd', vis: 'demon', text: 'I changed the class supply counts. Update the cells and check whether the total formula still adds them correctly!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('What is a cell in a spreadsheet?', ['One box in the grid', 'A whole computer', 'A network cable', 'A file extension'], 'A cell is one box where spreadsheet data or a formula can be entered.'),
+      q('How are spreadsheet columns commonly identified?', ['Letters', 'Weather names', 'Only colours', 'Passwords'], 'Spreadsheet columns are commonly labelled with letters.'),
+      q('What does a formula do?', ['Calculates a result from values or other cells', 'Changes a screen into a keyboard', 'Names a folder', 'Connects a computer to Wi-Fi'], 'A formula performs a calculation using entered values or cell references.'),
+      q('What does =SUM(B2:B4) ask a spreadsheet to do?', ['Add the values in cells B2 through B4', 'Delete row B', 'Rename cell B4', 'Display a picture'], 'The SUM function adds the values in the specified range.'),
+      q('What should you do if a formula result looks wrong?', ['Check the values and the cells included in the formula', 'Assume it must be correct', 'Delete the headings', 'Share the sheet publicly'], 'Checking the input values and referenced cells can reveal a mistake.')
+    ]
+  },
+  {
+    id: 'gh-jhs1-computing-accessibility',
+    arc: 14, sec: 'Making Digital Content Accessible', pages: 'Provisional JHS 1 slice · source verification pending',
+    hue: 286, horns: 2, eyes: 2,
+    title: 'The Accessible Content Builder',
+    topic: 'Make digital content easier to understand with useful image descriptions, captions and readable choices.',
+    demon: 'The Missing Description',
+    tech: 'Access Form · Fifteenth Technique: Describe and Include',
+    scenes: [
+      lesson('<p>People use different ways to see, hear and understand digital information. A thoughtful creator makes content usable by as many people as possible.</p>'),
+      lesson('<p>Alternative text describes the useful meaning of an image for someone who cannot see it. A concise description is more helpful than a vague label such as “picture”.</p>'),
+      lesson('<p>Captions show spoken words and important sounds in a video. Clear headings and readable colour contrast can also help people find and understand information.</p>'),
+      lesson('<p>Choose accessibility features that fit the content. Avoid relying on colour alone to communicate a result, and ask readers or a teacher whether your material is clear.</p>'),
+      { who: 'd', vis: 'demon', text: 'My poster has an important picture but no description. Choose text that tells everyone what the picture shows!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('What is useful alternative text for an image?', ['A short description of the image’s important meaning', 'The word “picture” for every image', 'A list of unrelated colours', 'A hidden password'], 'Alternative text should briefly communicate the important meaning of the image.'),
+      q('What do captions provide in a video?', ['Spoken words and important sounds as text', 'A larger screen', 'A new file name', 'A spreadsheet formula'], 'Captions make spoken content and relevant sounds available as text.'),
+      q('Why should a chart not rely only on colour?', ['Some readers may not distinguish the colours', 'Colours always change the data', 'Charts cannot have labels', 'Colour replaces the values'], 'Labels or patterns provide another way to understand information.'),
+      q('Which text is the most useful description of a class garden photo?', ['Learners watering rows of seedlings in the school garden', 'Picture', 'Image 3', 'A lovely thing'], 'A specific description explains the image content rather than giving a generic label.'),
+      q('What is a good way to check whether content is clear?', ['Ask someone to review it and make improvements', 'Assume every reader uses it the same way', 'Remove all headings', 'Use smaller text everywhere'], 'Feedback can reveal barriers and help improve the content.')
+    ]
+  },
+  {
+    id: 'gh-jhs1-computing-troubleshooting',
+    arc: 15, sec: 'Troubleshooting with Safe Checks', pages: 'Provisional JHS 1 slice · source verification pending',
+    hue: 18, horns: 2, eyes: 2,
+    title: 'The Safe Troubleshooting Scout',
+    topic: 'Describe a computer problem, try simple safe checks and know when to stop and ask a responsible adult.',
+    demon: 'The Guesswork Glitch',
+    tech: 'Support Form · Sixteenth Technique: Observe, Check and Ask',
+    scenes: [
+      lesson('<p>Troubleshooting means working step by step to understand and solve a problem. First describe what is happening and what you expected to happen.</p>'),
+      lesson('<p>Try simple checks that do not involve opening equipment: check whether an app is muted, look for a message on screen or ask whether the network is available.</p>'),
+      lesson('<p>Change one thing at a time and observe what happens. This helps you learn which check made a difference instead of guessing.</p>'),
+      lesson('<p>Stop and ask a teacher, adult or trained technician if equipment is damaged, unusually hot, smells strange or needs to be opened. Never touch exposed wires or attempt electrical repairs.</p>'),
+      { who: 'd', vis: 'demon', text: 'A classroom computer is not working. Choose a safe first check, then decide when it is time to ask for help!' },
+      { type: 'battle' }
+    ],
+    quiz: [
+      q('What is a good first step when a computer problem occurs?', ['Describe what is happening and what you expected', 'Open the computer case', 'Pull out every cable', 'Guess and change many settings'], 'A clear description helps you choose a relevant check.'),
+      q('Which is a simple safe check when an app has no sound?', ['Check the app volume or mute setting', 'Open the monitor', 'Touch exposed wiring', 'Pour water on the keyboard'], 'Checking an on-screen volume setting does not require opening equipment.'),
+      q('Why change one thing at a time?', ['It helps show which check made a difference', 'It guarantees every problem disappears', 'It removes the need to observe', 'It makes the computer faster'], 'Changing one thing at a time makes it easier to understand the result.'),
+      q('What should you do if equipment smells strange or is damaged?', ['Stop using it and tell a responsible adult', 'Open it while it is plugged in', 'Keep using it', 'Try to repair the wiring'], 'Damaged or unusual equipment may be unsafe; stop and get qualified help.'),
+      q('Who should handle a repair that requires opening a computer?', ['A trained technician or responsible adult', 'Any learner with a paper clip', 'A classmate without supervision', 'Nobody should tell anyone'], 'Opening or repairing electrical equipment should be left to trained people.')
     ]
   }
 ];

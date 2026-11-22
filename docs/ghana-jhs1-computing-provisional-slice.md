@@ -16,7 +16,7 @@ Because an authoritative JHS Computing document could not be verified, this firs
 
 ## Registered first slice
 
-The pilot contains twelve focused missions:
+The pilot contains sixteen focused missions:
 
 1. Computer systems: input, processing, output and storage.
 2. Digital information and files: file names, folders and responsible reuse.
@@ -30,8 +30,12 @@ The pilot contains twelve focused missions:
 10. Data: recording a class survey in a table and comparing counts in a bar chart.
 11. Search and research: use focused terms and check authorship, dates and evidence.
 12. Collaboration: choose appropriate access for shared class work and credit contributions.
+13. Documents: use a clear title, headings, readable paragraphs and consistent formatting.
+14. Spreadsheets: organise values in cells and calculate a total with a formula.
+15. Accessibility: use helpful image descriptions and captions, and avoid relying on colour alone.
+16. Troubleshooting: describe a problem, try a safe check and ask for help when needed.
 
-Each mission now has a Ghana-specific interactive visual on its second teaching scene. Learners can trace computer-system stages, sort sample files, test an algorithm condition, respond to a suspicious message, toggle binary bits, send a network message, match an application to a task, adjust an illustrative screen position, trace repeated program instructions, update survey counts, inspect source clues, or choose sharing permissions. The diagrams are locally rendered; motion respects the site's reduced-motion setting.
+Each mission now has a Ghana-specific interactive visual on its second teaching scene. Learners can trace computer-system stages, sort sample files, test an algorithm condition, respond to a suspicious message, toggle binary bits, send a network message, match an application to a task, adjust an illustrative screen position, trace repeated program instructions, update survey counts, inspect source clues, choose sharing permissions, compare document layouts, recalculate a spreadsheet total, select useful image descriptions, or try a safe troubleshooting check. The diagrams are locally rendered; motion respects the site's reduced-motion setting.
 
 These topics are broad foundational computing themes, not a claim that they are a complete or exact restatement of the official JHS 1 Computing curriculum.
 
