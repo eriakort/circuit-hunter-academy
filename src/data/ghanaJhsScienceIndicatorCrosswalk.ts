@@ -569,8 +569,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-waste-management"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Explain sustainable waste management practices.",
     "sourcePdfPage": 77,
     "teachingSceneEvidence": "Waste hierarchy teaching plus the applied community survey and evaluation task; learners must verify local collection options and report evidence.",
@@ -586,8 +584,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-waste-management"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Apply knowledge of waste management practices to manage waste in a community.",
     "sourcePdfPage": 77,
     "teachingSceneEvidence": "Applied activity asks learners to plan and carry out a supervised community action, then compare outcomes with a baseline record.",
@@ -603,8 +599,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-human-health"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Explain the symptoms, effects and prevention of common communicable diseases.",
     "sourcePdfPage": 78,
     "teachingSceneEvidence": "Lessons compare transmission routes, symptoms, effects and prevention; applied task creates a sourced comparison chart without identifying patients.",
@@ -620,8 +614,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-human-health"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Explain the nature of bacterial diseases with special emphasis on food poisoning, gonorrhoea and meningitis, their causes, symptoms, effects on humans and prevention.",
     "sourcePdfPage": 80,
     "teachingSceneEvidence": "Lessons distinguish bacterial disease examples, causes, symptoms, effects, transmission and prevention; the applied comparison requires a respectful, sourced presentation.",
@@ -637,8 +629,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-science-industry"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Examine the relationship among science, technology, innovation and society.",
     "sourcePdfPage": 81,
     "teachingSceneEvidence": "Lessons connect scientific knowledge to technologies and innovation in Ghanaian farming and health; learners build a sourced portfolio and evaluate access and environmental impacts.",
@@ -654,8 +644,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-climate-green-economy"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Explain the concept of climate change and its effect on the environment.",
     "sourcePdfPage": 82,
     "teachingSceneEvidence": "Lessons distinguish climate from weather, explain human-driven warming and examine effects; applied task compares long-term evidence across tropical regions.",
@@ -671,8 +659,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-climate-green-economy"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Describe climate change and green economy actions.",
     "sourcePdfPage": 83,
     "teachingSceneEvidence": "Lessons distinguish adaptation and mitigation and describe green-economy choices; applied task proposes measurable community actions.",
@@ -688,8 +674,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-soils-plants"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Discuss physical properties of soils.",
     "sourcePdfPage": 84,
     "teachingSceneEvidence": "Lessons compare sandy, clayey and loamy soils; applied investigation compares labelled samples using controlled volumes and safe handling.",
@@ -705,8 +689,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-soils-plants"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Analyse the physical properties of soils and soil water content and demonstrate their importance in crop production.",
     "sourcePdfPage": 85,
     "teachingSceneEvidence": "Lessons link soil properties, water retention, root support and osmosis to crop growth; applied task records comparative drainage and plant suitability.",
@@ -722,8 +704,6 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs2-science-rocks-soil-formation"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
     "officialIndicatorText": "Observe and describe different types of rocks as origins of soils.",
     "sourcePdfPage": 85,
     "teachingSceneEvidence": "Lessons describe igneous, sedimentary and metamorphic rocks and physical, chemical and biological weathering; learners create a labelled guide from safe samples or photographs.",
