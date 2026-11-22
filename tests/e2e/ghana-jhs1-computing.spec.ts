@@ -88,3 +88,31 @@ test('JHS 1 Computing collaboration visual explains public-link risk', async ({ 
   await page.getByRole('button', { name: 'Public link' }).click();
   await expect(page.locator('.ghana-computing-lab__result')).toContainText('outside your group');
 });
+
+test('JHS 1 Computing document visual compares plain text with a clear heading', async ({ page }) => {
+  await openComputingVisual(page, 'gh-jhs1-computing-documents');
+  await page.getByRole('button', { name: 'Keep plain text' }).click();
+  await expect(page.locator('.ghana-computing-lab__result')).toContainText('less help finding the report topic');
+  await page.getByRole('button', { name: 'Add a heading' }).click();
+  await expect(page.locator('.ghana-computing-lab__document')).toContainText('Our School Garden');
+});
+
+test('JHS 1 Computing spreadsheet visual recalculates its formula', async ({ page }) => {
+  await openComputingVisual(page, 'gh-jhs1-computing-spreadsheets');
+  await expect(page.locator('.ghana-computing-lab__sheet')).toContainText('GH₵18');
+  await page.getByRole('button', { name: 'Add one exercise book' }).click();
+  await expect(page.locator('.ghana-computing-lab__sheet')).toContainText('GH₵20');
+});
+
+test('JHS 1 Computing accessibility visual explains useful alternative text', async ({ page }) => {
+  await openComputingVisual(page, 'gh-jhs1-computing-accessibility');
+  await page.getByRole('button', { name: 'Picture', exact: true }).click();
+  await expect(page.locator('.ghana-computing-lab__result')).toContainText('does not tell a reader what the image shows');
+});
+
+test('JHS 1 Computing troubleshooting visual keeps checks safe', async ({ page }) => {
+  await openComputingVisual(page, 'gh-jhs1-computing-troubleshooting');
+  await page.getByLabel('What is happening?').selectOption('internet');
+  await page.getByRole('button', { name: 'Try this safe check' }).click();
+  await expect(page.locator('.ghana-computing-lab__result')).toContainText('Do not open the device or touch wires');
+});

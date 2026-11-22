@@ -6,10 +6,10 @@ const subject = getCurriculumSubjects('ghjhs1', 'ghana-nacca')
   .find(candidate => candidate.id === 'ghjhs1computing');
 
 assert.ok(subject, 'JHS 1 Computing is selectable in the Ghana curriculum');
-assert.match(String(subject.meta), /Provisional Computing pilot · 12 missions/);
+assert.match(String(subject.meta), /Provisional Computing pilot · 16 missions/);
 
 const missions = MISSIONS.filter(mission => ARCS[mission.arc]?.subject === 'ghjhs1computing');
-assert.equal(missions.length, 12);
+assert.equal(missions.length, 16);
 assert.deepEqual(missions.map(mission => mission.title), [
   'The Computer Parts Pathfinder',
   'The File and Folder Guardian',
@@ -22,7 +22,11 @@ assert.deepEqual(missions.map(mission => mission.title), [
   'The Block-Code Builder',
   'The Class Data Cartographer',
   'The Information Trail Checker',
-  'The Teamwork Permission Keeper'
+  'The Teamwork Permission Keeper',
+  'The Document Design Guide',
+  'The Spreadsheet Sum Keeper',
+  'The Accessible Content Builder',
+  'The Safe Troubleshooting Scout'
 ]);
 
 const units = UNITS.filter(unit => unit.subject === 'ghjhs1computing');
@@ -30,7 +34,7 @@ assert.equal(units.length, 1);
 assert.equal(units[0].title, 'Computing Foundations');
 
 const arcs = ARCS.filter(arc => arc.subject === 'ghjhs1computing');
-assert.equal(arcs.length, 12);
+assert.equal(arcs.length, 16);
 assert.ok(arcs.every(arc => !/B[789]\./.test(arc.pages)), 'The provisional slice does not invent official indicator IDs');
 assert.ok(arcs.every(arc => /source verification pending/.test(arc.pages)));
 assert.ok(missions.every(mission => mission.id.startsWith('gh-jhs1-computing-')), 'The subject contains only JHS 1 Computing missions');
