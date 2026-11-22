@@ -102,7 +102,8 @@ const expectedCodes = [
   'B8.4.4.1.1','B8.4.4.1.2','B8.4.4.2.1','B8.4.5.1.1','B8.4.5.1.2'
 ];
 const evidence = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE
-  .filter(item => item.grade === 8 && item.strand === 4);
+  .filter(item => item.grade === 8 && item.strand === 4)
+  .sort((a, b) => a.indicatorCode.localeCompare(b.indicatorCode));
 assert.deepEqual(evidence.map(item => item.indicatorCode), expectedCodes);
 const byCode = new Map(evidence.map(item => [item.indicatorCode, item]));
 for (const item of evidence) {
