@@ -385,7 +385,7 @@ assert.deepEqual(basic9SystemsApplied.map(item => item.indicatorCode), [
 assert.ok(basic9SystemsApplied.every(item => item.status === 'needs-review'));
 assert.ok(basic9SystemsApplied.every(item => item.officialIndicatorText && item.sourcePdfPage));
 assert.ok(basic9SystemsApplied.every(item => item.teachingSceneRefs?.length && item.assessmentQuestionRefs?.length));
-const basic9SystemsEvidence = new Map(basic9Systems.map(item => [item.indicatorCode, item]));
+const basic9SystemsEvidence = new Map(basic9SystemsApplied.map(item => [item.indicatorCode, item]));
 const expectedBasic9SystemsEvidence: Record<string, { page: number; scenes: string[]; questions: string[] }> = {
   'B9.3.1.1.1': {
     page: 139,
@@ -430,8 +430,8 @@ for (const [code, expected] of Object.entries(expectedBasic9SystemsEvidence)) {
   assert.deepEqual(item.teachingSceneRefs, expected.scenes, `${code} links to focused teaching scenes`);
   assert.deepEqual(item.assessmentQuestionRefs, expected.questions, `${code} links to focused assessment questions`);
 }
-assert.match(basic9Systems.find(item => item.indicatorCode === 'B9.3.1.1.1')?.assessmentEvidence ?? '', /safe health reasoning/i);
-assert.match(basic9Systems.find(item => item.indicatorCode === 'B9.3.4.1.3')?.assessmentEvidence ?? '', /teacher-managed demonstration/i);
+assert.match(basic9SystemsApplied.find(item => item.indicatorCode === 'B9.3.1.1.1')?.assessmentEvidence ?? '', /safe health reasoning/i);
+assert.match(basic9SystemsApplied.find(item => item.indicatorCode === 'B9.3.4.1.3')?.assessmentEvidence ?? '', /teacher-managed demonstration/i);
 
 
 const basic8Cycles = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 8 && item.strand === 2);
