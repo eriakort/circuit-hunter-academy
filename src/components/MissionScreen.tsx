@@ -10,6 +10,7 @@ import { MathLab } from './MathLab';
 import { MathGeometryLab } from './MathGeometryLab';
 import { MathAdvancedLab } from './MathAdvancedLab';
 import { ComputerScienceLab } from './ComputerScienceLab';
+import { GhanaComputingLab } from './GhanaComputingLab';
 import { ChemistryLab } from './ChemistryLab';
 import { ScienceLab } from './ScienceLab';
 import { MOTION_SCENES } from './scienceMotion/registry';
@@ -371,6 +372,9 @@ export const MissionScreen: React.FC = () => {
       )}
       {(currentMission.id.startsWith('a') || /^c\d/.test(currentMission.id)) && currentSceneIndex === 1 && (
         <ComputerScienceLab missionId={currentMission.id} lang={lang} />
+      )}
+      {currentMission.id.startsWith('gh-jhs1-computing-') && currentSceneIndex === 1 && (
+        <GhanaComputingLab key={currentMission.id} missionId={currentMission.id} />
       )}
       {currentMission.id.startsWith('chem_') && currentSceneIndex === 1 && (
         <ChemistryLab missionId={currentMission.id} lang={lang} />

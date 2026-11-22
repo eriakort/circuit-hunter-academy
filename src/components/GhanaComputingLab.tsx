@@ -1,0 +1,195 @@
+import React, { useState } from 'react';
+
+type Props = { missionId: string };
+
+const STEPS = ['Input', 'Process', 'Output', 'Storage'];
+const BIT_VALUES = [128, 64, 32, 16, 8, 4, 2, 1];
+
+const LabPanel: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
+  <section className="ghana-computing-lab" aria-label="Interactive Ghana JHS 1 Computing visual">
+    <h3>{title}</h3>
+    <p className="ghana-computing-lab__prompt">Explore the diagram. Change a choice and observe what happens.</p>
+    {children}
+  </section>
+);
+
+const Choice: React.FC<{
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}> = ({ label, active, onClick }) => (
+  <button type="button" className={`ghana-computing-lab__choice${active ? ' is-active' : ''}`} aria-pressed={active} onClick={onClick}>
+    {label}
+  </button>
+);
+
+export const GhanaComputingLab: React.FC<Props> = ({ missionId }) => {
+  const [systemStep, setSystemStep] = useState(0);
+  const [fileType, setFileType] = useState<'text' | 'image' | 'sound'>('text');
+  const [weather, setWeather] = useState<'sunny' | 'rainy'>('rainy');
+  const [safetyResponse, setSafetyResponse] = useState<'share' | 'check'>('check');
+  const [bits, setBits] = useState([0, 0, 0, 0, 1, 1, 0, 1]);
+  const [networkRoute, setNetworkRoute] = useState<'wifi' | 'cable'>('wifi');
+  const [messageSent, setMessageSent] = useState(false);
+  const [application, setApplication] = useState<'report' | 'survey' | 'slides'>('report');
+  const [screenHeight, setScreenHeight] = useState(50);
+
+  if (missionId === 'gh-jhs1-computing-computer-systems') {
+    return (
+      <LabPanel title="Follow information through a computer">
+        <div className="ghana-computing-lab__flow" role="group" aria-label="Input, process, output, storage">
+          {STEPS.map((step, index) => (
+            <React.Fragment key={step}>
+              <button type="button" className={`ghana-computing-lab__node${systemStep === index ? ' is-active' : ''}`} aria-pressed={systemStep === index} onClick={() => setSystemStep(index)}>
+                <span>{['⌨', '▣', '▤', '▱'][index]}</span>{step}
+              </button>
+              {index < STEPS.length - 1 && <span className="ghana-computing-lab__arrow" aria-hidden="true">→</span>}
+            </React.Fragment>
+          ))}
+        </div>
+        <p className="ghana-computing-lab__result" role="status">{[
+          'A keyboard provides data and instructions.',
+          'The processor follows instructions to work with the data.',
+          'A screen or printer presents the result.',
+          'A file can be kept for later use.'
+        ][systemStep]}</p>
+        <button type="button" className="ghana-computing-lab__action" onClick={() => setSystemStep((systemStep + 1) % STEPS.length)}>Next step</button>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-digital-information') {
+    const fileDetails = {
+      text: { extension: '.txt', example: 'Science-notes.txt', folder: 'School work' },
+      image: { extension: '.jpg', example: 'Class-garden.jpg', folder: 'Pictures' },
+      sound: { extension: '.mp3', example: 'Interview.mp3', folder: 'Audio' }
+    }[fileType];
+    return (
+      <LabPanel title="Sort a digital file">
+        <div className="ghana-computing-lab__choices" role="group" aria-label="Choose a file kind">
+          <Choice label="Text" active={fileType === 'text'} onClick={() => setFileType('text')} />
+          <Choice label="Image" active={fileType === 'image'} onClick={() => setFileType('image')} />
+          <Choice label="Sound" active={fileType === 'sound'} onClick={() => setFileType('sound')} />
+        </div>
+        <div className="ghana-computing-lab__file-card" aria-live="polite">
+          <span className="ghana-computing-lab__file-icon" aria-hidden="true">{fileType === 'text' ? 'T' : fileType === 'image' ? '▧' : '♫'}</span>
+          <div><strong>{fileDetails.example}</strong><small>{fileDetails.extension} file · save in {fileDetails.folder}</small></div>
+        </div>
+        <p className="ghana-computing-lab__result" role="status">A clear name and a suitable folder make this file easier to find.</p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-algorithms') {
+    const bringUmbrella = weather === 'rainy';
+    return (
+      <LabPanel title="Test a simple decision">
+        <div className="ghana-computing-lab__choices" role="group" aria-label="Choose the weather">
+          <Choice label="Sunny" active={weather === 'sunny'} onClick={() => setWeather('sunny')} />
+          <Choice label="Rainy" active={weather === 'rainy'} onClick={() => setWeather('rainy')} />
+        </div>
+        <div className="ghana-computing-lab__decision" aria-live="polite">
+          <span className={`ghana-computing-lab__weather ${weather}`} aria-hidden="true">{weather === 'rainy' ? '☔' : '☀'}</span>
+          <span>If the weather is rainy</span><b>→</b><strong>{bringUmbrella ? 'Take an umbrella' : 'No umbrella needed'}</strong>
+        </div>
+        <p className="ghana-computing-lab__result" role="status">The condition changes the action. Try both inputs to test the algorithm.</p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-digital-safety') {
+    const safeChoice = safetyResponse === 'check';
+    return (
+      <LabPanel title="Pause before responding">
+        <div className="ghana-computing-lab__message">
+          <span aria-hidden="true">!</span>
+          <div><strong>Unexpected message</strong><small>“Send your password to win a prize!”</small></div>
+        </div>
+        <div className="ghana-computing-lab__choices" role="group" aria-label="Choose how to respond">
+          <Choice label="Share the password" active={safetyResponse === 'share'} onClick={() => setSafetyResponse('share')} />
+          <Choice label="Stop and check with a trusted adult" active={safeChoice} onClick={() => setSafetyResponse('check')} />
+        </div>
+        <p className={`ghana-computing-lab__result${safeChoice ? ' is-safe' : ' is-warning'}`} role="status">
+          {safeChoice ? 'Safe choice: keep passwords private and ask a trusted adult.' : 'Unsafe: never send a password in response to a message.'}
+        </p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-binary-data') {
+    const decimal = bits.reduce((sum, bit, index) => sum + bit * BIT_VALUES[index], 0);
+    return (
+      <LabPanel title="Build an 8-bit number">
+        <div className="ghana-computing-lab__bits" role="group" aria-label="Toggle binary bits">
+          {bits.map((bit, index) => (
+            <button type="button" key={BIT_VALUES[index]} className={`ghana-computing-lab__bit${bit ? ' is-on' : ''}`} aria-label={`Place value ${BIT_VALUES[index]}, ${bit ? 'on' : 'off'}`} aria-pressed={!!bit} onClick={() => setBits(current => current.map((value, i) => i === index ? 1 - value : value))}>
+              <small>{BIT_VALUES[index]}</small><strong>{bit}</strong>
+            </button>
+          ))}
+        </div>
+        <div className="ghana-computing-lab__readout" aria-live="polite"><span>Binary</span><strong>{bits.join('')}</strong><span>Decimal</span><strong>{decimal}</strong></div>
+        <p className="ghana-computing-lab__result">Add the place values that have a 1 bit to find the decimal number.</p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-networks') {
+    return (
+      <LabPanel title="Send a classroom message">
+        <div className={`ghana-computing-lab__network${messageSent ? ' is-sent' : ''}`}>
+          <span className="ghana-computing-lab__device">Sender</span>
+          <span className="ghana-computing-lab__route">{networkRoute === 'wifi' ? 'Wi-Fi' : 'Ethernet cable'}<i aria-hidden="true" /></span>
+          <span className="ghana-computing-lab__device">Receiver</span>
+        </div>
+        <div className="ghana-computing-lab__choices" role="group" aria-label="Choose a network connection">
+          <Choice label="Wi-Fi" active={networkRoute === 'wifi'} onClick={() => { setNetworkRoute('wifi'); setMessageSent(false); }} />
+          <Choice label="Ethernet cable" active={networkRoute === 'cable'} onClick={() => { setNetworkRoute('cable'); setMessageSent(false); }} />
+        </div>
+        <button type="button" className="ghana-computing-lab__action" onClick={() => setMessageSent(!messageSent)}>{messageSent ? 'Reset message' : 'Send message'}</button>
+        <p className="ghana-computing-lab__result" role="status">{messageSent ? 'Message delivered! A real network may send data in packets.' : 'Choose a route, then send the message to see the connection.'}</p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-applications') {
+    const task = {
+      report: { task: 'Write a class report', tool: 'Word processor', icon: '¶' },
+      survey: { task: 'Organise survey results', tool: 'Spreadsheet', icon: '▦' },
+      slides: { task: 'Present a group project', tool: 'Presentation app', icon: '▣' }
+    }[application];
+    return (
+      <LabPanel title="Match the application to the task">
+        <label className="ghana-computing-lab__select">Choose a class task
+          <select value={application} onChange={event => setApplication(event.target.value as typeof application)}>
+            <option value="report">Write a class report</option>
+            <option value="survey">Organise survey results</option>
+            <option value="slides">Present a group project</option>
+          </select>
+        </label>
+        <div className="ghana-computing-lab__app-card" aria-live="polite">
+          <span aria-hidden="true">{task.icon}</span><div><small>{task.task}</small><strong>{task.tool}</strong></div>
+        </div>
+        <p className="ghana-computing-lab__result" role="status">Pick software that fits what you need to create, calculate or present.</p>
+      </LabPanel>
+    );
+  }
+
+  if (missionId === 'gh-jhs1-computing-device-care') {
+    const heightLabel = screenHeight < 34 ? 'Too low: raise the screen with adult help.' : screenHeight > 67 ? 'Too high: lower the screen with adult help.' : 'Comfortable viewing range. Keep a relaxed posture.';
+    return (
+      <LabPanel title="Adjust a comfortable screen position">
+        <div className="ghana-computing-lab__desk" aria-label="Illustration of a learner at a desk">
+          <span className="ghana-computing-lab__person" aria-hidden="true">◉</span>
+          <span className="ghana-computing-lab__monitor" style={{ transform: `translateY(${(50 - screenHeight) / 4}px)` }} aria-hidden="true">▱</span>
+          <span className="ghana-computing-lab__desk-line" aria-hidden="true" />
+        </div>
+        <label className="ghana-computing-lab__slider">Screen height
+          <input type="range" min="0" max="100" value={screenHeight} onChange={event => setScreenHeight(Number(event.target.value))} />
+        </label>
+        <p className="ghana-computing-lab__result" role="status">{heightLabel}</p>
+      </LabPanel>
+    );
+  }
+
+  return null;
+};
