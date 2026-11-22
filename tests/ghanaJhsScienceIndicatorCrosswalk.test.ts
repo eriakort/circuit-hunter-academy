@@ -453,3 +453,20 @@ for (const [code, expected] of Object.entries(expectedBasic8CyclesEvidence)) {
 }
 assert.match(basic8Cycles.find(item => item.indicatorCode === 'B8.2.3.2.1')?.assessmentEvidence ?? '', /practical learner task/i);
 
+
+const basic8HumansEnvironment = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE
+  .filter(item => item.grade === 8 && item.strand === 5)
+  .sort((a, b) => a.indicatorCode.localeCompare(b.indicatorCode));
+assert.deepEqual(basic8HumansEnvironment.map(item => item.indicatorCode), [
+  'B8.5.1.1.1','B8.5.1.1.2','B8.5.2.1.1','B8.5.2.1.2','B8.5.2.2.1',
+  'B8.5.3.1.1','B8.5.4.1.1','B8.5.4.1.2','B8.5.5.1.1','B8.5.5.1.2','B8.5.6.1.1'
+]);
+assert.ok(basic8HumansEnvironment.every(item =>
+  item.officialIndicatorText &&
+  item.sourcePdfPage &&
+  item.teachingSceneRefs.length > 0 &&
+  item.assessmentQuestionRefs.length > 0 &&
+  item.teachingSceneRefs.every(ref => /#scene-[0-5]$/.test(ref)) &&
+  item.assessmentQuestionRefs.every(ref => /#quiz-[0-7]$/.test(ref))
+), 'Every Basic 8 Strand 5 indicator must resolve to teaching and assessment evidence');
+assert.ok(basic8HumansEnvironment.every(item => item.status === 'needs-review'));
