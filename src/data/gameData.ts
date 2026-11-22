@@ -29514,6 +29514,27 @@ const ghanaJhs1ScienceHumansEnvironmentArcOffset = ARCS.length;
 ARCS.push(...GHANA_JHS1_SCIENCE_HUMANS_ENVIRONMENT_ARCS.map(arc => ({ ...arc, unit: ghanaJhs1ScienceHumansEnvironmentUnitOffset, subject: 'ghjhs1science' as const })));
 MISSIONS.push(...GHANA_JHS1_SCIENCE_HUMANS_ENVIRONMENT_MISSIONS.map(mission => ({ ...mission, arc: ghanaJhs1ScienceHumansEnvironmentArcOffset + mission.arc })));
 
+// Ghana NaCCA · JHS 1 Computing · provisional, first-slice pilot.
+import {
+  GHANA_JHS1_COMPUTING_SUBJECT,
+  GHANA_JHS1_COMPUTING_UNIT,
+  GHANA_JHS1_COMPUTING_ARCS,
+  GHANA_JHS1_COMPUTING_MISSIONS
+} from './ghanaJhs1ComputingData';
+if (!SUBJECTS.some(subject => subject.id === 'ghjhs1computing')) SUBJECTS.push(GHANA_JHS1_COMPUTING_SUBJECT);
+const ghanaJhs1ComputingUnitOffset = UNITS.length;
+UNITS.push({ ...GHANA_JHS1_COMPUTING_UNIT, subject: 'ghjhs1computing' });
+const ghanaJhs1ComputingArcOffset = ARCS.length;
+ARCS.push(...GHANA_JHS1_COMPUTING_ARCS.map(arc => ({
+  ...arc,
+  unit: ghanaJhs1ComputingUnitOffset,
+  subject: 'ghjhs1computing' as const
+})));
+MISSIONS.push(...GHANA_JHS1_COMPUTING_MISSIONS.map(mission => ({
+  ...mission,
+  arc: ghanaJhs1ComputingArcOffset + mission.arc
+})));
+
 // Ghana NaCCA · JHS 2 Science · Diversity of Matter strand.
 const ghanaJhs2ScienceUnitOffset = UNITS.length;
 UNITS.push({ ...GHANA_JHS2_SCIENCE_UNIT, subject: 'ghjhs2science' });
