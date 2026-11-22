@@ -50,3 +50,16 @@ This tranche reviews all 12 unique Basic 9 Strand 5 indicator codes against the 
 All records remain `needs-review`. The mappings deliberately retain gaps where a multiple-choice quiz cannot demonstrate a curriculum performance: conducting a school waste audit, investigating an industrial process, assessing real climate-action datasets across countries, and creating agricultural and non-agricultural materials from plant parts. The current NCD lesson also does not explicitly teach disease-specific symptoms/effects or named cancers; the health/disease lesson does not explicitly teach the WHO definition.
 
 **Curriculum source-code ambiguity:** the official PDF uses `B9.5.2.2.1` on printed p. 116 for the health–disease relationship, then repeats the same code on p. 117 for a distinct fungal-disease outcome. The crosswalk preserves the first occurrence as the unique `B9.5.2.2.1` record and flags the duplicate in its evidence note; it does not invent a new indicator code. The separately listed `B9.5.2.2.2` remains mapped to the common-diseases outcome on p. 116. This means Strand 5 has 12 unique codes but 13 printed indicator statements if the duplicated p. 117 statement is counted separately; curriculum-owner clarification is needed before changing the official inventory count.
+
+
+### Basic 8 Forces and Energy — Strand 4 evidence tranche (2026-11-22)
+
+This increment reviews all 13 unique Basic 8 Strand 4 indicator statements against the five existing Forces and Energy missions. It adds official indicator wording, source PDF pages, focused teaching-scene references and assessment-question references:
+
+- Energy: pp. 69–71 (energy conversion, renewable and non-renewable sources, sustainable management, heat and temperature).
+- Electricity and Electronics: p. 72 (transmission and capacitor charging/discharging in DC circuits).
+- Conversion and Conservation of Energy: p. 73.
+- Force and Motion: pp. 74–75 (magnet-making and applications, Newton's Second Law, complex machines).
+- Agricultural Tools: p. 76.
+
+All 13 mappings remain `needs-review`. The added references identify candidate instructional and assessment evidence, not verified mastery. Multiple-choice questions cannot demonstrate practical performance; teacher observation is still required for circuit work, magnet-making, the trolley investigation and agricultural-tool use. The evidence test also verifies that each scene/question reference resolves to an existing mission item.
