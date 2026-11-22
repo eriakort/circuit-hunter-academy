@@ -35,6 +35,7 @@ export const GHANA_JHS3_SCIENCE_MISSIONS: Mission[] = [
       lesson('<p>Learn to read element symbols: H is hydrogen, O oxygen, Na sodium, Cl chlorine, Mg magnesium, C carbon and Fe iron. A chemical <b>formula</b> uses these symbols and small numbers to show the relative numbers of atoms or ions. In CO₂ there is one carbon atom for every two oxygen atoms. In MgO the ratio is one magnesium to one oxygen.</p>'),
       lesson('<p>An <b>element</b> contains one type of atom. A <b>molecule</b> is two or more atoms chemically bonded; it may contain the same element, as in O₂, or different elements, as in H₂O. An <b>ion</b> is a charged atom or group of atoms. A compound contains different elements chemically combined; some compounds form molecules while ionic compounds form lattices of ions.</p>'),
       lesson('<p>Binary compounds form when atoms or ions of two elements combine in definite ratios. For example, sodium can lose one electron to form Na⁺ and chlorine can gain one to form Cl⁻; their opposite charges attract to form sodium chloride. Use particle models to show the ratio, but remember that an ionic solid is a repeating lattice, not a collection of separate NaCl molecules. Household products such as vinegar, soap, detergents and fuels may be mixtures, so check the label rather than treating every product as a pure compound. Never handle or taste unknown chemicals.</p>'),
+      lesson('<p><b>Applied formula investigation:</b> Use element-symbol cards and coloured counters to build models for water, carbon dioxide, magnesium oxide and sodium chloride. Label elements, count particles and write each formula. Explain why sodium chloride is represented by an ion ratio in a lattice rather than separate NaCl molecules. Never use unknown chemicals.</p>'),
       { who: 'd', vis: 'demon', text: 'I have swapped the symbols and scrambled the formulae. Identify the elements, count the particles and choose a model that matches the compound!' },
       { type: 'battle' }
     ],
@@ -43,7 +44,10 @@ export const GHANA_JHS3_SCIENCE_MISSIONS: Mission[] = [
       q('Which two elements are present in magnesium oxide (MgO)?', ['Magnesium and oxygen', 'Manganese and gold', 'Magnesium and ozone', 'Mercury and oxygen'], 'The symbols Mg and O stand for magnesium and oxygen.'),
       q('What does the small 2 in CO₂ show?', ['Two oxygen atoms for each carbon atom', 'Two carbon atoms', 'Two separate compounds', 'Two charges on carbon'], 'The subscript applies to oxygen, so each carbon dioxide molecule has two oxygen atoms.'),
       q('Which is an ion?', ['Na⁺', 'O₂', 'H₂O', 'Ne'], 'Na⁺ is a sodium ion with a positive charge. O₂ and H₂O are molecules; Ne is a neutral atom.'),
-      q('Which statement about vinegar is most accurate?', ['It is usually a solution containing acetic acid and water', 'It is always pure ethanoic acid', 'It is a single element', 'It contains only sodium and chlorine'], 'Household vinegar is an aqueous solution, so it is a mixture rather than a pure binary compound.')
+      q('Which statement about vinegar is most accurate?', ['It is usually a solution containing acetic acid and water', 'It is always pure ethanoic acid', 'It is a single element', 'It contains only sodium and chlorine'], 'Household vinegar is an aqueous solution, so it is a mixture rather than a pure binary compound.'),
+      q('A model has one magnesium ion for every two chloride ions. Which formula matches?', ['MgCl₂', 'Mg₂Cl', 'MgO', 'Cl₂Mg₂'], 'Mg²⁺ is balanced by two Cl⁻ ions, giving MgCl₂.'),
+      q('Which particle model represents carbon dioxide?', ['One carbon atom bonded to two oxygen atoms', 'Two carbon atoms and one oxygen atom', 'One calcium ion and two chloride ions', 'Two unjoined elements'], 'CO₂ contains one carbon atom and two oxygen atoms in each molecule.'),
+      q('Why is sodium chloride represented by a formula unit?', ['It forms a repeating lattice of sodium and chloride ions', 'It contains only neutral sodium atoms', 'It is a mixture of salt and water', 'Its ions are not attracted'], 'Solid sodium chloride is a giant ionic lattice; NaCl gives the simplest ion ratio.')
     ]
   },
   {
@@ -56,6 +60,7 @@ export const GHANA_JHS3_SCIENCE_MISSIONS: Mission[] = [
       lesson('<p>Indicators change colour to help identify acidic and alkaline solutions. Blue litmus turns red in acid; red litmus turns blue in alkali. Universal indicator gives a range of colours that can be compared with a pH chart. Use only teacher-approved, labelled samples and never mix household cleaners.</p>'),
       lesson('<p>The <b>pH scale</b> commonly runs from 0 to 14 for aqueous solutions. A pH below 7 is acidic, 7 is neutral and above 7 is alkaline. A lower pH means a more acidic solution; a higher pH means a more alkaline solution. pH describes acidity or alkalinity, not by itself how concentrated a solution is.</p>'),
       lesson('<p><b>Salts</b> are ionic compounds. Many form when an acid reacts with a base in a neutralisation reaction: acid + base → salt + water. For example, hydrochloric acid reacts with sodium hydroxide to form sodium chloride and water. Different salts have different properties and uses. Do not perform chemical tests or handle corrosive substances without a trained teacher and proper protective equipment.</p>'),
+      lesson('<p><b>Applied indicator investigation:</b> With teacher supervision, test small amounts of labelled, low-risk solutions using universal indicator or pH paper. Record colour, estimated pH and classification. Repeat unclear readings and compare with a reference chart. Use goggles and teacher disposal instructions; never taste samples, mix cleaning products or test unknown liquids.</p>'),
       { who: 'd', vis: 'demon', text: 'I have reversed the indicator colours and hidden the neutral point. Use the pH evidence to classify each solution and explain your choice!' },
       { type: 'battle' }
     ],
@@ -64,7 +69,10 @@ export const GHANA_JHS3_SCIENCE_MISSIONS: Mission[] = [
       q('What happens to blue litmus paper in an acidic solution?', ['It turns red', 'It turns green', 'It stays blue in every acid', 'It becomes colourless in every case'], 'Blue litmus turns red in an acidic solution.'),
       q('What pH is neutral on the usual school pH scale?', ['7', '0', '3', '14'], 'A neutral aqueous solution has pH 7 at about room temperature.'),
       q('Which statement correctly describes an alkali?', ['A soluble base that produces hydroxide ions in water', 'Any substance with pH below 7', 'A type of metal element', 'A salt that cannot dissolve'], 'An alkali is a base that dissolves in water and produces hydroxide ions.'),
-      q('What are the usual products of an acid reacting with a base?', ['A salt and water', 'Oxygen and hydrogen only', 'A metal and carbon dioxide', 'Sugar and water'], 'Neutralisation between an acid and a base commonly produces a salt and water.')
+      q('What are the usual products of an acid reacting with a base?', ['A salt and water', 'Oxygen and hydrogen only', 'A metal and carbon dioxide', 'Sugar and water'], 'Neutralisation between an acid and a base commonly produces a salt and water.'),
+      q('A labelled sample has estimated pH 4. How is it classified?', ['Acidic', 'Neutral', 'Alkaline', 'It contains no water'], 'A pH below 7 indicates an acidic aqueous solution.'),
+      q('Why use a pH chart rather than colour memory alone?', ['It provides a consistent reference for interpreting indicator colours', 'Every indicator has the same colour at every pH', 'Colour is unrelated to pH', 'A chart removes the need for safety equipment'], 'A reference chart makes colour interpretation more consistent.'),
+      q('Which safety action is correct during an indicator test?', ['Use labelled samples, goggles and teacher disposal instructions', 'Taste each solution', 'Mix household cleaners', 'Pour samples back into original bottles'], 'Use only labelled, teacher-approved samples and proper protective procedures.')
     ]
   },
   {
@@ -77,6 +85,7 @@ export const GHANA_JHS3_SCIENCE_MISSIONS: Mission[] = [
       lesson('<p><b>Ionic bonding</b> involves electron transfer, usually from a metal atom to a non-metal atom. The metal becomes a positive ion and the non-metal becomes a negative ion. Oppositely charged ions attract and form a giant ionic lattice. Sodium chloride is a familiar example.</p>'),
       lesson('<p><b>Covalent bonding</b> forms when non-metal atoms share pairs of electrons. Water (H₂O) and carbon dioxide (CO₂) are examples of substances with covalent bonds within their molecules. Some covalent substances form large networks rather than small separate molecules.</p>'),
       lesson('<p><b>Metallic bonding</b> is the attraction between positive metal ions and delocalised electrons that can move through the structure. This helps explain why metals conduct electricity and heat, and why many metals can be bent or shaped. Models are simplified: they help compare bonding but do not show every detail of real particles.</p>'),
+      lesson('<p><b>Applied bonding-model task:</b> Build labelled models for electron transfer in sodium chloride, electron sharing in water, and positive metal ions surrounded by delocalised electrons in copper. Identify particles and attractions. Compare what each model explains and what it leaves out; a diagram is not a photograph of atoms.</p>'),
       { who: 'd', vis: 'demon', text: 'I claim every bond works by electron transfer. Compare the three models and identify whether electrons are transferred, shared or delocalised!' },
       { type: 'battle' }
     ],
@@ -85,7 +94,10 @@ export const GHANA_JHS3_SCIENCE_MISSIONS: Mission[] = [
       q('What happens to electrons in a simple covalent bond?', ['Atoms share pairs of electrons', 'All electrons leave both atoms', 'Protons are transferred', 'Neutrons are shared between nuclei'], 'Covalent bonds involve shared pairs of electrons.'),
       q('Which substance is a familiar example of an ionic compound?', ['Sodium chloride', 'Oxygen gas', 'Copper metal', 'Diamond'], 'Sodium chloride consists of Na⁺ and Cl⁻ ions in a giant ionic lattice.'),
       q('What is meant by delocalised electrons in a metal?', ['Electrons that can move through the metallic structure', 'Electrons fixed inside the nucleus', 'Electrons shared only by two non-metals', 'Electrons that have no charge'], 'Metallic bonding includes mobile electrons spread through the structure.'),
-      q('Why can many metals conduct electricity?', ['Their delocalised electrons can move and carry charge', 'Their protons flow through wires', 'They contain no charged particles', 'All metals dissolve in water'], 'Mobile delocalised electrons carry electrical charge through a metal.')
+      q('Why can many metals conduct electricity?', ['Their delocalised electrons can move and carry charge', 'Their protons flow through wires', 'They contain no charged particles', 'All metals dissolve in water'], 'Mobile delocalised electrons carry electrical charge through a metal.'),
+      q('Which model shows electron transfer and attraction between oppositely charged ions?', ['Ionic bonding in sodium chloride', 'Covalent bonding in water', 'Metallic bonding in copper', 'A sand-and-salt mixture'], 'Ionic bonding follows electron transfer and electrostatic attraction between ions.'),
+      q('Which model shows shared electron pairs between non-metal atoms?', ['Covalent bonding', 'Metallic bonding', 'An ionic lattice only', 'A physical mixture'], 'Covalent bonds form when atoms share pairs of electrons.'),
+      q('What is a limitation of a simple ball-and-stick model?', ['It simplifies particle sizes, distances and electron behaviour', 'It proves atoms are solid coloured balls', 'It shows every electron exactly as in reality', 'It replaces scientific evidence'], 'Models help explain ideas but simplify real atomic structures.')
     ]
   },
   {
@@ -98,6 +110,7 @@ export const GHANA_JHS3_SCIENCE_MISSIONS: Mission[] = [
       lesson('<p><b>Epidermal cells</b> form the outer protective covering of a plant. They help reduce damage and water loss. Many are closely packed; in leaves, a waxy cuticle over the epidermis provides an additional barrier. Root hair cells are epidermal cells adapted to absorb water and mineral ions from soil.</p>'),
       lesson('<p><b>Guard cells</b> occur in pairs around a stoma, a tiny pore usually found in a leaf surface. Changes in their water content alter the pore opening. This helps regulate gas exchange for photosynthesis and the loss of water vapour during transpiration.</p>'),
       lesson('<p><b>Xylem</b> vessels are formed from specialised cells joined end to end; their thickened walls support the plant and the hollow tubes transport water and dissolved minerals from roots. <b>Cambium</b> is a layer of dividing cells in many dicotyledonous stems and roots. It produces new vascular tissues and helps the plant grow thicker.</p>'),
+      lesson('<p><b>Applied plant-cell observation:</b> Use prepared microscope slides, teacher-provided micrographs or diagrams to compare epidermal, guard, xylem and cambium cells. Sketch and label protective packing, paired guard cells around a stoma, hollow reinforced xylem vessels, and dividing cambium cells. Add a structure-to-function caption and distinguish slide observations from diagram features.</p>'),
       { who: 'd', vis: 'demon', text: 'I have swapped the jobs of the guard cells, xylem and cambium. Use each cell’s structure to restore the plant’s transport and growth!' },
       { type: 'battle' }
     ],
@@ -106,7 +119,10 @@ export const GHANA_JHS3_SCIENCE_MISSIONS: Mission[] = [
       q('What is a main function of the plant epidermis?', ['Protect the plant surface', 'Pump blood around the body', 'Make all the plant’s food in every cell', 'Carry electrical impulses'], 'The epidermis forms a protective outer covering.'),
       q('What do guard cells control?', ['The opening and closing of stomata', 'The formation of seeds inside roots', 'The movement of blood', 'The production of metal ions'], 'Guard cells change shape to regulate the stomatal pore.'),
       q('Which plant tissue transports water and mineral ions from the roots?', ['Xylem', 'Cambium', 'Epidermis only', 'Pollen'], 'Xylem vessels transport water and dissolved mineral ions through the plant.'),
-      q('What is one role of cambium in a dicotyledonous plant?', ['Produce new vascular tissues and support increase in thickness', 'Open and close stomata', 'Absorb light for photosynthesis', 'Make red blood cells'], 'Cambium cells divide to produce new tissues that contribute to secondary growth.')
+      q('What is one role of cambium in a dicotyledonous plant?', ['Produce new vascular tissues and support increase in thickness', 'Open and close stomata', 'Absorb light for photosynthesis', 'Make red blood cells'], 'Cambium cells divide to produce new tissues that contribute to secondary growth.'),
+      q('Which feature helps xylem vessels transport water?', ['Hollow joined cells with strengthened walls', 'A tail that beats like a sperm cell', 'A nucleus that pumps blood', 'A pore controlled by guard cells'], 'Xylem forms hollow pathways with strengthened walls.'),
+      q('What should a sketch of guard cells show?', ['A pair of cells surrounding a stomatal pore', 'A single long axon', 'A red blood cell with haemoglobin', 'A root cap with no pore'], 'Guard cells occur in pairs and regulate a stoma.'),
+      q('Why compare a microscope observation with a diagram?', ['The diagram helps label features while the slide provides observed evidence', 'The diagram proves all cells have the same shape', 'A diagram removes the need to record observations', 'A slide always shows every structure clearly'], 'Diagrams support interpretation, while observations should be recorded accurately.')
     ]
   },
   {
@@ -119,6 +135,7 @@ export const GHANA_JHS3_SCIENCE_MISSIONS: Mission[] = [
       lesson('<p><b>Nerve cells</b> (neurones) carry electrical signals. Many have a long fibre called an axon to transmit signals over a distance and branched ends to connect with other cells. This helps the brain, spinal cord and nerves coordinate the body.</p>'),
       lesson('<p><b>Red blood cells</b> carry oxygen using haemoglobin. In humans they have a flexible, biconcave shape and, when mature, no nucleus, leaving more room for haemoglobin. <b>Muscle cells</b> contain protein fibres that slide past one another to shorten the cell and produce force for movement.</p>'),
       lesson('<p><b>Sperm cells</b> are specialised male reproductive cells. A human sperm has a head containing genetic material, a midpiece with many mitochondria and a tail that helps it swim. Its role is to deliver genetic material to an egg during fertilisation. These are normal biological structures; study them respectfully and use scientific language.</p>'),
+      lesson('<p><b>Applied human-cell comparison:</b> Create a comparison for nerve, red blood, muscle and sperm cells. Draw key features and connect them to function: long axon, haemoglobin-rich biconcave cell, contractile muscle fibres, and sperm head, midpiece and tail. Use respectful scientific language and note that diagrams are simplified.</p>'),
       { who: 'd', vis: 'demon', text: 'I have mixed up the jobs of nerve, blood, muscle and sperm cells. Match each structure to its function to protect the human body system!' },
       { type: 'battle' }
     ],
@@ -127,7 +144,10 @@ export const GHANA_JHS3_SCIENCE_MISSIONS: Mission[] = [
       q('Which feature helps a red blood cell carry oxygen?', ['Haemoglobin', 'Chlorophyll', 'A cell wall made of cellulose', 'A long axon'], 'Haemoglobin binds oxygen and allows red blood cells to transport it.'),
       q('What do muscle cells do?', ['Contract to produce force and movement', 'Open stomata in leaves', 'Carry water from roots', 'Form the outer bark of rocks'], 'Muscle cells contain contractile proteins that generate force when they shorten.'),
       q('Which part of a sperm cell helps it move?', ['Tail (flagellum)', 'Cell wall', 'Chloroplast', 'Stoma'], 'The tail, or flagellum, helps a sperm cell swim.'),
-      q('Why are specialised cells important in humans?', ['Their different structures allow them to perform different jobs', 'Every cell performs exactly the same task', 'They replace the need for organs', 'They contain no genetic material'], 'Specialisation allows different cells to work together in tissues and organs.')
+      q('Why are specialised cells important in humans?', ['Their different structures allow them to perform different jobs', 'Every cell performs exactly the same task', 'They replace the need for organs', 'They contain no genetic material'], 'Specialisation allows different cells to work together in tissues and organs.'),
+      q('Which feature of a neurone helps it carry signals over a long distance?', ['A long axon', 'A biconcave disc with haemoglobin', 'Contractile fibres', 'A stomatal pore'], 'The axon carries nerve impulses over distances.'),
+      q('Which pairing is correct?', ['Red blood cell — haemoglobin carries oxygen', 'Muscle cell — opens leaf stomata', 'Sperm cell — transports water from roots', 'Nerve cell — forms xylem vessels'], 'Haemoglobin in red blood cells binds and transports oxygen.'),
+      q('What is the role of mitochondria in the sperm midpiece?', ['Release energy that supports movement', 'Store oxygen for the whole body', 'Make the cell wall', 'Control stomatal opening'], 'Mitochondria release energy used to support sperm movement.')
     ]
   }
 ];

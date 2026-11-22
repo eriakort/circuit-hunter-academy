@@ -767,10 +767,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-binary-compounds"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
-    "teachingSceneRefs": ["gh-jhs3-science-binary-compounds#scene-0","gh-jhs3-science-binary-compounds#scene-1"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-binary-compounds#quiz-0","gh-jhs3-science-binary-compounds#quiz-1"]
+    "teachingSceneEvidence": "Learners build and label binary-compound particle models and match element ratios to formulae. Practical observations and model work still require educator review.",
+    "assessmentEvidence": "Expanded assessment includes application questions tied to the new learning activity; quiz performance does not certify practical competence or mastery.",
+    "teachingSceneRefs": ["gh-jhs3-science-binary-compounds#scene-0","gh-jhs3-science-binary-compounds#scene-1","gh-jhs3-science-binary-compounds#scene-4"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-binary-compounds#quiz-0","gh-jhs3-science-binary-compounds#quiz-1","gh-jhs3-science-binary-compounds#quiz-5"]
   },
   {
     "indicatorCode": "B9.1.1.1.2",
@@ -780,10 +780,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-binary-compounds"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
-    "teachingSceneRefs": ["gh-jhs3-science-binary-compounds#scene-1","gh-jhs3-science-binary-compounds#scene-2","gh-jhs3-science-binary-compounds#scene-3"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-binary-compounds#quiz-2","gh-jhs3-science-binary-compounds#quiz-3","gh-jhs3-science-binary-compounds#quiz-4"]
+    "teachingSceneEvidence": "Learners construct formula models and distinguish molecular compounds from ionic lattices. Practical observations and model work still require educator review.",
+    "assessmentEvidence": "Expanded assessment includes application questions tied to the new learning activity; quiz performance does not certify practical competence or mastery.",
+    "teachingSceneRefs": ["gh-jhs3-science-binary-compounds#scene-1","gh-jhs3-science-binary-compounds#scene-2","gh-jhs3-science-binary-compounds#scene-3","gh-jhs3-science-binary-compounds#scene-4"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-binary-compounds#quiz-2","gh-jhs3-science-binary-compounds#quiz-3","gh-jhs3-science-binary-compounds#quiz-4","gh-jhs3-science-binary-compounds#quiz-6","gh-jhs3-science-binary-compounds#quiz-7"]
   },
   {
     "indicatorCode": "B9.1.1.1.3",
@@ -793,10 +793,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-acids-bases-salts"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
-    "teachingSceneRefs": ["gh-jhs3-science-acids-bases-salts#scene-0","gh-jhs3-science-acids-bases-salts#scene-1","gh-jhs3-science-acids-bases-salts#scene-2","gh-jhs3-science-acids-bases-salts#scene-3"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-acids-bases-salts#quiz-0","gh-jhs3-science-acids-bases-salts#quiz-1","gh-jhs3-science-acids-bases-salts#quiz-2","gh-jhs3-science-acids-bases-salts#quiz-3","gh-jhs3-science-acids-bases-salts#quiz-4"]
+    "teachingSceneEvidence": "Learners conduct a supervised indicator and pH investigation using labelled low-risk solutions. Practical observations and model work still require educator review.",
+    "assessmentEvidence": "Expanded assessment includes application questions tied to the new learning activity; quiz performance does not certify practical competence or mastery.",
+    "teachingSceneRefs": ["gh-jhs3-science-acids-bases-salts#scene-0","gh-jhs3-science-acids-bases-salts#scene-1","gh-jhs3-science-acids-bases-salts#scene-2","gh-jhs3-science-acids-bases-salts#scene-3","gh-jhs3-science-acids-bases-salts#scene-4"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-acids-bases-salts#quiz-0","gh-jhs3-science-acids-bases-salts#quiz-1","gh-jhs3-science-acids-bases-salts#quiz-2","gh-jhs3-science-acids-bases-salts#quiz-3","gh-jhs3-science-acids-bases-salts#quiz-4","gh-jhs3-science-acids-bases-salts#quiz-5","gh-jhs3-science-acids-bases-salts#quiz-6","gh-jhs3-science-acids-bases-salts#quiz-7"]
   },
   {
     "indicatorCode": "B9.1.1.2.1",
@@ -806,10 +806,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-chemical-bonding"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
-    "teachingSceneRefs": ["gh-jhs3-science-chemical-bonding#scene-0","gh-jhs3-science-chemical-bonding#scene-1","gh-jhs3-science-chemical-bonding#scene-2","gh-jhs3-science-chemical-bonding#scene-3"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-chemical-bonding#quiz-0","gh-jhs3-science-chemical-bonding#quiz-1","gh-jhs3-science-chemical-bonding#quiz-2","gh-jhs3-science-chemical-bonding#quiz-3","gh-jhs3-science-chemical-bonding#quiz-4"]
+    "teachingSceneEvidence": "Learners compare labelled ionic, covalent and metallic bonding models and discuss model limitations. Practical observations and model work still require educator review.",
+    "assessmentEvidence": "Expanded assessment includes application questions tied to the new learning activity; quiz performance does not certify practical competence or mastery.",
+    "teachingSceneRefs": ["gh-jhs3-science-chemical-bonding#scene-0","gh-jhs3-science-chemical-bonding#scene-1","gh-jhs3-science-chemical-bonding#scene-2","gh-jhs3-science-chemical-bonding#scene-3","gh-jhs3-science-chemical-bonding#scene-4"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-chemical-bonding#quiz-0","gh-jhs3-science-chemical-bonding#quiz-1","gh-jhs3-science-chemical-bonding#quiz-2","gh-jhs3-science-chemical-bonding#quiz-3","gh-jhs3-science-chemical-bonding#quiz-4","gh-jhs3-science-chemical-bonding#quiz-5","gh-jhs3-science-chemical-bonding#quiz-6","gh-jhs3-science-chemical-bonding#quiz-7"]
   },
   {
     "indicatorCode": "B9.1.2.1.1",
@@ -820,10 +820,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-specialised-human-cells"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
-    "teachingSceneRefs": ["gh-jhs3-science-specialised-plant-cells#scene-0","gh-jhs3-science-specialised-human-cells#scene-0"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-specialised-plant-cells#quiz-0","gh-jhs3-science-specialised-human-cells#quiz-4"]
+    "teachingSceneEvidence": "Learners compare specialised plant and human cell structures and connect visible features to functions. Practical observations and model work still require educator review.",
+    "assessmentEvidence": "Expanded assessment includes application questions tied to the new learning activity; quiz performance does not certify practical competence or mastery.",
+    "teachingSceneRefs": ["gh-jhs3-science-specialised-plant-cells#scene-0","gh-jhs3-science-specialised-human-cells#scene-0","gh-jhs3-science-specialised-plant-cells#scene-4","gh-jhs3-science-specialised-human-cells#scene-4"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-specialised-plant-cells#quiz-0","gh-jhs3-science-specialised-human-cells#quiz-4","gh-jhs3-science-specialised-plant-cells#quiz-5","gh-jhs3-science-specialised-human-cells#quiz-7"]
   },
   {
     "indicatorCode": "B9.1.2.1.2",
@@ -833,10 +833,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-specialised-plant-cells"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
-    "teachingSceneRefs": ["gh-jhs3-science-specialised-plant-cells#scene-1","gh-jhs3-science-specialised-plant-cells#scene-2","gh-jhs3-science-specialised-plant-cells#scene-3"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-specialised-plant-cells#quiz-1","gh-jhs3-science-specialised-plant-cells#quiz-2","gh-jhs3-science-specialised-plant-cells#quiz-3","gh-jhs3-science-specialised-plant-cells#quiz-4"]
+    "teachingSceneEvidence": "Learners observe or interpret plant-cell slides and micrographs and produce labelled structure-function sketches. Practical observations and model work still require educator review.",
+    "assessmentEvidence": "Expanded assessment includes application questions tied to the new learning activity; quiz performance does not certify practical competence or mastery.",
+    "teachingSceneRefs": ["gh-jhs3-science-specialised-plant-cells#scene-1","gh-jhs3-science-specialised-plant-cells#scene-2","gh-jhs3-science-specialised-plant-cells#scene-3","gh-jhs3-science-specialised-plant-cells#scene-4"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-specialised-plant-cells#quiz-1","gh-jhs3-science-specialised-plant-cells#quiz-2","gh-jhs3-science-specialised-plant-cells#quiz-3","gh-jhs3-science-specialised-plant-cells#quiz-4","gh-jhs3-science-specialised-plant-cells#quiz-5","gh-jhs3-science-specialised-plant-cells#quiz-6","gh-jhs3-science-specialised-plant-cells#quiz-7"]
   },
   {
     "indicatorCode": "B9.1.2.1.3",
@@ -846,10 +846,10 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
       "gh-jhs3-science-specialised-human-cells"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed.",
-    "teachingSceneRefs": ["gh-jhs3-science-specialised-human-cells#scene-1","gh-jhs3-science-specialised-human-cells#scene-2","gh-jhs3-science-specialised-human-cells#scene-3"],
-    "assessmentQuestionRefs": ["gh-jhs3-science-specialised-human-cells#quiz-0","gh-jhs3-science-specialised-human-cells#quiz-1","gh-jhs3-science-specialised-human-cells#quiz-2","gh-jhs3-science-specialised-human-cells#quiz-3"]
+    "teachingSceneEvidence": "Learners create a structure-function comparison of nerve, red blood, muscle and sperm cells. Practical observations and model work still require educator review.",
+    "assessmentEvidence": "Expanded assessment includes application questions tied to the new learning activity; quiz performance does not certify practical competence or mastery.",
+    "teachingSceneRefs": ["gh-jhs3-science-specialised-human-cells#scene-1","gh-jhs3-science-specialised-human-cells#scene-2","gh-jhs3-science-specialised-human-cells#scene-3","gh-jhs3-science-specialised-human-cells#scene-4"],
+    "assessmentQuestionRefs": ["gh-jhs3-science-specialised-human-cells#quiz-0","gh-jhs3-science-specialised-human-cells#quiz-1","gh-jhs3-science-specialised-human-cells#quiz-2","gh-jhs3-science-specialised-human-cells#quiz-3","gh-jhs3-science-specialised-human-cells#quiz-5","gh-jhs3-science-specialised-human-cells#quiz-6","gh-jhs3-science-specialised-human-cells#quiz-7"]
   },
   {
     "indicatorCode": "B9.2.1.1.1",

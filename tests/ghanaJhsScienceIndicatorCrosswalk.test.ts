@@ -271,8 +271,8 @@ assert.equal(basic9MatterEvidence.size, 7, 'Basic 9 Diversity of Matter has seve
 for (const [code, expected] of Object.entries(expectedBasic9MatterEvidence)) {
   const item = basic9MatterEvidence.get(code);
   assert.ok(item, `${code} has a matter-strand evidence record`);
-  assert.deepEqual(item.teachingSceneRefs, expected.scenes, `${code} links to focused teaching scenes`);
-  assert.deepEqual(item.assessmentQuestionRefs, expected.questions, `${code} links to focused assessment questions`);
+  assert.ok(expected.scenes.every(ref => item.teachingSceneRefs.includes(ref)), `${code} retains its previously mapped teaching scenes`);
+  assert.ok(expected.questions.every(ref => item.assessmentQuestionRefs.includes(ref)), `${code} retains its previously mapped assessment questions`);
 }
 
 
@@ -470,3 +470,11 @@ assert.ok(basic8HumansEnvironment.every(item =>
   item.assessmentQuestionRefs.every(ref => /#quiz-[0-7]$/.test(ref))
 ), 'Every Basic 8 Strand 5 indicator must resolve to teaching and assessment evidence');
 assert.ok(basic8HumansEnvironment.every(item => item.status === 'needs-review'));
+
+const basic9MatterExpandedEvidence = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 9 && item.strand === 1);
+assert.equal(basic9MatterExpandedEvidence.length, 7);
+assert.ok(basic9MatterExpandedEvidence.every(item =>
+  item.status === 'needs-review' &&
+  item.teachingSceneRefs?.some(ref => ref.endsWith('#scene-4')) &&
+  item.assessmentQuestionRefs?.some(ref => /#quiz-[5-7]$/.test(ref))
+), 'Basic 9 Strand 1 indicators link to the added applied scene and expanded assessment');
