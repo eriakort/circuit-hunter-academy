@@ -8,6 +8,8 @@ import { CHEM9_BUILDERS } from '../src/data/chemVisualsG9';
 import { MATH9_BUILDERS } from '../src/data/mathVisualsG9';
 import { MATH10_BUILDERS } from '../src/data/mathVisualsG10';
 import { MATH11_BUILDERS } from '../src/data/mathVisualsG11';
+import { GHANA_MATH_VISUAL_KEYS, getGhanaMathVisual } from '../src/data/ghanaMathVisuals';
+import { MATH5_BUILDERS } from '../src/data/mathVisualsG5';
 import { MATH_ADV_VISUAL_KEYS } from '../src/data/mathAdvVisuals';
 
 /**
@@ -22,7 +24,8 @@ const groups: Array<[string, Record<string, unknown>]> = [
   ['chemistry grade 11', CHEM11_BUILDERS],
   ['maths grade 9', MATH9_BUILDERS],
   ['maths grade 10', MATH10_BUILDERS],
-  ['maths grade 11', MATH11_BUILDERS]
+  ['maths grade 11', MATH11_BUILDERS],
+  ['maths grade 5', MATH5_BUILDERS]
 ];
 let total = 0;
 for (const [name, builders] of groups) {
@@ -46,6 +49,15 @@ for (const [name, builders] of groups) {
     // The Italian version must not carry untouched English caption words.
     assert.ok(!/\b(the|and|with)\b/i.test(html.it.replace(/<[^>]+>/g, ' ')), `${key} (it) contains English words`);
   }
+}
+// Ghana strand motifs (English only): same readable style.
+for (const key of GHANA_MATH_VISUAL_KEYS) {
+  const out = getGhanaMathVisual(key)!;
+  assert.ok(out.includes('class="sv"') && /<animate/.test(out), `${key} uses the shared style and moves`);
+  assert.ok(!/undefined|(?<![A-Za-z])NaN(?![A-Za-z])/.test(out), `${key} has no undefined/NaN`);
+  const sizes = [...out.matchAll(/<text [^>]*font-size="(\d+(?:\.\d+)?)"/g)].map(m => Number(m[1]));
+  assert.ok(sizes.length >= 2 && Math.min(...sizes) >= 18, `${key} has text smaller than 18 units`);
+  total++;
 }
 // Every Chemistry key has exactly one redrawn builder (no leftover old drawings, no orphan builders).
 const chemBuilt = [...Object.keys(CHEM9_BUILDERS), ...Object.keys(CHEM10_BUILDERS), ...Object.keys(CHEM11_BUILDERS)].sort();

@@ -1,5 +1,6 @@
 import type { Language } from '../types';
 import { animateGrade5 } from './mathMotion';
+import { MATH5_BUILDERS } from './mathVisualsG5';
 
 /**
  * Visual aids for Grade 5 Mathematics lessons (tables of measures, number line,
@@ -14,7 +15,7 @@ const n = (value: string, lang: Language) => (lang === 'it' ? value.replace(/\./
 interface UnitCell { sym: string; name: Pair; value: string; kind: 'mul' | 'uni' | 'sub' }
 
 const measureTable = (caption: Pair, cells: UnitCell[], lang: Language, note?: Pair): string => {
-  const head = cells.map(c => `<th class="${c.kind}"><b>${c.sym}</b><small>${t(c.name, lang)}</small></th>`).join('');
+  const head = cells.map(c => `<th class="${c.kind}">${c.sym === '—' ? '' : `<b>${c.sym}</b>`}<small>${t(c.name, lang)}</small></th>`).join('');
   const body = cells.map(c => `<td>${n(c.value, lang)}</td>`).join('');
   const groups: Array<[UnitCell['kind'], Pair]> = [
     ['mul', ['Multiples', 'Multipli']],
@@ -186,6 +187,8 @@ const RENDERERS: Record<string, (lang: Language) => string> = {
 };
 
 export function getGrade5MathVisual(key: string, lang: Language): string | null {
+  const redrawn = MATH5_BUILDERS[key];
+  if (redrawn) return redrawn(lang);
   const render = RENDERERS[key];
   return render ? animateGrade5(key, render(lang)) : null;
 }

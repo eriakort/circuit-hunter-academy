@@ -5,7 +5,8 @@ import { ARCS, MISSIONS } from '../../src/data/gameData';
 const KEYS = [
   'math10Systems', 'math10Radicals', 'math10QuadraticDelta', 'math10Probability',
   'math11ParabolaCircle', 'math11UnitCircle', 'math11Irrational',
-  'g5m-place-value', 'g5m-bar-chart', 'g5m-percent-grid', 'g5m-venn', 'g5m-circle', 'g5m-solids'
+  'g5m-place-value', 'g5m-bar-chart', 'g5m-percent-grid', 'g5m-venn', 'g5m-circle', 'g5m-solids',
+  'g5m-number-line', 'g5m-fraction-bar', 'g5m-cartesian', 'g5m-angles', 'g5m-regular-polygon'
 ];
 
 function locate(key: string) {
