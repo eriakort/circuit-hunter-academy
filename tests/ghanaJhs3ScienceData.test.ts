@@ -21,8 +21,9 @@ for (const [unitTitle, expectedArcs, expectedMissions] of expected) {
   for (const mission of missions) {
     assert.equal(ARCS[mission.arc].subject, 'ghjhs3science');
     assert.equal(UNITS[ARCS[mission.arc].unit as number]?.subject, 'ghjhs3science');
-    assert.equal(mission.quiz.length, 5);
-    assert.equal(mission.scenes.length, 6);
+    const expandedMatter = unitTitle === 'Diversity of Matter';
+    assert.equal(mission.quiz.length, expandedMatter ? 8 : 5);
+    assert.equal(mission.scenes.length, expandedMatter ? 7 : 6);
     assert.ok(mission.quiz.every(question => typeof question.q === 'string' && typeof question.why === 'string' && question.a.length === 4));
   }
 }
