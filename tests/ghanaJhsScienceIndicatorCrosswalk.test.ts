@@ -419,8 +419,8 @@ const expectedBasic9SystemsEvidence: Record<string, { page: number; scenes: stri
   },
   'B9.3.4.1.3': {
     page: 143,
-    scenes: ['gh-jhs3-science-manure-composting#scene-0','gh-jhs3-science-manure-composting#scene-1','gh-jhs3-science-manure-composting#scene-2','gh-jhs3-science-manure-composting#scene-3'],
-    questions: ['gh-jhs3-science-manure-composting#quiz-0','gh-jhs3-science-manure-composting#quiz-1','gh-jhs3-science-manure-composting#quiz-2','gh-jhs3-science-manure-composting#quiz-3','gh-jhs3-science-manure-composting#quiz-4']
+    scenes: [0,1,2,3,4].map(n => `gh-jhs3-science-manure-composting#scene-${n}`),
+    questions: [0,1,2,3,4,5,6,7].map(n => `gh-jhs3-science-manure-composting#quiz-${n}`)
   }
 };
 for (const [code, expected] of Object.entries(expectedBasic9SystemsEvidence)) {
