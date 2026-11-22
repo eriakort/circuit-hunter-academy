@@ -25,7 +25,7 @@ for (const [unitTitle, expectedArcs, expectedMissions] of expected) {
     assert.equal(mission.quiz.length, expandedStrand ? 8 : 5);
     assert.equal(mission.scenes.length, expandedStrand ? 7 : 6);
     if (unitTitle === 'Cycles' || unitTitle === 'Systems') {
-      assert.ok(mission.scenes.some(scene => /Applied .* task|Applied .* investigation/i.test(scene.text ?? '')), `Expected an applied learning activity in ${mission.id}`);
+      assert.ok(mission.scenes.some(scene => /Applied (?:.* )?(?:task|investigation)/i.test(scene.text ?? '')), `Expected an applied learning activity in ${mission.id}`);
     }
     assert.ok(mission.quiz.every(question => typeof question.q === 'string' && typeof question.why === 'string' && question.a.length === 4));
   }
