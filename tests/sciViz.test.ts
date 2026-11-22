@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { getVisualHtml } from '../src/data/visuals';
 import { PHYS_VISUAL_BUILDERS } from '../src/data/physVisualsG9';
+import { CHEM10_BUILDERS } from '../src/data/chemVisualsG10';
+import { CHEM11_BUILDERS } from '../src/data/chemVisualsG11';
 import { CHEM9_BUILDERS } from '../src/data/chemVisualsG9';
 
 /**
@@ -10,7 +12,9 @@ import { CHEM9_BUILDERS } from '../src/data/chemVisualsG9';
  */
 const groups: Array<[string, Record<string, unknown>]> = [
   ['physics grade 9', PHYS_VISUAL_BUILDERS],
-  ['chemistry grade 9', CHEM9_BUILDERS]
+  ['chemistry grade 9', CHEM9_BUILDERS],
+  ['chemistry grade 10', CHEM10_BUILDERS],
+  ['chemistry grade 11', CHEM11_BUILDERS]
 ];
 let total = 0;
 for (const [name, builders] of groups) {
@@ -23,7 +27,7 @@ for (const [name, builders] of groups) {
       assert.ok(out.startsWith('<svg') && out.includes('class="sv"'), `${key} (${lang}) uses the shared diagram style`);
       assert.match(out, /role="img" aria-label="[^"]+"/, `${key} (${lang}) has an accessible name`);
       assert.ok(/<animate/.test(out), `${key} (${lang}) has real motion`);
-      assert.ok(!/undefined|NaN|\[object/.test(out), `${key} (${lang}) has no undefined/NaN`);
+      assert.ok(!/undefined|(?<![A-Za-z])NaN(?![A-Za-z])|\[object/.test(out), `${key} (${lang}) has no undefined/NaN`);
       const viewW = Number(/viewBox="0 0 (\d+) /.exec(out)![1]);
       assert.equal(viewW, 640, `${key} uses the 640-wide canvas`);
       const sizes = [...out.matchAll(/<text [^>]*font-size="(\d+(?:\.\d+)?)"/g)].map(m => Number(m[1]));

@@ -41,7 +41,7 @@ for (const key of KEYS) {
     await open(page, key);
     await page.waitForTimeout(600);
     const frames = new Set<string>();
-    for (let i = 0; i < 4; i++) { frames.add(await shot(page)); await page.waitForTimeout(900); }
+    for (let i = 0; i < 7; i++) { frames.add(await shot(page)); await page.waitForTimeout(1200); } // long enough to cross one slow cycle
     expect(frames.size, `${key} should change over time`).toBeGreaterThan(1);
   });
 

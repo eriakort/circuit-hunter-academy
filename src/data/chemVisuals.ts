@@ -1,8 +1,10 @@
 import type { Language } from '../types';
 import { CHEM9_BUILDERS } from './chemVisualsG9';
+import { CHEM10_BUILDERS } from './chemVisualsG10';
+import { CHEM11_BUILDERS } from './chemVisualsG11';
 
 /** Diagrams redrawn large and clear (see sciViz.ts); these take priority over the older drawings below. */
-const CHEM_REDRAWN: Record<string, (lang: Language) => string> = { ...CHEM9_BUILDERS };
+const CHEM_REDRAWN: Record<string, (lang: Language) => string> = { ...CHEM9_BUILDERS, ...CHEM10_BUILDERS, ...CHEM11_BUILDERS };
 
 export const CHEM_VISUAL_KEYS = [
   'chemStates',
