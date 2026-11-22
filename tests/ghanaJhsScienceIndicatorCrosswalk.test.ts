@@ -483,3 +483,16 @@ assert.ok(basic9MatterExpandedEvidence.every(item =>
   item.teachingSceneRefs?.some(ref => ref.endsWith('#scene-4')) &&
   item.assessmentQuestionRefs?.some(ref => /#quiz-[5-7]$/.test(ref))
 ), 'Basic 9 Strand 1 indicators link to the added applied scene and expanded assessment');
+
+
+const basic9Systems = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 9 && item.strand === 3);
+assert.deepEqual(basic9Systems.map(item => item.indicatorCode), [
+  'B9.3.1.1.1','B9.3.1.1.2','B9.3.2.1.1','B9.3.3.1.1','B9.3.4.1.1','B9.3.4.1.2','B9.3.4.1.3'
+]);
+assert.ok(basic9Systems.every(item => item.status === 'needs-review'));
+assert.ok(basic9Systems.every(item => item.teachingSceneRefs.includes(item.missionIds[0] + '#scene-4')),
+  'Each Basic 9 Systems indicator links to an applied learning scene');
+assert.ok(basic9Systems.every(item => item.assessmentQuestionRefs.some(ref => /#quiz-[5-7]$/.test(ref))),
+  'Each Basic 9 Systems indicator links to expanded assessment evidence');
+assert.ok(basic9Systems.every(item => item.teachingSceneRefs.every(ref => /^gh-jhs3-science-[a-z-]+#scene-[0-6]$/.test(ref))));
+assert.ok(basic9Systems.every(item => item.assessmentQuestionRefs.every(ref => /^gh-jhs3-science-[a-z-]+#quiz-[0-7]$/.test(ref))));
