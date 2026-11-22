@@ -431,7 +431,7 @@ for (const [code, expected] of Object.entries(expectedBasic9SystemsEvidence)) {
   assert.deepEqual(item.assessmentQuestionRefs, expected.questions, `${code} links to focused assessment questions`);
 }
 assert.match(basic9SystemsApplied.find(item => item.indicatorCode === 'B9.3.1.1.1')?.assessmentEvidence ?? '', /safe health reasoning/i);
-assert.match(basic9SystemsApplied.find(item => item.indicatorCode === 'B9.3.4.1.3')?.assessmentEvidence ?? '', /teacher-managed demonstration/i);
+assert.match(basic9SystemsApplied.find(item => item.indicatorCode === 'B9.3.4.1.3')?.assessmentEvidence ?? '', /safe decomposition/i);
 
 
 const basic8Cycles = GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE.filter(item => item.grade === 8 && item.strand === 2);
