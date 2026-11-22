@@ -14,7 +14,8 @@ for (const key of MATH_ADV_VISUAL_KEYS) {
     const html = getMathAdvVisual(key, lang) || '';
     assert.ok(html.trim().endsWith('</svg>'), `${key} (${lang}) is still a single SVG`);
     assert.ok(MOTION.test(html), `${key} (${lang}) has motion`);
-    assert.ok(html.includes('<g aria-hidden="true">'), `${key} (${lang}) hides decorative motion`);
+    // Redrawn diagrams (class "sv") expose one accessible name; older ones hide their decorative group.
+    assert.ok(html.includes('class="sv"') ? /role="img" aria-label="[^"]+"/.test(html) : html.includes('<g aria-hidden="true">'), `${key} (${lang}) is accessible`);
   }
 }
 for (const key of MATH_ADV_HAND_MOTION_KEYS) assert.ok(MATH_ADV_VISUAL_KEYS.includes(key as never), `${key} is not an advanced maths diagram`);

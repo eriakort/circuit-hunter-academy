@@ -1,5 +1,10 @@
 import type { Language } from '../types';
 import { animateMathAdv } from './mathMotion';
+import { MATH10_BUILDERS } from './mathVisualsG10';
+import { MATH11_BUILDERS } from './mathVisualsG11';
+
+/** Diagrams redrawn large and clear (see sciViz.ts), one file per grade. They take priority over the older drawings below. */
+const MATH_ADV_REDRAWN: Record<string, (lang: Language) => string> = { ...MATH10_BUILDERS, ...MATH11_BUILDERS };
 
 export const MATH_ADV_VISUAL_KEYS = [
   'math10Systems',
@@ -27,6 +32,8 @@ export type MathAdvVisualKey = typeof MATH_ADV_VISUAL_KEYS[number];
 const pick = (lang: Language, en: string, it: string) => (lang === 'it' ? it : en);
 
 export function getMathAdvVisual(key: string, lang: Language): string | null {
+  const redrawn = MATH_ADV_REDRAWN[key];
+  if (redrawn) return redrawn(lang);
   const html = getMathAdvStaticVisual(key, lang);
   return html ? animateMathAdv(key, html) : null;
 }

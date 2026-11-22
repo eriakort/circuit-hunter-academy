@@ -11,6 +11,7 @@ import { getMathAdvVisual } from "./mathAdvVisuals";
 import { animateVisual } from "./visualsMotion";
 
 import { PHYS_VISUAL_BUILDERS } from './physVisualsG9';
+import { MATH9_BUILDERS } from './mathVisualsG9';
 let currentLang: Language = "en";
 const L: any = (x: any) => origL(x, currentLang);
 const PILL = (en: string, it: string) => origPILL(en, it, currentLang);
@@ -1216,6 +1217,8 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
 
 // Physics diagrams redrawn in physVisualsG9.ts (same keys, so the lessons are unchanged).
 for (const [key, build] of Object.entries(PHYS_VISUAL_BUILDERS)) VIS[key] = () => build(currentLang);
+// Italian Grade 9 Maths diagrams redrawn in mathVisualsG9.ts.
+for (const [key, build] of Object.entries(MATH9_BUILDERS)) VIS[key] = () => build(currentLang);
 
 export function getVisualHtml(key: string, lang: Language): string {
   currentLang = lang;

@@ -5,9 +5,13 @@ import { PHYS_VISUAL_BUILDERS } from '../src/data/physVisualsG9';
 import { CHEM10_BUILDERS } from '../src/data/chemVisualsG10';
 import { CHEM11_BUILDERS } from '../src/data/chemVisualsG11';
 import { CHEM9_BUILDERS } from '../src/data/chemVisualsG9';
+import { MATH9_BUILDERS } from '../src/data/mathVisualsG9';
+import { MATH10_BUILDERS } from '../src/data/mathVisualsG10';
+import { MATH11_BUILDERS } from '../src/data/mathVisualsG11';
+import { MATH_ADV_VISUAL_KEYS } from '../src/data/mathAdvVisuals';
 
 /**
- * The redrawn Physics and Chemistry diagrams must stay readable and moving:
+ * The redrawn Physics, Chemistry and Maths diagrams must stay readable and moving:
  * large text (at least 18 units on a 640-wide canvas), short captions, real motion, accessible names,
  * both languages, and no leftovers like "undefined" or NaN.
  */
@@ -15,7 +19,10 @@ const groups: Array<[string, Record<string, unknown>]> = [
   ['physics grade 9', PHYS_VISUAL_BUILDERS],
   ['chemistry grade 9', CHEM9_BUILDERS],
   ['chemistry grade 10', CHEM10_BUILDERS],
-  ['chemistry grade 11', CHEM11_BUILDERS]
+  ['chemistry grade 11', CHEM11_BUILDERS],
+  ['maths grade 9', MATH9_BUILDERS],
+  ['maths grade 10', MATH10_BUILDERS],
+  ['maths grade 11', MATH11_BUILDERS]
 ];
 let total = 0;
 for (const [name, builders] of groups) {
@@ -43,4 +50,6 @@ for (const [name, builders] of groups) {
 // Every Chemistry key has exactly one redrawn builder (no leftover old drawings, no orphan builders).
 const chemBuilt = [...Object.keys(CHEM9_BUILDERS), ...Object.keys(CHEM10_BUILDERS), ...Object.keys(CHEM11_BUILDERS)].sort();
 assert.deepEqual(chemBuilt, [...CHEM_VISUAL_KEYS].sort(), 'chemistry builders match CHEM_VISUAL_KEYS one to one');
-console.log(`sciViz.test.ts ok! ${total} redrawn Physics/Chemistry diagrams: large text, motion, both languages.`);
+// Every advanced (grade 10 and 11) maths key has a redrawn builder.
+assert.deepEqual([...Object.keys(MATH10_BUILDERS), ...Object.keys(MATH11_BUILDERS)].sort(), [...MATH_ADV_VISUAL_KEYS].sort(), 'maths builders match MATH_ADV_VISUAL_KEYS one to one');
+console.log(`sciViz.test.ts ok! ${total} redrawn Physics/Chemistry/Maths diagrams: large text, motion, both languages.`);
