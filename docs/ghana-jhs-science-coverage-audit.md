@@ -187,3 +187,19 @@ Each mission now has eight assessment questions (40 across the strand). The cros
 All five missions retain their existing dedicated instructional visuals in the Science Motion registry. This increment adds teaching and assessment evidence; it does not alter mastery gates, progress logic or visual registration.
 
 Source: NaCCA, *Science Common Core Programme Curriculum for JHS1 (B7)–JHS3 (B9)*, September 2020, Basic 8 Strand 4, printed pp. 69–76 (PDF pages 110–117).
+
+
+## Basic 8 Humans and the Environment learning-evidence increment (2026-11-22)
+
+The six existing Basic 8 Strand 5 missions now include a sixth teaching scene with an applied task and eight assessment questions each (48 questions across the strand):
+
+- **Waste Management:** learners conduct a permission-based community waste survey, plan a supervised improvement activity and evaluate it against a baseline. Hazardous waste is handled only by trained adults.
+- **Human Health:** learners create a sourced comparison of communicable diseases, transmission, symptoms, effects and prevention. Health-centre data must be authorised and anonymous; the lesson explicitly avoids stigma and diagnosis by symptoms alone.
+- **Science and Industry:** learners build an innovation portfolio connecting science, technology and innovation to Ghana-relevant examples, checking source quality, access and environmental impacts.
+- **Climate Change and Green Economy:** learners compare long-term climate evidence across tropical regions, distinguish adaptation from mitigation and propose measurable community actions.
+- **Soils and Plants:** learners conduct a controlled comparison of labelled sandy, loamy and clayey soil samples, recording drainage and water retention with safe handling.
+- **Rocks and Soil Formation:** learners create a labelled rock-identification guide from teacher-provided samples or safe photographs and explain how weathering contributes to soil formation.
+
+The crosswalk now records official wording, printed source pages, candidate teaching-scene references and quiz-question references for all 11 Basic 8 Strand 5 indicators. All remain `needs-review`: automated checks confirm that candidate evidence links resolve, but do not certify practical performance, community projects or learner mastery.
+
+Source: NaCCA, *Science Common Core Programme Curriculum for JHS1 (B7)–JHS3 (B9)*, September 2020, Basic 8 Strand 5, printed pp. 77–85 (PDF pages 118–126).
