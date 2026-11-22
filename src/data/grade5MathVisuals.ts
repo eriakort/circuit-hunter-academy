@@ -86,9 +86,6 @@ const TIME: UnitCell[] = [
   { sym: '—', name: ['hundredth of a second', 'centesimo di secondo'], value: '0.01 s', kind: 'sub' }
 ];
 
-const svg = (viewBox: string, label: string, body: string) =>
-  `<svg viewBox="${viewBox}" class="dia" role="img" aria-label="${label}">${body}</svg>`;
-
 const RENDERERS: Record<string, (lang: Language) => string> = {
   'g5m-place-value': lang => {
     const heads: Array<[string, Pair]> = [
@@ -105,60 +102,7 @@ const RENDERERS: Record<string, (lang: Language) => string> = {
   'g5m-volume-table': lang => measureTable(['Measures of volume', 'Misure di volume'], VOLUME, lang, ['Each step is × 1 000 or ÷ 1 000. 1 dm³ = 1 l.', 'Ogni passo vale × 1 000 oppure : 1 000. 1 dm³ = 1 l.']),
   'g5m-time-table': lang => measureTable(['Measures of time', 'Misure di tempo'], TIME.map(c => ({ ...c, value: lang === 'it' ? c.value.replace('months', 'mesi') : c.value })), lang, ['1 century = 100 years · February has 28 or 29 days; other months 30 or 31.', '1 secolo = 100 anni · febbraio ha 28 o 29 giorni; gli altri mesi 30 o 31.']),
   'g5m-equivalences': lang => `<figure class="g5m-fig"><figcaption>${t(['Conversions (equivalences)', 'Le equivalenze'], lang)}</figcaption><div class="g5m-two"><div class="g5m-box sub"><b>${t(['To a BIGGER unit', 'A un’unità PIÙ GRANDE'], lang)}</b><p>${t(['Divide by 10, 100, 1 000 (one, two, three steps).', 'Dividi per 10, 100, 1 000 (una, due, tre posizioni).'], lang)}</p><p class="ex">9 500 cl ${lang === 'it' ? ':' : '÷'} 100 = 95 l</p></div><div class="g5m-box mul"><b>${t(['To a SMALLER unit', 'A un’unità PIÙ PICCOLA'], lang)}</b><p>${t(['Multiply by 10, 100, 1 000 (one, two, three steps).', 'Moltiplica per 10, 100, 1 000 (una, due, tre posizioni).'], lang)}</p><p class="ex">6 m × 100 = 600 cm</p></div></div></figure>`,
-  'g5m-number-line': lang => {
-    let ticks = '';
-    for (let v = -5; v <= 5; v++) {
-      const x = 40 + (v + 5) * 56;
-      const colour = v < 0 ? 'var(--data)' : v > 0 ? 'var(--ember)' : 'var(--text)';
-      ticks += `<line x1="${x}" y1="52" x2="${x}" y2="68" stroke="${colour}" stroke-width="2"/><text x="${x}" y="90" text-anchor="middle" style="fill:${colour}">${v > 0 ? '+' + v : v < 0 ? '−' + Math.abs(v) : '0'}</text>`;
-    }
-    return svg('0 0 640 120', t(['Number line from −5 to +5', 'Retta dei numeri da −5 a +5'], lang),
-      `<line x1="20" y1="60" x2="620" y2="60" stroke="var(--muted)" stroke-width="2"/><path d="M620 60 l-10 -6 v12 z" fill="var(--muted)"/>${ticks}<text x="40" y="30" class="sm">${t(['negative numbers', 'numeri negativi'], lang)}</text><text x="600" y="30" text-anchor="end" class="sm">${t(['positive numbers', 'numeri positivi'], lang)}</text>`);
-  },
-  'g5m-fraction-bar': lang => {
-    let parts = '';
-    for (let i = 0; i < 4; i++) parts += `<rect x="${60 + i * 130}" y="30" width="130" height="56" fill="${i < 3 ? 'var(--sakura)' : 'transparent'}" fill-opacity="${i < 3 ? 0.55 : 0}" stroke="var(--text)" stroke-width="2"/>`;
-    return svg('0 0 640 150', '3/4', `${parts}<text x="320" y="122" text-anchor="middle">${t(['3/4: the whole is split into 4 equal parts and 3 are taken', '3/4: l’intero è diviso in 4 parti uguali e se ne prendono 3'], lang)}</text>`);
-  },
-  'g5m-percent-grid': lang => {
-    let cells = '';
-    for (let r = 0; r < 10; r++) for (let c = 0; c < 10; c++) {
-      const filled = r * 10 + c < 25;
-      cells += `<rect x="${220 + c * 20}" y="${10 + r * 20}" width="18" height="18" rx="2" fill="${filled ? 'var(--gold)' : 'var(--panel2)'}" stroke="var(--line)"/>`;
-    }
-    return svg('0 0 640 220', '25%', `${cells}<text x="200" y="110" text-anchor="end">25% = 25/100 = 1/4</text><text x="440" y="110">${n('= 0.25', lang)}</text>`);
-  },
-  'g5m-venn': lang => svg('0 -20 640 240', t(['Venn diagram', 'Diagramma di Eulero-Venn'], lang),
-    `<ellipse cx="250" cy="110" rx="150" ry="90" fill="var(--data)" fill-opacity=".15" stroke="var(--data)" stroke-width="2"/><ellipse cx="390" cy="110" rx="150" ry="90" fill="var(--ember)" fill-opacity=".15" stroke="var(--ember)" stroke-width="2"/><text x="150" y="8" text-anchor="middle" class="lbl">A · ${t(['even', 'pari'], lang)}</text><text x="490" y="8" text-anchor="middle" class="lbl">B · &gt; 10</text><text x="180" y="115" text-anchor="middle">2  4  8</text><text x="320" y="115" text-anchor="middle">12  20</text><text x="460" y="115" text-anchor="middle">11  15</text><text x="320" y="145" text-anchor="middle" class="sm">${t(['intersection', 'intersezione'], lang)}</text><text x="600" y="200" text-anchor="end">7</text>`),
-  'g5m-bar-chart': lang => {
-    const data: Array<[Pair, number, string]> = [[['Football', 'Calcio'], 8, 'var(--data)'], [['Volleyball', 'Pallavolo'], 5, 'var(--ember)'], [['Swimming', 'Nuoto'], 6, 'var(--good)'], [['Dance', 'Danza'], 3, 'var(--sakura)']];
-    const bars = data.map(([label, v, col], i) => `<rect x="${120 + i * 120}" y="${190 - v * 18}" width="70" height="${v * 18}" fill="${col}" fill-opacity=".8"/><text x="${155 + i * 120}" y="${182 - v * 18}" text-anchor="middle">${v}</text><text x="${155 + i * 120}" y="210" text-anchor="middle" class="sm">${t(label, lang)}</text>`).join('');
-    return svg('0 0 640 220', t(['Bar chart of favourite sports', 'Istogramma degli sport preferiti'], lang), `<line x1="100" y1="190" x2="600" y2="190" stroke="var(--muted)"/><line x1="100" y1="20" x2="100" y2="190" stroke="var(--muted)"/><text x="90" y="30" text-anchor="end" class="sm">${t(['freq.', 'freq.'], lang)}</text>${bars}`);
-  },
   'g5m-trade': lang => `<figure class="g5m-fig"><figcaption>${t(['Buying and selling', 'La compravendita'], lang)}</figcaption><div class="g5m-two"><div class="g5m-box mul"><b>${t(['Profit', 'Guadagno'], lang)}</b><p>${t(['revenue − cost', 'ricavo − spesa'], lang)}</p></div><div class="g5m-box sub"><b>${t(['Loss', 'Perdita'], lang)}</b><p>${t(['cost − revenue', 'spesa − ricavo'], lang)}</p></div></div></figure>`,
-  'g5m-cartesian': lang => {
-    let grid = '';
-    for (let i = 0; i <= 8; i++) {
-      grid += `<line x1="${120 + i * 40}" y1="20" x2="${120 + i * 40}" y2="260" stroke="var(--line)" stroke-opacity=".6"/>`;
-      if (i <= 6) grid += `<line x1="120" y1="${260 - i * 40}" x2="440" y2="${260 - i * 40}" stroke="var(--line)" stroke-opacity=".6"/>`;
-      grid += `<text x="${120 + i * 40}" y="280" text-anchor="middle" class="sm">${i}</text>`;
-      if (i <= 6 && i > 0) grid += `<text x="108" y="${264 - i * 40}" text-anchor="end" class="sm">${i}</text>`;
-    }
-    const sep = lang === 'it' ? '; ' : ', ';
-    return svg('0 0 560 300', t(['Cartesian plane', 'Piano cartesiano'], lang),
-      `${grid}<line x1="120" y1="260" x2="460" y2="260" stroke="var(--text)" stroke-width="2"/><line x1="120" y1="260" x2="120" y2="10" stroke="var(--text)" stroke-width="2"/><text x="470" y="264">x</text><text x="120" y="8" text-anchor="middle">y</text><text x="104" y="284" class="sm">O</text><circle cx="240" cy="60" r="7" fill="var(--ember)"/><text x="252" y="54">A (3${sep}5)</text><line x1="240" y1="260" x2="240" y2="60" stroke="var(--ember)" stroke-dasharray="4 4"/><line x1="120" y1="60" x2="240" y2="60" stroke="var(--ember)" stroke-dasharray="4 4"/>`);
-  },
-  'g5m-angles': lang => {
-    const items: Array<[number, Pair]> = [[45, ['acute', 'acuto']], [90, ['right', 'retto']], [135, ['obtuse', 'ottuso']], [180, ['straight', 'piatto']]];
-    const drawn = items.map(([deg, label], i) => {
-      const cx = 80 + i * 150, cy = 130, r = 60;
-      const rad = (deg * Math.PI) / 180;
-      const x2 = cx + r * Math.cos(rad), y2 = cy - r * Math.sin(rad);
-      const ax = cx + 22 * Math.cos(rad), ay = cy - 22 * Math.sin(rad);
-      return `<line x1="${cx}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="var(--data)" stroke-width="3"/><line x1="${cx}" y1="${cy}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="var(--data)" stroke-width="3"/><path d="M${cx + 22} ${cy} A22 22 0 0 0 ${ax.toFixed(1)} ${ay.toFixed(1)}" fill="none" stroke="var(--gold)" stroke-width="2"/><text x="${cx}" y="${cy + 30}" text-anchor="middle">${deg}°</text><text x="${cx}" y="${cy + 50}" text-anchor="middle" class="sm">${t(label, lang)}</text>`;
-    }).join('');
-    return svg('0 0 640 200', t(['Kinds of angles', 'Tipi di angoli'], lang), drawn);
-  },
   'g5m-area-formulas': lang => {
     const rows: Array<[Pair, string, string]> = [
       [['Rectangle', 'Rettangolo'], '(b + h) × 2', 'b × h'],
@@ -173,17 +117,6 @@ const RENDERERS: Record<string, (lang: Language) => string> = {
     const fix = (s: string) => (lang === 'it' ? s.replace(/÷/g, ':') : s);
     return `<figure class="g5m-fig"><figcaption>${t(['Perimeter and area formulas', 'Formule di perimetro e area'], lang)}</figcaption><div class="g5m-scroll"><table class="g5m-table g5m-formulas"><thead><tr><th>${t(['Figure', 'Figura'], lang)}</th><th>${t(['Perimeter', 'Perimetro'], lang)}</th><th>${t(['Area', 'Area'], lang)}</th></tr></thead><tbody>${rows.map(([name, p, a]) => `<tr><td>${t(name, lang)}</td><td>${fix(p)}</td><td>${fix(a)}</td></tr>`).join('')}</tbody></table></div></figure>`;
   },
-  'g5m-regular-polygon': lang => {
-    const pts: string[] = [];
-    for (let i = 0; i < 6; i++) { const a = (Math.PI / 3) * i; pts.push(`${(320 + 90 * Math.cos(a)).toFixed(1)},${(110 + 90 * Math.sin(a)).toFixed(1)}`); }
-    const midX = 320 + 90 * Math.cos(Math.PI / 6) * Math.cos(Math.PI / 6) * 1, midY = 110 + 90 * Math.sin(Math.PI / 6) * Math.cos(Math.PI / 6);
-    return svg('0 0 640 220', t(['Regular hexagon with apothem', 'Esagono regolare con apotema'], lang),
-      `<polygon points="${pts.join(' ')}" fill="var(--data)" fill-opacity=".12" stroke="var(--data)" stroke-width="3"/><circle cx="320" cy="110" r="4" fill="var(--gold)"/><line x1="320" y1="110" x2="${midX.toFixed(1)}" y2="${midY.toFixed(1)}" stroke="var(--gold)" stroke-width="3"/><text x="470" y="60">a = ${t(['apothem', 'apotema'], lang)}</text><text x="470" y="90">a = l × ${n('0.866', lang)}</text><text x="470" y="120">A = P × a ${lang === 'it' ? ':' : '÷'} 2</text>`);
-  },
-  'g5m-circle': lang => svg('0 0 640 220', t(['Elements of the circle', 'Elementi del cerchio'], lang),
-    `<circle cx="220" cy="110" r="90" fill="var(--good)" fill-opacity=".12" stroke="var(--good)" stroke-width="3"/><circle cx="220" cy="110" r="4" fill="var(--text)"/><line x1="130" y1="110" x2="310" y2="110" stroke="var(--ember)" stroke-width="3"/><line x1="220" y1="110" x2="${(220 + 90 * Math.cos(-Math.PI / 3)).toFixed(1)}" y2="${(110 + 90 * Math.sin(-Math.PI / 3)).toFixed(1)}" stroke="var(--data)" stroke-width="3"/><line x1="${(220 + 90 * Math.cos(2.4)).toFixed(1)}" y1="${(110 + 90 * Math.sin(2.4)).toFixed(1)}" x2="${(220 + 90 * Math.cos(0.9)).toFixed(1)}" y2="${(110 + 90 * Math.sin(0.9)).toFixed(1)}" stroke="var(--gold)" stroke-width="2"/><text x="360" y="60" style="fill:var(--data)">r = ${t(['radius', 'raggio'], lang)}</text><text x="360" y="95" style="fill:var(--ember)">d = ${t(['diameter', 'diametro'], lang)} = r × 2</text><text x="360" y="130" style="fill:var(--gold)">${t(['chord', 'corda'], lang)}</text><text x="360" y="165">C = d × π   ·   A = r × r × π</text>`),
-  'g5m-solids': lang => svg('0 0 640 200', t(['Cube, cylinder and cone', 'Cubo, cilindro e cono'], lang),
-    `<g stroke="var(--data)" stroke-width="2.5" fill="var(--data)" fill-opacity=".1"><rect x="60" y="70" width="90" height="90"/><polygon points="60,70 95,40 185,40 150,70"/><polygon points="150,70 185,40 185,130 150,160"/></g><g stroke="var(--ember)" stroke-width="2.5" fill="var(--ember)" fill-opacity=".1"><ellipse cx="320" cy="50" rx="50" ry="14"/><path d="M270 50 V150 A50 14 0 0 0 370 150 V50"/></g><g stroke="var(--good)" stroke-width="2.5" fill="var(--good)" fill-opacity=".1"><path d="M500 30 L450 150 A50 14 0 0 0 550 150 Z"/></g><text x="120" y="190" text-anchor="middle" class="sm">${t(['cube (polyhedron)', 'cubo (poliedro)'], lang)}</text><text x="320" y="190" text-anchor="middle" class="sm">${t(['cylinder', 'cilindro'], lang)}</text><text x="500" y="190" text-anchor="middle" class="sm">${t(['cone', 'cono'], lang)}</text>`)
 };
 
 export function getGrade5MathVisual(key: string, lang: Language): string | null {
@@ -193,4 +126,4 @@ export function getGrade5MathVisual(key: string, lang: Language): string | null 
   return render ? animateGrade5(key, render(lang)) : null;
 }
 
-export const GRADE5_MATH_VISUAL_KEYS = Object.keys(RENDERERS);
+export const GRADE5_MATH_VISUAL_KEYS = [...Object.keys(RENDERERS), ...Object.keys(MATH5_BUILDERS)];

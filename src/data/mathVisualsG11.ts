@@ -1,5 +1,5 @@
 import type { Language } from '../types';
-import { C, T, anim, move, frame, pick, showDuring, card } from './sciViz';
+import { C, T, move, frame, pick, showDuring, card } from './sciViz';
 
 /**
  * Italian Grade 11 Maths diagrams, redrawn large with motion that shows the idea. Keys are unchanged
