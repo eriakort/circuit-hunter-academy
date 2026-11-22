@@ -233,3 +233,18 @@ The crosswalk now links all 11 Basic 9 Strand 2 indicator records to the applied
 
 Source: NaCCA, *Science Common Core Programme Curriculum for JHS1 (B7)–JHS3 (B9)*, September 2020, Basic 9 Strand 2, printed pp. 97–100.
 
+
+
+## Basic 9 Systems applied-learning increment (2026-11-22)
+
+The five existing Basic 9 Systems missions now include an additional applied learning scene and eight assessment questions each (40 questions across the strand):
+
+- **Circulation and Respiration:** learners use a heart diagram and labelled cards to trace blood flow, classify blood components and compare fictional health profiles. The task does not ask learners to diagnose illness or measure blood pressure without a trained adult.
+- **Asteroids and Comets:** learners compare asteroid and comet orbit models, record how comet activity changes near the Sun and show the tail directed away from the Sun. Models are labelled not to scale; unsafe solar viewing is excluded.
+- **Ecosystem Balance:** learners create a safe school-ground or photograph-based field record, construct a food web and write a sourced prediction about ecosystem disturbance without collecting or disturbing wildlife.
+- **Manure Materials:** learners classify suitable plant residues and properly treated animal manure using picture cards or sealed samples and compare their contribution to soil needs. Raw manure and hazardous waste are excluded.
+- **Compost Preparation:** learners sequence sorting, layering, moisture control, aeration, turning and curing using a teacher-managed demonstration or photographs. Learners do not handle fresh manure or unfinished compost.
+
+The crosswalk now links all seven Basic 9 Strand 3 indicator records to focused teaching scenes and assessment questions. All remain `needs-review`: automated checks verify that candidate evidence references resolve, but do not certify classroom delivery, practical performance or learner mastery. Mission gates and progression logic are unchanged.
+
+Source: NaCCA, *Science Common Core Programme Curriculum for JHS1 (B7)–JHS3 (B9)*, September 2020, Basic 9 Strand 3, printed pp. 139–143.

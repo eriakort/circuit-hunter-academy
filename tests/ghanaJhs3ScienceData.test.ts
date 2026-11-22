@@ -21,11 +21,11 @@ for (const [unitTitle, expectedArcs, expectedMissions] of expected) {
   for (const mission of missions) {
     assert.equal(ARCS[mission.arc].subject, 'ghjhs3science');
     assert.equal(UNITS[ARCS[mission.arc].unit as number]?.subject, 'ghjhs3science');
-    const expandedStrand = unitTitle === 'Diversity of Matter' || unitTitle === 'Cycles';
+    const expandedStrand = unitTitle === 'Diversity of Matter' || unitTitle === 'Cycles' || unitTitle === 'Systems';
     assert.equal(mission.quiz.length, expandedStrand ? 8 : 5);
     assert.equal(mission.scenes.length, expandedStrand ? 7 : 6);
-    if (unitTitle === 'Cycles') {
-      assert.ok(mission.scenes.some(scene => /Applied .* task|Applied .* investigation/i.test(scene.text ?? '')), `Expected an applied learning activity in ${mission.id}`);
+    if (unitTitle === 'Cycles' || unitTitle === 'Systems') {
+      assert.ok(mission.scenes.some(scene => /Applied (?:.* )?(?:task|investigation)/i.test(scene.text ?? '')), `Expected an applied learning activity in ${mission.id}`);
     }
     assert.ok(mission.quiz.every(question => typeof question.q === 'string' && typeof question.why === 'string' && question.a.length === 4));
   }
