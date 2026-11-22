@@ -1,4 +1,8 @@
 import type { Language } from '../types';
+import { CHEM9_BUILDERS } from './chemVisualsG9';
+
+/** Diagrams redrawn large and clear (see sciViz.ts); these take priority over the older drawings below. */
+const CHEM_REDRAWN: Record<string, (lang: Language) => string> = { ...CHEM9_BUILDERS };
 
 export const CHEM_VISUAL_KEYS = [
   'chemStates',
@@ -44,6 +48,8 @@ export type ChemVisualKey = typeof CHEM_VISUAL_KEYS[number];
 const pick = (lang: Language, en: string, it: string) => (lang === 'it' ? it : en);
 
 export function getChemVisual(key: string, lang: Language): string | null {
+  const redrawn = CHEM_REDRAWN[key];
+  if (redrawn) return redrawn(lang);
   switch (key) {
     case 'chemStates':
       return `<svg viewBox="0 0 640 215" class="dia" width="100%" aria-hidden="true">
