@@ -74,7 +74,7 @@ assert.match(lessonText(conservation), /school energy audit/);
 assert.match(lessonText(conservation), /evidence poster/);
 assert.match(lessonText(conservation), /scientific principle/);
 assert.match(questionText(conservation), /school/);
-assert.match(questionText(conservation), /scientific principle/);
+assert.match(questionText(conservation), /conservation of energy principle/);
 
 const magnetism = 'gh-jhs2-science-magnetism-force-machines';
 for (const concept of ['iron nail', 'electromagnet', 'compass', 'Newton’s Second Law', 'F = m × a', 'complex machine', 'wheelbarrow', 'bicycle']) {
