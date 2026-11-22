@@ -203,3 +203,18 @@ The six existing Basic 8 Strand 5 missions now include a sixth teaching scene wi
 The crosswalk now records official wording, printed source pages, candidate teaching-scene references and quiz-question references for all 11 Basic 8 Strand 5 indicators. All remain `needs-review`: automated checks confirm that candidate evidence links resolve, but do not certify practical performance, community projects or learner mastery.
 
 Source: NaCCA, *Science Common Core Programme Curriculum for JHS1 (B7)–JHS3 (B9)*, September 2020, Basic 8 Strand 5, printed pp. 77–85 (PDF pages 118–126).
+
+
+## Basic 9 Diversity of Matter learning-evidence increment (2026-11-22)
+
+The five existing Basic 9 Strand 1 missions now include a fifth teaching scene with an applied model-building or observation task and eight assessment questions each (40 questions across the strand):
+
+- **Binary Compounds:** learners build particle models with element-symbol cards and counters, write formulae, and distinguish molecular compounds from ionic lattices.
+- **Acids, Bases and Salts:** learners conduct a supervised indicator and pH investigation with labelled low-risk samples, recording evidence and following chemical-safety procedures.
+- **Chemical Bonding:** learners compare ionic electron transfer, covalent electron sharing and metallic delocalised-electron models, including model limitations.
+- **Specialised Plant Cells:** learners observe or interpret prepared slides and micrographs, linking epidermal, guard, xylem and cambium structures to their functions.
+- **Specialised Human Cells:** learners compare nerve, red blood, muscle and sperm cells through structure-to-function diagrams using respectful scientific language.
+
+The seven Basic 9 Strand 1 indicators now include references to the added applied scene and expanded assessment questions. All remain `needs-review`; activities require teacher supervision and observation, and automated checks do not certify practical performance or mastery.
+
+Source: NaCCA, *Science Common Core Programme Curriculum for JHS1 (B7)–JHS3 (B9)*, September 2020, Basic 9 Strand 1.
