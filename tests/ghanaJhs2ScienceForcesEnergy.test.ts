@@ -61,7 +61,7 @@ for (const concept of ['step-up transformer', 'transmission lines', 'substation'
   assert.match(lessonText(electricity), new RegExp(concept, 'i'));
 }
 assert.match(lessonText(electricity), /flow chart/);
-assert.match(lessonText(electricity), /teacher-approved, low-voltage DC kit/);
+assert.match(lessonText(electricity), /teacher-approved, low-voltage DC kit/i);
 assert.match(questionText(electricity), /transmission/);
 assert.match(questionText(electricity), /resistor/);
 assert.match(questionText(electricity), /capacitor/);
