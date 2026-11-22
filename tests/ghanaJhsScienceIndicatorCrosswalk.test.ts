@@ -197,16 +197,16 @@ assert.ok(basic9FinalGaps.every(item => item.missionIds.length === 1));
 const basic9EvidenceByCode = new Map(basic9FinalGaps.map(item => [item.indicatorCode, item]));
 const expectedBasic9Evidence: Record<string, { scenes: string[]; questions: string[] }> = {
   'B9.2.3.2.1': {
-    scenes: ['gh-jhs3-science-crop-maturity#scene-1', 'gh-jhs3-science-crop-maturity#scene-2'],
-    questions: ['gh-jhs3-science-crop-maturity#quiz-1', 'gh-jhs3-science-crop-maturity#quiz-2', 'gh-jhs3-science-crop-maturity#quiz-3']
+    scenes: ['gh-jhs3-science-crop-maturity#scene-1', 'gh-jhs3-science-crop-maturity#scene-2', 'gh-jhs3-science-crop-maturity#scene-4'],
+    questions: ['gh-jhs3-science-crop-maturity#quiz-1', 'gh-jhs3-science-crop-maturity#quiz-2', 'gh-jhs3-science-crop-maturity#quiz-3', 'gh-jhs3-science-crop-maturity#quiz-5', 'gh-jhs3-science-crop-maturity#quiz-6', 'gh-jhs3-science-crop-maturity#quiz-7']
   },
   'B9.2.4.2.2': {
-    scenes: ['gh-jhs3-science-animal-feed-selection#scene-2', 'gh-jhs3-science-animal-feed-selection#scene-3'],
-    questions: ['gh-jhs3-science-animal-feed-selection#quiz-3', 'gh-jhs3-science-animal-feed-selection#quiz-4']
+    scenes: ['gh-jhs3-science-animal-feed-selection#scene-2', 'gh-jhs3-science-animal-feed-selection#scene-3', 'gh-jhs3-science-animal-feed-selection#scene-4'],
+    questions: ['gh-jhs3-science-animal-feed-selection#quiz-3', 'gh-jhs3-science-animal-feed-selection#quiz-4', 'gh-jhs3-science-animal-feed-selection#quiz-5', 'gh-jhs3-science-animal-feed-selection#quiz-6', 'gh-jhs3-science-animal-feed-selection#quiz-7']
   },
   'B9.2.4.2.3': {
-    scenes: ['gh-jhs3-science-animal-feed-selection#scene-3'],
-    questions: ['gh-jhs3-science-animal-feed-selection#quiz-4']
+    scenes: ['gh-jhs3-science-animal-feed-selection#scene-3', 'gh-jhs3-science-animal-feed-selection#scene-4'],
+    questions: ['gh-jhs3-science-animal-feed-selection#quiz-4', 'gh-jhs3-science-animal-feed-selection#quiz-5', 'gh-jhs3-science-animal-feed-selection#quiz-6', 'gh-jhs3-science-animal-feed-selection#quiz-7']
   },
   'B9.4.1.2.2': {
     scenes: ['gh-jhs3-science-energy-light#scene-3'],
@@ -285,7 +285,12 @@ assert.deepEqual(basic9Cycles.map(item => item.indicatorCode), [
 assert.ok(basic9Cycles.every(item => item.status === 'needs-review'));
 assert.ok(basic9Cycles.every(item => item.teachingSceneRefs?.length && item.assessmentQuestionRefs?.length));
 assert.deepEqual(basic9Cycles.find(item => item.indicatorCode === 'B9.2.4.2.3')?.assessmentQuestionRefs,
-  ['gh-jhs3-science-animal-feed-selection#quiz-4']);
+  ['gh-jhs3-science-animal-feed-selection#quiz-4','gh-jhs3-science-animal-feed-selection#quiz-5','gh-jhs3-science-animal-feed-selection#quiz-6','gh-jhs3-science-animal-feed-selection#quiz-7']);
+assert.ok(basic9Cycles.every(item =>
+  item.teachingSceneRefs.some(ref => ref.endsWith('#scene-4')) &&
+  item.assessmentQuestionRefs.some(ref => /#quiz-[5-7]$/.test(ref))
+), 'All Basic 9 Cycles indicators link to an applied scene and expanded assessment');
+assert.ok(basic9Cycles.every(item => item.teachingSceneRefs.every(ref => /#scene-[0-4]$/.test(ref)) && item.assessmentQuestionRefs.every(ref => /#quiz-[0-7]$/.test(ref))));
 assert.match(basic9Cycles.find(item => item.indicatorCode === 'B9.2.3.2.1')?.teachingSceneEvidence ?? '', /harvesting crops for different intended uses/i);
 
 

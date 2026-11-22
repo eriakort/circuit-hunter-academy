@@ -218,3 +218,18 @@ The five existing Basic 9 Strand 1 missions now include a fifth teaching scene w
 The seven Basic 9 Strand 1 indicators now include references to the added applied scene and expanded assessment questions. All remain `needs-review`; activities require teacher supervision and observation, and automated checks do not certify practical performance or mastery.
 
 Source: NaCCA, *Science Common Core Programme Curriculum for JHS1 (B7)–JHS3 (B9)*, September 2020, Basic 9 Strand 1.
+
+## Basic 9 Cycles applied-learning increment (2026-11-22)
+
+The five existing Basic 9 Cycles missions now include an additional applied learning scene and eight assessment questions each (40 questions across the strand):
+
+- **Nitrogen Cycle:** learners compare teacher-prepared soil evidence or root-nodule photographs, explain nitrogen-fixing legume associations and propose a crop-rotation plan. Unknown cultures and soil tasting are excluded.
+- **Grasshopper Life Cycle:** learners build a labelled egg–nymph–adult sequence and create a crop-monitoring record using approved images or observations without disturbing organisms or applying pesticides.
+- **Crop Maturity:** learners create a maturity-and-use matrix for maize, leafy vegetables and beans, recording harvest signs, intended use and storage considerations.
+- **Animal Feed Preparation:** learners classify energy, protein, fibre and mineral ingredients and create a safe feed-preparation flow chart. Real rations require qualified adult review.
+- **Animal Feed Selection:** learners compare animal profiles and use verified feed information to justify stage-appropriate ration choices, water needs and safe responses.
+
+The crosswalk now links all 11 Basic 9 Strand 2 indicator records to the applied scene and expanded quiz evidence. All indicators remain `needs-review`; practical observation, local agricultural guidance and educator review are still required. The changes do not alter mastery gates or progression logic.
+
+Source: NaCCA, *Science Common Core Programme Curriculum for JHS1 (B7)–JHS3 (B9)*, September 2020, Basic 9 Strand 2, printed pp. 97–100.
+

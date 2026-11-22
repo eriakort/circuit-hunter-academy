@@ -63,3 +63,8 @@ This increment reviews all 13 unique Basic 8 Strand 4 indicator statements again
 - Agricultural Tools: p. 76.
 
 All 13 mappings remain `needs-review`. The added references identify candidate instructional and assessment evidence, not verified mastery. Multiple-choice questions cannot demonstrate practical performance; teacher observation is still required for circuit work, magnet-making, the trolley investigation and agricultural-tool use. The evidence test also verifies that each scene/question reference resolves to an existing mission item.
+
+### Basic 9 Cycles — Strand 2 applied evidence increment (2026-11-22)
+
+The five Basic 9 Cycles missions now include an additional applied learning scene and eight assessment questions each. All 11 indicator records in Strand 2 link to focused teaching scenes and quiz questions, including the new applied activities for nitrogen-cycle soil evidence, grasshopper life-cycle and crop monitoring, crop maturity and use, feed preparation, and stage-specific animal feed selection. All mappings remain `needs-review`; automated checks establish reference integrity, not classroom delivery or practical mastery. See the coverage audit for the activity descriptions and safety boundaries.
+
