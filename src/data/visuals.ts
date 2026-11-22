@@ -12,6 +12,7 @@ import { animateVisual } from "./visualsMotion";
 
 import { PHYS_VISUAL_BUILDERS } from './physVisualsG9';
 import { MATH9_BUILDERS } from './mathVisualsG9';
+import { getGhanaComputingVisual } from './ghanaComputingVisuals';
 let currentLang: Language = "en";
 const L: any = (x: any) => origL(x, currentLang);
 const PILL = (en: string, it: string) => origPILL(en, it, currentLang);
@@ -895,6 +896,8 @@ export function getVisualHtml(key: string, lang: Language): string {
   if (histGeoVisual !== null) return histGeoVisual;
   const mathAdvVisual = getMathAdvVisual(key, lang);
   if (mathAdvVisual !== null) return mathAdvVisual;
+  const ghanaComputing = getGhanaComputingVisual(key);
+  if (ghanaComputing !== null) return ghanaComputing;
   const ghanaMath = getGhanaMathVisual(key);
   if (ghanaMath !== null) return ghanaMath;
   const italianQuinta = getItalianQuintaVisual(key, lang);

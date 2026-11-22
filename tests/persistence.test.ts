@@ -330,7 +330,7 @@ assert.equal(legacyAlternateReview?.questionVariantIndexes, undefined, 'legacy a
 
 const ghanaSubjectState = sanitizeGameState({ grade: 'ghshs1', subject: 'ghcoremath' }, 'ghana-nacca');
 assert.ok(!GRADE_SUBJECT_IDS.ghshs1.includes('ghcoremath'), 'Ghana subjects stay outside the Italy Grade 9 catalogue');
-assert.deepEqual(getCurriculumSubjects('ghshs1', 'ghana-nacca').map(subject => subject.id), ['ghcoremath'], 'Ghana Core Mathematics is available in the Ghana SS1 pathway');
+assert.deepEqual(getCurriculumSubjects('ghshs1', 'ghana-nacca').map(subject => subject.id), ['ghcoremath', 'ghcomputing'], 'Ghana Core Mathematics and Computing are available in the Ghana SS1 pathway');
 assert.equal(ghanaSubjectState.subject, 'ghcoremath', 'Ghana Core Mathematics survives save sanitization under its own curriculum');
 assert.notEqual(sanitizeGameState({ grade: 'ghshs1', subject: 'ghcoremath' }, 'italy-national').subject, 'ghcoremath', 'the Italian save namespace rejects Ghana-only subjects');
 const ghanaMission = MISSIONS.find(mission => mission.id === 'gh-core-ss1-statistical-investigation-mastery');

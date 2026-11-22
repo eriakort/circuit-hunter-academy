@@ -85,7 +85,7 @@ export const MATH5_BUILDERS: Record<string, Builder> = {
       const x = 130 + i * 118;
       const h = v * 20;
       return `<rect x="${x}" y="${250 - h}" width="80" height="${h}" rx="6" fill="${col}" fill-opacity="0.85"/>${T(x + 40, 234 - h, String(v), { size: 26, weight: 800 })}${T(x + 40, 284, p(en, it), { size: 20, fill: C.muted })}
-        <rect x="${x - 4}" y="${246 - h}" width="88" height="${h + 8}" rx="8" fill="none" stroke="${C.text}" stroke-width="4" opacity="0">${anim('opacity', '0;1;1;0;0', 8, 0, `keyTimes="0;${(0.04 + i * 0.2).toFixed(2)};${(0.18 + i * 0.2).toFixed(2)};${(0.22 + i * 0.2).toFixed(2)};1"`)}</rect>`;
+        <rect x="${x - 4}" y="${246 - h}" width="88" height="${h + 8}" rx="8" fill="none" stroke="${C.text}" stroke-width="4" opacity="0">${anim('opacity', '0;0;1;1;0;0', 8, 0, `keyTimes="0;${(0.04 + i * 0.2).toFixed(2)};${(0.06 + i * 0.2).toFixed(2)};${(0.18 + i * 0.2).toFixed(2)};${(0.22 + i * 0.2).toFixed(2)};1"`)}</rect>`;
     }).join('');
     return frame(p('Bar chart of favourite sports', 'Istogramma degli sport preferiti'),
       `${T(110, 34, p('children', 'bambini'), { size: 22, fill: C.muted, anchor: 'start', weight: 800 })}${grid}<line x1="110" y1="48" x2="110" y2="250" stroke="${C.muted}" stroke-width="4"/>${bars}`,

@@ -49,7 +49,7 @@ const geometryMotif = () => {
 const dataMotif = () => {
   const hs = [56, 88, 40, 104, 72];
   const bars = hs.map((h, i) => `<rect x="${50 + i * 64}" y="${190 - h}" width="48" height="${h}" rx="6" fill="${i % 2 ? C.ember : C.good}" fill-opacity="0.85"/>
-    <rect x="${46 + i * 64}" y="${186 - h}" width="56" height="${h + 8}" rx="8" fill="none" stroke="${C.text}" stroke-width="4" opacity="0">${anim('opacity', '0;1;1;0;0', 7, 0, `keyTimes="0;${(0.03 + i * 0.16).toFixed(2)};${(0.14 + i * 0.16).toFixed(2)};${(0.18 + i * 0.16).toFixed(2)};1"`)}</rect>`).join('');
+    <rect x="${46 + i * 64}" y="${186 - h}" width="56" height="${h + 8}" rx="8" fill="none" stroke="${C.text}" stroke-width="4" opacity="0">${anim('opacity', '0;0;1;1;0;0', 7, 0, `keyTimes="0;${(0.03 + i * 0.16).toFixed(2)};${(0.05 + i * 0.16).toFixed(2)};${(0.14 + i * 0.16).toFixed(2)};${(0.18 + i * 0.16).toFixed(2)};1"`)}</rect>`).join('');
   const cx = 500, cy = 112, r = 66;
   return frame('Data and chance',
     `<line x1="36" y1="190" x2="372" y2="190" stroke="${C.muted}" stroke-width="5" stroke-linecap="round"/>${bars}

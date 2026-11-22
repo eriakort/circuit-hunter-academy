@@ -13,6 +13,7 @@ export type CurriculumPathwayId =
   | 'ghana-additional-mathematics'
   | 'ghana-jhs-mathematics'
   | 'ghana-jhs-science'
+  | 'ghana-computing'
   | 'ghana-jhs-computing'
   | 'ghana-shs-general-science';
 
@@ -138,6 +139,7 @@ export const COUNTRIES: readonly CountryDefinition[] = [
           },
           { id: 'ghana-jhs-mathematics', name: 'JHS Mathematics', description: 'NaCCA Common Core Programme Mathematics for JHS 1–3: all four strands in each year.', status: 'available', subjectIdsByGrade: { ghjhs1: ['ghjhs1math'], ghjhs2: ['ghjhs2math'], ghjhs3: ['ghjhs3math'] } },
           { id: 'ghana-jhs-science', name: 'JHS Science', description: 'NaCCA Common Core Programme Science for JHS 1–3: all five strands in each year.', status: 'available', subjectIdsByGrade: { ghjhs1: ['ghjhs1science'], ghjhs2: ['ghjhs2science'], ghjhs3: ['ghjhs3science'] } },
+          { id: 'ghana-computing', name: 'Computing', description: 'NaCCA Computing for SHS 1–3. SHS 1 is available; SHS 2 and SHS 3 are being prepared.', status: 'available', subjectIdsByGrade: { ghshs1: ['ghcomputing'] } },
           { id: 'ghana-jhs-computing', name: 'JHS Computing', description: 'Provisional JHS 1 Computing pilot. The authoritative JHS Computing CCP source remains to be verified.', status: 'available', subjectIdsByGrade: { ghjhs1: ['ghjhs1computing'] } },
           { id: 'ghana-shs-general-science', name: 'SHS General Science', description: 'NaCCA General Science for SHS 1–3.', status: 'planned' },
           {

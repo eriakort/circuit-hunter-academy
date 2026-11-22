@@ -10,6 +10,7 @@ import { MATH10_BUILDERS } from '../src/data/mathVisualsG10';
 import { MATH11_BUILDERS } from '../src/data/mathVisualsG11';
 import { GHANA_MATH_VISUAL_KEYS, getGhanaMathVisual } from '../src/data/ghanaMathVisuals';
 import { MATH5_BUILDERS } from '../src/data/mathVisualsG5';
+import { GHANA_COMPUTING_VISUAL_KEYS, getGhanaComputingVisual } from '../src/data/ghanaComputingVisuals';
 import { MATH_ADV_VISUAL_KEYS } from '../src/data/mathAdvVisuals';
 
 /**
@@ -51,8 +52,10 @@ for (const [name, builders] of groups) {
   }
 }
 // Ghana strand motifs (English only): same readable style.
-for (const key of GHANA_MATH_VISUAL_KEYS) {
-  const out = getGhanaMathVisual(key)!;
+for (const key of [...GHANA_MATH_VISUAL_KEYS, ...GHANA_COMPUTING_VISUAL_KEYS]) {
+  const out = (getGhanaMathVisual(key) ?? getGhanaComputingVisual(key))!;
+  assert.ok(out && out.includes('role="img"'), `${key} has an accessible name`);
+  assert.ok(getVisualHtml(key, 'en') === out, `${key} is reachable through getVisualHtml`);
   assert.ok(out.includes('class="sv"') && /<animate/.test(out), `${key} uses the shared style and moves`);
   assert.ok(!/undefined|(?<![A-Za-z])NaN(?![A-Za-z])/.test(out), `${key} has no undefined/NaN`);
   const sizes = [...out.matchAll(/<text [^>]*font-size="(\d+(?:\.\d+)?)"/g)].map(m => Number(m[1]));

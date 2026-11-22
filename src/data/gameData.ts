@@ -29614,5 +29614,14 @@ import { GHANA_JHS3_SCIENCE_SUBJECT } from './ghanaJhs3ScienceData';
   if (!SUBJECTS.some(item => item.id === subject.id)) SUBJECTS.push(subject);
 });
 
+// Ghana NaCCA · SHS 1 Computing. Separate subject and progress namespace; appended so existing indices stay stable.
+import { GHANA_COMPUTING_SS1_SUBJECT, GHANA_COMPUTING_SS1_UNITS, GHANA_COMPUTING_SS1_ARCS, GHANA_COMPUTING_SS1_MISSIONS } from './ghanaComputingSS1Data';
+if (!SUBJECTS.some(subject => subject.id === 'ghcomputing')) SUBJECTS.push(GHANA_COMPUTING_SS1_SUBJECT);
+const ghanaComputingUnitOffset = UNITS.length;
+GHANA_COMPUTING_SS1_UNITS.forEach(unit => UNITS.push({ ...unit, subject: 'ghcomputing' }));
+const ghanaComputingArcOffset = ARCS.length;
+GHANA_COMPUTING_SS1_ARCS.forEach(arc => ARCS.push({ ...arc, unit: ghanaComputingUnitOffset + (arc.unit ?? 0), subject: 'ghcomputing' }));
+MISSIONS.push(...GHANA_COMPUTING_SS1_MISSIONS.map(mission => ({ ...mission, arc: ghanaComputingArcOffset + mission.arc })));
+
 import { addSubjectGameScenes } from './subjectGameScenes';
 addSubjectGameScenes(MISSIONS);
