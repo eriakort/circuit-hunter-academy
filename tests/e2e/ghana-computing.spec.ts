@@ -69,7 +69,24 @@ test('Ghana SHS 2 offers Computing next to Core Mathematics and opens its first 
   await expect(page.locator('main')).not.toContainText(/INFORMATIC|Italian/i);
 });
 
-test('every interactive Computing scene (SHS 1 and SHS 2) loads its game without errors', async ({ page }) => {
+test('Ghana SHS 3 offers Computing next to Core Mathematics and opens its first mission', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await page.locator('.curriculum-country-picker').getByRole('button', { name: /Ghana/ }).click();
+  await page.locator('.grade-card[data-grade="ghshs3"]').click();
+  await expect(page.locator('.subjcard[data-s="ghcoremath3"]')).toHaveCount(1);
+  await expect(page.locator('.subjcard[data-s="ghcomputing3"]')).toContainText('Computing');
+  await page.locator('.subjcard[data-s="ghcomputing3"]').click();
+  if (await page.locator('#nm').count()) {
+    await page.locator('#nm').fill('Ama');
+    await page.locator('#regf button').first().click();
+  }
+  await expect(page.locator('.mcard').first()).toContainText('The Logic Detective');
+  await expect(page.locator('main')).not.toContainText(/INFORMATIC|Italian/i);
+});
+
+test('every interactive Computing scene (SHS 1, SHS 2 and SHS 3) loads its game without errors', async ({ page }) => {
   test.setTimeout(240000);
   const { MISSIONS, ARCS } = await import('../../src/data/gameData');
   const errors: string[] = [];
@@ -81,17 +98,17 @@ test('every interactive Computing scene (SHS 1 and SHS 2) loads its game without
     localStorage.setItem('circuit-hunter-academy-navigation-v2:ghana-nacca', JSON.stringify({ view: 'scene', currentMissionIndex: m, currentSceneIndex: s, battleContext: null }));
   });
   page.on('pageerror', e => errors.push(e.message));
-  const targets: Array<{ grade: 'ghshs1' | 'ghshs2'; subject: string; m: number; s: number; id: string; type: string }> = [];
+  const targets: Array<{ grade: 'ghshs1' | 'ghshs2' | 'ghshs3'; subject: string; m: number; s: number; id: string; type: string }> = [];
   MISSIONS.forEach((mission: any, m: number) => {
     const subject = ARCS[mission.arc]?.subject;
-    if (subject !== 'ghcomputing' && subject !== 'ghcomputing2') return;
+    if (subject !== 'ghcomputing' && subject !== 'ghcomputing2' && subject !== 'ghcomputing3') return;
     (mission.scenes || []).forEach((scene: any, s: number) => {
-      if (scene.type && scene.type !== 'battle') targets.push({ grade: subject === 'ghcomputing' ? 'ghshs1' : 'ghshs2', subject, m, s, id: mission.id, type: scene.type });
+      if (scene.type && scene.type !== 'battle') targets.push({ grade: subject === 'ghcomputing' ? 'ghshs1' : subject === 'ghcomputing2' ? 'ghshs2' : 'ghshs3', subject, m, s, id: mission.id, type: scene.type });
     });
   });
-  expect(targets.length).toBeGreaterThan(30);
-  for (const grade of ['ghshs1', 'ghshs2'] as const) {
-    await enterGhanaComputing(page, grade, grade === 'ghshs1' ? 'ghcomputing' : 'ghcomputing2');
+  expect(targets.length).toBeGreaterThan(50);
+  for (const grade of ['ghshs1', 'ghshs2', 'ghshs3'] as const) {
+    await enterGhanaComputing(page, grade, grade === 'ghshs1' ? 'ghcomputing' : grade === 'ghshs2' ? 'ghcomputing2' : 'ghcomputing3');
     for (const t of targets.filter(x => x.grade === grade)) {
       await page.evaluate(({ m, s }) => localStorage.setItem('zz-target', JSON.stringify({ m, s })), t);
       await page.reload();

@@ -92,6 +92,7 @@ export const SUBJECT_TOPICS: Record<SubjectId, SubjectTopic[]> = {
   ghcoremath: [],
   ghcomputing: [],
   ghcomputing2: [],
+  ghcomputing3: [],
   ghcoremath2: [
     { id: 'simultaneous-equations', subject: 'ghcoremath2', name: 'Simultaneous Linear Equations' },
     { id: 'sequences-progressions', subject: 'ghcoremath2', name: 'Sequences and Progressions' },

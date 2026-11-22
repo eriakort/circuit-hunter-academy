@@ -294,6 +294,143 @@ export const GHANA_COMPUTING_BUILDERS: Record<string, Builder> = {
        <rect x="396" y="214" width="228" height="48" rx="12" fill="${C.good}" fill-opacity="0.16" stroke="${C.good}" stroke-width="3"/>${T(510, 245, 'https  secure page', { size: 22, fill: C.good, weight: 800 })}
        <path d="M44 232 h20 v16 h-20 z M48 232 v-6 a6 6 0 0 1 12 0 v6" fill="none" stroke="${C.muted}" stroke-width="3"/>${T(84, 248, 'login and card details are protected', { size: 20, fill: C.muted, anchor: 'start' })}`,
       'Good e-commerce pages are easy and safe to use', 322);
+  },
+
+  /* ---- SHS 3 ---- */
+
+  /* Shift and rotate on an 8-bit register */
+  'ghc-shiftrot': () => {
+    const cell = (x: number, y: number, b: number, col: string) => `<rect x="${x}" y="${y}" width="40" height="42" rx="7" fill="${col}" fill-opacity="${b ? 0.3 : 0.1}" stroke="${col}" stroke-width="3"/>${T(x + 20, y + 30, String(b), { size: 24, weight: 800 })}`;
+    const row = (y: number, bits: number[], col: string, mark = -1, markCol = '') => bits.map((b, i) => cell(150 + i * 46, y, b, i === mark ? markCol : col)).join('');
+    const before = [1, 0, 1, 1, 0, 0, 1, 0];
+    return frame('Shift and rotate left',
+      `${T(24, 44, 'Shift left', { size: 24, weight: 800, fill: C.data, anchor: 'start' })}
+       ${row(30, before, C.data, 0, C.ember)}${row(94, [0, 1, 1, 0, 0, 1, 0, 0], C.data, 7, C.gold)}
+       <path d="M170 76 V90" stroke="${C.muted}" stroke-width="4"/>${T(120, 126, 'lost', { size: 20, fill: C.ember })}${T(540, 126, 'new 0', { size: 20, fill: C.gold })}
+       ${T(24, 200, 'Rotate left', { size: 24, weight: 800, fill: C.good, anchor: 'start' })}
+       ${row(186, before, C.good, 0, C.ember)}${row(250, [0, 1, 1, 0, 0, 1, 0, 1], C.good, 7, C.ember)}
+       <path d="M170 184 C170 164 520 164 520 184" fill="none" stroke="${C.ember}" stroke-width="4" stroke-dasharray="8 6"/>${flow('M170 184 C170 164 520 164 520 184', 3, C.sakura, 0, 7)}
+       ${T(120, 282, 'back in', { size: 20, fill: C.ember })}`,
+      'A shift drops a bit. A rotate wraps it round to the other end', 330);
+  },
+
+  /* Installing an operating system */
+  'ghc-osinstall': () => {
+    const steps: Array<[string, string, string]> = [['Check', 'needs', C.data], ['Back up', 'your files', C.gold], ['Boot', 'from USB', C.ember], ['Install', 'to a drive', C.good], ['Set up', 'accounts', C.sakura]];
+    const body = steps.map(([n, d, col], i) => `${card(14 + i * 124, 66, 112, 104, col, 0.14)}${T(70 + i * 124, 108, n, { size: 22, fill: col, weight: 800 })}${T(70 + i * 124, 140, d, { size: 20, fill: C.muted })}${hlRing(14 + i * 124, 66, 112, 104, i, 5, 10, 14)}`).join('');
+    return frame('Installing an operating system',
+      `${body}<path d="M126 118 H138 M250 118 H262 M374 118 H386 M498 118 H510" stroke="${C.text}" stroke-width="4" fill="none"/>
+       <rect x="30" y="206" width="580" height="22" rx="11" fill="${C.panel}" stroke="${C.line}" stroke-width="3"/>
+       <rect x="30" y="206" width="0" height="22" rx="11" fill="${C.good}" fill-opacity="0.8"><animate attributeName="width" values="0;580;580" keyTimes="0;0.9;1" dur="10s" repeatCount="indefinite"/></rect>
+       ${T(320, 262, 'progress while the files are copied', { size: 22, fill: C.muted })}`,
+      'Back up first. An install can erase a drive', 316);
+  },
+
+  /* Transmission media: cable, fibre, wireless */
+  'ghc-media': () => {
+    const cols = [
+      { x: 20, name: 'Copper cable', note: 'cheap, common', col: C.gold, v: 0.55 },
+      { x: 226, name: 'Fibre optic', note: 'fast, far', col: C.data, v: 0.95 },
+      { x: 432, name: 'Wireless', note: 'no wires', col: C.good, v: 0.4 }
+    ];
+    const body = cols.map((c, i) => {
+      const cx = c.x + 94;
+      const icon = i === 0
+        ? `<path d="M${cx - 60} 90 C${cx - 30} 70 ${cx - 30} 110 ${cx} 90 C${cx + 30} 70 ${cx + 30} 110 ${cx + 60} 90" fill="none" stroke="${c.col}" stroke-width="6"/><path d="M${cx - 60} 100 C${cx - 30} 80 ${cx - 30} 120 ${cx} 100 C${cx + 30} 80 ${cx + 30} 120 ${cx + 60} 100" fill="none" stroke="${C.ember}" stroke-width="6"/>`
+        : i === 1
+          ? `<line x1="${cx - 64}" y1="94" x2="${cx + 64}" y2="94" stroke="${c.col}" stroke-width="12" stroke-linecap="round" opacity="0.4"/><line x1="${cx - 64}" y1="94" x2="${cx + 64}" y2="94" stroke="${c.col}" stroke-width="4" stroke-linecap="round"/>`
+          : [14, 28, 42].map(r => `<path d="M${cx - r} 128 A${r} ${r} 0 0 1 ${cx + r} 128" fill="none" stroke="${c.col}" stroke-width="5" opacity="0.8"/>`).join('') + `<circle cx="${cx}" cy="134" r="6" fill="${c.col}"/>`;
+      return `${card(c.x, 40, 188, 250, c.col, 0.1)}${T(cx, 70, c.name, { size: 24, weight: 800, fill: c.col })}${icon}${flow(i === 2 ? `M${cx} 134 L${cx + 30} 98` : `M${cx - 64} ${i === 0 ? 94 : 94} H${cx + 64}`, 2.4, C.sakura, i * 0.6, 6)}
+        ${T(cx, 160, 'speed', { size: 20, fill: C.muted })}<rect x="${c.x + 24}" y="172" width="140" height="16" rx="8" fill="${C.panel}" stroke="${C.line}" stroke-width="2"/><rect x="${c.x + 24}" y="172" width="${Math.round(140 * c.v)}" height="16" rx="8" fill="${c.col}" fill-opacity="0.85"/>
+        ${T(cx, 232, c.note, { size: 22, fill: C.text, weight: 700 })}${T(cx, 266, i === 1 ? 'light in glass' : i === 0 ? 'electric signals' : 'radio waves', { size: 20, fill: C.muted })}`;
+    }).join('');
+    return frame('Transmission media', body, 'Bandwidth is how much data can move each second', 330);
+  },
+
+  /* Layers of protection around data */
+  'ghc-security': () => {
+    const layers: Array<[string, string]> = [['Strong passwords', C.gold], ['Updates and patches', C.data], ['Antivirus and firewall', C.good], ['Backups', C.sakura]];
+    const body = layers.map(([n, col], i) => `${card(190, 40 + i * 62, 420, 50, col, 0.14)}${T(400, 73 + i * 62, n, { size: 24, weight: 800, fill: col })}<path d="M${150} ${52 + i * 62} l16 6 v14 c0 10 -8 16 -16 20 c-8 -4 -16 -10 -16 -20 v-14 z" fill="${col}" fill-opacity="0.3" stroke="${col}" stroke-width="3"/>`).join('');
+    return frame('Layers of security',
+      `${body}<circle r="11" fill="${C.ember}" stroke="${C.text}" stroke-width="2"><animateMotion dur="4s" repeatCount="indefinite" path="M40 44 L124 70"/>${anim('opacity', '1;1;0;0', 4, 0, 'keyTimes="0;0.7;0.8;1"')}</circle>
+       ${T(60, 110, 'threat', { size: 20, fill: C.ember })}`,
+      'No single layer is enough. Use all of them', 318);
+  },
+
+  /* An IPv4 address */
+  'ghc-ipaddr': () => {
+    const parts = ['192', '168', '1', '10'];
+    const boxes = parts.map((p, i) => `${card(30 + i * 150, 60, 120, 76, i < 3 ? C.data : C.gold, 0.16)}${T(90 + i * 150, 110, p, { size: 38, weight: 800, fill: i < 3 ? C.data : C.gold })}${i < 3 ? T(150 + i * 150, 112, '.', { size: 40, weight: 800 }) : ''}${hlRing(30 + i * 150, 60, 120, 76, i, 4, 8, 14)}`).join('');
+    return frame('An IP address',
+      `${boxes}
+       <path d="M36 158 H444" stroke="${C.data}" stroke-width="5"/>${T(240, 190, 'network: which network', { size: 22, fill: C.data, weight: 700 })}
+       <path d="M486 158 H594" stroke="${C.gold}" stroke-width="5"/>${T(540, 190, 'device', { size: 22, fill: C.gold, weight: 700 })}
+       ${T(320, 238, 'four numbers, each from 0 to 255', { size: 24, weight: 700 })}${T(320, 272, 'mask 255.255.255.0 marks the network part', { size: 20, fill: C.muted })}`,
+      'The router gives each device an address on the network', 318);
+  },
+
+  /* Mass storage families */
+  'ghc-storage': () => {
+    const spin = (cx: number, cy: number, col: string, dur: number) => `<g><circle cx="${cx}" cy="${cy}" r="40" fill="${col}" fill-opacity="0.2" stroke="${col}" stroke-width="4"/><circle cx="${cx}" cy="${cy}" r="8" fill="${C.panel}" stroke="${col}" stroke-width="3"/><line x1="${cx}" y1="${cy - 36}" x2="${cx}" y2="${cy - 12}" stroke="${col}" stroke-width="5" stroke-linecap="round"/><animateTransform attributeName="transform" type="rotate" from="0 ${cx} ${cy}" to="360 ${cx} ${cy}" dur="${dur}s" repeatCount="indefinite"/></g>`;
+    const chip = (cx: number, cy: number, col: string) => `<rect x="${cx - 40}" y="${cy - 32}" width="80" height="64" rx="8" fill="${col}" fill-opacity="0.2" stroke="${col}" stroke-width="4"/>${[0, 1, 2].map(k => `<rect x="${cx - 26 + k * 20}" y="${cy - 14}" width="14" height="28" rx="3" fill="${col}"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.4s" begin="${-k * 0.8}s" repeatCount="indefinite"/></rect>`).join('')}`;
+    const cols: Array<[string, string, string, string]> = [['Magnetic', 'HDD, tape', 'big and cheap', C.gold], ['Optical', 'CD, DVD', 'slow, portable', C.data], ['Solid-state', 'SSD, flash', 'fast, silent', C.good]];
+    const body = cols.map(([n, ex, note, col], i) => { const cx = 106 + i * 214; return `${card(i * 214 + 12, 36, 188, 250, col, 0.1)}${T(cx, 68, n, { size: 26, weight: 800, fill: col })}${i === 2 ? chip(cx, 134, col) : spin(cx, 134, col, i === 0 ? 1.6 : 3)}${T(cx, 214, ex, { size: 22, weight: 700 })}${T(cx, 248, note, { size: 20, fill: C.muted })}`; }).join('');
+    return frame('Mass storage media', body, 'Choose by capacity, speed and reliability', 322);
+  },
+
+  /* A small neural network */
+  'ghc-neural': () => {
+    const layers = [[3, 90], [4, 320], [2, 550]] as const;
+    const ys = (n: number) => Array.from({ length: n }, (_, i) => 70 + ((i + 0.5) * 170) / n + (n === 2 ? 14 : 0));
+    const nodes = layers.map(([n, x]) => ys(n).map(y => ({ x, y })));
+    let links = '';
+    for (let l = 0; l < 2; l++) nodes[l].forEach(a => nodes[l + 1].forEach(b => { links += `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="${C.line}" stroke-width="2"/>`; }));
+    const dots = [0, 1, 2].map(k => flow(`M${nodes[0][k].x} ${nodes[0][k].y} L${nodes[1][k].x} ${nodes[1][k].y} L${nodes[2][k % 2].x} ${nodes[2][k % 2].y}`, 3.2, C.sakura, k * 0.9, 7)).join('');
+    const circles = nodes.map((layer, l) => layer.map(p => `<circle cx="${p.x}" cy="${p.y}" r="16" fill="${[C.data, C.gold, C.good][l]}" fill-opacity="0.35" stroke="${[C.data, C.gold, C.good][l]}" stroke-width="3"/>`).join('')).join('');
+    return frame('A neural network',
+      `${links}${circles}${dots}${T(90, 268, 'Input', { size: 24, weight: 800, fill: C.data })}${T(320, 268, 'Hidden layer', { size: 24, weight: 800, fill: C.gold })}${T(550, 268, 'Output', { size: 24, weight: 800, fill: C.good })}${T(90, 296, 'the data', { size: 20, fill: C.muted })}${T(320, 296, 'finds patterns', { size: 20, fill: C.muted })}${T(550, 296, 'the answer', { size: 20, fill: C.muted })}`,
+      'Signals pass through layers of connected nodes', 350);
+  },
+
+  /* Conventional versus intelligent systems */
+  'ghc-compare': () => {
+    const rows: Array<[string, string, string]> = [['Rules', 'written by people', 'learned from data'], ['Change', 'only if reprogrammed', 'adapts to new data'], ['Mistakes', 'predictable', 'can be wrong or unfair']];
+    const body = rows.map(([h, a, b], i) => {
+      const y = 112 + i * 72;
+      return `${T(20, y - 10, h, { size: 20, weight: 800, fill: C.muted, anchor: 'start' })}${card(20, y, 290, 42, C.gold, 0.12)}${T(165, y + 29, a, { size: 22 })}${card(330, y, 290, 42, C.good, 0.12)}${T(475, y + 29, b, { size: 22 })}${hlRing(20, y, 600, 42, i, 3, 9, 12)}`;
+    }).join('');
+    return frame('Conventional and intelligent systems',
+      `${T(165, 48, 'Conventional', { size: 26, weight: 800, fill: C.gold })}${T(475, 48, 'Intelligent', { size: 26, weight: 800, fill: C.good })}${T(165, 76, 'fixed rules', { size: 20, fill: C.muted })}${T(475, 76, 'learns', { size: 20, fill: C.muted })}${body}`,
+      'Each kind of system suits different problems', 356);
+  },
+
+  /* The six goals of cyber security */
+  'ghc-cybergoals': () => {
+    const goals: Array<[string, string, string]> = [['Confidentiality', 'kept secret', C.data], ['Integrity', 'not altered', C.gold], ['Availability', 'ready to use', C.good], ['Authentication', 'prove who you are', C.ember], ['Authorization', 'what you may do', C.sakura], ['Auditing', 'who did what', C.muted]];
+    const body = goals.map(([n, d, col], i) => { const x = 14 + (i % 3) * 208; const y = 44 + Math.floor(i / 3) * 124; return `${card(x, y, 196, 104, col, 0.14)}${T(x + 98, y + 46, n, { size: 22, weight: 800, fill: col })}${T(x + 98, y + 80, d, { size: 20, fill: C.text })}${hlRing(x, y, 196, 104, i, 6, 12, 14)}`; }).join('');
+    return frame('Goals of cyber security', body, 'Protect data, systems and the people who use them', 320);
+  },
+
+  /* Two-factor authentication */
+  'ghc-2fa': () => {
+    const steps: Array<[string, string, string]> = [['Password', 'something you know', C.gold], ['Code', 'something you have', C.data], ['Access', 'you are in', C.good]];
+    const body = steps.map(([n, d, col], i) => `${card(18 + i * 212, 60, 188, 124, col, 0.14)}${T(112 + i * 212, 112, n, { size: 28, weight: 800, fill: col })}${T(112 + i * 212, 148, d, { size: 20, fill: C.text })}`).join('');
+    return frame('Two-factor login',
+      `${body}<path d="M206 122 H230 M418 122 H442" stroke="${C.text}" stroke-width="4" fill="none"/>
+       ${flow('M30 214 H610', 5, C.sakura, 0)}${T(320, 250, 'a stolen password alone is not enough', { size: 22, fill: C.muted })}`,
+      'The second factor stops most account takeovers', 318);
+  },
+
+  /* Spotting a phishing email */
+  'ghc-phish': () => {
+    const flags: Array<[number, number, number, number, string]> = [[40, 62, 340, 30, 'odd sender'], [40, 104, 340, 30, 'urgent threat'], [40, 146, 340, 30, 'asks for a PIN'], [40, 188, 340, 30, 'fake link']];
+    return frame('Spot the phishing email',
+      `<rect x="24" y="30" width="372" height="230" rx="12" fill="${C.panel}" stroke="${C.muted}" stroke-width="3"/>
+       ${T(40, 56, 'From: alert@my-bnk-help.example', { size: 20, anchor: 'start' })}${T(40, 98, 'URGENT: account will close!', { size: 20, anchor: 'start', weight: 800 })}${T(40, 140, 'Reply now with your PIN', { size: 20, anchor: 'start' })}${T(40, 182, 'http://bank-login.example/x', { size: 20, anchor: 'start', fill: C.data })}
+       ${flags.map(([x, y, w, h], i) => hlRing(x - 8, y - 22, w, h, i, 4, 10, 8)).join('')}
+       ${flags.map(([, y, , , t]) => T(536, y - 2, t, { size: 22, weight: 800, fill: C.ember })).join('')}${flags.map(([, y]) => `<path d="M396 ${y - 8} H420" stroke="${C.ember}" stroke-width="3" stroke-dasharray="5 5"/>`).join('')}
+       ${T(210, 240, 'do not click. report it', { size: 20, fill: C.good, weight: 700 })}`,
+      'Real banks never ask for your PIN by message', 304);
   }
 };
 
