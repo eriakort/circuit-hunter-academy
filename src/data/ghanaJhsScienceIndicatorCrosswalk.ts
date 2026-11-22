@@ -358,67 +358,73 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
     "indicatorCode": "B8.3.1.1.1",
     "grade": 8,
     "strand": 3,
+    "officialIndicatorText": "Identify parts of a mammalian tooth.",
     "missionIds": [
       "gh-jhs2-science-teeth-dental-health"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Candidate evidence: dental lesson 1 identifies the crown, neck and root and explains enamel, dentine and pulp. The dedicated DentalScene visual explores tooth structure. Educator review should confirm that the diagram labels match the taught anatomy.",
+    "assessmentEvidence": "Assessment evidence: dental quiz question 1 checks identification of the crown. The remaining tooth-part functions are not separately assessed in this quiz."
   },
   {
     "indicatorCode": "B8.3.1.1.3",
     "grade": 8,
     "strand": 3,
+    "officialIndicatorText": "Explain the causes and prevention of tooth and gum decay.",
     "missionIds": [
       "gh-jhs2-science-teeth-dental-health"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Candidate evidence: dental lessons 3–4 explain plaque, bacterial acids, enamel damage, gum inflammation and prevention through fluoride brushing, interdental cleaning and dental checks. Lesson 4 includes a model-based gentle-brushing demonstration task.",
+    "assessmentEvidence": "Assessment evidence: dental quiz questions 4, 5 and 8 assess plaque-related decay, preventive habits and careful cleaning. Gum-disease causes and the practical demonstration still need educator review."
   },
   {
     "indicatorCode": "B8.3.2.1.1",
     "grade": 8,
     "strand": 3,
+    "officialIndicatorText": "Identify the outer planets of the solar system and describe their properties.",
     "missionIds": [
       "gh-jhs2-science-outer-planets"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Candidate evidence: outer-planet lessons 1–5 identify the four outer planets, compare gas and ice giants, describe distinctive properties and explain why their environments are unsuitable for life as we know it. Lesson 5 asks learners to construct and label a model and state when it is not to scale.",
+    "assessmentEvidence": "Assessment evidence: outer-planet quiz questions 1–8 assess planet identification, Jupiter, Saturn, gas/ice giant classification, extreme conditions, Uranus's axial tilt and Neptune's winds. The model-building exemplar is a learner task, not a quiz performance."
   },
   {
     "indicatorCode": "B8.3.3.1.1",
     "grade": 8,
     "strand": 3,
+    "officialIndicatorText": "Explore the feeding relationships within an ecosystem.",
     "missionIds": [
       "gh-jhs2-science-ecosystem-feeding"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Candidate evidence: ecosystem lessons 1–5 explain the Sun as the main energy source for most ecosystems, producers, primary and secondary consumers, food chains, food webs and energy-flow arrows. Lesson 5 asks learners to draw a Ghanaian grassland or pond food web and predict effects of change.",
+    "assessmentEvidence": "Assessment evidence: ecosystem quiz questions 1–8 assess energy source, producer and consumer roles, food webs, arrow direction, secondary consumers and the effect of prolonged loss of sunlight. The learner-drawn diagram needs educator review."
   },
   {
     "indicatorCode": "B8.3.4.1.1",
     "grade": 8,
     "strand": 3,
+    "officialIndicatorText": "Identify and describe the types of crops, animals and land combinations for the different farming systems.",
     "missionIds": [
       "gh-jhs2-science-farming-systems"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Candidate evidence: farming lessons 1–4 distinguish mixed cropping, mixed farming and crop rotation; describe crop, livestock and land/resource combinations; and ask learners to plan a locally appropriate farm. The task requires identifying land areas, crops and animals and considering trade-offs.",
+    "assessmentEvidence": "Assessment evidence: farming quiz questions 1–3, 5, 6 and 8 assess farming-system distinctions, local selection criteria, a crop combination and possible disadvantages. The learner's own local farm plan needs educator review."
   },
   {
     "indicatorCode": "B8.3.4.1.2",
     "grade": 8,
     "strand": 3,
+    "officialIndicatorText": "Discuss the usefulness of the different crops and animals involved in the different farming systems.",
     "missionIds": [
       "gh-jhs2-science-farming-systems"
     ],
     "status": "needs-review",
-    "teachingSceneEvidence": "Lesson scenes exist in the linked mission; exact scene-to-indicator alignment has not yet been reviewed.",
-    "assessmentEvidence": "Quiz questions exist in the linked mission; exact question-to-indicator alignment has not yet been reviewed."
+    "teachingSceneEvidence": "Candidate evidence: farming lessons 3–4 explain how crop residues may support livestock, how properly composted manure returns nutrients to soil, and how crops and animals contribute to farm sustainability. The local farm task asks learners to map what each component provides and receives.",
+    "assessmentEvidence": "Assessment evidence: farming quiz questions 4 and 7 assess manure's contribution and crop–animal support. The written component-interdependence explanation needs educator review."
   },
   {
     "indicatorCode": "B8.4.1.1.1",
@@ -633,8 +639,8 @@ export const GHANA_JHS_SCIENCE_INDICATOR_EVIDENCE: GhanaScienceIndicatorEvidence
   {
     indicatorCode: 'B8.3.1.1.2', grade: 8, strand: 3, missionIds: ['gh-jhs2-science-teeth-dental-health'],
     status: 'needs-review', officialIndicatorText: 'Discuss the functions of the different types of teeth such as incisors, canines, premolars, and molars.', sourcePdfPage: 105,
-    teachingSceneEvidence: 'Candidate: teeth and dental-health mission covers mammalian tooth structure and oral health; verify that the functions of incisors, canines, premolars and molars are explicitly taught and illustrated.',
-    assessmentEvidence: 'Candidate: dental-health questions may cover tooth structure and care; classification and function of all four tooth types needs direct question-level verification.'
+    teachingSceneEvidence: 'Candidate evidence: dental lesson 2 explains the cutting, tearing and grinding functions of incisors, canines, premolars and molars. The dedicated visual currently focuses on tooth structure; educators should confirm that tooth-type drawings are also used.',
+    assessmentEvidence: 'Assessment evidence: dental quiz questions 2, 3, 6 and 7 directly assess the functions of incisors, molars, canines and premolars respectively.'
   },
   {
     indicatorCode: 'B8.4.1.1.2', grade: 8, strand: 4, missionIds: ['gh-jhs2-science-energy-sources-heat'],

@@ -29,7 +29,7 @@ The audit reads the live application registries rather than maintaining a second
 - Every registered arc has a mission and carries a NaCCA indicator reference.
 - Registered mission totals match subject metadata: 22, 22 and 25.
 - Science mission IDs are unique across JHS 1–3.
-- Every mission has teaching/challenge scenes and five assessment questions.
+- Every mission has teaching/challenge scenes and at least five assessment questions.
 - Every question has a prompt, feedback and non-empty answer choices.
 
 Run the test with `bun test tests/ghanaJhsScienceCoverageAudit.test.ts`.
@@ -63,11 +63,11 @@ Baseline findings from the 15 Ghana JHS Science lesson data modules:
 
 | Visual category | Missions |
 |---|---:|
-| Dedicated instructional visual reference | 8 |
-| Generic challenge illustration only | 61 |
+| Dedicated instructional visual reference | 69 |
+| Generic challenge illustration only | 0 |
 | No visual reference at all | 0 |
 
-All 69 current missions retain the shared `vis: 'demon'` challenge illustration. Eight Basic 7 missions across Diversity of Matter and Cycles now also have dedicated interactive teaching visuals; the remaining 61 missions still have generic challenge artwork only. Each mission also has an interactive battle scene, but that is an assessment/game interaction rather than an instructional science visual. This distinction is important: the presence of an image or an interactive quiz does not mean that the scientific process itself has been visualised.
+All 69 current missions retain the shared `vis: 'demon'` challenge illustration and now also have dedicated instructional visuals: Basic 7 (22/22), Basic 8 (22/22) and Basic 9 (25/25). Each mission also has an interactive battle scene, but that is an assessment/game interaction rather than an instructional science visual. This distinction is important: the presence of an image or an interactive quiz does not mean that the scientific process itself has been visualised.
 
 The reusable `GhanaScienceVisual` frame provides local React/SVG content with explicit play/pause and replay controls, keyboard-operable buttons, a static paused default, responsive layout and reduced-motion support. The Basic 7 Diversity of Matter pilot adds a particle-state temperature model, a selectable liquid-role explorer, a materials-and-properties comparator, and a plant/animal cell explorer. The follow-on Cycles pilot adds an interactive water-cycle and land-process explorer, a comparative housefly/maize/chicken life-cycle explorer, a Ghanaian crop-production journey, and a domestic-animal classification and welfare explorer. Interactions update the model or explanatory text; these are locally rendered and do not require an external service.
 
@@ -153,4 +153,20 @@ Three Basic 8 Diversity of Matter missions now include dedicated interactive tea
 - **Atoms and the Periodic Table:** learners explore protons, neutrons and electrons, calculate particle counts from atomic and mass numbers, and compare a neutral atom with an ion.
 - **Prokaryotic and Eukaryotic Cells:** learners compare bacteria with plant and animal cells, identify the membrane-bound nucleus, and examine structures shared by both cell types.
 
-The visuals use local React/SVG artwork, keyboard-operable controls and bilingual English/Italian explanations. They appear in the second teaching scene and do not change mission gates, quizzes or mastery logic. The visual audit now records 25 dedicated instructional visuals and 44 generic-only JHS Science missions (Basic 7: 22/0; Basic 8: 3/19; Basic 9: 0/25). The Basic 8 pilot currently covers all three missions registered in its Diversity of Matter strand.
+The visuals use local React/SVG artwork, keyboard-operable controls and bilingual English/Italian explanations. They appear in the second teaching scene and do not change mission gates, quizzes or mastery logic. At the time of this Diversity of Matter increment, the visual audit recorded 25 dedicated instructional visuals and 44 generic-only JHS Science missions (Basic 7: 22/0; Basic 8: 3/19; Basic 9: 0/25). Subsequent strand increments have since completed dedicated visuals for all 69 registered missions.
+
+
+## Basic 8 Systems learning-evidence increment (2026-11-22)
+
+The four existing Basic 8 Systems missions have been strengthened against the seven NaCCA indicators in Strand 3 (official curriculum printed pp. 64–68):
+
+- **Human Body System — Teeth and Dental Health:** the lesson now includes a model-based task to label the crown, neck and root, sketch the four tooth types, and demonstrate gentle cleaning. Assessment now directly checks incisors, canines, premolars, molars, plaque and preventive cleaning.
+- **Solar System — Outer Planets:** learners compare the gas giants and ice giants, distinguish Uranus's extreme axial tilt and Neptune's fast winds, and construct a labelled outer-planet model while identifying when it is not to scale.
+- **Ecosystem — Feeding Relationships:** learners distinguish energy flow from matter cycling, construct a Ghanaian grassland or pond food web, and predict the effects of reduced sunlight or a population change.
+- **Farming Systems:** learners plan a locally appropriate crop–animal–land combination and explain component contributions, including suitable crop residues and properly composted manure, while considering resource and animal-welfare trade-offs.
+
+Each mission now has eight assessment questions (32 across the strand). The crosswalk records the official indicator wording and specific candidate lesson and question evidence for all seven Basic 8 Strand 3 indicators. **All seven remain `needs-review`**: automated checks verify that evidence is present and linked, but do not certify classroom delivery or learner performance.
+
+The four missions retain their existing dedicated instructional visuals in the Science Motion registry. This increment changes lesson and assessment evidence, not mission gates, progress logic or visual registration.
+
+Source: [NaCCA Science Common Core Programme Curriculum for JHS1 (B7)–JHS3 (B9), September 2020](https://nacca.gov.gh/wp-content/uploads/2023/06/SCIENCE.pdf), Basic 8 Strand 3.

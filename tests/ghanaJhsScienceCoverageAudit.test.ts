@@ -70,7 +70,7 @@ for (const { grade, curriculumId, subjectId, missionCount } of GRADES) {
       scienceMissionIds.add(mission.id);
       assert.equal(UNITS[ARCS[mission.arc].unit as number]?.subject, subjectId);
       assert.ok(mission.scenes.length >= 5, `${mission.id} includes teaching and challenge scenes`);
-      assert.equal(mission.quiz.length, 5, `${mission.id} has five assessment questions`);
+      assert.ok(mission.quiz.length >= 5, `${mission.id} has at least five assessment questions`);
 
       for (const [questionIndex, question] of mission.quiz.entries()) {
         assert.ok(question.q.trim(), `${mission.id} question ${questionIndex + 1} has a prompt`);
