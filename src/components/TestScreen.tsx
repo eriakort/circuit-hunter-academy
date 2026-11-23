@@ -270,7 +270,7 @@ export const TestScreen: React.FC = () => {
                 type="button"
                 className="btn sm"
                 onClick={() => {
-                  const itText = Array.isArray(currentItem.q.q) ? currentItem.q.q[1] || currentItem.q.q[0] : currentItem.q.q;
+                  const itText = L(currentItem.q.q, 'it');
                   speakItalian(itText, { rate: 0.88 });
                 }}
                 style={{ flexShrink: 0, padding: '4px 10px', fontSize: '13px' }}
@@ -314,7 +314,7 @@ export const TestScreen: React.FC = () => {
                       onClick={(e) => {
                         e.stopPropagation();
                         const rawOpt = currentItem.q.a[answerIndex];
-                        const itText = Array.isArray(rawOpt) ? rawOpt[1] || rawOpt[0] : rawOpt;
+                        const itText = L(rawOpt, 'it');
                         speakItalian(itText, { rate: 0.9 });
                       }}
                       title={lang === 'it' ? 'Ascolta pronuncia' : 'Listen to pronunciation'}

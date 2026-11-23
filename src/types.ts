@@ -1,6 +1,25 @@
-export type Language = 'en' | 'it';
+export type Language = 'en' | 'it' | 'pt' | 'es' | 'fr' | 'de';
 
-export type BilingualText = [string, string] | string;
+/**
+ * The target language (Italian) is fixed; the additional codes are optional
+ * SUPPORT languages for the Italian-learning track. English is the base and
+ * the universal fallback for any missing translation.
+ */
+export type SupportLanguage = 'pt' | 'es' | 'fr' | 'de';
+
+/**
+ * A string localized for several interface languages. `en` and `it` are
+ * required (the original bilingual content); support-language fields are
+ * optional and fall back to English when absent.
+ */
+export type LocalizedText = { en: string; it: string } & Partial<Record<SupportLanguage, string>>;
+
+/**
+ * Content string. A plain string renders identically in every language
+ * (used for Italian target text that must stay Italian). A 2-tuple is the
+ * legacy [English, Italian] form. A record adds support-language variants.
+ */
+export type BilingualText = [string, string] | string | LocalizedText;
 
 export type GradeId = 'grade5' | 'grade9' | 'grade10' | 'grade11' | 'ghjhs1' | 'ghjhs2' | 'ghjhs3' | 'ghshs1' | 'ghshs2' | 'ghshs3';
 

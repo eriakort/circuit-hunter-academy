@@ -99,7 +99,7 @@ export const BattleScreen: React.FC = () => {
           let bestScore = 0;
           options.forEach((optIdx, displayIdx) => {
             const rawOpt = currentQ.a[optIdx];
-            const optItalian = Array.isArray(rawOpt) ? rawOpt[1] || rawOpt[0] : rawOpt;
+            const optItalian = L(rawOpt, 'it');
             const res = scorePronunciation(transcript, optItalian);
             if (res.score > bestScore) {
               bestScore = res.score;
@@ -470,7 +470,7 @@ export const BattleScreen: React.FC = () => {
                 type="button"
                 className="btn sm"
                 onClick={() => {
-                  const itText = Array.isArray(currentQ.q) ? currentQ.q[1] || currentQ.q[0] : currentQ.q;
+                  const itText = L(currentQ.q, 'it');
                   speakItalian(itText, { rate: 0.88 });
                 }}
                 style={{ flexShrink: 0, padding: '4px 10px', fontSize: '13px' }}
@@ -538,7 +538,7 @@ export const BattleScreen: React.FC = () => {
                       onClick={(e) => {
                         e.stopPropagation();
                         const rawOpt = currentQ.a[optionIndex];
-                        const itText = Array.isArray(rawOpt) ? rawOpt[1] || rawOpt[0] : rawOpt;
+                        const itText = L(rawOpt, 'it');
                         speakItalian(itText, { rate: 0.9 });
                       }}
                       title={L(['Listen', 'Ascolta'], lang)}

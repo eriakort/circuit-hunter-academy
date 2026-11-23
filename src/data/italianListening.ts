@@ -1,5 +1,8 @@
-import { BilingualText } from '../types';
+import { BilingualText, SupportLanguage } from '../types';
 import { GrammarLevel } from './italianGrammar';
+
+/** A key-vocabulary gloss: the Italian term stays fixed; the gloss is localized. */
+export type GlossaryEntry = { it: string; en: string } & Partial<Record<SupportLanguage, string>>;
 
 /**
  * Italian listening-comprehension passages (CEFR A1 · A2 · B1).
@@ -37,8 +40,8 @@ export interface ListeningPassage {
   text: string;
   /** Bilingual transcript/translation revealed on demand for self-checking. */
   transcript: BilingualText;
-  /** Key vocabulary to pre-teach (Italian · gloss). */
-  glossary: { it: string; en: string }[];
+  /** Key vocabulary to pre-teach (Italian term · localized gloss). */
+  glossary: GlossaryEntry[];
   questions: ListeningQuestion[];
 }
 
@@ -54,46 +57,57 @@ export const ITALIAN_LISTENING_PASSAGES: ListeningPassage[] = [
     id: 'lis-everyday-a1-1',
     level: 'A1',
     theme: 'everyday',
-    title: ['Paolo’s morning', 'La mattina di Paolo'],
-    intro: ['A simple daily routine. Listen for the times and the order of actions.', 'Una semplice routine quotidiana. Ascolta gli orari e l’ordine delle azioni.'],
+    title: { en: 'Paolo’s morning', it: 'La mattina di Paolo', pt: 'A manhã do Paolo', es: 'La mañana de Paolo', fr: 'La matinée de Paolo', de: 'Paolos Morgen' },
+    intro: {
+      en: 'A simple daily routine. Listen for the times and the order of actions.',
+      it: 'Una semplice routine quotidiana. Ascolta gli orari e l’ordine delle azioni.',
+      pt: 'Uma rotina diária simples. Preste atenção nos horários e na ordem das ações.',
+      es: 'Una rutina diaria sencilla. Fíjate en las horas y en el orden de las acciones.',
+      fr: 'Une routine quotidienne simple. Écoute les horaires et l’ordre des actions.',
+      de: 'Ein einfacher Tagesablauf. Achte auf die Uhrzeiten und die Reihenfolge der Handlungen.'
+    },
     text: 'Paolo si sveglia alle sette. Prima beve un caffè in cucina. Poi si lava e si veste. Alle otto esce di casa e prende l’autobus. Arriva al lavoro alle nove. A mezzogiorno mangia un panino con un amico.',
-    transcript: [
-      'Paolo wakes up at seven. First he drinks a coffee in the kitchen. Then he washes and gets dressed. At eight he leaves the house and takes the bus. He arrives at work at nine. At noon he eats a sandwich with a friend.',
-      'Paolo si sveglia alle sette. Prima beve un caffè in cucina. Poi si lava e si veste. Alle otto esce di casa e prende l’autobus. Arriva al lavoro alle nove. A mezzogiorno mangia un panino con un amico.'
-    ],
+    transcript: {
+      en: 'Paolo wakes up at seven. First he drinks a coffee in the kitchen. Then he washes and gets dressed. At eight he leaves the house and takes the bus. He arrives at work at nine. At noon he eats a sandwich with a friend.',
+      it: 'Paolo si sveglia alle sette. Prima beve un caffè in cucina. Poi si lava e si veste. Alle otto esce di casa e prende l’autobus. Arriva al lavoro alle nove. A mezzogiorno mangia un panino con un amico.',
+      pt: 'Paolo acorda às sete. Primeiro toma um café na cozinha. Depois se lava e se veste. Às oito sai de casa e pega o ônibus. Chega ao trabalho às nove. Ao meio-dia come um sanduíche com um amigo.',
+      es: 'Paolo se despierta a las siete. Primero toma un café en la cocina. Luego se lava y se viste. A las ocho sale de casa y toma el autobús. Llega al trabajo a las nueve. A mediodía come un bocadillo con un amigo.',
+      fr: 'Paolo se réveille à sept heures. D’abord il boit un café dans la cuisine. Puis il se lave et s’habille. À huit heures il sort de chez lui et prend le bus. Il arrive au travail à neuf heures. À midi il mange un sandwich avec un ami.',
+      de: 'Paolo wacht um sieben auf. Zuerst trinkt er einen Kaffee in der Küche. Dann wäscht er sich und zieht sich an. Um acht verlässt er das Haus und nimmt den Bus. Er kommt um neun bei der Arbeit an. Mittags isst er ein Brötchen mit einem Freund.'
+    },
     glossary: [
-      { it: 'si sveglia', en: 'he wakes up' },
-      { it: 'esce di casa', en: 'he leaves the house' },
-      { it: 'a mezzogiorno', en: 'at noon' }
+      { it: 'si sveglia', en: 'he wakes up', pt: 'ele acorda', es: 'se despierta', fr: 'il se réveille', de: 'er wacht auf' },
+      { it: 'esce di casa', en: 'he leaves the house', pt: 'sai de casa', es: 'sale de casa', fr: 'il sort de chez lui', de: 'er verlässt das Haus' },
+      { it: 'a mezzogiorno', en: 'at noon', pt: 'ao meio-dia', es: 'a mediodía', fr: 'à midi', de: 'mittags' }
     ],
     questions: [
       {
         id: 'lis-everyday-a1-1-q1',
-        prompt: ['At what time does Paolo wake up?', 'A che ora si sveglia Paolo?'],
+        prompt: { en: 'At what time does Paolo wake up?', it: 'A che ora si sveglia Paolo?', pt: 'A que horas o Paolo acorda?', es: '¿A qué hora se despierta Paolo?', fr: 'À quelle heure Paolo se réveille-t-il ?', de: 'Um wie viel Uhr wacht Paolo auf?' },
         options: ['Alle sette', 'Alle otto', 'Alle nove'],
         answer: 0,
-        explanation: ['“Paolo si sveglia alle sette” — at seven.', '“Paolo si sveglia alle sette” — alle sette.']
+        explanation: { en: '“Paolo si sveglia alle sette” — at seven.', it: '“Paolo si sveglia alle sette” — alle sette.', pt: '“Paolo si sveglia alle sette” — às sete.', es: '“Paolo si sveglia alle sette” — a las siete.', fr: '“Paolo si sveglia alle sette” — à sept heures.', de: '“Paolo si sveglia alle sette” — um sieben.' }
       },
       {
         id: 'lis-everyday-a1-1-q2',
-        prompt: ['What does he drink first?', 'Che cosa beve per primo?'],
+        prompt: { en: 'What does he drink first?', it: 'Che cosa beve per primo?', pt: 'O que ele toma primeiro?', es: '¿Qué toma primero?', fr: 'Que boit-il en premier ?', de: 'Was trinkt er zuerst?' },
         options: ['Un tè', 'Un caffè', 'Un succo'],
         answer: 1,
-        explanation: ['“Prima beve un caffè” — a coffee.', '“Prima beve un caffè” — un caffè.']
+        explanation: { en: '“Prima beve un caffè” — a coffee.', it: '“Prima beve un caffè” — un caffè.', pt: '“Prima beve un caffè” — um café.', es: '“Prima beve un caffè” — un café.', fr: '“Prima beve un caffè” — un café.', de: '“Prima beve un caffè” — einen Kaffee.' }
       },
       {
         id: 'lis-everyday-a1-1-q3',
-        prompt: ['How does he go to work?', 'Come va al lavoro?'],
+        prompt: { en: 'How does he go to work?', it: 'Come va al lavoro?', pt: 'Como ele vai ao trabalho?', es: '¿Cómo va al trabajo?', fr: 'Comment va-t-il au travail ?', de: 'Wie fährt er zur Arbeit?' },
         options: ['In macchina', 'A piedi', 'In autobus'],
         answer: 2,
-        explanation: ['“Prende l’autobus” — he takes the bus.', '“Prende l’autobus” — prende l’autobus.']
+        explanation: { en: '“Prende l’autobus” — he takes the bus.', it: '“Prende l’autobus” — prende l’autobus.', pt: '“Prende l’autobus” — ele pega o ônibus.', es: '“Prende l’autobus” — toma el autobús.', fr: '“Prende l’autobus” — il prend le bus.', de: '“Prende l’autobus” — er nimmt den Bus.' }
       },
       {
         id: 'lis-everyday-a1-1-q4',
-        prompt: ['What does he eat at noon?', 'Che cosa mangia a mezzogiorno?'],
+        prompt: { en: 'What does he eat at noon?', it: 'Che cosa mangia a mezzogiorno?', pt: 'O que ele come ao meio-dia?', es: '¿Qué come a mediodía?', fr: 'Que mange-t-il à midi ?', de: 'Was isst er mittags?' },
         options: ['Una pizza', 'Un panino', 'Un’insalata'],
         answer: 1,
-        explanation: ['“Mangia un panino con un amico” — a sandwich.', '“Mangia un panino con un amico” — un panino.']
+        explanation: { en: '“Mangia un panino con un amico” — a sandwich.', it: '“Mangia un panino con un amico” — un panino.', pt: '“Mangia un panino con un amico” — um sanduíche.', es: '“Mangia un panino con un amico” — un bocadillo.', fr: '“Mangia un panino con un amico” — un sandwich.', de: '“Mangia un panino con un amico” — ein Brötchen.' }
       }
     ]
   },
@@ -197,39 +211,50 @@ export const ITALIAN_LISTENING_PASSAGES: ListeningPassage[] = [
     id: 'lis-travel-a1-1',
     level: 'A1',
     theme: 'travel',
-    title: ['A day in the city', 'Una giornata in città'],
-    intro: ['A short trip downtown. Listen for the places visited.', 'Una breve gita in centro. Ascolta i luoghi visitati.'],
+    title: { en: 'A day in the city', it: 'Una giornata in città', pt: 'Um dia na cidade', es: 'Un día en la ciudad', fr: 'Une journée en ville', de: 'Ein Tag in der Stadt' },
+    intro: {
+      en: 'A short trip downtown. Listen for the places visited.',
+      it: 'Una breve gita in centro. Ascolta i luoghi visitati.',
+      pt: 'Um breve passeio pelo centro. Preste atenção nos lugares visitados.',
+      es: 'Una breve excursión al centro. Fíjate en los lugares visitados.',
+      fr: 'Une courte sortie au centre-ville. Écoute les lieux visités.',
+      de: 'Ein kurzer Ausflug in die Innenstadt. Achte auf die besuchten Orte.'
+    },
     text: 'Oggi vado in centro con Marco. Prima andiamo al museo. Poi mangiamo una pizza in un ristorante. Dopo pranzo visitiamo una chiesa antica. La sera prendiamo un gelato e torniamo a casa in treno.',
-    transcript: [
-      'Today I go downtown with Marco. First we go to the museum. Then we eat a pizza in a restaurant. After lunch we visit an old church. In the evening we get an ice cream and go home by train.',
-      'Oggi vado in centro con Marco. Prima andiamo al museo. Poi mangiamo una pizza in un ristorante. Dopo pranzo visitiamo una chiesa antica. La sera prendiamo un gelato e torniamo a casa in treno.'
-    ],
+    transcript: {
+      en: 'Today I go downtown with Marco. First we go to the museum. Then we eat a pizza in a restaurant. After lunch we visit an old church. In the evening we get an ice cream and go home by train.',
+      it: 'Oggi vado in centro con Marco. Prima andiamo al museo. Poi mangiamo una pizza in un ristorante. Dopo pranzo visitiamo una chiesa antica. La sera prendiamo un gelato e torniamo a casa in treno.',
+      pt: 'Hoje vou ao centro com o Marco. Primeiro vamos ao museu. Depois comemos uma pizza num restaurante. Após o almoço visitamos uma igreja antiga. À noite tomamos um sorvete e voltamos para casa de trem.',
+      es: 'Hoy voy al centro con Marco. Primero vamos al museo. Luego comemos una pizza en un restaurante. Después del almuerzo visitamos una iglesia antigua. Por la noche tomamos un helado y volvemos a casa en tren.',
+      fr: 'Aujourd’hui je vais au centre avec Marco. D’abord nous allons au musée. Puis nous mangeons une pizza dans un restaurant. Après le déjeuner nous visitons une vieille église. Le soir nous prenons une glace et nous rentrons en train.',
+      de: 'Heute gehe ich mit Marco in die Innenstadt. Zuerst gehen wir ins Museum. Dann essen wir eine Pizza in einem Restaurant. Nach dem Mittagessen besuchen wir eine alte Kirche. Am Abend holen wir uns ein Eis und fahren mit dem Zug nach Hause.'
+    },
     glossary: [
-      { it: 'in centro', en: 'downtown / in the city centre' },
-      { it: 'chiesa antica', en: 'old church' },
-      { it: 'in treno', en: 'by train' }
+      { it: 'in centro', en: 'downtown / in the city centre', pt: 'no centro', es: 'en el centro', fr: 'au centre-ville', de: 'in der Innenstadt' },
+      { it: 'chiesa antica', en: 'old church', pt: 'igreja antiga', es: 'iglesia antigua', fr: 'vieille église', de: 'alte Kirche' },
+      { it: 'in treno', en: 'by train', pt: 'de trem', es: 'en tren', fr: 'en train', de: 'mit dem Zug' }
     ],
     questions: [
       {
         id: 'lis-travel-a1-1-q1',
-        prompt: ['Where do they go first?', 'Dove vanno prima?'],
+        prompt: { en: 'Where do they go first?', it: 'Dove vanno prima?', pt: 'Aonde vão primeiro?', es: '¿Adónde van primero?', fr: 'Où vont-ils d’abord ?', de: 'Wohin gehen sie zuerst?' },
         options: ['Al museo', 'Al ristorante', 'Alla chiesa'],
         answer: 0,
-        explanation: ['“Prima andiamo al museo.”', '“Prima andiamo al museo.”']
+        explanation: { en: '“Prima andiamo al museo.”', it: '“Prima andiamo al museo.”', pt: '“Prima andiamo al museo” — ao museu.', es: '“Prima andiamo al museo” — al museo.', fr: '“Prima andiamo al museo” — au musée.', de: '“Prima andiamo al museo” — ins Museum.' }
       },
       {
         id: 'lis-travel-a1-1-q2',
-        prompt: ['What do they eat?', 'Che cosa mangiano?'],
+        prompt: { en: 'What do they eat?', it: 'Che cosa mangiano?', pt: 'O que eles comem?', es: '¿Qué comen?', fr: 'Que mangent-ils ?', de: 'Was essen sie?' },
         options: ['Un panino', 'Una pizza', 'Una pasta'],
         answer: 1,
-        explanation: ['“Mangiamo una pizza in un ristorante.”', '“Mangiamo una pizza in un ristorante.”']
+        explanation: { en: '“Mangiamo una pizza in un ristorante.”', it: '“Mangiamo una pizza in un ristorante.”', pt: '“Mangiamo una pizza” — uma pizza.', es: '“Mangiamo una pizza” — una pizza.', fr: '“Mangiamo una pizza” — une pizza.', de: '“Mangiamo una pizza” — eine Pizza.' }
       },
       {
         id: 'lis-travel-a1-1-q3',
-        prompt: ['How do they go home?', 'Come tornano a casa?'],
+        prompt: { en: 'How do they go home?', it: 'Come tornano a casa?', pt: 'Como voltam para casa?', es: '¿Cómo vuelven a casa?', fr: 'Comment rentrent-ils ?', de: 'Wie fahren sie nach Hause?' },
         options: ['In autobus', 'In treno', 'A piedi'],
         answer: 1,
-        explanation: ['“Torniamo a casa in treno.”', '“Torniamo a casa in treno.”']
+        explanation: { en: '“Torniamo a casa in treno.”', it: '“Torniamo a casa in treno.”', pt: '“Torniamo a casa in treno” — de trem.', es: '“Torniamo a casa in treno” — en tren.', fr: '“Torniamo a casa in treno” — en train.', de: '“Torniamo a casa in treno” — mit dem Zug.' }
       }
     ]
   },
@@ -333,39 +358,50 @@ export const ITALIAN_LISTENING_PASSAGES: ListeningPassage[] = [
     id: 'lis-work-a1-1',
     level: 'A1',
     theme: 'work',
-    title: ['A phone call to the office', 'Una telefonata in ufficio'],
-    intro: ['A short, simple work call. Listen for the names and the time.', 'Una breve e semplice telefonata di lavoro. Ascolta i nomi e l’orario.'],
+    title: { en: 'A phone call to the office', it: 'Una telefonata in ufficio', pt: 'Um telefonema para o escritório', es: 'Una llamada a la oficina', fr: 'Un appel au bureau', de: 'Ein Anruf im Büro' },
+    intro: {
+      en: 'A short, simple work call. Listen for the names and the time.',
+      it: 'Una breve e semplice telefonata di lavoro. Ascolta i nomi e l’orario.',
+      pt: 'Um telefonema de trabalho curto e simples. Preste atenção nos nomes e no horário.',
+      es: 'Una llamada de trabajo breve y sencilla. Fíjate en los nombres y en la hora.',
+      fr: 'Un appel professionnel court et simple. Écoute les noms et l’heure.',
+      de: 'Ein kurzer, einfacher Arbeitsanruf. Achte auf die Namen und die Uhrzeit.'
+    },
     text: 'Buongiorno, sono Anna. Vorrei parlare con il signor Rossi. Oggi non posso venire in ufficio perché sto male. Torno al lavoro domani mattina alle nove. Grazie e buona giornata.',
-    transcript: [
-      'Good morning, I’m Anna. I would like to speak with Mr Rossi. Today I can’t come to the office because I’m unwell. I’ll be back at work tomorrow morning at nine. Thank you and have a good day.',
-      'Buongiorno, sono Anna. Vorrei parlare con il signor Rossi. Oggi non posso venire in ufficio perché sto male. Torno al lavoro domani mattina alle nove. Grazie e buona giornata.'
-    ],
+    transcript: {
+      en: 'Good morning, I’m Anna. I would like to speak with Mr Rossi. Today I can’t come to the office because I’m unwell. I’ll be back at work tomorrow morning at nine. Thank you and have a good day.',
+      it: 'Buongiorno, sono Anna. Vorrei parlare con il signor Rossi. Oggi non posso venire in ufficio perché sto male. Torno al lavoro domani mattina alle nove. Grazie e buona giornata.',
+      pt: 'Bom dia, sou a Anna. Gostaria de falar com o senhor Rossi. Hoje não posso ir ao escritório porque estou passando mal. Volto ao trabalho amanhã de manhã às nove. Obrigada e bom dia.',
+      es: 'Buenos días, soy Anna. Quisiera hablar con el señor Rossi. Hoy no puedo ir a la oficina porque me siento mal. Vuelvo al trabajo mañana por la mañana a las nueve. Gracias y buen día.',
+      fr: 'Bonjour, je suis Anna. Je voudrais parler à Monsieur Rossi. Aujourd’hui je ne peux pas venir au bureau parce que je ne me sens pas bien. Je reviens au travail demain matin à neuf heures. Merci et bonne journée.',
+      de: 'Guten Morgen, ich bin Anna. Ich möchte mit Herrn Rossi sprechen. Heute kann ich nicht ins Büro kommen, weil es mir schlecht geht. Ich bin morgen früh um neun wieder bei der Arbeit. Danke und schönen Tag.'
+    },
     glossary: [
-      { it: 'sto male', en: 'I’m unwell' },
-      { it: 'in ufficio', en: 'at/to the office' },
-      { it: 'buona giornata', en: 'have a good day' }
+      { it: 'sto male', en: 'I’m unwell', pt: 'estou passando mal', es: 'me siento mal', fr: 'je ne me sens pas bien', de: 'mir geht es schlecht' },
+      { it: 'in ufficio', en: 'at/to the office', pt: 'no/ao escritório', es: 'en/a la oficina', fr: 'au bureau', de: 'im/ins Büro' },
+      { it: 'buona giornata', en: 'have a good day', pt: 'tenha um bom dia', es: 'buen día', fr: 'bonne journée', de: 'schönen Tag' }
     ],
     questions: [
       {
         id: 'lis-work-a1-1-q1',
-        prompt: ['Who is calling?', 'Chi telefona?'],
+        prompt: { en: 'Who is calling?', it: 'Chi telefona?', pt: 'Quem está ligando?', es: '¿Quién llama?', fr: 'Qui téléphone ?', de: 'Wer ruft an?' },
         options: ['Anna', 'Il signor Rossi', 'Maria'],
         answer: 0,
-        explanation: ['“Sono Anna.”', '“Sono Anna.”']
+        explanation: { en: '“Sono Anna.”', it: '“Sono Anna.”', pt: '“Sono Anna” — sou a Anna.', es: '“Sono Anna” — soy Anna.', fr: '“Sono Anna” — je suis Anna.', de: '“Sono Anna” — ich bin Anna.' }
       },
       {
         id: 'lis-work-a1-1-q2',
-        prompt: ['Why can’t she come to the office?', 'Perché non può venire in ufficio?'],
+        prompt: { en: 'Why can’t she come to the office?', it: 'Perché non può venire in ufficio?', pt: 'Por que ela não pode ir ao escritório?', es: '¿Por qué no puede ir a la oficina?', fr: 'Pourquoi ne peut-elle pas venir au bureau ?', de: 'Warum kann sie nicht ins Büro kommen?' },
         options: ['Perché sta male', 'Perché è in vacanza', 'Perché è in ritardo'],
         answer: 0,
-        explanation: ['“Non posso venire… perché sto male.”', '“Non posso venire… perché sto male.”']
+        explanation: { en: '“Non posso venire… perché sto male.”', it: '“Non posso venire… perché sto male.”', pt: '“…perché sto male” — porque está passando mal.', es: '“…perché sto male” — porque se siente mal.', fr: '“…perché sto male” — parce qu’elle ne se sent pas bien.', de: '“…perché sto male” — weil es ihr schlecht geht.' }
       },
       {
         id: 'lis-work-a1-1-q3',
-        prompt: ['When will she be back at work?', 'Quando torna al lavoro?'],
+        prompt: { en: 'When will she be back at work?', it: 'Quando torna al lavoro?', pt: 'Quando ela volta ao trabalho?', es: '¿Cuándo vuelve al trabajo?', fr: 'Quand revient-elle au travail ?', de: 'Wann ist sie wieder bei der Arbeit?' },
         options: ['Oggi pomeriggio', 'Domani mattina', 'Lunedì prossimo'],
         answer: 1,
-        explanation: ['“Torno al lavoro domani mattina alle nove.”', '“Torno al lavoro domani mattina alle nove.”']
+        explanation: { en: '“Torno al lavoro domani mattina alle nove.”', it: '“Torno al lavoro domani mattina alle nove.”', pt: '“…domani mattina alle nove” — amanhã de manhã.', es: '“…domani mattina alle nove” — mañana por la mañana.', fr: '“…domani mattina alle nove” — demain matin.', de: '“…domani mattina alle nove” — morgen früh.' }
       }
     ]
   },

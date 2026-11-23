@@ -1,4 +1,4 @@
-import type { GameState, GradeId, QuizQuestion, SubjectId, ViewMode } from './types';
+import type { GameState, GradeId, Language, QuizQuestion, SubjectId, ViewMode } from './types';
 import { MISSIONS, UNITS, ARCS, SUBJECTS } from './data/gameData';
 import { GRADE_SUBJECT_IDS } from './data/gradeData';
 import { DEFAULT_CURRICULUM_ID, getCurriculum, type CurriculumId } from './data/curricula';
@@ -256,7 +256,7 @@ export const sanitizeGameState = (value: unknown, curriculumId: CurriculumId = D
   return {
     grade,
     name: typeof saved.name === 'string' ? saved.name.trim().slice(0, 20) : '',
-    lang: saved.lang === 'it' ? 'it' : 'en',
+    lang: ((['en', 'it', 'pt', 'es', 'fr', 'de'] as string[]).includes(saved.lang as string) ? saved.lang : 'en') as Language,
     xp: typeof saved.xp === 'number' && Number.isFinite(saved.xp) ? Math.max(0, Math.floor(saved.xp)) : 0,
     subject,
     unit: unitMatchesSubject ? requestedUnit : (firstUnit < 0 ? 0 : firstUnit),
