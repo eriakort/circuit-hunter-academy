@@ -202,6 +202,14 @@ export const HUD: React.FC = () => {
               {L(['Speaking Lab', 'Laboratorio'], lang)}
             </button>
             <button
+              className={navClass(view === 'it-listening')}
+              id="hItListening"
+              aria-current={currentPage(view === 'it-listening')}
+              onClick={() => goToView('it-listening')}
+            >
+              {L(['Listening Lab', 'Ascolto'], lang)}
+            </button>
+            <button
               className={navClass(view === 'it-checkpoint')}
               id="hItCheckpoint"
               aria-current={currentPage(view === 'it-checkpoint')}

@@ -101,6 +101,7 @@ export const ItalianGrammarScreen: React.FC = () => {
         </p>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 14 }}>
           <button type="button" className="btn ghost sm" onClick={() => goToView('it-lab')}>🎙️ {L(['Speaking Lab', 'Laboratorio Parlato'], lang)}</button>
+          <button type="button" className="btn ghost sm" onClick={() => goToView('it-listening')}>🎧 {L(['Listening Lab', 'Laboratorio di Ascolto'], lang)}</button>
           <button type="button" className="btn ghost sm" onClick={() => goToView('test')}>📝 {L(['Italian subject tests', 'Test di italiano'], lang)}</button>
           <button type="button" className="btn ghost sm" onClick={() => goToView('map')}>← {L(['Missions', 'Missioni'], lang)}</button>
         </div>

@@ -12,7 +12,7 @@ export const SAVE_SCHEMA = 5;
 export const VALID_VIEWS: ViewMode[] = [
   'grades', 'subjects', 'map', 'scene', 'battle', 'result', 'ending',
   'dojo', 'codex', 'race', 'test', 'formula', 'checkpoint',
-  'cs-checkpoint', 'cs-applied-checkpoint', 'it-checkpoint', 'it-lab', 'it-grammar'
+  'cs-checkpoint', 'cs-applied-checkpoint', 'it-checkpoint', 'it-lab', 'it-grammar', 'it-listening'
 ];
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
@@ -318,7 +318,7 @@ const isViewAvailableForCurriculum = (view: ViewMode, grade: GradeId, subject: S
   if (view === 'cs-checkpoint' || view === 'cs-applied-checkpoint') {
     return grade === 'grade9' && subject === 'cs';
   }
-  if (view === 'it-checkpoint' || view === 'it-lab' || view === 'it-grammar') return subject === 'italian';
+  if (view === 'it-checkpoint' || view === 'it-lab' || view === 'it-grammar' || view === 'it-listening') return subject === 'italian';
   return true;
 };
 
