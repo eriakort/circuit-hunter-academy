@@ -43,6 +43,15 @@ for (const passage of ITALIAN_LISTENING_PASSAGES) {
     }
   }
 
+  // Every passage must be fully localized into all support languages.
+  const localized = (x: BT): boolean => typeof x === 'object' && !Array.isArray(x) && SUPPORT.every(sl => typeof x[sl] === 'string' && x[sl].trim().length > 0);
+  assert.ok(localized(passage.title), `${passage.id} title must be localized into all support languages`);
+  assert.ok(localized(passage.intro), `${passage.id} intro must be localized into all support languages`);
+  assert.ok(localized(passage.transcript), `${passage.id} transcript must be localized into all support languages`);
+  for (const g of passage.glossary) {
+    assert.ok(SUPPORT.every(sl => typeof (g as any)[sl] === 'string' && (g as any)[sl].trim().length > 0), `${passage.id} glossary "${g.it}" must be localized into all support languages`);
+  }
+
   assert.ok(passage.questions.length >= 3, `${passage.id} should have at least three comprehension questions`);
   for (const q of passage.questions) {
     assert.ok(!questionIds.has(q.id), `Duplicate question id: ${q.id}`);
@@ -53,6 +62,8 @@ for (const passage of ITALIAN_LISTENING_PASSAGES) {
     assert.ok(new Set(q.options).size === q.options.length, `${q.id} options must be distinct`);
     assert.ok(Number.isInteger(q.answer) && q.answer >= 0 && q.answer < q.options.length, `${q.id} answer index must be valid`);
     assert.ok(en(q.explanation).trim().length > 0 && it(q.explanation).trim().length > 0, `${q.id} needs bilingual feedback`);
+    assert.ok(localized(q.prompt), `${q.id} prompt must be localized into all support languages`);
+    assert.ok(localized(q.explanation), `${q.id} explanation must be localized into all support languages`);
   }
 }
 
