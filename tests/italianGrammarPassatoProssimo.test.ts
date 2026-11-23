@@ -2,16 +2,23 @@ import assert from 'node:assert/strict';
 import { ITALIAN_GRAMMAR_TOPICS } from '../src/data/italianGrammar';
 import { getGrammarActivities, matchesGrammarAnswer } from '../src/data/italianGrammarActivities';
 
+// Explanations may be a legacy [en, it] tuple or a localized record; require
+// non-empty English and Italian in either shape.
+const hasBothLangs = (v: any): boolean =>
+  Array.isArray(v)
+    ? v.every((value: string) => value.trim().length > 0)
+    : typeof v?.en === 'string' && v.en.trim().length > 0 && typeof v?.it === 'string' && v.it.trim().length > 0;
+
 const topic = ITALIAN_GRAMMAR_TOPICS.find(item => item.id === 'passato-prossimo');
 assert.ok(topic, 'Passato prossimo topic must exist');
 
 for (const level of ['A1', 'A2'] as const) {
   const content = topic.levels[level];
   assert.ok(content.exercises.length >= 5, level + ' should have a full passato prossimo question set');
-  assert.ok(content.explanation.every(value => value.trim().length > 0), level + ' needs bilingual explanations');
+  assert.ok(hasBothLangs(content.explanation), level + ' needs bilingual explanations');
   assert.ok(content.example.every(value => value.trim().length > 0), level + ' needs bilingual examples');
   assert.ok(content.exercises.every(item => item.prompt.every(value => value.trim().length > 0)), level + ' prompts must be bilingual');
-  assert.ok(content.exercises.every(item => item.explanation.every(value => value.trim().length > 0)), level + ' feedback must be bilingual');
+  assert.ok(content.exercises.every(item => hasBothLangs(item.explanation)), level + ' feedback must be bilingual');
 
   for (const type of ['correct', 'order', 'translate', 'write'] as const) {
     const activities = getGrammarActivities('passato-prossimo', level, type);
