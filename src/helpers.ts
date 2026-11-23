@@ -18,10 +18,20 @@ export const C = {
 };
 
 export const L = (x: any, lang: Language = 'en'): any => {
+  if (x == null) return '';
+  // Legacy [English, Italian] tuple. Italian for 'it'; every other language
+  // (English and all support languages) falls back to the English slot.
   if (Array.isArray(x)) {
-    return x[lang === 'it' ? 1 : 0] ?? x[0] ?? '';
+    if (lang === 'it') return x[1] ?? x[0] ?? '';
+    return x[0] ?? x[1] ?? '';
   }
-  return x ?? '';
+  // Localized record { en, it, pt?, es?, fr?, de? }: pick the requested
+  // language, else fall back to English, then Italian.
+  if (typeof x === 'object') {
+    return x[lang] ?? x.en ?? x.it ?? '';
+  }
+  // Plain string: identical in every language (e.g. Italian target text).
+  return x;
 };
 
 export const PILL = (en: any, it: any, lang: Language = 'en'): string => {

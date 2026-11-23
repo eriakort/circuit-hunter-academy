@@ -505,7 +505,7 @@ export const ITALIAN_MISSIONS: Mission[] = [
       {
         q: [
           'Choose the grammatically correct sentence for a female speaker saying "Yesterday I went to Rome":',
-          'Scegli la frase corretta detta da una ragazza che dice "Ieri sono andata a Roma":'
+          'Scegli la frase corretta per una ragazza che dice "Yesterday I went to Rome":'
         ],
         a: [
           ['Ieri sono andata a Roma.', 'Ieri sono andata a Roma.'],
@@ -643,7 +643,7 @@ export const ITALIAN_MISSIONS: Mission[] = [
       {
         q: [
           'How do you say "I will take three of them, thank you" when buying oranges?',
-          'Come dici "Ne prendo tre, grazie" quando compri delle arance?'
+          'Come dici "I will take three of them, thank you" quando compri delle arance?'
         ],
         a: [
           ['Ne prendo tre, grazie.', 'Ne prendo tre, grazie.'],
@@ -724,7 +724,7 @@ export const ITALIAN_MISSIONS: Mission[] = [
       {
         q: [
           'What is the first-person plural future of the verb "partire" (we will depart)?',
-          'Qual è la prima persona plurale del futuro del verbo "partire" (noi partiremo)?'
+          'Qual è la prima persona plurale del futuro del verbo "partire" (we will depart)?'
         ],
         a: [
           ['Noi partiremo', 'Noi partiremo'],

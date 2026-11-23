@@ -27,7 +27,7 @@ const grade5 = sanitizeGameState({
   unit: 3,
   xp: -40,
   name: 'A'.repeat(40),
-  lang: 'fr',
+  lang: 'zz',
   cleared: { [validMission!.id]: true, 'unknown-mission': true },
   learningProgress: { [learningMission!.id]: { mastered: true }, 'unknown-mission': { mastered: true } }
 });
@@ -36,7 +36,10 @@ assert.equal(grade5.subject, 'science', 'a Grade 5 save cannot restore a Grade 9
 assert.equal(grade5.unit, UNITS.findIndex(unit => unit.subject === 'science'));
 assert.equal(grade5.xp, 0);
 assert.equal(grade5.name.length, 20);
-assert.equal(grade5.lang, 'en');
+assert.equal(grade5.lang, 'en', 'an unsupported language code must fall back to English');
+// A valid Italian-track support language is preserved on restore.
+const ptSave = sanitizeGameState({ grade: 'grade5', subject: 'science', lang: 'pt' });
+assert.equal(ptSave.lang, 'pt', 'a supported language (pt) must be preserved');
 assert.equal(Object.keys(grade5.cleared).length, 1);
 assert.equal(Object.keys(grade5.learningProgress).length, 1);
 
