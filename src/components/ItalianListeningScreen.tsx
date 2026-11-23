@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Flag } from './Flag';
-import { LanguagePicker } from './LanguagePicker';
 import { useGame } from '../context/GameContext';
 import { L } from '../helpers';
 import { GrammarLevel } from '../data/italianGrammar';
@@ -131,13 +130,10 @@ export const ItalianListeningScreen: React.FC = () => {
         <div className="eyebrow" style={{ color: '#4ade80' }}><Flag country="IT" /> {T('eyebrow')}</div>
         <h1 style={{ margin: '5px 0 8px', fontSize: 26 }}>{T('title')}</h1>
         <p className="muted" style={{ margin: 0, lineHeight: 1.6 }}>{T('subtitle')}</p>
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 14, alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            <button type="button" className="btn ghost sm" onClick={() => goToView('it-grammar')}>📚 {T('grammarTraining')}</button>
-            <button type="button" className="btn ghost sm" onClick={() => goToView('it-lab')}>🎙️ {T('speakingLab')}</button>
-            <button type="button" className="btn ghost sm" onClick={() => goToView('map')}>← {T('missions')}</button>
-          </div>
-          <LanguagePicker />
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 14 }}>
+          <button type="button" className="btn ghost sm" onClick={() => goToView('it-grammar')}>📚 {T('grammarTraining')}</button>
+          <button type="button" className="btn ghost sm" onClick={() => goToView('it-lab')}>🎙️ {T('speakingLab')}</button>
+          <button type="button" className="btn ghost sm" onClick={() => goToView('map')}>← {T('missions')}</button>
         </div>
         {!speechSupported && (
           <div role="status" style={{ marginTop: 12, padding: 12, borderRadius: 9, border: '1px solid rgba(248,113,113,.45)', background: 'rgba(248,113,113,.08)' }}>
@@ -247,7 +243,13 @@ export const ItalianListeningScreen: React.FC = () => {
                 const revealed = chosen !== undefined;
                 return (
                   <div key={q.id}>
-                    <p style={{ fontSize: 16, fontWeight: 650, lineHeight: 1.5, margin: '0 0 8px' }}>{qi + 1}. {L(q.prompt, lang)}</p>
+                    {/* The comprehension question is part of the Italian practice,
+                        so it is always shown in Italian. The learner's language
+                        appears beneath it as support, not as a replacement. */}
+                    <p style={{ fontSize: 16, fontWeight: 650, lineHeight: 1.5, margin: '0 0 2px' }}>{qi + 1}. {L(q.prompt, 'it')}</p>
+                    {lang !== 'it' && (
+                      <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.4, margin: '0 0 8px' }}>{L(q.prompt, lang)}</p>
+                    )}
                     <div style={{ display: 'grid', gap: 8 }}>
                       {q.options.map((option, index) => {
                         const isChosen = chosen === index;

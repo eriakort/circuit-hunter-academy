@@ -264,7 +264,16 @@ export const TestScreen: React.FC = () => {
         {/* Question Card */}
         <div className="card qbox">
           <div className="qtxt" id="test-question" style={{ fontSize: '20px', marginBottom: '18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
-            <span>{L(currentItem.q.q, lang)}</span>
+            {/* Italian questions are part of the practice: shown in Italian,
+                with the learner's language beneath as support. */}
+            {currentItem.q.subject === 'italian' ? (
+              <span style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <span>{L(currentItem.q.q, 'it')}</span>
+                {lang !== 'it' && <span className="muted" style={{ fontSize: 14, fontWeight: 400 }}>{L(currentItem.q.q, lang)}</span>}
+              </span>
+            ) : (
+              <span>{L(currentItem.q.q, lang)}</span>
+            )}
             {currentItem.q.subject === 'italian' && (
               <button
                 type="button"

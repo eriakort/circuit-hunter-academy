@@ -464,7 +464,16 @@ export const BattleScreen: React.FC = () => {
       {currentQ && (
         <div className="qbox">
           <div className="qtxt" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
-            <span>{L(currentQ.q, lang)}</span>
+            {/* Italian missions: the question is part of the practice, so show
+                it in Italian with the learner's language beneath as support. */}
+            {currentMission.id.startsWith('it_') ? (
+              <span style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <span>{L(currentQ.q, 'it')}</span>
+                {lang !== 'it' && <span className="muted" style={{ fontSize: 13.5, fontWeight: 400 }}>{L(currentQ.q, lang)}</span>}
+              </span>
+            ) : (
+              <span>{L(currentQ.q, lang)}</span>
+            )}
             {currentMission.id.startsWith('it_') && (
               <button
                 type="button"
