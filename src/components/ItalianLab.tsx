@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../context/GameContext';
 import { L } from '../helpers';
+import { BilingualText } from '../types';
 import { ITALIAN_GRAMMAR_TOPICS } from '../data/italianGrammar';
 import {
   speakItalian,
@@ -37,7 +38,8 @@ export interface PracticePhrase {
   id: string;
   level: 'A1' | 'A2' | 'B1';
   targetIt: string;
-  translationEn: string;
+  // The Italian phrase's meaning, shown as support in the learner's language.
+  translation: BilingualText;
   phoneticHint?: string;
   notes?: [string, string];
   grammarTopicId?: string;
@@ -49,7 +51,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'a1-1',
     level: 'A1',
     targetIt: 'Buongiorno, come si chiama?',
-    translationEn: 'Good morning, what is your name? (formal)',
+    translation: {en: 'Good morning, what is your name? (formal)', it: 'Good morning, what is your name? (formal)', pt: 'Bom dia, como o senhor se chama? (formal)', es: 'Buenos días, ¿cómo se llama usted? (formal)', fr: 'Bonjour, comment vous appelez-vous ? (formel)', de: 'Guten Morgen, wie heißen Sie? (formell)'},
     phoneticHint: 'bwon-DJOR-no, KO-me see KYA-ma?',
     notes: ['Formal greeting with "si chiama" (Lei)', 'Saluto formale con forma di cortesia (Lei)']
   },
@@ -57,7 +59,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'a1-2',
     level: 'A1',
     targetIt: 'Piacere, mi chiamo Alessandro.',
-    translationEn: 'Nice to meet you, my name is Alessandro.',
+    translation: {en: 'Nice to meet you, my name is Alessandro.', it: 'Nice to meet you, my name is Alessandro.', pt: 'Prazer, meu nome é Alessandro.', es: 'Encantado, me llamo Alessandro.', fr: 'Enchanté, je m’appelle Alessandro.', de: 'Freut mich, ich heiße Alessandro.'},
     phoneticHint: 'pya-CHE-reh, mee KYA-mo a-les-SAN-dro',
     notes: ['The reflexive verb chiamarsi uses mi with io: mi chiamo.', 'Il verbo riflessivo chiamarsi usa mi con io: mi chiamo.'],
     grammarTopicId: 'reflexive'
@@ -66,7 +68,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'a1-3',
     level: 'A1',
     targetIt: 'Vorrei un caffè macchiato e un cornetto alla crema, per favore.',
-    translationEn: 'I would like a macchiato coffee and a cream croissant, please.',
+    translation: {en: 'I would like a macchiato coffee and a cream croissant, please.', it: 'I would like a macchiato coffee and a cream croissant, please.', pt: 'Eu gostaria de um café macchiato e um croissant de creme, por favor.', es: 'Querría un café cortado y un cruasán de crema, por favor.', fr: 'Je voudrais un café noisette et un croissant à la crème, s’il vous plaît.', de: 'Ich hätte gerne einen Macchiato und ein Croissant mit Creme, bitte.'},
     phoneticHint: 'vor-RAY oon kaf-FEH mak-KYA-to eh oon kor-NET-to AL-la KRE-ma',
     notes: ['Essential Italian cafe order; notice the articles un and un', 'Ordinazione classica al bar; osserva gli articoli un e un'],
     grammarTopicId: 'articles'
@@ -75,7 +77,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'a1-4',
     level: 'A1',
     targetIt: 'Quanto costa questo panino?',
-    translationEn: 'How much does this sandwich cost?',
+    translation: {en: 'How much does this sandwich cost?', it: 'How much does this sandwich cost?', pt: 'Quanto custa este sanduíche?', es: '¿Cuánto cuesta este bocadillo?', fr: 'Combien coûte ce sandwich ?', de: 'Wie viel kostet dieses Brötchen?'},
     phoneticHint: 'KWAN-to KOS-ta KWES-to pa-NEE-no?',
     notes: ['Asking prices', 'Chiedere il prezzo']
   },
@@ -83,7 +85,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'a1-5',
     level: 'A1',
     targetIt: 'Abito a Roma ma sono di Napoli.',
-    translationEn: 'I live in Rome but I am from Naples.',
+    translation: {en: 'I live in Rome but I am from Naples.', it: 'I live in Rome but I am from Naples.', pt: 'Moro em Roma, mas sou de Nápoles.', es: 'Vivo en Roma pero soy de Nápoles.', fr: 'J’habite à Rome mais je suis de Naples.', de: 'Ich wohne in Rom, aber ich komme aus Neapel.'},
     phoneticHint: 'A-bee-to ah RO-ma mah SO-no dee NA-po-lee',
     notes: ['"A" for cities, "di" for origin', '"A" per le città, "di" per la provenienza']
   },
@@ -93,7 +95,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'a2-1',
     level: 'A2',
     targetIt: 'Ieri sera sono andato al cinema con i miei amici.',
-    translationEn: 'Yesterday evening I went to the cinema with my friends.',
+    translation: {en: 'Yesterday evening I went to the cinema with my friends.', it: 'Yesterday evening I went to the cinema with my friends.', pt: 'Ontem à noite fui ao cinema com os meus amigos.', es: 'Ayer por la noche fui al cine con mis amigos.', fr: 'Hier soir je suis allé au cinéma avec mes amis.', de: 'Gestern Abend bin ich mit meinen Freunden ins Kino gegangen.'},
     phoneticHint: 'YE-ree SE-ra SO-no an-DA-to al CHEE-ne-ma...',
     notes: ['Passato prossimo with essere (movement verb: andare)', 'Passato prossimo con ausiliare essere per verbo di movimento'],
     grammarTopicId: 'passato-prossimo'
@@ -102,7 +104,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'a2-2',
     level: 'A2',
     targetIt: 'Scusi, per andare alla stazione centrale devo girare a destra?',
-    translationEn: 'Excuse me, to go to the central station should I turn right?',
+    translation: {en: 'Excuse me, to go to the central station should I turn right?', it: 'Excuse me, to go to the central station should I turn right?', pt: 'Com licença, para ir à estação central devo virar à direita?', es: 'Perdone, para ir a la estación central ¿debo girar a la derecha?', fr: 'Excusez-moi, pour aller à la gare centrale, dois-je tourner à droite ?', de: 'Entschuldigung, muss ich zum Hauptbahnhof rechts abbiegen?'},
     phoneticHint: 'SKOO-zee, per an-DA-re al-la sta-tzyo-ne chen-TRA-le...',
     notes: ['Asking for street directions', 'Chiedere indicazioni stradali']
   },
@@ -110,7 +112,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'a2-3',
     level: 'A2',
     targetIt: 'Queste mele sono deliziose, ne prendo due chili.',
-    translationEn: 'These apples are delicious, I will take two kilos of them.',
+    translation: {en: 'These apples are delicious, I will take two kilos of them.', it: 'These apples are delicious, I will take two kilos of them.', pt: 'Estas maçãs estão deliciosas, vou levar dois quilos.', es: 'Estas manzanas están deliciosas, me llevo dos kilos.', fr: 'Ces pommes sont délicieuses, j’en prends deux kilos.', de: 'Diese Äpfel sind köstlich, ich nehme zwei Kilo davon.'},
     phoneticHint: 'KWES-te ME-le SO-no de-lee-TSYO-ze, neh PREN-do...',
     notes: ['Partitive pronoun "ne" for specified quantity', 'Partitivo "ne" per esprimere una quantità definita'],
     grammarTopicId: 'partitive'
@@ -119,7 +121,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'a2-4',
     level: 'A2',
     targetIt: 'Da bambino andavo sempre in vacanza in Sardegna.',
-    translationEn: 'As a child I always used to go on holiday in Sardinia.',
+    translation: {en: 'As a child I always used to go on holiday in Sardinia.', it: 'As a child I always used to go on holiday in Sardinia.', pt: 'Quando criança, eu sempre passava as férias na Sardenha.', es: 'De niño siempre iba de vacaciones a Cerdeña.', fr: 'Enfant, j’allais toujours en vacances en Sardaigne.', de: 'Als Kind habe ich immer in Sardinien Urlaub gemacht.'},
     phoneticHint: 'dah bam-BEE-no an-DA-vo SEM-pre een va-KAN-tsa...',
     notes: ['Imperfect for habitual past actions', 'Imperfetto per abitudini del passato']
   },
@@ -129,7 +131,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'b1-1',
     level: 'B1',
     targetIt: 'Penso che questo museo sia davvero straordinario.',
-    translationEn: 'I think that this museum is truly extraordinary.',
+    translation: {en: 'I think that this museum is truly extraordinary.', it: 'I think that this museum is truly extraordinary.', pt: 'Acho que este museu é realmente extraordinário.', es: 'Creo que este museo es verdaderamente extraordinario.', fr: 'Je pense que ce musée est vraiment extraordinaire.', de: 'Ich finde, dieses Museum ist wirklich außergewöhnlich.'},
     phoneticHint: 'PEN-so keh KWES-to moo-ZE-o SEE-a dahv-VE-ro...',
     notes: ['Present subjunctive after opinion verb "penso che"', 'Congiuntivo presente retto dal verbo di opinione "penso che"']
   },
@@ -137,7 +139,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'b1-2',
     level: 'B1',
     targetIt: 'Se avessi più tempo libero, viaggerei in tutta Italia.',
-    translationEn: 'If I had more free time, I would travel all over Italy.',
+    translation: {en: 'If I had more free time, I would travel all over Italy.', it: 'If I had more free time, I would travel all over Italy.', pt: 'Se eu tivesse mais tempo livre, viajaria por toda a Itália.', es: 'Si tuviera más tiempo libre, viajaría por toda Italia.', fr: 'Si j’avais plus de temps libre, je voyagerais dans toute l’Italie.', de: 'Wenn ich mehr Freizeit hätte, würde ich durch ganz Italien reisen.'},
     phoneticHint: 'seh a-VES-see pyoo TEM-po LEE-be-ro, vyad-je-RAY...',
     notes: ['Hypothetical period: congiuntivo imperfetto + condizionale', 'Periodo ipotetico della possibilità']
   },
@@ -145,7 +147,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'b1-3',
     level: 'B1',
     targetIt: 'Quel libro me l’ha consigliato il professore la settimana scorsa.',
-    translationEn: 'The professor recommended that book to me last week.',
+    translation: {en: 'The professor recommended that book to me last week.', it: 'The professor recommended that book to me last week.', pt: 'O professor me recomendou aquele livro na semana passada.', es: 'El profesor me recomendó ese libro la semana pasada.', fr: 'Le professeur m’a recommandé ce livre la semaine dernière.', de: 'Der Professor hat mir letzte Woche dieses Buch empfohlen.'},
     phoneticHint: 'kwel LEE-bro meh l-ah kon-seel-YA-to...',
     notes: ['Combined pronoun "me lo" -> me l\'ha consigliato', 'Pronome combinato mi + lo = me lo'],
     grammarTopicId: 'pronouns'
@@ -154,7 +156,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'b1-4',
     level: 'B1',
     targetIt: 'Potrebbe ripetere più lentamente, per cortesia?',
-    translationEn: 'Could you please repeat more slowly, as a courtesy?',
+    translation: {en: 'Could you please repeat more slowly, as a courtesy?', it: 'Could you please repeat more slowly, as a courtesy?', pt: 'Você poderia repetir mais devagar, por gentileza?', es: '¿Podría repetir más despacio, por favor?', fr: 'Pourriez-vous répéter plus lentement, s’il vous plaît ?', de: 'Könnten Sie das bitte langsamer wiederholen?'},
     phoneticHint: 'po-TREB-be ree-PE-te-re pyoo len-ta-MEN-te...',
     notes: ['Polite conditional of "potere"', 'Condizionale di cortesia']
   },
@@ -164,7 +166,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a1-pronouns',
     level: 'A1',
     targetIt: 'Maria? La vedo ogni giorno.',
-    translationEn: 'Maria? I see her every day.',
+    translation: {en: 'Maria? I see her every day.', it: 'Maria? I see her every day.', pt: 'A Maria? Eu a vejo todos os dias.', es: '¿María? La veo todos los días.', fr: 'Maria ? Je la vois tous les jours.', de: 'Maria? Ich sehe sie jeden Tag.'},
     phoneticHint: 'ma-REE-a, la VE-do ON-yee JOR-no',
     notes: ['La replaces a feminine singular direct object: Maria → la.', 'La sostituisce un complemento oggetto femminile singolare: Maria → la.'],
     grammarTopicId: 'pronouns'
@@ -173,7 +175,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a1-passato',
     level: 'A1',
     targetIt: 'Ieri ho studiato italiano.',
-    translationEn: 'Yesterday I studied Italian.',
+    translation: {en: 'Yesterday I studied Italian.', it: 'Yesterday I studied Italian.', pt: 'Ontem estudei italiano.', es: 'Ayer estudié italiano.', fr: 'Hier j’ai étudié l’italien.', de: 'Gestern habe ich Italienisch gelernt.'},
     phoneticHint: 'YE-ree oh stoo-DYA-to ee-ta-LYA-no',
     notes: ['Studiare uses avere + the past participle: ho studiato.', 'Studiare usa avere + il participio passato: ho studiato.'],
     grammarTopicId: 'passato-prossimo'
@@ -182,7 +184,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a1-partitive',
     level: 'A1',
     targetIt: 'Vorrei del pane e dell’acqua.',
-    translationEn: 'I would like some bread and water.',
+    translation: {en: 'I would like some bread and water.', it: 'I would like some bread and water.', pt: 'Eu gostaria de um pouco de pão e água.', es: 'Querría un poco de pan y agua.', fr: 'Je voudrais du pain et de l’eau.', de: 'Ich hätte gerne etwas Brot und Wasser.'},
     phoneticHint: 'vor-RAY del PA-ne eh del-LAK-kwa',
     notes: ['Del and dell’ express an unspecified quantity: del pane, dell’acqua.', 'Del e dell’ esprimono una quantità non specificata: del pane, dell’acqua.'],
     grammarTopicId: 'partitive'
@@ -191,7 +193,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a1-sentence',
     level: 'A1',
     targetIt: 'Ogni mattina studio italiano prima di colazione.',
-    translationEn: 'Every morning I study Italian before breakfast.',
+    translation: {en: 'Every morning I study Italian before breakfast.', it: 'Every morning I study Italian before breakfast.', pt: 'Todas as manhãs estudo italiano antes do café da manhã.', es: 'Cada mañana estudio italiano antes de desayunar.', fr: 'Chaque matin j’étudie l’italien avant le petit-déjeuner.', de: 'Jeden Morgen lerne ich vor dem Frühstück Italienisch.'},
     phoneticHint: 'ON-yee mat-TEE-na STOO-dyo ee-ta-LYA-no PREE-ma dee ko-la-TSYO-ne',
     notes: ['A time expression can begin the sentence, followed by the verb and its complement.', 'Un’espressione di tempo può aprire la frase, seguita dal verbo e dal complemento.'],
     grammarTopicId: 'sentence-building'
@@ -200,7 +202,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a2-articles',
     level: 'A2',
     targetIt: 'Ho incontrato un’amica e gli amici di Marco.',
-    translationEn: 'I met a female friend and Marco’s friends.',
+    translation: {en: 'I met a female friend and Marco’s friends.', it: 'I met a female friend and Marco’s friends.', pt: 'Encontrei uma amiga e os amigos do Marco.', es: 'Conocí a una amiga y a los amigos de Marco.', fr: 'J’ai rencontré une amie et les amis de Marco.', de: 'Ich habe eine Freundin und Marcos Freunde getroffen.'},
     phoneticHint: 'oh een-kon-TRA-to oon-A-mee-ka eh lyee a-MEE-chee dee MAR-ko',
     notes: ['Un’amica is feminine singular; gli amici is masculine plural before a vowel.', 'Un’amica è femminile singolare; gli amici è maschile plurale davanti a vocale.'],
     grammarTopicId: 'articles'
@@ -209,7 +211,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a2-pronouns',
     level: 'A2',
     targetIt: 'Ho chiamato Giulia e le ho parlato.',
-    translationEn: 'I called Giulia and spoke to her.',
+    translation: {en: 'I called Giulia and spoke to her.', it: 'I called Giulia and spoke to her.', pt: 'Liguei para a Giulia e falei com ela.', es: 'Llamé a Giulia y hablé con ella.', fr: 'J’ai appelé Giulia et je lui ai parlé.', de: 'Ich habe Giulia angerufen und mit ihr gesprochen.'},
     phoneticHint: 'oh kya-MA-to JOO-lya eh leh oh par-LA-to',
     notes: ['Giulia is the direct object of chiamare; le means “to her” with parlare a.', 'Giulia è complemento diretto di chiamare; le significa “a lei” con parlare a.'],
     grammarTopicId: 'pronouns'
@@ -218,7 +220,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a2-reflexive',
     level: 'A2',
     targetIt: 'Ieri Giulia si è svegliata presto e si è preparata.',
-    translationEn: 'Yesterday Giulia woke up early and got ready.',
+    translation: {en: 'Yesterday Giulia woke up early and got ready.', it: 'Yesterday Giulia woke up early and got ready.', pt: 'Ontem a Giulia acordou cedo e se arrumou.', es: 'Ayer Giulia se despertó temprano y se preparó.', fr: 'Hier Giulia s’est réveillée tôt et s’est préparée.', de: 'Gestern ist Giulia früh aufgewacht und hat sich fertig gemacht.'},
     phoneticHint: 'YE-ree JOO-lya see eh sve-LYA-ta PRES-to eh see eh pre-pa-RA-ta',
     notes: ['Reflexive verbs use essere in the passato prossimo; the participle agrees with Giulia.', 'I verbi riflessivi usano essere nel passato prossimo; il participio concorda con Giulia.'],
     grammarTopicId: 'reflexive'
@@ -227,7 +229,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a2-sentence',
     level: 'A2',
     targetIt: 'Ieri ho comprato un libro e l’ho letto in treno.',
-    translationEn: 'Yesterday I bought a book and read it on the train.',
+    translation: {en: 'Yesterday I bought a book and read it on the train.', it: 'Yesterday I bought a book and read it on the train.', pt: 'Ontem comprei um livro e o li no trem.', es: 'Ayer compré un libro y lo leí en el tren.', fr: 'Hier j’ai acheté un livre et je l’ai lu dans le train.', de: 'Gestern habe ich ein Buch gekauft und es im Zug gelesen.'},
     phoneticHint: 'YE-ree oh kom-PRA-to oon LEE-bro eh loh LET-to een TRE-no',
     notes: ['L’ replaces il libro and comes before ho; letto agrees with the preceding masculine singular pronoun.', 'L’ sostituisce il libro e precede ho; letto concorda con il pronome maschile singolare.'],
     grammarTopicId: 'sentence-building'
@@ -236,7 +238,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-b1-articles',
     level: 'B1',
     targetIt: 'Nel centro storico ci sono degli edifici antichi e delle piazze luminose.',
-    translationEn: 'In the historic centre there are some old buildings and bright squares.',
+    translation: {en: 'In the historic centre there are some old buildings and bright squares.', it: 'In the historic centre there are some old buildings and bright squares.', pt: 'No centro histórico há alguns edifícios antigos e praças iluminadas.', es: 'En el centro histórico hay algunos edificios antiguos y plazas luminosas.', fr: 'Dans le centre historique il y a de vieux bâtiments et des places lumineuses.', de: 'In der Altstadt gibt es alte Gebäude und helle Plätze.'},
     phoneticHint: 'nel CHEN-tro STO-ree-ko chee SO-no DEL-yee eh-DEE-fee-chi an-TEE-kee eh DEL-le PYAT-tse loo-mee-NO-ze',
     notes: ['Notice the articulated preposition nel and the plural forms degli and delle.', 'Osserva la preposizione articolata nel e le forme plurali degli e delle.'],
     grammarTopicId: 'articles'
@@ -245,7 +247,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-b1-passato',
     level: 'B1',
     targetIt: 'Le ho viste quando sono arrivate.',
-    translationEn: 'I saw them when they arrived.',
+    translation: {en: 'I saw them when they arrived.', it: 'I saw them when they arrived.', pt: 'Eu os vi quando chegaram.', es: 'Los vi cuando llegaron.', fr: 'Je les ai vus quand ils sont arrivés.', de: 'Ich habe sie gesehen, als sie ankamen.'},
     phoneticHint: 'leh oh VEES-te KWAN-do SO-no ar-ree-VA-te',
     notes: ['Le ho viste uses agreement with a preceding feminine plural pronoun; arrivare takes essere.', 'Le ho viste richiede l’accordo con il pronome femminile plurale; arrivare usa essere.'],
     grammarTopicId: 'passato-prossimo'
@@ -254,7 +256,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-b1-partitive',
     level: 'B1',
     targetIt: 'Per la zuppa uso delle carote, del sedano e un po’ d’olio.',
-    translationEn: 'For the soup I use some carrots, celery and a little oil.',
+    translation: {en: 'For the soup I use some carrots, celery and a little oil.', it: 'For the soup I use some carrots, celery and a little oil.', pt: 'Para a sopa uso umas cenouras, aipo e um pouco de azeite.', es: 'Para la sopa uso unas zanahorias, apio y un poco de aceite.', fr: 'Pour la soupe j’utilise des carottes, du céleri et un peu d’huile.', de: 'Für die Suppe nehme ich Karotten, Sellerie und etwas Öl.'},
     phoneticHint: 'per la TSOOP-pa OO-zo DEL-le ka-RO-te del SE-da-no eh oon poh DO-lyo',
     notes: ['Combine partitive articles with un po’ di to express different quantities.', 'Combina gli articoli partitivi con un po’ di per esprimere quantità diverse.'],
     grammarTopicId: 'partitive'
@@ -263,7 +265,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-b1-reflexive',
     level: 'B1',
     targetIt: 'Dopo essersi svegliata, Giulia si è preparata ed è uscita.',
-    translationEn: 'After waking up, Giulia got ready and went out.',
+    translation: {en: 'After waking up, Giulia got ready and went out.', it: 'After waking up, Giulia got ready and went out.', pt: 'Depois de acordar, a Giulia se arrumou e saiu.', es: 'Después de despertarse, Giulia se preparó y salió.', fr: 'Après s’être réveillée, Giulia s’est préparée et est sortie.', de: 'Nach dem Aufwachen hat sich Giulia fertig gemacht und ist ausgegangen.'},
     phoneticHint: 'DO-po ES-ser-see sve-LYA-ta JOO-lya see eh pre-pa-RA-ta ed eh oo-SHEE-ta',
     notes: ['Essersi is the reflexive infinitive after dopo; the following past participles agree with Giulia.', 'Essersi è l’infinito riflessivo dopo dopo; i participi seguenti concordano con Giulia.'],
     grammarTopicId: 'reflexive'
@@ -272,7 +274,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-b1-sentence',
     level: 'B1',
     targetIt: 'Quando Giulia è arrivata a casa, si è fatta una doccia e poi ha cenato.',
-    translationEn: 'When Giulia got home, she took a shower and then had dinner.',
+    translation: {en: 'When Giulia got home, she took a shower and then had dinner.', it: 'When Giulia got home, she took a shower and then had dinner.', pt: 'Quando a Giulia chegou em casa, tomou banho e depois jantou.', es: 'Cuando Giulia llegó a casa, se duchó y luego cenó.', fr: 'Quand Giulia est rentrée, elle a pris une douche puis a dîné.', de: 'Als Giulia nach Hause kam, duschte sie und aß dann zu Abend.'},
     phoneticHint: 'KWAN-do JOO-lya eh ar-ree-VA-ta a KA-za see eh FAT-ta OO-na DOT-cha eh poy ah che-NA-to',
     notes: ['Connect clauses with quando and poi; keep auxiliary and participle agreement consistent.', 'Collega le proposizioni con quando e poi; mantieni coerenti ausiliare e accordo del participio.'],
     grammarTopicId: 'sentence-building'
@@ -281,7 +283,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a1-present-tense',
     level: 'A1',
     targetIt: 'Ogni mattina preparo la colazione e poi vado a scuola.',
-    translationEn: 'Every morning I make breakfast and then go to school.',
+    translation: {en: 'Every morning I make breakfast and then go to school.', it: 'Every morning I make breakfast and then go to school.', pt: 'Todas as manhãs preparo o café da manhã e depois vou à escola.', es: 'Cada mañana preparo el desayuno y luego voy a la escuela.', fr: 'Chaque matin je prépare le petit-déjeuner puis je vais à l’école.', de: 'Jeden Morgen mache ich Frühstück und gehe dann zur Schule.'},
     phoneticHint: 'ON-yee mat-TEE-na pre-PA-ro la ko-la-TSYO-ne eh poy VA-do a SKWO-la',
     notes: ['Preparo is the io form of preparare; vado is the irregular io form of andare.', 'Preparo è la forma di preparare con io; vado è la forma irregolare di andare con io.'],
     grammarTopicId: 'present-tense'
@@ -290,7 +292,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a2-present-tense',
     level: 'A2',
     targetIt: 'Oggi non posso uscire, ma domani vengo volentieri.',
-    translationEn: 'Today I cannot go out, but tomorrow I will gladly come.',
+    translation: {en: 'Today I cannot go out, but tomorrow I will gladly come.', it: 'Today I cannot go out, but tomorrow I will gladly come.', pt: 'Hoje não posso sair, mas amanhã venho com prazer.', es: 'Hoy no puedo salir, pero mañana vendré con gusto.', fr: 'Aujourd’hui je ne peux pas sortir, mais demain je viendrai volontiers.', de: 'Heute kann ich nicht ausgehen, aber morgen komme ich gerne.'},
     phoneticHint: 'OD-jee non POS-so oo-SHEE-reh, mah do-MA-nee VEN-go vo-len-TYE-ree',
     notes: ['Non comes before posso; the modal verb is followed by the infinitive uscire. Vengo is the io form of venire.', 'Non precede posso; il verbo modale è seguito dall’infinito uscire. Vengo è la forma di venire con io.'],
     grammarTopicId: 'present-tense'
@@ -299,7 +301,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-b1-present-tense',
     level: 'B1',
     targetIt: 'Di solito prendo il treno, ma oggi preferisco lavorare da casa.',
-    translationEn: 'I usually take the train, but today I prefer to work from home.',
+    translation: {en: 'I usually take the train, but today I prefer to work from home.', it: 'I usually take the train, but today I prefer to work from home.', pt: 'Normalmente pego o trem, mas hoje prefiro trabalhar de casa.', es: 'Normalmente tomo el tren, pero hoy prefiero trabajar desde casa.', fr: 'D’habitude je prends le train, mais aujourd’hui je préfère travailler à la maison.', de: 'Normalerweise nehme ich den Zug, aber heute arbeite ich lieber von zu Hause.'},
     phoneticHint: 'dee SO-lee-to PREN-do eel TRE-no, mah OD-jee pre-fe-REE-sko la-vo-RA-reh da KA-sa',
     notes: ['The present tense contrasts a usual routine with today’s choice; preferire uses the -isc- form preferisco.', 'Il presente contrappone un’abitudine a una scelta di oggi; preferire usa la forma in -isc- preferisco.'],
     grammarTopicId: 'present-tense'
@@ -308,7 +310,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a1-imperfetto',
     level: 'A1',
     targetIt: 'Quando ero piccolo, avevo un cane.',
-    translationEn: 'When I was little, I had a dog.',
+    translation: {en: 'When I was little, I had a dog.', it: 'When I was little, I had a dog.', pt: 'Quando eu era pequeno, tinha um cachorro.', es: 'Cuando era pequeño, tenía un perro.', fr: 'Quand j’étais petit, j’avais un chien.', de: 'Als ich klein war, hatte ich einen Hund.'},
     phoneticHint: 'KWAN-do EH-ro PIK-ko-lo, a-VE-vo oon KA-ne',
     notes: ['Ero and avevo are common imperfect forms for past descriptions and possession.', 'Ero e avevo sono forme comuni dell’imperfetto per descrizioni e possesso nel passato.'],
     grammarTopicId: 'imperfetto'
@@ -317,7 +319,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a2-imperfetto',
     level: 'A2',
     targetIt: 'Ogni estate andavo al mare con la mia famiglia.',
-    translationEn: 'Every summer I used to go to the seaside with my family.',
+    translation: {en: 'Every summer I used to go to the seaside with my family.', it: 'Every summer I used to go to the seaside with my family.', pt: 'Todo verão eu ia à praia com a minha família.', es: 'Cada verano iba a la playa con mi familia.', fr: 'Chaque été j’allais à la mer avec ma famille.', de: 'Jeden Sommer bin ich mit meiner Familie ans Meer gefahren.'},
     phoneticHint: 'ON-yee eh-STA-te an-DA-vo al MA-re kon la MEE-a fa-MEE-lya',
     notes: ['Ogni estate signals a repeated past habit; andavo is the imperfetto of andare.', 'Ogni estate indica un’abitudine passata; andavo è l’imperfetto di andare.'],
     grammarTopicId: 'imperfetto'
@@ -326,7 +328,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-b1-imperfetto',
     level: 'B1',
     targetIt: 'Mentre camminavo, ho incontrato una vecchia amica.',
-    translationEn: 'While I was walking, I met an old friend.',
+    translation: {en: 'While I was walking, I met an old friend.', it: 'While I was walking, I met an old friend.', pt: 'Enquanto caminhava, encontrei um velho amigo.', es: 'Mientras caminaba, me encontré con un viejo amigo.', fr: 'Pendant que je marchais, j’ai rencontré un vieil ami.', de: 'Während ich spazieren ging, traf ich einen alten Freund.'},
     phoneticHint: 'MEN-tre kam-mee-NA-vo, oh een-kon-TRA-to OO-na VEK-kya a-MEE-ka',
     notes: ['Camminavo describes the background action; ho incontrato is the completed event.', 'Camminavo descrive l’azione di sfondo; ho incontrato è l’evento concluso.'],
     grammarTopicId: 'imperfetto'
@@ -336,7 +338,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a1-prepositions',
     level: 'A1',
     targetIt: 'Abito a Roma e vado da Luca con mia sorella.',
-    translationEn: 'I live in Rome and I am going to Luca’s place with my sister.',
+    translation: {en: 'I live in Rome and I am going to Luca’s place with my sister.', it: 'I live in Rome and I am going to Luca’s place with my sister.', pt: 'Moro em Roma e vou à casa do Luca com a minha irmã.', es: 'Vivo en Roma y voy a casa de Luca con mi hermana.', fr: 'J’habite à Rome et je vais chez Luca avec ma sœur.', de: 'Ich wohne in Rom und gehe mit meiner Schwester zu Luca.'},
     phoneticHint: 'A-bee-to a RO-ma eh VA-do da LOO-ka kon MEE-a so-REL-la',
     notes: ['Use a with a city, da with a person’s place and con for company.', 'Usa a con una città, da con il luogo di una persona e con per indicare compagnia.'],
     grammarTopicId: 'prepositions'
@@ -345,7 +347,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a2-prepositions',
     level: 'A2',
     targetIt: 'La lezione comincia alle nove e finisce nel pomeriggio.',
-    translationEn: 'The lesson starts at nine and finishes in the afternoon.',
+    translation: {en: 'The lesson starts at nine and finishes in the afternoon.', it: 'The lesson starts at nine and finishes in the afternoon.', pt: 'A aula começa às nove e termina à tarde.', es: 'La clase empieza a las nueve y termina por la tarde.', fr: 'Le cours commence à neuf heures et finit l’après-midi.', de: 'Der Unterricht beginnt um neun und endet am Nachmittag.'},
     phoneticHint: 'la let-TSYO-ne ko-MEEN-cha AL-le NO-ve eh fee-NEE-she nel po-me-REEJ-jo',
     notes: ['Use alle with clock times; nel is in + il and introduces a time period.', 'Usa alle con gli orari; nel è in + il e introduce un periodo di tempo.'],
     grammarTopicId: 'prepositions'
@@ -354,7 +356,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-b1-prepositions',
     level: 'B1',
     targetIt: 'Dipende dal tempo, ma penso spesso a quel viaggio.',
-    translationEn: 'It depends on the weather, but I often think about that trip.',
+    translation: {en: 'It depends on the weather, but I often think about that trip.', it: 'It depends on the weather, but I often think about that trip.', pt: 'Depende do tempo, mas penso muitas vezes naquela viagem.', es: 'Depende del tiempo, pero pienso a menudo en aquel viaje.', fr: 'Ça dépend du temps, mais je pense souvent à ce voyage.', de: 'Es hängt vom Wetter ab, aber ich denke oft an diese Reise.'},
     phoneticHint: 'dee-PEN-de dal TEM-po, ma PEN-so SPES-so a kwel vyad-jo',
     notes: ['Dipendere takes da (da + il = dal); pensare takes a.', 'Dipendere richiede da (da + il = dal); pensare richiede a.'],
     grammarTopicId: 'prepositions'
@@ -364,7 +366,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a1-adjective-agreement',
     level: 'A1',
     targetIt: 'La ragazza è simpatica e i ragazzi sono gentili.',
-    translationEn: 'The girl is friendly and the boys are kind.',
+    translation: {en: 'The girl is friendly and the boys are kind.', it: 'The girl is friendly and the boys are kind.', pt: 'A menina é simpática e os meninos são gentis.', es: 'La niña es simpática y los niños son amables.', fr: 'La fille est sympathique et les garçons sont gentils.', de: 'Das Mädchen ist nett und die Jungen sind freundlich.'},
     phoneticHint: 'la ra-GAT-tsa eh seem-PA-tee-ka eh ee ra-GAT-tsee SO-no jen-TEE-lee',
     notes: ['Simpatica agrees with the feminine singular ragazza; gentili is plural.', 'Simpatica concorda con ragazza, femminile singolare; gentili è plurale.'],
     grammarTopicId: 'adjective-agreement'
@@ -373,7 +375,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-a2-adjective-agreement',
     level: 'A2',
     targetIt: 'Le mie amiche sono molto gentili e interessanti.',
-    translationEn: 'My female friends are very kind and interesting.',
+    translation: {en: 'My female friends are very kind and interesting.', it: 'My female friends are very kind and interesting.', pt: 'As minhas amigas são muito gentis e interessantes.', es: 'Mis amigas son muy amables e interesantes.', fr: 'Mes amies sont très gentilles et intéressantes.', de: 'Meine Freundinnen sind sehr nett und interessant.'},
     phoneticHint: 'leh MEE-eh a-MEE-keh SO-no MOL-to jen-TEE-lee eh een-teh-res-SAN-tee',
     notes: ['Amiche is feminine plural; adjectives ending in -e become -i in the plural.', 'Amiche è femminile plurale; gli aggettivi in -e diventano -i al plurale.'],
     grammarTopicId: 'adjective-agreement'
@@ -382,7 +384,7 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     id: 'grammar-b1-adjective-agreement',
     level: 'B1',
     targetIt: 'Abbiamo visitato due vecchie città molto affascinanti.',
-    translationEn: 'We visited two old, very fascinating cities.',
+    translation: {en: 'We visited two old, very fascinating cities.', it: 'We visited two old, very fascinating cities.', pt: 'Visitamos duas cidades antigas e muito fascinantes.', es: 'Visitamos dos ciudades antiguas y muy fascinantes.', fr: 'Nous avons visité deux villes anciennes et très fascinantes.', de: 'Wir haben zwei alte, sehr faszinierende Städte besucht.'},
     phoneticHint: 'ab-BYA-mo vee-zee-TA-to DOO-eh VEK-kye cheet-TA MOL-to af-fa-shee-NAN-tee',
     notes: ['Vecchie and affascinanti agree with città in the feminine plural.', 'Vecchie e affascinanti concordano con città al femminile plurale.'],
     grammarTopicId: 'adjective-agreement'
@@ -952,7 +954,7 @@ export const ItalianLab: React.FC<{ initialPhrase?: string }> = ({ initialPhrase
                 {activePhrase.targetIt}
               </div>
               <div style={{ fontSize: '0.95rem', color: 'var(--sub)', marginTop: '0.25rem' }}>
-                {activePhrase.translationEn}
+                {L(activePhrase.translation, lang)}
               </div>
               {activePhrase.phoneticHint && (
                 <div style={{ fontSize: '0.8rem', color: 'var(--accent)', marginTop: '0.35rem', fontStyle: 'italic' }}>
