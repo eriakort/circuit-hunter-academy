@@ -100,10 +100,14 @@ export const MapScreen: React.FC = () => {
                       'Your learning journey is saved in this browser. You can return to your discoveries at any time.',
                       'Your learning journey is saved in this browser. You can return to your discoveries at any time.'
                     ]
-                  : [
-                      'You can switch between English and Italian at any time with EN / IT at the top.',
-                      "Puoi passare dall'inglese all'italiano in qualsiasi momento con EN / IT in alto."
-                    ],
+                  : {
+                      en: 'You can change the language at any time with the EN · IT · PT · ES · FR · DE buttons at the top.',
+                      it: "Puoi cambiare lingua in qualsiasi momento con i pulsanti EN · IT · PT · ES · FR · DE in alto.",
+                      pt: 'Você pode mudar o idioma a qualquer momento com os botões EN · IT · PT · ES · FR · DE no topo.',
+                      es: 'Puedes cambiar el idioma en cualquier momento con los botones EN · IT · PT · ES · FR · DE de arriba.',
+                      fr: 'Tu peux changer de langue à tout moment avec les boutons EN · IT · PT · ES · FR · DE en haut.',
+                      de: 'Du kannst die Sprache jederzeit mit den Schaltflächen EN · IT · PT · ES · FR · DE oben ändern.'
+                    },
                 lang
               )}
             </span>

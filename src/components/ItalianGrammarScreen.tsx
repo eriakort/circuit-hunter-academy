@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react';
 import { Flag } from './Flag';
-import { LanguagePicker } from './LanguagePicker';
 import { useGame } from '../context/GameContext';
 import { L } from '../helpers';
 import { LocalizedText } from '../types';
@@ -102,14 +101,11 @@ export const ItalianGrammarScreen: React.FC = () => {
         <p className="muted" style={{ margin: 0, lineHeight: 1.6 }}>
           {L(GRAMMAR_UI.heroText, lang)}
         </p>
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 14, alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            <button type="button" className="btn ghost sm" onClick={() => goToView('it-lab')}>🎙️ {L(GRAMMAR_UI.speakingLab, lang)}</button>
-            <button type="button" className="btn ghost sm" onClick={() => goToView('it-listening')}>🎧 {L(GRAMMAR_UI.listeningLab, lang)}</button>
-            <button type="button" className="btn ghost sm" onClick={() => goToView('test')}>📝 {L(GRAMMAR_UI.subjectTests, lang)}</button>
-            <button type="button" className="btn ghost sm" onClick={() => goToView('map')}>← {L(GRAMMAR_UI.missions, lang)}</button>
-          </div>
-          <LanguagePicker />
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 14 }}>
+          <button type="button" className="btn ghost sm" onClick={() => goToView('it-lab')}>🎙️ {L(GRAMMAR_UI.speakingLab, lang)}</button>
+          <button type="button" className="btn ghost sm" onClick={() => goToView('it-listening')}>🎧 {L(GRAMMAR_UI.listeningLab, lang)}</button>
+          <button type="button" className="btn ghost sm" onClick={() => goToView('test')}>📝 {L(GRAMMAR_UI.subjectTests, lang)}</button>
+          <button type="button" className="btn ghost sm" onClick={() => goToView('map')}>← {L(GRAMMAR_UI.missions, lang)}</button>
         </div>
       </section>
 

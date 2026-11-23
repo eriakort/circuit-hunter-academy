@@ -111,6 +111,20 @@ export const HUD: React.FC = () => {
             IT
           </button>
           )}
+          {/* Support languages for the Italian-learning track: shown on every
+              Italian screen so the learner can switch from the top bar. */}
+          {subject === 'italian' && (['pt', 'es', 'fr', 'de'] as const).map(code => (
+            <button
+              key={code}
+              id={`l${code.toUpperCase()}`}
+              className={lang === code ? 'on' : ''}
+              aria-pressed={lang === code}
+              title={{ pt: 'Português (Brasil)', es: 'Español', fr: 'Français', de: 'Deutsch' }[code]}
+              onClick={() => setLanguage(code)}
+            >
+              {code.toUpperCase()}
+            </button>
+          ))}
         </div>
 
         {grade && subject && (
