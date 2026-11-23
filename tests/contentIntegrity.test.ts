@@ -2,10 +2,20 @@ import assert from 'node:assert/strict';
 import { ARCS, MISSIONS, SUBJECTS, UNITS } from '../src/data/gameData';
 import { getCompleteQuestionBank } from '../src/data/questionBank';
 
-const isCompleteBilingualPair = (value: unknown): value is [string, string] =>
-  Array.isArray(value) &&
-  value.length === 2 &&
-  value.every(part => typeof part === 'string' && part.trim().length > 0);
+// Accepts either a legacy [en, it] tuple or a localized record. Both must
+// carry non-empty English and Italian, which is the bilingual guarantee the
+// content policy depends on; extra support languages (pt/es/fr/de) are optional.
+const isCompleteBilingualPair = (value: unknown): boolean => {
+  if (Array.isArray(value)) {
+    return value.length === 2 && value.every(part => typeof part === 'string' && part.trim().length > 0);
+  }
+  if (value && typeof value === 'object') {
+    const rec = value as Record<string, unknown>;
+    return typeof rec.en === 'string' && rec.en.trim().length > 0 &&
+      typeof rec.it === 'string' && rec.it.trim().length > 0;
+  }
+  return false;
+};
 
 const missionIdCounts = new Map<string, number>();
 MISSIONS.forEach(mission => {
