@@ -37,7 +37,12 @@ describe('Italian Checkpoint & Oral Proficiency Suite', () => {
 
     ITALIAN_PRACTICE_PHRASES.forEach(phrase => {
       expect(phrase.targetIt).toBeDefined();
-      expect(phrase.translationEn).toBeDefined();
+      // Meaning is now localized into every support language.
+      expect(phrase.translation).toBeDefined();
+      (['en', 'it', 'pt', 'es', 'fr', 'de'] as const).forEach(lng => {
+        expect(typeof (phrase.translation as any)[lng]).toBe('string');
+        expect((phrase.translation as any)[lng].length).toBeGreaterThan(0);
+      });
       expect(phrase.phoneticHint).toBeDefined();
     });
   });

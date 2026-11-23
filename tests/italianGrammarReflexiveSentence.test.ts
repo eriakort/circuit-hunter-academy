@@ -32,7 +32,11 @@ for (const topicId of topicIds) {
         assert.ok(activity.explanation.every(value => value.trim().length > 0), activity.id + ' needs bilingual feedback');
         assert.ok(activity.modelAnswer.trim().length > 0, activity.id + ' needs a model answer');
         if (type === 'order') assert.ok(activity.words && activity.words.length >= 3, activity.id + ' needs word tiles');
-        if (type === 'translate') assert.ok(activity.source?.trim(), activity.id + ' needs a source sentence');
+        if (type === 'translate') {
+          const src: any = activity.source;
+          const srcText = typeof src === 'string' ? src : (src?.en ?? '');
+          assert.ok(srcText.trim(), activity.id + ' needs a source sentence');
+        }
         if (type === 'correct' || type === 'translate') assert.ok(activity.acceptedAnswers?.length, activity.id + ' needs accepted answers');
       }
     }

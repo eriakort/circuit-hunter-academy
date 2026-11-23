@@ -223,7 +223,7 @@ export const ItalianGrammarScreen: React.FC = () => {
           <p style={{ lineHeight: 1.55, margin: '0 0 2px' }}>{L(activity.prompt, 'it')}</p>
           {lang !== 'it' && <p className="muted" style={{ fontSize: 14, lineHeight: 1.4, margin: '0 0 10px' }}>{L(activity.prompt, lang)}</p>}
           {activeActivityPool.length > 1 && <button type="button" className="btn ghost sm" onClick={nextActivity}>{L(GRAMMAR_UI.nextPractice, lang)} →</button>}
-          {activity.source && <div style={{ padding: 12, borderRadius: 9, background: 'rgba(255,255,255,.06)', fontSize: 17, fontWeight: 650, marginBottom: 12 }}>{activity.source}</div>}
+          {activity.source && <div style={{ padding: 12, borderRadius: 9, background: 'rgba(255,255,255,.06)', fontSize: 17, fontWeight: 650, marginBottom: 12 }}>{L(activity.source, lang)}</div>}
           {activityType === 'order' && activity.words && (
             <div style={{ display: 'grid', gap: 10 }}>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7, minHeight: 42, padding: 10, borderRadius: 9, border: '1px dashed rgba(255,255,255,.25)' }}>
