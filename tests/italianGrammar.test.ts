@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
 import { ITALIAN_GRAMMAR_TOPICS } from '../src/data/italianGrammar';
 
+// Explanations may be a legacy [en, it] tuple or a localized record; read both.
+const en = (v: any): string => (Array.isArray(v) ? v[0] : v?.en) ?? '';
+const it = (v: any): string => (Array.isArray(v) ? v[1] : v?.it) ?? '';
+
 const expectedTopics = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'sentence-building', 'present-tense', 'imperfetto', 'prepositions', 'adjective-agreement'];
 assert.deepEqual(ITALIAN_GRAMMAR_TOPICS.map(topic => topic.id), expectedTopics);
 
@@ -10,8 +14,8 @@ let totalExercises = 0;
 for (const topic of ITALIAN_GRAMMAR_TOPICS) {
   for (const level of levels) {
     const content = topic.levels[level];
-    assert.ok(content.explanation[0].length > 0, `${topic.id} ${level} needs an English explanation`);
-    assert.ok(content.explanation[1].length > 0, `${topic.id} ${level} needs an Italian explanation`);
+    assert.ok(en(content.explanation).length > 0, `${topic.id} ${level} needs an English explanation`);
+    assert.ok(it(content.explanation).length > 0, `${topic.id} ${level} needs an Italian explanation`);
     assert.ok(content.example[0].length > 0 && content.example[1].length > 0, `${topic.id} ${level} needs bilingual examples`);
     assert.ok(content.exercises.length >= 3, `${topic.id} ${level} should include at least three practice questions`);
     for (const item of content.exercises) {
@@ -19,7 +23,7 @@ for (const topic of ITALIAN_GRAMMAR_TOPICS) {
       exerciseIds.add(item.id);
       totalExercises += 1;
       assert.ok(item.prompt[0].length > 0 && item.prompt[1].length > 0, `${item.id} needs a bilingual prompt`);
-      assert.ok(item.explanation[0].length > 0 && item.explanation[1].length > 0, `${item.id} needs bilingual feedback`);
+      assert.ok(en(item.explanation).length > 0 && it(item.explanation).length > 0, `${item.id} needs bilingual feedback`);
       assert.ok(item.options.length >= 2, `${item.id} needs answer choices`);
       assert.ok(item.answer >= 0 && item.answer < item.options.length, `${item.id} answer index must be valid`);
     }
@@ -45,18 +49,18 @@ assert.ok(presentTense, 'Present tense topic must be registered');
 assert.ok((presentTense.levels.A1.exercises.length ?? 0) >= 6);
 assert.ok((presentTense.levels.A2.exercises.length ?? 0) >= 6);
 assert.ok((presentTense.levels.B1.exercises.length ?? 0) >= 3);
-assert.ok(presentTense.levels.A1.explanation[1].includes('desinenza'));
-assert.ok(presentTense.levels.A2.explanation[1].includes('Potere'));
+assert.ok(it(presentTense.levels.A1.explanation).includes('desinenza'));
+assert.ok(it(presentTense.levels.A2.explanation).includes('Potere'));
 const prepositions = ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'prepositions');
 assert.ok(prepositions, 'Prepositions topic must be registered');
 assert.ok((prepositions.levels.A1.exercises.length ?? 0) >= 6);
 assert.ok((prepositions.levels.A2.exercises.length ?? 0) >= 6);
 assert.ok((prepositions.levels.B1.exercises.length ?? 0) >= 3);
-assert.ok(prepositions.levels.A1.explanation[1].includes('città'));
+assert.ok(it(prepositions.levels.A1.explanation).includes('città'));
 const imperfetto = ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'imperfetto');
 assert.ok(imperfetto, 'Imperfetto topic must be registered');
 assert.ok((imperfetto.levels.A1.exercises.length ?? 0) >= 6);
 assert.ok((imperfetto.levels.A2.exercises.length ?? 0) >= 6);
 assert.ok((imperfetto.levels.B1.exercises.length ?? 0) >= 3);
-assert.ok(imperfetto.levels.A2.explanation[1].includes('abitudini'));
+assert.ok(it(imperfetto.levels.A2.explanation).includes('abitudini'));
 console.log('italianGrammar.test.ts ok! Ten topics, three CEFR levels and 144 bilingual exercises verified.');
