@@ -2,16 +2,23 @@ import assert from 'node:assert/strict';
 import { ITALIAN_GRAMMAR_TOPICS } from '../src/data/italianGrammar';
 import { getGrammarActivities } from '../src/data/italianGrammarActivities';
 
+// Explanations may be a legacy [en, it] tuple or a localized record; require
+// non-empty English and Italian in either shape.
+const hasBothLangs = (v: any): boolean =>
+  Array.isArray(v)
+    ? v.every((value: string) => value.trim().length > 0)
+    : typeof v?.en === 'string' && v.en.trim().length > 0 && typeof v?.it === 'string' && v.it.trim().length > 0;
+
 const topic = ITALIAN_GRAMMAR_TOPICS.find(item => item.id === 'pronouns');
 assert.ok(topic, 'Pronouns topic must exist');
 
 for (const level of ['A1', 'A2'] as const) {
   const content = topic.levels[level];
   assert.ok(content.exercises.length >= 5, level + ' should have a full pronoun question set');
-  assert.ok(content.explanation.every(value => value.trim().length > 0));
+  assert.ok(hasBothLangs(content.explanation));
   assert.ok(content.example.every(value => value.trim().length > 0));
   assert.ok(content.exercises.every(item => item.prompt.every(value => value.trim().length > 0)));
-  assert.ok(content.exercises.every(item => item.explanation.every(value => value.trim().length > 0)));
+  assert.ok(content.exercises.every(item => hasBothLangs(item.explanation)));
 }
 
 const a1 = getGrammarActivities('pronouns', 'A1', 'write');
