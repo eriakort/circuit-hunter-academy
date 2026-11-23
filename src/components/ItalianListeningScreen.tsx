@@ -243,7 +243,13 @@ export const ItalianListeningScreen: React.FC = () => {
                 const revealed = chosen !== undefined;
                 return (
                   <div key={q.id}>
-                    <p style={{ fontSize: 16, fontWeight: 650, lineHeight: 1.5, margin: '0 0 8px' }}>{qi + 1}. {L(q.prompt, lang)}</p>
+                    {/* The comprehension question is part of the Italian practice,
+                        so it is always shown in Italian. The learner's language
+                        appears beneath it as support, not as a replacement. */}
+                    <p style={{ fontSize: 16, fontWeight: 650, lineHeight: 1.5, margin: '0 0 2px' }}>{qi + 1}. {L(q.prompt, 'it')}</p>
+                    {lang !== 'it' && (
+                      <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.4, margin: '0 0 8px' }}>{L(q.prompt, lang)}</p>
+                    )}
                     <div style={{ display: 'grid', gap: 8 }}>
                       {q.options.map((option, index) => {
                         const isChosen = chosen === index;
