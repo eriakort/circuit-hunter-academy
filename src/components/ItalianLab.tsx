@@ -361,6 +361,33 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     grammarTopicId: 'imperative'
   },
   {
+    id: 'grammar-a1-comparatives',
+    level: 'A1',
+    targetIt: 'Il treno è più veloce dell’autobus.',
+    translation: {en: 'The train is faster than the bus.', it: 'The train is faster than the bus.', pt: 'O trem é mais rápido do que o ônibus.', es: 'El tren es más rápido que el autobús.', fr: 'Le train est plus rapide que le bus.', de: 'Der Zug ist schneller als der Bus.'},
+    phoneticHint: 'eel TREH-no eh pyoo ve-LO-che dell-ow-TO-boos',
+    notes: {en: 'più + adjective + di: di + l’ joins into dell’.', it: 'più + aggettivo + di: di + l’ diventa dell’.', pt: 'più + adjetivo + di: di + l’ forma dell’.', es: 'più + adjetivo + di: di + l’ forma dell’.', fr: 'più + adjectif + di : di + l’ donne dell’.', de: 'più + Adjektiv + di: di + l’ wird zu dell’.'},
+    grammarTopicId: 'comparatives'
+  },
+  {
+    id: 'grammar-a2-comparatives',
+    level: 'A2',
+    targetIt: 'Anna è la più brava della classe, ed è simpaticissima!',
+    translation: {en: 'Anna is the best in the class, and she is very nice!', it: 'Anna is the best in the class, and she is very nice!', pt: 'A Anna é a melhor da turma, e é simpaticíssima!', es: '¡Anna es la mejor de la clase y es simpatiquísima!', fr: 'Anna est la meilleure de la classe, et elle est très sympathique !', de: 'Anna ist die Beste der Klasse und sie ist supernett!'},
+    phoneticHint: 'AN-na eh la pyoo BRA-va DEL-la KLAS-seh, ed eh seem-pa-tee-CHEES-see-ma',
+    notes: {en: 'Superlative = article + più + adjective; -issima for “very”.', it: 'Superlativo = articolo + più + aggettivo; -issima per “molto”.', pt: 'Superlativo = artigo + più + adjetivo; -issima para “muito”.', es: 'Superlativo = artículo + più + adjetivo; -issima para «muy».', fr: 'Superlatif = article + più + adjectif ; -issima pour « très ».', de: 'Superlativ = Artikel + più + Adjektiv; -issima für „sehr“.'},
+    grammarTopicId: 'comparatives'
+  },
+  {
+    id: 'grammar-b1-comparatives',
+    level: 'B1',
+    targetIt: 'Oggi sto meglio di ieri: l’esame era più difficile di quanto pensassi.',
+    translation: {en: 'I feel better today than yesterday: the exam was harder than I thought.', it: 'I feel better today than yesterday: the exam was harder than I thought.', pt: 'Hoje estou melhor do que ontem: a prova foi mais difícil do que eu pensava.', es: 'Hoy estoy mejor que ayer: el examen fue más difícil de lo que pensaba.', fr: 'Aujourd’hui je vais mieux qu’hier : l’examen était plus difficile que je ne le pensais.', de: 'Heute geht es mir besser als gestern: Die Prüfung war schwerer, als ich dachte.'},
+    phoneticHint: 'OD-jee sto MEL-yo dee ee-EHR: leh-ZAH-meh eh-ra pyoo deef-FEE-chee-leh dee KWAN-to pen-SAS-see',
+    notes: {en: 'meglio is the adverb of bene; di quanto + subjunctive introduces a whole clause.', it: 'meglio è l’avverbio di bene; di quanto + congiuntivo introduce una frase intera.', pt: 'meglio é o advérbio de bene; di quanto + subjuntivo introduz uma oração inteira.', es: 'meglio es el adverbio de bene; di quanto + subjuntivo introduce una oración entera.', fr: 'meglio est l’adverbe de bene ; di quanto + subjonctif introduit une proposition entière.', de: 'meglio ist das Adverb von bene; di quanto + Konjunktiv leitet einen ganzen Satz ein.'},
+    grammarTopicId: 'comparatives'
+  },
+  {
     id: 'grammar-a1-imperfetto',
     level: 'A1',
     targetIt: 'Quando ero piccolo, avevo un cane.',
