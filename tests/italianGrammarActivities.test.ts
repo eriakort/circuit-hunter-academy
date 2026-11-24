@@ -194,3 +194,15 @@ for (const activity of pictureActivities) {
   assert.ok(existsSync('public/' + activity.image), activity.id + ' image file must exist: ' + activity.image);
   assert.ok(activity.imageAlt, activity.id + ' needs alt text');
 }
+
+// Every activity's title, prompt, hint and explanation carries all six languages,
+// so PT/ES/FR/DE learners never fall back to English inside an activity.
+for (const activity of ITALIAN_GRAMMAR_ACTIVITIES) {
+  for (const field of ['title', 'prompt', 'hint', 'explanation'] as const) {
+    const value = activity[field] as unknown as Record<string, string>;
+    assert.ok(!Array.isArray(value), `${activity.id} ${field} should be a localized record`);
+    for (const lang of ['en', 'it', 'pt', 'es', 'fr', 'de']) {
+      assert.ok(value[lang]?.trim(), `${activity.id} ${field} needs ${lang}`);
+    }
+  }
+}
