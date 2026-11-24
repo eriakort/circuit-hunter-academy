@@ -3,11 +3,16 @@ import { useGame } from '../context/GameContext';
 import { MISSIONS, ARCS, CODEX } from '../data/gameData';
 import { L, PILL, U } from '../helpers';
 import { speakItalian } from '../speech/speechEngine';
+import { ITALIAN_CODEX_SUPPORT } from '../data/italianCodex';
+import type { CodexEntry } from '../types';
 
 export const CodexScreen: React.FC = () => {
   const { state, curriculumProfile } = useGame();
   const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
   const { lang, subject, seen } = state;
+  // Italian Codex entries in the learner's support language (PT/ES/FR/DE), when available.
+  const supportCodex = (e: CodexEntry): [string, string] | undefined =>
+    (lang === 'pt' || lang === 'es' || lang === 'fr' || lang === 'de') ? ITALIAN_CODEX_SUPPORT[e[1]]?.[lang] : undefined;
   const [searchQuery, setSearchQuery] = useState('');
 
   const curSub = subject || 'cs';
@@ -34,10 +39,14 @@ export const CodexScreen: React.FC = () => {
         <div>
           <div className="eyebrow">
             {isGhana ? 'Core Mathematics glossary' : L(
-              [
-                "Hunter's Codex · English + Italiano",
-                'Glossario della cacciatrice · Italiano + English'
-              ],
+              {
+                en: "Hunter's Codex · English + Italiano",
+                it: 'Glossario della cacciatrice · Italiano + English',
+                pt: 'Códex do caçador · Português + Italiano',
+                es: 'Códice del cazador · Español + Italiano',
+                fr: 'Codex du chasseur · Français + Italiano',
+                de: 'Kodex der Jäger · Deutsch + Italiano'
+              },
               lang
             )}
           </div>
@@ -47,10 +56,14 @@ export const CodexScreen: React.FC = () => {
 
       <p className="muted" style={{ maxWidth: '62ch' }}>
         {isGhana ? 'Key mathematics terms appear here when you open the mission that teaches them.' : L(
-          [
-            'Every key term, with its Italian name. Terms unlock when you open the mission that teaches them.',
-            'Tutti i termini chiave, con il nome in inglese. Si sbloccano quando apri la missione che li spiega.'
-          ],
+          {
+            en: 'Every key term, with its Italian name. Terms unlock when you open the mission that teaches them.',
+            it: 'Tutti i termini chiave, con il nome in inglese. Si sbloccano quando apri la missione che li spiega.',
+            pt: 'Todos os termos-chave, com o nome em italiano. Os termos são desbloqueados quando você abre a missão que os ensina.',
+            es: 'Todos los términos clave, con su nombre en italiano. Se desbloquean al abrir la misión que los enseña.',
+            fr: 'Tous les termes clés, avec leur nom italien. Ils se débloquent quand tu ouvres la mission qui les enseigne.',
+            de: 'Alle Schlüsselbegriffe mit ihrem italienischen Namen. Sie werden freigeschaltet, sobald du die Mission öffnest, die sie erklärt.'
+          },
           lang
         )}
       </p>
@@ -59,7 +72,7 @@ export const CodexScreen: React.FC = () => {
         className="codex-search"
         id="cxq"
         placeholder={isGhana ? 'Search a term' : L(
-          ['Search a term (English or Italian)', 'Cerca un termine (italiano o inglese)'],
+          { en: 'Search a term (English or Italian)', it: 'Cerca un termine (italiano o inglese)', pt: 'Pesquise um termo (português ou italiano)', es: 'Busca un término (español o italiano)', fr: 'Cherche un terme (français ou italien)', de: 'Begriff suchen (Deutsch oder Italienisch)' },
           lang
         )}
         autoComplete="off"
@@ -72,7 +85,7 @@ export const CodexScreen: React.FC = () => {
           <p className="muted" data-testid="codex-empty">The Core Mathematics glossary is still being prepared. Use the Formulas page for rules and worked examples.</p>
         )}
         {!anyMatch && (
-          <p className="muted">{L(['No unlocked terms match your search.', 'Nessun termine sbloccato corrisponde alla ricerca.'], lang)}</p>
+          <p className="muted">{L({ en: 'No unlocked terms match your search.', it: 'Nessun termine sbloccato corrisponde alla ricerca.', pt: 'Nenhum termo desbloqueado corresponde à pesquisa.', es: 'Ningún término desbloqueado coincide con tu búsqueda.', fr: 'Aucun terme débloqué ne correspond à ta recherche.', de: 'Kein freigeschalteter Begriff passt zu deiner Suche.' }, lang)}</p>
         )}
         {MISSIONS.map((m, mi) => {
           if ((ARCS[m.arc]?.subject || 'cs') !== curSub) return null;
@@ -83,7 +96,8 @@ export const CodexScreen: React.FC = () => {
             if (e[0] !== mi && e[0] !== m.id) return false;
             if (!q) return true;
             if (!isMissionSeen) return false;
-            return e.slice(1).join(' ').toLowerCase().includes(q);
+            const support = supportCodex(e);
+            return [...e.slice(1), ...(support ?? [])].join(' ').toLowerCase().includes(q);
           });
 
           if (!entries.length) return null;
@@ -96,8 +110,9 @@ export const CodexScreen: React.FC = () => {
               <div className="cx">
                 {entries.map((e, ei) => {
                   if (isMissionSeen) {
-                    const primary = lang === 'it' ? e[2] : e[1];
-                    const definition = lang === 'it' ? e[4] : e[3];
+                    const support = supportCodex(e);
+                    const primary = support?.[0] ?? (lang === 'it' ? e[2] : e[1]);
+                    const definition = support?.[1] ?? (lang === 'it' ? e[4] : e[3]);
                     const isItalianSubject = curSub === 'italian';
                     return (
                       <div className="cx-e" key={ei}>
@@ -107,7 +122,7 @@ export const CodexScreen: React.FC = () => {
                             <button
                               type="button"
                               onClick={() => speakItalian(e[2], { rate: 0.85 })}
-                              title={lang === 'it' ? 'Ascolta pronuncia italiana' : 'Listen to Italian pronunciation'}
+                              title={L({ en: 'Listen to Italian pronunciation', it: 'Ascolta pronuncia italiana', pt: 'Ouvir a pronúncia italiana', es: 'Escuchar la pronunciación italiana', fr: 'Écouter la prononciation italienne', de: 'Italienische Aussprache anhören' }, lang)}
                               style={{
                                 background: 'rgba(106, 209, 255, 0.1)',
                                 border: '1px solid rgba(106, 209, 255, 0.25)',
@@ -131,7 +146,7 @@ export const CodexScreen: React.FC = () => {
                     <div className="cx-e locked" key={ei}>
                       <b>???</b>
                       <p>
-                        {L(['Unlocks in', 'Si sblocca in'], lang)} § {m.sec}.
+                        {L({ en: 'Unlocks in', it: 'Si sblocca in', pt: 'Desbloqueia em', es: 'Se desbloquea en', fr: 'Se débloque en', de: 'Freigeschaltet in' }, lang)} § {m.sec}.
                       </p>
                     </div>
                   );
