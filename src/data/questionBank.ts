@@ -63,6 +63,9 @@ export function getCompleteQuestionBank(): TaggedQuestion[] {
   ITALIAN_GRAMMAR_TOPICS.forEach(topic => {
     (['A1', 'A2', 'B1'] as const).forEach(level => {
       topic.levels[level].exercises.forEach(exercise => {
+        // Picture exercises only make sense next to their image, which the test
+        // screens do not show, so they stay in Grammar Training only.
+        if (exercise.image) return;
         const correctOption = exercise.options[exercise.answer];
         const answers = [correctOption, ...exercise.options.filter((_, index) => index !== exercise.answer)];
         bank.push({
