@@ -307,6 +307,33 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     grammarTopicId: 'present-tense'
   },
   {
+    id: 'grammar-a1-stare-gerundio',
+    level: 'A1',
+    targetIt: 'Marco sta leggendo un libro.',
+    translation: {en: 'Marco is reading a book.', it: 'Marco is reading a book.', pt: 'Marco está lendo um livro.', es: 'Marco está leyendo un libro.', fr: 'Marco est en train de lire un livre.', de: 'Marco liest gerade ein Buch.'},
+    phoneticHint: 'MAR-ko sta led-JEN-do oon LEE-bro',
+    notes: ['Sta + gerund describes an action in progress; leggere → leggendo.', 'Sta + gerundio descrive un’azione in corso; leggere → leggendo.'],
+    grammarTopicId: 'stare-gerundio'
+  },
+  {
+    id: 'grammar-a2-stare-gerundio',
+    level: 'A2',
+    targetIt: 'I miei amici stanno guardando la partita.',
+    translation: {en: 'My friends are watching the match.', it: 'My friends are watching the match.', pt: 'Os meus amigos estão assistindo à partida.', es: 'Mis amigos están viendo el partido.', fr: 'Mes amis sont en train de regarder le match.', de: 'Meine Freunde schauen gerade das Spiel.'},
+    phoneticHint: 'ee MYAY a-MEE-chee STAN-no gwar-DAN-do la par-TEE-ta',
+    notes: ['A plural subject takes stanno; the gerund guardando does not change.', 'Un soggetto plurale vuole stanno; il gerundio guardando non cambia.'],
+    grammarTopicId: 'stare-gerundio'
+  },
+  {
+    id: 'grammar-b1-stare-gerundio',
+    level: 'B1',
+    targetIt: 'Che cosa stai facendo? Sto bevendo un caffè con Giulia.',
+    translation: {en: 'What are you doing? I am having a coffee with Giulia.', it: 'What are you doing? I am having a coffee with Giulia.', pt: 'O que você está fazendo? Estou tomando um café com a Giulia.', es: '¿Qué estás haciendo? Estoy tomando un café con Giulia.', fr: 'Qu’est-ce que tu fais en ce moment ? Je bois un café avec Giulia.', de: 'Was machst du gerade? Ich trinke einen Kaffee mit Giulia.'},
+    phoneticHint: 'keh KO-za STAI fa-CHEN-do? sto be-VEN-do oon kaf-FEH kon JOO-lya',
+    notes: ['Fare and bere have irregular gerunds: facendo, bevendo.', 'Fare e bere hanno gerundi irregolari: facendo, bevendo.'],
+    grammarTopicId: 'stare-gerundio'
+  },
+  {
     id: 'grammar-a1-imperfetto',
     level: 'A1',
     targetIt: 'Quando ero piccolo, avevo un cane.',

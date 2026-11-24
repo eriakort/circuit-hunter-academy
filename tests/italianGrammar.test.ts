@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
 import { ITALIAN_GRAMMAR_TOPICS } from '../src/data/italianGrammar';
 
 // Explanations may be a legacy [en, it] tuple or a localized record; read both.
 const en = (v: any): string => (Array.isArray(v) ? v[0] : v?.en) ?? '';
 const it = (v: any): string => (Array.isArray(v) ? v[1] : v?.it) ?? '';
 
-const expectedTopics = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'sentence-building', 'present-tense', 'imperfetto', 'prepositions', 'adjective-agreement'];
+const expectedTopics = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'sentence-building', 'present-tense', 'stare-gerundio', 'imperfetto', 'prepositions', 'adjective-agreement'];
 assert.deepEqual(ITALIAN_GRAMMAR_TOPICS.map(topic => topic.id), expectedTopics);
 
 const levels = ['A1', 'A2', 'B1'] as const;
@@ -63,4 +64,25 @@ assert.ok((imperfetto.levels.A1.exercises.length ?? 0) >= 6);
 assert.ok((imperfetto.levels.A2.exercises.length ?? 0) >= 6);
 assert.ok((imperfetto.levels.B1.exercises.length ?? 0) >= 3);
 assert.ok(it(imperfetto.levels.A2.explanation).includes('abitudini'));
-console.log('italianGrammar.test.ts ok! Ten topics, three CEFR levels and 144 bilingual exercises verified.');
+
+const stareGerundio = ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'stare-gerundio');
+assert.ok(stareGerundio, 'Stare + gerundio topic must be registered');
+assert.ok(stareGerundio.levels.A1.exercises.length >= 6);
+assert.ok(stareGerundio.levels.A2.exercises.length >= 6);
+assert.ok(stareGerundio.levels.B1.exercises.length >= 3);
+assert.ok(it(stareGerundio.levels.A1.explanation).includes('gerundio'));
+console.log('italianGrammar.test.ts ok! Eleven topics, three CEFR levels and 144 bilingual exercises verified.');
+
+// Every picture exercise points at a real file in public/ and has alt text that
+// does not give the correct answer away.
+const norm = (s: string) => s.toLowerCase().replace(/[.,!?’']/g, ' ').replace(/\s+/g, ' ').trim();
+for (const topic of ITALIAN_GRAMMAR_TOPICS) {
+  for (const level of levels) {
+    for (const item of topic.levels[level].exercises.filter(exercise => exercise.image)) {
+      assert.ok(existsSync('public/' + item.image), item.id + ' image file must exist: ' + item.image);
+      assert.ok(en(item.imageAlt).length > 0 && it(item.imageAlt).length > 0, item.id + ' needs bilingual alt text');
+      const answer = norm(item.options[item.answer]);
+      if (answer.split(' ').length >= 2) assert.ok(!norm(it(item.imageAlt)).includes(answer), item.id + ' alt text must not reveal the answer');
+    }
+  }
+}

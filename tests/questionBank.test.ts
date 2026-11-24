@@ -67,14 +67,21 @@ assert.ok(scienceQuestions.length > 0, 'Grade 5 Science should have questions in
 assert.ok(scienceCategories[0]?.count === scienceQuestions.length, 'Science subject-wide category count should match its question pool');
 
 // Grammar Training and Italian subject tests share the same source exercises.
+// Picture exercises (with an image) only make sense next to their picture, so
+// they stay in Grammar Training and are not copied into the text-only test bank.
+const textExercises = (topic: typeof ITALIAN_GRAMMAR_TOPICS[number], level: 'A1' | 'A2' | 'B1') => topic.levels[level].exercises.filter(exercise => !exercise.image);
+const textTopics = ITALIAN_GRAMMAR_TOPICS.filter(topic => (['A1', 'A2', 'B1'] as const).every(level => textExercises(topic, level).length > 0));
 const italianCategories = getCategories('italian');
 const grammarCategories = italianCategories.filter(category => category.type === 'grammar');
-assert.equal(grammarCategories.length, ITALIAN_GRAMMAR_TOPICS.length * 4, 'Each grammar topic should have an all-level category and three CEFR-specific categories');
+assert.equal(grammarCategories.length, textTopics.length * 4, 'Each grammar topic should have an all-level category and three CEFR-specific categories');
 const grammarQuestions = bank.filter(question => question.subject === 'italian' && question.id.startsWith('italian-grammar-'));
-const expectedGrammarCount = ITALIAN_GRAMMAR_TOPICS.reduce((total, topic) => total + (['A1', 'A2', 'B1'] as const).reduce((levelTotal, level) => levelTotal + topic.levels[level].exercises.length, 0), 0);
-assert.equal(grammarQuestions.length, expectedGrammarCount, 'Every Grammar Training multiple-choice exercise should appear once in the test bank');
+const expectedGrammarCount = ITALIAN_GRAMMAR_TOPICS.reduce((total, topic) => total + (['A1', 'A2', 'B1'] as const).reduce((levelTotal, level) => levelTotal + textExercises(topic, level).length, 0), 0);
+assert.equal(grammarQuestions.length, expectedGrammarCount, 'Every text-only Grammar Training multiple-choice exercise should appear once in the test bank');
 assert.ok(grammarQuestions.length >= 144, 'The Italian subject test bank should include every current grammar question');
-for (const topic of ITALIAN_GRAMMAR_TOPICS) {
+const pictureExerciseIds = ITALIAN_GRAMMAR_TOPICS.flatMap(topic => (['A1', 'A2', 'B1'] as const).flatMap(level => topic.levels[level].exercises.filter(exercise => exercise.image).map(exercise => 'italian-grammar-' + exercise.id)));
+assert.ok(pictureExerciseIds.length > 0, 'Grammar Training should include picture exercises');
+assert.ok(pictureExerciseIds.every(id => !bank.some(question => question.id === id)), 'Picture exercises must not appear in the text-only test bank');
+for (const topic of textTopics) {
   const category = grammarCategories.find(item => item.grammarTopicId === topic.id);
   assert.ok(category, 'Missing Italian grammar test category: ' + topic.id);
   const pool = filterQuestionPool('italian', category!);

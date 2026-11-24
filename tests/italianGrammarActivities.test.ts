@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
 import { ITALIAN_GRAMMAR_ACTIVITIES, getGrammarActivities, normaliseGrammarAnswer, matchesGrammarAnswer } from '../src/data/italianGrammarActivities';
 // A translate source is now localized (a record); correct/order sources stay
 // plain Italian strings. Extract the base (English) text for assertions.
@@ -22,7 +23,7 @@ for (const id of extraWritingIds) {
 const levels = ['A1', 'A2', 'B1'] as const;
 const types = ['correct', 'order', 'translate', 'write'] as const;
 const ids = new Set<string>();
-assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 143);
+assert.equal(ITALIAN_GRAMMAR_ACTIVITIES.length, 149);
 const presentA1Translation = getGrammarActivities('present-tense', 'A1', 'translate')[0];
 assert.deepEqual(presentA1Translation.acceptedAnswers, ['Noi viviamo a Roma.', 'Viviamo a Roma.']);
 const presentA2Translation = getGrammarActivities('present-tense', 'A2', 'translate')[0];
@@ -81,9 +82,10 @@ const partitiveA2Write = getGrammarActivities('partitive', 'A2', 'write')[0];
 assert.equal(partitiveA2Write.modelAnswer, 'Per preparare la pasta, aggiungi dell’acqua, del sale e delle verdure.');
 for (const level of levels) {
   for (const type of types) {
-    const topics = ['sentence-building', 'articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'present-tense', 'imperfetto', 'prepositions', 'adjective-agreement'];
+    const topics = ['sentence-building', 'articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'present-tense', 'stare-gerundio', 'imperfetto', 'prepositions', 'adjective-agreement'];
     const items = topics.flatMap(topic => getGrammarActivities(topic, level, type));
-    const expectedCount = level === 'B1' ? 7 : type === 'write' ? 15 : type === 'correct' ? (level === 'A2' ? 11 : 10) : 16;
+    // stare-gerundio adds one picture 'correct' and one picture 'write' activity per level.
+    const expectedCount = level === 'B1' ? (type === 'correct' || type === 'write' ? 8 : 7) : type === 'write' ? 16 : type === 'correct' ? (level === 'A2' ? 12 : 11) : 16;
     assert.equal(items.length, expectedCount, level + ' should have ' + expectedCount + ' ' + type + ' activities across all topics');
     for (const item of items) {
       assert.ok(!ids.has(item.id), 'Duplicate activity id: ' + item.id);
@@ -180,3 +182,11 @@ assert.ok(matchesGrammarAnswer('Mi sono vestito in fretta', ['Mi sono vestito ra
 assert.ok(!matchesGrammarAnswer('Mi sono vestita in fretta', ['Mi sono vestito rapidamente.']), 'Gender agreement must not be normalized away');
 assert.ok(!matchesGrammarAnswer('Ho mangiato una pizza', ['Ho mangiato due pizze.']), 'Different words must not be accepted');
 console.log('Italian grammar answer normalization tests ok!');
+
+// Picture activities point at a real file in public/ and carry alt text.
+const pictureActivities = ITALIAN_GRAMMAR_ACTIVITIES.filter(activity => activity.image);
+assert.equal(pictureActivities.length, 6, 'stare-gerundio should have six picture activities');
+for (const activity of pictureActivities) {
+  assert.ok(existsSync('public/' + activity.image), activity.id + ' image file must exist: ' + activity.image);
+  assert.ok(activity.imageAlt, activity.id + ' needs alt text');
+}

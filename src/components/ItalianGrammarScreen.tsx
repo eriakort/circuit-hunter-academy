@@ -8,6 +8,13 @@ import { GrammarLevel, ITALIAN_GRAMMAR_TOPICS } from '../data/italianGrammar';
 import { buildAdaptiveGrammarReview, getGrammarTopicProgress, GrammarReviewQuestion } from '../data/italianGrammarReview';
 import { getGrammarActivities, GrammarActivityType, normaliseGrammarAnswer, matchesGrammarAnswer } from '../data/italianGrammarActivities';
 
+// Exercise pictures live in public/ and are stored relative to the app base,
+// so they resolve under the GitHub Pages subpath as well as in dev.
+const GrammarPicture: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
+  <img src={import.meta.env.BASE_URL + src} alt={alt} loading="lazy" decoding="async"
+    style={{ display: 'block', width: '100%', maxWidth: 320, height: 'auto', borderRadius: 10, margin: '0 0 12px', border: '1px solid rgba(255,255,255,.15)', background: '#fdf6ea' }} />
+);
+
 export const ItalianGrammarScreen: React.FC = () => {
   const { state, goToView, recordGrammarResult } = useGame();
   const { lang } = state;
@@ -177,6 +184,7 @@ export const ItalianGrammarScreen: React.FC = () => {
             appears beneath it as support, never replacing it. */}
         <p style={{ fontSize: 17, fontWeight: 650, lineHeight: 1.5, margin: '12px 0 2px' }}>{L(question.prompt, 'it')}</p>
         {lang !== 'it' && <p className="muted" style={{ fontSize: 14, lineHeight: 1.4, margin: '0 0 12px' }}>{L(question.prompt, lang)}</p>}
+        {question.image && <GrammarPicture key={question.id} src={question.image} alt={L(question.imageAlt || '', lang)} />}
         {question.sentence && <div style={{ padding: '10px 13px', borderRadius: 9, background: 'rgba(255,255,255,.05)', marginBottom: 12, fontSize: 17, fontWeight: 600 }}>{question.sentence}</div>}
         <div style={{ display: 'grid', gap: 8 }}>
           {question.options.map((option, index) => {
@@ -223,6 +231,7 @@ export const ItalianGrammarScreen: React.FC = () => {
           <p style={{ lineHeight: 1.55, margin: '0 0 2px' }}>{L(activity.prompt, 'it')}</p>
           {lang !== 'it' && <p className="muted" style={{ fontSize: 14, lineHeight: 1.4, margin: '0 0 10px' }}>{L(activity.prompt, lang)}</p>}
           {activeActivityPool.length > 1 && <button type="button" className="btn ghost sm" onClick={nextActivity}>{L(GRAMMAR_UI.nextPractice, lang)} →</button>}
+          {activity.image && <GrammarPicture key={activity.id} src={activity.image} alt={L(activity.imageAlt || '', lang)} />}
           {activity.source && <div style={{ padding: 12, borderRadius: 9, background: 'rgba(255,255,255,.06)', fontSize: 17, fontWeight: 650, marginBottom: 12 }}>{L(activity.source, lang)}</div>}
           {activityType === 'order' && activity.words && (
             <div style={{ display: 'grid', gap: 10 }}>
