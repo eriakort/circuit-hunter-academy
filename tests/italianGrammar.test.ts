@@ -6,7 +6,7 @@ import { ITALIAN_GRAMMAR_TOPICS } from '../src/data/italianGrammar';
 const en = (v: any): string => (Array.isArray(v) ? v[0] : v?.en) ?? '';
 const it = (v: any): string => (Array.isArray(v) ? v[1] : v?.it) ?? '';
 
-const expectedTopics = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'sentence-building', 'present-tense', 'stare-gerundio', 'imperative', 'comparatives', 'imperfetto', 'prepositions', 'adjective-agreement'];
+const expectedTopics = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'sentence-building', 'present-tense', 'stare-gerundio', 'imperative', 'comparatives', 'future', 'imperfetto', 'prepositions', 'adjective-agreement'];
 assert.deepEqual(ITALIAN_GRAMMAR_TOPICS.map(topic => topic.id), expectedTopics);
 
 const levels = ['A1', 'A2', 'B1'] as const;
@@ -101,7 +101,22 @@ for (const level of levels) {
     for (const text of Object.values(item.prompt as Record<string, string>)) assert.ok(!text.toLowerCase().includes(answer + ' ') && !text.toLowerCase().endsWith(answer), `${item.id} prompt gives the answer away`);
   }
 }
-console.log('italianGrammar.test.ts ok! Thirteen topics, three CEFR levels and 144 bilingual exercises verified.');
+const future = ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'future');
+assert.ok(future, 'Future topic must be registered');
+for (const level of levels) {
+  assert.ok(future.levels[level].exercises.length >= (level === 'B1' ? 7 : 11), `future ${level} needs exercises`);
+  for (const item of future.levels[level].exercises) {
+    assert.equal(item.options.length, 3, `${item.id} needs three options for the test bank`);
+    for (const lang of ['en', 'it', 'pt', 'es', 'fr', 'de'] as const) {
+      assert.ok((item.prompt as Record<string, string>)[lang]?.trim(), `${item.id} prompt needs ${lang}`);
+      assert.ok((item.explanation as Record<string, string>)[lang]?.trim(), `${item.id} explanation needs ${lang}`);
+    }
+    // The correct option must not appear inside its own prompt.
+    const answer = item.options[item.answer].toLowerCase().replace(/[!?.,]/g, '').trim();
+    for (const text of Object.values(item.prompt as Record<string, string>)) assert.ok(!text.toLowerCase().includes(answer + ' ') && !text.toLowerCase().endsWith(answer), `${item.id} prompt gives the answer away`);
+  }
+}
+console.log('italianGrammar.test.ts ok! Fourteen topics, three CEFR levels and 144 bilingual exercises verified.');
 
 // Every picture exercise points at a real file in public/ and has alt text that
 // does not give the correct answer away.
