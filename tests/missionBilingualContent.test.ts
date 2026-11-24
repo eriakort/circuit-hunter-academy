@@ -1,10 +1,19 @@
 import assert from 'node:assert/strict';
 import { ARCS, MISSIONS } from '../src/data/gameData';
 
-const isBilingualPair = (value: unknown): value is [string, string] =>
-  Array.isArray(value) &&
-  value.length === 2 &&
-  value.every(part => typeof part === 'string' && part.trim().length > 0);
+// Accepts the legacy [English, Italian] tuple or a localized record that
+// carries non-empty English and Italian (plus optional support languages).
+const isBilingualPair = (value: unknown): value is [string, string] => {
+  if (Array.isArray(value)) {
+    return value.length === 2 && value.every(part => typeof part === 'string' && part.trim().length > 0);
+  }
+  if (value && typeof value === 'object') {
+    const record = value as Record<string, unknown>;
+    return ['en', 'it'].every(key => typeof record[key] === 'string' && (record[key] as string).trim().length > 0)
+      && Object.values(record).every(part => typeof part === 'string' && part.trim().length > 0);
+  }
+  return false;
+};
 
 const requiredMissionFields = ['title', 'topic', 'demon', 'tech'] as const;
 

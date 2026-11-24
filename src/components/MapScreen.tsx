@@ -14,6 +14,7 @@ import { scheduleNextConceptReview } from '../spacedRepetition';
 import { calculateLearningStreak } from '../learningStreak';
 import { LearningStreak } from './LearningStreak';
 import { GhanaSS1ReadinessDashboard } from './GhanaSS1ReadinessDashboard';
+import { ui, uiLocale, uiText } from '../data/missionUi';
 
 export const MapScreen: React.FC = () => {
   const {
@@ -79,7 +80,7 @@ export const MapScreen: React.FC = () => {
 
           <form className="reg" id="regf" style={{ marginTop: '16px' }} onSubmit={handleRegister}>
             <label htmlFor="nm" className="eyebrow">
-              {L(isGhana ? ['Choose your explorer name', 'Choose your explorer name'] : ['Enter your hunter name', 'Scrivi il tuo nome da cacciatrice'], lang)}
+              {L(isGhana ? ['Choose your explorer name', 'Choose your explorer name'] : uiText('Enter your hunter name', 'Scrivi il tuo nome da cacciatrice'), lang)}
             </label>
             <input
               id="nm"
@@ -288,7 +289,7 @@ export const MapScreen: React.FC = () => {
       <section className="hero card">
         <div>
           <div className="eyebrow">
-            {isGhana ? 'Welcome back to your journey' : L(['Welcome back', 'Bentornata'], lang)}, {esc(name)}
+            {isGhana ? 'Welcome back to your journey' : L(uiText('Welcome back', 'Bentornata'), lang)}, {esc(name)}
           </div>
           <h1>
             {isGhana ? <>Sankofa <span>Knowledge Quest</span></> : <>Circuit Hunter <span>Academy</span></>}
@@ -325,10 +326,10 @@ export const MapScreen: React.FC = () => {
             {isMastered ? (
               <>
                 <button className="btn" id="goDojo" onClick={() => startBattle(true)}>
-                  {L(['Train in the Dojo', 'Allenati nel Dojo'], lang)}
+                  {L(uiText('Train in the Dojo', 'Allenati nel Dojo'), lang)}
                 </button>
                 <button className="btn ghost" id="goCert" onClick={() => goToView('ending')}>
-                  {L(['See certificate', 'Vedi il diploma'], lang)}
+                  {L(uiText('See certificate', 'Vedi il diploma'), lang)}
                 </button>
               </>
             ) : nextMissionIndex >= 0 ? (
@@ -339,10 +340,10 @@ export const MapScreen: React.FC = () => {
             ) : null}
 
             <button className="btn ghost" id="goRace" onClick={() => goToView('race')}>
-              {L(['Race your friends', 'Sfida le amiche'], lang)}
+              {L(uiText('Race your friends', 'Sfida le amiche'), lang)}
             </button>
             <button className="btn ghost" id="goTest" onClick={() => goToView('test')}>
-              {L(['Test Knowledge', 'Test del Sapere'], lang)}
+              {L(uiText('Test Knowledge', 'Test del Sapere'), lang)}
             </button>
           </div>
         </div>
@@ -364,36 +365,36 @@ export const MapScreen: React.FC = () => {
         />
       )}
 
-      <section className="learning-dashboard card" aria-label={lang === 'it' ? 'Cruscotto dei progressi' : 'Learning progress dashboard'}>
+      <section className="learning-dashboard card" aria-label={ui(lang, 'Learning progress dashboard', 'Cruscotto dei progressi')}>
         <div className="learning-dashboard-heading">
           <div>
-            <div className="eyebrow">{lang === 'it' ? 'IL TUO PERCORSO' : 'YOUR LEARNING JOURNEY'}</div>
-            <h2>{lang === 'it' ? 'Cruscotto dei progressi' : 'Learning progress'}</h2>
-            <p className="muted">{lang === 'it' ? 'Una panoramica dei risultati e dei prossimi passi.' : 'A course-wide view of your results and what to focus on next.'}</p>
+            <div className="eyebrow">{ui(lang, 'YOUR LEARNING JOURNEY', 'IL TUO PERCORSO')}</div>
+            <h2>{ui(lang, 'Learning progress', 'Cruscotto dei progressi')}</h2>
+            <p className="muted">{ui(lang, 'A course-wide view of your results and what to focus on next.', 'Una panoramica dei risultati e dei prossimi passi.')}</p>
           </div>
         </div>
         <div className="learning-dashboard-stats">
           <div className="learning-stat">
             <strong>{doneCount}/{MY.length}</strong>
-            <span>{lang === 'it' ? 'Missioni completate' : 'Missions cleared'}</span>
+            <span>{ui(lang, 'Missions cleared', 'Missioni completate')}</span>
           </div>
           <div className="learning-stat">
             <strong>{masteredCount}/{MY.length}</strong>
-            <span>{lang === 'it' ? 'Prove superate' : 'Mastery passed'}</span>
+            <span>{ui(lang, 'Mastery passed', 'Prove superate')}</span>
           </div>
           <div className="learning-stat">
             <strong>{averageMastery === null ? '—' : averageMastery + '%'}</strong>
-            <span>{lang === 'it' ? 'Media ultimo risultato' : 'Average latest score'}</span>
+            <span>{ui(lang, 'Average latest score', 'Media ultimo risultato')}</span>
           </div>
           <div className="learning-stat">
             <strong>{assessedCount}</strong>
-            <span>{lang === 'it' ? 'Missioni valutate' : 'Missions assessed'}</span>
+            <span>{ui(lang, 'Missions assessed', 'Missioni valutate')}</span>
           </div>
         </div>
         <LearningStreak streak={learningStreak} lang={lang} />
         <div className="learning-dashboard-grid">
           <div className="learning-dashboard-panel">
-            <h3>{lang === 'it' ? 'Concetti da rinforzare' : 'Concepts to strengthen'}</h3>
+            <h3>{ui(lang, 'Concepts to strengthen', 'Concetti da rinforzare')}</h3>
             {weakestConcepts.length ? (
               <div className="learning-dashboard-concepts">
                 {weakestConcepts.map(concept => (
@@ -405,21 +406,21 @@ export const MapScreen: React.FC = () => {
                     <div className="learning-dashboard-track" role="img" aria-label={`${concept.percent}% correct`}>
                       <i style={{ width: `${concept.percent}%` }} />
                     </div>
-                    <small>{concept.correct}/{concept.attempted} {lang === 'it' ? 'risposte corrette' : 'correct responses'}</small>
+                    <small>{concept.correct}/{concept.attempted} {ui(lang, 'correct responses', 'risposte corrette')}</small>
                     {concept.revision?.baselineMasteryPercent !== undefined && concept.revision.postRevisionMasteryPercent !== undefined && (
                       <small className="concept-revision-impact">
-                        {lang === 'it' ? 'Maestria dopo il ripasso: ' : 'Mastery after revision: '}
+                        {ui(lang, 'Mastery after revision: ', 'Maestria dopo il ripasso: ')}
                         {concept.revision.postRevisionMasteryPercent}%
                         {' ('}{concept.revision.postRevisionMasteryPercent - concept.revision.baselineMasteryPercent > 0 ? '+' : ''}
-                        {concept.revision.postRevisionMasteryPercent - concept.revision.baselineMasteryPercent} {lang === 'it' ? 'punti' : 'pp'}{')'}
+                        {concept.revision.postRevisionMasteryPercent - concept.revision.baselineMasteryPercent} {ui(lang, 'pp', 'punti')}{')'}
                       </small>
                     )}
                     {concept.revision?.sessions ? (
                       <small className="concept-revision-history">
-                        {lang === 'it'
-                          ? `Ripassato ${concept.revision.sessions} ${concept.revision.sessions === 1 ? 'volta' : 'volte'}`
-                          : `Reviewed ${concept.revision.sessions} ${concept.revision.sessions === 1 ? 'session' : 'sessions'}`}
-                        {' · '}{new Date(concept.revision.lastReviewedAt).toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-CA')}
+                        {concept.revision.sessions === 1
+                          ? ui(lang, 'Reviewed {n} session', 'Ripassato {n} volta', concept.revision.sessions)
+                          : ui(lang, 'Reviewed {n} sessions', 'Ripassato {n} volte', concept.revision.sessions)}
+                        {' · '}{new Date(concept.revision.lastReviewedAt).toLocaleDateString(uiLocale(lang))}
                       </small>
                     ) : null}
                     <small className="concept-revision-mission">{L(concept.missionTitle, lang)}</small>
@@ -433,29 +434,29 @@ export const MapScreen: React.FC = () => {
                         if (mission && selectedConcept) startSingleRevision({ mission, concept: selectedConcept });
                       }}
                     >
-                      {lang === 'it' ? 'Ripassa concetto' : 'Review concept'}
+                      {ui(lang, 'Review concept', 'Ripassa concetto')}
                     </button>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="muted">{lang === 'it' ? 'Completa una prova di maestria per vedere quali concetti ripassare.' : 'Complete a mastery assessment to discover which concepts need revision.'}</p>
+              <p className="muted">{ui(lang, 'Complete a mastery assessment to discover which concepts need revision.', 'Completa una prova di maestria per vedere quali concetti ripassare.')}</p>
             )}
           </div>
           <div className="learning-dashboard-panel">
-            <h3>{lang === 'it' ? 'Ultimi tentativi' : 'Recent attempts'}</h3>
+            <h3>{ui(lang, 'Recent attempts', 'Ultimi tentativi')}</h3>
             {recentAttempts.length ? (
               <ol className="learning-dashboard-history">
                 {recentAttempts.map((attempt, index) => (
                   <li key={`${attempt.attemptedAt}-${index}`}>
                     <span>{L(attempt.missionTitle, lang)}</span>
                     <strong>{attempt.score}%</strong>
-                    <small>{new Date(attempt.attemptedAt).toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-CA')}</small>
+                    <small>{new Date(attempt.attemptedAt).toLocaleDateString(uiLocale(lang))}</small>
                   </li>
                 ))}
               </ol>
             ) : (
-              <p className="muted">{lang === 'it' ? 'I risultati delle prove appariranno qui.' : 'Your mastery scores will appear here as you complete assessments.'}</p>
+              <p className="muted">{ui(lang, 'Your mastery scores will appear here as you complete assessments.', 'I risultati delle prove appariranno qui.')}</p>
             )}
           </div>
         </div>
@@ -483,59 +484,59 @@ export const MapScreen: React.FC = () => {
         />
         <div className="learning-dashboard-next adaptive-recommendation" data-recommendation={adaptiveRecommendation.kind}>
           <div>
-            <span className="learning-kicker">{lang === 'it' ? 'PERCORSO ADATTIVO' : 'ADAPTIVE LEARNING'}</span>
-            <strong>{lang === 'it' ? 'Il tuo prossimo passo' : 'Your recommended next step'}</strong>
+            <span className="learning-kicker">{ui(lang, 'ADAPTIVE LEARNING', 'PERCORSO ADATTIVO')}</span>
+            <strong>{ui(lang, 'Your recommended next step', 'Il tuo prossimo passo')}</strong>
             <p>
               {adaptiveRecommendation.kind === 'review' && (
                 <>
-                  {lang === 'it' ? 'Rinforza ' : 'Strengthen '}
+                  {ui(lang, 'Strengthen ', 'Rinforza ')}
                   <b>{L(adaptiveRecommendation.concept.title, lang)}</b>
                   {adaptiveRecommendation.reason === 'revision-needs-practice'
-                    ? (lang === 'it' ? `: il ripasso precedente ha ottenuto il ${adaptiveRecommendation.revisionAccuracy}%. Prova ancora prima di tornare alla prova.` : `: your previous review scored ${adaptiveRecommendation.revisionAccuracy}%. Practise it again before returning to mastery.`)
-                    : (lang === 'it' ? ': è uno dei concetti più deboli nella tua ultima prova di maestria.' : ': it was one of the weakest concepts in your latest mastery assessment.')}
+                    ? ui(lang, ': your previous review scored {n}%. Practise it again before returning to mastery.', ': il ripasso precedente ha ottenuto il {n}%. Prova ancora prima di tornare alla prova.', adaptiveRecommendation.revisionAccuracy)
+                    : (ui(lang, ': it was one of the weakest concepts in your latest mastery assessment.', ': è uno dei concetti più deboli nella tua ultima prova di maestria.'))}
                 </>
               )}
               {adaptiveRecommendation.kind === 'retry' && (
                 <>
-                  {lang === 'it' ? 'Hai ottenuto ' : 'You scored '}
+                  {ui(lang, 'You scored ', 'Hai ottenuto ')}
                   <b>{adaptiveRecommendation.revisionAccuracy}%</b>
-                  {lang === 'it' ? ' nel ripasso mirato di ' : ' in targeted revision for '}
+                  {ui(lang, ' in targeted revision for ', ' nel ripasso mirato di ')}
                   <b>{L(adaptiveRecommendation.concept.title, lang)}</b>
-                  {lang === 'it' ? '. Ora torna alla prova di maestria per verificare i progressi.' : '. Now return to the mastery assessment to check your progress.'}
+                  {ui(lang, '. Now return to the mastery assessment to check your progress.', '. Ora torna alla prova di maestria per verificare i progressi.')}
                 </>
               )}
               {adaptiveRecommendation.kind === 'mission' && (
-                <>{lang === 'it' ? 'Continua con ' : 'Continue with '}<b>{L(adaptiveRecommendation.mission.title, lang)}</b>{lang === 'it' ? ' e completa il percorso.' : ' and complete its learning pathway.'}</>
+                <>{ui(lang, 'Continue with ', 'Continua con ')}<b>{L(adaptiveRecommendation.mission.title, lang)}</b>{ui(lang, ' and complete its learning pathway.', ' e completa il percorso.')}</>
               )}
               {adaptiveRecommendation.kind === 'dojo' && (
-                <>{lang === 'it' ? 'Hai completato tutte le missioni disponibili. Continua ad allenarti nel Dojo.' : 'You have cleared all available missions. Keep practising in the Dojo.'}</>
+                <>{ui(lang, 'You have cleared all available missions. Keep practising in the Dojo.', 'Hai completato tutte le missioni disponibili. Continua ad allenarti nel Dojo.')}</>
               )}
             </p>
             {adaptiveRecommendation.kind === 'retry' && (
               <small className="adaptive-recommendation-reason">
-                {lang === 'it' ? 'Consiglio basato sul risultato del ripasso e sulla prova di maestria ancora da superare.' : 'Suggested because your revision result is strong and this mission still needs mastery.'}
+                {ui(lang, 'Suggested because your revision result is strong and this mission still needs mastery.', 'Consiglio basato sul risultato del ripasso e sulla prova di maestria ancora da superare.')}
               </small>
             )}
           </div>
           <button className="btn sm" id="adaptiveNextAction" onClick={handleAdaptiveAction}>
             {adaptiveRecommendation.kind === 'review'
-              ? (lang === 'it' ? 'Ripassa concetto' : 'Review concept')
+              ? (ui(lang, 'Review concept', 'Ripassa concetto'))
               : adaptiveRecommendation.kind === 'retry'
-                ? (lang === 'it' ? 'Riprova maestria' : 'Retry mastery')
+                ? (ui(lang, 'Retry mastery', 'Riprova maestria'))
                 : adaptiveRecommendation.kind === 'mission'
-                  ? (lang === 'it' ? 'Continua missione' : 'Continue mission')
-                  : (lang === 'it' ? 'Vai al Dojo' : 'Open Dojo')}
+                  ? (ui(lang, 'Continue mission', 'Continua missione'))
+                  : (ui(lang, 'Open Dojo', 'Vai al Dojo'))}
           </button>
         </div>
       </section>
 
       {reviewQueueSummary && (
         <section className="review-session-summary card" aria-live="polite">
-          <div className="learning-kicker">{lang === 'it' ? 'SESSIONE COMPLETATA' : 'SESSION COMPLETE'}</div>
-          <h2>{lang === 'it' ? 'Riepilogo del ripasso' : 'Review session summary'}</h2>
-          <p>{lang === 'it'
-            ? `Hai completato ${reviewQueueResults.length} ${reviewQueueResults.length === 1 ? 'concetto' : 'concetti'}.`
-            : `You completed ${reviewQueueResults.length} ${reviewQueueResults.length === 1 ? 'concept' : 'concepts'}.`}</p>
+          <div className="learning-kicker">{ui(lang, 'SESSION COMPLETE', 'SESSIONE COMPLETATA')}</div>
+          <h2>{ui(lang, 'Review session summary', 'Riepilogo del ripasso')}</h2>
+          <p>{reviewQueueResults.length === 1
+            ? ui(lang, 'You completed {n} concept.', 'Hai completato {n} concetto.', reviewQueueResults.length)
+            : ui(lang, 'You completed {n} concepts.', 'Hai completato {n} concetti.', reviewQueueResults.length)}</p>
           <div className="review-session-results">
             {reviewQueueResults.map((item, index) => (
               <div className="review-session-result" key={index}>
@@ -545,13 +546,13 @@ export const MapScreen: React.FC = () => {
             ))}
           </div>
           <div className="review-session-total">
-            <span>{lang === 'it' ? 'Punteggio medio della sessione' : 'Session average'}</span>
+            <span>{ui(lang, 'Session average', 'Punteggio medio della sessione')}</span>
             <strong>{reviewQueueResults.length
               ? Math.round(reviewQueueResults.reduce((sum, item) => sum + item.score, 0) / reviewQueueResults.length)
               : 0}%</strong>
           </div>
           <button type="button" className="btn" onClick={closeReviewQueue}>
-            {lang === 'it' ? 'Torna al percorso' : 'Return to learning path'}
+            {ui(lang, 'Return to learning path', 'Torna al percorso')}
           </button>
         </section>
       )}
@@ -586,10 +587,10 @@ export const MapScreen: React.FC = () => {
           <div>
             <div className="eyebrow" style={{ color: '#ffd166', display: 'flex', alignItems: 'center', gap: 6 }}>
               <Flag country="IT" />
-              <span>{L(['CEFR LANGUAGE ACADEMY · A1 · A2 · B1', 'ACCADEMIA DI LINGUA QCER · A1 · A2 · B1'], lang)}</span>
+              <span>{L(uiText('CEFR LANGUAGE ACADEMY · A1 · A2 · B1', 'ACCADEMIA DI LINGUA QCER · A1 · A2 · B1'), lang)}</span>
             </div>
             <h3 style={{ margin: '4px 0 2px', fontSize: 20 }}>
-              {L(['Active Italian Speaking & Pronunciation Lab', 'Laboratorio di Parlato e Pronuncia Attiva'], lang)}
+              {L(uiText('Active Italian Speaking & Pronunciation Lab', 'Laboratorio di Parlato e Pronuncia Attiva'), lang)}
             </h3>
             <p className="muted" style={{ margin: 0, fontSize: 13.5 }}>
               {L(
@@ -605,21 +606,21 @@ export const MapScreen: React.FC = () => {
               style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(0, 146, 70, 0.85)', borderColor: '#00c853' }}
               onClick={() => goToView('it-lab')}
             >
-              🎙️ {L(['Speaking Lab', 'Laboratorio Parlato'], lang)}
+              🎙️ {L(uiText('Speaking Lab', 'Laboratorio Parlato'), lang)}
             </button>
             <button
               className="btn sm"
               style={{ display: 'flex', alignItems: 'center', gap: 6 }}
               onClick={() => goToView('it-checkpoint')}
             >
-              🎤 {L(['Take Oral Trial', 'Affronta l’Esame Orale'], lang)}
+              🎤 {L(uiText('Take Oral Trial', 'Affronta l’Esame Orale'), lang)}
             </button>
             <button
               className="btn ghost sm"
               style={{ display: 'flex', alignItems: 'center', gap: 6 }}
               onClick={() => goToView('formula')}
             >
-              📖 {L(['Grammar Rules', 'Grammatica'], lang)}
+              📖 {L(uiText('Grammar Rules', 'Grammatica'), lang)}
             </button>
           </div>
         </section>
@@ -642,9 +643,9 @@ export const MapScreen: React.FC = () => {
                 aria-pressed={isSelected}
                 onClick={() => setUnit(ui)}
               >
-                {L(['Unit', 'Unità'], lang)} {k + 1} · {L(u.title, lang)}
+                {L(uiText('Unit', 'Unità'), lang)} {k + 1} · {L(u.title, lang)}
                 <small>
-                  {L(['ch.', 'cap.'], lang)} {u.ch} · {dn}/{ms.length}
+                  {L(uiText('ch.', 'cap.'), lang)} {u.ch} · {dn}/{ms.length}
                 </small>
               </button>
             );
@@ -662,7 +663,7 @@ export const MapScreen: React.FC = () => {
               <span className="n">{a.n}</span>
               <h2>{L(a.title, lang)}</h2>
               <span className="pg">
-                {L(['Chapter', 'Capitolo'], lang)} {a.n} · pp. {a.pages}
+                {L(uiText('Chapter', 'Capitolo'), lang)} {a.n} · pp. {a.pages}
               </span>
             </div>
 
@@ -695,19 +696,19 @@ export const MapScreen: React.FC = () => {
                     <span className="topic">{L(m.topic, lang)}</span>
                     {learning?.knowledgeCheckScore !== undefined && (
                       <small className="learning-map-progress">
-                        {L(['Knowledge check', 'Verifica conoscenze'], lang)} · {learning.knowledgeCheckScore}%
+                        {L(uiText('Knowledge check', 'Verifica conoscenze'), lang)} · {learning.knowledgeCheckScore}%
                       </small>
                     )}
                     {learning?.masteryScore !== undefined && (
                       <small className={`learning-map-progress ${learning.mastered ? 'mastery-map-passed' : 'mastery-map-pending'}`}>
-                        {L(['Mastery', 'Maestria'], lang)} · {learning.mastered
-                          ? L(['Passed', 'Superata'], lang)
-                          : L(['Not yet passed', 'Non superata'], lang)} · {learning.masteryScore}%
+                        {L(uiText('Mastery', 'Maestria'), lang)} · {learning.mastered
+                          ? L(uiText('Passed', 'Superata'), lang)
+                          : L(uiText('Not yet passed', 'Non superata'), lang)} · {learning.masteryScore}%
                       </small>
                     )}
                     {!!learning?.masteryLastAttemptWeakConcepts?.length && (
                       <small className="learning-map-progress mastery-map-pending">
-                        {L(['Review', 'Ripasso'], lang)} · {m.learning?.concepts
+                        {L(uiText('Review', 'Ripasso'), lang)} · {m.learning?.concepts
                           .filter(concept => learning.masteryLastAttemptWeakConcepts?.includes(concept.id))
                           .map(concept => L(concept.title, lang)).join(', ')}
                       </small>
@@ -731,7 +732,7 @@ export const MapScreen: React.FC = () => {
       {/* Techniques learned & Reset */}
       <section className="card">
         <div className="eyebrow" style={{ marginBottom: '8px' }}>
-          {L(isGhana ? ['Knowledge discovered', 'Knowledge discovered'] : ['Techniques learned', 'Tecniche apprese'], lang)}
+          {L(isGhana ? ['Knowledge discovered', 'Knowledge discovered'] : uiText('Techniques learned', 'Tecniche apprese'), lang)}
         </div>
         <div className="techlist">
           {doneCount ? (
@@ -753,7 +754,7 @@ export const MapScreen: React.FC = () => {
 
         <div className="row" style={{ marginTop: '16px', justifyContent: 'space-between' }}>
           <span className="muted" style={{ fontSize: '13px' }}>
-            {L(['Progress is saved in this browser.', 'I progressi sono salvati in questo browser.'], lang)}
+            {L(uiText('Progress is saved in this browser.', 'I progressi sono salvati in questo browser.'), lang)}
           </span>
           <button
             className="btn ghost sm"
@@ -762,8 +763,8 @@ export const MapScreen: React.FC = () => {
             onClick={handleResetClick}
           >
             {resetArmed
-              ? L(['Tap again to erase everything', 'Tocca di nuovo per cancellare tutto'], lang)
-              : L(['Reset progress', 'Azzera i progressi'], lang)}
+              ? L(uiText('Tap again to erase everything', 'Tocca di nuovo per cancellare tutto'), lang)
+              : L(uiText('Reset progress', 'Azzera i progressi'), lang)}
           </button>
         </div>
       </section>
