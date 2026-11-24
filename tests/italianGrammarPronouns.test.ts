@@ -17,7 +17,7 @@ for (const level of ['A1', 'A2'] as const) {
   assert.ok(content.exercises.length >= 5, level + ' should have a full pronoun question set');
   assert.ok(hasBothLangs(content.explanation));
   assert.ok(content.example.every(value => value.trim().length > 0));
-  assert.ok(content.exercises.every(item => item.prompt.every(value => value.trim().length > 0)));
+  assert.ok(content.exercises.every(item => hasBothLangs(item.prompt)));
   assert.ok(content.exercises.every(item => hasBothLangs(item.explanation)));
 }
 
@@ -25,8 +25,8 @@ const a1 = getGrammarActivities('pronouns', 'A1', 'write');
 const a2 = getGrammarActivities('pronouns', 'A2', 'write');
 assert.equal(a1.length, 2, 'A1 needs two progressive sentence-writing prompts');
 assert.equal(a2.length, 2, 'A2 needs two progressive sentence-writing prompts');
-assert.ok(a1.every(activity => activity.prompt.every(value => value.trim().length > 0)));
-assert.ok(a2.every(activity => activity.prompt.every(value => value.trim().length > 0)));
+assert.ok(a1.every(activity => hasBothLangs(activity.prompt)));
+assert.ok(a2.every(activity => hasBothLangs(activity.prompt)));
 assert.ok(getGrammarActivities('pronouns', 'A1', 'order').length > 0);
 assert.ok(getGrammarActivities('pronouns', 'A2', 'translate').length > 0);
 assert.ok(getGrammarActivities('pronouns', 'A1', 'correct').length > 0);

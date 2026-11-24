@@ -20,7 +20,7 @@ for (const topicId of ['articles', 'partitive'] as const) {
     assert.ok(content.example.every(value => value.trim().length > 0), topicId + ' needs bilingual examples');
 
     for (const item of content.exercises) {
-      assert.ok(item.prompt.every(value => value.trim().length > 0), item.id + ' needs bilingual prompts');
+      assert.ok(hasBothLangs(item.prompt), item.id + ' needs bilingual prompts');
       assert.ok(hasBothLangs(item.explanation), item.id + ' needs bilingual feedback');
       assert.ok(item.options.length >= 3, item.id + ' needs at least three answer choices');
       assert.ok(item.answer >= 0 && item.answer < item.options.length, item.id + ' answer index must be valid');
@@ -31,7 +31,7 @@ for (const topicId of ['articles', 'partitive'] as const) {
       const expectedCount = type === 'correct' ? 1 : 2;
       assert.equal(activities.length, expectedCount, topicId + ' ' + level + ' needs ' + expectedCount + ' ' + type + ' activities');
       for (const activity of activities) {
-        assert.ok(activity.prompt.every(value => value.trim().length > 0), activity.id + ' needs bilingual prompts');
+        assert.ok(hasBothLangs(activity.prompt), activity.id + ' needs bilingual prompts');
         assert.ok(hasBothLangs(activity.explanation), activity.id + ' needs bilingual feedback');
       }
     }
