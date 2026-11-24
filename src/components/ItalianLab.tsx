@@ -334,6 +334,33 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     grammarTopicId: 'stare-gerundio'
   },
   {
+    id: 'grammar-a1-imperative',
+    level: 'A1',
+    targetIt: 'Apri la finestra, per favore!',
+    translation: {en: 'Open the window, please!', it: 'Open the window, please!', pt: 'Abra a janela, por favor!', es: '¡Abre la ventana, por favor!', fr: 'Ouvre la fenêtre, s’il te plaît !', de: 'Mach bitte das Fenster auf!'},
+    phoneticHint: 'AH-pree la fee-NES-tra, per fa-VO-reh',
+    notes: {en: 'With tu, -ire verbs end in -i: aprire → apri!', it: 'Con tu, i verbi in -ire finiscono in -i: aprire → apri!', pt: 'Com tu, os verbos em -ire terminam em -i: aprire → apri!', es: 'Con tu, los verbos en -ire terminan en -i: aprire → apri!', fr: 'Avec tu, les verbes en -ire se terminent en -i : aprire → apri!', de: 'Bei tu enden Verben auf -ire auf -i: aprire → apri!'},
+    grammarTopicId: 'imperative'
+  },
+  {
+    id: 'grammar-a2-imperative',
+    level: 'A2',
+    targetIt: 'Scusi, vada dritto e prenda la seconda a destra.',
+    translation: {en: 'Excuse me, go straight on and take the second on the right.', it: 'Excuse me, go straight on and take the second on the right.', pt: 'Com licença, siga em frente e pegue a segunda à direita.', es: 'Disculpe, siga recto y tome la segunda a la derecha.', fr: 'Excusez-moi, allez tout droit et prenez la deuxième à droite.', de: 'Entschuldigung, gehen Sie geradeaus und nehmen Sie die zweite rechts.'},
+    phoneticHint: 'SKOO-zee, VA-da DREET-to eh PREN-da la se-KON-da a DES-tra',
+    notes: {en: 'Formal Lei imperatives: scusi, vada, prenda.', it: 'Imperativi formali con Lei: scusi, vada, prenda.', pt: 'Imperativos formais com Lei: scusi, vada, prenda.', es: 'Imperativos formales con Lei: scusi, vada, prenda.', fr: 'Impératifs de politesse avec Lei : scusi, vada, prenda.', de: 'Höfliche Imperative mit Lei: scusi, vada, prenda.'},
+    grammarTopicId: 'imperative'
+  },
+  {
+    id: 'grammar-b1-imperative',
+    level: 'B1',
+    targetIt: 'Dimmi la verità e non preoccuparti!',
+    translation: {en: 'Tell me the truth and don’t worry!', it: 'Tell me the truth and don’t worry!', pt: 'Diga-me a verdade e não se preocupe!', es: '¡Dime la verdad y no te preocupes!', fr: 'Dis-moi la vérité et ne t’inquiète pas !', de: 'Sag mir die Wahrheit und mach dir keine Sorgen!'},
+    phoneticHint: 'DEEM-mee la ve-ree-TA eh non pre-ok-KOO-par-tee',
+    notes: {en: 'di’ + mi doubles the m: dimmi. In the negative, the pronoun attaches to the infinitive: non preoccuparti.', it: 'di’ + mi raddoppia la m: dimmi. Nel negativo il pronome si unisce all’infinito: non preoccuparti.', pt: 'di’ + mi dobra o m: dimmi. Na negativa, o pronome se une ao infinitivo: non preoccuparti.', es: 'di’ + mi duplica la m: dimmi. En negativa, el pronombre se une al infinitivo: non preoccuparti.', fr: 'di’ + mi double le m : dimmi. À la forme négative, le pronom se soude à l’infinitif : non preoccuparti.', de: 'di’ + mi verdoppelt das m: dimmi. In der Verneinung wird das Pronomen an den Infinitiv angehängt: non preoccuparti.'},
+    grammarTopicId: 'imperative'
+  },
+  {
     id: 'grammar-a1-imperfetto',
     level: 'A1',
     targetIt: 'Quando ero piccolo, avevo un cane.',
