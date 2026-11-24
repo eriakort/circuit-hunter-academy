@@ -21,8 +21,12 @@ test('Italian mission story follows the chosen support language and keeps Italia
   // Portuguese support text, with the Italian examples left untouched.
   await expect(page.getByText('Hoje você começa a sua jornada', { exact: false }).first()).toBeVisible();
   await expect(page.getByText('Ciao', { exact: false }).first()).toBeVisible();
+  // The mission screen's own labels follow the language too.
+  await expect(page.getByText('Ideia-chave').first()).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Continuar' }).first()).toBeVisible();
 
   await page.locator('#lDE').click();
   await expect(page.getByText('Heute beginnt deine Reise', { exact: false }).first()).toBeVisible();
+  await expect(page.getByText('Das Wichtigste').first()).toBeVisible();
   expect(errors).toEqual([]);
 });

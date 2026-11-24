@@ -201,21 +201,21 @@ export const CODE = (src: any, lang: Language = 'en'): string =>
   `<pre class="code">${hl(L(src, lang))}</pre>`;
 
 export const U = {
-  missions: ['Missions', 'Missioni'],
-  codex: ['Codex', 'Glossario'],
-  dojo: ['Dojo', 'Dojo'],
-  cont: ['Continue', 'Continua'],
-  back: ['Back', 'Indietro'],
-  fight: ['Fight!', 'Combatti!'],
-  next: ['Next step', 'Passo successivo'],
-  prev: ['Previous step', 'Passo precedente'],
-  arc: ['Arc', 'Arco'],
-  mission: ['Mission', 'Missione'],
-  pages: ['pp.', 'pp.'],
-  ready: ['Ready', 'Pronta'],
-  locked: ['Locked', 'Bloccata'],
-  cleared: ['Cleared', 'Superata'],
-  flawless: ['Cleared · flawless', 'Superata · perfetta']
+  missions: { en: 'Missions', it: 'Missioni', pt: 'Missões', es: 'Misiones', fr: 'Missions', de: 'Missionen' },
+  codex: { en: 'Codex', it: 'Glossario', pt: 'Códex', es: 'Códice', fr: 'Codex', de: 'Codex' },
+  dojo: { en: 'Dojo', it: 'Dojo', pt: 'Dojo', es: 'Dojo', fr: 'Dojo', de: 'Dojo' },
+  cont: { en: 'Continue', it: 'Continua', pt: 'Continuar', es: 'Continuar', fr: 'Continuer', de: 'Weiter' },
+  back: { en: 'Back', it: 'Indietro', pt: 'Voltar', es: 'Atrás', fr: 'Retour', de: 'Zurück' },
+  fight: { en: 'Fight!', it: 'Combatti!', pt: 'Lute!', es: '¡Lucha!', fr: 'Combats !', de: 'Kämpfe!' },
+  next: { en: 'Next step', it: 'Passo successivo', pt: 'Próximo passo', es: 'Paso siguiente', fr: 'Étape suivante', de: 'Nächster Schritt' },
+  prev: { en: 'Previous step', it: 'Passo precedente', pt: 'Passo anterior', es: 'Paso anterior', fr: 'Étape précédente', de: 'Vorheriger Schritt' },
+  arc: { en: 'Arc', it: 'Arco', pt: 'Arco', es: 'Arco', fr: 'Arc', de: 'Bogen' },
+  mission: { en: 'Mission', it: 'Missione', pt: 'Missão', es: 'Misión', fr: 'Mission', de: 'Mission' },
+  pages: { en: 'pp.', it: 'pp.', pt: 'pp.', es: 'pp.', fr: 'p.', de: 'S.' },
+  ready: { en: 'Ready', it: 'Pronta', pt: 'Pronta', es: 'Lista', fr: 'Prête', de: 'Bereit' },
+  locked: { en: 'Locked', it: 'Bloccata', pt: 'Bloqueada', es: 'Bloqueada', fr: 'Verrouillée', de: 'Gesperrt' },
+  cleared: { en: 'Cleared', it: 'Superata', pt: 'Concluída', es: 'Superada', fr: 'Réussie', de: 'Geschafft' },
+  flawless: { en: 'Cleared · flawless', it: 'Superata · perfetta', pt: 'Concluída · perfeita', es: 'Superada · perfecta', fr: 'Réussie · sans faute', de: 'Geschafft · fehlerfrei' }
 };
 
 export const GUIDE = {

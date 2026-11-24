@@ -23,6 +23,7 @@ import { createAssessmentQuestionVariantIndexes, resolveAssessmentQuestions } fr
 import { HARDWARE_LEARNING_PILOT } from '../data/learningPilot';
 import { BreakGame } from './BreakGame';
 import { BREAK_XP, buildBreakGame, shouldOfferBreak } from '../data/breakGames';
+import { ui } from '../data/missionUi';
 
 const SANKOFA_GUIDE_AVATAR = '<svg viewBox="0 0 80 80" role="img" aria-label="The Elder Guide"><circle cx="40" cy="40" r="37" fill="#174b36" stroke="#d5a43b" stroke-width="3"/><path d="M19 67c2-14 10-21 21-21s19 7 21 21" fill="#d5a43b"/><circle cx="40" cy="31" r="13" fill="#f2e8d5"/><path d="M26 29c2-15 26-19 29 1-8-5-19-6-29-1" fill="#282a27"/></svg>';
 const SANKOFA_EXPLORER_AVATAR = '<svg viewBox="0 0 80 80" role="img" aria-label="Knowledge Seeker"><circle cx="40" cy="40" r="37" fill="#293b60" stroke="#d5a43b" stroke-width="3"/><path d="M17 68c3-16 12-23 23-23s20 7 23 23" fill="#b9573f"/><circle cx="40" cy="31" r="13" fill="#d5a43b"/></svg>';
@@ -315,7 +316,7 @@ export const MissionScreen: React.FC = () => {
                         .replace(/\[\[(.*?)\|(.*?)\]\]/g, '$2');
                       speakItalian(textToSpeak, { rate: 0.88 });
                     }}
-                    title={lang === 'it' ? 'Ascolta questo dialogo in italiano' : 'Listen to this dialogue in Italian'}
+                    title={ui(lang, 'Listen to this dialogue in Italian', 'Ascolta questo dialogo in italiano')}
                     style={{
                       background: 'rgba(106, 209, 255, 0.12)',
                       border: '1px solid rgba(106, 209, 255, 0.3)',
@@ -329,7 +330,7 @@ export const MissionScreen: React.FC = () => {
                       gap: '4px'
                     }}
                   >
-                    🔊 {lang === 'it' ? 'Ascolta' : 'Listen'}
+                    🔊 {ui(lang, 'Listen', 'Ascolta')}
                   </button>
                 )}
               </div>
@@ -393,12 +394,12 @@ export const MissionScreen: React.FC = () => {
       )}
 
       {guidedPractice && guidedQuestion && !guidedComplete && (
-        <section className="learning-guided-practice" aria-label={lang === 'it' ? 'Esercitazione guidata' : 'Guided practice'}>
+        <section className="learning-guided-practice" aria-label={ui(lang, 'Guided practice', 'Esercitazione guidata')}>
           <div className="learning-section-heading">
-            <span className="learning-kicker">{lang === 'it' ? 'ALLENAMENTO GUIDATO' : 'GUIDED TRAINING'}</span>
+            <span className="learning-kicker">{ui(lang, 'GUIDED TRAINING', 'ALLENAMENTO GUIDATO')}</span>
             <h3>{L(guidedPractice.title, lang)}</h3>
             <p>{L(guidedPractice.instructions, lang)}</p>
-            <div className="guided-progress">{lang === 'it' ? 'Domanda' : 'Question'} {guidedIndex + 1} / {guidedQuestions.length}</div>
+            <div className="guided-progress">{ui(lang, 'Question', 'Domanda')} {guidedIndex + 1} / {guidedQuestions.length}</div>
           </div>
           <div className="guided-question">
             <strong>{L(guidedQuestion.q, lang)}</strong>
@@ -419,14 +420,14 @@ export const MissionScreen: React.FC = () => {
             {guidedPractice.hints?.[guidedIndex] && (
               <div className="guided-hint-wrap">
                 <button type="button" className="guided-hint-toggle" onClick={() => setGuidedHintVisible(value => !value)}>
-                  {guidedHintVisible ? (lang === 'it' ? 'Nascondi suggerimento' : 'Hide hint') : (lang === 'it' ? 'Mostra suggerimento' : 'Show hint')}
+                  {guidedHintVisible ? (ui(lang, 'Hide hint', 'Nascondi suggerimento')) : (ui(lang, 'Show hint', 'Mostra suggerimento'))}
                 </button>
                 {guidedHintVisible && <p className="guided-hint">{L(guidedPractice.hints[guidedIndex], lang)}</p>}
               </div>
             )}
             {guidedFeedback && (
               <div className={guidedFeedback.correct ? 'guided-feedback correct' : 'guided-feedback retry'} role="status" aria-live="polite">
-                <strong>{guidedFeedback.correct ? (lang === 'it' ? 'Esatto!' : 'Correct!') : (lang === 'it' ? 'Riprova' : 'Try again')}</strong>
+                <strong>{guidedFeedback.correct ? (ui(lang, 'Correct!', 'Esatto!')) : (ui(lang, 'Try again', 'Riprova'))}</strong>
                 <p>{L(guidedFeedback.why, lang)}</p>
                 {guidedFeedback.correct ? (
                   <button type="button" className="btn" onClick={() => {
@@ -439,11 +440,11 @@ export const MissionScreen: React.FC = () => {
                       saveLearningProgress(currentMission.id, { guidedPracticeComplete: true });
                     }
                   }}>
-                    {guidedIndex + 1 < guidedQuestions.length ? (lang === 'it' ? 'Prossima domanda' : 'Next question') : (lang === 'it' ? 'Completa esercitazione' : 'Complete practice')}
+                    {guidedIndex + 1 < guidedQuestions.length ? (ui(lang, 'Next question', 'Prossima domanda')) : (ui(lang, 'Complete practice', 'Completa esercitazione'))}
                   </button>
                 ) : (
                   <button type="button" className="btn ghost" onClick={() => setGuidedFeedback(null)}>
-                    {lang === 'it' ? 'Riprova' : 'Try again'}
+                    {ui(lang, 'Try again', 'Riprova')}
                   </button>
                 )}
               </div>
@@ -453,18 +454,18 @@ export const MissionScreen: React.FC = () => {
       )}
       {guidedComplete && guidedPractice && (
         <div className="guided-complete" role="status">
-          <strong>{lang === 'it' ? 'Esercitazione guidata completata' : 'Guided practice completed'}</strong>
-          <p>{lang === 'it' ? 'Ottimo lavoro. Ora puoi continuare la missione.' : 'Well done. You can now continue the mission.'}</p>
+          <strong>{ui(lang, 'Guided practice completed', 'Esercitazione guidata completata')}</strong>
+          <p>{ui(lang, 'Well done. You can now continue the mission.', 'Ottimo lavoro. Ora puoi continuare la missione.')}</p>
         </div>
       )}
 
       {independentPractice && independentQuestion && !independentComplete && (
-        <section className="learning-independent-practice" aria-label={lang === 'it' ? 'Esercitazione autonoma' : 'Independent practice'}>
+        <section className="learning-independent-practice" aria-label={ui(lang, 'Independent practice', 'Esercitazione autonoma')}>
           <div className="learning-section-heading">
-            <span className="learning-kicker">{lang === 'it' ? 'SFIDA AUTONOMA' : 'INDEPENDENT CHALLENGE'}</span>
+            <span className="learning-kicker">{ui(lang, 'INDEPENDENT CHALLENGE', 'SFIDA AUTONOMA')}</span>
             <h3>{L(independentPractice.title, lang)}</h3>
             <p>{L(independentPractice.instructions, lang)}</p>
-            <div className="independent-progress">{lang === 'it' ? 'Problema' : 'Challenge'} {independentIndex + 1} / {independentQuestions.length}</div>
+            <div className="independent-progress">{ui(lang, 'Challenge', 'Problema')} {independentIndex + 1} / {independentQuestions.length}</div>
           </div>
           <div className="guided-question">
             <strong>{L(independentQuestion.q, lang)}</strong>
@@ -484,7 +485,7 @@ export const MissionScreen: React.FC = () => {
             </div>
             {independentFeedback && (
               <div className={independentFeedback.correct ? 'guided-feedback correct' : 'guided-feedback retry'} role="status" aria-live="polite">
-                <strong>{independentFeedback.correct ? (lang === 'it' ? 'Risposta corretta' : 'Correct answer') : (lang === 'it' ? 'Non ancora: riprova' : 'Not quite — try again')}</strong>
+                <strong>{independentFeedback.correct ? (ui(lang, 'Correct answer', 'Risposta corretta')) : (ui(lang, 'Not quite — try again', 'Non ancora: riprova'))}</strong>
                 <p>{L(independentFeedback.why, lang)}</p>
                 {independentFeedback.correct ? (
                   <button type="button" className="btn" onClick={() => {
@@ -496,11 +497,11 @@ export const MissionScreen: React.FC = () => {
                       saveLearningProgress(currentMission.id, { independentPracticeComplete: true });
                     }
                   }}>
-                    {independentIndex + 1 < independentQuestions.length ? (lang === 'it' ? 'Prossimo problema' : 'Next challenge') : (lang === 'it' ? 'Completa la sfida' : 'Complete challenge')}
+                    {independentIndex + 1 < independentQuestions.length ? (ui(lang, 'Next challenge', 'Prossimo problema')) : (ui(lang, 'Complete challenge', 'Completa la sfida'))}
                   </button>
                 ) : (
                   <button type="button" className="btn ghost" onClick={() => setIndependentFeedback(null)}>
-                    {lang === 'it' ? 'Riprova' : 'Try again'}
+                    {ui(lang, 'Try again', 'Riprova')}
                   </button>
                 )}
               </div>
@@ -510,18 +511,18 @@ export const MissionScreen: React.FC = () => {
       )}
       {independentComplete && independentPractice && (
         <div className="independent-complete" role="status">
-          <strong>{lang === 'it' ? 'Sfida autonoma completata' : 'Independent challenge completed'}</strong>
-          <p>{lang === 'it' ? 'Hai applicato le tue conoscenze senza suggerimenti. Puoi continuare.' : 'You applied your knowledge without hints. You can continue.'}</p>
+          <strong>{ui(lang, 'Independent challenge completed', 'Sfida autonoma completata')}</strong>
+          <p>{ui(lang, 'You applied your knowledge without hints. You can continue.', 'Hai applicato le tue conoscenze senza suggerimenti. Puoi continuare.')}</p>
         </div>
       )}
 
       {independentComplete && knowledgeQuestions.length > 0 && !knowledgeComplete && knowledgeQuestion && (
-        <section className="learning-knowledge-check" aria-label={lang === 'it' ? 'Verifica delle conoscenze' : 'Knowledge check'}>
+        <section className="learning-knowledge-check" aria-label={ui(lang, 'Knowledge check', 'Verifica delle conoscenze')}>
           <div className="learning-section-heading">
-            <span className="learning-kicker">{lang === 'it' ? 'VERIFICA DELLE CONOSCENZE' : 'KNOWLEDGE CHECK'}</span>
-            <h3>{lang === 'it' ? 'Metti alla prova ciò che hai imparato' : 'Check what you have learned'}</h3>
-            <p>{lang === 'it' ? 'Rispondi senza suggerimenti. Se sbagli, leggi la spiegazione e riprova.' : 'Answer without hints. If you miss one, read the explanation and try again.'}</p>
-            <div className="guided-progress">{lang === 'it' ? 'Domanda' : 'Question'} {knowledgeIndex + 1} / {knowledgeQuestions.length}</div>
+            <span className="learning-kicker">{ui(lang, 'KNOWLEDGE CHECK', 'VERIFICA DELLE CONOSCENZE')}</span>
+            <h3>{ui(lang, 'Check what you have learned', 'Metti alla prova ciò che hai imparato')}</h3>
+            <p>{ui(lang, 'Answer without hints. If you miss one, read the explanation and try again.', 'Rispondi senza suggerimenti. Se sbagli, leggi la spiegazione e riprova.')}</p>
+            <div className="guided-progress">{ui(lang, 'Question', 'Domanda')} {knowledgeIndex + 1} / {knowledgeQuestions.length}</div>
           </div>
           <div className="guided-question">
             <strong>{L(knowledgeQuestion.q, lang)}</strong>
@@ -541,7 +542,7 @@ export const MissionScreen: React.FC = () => {
             </div>
             {knowledgeFeedback !== null && (
               <div className={knowledgeFeedback ? 'guided-feedback correct' : 'guided-feedback retry'} role="status" aria-live="polite">
-                <strong>{knowledgeFeedback ? (lang === 'it' ? 'Risposta corretta' : 'Correct answer') : (lang === 'it' ? 'Riprova' : 'Try again')}</strong>
+                <strong>{knowledgeFeedback ? (ui(lang, 'Correct answer', 'Risposta corretta')) : (ui(lang, 'Try again', 'Riprova'))}</strong>
                 <p>{L(knowledgeQuestion.why, lang)}</p>
                 <button type="button" className="btn" onClick={() => {
                   if (!knowledgeFeedback) { setKnowledgeFeedback(null); return; }
@@ -553,7 +554,7 @@ export const MissionScreen: React.FC = () => {
                     saveLearningProgress(currentMission.id, { knowledgeCheckScore: score, lastAttemptAt: Date.now() });
                   }
                 }}>
-                  {!knowledgeFeedback ? (lang === 'it' ? 'Riprova' : 'Try again') : knowledgeIndex + 1 < knowledgeQuestions.length ? (lang === 'it' ? 'Prossima domanda' : 'Next question') : (lang === 'it' ? 'Completa verifica' : 'Finish check')}
+                  {!knowledgeFeedback ? (ui(lang, 'Try again', 'Riprova')) : knowledgeIndex + 1 < knowledgeQuestions.length ? (ui(lang, 'Next question', 'Prossima domanda')) : (ui(lang, 'Finish check', 'Completa verifica'))}
                 </button>
               </div>
             )}
@@ -562,21 +563,21 @@ export const MissionScreen: React.FC = () => {
       )}
       {knowledgeComplete && knowledgeQuestions.length > 0 && (
         <div className="independent-complete" role="status">
-          <strong>{lang === 'it' ? 'Verifica completata' : 'Knowledge check complete'} · {savedLearning?.knowledgeCheckScore ?? 0}%</strong>
-          <p>{lang === 'it' ? 'Il risultato è salvato in questo browser. Puoi continuare la missione.' : 'Your result is saved in this browser. You can continue the mission.'}</p>
+          <strong>{ui(lang, 'Knowledge check complete', 'Verifica completata')} · {savedLearning?.knowledgeCheckScore ?? 0}%</strong>
+          <p>{ui(lang, 'Your result is saved in this browser. You can continue the mission.', 'Il risultato è salvato in questo browser. Puoi continuare la missione.')}</p>
           <button type="button" className="btn ghost" onClick={() => {
             setKnowledgeIndex(0); setKnowledgeFeedback(null); setKnowledgeMissed({});
             saveLearningProgress(currentMission.id, { knowledgeCheckScore: undefined });
-          }}>{lang === 'it' ? 'Ripeti verifica' : 'Retake check'}</button>
+          }}>{ui(lang, 'Retake check', 'Ripeti verifica')}</button>
         </div>
       )}
 
       {workedExamples.length > 0 && (
-        <section className="learning-worked-examples" aria-label={lang === 'it' ? 'Esempi svolti' : 'Worked examples'}>
+        <section className="learning-worked-examples" aria-label={ui(lang, 'Worked examples', 'Esempi svolti')}>
           <div className="learning-section-heading">
-            <span className="learning-kicker">{lang === 'it' ? 'IMPARA FACENDO' : 'LEARN BY EXAMPLE'}</span>
-            <h3>{lang === 'it' ? 'Esempio svolto' : 'Worked example'}</h3>
-            <p>{lang === 'it' ? 'Segui il ragionamento passo dopo passo, poi prova a spiegare il concetto con parole tue.' : 'Follow the reasoning step by step, then try explaining the concept in your own words.'}</p>
+            <span className="learning-kicker">{ui(lang, 'LEARN BY EXAMPLE', 'IMPARA FACENDO')}</span>
+            <h3>{ui(lang, 'Worked example', 'Esempio svolto')}</h3>
+            <p>{ui(lang, 'Follow the reasoning step by step, then try explaining the concept in your own words.', 'Segui il ragionamento passo dopo passo, poi prova a spiegare il concetto con parole tue.')}</p>
           </div>
           {workedExamples.map(concept => (
             <details className="learning-example" key={concept.id}>
@@ -589,14 +590,14 @@ export const MissionScreen: React.FC = () => {
                   ))}
                 </ol>
                 <div className="learning-answer">
-                  <strong>{lang === 'it' ? 'Risposta ragionata' : 'Reasoned answer'}</strong>
+                  <strong>{ui(lang, 'Reasoned answer', 'Risposta ragionata')}</strong>
                   <p>{L(concept.workedExample!.answer, lang)}</p>
                 </div>
                 {concept.misconceptions?.[0] && (
                   <div className="learning-misconception">
-                    <strong>{lang === 'it' ? 'Attenzione a questo errore comune' : 'Watch out for this common mistake'}</strong>
-                    <p><span>{lang === 'it' ? 'Idea errata: ' : 'Common mistake: '}</span>{L(concept.misconceptions[0].belief, lang)}</p>
-                    <p><span>{lang === 'it' ? 'Correzione: ' : 'Correction: '}</span>{L(concept.misconceptions[0].correction, lang)}</p>
+                    <strong>{ui(lang, 'Watch out for this common mistake', 'Attenzione a questo errore comune')}</strong>
+                    <p><span>{ui(lang, 'Common mistake: ', 'Idea errata: ')}</span>{L(concept.misconceptions[0].belief, lang)}</p>
+                    <p><span>{ui(lang, 'Correction: ', 'Correzione: ')}</span>{L(concept.misconceptions[0].correction, lang)}</p>
                   </div>
                 )}
               </div>
@@ -606,42 +607,42 @@ export const MissionScreen: React.FC = () => {
       )}
 
       {masteryIsActive && independentComplete && knowledgeComplete && (
-        <section className="learning-mastery-assessment" aria-label={lang === 'it' ? 'Valutazione di padronanza' : 'Mastery assessment'}>
+        <section className="learning-mastery-assessment" aria-label={ui(lang, 'Mastery assessment', 'Valutazione di padronanza')}>
           <div className="learning-section-heading">
-            <span className="learning-kicker">{lang === 'it' ? 'PROVA DI MAESTRIA' : 'MASTERY TRIAL'}</span>
+            <span className="learning-kicker">{ui(lang, 'MASTERY TRIAL', 'PROVA DI MAESTRIA')}</span>
             <h3>{L(masteryAssessment!.title, lang)}</h3>
             <p>{L(masteryAssessment!.instructions, lang)}</p>
             <div className="mastery-progress">
-              {lang === 'it' ? 'Domanda' : 'Question'} {Math.min(masteryIndex + 1, masteryQuestions.length)} / {masteryQuestions.length}
-              {' · '}{lang === 'it' ? 'Soglia' : 'Pass mark'} {masteryAssessment!.passingScore}%
+              {ui(lang, 'Question', 'Domanda')} {Math.min(masteryIndex + 1, masteryQuestions.length)} / {masteryQuestions.length}
+              {' · '}{ui(lang, 'Pass mark', 'Soglia')} {masteryAssessment!.passingScore}%
             </div>
           </div>
 
           {savedLearning?.mastered && !masteryFeedback && (
             <div className="mastery-result passed" role="status">
-              <strong>{lang === 'it' ? 'Maestria raggiunta' : 'Mastery achieved'} · {savedLearning.masteryScore ?? 0}%</strong>
-              <p>{lang === 'it' ? 'Hai superato la prova. La battaglia è sbloccata.' : 'You passed the assessment. The boss battle is unlocked.'}</p>
-              <small>{lang === 'it' ? 'Tentativi' : 'Attempts'}: {savedLearning.masteryAttempts ?? 1}</small>
+              <strong>{ui(lang, 'Mastery achieved', 'Maestria raggiunta')} · {savedLearning.masteryScore ?? 0}%</strong>
+              <p>{ui(lang, 'You passed the assessment. The boss battle is unlocked.', 'Hai superato la prova. La battaglia è sbloccata.')}</p>
+              <small>{ui(lang, 'Attempts', 'Tentativi')}: {savedLearning.masteryAttempts ?? 1}</small>
             </div>
           )}
 
           {masteryNeedsRetry && (
             <div className="mastery-result retry" role="status">
-              <strong>{lang === 'it' ? 'Ultimo risultato' : 'Previous result'} · {savedLearning?.masteryScore}%</strong>
-              <p>{lang === 'it' ? 'Serve un altro tentativo per raggiungere la soglia richiesta.' : 'One more attempt is needed to reach the required pass mark.'}</p>
+              <strong>{ui(lang, 'Previous result', 'Ultimo risultato')} · {savedLearning?.masteryScore}%</strong>
+              <p>{ui(lang, 'One more attempt is needed to reach the required pass mark.', 'Serve un altro tentativo per raggiungere la soglia richiesta.')}</p>
               <button type="button" className="btn" onClick={() => {
                 setMasteryIndex(0);
                 setMasteryAnswers([]);
                 setMasteryFeedback(null);
                 setMasteryVariantIndexes(createAssessmentQuestionVariantIndexes(masteryAssessment, Math.random, masteryVariantIndexes));
                 setMasteryStarted(true);
-              }}>{lang === 'it' ? 'Riprova la prova' : 'Retry assessment'}</button>
+              }}>{ui(lang, 'Retry assessment', 'Riprova la prova')}</button>
             </div>
           )}
 
           {!savedLearning?.mastered && !masteryNeedsRetry && !masteryFeedback && masteryQuestion && (
             <div className="guided-question">
-              <div className="mastery-progress">{lang === 'it' ? 'Risposta' : 'Response'} {masteryIndex + 1} / {masteryQuestions.length}</div>
+              <div className="mastery-progress">{ui(lang, 'Response', 'Risposta')} {masteryIndex + 1} / {masteryQuestions.length}</div>
               <strong>{L(masteryQuestion.q, lang)}</strong>
               <div className="guided-options">
                 {masteryQuestion.a.map((option, index) => (
@@ -732,43 +733,43 @@ export const MissionScreen: React.FC = () => {
             <div className={masteryFeedback.passed ? 'mastery-result passed' : 'mastery-result retry'} role="status" aria-live="polite">
               <strong>
                 {masteryFeedback.passed
-                  ? (lang === 'it' ? 'Maestria raggiunta' : 'Mastery achieved')
-                  : (lang === 'it' ? 'Prova non superata' : 'Assessment not passed')}
+                  ? (ui(lang, 'Mastery achieved', 'Maestria raggiunta'))
+                  : (ui(lang, 'Assessment not passed', 'Prova non superata'))}
                 {' · '}{masteryFeedback.score}%
               </strong>
               <p>
                 {masteryFeedback.passed
-                  ? (lang === 'it' ? 'Ottimo lavoro. La battaglia è sbloccata.' : 'Excellent work. The boss battle is now unlocked.')
-                  : (lang === 'it' ? `Hai bisogno del ${masteryAssessment!.passingScore}% per superare la prova. Rivedi le spiegazioni e riprova.` : `You need ${masteryAssessment!.passingScore}% to pass. Review the explanations and try again.`)}
+                  ? (ui(lang, 'Excellent work. The boss battle is now unlocked.', 'Ottimo lavoro. La battaglia è sbloccata.'))
+                  : ui(lang, 'You need {n}% to pass. Review the explanations and try again.', 'Hai bisogno del {n}% per superare la prova. Rivedi le spiegazioni e riprova.', masteryAssessment!.passingScore)}
               </p>
               <ol className="mastery-review">
                 {masteryQuestions.map((question, index) => (
                   <li key={index}>
                     <strong>{L(question.q, lang)}</strong>
-                    <span>{lang === 'it' ? 'Risposta corretta: ' : 'Correct answer: '}{L(question.a[0], lang)}</span>
+                    <span>{ui(lang, 'Correct answer: ', 'Risposta corretta: ')}{L(question.a[0], lang)}</span>
                     <p>{L(question.why, lang)}</p>
                   </li>
                 ))}
               </ol>
               {masteryFeedback.passed ? (
-                <small>{lang === 'it' ? 'Tentativi totali' : 'Total attempts'}: {masteryFeedback.attempt}</small>
+                <small>{ui(lang, 'Total attempts', 'Tentativi totali')}: {masteryFeedback.attempt}</small>
               ) : (
                 <button type="button" className="btn" onClick={() => {
                   setMasteryIndex(0);
                   setMasteryAnswers([]);
                   setMasteryFeedback(null);
                   setMasteryStarted(true);
-                }}>{lang === 'it' ? 'Riprova la prova' : 'Retry assessment'}</button>
+                }}>{ui(lang, 'Retry assessment', 'Riprova la prova')}</button>
               )}
             </div>
           )}
 
           {(masteryNeedsRetry || (masteryFeedback && !masteryFeedback.passed)) && masteryReviewConcepts.length > 0 && (
-            <section className="mastery-recommendations" aria-label={lang === 'it' ? 'Ripasso consigliato' : 'Recommended revision'}>
+            <section className="mastery-recommendations" aria-label={ui(lang, 'Recommended revision', 'Ripasso consigliato')}>
               <div className="learning-section-heading">
-                <span className="learning-kicker">{lang === 'it' ? 'RIPASSO MIRATO' : 'TARGETED REVISION'}</span>
-                <h4>{lang === 'it' ? 'Concentrati su questi concetti' : 'Focus on these concepts'}</h4>
-                <p>{lang === 'it' ? 'Questi argomenti corrispondono alle risposte errate dell’ultimo tentativo.' : 'These topics match the questions missed in your latest attempt.'}</p>
+                <span className="learning-kicker">{ui(lang, 'TARGETED REVISION', 'RIPASSO MIRATO')}</span>
+                <h4>{ui(lang, 'Focus on these concepts', 'Concentrati su questi concetti')}</h4>
+                <p>{ui(lang, 'These topics match the questions missed in your latest attempt.', 'Questi argomenti corrispondono alle risposte errate dell’ultimo tentativo.')}</p>
               </div>
               {masteryReviewConcepts.map(concept => {
                 const performance = savedLearning?.masteryConceptPerformance?.[concept.id];
@@ -780,18 +781,18 @@ export const MissionScreen: React.FC = () => {
                     <div className="mastery-recommendation-heading">
                       <strong>{L(concept.title, lang)}</strong>
                       {percent !== null && (
-                        <small>{lang === 'it' ? 'Risposte corrette' : 'Correct responses'}: {performance!.correct}/{performance!.attempted} · {percent}%</small>
+                        <small>{ui(lang, 'Correct responses', 'Risposte corrette')}: {performance!.correct}/{performance!.attempted} · {percent}%</small>
                       )}
                     </div>
                     <p>{L(concept.explanation, lang)}</p>
                     {concept.workedExample && (
                       <details className="learning-example">
-                        <summary>{lang === 'it' ? 'Rivedi un esempio svolto' : 'Review a worked example'}</summary>
+                        <summary>{ui(lang, 'Review a worked example', 'Rivedi un esempio svolto')}</summary>
                         <div className="learning-example-body">
                           <p className="learning-scenario">{L(concept.workedExample.scenario, lang)}</p>
                           <ol>{concept.workedExample.steps.map((step, index) => <li key={index}>{L(step, lang)}</li>)}</ol>
                           <div className="learning-answer">
-                            <strong>{lang === 'it' ? 'Risposta ragionata' : 'Reasoned answer'}</strong>
+                            <strong>{ui(lang, 'Reasoned answer', 'Risposta ragionata')}</strong>
                             <p>{L(concept.workedExample.answer, lang)}</p>
                           </div>
                         </div>
@@ -799,7 +800,7 @@ export const MissionScreen: React.FC = () => {
                     )}
                     {concept.misconceptions?.[0] && (
                       <div className="learning-misconception">
-                        <strong>{lang === 'it' ? 'Errore da evitare' : 'Misconception to avoid'}</strong>
+                        <strong>{ui(lang, 'Misconception to avoid', 'Errore da evitare')}</strong>
                         <p>{L(concept.misconceptions[0].belief, lang)}</p>
                         <p>{L(concept.misconceptions[0].correction, lang)}</p>
                       </div>
