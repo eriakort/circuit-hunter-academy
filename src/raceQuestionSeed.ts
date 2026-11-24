@@ -12,6 +12,11 @@ export interface RaceQuestionSeedRow {
 type GradeSubjectMap = Record<GradeId, string[]>;
 
 const bilingualPair = (value: BilingualText, label: string): [string, string] => {
+  // Localized records carry extra support languages; multiplayer keeps using
+  // the canonical English/Italian pair, so the seed is unchanged by them.
+  if (value && typeof value === 'object' && !Array.isArray(value)) {
+    value = [value.en, value.it];
+  }
   if (
     !Array.isArray(value) ||
     value.length !== 2 ||

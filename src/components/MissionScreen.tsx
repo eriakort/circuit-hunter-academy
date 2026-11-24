@@ -310,7 +310,7 @@ export const MissionScreen: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => {
-                      const textToSpeak = (Array.isArray(sc.text) ? sc.text[1] || sc.text[0] : sc.text || '')
+                      const textToSpeak = (Array.isArray(sc.text) ? sc.text[1] || sc.text[0] : typeof sc.text === 'object' ? sc.text.it || sc.text.en : sc.text || '')
                         .replace(/<[^>]*>/g, '')
                         .replace(/\[\[(.*?)\|(.*?)\]\]/g, '$2');
                       speakItalian(textToSpeak, { rate: 0.88 });
