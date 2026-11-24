@@ -1,19 +1,23 @@
 import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
 import { ITALIAN_GRAMMAR_ACTIVITIES, getGrammarActivities, normaliseGrammarAnswer, matchesGrammarAnswer } from '../src/data/italianGrammarActivities';
+// Activity text fields are a legacy [en, it] tuple or a localized record.
+const en = (v: any): string => Array.isArray(v) ? v[0] : v?.en;
+const it = (v: any): string => Array.isArray(v) ? v[1] : v?.it;
+
 // A translate source is now localized (a record); correct/order sources stay
 // plain Italian strings. Extract the base (English) text for assertions.
 const srcEn = (x: any): string => (x == null ? '' : typeof x === 'string' ? x : (x.en ?? ''));
 const srcLangs = (x: any): string[] => (typeof x === 'object' && x ? ['en', 'it', 'pt', 'es', 'fr', 'de'].map(l => x[l]) : []);
 const sentenceA1Translation = getGrammarActivities('sentence-building', 'A1', 'translate')[0];
-assert.equal(sentenceA1Translation.hint[0], 'Use la with the feminine noun ragazza and un with the masculine noun libro.');
-assert.equal(sentenceA1Translation.hint[1], 'Usa la con il nome femminile ragazza e un con il nome maschile libro.');
+assert.equal(en(sentenceA1Translation.hint), 'Use la with the feminine noun ragazza and un with the masculine noun libro.');
+assert.equal(it(sentenceA1Translation.hint), 'Usa la con il nome femminile ragazza e un con il nome maschile libro.');
 const articlesA1Translation = getGrammarActivities('articles', 'A1', 'translate')[0];
-assert.equal(articlesA1Translation.hint[0], 'Use gli before studenti because it is masculine plural and begins with s + consonant.');
-assert.equal(articlesA1Translation.hint[1], 'Usa gli davanti a studenti: è un nome maschile plurale che inizia con s + consonante.');
+assert.equal(en(articlesA1Translation.hint), 'Use gli before studenti because it is masculine plural and begins with s + consonant.');
+assert.equal(it(articlesA1Translation.hint), 'Usa gli davanti a studenti: è un nome maschile plurale che inizia con s + consonante.');
 const articlesA1Write = getGrammarActivities('articles', 'A1', 'write')[0];
-assert.equal(articlesA1Write.prompt[0], 'Write one sentence using a masculine noun and a feminine noun.');
-assert.equal(articlesA1Write.prompt[1], 'Scrivi una frase usando un nome maschile e un nome femminile.');
+assert.equal(en(articlesA1Write.prompt), 'Write one sentence using a masculine noun and a feminine noun.');
+assert.equal(it(articlesA1Write.prompt), 'Scrivi una frase usando un nome maschile e un nome femminile.');
 assert.equal(articlesA1Write.modelAnswer, 'Ho un libro e una penna.');
 assert.equal(articlesA1Write.modelAnswer.split(/[.!?]+/).filter(Boolean).length, 1, 'A1 article model should contain the one sentence requested');
 const extraWritingIds = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'present-tense'].flatMap(topic => ['A1', 'A2'].map(level => topic + '-' + level.toLowerCase() + '-write-2'));
@@ -40,18 +44,18 @@ const passatoProssimoA2Correction = getGrammarActivities('passato-prossimo', 'A2
 assert.ok(srcEn(passatoProssimoA2Correction.source).includes('Io ho andato a scuola ieri'), 'A2 correction should cover the common ho/sono auxiliary error');
 assert.deepEqual(passatoProssimoA2Correction.acceptedAnswers, ['Io sono andato a scuola ieri.', 'Io sono andata a scuola ieri.']);
 const passatoProssimoA1Translation = getGrammarActivities('passato-prossimo', 'A1', 'translate')[0];
-assert.equal(passatoProssimoA1Translation.prompt[1], 'Traduci in italiano: “I have finished my homework”.');
+assert.equal(it(passatoProssimoA1Translation.prompt), 'Traduci in italiano: “I have finished my homework”.');
 assert.equal(srcEn(passatoProssimoA1Translation.source), 'I have finished my homework.');
 const passatoProssimoA2Translation = getGrammarActivities('passato-prossimo', 'A2', 'translate')[0];
-assert.equal(passatoProssimoA2Translation.prompt[1], 'Traduci in italiano: “We wrote a letter”.');
+assert.equal(it(passatoProssimoA2Translation.prompt), 'Traduci in italiano: “We wrote a letter”.');
 assert.equal(srcEn(passatoProssimoA2Translation.source), 'We wrote a letter.');
 const reflexiveA1Translation = getGrammarActivities('reflexive', 'A1', 'translate')[0];
-assert.equal(reflexiveA1Translation.prompt[1], 'Traduci in italiano: “She gets up at seven”.');
+assert.equal(it(reflexiveA1Translation.prompt), 'Traduci in italiano: “She gets up at seven”.');
 assert.equal(srcEn(reflexiveA1Translation.source), 'She gets up at seven.');
 const reflexiveA2Translation = getGrammarActivities('reflexive', 'A2', 'translate')[0];
 assert.deepEqual(reflexiveA2Translation.acceptedAnswers, ['Mi sono vestito rapidamente.', 'Mi sono vestita rapidamente.', 'Mi sono vestito in fretta.', 'Mi sono vestita in fretta.']);
-assert.equal(reflexiveA2Translation.prompt[0], 'Translate into Italian: I got dressed quickly. Use the form that agrees with you.');
-assert.equal(reflexiveA2Translation.prompt[1], 'Traduci in italiano: “I got dressed quickly”. Usa la forma che concorda con te.');
+assert.equal(en(reflexiveA2Translation.prompt), 'Translate into Italian: I got dressed quickly. Use the form that agrees with you.');
+assert.equal(it(reflexiveA2Translation.prompt), 'Traduci in italiano: “I got dressed quickly”. Usa la forma che concorda con te.');
 assert.equal(srcEn(reflexiveA2Translation.source), 'I got dressed quickly.');
 const sentenceA2Translation = getGrammarActivities('sentence-building', 'A2', 'translate')[0];
 const sentenceA2Write = getGrammarActivities('sentence-building', 'A2', 'write')[0];
@@ -59,23 +63,23 @@ assert.equal(sentenceA2Write.modelAnswer, 'Ieri ho studiato italiano. Poi ho gua
 assert.equal(sentenceA2Write.modelAnswer.split(/[.!?]+/).filter(Boolean).length, 2, 'A2 daily-activities model should contain two connected sentences as requested');
 assert.deepEqual(sentenceA2Translation.acceptedAnswers, ['Ho chiamato Giulia e le ho parlato.', 'Ho chiamato Giulia e ho parlato con lei.']);
 const weekendA2Write = getGrammarActivities('passato-prossimo', 'A2', 'write')[0];
-assert.equal(weekendA2Write.prompt[1], 'Scrivi due frasi sul fine settimana scorso. Usa il passato prossimo.');
+assert.equal(it(weekendA2Write.prompt), 'Scrivi due frasi sul fine settimana scorso. Usa il passato prossimo.');
 assert.equal(weekendA2Write.modelAnswer, 'Sabato ho visitato un museo. Domenica ho visto una mostra.');
 assert.equal(weekendA2Write.modelAnswer.split(/[.!?]+/).filter(Boolean).length, 2, 'A2 weekend model should contain the two sentences requested');
 const partitiveA1Translation = getGrammarActivities('partitive', 'A1', 'translate')[0];
-assert.equal(partitiveA1Translation.prompt[0], 'Translate: I eat some cheese.');
-assert.equal(partitiveA1Translation.prompt[1], 'Traduci in italiano: “I eat some cheese”.');
+assert.equal(en(partitiveA1Translation.prompt), 'Translate: I eat some cheese.');
+assert.equal(it(partitiveA1Translation.prompt), 'Traduci in italiano: “I eat some cheese”.');
 assert.equal(srcEn(partitiveA1Translation.source), 'I eat some cheese.');
 const partitiveA2Translation = getGrammarActivities('partitive', 'A2', 'translate')[0];
-assert.equal(partitiveA2Translation.prompt[0], 'Translate: Would you like some vegetables?');
-assert.equal(partitiveA2Translation.prompt[1], 'Traduci in italiano: “Would you like some vegetables?”.');
+assert.equal(en(partitiveA2Translation.prompt), 'Translate: Would you like some vegetables?');
+assert.equal(it(partitiveA2Translation.prompt), 'Traduci in italiano: “Would you like some vegetables?”.');
 assert.equal(srcEn(partitiveA2Translation.source), 'Would you like some vegetables?');
 assert.deepEqual(partitiveA2Translation.acceptedAnswers, ['Vuoi della verdura?', 'Vuoi delle verdure?']);
 const articlesA2Write = getGrammarActivities('articles', 'A2', 'write')[0];
 assert.equal(articlesA2Write.modelAnswer, 'Nel mio quartiere ci sono una piazza e un bar. Le case del centro sono antiche.');
 assert.equal(articlesA2Write.modelAnswer.split(/[.!?]+/).filter(Boolean).length, 2, 'A2 place-description model should contain two sentences as requested');
-assert.equal(articlesA2Write.explanation[0], 'Check agreement and contractions: nel = in + il; una agrees with piazza; le agrees with case; del = di + il.');
-assert.equal(articlesA2Write.explanation[1], 'Controlla l’accordo e le preposizioni articolate: nel = in + il; una concorda con piazza; le concorda con case; del = di + il.');
+assert.equal(en(articlesA2Write.explanation), 'Check agreement and contractions: nel = in + il; una agrees with piazza; le agrees with case; del = di + il.');
+assert.equal(it(articlesA2Write.explanation), 'Controlla l’accordo e le preposizioni articolate: nel = in + il; una concorda con piazza; le concorda con case; del = di + il.');
 const articlesA2Order = getGrammarActivities('articles', 'A2', 'order')[0];
 assert.equal(articlesA2Order.modelAnswer, 'Ho degli amici simpatici e generosi.');
 const partitiveA2Write = getGrammarActivities('partitive', 'A2', 'write')[0];
@@ -90,10 +94,10 @@ for (const level of levels) {
     for (const item of items) {
       assert.ok(!ids.has(item.id), 'Duplicate activity id: ' + item.id);
       ids.add(item.id);
-      assert.ok(item.title[0] && item.title[1], item.id + ' needs bilingual title');
-      assert.ok(item.prompt[0] && item.prompt[1], item.id + ' needs bilingual prompt');
-      assert.ok(item.hint[0] && item.hint[1], item.id + ' needs bilingual hint');
-      assert.ok(item.explanation[0] && item.explanation[1], item.id + ' needs bilingual explanation');
+      assert.ok(en(item.title) && it(item.title), item.id + ' needs bilingual title');
+      assert.ok(en(item.prompt) && it(item.prompt), item.id + ' needs bilingual prompt');
+      assert.ok(en(item.hint) && it(item.hint), item.id + ' needs bilingual hint');
+      assert.ok(en(item.explanation) && it(item.explanation), item.id + ' needs bilingual explanation');
       assert.ok(item.modelAnswer.length > 0, item.id + ' needs a model answer');
       if (type === 'order') assert.ok(item.words && item.words.length >= 3, item.id + ' needs word tiles');
       if (type === 'translate') {
@@ -143,22 +147,22 @@ const localizedPromptExpectations: Record<string, string> = {
 for (const [activityId, expectedPrompt] of Object.entries(localizedPromptExpectations)) {
   const activity = ITALIAN_GRAMMAR_ACTIVITIES.find(item => item.id === activityId);
   assert.ok(activity, 'Missing activity: ' + activityId);
-  assert.equal(activity.prompt[1], expectedPrompt, activityId + ' should have a complete Italian prompt');
-  assert.notEqual(activity.prompt[1], 'Scrivi la tua risposta.', activityId + ' should not use a generic placeholder');
+  assert.equal(it(activity.prompt), expectedPrompt, activityId + ' should have a complete Italian prompt');
+  assert.notEqual(it(activity.prompt), 'Scrivi la tua risposta.', activityId + ' should not use a generic placeholder');
 }
 
 const articlesA1TranslationPrompt = getGrammarActivities('articles', 'A1', 'translate')[0];
-assert.equal(articlesA1TranslationPrompt.prompt[0], 'Translate into Italian: “The students are here”.');
-assert.equal(articlesA1TranslationPrompt.prompt[1], 'Traduci in italiano: “The students are here”.');
+assert.equal(en(articlesA1TranslationPrompt.prompt), 'Translate into Italian: “The students are here”.');
+assert.equal(it(articlesA1TranslationPrompt.prompt), 'Traduci in italiano: “The students are here”.');
 assert.equal(srcEn(articlesA1TranslationPrompt.source), 'The students are here.');
 const articlesA1Correction = getGrammarActivities('articles', 'A1', 'correct')[0];
-assert.equal(articlesA1Correction.explanation[0], 'Use il with a masculine singular noun beginning with a consonant that does not require lo.');
-assert.equal(articlesA1Correction.explanation[1], 'Usa il con un nome maschile singolare che inizia con una consonante che non richiede lo.');
+assert.equal(en(articlesA1Correction.explanation), 'Use il with a masculine singular noun beginning with a consonant that does not require lo.');
+assert.equal(it(articlesA1Correction.explanation), 'Usa il con un nome maschile singolare che inizia con una consonante che non richiede lo.');
 const pronounsA1Translation = getGrammarActivities('pronouns', 'A1', 'translate')[0];
-assert.equal(pronounsA1Translation.hint[1], 'Il pronome soggetto per “she” è lei.');
+assert.equal(it(pronounsA1Translation.hint), 'Il pronome soggetto per “she” è lei.');
 const pronounsA2Correction = getGrammarActivities('pronouns', 'A2', 'correct')[0];
-assert.equal(pronounsA2Correction.hint[0], 'The noun libri is masculine plural.');
-assert.equal(pronounsA2Correction.hint[1], 'Il nome libri è maschile plurale.');
+assert.equal(en(pronounsA2Correction.hint), 'The noun libri is masculine plural.');
+assert.equal(it(pronounsA2Correction.hint), 'Il nome libri è maschile plurale.');
 
 
 const passatoProssimoA1CorrectionVariants = getGrammarActivities('passato-prossimo', 'A1', 'correct')[0];
@@ -189,4 +193,16 @@ assert.equal(pictureActivities.length, 6, 'stare-gerundio should have six pictur
 for (const activity of pictureActivities) {
   assert.ok(existsSync('public/' + activity.image), activity.id + ' image file must exist: ' + activity.image);
   assert.ok(activity.imageAlt, activity.id + ' needs alt text');
+}
+
+// Every activity's title, prompt, hint and explanation carries all six languages,
+// so PT/ES/FR/DE learners never fall back to English inside an activity.
+for (const activity of ITALIAN_GRAMMAR_ACTIVITIES) {
+  for (const field of ['title', 'prompt', 'hint', 'explanation'] as const) {
+    const value = activity[field] as unknown as Record<string, string>;
+    assert.ok(!Array.isArray(value), `${activity.id} ${field} should be a localized record`);
+    for (const lang of ['en', 'it', 'pt', 'es', 'fr', 'de']) {
+      assert.ok(value[lang]?.trim(), `${activity.id} ${field} needs ${lang}`);
+    }
+  }
 }

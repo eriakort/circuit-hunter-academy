@@ -23,7 +23,7 @@ for (const topicId of topicIds) {
     assert.ok(content.example.every(value => value.trim().length > 0), topicId + ' needs bilingual examples');
 
     for (const item of content.exercises) {
-      assert.ok(item.prompt.every(value => value.trim().length > 0), item.id + ' needs bilingual prompts');
+      assert.ok(hasBothLangs(item.prompt), item.id + ' needs bilingual prompts');
       assert.ok(hasBothLangs(item.explanation), item.id + ' needs bilingual feedback');
       assert.ok(item.options.length >= 3, item.id + ' needs meaningful answer choices');
       assert.ok(item.answer >= 0 && item.answer < item.options.length, item.id + ' answer index must be valid');
@@ -34,9 +34,9 @@ for (const topicId of topicIds) {
       const expectedCount = type === 'correct' || (topicId === 'sentence-building' && type === 'write') ? 1 : 2;
       assert.equal(activities.length, expectedCount, topicId + ' ' + level + ' needs ' + expectedCount + ' ' + type + ' activities');
       for (const activity of activities) {
-        assert.ok(activity.prompt.every(value => value.trim().length > 0), activity.id + ' needs bilingual prompts');
-        assert.ok(activity.hint.every(value => value.trim().length > 0), activity.id + ' needs bilingual hints');
-        assert.ok(activity.explanation.every(value => value.trim().length > 0), activity.id + ' needs bilingual feedback');
+        assert.ok(hasBothLangs(activity.prompt), activity.id + ' needs bilingual prompts');
+        assert.ok(hasBothLangs(activity.hint), activity.id + ' needs bilingual hints');
+        assert.ok(hasBothLangs(activity.explanation), activity.id + ' needs bilingual feedback');
         assert.ok(activity.modelAnswer.trim().length > 0, activity.id + ' needs a model answer');
         if (type === 'order') assert.ok(activity.words && activity.words.length >= 3, activity.id + ' needs word tiles');
         if (type === 'translate') {
