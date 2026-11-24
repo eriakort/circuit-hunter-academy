@@ -57,8 +57,10 @@ describe('Italian Checkpoint & Oral Proficiency Suite', () => {
       phraseIds.add(phrase.id);
       if (phrase.grammarTopicId) {
         expect(validTopicIds.has(phrase.grammarTopicId)).toBe(true);
-        expect(phrase.notes?.[0].trim()).toBeTruthy();
-        expect(phrase.notes?.[1].trim()).toBeTruthy();
+        // Notes are a localized record with every support language (legacy [en, it] tuples were converted).
+        const notes = phrase.notes as Record<string, string> | undefined;
+        expect(Array.isArray(phrase.notes)).toBe(false);
+        for (const lang of ['en', 'it', 'pt', 'es', 'fr', 'de']) expect(notes?.[lang]?.trim()).toBeTruthy();
       }
     }
 
