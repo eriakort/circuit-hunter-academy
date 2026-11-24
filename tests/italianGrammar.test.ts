@@ -6,7 +6,7 @@ import { ITALIAN_GRAMMAR_TOPICS } from '../src/data/italianGrammar';
 const en = (v: any): string => (Array.isArray(v) ? v[0] : v?.en) ?? '';
 const it = (v: any): string => (Array.isArray(v) ? v[1] : v?.it) ?? '';
 
-const expectedTopics = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'sentence-building', 'present-tense', 'stare-gerundio', 'imperfetto', 'prepositions', 'adjective-agreement'];
+const expectedTopics = ['articles', 'pronouns', 'passato-prossimo', 'partitive', 'reflexive', 'sentence-building', 'present-tense', 'stare-gerundio', 'imperative', 'imperfetto', 'prepositions', 'adjective-agreement'];
 assert.deepEqual(ITALIAN_GRAMMAR_TOPICS.map(topic => topic.id), expectedTopics);
 
 const levels = ['A1', 'A2', 'B1'] as const;
@@ -23,7 +23,7 @@ for (const topic of ITALIAN_GRAMMAR_TOPICS) {
       assert.ok(!exerciseIds.has(item.id), `Duplicate exercise ID: ${item.id}`);
       exerciseIds.add(item.id);
       totalExercises += 1;
-      assert.ok(item.prompt[0].length > 0 && item.prompt[1].length > 0, `${item.id} needs a bilingual prompt`);
+      assert.ok(en(item.prompt).length > 0 && it(item.prompt).length > 0, `${item.id} needs a bilingual prompt`);
       assert.ok(en(item.explanation).length > 0 && it(item.explanation).length > 0, `${item.id} needs bilingual feedback`);
       assert.ok(item.options.length >= 2, `${item.id} needs answer choices`);
       assert.ok(item.answer >= 0 && item.answer < item.options.length, `${item.id} answer index must be valid`);
@@ -71,7 +71,22 @@ assert.ok(stareGerundio.levels.A1.exercises.length >= 6);
 assert.ok(stareGerundio.levels.A2.exercises.length >= 6);
 assert.ok(stareGerundio.levels.B1.exercises.length >= 3);
 assert.ok(it(stareGerundio.levels.A1.explanation).includes('gerundio'));
-console.log('italianGrammar.test.ts ok! Eleven topics, three CEFR levels and 144 bilingual exercises verified.');
+const imperative = ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === 'imperative');
+assert.ok(imperative, 'Imperative topic must be registered');
+for (const level of levels) {
+  assert.ok(imperative.levels[level].exercises.length >= (level === 'B1' ? 5 : 11), `imperative ${level} needs exercises`);
+  for (const item of imperative.levels[level].exercises) {
+    assert.equal(item.options.length, 3, `${item.id} needs three options for the test bank`);
+    for (const lang of ['en', 'it', 'pt', 'es', 'fr', 'de'] as const) {
+      assert.ok((item.prompt as Record<string, string>)[lang]?.trim(), `${item.id} prompt needs ${lang}`);
+      assert.ok((item.explanation as Record<string, string>)[lang]?.trim(), `${item.id} explanation needs ${lang}`);
+    }
+    // The correct option must not appear inside its own prompt.
+    const answer = item.options[item.answer].toLowerCase().replace(/[!?.,]/g, '').trim();
+    for (const text of Object.values(item.prompt as Record<string, string>)) assert.ok(!text.toLowerCase().includes(answer + ' ') && !text.toLowerCase().endsWith(answer), `${item.id} prompt gives the answer away`);
+  }
+}
+console.log('italianGrammar.test.ts ok! Twelve topics, three CEFR levels and 144 bilingual exercises verified.');
 
 // Every picture exercise points at a real file in public/ and has alt text that
 // does not give the correct answer away.
