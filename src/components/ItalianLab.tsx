@@ -442,6 +442,114 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     grammarTopicId: 'past-contrast'
   },
   {
+    id: 'grammar-a1-bello-quello',
+    level: 'A1',
+    targetIt: 'Che bel libro! Quello zaino è nuovo.',
+    translation: {en: 'What a nice book! That backpack is new.', it: 'What a nice book! That backpack is new.', pt: 'Que livro bonito! Aquela mochila é nova.', es: '¡Qué libro tan bonito! Esa mochila es nueva.', fr: 'Quel beau livre ! Ce sac à dos est neuf.', de: 'Was für ein schönes Buch! Dieser Rucksack dort ist neu.'},
+    phoneticHint: 'keh bel LEE-bro! KWEL-lo DZAI-no eh NWO-vo',
+    notes: {en: 'Bel follows il (il libro → bel libro); quello follows lo (lo zaino → quello zaino).', it: 'Bel segue il (il libro → bel libro); quello segue lo (lo zaino → quello zaino).', pt: 'Bel segue il (il libro → bel libro); quello segue lo (lo zaino → quello zaino).', es: 'Bel sigue a il (il libro → bel libro); quello sigue a lo (lo zaino → quello zaino).', fr: 'Bel suit il (il libro → bel libro) ; quello suit lo (lo zaino → quello zaino).', de: 'Bel folgt il (il libro → bel libro); quello folgt lo (lo zaino → quello zaino).'},
+    grammarTopicId: 'bello-quello'
+  },
+  {
+    id: 'grammar-a2-bello-quello',
+    level: 'A2',
+    targetIt: 'Quei ragazzi sono simpatici, ma quelli sono antipatici.',
+    translation: {en: 'Those boys are nice, but those ones are unpleasant.', it: 'Those boys are nice, but those ones are unpleasant.', pt: 'Aqueles rapazes são simpáticos, mas aqueles são antipáticos.', es: 'Esos chicos son simpáticos, pero aquellos son antipáticos.', fr: 'Ces garçons sont sympathiques, mais ceux-là sont antipathiques.', de: 'Diese Jungen sind nett, aber jene sind unsympathisch.'},
+    phoneticHint: 'KWAY ra-GAT-tsee SO-no sim-PA-tee-kee, ma KWEL-lee SO-no an-tee-PA-tee-kee',
+    notes: {en: 'Quei goes before a noun (like i); quelli stands alone as a pronoun.', it: 'Quei sta davanti a un nome (come i); quelli sta da solo come pronome.', pt: 'Quei vem antes de um nome (como i); quelli aparece sozinho como pronome.', es: 'Quei va delante de un nombre (como i); quelli va solo como pronombre.', fr: 'Quei se place devant un nom (comme i) ; quelli s’emploie seul comme pronom.', de: 'Quei steht vor einem Nomen (wie i); quelli steht allein als Pronomen.'},
+    grammarTopicId: 'bello-quello'
+  },
+  {
+    id: 'grammar-b1-bello-quello',
+    level: 'B1',
+    targetIt: 'Che bell’idea! Quello che dici è vero.',
+    translation: {en: 'What a nice idea! What you say is true.', it: 'What a nice idea! What you say is true.', pt: 'Que boa ideia! O que dizes é verdade.', es: '¡Qué buena idea! Lo que dices es verdad.', fr: 'Quelle belle idée ! Ce que tu dis est vrai.', de: 'Was für eine schöne Idee! Was du sagst, ist wahr.'},
+    phoneticHint: 'keh bel-lee-DEH-a! KWEL-lo keh DEE-chee eh VEH-ro',
+    notes: {en: 'Bell’ before a vowel; quello che means “what”.', it: 'Bell’ davanti a vocale; quello che significa “ciò che”.', pt: 'Bell’ antes de vogal; quello che significa “aquilo que”.', es: 'Bell’ delante de vocal; quello che significa “lo que”.', fr: 'Bell’ devant une voyelle ; quello che signifie « ce que ».', de: 'Bell’ vor Vokal; quello che bedeutet „das, was“.'},
+    grammarTopicId: 'bello-quello'
+  },
+  {
+    id: 'grammar-a1-indefinites',
+    level: 'A1',
+    targetIt: 'Non vedo nessuno, ma ho qualche amico qui.',
+    translation: {en: 'I don’t see anyone, but I have a few friends here.', it: 'I don’t see anyone, but I have a few friends here.', pt: 'Não vejo ninguém, mas tenho alguns amigos aqui.', es: 'No veo a nadie, pero tengo algunos amigos aquí.', fr: 'Je ne vois personne, mais j’ai quelques amis ici.', de: 'Ich sehe niemanden, aber ich habe ein paar Freunde hier.'},
+    phoneticHint: 'non VEH-do nes-SOO-no, ma o KWAL-keh a-MEE-ko kwee',
+    notes: {en: 'After the verb, nessuno needs non before the verb; qualche takes a singular noun.', it: 'Dopo il verbo, nessuno vuole non prima del verbo; qualche vuole un nome singolare.', pt: 'Depois do verbo, nessuno pede non antes do verbo; qualche pede um nome no singular.', es: 'Después del verbo, nessuno pide non delante del verbo; qualche pide un nombre singular.', fr: 'Après le verbe, nessuno demande non devant le verbe ; qualche demande un nom au singulier.', de: 'Nach dem Verb verlangt nessuno non vor dem Verb; qualche verlangt ein Nomen im Singular.'},
+    grammarTopicId: 'indefinites'
+  },
+  {
+    id: 'grammar-a2-indefinites',
+    level: 'A2',
+    targetIt: 'Nessuno mi ha telefonato e non ho niente da fare.',
+    translation: {en: 'Nobody called me and I have nothing to do.', it: 'Nobody called me and I have nothing to do.', pt: 'Ninguém me telefonou e não tenho nada para fazer.', es: 'Nadie me ha llamado y no tengo nada que hacer.', fr: 'Personne ne m’a téléphoné et je n’ai rien à faire.', de: 'Niemand hat mich angerufen und ich habe nichts zu tun.'},
+    phoneticHint: 'nes-SOO-no mee a te-le-fo-NA-to e non o NYEN-te da FA-re',
+    notes: {en: 'Nessuno before the verb: no non. Niente after the verb: non before the verb.', it: 'Nessuno prima del verbo: niente non. Niente dopo il verbo: non prima del verbo.', pt: 'Nessuno antes do verbo: sem non. Niente depois do verbo: non antes do verbo.', es: 'Nessuno antes del verbo: sin non. Niente después del verbo: non delante del verbo.', fr: 'Nessuno avant le verbe : pas de non. Niente après le verbe : non devant le verbe.', de: 'Nessuno vor dem Verb: kein non. Niente nach dem Verb: non vor dem Verb.'},
+    grammarTopicId: 'indefinites'
+  },
+  {
+    id: 'grammar-b1-indefinites',
+    level: 'B1',
+    targetIt: 'Non dice mai niente a nessuno.',
+    translation: {en: 'He never says anything to anyone.', it: 'He never says anything to anyone.', pt: 'Ele nunca diz nada a ninguém.', es: 'Nunca dice nada a nadie.', fr: 'Il ne dit jamais rien à personne.', de: 'Er sagt nie etwas zu irgendjemandem.'},
+    phoneticHint: 'non DEE-che mai NYEN-te a nes-SOO-no',
+    notes: {en: 'Negative words can pile up after non: mai, niente, nessuno.', it: 'Le parole negative si accumulano dopo non: mai, niente, nessuno.', pt: 'As palavras negativas acumulam-se depois de non: mai, niente, nessuno.', es: 'Las palabras negativas se acumulan detrás de non: mai, niente, nessuno.', fr: 'Les mots négatifs s’accumulent après non : mai, niente, nessuno.', de: 'Negative Wörter häufen sich nach non: mai, niente, nessuno.'},
+    grammarTopicId: 'indefinites'
+  },
+  {
+    id: 'grammar-a1-ne',
+    level: 'A1',
+    targetIt: 'Quanti fratelli hai? Ne ho due.',
+    translation: {en: 'How many brothers do you have? I have two.', it: 'How many brothers do you have? I have two.', pt: 'Quantos irmãos tens? Tenho dois.', es: '¿Cuántos hermanos tienes? Tengo dos.', fr: 'Combien de frères as-tu ? J’en ai deux.', de: 'Wie viele Brüder hast du? Ich habe zwei.'},
+    phoneticHint: 'KWAN-tee fra-TEL-lee ai? ne o DOO-eh',
+    notes: {en: 'Ne replaces “of them” after a number: ne ho due.', it: 'Ne sostituisce “di loro” dopo un numero: ne ho due.', pt: 'Ne substitui “deles” depois de um número: ne ho due.', es: 'Ne sustituye “de ellos” después de un número: ne ho due.', fr: 'Ne remplace « en » après un nombre : ne ho due.', de: 'Ne ersetzt „davon“ nach einer Zahl: ne ho due.'},
+    grammarTopicId: 'ne'
+  },
+  {
+    id: 'grammar-a2-ne',
+    level: 'A2',
+    targetIt: 'Hai delle mele? Sì, voglio mangiarne due.',
+    translation: {en: 'Do you have apples? Yes, I want to eat two of them.', it: 'Do you have apples? Yes, I want to eat two of them.', pt: 'Tens maçãs? Sim, quero comer duas.', es: '¿Tienes manzanas? Sí, quiero comer dos.', fr: 'Tu as des pommes ? Oui, je veux en manger deux.', de: 'Hast du Äpfel? Ja, ich möchte zwei davon essen.'},
+    phoneticHint: 'ai DEL-le MEH-le? see, VOL-yo man-JAR-ne DOO-eh',
+    notes: {en: 'Ne attaches to the end of the infinitive: mangiare → mangiarne.', it: 'Ne si attacca alla fine dell’infinito: mangiare → mangiarne.', pt: 'Ne junta-se ao fim do infinitivo: mangiare → mangiarne.', es: 'Ne se une al final del infinitivo: mangiare → mangiarne.', fr: 'Ne s’attache à la fin de l’infinitif : mangiare → mangiarne.', de: 'Ne wird an den Infinitiv angehängt: mangiare → mangiarne.'},
+    grammarTopicId: 'ne'
+  },
+  {
+    id: 'grammar-b1-ne',
+    level: 'B1',
+    targetIt: 'Sono stanco: me ne vado.',
+    translation: {en: 'I’m tired: I’m leaving.', it: 'I’m tired: I’m leaving.', pt: 'Estou cansado: vou-me embora.', es: 'Estoy cansado: me voy.', fr: 'Je suis fatigué : je m’en vais.', de: 'Ich bin müde: ich gehe jetzt.'},
+    phoneticHint: 'SO-no STAN-ko: me ne VA-do',
+    notes: {en: 'Andarsene: mi + ne = me ne vado.', it: 'Andarsene: mi + ne = me ne vado.', pt: 'Andarsene: mi + ne = me ne vado.', es: 'Andarsene: mi + ne = me ne vado.', fr: 'Andarsene : mi + ne = me ne vado.', de: 'Andarsene: mi + ne = me ne vado.'},
+    grammarTopicId: 'ne'
+  },
+  {
+    id: 'grammar-a1-irregular-plurals',
+    level: 'A1',
+    targetIt: 'Compro sei uova e due caffè.',
+    translation: {en: 'I buy six eggs and two coffees.', it: 'I buy six eggs and two coffees.', pt: 'Compro seis ovos e dois cafés.', es: 'Compro seis huevos y dos cafés.', fr: 'J’achète six œufs et deux cafés.', de: 'Ich kaufe sechs Eier und zwei Kaffee.'},
+    phoneticHint: 'KOM-pro say WO-va e DOO-eh kaf-FEH',
+    notes: {en: 'L’uovo → le uova (feminine plural); il caffè does not change.', it: 'L’uovo → le uova (plurale femminile); il caffè non cambia.', pt: 'L’uovo → le uova (plural feminino); il caffè não muda.', es: 'L’uovo → le uova (plural femenino); il caffè no cambia.', fr: 'L’uovo → le uova (pluriel féminin) ; il caffè ne change pas.', de: 'L’uovo → le uova (femininer Plural); il caffè ändert sich nicht.'},
+    grammarTopicId: 'irregular-plurals'
+  },
+  {
+    id: 'grammar-a2-irregular-plurals',
+    level: 'A2',
+    targetIt: 'Abbiamo visitato i laghi e i parchi.',
+    translation: {en: 'We visited the lakes and the parks.', it: 'We visited the lakes and the parks.', pt: 'Visitámos os lagos e os parques.', es: 'Hemos visitado los lagos y los parques.', fr: 'Nous avons visité les lacs et les parcs.', de: 'Wir haben die Seen und die Parks besucht.'},
+    phoneticHint: 'ab-BYAH-mo vee-zee-TA-to ee LA-ghee e ee PAR-kee',
+    notes: {en: 'Lago → laghi and parco → parchi: add h to keep the hard sound.', it: 'Lago → laghi e parco → parchi: si aggiunge h per mantenere il suono duro.', pt: 'Lago → laghi e parco → parchi: acrescenta-se h para manter o som duro.', es: 'Lago → laghi y parco → parchi: se añade h para mantener el sonido duro.', fr: 'Lago → laghi et parco → parchi : on ajoute h pour garder le son dur.', de: 'Lago → laghi und parco → parchi: ein h erhält den harten Laut.'},
+    grammarTopicId: 'irregular-plurals'
+  },
+  {
+    id: 'grammar-b1-irregular-plurals',
+    level: 'B1',
+    targetIt: 'Le mura della città sono antiche e migliaia di turisti le visitano.',
+    translation: {en: 'The city walls are ancient and thousands of tourists visit them.', it: 'The city walls are ancient and thousands of tourists visit them.', pt: 'As muralhas da cidade são antigas e milhares de turistas visitam-nas.', es: 'Las murallas de la ciudad son antiguas y miles de turistas las visitan.', fr: 'Les remparts de la ville sont anciens et des milliers de touristes les visitent.', de: 'Die Stadtmauern sind antik und Tausende von Touristen besuchen sie.'},
+    phoneticHint: 'le MOO-ra DEL-la cheet-TA SO-no an-TEE-ke e mee-LYA-ya dee too-REE-stee le VEE-zee-ta-no',
+    notes: {en: 'Le mura (city walls) and le migliaia are feminine plurals of masculine nouns.', it: 'Le mura (di una città) e le migliaia sono plurali femminili di nomi maschili.', pt: 'Le mura (de uma cidade) e le migliaia são plurais femininos de nomes masculinos.', es: 'Le mura (de una ciudad) y le migliaia son plurales femeninos de nombres masculinos.', fr: 'Le mura (d’une ville) et le migliaia sont des pluriels féminins de noms masculins.', de: 'Le mura (einer Stadt) und le migliaia sind feminine Plurale maskuliner Nomen.'},
+    grammarTopicId: 'irregular-plurals'
+  },
+  {
     id: 'grammar-a1-imperfetto',
     level: 'A1',
     targetIt: 'Quando ero piccolo, avevo un cane.',
