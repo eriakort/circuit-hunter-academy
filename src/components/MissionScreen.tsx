@@ -15,6 +15,7 @@ import { ChemistryLab } from './ChemistryLab';
 import { ScienceLab } from './ScienceLab';
 import { Grade5HumanBodyLab } from './Grade5HumanBodyLab';
 import { Grade5ScienceReviewLab } from './Grade5ScienceReviewLab';
+import { Grade5EcologyLab } from './Grade5EcologyLab';
 import { MOTION_SCENES } from './scienceMotion/registry';
 import { ItalianLab } from './ItalianLab';
 import { HistoryLab } from './HistoryLab';
@@ -387,6 +388,9 @@ export const MissionScreen: React.FC = () => {
       )}
       {currentMission.id.startsWith('g5x-') && currentSceneIndex === 1 && (
         <Grade5ScienceReviewLab missionId={currentMission.id} lang={lang} />
+      )}
+      {['g5s-habitats', 'g5s-food-chains', 'g5s-biodiversity', 'g5s-environment-care', 'g5s-scientific-investigation'].includes(currentMission.id) && currentSceneIndex === 1 && (
+        <Grade5EcologyLab missionId={currentMission.id} lang={lang} />
       )}
       {(currentMission.id.startsWith('g5s-') || currentMission.id.startsWith('g5u-') || currentMission.id.startsWith('g5e-')) && currentSceneIndex === 1 && (
         <ScienceLab missionId={currentMission.id} lang={lang} />
