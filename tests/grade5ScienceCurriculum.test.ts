@@ -98,6 +98,26 @@ for (const id of ['g5s-plants', 'g5s-animals', 'g5s-ecosystems']) {
   }
 }
 
+for (const id of [
+  'g5u-sky',
+  'g5u-big-bang',
+  'g5u-solar-system',
+  'g5u-earth-movements',
+  'g5u-moon',
+  'g5u-eclipses',
+  'g5u-gravity',
+  'g5u-constellations',
+  'g5u-space-exploration',
+  'g5u-foucault',
+  'g5u-review'
+]) {
+  for (const lang of ['en', 'it'] as const) {
+    const labMarkup = renderToStaticMarkup(React.createElement(ScienceLab, { missionId: id, lang }));
+    assert.ok(labMarkup.includes('<svg'), `Universe ScienceLab ${id} (${lang}) must render an illustration`);
+    assert.ok(!labMarkup.includes('undefined'), `Universe ScienceLab ${id} (${lang}) must not contain undefined`);
+  }
+}
+
 console.log(
   'grade5ScienceCurriculum.test.ts ok! Validated 6 units, 6 arcs, and',
   scienceMissions.length,
