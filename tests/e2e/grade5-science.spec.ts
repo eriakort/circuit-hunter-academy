@@ -389,3 +389,47 @@ test('Grade 5 habitat lab explores adaptations interactively in both languages',
   await expect(page.getByRole('heading', { name: 'Abbina un organismo al suo habitat' })).toBeVisible();
   await expect(page.locator('.cl-readout').first()).toContainText('Orso polare');
 });
+
+test('Grade 5 biodiversity lab fits mobile screens and respects reduced motion', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.addInitScript(() => {
+    localStorage.setItem('circuit-hunter-academy-curriculum-profile-v1', JSON.stringify({
+      activeCurriculumId: 'italy-national',
+      enabledCurriculumIds: ['italy-national']
+    }));
+    localStorage.setItem('circuit-hunter-academy-v2:italy-national', JSON.stringify({
+      grade: 'grade5',
+      name: 'Meadow Explorer',
+      lang: 'en',
+      xp: 0,
+      subject: 'science',
+      unit: 0,
+      cleared: {
+        'g5s-ecosystems': true,
+        'g5s-habitats': true,
+        'g5s-food-chains': true
+      },
+      seen: {},
+      flawless: {},
+      learningProgress: {},
+      grammarProgress: {},
+      v: 5
+    }));
+  });
+  await page.goto('/');
+
+  await page.locator('.units button').nth(5).click();
+  await page.locator('.mcard').nth(3).click();
+  await advanceScene(page);
+
+  await expect(page.getByRole('heading', { name: 'Grow a Meadow Full of Life' })).toBeVisible();
+  await expect(page.getByRole('slider', { name: 'Kinds shown in this model' })).toBeVisible();
+  await expect(page.locator('.chem-anim-pulse').first()).toHaveCSS('animation-name', 'none');
+
+  const { viewportWidth, documentWidth } = await page.evaluate(() => ({
+    viewportWidth: window.innerWidth,
+    documentWidth: document.documentElement.scrollWidth
+  }));
+  expect(documentWidth).toBeLessThanOrEqual(viewportWidth);
+});

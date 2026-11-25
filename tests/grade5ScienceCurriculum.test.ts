@@ -8,6 +8,7 @@ import { Grade5HumanBodyLab } from '../src/components/Grade5HumanBodyLab';
 import { Grade5ScienceReviewLab } from '../src/components/Grade5ScienceReviewLab';
 import { Grade5EcologyLab } from '../src/components/Grade5EcologyLab';
 import { getVisualHtml } from '../src/data/visuals';
+import type { Language } from '../src/types';
 
 const isBilingualPair = (value: unknown): value is [string, string] =>
   Array.isArray(value) &&
@@ -197,6 +198,42 @@ for (const id of [
     const labMarkup = renderToStaticMarkup(React.createElement(Grade5EcologyLab, { missionId: id, lang }));
     assert.ok(labMarkup.includes('<svg'), `Ecology lab ${id} (${lang}) must render an illustration`);
     assert.ok(!/\bundefined\b|\bNaN\b/.test(labMarkup), `Ecology lab ${id} (${lang}) must render cleanly`);
+  }
+}
+
+type ScienceLabProps = { missionId: string; lang: Language };
+const ecologyLabMissionIds = new Set([
+  'g5s-habitats',
+  'g5s-food-chains',
+  'g5s-biodiversity',
+  'g5s-environment-care',
+  'g5s-scientific-investigation'
+]);
+const legacyVisualMissionIds = ['g5s-plants', 'g5s-animals', 'g5s-ecosystems'];
+const labForMission = (missionId: string): React.ComponentType<ScienceLabProps> | undefined => {
+  if (missionId.startsWith('g5h-')) return Grade5HumanBodyLab;
+  if (missionId.startsWith('g5x-')) return Grade5ScienceReviewLab;
+  if (ecologyLabMissionIds.has(missionId)) return Grade5EcologyLab;
+  if (
+    legacyVisualMissionIds.includes(missionId) ||
+    missionId.startsWith('g5u-') ||
+    missionId.startsWith('g5e-')
+  ) return ScienceLab;
+};
+
+assert.deepEqual(
+  scienceMissions.filter(mission => !labForMission(mission.id)).map(mission => mission.id),
+  [],
+  'Every Grade 5 Science mission must resolve to a lab component'
+);
+
+for (const mission of scienceMissions) {
+  const Lab = labForMission(mission.id);
+  assert.ok(Lab, `Grade 5 Science mission ${mission.id} must have an interactive visual lab`);
+  for (const lang of ['en', 'it'] as const) {
+    const labMarkup = renderToStaticMarkup(React.createElement(Lab, { missionId: mission.id, lang }));
+    assert.ok(labMarkup.includes('<svg'), `Science lab ${mission.id} (${lang}) must render an illustration`);
+    assert.ok(!/\bundefined\b|\bNaN\b/.test(labMarkup), `Science lab ${mission.id} (${lang}) must render cleanly`);
   }
 }
 
