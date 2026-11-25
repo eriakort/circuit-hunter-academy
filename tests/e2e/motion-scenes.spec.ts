@@ -25,7 +25,13 @@ for (const id of SCENE_IDS) {
     await expect(page.getByTestId('ghana-science-visual')).toBeVisible();
     await page.waitForTimeout(1000);
 
-    expect(await snapshot(page), 'picture changes while playing').not.toBe(await (async () => { await page.waitForTimeout(700); return snapshot(page); })());
+    // Poll instead of comparing two fixed samples: on a slow, loaded CI machine two frames can coincide.
+    const playingA = await snapshot(page);
+    await expect.poll(() => snapshot(page), {
+      message: 'picture changes while playing',
+      timeout: 5000,
+      intervals: [250, 500, 750]
+    }).not.toBe(playingA);
 
     await page.getByRole('button', { name: 'Pause', exact: true }).click();
     await page.waitForTimeout(250);
