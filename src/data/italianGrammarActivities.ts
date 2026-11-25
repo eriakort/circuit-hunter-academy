@@ -3,6 +3,7 @@ import { ACTION_IMAGE_ALT, actionImage } from './italianGrammarPictures';
 import { IMPERATIVE_ACTIVITIES } from './italianGrammarImperative';
 import { COMPARATIVES_ACTIVITIES } from './italianGrammarComparatives';
 import { FUTURE_ACTIVITIES } from './italianGrammarFuture';
+import { PAST_CONTRAST_ACTIVITIES } from './italianGrammarPastContrast';
 export type GrammarActivityType = 'correct' | 'order' | 'translate' | 'write';
 export interface GrammarActivity {
   id: string; topicId: string; level: 'A1' | 'A2' | 'B1'; type: GrammarActivityType;
@@ -188,6 +189,7 @@ export const ITALIAN_GRAMMAR_ACTIVITIES: GrammarActivity[] = [
 ...IMPERATIVE_ACTIVITIES,
 ...COMPARATIVES_ACTIVITIES,
 ...FUTURE_ACTIVITIES,
+...PAST_CONTRAST_ACTIVITIES,
 ]; 
 export const getGrammarActivities = (topicId: string, level: GrammarActivity['level'], type: GrammarActivityType) =>
   ITALIAN_GRAMMAR_ACTIVITIES.filter(activity => activity.topicId === topicId && activity.level === level && activity.type === type);

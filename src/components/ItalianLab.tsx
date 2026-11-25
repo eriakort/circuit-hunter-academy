@@ -415,6 +415,33 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     grammarTopicId: 'future'
   },
   {
+    id: 'grammar-a1-past-contrast',
+    level: 'A1',
+    targetIt: 'Da piccolo giocavo sempre al parco, ma ieri ho guardato un film.',
+    translation: {en: 'As a child I always played in the park, but yesterday I watched a film.', it: 'As a child I always played in the park, but yesterday I watched a film.', pt: 'Quando criança eu sempre brincava no parque, mas ontem assisti a um filme.', es: 'De pequeño siempre jugaba en el parque, pero ayer vi una película.', fr: 'Enfant, je jouais toujours au parc, mais hier j’ai regardé un film.', de: 'Als Kind habe ich immer im Park gespielt, aber gestern habe ich einen Film gesehen.'},
+    phoneticHint: 'da PEEK-ko jo-KA-vo SEM-pre al PAR-ko, ma ee-EHR o gwar-DA-to oon feelm',
+    notes: {en: 'Imperfetto for habits (giocavo), passato prossimo for a single event (ho guardato).', it: 'Imperfetto per le abitudini (giocavo), passato prossimo per un fatto singolo (ho guardato).', pt: 'Imperfetto para hábitos (giocavo), passato prossimo para um fato único (ho guardato).', es: 'Imperfetto para hábitos (giocavo), passato prossimo para un hecho único (ho guardato).', fr: 'Imperfetto pour les habitudes (giocavo), passato prossimo pour un fait unique (ho guardato).', de: 'Imperfetto für Gewohnheiten (giocavo), Passato prossimo für ein einmaliges Ereignis (ho guardato).'},
+    grammarTopicId: 'past-contrast'
+  },
+  {
+    id: 'grammar-a2-past-contrast',
+    level: 'A2',
+    targetIt: 'Mentre dormivo, è squillato il telefono.',
+    translation: {en: 'While I was sleeping, the phone rang.', it: 'While I was sleeping, the phone rang.', pt: 'Enquanto eu dormia, o telefone tocou.', es: 'Mientras dormía, sonó el teléfono.', fr: 'Pendant que je dormais, le téléphone a sonné.', de: 'Während ich schlief, klingelte das Telefon.'},
+    phoneticHint: 'MEN-tre dor-MEE-vo, eh skweel-LA-to eel te-LEH-fo-no',
+    notes: {en: 'Mentre + imperfetto gives the background; the passato prossimo tells the event that interrupted it.', it: 'Mentre + imperfetto dà lo sfondo; il passato prossimo racconta il fatto che lo ha interrotto.', pt: 'Mentre + imperfetto dá o fundo; o passato prossimo conta o fato que o interrompeu.', es: 'Mentre + imperfetto da el fondo; el passato prossimo cuenta el hecho que lo interrumpió.', fr: 'Mentre + imperfetto donne l’arrière-plan ; le passato prossimo raconte l’événement qui l’a interrompu.', de: 'Mentre + Imperfetto liefert den Hintergrund; das Passato prossimo erzählt das Ereignis, das ihn unterbrach.'},
+    grammarTopicId: 'past-contrast'
+  },
+  {
+    id: 'grammar-b1-past-contrast',
+    level: 'B1',
+    targetIt: 'Anna non è potuta venire alla festa perché è dovuta restare a casa.',
+    translation: {en: 'Anna could not come to the party because she had to stay at home.', it: 'Anna could not come to the party because she had to stay at home.', pt: 'A Anna não pôde vir à festa porque teve que ficar em casa.', es: 'Anna no pudo venir a la fiesta porque tuvo que quedarse en casa.', fr: 'Anna n’a pas pu venir à la fête parce qu’elle a dû rester à la maison.', de: 'Anna konnte nicht zur Party kommen, weil sie zu Hause bleiben musste.'},
+    phoneticHint: 'AN-na non eh po-TOO-ta ve-NEE-re AL-la FES-ta per-KEH eh do-VOO-ta res-TA-re a KA-za',
+    notes: {en: 'Modal + infinitive in the past: the auxiliary of the infinitive (essere) and the participle agrees: è potuta, è dovuta.', it: 'Modale + infinito al passato: ausiliare dell’infinito (essere) e participio concordato: è potuta, è dovuta.', pt: 'Modal + infinitivo no passado: auxiliar do infinitivo (essere) e particípio concordado: è potuta, è dovuta.', es: 'Modal + infinitivo en pasado: auxiliar del infinitivo (essere) y participio concordado: è potuta, è dovuta.', fr: 'Modal + infinitif au passé : auxiliaire de l’infinitif (essere) et participe accordé : è potuta, è dovuta.', de: 'Modalverb + Infinitiv in der Vergangenheit: Hilfsverb des Infinitivs (essere) und angeglichenes Partizip: è potuta, è dovuta.'},
+    grammarTopicId: 'past-contrast'
+  },
+  {
     id: 'grammar-a1-imperfetto',
     level: 'A1',
     targetIt: 'Quando ero piccolo, avevo un cane.',

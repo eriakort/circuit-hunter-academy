@@ -3,6 +3,7 @@ import { STARE_GERUNDIO_TOPIC } from './italianGrammarPictures';
 import { IMPERATIVE_TOPIC } from './italianGrammarImperative';
 import { COMPARATIVES_TOPIC } from './italianGrammarComparatives';
 import { FUTURE_TOPIC } from './italianGrammarFuture';
+import { PAST_CONTRAST_TOPIC } from './italianGrammarPastContrast';
 
 export type GrammarLevel = 'A1' | 'A2' | 'B1';
 export interface GrammarExercise {
@@ -95,6 +96,7 @@ export const ITALIAN_GRAMMAR_TOPICS: GrammarTopic[] = [
   IMPERATIVE_TOPIC,
   COMPARATIVES_TOPIC,
   FUTURE_TOPIC,
+  PAST_CONTRAST_TOPIC,
 
   {
     id: 'imperfetto', title: { en: 'Imperfect tense · Imperfetto', it: 'Imperfetto', pt: 'Imperfeito · Imperfetto', es: 'Imperfecto · Imperfetto', fr: 'Imparfait · Imperfetto', de: 'Imperfekt · Imperfetto' }, subtitle: { en: 'Describe past habits, ongoing situations and background.', it: 'Descrivi abitudini passate, situazioni in corso e contesti.', pt: 'Descreva hábitos passados, situações em curso e contexto.', es: 'Describe hábitos pasados, situaciones en curso y contexto.', fr: 'Décris des habitudes passées, des situations en cours et le contexte.', de: 'Beschreibe frühere Gewohnheiten, laufende Situationen und den Hintergrund.' },
