@@ -135,12 +135,12 @@ test('Grade 5 Energy and Forces science lab is interactive and bilingual', async
   await advanceScene(page);
 
   await expect(page.getByRole('heading', { name: 'Follow the Energy' })).toBeVisible();
-  await page.getByRole('button', { name: 'Circuit' }).click();
+  await page.getByRole('button', { name: 'Circuit', exact: true }).click();
   await expect(page.getByText('Moves through circuit')).toBeVisible();
 
   await page.locator('#lIT').click();
   await expect(page.getByRole('heading', { name: 'Segui l’energia' })).toBeVisible();
-  await page.getByRole('button', { name: 'Torcia' }).click();
+  await page.getByRole('button', { name: 'Torcia', exact: true }).click();
   await expect(page.getByText('Esce dalla torcia')).toBeVisible();
 });
 
