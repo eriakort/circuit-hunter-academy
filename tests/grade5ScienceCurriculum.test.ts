@@ -4,6 +4,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { ARCS, MISSIONS, SUBJECTS, UNITS } from '../src/data/gameData';
 import { GRADE_CURRICULUM_MAP, getCurriculumSubjects } from '../src/data/curriculumSubjects';
 import { ScienceLab } from '../src/components/ScienceLab';
+import { Grade5HumanBodyLab } from '../src/components/Grade5HumanBodyLab';
 import { getVisualHtml } from '../src/data/visuals';
 
 const isBilingualPair = (value: unknown): value is [string, string] =>
@@ -136,6 +137,35 @@ for (const id of [
     const labMarkup = renderToStaticMarkup(React.createElement(ScienceLab, { missionId: id, lang }));
     assert.ok(labMarkup.includes('<svg'), `Energy and Forces ScienceLab ${id} (${lang}) must render an illustration`);
     assert.ok(!labMarkup.includes('undefined'), `Energy and Forces ScienceLab ${id} (${lang}) must not contain undefined`);
+  }
+}
+
+for (const id of [
+  'g5h-one-amazing-organism',
+  'g5h-cells-building-blocks',
+  'g5h-tissues-and-organs',
+  'g5h-locomotor-system',
+  'g5h-skeletal-system',
+  'g5h-muscular-system',
+  'g5h-circulatory-system',
+  'g5h-blood-stem',
+  'g5h-respiratory-system',
+  'g5h-digestive-system',
+  'g5h-teeth-and-nutrition',
+  'g5h-excretory-system',
+  'g5h-reproductive-system',
+  'g5h-immune-system',
+  'g5h-nervous-system',
+  'g5h-sense-organs',
+  'g5h-stem-senses',
+  'g5h-marvellous-machine',
+  'g5h-body-concept-map',
+  'g5h-human-body-checkpoint'
+]) {
+  for (const lang of ['en', 'it'] as const) {
+    const labMarkup = renderToStaticMarkup(React.createElement(Grade5HumanBodyLab, { missionId: id, lang }));
+    assert.ok(labMarkup.includes('<svg'), `Human Body lab ${id} (${lang}) must render an illustration`);
+    assert.ok(!/\bundefined\b|\bNaN\b/.test(labMarkup), `Human Body lab ${id} (${lang}) must render cleanly`);
   }
 }
 

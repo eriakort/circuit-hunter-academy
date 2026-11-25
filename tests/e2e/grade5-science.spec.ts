@@ -214,6 +214,30 @@ test('Grade 5 Science includes the complete bilingual Human Body unit', async ({
   await expect(page.getByRole('heading', { name: 'Verifica: il corpo umano' })).toBeVisible();
 });
 
+test('Grade 5 Human Body lab explores body organisation interactively in both languages', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="science"]').click();
+  await page.locator('#regf').waitFor();
+  await page.locator('#nm').fill('Body Explorer');
+  await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
+
+  await page.locator('.units button').nth(3).click();
+  await page.locator('.mcard').first().click();
+  await advanceScene(page);
+
+  await expect(page.getByRole('heading', { name: 'Build a Body, Step by Step' })).toBeVisible();
+  await page.getByRole('button', { name: 'Organ', exact: true }).click();
+  await expect(page.locator('.cl-readout').first()).toContainText('Organ');
+
+  await page.locator('#lIT').click();
+  await expect(page.getByRole('heading', { name: 'Costruisci il corpo, passo dopo passo' })).toBeVisible();
+  await expect(page.locator('.cl-readout').first()).toContainText('Organo');
+});
+
 
 test('Grade 5 Science includes bilingual self-assessment and workbook practice', async ({ page }) => {
   await page.goto('/');

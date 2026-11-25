@@ -13,6 +13,7 @@ import { ComputerScienceLab } from './ComputerScienceLab';
 import { GhanaComputingLab } from './GhanaComputingLab';
 import { ChemistryLab } from './ChemistryLab';
 import { ScienceLab } from './ScienceLab';
+import { Grade5HumanBodyLab } from './Grade5HumanBodyLab';
 import { MOTION_SCENES } from './scienceMotion/registry';
 import { ItalianLab } from './ItalianLab';
 import { HistoryLab } from './HistoryLab';
@@ -379,6 +380,9 @@ export const MissionScreen: React.FC = () => {
       )}
       {currentMission.id.startsWith('chem_') && currentSceneIndex === 1 && (
         <ChemistryLab missionId={currentMission.id} lang={lang} />
+      )}
+      {currentMission.id.startsWith('g5h-') && currentSceneIndex === 1 && (
+        <Grade5HumanBodyLab missionId={currentMission.id} lang={lang} />
       )}
       {(currentMission.id.startsWith('g5s-') || currentMission.id.startsWith('g5u-') || currentMission.id.startsWith('g5e-')) && currentSceneIndex === 1 && (
         <ScienceLab missionId={currentMission.id} lang={lang} />
