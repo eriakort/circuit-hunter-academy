@@ -18,6 +18,18 @@ export const ScienceLab: React.FC<Props> = ({ missionId, lang }) => {
   const [skyView, setSkyView] = useState<'day' | 'night'>('night');
   const [earthHour, setEarthHour] = useState(12);
   const [reviewTopic, setReviewTopic] = useState<'space' | 'motion' | 'exploration'>('space');
+  const [energyMode, setEnergyMode] = useState<'chemical' | 'electrical' | 'light'>('chemical');
+  const [energySource, setEnergySource] = useState<'solar' | 'wind' | 'coal'>('solar');
+  const [circuitClosed, setCircuitClosed] = useState(false);
+  const [prismMode, setPrismMode] = useState<'white' | 'prism' | 'apple'>('white');
+  const [lightMaterial, setLightMaterial] = useState<'mirror' | 'glass' | 'wall'>('mirror');
+  const [lightActivity, setLightActivity] = useState<'shadow' | 'colour'>('shadow');
+  const [soundFrequency, setSoundFrequency] = useState(50);
+  const [forceMode, setForceMode] = useState<'push' | 'pull' | 'friction'>('push');
+  const [magnetPoles, setMagnetPoles] = useState<'nn' | 'ns'>('ns');
+  const [magnetMaterial, setMagnetMaterial] = useState<'steel' | 'plastic' | 'aluminium'>('steel');
+  const [leverPosition, setLeverPosition] = useState(50);
+  const [geoparkTopic, setGeoparkTopic] = useState<'energy' | 'light' | 'forces'>('energy');
 
   if (missionId === 'g5s-plants') {
     const growth = Math.round((sunlight + water) / 2);
@@ -343,6 +355,187 @@ export const ScienceLab: React.FC<Props> = ({ missionId, lang }) => {
           <path d="M142 82L105 70M218 82l37-12M180 140v-15" stroke="#fff" strokeWidth="3"/>
           <text x="180" y="108" textAnchor="middle" fill="#10143a" fontSize="13" fontWeight="900">{pick(lang,'UNIVERSE','UNIVERSO')}</text>
         </svg></div><div className="cl-controls"><div className="cl-mode-tabs"><button type="button" className={reviewTopic==='space'?'active':''} onClick={()=>setReviewTopic('space')}>{pick(lang,'Space','Spazio')}</button><button type="button" className={reviewTopic==='motion'?'active':''} onClick={()=>setReviewTopic('motion')}>{pick(lang,'Motion','Movimento')}</button><button type="button" className={reviewTopic==='exploration'?'active':''} onClick={()=>setReviewTopic('exploration')}>{pick(lang,'Exploration','Esplorazione')}</button></div><Readout label={pick(lang,'Topic','Argomento')} value={reviewCopy[0]}/><Readout label={pick(lang,'Challenge','Sfida')} value={reviewCopy[1]}/></div></div>
+      </section>
+    );
+  }
+
+  if (missionId === 'g5e-what-is-energy') {
+    const energyLabels = energyMode === 'chemical'
+      ? [pick(lang,'Chemical','Chimica'),pick(lang,'Stored in battery','Immagazzinata nella batteria')]
+      : energyMode === 'electrical'
+        ? [pick(lang,'Electrical','Elettrica'),pick(lang,'Moves through circuit','Si muove nel circuito')]
+        : [pick(lang,'Light','Luminosa'),pick(lang,'Leaves the torch','Esce dalla torcia')];
+    return (
+      <section className="chem-lab" aria-label={pick(lang,'Energy Transformation Lab','Laboratorio delle trasformazioni dell’energia')}>
+        <header className="cl-heading"><span className="cl-kicker">{pick(lang,'INTERACTIVE SCIENCE LAB','LABORATORIO INTERATTIVO DI SCIENZE')}</span><h3>{pick(lang,'Follow the Energy','Segui l’energia')}</h3></header>
+        <div className="cl-grid"><div className="cl-visual"><svg viewBox="0 0 360 205" role="img" aria-label={pick(lang,'Energy changing form','Energia che cambia forma')}>
+          <rect x="18" y="18" width="324" height="169" rx="18" fill="rgba(16,22,58,.95)" stroke="#8a7bff"/>
+          <circle cx="75" cy="102" r="34" fill={energyMode==='chemical'?'#ffd166':'#3a3f7a'} className="chem-anim-pulse"/><circle cx="180" cy="102" r="34" fill={energyMode==='electrical'?'#45d8ff':'#3a3f7a'}/><circle cx="285" cy="102" r="34" fill={energyMode==='light'?'#38ef7d':'#3a3f7a'} className="chem-anim-pulse"/>
+          <path d="M110 102H145M215 102H250" stroke="#fff" strokeWidth="4" strokeDasharray="7 5" className="chem-anim-dash"/>
+          <text x="75" y="158" textAnchor="middle" fill="#fff" fontSize="11">{pick(lang,'Chemical','Chimica')}</text><text x="180" y="158" textAnchor="middle" fill="#fff" fontSize="11">{pick(lang,'Electrical','Elettrica')}</text><text x="285" y="158" textAnchor="middle" fill="#fff" fontSize="11">{pick(lang,'Light','Luminosa')}</text>
+        </svg></div><div className="cl-controls"><div className="cl-mode-tabs"><button type="button" className={energyMode==='chemical'?'active':''} onClick={()=>setEnergyMode('chemical')}>{pick(lang,'Battery','Batteria')}</button><button type="button" className={energyMode==='electrical'?'active':''} onClick={()=>setEnergyMode('electrical')}>{pick(lang,'Circuit','Circuito')}</button><button type="button" className={energyMode==='light'?'active':''} onClick={()=>setEnergyMode('light')}>{pick(lang,'Torch','Torcia')}</button></div><Readout label={pick(lang,'Energy form','Forma di energia')} value={energyLabels[0]}/><Readout label={pick(lang,'What happens','Che cosa succede')} value={energyLabels[1]}/></div></div>
+      </section>
+    );
+  }
+
+  if (missionId === 'g5e-energy-sources') {
+    const source = energySource === 'solar'
+      ? [pick(lang,'Solar','Solare'),pick(lang,'Renewable','Rinnovabile'),'#ffd166']
+      : energySource === 'wind'
+        ? [pick(lang,'Wind','Eolico'),pick(lang,'Renewable','Rinnovabile'),'#45d8ff']
+        : [pick(lang,'Coal','Carbone'),pick(lang,'Non-renewable','Non rinnovabile'),'#ff6a55'];
+    return (
+      <section className="chem-lab" aria-label={pick(lang,'Energy Source Lab','Laboratorio delle fonti di energia')}>
+        <header className="cl-heading"><span className="cl-kicker">{pick(lang,'INTERACTIVE SCIENCE LAB','LABORATORIO INTERATTIVO DI SCIENZE')}</span><h3>{pick(lang,'Sort the Power Sources','Classifica le fonti di energia')}</h3></header>
+        <div className="cl-grid"><div className="cl-visual"><svg viewBox="0 0 360 205" role="img" aria-label={pick(lang,'Renewable or non-renewable source','Fonte rinnovabile o non rinnovabile')}>
+          <rect x="18" y="18" width="324" height="169" rx="18" fill="rgba(16,22,58,.95)" stroke="#8a7bff"/>
+          {energySource==='solar'?<><circle cx="180" cy="90" r="38" fill="#ffd166" className="chem-anim-pulse"/>{[0,1,2,3].map(i=> <line key={i} x1={180} y1={90} x2={180+Math.cos(i*Math.PI/2)*70} y2={90+Math.sin(i*Math.PI/2)*70} stroke="#ffd166" strokeWidth="3"/>)}</>:energySource==='wind'?<><line x1="180" y1="155" x2="180" y2="55" stroke="#45d8ff" strokeWidth="6"/>{[0,1,2].map(i=> <path key={i} d="M180 55l8 0l55 18z" fill="#45d8ff" transform={`rotate(${i*120} 180 55)`}/>)}</>:<><path d="M100 155l55-75h50l55 75z" fill="#ff6a55"/><text x="180" y="122" textAnchor="middle" fill="#10143a" fontSize="30">COAL</text></>}
+        </svg></div><div className="cl-controls"><div className="cl-mode-tabs"><button type="button" className={energySource==='solar'?'active':''} onClick={()=>setEnergySource('solar')}>{pick(lang,'Solar','Solare')}</button><button type="button" className={energySource==='wind'?'active':''} onClick={()=>setEnergySource('wind')}>{pick(lang,'Wind','Eolico')}</button><button type="button" className={energySource==='coal'?'active':''} onClick={()=>setEnergySource('coal')}>{pick(lang,'Coal','Carbone')}</button></div><Readout label={pick(lang,'Source','Fonte')} value={source[0]}/><Readout label={pick(lang,'Category','Categoria')} value={source[1]}/></div></div>
+      </section>
+    );
+  }
+
+  if (missionId === 'g5e-electricity') {
+    return (
+      <section className="chem-lab" aria-label={pick(lang,'Safe Circuit Lab','Laboratorio sicuro dei circuiti')}>
+        <header className="cl-heading"><span className="cl-kicker">{pick(lang,'INTERACTIVE SCIENCE LAB','LABORATORIO INTERATTIVO DI SCIENZE')}</span><h3>{pick(lang,'Close the Low-Voltage Circuit','Chiudi il circuito a bassa tensione')}</h3></header>
+        <div className="cl-grid"><div className="cl-visual"><svg viewBox="0 0 360 205" role="img" aria-label={pick(lang,'Closed or open battery circuit','Circuito a batteria aperto o chiuso')}>
+          <rect x="18" y="18" width="324" height="169" rx="18" fill="rgba(16,22,58,.95)" stroke="#8a7bff"/>
+          <rect x="70" y="82" width="55" height="48" rx="8" fill="#ffd166"/><rect x="235" y="82" width="55" height="48" rx="8" fill={circuitClosed?'#38ef7d':'#3a3f7a'} stroke="#38ef7d" strokeWidth="3"/>
+          <path d={circuitClosed?'M125 106H235M262 82V55H125V82':'M125 106H195M235 106H290M262 82V55H125V82'} fill="none" stroke={circuitClosed?'#45d8ff':'#ff6a55'} strokeWidth="5" strokeDasharray={circuitClosed?'7 4':'none'} className={circuitClosed?'chem-anim-dash':''}/>
+          <text x="97" y="112" textAnchor="middle" fill="#10143a" fontSize="13" fontWeight="900">{pick(lang,'CELL','CELLA')}</text><text x="262" y="112" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="900">{circuitClosed?'ON':'OFF'}</text>
+        </svg></div><div className="cl-controls"><button type="button" className="cl-primary" onClick={()=>setCircuitClosed(!circuitClosed)}>{circuitClosed?pick(lang,'Open switch','Apri interruttore'):pick(lang,'Close switch','Chiudi interruttore')}</button><Readout label={pick(lang,'Circuit','Circuito')} value={circuitClosed?pick(lang,'Closed: lamp on','Chiuso: lampada accesa'):pick(lang,'Open: lamp off','Aperto: lampada spenta')}/><Analogy lang={lang} en="Only use a teacher-approved low-voltage kit. Never touch wall sockets or damaged mains cables." it="Usa solo un kit a bassa tensione approvato dall’insegnante. Non toccare prese domestiche o cavi danneggiati."/></div></div>
+      </section>
+    );
+  }
+
+  if (missionId === 'g5e-light-colours') {
+    return (
+      <section className="chem-lab" aria-label={pick(lang,'Colour Lab','Laboratorio dei colori')}>
+        <header className="cl-heading"><span className="cl-kicker">{pick(lang,'INTERACTIVE SCIENCE LAB','LABORATORIO INTERATTIVO DI SCIENZE')}</span><h3>{pick(lang,'Split and Mix Light','Separa e mescola la luce')}</h3></header>
+        <div className="cl-grid"><div className="cl-visual"><svg viewBox="0 0 360 205" role="img" aria-label={pick(lang,'White light through a prism','Luce bianca attraverso un prisma')}>
+          <rect x="18" y="18" width="324" height="169" rx="18" fill="rgba(16,22,58,.95)" stroke="#8a7bff"/>
+          <line x1="45" y1="102" x2="155" y2="102" stroke="#fff" strokeWidth="8"/>
+          <path d="M155 55L220 155L90 155Z" fill={prismMode==='prism'?'rgba(69,216,255,.35)':'rgba(255,255,255,.08)'} stroke="#45d8ff" strokeWidth="3"/>
+          {prismMode==='prism'&&['#ff4d6d','#ffd166','#38ef7d','#45d8ff','#8a7bff'].map((c,i)=><line key={c} x1="220" y1="102" x2="310" y2={55+i*25} stroke={c} strokeWidth="7" className="chem-anim-dash"/>)}
+          {prismMode==='apple'&&<><circle cx="270" cy="102" r="28" fill="#ff5d8f"/><text x="270" y="150" textAnchor="middle" fill="#fff" fontSize="12">{pick(lang,'Red apple reflects red','La mela rossa riflette il rosso')}</text></>}
+        </svg></div><div className="cl-controls"><div className="cl-mode-tabs"><button type="button" className={prismMode==='white'?'active':''} onClick={()=>setPrismMode('white')}>{pick(lang,'White light','Luce bianca')}</button><button type="button" className={prismMode==='prism'?'active':''} onClick={()=>setPrismMode('prism')}>{pick(lang,'Prism','Prisma')}</button><button type="button" className={prismMode==='apple'?'active':''} onClick={()=>setPrismMode('apple')}>{pick(lang,'Red apple','Mela rossa')}</button></div><Analogy lang={lang} en="A prism separates white light into a spectrum. Screens mix red, green and blue light." it="Un prisma separa la luce bianca in uno spettro. Gli schermi mescolano luce rossa, verde e blu."/></div></div>
+      </section>
+    );
+  }
+
+  if (missionId === 'g5e-light-phenomena') {
+    return (
+      <section className="chem-lab" aria-label={pick(lang,'Light Behaviour Lab','Laboratorio del comportamento della luce')}>
+        <header className="cl-heading"><span className="cl-kicker">{pick(lang,'INTERACTIVE SCIENCE LAB','LABORATORIO INTERATTIVO DI SCIENZE')}</span><h3>{pick(lang,'Mirror, Glass or Shadow?','Specchio, vetro o ombra?')}</h3></header>
+        <div className="cl-grid"><div className="cl-visual"><svg viewBox="0 0 360 205" role="img" aria-label={pick(lang,'Reflection and refraction paths','Percorsi di riflessione e rifrazione')}>
+          <rect x="18" y="18" width="324" height="169" rx="18" fill="rgba(16,22,58,.95)" stroke="#8a7bff"/>
+          <line x1="55" y1="102" x2={lightMaterial==='glass'?170:lightMaterial==='wall'?115:145} y2="102" stroke="#ffd166" strokeWidth="5"/>
+          {lightMaterial==='mirror'?<><line x1="145" y1="102" x2="145" y2="35" stroke="#45d8ff" strokeWidth="8"/><path d="M145 102L260 55" stroke="#45d8ff" strokeWidth="4" strokeDasharray="7 5"/></>:lightMaterial==='glass'?<><rect x="170" y="65" width="45" height="74" fill="rgba(69,216,255,.28)" stroke="#45d8ff"/><path d="M215 102L290 125" stroke="#45d8ff" strokeWidth="4"/></>:<><rect x="115" y="55" width="28" height="94" fill="#3a3f7a" stroke="#fff"/><path d="M143 102L300 102" stroke="#ff6a55" strokeWidth="3" strokeDasharray="5 5"/></>}
+        </svg></div><div className="cl-controls"><div className="cl-mode-tabs"><button type="button" className={lightMaterial==='mirror'?'active':''} onClick={()=>setLightMaterial('mirror')}>{pick(lang,'Mirror','Specchio')}</button><button type="button" className={lightMaterial==='glass'?'active':''} onClick={()=>setLightMaterial('glass')}>{pick(lang,'Glass','Vetro')}</button><button type="button" className={lightMaterial==='wall'?'active':''} onClick={()=>setLightMaterial('wall')}>{pick(lang,'Opaque wall','Parete opaca')}</button></div><Readout label={pick(lang,'Light effect','Effetto della luce')} value={lightMaterial==='mirror'?pick(lang,'Reflects','Si riflette'):lightMaterial==='glass'?pick(lang,'Bends through glass','Si piega nel vetro'):pick(lang,'Forms a shadow','Forma un’ombra')}/></div></div>
+      </section>
+    );
+  }
+
+  if (missionId === 'g5e-stem-light') {
+    return (
+      <section className="chem-lab" aria-label={pick(lang,'Light Experiment Lab','Laboratorio sperimentale sulla luce')}>
+        <header className="cl-heading"><span className="cl-kicker">{pick(lang,'INTERACTIVE SCIENCE LAB','LABORATORIO INTERATTIVO DI SCIENZE')}</span><h3>{pick(lang,'Design a Light Test','Progetta una prova sulla luce')}</h3></header>
+        <div className="cl-grid"><div className="cl-visual"><svg viewBox="0 0 360 205" role="img" aria-label={pick(lang,'Light shadow or colour experiment','Esperimento sull’ombra o sui colori')}>
+          <rect x="18" y="18" width="324" height="169" rx="18" fill="rgba(16,22,58,.95)" stroke="#8a7bff"/>
+          {lightActivity==='shadow'?<><circle cx="62" cy="102" r="25" fill="#ffd166"/><rect x="154" y="65" width="42" height="75" fill="#45d8ff" stroke="#fff"/><path d="M196 65L310 52M196 140L310 153" fill="#10143a" stroke="#10143a" strokeWidth="55"/></>:<>{['#ff4d6d','#ffd166','#38ef7d','#45d8ff','#8a7bff'].map((c,i)=><circle key={c} cx={100+i*40} cy="102" r="22" fill={c}/>)}</>}
+        </svg></div><div className="cl-controls"><div className="cl-mode-tabs"><button type="button" className={lightActivity==='shadow'?'active':''} onClick={()=>setLightActivity('shadow')}>{pick(lang,'Shadow','Ombra')}</button><button type="button" className={lightActivity==='colour'?'active':''} onClick={()=>setLightActivity('colour')}>{pick(lang,'Colour wheel','Ruota dei colori')}</button></div><Analogy lang={lang} en="Predict first, test safely, and record exactly what you observe." it="Prevedi prima, prova in sicurezza e registra esattamente ciò che osservi."/></div></div>
+      </section>
+    );
+  }
+
+  if (missionId === 'g5e-sound') {
+    return (
+      <section className="chem-lab" aria-label={pick(lang,'Sound Wave Lab','Laboratorio delle onde sonore')}>
+        <header className="cl-heading"><span className="cl-kicker">{pick(lang,'INTERACTIVE SCIENCE LAB','LABORATORIO INTERATTIVO DI SCIENZE')}</span><h3>{pick(lang,'See the Sound Vibrate','Vedi vibrare il suono')}</h3></header>
+        <div className="cl-grid"><div className="cl-visual"><svg viewBox="0 0 360 205" role="img" aria-label={pick(lang,'Sound wave frequency','Frequenza di un’onda sonora')}>
+          <rect x="18" y="18" width="324" height="169" rx="18" fill="rgba(16,22,58,.95)" stroke="#8a7bff"/>
+          <path d={`M35 102 ${Array.from({length:50},(_,i)=>{const x=35+i*6; const y=102-Math.sin(i*(soundFrequency/50))*28; return `L${x} ${y}`}).join(' ')}`} fill="none" stroke="#45d8ff" strokeWidth="4" className="chem-anim-dash"/>
+          <text x="180" y="176" textAnchor="middle" fill="#fff" fontSize="12">{pick(lang,'Higher vibration = higher pitch','Maggiore vibrazione = tono più alto')}</text>
+        </svg></div><div className="cl-controls"><Slider label={pick(lang,'Vibration frequency','Frequenza di vibrazione')} value={soundFrequency} min={10} max={100} step={5} unit="" lang={lang} onChange={setSoundFrequency}/><Readout label={pick(lang,'Pitch','Tono')} value={soundFrequency<40?pick(lang,'Low','Basso'):soundFrequency<75?pick(lang,'Medium','Medio'):pick(lang,'High','Alto')}/><Analogy lang={lang} en="Sound begins with vibrations and needs a material medium to travel." it="Il suono nasce dalle vibrazioni e ha bisogno di un mezzo materiale."/></div></div>
+      </section>
+    );
+  }
+
+  if (missionId === 'g5e-forces') {
+    return (
+      <section className="chem-lab" aria-label={pick(lang,'Force and Motion Lab','Laboratorio di forze e movimento')}>
+        <header className="cl-heading"><span className="cl-kicker">{pick(lang,'INTERACTIVE SCIENCE LAB','LABORATORIO INTERATTIVO DI SCIENZE')}</span><h3>{pick(lang,'Push, Pull or Rub','Spingi, tira o sfrega')}</h3></header>
+        <div className="cl-grid"><div className="cl-visual"><svg viewBox="0 0 360 205" role="img" aria-label={pick(lang,'Push pull and friction forces','Forze di spinta, trazione e attrito')}>
+          <rect x="18" y="18" width="324" height="169" rx="18" fill="rgba(16,22,58,.95)" stroke="#8a7bff"/>
+          <rect x="130" y="92" width="100" height="52" rx="10" fill="#45d8ff"/>
+          {forceMode==='push'?<><path d="M70 118H125" stroke="#ffd166" strokeWidth="7"/><path d="M125 118l-18-12M125 118l-18 12" stroke="#ffd166" strokeWidth="7"/></>:forceMode==='pull'?<><path d="M230 118H290" stroke="#ffd166" strokeWidth="7"/><path d="M230 118l18-12M230 118l18 12" stroke="#ffd166" strokeWidth="7"/></>:<><path d="M100 158H260" stroke="#ff6a55" strokeWidth="5" strokeDasharray="8 5"/><path d="M130 144H230" stroke="#ffd166" strokeWidth="5"/></>}
+        </svg></div><div className="cl-controls"><div className="cl-mode-tabs"><button type="button" className={forceMode==='push'?'active':''} onClick={()=>setForceMode('push')}>{pick(lang,'Push','Spinta')}</button><button type="button" className={forceMode==='pull'?'active':''} onClick={()=>setForceMode('pull')}>{pick(lang,'Pull','Trazione')}</button><button type="button" className={forceMode==='friction'?'active':''} onClick={()=>setForceMode('friction')}>{pick(lang,'Friction','Attrito')}</button></div><Analogy lang={lang} en="A force can start, stop or change motion, or change shape." it="Una forza può avviare, fermare o cambiare il movimento, oppure cambiare la forma."/></div></div>
+      </section>
+    );
+  }
+
+  if (missionId === 'g5e-magnetism') {
+    return (
+      <section className="chem-lab" aria-label={pick(lang,'Magnet Poles Lab','Laboratorio dei poli magnetici')}>
+        <header className="cl-heading"><span className="cl-kicker">{pick(lang,'INTERACTIVE SCIENCE LAB','LABORATORIO INTERATTIVO DI SCIENZE')}</span><h3>{pick(lang,'Bring the Poles Together','Avvicina i poli')}</h3></header>
+        <div className="cl-grid"><div className="cl-visual"><svg viewBox="0 0 360 205" role="img" aria-label={pick(lang,'Magnetic attraction or repulsion','Attrazione o repulsione magnetica')}>
+          <rect x="18" y="18" width="324" height="169" rx="18" fill="rgba(16,22,58,.95)" stroke="#8a7bff"/>
+          <rect x={magnetPoles==='ns'?75:65} y="78" width="100" height="54" rx="12" fill="#ff5d8f"/><rect x="185" y="78" width="100" height="54" rx="12" fill="#45d8ff"/>
+          <text x={magnetPoles==='ns'?125:115} y="112" textAnchor="middle" fill="#fff" fontSize="20" fontWeight="900">N</text><text x="235" y="112" textAnchor="middle" fill="#10143a" fontSize="20" fontWeight="900">{magnetPoles==='ns'?'S':'N'}</text>
+          {[0,1,2].map(i=><path key={i} d={`M${magnetPoles==='ns'?175:155+i*12} ${85+i*12}Q${magnetPoles==='ns'?190:205} ${75+i*12} ${magnetPoles==='ns'?205:235-i*12} ${85+i*12}`} fill="none" stroke="#ffd166" strokeWidth="2" opacity=".8"/>)}
+        </svg></div><div className="cl-controls"><div className="cl-mode-tabs"><button type="button" className={magnetPoles==='ns'?'active':''} onClick={()=>setMagnetPoles('ns')}>{pick(lang,'N facing S','Nord davanti a Sud')}</button><button type="button" className={magnetPoles==='nn'?'active':''} onClick={()=>setMagnetPoles('nn')}>{pick(lang,'N facing N','Nord davanti a Nord')}</button></div><Readout label={pick(lang,'Result','Risultato')} value={magnetPoles==='ns'?pick(lang,'Attract','Attrazione'):pick(lang,'Repel','Repulsione')}/><Analogy lang={lang} en="Opposite poles attract; like poles repel." it="I poli opposti si attraggono; i poli uguali si respingono."/></div></div>
+      </section>
+    );
+  }
+
+  if (missionId === 'g5e-stem-magnets') {
+    const magnetic = magnetMaterial === 'steel';
+    return (
+      <section className="chem-lab" aria-label={pick(lang,'Magnetic Material Test Lab','Laboratorio sui materiali magnetici')}>
+        <header className="cl-heading"><span className="cl-kicker">{pick(lang,'INTERACTIVE SCIENCE LAB','LABORATORIO INTERATTIVO DI SCIENZE')}</span><h3>{pick(lang,'Test a Classroom Object','Prova un oggetto della classe')}</h3></header>
+        <div className="cl-grid"><div className="cl-visual"><svg viewBox="0 0 360 205" role="img" aria-label={pick(lang,'Magnet test for everyday materials','Test con magnete su materiali quotidiani')}>
+          <rect x="18" y="18" width="324" height="169" rx="18" fill="rgba(16,22,58,.95)" stroke="#8a7bff"/>
+          <rect x="55" y="82" width="92" height="52" rx="10" fill="#ff5d8f"/><text x="101" y="114" textAnchor="middle" fill="#fff" fontSize="16" fontWeight="900">N</text>
+          <rect x="215" y="82" width="92" height="52" rx="10" fill={magnetic?'#aab0c0':magnetMaterial==='aluminium'?'#dfe7ff':'#38ef7d'} stroke="#fff" strokeWidth="3"/>
+          {magnetic&&<path d="M147 108H215" stroke="#ffd166" strokeWidth="5" strokeDasharray="7 5" className="chem-anim-dash"/>}
+          <text x="261" y="114" textAnchor="middle" fill="#10143a" fontSize="11" fontWeight="900">{magnetMaterial.toUpperCase()}</text>
+        </svg></div><div className="cl-controls"><div className="cl-mode-tabs"><button type="button" className={magnetMaterial==='steel'?'active':''} onClick={()=>setMagnetMaterial('steel')}>{pick(lang,'Steel','Acciaio')}</button><button type="button" className={magnetMaterial==='plastic'?'active':''} onClick={()=>setMagnetMaterial('plastic')}>{pick(lang,'Plastic','Plastica')}</button><button type="button" className={magnetMaterial==='aluminium'?'active':''} onClick={()=>setMagnetMaterial('aluminium')}>{pick(lang,'Aluminium','Alluminio')}</button></div><Readout label={pick(lang,'Test result','Risultato')} value={magnetic?pick(lang,'Attracted','Attratto'):pick(lang,'Not attracted','Non attratto')}/></div></div>
+      </section>
+    );
+  }
+
+  if (missionId === 'g5e-levers') {
+    const easy = leverPosition > 65;
+    return (
+      <section className="chem-lab" aria-label={pick(lang,'Lever Lab','Laboratorio delle leve')}>
+        <header className="cl-heading"><span className="cl-kicker">{pick(lang,'INTERACTIVE SCIENCE LAB','LABORATORIO INTERATTIVO DI SCIENZE')}</span><h3>{pick(lang,'Move the Effort and Lift the Load','Sposta la forza e solleva il carico')}</h3></header>
+        <div className="cl-grid"><div className="cl-visual"><svg viewBox="0 0 360 205" role="img" aria-label={pick(lang,'Lever with fulcrum and load','Leva con fulcro e carico')}>
+          <rect x="18" y="18" width="324" height="169" rx="18" fill="rgba(16,22,58,.95)" stroke="#8a7bff"/>
+          <line x1="60" y1={easy?90:125} x2="300" y2={easy?125:90} stroke="#ffd166" strokeWidth="8" strokeLinecap="round"/>
+          <path d="M180 125l-28 42h56z" fill="#45d8ff"/><rect x="70" y="62" width="38" height="38" rx="6" fill="#ff6a55"/>
+          <circle cx={60+leverPosition*2.4} cy={easy?78:136} r="12" fill="#38ef7d" className="chem-anim-pulse"/>
+          <text x="180" y="184" textAnchor="middle" fill="#fff" fontSize="12">{pick(lang,'Fulcrum','Fulcro')} · {pick(lang,'effort moves','la forza si sposta')}</text>
+        </svg></div><div className="cl-controls"><Slider label={pick(lang,'Effort distance','Distanza della forza')} value={leverPosition} min={10} max={90} step={5} unit="" lang={lang} onChange={setLeverPosition}/><Readout label={pick(lang,'Lever effect','Effetto della leva')} value={easy?pick(lang,'Easier to lift','Più facile sollevare'):pick(lang,'More effort needed','Serve più forza')}/><Analogy lang={lang} en="A longer effort arm can make a lever easier to turn." it="Un braccio della forza più lungo può rendere la leva più facile da girare."/></div></div>
+      </section>
+    );
+  }
+
+  if (missionId === 'g5e-geopark-review') {
+    const reviewCopy = geoparkTopic==='energy'
+      ? [pick(lang,'Energy makes changes','L’energia rende possibili i cambiamenti'),pick(lang,'Sources, forms and transformations','Fonti, forme e trasformazioni')]
+      : geoparkTopic==='light'
+        ? [pick(lang,'Light reflects and refracts','La luce si riflette e si rifrange'),pick(lang,'Sound comes from vibrations','Il suono nasce dalle vibrazioni')]
+        : [pick(lang,'Forces change motion','Le forze cambiano il movimento'),pick(lang,'Gravity, magnetism and levers','Gravità, magnetismo e leve')];
+    return (
+      <section className="chem-lab" aria-label={pick(lang,'Energy and Forces Review Lab','Laboratorio di ripasso su energia e forze')}>
+        <header className="cl-heading"><span className="cl-kicker">{pick(lang,'INTERACTIVE SCIENCE LAB','LABORATORIO INTERATTIVO DI SCIENZE')}</span><h3>{pick(lang,'Build the Review Map','Costruisci la mappa di ripasso')}</h3></header>
+        <div className="cl-grid"><div className="cl-visual"><svg viewBox="0 0 360 205" role="img" aria-label={pick(lang,'Energy forces and landscape knowledge map','Mappa su energia, forze e paesaggio')}>
+          <rect x="18" y="18" width="324" height="169" rx="18" fill="rgba(16,22,58,.95)" stroke="#8a7bff"/>
+          <circle cx="180" cy="102" r="42" fill="#ffd166"/><circle cx="78" cy="60" r="24" fill="#45d8ff"/><circle cx="282" cy="60" r="24" fill="#38ef7d"/><circle cx="180" cy="158" r="24" fill="#ff6a55"/>
+          <path d="M138 82L92 70M222 82l46-12M180 138v-17" stroke="#fff" strokeWidth="3"/>
+          <text x="180" y="108" textAnchor="middle" fill="#10143a" fontSize="12" fontWeight="900">{pick(lang,'SCIENCE','SCIENZE')}</text>
+        </svg></div><div className="cl-controls"><div className="cl-mode-tabs"><button type="button" className={geoparkTopic==='energy'?'active':''} onClick={()=>setGeoparkTopic('energy')}>{pick(lang,'Energy','Energia')}</button><button type="button" className={geoparkTopic==='light'?'active':''} onClick={()=>setGeoparkTopic('light')}>{pick(lang,'Light & sound','Luce e suono')}</button><button type="button" className={geoparkTopic==='forces'?'active':''} onClick={()=>setGeoparkTopic('forces')}>{pick(lang,'Forces','Forze')}</button></div><Readout label={pick(lang,'Main idea','Idea principale')} value={reviewCopy[0]}/><Readout label={pick(lang,'Key detail','Dettaglio chiave')} value={reviewCopy[1]}/></div></div>
       </section>
     );
   }
