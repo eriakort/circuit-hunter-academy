@@ -388,6 +388,33 @@ export const ITALIAN_PRACTICE_PHRASES: PracticePhrase[] = [
     grammarTopicId: 'comparatives'
   },
   {
+    id: 'grammar-a1-future',
+    level: 'A1',
+    targetIt: 'Domani parlerò con il professore e partirò alle otto.',
+    translation: {en: 'Tomorrow I will talk to the teacher and leave at eight.', it: 'Tomorrow I will talk to the teacher and leave at eight.', pt: 'Amanhã vou falar com o professor e partir às oito.', es: 'Mañana hablaré con el profesor y saldré a las ocho.', fr: 'Demain je parlerai au professeur et je partirai à huit heures.', de: 'Morgen spreche ich mit dem Lehrer und fahre um acht Uhr ab.'},
+    phoneticHint: 'do-MA-nee par-le-RO kon eel pro-fes-SO-reh eh par-tee-RO AL-leh OT-to',
+    notes: {en: 'Future: infinitive minus -e + -ò. -are verbs change a to e: parlare → parlerò.', it: 'Futuro: infinito senza -e + -ò. I verbi in -are cambiano a in e: parlare → parlerò.', pt: 'Futuro: infinitivo sem -e + -ò. Os verbos em -are mudam a para e: parlare → parlerò.', es: 'Futuro: infinitivo sin -e + -ò. Los verbos en -are cambian a por e: parlare → parlerò.', fr: 'Futur : infinitif sans -e + -ò. Les verbes en -are changent a en e : parlare → parlerò.', de: 'Futur: Infinitiv ohne -e + -ò. Verben auf -are wechseln a zu e: parlare → parlerò.'},
+    grammarTopicId: 'future'
+  },
+  {
+    id: 'grammar-a2-future',
+    level: 'A2',
+    targetIt: 'L’anno prossimo andrò a Roma e farò un corso d’italiano.',
+    translation: {en: 'Next year I will go to Rome and take an Italian course.', it: 'Next year I will go to Rome and take an Italian course.', pt: 'No próximo ano vou a Roma e vou fazer um curso de italiano.', es: 'El año que viene iré a Roma y haré un curso de italiano.', fr: 'L’année prochaine j’irai à Rome et je suivrai un cours d’italien.', de: 'Nächstes Jahr fahre ich nach Rom und mache einen Italienischkurs.'},
+    phoneticHint: 'LAN-no PROS-see-mo an-DRO a RO-ma eh fa-RO oon KOOR-so dee-ta-LYA-no',
+    notes: {en: 'Irregular futures: andare → andrò, fare → farò.', it: 'Futuri irregolari: andare → andrò, fare → farò.', pt: 'Futuros irregulares: andare → andrò, fare → farò.', es: 'Futuros irregulares: andare → andrò, fare → farò.', fr: 'Futurs irréguliers : andare → andrò, fare → farò.', de: 'Unregelmäßige Futurformen: andare → andrò, fare → farò.'},
+    grammarTopicId: 'future'
+  },
+  {
+    id: 'grammar-b1-future',
+    level: 'B1',
+    targetIt: 'Quando avrò finito l’università, cercherò lavoro. Sarà difficile!',
+    translation: {en: 'When I have finished university, I will look for a job. It will be hard!', it: 'When I have finished university, I will look for a job. It will be hard!', pt: 'Quando eu tiver terminado a universidade, vou procurar trabalho. Vai ser difícil!', es: 'Cuando haya terminado la universidad, buscaré trabajo. ¡Será difícil!', fr: 'Quand j’aurai fini l’université, je chercherai du travail. Ce sera difficile !', de: 'Wenn ich die Universität abgeschlossen habe, suche ich Arbeit. Es wird schwer!'},
+    phoneticHint: 'KWAN-do a-VRO fee-NEE-to loo-nee-ver-see-TA, cher-ke-RO la-VO-ro. sa-RA deef-FEE-chee-leh',
+    notes: {en: 'Future perfect: avrò finito (avere in the future + participle), used after quando for an action finished first.', it: 'Futuro anteriore: avrò finito (avere al futuro + participio), dopo quando per un’azione conclusa prima.', pt: 'Futuro anterior: avrò finito (avere no futuro + particípio), depois de quando para uma ação concluída antes.', es: 'Futuro perfecto: avrò finito (avere en futuro + participio), después de quando para una acción terminada antes.', fr: 'Futur antérieur : avrò finito (avere au futur + participe), après quando pour une action achevée d’abord.', de: 'Futur II: avrò finito (avere im Futur + Partizip), nach quando für eine zuerst abgeschlossene Handlung.'},
+    grammarTopicId: 'future'
+  },
+  {
     id: 'grammar-a1-imperfetto',
     level: 'A1',
     targetIt: 'Quando ero piccolo, avevo un cane.',

@@ -2,6 +2,7 @@ import { BilingualText } from '../types';
 import { ACTION_IMAGE_ALT, actionImage } from './italianGrammarPictures';
 import { IMPERATIVE_ACTIVITIES } from './italianGrammarImperative';
 import { COMPARATIVES_ACTIVITIES } from './italianGrammarComparatives';
+import { FUTURE_ACTIVITIES } from './italianGrammarFuture';
 export type GrammarActivityType = 'correct' | 'order' | 'translate' | 'write';
 export interface GrammarActivity {
   id: string; topicId: string; level: 'A1' | 'A2' | 'B1'; type: GrammarActivityType;
@@ -186,6 +187,7 @@ export const ITALIAN_GRAMMAR_ACTIVITIES: GrammarActivity[] = [
 {topicId:'stare-gerundio',id:'stare-gerundio-b1-write',level:'B1',type:'write',image:actionImage('calcio'),imageAlt:ACTION_IMAGE_ALT.calcio,title:{en:'Describe the scene',it:'Descrivi la scena',pt:'Descreva a cena',es:'Describe la escena',fr:'Décris la scène',de:'Beschreibe die Szene'},prompt:{en:'Describe the picture in two or three sentences. Say what is happening right now.',it:'Descrivi l’immagine con due o tre frasi. Di’ che cosa sta succedendo in questo momento.',pt:'Descreva a imagem em duas ou três frases. Diga o que está acontecendo neste momento.',es:'Describe la imagen en dos o tres frases. Di qué está pasando en este momento.',fr:'Décris l’image en deux ou trois phrases. Dis ce qui se passe en ce moment.',de:'Beschreibe das Bild in zwei oder drei Sätzen. Sag, was gerade passiert.'},modelAnswer:'La ragazza sta giocando a calcio. Sta correndo verso il pallone.',hint:{en:'Use stare + gerund for actions in progress; you can add where and how.',it:'Usa stare + gerundio per le azioni in corso; puoi aggiungere dove e come.',pt:'Use stare + gerúndio para ações em curso; você pode acrescentar onde e como.',es:'Usa stare + gerundio para acciones en curso; puedes añadir dónde y cómo.',fr:'Utilise stare + gérondif pour les actions en cours ; tu peux ajouter où et comment.',de:'Verwende stare + Gerundium für laufende Handlungen; du kannst ergänzen, wo und wie.'},explanation:{en:'Check each form of stare and each gerund. Your own correct description can differ from the model.',it:'Controlla ogni forma di stare e ogni gerundio. La tua descrizione corretta può essere diversa dal modello.',pt:'Verifique cada forma de stare e cada gerúndio. A sua descrição correta pode ser diferente do modelo.',es:'Comprueba cada forma de stare y cada gerundio. Tu descripción correcta puede ser distinta del modelo.',fr:'Vérifie chaque forme de stare et chaque gérondif. Ta description correcte peut différer du modèle.',de:'Prüfe jede Form von stare und jedes Gerundium. Deine eigene richtige Beschreibung darf vom Modell abweichen.'}},
 ...IMPERATIVE_ACTIVITIES,
 ...COMPARATIVES_ACTIVITIES,
+...FUTURE_ACTIVITIES,
 ]; 
 export const getGrammarActivities = (topicId: string, level: GrammarActivity['level'], type: GrammarActivityType) =>
   ITALIAN_GRAMMAR_ACTIVITIES.filter(activity => activity.topicId === topicId && activity.level === level && activity.type === type);
