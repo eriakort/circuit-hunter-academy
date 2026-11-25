@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Language, LearningMissionProgress, Mission } from '../types';
-import { L } from '../helpers';
+import { L, T } from '../helpers';
 import { resolveAssessmentQuestions } from '../learningAssessment';
 
 interface AssessmentReviewProps {
@@ -22,13 +22,11 @@ export const AssessmentReview: React.FC<AssessmentReviewProps> = ({
   }).sort((a, b) => b.review.attemptedAt - a.review.attemptedAt).slice(0, 5);
 
   return (
-    <section className="assessment-review card" aria-label={isItalian ? 'Revisione delle prove' : 'Assessment review'}>
+    <section className="assessment-review card" aria-label={T(lang, 'Assessment review', 'Revisione delle prove')}>
       <div className="assessment-review-heading">
-        <div className="learning-kicker">{isItalian ? 'IMPARA DAGLI ERRORI' : 'LEARN FROM MISTAKES'}</div>
-        <h3>{isItalian ? 'Revisione delle prove' : 'Assessment review'}</h3>
-        <p className="muted">{isItalian
-          ? 'Rivedi le risposte, leggi le spiegazioni e torna direttamente ai concetti da rinforzare.'
-          : 'Revisit your answers, read the explanations, and jump straight to concepts that need more practice.'}</p>
+        <div className="learning-kicker">{T(lang, 'LEARN FROM MISTAKES', 'IMPARA DAGLI ERRORI')}</div>
+        <h3>{T(lang, 'Assessment review', 'Revisione delle prove')}</h3>
+        <p className="muted">{T(lang, 'Revisit your answers, read the explanations, and jump straight to concepts that need more practice.', 'Rivedi le risposte, leggi le spiegazioni e torna direttamente ai concetti da rinforzare.')}</p>
       </div>
 
       {attempts.length ? (
@@ -45,17 +43,17 @@ export const AssessmentReview: React.FC<AssessmentReviewProps> = ({
             return (
               <details className="assessment-review-attempt" key={mission.id + ':' + review.attempt + ':' + review.attemptedAt}>
                 <summary>
-                  <strong>{L(mission.title, lang)} · {isItalian ? 'Tentativo' : 'Attempt'} {review.attempt}</strong>
+                  <strong>{L(mission.title, lang)} · {T(lang, 'Attempt', 'Tentativo')} {review.attempt}</strong>
                   <span className="assessment-review-meta">
                     <b className="assessment-review-score">{review.score}%</b>
-                    <span>{new Date(review.attemptedAt).toLocaleDateString(isItalian ? 'it-IT' : 'en-CA')}</span>
-                    <span>{missed.length} {isItalian ? 'errori' : 'missed'}</span>
+                    <span>{new Date(review.attemptedAt).toLocaleDateString(T(lang, 'en-CA', 'it-IT'))}</span>
+                    <span>{missed.length} {T(lang, 'missed', 'errori')}</span>
                   </span>
                 </summary>
                 <div className="assessment-review-body">
                   {missed.length > 0 && (
                     <section className="assessment-review-mistakes">
-                      <h4>{isItalian ? 'Analisi degli errori' : 'Mistake analysis'}</h4>
+                      <h4>{T(lang, 'Mistake analysis', 'Analisi degli errori')}</h4>
                       {missedConcepts.length > 0 ? (
                         <div className="assessment-review-concepts">
                           {missedConcepts.map(conceptId => {
@@ -66,19 +64,19 @@ export const AssessmentReview: React.FC<AssessmentReviewProps> = ({
                               <div className="assessment-review-concept" key={conceptId}>
                                 <strong>{L(concept.title, lang)} · {count}</strong>
                                 <button type="button" className="btn ghost sm" onClick={() => onReviewConcept(mission.id, conceptId)}>
-                                  {isItalian ? 'Ripassa concetto' : 'Review concept'}
+                                  {T(lang, 'Review concept', 'Ripassa concetto')}
                                 </button>
                               </div>
                             );
                           })}
                         </div>
                       ) : (
-                        <p className="muted">{isItalian ? 'Questi errori non sono ancora associati a un concetto specifico.' : 'These missed questions are not linked to a specific concept yet.'}</p>
+                        <p className="muted">{T(lang, 'These missed questions are not linked to a specific concept yet.', 'Questi errori non sono ancora associati a un concetto specifico.')}</p>
                       )}
                     </section>
                   )}
                   <section className="assessment-review-questions">
-                    <h4>{isItalian ? 'Revisione domanda per domanda' : 'Question-by-question review'}</h4>
+                    <h4>{T(lang, 'Question-by-question review', 'Revisione domanda per domanda')}</h4>
                     {reviewQuestions.map((question, index) => {
                       const selected = review.answers[index];
                       const correct = selected === 0;
@@ -87,12 +85,12 @@ export const AssessmentReview: React.FC<AssessmentReviewProps> = ({
                           <strong>{index + 1}. {L(question.q, lang)}</strong>
                           <p className="assessment-review-answer">
                             <span className={correct ? 'right-answer' : 'wrong-answer'}>
-                              {correct ? (isItalian ? 'La tua risposta: ' : 'Your answer: ') : (isItalian ? 'La tua risposta: ' : 'Your answer: ')}
-                              {question.a[selected] ? L(question.a[selected], lang) : (isItalian ? 'Nessuna risposta registrata' : 'No answer recorded')}
+                              {correct ? (T(lang, 'Your answer: ', 'La tua risposta: ')) : (T(lang, 'Your answer: ', 'La tua risposta: '))}
+                              {question.a[selected] ? L(question.a[selected], lang) : (T(lang, 'No answer recorded', 'Nessuna risposta registrata'))}
                             </span>
                           </p>
                           {!correct && <p className="assessment-review-answer right-answer">
-                            {isItalian ? 'Risposta corretta: ' : 'Correct answer: '}{L(question.a[0], lang)}
+                            {T(lang, 'Correct answer: ', 'Risposta corretta: ')}{L(question.a[0], lang)}
                           </p>}
                           <p className="assessment-review-explanation">{L(question.why, lang)}</p>
                         </article>
@@ -106,9 +104,7 @@ export const AssessmentReview: React.FC<AssessmentReviewProps> = ({
         </div>
       ) : (
         <p className="assessment-review-empty">
-          {isItalian
-            ? 'I dettagli delle prove appariranno qui dopo il prossimo tentativo di maestria.'
-            : 'Detailed assessment reviews will appear here after your next mastery attempt.'}
+          {T(lang, 'Detailed assessment reviews will appear here after your next mastery attempt.', 'I dettagli delle prove appariranno qui dopo il prossimo tentativo di maestria.')}
         </p>
       )}
     </section>

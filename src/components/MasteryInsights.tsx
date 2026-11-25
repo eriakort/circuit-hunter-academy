@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Language, LearningMissionProgress, Mission } from '../types';
-import { L } from '../helpers';
+import { L, T } from '../helpers';
 
 interface MasteryInsightsProps {
   missions: Mission[];
@@ -90,31 +90,29 @@ export const MasteryInsights: React.FC<MasteryInsightsProps> = ({
           <div className="learning-dashboard-track" role="img" aria-label={`${item.percent}% correct`}>
             <i style={{ width: `${item.percent}%` }} />
           </div>
-          <small>{item.correct}/{item.attempted} {isItalian ? 'risposte corrette' : 'correct responses'} · {L(item.missionTitle, lang)}</small>
+          <small>{item.correct}/{item.attempted} {T(lang, 'correct responses', 'risposte corrette')} · {L(item.missionTitle, lang)}</small>
         </li>
       ))}
     </ol>
   ) : <p className="muted">{emptyText}</p>;
 
   return (
-    <section className="mastery-insights" aria-label={isItalian ? 'Approfondimenti sulla maestria' : 'Mastery insights'}>
+    <section className="mastery-insights" aria-label={T(lang, 'Mastery insights', 'Approfondimenti sulla maestria')}>
       <div className="mastery-insights-heading">
         <div>
-          <span className="eyebrow">{isItalian ? 'OLTRE IL PUNTEGGIO' : 'BEYOND THE SCORE'}</span>
-          <h3>{isItalian ? 'Approfondimenti sulla maestria' : 'Mastery insights'}</h3>
+          <span className="eyebrow">{T(lang, 'BEYOND THE SCORE', 'OLTRE IL PUNTEGGIO')}</span>
+          <h3>{T(lang, 'Mastery insights', 'Approfondimenti sulla maestria')}</h3>
           <p className="muted">
-            {isItalian
-              ? 'Scopri come cambiano i risultati e quali concetti sono più solidi.'
-              : 'See how assessment results change and which concepts are becoming stronger.'}
+            {T(lang, 'See how assessment results change and which concepts are becoming stronger.', 'Scopri come cambiano i risultati e quali concetti sono più solidi.')}
           </p>
         </div>
-        <span className="mastery-insights-count">{assessments.length} {isItalian ? 'prove recenti' : 'recent assessments'}</span>
+        <span className="mastery-insights-count">{assessments.length} {T(lang, 'recent assessments', 'prove recenti')}</span>
       </div>
 
       <div className="mastery-insights-grid">
         <article className="learning-dashboard-panel mastery-insights-trend">
           <div className="mastery-insights-panel-heading">
-            <h4>{isItalian ? 'Andamento delle prove' : 'Assessment trend'}</h4>
+            <h4>{T(lang, 'Assessment trend', 'Andamento delle prove')}</h4>
             {trendChange !== null && (
               <strong className={trendChange > 0 ? 'trend-positive' : trendChange < 0 ? 'trend-negative' : ''}>
                 {trendChange > 0 ? '+' : ''}{trendChange} pp
@@ -124,7 +122,7 @@ export const MasteryInsights: React.FC<MasteryInsightsProps> = ({
           {assessments.length >= 2 ? (
             <>
               <svg className="mastery-trend-chart" viewBox="0 0 640 190" role="img"
-                aria-label={isItalian ? 'Andamento degli ultimi otto risultati di maestria' : 'Trend of the last eight mastery assessment scores'}>
+                aria-label={T(lang, 'Trend of the last eight mastery assessment scores', 'Andamento degli ultimi otto risultati di maestria')}>
                 {[28, 88, 148].map((y, index) => (
                   <g key={y}>
                     <line x1="36" x2="604" y1={y} y2={y} className="mastery-chart-gridline" />
@@ -144,23 +142,21 @@ export const MasteryInsights: React.FC<MasteryInsightsProps> = ({
                 <span>{dateLabel(assessments[assessments.length - 1].attemptedAt, lang)} · {assessments[assessments.length - 1].score}%</span>
               </div>
               <p className="mastery-insights-note">
-                {isItalian
-                  ? 'Confronto tra i risultati salvati più vecchio e più recente in questa finestra.'
-                  : 'Compares the oldest and newest saved scores in this recent history window.'}
+                {T(lang, 'Compares the oldest and newest saved scores in this recent history window.', 'Confronto tra i risultati salvati più vecchio e più recente in questa finestra.')}
               </p>
             </>
           ) : (
             <p className="muted">
               {assessments.length === 1
-                ? (isItalian ? 'Hai un risultato registrato. Completa un’altra prova per vedere l’andamento.' : 'You have one recorded score. Complete another assessment to reveal a trend.')
-                : (isItalian ? 'Completa almeno due prove di maestria per visualizzare l’andamento.' : 'Complete at least two mastery assessments to see your score trend.')}
+                ? (T(lang, 'You have one recorded score. Complete another assessment to reveal a trend.', 'Hai un risultato registrato. Completa un’altra prova per vedere l’andamento.'))
+                : (T(lang, 'Complete at least two mastery assessments to see your score trend.', 'Completa almeno due prove di maestria per visualizzare l’andamento.'))}
             </p>
           )}
         </article>
 
         <article className="learning-dashboard-panel mastery-insights-revision">
           <div className="mastery-insights-panel-heading">
-            <h4>{isItalian ? 'Effetto del ripasso' : 'Revision impact'}</h4>
+            <h4>{T(lang, 'Revision impact', 'Effetto del ripasso')}</h4>
             {averageRevisionChange !== null && (
               <strong className={averageRevisionChange > 0 ? 'trend-positive' : averageRevisionChange < 0 ? 'trend-negative' : ''}>
                 {averageRevisionChange > 0 ? '+' : ''}{averageRevisionChange} pp
@@ -175,28 +171,24 @@ export const MasteryInsights: React.FC<MasteryInsightsProps> = ({
                   : `Average change of ${averageRevisionChange > 0 ? '+' : ''}${averageRevisionChange} percentage points in the first mastery result after revision, across ${revisionChanges.length} concept(s).`}
               </p>
               <p className="mastery-insights-note">
-                {isItalian
-                  ? 'È un confronto osservato, non una prova che il ripasso da solo abbia causato il cambiamento.'
-                  : 'This is an observed comparison, not proof that revision alone caused the change.'}
+                {T(lang, 'This is an observed comparison, not proof that revision alone caused the change.', 'È un confronto osservato, non una prova che il ripasso da solo abbia causato il cambiamento.')}
               </p>
             </>
           ) : (
             <p className="muted">
-              {isItalian
-                ? 'Completa un ripasso mirato e poi una nuova prova di maestria per misurare il cambiamento.'
-                : 'Complete targeted revision followed by a new mastery assessment to measure the change.'}
+              {T(lang, 'Complete targeted revision followed by a new mastery assessment to measure the change.', 'Completa un ripasso mirato e poi una nuova prova di maestria per misurare il cambiamento.')}
             </p>
           )}
         </article>
 
         <article className="learning-dashboard-panel">
-          <h4>{isItalian ? 'I tuoi punti di forza' : 'Your strengths'}</h4>
-          {renderConceptList(strongest, isItalian ? 'I risultati dei concetti appariranno dopo una prova di maestria.' : 'Concept results will appear after a mastery assessment.')}
+          <h4>{T(lang, 'Your strengths', 'I tuoi punti di forza')}</h4>
+          {renderConceptList(strongest, T(lang, 'Concept results will appear after a mastery assessment.', 'I risultati dei concetti appariranno dopo una prova di maestria.'))}
         </article>
 
         <article className="learning-dashboard-panel">
-          <h4>{isItalian ? 'Concetti da seguire' : 'Concepts to watch'}</h4>
-          {renderConceptList(needsFocus, isItalian ? 'Non ci sono ancora concetti da seguire.' : 'There are no concepts to flag yet.')}
+          <h4>{T(lang, 'Concepts to watch', 'Concetti da seguire')}</h4>
+          {renderConceptList(needsFocus, T(lang, 'There are no concepts to flag yet.', 'Non ci sono ancora concetti da seguire.'))}
         </article>
       </div>
     </section>

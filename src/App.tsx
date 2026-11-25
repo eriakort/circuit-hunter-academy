@@ -1,3 +1,4 @@
+import { T } from './helpers';
 import React, { Component, ErrorInfo, ReactNode, useEffect, useRef, useState } from 'react';
 import { GameProvider, useGame } from './context/GameContext';
 import { HUD } from './components/HUD';
@@ -107,7 +108,7 @@ const AppContent: React.FC = () => {
     }
     if (viewChanged || languageChanged) {
       const [englishName, italianName] = viewNames[activeView] || ['Main content', 'Contenuto principale'];
-      setNavigationAnnouncement(state.lang === 'it' ? italianName : englishName);
+      setNavigationAnnouncement(T(state.lang, englishName, italianName));
     }
     previousLanguage.current = state.lang;
   }, [activeView, state.lang]);
@@ -115,10 +116,10 @@ const AppContent: React.FC = () => {
   return (
     <div className={'wrap ' + (isGhana ? 'theme-sankofa' : 'theme-italian')} data-curriculum={isGhana ? 'ghana-nacca' : 'italy-national'}>
       <a className="skip-link" href="#app">
-        {state.lang === 'it' ? 'Salta al contenuto principale' : 'Skip to main content'}
+        {T(state.lang, 'Skip to main content', 'Salta al contenuto principale')}
       </a>
       <HUD />
-      <div className="sr-only" data-navigation-announcement="true" aria-live="polite" aria-atomic="true">{navigationAnnouncement ? `${state.lang === 'it' ? 'Sezione: ' : 'Section: '}${navigationAnnouncement}` : ''}</div>
+      <div className="sr-only" data-navigation-announcement="true" aria-live="polite" aria-atomic="true">{navigationAnnouncement ? `${T(state.lang, 'Section: ', 'Sezione: ')}${navigationAnnouncement}` : ''}</div>
       <main id="app" ref={mainRef} tabIndex={-1}>
         {activeView === 'grades' && <GradePicker />}
         {activeView === 'subjects' && <SubjectPickerScreen />}

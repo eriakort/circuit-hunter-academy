@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Language, LearningMissionProgress, Mission } from '../types';
-import { L } from '../helpers';
+import { L, T } from '../helpers';
 
 interface SpacedReviewProps {
   missions: Mission[];
@@ -27,38 +27,36 @@ export const SpacedReview: React.FC<SpacedReviewProps> = ({
   const upcomingItems = allItems.filter(item => item.dueAt > now).slice(0, 3);
   const reviewedThisWeek = allItems.filter(item => now - item.lastReviewedAt <= 7 * 24 * 60 * 60 * 1000).length;
   const nextDue = upcomingItems[0]?.dueAt;
-  const formatDate = (timestamp: number) => new Date(timestamp).toLocaleDateString(isItalian ? 'it-IT' : 'en-CA', {
+  const formatDate = (timestamp: number) => new Date(timestamp).toLocaleDateString(T(lang, 'en-CA', 'it-IT'), {
     month: 'short', day: 'numeric'
   });
 
   return (
-    <section className="spaced-review" aria-label={isItalian ? 'Ripasso dilazionato' : 'Spaced review'}>
+    <section className="spaced-review" aria-label={T(lang, 'Spaced review', 'Ripasso dilazionato')}>
       <div className="spaced-review-heading">
-        <div className="learning-kicker">{isItalian ? 'RICHIAMO NEL TEMPO' : 'RETRIEVAL OVER TIME'}</div>
-        <h3>{isItalian ? 'Ripasso dilazionato' : 'Spaced review'}</h3>
-        <p className="muted">{isItalian
-          ? 'Ripassa al momento giusto: gli intervalli si allungano quando ricordi bene e si accorciano quando serve più pratica.'
-          : 'Review at the right time: intervals grow when you remember well and shorten when a concept needs more practice.'}</p>
+        <div className="learning-kicker">{T(lang, 'RETRIEVAL OVER TIME', 'RICHIAMO NEL TEMPO')}</div>
+        <h3>{T(lang, 'Spaced review', 'Ripasso dilazionato')}</h3>
+        <p className="muted">{T(lang, 'Review at the right time: intervals grow when you remember well and shorten when a concept needs more practice.', 'Ripassa al momento giusto: gli intervalli si allungano quando ricordi bene e si accorciano quando serve più pratica.')}</p>
       </div>
 
       <div className="spaced-review-stats">
         <div className="spaced-review-stat">
           <strong>{dueItems.length}</strong>
-          <span>{isItalian ? 'Da ripassare ora' : 'Due now'}</span>
+          <span>{T(lang, 'Due now', 'Da ripassare ora')}</span>
         </div>
         <div className="spaced-review-stat">
           <strong>{nextDue ? formatDate(nextDue) : '—'}</strong>
-          <span>{isItalian ? 'Prossimo ripasso' : 'Next review'}</span>
+          <span>{T(lang, 'Next review', 'Prossimo ripasso')}</span>
         </div>
         <div className="spaced-review-stat">
           <strong>{reviewedThisWeek}</strong>
-          <span>{isItalian ? 'Ripassati questa settimana' : 'Reviewed this week'}</span>
+          <span>{T(lang, 'Reviewed this week', 'Ripassati questa settimana')}</span>
         </div>
       </div>
 
       {dueItems.length > 0 ? (
         <>
-          <h4 className="spaced-review-subheading">{isItalian ? 'Pronti per il ripasso' : 'Ready to review'}</h4>
+          <h4 className="spaced-review-subheading">{T(lang, 'Ready to review', 'Pronti per il ripasso')}</h4>
           {onStartReviewQueue && (
             <button
               type="button"
@@ -76,12 +74,12 @@ export const SpacedReview: React.FC<SpacedReviewProps> = ({
                   <small>{L(item.mission.title, lang)}</small>
                   <small className="spaced-review-due">
                     {item.dueAt < now
-                      ? (isItalian ? 'In ritardo dal ' : 'Overdue since ') + formatDate(item.dueAt)
-                      : (isItalian ? 'Da ripassare oggi' : 'Due today')}
+                      ? (T(lang, 'Overdue since ', 'In ritardo dal ')) + formatDate(item.dueAt)
+                      : (T(lang, 'Due today', 'Da ripassare oggi'))}
                   </small>
                 </div>
                 <button type="button" className="btn sm" onClick={() => onReviewConcept(item.mission.id, item.concept.id)}>
-                  {isItalian ? 'Inizia ripasso' : 'Start review'}
+                  {T(lang, 'Start review', 'Inizia ripasso')}
                 </button>
               </article>
             ))}
@@ -89,26 +87,24 @@ export const SpacedReview: React.FC<SpacedReviewProps> = ({
         </>
       ) : allItems.length === 0 ? (
         <p className="spaced-review-empty">
-          {isItalian
-            ? 'Il tuo programma di ripasso apparirà qui dopo la prossima prova di maestria.'
-            : 'Your review schedule will appear here after your next mastery assessment.'}
+          {T(lang, 'Your review schedule will appear here after your next mastery assessment.', 'Il tuo programma di ripasso apparirà qui dopo la prossima prova di maestria.')}
         </p>
       ) : (
         <p className="spaced-review-empty">
-          {isItalian ? 'Nessun concetto da ripassare oggi. Ottimo lavoro: controlla i prossimi ripassi qui sotto.' : 'Nothing is due today. Great work — your upcoming reviews are listed below.'}
+          {T(lang, 'Nothing is due today. Great work — your upcoming reviews are listed below.', 'Nessun concetto da ripassare oggi. Ottimo lavoro: controlla i prossimi ripassi qui sotto.')}
         </p>
       )}
 
       {upcomingItems.length > 0 && (
         <>
-          <h4 className="spaced-review-subheading">{isItalian ? 'In programma' : 'Coming up'}</h4>
+          <h4 className="spaced-review-subheading">{T(lang, 'Coming up', 'In programma')}</h4>
           <div className="spaced-review-list">
             {upcomingItems.map(item => (
               <article className="spaced-review-item spaced-review-upcoming" key={item.mission.id + ':' + item.concept.id}>
                 <div>
                   <strong>{L(item.concept.title, lang)}</strong>
                   <small>{L(item.mission.title, lang)}</small>
-                  <small>{isItalian ? 'Previsto per ' : 'Scheduled for '}{formatDate(item.dueAt)}</small>
+                  <small>{T(lang, 'Scheduled for ', 'Previsto per ')}{formatDate(item.dueAt)}</small>
                 </div>
               </article>
             ))}

@@ -315,11 +315,11 @@ export const MapScreen: React.FC = () => {
                         `${doneCount} of ${MY.length} missions completed. Explore each topic, practise new ideas and apply your knowledge to the next challenge.`
                       ]
                     : [
-                        `${doneCount} of ${MY.length} missions cleared. The units are the tabs below; each arc is one chapter, and every arc's first mission is open, so you can start from the chapter you're studying in class.`,
+                        '{done} of {total} missions cleared. The units are the tabs below; each arc is one chapter, and every arc\'s first mission is open, so you can start from the chapter you\'re studying in class.',
                         `${doneCount} missioni superate su ${MY.length}. Le unità sono le schede qui sotto; ogni arco è un capitolo, e la prima missione di ogni arco è già aperta: puoi partire dal capitolo che state studiando in classe.`
                       ],
                   lang
-                )}
+                ).replace('{done}', String(doneCount)).replace('{total}', String(MY.length))}
           </p>
 
           <div className="row" style={{ marginTop: '14px' }}>
