@@ -272,6 +272,34 @@ test('Grade 5 Science includes bilingual self-assessment and workbook practice',
   await expect(page.getByRole('heading', { name: 'STEM: Costruisci un ponte di carta' })).toBeVisible();
 });
 
+test('Grade 5 Science self-assessment compass is interactive and bilingual', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="science"]').click();
+  await page.locator('#regf').waitFor();
+  await page.locator('#nm').fill('Science Explorer');
+  await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
+
+  await page.locator('.units button').nth(4).click();
+  await page.locator('.mcard').first().click();
+  await advanceScene(page);
+
+  await expect(page.getByRole('heading', { name: 'Check In With Your Science Learning' })).toBeVisible();
+  await page.getByRole('button', { name: 'Energy', exact: true }).click();
+  await expect(page.locator('.cl-readout').first()).toContainText('Energy');
+  await page.getByRole('button', { name: 'I want more practice', exact: true }).click();
+  await expect(page.locator('.cl-readout').last()).toContainText('Ask for help');
+
+  await page.locator('#lIT').click();
+  await expect(page.getByRole('heading', { name: 'Fai il punto sulle tue conoscenze scientifiche' })).toBeVisible();
+  await expect(page.locator('.cl-readout').first()).toContainText('Energia');
+  await expect(page.locator('.cl-readout').last()).toContainText('Chiedi aiuto');
+});
+
+
 test('Grade 5 Science knowledge tests show the correct subject in English and Italian', async ({ page }) => {
   await page.goto('/');
   await page.evaluate(() => window.localStorage.clear());
