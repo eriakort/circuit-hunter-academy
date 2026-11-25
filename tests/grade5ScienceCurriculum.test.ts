@@ -5,6 +5,7 @@ import { ARCS, MISSIONS, SUBJECTS, UNITS } from '../src/data/gameData';
 import { GRADE_CURRICULUM_MAP, getCurriculumSubjects } from '../src/data/curriculumSubjects';
 import { ScienceLab } from '../src/components/ScienceLab';
 import { Grade5HumanBodyLab } from '../src/components/Grade5HumanBodyLab';
+import { Grade5ScienceReviewLab } from '../src/components/Grade5ScienceReviewLab';
 import { getVisualHtml } from '../src/data/visuals';
 
 const isBilingualPair = (value: unknown): value is [string, string] =>
@@ -166,6 +167,21 @@ for (const id of [
     const labMarkup = renderToStaticMarkup(React.createElement(Grade5HumanBodyLab, { missionId: id, lang }));
     assert.ok(labMarkup.includes('<svg'), `Human Body lab ${id} (${lang}) must render an illustration`);
     assert.ok(!/\bundefined\b|\bNaN\b/.test(labMarkup), `Human Body lab ${id} (${lang}) must render cleanly`);
+  }
+}
+
+for (const id of [
+  'g5x-science-self-assessment',
+  'g5x-science-workbook-challenge',
+  'g5x-energy-smart-classroom',
+  'g5x-habitat-helper',
+  'g5x-science-fair-capstone',
+  'g5x-stem-paper-bridge'
+]) {
+  for (const lang of ['en', 'it'] as const) {
+    const labMarkup = renderToStaticMarkup(React.createElement(Grade5ScienceReviewLab, { missionId: id, lang }));
+    assert.ok(labMarkup.includes('<svg'), `Science practice lab ${id} (${lang}) must render an illustration`);
+    assert.ok(!/\bundefined\b|\bNaN\b/.test(labMarkup), `Science practice lab ${id} (${lang}) must render cleanly`);
   }
 }
 
