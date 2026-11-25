@@ -94,6 +94,31 @@ test('Grade 5 Science includes the complete bilingual Universe unit', async ({ p
   await expect(page.getByRole('heading', { name: 'STEM: Il pendolo di Foucault' })).toBeVisible();
 });
 
+test('Grade 5 Universe science lab is interactive and bilingual', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="science"]').click();
+  await page.locator('#regf').waitFor();
+  await page.locator('#nm').fill('Sky Explorer');
+  await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
+
+  await page.locator('.units button').nth(1).click();
+  await page.locator('.mcard').first().click();
+  await advanceScene(page);
+
+  await expect(page.getByRole('heading', { name: 'Day Sky or Night Sky?' })).toBeVisible();
+  await page.getByRole('button', { name: 'Day' }).click();
+  await expect(page.getByText('Sun, clouds')).toBeVisible();
+
+  await page.locator('#lIT').click();
+  await expect(page.getByRole('heading', { name: 'Cielo di giorno o cielo di notte?' })).toBeVisible();
+  await page.getByRole('button', { name: 'Notte' }).click();
+  await expect(page.getByText('Luna, stelle')).toBeVisible();
+});
+
 
 test('Grade 5 Science includes the complete bilingual Energy and Forces unit', async ({ page }) => {
   await page.goto('/');
