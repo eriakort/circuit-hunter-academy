@@ -353,3 +353,39 @@ test('Grade 5 Science includes the bilingual Living Things and Ecosystems unit',
   await expect(page.getByRole('heading', { name: 'Proteggere il nostro ambiente' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Diventa scienziata: esplora un habitat' })).toBeVisible();
 });
+
+test('Grade 5 habitat lab explores adaptations interactively in both languages', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('circuit-hunter-academy-curriculum-profile-v1', JSON.stringify({
+      activeCurriculumId: 'italy-national',
+      enabledCurriculumIds: ['italy-national']
+    }));
+    localStorage.setItem('circuit-hunter-academy-v2:italy-national', JSON.stringify({
+      grade: 'grade5',
+      name: 'Habitat Explorer',
+      lang: 'en',
+      xp: 0,
+      subject: 'science',
+      unit: 0,
+      cleared: { 'g5s-ecosystems': true },
+      seen: {},
+      flawless: {},
+      learningProgress: {},
+      grammarProgress: {},
+      v: 5
+    }));
+  });
+  await page.goto('/');
+
+  await page.locator('.units button').nth(5).click();
+  await page.locator('.mcard').nth(1).click();
+  await advanceScene(page);
+
+  await expect(page.getByRole('heading', { name: 'Match an Organism to Its Habitat' })).toBeVisible();
+  await page.getByRole('button', { name: 'Cold Arctic', exact: true }).click();
+  await expect(page.locator('.cl-readout').first()).toContainText('Polar bear');
+
+  await page.locator('#lIT').click();
+  await expect(page.getByRole('heading', { name: 'Abbina un organismo al suo habitat' })).toBeVisible();
+  await expect(page.locator('.cl-readout').first()).toContainText('Orso polare');
+});
