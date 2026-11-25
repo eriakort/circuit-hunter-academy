@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useGame } from '../context/GameContext';
 import { MISSIONS, ARCS, CODEX } from '../data/gameData';
 import { L, PILL, U } from '../helpers';
+import { translateUi } from '../data/uiTranslations';
 import { speakItalian } from '../speech/speechEngine';
 import { ITALIAN_CODEX_SUPPORT } from '../data/italianCodex';
 import type { CodexEntry } from '../types';
@@ -111,8 +112,9 @@ export const CodexScreen: React.FC = () => {
                 {entries.map((e, ei) => {
                   if (isMissionSeen) {
                     const support = supportCodex(e);
-                    const primary = support?.[0] ?? (lang === 'it' ? e[2] : e[1]);
-                    const definition = support?.[1] ?? (lang === 'it' ? e[4] : e[3]);
+                    const sl = (lang === 'pt' || lang === 'es' || lang === 'fr' || lang === 'de') ? lang : undefined;
+                    const primary = support?.[0] ?? (sl ? translateUi(e[1], sl) : undefined) ?? (lang === 'it' ? e[2] : e[1]);
+                    const definition = support?.[1] ?? (sl ? translateUi(e[3], sl) : undefined) ?? (lang === 'it' ? e[4] : e[3]);
                     const isItalianSubject = curSub === 'italian';
                     return (
                       <div className="cx-e" key={ei}>

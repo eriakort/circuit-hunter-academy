@@ -1,4 +1,5 @@
 import type { Language } from '../types';
+import { visualLabel } from './italianQuintaVisualsI18n';
 import { IRREGULAR_VERBS, PERSONS, VERB_TABLES, type Six, type VerbTable } from './italianQuintaVerbTables';
 
 /**
@@ -6,10 +7,10 @@ import { IRREGULAR_VERBS, PERSONS, VERB_TABLES, type Six, type VerbTable } from 
  * dei verbi”) and small reference tables. All HTML is built from constants.
  */
 type Pair = [string, string];
-const t = (pair: Pair, lang: Language) => (lang === 'it' ? pair[1] : pair[0]);
+const t = (pair: Pair, lang: Language) => (lang === 'it' ? pair[1] : visualLabel(pair[0], lang) ?? (lang === 'en' ? pair[0] : pair[1]));
 
 /** Italian grammar terms stay in Italian; in English mode a short gloss is added. */
-const term = (it: string, en: string, lang: Language) => (lang === 'it' ? it : `${it} <small>(${en})</small>`);
+const term = (it: string, en: string, lang: Language) => (lang === 'it' ? it : `${it} <small>(${lang === 'en' ? en : visualLabel(en, lang) ?? en})</small>`);
 
 const GLOSS: Record<string, string> = {
   presente: 'present', imperfetto: 'imperfect', 'passato remoto': 'remote past', 'futuro semplice': 'simple future',

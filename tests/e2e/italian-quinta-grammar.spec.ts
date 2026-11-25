@@ -43,3 +43,19 @@ test('a grammar lesson is bilingual and the verb tables render like the textbook
   await page.locator('#lIT').click();
   await expect(page.locator('figure.itv')).not.toContainText('(indicative)');
 });
+
+test('Grade 5 grammar shows only the support language and Italian in Portuguese', async ({ page }) => {
+  await enterItalian(page, 0);
+  await page.locator('#lPT').click();
+
+  await page.locator('.units button').nth(3).click();
+  await page.locator('.mcard').first().click();
+  await expect(page.getByText(/i mudo/i).first()).toBeVisible();
+  await expect(page.getByText(/silent i/i)).toHaveCount(0);
+
+  await page.locator('#hMap').click();
+  await page.locator('.units button').nth(10).click();
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('figure.itv')).toContainText('fummo');
+  await expect(page.locator('figure.itv')).not.toContainText('(indicative)');
+});
