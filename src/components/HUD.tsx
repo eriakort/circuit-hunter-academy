@@ -2,7 +2,7 @@ import React from 'react';
 import { useGame } from '../context/GameContext';
 import { getCurriculumGradeLevel } from '../data/curricula';
 import { RANKS, SUBJECTS } from '../data/gameData';
-import { L, rankOf, nextRank, esc } from '../helpers';
+import { L, rankOf, nextRank, esc, T } from '../helpers';
 import { getSankofaRank, getSankofaRankProgress } from '../data/sankofaTheme';
 
 export const HUD: React.FC = () => {
@@ -104,7 +104,7 @@ export const HUD: React.FC = () => {
           {!isGhana && (
           <button
             id="lIT"
-            className={lang === 'it' ? 'on' : ''}
+            className={T(lang, '', 'on')}
             aria-pressed={lang === 'it'}
             onClick={() => setLanguage('it')}
           >

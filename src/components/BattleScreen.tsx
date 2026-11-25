@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useGame } from '../context/GameContext';
 import { QuizQuestion, Mission } from '../types';
 import { MISSIONS } from '../data/gameData';
-import { L, demonSVG, HEART, shuffle, U } from '../helpers';
+import { L, demonSVG, HEART, shuffle, U, T } from '../helpers';
 import { speakItalian, startListening, isSpeechRecognitionAvailable, scorePronunciation } from '../speech/speechEngine';
 
 export const BattleScreen: React.FC = () => {
@@ -483,7 +483,7 @@ export const BattleScreen: React.FC = () => {
                   speakItalian(itText, { rate: 0.88 });
                 }}
                 style={{ flexShrink: 0, padding: '4px 10px', fontSize: '13px' }}
-                title={lang === 'it' ? 'Ascolta domanda' : 'Listen to question'}
+                title={T(lang, 'Listen to question', 'Ascolta domanda')}
               >
                 🔊
               </button>

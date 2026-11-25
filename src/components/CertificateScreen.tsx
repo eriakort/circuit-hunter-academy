@@ -2,14 +2,14 @@ import React from 'react';
 import { Flag } from './Flag';
 import { useGame } from '../context/GameContext';
 import { RANKS } from '../data/gameData';
-import { L, demonSVG, esc, rankOf, U } from '../helpers';
+import { L, demonSVG, esc, rankOf, U, T } from '../helpers';
 
 export const CertificateScreen: React.FC = () => {
   const { state, myMissions, goToView, startBattle } = useGame();
   const { lang, name, xp } = state;
 
   const currentRank = rankOf(xp, RANKS);
-  const dateStr = new Date().toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-GB', {
+  const dateStr = new Date().toLocaleDateString(T(lang, 'en-GB', 'it-IT'), {
     day: 'numeric',
     month: 'long',
     year: 'numeric'

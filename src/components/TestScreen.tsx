@@ -9,7 +9,7 @@ import {
   CategoryOption
 } from '../data/questionBank';
 import { FORMULA_CARDS } from '../data/formulaData';
-import { L, shuffle, esc, U } from '../helpers';
+import { L, shuffle, esc, U, T } from '../helpers';
 import { speakItalian } from '../speech/speechEngine';
 
 export const TestScreen: React.FC = () => {
@@ -283,9 +283,9 @@ export const TestScreen: React.FC = () => {
                   speakItalian(itText, { rate: 0.88 });
                 }}
                 style={{ flexShrink: 0, padding: '4px 10px', fontSize: '13px' }}
-                title={lang === 'it' ? 'Ascolta la domanda in italiano' : 'Listen to question in Italian'}
+                title={T(lang, 'Listen to question in Italian', 'Ascolta la domanda in italiano')}
               >
-                🔊 {lang === 'it' ? 'Ascolta' : 'Listen'}
+                🔊 {T(lang, 'Listen', 'Ascolta')}
               </button>
             )}
           </div>
@@ -326,7 +326,7 @@ export const TestScreen: React.FC = () => {
                         const itText = L(rawOpt, 'it');
                         speakItalian(itText, { rate: 0.9 });
                       }}
-                      title={lang === 'it' ? 'Ascolta pronuncia' : 'Listen to pronunciation'}
+                      title={T(lang, 'Listen to pronunciation', 'Ascolta pronuncia')}
                     >
                       🔊
                     </button>

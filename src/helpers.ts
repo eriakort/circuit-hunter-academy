@@ -1,5 +1,6 @@
 import { Language, Rank } from './types';
 import { ICONS } from './data/icons';
+import { translateUi } from './data/uiTranslations';
 
 export const C = {
   ink: '#0e0f22',
@@ -17,17 +18,24 @@ export const C = {
   gold: '#ffd166'
 };
 
+/** Two-language helper for interface text: (language, English, Italian). */
+export const T = (lang: Language, en: string, it: string): string => L([en, it], lang);
+
 export const L = (x: any, lang: Language = 'en'): any => {
   if (x == null) return '';
-  // Legacy [English, Italian] tuple. Italian for 'it'; every other language
-  // (English and all support languages) falls back to the English slot.
+  // Legacy [English, Italian] tuple. Italian for 'it'; support languages use
+  // the translation table (falling back to English only if a string is missing).
   if (Array.isArray(x)) {
     if (lang === 'it') return x[1] ?? x[0] ?? '';
+    // A missing support-language string shows the taught language (Italian),
+    // never English, so only the learner's language and Italian appear.
+    if (lang !== 'en' && typeof x[0] === 'string') return translateUi(x[0], lang) ?? x[1] ?? x[0];
     return x[0] ?? x[1] ?? '';
   }
   // Localized record { en, it, pt?, es?, fr?, de? }: pick the requested
   // language, else fall back to English, then Italian.
   if (typeof x === 'object') {
+    if (lang !== 'en' && lang !== 'it') return x[lang] ?? x.it ?? x.en ?? '';
     return x[lang] ?? x.en ?? x.it ?? '';
   }
   // Plain string: identical in every language (e.g. Italian target text).
