@@ -3,6 +3,7 @@ import { STARE_GERUNDIO_TOPIC } from './italianGrammarPictures';
 import { IMPERATIVE_TOPIC } from './italianGrammarImperative';
 import { COMPARATIVES_TOPIC } from './italianGrammarComparatives';
 import { FUTURE_TOPIC } from './italianGrammarFuture';
+import { localizeLegacyPrompt } from './italianGrammarPromptLocalization';
 import { PAST_CONTRAST_TOPIC } from './italianGrammarPastContrast';
 import { BELLO_QUELLO_TOPIC } from './italianGrammarBelloQuello';
 import { INDEFINITES_TOPIC } from './italianGrammarIndefinites';
@@ -160,6 +161,13 @@ export const ITALIAN_GRAMMAR_TOPICS: GrammarTopic[] = [
   },
 
 ];
+
+// Older topics were written with English and Italian prompts only; add the other four support languages.
+for (const topic of ITALIAN_GRAMMAR_TOPICS) {
+  for (const level of Object.values(topic.levels)) {
+    for (const item of level.exercises) item.prompt = localizeLegacyPrompt(item.prompt);
+  }
+}
 
 export const getGrammarTopic = (id: string): GrammarTopic | undefined =>
   ITALIAN_GRAMMAR_TOPICS.find(topic => topic.id === id);

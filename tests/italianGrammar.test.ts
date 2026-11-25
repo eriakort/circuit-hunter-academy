@@ -131,6 +131,22 @@ for (const level of levels) {
     for (const text of Object.values(item.prompt as Record<string, string>)) assert.ok(!text.toLowerCase().includes(answer + ' ') && !text.toLowerCase().endsWith(answer), `${item.id} prompt gives the answer away`);
   }
 }
+// Every exercise prompt in every topic carries all six languages (older topics were localized later).
+for (const topic of ITALIAN_GRAMMAR_TOPICS) {
+  for (const level of levels) {
+    for (const item of topic.levels[level].exercises) {
+      for (const lang of ['en', 'it', 'pt', 'es', 'fr', 'de'] as const) {
+        assert.ok((item.prompt as Record<string, string>)[lang]?.trim(), `${item.id} prompt needs ${lang}`);
+      }
+      const prompt = item.prompt as Record<string, string>;
+      // The Italian sentence inside a prompt is kept; the instruction around it must be translated.
+      for (const lang of ['es', 'fr', 'de'] as const) {
+        if (/^(Choose|Replace|Which|Look|Combine|Rewrite|What|Past participle|Correct)/.test(prompt.en)) assert.notEqual(prompt[lang], prompt.en, `${item.id} ${lang} prompt must be translated`);
+      }
+      assert.ok(!/\b(Choose|Complete the|Replace|Which)\b/.test(prompt.pt + prompt.es + prompt.fr + prompt.de), `${item.id} support prompts must not contain English instructions`);
+    }
+  }
+}
 // Practice topics: at least 25 unique exercises each, three options, six languages.
 for (const topicId of ['bello-quello', 'indefinites', 'ne', 'irregular-plurals']) {
   const topic = ITALIAN_GRAMMAR_TOPICS.find(entry => entry.id === topicId);
