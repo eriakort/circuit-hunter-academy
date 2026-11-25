@@ -119,6 +119,31 @@ test('Grade 5 Universe science lab is interactive and bilingual', async ({ page 
   await expect(page.getByText('Luna, stelle')).toBeVisible();
 });
 
+test('Grade 5 Energy and Forces science lab is interactive and bilingual', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="science"]').click();
+  await page.locator('#regf').waitFor();
+  await page.locator('#nm').fill('Energy Explorer');
+  await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
+
+  await page.locator('.units button').nth(2).click();
+  await page.locator('.mcard').first().click();
+  await advanceScene(page);
+
+  await expect(page.getByRole('heading', { name: 'Follow the Energy' })).toBeVisible();
+  await page.getByRole('button', { name: 'Circuit' }).click();
+  await expect(page.getByText('Moves through circuit')).toBeVisible();
+
+  await page.locator('#lIT').click();
+  await expect(page.getByRole('heading', { name: 'Segui l’energia' })).toBeVisible();
+  await page.getByRole('button', { name: 'Torcia' }).click();
+  await expect(page.getByText('Esce dalla torcia')).toBeVisible();
+});
+
 
 test('Grade 5 Science includes the complete bilingual Energy and Forces unit', async ({ page }) => {
   await page.goto('/');

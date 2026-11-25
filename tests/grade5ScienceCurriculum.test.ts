@@ -118,6 +118,27 @@ for (const id of [
   }
 }
 
+for (const id of [
+  'g5e-what-is-energy',
+  'g5e-energy-sources',
+  'g5e-electricity',
+  'g5e-light-colours',
+  'g5e-light-phenomena',
+  'g5e-stem-light',
+  'g5e-sound',
+  'g5e-forces',
+  'g5e-magnetism',
+  'g5e-stem-magnets',
+  'g5e-levers',
+  'g5e-geopark-review'
+]) {
+  for (const lang of ['en', 'it'] as const) {
+    const labMarkup = renderToStaticMarkup(React.createElement(ScienceLab, { missionId: id, lang }));
+    assert.ok(labMarkup.includes('<svg'), `Energy and Forces ScienceLab ${id} (${lang}) must render an illustration`);
+    assert.ok(!labMarkup.includes('undefined'), `Energy and Forces ScienceLab ${id} (${lang}) must not contain undefined`);
+  }
+}
+
 console.log(
   'grade5ScienceCurriculum.test.ts ok! Validated 6 units, 6 arcs, and',
   scienceMissions.length,

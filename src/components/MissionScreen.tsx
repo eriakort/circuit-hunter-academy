@@ -380,7 +380,7 @@ export const MissionScreen: React.FC = () => {
       {currentMission.id.startsWith('chem_') && currentSceneIndex === 1 && (
         <ChemistryLab missionId={currentMission.id} lang={lang} />
       )}
-      {(currentMission.id.startsWith('g5s-') || currentMission.id.startsWith('g5u-')) && currentSceneIndex === 1 && (
+      {(currentMission.id.startsWith('g5s-') || currentMission.id.startsWith('g5u-') || currentMission.id.startsWith('g5e-')) && currentSceneIndex === 1 && (
         <ScienceLab missionId={currentMission.id} lang={lang} />
       )}
       {currentMission.id.startsWith('it_') && currentSceneIndex === 1 && (
