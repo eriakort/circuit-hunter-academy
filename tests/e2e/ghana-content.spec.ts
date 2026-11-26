@@ -17,7 +17,7 @@ test('Ghana maths lessons show maths visuals, not computer science, and offer En
   await enterGhana(page, 'ghshs1', 'ghcoremath');
   await expect(page.locator('#lIT')).toHaveCount(0);
   await page.locator('.mcard').first().click();
-  await expect(page.locator('.ghmath-visual')).toContainText('Numbers for Everyday Life');
+  await expect(page.locator('.ghmath-visual')).toContainText('Real Number System Hierarchy');
   await expect(page.locator('main')).not.toContainText(/INFORMATIC/i);
   await expect(page.locator('.eyebrow').first()).toContainText('Topic 1');
 });
