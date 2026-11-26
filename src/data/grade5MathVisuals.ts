@@ -1,6 +1,7 @@
 import type { Language } from '../types';
 import { animateGrade5 } from './mathMotion';
 import { MATH5_BUILDERS } from './mathVisualsG5';
+import { renderGrade5MathTopicDiagram, resolveExistingGrade5VisKey } from './mathVisualsG5Topics';
 
 /**
  * Visual aids for Grade 5 Mathematics lessons (tables of measures, number line,
@@ -124,6 +125,12 @@ export function getGrade5MathVisual(key: string, lang: Language): string | null 
   if (redrawn) return redrawn(lang);
   const render = RENDERERS[key];
   return render ? animateGrade5(key, render(lang)) : null;
+}
+
+export function getGrade5MathMissionVisual(missionId: string, lang: Language): string | null {
+  const existingKey = resolveExistingGrade5VisKey(missionId);
+  if (existingKey) return getGrade5MathVisual(existingKey, lang);
+  return renderGrade5MathTopicDiagram(missionId, lang);
 }
 
 export const GRADE5_MATH_VISUAL_KEYS = [...Object.keys(RENDERERS), ...Object.keys(MATH5_BUILDERS)];

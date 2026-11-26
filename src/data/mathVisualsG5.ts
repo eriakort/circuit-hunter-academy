@@ -95,7 +95,7 @@ export const MATH5_BUILDERS: Record<string, Builder> = {
   /* Cartesian plane: the point A (3, 5) */
   'g5m-cartesian': lang => {
     const p = t2(lang);
-    const x0 = 70, y0 = 292, s = 40;
+    const x0 = 70, y0 = 300, s = 38;
     let grid = '';
     for (let i = 0; i <= 7; i++) {
       grid += `<line x1="${x0 + i * s}" y1="${y0}" x2="${x0 + i * s}" y2="${y0 - 6 * s}" stroke="${C.line}" stroke-width="2"/>${T(x0 + i * s, y0 + 24, String(i), { size: 20, fill: C.muted })}`;
@@ -105,7 +105,7 @@ export const MATH5_BUILDERS: Record<string, Builder> = {
     const sep = lang === 'it' ? '; ' : ', ';
     return frame(p('Cartesian plane', 'Piano cartesiano'),
       `${grid}<line x1="${x0}" y1="${y0}" x2="${x0 + 7 * s + 14}" y2="${y0}" stroke="${C.text}" stroke-width="5" stroke-linecap="round"/><line x1="${x0}" y1="${y0}" x2="${x0}" y2="${y0 - 6 * s - 14}" stroke="${C.text}" stroke-width="5" stroke-linecap="round"/>
-       ${T(x0 + 7 * s + 30, y0 + 8, 'x', { size: 26, weight: 800 })}${T(x0, y0 - 6 * s - 24, 'y', { size: 26, weight: 800 })}
+       ${T(x0 + 7 * s + 30, y0 + 8, 'x', { size: 26, weight: 800 })}${T(x0 + 18, y0 - 6 * s - 14, 'y', { size: 26, weight: 800 })}
        <line x1="${ax}" y1="${y0}" x2="${ax}" y2="${ay}" stroke="${C.ember}" stroke-width="4" stroke-dasharray="8 7"/><line x1="${x0}" y1="${ay}" x2="${ax}" y2="${ay}" stroke="${C.ember}" stroke-width="4" stroke-dasharray="8 7"/>
        <circle cx="${ax}" cy="${ay}" r="11" fill="${C.ember}"/>${T(ax + 20, ay - 12, 'A', { size: 26, fill: C.ember, weight: 800, anchor: 'start' })}
        <circle r="10" fill="${C.gold}" stroke="${C.text}" stroke-width="3"><animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;0.5;1;1" keyTimes="0;0.4;0.8;1" calcMode="linear" path="M${x0} ${y0} H${ax} V${ay}"/></circle>

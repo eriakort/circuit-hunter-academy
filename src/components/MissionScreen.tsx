@@ -17,10 +17,12 @@ import { ScienceLab } from './ScienceLab';
 import { Grade5HumanBodyLab } from './Grade5HumanBodyLab';
 import { Grade5ScienceReviewLab } from './Grade5ScienceReviewLab';
 import { Grade5EcologyLab } from './Grade5EcologyLab';
+import { Grade5MathLab } from './Grade5MathLab';
 import { MOTION_SCENES } from './scienceMotion/registry';
 import { ItalianLab } from './ItalianLab';
 import { ItalianGrammarLab } from './ItalianGrammarLab';
 import { getItalianMissionVisual } from '../data/italianVisuals';
+import { getGrade5MathMissionVisual } from '../data/grade5MathVisuals';
 import { HistoryLab } from './HistoryLab';
 import { GeographyLab } from './GeographyLab';
 import { speakItalian } from '../speech/speechEngine';
@@ -224,6 +226,8 @@ export const MissionScreen: React.FC = () => {
       visualContent = getVisualHtml(sc.vis, lang, currentMission.id);
     } else if (currentMission.id.startsWith('it')) {
       visualContent = getItalianMissionVisual(currentMission.id, lang) || '';
+    } else if (currentMission.id.startsWith('g5m-')) {
+      visualContent = getGrade5MathMissionVisual(currentMission.id, lang) || '';
     }
     if (sc.code) {
       visualContent += (visualContent ? '<div style="height:12px"></div>' : '') + CODE(sc.code, lang);
@@ -378,6 +382,9 @@ export const MissionScreen: React.FC = () => {
       )}
       {(currentMission.id.startsWith('math_l2_') || currentMission.id.startsWith('math_l3_')) && currentSceneIndex === 1 && (
         <MathAdvancedLab missionId={currentMission.id} lang={lang} />
+      )}
+      {currentMission.id.startsWith('g5m-') && currentSceneIndex === 1 && (
+        <Grade5MathLab key={`g5ml-${currentMission.id}`} missionId={currentMission.id} lang={lang} />
       )}
       {(currentMission.id.startsWith('a') || /^c\d/.test(currentMission.id)) && currentSceneIndex === 1 && (
         <ComputerScienceLab missionId={currentMission.id} lang={lang} />
