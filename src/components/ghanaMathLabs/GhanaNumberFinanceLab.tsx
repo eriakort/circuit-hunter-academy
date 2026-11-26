@@ -220,7 +220,8 @@ export const GhanaNumberFinanceLab: React.FC<{ mode: GhanaMathLabMode }> = ({ mo
               width="388"
               height="160"
               rx="14"
-              fill={vennHighlight === 'complement' ? 'rgba(255,209,102,0.14)' : 'rgba(255,255,255,0.03)'}
+              fill={vennHighlight === 'complement' ? 'var(--gold)' : 'var(--panel)'}
+              fillOpacity={vennHighlight === 'complement' ? 0.16 : 1}
               stroke="var(--line)"
               strokeWidth="2.5"
             />
@@ -229,7 +230,8 @@ export const GhanaNumberFinanceLab: React.FC<{ mode: GhanaMathLabMode }> = ({ mo
               cx="165"
               cy="94"
               r="58"
-              fill={vennHighlight === 'union' || vennHighlight === 'aOnly' ? 'rgba(69,216,255,0.28)' : 'rgba(69,216,255,0.12)'}
+              fill="var(--data)"
+              fillOpacity={vennHighlight === 'union' || vennHighlight === 'aOnly' ? 0.28 : 0.12}
               stroke="var(--data)"
               strokeWidth="3"
             />
@@ -237,7 +239,8 @@ export const GhanaNumberFinanceLab: React.FC<{ mode: GhanaMathLabMode }> = ({ mo
               cx="255"
               cy="94"
               r="58"
-              fill={vennHighlight === 'union' ? 'rgba(255,209,102,0.28)' : 'rgba(255,209,102,0.12)'}
+              fill="var(--gold)"
+              fillOpacity={vennHighlight === 'union' ? 0.28 : 0.14}
               stroke="var(--gold)"
               strokeWidth="3"
             />
@@ -246,7 +249,8 @@ export const GhanaNumberFinanceLab: React.FC<{ mode: GhanaMathLabMode }> = ({ mo
               cy="94"
               rx="15"
               ry="38"
-              fill={vennHighlight === 'intersection' ? 'rgba(56,239,125,0.45)' : 'transparent'}
+              fill="var(--good)"
+              fillOpacity={vennHighlight === 'intersection' ? 0.36 : 0}
             />
             <text x="135" y="99" textAnchor="middle" fill="var(--data)" fontSize="20" fontWeight="800">{onlyA}</text>
             <text x="210" y="99" textAnchor="middle" fill="var(--good)" fontSize="20" fontWeight="800">{safeBoth}</text>
@@ -334,7 +338,7 @@ export const GhanaNumberFinanceLab: React.FC<{ mode: GhanaMathLabMode }> = ({ mo
           {subTab === 'modulo' ? (
             <>
               <svg viewBox="0 0 300 185" role="img" aria-label={`Modulo ${modBase} clock showing remainder ${modAns}`}>
-                <circle cx="150" cy="94" r="72" fill="rgba(255,255,255,0.03)" stroke="var(--gold)" strokeWidth="3" />
+                <circle cx="150" cy="94" r="72" fill="var(--panel)" stroke="var(--gold)" strokeWidth="3" />
                 {Array.from({ length: modBase }, (_, k) => {
                   const angle = -Math.PI / 2 + (k * 2 * Math.PI) / modBase;
                   const tx = 150 + Math.cos(angle) * 52;

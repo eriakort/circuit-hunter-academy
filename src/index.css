@@ -1796,6 +1796,139 @@ table.g5m-formulas td:first-child{font-family:inherit;text-align:left}
 .theme-sankofa .rank { color: #76520f; }
 .theme-sankofa :focus-visible { outline-color: #805a12; }
 
+/* Sankofa Math Lab & Diagram Contrast — replace dark navy overlays with warm high-contrast parchment surfaces */
+.theme-sankofa .visual {
+  background: #f2e8d4;
+}
+.theme-sankofa .visual svg.sv {
+  --muted: #49574a;
+  --gold: #7d560f;
+}
+.theme-sankofa .visual svg.sv > rect:first-child {
+  fill: #fcf7eb;
+  stroke: #cbb890;
+}
+.theme-sankofa .math-lab {
+  background: linear-gradient(145deg, #fffdf8, #f7efe0);
+  border: 1px solid #c8b58d;
+  box-shadow: 0 8px 24px rgba(48, 58, 42, .08);
+  color: #26382d;
+}
+.theme-sankofa .ml-kicker { color: #805a12; }
+.theme-sankofa .ml-heading h3 { color: #26382d; }
+.theme-sankofa .ml-heading p,
+.theme-sankofa .ml-stage p { color: #4b594c; }
+.theme-sankofa .ml-stage,
+.theme-sankofa .ml-controls {
+  background: #f5ecda;
+  border: 1px solid #d1bf96;
+  color: #26382d;
+  --muted: #4b594c;
+  --gold: #7d560f;
+}
+.theme-sankofa .ml-control { color: #26382d; }
+.theme-sankofa .ml-control b { color: #1e684b; }
+.theme-sankofa .ml-control small { color: #4b594c; }
+.theme-sankofa .ml-control select {
+  background: #fffaf0;
+  border-color: #c8b58d;
+  color: #26382d;
+}
+.theme-sankofa .ml-control input[type=range] {
+  accent-color: #1e684b;
+  background: transparent;
+}
+.theme-sankofa .ml-control input[type=range]::-webkit-slider-runnable-track {
+  height: 7px;
+  border-radius: 999px;
+  background: #dfd1b3;
+  border: 1px solid #c4b086;
+}
+.theme-sankofa .ml-control input[type=range]::-webkit-slider-thumb {
+  margin-top: -5px;
+}
+.theme-sankofa .ml-control input[type=range]::-moz-range-track {
+  height: 7px;
+  border-radius: 999px;
+  background: #dfd1b3;
+  border: 1px solid #c4b086;
+}
+.theme-sankofa .ml-check { color: #26382d; }
+.theme-sankofa .ml-check input { accent-color: #1e684b; }
+.theme-sankofa .ml-result {
+  background: #fffaf0;
+  border: 1px solid #cbb890;
+}
+.theme-sankofa .ml-result small { color: #4b594c; }
+.theme-sankofa .ml-result strong { color: #1e684b; }
+.theme-sankofa .ml-factor-grid div,
+.theme-sankofa .ml-logic span,
+.theme-sankofa .ml-logic strong,
+.theme-sankofa .ml-quantifiers strong,
+.theme-sankofa .ml-quantifiers span,
+.theme-sankofa .ml-mapping span {
+  background: #fffaf0;
+  border-color: #cbb890;
+  color: #26382d;
+}
+.theme-sankofa .ml-factor-grid b,
+.theme-sankofa .ml-digit { color: #7d560f; }
+.theme-sankofa .ml-factor-grid span { color: #4b594c; }
+.theme-sankofa .ml-logic strong { color: #7d560f; }
+.theme-sankofa .ml-fraction-bar i {
+  background: #fffaf0;
+  border-color: #1e684b;
+}
+.theme-sankofa .ml-fraction-bar i.filled {
+  background: linear-gradient(145deg, #1e684b, #34784e);
+}
+.theme-sankofa .ml-fraction strong,
+.theme-sankofa .ml-power-result,
+.theme-sankofa .ml-digit-sum,
+.theme-sankofa .ml-eq-result,
+.theme-sankofa .ml-decimal { color: #7d560f; }
+.theme-sankofa .ml-percent {
+  background: #e6d9be;
+  border-color: #c8b58d;
+}
+.theme-sankofa .ml-percent div {
+  background: linear-gradient(90deg, #9dd3b5, #e6be6a);
+}
+.theme-sankofa .ml-percent b {
+  color: #1f2e24;
+  text-shadow: 0 1px 0 rgba(255, 250, 240, .85);
+}
+.theme-sankofa .ml-area {
+  background: #fffaf0;
+  border-color: #1e684b;
+}
+.theme-sankofa .ml-area span {
+  background: rgba(30, 104, 75, .14);
+  border-right-color: #1e684b;
+  color: #1e684b;
+}
+.theme-sankofa .ml-area span + span {
+  background: rgba(165, 72, 50, .14);
+  color: #a54832;
+}
+.theme-sankofa .ml-balance > div:first-child {
+  border-bottom-color: #805a12;
+  color: #1e684b;
+}
+.theme-sankofa .ml-balance b { color: #7d560f; }
+.theme-sankofa .math-lab .btn.ghost {
+  background: #fffaf0;
+  color: #1e684b;
+  border-color: #b7a274;
+}
+.theme-sankofa .math-lab .btn.ghost:hover:not(:disabled) {
+  background: #efe4cf;
+}
+.theme-sankofa .ml-footnote {
+  border-top-color: #d4c29b;
+  color: #4b594c;
+}
+
 /* Italian grammar: verb tables (tavole attive dei verbi) */
 .itv{margin:0;display:flex;flex-direction:column;gap:10px}
 .itv figcaption{font-family:var(--display,inherit);font-size:18px;color:var(--sakura);text-align:center}

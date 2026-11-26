@@ -107,13 +107,14 @@ export const GhanaGeometryTrigLab: React.FC<{ mode: GhanaMathLabMode }> = ({ mod
               <svg viewBox="0 0 380 175" role="img" aria-label={`Right triangle with legs ${legA} and ${legB}`}>
                 <polygon
                   points={`90,145 ${90 + legA * 18},145 ${90 + legA * 18},${145 - legB * 10}`}
-                  fill="rgba(56,239,125,0.16)"
+                  fill="var(--good)"
+                  fillOpacity={0.18}
                   stroke="var(--good)"
                   strokeWidth="3.5"
                 />
                 <text x={90 + legA * 9} y="164" textAnchor="middle" fill="var(--data)" fontSize="14" fontWeight="800">a = {legA}</text>
                 <text x={102 + legA * 18} y={145 - legB * 5} fill="var(--ember)" fontSize="14" fontWeight="800">b = {legB}</text>
-                <text x={78 + legA * 7} y={136 - legB * 6} fill="var(--gold)" fontSize="15" fontWeight="800">c = {hyp.toFixed(2)}</text>
+                <text x={80 + legA * 8} y={136 - legB * 6} textAnchor="end" fill="var(--gold)" fontSize="15" fontWeight="800">c = {hyp.toFixed(2)}</text>
               </svg>
               <div className="ml-result" aria-live="polite">
                 <small>{legA}² + {legB}² = {legA * legA} + {legB * legB} = {legA * legA + legB * legB}</small>
@@ -123,7 +124,7 @@ export const GhanaGeometryTrigLab: React.FC<{ mode: GhanaMathLabMode }> = ({ mod
           ) : (
             <>
               <svg viewBox="0 0 380 175" role="img" aria-label={`Regular ${polySides}-sided polygon`}>
-                <polygon points={polyPts} fill="rgba(69,216,255,0.18)" stroke="var(--data)" strokeWidth="3.5" />
+                <polygon points={polyPts} fill="var(--data)" fillOpacity={0.18} stroke="var(--data)" strokeWidth="3.5" />
                 <text x="190" y="98" textAnchor="middle" fill="var(--gold)" fontSize="18" fontWeight="800">{polySides} sides</text>
               </svg>
               <div className="ml-result" aria-live="polite">
@@ -171,8 +172,8 @@ export const GhanaGeometryTrigLab: React.FC<{ mode: GhanaMathLabMode }> = ({ mod
           <svg viewBox="0 0 380 185" role="img" aria-label="Coordinate transformation grid">
             <line x1="20" y1="94" x2="360" y2="94" stroke="var(--muted)" strokeWidth="1.5" />
             <line x1="190" y1="10" x2="190" y2="178" stroke="var(--muted)" strokeWidth="1.5" />
-            <polygon points={obj.map(toSvg).join(' ')} fill="rgba(69,216,255,0.22)" stroke="var(--data)" strokeWidth="3" />
-            <polygon points={img.map(toSvg).join(' ')} fill="rgba(56,239,125,0.25)" stroke="var(--good)" strokeWidth="3" />
+            <polygon points={obj.map(toSvg).join(' ')} fill="var(--data)" fillOpacity={0.22} stroke="var(--data)" strokeWidth="3" />
+            <polygon points={img.map(toSvg).join(' ')} fill="var(--good)" fillOpacity={0.24} stroke="var(--good)" strokeWidth="3" />
           </svg>
           <div className="ml-result" aria-live="polite">
             <small>{ruleLabel}</small>
@@ -207,7 +208,7 @@ export const GhanaGeometryTrigLab: React.FC<{ mode: GhanaMathLabMode }> = ({ mod
       <div className="ml-grid">
         <div className="ml-stage">
           <svg viewBox="0 0 380 175" role="img" aria-label={`Compass bearing ${bearing} degrees and vector (${vecX}, ${vecY})`}>
-            <circle cx="95" cy="92" r="58" fill="rgba(255,255,255,0.03)" stroke="var(--gold)" strokeWidth="3" />
+            <circle cx="95" cy="92" r="58" fill="var(--panel)" stroke="var(--gold)" strokeWidth="3" />
             <line x1="95" y1="92" x2="95" y2="28" stroke="var(--muted)" strokeWidth="2" strokeDasharray="4 3" />
             <text x="95" y="22" textAnchor="middle" fill="var(--gold)" fontSize="13" fontWeight="800">N</text>
             <line x1="95" y1="92" x2={95 + 48 * Math.cos(radB)} y2={92 + 48 * Math.sin(radB)} stroke="var(--ember)" strokeWidth="4" strokeLinecap="round" />
@@ -240,7 +241,7 @@ export const GhanaGeometryTrigLab: React.FC<{ mode: GhanaMathLabMode }> = ({ mod
       <div className="ml-grid">
         <div className="ml-stage">
           <svg viewBox="0 0 380 175" role="img" aria-label={`Right triangle with elevation ${elevDeg} degrees`}>
-            <polygon points={`70,145 290,145 290,${145 - drawH}`} fill="rgba(69,216,255,0.16)" stroke="var(--data)" strokeWidth="3.5" />
+            <polygon points={`70,145 290,145 290,${145 - drawH}`} fill="var(--data)" fillOpacity={0.18} stroke="var(--data)" strokeWidth="3.5" />
             <path d="M 118 145 A 48 48 0 0 0 112 126" fill="none" stroke="var(--ember)" strokeWidth="3.5" />
             <text x="132" y="136" fill="var(--ember)" fontSize="14" fontWeight="800">{elevDeg}°</text>
             <text x="180" y="164" textAnchor="middle" fill="var(--muted)" fontSize="13">Adjacent = {groundDist} m</text>
@@ -333,7 +334,7 @@ export const GhanaGeometryTrigLab: React.FC<{ mode: GhanaMathLabMode }> = ({ mod
             <button type="button" className={circleRule === 'tangent' ? 'btn cyan sm' : 'btn ghost sm'} onClick={() => setCircleRule('tangent')}>Tangent ⊥ Radius</button>
           </div>
           <svg viewBox="0 0 380 175" role="img" aria-label="Interactive circle theorem diagram">
-            <circle cx="190" cy="92" r="66" fill="rgba(69,216,255,0.08)" stroke="var(--data)" strokeWidth="3" />
+            <circle cx="190" cy="92" r="66" fill="var(--panel)" stroke="var(--data)" strokeWidth="3" />
             {circleRule === 'central' && (
               <>
                 <line x1={lx} y1={ly} x2="190" y2="92" stroke="var(--gold)" strokeWidth="3" />
@@ -345,7 +346,7 @@ export const GhanaGeometryTrigLab: React.FC<{ mode: GhanaMathLabMode }> = ({ mod
               </>
             )}
             {circleRule === 'cyclic' && (
-              <polygon points={`${topX},${topY} ${rx},${ry} 190,158 ${lx},${ly}`} fill="rgba(255,209,102,0.16)" stroke="var(--gold)" strokeWidth="3" />
+              <polygon points={`${topX},${topY} ${rx},${ry} 190,158 ${lx},${ly}`} fill="var(--gold)" fillOpacity={0.22} stroke="var(--gold)" strokeWidth="3" />
             )}
             {circleRule === 'tangent' && (
               <>

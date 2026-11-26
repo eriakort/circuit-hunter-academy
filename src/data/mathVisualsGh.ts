@@ -34,14 +34,14 @@ const algebraMotif = () =>
      ${T(320, 40, '=', { size: 34, weight: 800 })}${T(570, 214, 'x = 4', { size: 30, fill: C.good, weight: 800 })}`, '', H);
 
 const geometryMotif = () => {
-  const cx = 480, cy = 122, r = 64;
+  const cx = 480, cy = 128, r = 58;
   return frame('A right triangle and a bearing',
     `<polygon points="60,186 270,186 270,50" fill="${C.good}" fill-opacity="0.14" stroke="${C.good}" stroke-width="5" stroke-linejoin="round"/>
      <path d="M258 186 V174 H270" fill="none" stroke="${C.text}" stroke-width="3"/>
      <path d="M110 186 A50 50 0 0 0 103 162" fill="none" stroke="${C.ember}" stroke-width="5"/>${T(132, 176, 'θ', { size: 30, fill: C.ember, weight: 800 })}
      ${T(138, 98, 'hyp', { size: 22, fill: C.muted })}${T(165, 214, 'adj', { size: 22, fill: C.muted })}${T(296, 126, 'opp', { size: 22, fill: C.muted, anchor: 'start' })}
      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${C.gold}" stroke-width="5"/>
-     <line x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy - r - 10}" stroke="${C.text}" stroke-width="4" stroke-dasharray="6 6"/>${T(cx, 30, 'N', { size: 30, weight: 800 })}
+     <line x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy - r - 10}" stroke="${C.text}" stroke-width="4" stroke-dasharray="6 6"/>${T(cx, 40, 'N', { size: 24, weight: 800 })}
      <g transform="translate(${cx} ${cy})"><line x1="0" y1="0" x2="0" y2="${-r}" stroke="${C.ember}" stroke-width="6" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" values="0;0;70;70;0" keyTimes="0;0.1;0.5;0.85;1" dur="6s" repeatCount="indefinite"/></line></g>
      <circle cx="${cx}" cy="${cy}" r="6" fill="${C.text}"/>${T(cx, 222, 'bearing', { size: 22, fill: C.muted })}`, '', H + 4);
 };
