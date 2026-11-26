@@ -11,6 +11,7 @@ import { MathGeometryLab } from './MathGeometryLab';
 import { MathAdvancedLab } from './MathAdvancedLab';
 import { ComputerScienceLab } from './ComputerScienceLab';
 import { GhanaComputingLab } from './GhanaComputingLab';
+import { GhanaMathLab } from './GhanaMathLab';
 import { ChemistryLab } from './ChemistryLab';
 import { ScienceLab } from './ScienceLab';
 import { Grade5HumanBodyLab } from './Grade5HumanBodyLab';
@@ -218,7 +219,7 @@ export const MissionScreen: React.FC = () => {
         'dia'
       )}</div></div>`;
     } else if (sc.vis) {
-      visualContent = getVisualHtml(sc.vis, lang);
+      visualContent = getVisualHtml(sc.vis, lang, currentMission.id);
     }
     if (sc.code) {
       visualContent += (visualContent ? '<div style="height:12px"></div>' : '') + CODE(sc.code, lang);
@@ -379,6 +380,9 @@ export const MissionScreen: React.FC = () => {
       )}
       {currentMission.id.startsWith('gh-jhs1-computing-') && currentSceneIndex === 1 && (
         <GhanaComputingLab key={currentMission.id} missionId={currentMission.id} />
+      )}
+      {currentSceneIndex === 1 && (
+        <GhanaMathLab key={`gml-${currentMission.id}`} missionId={currentMission.id} />
       )}
       {currentMission.id.startsWith('chem_') && currentSceneIndex === 1 && (
         <ChemistryLab missionId={currentMission.id} lang={lang} />

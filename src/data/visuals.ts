@@ -885,7 +885,7 @@ for (const [key, build] of Object.entries(PHYS_VISUAL_BUILDERS)) VIS[key] = () =
 // Italian Grade 9 Maths diagrams redrawn in mathVisualsG9.ts.
 for (const [key, build] of Object.entries(MATH9_BUILDERS)) VIS[key] = () => build(currentLang);
 
-export function getVisualHtml(key: string, lang: Language): string {
+export function getVisualHtml(key: string, lang: Language, missionId?: string): string {
   currentLang = lang;
   if (VIS[key]) return animateVisual(VIS[key]());
   const grade5Math = getGrade5MathVisual(key, lang);
@@ -898,7 +898,7 @@ export function getVisualHtml(key: string, lang: Language): string {
   if (mathAdvVisual !== null) return mathAdvVisual;
   const ghanaComputing = getGhanaComputingVisual(key);
   if (ghanaComputing !== null) return ghanaComputing;
-  const ghanaMath = getGhanaMathVisual(key);
+  const ghanaMath = getGhanaMathVisual(key, missionId);
   if (ghanaMath !== null) return ghanaMath;
   const italianQuinta = getItalianQuintaVisual(key, lang);
   if (italianQuinta !== null) return italianQuinta;

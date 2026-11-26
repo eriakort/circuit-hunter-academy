@@ -7,6 +7,7 @@
  */
 
 import { GHANA_MOTIFS } from './mathVisualsGh';
+import { renderGhanaMathTopicDiagram } from './mathVisualsGhTopics';
 
 export type GhanaMathStrand = 'number' | 'algebra' | 'geometry' | 'data' | 'mastery';
 
@@ -21,15 +22,19 @@ export const GHANA_MATH_STRANDS: Record<GhanaMathStrand, { title: string; captio
 
 export const GHANA_MATH_VISUAL_KEYS = ['ghmath', 'ghmath-number', 'ghmath-algebra', 'ghmath-geometry', 'ghmath-data', 'ghmath-mastery'];
 
-export function getGhanaMathVisual(key: string): string | null {
+export function getGhanaMathVisual(key: string, missionId?: string): string | null {
   if (!GHANA_MATH_VISUAL_KEYS.includes(key)) return null;
   const strand = (key === 'ghmath' ? 'mastery' : key.slice('ghmath-'.length)) as GhanaMathStrand;
   const info = GHANA_MATH_STRANDS[strand];
+  const topicDiagram = missionId ? renderGhanaMathTopicDiagram(missionId) : null;
+  const svg = topicDiagram ? topicDiagram.svg : GHANA_MOTIFS[strand]();
+  const title = topicDiagram ? topicDiagram.title : info.title;
+  const caption = topicDiagram ? topicDiagram.caption : info.caption;
   return `<figure class="ghmath-visual" data-strand="${strand}" style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px">
-    ${GHANA_MOTIFS[strand]()}
+    ${svg}
     <figcaption style="text-align:center">
-      <div style="font-family:var(--display, Georgia, serif);font-size:22px;color:var(--good)">${info.title}</div>
-      <div class="muted" style="font-size:16px">${info.caption}</div>
+      <div style="font-family:var(--display, Georgia, serif);font-size:22px;color:var(--good)">${title}</div>
+      <div class="muted" style="font-size:16px">${caption}</div>
     </figcaption>
   </figure>`;
 }
