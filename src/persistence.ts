@@ -47,6 +47,9 @@ const VALID_GRAMMAR_ACTIVITY_IDS = new Set([
 export const isValidGrammarActivityId = (value: unknown): value is string =>
   typeof value === 'string' && VALID_GRAMMAR_ACTIVITY_IDS.has(value);
 
+const isFiniteNonNegative = (value: unknown): value is number =>
+  typeof value === 'number' && Number.isFinite(value) && value >= 0;
+
 export const sanitizeGrammarProgress = (value: unknown): NonNullable<GameState['grammarProgress']> => {
   if (!isRecord(value)) return {};
   return Object.fromEntries(Object.entries(value).flatMap(([id, entry]) => {
@@ -59,9 +62,6 @@ export const sanitizeGrammarProgress = (value: unknown): NonNullable<GameState['
     return [[id, { attempts: attempts as number, correct, xpAwarded, ...(completedAt !== undefined ? { completedAt: completedAt as number } : {}) }]];
   }));
 };
-
-const isFiniteNonNegative = (value: unknown): value is number =>
-  typeof value === 'number' && Number.isFinite(value) && value >= 0;
 
 const sanitizeLearningMissionProgress = (value: unknown, mission: typeof MISSIONS[number]) => {
   if (!isRecord(value) || !mission.learning) return null;

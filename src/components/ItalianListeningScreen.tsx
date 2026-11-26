@@ -126,7 +126,7 @@ export const ItalianListeningScreen: React.FC = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <section className="card" style={{ border: '1px solid rgba(0,146,70,.35)', background: 'linear-gradient(135deg, rgba(17,25,54,.96), rgba(0,146,70,.10) 58%, rgba(206,43,55,.08)' }}>
+      <section className="card" style={{ border: '1px solid rgba(0,146,70,.35)', background: 'linear-gradient(135deg, rgba(17,25,54,.96), rgba(0,146,70,.10) 58%, rgba(206,43,55,.08))' }}>
         <div className="eyebrow" style={{ color: '#4ade80' }}><Flag country="IT" /> {T('eyebrow')}</div>
         <h1 style={{ margin: '5px 0 8px', fontSize: 26 }}>{T('title')}</h1>
         <p className="muted" style={{ margin: 0, lineHeight: 1.6 }}>{T('subtitle')}</p>

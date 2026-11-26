@@ -2,14 +2,18 @@ import React from 'react';
 import { Flag } from './Flag';
 import { useGame } from '../context/GameContext';
 import { RANKS } from '../data/gameData';
-import { L, demonSVG, esc, rankOf, U, T } from '../helpers';
+import { getSankofaRank, isSankofaCurriculum } from '../data/sankofaTheme';
+import { uiLocale } from '../data/missionUi';
+import { L, demonSVG, esc, rankOf, U } from '../helpers';
 
 export const CertificateScreen: React.FC = () => {
-  const { state, myMissions, goToView, startBattle } = useGame();
+  const { state, curriculumProfile, myMissions, goToView, startBattle } = useGame();
   const { lang, name, xp } = state;
+  const isGhana = isSankofaCurriculum(curriculumProfile.activeCurriculumId);
 
   const currentRank = rankOf(xp, RANKS);
-  const dateStr = new Date().toLocaleDateString(T(lang, 'en-GB', 'it-IT'), {
+  const displayedRank = isGhana ? getSankofaRank(xp).title : L(currentRank[1], lang);
+  const dateStr = new Date().toLocaleDateString(uiLocale(lang), {
     day: 'numeric',
     month: 'long',
     year: 'numeric'
@@ -21,7 +25,7 @@ export const CertificateScreen: React.FC = () => {
     <>
       <div className="cert">
         <div className="eyebrow">
-          Circuit Hunter Academy · {L(['Certificate of mastery', 'Diploma di maestria'], lang)}
+          {isGhana ? 'Sankofa Knowledge Quest' : 'Circuit Hunter Academy'} · {L(['Certificate of mastery', 'Diploma di maestria'], lang)}
         </div>
 
         <div style={{ width: 'min(200px, 50%)', margin: '0 auto' }}>
@@ -33,19 +37,21 @@ export const CertificateScreen: React.FC = () => {
         </div>
 
         <p>
-          {L(
-            [
-              `All ${missions.length} missions cleared and every Glitch Demon sealed by`,
-              `Tutte le ${missions.length} missioni superate e tutti i Demoni Glitch sigillati da`
-            ],
-            lang
-          )}
+          {isGhana
+            ? `All ${missions.length} missions cleared and every learning challenge completed by`
+            : L(
+                [
+                  `All ${missions.length} missions cleared and every Glitch Demon sealed by`,
+                  `Tutte le ${missions.length} missioni superate e tutti i Demoni Glitch sigillati da`
+                ],
+                lang
+              )}
         </p>
 
         <div className="nm">{esc(name)}</div>
 
         <p className="rank" style={{ fontSize: '15px' }}>
-          {L(currentRank[1], lang)} · {xp} XP
+          {displayedRank} · {xp} {isGhana ? 'Wisdom points' : 'XP'}
         </p>
         <p className="muted">{dateStr}</p>
 
@@ -99,13 +105,15 @@ export const CertificateScreen: React.FC = () => {
 
       <div className="card" style={{ marginTop: '18px' }}>
         <p>
-          {L(
-            [
-              'You have cleared every mission in this subject. Keep it fresh with a few rounds in the Dojo each week, look through the Codex before tests — and try the other subject from Subjects at the top.',
-              "Hai superato ogni missione di questa materia. Tieniti in allenamento con qualche round nel Dojo ogni settimana, sfoglia il Glossario prima delle verifiche — e prova l'altra materia da Materie in alto."
-            ],
-            lang
-          )}
+          {isGhana
+            ? 'You have completed every mission in this subject. Keep your skills sharp with practice rounds in the Dojo, review the Glossary before assessments, and explore other subjects from Subjects at the top.'
+            : L(
+                [
+                  'You have cleared every mission in this subject. Keep it fresh with a few rounds in the Dojo each week, look through the Codex before tests — and try the other subject from Subjects at the top.',
+                  "Hai superato ogni missione di questa materia. Tieniti in allenamento con qualche round nel Dojo ogni settimana, sfoglia il Glossario prima delle verifiche — e prova l'altra materia da Materie in alto."
+                ],
+                lang
+              )}
         </p>
 
         <div className="row" style={{ marginTop: '12px' }}>

@@ -45,7 +45,7 @@ export const MapScreen: React.FC = () => {
 
   const curSub = subject || 'cs';
   const currentSubjectData = SUBJECTS.find(s => s.id === curSub) || SUBJECTS[0];
-  const titleSvgHtml = curSub === 'math' || curSub === 'math5' || curSub === 'math10' || curSub === 'math11' || curSub === 'science' || curSub === 'italian' || curSub === 'chem' || curSub === 'chem10' || curSub === 'chem11' || curSub.startsWith('hist') || curSub.startsWith('geo') || curSub.startsWith('ghcoremath') || curSub === 'ghjhs1computing' || curSub === 'ghcomputing' || curSub === 'ghcomputing2' || curSub === 'ghcomputing3' ? currentSubjectData.art : curSub === 'phys' ? getVisualHtml('titlePhys', lang) : getVisualHtml('title', lang);
+  const titleSvgHtml = curSub === 'math' || curSub === 'math5' || curSub === 'math10' || curSub === 'math11' || curSub === 'science' || curSub === 'italian' || curSub === 'chem' || curSub === 'chem10' || curSub === 'chem11' || curSub.startsWith('hist') || curSub.startsWith('geo') || curSub.startsWith('ghcoremath') || curSub.startsWith('ghjhs') || curSub === 'ghcomputing' || curSub === 'ghcomputing2' || curSub === 'ghcomputing3' ? currentSubjectData.art : curSub === 'phys' ? getVisualHtml('titlePhys', lang) : getVisualHtml('title', lang);
 
   // If player hasn't entered a name yet
   if (!name) {
@@ -479,7 +479,7 @@ export const MapScreen: React.FC = () => {
           onReviewConcept={(missionId, conceptId) => {
             const mission = MY.find(item => item.id === missionId);
             const concept = mission?.learning?.concepts.find(item => item.id === conceptId);
-            if (mission && concept) setRevisionTarget({ mission, concept });
+            if (mission && concept) startSingleRevision({ mission, concept });
           }}
         />
         <div className="learning-dashboard-next adaptive-recommendation" data-recommendation={adaptiveRecommendation.kind}>

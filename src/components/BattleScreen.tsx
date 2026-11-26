@@ -8,6 +8,7 @@ import { speakItalian, startListening, isSpeechRecognitionAvailable, scorePronun
 export const BattleScreen: React.FC = () => {
   const {
     state,
+    curriculumProfile,
     currentMission,
     battleContext,
     clearMission,
@@ -18,6 +19,7 @@ export const BattleScreen: React.FC = () => {
   } = useGame();
 
   const { lang, cleared } = state;
+  const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
   const isDojo = battleContext?.isDojo || false;
 
   // Keep the synthetic Dojo mission stable across battle-state renders.
@@ -245,15 +247,17 @@ export const BattleScreen: React.FC = () => {
             }}
           />
         </div>
-        <h2>{L(['The demon escaped', 'Il demone è fuggito'], lang)}</h2>
+        <h2>{isGhana ? 'Challenge incomplete' : L(['The demon escaped', 'Il demone è fuggito'], lang)}</h2>
         <p className="muted" style={{ maxWidth: '52ch', margin: '0 auto' }}>
-          {L(
-            [
-              "Your spirit ran out. Every hunter retreats sometimes, and every question you missed was explained, so you're stronger now. Try again, or review the lesson first.",
-              'Il tuo spirito si è esaurito. Ogni cacciatrice a volte si ritira, e ogni domanda sbagliata è stata spiegata: ora sei più forte. Riprova, oppure ripassa prima la lezione.'
-            ],
-            lang
-          )}
+          {isGhana
+            ? 'Your focus ran out, and every question you missed was explained so you are ready now. Try again, or review the lesson first.'
+            : L(
+                [
+                  "Your spirit ran out. Every hunter retreats sometimes, and every question you missed was explained, so you're stronger now. Try again, or review the lesson first.",
+                  'Il tuo spirito si è esaurito. Ogni cacciatrice a volte si ritira, e ogni domanda sbagliata è stata spiegata: ora sei più forte. Riprova, oppure ripassa prima la lezione.'
+                ],
+                lang
+              )}
         </p>
         <div className="row" style={{ justifyContent: 'center', marginTop: '16px' }}>
           <button
@@ -346,9 +350,9 @@ export const BattleScreen: React.FC = () => {
 
     return (
       <div className="card result">
-        <div className="eyebrow">{L(['Demon defeated', 'Demone sconfitto'], lang)}</div>
+        <div className="eyebrow">{isGhana ? 'Challenge completed' : L(['Demon defeated', 'Demone sconfitto'], lang)}</div>
         <h2>
-          {L(activeMission.demon, lang)} {L(['is sealed!', 'è sigillato!'], lang)}
+          {isGhana ? 'Knowledge quest complete!' : <>{L(activeMission.demon, lang)} {L(['is sealed!', 'è sigillato!'], lang)}</>}
         </h2>
 
         {flawless && (
@@ -358,19 +362,19 @@ export const BattleScreen: React.FC = () => {
           </div>
         )}
 
-        <p>{L(['Technique learned', 'Tecnica appresa'], lang)}</p>
+        <p>{isGhana ? 'Discovery unlocked' : L(['Technique learned', 'Tecnica appresa'], lang)}</p>
         <div className="tech">{L(activeMission.tech, lang)}</div>
 
         <p className="muted">
           {first
-            ? `+${gained} XP${
+            ? `+${gained} ${isGhana ? 'Wisdom points' : 'XP'}${
                 flawless
                   ? L([' (including +25 flawless bonus)', ' (compreso il bonus perfezione +25)'], lang)
                   : ''
               }`
             : L(
                 [
-                  'Replay complete. XP is only awarded the first time.',
+                  `Replay complete. ${isGhana ? 'Wisdom points are' : 'XP is'} only awarded the first time.`,
                   'Replay completato. I punti XP si ottengono solo la prima volta.'
                 ],
                 lang
@@ -402,9 +406,9 @@ export const BattleScreen: React.FC = () => {
     <div id="arena" className={`arena ${arenaOuch ? 'ouch' : ''}`}>
       <div className="foe-band">
         <div className="who-foe">
-          <b>{L(activeMission.demon, lang)}</b>
+          <b>{isGhana ? L(activeMission.title, lang) : L(activeMission.demon, lang)}</b>
           <small className="muted">
-            {L(['Glitch Demon', 'Demone Glitch'], lang)} · {hp}/{maxHp}
+            {isGhana ? 'Sankofa Challenge' : L(['Glitch Demon', 'Demone Glitch'], lang)} · {hp}/{maxHp}
           </small>
         </div>
 
@@ -573,7 +577,7 @@ export const BattleScreen: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      <b>{L(['The demon strikes back!', 'Il demone contrattacca!'], lang)}</b> {L(
+                      <b>{isGhana ? 'Not quite right!' : L(['The demon strikes back!', 'Il demone contrattacca!'], lang)}</b> {L(
                         ['Your focus breaks and the chain resets.', 'La concentrazione si spezza e la catena si azzera.'], lang
                       )} {L(['The answer is', 'La risposta è'], lang)} "{L(currentQ.a[feedback.correctAnswerIndex], lang)}". {L(currentQ.why, lang)}
                       <br /><span className="muted">{L(

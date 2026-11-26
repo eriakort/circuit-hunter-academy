@@ -102,7 +102,7 @@ export const ItalianGrammarScreen: React.FC = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <section className="card" style={{ border: '1px solid rgba(0, 146, 70, 0.35)', background: 'linear-gradient(135deg, rgba(17,25,54,.96), rgba(0,146,70,.10) 58%, rgba(206,43,55,.08)' }}>
+      <section className="card" style={{ border: '1px solid rgba(0, 146, 70, 0.35)', background: 'linear-gradient(135deg, rgba(17,25,54,.96), rgba(0,146,70,.10) 58%, rgba(206,43,55,.08))' }}>
         <div className="eyebrow" style={{ color: '#4ade80' }}><Flag country="IT" /> {L(GRAMMAR_UI.eyebrow, lang)}</div>
         <h1 style={{ margin: '5px 0 8px', fontSize: '26px' }}>{L(GRAMMAR_UI.heroTitle, lang)}</h1>
         <p className="muted" style={{ margin: 0, lineHeight: 1.6 }}>
@@ -204,7 +204,7 @@ export const ItalianGrammarScreen: React.FC = () => {
           <div role="status" aria-live="polite" style={{ marginTop: 14, padding: 14, borderRadius: 10, border: '1px solid ' + (selectedAnswer === question.answer ? 'rgba(74,222,128,.45)' : 'rgba(248,113,113,.45)'), background: selectedAnswer === question.answer ? 'rgba(34,197,94,.08)' : 'rgba(248,113,113,.08)' }}>
             <strong>{selectedAnswer === question.answer ? L(GRAMMAR_UI.correct, lang) : L(GRAMMAR_UI.notQuiteRule, lang)}</strong>
             <p style={{ margin: '6px 0 0', lineHeight: 1.55 }}>{L(question.explanation, lang)}</p>
-            <button type="button" className="btn sm" style={{ marginTop: 12 }} onClick={nextQuestion}>{L(GRAMMAR_UI.nextExercise)} →</button>
+            <button type="button" className="btn sm" style={{ marginTop: 12 }} onClick={nextQuestion}>{L(GRAMMAR_UI.nextExercise, lang)} →</button>
           </div>
         )}
       </section>

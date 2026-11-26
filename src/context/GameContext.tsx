@@ -6,6 +6,7 @@ import { GRADE_SUBJECT_IDS } from '../data/gradeData';
 import { isMissionOpen, isValidXpAward } from '../missionAccess';
 import { NAVIGATION_KEY, SAVE_KEY, SAVE_SCHEMA, createFreshProgressState, isValidCheckpointResult, isValidGrammarActivityId, restoreSavedNavigation, sanitizeGameState, SavedNavigation } from '../persistence';
 import { DEFAULT_CURRICULUM_ID, type CurriculumId } from '../data/curricula';
+import { getCurriculumSubjects } from '../data/curriculumSubjects';
 import { getCurriculumContentLanguage } from '../data/curriculumLanguage';
 import { CURRICULUM_PROFILE_KEY, createDefaultCurriculumProfile, getCurriculumNavigationKey, getCurriculumSaveKey, migrateLegacyItalianSave, sanitizeCurriculumProfile, switchActiveCurriculum, type CurriculumProfile } from '../data/curriculumProfile';
 
@@ -195,10 +196,9 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const setGrade = (grade: GradeId) => {
     const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
-    if (isGhana && !['ghjhs1', 'ghjhs2', 'ghjhs3', 'ghshs1', 'ghshs2', 'ghshs3'].includes(grade)) return;
-    const allowedSubjects = isGhana
-      ? (grade === 'ghjhs1' ? ['ghjhs1math', 'ghjhs1science', 'ghjhs1computing'] : grade === 'ghjhs2' ? ['ghjhs2math', 'ghjhs2science'] : grade === 'ghjhs3' ? ['ghjhs3math', 'ghjhs3science'] : grade === 'ghshs1' ? ['ghcoremath', 'ghcomputing'] : grade === 'ghshs2' ? ['ghcoremath2', 'ghcomputing2'] : grade === 'ghshs3' ? ['ghcoremath3', 'ghcomputing3'] : [])
-      : GRADE_SUBJECT_IDS[grade];
+    const ghanaSubjects = isGhana ? getCurriculumSubjects(grade, 'ghana-nacca').map(item => item.id) : [];
+    if (isGhana && ghanaSubjects.length === 0) return;
+    const allowedSubjects = isGhana ? ghanaSubjects : GRADE_SUBJECT_IDS[grade];
     const subject = allowedSubjects.includes(state.subject)
       ? state.subject
       : (allowedSubjects[0] || 'cs') as SubjectId;
@@ -221,7 +221,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const activeGrade = state.grade || 'grade9';
     const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
     const isAllowed = isGhana
-      ? (activeGrade === 'ghjhs1' && (sub === 'ghjhs1math' || sub === 'ghjhs1science' || sub === 'ghjhs1computing')) || (activeGrade === 'ghjhs2' && (sub === 'ghjhs2math' || sub === 'ghjhs2science')) || (activeGrade === 'ghjhs3' && (sub === 'ghjhs3math' || sub === 'ghjhs3science')) || (activeGrade === 'ghshs1' && (sub === 'ghcoremath' || sub === 'ghcomputing')) || (activeGrade === 'ghshs2' && (sub === 'ghcoremath2' || sub === 'ghcomputing2')) || (activeGrade === 'ghshs3' && (sub === 'ghcoremath3' || sub === 'ghcomputing3'))
+      ? getCurriculumSubjects(activeGrade, 'ghana-nacca').some(item => item.id === sub)
       : GRADE_SUBJECT_IDS[activeGrade]?.includes(sub);
     if (!isAllowed) return;
     const firstUnit = UNITS.findIndex(u => (u.subject || 'cs') === sub);

@@ -5,18 +5,22 @@ import { L, PILL, U } from '../helpers';
 import { translateUi } from '../data/uiTranslations';
 import { speakItalian } from '../speech/speechEngine';
 import { ITALIAN_CODEX_SUPPORT } from '../data/italianCodex';
+import { getCurriculumSubjects } from '../data/curriculumSubjects';
 import type { CodexEntry } from '../types';
 
 export const CodexScreen: React.FC = () => {
   const { state, curriculumProfile } = useGame();
   const isGhana = curriculumProfile.activeCurriculumId === 'ghana-nacca';
-  const { lang, subject, seen } = state;
+  const { lang, subject, grade, seen } = state;
   // Italian Codex entries in the learner's support language (PT/ES/FR/DE), when available.
   const supportCodex = (e: CodexEntry): [string, string] | undefined =>
     (lang === 'pt' || lang === 'es' || lang === 'fr' || lang === 'de') ? ITALIAN_CODEX_SUPPORT[e[1]]?.[lang] : undefined;
   const [searchQuery, setSearchQuery] = useState('');
 
   const curSub = subject || 'cs';
+  const ghanaSubjectTitle = isGhana
+    ? (getCurriculumSubjects(grade, 'ghana-nacca').find(item => item.id === curSub)?.name as string | undefined) || 'Subject'
+    : '';
   const hasSubjectTerms = CODEX.some(e => {
     const mi = typeof e[0] === 'number' ? e[0] : MISSIONS.findIndex(m => m.id === e[0]);
     return mi >= 0 && (ARCS[MISSIONS[mi]?.arc]?.subject || 'cs') === curSub;
@@ -39,7 +43,7 @@ export const CodexScreen: React.FC = () => {
       <div className="mhead">
         <div>
           <div className="eyebrow">
-            {isGhana ? 'Core Mathematics glossary' : L(
+            {isGhana ? `${ghanaSubjectTitle} glossary` : L(
               {
                 en: "Hunter's Codex · English + Italiano",
                 it: 'Glossario della cacciatrice · Italiano + English',
@@ -56,7 +60,7 @@ export const CodexScreen: React.FC = () => {
       </div>
 
       <p className="muted" style={{ maxWidth: '62ch' }}>
-        {isGhana ? 'Key mathematics terms appear here when you open the mission that teaches them.' : L(
+        {isGhana ? `Key ${ghanaSubjectTitle} terms appear here when you open the mission that teaches them.` : L(
           {
             en: 'Every key term, with its Italian name. Terms unlock when you open the mission that teaches them.',
             it: 'Tutti i termini chiave, con il nome in inglese. Si sbloccano quando apri la missione che li spiega.',
@@ -83,7 +87,7 @@ export const CodexScreen: React.FC = () => {
 
       <div id="cxl" style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
         {isGhana && !hasSubjectTerms && (
-          <p className="muted" data-testid="codex-empty">The Core Mathematics glossary is still being prepared. Use the Formulas page for rules and worked examples.</p>
+          <p className="muted" data-testid="codex-empty">The {ghanaSubjectTitle} glossary is still being prepared. {curSub.includes('math') ? 'Use the Formulas page for rules and worked examples.' : 'Use the Missions page to review lesson concepts and worked examples.'}</p>
         )}
         {!anyMatch && (
           <p className="muted">{L({ en: 'No unlocked terms match your search.', it: 'Nessun termine sbloccato corrisponde alla ricerca.', pt: 'Nenhum termo desbloqueado corresponde à pesquisa.', es: 'Ningún término desbloqueado coincide con tu búsqueda.', fr: 'Aucun terme débloqué ne correspond à ta recherche.', de: 'Kein freigeschalteter Begriff passt zu deiner Suche.' }, lang)}</p>

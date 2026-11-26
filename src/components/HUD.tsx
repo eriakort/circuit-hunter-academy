@@ -104,7 +104,7 @@ export const HUD: React.FC = () => {
           {!isGhana && (
           <button
             id="lIT"
-            className={T(lang, '', 'on')}
+            className={lang === 'it' ? 'on' : ''}
             aria-pressed={lang === 'it'}
             onClick={() => setLanguage('it')}
           >
