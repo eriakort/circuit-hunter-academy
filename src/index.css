@@ -1177,10 +1177,27 @@ body{overflow-x:hidden}
 .csl-mini-table{width:100%;border-collapse:collapse;font-size:13px}
 .csl-mini-table th,.csl-mini-table td{padding:7px;border:1px solid var(--line);text-align:left}
 .csl-mini-table th{background:rgba(106,209,255,.12)}
+.csl-trace-table{max-width:560px}
+.csl-ranked-list{display:flex;flex-direction:column;gap:7px;margin:0;padding:0;list-style:none}
+.csl-ranked-list li{display:grid;grid-template-columns:30px minmax(0,1fr) auto;align-items:center;gap:9px;padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--panel2);font-size:13px}
+.csl-ranked-list li>b{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(106,209,255,.14);color:var(--data)}
+.csl-ranked-list li small{color:var(--muted)}
+.csl-choice-actions{flex-direction:column}
+.csl-feedback{padding:10px;border:1px solid var(--line);border-radius:8px}
+.csl-feedback-good{border-color:var(--good);background:rgba(75,227,154,.1)}
+.csl-feedback-try{border-color:var(--gold);background:rgba(255,209,102,.1)}
+.csl-list-item{display:flex;flex-direction:column;align-items:center;min-width:42px;padding:6px;border:1px solid var(--line);border-radius:6px;background:var(--panel2);color:var(--text);cursor:pointer}
+.csl-list-item b{font:700 15px var(--mono);color:var(--data)}
+.csl-list-item small{font:10px var(--mono);color:var(--muted)}
+.csl-structure-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.csl-structure-grid>section{display:flex;flex-direction:column;gap:8px;min-width:0;padding:10px;border:1px solid var(--line);border-radius:9px;background:rgba(10,12,34,.3)}
+.csl-structure-grid h5,.csl-structure-grid p{margin:0}
+.csl-structure-grid .csl-packets{justify-content:flex-start}
+.csl-actions button:disabled{opacity:.5;cursor:not-allowed}
 .csl-check{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text)}
 .csl-check input{width:16px;height:16px;accent-color:var(--data)}
 .csl-divider{height:1px;background:var(--line);margin:4px 0}
-@media(max-width:560px){.csl-format-toolbar{grid-template-columns:1fr}.csl-layout-preview{flex-direction:column}.csl-layout-image{flex-basis:auto;width:76px}}
+@media(max-width:560px){.csl-format-toolbar,.csl-structure-grid{grid-template-columns:1fr}.csl-layout-preview{flex-direction:column}.csl-layout-image{flex-basis:auto;width:76px}.csl-ranked-list li{grid-template-columns:30px minmax(0,1fr)}.csl-ranked-list li small{grid-column:2}}
 
 
 /* Chapter 10 presentation labs */

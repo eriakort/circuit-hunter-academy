@@ -9,7 +9,7 @@ import { PhysicsLab } from './PhysicsLab';
 import { MathLab } from './MathLab';
 import { MathGeometryLab } from './MathGeometryLab';
 import { MathAdvancedLab } from './MathAdvancedLab';
-import { ComputerScienceLab } from './ComputerScienceLab';
+import { ComputerScienceMissionLab } from './ComputerScienceMissionLab';
 import { GhanaComputingLab } from './GhanaComputingLab';
 import { GhanaMathLab } from './GhanaMathLab';
 import { ChemistryLab } from './ChemistryLab';
@@ -387,7 +387,7 @@ export const MissionScreen: React.FC = () => {
         <Grade5MathLab key={`g5ml-${currentMission.id}`} missionId={currentMission.id} lang={lang} />
       )}
       {(currentMission.id.startsWith('a') || /^c\d/.test(currentMission.id)) && currentSceneIndex === 1 && (
-        <ComputerScienceLab missionId={currentMission.id} lang={lang} />
+        <ComputerScienceMissionLab missionId={currentMission.id} lang={lang} />
       )}
       {currentMission.id.startsWith('gh-jhs1-computing-') && currentSceneIndex === 1 && (
         <GhanaComputingLab key={currentMission.id} missionId={currentMission.id} />
