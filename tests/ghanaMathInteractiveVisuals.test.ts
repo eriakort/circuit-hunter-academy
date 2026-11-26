@@ -3,6 +3,7 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { ARCS, MISSIONS } from '../src/data/gameData';
 import { getVisualHtml } from '../src/data/visuals';
+import { GHANA_MATH_STRANDS, type GhanaMathStrand } from '../src/data/ghanaMathVisuals';
 import { GHANA_MATH_TOPIC_BY_MISSION, renderGhanaMathTopicDiagram } from '../src/data/mathVisualsGhTopics';
 import { ALL_GHANA_MATH_LAB_IDS, getGhanaMathLabSpec } from '../src/components/ghanaMathLabs/ghanaMathLabConfig';
 import { GhanaMathLab } from '../src/components/GhanaMathLab';
@@ -28,6 +29,8 @@ for (const mission of ghanaMathMissions) {
   const mathScene = mission.scenes.find(sc => sc.vis && sc.vis !== 'demon');
   assert.ok(mathScene?.vis, `${mission.id} has a math visual scene`);
   const enrichedHtml = getVisualHtml(mathScene!.vis!, 'en', mission.id);
+  const strandKey = (mathScene!.vis === 'ghmath' ? 'mastery' : mathScene!.vis!.slice('ghmath-'.length)) as GhanaMathStrand;
+  assert.ok(enrichedHtml.includes(GHANA_MATH_STRANDS[strandKey].title), `${mission.id} preserves NaCCA strand title in scene visual`);
   assert.ok(enrichedHtml.includes(diagram!.title), `${mission.id} renders mission-specific title in scene visual`);
 
   const spec = getGhanaMathLabSpec(mission.id);

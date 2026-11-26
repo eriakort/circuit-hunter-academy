@@ -9,6 +9,7 @@ import {
   ListeningPassage
 } from '../data/italianListening';
 import { LISTEN_UI, LISTEN_THEME_UI, partialScoreLine } from '../data/italianListeningUi';
+import { getItalianListeningSceneSvg } from '../data/italianVisuals';
 import {
   speakItalian,
   stopSpeaking,
@@ -180,6 +181,13 @@ export const ItalianListeningScreen: React.FC = () => {
               <span className="badge">{passage.level} · {L(LISTEN_THEME_UI[passage.theme], lang)}</span>
             </div>
             <p className="muted" style={{ lineHeight: 1.55, marginTop: 6 }}>{L(passage.intro, lang)}</p>
+            <div
+              className="visual"
+              style={{ marginTop: 12 }}
+              dangerouslySetInnerHTML={{
+                __html: getItalianListeningSceneSvg(passage.theme, isSpeaking && !isPaused, lang)
+              }}
+            />
 
             <div style={{ marginTop: 12 }}>
               <div className="eyebrow" style={{ marginBottom: 6 }}>{T('playbackSpeed')}</div>

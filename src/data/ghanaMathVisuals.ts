@@ -30,9 +30,14 @@ export function getGhanaMathVisual(key: string, missionId?: string): string | nu
   const svg = topicDiagram ? topicDiagram.svg : GHANA_MOTIFS[strand]();
   const title = topicDiagram ? topicDiagram.title : info.title;
   const caption = topicDiagram ? topicDiagram.caption : info.caption;
+  const strandEyebrow =
+    topicDiagram && topicDiagram.title !== info.title
+      ? `<div style="font:700 12px var(--mono, monospace);letter-spacing:.06em;color:var(--data);margin-bottom:2px">${info.title}</div>`
+      : '';
   return `<figure class="ghmath-visual" data-strand="${strand}" style="margin:0;display:flex;flex-direction:column;align-items:center;gap:6px">
     ${svg}
     <figcaption style="text-align:center">
+      ${strandEyebrow}
       <div style="font-family:var(--display, Georgia, serif);font-size:22px;color:var(--good)">${title}</div>
       <div class="muted" style="font-size:16px">${caption}</div>
     </figcaption>
