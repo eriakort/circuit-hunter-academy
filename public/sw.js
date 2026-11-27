@@ -13,21 +13,17 @@ const SHELL_FILES = [
 ];
 
 self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(SHELL_FILES))
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil(caches.open(CACHE_NAME)
+    .then(cache => cache.addAll(SHELL_FILES))
+    .then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(keys
-        .filter(key => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME)
-        .map(key => caches.delete(key))))
-      .then(() => self.clients.claim())
-  );
+  event.waitUntil(caches.keys()
+    .then(keys => Promise.all(keys
+      .filter(key => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME)
+      .map(key => caches.delete(key))))
+    .then(() => self.clients.claim()));
 });
 
 self.addEventListener('fetch', event => {
@@ -35,36 +31,36 @@ self.addEventListener('fetch', event => {
   if (request.method !== 'GET') return;
 
   const url = new URL(request.url);
+  // Do not intercept third-party, Supabase, or application API traffic.
   if (url.origin !== self.location.origin ||
-      /\\/rest\\/v1\\//.test(url.pathname) ||
-      /\\/auth\\/v1\\//.test(url.pathname) ||
-      /\\/functions\\/v1\\//.test(url.pathname) ||
-      /\\/storage\\/v1\\//.test(url.pathname) ||
-      /\\/api\\//.test(url.pathname)) return;
+      ['/rest/v1/', '/auth/v1/', '/functions/v1/', '/storage/v1/', '/api/']
+        .some(path => url.pathname.includes(path))) return;
 
   if (request.mode === 'navigate') {
-    event.respondWith(fetch(request)
-      .then(response => {
+    event.respondWith((async () => {
+      try {
+        const response = await fetch(request);
         if (response.ok) {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(APP_SHELL, copy));
+          await (await caches.open(CACHE_NAME)).put(APP_SHELL, response.clone());
         }
         return response;
-      })
-      .catch(() => caches.match(APP_SHELL).then(cached => cached || Response.error())));
+      } catch {
+        return (await caches.match(APP_SHELL)) || Response.error();
+      }
+    })());
     return;
   }
 
-  if (/\\.(?:js|css|png|jpe?g|webp|svg|ico|woff2?|ttf|webmanifest)$/i.test(url.pathname)) {
-    event.respondWith(caches.match(request).then(cached => {
+  const extension = url.pathname.split('.').pop()?.toLowerCase();
+  if (['js', 'css', 'png', 'jpg', 'jpeg', 'webp', 'svg', 'ico', 'woff', 'woff2', 'ttf', 'webmanifest'].includes(extension || '')) {
+    event.respondWith((async () => {
+      const cached = await caches.match(request);
       if (cached) return cached;
-      return fetch(request).then(response => {
-        if (response.ok && response.type === 'basic') {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
-        }
-        return response;
-      });
-    }));
+      const response = await fetch(request);
+      if (response.ok && response.type === 'basic') {
+        await (await caches.open(CACHE_NAME)).put(request, response.clone());
+      }
+      return response;
+    })());
   }
 });
