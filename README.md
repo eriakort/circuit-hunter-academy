@@ -126,3 +126,7 @@ GitHub Pages is built by `.github/workflows/deploy.yml`: every push to `main` ru
 - **Vite**
 - **Supabase Realtime** (`@supabase/supabase-js`)
 - **CSS3 Design System**: Custom anime dark mode palette, cyber gridlines, and typography (`Dela Gothic One`, `DotGothic16`, `M PLUS Rounded 1c`).
+
+## Install the app (PWA)
+
+Circuit Hunter Academy can be installed from its HTTPS deployment. On desktop Chrome/Edge, use the address-bar install icon or browser menu; on Android Chrome, use **Install app** / **Add to Home screen**; on iOS Safari, use **Share → Add to Home Screen**. The app shell and static assets support basic offline startup; account sync and live/multiplayer data still require a connection. See [the installation guide](docs/install-app.md).
