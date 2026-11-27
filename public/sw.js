@@ -6,6 +6,7 @@ const SHELL_FILES = [
   APP_SHELL,
   new URL('manifest.webmanifest', self.registration.scope).href,
   new URL('favicon.svg', self.registration.scope).href,
+  new URL('logo.svg', self.registration.scope).href,
   new URL('icon-192.png', self.registration.scope).href,
   new URL('icon-512.png', self.registration.scope).href,
   new URL('icon-maskable-512.png', self.registration.scope).href,
