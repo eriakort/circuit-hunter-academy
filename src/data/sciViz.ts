@@ -1,4 +1,5 @@
 import type { Language } from '../types';
+import { supportText } from './visualI18n';
 
 /**
  * Shared helpers for the Physics and Chemistry diagrams (Italian curriculum, Grades 9–11).
@@ -14,7 +15,7 @@ import type { Language } from '../types';
  * Motion is SMIL (<animate>), which MissionScreen pauses for reduced motion.
  */
 
-export const pick = (lang: Language, en: string, it: string) => (lang === 'it' ? it : en);
+export const pick = (lang: Language, en: string, it: string) => supportText(en, it, lang);
 
 export const C = {
   data: 'var(--data)',

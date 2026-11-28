@@ -1,4 +1,5 @@
 import type { Language } from '../types';
+import { supportText, usesDecimalComma } from './visualI18n';
 import { animateGrade5 } from './mathMotion';
 import { MATH5_BUILDERS } from './mathVisualsG5';
 import { renderGrade5MathTopicDiagram, resolveExistingGrade5VisKey } from './mathVisualsG5Topics';
@@ -9,9 +10,9 @@ import { renderGrade5MathTopicDiagram, resolveExistingGrade5VisKey } from './mat
  * HTML/SVG built only from constants in this file.
  */
 type Pair = [string, string];
-const t = (pair: Pair, lang: Language) => (lang === 'it' ? pair[1] : pair[0]);
+const t = (pair: Pair, lang: Language) => supportText(pair[0], pair[1], lang);
 /** Decimal separator follows the language: point in English, comma in Italian. */
-const n = (value: string, lang: Language) => (lang === 'it' ? value.replace(/\./g, ',') : value);
+const n = (value: string, lang: Language) => (usesDecimalComma(lang) ? value.replace(/\./g, ',') : value);
 
 interface UnitCell { sym: string; name: Pair; value: string; kind: 'mul' | 'uni' | 'sub' }
 

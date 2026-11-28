@@ -1,10 +1,11 @@
 import type { Language } from '../types';
+import { usesDecimalComma } from './visualI18n';
 import { C, T, arrow, card, move, pick, showDuring } from './sciViz';
 
 type Builder = (lang: Language) => string;
 
 const t2 = (lang: Language) => (en: string, it: string) => pick(lang, en, it);
-const dec = (lang: Language, s: string) => (lang === 'it' ? s.replace(/\./g, ',') : s);
+const dec = (lang: Language, s: string) => (usesDecimalComma(lang) ? s.replace(/\./g, ',') : s);
 const divSym = (lang: Language) => (lang === 'it' ? ':' : '÷');
 
 /** Clean 640-wide SVG frame with high-clearance compact footer caption that never clips horizontally. */
@@ -249,7 +250,7 @@ export const GRADE5_MATH_TOPICS: Record<Grade5MathTopicKey, Builder> = {
 
   decimalPlaces: lang => {
     const p = t2(lang);
-    const comma = lang === 'it' ? ',' : '.';
+    const comma = usesDecimalComma(lang) ? ',' : '.';
     const cols: Array<[string, string, string]> = [
       ['h', '1', C.muted],
       ['da', '2', C.data],

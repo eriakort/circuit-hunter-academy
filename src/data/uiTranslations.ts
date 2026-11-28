@@ -48,10 +48,13 @@ import { UI_S33 } from './uiTranslationsS33';
 import { UI_S34 } from './uiTranslationsS34';
 import { UI_S35 } from './uiTranslationsS35';
 import { UI_S36 } from './uiTranslationsS36';
+import { UI_S37 } from './uiTranslationsS37';
+import { UI_S38 } from './uiTranslationsS38';
+import { UI_S39 } from './uiTranslationsS39';
 import { UI_T1 } from './uiTranslationsT1';
 import type { UiRow } from './uiTranslationsA';
 
-export const UI_TRANSLATIONS: Record<string, UiRow> = { ...UI_A, ...UI_B, ...UI_C, ...UI_D, ...UI_E, ...UI_Q1, ...UI_Q2, ...UI_Q3, ...UI_Q4, ...UI_Q5, ...UI_Q6, ...UI_Q7, ...UI_Q8, ...UI_Q9, ...UI_S1, ...UI_S2, ...UI_S3, ...UI_S4, ...UI_S5, ...UI_S6, ...UI_S7, ...UI_S8, ...UI_S9, ...UI_S10, ...UI_S11, ...UI_S12, ...UI_S13, ...UI_S14, ...UI_S15, ...UI_S16, ...UI_S17, ...UI_S18, ...UI_S19, ...UI_S20, ...UI_S21, ...UI_S22, ...UI_S23, ...UI_S24, ...UI_S25, ...UI_S26, ...UI_S27, ...UI_S28, ...UI_S29, ...UI_S30, ...UI_S31, ...UI_S32, ...UI_S33, ...UI_S34, ...UI_S35, ...UI_S36, ...UI_T1 };
+export const UI_TRANSLATIONS: Record<string, UiRow> = { ...UI_A, ...UI_B, ...UI_C, ...UI_D, ...UI_E, ...UI_Q1, ...UI_Q2, ...UI_Q3, ...UI_Q4, ...UI_Q5, ...UI_Q6, ...UI_Q7, ...UI_Q8, ...UI_Q9, ...UI_S1, ...UI_S2, ...UI_S3, ...UI_S4, ...UI_S5, ...UI_S6, ...UI_S7, ...UI_S8, ...UI_S9, ...UI_S10, ...UI_S11, ...UI_S12, ...UI_S13, ...UI_S14, ...UI_S15, ...UI_S16, ...UI_S17, ...UI_S18, ...UI_S19, ...UI_S20, ...UI_S21, ...UI_S22, ...UI_S23, ...UI_S24, ...UI_S25, ...UI_S26, ...UI_S27, ...UI_S28, ...UI_S29, ...UI_S30, ...UI_S31, ...UI_S32, ...UI_S33, ...UI_S34, ...UI_S35, ...UI_S36, ...UI_S37, ...UI_S38, ...UI_S39, ...UI_T1 };
 
 const SUPPORT_INDEX: Record<string, number> = { pt: 0, es: 1, fr: 2, de: 3 };
 
