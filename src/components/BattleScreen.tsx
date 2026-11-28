@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useGame } from '../context/GameContext';
 import { QuizQuestion, Mission } from '../types';
 import { MISSIONS } from '../data/gameData';
-import { L, demonSVG, HEART, shuffle, U, T } from '../helpers';
+import { L, Lv, demonSVG, HEART, shuffle, U, T } from '../helpers';
 import { speakItalian, startListening, isSpeechRecognitionAvailable, scorePronunciation } from '../speech/speechEngine';
 
 export const BattleScreen: React.FC = () => {
@@ -372,13 +372,21 @@ export const BattleScreen: React.FC = () => {
                   ? L([' (including +25 flawless bonus)', ' (compreso il bonus perfezione +25)'], lang)
                   : ''
               }`
-            : L(
-                [
-                  `Replay complete. ${isGhana ? 'Wisdom points are' : 'XP is'} only awarded the first time.`,
-                  'Replay completato. I punti XP si ottengono solo la prima volta.'
-                ],
-                lang
-              )}
+            : isGhana
+              ? L(
+                  [
+                    'Replay complete. Wisdom points are only awarded the first time.',
+                    'Replay completato. I punti Saggezza si ottengono solo la prima volta.'
+                  ],
+                  lang
+                )
+              : L(
+                  [
+                    'Replay complete. XP is only awarded the first time.',
+                    'Replay completato. I punti XP si ottengono solo la prima volta.'
+                  ],
+                  lang
+                )}
         </p>
 
         <div className="row" style={{ justifyContent: 'center', marginTop: '16px' }}>
