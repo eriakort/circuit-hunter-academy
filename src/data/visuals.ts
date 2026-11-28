@@ -768,7 +768,7 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
    <text x="320" y="218" text-anchor="middle" class="lbl">CIRCUIT · HUNTER · ACADEMY</text></svg>`;
 },
   "g5s-plants": function g5sPlants(){
-    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="Plant parts and photosynthesis">
+    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="${L(['Plant parts and photosynthesis','Parti della pianta e fotosintesi'])}">
       <rect x="18" y="20" width="186" height="164" rx="12" fill="rgba(255,209,102,.08)" stroke="#ffd166"/>
       <text x="111" y="48" text-anchor="middle" fill="#ffd166" font-size="14" font-weight="800">${L(['LEAVES · Solar Kitchen','FOGLIE · Cucina Solare'])}</text>
       <text x="111" y="88" text-anchor="middle" fill="#ffffff" font-size="14">☀️ + CO₂ + H₂O</text>
@@ -789,7 +789,7 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
     </svg>`;
   },
   "g5s-animals": function g5sAnimals(){
-    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="Vertebrates vs Invertebrates">
+    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="${L(['Vertebrates vs Invertebrates','Vertebrati e invertebrati'])}">
       <rect x="18" y="20" width="292" height="164" rx="14" fill="rgba(56,239,125,.08)" stroke="#38ef7d" stroke-width="2"/>
       <text x="164" y="48" text-anchor="middle" fill="#38ef7d" font-size="15" font-weight="800">${L(['VERTEBRATES (Backbone ✓)','VERTEBRATI (Colonna Vertebrale ✓)'])}</text>
       <text x="164" y="84" text-anchor="middle" fill="#ffffff" font-size="13.5" font-weight="700">${L(['Mammals · Birds · Fish · Reptiles · Amphibians','Mammiferi · Uccelli · Pesci · Rettili · Anfibi'])}</text>
@@ -805,7 +805,7 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
   },
 
   "g5s-ecosystems": function g5sEcosystems(){
-    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="Ecosystem living and non-living parts">
+    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="${L(['Ecosystem living and non-living parts','Parti viventi e non viventi di un ecosistema'])}">
       <rect x="18" y="20" width="190" height="164" rx="14" fill="rgba(56,239,125,.08)" stroke="#38ef7d"/>
       <text x="113" y="49" text-anchor="middle" fill="#38ef7d" font-size="15" font-weight="800">${L(['LIVING','VIVENTI'])}</text>
       <text x="113" y="88" text-anchor="middle" fill="#fff" font-size="14">${L(['Plants · Animals','Piante · Animali'])}</text>
@@ -824,7 +824,7 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
     </svg>`;
   },
   "g5s-habitats": function g5sHabitats(){
-    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="Different habitats and adaptations">
+    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="${L(['Different habitats and adaptations','Habitat e adattamenti diversi'])}">
       <rect x="18" y="20" width="190" height="164" rx="14" fill="rgba(255,209,102,.08)" stroke="#ffd166"/>
       <text x="113" y="49" text-anchor="middle" fill="#ffd166" font-size="15" font-weight="800">${L(['DESERT','DESERTO'])}</text>
       <text x="113" y="91" text-anchor="middle" fill="#fff" font-size="14">${L(['Cactus stores water','Il cactus conserva acqua'])}</text>
@@ -840,7 +840,7 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
     </svg>`;
   },
   "g5s-food-chains": function g5sFoodChains(){
-    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="Food chain">
+    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="${L(['Food chain','Catena alimentare'])}">
       <rect x="18" y="54" width="130" height="96" rx="12" fill="rgba(56,239,125,.10)" stroke="#38ef7d"/>
       <text x="83" y="91" text-anchor="middle" fill="#38ef7d" font-size="16" font-weight="800">${L(['GRASS','ERBA'])}</text><text x="83" y="119" text-anchor="middle" class="sm">${L(['Producer','Produttore'])}</text>
       <path d="M152 102 H180 m-8 -7 8 7 -8 7" stroke="#ffd166" stroke-width="3" fill="none"/>
@@ -856,7 +856,7 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
     </svg>`;
   },
   "g5s-biodiversity": function g5sBiodiversity(){
-    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="Biodiversity">
+    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="${L(['Biodiversity','Biodiversità'])}">
       <text x="320" y="35" text-anchor="middle" fill="#ffd166" font-size="17" font-weight="800">${L(['BIODIVERSITY = VARIETY OF LIFE','BIODIVERSITÀ = VARIETÀ DELLA VITA'])}</text>
       <g fill="none" stroke-width="3"><circle cx="130" cy="112" r="42" stroke="#38ef7d"/><circle cx="255" cy="112" r="42" stroke="#45d8ff"/><circle cx="385" cy="112" r="42" stroke="#ffd166"/><circle cx="510" cy="112" r="42" stroke="#ff5d8f"/></g>
       <g fill="#fff" font-size="13" text-anchor="middle"><text x="130" y="108">${L(['Plants','Piante'])}</text><text x="130" y="128">${L(['Flowers','Fiori'])}</text><text x="255" y="108">${L(['Animals','Animali'])}</text><text x="255" y="128">${L(['Birds','Uccelli'])}</text><text x="385" y="108">${L(['Fungi','Funghi'])}</text><text x="385" y="128">${L(['Mushrooms','Funghi'])}</text><text x="510" y="108">${L(['Habitats','Habitat'])}</text><text x="510" y="128">${L(['Forests','Boschi'])}</text></g>
@@ -864,14 +864,14 @@ B13: =A13*(1-$B$10)</p><p class="muted" style="font-size:14px;margin-top:6px">${
     </svg>`;
   },
   "g5s-environment-care": function g5sEnvironmentCare(){
-    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="Reduce reuse recycle">
+    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="${L(['Reduce reuse recycle','Riduci, riutilizza, ricicla'])}">
       <rect x="28" y="28" width="176" height="145" rx="14" fill="rgba(56,239,125,.08)" stroke="#38ef7d"/><text x="116" y="70" text-anchor="middle" fill="#38ef7d" font-size="18" font-weight="800">${L(['REDUCE','RIDUCI'])}</text><text x="116" y="110" text-anchor="middle" fill="#fff" font-size="14">${L(['Use less','Consuma meno'])}</text>
       <rect x="232" y="28" width="176" height="145" rx="14" fill="rgba(69,216,255,.08)" stroke="#45d8ff"/><text x="320" y="70" text-anchor="middle" fill="#45d8ff" font-size="18" font-weight="800">${L(['REUSE','RIUTILIZZA'])}</text><text x="320" y="110" text-anchor="middle" fill="#fff" font-size="14">${L(['Use again','Usa di nuovo'])}</text>
       <rect x="436" y="28" width="176" height="145" rx="14" fill="rgba(255,209,102,.08)" stroke="#ffd166"/><text x="524" y="70" text-anchor="middle" fill="#ffd166" font-size="18" font-weight="800">${L(['RECYCLE','RICICLA'])}</text><text x="524" y="110" text-anchor="middle" fill="#fff" font-size="14">${L(['Make new materials','Crea nuovi materiali'])}</text>
     </svg>`;
   },
   "g5s-scientific-investigation": function g5sInvestigation(){
-    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="Scientific investigation steps">
+    return `<svg viewBox="0 0 640 205" class="dia" role="img" aria-label="${L(['Scientific investigation steps','Fasi dell’indagine scientifica'])}">
       <g fill="rgba(69,216,255,.08)" stroke="#45d8ff" stroke-width="2"><rect x="18" y="58" width="130" height="92" rx="12"/><rect x="176" y="58" width="130" height="92" rx="12"/><rect x="334" y="58" width="130" height="92" rx="12"/><rect x="492" y="58" width="130" height="92" rx="12"/></g>
       <g fill="#ffd166" font-size="14" font-weight="800" text-anchor="middle"><text x="83" y="92">${L(['QUESTION','DOMANDA'])}</text><text x="241" y="92">${L(['PREDICT','PREVEDI'])}</text><text x="399" y="92">${L(['OBSERVE','OSSERVA'])}</text><text x="557" y="92">${L(['CONCLUDE','CONCLUDI'])}</text></g>
       <g fill="#fff" font-size="11" text-anchor="middle"><text x="83" y="120">${L(['What do I ask?','Che cosa chiedo?'])}</text><text x="241" y="120">${L(['What may happen?','Che cosa accadrà?'])}</text><text x="399" y="120">${L(['What is the evidence?','Quali sono le prove?'])}</text><text x="557" y="120">${L(['What did I learn?','Che cosa ho imparato?'])}</text></g>
