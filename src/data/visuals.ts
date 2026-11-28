@@ -365,7 +365,13 @@ export const VIS: Record<string, () => string> = {
   </svg>`;
 },
   "stack": function stack(){
-  const Ls=L([[['You (the user)','click, type, tap'],['Application software','games, browser, word processor'],['Operating system','Windows, macOS, Linux, Android, iOS'],['Drivers + firmware','translators for each device'],['Hardware','CPU, RAM, storage, screen…']],[['Tu (l\'utente)','clicchi, scrivi, tocchi'],['Software applicativo','giochi, browser, videoscrittura'],['Sistema operativo','Windows, macOS, Linux, Android, iOS'],['Driver + firmware','traduttori per ogni dispositivo'],['Hardware','CPU, RAM, memoria di massa, schermo…']]]);
+  const Ls=[
+    [['You (the user)','Tu (l\'utente)'],['click, type, tap','clicchi, scrivi, tocchi']],
+    [['Application software','Software applicativo'],['games, browser, word processor','giochi, browser, videoscrittura']],
+    [['Operating system','Sistema operativo'],['Windows, macOS, Linux, Android, iOS','Windows, macOS, Linux, Android, iOS']],
+    [['Drivers + firmware','Driver + firmware'],['translators for each device','traduttori per ogni dispositivo']],
+    [['Hardware','Hardware'],['CPU, RAM, storage, screen…','CPU, RAM, memoria di massa, schermo…']]
+  ].map(([t,c])=>[L(t),L(c)]);
   const col=[C.sak,C.gold,C.ember,C.data,'#b6b9e0'];
   return `<div class="stack">${Ls.map((l,i)=>`${i?'<div class="arrowdown"><i></i></div>':''}<div class="layer" style="background:${col[i]}">${l[0]}<small>${l[1]}</small></div>`).join('')}</div>`;
 },

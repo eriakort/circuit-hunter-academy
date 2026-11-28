@@ -52,14 +52,19 @@ export const PILL = (en: any, it: any, lang: Language = 'en'): string => {
     : `<span class="it" data-l="IT">${it}</span>`;
 };
 
+// Text for one language of an (English, Italian) pair: PT/ES/FR/DE use the
+// translation table and fall back to Italian, never English.
+const pairText = (en: any, it: any, lang: Language): any =>
+  lang === 'it' ? it : lang === 'en' || typeof en !== 'string' ? en : translateUi(en, lang) ?? it ?? en;
+
 export const H = (en: any, it: any, lang: Language = 'en'): string => {
-  return `${lang === 'it' ? it : en}${PILL(en, it, lang)}`;
+  return `${pairText(en, it, lang)}${PILL(en, it, lang)}`;
 };
 
 export const rich = (s: any, lang: Language = 'en'): string => {
   if (!s) return '';
   return String(s).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, (_m, en, it) =>
-    `<span class="term">${lang === 'it' ? it : en}</span>${PILL(en, it, lang)}`
+    `<span class="term">${pairText(en, it, lang)}</span>${PILL(en, it, lang)}`
   );
 };
 
