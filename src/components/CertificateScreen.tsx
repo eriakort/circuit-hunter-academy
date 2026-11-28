@@ -4,7 +4,7 @@ import { useGame } from '../context/GameContext';
 import { RANKS } from '../data/gameData';
 import { getSankofaRank, isSankofaCurriculum } from '../data/sankofaTheme';
 import { uiLocale } from '../data/missionUi';
-import { L, demonSVG, esc, rankOf, U } from '../helpers';
+import { L, Lv, demonSVG, esc, rankOf, U } from '../helpers';
 
 export const CertificateScreen: React.FC = () => {
   const { state, curriculumProfile, myMissions, goToView, startBattle } = useGame();
@@ -39,12 +39,13 @@ export const CertificateScreen: React.FC = () => {
         <p>
           {isGhana
             ? `All ${missions.length} missions cleared and every learning challenge completed by`
-            : L(
+            : Lv(
                 [
-                  `All ${missions.length} missions cleared and every Glitch Demon sealed by`,
-                  `Tutte le ${missions.length} missioni superate e tutti i Demoni Glitch sigillati da`
+                  'All {n} missions cleared and every Glitch Demon sealed by',
+                  'Tutte le {n} missioni superate e tutti i Demoni Glitch sigillati da'
                 ],
-                lang
+                lang,
+                { n: missions.length }
               )}
         </p>
 
@@ -74,10 +75,11 @@ export const CertificateScreen: React.FC = () => {
             </div>
             {state.checkpointProgress?.['it_checkpoint_a1_b1']?.completed ? (
               <p style={{ margin: '6px 0 0', fontSize: '14px', color: 'var(--text)' }}>
-                ★ {L(
-                  [`Distinction: CEFR A1, A2, and B1 Speaking Examination passed with ${state.checkpointProgress['it_checkpoint_a1_b1'].bestScore}% score!`,
-                   `Distinzione: Esame orale QCER A1, A2 e B1 superato con il ${state.checkpointProgress['it_checkpoint_a1_b1'].bestScore}%!`],
-                  lang
+                ★ {Lv(
+                  ['Distinction: CEFR A1, A2, and B1 Speaking Examination passed with {score}% score!',
+                   'Distinzione: Esame orale QCER A1, A2 e B1 superato con il {score}%!'],
+                  lang,
+                  { score: state.checkpointProgress['it_checkpoint_a1_b1'].bestScore }
                 )}
               </p>
             ) : (

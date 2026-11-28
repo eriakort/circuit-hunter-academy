@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useGame } from '../context/GameContext';
-import { L } from '../helpers';
+import { L, Lv } from '../helpers';
 import { BilingualText } from '../types';
 import { GrammarLevel, ITALIAN_GRAMMAR_TOPICS } from '../data/italianGrammar';
 import { getGrammarLevelProgress, getLeastMasteredGrammarTopic } from '../data/italianGrammarReview';
@@ -467,14 +467,14 @@ export const ItalianCheckpointScreen: React.FC = () => {
 
         <p className="muted" style={{ fontSize: 17, maxWidth: 580, margin: '0 auto 24px' }}>
           {passed
-            ? L([
-                `Congratulations! You scored ${score}/${TOTAL_QUESTIONS} (${pct}%). You demonstrated communicative competence across CEFR levels A1, A2, and B1 with clear pronunciation and sound grammar intuition.`,
-                `Congratulazioni! Hai ottenuto ${score}/${TOTAL_QUESTIONS} (${pct}%). Hai dimostrato competenza comunicativa nei livelli QCER A1, A2 e B1 con pronuncia chiara e solida intuizione grammaticale.`
-              ], lang)
-            : L([
-                `You scored ${score}/${TOTAL_QUESTIONS} (${pct}%). The pass threshold is ${PASS_SCORE}/${TOTAL_QUESTIONS}. Review the missions in your learning map and practice with the Italian Lab!`,
-                `Hai ottenuto ${score}/${TOTAL_QUESTIONS} (${pct}%). La soglia di superamento è ${PASS_SCORE}/${TOTAL_QUESTIONS}. Rivedi le missioni sulla mappa e allenati con il Laboratorio di Parlato!`
-              ], lang)}
+            ? Lv([
+                'Congratulations! You scored {score}/{total} ({pct}%). You demonstrated communicative competence across CEFR levels A1, A2, and B1 with clear pronunciation and sound grammar intuition.',
+                'Congratulazioni! Hai ottenuto {score}/{total} ({pct}%). Hai dimostrato competenza comunicativa nei livelli QCER A1, A2 e B1 con pronuncia chiara e solida intuizione grammaticale.'
+              ], lang, { score, total: TOTAL_QUESTIONS, pct })
+            : Lv([
+                'You scored {score}/{total} ({pct}%). The pass threshold is {pass}/{total}. Review the missions in your learning map and practice with the Italian Lab!',
+                'Hai ottenuto {score}/{total} ({pct}%). La soglia di superamento è {pass}/{total}. Rivedi le missioni sulla mappa e allenati con il Laboratorio di Parlato!'
+              ], lang, { score, total: TOTAL_QUESTIONS, pct, pass: PASS_SCORE })}
         </p>
 
         <section className="it-grammar-readiness-summary" aria-label={L(['Grammar mastery by CEFR level', 'Padronanza grammaticale per livello QCER'], lang)} style={{ margin: '22px auto', maxWidth: 660, textAlign: 'left', border: '1px solid var(--line)', borderRadius: 14, padding: 16, background: 'var(--panel)' }}>

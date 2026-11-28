@@ -21,6 +21,10 @@ export const C = {
 /** Two-language helper for interface text: (language, English, Italian). */
 export const T = (lang: Language, en: string, it: string): string => L([en, it], lang);
 
+// L() for strings with {name} placeholders: translate the template, then fill values.
+export const Lv = (x: [string, string], lang: Language, vars: Record<string, string | number>): string =>
+  String(L(x, lang)).replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k]) : m));
+
 export const L = (x: any, lang: Language = 'en'): any => {
   if (x == null) return '';
   // Legacy [English, Italian] tuple. Italian for 'it'; support languages use
