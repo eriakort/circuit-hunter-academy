@@ -456,3 +456,28 @@ test('Grade 5 science labs follow a support language chosen in the Italian subje
   await expect(page.locator('.chem-lab')).not.toContainText('Photosynthesis');
   await expect(page.locator('.chem-lab')).not.toContainText('Sunlight Energy');
 });
+
+test('Grade 5 science lessons are translated into the support language chosen in the Italian subject', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="italian"]').click();
+  await page.locator('#nm').fill('Lesson Hunter');
+  await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
+  await page.locator('#lPT').click();
+
+  await page.locator('#subject-switcher').click();
+  await page.locator('.subjcard[data-s="science"]').click();
+
+  // Mission map shows the Portuguese title, not English or Italian.
+  await expect(page.locator('.mcard').first()).toContainText('O Segredo da Vida das Plantas');
+  await expect(page.locator('.mcard').first()).not.toContainText('The Secret Life of Plants');
+  await expect(page.locator('.mcard').first()).not.toContainText('La vita segreta delle piante');
+
+  // Opening the mission shows Portuguese narration.
+  await page.locator('.mcard').first().click();
+  await expect(page.locator('body')).toContainText('Bem-vindo, jovem cientista');
+  await expect(page.locator('body')).not.toContainText('Welcome, young scientist');
+});
