@@ -77,10 +77,10 @@ export const CHEM9_BUILDERS: Record<string, Builder> = {
     return frame(p('Is it pure or a mixture?', 'Pura o miscuglio?'),
       `${q(190, 20, 260, p('1. One formula?', '1. Una sola formula?'))}
       <path d="M260 84 L110 238 M380 84 L320 130" stroke="${C.muted}" stroke-width="4" fill="none"/>
-      ${T(150, 150, p('YES', 'SÌ'), { size: 22, fill: C.good })}${T(366, 112, p('NO', 'NO'), { size: 22, fill: C.bad, anchor: 'start' })}
+      ${T(150, 150, p('YES', 'SÌ'), { size: 22, fill: C.good })}${T(366, 112, (lang === 'en' ? 'NO' : p('NO (decision)', 'NO')), { size: 22, fill: C.bad, anchor: 'start' })}
       ${q(210, 130, 220, p('2. Uniform?', '2. Uniforme?'))}
       <path d="M270 194 L330 238 M390 194 L520 238" stroke="${C.muted}" stroke-width="4" fill="none"/>
-      ${T(292, 214, p('YES', 'SÌ'), { size: 22, fill: C.good, anchor: 'end' })}${T(470, 224, p('NO', 'NO'), { size: 22, fill: C.bad, anchor: 'start' })}
+      ${T(292, 214, p('YES', 'SÌ'), { size: 22, fill: C.good, anchor: 'end' })}${T(470, 224, (lang === 'en' ? 'NO' : p('NO (decision)', 'NO')), { size: 22, fill: C.bad, anchor: 'start' })}
       ${res(10, C.data, p('PURE SUBSTANCE', 'SOSTANZA PURA'), 'Au · H₂O')}${res(220, C.good, p('HOMOGENEOUS', 'OMOGENEO'), p('salt water', 'acqua e sale'))}${res(430, C.ember, p('HETEROGENEOUS', 'ETEROGENEO'), p('sand + water', 'sabbia + acqua'))}
       <circle r="9" fill="${C.text}"><animateMotion dur="6s" repeatCount="indefinite" path="M320 20 L320 84 L320 130 L320 194 L330 238" keyPoints="0;.5;.5;1;1" keyTimes="0;.3;.5;.9;1" calcMode="linear"/></circle>`,
       p('Ask the two questions in order', 'Poni le due domande in ordine'), 372);
