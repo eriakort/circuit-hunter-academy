@@ -1,4 +1,5 @@
 import type { Language } from '../types';
+import { usesDecimalComma } from './visualI18n';
 import { C, T, anim, move, frame, pick, showDuring, card } from './sciViz';
 
 /**
@@ -9,7 +10,7 @@ import { C, T, anim, move, frame, pick, showDuring, card } from './sciViz';
  */
 type Builder = (lang: Language) => string;
 const t2 = (lang: Language) => (en: string, it: string) => pick(lang, en, it);
-const dec = (lang: Language, s: string) => (lang === 'it' ? s.replace(/\./g, ',') : s);
+const dec = (lang: Language, s: string) => (usesDecimalComma(lang) ? s.replace(/\./g, ',') : s);
 const f1 = (v: number) => v.toFixed(1);
 
 export const MATH5_BUILDERS: Record<string, Builder> = {
@@ -129,7 +130,7 @@ export const MATH5_BUILDERS: Record<string, Builder> = {
       const mark = deg === 90
         ? `<path d="M${cx + 24} ${cy} V${cy - 24} H${cx}" fill="none" stroke="${col}" stroke-width="4"/>`
         : `<path d="M${cx + 30} ${cy} A30 30 0 0 0 ${f1(arcX)} ${f1(arcY)}" fill="none" stroke="${col}" stroke-width="5"/>`;
-      return `<line x1="${cx}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="${C.data}" stroke-width="5" stroke-linecap="round"/><line x1="${cx}" y1="${cy}" x2="${f1(ex)}" y2="${f1(ey)}" stroke="${C.data}" stroke-width="5" stroke-linecap="round"/>${mark}${T(cx, cy + 46, deg + '°', { size: 28, fill: col, weight: 800 })}${T(cx, cy + 78, p(en, it), { size: 22, fill: C.muted, weight: 700 })}`;
+      return `<line x1="${cx}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="${C.data}" stroke-width="5" stroke-linecap="round"/><line x1="${cx}" y1="${cy}" x2="${f1(ex)}" y2="${f1(ey)}" stroke="${C.data}" stroke-width="5" stroke-linecap="round"/>${mark}${T(cx, cy + 46, deg + '°', { size: 28, fill: col, weight: 800 })}${T(cx, cy + 78, (lang === 'en' ? en : p(en + ' angle', it)), { size: 22, fill: C.muted, weight: 700 })}`;
     }).join('');
     return frame(p('Kinds of angles', 'Tipi di angoli'), `${base}${sweeps}`,
       p('An angle is how far one side turns from the other', 'L’angolo misura quanto ruota un lato'), 262);
