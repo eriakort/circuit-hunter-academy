@@ -1,11 +1,19 @@
 import React from 'react';
 import type { Language } from '../../types';
+import { labText } from '../../data/grade5ScienceLabText';
+import { translateUi } from '../../data/uiTranslations';
 
-export const pick = (lang: Language, en: string, it: string) => (lang === 'it' ? it : en);
+// Italian learners get Italian; PT/ES/FR/DE learners get their own language (Italian when no
+// translation exists, never English); everyone else gets English.
+export const pick = (lang: Language, en: string, it: string) => {
+  if (lang === 'it') return it;
+  if (lang === 'pt' || lang === 'es' || lang === 'fr' || lang === 'de') return labText(en, lang) ?? translateUi(en, lang) ?? it;
+  return en;
+};
 
 export const fmt = (lang: Language, value: number, decimals = 2) => {
   const s = value.toFixed(decimals);
-  return lang === 'it' ? s.replace('.', ',') : s;
+  return lang === 'en' ? s : s.replace('.', ',');
 };
 
 export function Slider({

@@ -433,3 +433,26 @@ test('Grade 5 biodiversity lab fits mobile screens and respects reduced motion',
   }));
   expect(documentWidth).toBeLessThanOrEqual(viewportWidth);
 });
+
+test('Grade 5 science labs follow a support language chosen in the Italian subject', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.clear());
+  await page.reload();
+
+  await page.locator('.grade-card').first().click();
+  await page.locator('.subjcard[data-s="italian"]').click();
+  await page.locator('#nm').fill('Lab Hunter');
+  await page.locator('#regf').getByRole('button', { name: 'Join the academy' }).click();
+  await page.locator('#lPT').click();
+  await expect(page.locator('#lPT')).toHaveAttribute('aria-pressed', 'true');
+
+  await page.locator('#subject-switcher').click();
+  await page.locator('.subjcard[data-s="science"]').click();
+  await page.locator('.mcard').first().click();
+  await advanceScene(page);
+
+  await expect(page.locator('.chem-lab')).toBeVisible();
+  await expect(page.locator('.chem-lab')).toContainText('Bancada de Fotossíntese');
+  await expect(page.locator('.chem-lab')).not.toContainText('Photosynthesis');
+  await expect(page.locator('.chem-lab')).not.toContainText('Sunlight Energy');
+});

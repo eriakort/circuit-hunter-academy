@@ -161,7 +161,7 @@ export const Grade5ScienceReviewLab: React.FC<Props> = ({ missionId, lang }) => 
         {Array.from({length: Math.min(7, Math.floor(strength/14))},(_,n)=><circle key={n} cx={127+(n%4)*34} cy={83+Math.floor(n/4)*24} r="8" fill="#45d8ff" className="chem-anim-pulse" style={{animationDelay:`${n*.12}s`}} />)}
         <text x="180" y="171" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="800">{text(folds[i][0], folds[i][1])} · {strength}%</text>
       </>),
-      <>{choices(lang, folds, i, n => choose('bridge', n))}<Slider label={text('Model load', 'Carico del modello')} value={load} min={10} max={100} step={5} unit="%" lang={lang} onChange={n => adjust('bridge-load', n)}/><Readout label={text('Model result', 'Risultato del modello')} value={text(`${strength}% illustrative support`, `${strength}% di sostegno illustrativo`)}/>{analogy('Engineers compare designs, test them safely and use evidence to improve a bridge.', 'Gli ingegneri confrontano progetti, li provano in sicurezza e usano le prove per migliorare un ponte.')}</>);
+      <>{choices(lang, folds, i, n => choose('bridge', n))}<Slider label={text('Model load', 'Carico del modello')} value={load} min={10} max={100} step={5} unit="%" lang={lang} onChange={n => adjust('bridge-load', n)}/><Readout label={text('Model result', 'Risultato del modello')} value={`${strength}% ${text('illustrative support', 'di sostegno illustrativo')}`}/>{analogy('Engineers compare designs, test them safely and use evidence to improve a bridge.', 'Gli ingegneri confrontano progetti, li provano in sicurezza e usano le prove per migliorare un ponte.')}</>);
   }
 
   return null;
